@@ -1,5 +1,6 @@
 import { ClinicalQuickGuide } from '../../types/clinicalQuickGuide';
 import { guiaBiopsiaIncisional } from './clinicalQuickGuides.biopsia-incisional.seed';
+import { guiaEsofagostomia } from './clinicalQuickGuides.esofagostomia.seed';
 
 /**
  * Guia: exame físico para suspeita de ruptura do ligamento cruzado cranial (LCC).
@@ -4915,6 +4916,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
 };
 
 export const clinicalQuickGuidesSeed: ClinicalQuickGuide[] = [
+  guiaEsofagostomia,
   guiaBiopsiaIncisional,
   guiaRupturaLcc,
   guiaBandagemRobertJones,

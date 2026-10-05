@@ -1,0 +1,64 @@
+- generic [ref=f1e95]:
+  - banner [ref=f1e96]:
+    - generic [ref=f1e97]:
+      - generic [ref=f1e98]:
+        - button "Abrir navegação do Vetius" [ref=f1e99] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f1e101] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f1e103]
+          - generic [ref=f1e104]: Vetius
+      - generic [ref=f1e105]:
+        - button "Ativar modo escuro" [ref=f1e106] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f1e109] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=f1e110]
+          - generic [ref=f1e111]: Luis
+  - main [ref=f1e114]:
+    - generic [ref=f1e118]:
+      - complementary [ref=f1e119]:
+        - generic [ref=f1e120]:
+          - button "Esconder barra lateral" [ref=f1e121] [cursor=pointer]
+          - link [ref=f1e126] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=f1e127]
+          - navigation [ref=f1e128]:
+            - link "Início" [ref=f1e129] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f1e133] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [active] [ref=f1e139] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f1e144] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f1e149] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f1e154] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Procedimentos" [ref=f1e158] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f1e163] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f1e169] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f1e174] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f1e178] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=f1e184]:
+        - generic [ref=f1e1520]:
+          - generic [ref=f1e1523]:
+            - generic [ref=f1e1524]:
+              - heading "Medicamentos" [level=1] [ref=f1e1525]
+              - paragraph [ref=f1e1526]: Busca rápida de posologias, apresentações e diretrizes de dosagem organizadas por classes farmacológicas.
+            - textbox "Buscar por princípio ativo, nome comercial ou indicação..." [ref=f1e1533]
+          - generic [ref=f1e1534]:
+            - complementary [ref=f1e1535]:
+              - heading "Classe Farmacológica" [level=3] [ref=f1e1537]
+              - navigation [ref=f1e1538]:
+                - button "Todas as Classes 0" [pressed] [ref=f1e1539] [cursor=pointer]:
+                  - generic [ref=f1e1540]: Todas as Classes
+                  - generic [ref=f1e1541]: "0"
+            - main [ref=f1e1542]:
+              - generic [ref=f1e1543]:
+                - heading "Catálogo de Fármacos" [level=2] [ref=f1e1544]
+                - generic [ref=f1e1545]: ... fármacos
+              - paragraph [ref=f1e1549]: Buscando diretrizes farmacológicas...

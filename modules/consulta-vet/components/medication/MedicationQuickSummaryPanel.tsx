@@ -83,14 +83,24 @@ export function MedicationQuickSummaryPanel({
     if (medication.quickIndications && medication.quickIndications.length > 0) {
       return medication.quickIndications;
     }
+    if (medication.doses && medication.doses.length > 0) {
+      return medication.doses.map((d) => ({
+        condition: d.indication,
+        species: d.species,
+        doseSummary: `${d.doseMin}${d.doseMax && d.doseMax !== d.doseMin ? ` a ${d.doseMax}` : ''} ${d.doseUnit}/${d.perWeightUnit} ${d.frequency}`,
+        route: d.route,
+        duration: d.duration || 'Conforme indicação e resposta clínica',
+        clinicalContext: d.clinicalContext || d.notes,
+      }));
+    }
     return medication.indications.map((ind) => ({
       condition: ind,
       species: 'both' as const,
-      doseSummary: 'Conforme tabela de posologia clínica',
+      doseSummary: 'Consultar monografia e doses completas',
       route: medication.routes?.join(' / ') || 'Consultar posologia',
       duration: 'Conforme indicação e regime posológico',
     }));
-  }, [medication.quickIndications, medication.indications, medication.routes]);
+  }, [medication.quickIndications, medication.doses, medication.indications, medication.routes]);
 
   const pillars = useMemo(() => {
     if (medication.pillars && medication.pillars.length > 0) {

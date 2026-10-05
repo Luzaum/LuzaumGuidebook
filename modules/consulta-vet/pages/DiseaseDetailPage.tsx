@@ -108,6 +108,8 @@ export function DiseaseDetailPage() {
     const loadData = async () => {
       setIsLoading(true);
       setError(null);
+      setRelatedConsensos([]);
+      setRelatedMedications([]);
 
       if (!slug) {
         if (isMounted) {
@@ -131,11 +133,14 @@ export function DiseaseDetailPage() {
           return;
         }
 
+        // Show the monograph before loading optional related catalogs.
+        setIsLoading(false);
+
         addRecent('disease', found.id, undefined, resumeState?.sectionId);
 
         const [loadedMedications, loadedConsensos] = await Promise.all([
-          medicationRepository.list(),
-          consensoRepository.list(),
+          medicationRepository.list().catch(() => [] as MedicationRecord[]),
+          consensoRepository.list().catch(() => [] as ConsensusRecord[]),
         ]);
 
         if (!isMounted) return;
@@ -490,7 +495,9 @@ export function DiseaseDetailPage() {
 
           <QuickDecisionStrip slug={disease.slug} items={disease.quickDecisionStrip || []} />
 
-          {disease.slug === 'doenca-renal-cronica-caes-gatos' ||
+          {disease.slug === 'doenca-renal-cronica-canina' ||
+          disease.slug === 'doenca-renal-cronica-caes-gatos' ||
+          disease.id === 'disease-doenca-renal-cronica-canina' ||
           disease.id === 'disease-drc-caes-gatos' ||
           disease.title.toLowerCase().includes('renal cr') ||
           disease.slug.includes('drc') ? (

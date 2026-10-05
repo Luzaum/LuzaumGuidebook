@@ -30,7 +30,7 @@ for (const file of files) {
         const nextPath = currentPath ? `${currentPath}.${key}` : key;
         if (typeof val === 'string') {
           // ignore metadata keys
-          if (['id', 'slug', 'title', 'subtitle', 'category', 'status', 'version', 'species', 'tags', 'metaDescription', 'lastUpdate', 'url', 'aspectRatio'].includes(key)) {
+          if (['id', 'slug', 'title', 'subtitle', 'category', 'status', 'version', 'species', 'tags', 'metaDescription', 'lastUpdate', 'url', 'aspectRatio', 'citation', 'citationText'].includes(key)) {
             continue;
           }
           // Check if it's long and lacks formatting

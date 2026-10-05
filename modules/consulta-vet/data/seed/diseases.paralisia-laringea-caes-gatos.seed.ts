@@ -382,6 +382,18 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
       'Classificação etiológica e comparativa da paralisia laríngea em pequenos animais (Tabela 1).',
   },
 
+  pathogenesisTransmission: {
+    mecanismoPatogenicoNeurodegenerativo:
+      'Degeneração axonal retrógrada (dying-back axonopathy):\n' +
+      '- Na paralisia laríngea adquirida idiopática (GOLPP), o processo patogênico central é uma axonopatia degenerativa crônica e progressiva comprimento-dependente que acomete preferencialmente as fibras nervosas mais longas do organismo.\n' +
+      '- Como o nervo laríngeo recorrente possui trajeto anatômico extenso (originando-se do vago no tórax, contornando a aorta à esquerda e a artéria subclávia à direita antes de ascender pelo pescoço até a laringe), suas porções distais sofrem perda prematura de transporte axoplasmático e degeneração da bainha de mielina.\n' +
+      '- Ocorre denervação progressiva do músculo cricoaritenoideo dorsal (CAD), com perda de unidades motoras funcionais e atrofia muscular por denervação e perda trófica neuronal.',
+    naturezaNaoTransmissivel:
+      'Afecção não transmissível:\n' +
+      '- A paralisia laríngea canina e felina é uma afecção neurológica degenerativa, traumática ou neoplásica intrínseca, sem qualquer potencial infeccioso ou mecanismo de transmissão horizontal ou vetorial.\n' +
+      '- Em linhagens predispostas com formas congênitas (ex.: Bouvier des Flandres, Husky Siberiano, Dálmata, Rottweiler), o padrão de herança familiar é hereditário (autossômico dominante ou recessivo com penetrância variável).',
+  },
+
   pathophysiology: {
     mecanicaRespiratoriaNormalDaGlote:
       'Fisiologia ventilatória normal da rima glottidis:\n' +
@@ -450,7 +462,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
       'Tabela comparativa — Anatomia e fisiologia do trato laríngeo em cães e gatos (Tabela 2).',
   },
 
-  clinicalSigns: {
+  clinicalSignsPathophysiology: {
     stridorInspiratorioVsStertor:
       'Diferenciação semiológica: estridor vs estertor:\n' +
       '- Estridor inspiratório (Sinal cardeal de paralisia laríngea):\n' +
@@ -861,9 +873,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
       '  - Administrar a alimentação com o comedouro em nível ligeiramente elevado para favorecer a gravidade na propulsão alimentar.\n' +
       '- Restrição e manejo de ingestão hídrica:\n' +
       '  - Evitar o acesso a baldes ou bacias profundas de água fria; ofertar água fresca em volumes fracionados sob supervisão direta.',
-  },
 
-  prognosis: {
     sobrevidaPosOperatoriaNoCao:
       'Sobrevida pós-operatória e eficácia na espécie canina:\n' +
       '- Resolução imediata dos sinais obstrutivos:\n' +
@@ -1124,7 +1134,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
     },
   ],
 
-  editorialReferences: [
+  references: [
     {
       authors: 'Stanley BJ, Hauptman JG, Fritz MC, Rosenstein DS, Kinns J',
       title: 'Esophageal dysfunction in dogs with idiopathic laryngeal paralysis: a controlled cohort study',

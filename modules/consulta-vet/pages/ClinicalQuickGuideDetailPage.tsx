@@ -1,20 +1,24 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import { BookOpen, ChevronRight, ListChecks, ZoomIn } from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { ClinicalQuickGuideBody } from '../components/clinicalQuickGuide/ClinicalQuickGuideBody';
+import { ClinicalGuideInline } from '../components/clinicalQuickGuide/ClinicalGuideInline';
 import { ClinicalImageZoomModal } from '../components/clinicalQuickGuide/ClinicalImageZoomModal';
 import { getClinicalQuickGuideRepository } from '../services/clinicalQuickGuideRepository';
 import { ClinicalQuickGuide } from '../types/clinicalQuickGuide';
 import { CLINICAL_QUICK_GUIDE_CATEGORIES } from '../data/seed/clinicalQuickGuides.categories';
+import { SectionAnchorNav, type SectionAnchorEntry } from '../components/shared/SectionAnchorNav';
+import { getProcedureChapterLabel } from '../utils/procedureChapterLabels';
 
 const UI_TEXT = {
   home: 'Início',
-  section: 'Guia rápido clínico',
+  section: 'Procedimentos',
   notFoundTitle: 'Guia não encontrado',
   notFoundBody: 'Não foi possível localizar este conteúdo.',
   back: 'Voltar à lista',
-  quickTitle: 'Guia rápido',
+  quickTitle: 'Resumo prático',
 } as const;
 
 export function ClinicalQuickGuideDetailPage() {
@@ -24,10 +28,14 @@ export function ClinicalQuickGuideDetailPage() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
   const [heroZoomOpen, setHeroZoomOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const readingRef = useRef<HTMLElement>(null);
+  const scrollAfterTabChange = useRef(false);
 
   useEffect(() => {
     let ok = true;
     setActiveTab(0);
+    scrollAfterTabChange.current = false;
     if (!slug) {
       setGuide(null);
       setLoading(false);
@@ -59,6 +67,35 @@ export function ClinicalQuickGuideDetailPage() {
     return guide.sections;
   }, [guide]);
 
+  // Slice before removing placeholders so readingTabs keep their original section indices.
+  const readingBlocks = useMemo(() => {
+    if (!guide) return [];
+    const start = guide.readingTabs?.[activeTab]?.startIndex ?? 0;
+    const end = guide.readingTabs?.[activeTab + 1]?.startIndex;
+    return guide.sections
+      .map((block, index) => ({ block, id: `cqg-section-${index}` }))
+      .slice(start, end)
+      .filter(({ block }) => sectionsForBody.includes(block));
+  }, [guide, activeTab, sectionsForBody]);
+
+  const chapters = useMemo<SectionAnchorEntry[]>(() => [
+    { id: 'cqg-summary', label: UI_TEXT.quickTitle },
+    ...readingBlocks.flatMap(({ block, id }) => block.type === 'heading' && block.level === 2
+      ? [{ id, label: getProcedureChapterLabel(block.text) }]
+      : []),
+    ...(readingBlocks.some(({ block }) => block.type === 'heading' && block.level === 2)
+      ? [] : [{ id: 'clinical-guide-reading', label: 'Conteúdo completo' }]),
+  ], [readingBlocks]);
+
+  useEffect(() => {
+    if (!scrollAfterTabChange.current) return;
+    const frame = window.requestAnimationFrame(() => {
+      readingRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      scrollAfterTabChange.current = false;
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeTab, reduceMotion]);
+
   if (loading) {
     return (
       <div className="flex flex-1 items-center justify-center p-12">
@@ -83,7 +120,8 @@ export function ClinicalQuickGuideDetailPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[900px] space-y-8 p-4 md:p-8">
+    <div className="consulta-vet-detail-page mx-auto flex w-full max-w-[1280px] items-start gap-6">
+    <div className="min-w-0 flex-1 space-y-8 p-4 md:p-8">
       <nav
         className="consulta-vet-breadcrumb flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
         aria-label="Navegação estrutural"
@@ -143,6 +181,7 @@ export function ClinicalQuickGuideDetailPage() {
         </div>
       </ConsultaVetSurface>
 
+      <section id="cqg-summary" className="scroll-mt-24">
       <ConsultaVetSurface accent="sky" className="p-5 md:p-6">
         <div className="mb-4 flex items-center gap-2">
           <ListChecks className="h-5 w-5 text-sky-600 dark:text-sky-400" aria-hidden />
@@ -150,46 +189,48 @@ export function ClinicalQuickGuideDetailPage() {
         </div>
         <ul className="list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-foreground/90">
           {guide.quickBullets.map((b, i) => (
-            <li key={i}>{b}</li>
+            <li key={i}>{guide.richText ? <ClinicalGuideInline text={b} /> : b}</li>
           ))}
         </ul>
       </ConsultaVetSurface>
-
-      {guide.showTableOfContents && !guide.readingTabs ? (
-        <details className="rounded-2xl border border-border bg-card p-5">
-          <summary className="cursor-pointer text-base font-bold text-foreground">Neste guia — navegar pelos capítulos</summary>
-          <nav aria-label="Capítulos do procedimento" className="mt-4 grid gap-2 sm:grid-cols-2">
-            {sectionsForBody.map((block, index) => block.type === 'heading' && block.level === 2 ? (
-              <a key={index} href={`#cqg-section-${index}`} className="rounded-lg px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary">{block.text}</a>
-            ) : null)}
-          </nav>
-        </details>
-      ) : null}
+      </section>
       {guide.readingTabs ? (
         <nav aria-label="Tópicos do procedimento" className="flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-3">
           {guide.readingTabs.map((tab, index) => <button type="button" key={tab.label}
             aria-pressed={activeTab === index} aria-controls="clinical-guide-reading"
             onClick={() => {
+              if (activeTab === index) return;
+              scrollAfterTabChange.current = true;
               setActiveTab(index);
-              const el = document.getElementById('clinical-guide-reading');
-              if (el) {
-                const y = el.getBoundingClientRect().top + window.scrollY - 80;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-              }
             }}
             className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeTab === index ? 'bg-primary text-primary-foreground' : 'bg-muted/40 text-foreground hover:bg-muted'}`}>
             {tab.label}
           </button>)}
         </nav>
       ) : null}
-      <section id="clinical-guide-reading" aria-label={guide.readingTabs?.[activeTab]?.label ?? 'Conteúdo completo'}>
-      <ClinicalQuickGuideBody
+      <SectionAnchorNav
+        key={`mobile-${guide.slug}-${activeTab}`}
+        sections={chapters}
+        variant="mobile"
+        title="Índice deste procedimento"
+        observerRootMargin="-64px 0px -70% 0px"
+        className="md:block xl:hidden"
+      />
+      <section ref={readingRef} id="clinical-guide-reading" className="scroll-mt-24" aria-label={guide.readingTabs?.[activeTab]?.label ?? 'Conteúdo completo'}>
+      <motion.div
         key={`${guide.slug}-${activeTab}`}
+        initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.18, ease: 'easeOut' }}
+      >
+      <ClinicalQuickGuideBody
         richText={guide.richText}
-        blocks={guide.readingTabs ? sectionsForBody.slice(guide.readingTabs[activeTab]?.startIndex ?? 0, guide.readingTabs[activeTab + 1]?.startIndex) : sectionsForBody}
+        blocks={readingBlocks.map(({ block }) => block)}
+        blockIds={readingBlocks.map(({ id }) => id)}
         youtubeVideoId={guide.youtubeVideoId}
         youtubeTitle={guide.title}
       />
+      </motion.div>
       </section>
 
       <div className="flex justify-center border-t border-border/60 pt-8">
@@ -212,6 +253,16 @@ export function ClinicalQuickGuideDetailPage() {
           title={guide.title}
         />
       ) : null}
+    </div>
+    <aside className="hidden w-60 shrink-0 self-stretch py-8 pr-4 xl:block">
+      <SectionAnchorNav
+        key={`desktop-${guide.slug}-${activeTab}`}
+        sections={chapters}
+        variant="desktop"
+        title="Índice do procedimento"
+        observerRootMargin="-64px 0px -70% 0px"
+      />
+    </aside>
     </div>
   );
 }

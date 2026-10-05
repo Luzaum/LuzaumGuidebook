@@ -101,14 +101,39 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Gatos com FIV/FeLV têm maior risco de doença grave.',
     ],
   },
-  'doenca-renal-cronica-caes-gatos': {
+  'doenca-renal-cronica-canina': {
     whatIsIt:
-      'A doença renal crônica (DRC) é a perda lenta e progressiva da função dos rins. Eles deixam de filtrar toxinas e de concentrar a urina, acumulando resíduos no sangue.',
+      'A doença renal crônica em cães é o desgaste lento e permanente dos rins ao longo do tempo:\n\n' +
+      '- Filtros que não se recuperam: os rins perdem a capacidade de filtrar impurezas e de concentrar a urina, acumulando toxinas no sangue e eliminando água em excesso.\n' +
+      '- Beber e urinar sem parar: o cão passa a ter muita sede e urina em grande quantidade (dia e noite) como tentativa de compensar os filtros desgastados.\n' +
+      '- A comida certa prolonga a vida: a ração renal terapêutica com controle de fósforo é comprovadamente o tratamento que mais prolonga os anos de vida do cão.',
     keyPoints: [
-      'Muito comum em cães e gatos idosos.',
-      'Beber e urinar mais, vômitos e perda de peso são sinais típicos.',
-      'Dieta renal, hidratação e controle de pressão fazem parte do manejo de longo prazo.',
+      'Beber muita água e urinar em excesso dia e noite são os primeiros sinais de alerta de desgaste dos rins.',
+      'A ração renal exclusiva reduz o risco de crises em 75% e dobra o tempo de vida com bem-estar.',
+      'Petiscos comuns, carnes e ossos contêm muito fósforo e sobrecarregam os rins, sendo terminantemente proibidos.',
+      'Cães que perdem músculo podem ter creatinina falsamente normal; o exame de SDMA ajuda a enxergar a lesão real.',
+      'Remédios modernos como a telmisartana protegem os rins e diminuem a perda prejudicial de proteínas na urina.',
+      'A anemia do rim doente é tratada mais cedo atualmente, quando o hematócrito cai abaixo de 30%.',
     ],
+    whatIs:
+      'Entendendo o desgaste crônico dos rins caninos:\n\n' +
+      '- Perda contínua de unidades de filtragem: com o passar dos anos ou por infecções antigas, os néfrons deixam de funcionar e não se regeneram.\n' +
+      '- Falha no equilíbrio do sangue: substâncias importantes como o fósforo ficam presas no corpo, enquanto água e proteínas vitais escapam pela urina.',
+    warningSigns:
+      'Sinais clínicos de alerta que exigem avaliação do veterinário:\n\n' +
+      '- Aumento nítido da ingestão de água e cão pedindo para urinar de madrugada ou urinando na cama.\n' +
+      '- Emagrecimento progressivo, perda de massa muscular nas costas e na cabeça e pelos opacos e arrepiados.\n' +
+      '- Hálito com cheiro forte (semelhante a urina ou amônia), vômitos matinais de espuma e feridas na boca ou na língua.',
+    diagnosis:
+      'Como o médico-veterinário avalia a gravidade e o estágio da doença:\n\n' +
+      '- Exames de sangue completos: creatinina e SDMA avaliados juntos para medir a filtração, além de dosagem de fósforo, cálcio e hemograma.\n' +
+      '- Urina colhida na clínica: medição da densidade (para ver se o rim concentra) e teste de perda de proteína (UPC).\n' +
+      '- Medição da pressão arterial e ultrassom: para checar se a pressão está alta e verificar o tamanho e a textura dos rins.',
+    homeCare:
+      'Cuidados indispensáveis da família no dia a dia:\n\n' +
+      '- Fornecer exclusivamente a ração renal prescrita, sem nenhuma exceção para pedaços de carne, queijo ou petiscos ricos em fósforo.\n' +
+      '- Oferecer os medicamentos quelantes de fósforo misturados diretamente na comida, no momento exato em que o cão se alimenta.\n' +
+      '- Garantir livre acesso a água fresca em múltiplos potes pela casa e pesar o cão a cada 15 dias para vigiar a perda de massa magra.',
   },
   'hipertensao-arterial-sistemica-caes-gatos': {
     whatIsIt:
@@ -238,7 +263,9 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'hipertireoidismo-felino': {
     whatIsIt:
-      'O hipertireoidismo felino acontece quando a tireoide produz hormônios em excesso, deixando o metabolismo do gato acelerado o tempo todo. Na maioria dos casos é causado por um crescimento benigno da tireoide, não por infecção. É muito comum em gatos idosos.',
+      'O hipertireoidismo felino acontece quando a tireoide produz hormônios em excesso, deixando o metabolismo acelerado:\n\n' +
+      '- Causa principal: proliferação benigna dos tecidos da tireoide (adenoma ou hiperplasia), sem caráter infeccioso.\n' +
+      '- Perfil típico: endocrinopatia extremamente comum em gatos idosos, provocando emagrecimento rápido e sobrecarga cardiovascular.',
     keyPoints: [
       'Perde peso mesmo comendo muito, fica agitado e taquicárdico — mas alguns gatos ficam apáticos e com pouco apetite.',
       'O exame de sangue T4 (tiroxina total) é o primeiro passo; resultado normal não descarta a doença em todos os casos.',
@@ -448,7 +475,13 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'linfoma-cutaneo-caes-gatos': {
     whatIsIt:
-      'O linfoma cutâneo é um câncer dos linfócitos (células de defesa) que se instala primariamente na pele do cão ou gato. Ele não é uma doença única, mas sim um grupo de tumores com comportamentos muito diferentes. A forma mais comum no cão é o linfoma epiteliotrópico (ou micose fungoide), em que as células neoplásicas têm atração pelas camadas superficiais da pele, causando descamação, vermelhidão intensa, perda de cor (despigmentação) no focinho e nos lábios, feridas e nódulos que frequentemente são confundidos com alergias ou infecções por meses.',
+      'Entendendo o linfoma cutâneo em pequenos animais:\n\n' +
+      '- O que é a neoplasia:\n' +
+      '  - Câncer originado nos linfócitos (células de defesa) que acomete primariamente a pele de cães e gatos, compreendendo um grupo heterogêneo de tumores com comportamentos clínicos distintos.\n' +
+      '- Forma mais frequente (linfoma epiteliotrópico):\n' +
+      '  - No cão, as células neoplásicas têm atração pelas camadas superficiais da pele (micose fungoide), provocando descamação difusa, vermelhidão intensa e placas ulceradas.\n' +
+      '- Sinais de alerta clássicos:\n' +
+      '  - Perda da coloração escura (despigmentação) no focinho, lábios e coxins, feridas que não cicatrizam e coceira que mimetiza alergias graves ou sarnas por longos períodos.',
     keyPoints: [
       'Pode imitar com perfeição alergias crônicas, sarnas ou doenças autoimunes — coceira e melhora temporária com corticoides NÃO descartam câncer de pele.',
       'A biópsia precoce de pele em pacientes idosos com feridas, descamações que não saram ou perda de cor nos lábios e nariz é o único exame capaz de dar o diagnóstico correto.',
@@ -554,7 +587,10 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'leishmaniose-caes-gatos': {
     whatIsIt:
-      'A leishmaniose é uma doença infecciosa crônica e zoonótica transmitida pela picada do mosquito-palha (flebotomíneo). Ao picar o animal, o inseto introduz um protozoário microscópico chamado Leishmania, que invade e se multiplica dentro das células de defesa do organismo (macrófagos). Em muitos cães e gatos, o sistema de defesa reage de forma desregulada: produz uma quantidade colossal de anticorpos que não conseguem matar o parasita e acabam formando pequenos grumos inflamatórios (imunocomplexos). Esses grumos circulam no sangue e se depositam nos rins, na pele, nas articulações e nos olhos, causando as principais complicações da doença.',
+      'Entendendo a Leishmaniose em Cães e Gatos:\n' +
+      '- O que é a doença: infecção crônica e zoonótica causada pelo protozoário Leishmania, transmitido pela picada do mosquito-palha (flebotomíneo).\n' +
+      '- Agressão imunológica: o parasita multiplica-se dentro das células de defesa (macrófagos); o organismo produz grande quantidade de anticorpos que não eliminam o protozoário e formam grumos inflamatórios (imunocomplexos).\n' +
+      '- Lesões orgânicas: a deposição desses grumos circulantes inflama rins, pele, articulações e olhos, gerando os sintomas e riscos característicos da doença.',
     keyPoints: [
       'Ter o parasita não é o mesmo que estar doente: o consenso veterinário atual (CLWG 2026) separa com rigor a infecção da doença ativa. Animais que foram expostos e têm anticorpos, mas não têm sintomas nem lesões no corpo, NÃO devem receber remédios pesados anti-Leishmania.',
       'O rim é o órgão mais importante: a complicação mais perigosa da leishmaniose é a inflamação dos rins por deposição de imunocomplexos. Isso faz com que o rim perca proteína na urina muito antes de a creatinina subir. O exame de urina com relação proteína/creatinina (UPC) é obrigatório e salva vidas.',
@@ -565,15 +601,31 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Cálculos urinários pelo alopurinol: o alopurinol é indispensável para travar a multiplicação do protozoário, mas pode fazer com que se formem pedras de xantina na bexiga. O animal deve fazer exames de urina e ultrassom periódicos e comer ração com baixo teor de purinas se orientado pelo veterinário.',
       'Não há cura estéril total: o tratamento controla os sintomas, fecha as feridas e reduz drasticamente a carga do parasita, devolvendo ótima qualidade de vida, mas o protozoário permanece no corpo. O uso da coleira repelente deve continuar por toda a vida para proteger o animal e as pessoas ao redor.',
     ],
-    whatIs: 'A leishmaniose é uma doença parasitária grave transmitida pela picada do mosquito-palha. O protozoário ataca as células de defesa e o organismo reage produzindo anticorpos em excesso, que acabam inflamando os rins, pele, articulações e olhos.',
-    warningSigns: 'Descamação seca na pele com aspecto de caspa, perda de pelo ao redor dos olhos parecendo óculos, crescimento anormal e rápido das unhas (onicogrifose), emagrecimento mesmo comendo bem, feridas que não cicatrizam nas pontas das orelhas e focinho, sangramento nasal e olhos inflamados com secreção ou sangue.',
-    diagnosis: 'O padrão ouro é a análise microscópica direta (citologia) de amostras de linfonodos ou medula óssea para enxergar o parasita dentro das células. Exames de sangue avaliam a quantidade de anticorpos (sorologia quantitativa) e a presença de DNA do parasita (PCR), além de urinálise com UPC para checar a saúde dos rins.',
-    homeCare: 'Uso ininterrupto de coleira repelente com troca na data certa, administração diária rigorosa dos medicamentos prescritos sem falhas nos horários, alimentação com ração de qualidade com controle de purinas se prescrito e retornos a cada 3 a 6 meses para exames de sangue e urina.',
+    whatIs:
+      'A leishmaniose é uma doença parasitária grave transmitida pela picada do mosquito-palha. O protozoário ataca as células de defesa e o organismo reage produzindo anticorpos em excesso, que acabam inflamando os rins, pele, articulações e olhos.',
+    warningSigns:
+      'Principais sinais de alerta da leishmaniose:\n' +
+      '- Lesões na pele e unhas: descamação seca prateada, perda de pelo periocular em óculos, feridas persistentes em orelhas e focinho, e crescimento exagerado das unhas (onicogrifose).\n' +
+      '- Sinais sistêmicos: emagrecimento progressivo, fraqueza, sangramento nasal (epistaxe) e inflamação nos olhos (uveíte com vermelhidão ou sangue).',
+    diagnosis:
+      'Como o veterinário confirma o diagnóstico:\n' +
+      '- Exame padrão ouro: análise microscópica direta (citologia) de linfonodos ou medula para identificar o parasita nas células.\n' +
+      '- Exames complementares: dosagem de anticorpos no sangue (sorologia), PCR para detectar o DNA do parasita e exame de urina com UPC para monitorar os rins.',
+    homeCare:
+      'Cuidados essenciais no dia a dia em casa:\n' +
+      '- Proteção repelente: uso permanente de coleira repelente específica trocada rigorosamente no prazo (flumetrina para gatos; deltametrina para cães).\n' +
+      '- Medicamentos e acompanhamento: administração pontual dos remédios prescritos, alimentação com controle de purinas e exames de sangue e urina a cada 3 a 6 meses.',
   },
 
   'cistite-idiopatica-felina': {
     whatIsIt:
-      'A cistite idiopática felina (CIF ou FIC) é uma doença inflamatória crônica dolorosa da bexiga que afeta principalmente gatos jovens e de meia-idade. A palavra "idiopática" significa que a inflamação na parede da bexiga acontece sem que haja infecção bacteriana, pedras grandes ou tumores. As pesquisas veterinárias mais recentes comprovam que a CIF não é um problema isolado da bexiga: ela é a manifestação de uma sensibilidade profunda de todo o organismo do gato (Síndrome de Pandora). O cérebro do felino com CIF reage de forma hiperexcitada a mudanças na rotina e estresses ambientais, disparando sinais pelo sistema nervoso que liberam substâncias inflamatórias nos nervos da bexiga, causando dor intensa, espasmos e queimação para urinar.',
+      'Entendendo a Cistite Idiopática Felina (CIF / FIC):\n' +
+      '- Inflamação dolorosa estéril:\n' +
+      '  - Doença inflamatória crônica e dolorosa da bexiga que afeta principalmente gatos jovens e de meia-idade, sem infecção bacteriana, cálculos obstrutivos primários ou neoplasias.\n' +
+      '- Síndrome sistêmica e não apenas da bexiga:\n' +
+      '  - Evidências científicas contemporâneas comprovam que a CIF integra a Síndrome de Pandora, sendo a manifestação de uma sensibilidade neurobiológica profunda do organismo do gato.\n' +
+      '- Eixo cérebro-bexiga hiperexcitado:\n' +
+      '  - O cérebro do felino suscetível reage de forma intensa a mudanças ambientais e estressores, disparando vias neurais que liberam neuropeptídeos inflamatórios na parede vesical, gerando dor, espasmos e queimação ao urinar.',
     keyPoints: [
       'Não é infecção urinária por bactérias: menos de 1% a 3% dos gatos jovens com sintomas urinários têm bactérias na bexiga. Portanto, antibióticos quase nunca são necessários e não devem ser usados sem cultura e antibiograma comprovando infecção.',
       'Urgência médica fatal em machos (obstrução uretral): se o gato macho tentar urinar várias vezes na caixinha, soltar apenas gotas ou nada, chorar de dor ou lamber o pênis com frequência, trata-se de uma emergência de risco à vida. A uretra pode estar entupida por espasmo muscular, muco ou microcristais, levando ao acúmulo de potássio no sangue e parada cardíaca em poucas horas se não desobstruído imediatamente.',
@@ -613,7 +665,11 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
 
   'platinosomose-felina': {
     whatIsIt:
-      'A platinosomose (ou platinossomíase felina) é uma doença parasitária provocada por um verme plano minúsculo chamado Platynosomum illiciens (também conhecido como Platynosomum fastosum). Ao contrário dos vermes comuns que vivem dentro do intestino, este parasita instala-se especificamente dentro dos canais da bile (ductos biliares) e da vesícula biliar do gato. A infecção ocorre quando o felino caça e come pequenos animais contaminados com as larvas do verme — principalmente tatuzinhos-de-jardim e lagartixas de parede. Uma vez alojado nos canais biliares, o verme causa irritação constante, inflamação intensa e cicatrizes (fibrose) que engrossam e entopem a passagem da bile. Com a passagem bloqueada, a bile não consegue descer para o intestino e vaza para o sangue, fazendo com que o gato fique com os olhos, gengivas e pele amarelados (icterícia), perca o apetite, vomite e possa desenvolver danos graves no fígado se não diagnosticado a tempo.',
+      'A platinosomose (ou platinossomíase felina) é uma doença parasitária grave provocada pelo verme Platynosomum illiciens:\n' +
+      '- Localização no organismo: ao contrário de vermes comuns que habitam o intestino, ele instala-se nos canais da bile (ductos biliares) e na vesícula biliar do gato.\n' +
+      '- Forma de contágio: ocorre quando o felino caça animais contaminados por larvas — principalmente tatuzinhos-de-jardim e lagartixas de parede.\n' +
+      '- Danos causados: a presença dos vermes gera inflamação intensa e cicatrizes que entopem os canais, impedindo o fluxo normal da bile.\n' +
+      '- Consequências clínicas: o refluxo de bile para o sangue causa icterícia (amarelamento de olhos, pele e gengivas), vômitos, perda de apetite e risco de dano hepático irreversível.',
     keyPoints: [
       'O gato não precisa comer lagartixas visivelmente: pesquisas brasileiras recentes demonstraram que tatuzinhos-de-jardim e pequenos artrópodes de quintal também transmitem o parasita. Gatos com acesso a quintais ou à rua estão sob risco mesmo que o tutor nunca os tenha visto caçar lagartos.',
       'O exame de fezes comum de rotina frequentemente dá falso-negativo: como os ovos do verme são pesados, saem em pequena quantidade e os canais biliares podem estar entupidos, o exame de fezes simples pode vir negativo mesmo em gatos doentes. É necessário solicitar um método especial de centrifugação em solução densa (solução de Sheather) ou coletar uma amostra direta de bile por agulha guiada por ultrassom (colecistocentese).',
@@ -627,9 +683,17 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
     warningSigns:
       'Amarelamento dos olhos, gengivas e pele (icterícia), urina escura como refrigerante de cola, fezes claras, vômitos frequentes, perda rápida de peso, desânimo severo e aumento do volume ou dor na barriga.',
     diagnosis:
-      'Ultrassonografia do fígado e vesícula biliar (para avaliar canais dilatados e espessados), exames de sangue completos (para avaliar fígado e contagem de eosinófilos), exame de fezes por técnica de dupla centrifugação com solução pesada de Sheather e, nos casos suspeitos com fezes negativas, coleta de bile por agulha guiada por ultrassom (colecistocentese) para achar os ovos.',
+      'Exames essenciais para o diagnóstico veterinário:\n' +
+      '- Ultrassom abdominal: avalia dilatação, espessamento e tortuosidade dos ductos biliares e da vesícula.\n' +
+      '- Exames de sangue: dosagem de enzimas do fígado, bilirrubinas e pesquisa de aumento acentuado de eosinófilos.\n' +
+      '- Coproparasitológico especializado: técnica de centrifugação com solução densa de Sheather para achar ovos pesados.\n' +
+      '- Análise direta da bile (colecistocentese): aspiração da bile por agulha guiada por ultrassom quando o exame de fezes for negativo.',
     homeCare:
-      'Manter o gato estritamente dentro de casa sem acesso a caça, administrar rigorosamente os medicamentos prescritos nas doses e horários exatos, oferecer alimentação úmida e apetitosa para prevenir jejum prolongado (que pode causar lipidose hepática fatal) e retornar para reavaliações com exames de sangue e ultrassom.'
+      'Cuidados essenciais no domicílio durante o tratamento:\n' +
+      '- Isolamento domiciliar estrito: manter o gato 100% confinado sem acesso a quintais, caça de lagartixas ou tatuzinhos.\n' +
+      '- Rigor na medicação: administrar os remédios nas doses e horários prescritos sem interrupção precoce.\n' +
+      '- Nutrição constante: oferecer alimento úmido atrativo para evitar jejum prolongado e risco de lipidose hepática.\n' +
+      '- Acompanhamento clínico: retornar pontualmente às revisões para reavaliação por ultrassom e exames de sangue.',
   },
   'triade-felina': {
     whatIsIt:
@@ -921,6 +985,108 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'A confirmação exige laringoscopia direta sob anestesia leve mantendo a respiração espontânea, sincronizando o olhar com o tórax para flagrar a ausência de abertura das cartilagens, associada a radiografias do pescoço e tórax para investigar pneumonia aspirativa e megaesôfago.',
     homeCare:
       'Evitar passeios em horários quentes e locais úmidos, manter o ambiente sempre fresco com ar-condicionado ou ventilador, trocar definitivamente a coleira de pescoço por peitoral ergonômico, oferecer ração em formato de almôndegas úmidas, proibir terminantemente o pet de nadar ou entrar em piscinas e vigiar qualquer sinal de tosse ou cansaço respiratório.',
+  },
+  'enteropatia-perdedora-de-proteinas-caes-gatos': {
+    whatIsIt:
+      'A enteropatia perdedora de proteínas (PLE) é uma síndrome em que o intestino do cão ou gato perde a capacidade de reter as proteínas vitais do sangue:\n\n' +
+      '- O intestino como filtro furado: as proteínas plasmáticas, sobretudo a albumina, vazam para o trato digestivo em taxa superior à capacidade de reposição do fígado.\n' +
+      '- Consequências do extravasamento: a queda da albumina retira a força que segura a água nos vasos, provocando barriga d\'água (ascite), inchaço nas patas e efusão no peito.\n' +
+      '- Ocorrência e gravidade: afecção frequente e grave no cão (Yorkshire, Pastor Alemão, Maltês), sendo rara no gato e frequentemente associada a linfoma.',
+    keyPoints: [
+      'Nem todo paciente tem diarreia: cerca de 30% dos cães com a síndrome nunca apresentam diarreia ou vômito evidentes; o primeiro sinal percebido pelo tutor pode ser a barriga inchada de líquido (ascite), perda de massa muscular rápida ou fraqueza.',
+      'A gordura é o maior vilão da linfa: a gordura da alimentação precisa dos vasos linfáticos do intestino (lacteais) para ser absorvida. Quando esses vasos estão doentes ou entupidos (linfangiectasia), comer gordura aumenta a pressão nesses vasos até que eles arrebentem, vazando linfa e proteínas. Por isso, a dieta ultrabaixa em gordura é o tratamento mais potente para muitos cães.',
+      'Perigo invisível de trombose: com a perda de proteínas anticoagulantes pelo intestino e o sangue inflamado, os pacientes têm alto risco de formar coágulos que entopem artérias e veias vitais (tromboembolismo), exigindo medicamentos anticoagulantes protetores.',
+      'A albumina na veia não cura o problema: aplicar plasma ou albumina na veia traz um benefício muito curto (apenas horas a poucos dias), pois o intestino continuará vazando se a alimentação certa e os medicamentos não corrigirem a parede intestinal.',
+      'A resposta à dieta pode ser milagrosa: muitos cães classificados erroneamente como intratáveis recuperam totalmente os níveis de proteína apenas mudando para rações com teor ultrabaixo de gordura ou dietas caseiras prescritas por nutrólogo veterinário.',
+      'Em gatos exige investigação aprofundada: a síndrome é incomum nos felinos e frequentemente requer biópsias para distinguir entre enterite inflamatória crônica e linfoma intestinal de baixo grau.',
+    ],
+    whatIs:
+      'Entendendo a síndrome de perda proteica intestinal:\n\n' +
+      '- Perda contínua: escape de albumina e globulinas pela parede intestinal por inflamação ou dilatação de vasos linfáticos.\n' +
+      '- Impacto clínico: retenção de líquidos na cavidade abdominal (ascite), perda de massa magra e risco de coagulação desregulada.',
+    warningSigns:
+      'Sinais clínicos de alerta que exigem avaliação veterinária imediata:\n\n' +
+      '- Aumento rápido e flácido do abdômen por líquido (ascite) ou inchaço compressível em patas e barbela (edema).\n' +
+      '- Emaciação muscular progressiva ao longo da coluna e ossos da cabeça, mesmo com apetite conservado.\n' +
+      '- Cansaço fácil, respiração rápida ou superficial e episódios de fezes pastosas, amareladas ou esteatorreicas.',
+    diagnosis:
+      'Roteiro diagnóstico estruturado em três perguntas essenciais:\n\n' +
+      '- Confirmação laboratorial: exames de sangue demonstrando hipoalbuminemia e urinálise com UPC para excluir perda renal.\n' +
+      '- Ultrassonografia abdominal: busca de estriações brancas na parede intestinal (linfangiectasia) e líquido livre peritoneal.\n' +
+      '- Investigação funcional: dosagem de cobalamina (vitamina B12), cálcio ionizado, magnésio e biópsias intestinais quando indicadas.',
+    homeCare:
+      'Instruções inegociáveis para o manejo domiciliar pelo tutor:\n\n' +
+      '- Rigor absoluto na dieta: oferecer exclusivamente a ração ultrabaixa em gordura ou receita caseira prescrita por nutrólogo, sem nenhum petisco gorduroso.\n' +
+      '- Medicação preventiva: administrar pontualmente a tromboprofilaxia prescrita (como clopidogrel) e reposições vitamínicas.\n' +
+      '- Monitoramento constante: pesar semanalmente o pet, medir a circunferência abdominal e vigiar o ritmo respiratório em repouso.',
+  },
+  'enteropatia-inflamatoria-cronica-canina': {
+    whatIsIt:
+      'A enteropatia inflamatória crônica (CIE, antigamente chamada de IBD canina) é uma inflamação duradoura na parede do intestino do cão:\n\n' +
+      '- Desequilíbrio entre defesas e digestão: o sistema imune do cão perde a tolerância natural e passa a reagir exageradamente contra ingredientes da comida ou bactérias normais do intestino.\n' +
+      '- A comida é o remédio mais potente: pesquisas recentes mostram que até 89% dos cães melhoram completamente apenas trocando para uma dieta terapêutica exclusiva, sem precisar de remédios fortes.\n' +
+      '- Fim dos antibióticos de rotina: remédios como o metronidazol não são mais indicados de forma empírica, pois desregulam a flora intestinal e criam bactérias resistentes.',
+    keyPoints: [
+      'A dieta certa é o tratamento de primeira escolha: a grande maioria dos cães alcança remissão total apenas com rações especiais (hidrolisadas ou com proteínas inéditas), sem necessidade de imunossupressores.',
+      'Tolerância zero a qualquer petisco: durante o teste alimentar de 2 a 4 semanas, nenhuma migalha de pão, queijo, fruta, ossinho mastigável ou carne fora da dieta pode ser oferecida.',
+      'Se a primeira ração não funcionar, tente a segunda: o consenso internacional recomenda tentar até três tipos de dietas terapêuticas diferentes antes de considerar que a alimentação falhou.',
+      'Antibióticos não curam a inflamação intestinal: usar metronidazol ou tilosina sem critério altera a microbiota de forma permanente e mascara os sintomas sem resolver a causa.',
+      'Vitamina B12 pode ser tomada por via oral: dar cianocobalamina em comprimido diário por 84 dias tem o mesmo efeito protetor e curativo que injeções semanais.',
+      'Corticoides são reservados para casos resistentes: prednisona ou budesonida só devem ser iniciadas após documentar falha dietética ou se o cão tiver perda perigosa de peso e proteínas.',
+    ],
+    whatIs:
+      'Entendendo a inflamação intestinal crônica do cão:\n\n' +
+      '- Reação inflamatória persistente: irritação da mucosa do intestino delgado ou grosso provocando diarreia, vômitos e perda de nutrientes por mais de três semanas.\n' +
+      '- Resposta à nutrição: um distúrbio multifatorial no qual a mudança correta de dieta é a principal ferramenta de cura e controle a longo prazo.',
+    warningSigns:
+      'Sinais clínicos de alerta que exigem avaliação do médico-veterinário:\n\n' +
+      '- Fezes moles, pastosas ou com muco e sangue vivo de forma frequente ou intermitente.\n' +
+      '- Vômitos frequentes de espuma amarelada ou restos alimentares, e barulhos altos na barriga (borborigmos).\n' +
+      '- Emagrecimento progressivo, perda de músculo nas costas e na cabeça, ou inchaço súbito na barriga (barriga d\'água).',
+    diagnosis:
+      'Como o veterinário descobre a causa e o melhor tratamento:\n\n' +
+      '- Exclusão de vermes e infecções: exames de fezes seriados para giárdia e parasitas, hemograma e bioquímica completa.\n' +
+      '- Testes de sangue específicos: dosagem de cobalamina (B12), enzimas do pâncreas (TLI/cPL) e cortisol para descartar outras doenças.\n' +
+      '- Ultrassom e ensaios dietéticos: ultrassonografia abdominal para avaliar a espessura do intestino e biópsias por endoscopia nos casos graves.',
+    homeCare:
+      'Cuidados indispensáveis da família para manter o pet saudável:\n\n' +
+      '- Rigor absoluto na alimentação: fornecer exclusivamente a ração prescrita e evitar medicamentos mastigáveis com sabor de carne.\n' +
+      '- Regularidade nos horários: administrar a reposição de vitamina B12 e medicamentos no mesmo horário todos os dias.\n' +
+      '- Diário de sintomas: anotar consistência das fezes, frequência de evacuação e pesar o cão a cada 15 dias na mesma balança.',
+  },
+  'neoplasias-intracranianas-caes': {
+    whatIsIt:
+      'As neoplasias intracranianas em cães são tumores que crescem dentro da cabeça (no cérebro ou nas membranas que o cobrem):\n\n' +
+      '- Espaço fechado e sem folga: o crânio do cão é um osso duro que não estica; qualquer massa que cresce ali espreme o tecido cerebral e gera pressão perigosa (hipertensão intracraniana).\n' +
+      '- Atenção aos cães com mais de 5 a 6 anos: se um cão idoso tiver a primeira crise convulsiva da vida, a suspeita prioritária é de um problema físico no cérebro, como um tumor.\n' +
+      '- Tratamento moderno dá sobrevida com qualidade: hoje a neurocirurgia e a radioterapia avançada conseguem controlar a doença por quase dois anos com excelente bem-estar.',
+    keyPoints: [
+      'Primeira convulsão após os 5 anos de idade exige ressonância da cabeça para investigar tumor ou outra alteração física.',
+      'Mudanças de comportamento (andar sem rumo, ficar preso em quinas ou esquecer o local do xixi) são sinais de alerta no cérebro.',
+      'Melhora rápida com corticoide não cura o tumor: o remédio apenas murcha o inchaço ao redor da massa, não destruindo a neoplasia.',
+      'A ressonância magnética é o exame de escolha: ultrassom e raio-x não conseguem enxergar o cérebro dentro do crânio.',
+      'Nunca realize coleta de líquido da espinha às cegas: se houver inchaço no cérebro, a punção na nuca pode ser fatal.',
+      'Cirurgia e radioterapia de ponta oferecem sobrevida longa: cães operados ou irradiados chegam a viver cerca de dois anos sem crises.',
+    ],
+    whatIs:
+      'Entendendo os tumores cerebrais em cães:\n\n' +
+      '- Crescimento anormal no crânio: multiplicação descontrolada de células que formam nódulos comprimindo áreas vitais de movimento, visão e consciência.\n' +
+      '- Impacto do inchaço: o tumor altera a circulação local e acumula líquido (edema), piorando os sintomas de fraqueza e convulsões.',
+    warningSigns:
+      'Sinais clínicos de alerta que exigem atendimento veterinário urgente:\n\n' +
+      '- Crises convulsivas repentinas (tremores generalizados, perda de consciência, salivação e pedalagem com as patas).\n' +
+      '- Andar em círculos contínuos para o mesmo lado, tropeçar em paredes ou apoiar a cabeça imóvel contra a parede (head pressing).\n' +
+      '- Sonolência excessiva, dificuldade para levantar, fraqueza em um dos lados do corpo ou perda súbita da visão.',
+    diagnosis:
+      'Como o médico-veterinário investiga e confirma o tumor:\n\n' +
+      '- Exame neurológico detalhado: testes de reflexos e postura para identificar exatamente em qual parte do cérebro está a lesão.\n' +
+      '- Exames de sangue completos e raio-x de tórax: para descartar outras causas de convulsão e verificar se não há tumores em outros órgãos.\n' +
+      '- Ressonância magnética de alto campo: o exame definitivo para localizar o tamanho, o formato e o tipo provável da massa no encéfalo.',
+    homeCare:
+      'Cuidados indispensáveis da família no ambiente de casa:\n\n' +
+      '- Segurança física contra quedas: bloquear o acesso a escadas, sacadas e piscinas para prevenir acidentes durante uma crise.\n' +
+      '- Pontualidade rígida com os remédios: administrar o anticonvulsivante (como levetiracetam) nos horários exatos sem atrasos nem esquecimentos.\n' +
+      '- Proteção durante as convulsões: nunca colocar a mão dentro da boca do cão e afastar móveis próximos para evitar batidas na cabeça.',
   },
 };
 

@@ -16,7 +16,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'bronquite-cronica-caes-gatos',
   'granuloma-eosinofilico-felino',
   'micoplasmoses-hemotropicas',
-  'doenca-renal-cronica-caes-gatos',
+  'doenca-renal-cronica-canina',
   'hipertensao-arterial-sistemica-caes-gatos',
   'doenca-valvar-mitral-degenerativa-caes',
   'cardiomiopatia-hipertrofica-caes-gatos',
@@ -78,6 +78,9 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'brucelose-caes-gatos',
   'megaesofago-caes-gatos',
   'paralisia-laringea-caes-gatos',
+  'enteropatia-perdedora-de-proteinas-caes-gatos',
+  'enteropatia-inflamatoria-cronica-canina',
+  'neoplasias-intracranianas-caes',
 ] as const;
 
 
@@ -115,6 +118,7 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'sucralfato',
   'sulfametoxazol-trimetoprima',
   'tramadol',
+  'trazodona',
 ] as const;
 
 export function isPublicDiseaseSlug(slug: string): boolean {

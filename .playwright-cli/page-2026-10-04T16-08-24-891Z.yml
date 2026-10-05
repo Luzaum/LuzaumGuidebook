@@ -1,0 +1,35 @@
+- main [ref=f4e3]:
+  - generic [ref=f4e4]:
+    - region "WSAVA — guia de alimentação de cães e gatos hospitalizados" [ref=f4e5]:
+      - generic [ref=f4e6]:
+        - heading "WSAVA — guia de alimentação de cães e gatos hospitalizados" [level=3] [ref=f4e7]
+        - paragraph [ref=f4e8]: Documento original em inglês, para leitura aqui no guia. Use a rolagem do documento para consultar as duas páginas.
+      - status [ref=f4e9]: Carregando documento…
+    - region "Conferência radiográfica no app" [ref=f4e10]:
+      - generic [ref=f4e11]:
+        - heading "Conferência radiográfica no app" [level=3] [ref=f4e12]
+        - generic [ref=f4e13]: 0/4 itens revisados
+      - paragraph [ref=f4e14]: Recurso didático do guia, com os critérios descritos acima e a checagem da ponta da sonda de esofagostomia. Não é o módulo oficial do RVC. Consulte o esquema de posições no capítulo anterior e avalie a radiografia do paciente.
+      - list [ref=f4e15]:
+        - listitem [ref=f4e16]:
+          - group "1. O trajeto do tubo é dorsal à laringe e à cartilagem cricoide no pescoço?" [ref=f4e17]:
+            - generic [ref=f4e19]:
+              - button "Sim" [ref=f4e20] [cursor=pointer]
+              - button "Não / dúvida" [ref=f4e21] [cursor=pointer]
+        - listitem [ref=f4e22]:
+          - group "2. O tubo está fora do lúmen traqueal, sem sobreposição integral ao seu trajeto?" [ref=f4e23]:
+            - generic [ref=f4e25]:
+              - button "Sim" [ref=f4e26] [cursor=pointer]
+              - button "Não / dúvida" [ref=f4e27] [cursor=pointer]
+        - listitem [ref=f4e28]:
+          - group "3. A sonda cruza a região hilar torácica dorsalmente à carina traqueal?" [ref=f4e29]:
+            - generic [ref=f4e31]:
+              - button "Sim" [ref=f4e32] [cursor=pointer]
+              - button "Não / dúvida" [ref=f4e33] [cursor=pointer]
+        - listitem [ref=f4e34]:
+          - group "4. A ponta e os orifícios laterais terminam no esôfago torácico distal, antes da junção gastroesofágica?" [ref=f4e35]:
+            - generic [ref=f4e37]:
+              - button "Sim" [ref=f4e38] [cursor=pointer]
+              - button "Não / dúvida" [ref=f4e39] [cursor=pointer]
+      - status [ref=f4e40]: Conferência pendente. Revise a radiografia completa antes de utilizar a sonda.
+      - button "Limpar conferência" [ref=f4e41] [cursor=pointer]

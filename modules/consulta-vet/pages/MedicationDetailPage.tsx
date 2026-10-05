@@ -105,6 +105,8 @@ export function MedicationDetailPage() {
     const loadData = async () => {
       setIsLoading(true);
       setError(null);
+      setRelatedConsensos([]);
+      setRelatedDiseases([]);
 
       if (!slug) {
         if (isMounted) {
@@ -128,11 +130,14 @@ export function MedicationDetailPage() {
           return;
         }
 
+        // Show the monograph before loading optional related catalogs.
+        setIsLoading(false);
+
         addRecent('medication', found.id, undefined, resumeState?.sectionId);
 
         const [loadedDiseases, loadedConsensos] = await Promise.all([
-          diseaseRepository.list(),
-          consensoRepository.list(),
+          diseaseRepository.list().catch(() => [] as DiseaseRecord[]),
+          consensoRepository.list().catch(() => [] as ConsensusRecord[]),
         ]);
 
         if (!isMounted) return;
@@ -225,7 +230,13 @@ export function MedicationDetailPage() {
         { id: 'contraindicacoes', label: '2. Contraindicações e cuidados' },
         { id: 'ajustes-renais-hepaticos', label: '3. Ajuste em comorbidades' },
         { id: 'interacoes-medicamentosas', label: '4. Interações medicamentosas' },
-      ];
+        medication.monitoringParameters && medication.monitoringParameters.length > 0
+          ? { id: 'parametros-monitoramento', label: '5. Monitoramento clínico' }
+          : null,
+        medication.clientInformation && medication.clientInformation.length > 0
+          ? { id: 'orientacoes-tutor', label: '6. Orientações ao tutor' }
+          : null,
+      ].filter(Boolean) as Array<{ id: string; label: string }>;
     }
 
     if (activeTab === 'mercado') {

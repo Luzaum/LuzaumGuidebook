@@ -175,11 +175,6 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     ],
     limitesDoConceito:
       'Colapso traqueal dinâmico, broncomalácia periférica, hipoplasia traqueal congênita, estenose traqueal fibrosa cicatricial e compressão tumoral extrínseca representam entidades fisiopatológicas distintas. A abordagem terapêutica e o prognóstico dependem diretamente da identificação do mecanismo etiológico exato.',
-    figuraMapeamentoKim2024: {
-      kind: 'imageModal' as const,
-      url: '/consulta-vet/colapso-traqueal/mapeamento-anatomico-colapso-kim-2024.jpg',
-      caption: 'Mapeamento anatômico e gradação do colapso traqueal por fluoroscopia em 110 cães de raças pequenas: distribuição por segmento cervical, entrada torácica e intratorácico (Kim et al., 2024, Front Vet Sci, CC BY 4.0).',
-    },
   },
   epidemiology: {
     perfilClassico:
@@ -191,11 +186,6 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     ],
     notaSobreGatos:
       'Em gatos, a apresentação clínica é esporádica e acomete principalmente animais maduros a idosos (ex: felino de 12 anos relatado por Tanaka & Uemura, 2022). Ao contrário dos cães, felinos raramente apresentam o som clássico de grasnado de ganso, manifestando-se prioritariamente por respiração ruidosa, estridor laríngeo, taquipneia compensatória e crises súbitas de respiração com a boca aberta diante de esforço ou estresse.',
-    figuraColapsoBronquicoKim2024: {
-      kind: 'imageModal' as const,
-      url: '/consulta-vet/colapso-traqueal/colapso-bronquico-kim-2024.jpg',
-      caption: 'Grau de herniação de lobo pulmonar cranial cervical e presença de colapso de brônquio principal demonstrados por imagem fluoroscópica em cães (Kim et al., 2024, Front Vet Sci, CC BY 4.0).',
-    },
   },
   pathogenesisTransmission: {
     cascataMecanica: [

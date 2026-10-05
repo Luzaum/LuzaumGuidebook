@@ -28,6 +28,8 @@ interface PdfViewerShellProps {
   className?: string;
   initialPage?: number;
   onPageChange?: (pageNumber: number) => void;
+  showExternalActions?: boolean;
+  searchPlaceholder?: string;
 }
 
 type SearchablePdfDocument = {
@@ -58,6 +60,8 @@ export function PdfViewerShell({
   className,
   initialPage = 1,
   onPageChange,
+  showExternalActions = true,
+  searchPlaceholder = 'Pesquisar palavra no consenso...',
 }: PdfViewerShellProps) {
   const [numPages, setNumPages] = useState(0);
   const [pageNumber, setPageNumber] = useState(Math.max(1, initialPage));
@@ -423,7 +427,7 @@ export function PdfViewerShell({
             <p className="hidden text-xs text-muted-foreground sm:block">Leitor PDF integrado</p>
           </div>
 
-          <a
+          {showExternalActions ? <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
@@ -432,7 +436,7 @@ export function PdfViewerShell({
           >
             <ExternalLink className="h-3.5 w-3.5" />
             Abrir no leitor de PDF do celular
-          </a>
+          </a> : null}
 
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <button
@@ -487,7 +491,7 @@ export function PdfViewerShell({
               <ZoomIn className="h-4 w-4" />
             </button>
 
-            <a
+            {showExternalActions ? <><a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
@@ -506,7 +510,7 @@ export function PdfViewerShell({
               title="Baixar PDF"
             >
               <Download className="h-4 w-4" />
-            </a>
+            </a></> : null}
 
             <button
               type="button"
@@ -536,7 +540,7 @@ export function PdfViewerShell({
                   setActiveSearchResult(-1);
                   setSearchMessage(null);
                 }}
-                placeholder="Pesquisar palavra no consenso..."
+                placeholder={searchPlaceholder}
                 className="h-9 w-full rounded-lg border border-border bg-background pl-8 pr-10 text-xs text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 sm:h-11 sm:pl-9 sm:pr-12 sm:text-sm"
               />
               {searchQuery && (

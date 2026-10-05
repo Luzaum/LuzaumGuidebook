@@ -1,3 +1,4 @@
+import { CatalogCache } from '../../catalogCache';
 import { supabase } from '@/src/lib/supabaseClient';
 import { loadMedicationsEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { MedicationRecord } from '../../../types/medication';
@@ -11,7 +12,7 @@ import {
   CONSULTA_VET_MEDICATION_TABLE,
   ensureOwnerUserId,
   hasSupabaseEnv,
-  mergeBySlug,
+
   parseError,
   slugify,
   withTimeout,
@@ -101,8 +102,69 @@ async function fetchSupabaseMedications(includeDrafts = false): Promise<Medicati
   );
 }
 
+function mergeMedicationSeedWithRemote(
+  localItems: MedicationRecord[],
+  supabaseItems: MedicationRecord[]
+): MedicationRecord[] {
+  const localBySlug = new Map<string, MedicationRecord>();
+  localItems.forEach((item) => {
+    localBySlug.set(item.slug, item);
+  });
+
+  const remoteSlugs = new Set<string>();
+  const mergedRemotes = supabaseItems.map((remote) => {
+    remoteSlugs.add(remote.slug);
+    const local = localBySlug.get(remote.slug);
+    if (!local) return remote;
+
+    return {
+      ...local,
+      ...remote,
+      quickIndications: remote.quickIndications && remote.quickIndications.length > 0 ? remote.quickIndications : local.quickIndications,
+      detailedIndications: remote.detailedIndications && remote.detailedIndications.length > 0 ? remote.detailedIndications : local.detailedIndications,
+      pharmacokineticsData: remote.pharmacokineticsData || local.pharmacokineticsData,
+      attentionData: remote.attentionData || local.attentionData,
+      generalInfoData: remote.generalInfoData || local.generalInfoData,
+      clinicalStudiesCommented: remote.clinicalStudiesCommented && remote.clinicalStudiesCommented.length > 0 ? remote.clinicalStudiesCommented : local.clinicalStudiesCommented,
+      monitoringParameters: remote.monitoringParameters && remote.monitoringParameters.length > 0 ? remote.monitoringParameters : local.monitoringParameters,
+      clientInformation: remote.clientInformation && remote.clientInformation.length > 0 ? remote.clientInformation : local.clientInformation,
+      samplePrescriptionText: remote.samplePrescriptionText || local.samplePrescriptionText,
+      practicalWeightTable: remote.practicalWeightTable || local.practicalWeightTable,
+      pillars: remote.pillars && remote.pillars.length > 0 ? remote.pillars : local.pillars,
+      quickSummaryHighlights: remote.quickSummaryHighlights && remote.quickSummaryHighlights.length > 0 ? remote.quickSummaryHighlights : local.quickSummaryHighlights,
+      clinicalFoundationsData: remote.clinicalFoundationsData && remote.clinicalFoundationsData.length > 0 ? remote.clinicalFoundationsData : local.clinicalFoundationsData,
+      clinicalWarningItems: remote.clinicalWarningItems && remote.clinicalWarningItems.length > 0 ? remote.clinicalWarningItems : local.clinicalWarningItems,
+      doses: (local.doses?.length || 0) >= (remote.doses?.length || 0) ? local.doses : remote.doses,
+      presentations: (local.presentations?.length || 0) >= (remote.presentations?.length || 0) ? local.presentations : remote.presentations,
+      references: mergeUniqueReferences(local.references, remote.references),
+      source: 'supabase' as const,
+    };
+  });
+
+  const remainingLocals = localItems.filter((local) => !remoteSlugs.has(local.slug));
+  return [...remainingLocals, ...mergedRemotes];
+}
+
+function mergeUniqueReferences(
+  localRefs?: MedicationRecord['references'],
+  remoteRefs?: MedicationRecord['references']
+): MedicationRecord['references'] {
+  if (!localRefs && !remoteRefs) return undefined;
+  const list = [...(localRefs || [])];
+  const seenIds = new Set(list.map((r) => r.id).filter(Boolean));
+  const seenCitations = new Set(list.map((r) => r.citationText).filter(Boolean));
+
+  (remoteRefs || []).forEach((r) => {
+    if ((r.id && seenIds.has(r.id)) || (r.citationText && seenCitations.has(r.citationText))) {
+      return;
+    }
+    list.push(r);
+  });
+  return list;
+}
+
 export class SupabaseMedicationRepository implements MedicationRepository {
-  private listCache: { data: MedicationRecord[]; timestamp: number; includeDrafts: boolean } | null = null;
+  private readonly listCache = new CatalogCache<MedicationRecord[]>();
 
   async list(options?: { includeDrafts?: boolean }): Promise<MedicationRecord[]> {
     if (!hasSupabaseEnv()) {
@@ -110,32 +172,22 @@ export class SupabaseMedicationRepository implements MedicationRepository {
     }
 
     const includeDrafts = Boolean(options?.includeDrafts);
-    const now = Date.now();
-    if (this.listCache && this.listCache.includeDrafts === includeDrafts && (now - this.listCache.timestamp) < 15000) {
-      return this.listCache.data;
-    }
+    return this.listCache.load(includeDrafts, async () => {
+      try {
+        const [remote, medicationsSeed] = await Promise.all([
+          withTimeout(fetchSupabaseMedications(includeDrafts), 'carregar medicamentos editoriais'),
+          loadMedicationsEditorialSeed(),
+        ]);
+        const merged = mergeMedicationSeedWithRemote(medicationsSeed, remote).map(applyMedicationBookFoundations).sort((left, right) =>
+          left.title.localeCompare(right.title, 'pt-BR')
+        );
+        const result = filterPublicMedications(merged, includeDrafts);
 
-    try {
-      const remote = await withTimeout(
-        fetchSupabaseMedications(includeDrafts),
-        'carregar medicamentos editoriais'
-      );
-      const medicationsSeed = await loadMedicationsEditorialSeed();
-      const merged = mergeBySlug(medicationsSeed, remote).map(applyMedicationBookFoundations).sort((left, right) =>
-        left.title.localeCompare(right.title, 'pt-BR')
-      );
-      const result = filterPublicMedications(merged, includeDrafts);
-      
-      this.listCache = {
-        data: result,
-        timestamp: now,
-        includeDrafts,
-      };
-      
-      return result;
-    } catch {
-      return localMedicationRepository.list(options);
-    }
+        return result;
+      } catch {
+        return filterPublicMedications(await loadMedicationsEditorialSeed(), includeDrafts);
+      }
+    });
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
@@ -270,7 +322,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       }
     }
 
-    this.listCache = null;
+    this.listCache.clear();
     const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Medicamento salvo, mas não foi possível reler o registro editorial.');

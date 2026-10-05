@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
@@ -76,7 +76,14 @@ export function ConsultaVetShell() {
 
             <ConsultaVetErrorBoundary>
 
-              <Outlet />
+              <Suspense fallback={
+                <div role="status" aria-live="polite" className="flex min-h-48 items-center justify-center gap-3 p-6 text-muted-foreground">
+                  <span aria-hidden="true" className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                  Carregando seção…
+                </div>
+              }>
+                <Outlet />
+              </Suspense>
 
             </ConsultaVetErrorBoundary>
 

@@ -1,0 +1,329 @@
+- generic [ref=f4e4]:
+  - banner [ref=f4e5]:
+    - generic [ref=f4e6]:
+      - generic [ref=f4e7]:
+        - button "Abrir navegação do Vetius" [ref=f4e8] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f4e10] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f4e12]
+          - generic [ref=f4e13]: Vetius
+      - generic [ref=f4e14]:
+        - button "Ativar modo escuro" [ref=f4e15] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f4e18] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=f4e19]
+          - generic [ref=f4e20]: Luis
+  - main [ref=f4e23]:
+    - generic [ref=f4e27]:
+      - complementary [ref=f4e28]:
+        - generic [ref=f4e29]:
+          - button "Esconder barra lateral" [ref=f4e30] [cursor=pointer]
+          - link [ref=f4e35] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=f4e36]
+          - navigation [ref=f4e37]:
+            - link "Início" [ref=f4e38] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [active] [ref=f4e42] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f4e48] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f4e54] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f4e59] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f4e64] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Procedimentos" [ref=f4e68] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f4e72] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f4e78] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f4e83] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f4e87] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=f4e93]:
+        - generic [ref=f4e94]:
+          - generic [ref=f4e95]:
+            - navigation "Navegação estrutural" [ref=f4e96]:
+              - link "Início" [ref=f4e97] [cursor=pointer]:
+                - /url: /consulta-vet
+              - link "Medicamentos" [ref=f4e100] [cursor=pointer]:
+                - /url: /consulta-vet/medicamentos
+              - generic [ref=f4e103]: Amoxicilina + clavulanato
+            - generic [ref=f4e106]:
+              - generic [ref=f4e107]:
+                - generic [ref=f4e108]: Canino, Felino
+                - heading "Amoxicilina + clavulanato" [level=1] [ref=f4e110]
+                - paragraph [ref=f4e111]:
+                  - strong [ref=f4e112]: Amoxicilina trihidratada + clavulanato de potássio
+                  - text: • Antibiótico beta-lactâmico potencializado
+              - generic [ref=f4e113]:
+                - button "Copiar link da monografia" [ref=f4e114] [cursor=pointer]
+                - button "Adicionar aos favoritos" [ref=f4e121] [cursor=pointer]
+            - generic [ref=f4e125]:
+              - button "Medicamento" [ref=f4e126] [cursor=pointer]
+              - button "Info" [ref=f4e131] [cursor=pointer]
+              - button "Atenção" [ref=f4e135] [cursor=pointer]
+              - button "Mercado 2" [ref=f4e139] [cursor=pointer]:
+                - generic [ref=f4e143]: Mercado
+                - generic [ref=f4e144]: "2"
+            - main [ref=f4e145]:
+              - generic [ref=f4e147]:
+                - generic [ref=f4e149]:
+                  - heading "Resumo Clínico Executivo" [level=2] [ref=f4e156]
+                  - generic [ref=f4e157]:
+                    - paragraph [ref=f4e158]: Em palavras simples
+                    - generic [ref=f4e162]:
+                      - paragraph [ref=f4e163]: É um antibiótico associado a uma substância que protege sua ação contra algumas defesas das bactérias. Não trata toda infecção.
+                      - generic [ref=f4e164]: "Amoxicilina + clavulanato: A amoxicilina inibe a síntese da parede bacteriana; o clavulanato bloqueia beta-lactamases e amplia a cobertura contra alguns patógenos produtores dessas enzimas."
+                  - generic [ref=f4e165]:
+                    - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f4e166]
+                    - generic [ref=f4e167]:
+                      - generic [ref=f4e168]:
+                        - generic [ref=f4e169]: Como atua
+                        - paragraph [ref=f4e176]: A amoxicilina inibe a síntese da parede bacteriana; o clavulanato bloqueia beta-lactamases e amplia a cobertura contra alguns patógenos produtores dessas enzimas.
+                      - generic [ref=f4e177]:
+                        - generic [ref=f4e178]: Cuidados clínicos
+                        - paragraph [ref=f4e184]: Reavaliar resposta clínica em 48 a 72 horas e ajustar conforme cultura quando disponível.
+                      - generic [ref=f4e185]:
+                        - generic [ref=f4e186]: Cuidados clínicos
+                        - paragraph [ref=f4e192]: Evitar usar como rotina em toda cinomose sem justificativa infecciosa.
+                  - generic [ref=f4e193]:
+                    - heading "Indicações de Uso Resumidas" [level=3] [ref=f4e194]
+                    - generic [ref=f4e195]:
+                      - paragraph [ref=f4e196]: Opção para infecções por bactérias sensíveis, especialmente de pele, tecidos moles e trato urinário.
+                      - generic [ref=f4e198]:
+                        - generic [ref=f4e199]:
+                          - generic [ref=f4e201]:
+                            - heading "Infecções bacterianas de tecidos moles, vias respiratórias e trato urinário em cenários compatíveis." [level=4] [ref=f4e202]
+                            - generic [ref=f4e203]:
+                              - generic [ref=f4e204]: Cães
+                              - generic [ref=f4e205]: Gatos
+                          - generic [ref=f4e206]:
+                            - generic [ref=f4e215]:
+                              - generic [ref=f4e216]: Dose de Ataque / Manutenção
+                              - text: Conforme tabela de posologia clínica
+                            - generic [ref=f4e217]:
+                              - generic [ref=f4e218]:
+                                - generic [ref=f4e219]: Via
+                                - text: Consultar posologia
+                              - generic [ref=f4e220]:
+                                - generic [ref=f4e221]: Duração
+                                - text: Conforme indicação e regime posológico
+                        - generic [ref=f4e222]:
+                          - generic [ref=f4e224]:
+                            - heading "Cobertura de suporte em paciente com cinomose quando houver suspeita consistente de broncopneumonia ou infecção bacteriana secundária." [level=4] [ref=f4e225]
+                            - generic [ref=f4e226]:
+                              - generic [ref=f4e227]: Cães
+                              - generic [ref=f4e228]: Gatos
+                          - generic [ref=f4e229]:
+                            - generic [ref=f4e238]:
+                              - generic [ref=f4e239]: Dose de Ataque / Manutenção
+                              - text: Conforme tabela de posologia clínica
+                            - generic [ref=f4e240]:
+                              - generic [ref=f4e241]:
+                                - generic [ref=f4e242]: Via
+                                - text: Consultar posologia
+                              - generic [ref=f4e243]:
+                                - generic [ref=f4e244]: Duração
+                                - text: Conforme indicação e regime posológico
+                - generic [ref=f4e245]:
+                  - generic [ref=f4e250]:
+                    - heading "Fundamentos Clínicos & Evidências Farmacológicas" [level=3] [ref=f4e251]
+                    - paragraph [ref=f4e252]: Mecanismos, aplicação clínica e referências específicas deste medicamento
+                  - generic [ref=f4e253]:
+                    - article [ref=f4e254]:
+                      - heading "1 Mecanismo de ação bactericida e inibição suicida de beta-lactamases" [level=4] [ref=f4e255]:
+                        - generic [ref=f4e256]: "1"
+                        - text: Mecanismo de ação bactericida e inibição suicida de beta-lactamases
+                      - generic [ref=f4e257]: A amoxicilina é uma aminopenicilina semissintética de ação bactericida dependente do tempo, que se liga covalentemente às proteínas ligadoras de penicilina (PBPs), inibindo a transpeptidação terminal da síntese da parede celular de peptidoglicano e ativando autolisinas endógenas que culminam na lise bacteriana osmótica. O ácido clavulânico atua como um inibidor suicida progressivo e irreversível de beta-lactamases das classes funcionais de Ambler A (incluindo penicilinases estafilocócicas e beta-lactamases de espectro ampliado de Gram-negativos). Ao ligar-se ao sítio ativo da enzima bacteriana, o clavulanato é hidrolisado e forma um intermediário acil-enzima estável que inativa a defesa bacteriana, protegendo a integridade da molécula de amoxicilina e restaurando a sensibilidade em cepas de Staphylococcus pseudintermedius, Escherichia coli e Klebsiella spp.
+                    - article [ref=f4e258]:
+                      - heading "2 Farmacodinâmica tempo-dependente e a regra farmacológica de 50% T > CIM" [level=4] [ref=f4e259]:
+                        - generic [ref=f4e260]: "2"
+                        - text: Farmacodinâmica tempo-dependente e a regra farmacológica de 50% T > CIM
+                      - generic [ref=f4e261]: Como antimicrobiano beta-lactâmico clássico, o índice farmacodinâmico determinante da eficácia clínica e bacteriológica da amoxicilina-clavulanato é a porcentagem do intervalo entre as doses durante a qual a concentração plasmática da droga livre excede a Concentração Inibitória Mínima do patógeno (% T > CIM). Tratados internacionais de farmacologia clínica (Ettinger 2024, Plumb’s 10ª ed.) determinam que a exposição ótima para betalactâmicos requer T > CIM de pelo menos 40% a 50% do intervalo posológico para cães e gatos. Por essa razão, intervalos prolongados de 24 horas são inadequados na rotina clínica de pequenos animais, devendo-se rigorosamente manter o fracionamento a cada 12 horas (q12h) para tecidos moles e trato urinário, ou a cada 8 horas (q8h) em sepse e infecções respiratórias graves.
+                    - article [ref=f4e262]:
+                      - heading "3 Tolerância gastrintestinal, apresentações comerciais e stewardship antimicrobiano" [level=4] [ref=f4e263]:
+                        - generic [ref=f4e264]: "3"
+                        - text: Tolerância gastrintestinal, apresentações comerciais e stewardship antimicrobiano
+                      - generic [ref=f4e265]: O ácido clavulânico estimula a motilidade gastrintestinal por ação agonista direta sobre receptores da motilina, sendo a êmese e a diarreia osmótica transitória os efeitos adversos mais frequentemente relatados. A administração imediatamente antes ou junto com uma refeição reduz sensivelmente o desconforto gástrico sem comprometer a biodisponibilidade sistêmica. Na medicina veterinária, formulações orais veterinárias possuem proporção fixa de amoxicilina para clavulanato de 4:1, enquanto certas apresentações humanas utilizam proporções distintas (7:1 ou 8:1); a intercambialidade não deve ser feita sem ajuste rigoroso da dose de clavulanato para evitar toxicidade digestiva ou subdose. Dentro das diretrizes de Antimicrobial Stewardship da ISCAID, a amoxicilina-clavulanato é classificada como antibiótico de primeira linha essencial, devendo ser indicada com base em citologia e cultura/antibiograma.
+                - generic [ref=f4e266]:
+                  - heading "Conteúdo & Casos Relacionados" [level=2] [ref=f4e272]
+                  - generic [ref=f4e274]:
+                    - generic [ref=f4e275]:
+                      - heading "Doenças Associadas" [level=4] [ref=f4e276]
+                      - generic [ref=f4e281]:
+                        - link [ref=f4e282] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/cinomose-canina
+                          - paragraph [ref=f4e283]: Cinomose Canina
+                          - paragraph [ref=f4e284]: infecciosas
+                        - link [ref=f4e285] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/coagulacao-intravascular-disseminada-caes-gatos
+                          - paragraph [ref=f4e286]: Coagulação intravascular disseminada (CID/DIC)
+                          - paragraph [ref=f4e287]: intensivismo
+                        - link [ref=f4e288] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/doenca-periodontal-caes
+                          - paragraph [ref=f4e289]: Doença Periodontal Canina
+                          - paragraph [ref=f4e290]: odontologia
+                        - link [ref=f4e291] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/doenca-periodontal-gatos
+                          - paragraph [ref=f4e292]: Doença Periodontal Felina
+                          - paragraph [ref=f4e293]: odontologia
+                        - link [ref=f4e294] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/doencas-trato-urinario-inferior-felino-dtuif
+                          - paragraph [ref=f4e295]: Doenças do trato urinário inferior felino (DTUIF)
+                          - paragraph [ref=f4e296]: nefrologia-urologia
+                        - link [ref=f4e297] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/gengivoestomatite-cronica-felina
+                          - paragraph [ref=f4e298]: Gengivoestomatite crônica felina (GECF)
+                          - paragraph [ref=f4e299]: odontologia
+                        - link [ref=f4e300] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/mastite-caes-gatos
+                          - paragraph [ref=f4e301]: Mastite em cadelas e gatas
+                          - paragraph [ref=f4e302]: reproducao-obstetricia
+                        - link [ref=f4e303] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/pielonefrite-caes-gatos
+                          - paragraph [ref=f4e304]: Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica)
+                          - paragraph [ref=f4e305]: nefrologia-urologia
+                        - link [ref=f4e306] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/piotorax-caes-gatos
+                          - paragraph [ref=f4e307]: Piotórax em Cães e Gatos
+                          - paragraph [ref=f4e308]: urgencia-emergencia
+                        - link [ref=f4e309] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/prostatite-caes-gatos
+                          - paragraph [ref=f4e310]: Prostatite em cães e gatos
+                          - paragraph [ref=f4e311]: nefrologia-urologia
+                        - link [ref=f4e312] [cursor=pointer]:
+                          - /url: /consulta-vet/doencas/sepse-canina
+                          - paragraph [ref=f4e313]: Sepse e Choque Séptico em Cães
+                          - paragraph [ref=f4e314]: urgencia-emergencia
+                    - generic [ref=f4e315]:
+                      - heading "Consensos & Diretrizes" [level=4] [ref=f4e316]
+                      - generic [ref=f4e320]:
+                        - link [ref=f4e321] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/veccs-sepse-definicao-caes-gatos-2026
+                          - paragraph [ref=f4e322]: Sepse em cães e gatos — definição e critérios clínicos
+                          - paragraph [ref=f4e323]: VECCS / JVECC • 2026
+                        - link [ref=f4e324] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/veccs-choque-septico-prognostico-2026
+                          - paragraph [ref=f4e325]: Choque séptico e prognóstico em cães e gatos com sepse
+                          - paragraph [ref=f4e326]: VECCS / JVECC • 2026
+                        - link [ref=f4e327] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/curative-risco-trombotico-2022
+                          - paragraph [ref=f4e328]: CURATIVE — populações sob risco de trombose
+                          - paragraph [ref=f4e329]: ACVECC CURATIVE • 2022
+                        - link [ref=f4e330] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/iris-lra-2026
+                          - paragraph [ref=f4e331]: Graduação da lesão renal aguda em cães e gatos
+                          - paragraph [ref=f4e332]: IRIS • 2026
+                        - link [ref=f4e333] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/iscaid-itu-caes-gatos-2019
+                          - paragraph [ref=f4e334]: Infecções bacterianas do trato urinário em cães e gatos
+                          - paragraph [ref=f4e335]: ISCAID • 2019
+                        - link [ref=f4e336] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/acvim-urolitiase-caes-gatos-2016
+                          - paragraph [ref=f4e337]: Tratamento e prevenção de urólitos em cães e gatos
+                          - paragraph [ref=f4e338]: ACVIM • 2016
+                        - link [ref=f4e339] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/weese-terminologia-infeccoes-urinarias-2026
+                          - paragraph [ref=f4e340]: Terminologia e critérios diagnósticos padronizados para doenças infecciosas do trato urinário em cães e gatos
+                          - paragraph [ref=f4e341]: Consenso Internacional Delphi (Weese et al.) / JSAP • 2026
+                        - link [ref=f4e342] [cursor=pointer]:
+                          - /url: /consulta-vet/consensos/icatcare-dtuif-felina-2025
+                          - paragraph [ref=f4e343]: Doenças do trato urinário inferior em gatos
+                          - paragraph [ref=f4e344]: iCatCare • 2025
+                - generic [ref=f4e345]:
+                  - heading "Referências Bibliográficas & Diretrizes" [level=2] [ref=f4e351]
+                  - generic [ref=f4e353]:
+                    - paragraph [ref=f4e354]: Fontes com tipo, nível de evidência quando informado e links para aprofundamento.
+                    - generic [ref=f4e355]:
+                      - article [ref=f4e356]:
+                        - generic [ref=f4e357]:
+                          - generic [ref=f4e358]:
+                            - generic [ref=f4e359]:
+                              - generic [ref=f4e360]: "1"
+                              - generic [ref=f4e361]: SPC
+                            - paragraph [ref=f4e362]: NOAH Compendium. Synulox tablets for dogs and cats.
+                            - paragraph [ref=f4e363]: Resumo de características do produto com amoxicilina + clavulanato.
+                          - link "Abrir fonte" [ref=f4e364] [cursor=pointer]:
+                            - /url: https://www.noahcompendium.co.uk
+                      - article [ref=f4e372]:
+                        - generic [ref=f4e373]:
+                          - generic [ref=f4e374]:
+                            - generic [ref=f4e375]:
+                              - generic [ref=f4e376]: "2"
+                              - generic [ref=f4e377]: Ensaio clínico randomizado
+                              - generic [ref=f4e378]: "Evidência: Moderada; estudo antigo e duração dependente do diagnóstico"
+                            - paragraph [ref=f4e379]: Passmore CA et al. Comparative study of marbofloxacin and amoxicillin-clavulanic acid in the treatment of urinary tract infections in dogs. J Small Anim Pract. 1995;36(6):245-250.
+                            - paragraph [ref=f4e380]: Amoxicilina-clavulanato 12,5 mg/kg VO BID por 10 ou 28 dias conforme o diagnóstico no protocolo estudado; durações atuais devem seguir o tipo de ITU e a diretriz vigente.
+                          - link "Abrir fonte" [ref=f4e381] [cursor=pointer]:
+                            - /url: https://pubmed.ncbi.nlm.nih.gov/8558866/
+                      - article [ref=f4e389]:
+                        - generic [ref=f4e390]:
+                          - generic [ref=f4e391]:
+                            - generic [ref=f4e392]:
+                              - generic [ref=f4e393]: "3"
+                              - generic [ref=f4e394]: Diretriz ISCAID
+                              - generic [ref=f4e395]: "Evidência: Alta"
+                            - paragraph [ref=f4e396]: Loeffler A et al. Antimicrobial use guidelines for canine pyoderma by ISCAID. Veterinary Dermatology. 2025;36:234–282.
+                          - link "Abrir fonte" [ref=f4e397] [cursor=pointer]:
+                            - /url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12058580/
+                      - article [ref=f4e405]:
+                        - generic [ref=f4e406]:
+                          - generic [ref=f4e407]:
+                            - generic [ref=f4e408]:
+                              - generic [ref=f4e409]: "4"
+                              - generic [ref=f4e410]: Bula FDA
+                              - generic [ref=f4e411]: "Evidência: Alta (rótulo)"
+                            - paragraph [ref=f4e412]: FDA/CVM — CLAVAMOX prescribing information. 6,25 mg/lb BID cães; 62,5 mg/gato BID.
+                          - link "Abrir fonte" [ref=f4e413] [cursor=pointer]:
+                            - /url: https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=d342d015-0775-4f4a-98fe-e792b9895596
+                      - article [ref=f4e421]:
+                        - generic [ref=f4e422]:
+                          - generic [ref=f4e423]:
+                            - generic [ref=f4e424]:
+                              - generic [ref=f4e425]: "5"
+                              - generic [ref=f4e426]: Formulário farmacológico
+                            - paragraph [ref=f4e427]: "Plumb’s Veterinary Drug Handbook, 10ª edição. Monografia: Amoxicillin/Clavulanate. p. 70–73."
+                            - paragraph [ref=f4e428]: Fonte de referência farmacológica, doses e intervalos para cães e gatos.
+                          - link "Abrir fonte" [ref=f4e429] [cursor=pointer]:
+                            - /url: https://search.worldcat.org/isbn/9781394172207
+                      - article [ref=f4e437]:
+                        - generic [ref=f4e439]:
+                          - generic [ref=f4e440]:
+                            - generic [ref=f4e441]: "6"
+                            - generic [ref=f4e442]: Formulário farmacológico
+                          - paragraph [ref=f4e443]: "BSAVA Small Animal Formulary, Part A: Canine and Feline, 10ª edição. Monografia: Co-amoxiclav. p. 98–101."
+                          - paragraph [ref=f4e444]: Diretrizes britânicas de posologia e segurança em pequenos animais.
+                      - article [ref=f4e445]:
+                        - generic [ref=f4e447]:
+                          - generic [ref=f4e448]:
+                            - generic [ref=f4e449]: "7"
+                            - generic [ref=f4e450]: Tratado de Medicina Interna
+                          - paragraph [ref=f4e451]: "Nelson RW, Couto CG. Medicina Interna de Pequenos Animais, 6ª edição. Guanabara Koogan / Elsevier. Cap. 92: Practical Antimicrobial Chemotherapy (Potentiated Aminopenicillins). p. 1436–1442."
+                          - paragraph [ref=f4e452]: Referência clínica de fisiopatologia, conduta diagnóstica e protocolos terapêuticos.
+                      - article [ref=f4e453]:
+                        - generic [ref=f4e455]:
+                          - generic [ref=f4e456]:
+                            - generic [ref=f4e457]: "8"
+                            - generic [ref=f4e458]: Tratado de Medicina Interna
+                          - paragraph [ref=f4e459]: "Ettinger SJ, Feldman EC, Côté É. Textbook of Veterinary Internal Medicine, 9ª edição (2024). Elsevier. Cap. 7: Antimicrobial Stewardship & Cap. 184: Laboratory Diagnosis of Infectious Disease. p. 45–52, 1010–1018."
+                          - paragraph [ref=f4e460]: Diretrizes internacionais e farmacoterapia avançada em medicina interna de cães e gatos.
+          - navigation "Índice do medicamento" [ref=f4e462]:
+            - generic [ref=f4e463]:
+              - heading "Índice do medicamento" [level=2] [ref=f4e464]
+              - list [ref=f4e465]:
+                - listitem [ref=f4e466]:
+                  - link "1. Resumo rápido" [ref=f4e467] [cursor=pointer]:
+                    - /url: "#resumo-rapido"
+                - listitem [ref=f4e468]:
+                  - link "3. Fundamentos e evidências" [ref=f4e469] [cursor=pointer]:
+                    - /url: "#fundamentos-clinicos"
+                - listitem [ref=f4e470]:
+                  - link "6. Conteúdo relacionado" [ref=f4e471] [cursor=pointer]:
+                    - /url: "#conteudo-relacionado"
+                - listitem [ref=f4e472]:
+                  - link "7. Referências bibliográficas" [ref=f4e473] [cursor=pointer]:
+                    - /url: "#referencias-bibliograficas"

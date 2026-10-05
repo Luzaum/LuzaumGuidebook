@@ -8,8 +8,9 @@ export const CONSULTA_VET_DISEASE_MEDICATION_TABLE = 'consulta_vet_disease_medic
 export const CONSULTA_VET_DISEASE_CONSENSO_TABLE = 'consulta_vet_disease_consensos';
 
 export function hasSupabaseEnv(): boolean {
-  const url = String(import.meta.env.VITE_SUPABASE_URL || '').trim();
-  const key = String(import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
+  const env = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env : (typeof process !== 'undefined' ? process.env : {});
+  const url = String(env.VITE_SUPABASE_URL || '').trim();
+  const key = String(env.VITE_SUPABASE_ANON_KEY || '').trim();
   return Boolean(url && key && !key.includes('...'));
 }
 

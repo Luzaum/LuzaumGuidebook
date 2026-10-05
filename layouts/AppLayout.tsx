@@ -1,4 +1,4 @@
-﻿import React, { useCallback, useEffect, useRef, useState } from 'react'
+﻿import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
@@ -95,6 +95,14 @@ function restoreFormDraft(root: HTMLElement, draft: Record<string, unknown>): vo
       field.dispatchEvent(new Event(field instanceof HTMLSelectElement ? 'change' : 'input', { bubbles: true }))
     }
   })
+}
+
+function AppPageContent() {
+  return (
+    <Suspense fallback={<div role="status" aria-live="polite" className="p-6 text-center text-slate-500">Carregando seção…</div>}>
+      <Outlet />
+    </Suspense>
+  )
 }
 
 export function AppLayout() {
@@ -203,7 +211,7 @@ export function AppLayout() {
           onChangeCapture={scheduleFormDraftSave}
           className="h-dvh min-h-0 w-full overflow-hidden bg-background"
         >
-          <Outlet />
+          <AppPageContent />
         </div>
       </>
     )
@@ -494,11 +502,11 @@ export function AppLayout() {
                 isInternalScrollShellRoute ? 'h-full overflow-hidden' : ''
               }`}
             >
-              <Outlet />
+              <AppPageContent />
             </div>
           ) : (
             <div className="mx-auto w-full max-w-7xl px-3 sm:px-4 md:px-6 py-6 pb-12">
-              <Outlet />
+              <AppPageContent />
             </div>
           )}
         </main>

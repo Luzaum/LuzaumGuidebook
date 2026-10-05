@@ -39,7 +39,12 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
 
   plainLanguage: DISEASE_PLAIN_LANGUAGE['leishmaniose-caes-gatos'],
 
-  quickSummary: 'A leishmaniose em cães e gatos é uma zoonose parasitária crônica e multissistêmica causada pelo protozoário intracelular Leishmania infantum (sin. Leishmania chagasi nas Américas), transmitida primariamente pela picada de flebotomíneos hematófagos (especialmente Lutzomyia longipalpis no Brasil). A doença caracteriza-se por um complexo desequilíbrio imunológico no qual o hospedeiro vertebrado falha em montar uma resposta imune celular protetora (Th1 mediada por IFN-gama e TNF-alfa), desenvolvendo em contrapartida uma resposta humoral exuberante, ineficaz e lesiva (Th2), caracterizada por hipergamaglobulinemia policlonal severa e deposição massiva de imunocomplexos circulantes em múltiplos leitos vasculares. Essa deposição inflamatória deflagra as principais manifestações da síndrome: glomerulonefrite membranoproliferativa com proteinúria precoce (principal determinante de morbimortalidade), dermatite esfoliativa seca não pruriginosa, alopecia periocular em óculos, onicogrifose patológica desproporcional, vasculite com epistaxe, poliartrite imunomediada e uveíte granulomatosa. A abordagem clínica contemporânea fundamenta-se na atualização consensual do Canine Leishmaniosis Working Group (CLWG 2026), que estabelece o princípio de que infecção não é sinônimo de doença ativa (categorizando os pacientes em Classes A, B, C e D), proibindo o tratamento leishmanicida em animais assintomáticos apenas com base em soropositividade isolada. No Brasil, o manejo terapêutico é estritamente regulado pelo MAPA e Ministério da Saúde, sendo a miltefosina canina (Milteforan) o único leishmanicida registrado, associado ao alopurinol com monitoramento rigoroso de xantinúria e nefropatia. Em felinos, segundo o consenso ABCD 2026, a doença emerge primariamente associada a estados de imunossupressão (FIV/FeLV), exigindo cautela farmacológica e absoluto veto ao uso de repelentes à base de permetrina por toxicidade fatal nesta espécie.',
+  quickSummary: 'A leishmaniose em cães e gatos é uma zoonose parasitária crônica e multissistêmica causada pelo protozoário intracelular Leishmania infantum (sin. Leishmania chagasi nas Américas), transmitida pela picada de flebotomíneos hematófagos (Lutzomyia longipalpis no Brasil):\n\n' +
+    '- Imunopatogenia central: decorre do desequilíbrio imune no qual falha a resposta protetora celular (Th1 com IFN-gama e TNF-alfa), predominando a resposta humoral lesiva (Th2), com hipergamaglobulinemia policlonal severa e deposição massiva de imunocomplexos vasculares.\n' +
+    '- Espectro clínico clássico: glomerulonefrite membranoproliferativa com proteinúria precoce (principal determinante de morbimortalidade), dermatite esfoliativa seca não pruriginosa, alopecia periocular em óculos, onicogrifose desproporcional, vasculite com epistaxe, poliartrite e uveíte granulomatosa.\n' +
+    '- Paradigma CLWG 2026: infecção não é sinônimo de doença ativa. Os pacientes são categorizados em Classes A, B, C e D, sendo vedado o tratamento leishmanicida em animais assintomáticos baseando-se apenas em soropositividade isolada.\n' +
+    '- Manejo terapêutico no Brasil (MAPA): miltefosina canina (Milteforan) é o leishmanicida registrado, associada ao leishmaniostático alopurinol com monitoramento estrito de xantinúria e função renal.\n' +
+    '- Particularidades em felinos (ABCD 2026): associada frequentemente a imunossupressão (FIV/FeLV), com manifestação nodular ou ocular e VETO ABSOLUTO ao uso de permetrina por toxicidade fatal.',
 
   quickDecisionStrip: [
     'Mudança conceitual do CLWG 2026: infecção não é igual a doença ativa; nunca tratar apenas com base em sorologia positiva isolada sem evidência de doença atribuível.',
@@ -57,7 +62,10 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
   ],
 
   quickSummaryRich: {
-    lead: 'A leishmaniose é uma doença parasitária crônica e zoonótica causada por Leishmania infantum, cuja manifestação clínica decorre não apenas da replicação do protozoário em macrófagos, mas primordialmente da resposta imunopatológica do hospedeiro, mediada por hipergamaglobulinemia policlonal e deposição vascular de imunocomplexos. O manejo atual baseia-se na classificação CLWG 2026 (separando exposição de doença ativa), na vigilância renal rigorosa e no tratamento regulado conforme a legislação nacional.',
+    lead: 'A leishmaniose é uma afecção parasitária crônica e zoonótica causada por Leishmania infantum, cuja gravidade clínica decorre dos seguintes eixos fisiopatológicos e diretrizes normativas:\n\n' +
+      '- Imunopatologia: resposta exacerbada mediada por hipergamaglobulinemia policlonal e deposição vascular de imunocomplexos circulantes.\n' +
+      '- Classificação CLWG 2026: estratificação rigorosa separando exposição e infecção subclínica de doença ativa tratável.\n' +
+      '- Vigilância e terapia: monitoramento renal precoce e protocolos estritos regulamentados pela legislação nacional.',
     leadHighlights: [
       'Leishmania infantum',
       'CLWG 2026: Classes A, B, C e D',
@@ -69,22 +77,33 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
     pillars: [
       {
         title: 'Pilar 1: Mudança Conceitual CLWG 2026 — Infecção versus Doença Ativa',
-        body: 'O consenso CLWG 2026 estabelece uma ruptura definitiva com o dogma antigo de tratar qualquer animal soropositivo. Cães expostos com títulos baixos a moderados sem infecção direta (Classe A) e cães clinicamente saudáveis com DNA parasitário detectável (Classe B) NÃO devem receber fármacos leishmanicidas. O tratamento anti-Leishmania é reservado estritamente para animais com doença ativa atribuível (Classes C e D).',
+        body: 'O consenso CLWG 2026 estabelece uma ruptura com o dogma antigo de tratar qualquer animal soropositivo:\n\n' +
+          '- Animais não elegíveis a leishmanicidas: cães expostos com títulos baixos/moderados (Classe A) e clinicamente saudáveis com DNA parasitário (Classe B) não recebem fármacos leishmanicidas.\n' +
+          '- Animais elegíveis a tratamento: a terapia anti-Leishmania é reservada com exclusividade para pacientes com doença ativa clinicamente atribuível (Classes C e D).',
         highlights: ['Classe A e B não tratam', 'Classe C e D tratam', 'Evitar toxicidade e resistência farmacológica']
       },
       {
         title: 'Pilar 2: Imunopatogenia e o Rim como Órgão Sentinela',
-        body: 'A polarização da resposta imune define o destino do paciente: indivíduos com imunidade celular eficaz (Th1 com IFN-gama e óxido nítrico) contêm o parasita; indivíduos com resposta humoral exacerbada (Th2) desenvolvem hipergamaglobulinemia massiva. A deposição de imunocomplexos circulantes induz glomerulonefrite proliferativa, tornando a proteinúria (mensurada pelo UPC) a principal causa de desfecho desfavorável.',
+        body: 'A polarização da resposta imunológica define o prognóstico e a evolução do paciente:\n\n' +
+          '- Perfil Th1 (protetor): imunidade celular eficaz mediada por IFN-gama e óxido nítrico, promovendo contenção parasitária em macrófagos.\n' +
+          '- Perfil Th2 (lesivo): ativação humoral exacerbada com hipergamaglobulinemia massiva e deposição de imunocomplexos circulantes.\n' +
+          '- Lesão glomerular: glomerulonefrite membranoproliferativa induz proteinúria mensurada pelo UPC, sendo o principal determinante prognóstico.',
         highlights: ['Resposta Th1 protetora vs Th2 lesiva', 'Glomerulonefrite por imunocomplexos', 'UPC e biomarcadores uNGAL/uGGT']
       },
       {
         title: 'Pilar 3: Diagnóstico Integrado e Padrão Ouro Citológico',
-        body: 'Nenhum teste diagnóstico deve ser avaliado isoladamente. A citologia direta de linfonodo, medula óssea ou lesão cutânea constitui o método confirmatório padrão ouro, evidenciando amastigotas intracelulares. A sorologia quantitativa e o qPCR em tecidos-alvo (linfonodo/medula) complementam o diagnóstico, sendo a sorologia em sangue periférico inadequada como critério isolado de indicação medicamentosa.',
+        body: 'Nenhum ensaio diagnóstico deve ser interpretado de forma isolada na rotina médica:\n\n' +
+          '- Padrão ouro confirmatório: citologia direta de aspirado de linfonodo, medula óssea ou lesão cutânea demonstrando amastigotas intracelulares.\n' +
+          '- Diagnóstico complementar: sorologia quantitativa pareada e qPCR em tecidos-alvo (linfonodo ou medula óssea).\n' +
+          '- Conduta crítica: sorologia positiva em sangue periférico é insuficiente como critério isolado para início de terapia leishmanicida.',
         highlights: ['Citologia direta: padrão ouro', 'qPCR tecidual', 'Sorologia quantitativa']
       },
       {
         title: 'Pilar 4: Terapêutica Racional, Legislação e Manejo da Xantinúria',
-        body: 'No Brasil, a legislação do MAPA restringe o uso de leishmanicidas à miltefosina canina (Milteforan 2 mg/kg q24h por 28 dias), associada ao leishmaniostático alopurinol (10 mg/kg BID). O uso continuado de alopurinol inibe a xantina oxidase, gerando acúmulo urinário de xantina com risco de nefrolitíase radiotransparente, exigindo acompanhamento com urinálise, ultrassom e dieta de baixo teor purínico.',
+        body: 'O manejo farmacológico no Brasil segue estritas diretrizes regulatórias e monitoramento clínico:\n\n' +
+          '- Leishmanicida regulamentado (MAPA): miltefosina canina (Milteforan 2 mg/kg q24h VO por 28 dias consecutivos).\n' +
+          '- Leishmaniostático associado: alopurinol (10 mg/kg BID VO continuado) para contenção de carga parasitária.\n' +
+          '- Manejo da xantinúria: a inibição da xantina oxidase predispõe a urólitos radiotransparentes de xantina, exigindo ultrassom seriado e dieta hipopurínica.',
         highlights: ['Miltefosina registrada no MAPA', 'Alopurinol e urolitíase por xantina', 'Monitoramento clínico e ultrassonográfico']
       }
     ],
@@ -94,7 +113,9 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Etapa 1: Reconhecimento do Fenótipo Clínico e Triagem Básica',
           timing: 'Primeira consulta',
-          detail: 'Identificação de sinais clínicos sugestivos: dermatite esfoliativa, alopecia periocular, onicogrifose, linfadenomegalia, perda de peso ou uveíte. Coleta de sangue para hemograma completo, perfil bioquímico (ureia, creatinina, albumina, globulinas, relação A:G) e urinálise com UPC.'
+          detail: 'Triagem clínica e laboratorial inicial de suspeita:\n' +
+            '- Sinais clínicos: dermatite esfoliativa, alopecia periocular, onicogrifose, linfadenomegalia, emagrecimento e uveíte.\n' +
+            '- Exames de triagem: hemograma, perfil bioquímico (ureia, creatinina, albumina, globulinas, razão A:G) e urinálise completa com UPC.'
         },
         {
           label: 'Etapa 2: Demonstração Parasitológica Direta (Padrão Ouro)',
@@ -109,7 +130,9 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Etapa 4: Classificação Clínica CLWG 2026 e Avaliação Orgânica',
           timing: 'Após resultados laboratoriais',
-          detail: 'Enquadramento do paciente nas Classes A, B, C ou D do CLWG 2026. Se Classe C ou D, avaliar estadiamento renal estrito (estágios IRIS 1 a 4 com base em creatinina, SDMA e UPC), pressão arterial sistólica e pesquisa de coinfecções por carrapatos (Ehrlichia, Anaplasma, Babesia).'
+          detail: 'Estratificação consensual e rastreio de lesão orgânica:\n' +
+            '- Classificação CLWG 2026: enquadramento nas Classes A, B, C ou D.\n' +
+            '- Se Classe C ou D: estadiamento renal IRIS (creatinina, SDMA e UPC), aferição de pressão arterial sistólica e pesquisa de hemoparasitoses (Ehrlichia, Anaplasma, Babesia).'
         },
         {
           label: 'Etapa 5: Investigação Especial em Felinos',
@@ -124,7 +147,9 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Fase 1: Terapia Leishmanicida Indutora',
           timing: 'Dias 1 a 28',
-          detail: 'Administração de Miltefosina (Milteforan) na dose de 2 mg/kg por via oral a cada 24 horas por 28 dias consecutivos, sempre misturada ao alimento para mitigar náuseas e vômitos. Em países onde autorizado, Antimoniato de meglumina (100 mg/kg/dia SC dividido em 2 aplicações).'
+          detail: 'Terapia indutora leishmanicida protocolada:\n' +
+            '- Miltefosina (Milteforan): 2 mg/kg VO a cada 24 horas por 28 dias consecutivos, sempre fornecida com alimento gorduroso para minimizar náuseas.\n' +
+            '- Protocolo internacional alternativo: Antimoniato de meglumina (100 mg/kg/dia SC dividido BID por 28 a 30 dias), onde legalmente autorizado.'
         },
         {
           label: 'Fase 2: Terapia Leishmaniostática Contínua',
@@ -134,26 +159,38 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Fase 3: Manejo da Doença Renal e de Complicações Imunomediadas',
           timing: 'Simultâneo desde o diagnóstico',
-          detail: 'Em caso de proteinúria (UPC aumentado), instituir bloqueio do sistema renina-angiotensina (inibidores da ECA como enalapril/benazepril ou bloqueadores de receptores de angiotensina como telmisartana) e controle pressórico. Se uveíte ativa grave, corticoterapia tópica e suporte anti-inflamatório sob cobertura leishmanicida.'
+          detail: 'Controle de glomerulonefrite e alterações imunomediadas:\n' +
+            '- Manejo de proteinúria: bloqueio do SRAA com telmisartana ou inibidores da ECA (benazepril/enalapril) e controle de hipertensão sistêmica.\n' +
+            '- Lesões oculares: corticoterapia tópica oftálmica e suporte anti-inflamatório cuidadoso sob cobertura leishmanicida rigorosa.'
         },
         {
           label: 'Fase 4: Prevenção Vetorial Contínua Obrigatória',
           timing: 'Permanente',
-          detail: 'Aplicação ininterrupta de coleiras à base de deltametrina (4%) ou formulações tópicas repelentes registradas para prevenir novas inoculações vetoriais e evitar que o paciente atue como fonte de infecção para flebotomíneos. Em gatos, utilizar apenas coleiras de flumetrina autorizadas, jamais permetrina.'
+          detail: 'Profilaxia vetorial e bloqueio epidemiológico ininterrupto:\n' +
+            '- Cães: coleiras à base de deltametrina (4%) ou formulações repelentes registradas para impedir picadas e transmissão ao mosquito-palha.\n' +
+            '- Gatos: utilizar exclusivamente coleiras com flumetrina autorizadas para a espécie, com VETO ABSOLUTO à permetrina devido a toxicidade fatal.'
         },
         {
           label: 'Fase 5: Monitoramento Laboratorial e Detecção de Recidivas',
           timing: 'A cada 3 a 6 meses',
-          detail: 'Avaliação clínica seriada, hemograma completo, perfil bioquímico renal, UPC urinário, sedimento urinário com pesquisa de cristais de xantina e titulação sorológica quantitativa. Ascensão de títulos em duas ou mais diluições ou reaparecimento de proteinúria indicam necessidade de reavaliação terapêutica.'
+          detail: 'Vigilância clínica e laboratorial periódica:\n' +
+            '- Painel de controle: hemograma, perfil renal, UPC urinário, sedimento urinário (cristais de xantina) e sorologia quantitativa seriada.\n' +
+            '- Critérios de alerta: elevação de títulos sorológicos em duas diluições ou piora da proteinúria indicam reativação parasitária e reavaliação terapêutica.'
         }
       ]
     }
   },
 
   etiology: {
-    taxonomiaEBiologiaDoParasita: 'A leishmaniose em pequenos animais é causada por protozoários digenéticos e hemoflagelados pertencentes à ordem Trypanosomatida, família Trypanosomatidae e gênero Leishmania. No Brasil, nas Américas, no sul da Europa, no norte da África e em regiões da Ásia, a espécie de relevância clínica e em saúde pública é Leishmania infantum (historicamente denominada Leishmania chagasi no continente americano). O ciclo biológico apresenta duas formas morfológicas evolutivas: os promastigotas (formas flageladas alongadas, medindo de 15 a 20 um, altamente móveis, encontradas no trato digestivo dos insetos vetores) e os amastigotas (formas esféricas a ovoides, anucleadas de flagelo livre aparente, medindo de 2 a 4 um, contendo núcleo e cinetoplasto característicos, vivendo obrigatoriamente no interior de macrófagos e células do sistema fagocítico mononuclear dos hospedeiros mamíferos vertebrados) (Nelson & Couto, 6a ed., Cap. 98; Ettinger, 9a ed.).',
+    taxonomiaEBiologiaDoParasita: 'A leishmaniose em pequenos animais é causada por protozoários digenéticos e hemoflagelados pertencentes à ordem Trypanosomatida, família Trypanosomatidae e gênero Leishmania:\n\n' +
+      '- Agente etiológico principal: Leishmania infantum (historicamente denominada Leishmania chagasi no continente americano), de ampla distribuição no Brasil, Américas, sul da Europa, norte da África e Ásia.\n' +
+      '- Forma promastigota (no vetor): flagelada e alongada (15 a 20 um), altamente móvel, presente no trato digestivo dos insetos flebotomíneos.\n' +
+      '- Forma amastigota (no hospedeiro vertebrado): esférica a ovoide (2 a 4 um), sem flagelo livre visível, contendo núcleo e cinetoplasto característicos, multiplicando-se obrigatoriamente no interior de macrófagos e células do sistema fagocítico mononuclear (Nelson & Couto, 6a ed., Cap. 98; Ettinger, 9a ed.).',
 
-    mudancaDeConceitoCLWG2026InfeccaoVsDoenca: 'A publicação das novas diretrizes do Canine Leishmaniosis Working Group (CLWG 2026; Roura et al., Parasites & Vectors, 2026) promoveu uma reformulação paradigmática na conduta da leishmaniose canina. O dogma tradicional de que qualquer resultado soropositivo equivale a doença ativa que requer tratamento imediato foi definitivamente superado. O consenso estabelece com rigor que a infecção por Leishmania não é sinônimo de doença clínica. A grande maioria dos cães em regiões endêmicas entra em contato com o parasita, produz anticorpos ou abriga DNA parasitário em tecidos linfoides sem jamais desenvolver lesões anatomopatológicas ou sinais clínicos durante anos. Administrar fármacos leishmanicidas e leishmaniostáticos em animais que não apresentam doença ativa atribuível à Leishmania expõe o paciente a toxicidade iatrogênica (especialmente nefrotoxicidade e xantinúria), induz pressão seletiva para resistência parasitária e desvia o raciocínio clínico de outras enfermidades concomitantes.',
+    mudancaDeConceitoCLWG2026InfeccaoVsDoenca: 'As diretrizes do Canine Leishmaniosis Working Group (CLWG 2026; Roura et al., Parasites & Vectors, 2026) estabelecem uma reformulação paradigmática na abordagem da leishmaniose canina:\n\n' +
+      '- Infecção versus doença ativa: a infecção por Leishmania não é sinônimo de doença clínica ativa. Em regiões endêmicas, grande parcela dos cães alberga DNA ou anticorpos sem lesões ou manifestações clínicas.\n' +
+      '- Superação do dogma antigo: o achado isolado de soropositividade não justifica terapia imediata sem evidência de doença ativa atribuível.\n' +
+      '- Riscos do sobretratamento: o emprego indiscriminado de leishmanicidas e alopurinol em animais assintomáticos induz nefrotoxicidade, xantinúria, resistência farmacológica e mascara causas primárias subjacentes.',
 
     tabelaClassificacaoCLWG2026: {
       kind: 'clinicalTable',
@@ -223,19 +260,37 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
       ]
     },
 
-    respostaImunocelularVsHumoralTh1Th2: 'A imunopatologia da leishmaniose é determinada pela dicotomia entre os perfis de resposta imunológica celular e humoral do hospedeiro mamífero. A resistência à infecção correlaciona-se com a diferenciação de linfócitos T auxiliares no perfil Th1, caracterizado pela secreção de citocinas pró-inflamatórias como interleucina-2 (IL-2), fator de necrose tumoral alfa (TNF-alfa) e interferon-gama (IFN-gama). O IFN-gama ativa a enzima óxido nítrico sintase induzível (iNOS) nos macrófagos infectados, estimulando a síntese de óxido nítrico e espécies reativas de nitrogênio que erradicam os amastigotas nos vacúolos parasitóforos. Em contrapartida, os animais suscetíveis desenvolvem uma resposta polarizada para o perfil Th2, caracterizada pela secreção de IL-4, IL-10 e fator de crescimento transformador beta (TGF-beta), citocinas imunorreguladoras e desativadoras que inibem o burst oxidativo macrofágico, promovem anergia de células T e deflagram ativação policlonal descontrolada de linfócitos B e plasmócitos.',
+    respostaImunocelularVsHumoralTh1Th2: 'A imunopatologia da leishmaniose é determinada pela dicotomia entre os perfis de resposta imunológica celular e humoral no hospedeiro:\n\n' +
+      '- Perfil Th1 (imunidade protetora): secreção de citocinas pró-inflamatórias (IL-2, TNF-alfa e IFN-gama). O IFN-gama induz a óxido nítrico sintase (iNOS) macrofágica, produzindo óxido nítrico que destrói as formas amastigotas vacuolares.\n' +
+      '- Perfil Th2 (suscetibilidade e lesão): secreção de citocinas imunorreguladoras (IL-4, IL-10 e TGF-beta), as quais bloqueiam o burst oxidativo dos macrófagos e promovem anergia celular.\n' +
+      '- Repercussão clínica: a polarização Th2 culmina em ativação policlonal descontrolada de linfócitos B e síntese maciça de imunoglobulinas não protetoras.',
 
-    fisiopatologiaDaHiperglobulinemiaPoliclonal: 'A ativação desregulada de plasmócitos culmina em síntese maciça e indiscriminada de imunoglobulinas da classe IgG, gerando hiperproteinemia acentuada decorrente de hipergamaglobulinemia policlonal grave, frequentemente acompanhada de marcante inversão da relação albumina:globulina (A:G frequentemente inferior a 0,6 e por vezes menor que 0,3). Na eletroforese de proteínas séricas (SPE), observa-se elevação em base ampla na fração gama e beta-gama (padrão policlonal clássico), refletindo a multiplicidade de clones plasmocitários ativados. Grande parcela dessas imunoglobulinas é composta por anticorpos não neutralizantes e autoanticorpos (contra eritrócitos, plaquetas e antígenos nucleares), os quais se combinam com antígenos solúveis de Leishmania formando agregados de imunocomplexos circulantes (CICs).'
+    fisiopatologiaDaHiperglobulinemiaPoliclonal: 'A ativação policlonal desregulada de plasmócitos acarreta alterações séricas profundas e geração de imunocomplexos:\n\n' +
+      '- Hipergamaglobulinemia e inversão A:G: síntese descontrolada de IgG com hiperproteinemia acentuada e inversão marcante da relação albumina:globulina (A:G frequentemente < 0,6, atingindo < 0,3).\n' +
+      '- Eletroforese de proteínas séricas (SPE): elevação em base ampla na fração gama e beta-gama, atestando proliferação policlonal multiclonada.\n' +
+      '- Formação de imunocomplexos circulantes (CICs): anticorpos não neutralizantes e autoanticorpos ligam-se a antígenos solúveis de Leishmania, gerando complexos patogênicos que se depositam nos tecidos vasculares.'
   },
 
   epidemiology: {
-    distribuicaoGeograficaEEpidemiologiaUrbana: 'A leishmaniose visceral canina é uma zoonose de notificação compulsória no Brasil, de distribuição cosmopolita com elevada prevalência na América Latina, na bacia do Mediterrâneo, no Oriente Médio e na Ásia Central. No Brasil, historicamente restrita a áreas rurais e florestais, a doença sofreu acentuada transição epidemiológica para grandes centros urbanos e regiões periurbanas nas últimas quatro décadas, impulsionada pelo desmatamento, expansão urbana não planejada, acúmulo de matéria orgânica no peridomicílio e adaptação sinantrópica de seu vetor principal, o flebotomíneo Lutzomyia longipalpis (popularmente conhecido como mosquito-palha, asa-dura, birigui ou tatuquira). Em áreas do sul do Brasil e outros ecossistemas específicos, outras espécies como Lutzomyia cruzi também atuam como vetores competentes.',
+    distribuicaoGeograficaEEpidemiologiaUrbana: 'A leishmaniose visceral canina é uma zoonose de notificação compulsória no Brasil, cosmopolita e de alta prevalência na América Latina, Mediterrâneo e Ásia:\n\n' +
+      '- Urbanização acelerada: historicamente rural, a doença expandiu-se nas últimas décadas para regiões periurbanas e grandes capitais, impulsionada por degradação ambiental e habitação desordenada.\n' +
+      '- Adaptação vetorial sinantrópica: o vetor principal Lutzomyia longipalpis (mosquito-palha, birigui ou tatuquira) adaptou-se com grande êxito ao acúmulo de matéria orgânica no peridomicílio.\n' +
+      '- Espécies vetoriais secundárias: em regiões específicas como o Centro-Oeste e ecótonos do Pantanal, Lutzomyia cruzi também atua como vetor competente comprovado.',
 
-    viasDeTransmissaoVetorialENaoVetorial: 'A transmissão natural primária e epidemiologicamente sustentada ocorre pela picada de fêmeas infectadas de flebotomíneos hematófagos, que necessitam do repasto sanguíneo para a maturação dos ovos. No entanto, vias não vetoriais secundárias encontram-se plenamente documentadas na literatura médica contemporânea e assumem enorme relevância clínica: (1) Transmissão venérea através do sêmen de machos infectados contendo amastigotas viáveis; (2) Transmissão vertical transplacentária da cadela prenhe para os fetos; (3) Transmissão iatrogênica transfusional por transfusão de sangue total ou concentrado de hemácias colhido de doadores assintomáticos portadores de L. infantum; e (4) Transmissão por mordedura ou contato direto de secreções sanguinolentas entre cães com feridas ativas.',
+    viasDeTransmissaoVetorialENaoVetorial: 'A transmissão epidemiológica primária é vetorial, mas vias secundárias apresentam impacto clínico e sanitário relevante:\n\n' +
+      '- Transmissão vetorial (primária): picada de fêmeas hematófagas infectadas de flebotomíneos durante o repasto sanguíneo.\n' +
+      '- Transmissão venérea: eliminação de amastigotas viáveis no sêmen de machos infectados durante a cópula.\n' +
+      '- Transmissão transplacentária vertical: passagem congênita da fêmea prenhe infectada para a ninhada.\n' +
+      '- Transmissão transfusional iatrogênica: infusão de sangue colhido de doadores assintomáticos portadores subclínicos de L. infantum.\n' +
+      '- Transmissão por contato direto: contaminação de soluções de continuidade por mordedura ou exsudatos hemáticos entre animais com lesões abertas.',
 
-    dadosEpidemiologicosManualMinisterioSaude2026: 'O Manual de Vigilância e Controle da Leishmaniose Visceral do Ministério da Saúde do Brasil (2a ed., 2026) consolida as diretrizes operacionais de saúde pública no território nacional. O cão é identificado como o principal reservatório doméstico da doença em ambiente urbano devido à sua proximidade com os seres humanos, elevada prevalência de infecção e alta densidade parasitária na derme cutânea (mesmo em animais clinicamente assintomáticos), tornando-o altamente infectante para as populações de flebotomíneos vetores.',
+    dadosEpidemiologicosManualMinisterioSaude2026: 'O Manual de Vigilância e Controle da Leishmaniose Visceral do Ministério da Saúde (2a ed., 2026) define o papel do cão como reservatório primordial urbano:\n\n' +
+      '- Carga parasitária cutânea: cães infectados (mesmo assintomáticos) abrigam alta densidade de amastigotas na derme superficial, sendo fonte contínua de infecção para os vetores.\n' +
+      '- Interface de saúde única: o convívio íntimo no peridomicílio e intradomicílio torna a vigilância canina sentinela imprescindível para o controle da doença humana.',
 
-    reservatorioCaninoEInterfaceComSaudePublica: 'A alta densidade de flebotomíneos associada à presença de cães infectados no ambiente doméstico ou peridoméstico eleva substancialmente o risco de transmissão para humanos, nos quais a leishmaniose visceral (calazar) pode ser letal em mais de 90% dos casos não tratados. O cão, portanto, constitui um elo de vigilância epidemiológica contínua. As ações de controle englobam controle químico e ambiental do vetor, uso obrigatório de coleiras repelentes e inseticidas nos caninos e diagnóstico sorológico e parasitológico conforme os manuais do Ministério da Saúde.'
+    reservatorioCaninoEInterfaceComSaudePublica: 'A coexistência de alta densidade vetorial e cães reservatórios amplia criticamente o risco para a saúde coletiva:\n\n' +
+      '- Letalidade em humanos: o calazar humano não tratado apresenta taxa de letalidade superior a 90% por falência orgânica e sepse.\n' +
+      '- Ações sanitárias prioritárias: saneamento e manejo de matéria orgânica peridomiciliar, uso sistemático de coleiras impregnadas com inseticidas/repelentes e triagem diagnóstica regular de animais conforme diretrizes oficiais.'
   },
 
   pathogenesisTransmission: {
@@ -248,15 +303,28 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
       '6. Ativação do complemento e lesão tecidual: recrutamento de neutrófilos e macrófagos, liberação de proteases e espécies reativas de oxigênio, deflagrando glomerulonefrite proliferativa, vasculite leucocitoclástica, poliartrite estéril e uveíte granulomatosa.',
       '7. Evolução para falência de órgãos: desenvolvimento de proteinúria nefrótica, perda progressiva da filtração glomerular, azotemia, síndrome urêmica terminal, urolitíase por xantina sob alopurinol e caquexia crônica associada ao TNF-alfa.'
     ],
-    transmissao: 'A transmissão biológica ocorre pela inoculação de promastigotas por flebotomíneos fêmeas após repasto prévio em hospedeiro infectado com carga parasitária dérmica. O parasita cumpre desenvolvimento flagelado no tubo digestivo do inseto em 4 a 7 dias antes da nova picada. Vias secundárias compreendem inseminação/cópula por sêmen infectado, transmissão congênita transplacentária e contaminação hemotransfusional.'
+    transmissao: 'A dinâmica de transmissão do agente envolve ciclos biológicos vetoriais e rotas não vetoriais:\n\n' +
+      '- Ciclo vetorial: inoculação de promastigotas metacíclicos após desenvolvimento de 4 a 7 dias no trato digestivo da fêmea de flebotomíneo alimentada previamente em hospedeiro infectado.\n' +
+      '- Rotas secundárias documentadas: transmissão venérea por sêmen, passagem congênita transplacentária e transmissão transfusional por sangue não testado.'
   },
 
   pathophysiology: {
-    glomerulonefriteEDeposicaoDeImunocomplexos: 'O rim é o órgão prognosticamente mais relevante e o principal determinante de sobrevida na leishmaniose canina. A nefropatia é primariamente glomerular e decorre da deposição persistente de imunocomplexos circulantes de tamanho intermediário na matriz mesangial e ao longo da membrana basal glomerular. Essa deposição deflagra ativação clássica do sistema complemento, proliferação mesangial e endotelial e influxo de células inflamatórias, configurando glomerulonefrite membranoproliferativa (GNMP) ou proliferativa mesangial. A lesão podocitária resultante rompe a barreira de carga e tamanho da membrana de filtração, permitindo o extravasamento massivo de albumina e antitrombina para a urina. Como consequência, a proteinúria glomerular antecede em meses a elevação dos níveis séricos de creatinina e SDMA. Estudo prospectivo multicêntrico recente (Peris-Grau et al., 2026) demonstrou que novos biomarcadores urinários de lesão tubular, notadamente a lipocalina associada à gelatinase de neutrófilos (uNGAL) e a gama-glutamiltransferase urinária (uGGT), elevam-se precocemente em cães com leishmaniose antes do colapso da taxa de filtração glomerular, sinalizando dano nefronal túbulo-intersticial secundário à sobrecarga proteica tubular e à isquemia microvascular.',
+    glomerulonefriteEDeposicaoDeImunocomplexos: 'O rim é o principal determinante prognóstico e de sobrevida na leishmaniose canina:\n\n' +
+      '- Patogênese glomerular: decorre da deposição contínua de imunocomplexos circulantes na matriz mesangial e membrana basal, deflagrando ativação do complemento e glomerulonefrite membranoproliferativa (GNMP).\n' +
+      '- Lesão de podócitos e proteinúria: a perda da barreira de seletividade provoca extravasamento maciço de albumina e antitrombina; a proteinúria (UPC) antecede em meses a elevação da creatinina sérica.\n' +
+      '- Biomarcadores tubulares precoces (Peris-Grau et al., 2026): uNGAL e uGGT urinários elevam-se precocemente antes da queda da TFG, indicando sobrecarga proteica e sofrimento túbulo-intersticial.',
 
-    mielofisiologiaEAnemiaMultifatorial: 'A anemia na leishmaniose canina e felina é tipicamente normocítica, normocrômica e não regenerativa, apresentando fisiopatologia multifatorial: (1) Anemia de doença crônica ou de inflamação (AID) mediada pelo eixo hepcidina-ferroportina, no qual citocinas inflamatórias (IL-6 e TNF-alfa) induzem a síntese hepática excessiva de hepcidina, degradando os canais de ferroportina nos enterócitos e macrófagos do baço e sequestrando o ferro nos estoques corporais sem disponibilizá-lo para a eritropoiese; (2) Infiltração plasmo-histiocitária medular difusa pelo protozoário, ocupando os nichos hematopoiéticos e suprimindo a linhagem eritroide; (3) Encurtamento da sobrevida eritrocitária por hemólise extravascular no sistema reticuloendotelial esplênico e hepático ativado; e (4) Redução na síntese de eritropoietina (EPO) conforme a glomerulopatia progride para doença renal crônica avançada. A trombocitopenia ocorre frequentemente por sequestro esplênico, consumo em focos de vasculite ou destruição imunomediada induzida por anticorpos antiplaquetários.',
+    mielofisiologiaEAnemiaMultifatorial: 'A anemia na leishmaniose é tipicamente normocítica, normocrômica e não regenerativa, de etiologia multifatorial:\n\n' +
+      '- Bloqueio do ferro (eixo hepcidina-ferroportina): citocinas inflamatórias (IL-6 e TNF-alfa) elevam a hepcidina hepática, degradando a ferroportina e sequestrando o ferro nos macrófagos.\n' +
+      '- Infiltração medular: invasão plasmo-histiocitária massiva ocupando os nichos hematopoiéticos da medula óssea.\n' +
+      '- Hemólise extravascular: encurtamento da meia-vida das hemácias por fagocitose no sistema reticuloendotelial hiperativo.\n' +
+      '- Queda de eritropoietina e plaquetopenia: perda progressiva de parênquima renal produtor de EPO e plaquetopenia por consumo vascular ou destruição imunomediada.',
 
-    espectroDermatologicoEImunopatologiaCutanea: 'A pele é o leito de maior carga parasitária e expressão clínica na espécie canina, manifestando-se por quatro padrões dermatológicos fundamentais (WAVD 2025; Saridomichelakis & Koutinas, 2014): (1) Dermatite esfoliativa seca não pruriginosa (padrão mais frequente, presente em até 80% dos cães doentes), caracterizada por descamação lamelar prateada difusa, opacidade pilosa e hipotricose associada a infiltrado linfo-histiocitário perianexial e perivascular; (2) Alopecia periocular com descamação e blefarite (sinal clássico do cão de óculos), decorrente de tropismo inflamatório pelas margens palpebrais e derme periorbitária; (3) Dermatite ulcerativa profunda em proeminências ósseas e junções mucocutâneas, secundária a vasculite necrosante por imunocomplexos e isquemia cutânea focal; e (4) Onicogrifose patológica rápida e exuberante, definida pelo crescimento desmesurado, espessamento e curvatura anormal das unhas por hiperqueratose do leito ungueal.',
+    espectroDermatologicoEImunopatologiaCutanea: 'A pele concentra expressiva carga parasitária, exibindo quatro padrões dermatológicos clássicos (WAVD 2025):\n\n' +
+      '- Dermatite esfoliativa seca (80% dos casos): descamação lamelar prateada não pruriginosa com hipotricose e infiltrado perianexial linfo-histiocitário.\n' +
+      '- Alopecia periocular (sinal dos óculos): blefarite crônica e perda pilosa periorbitária simétrica por tropismo vascular e inflamatório palpebral.\n' +
+      '- Dermatite ulcerativa: úlceras de pressão e em junções mucocutâneas por vasculite necrosante e deposição de imunocomplexos.\n' +
+      '- Onicogrifose patológica: crescimento desmesurado e encurvamento de garras por hiperqueratose do leito ungueal.',
 
     figurasClinicasIntegradas: 'As imagens a seguir ilustram os achados citológicos, parasitológicos, vetoriais e as lesões clínicas dermatológicas e oftálmicas patognomônicas da leishmaniose em cães e gatos.'
   },
@@ -266,35 +334,42 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
       id: 'fig-leish-01',
       title: 'Flebotomíneo Vetor Fêmea (Lutzomyia longipalpis) após Repasto Sanguíneo',
       url: '/consulta-vet/leishmaniose/lutzomyia-longipalpis-vetor-flebotomineo.jpg',
-      legend: 'Fêmea ingurgitada de Lutzomyia longipalpis (mosquito-palha) após hematofagia. O inseto é o vetor biológico e elo epidemiológico fundamental de Leishmania infantum no Brasil e nas Américas, transmitindo promastigotas metacíclicos durante o repasto sanguíneo (Ray Wilson, Liverpool School of Tropical Medicine, CC BY 2.5).',
+      legend: 'Fêmea ingurgitada de Lutzomyia longipalpis (mosquito-palha) após repasto sanguíneo:\n' +
+        '- Papel vetorial: elo epidemiológico essencial de Leishmania infantum no Brasil, inoculando promastigotas metacíclicos na derme durante a hematofagia (Ray Wilson, Liverpool School of Tropical Medicine, CC BY 2.5).',
       source: 'Wikimedia Commons / PLoS Pathogens (CC BY 2.5)'
     },
     {
       id: 'fig-leish-02',
       title: 'Demonstração Citológica de Macrófago com Amastigotas de Leishmania spp.',
       url: '/consulta-vet/leishmaniose/leishmania-amastigotas-macrofago-citologia.jpg',
-      legend: 'Fotomicrorganografia de citologia de aspirado de linfonodo corada com Giemsa demonstrando macrófago contendo numerosas formas amastigotas intracelulares de Leishmania spp. Cada amastigota mede cerca de 2 a 4 um e apresenta núcleo esférico e cinetoplasto característico em forma de bastão. A observação citológica direta constitui o padrão ouro para confirmação diagnóstica definitiva (Stefan Walkowski, CC BY-SA 4.0).',
+      legend: 'Fotomicrorganografia de citologia de aspirado de linfonodo corada com Giemsa:\n' +
+        '- Macrófago parasitado: exibe numerosas formas amastigotas intracelulares (2 a 4 um) com núcleo esférico e cinetoplasto em bastonete.\n' +
+        '- Padrão ouro confirmatório: método direto de maior especificidade para diagnóstico definitivo da infecção (Stefan Walkowski, CC BY-SA 4.0).',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-leish-03',
       title: 'Dermatopatia Esfoliativa Canina com Alopecia Periocular (Sinal dos Óculos)',
       url: '/consulta-vet/leishmaniose/leishmaniose-canina-dermatopatia-desquamativa.jpg',
-      legend: 'Cão acometido por leishmaniose visceral exibindo o fenótipo dermatológico clássico com descamação esfoliativa facial difusa, blefarite crônica e alopecia periocular concêntrica bilateralmente simétrica, conhecida clinicamente como sinal dos óculos da leishmaniose (Wikimedia Commons, CC BY-SA 3.0).',
+      legend: 'Fenótipo dermatológico clássico em canino acometido por leishmaniose:\n' +
+        '- Achados faciais: descamação esfoliativa facial difusa, blefarite crônica e alopecia periocular bilateral concêntrica (sinal dos óculos) (Wikimedia Commons, CC BY-SA 3.0).',
       source: 'Wikimedia Commons (CC BY-SA 3.0)'
     },
     {
       id: 'fig-leish-04',
       title: 'Onicogrifose Patológica Grave e Caquexia em Cão com Calazar',
       url: '/consulta-vet/leishmaniose/leishmaniose-canina-onicogrifose-calazar.jpg',
-      legend: 'Quadro avançado de leishmaniose visceral canina (calazar) evidenciando onicogrifose patológica exuberante, espessamento de coxins plantares, hipotricose de membros e caquexia progressiva associada à produção crônica de citocinas inflamatórias catabólicas como TNF-alfa (Wikimedia Commons, CC BY-SA 4.0).',
+      legend: 'Quadro avançado de leishmaniose visceral canina (calazar):\n' +
+        '- Achados sistêmicos e podais: onicogrifose patológica exuberante, hiperqueratose de coxins e hipotricose acompanhada de caquexia crônica mediada por TNF-alfa (Wikimedia Commons, CC BY-SA 4.0).',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-leish-05',
       title: 'Leishmaniose Felina: Uveíte Granulomatosa Aguda com Hifema',
       url: '/consulta-vet/leishmaniose/leishmaniose-felina-uveite-hifema.png',
-      legend: 'Paciente felino acometido por leishmaniose clínica apresentando uveíte anterior granulomatosa unilateral grave com exsudato inflamatório na câmara anterior e hifema evidente. A apresentação ocular e as lesões cutâneas nodulares são as marcas da doença clínica no gato, demandando investigação conjunta de imunossupressão por FIV/FeLV conforme o consenso ABCD 2026 (CC BY 4.0).',
+      legend: 'Manifestação clínica ocular em paciente felino com leishmaniose ativa:\n' +
+        '- Achados oftálmicos: uveíte anterior granulomatosa unilateral severa, exsudato na câmara anterior e hifema evidente.\n' +
+        '- Investigação consensual (ABCD 2026): rastreio obrigatório de imunossupressão retroviral (FIV/FeLV) concomitante (CC BY 4.0).',
       source: 'Wikimedia Commons (CC BY 4.0)'
     }
   ],
@@ -438,77 +513,133 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
     {
       stepNumber: 1,
       title: 'Triagem Clínica, Hemograma, Perfil Bioquímico, SPE e Urinálise com UPC',
-      description: 'Avaliação inicial abrangente em pacientes de áreas endêmicas ou com histórico de viagem. O hemograma revela anemia normocítica normocrômica não regenerativa em graus variáveis e trombocitopenia leve a moderada. O perfil bioquímico evidencia hiperproteinemia marcante decorrente de hipergamaglobulinemia, hipoalbuminemia e inversão grave da relação albumina:globulina (A:G < 0,6). A eletroforese de proteínas séricas (SPE) demonstra o traçado clássico de hipergamaglobulinemia policlonal com elevação de base ampla na fração gama e beta-gama. A urinálise completa complementada pela relação proteína:creatinina urinária (UPC) é obrigatória para detectar glomerulonefrite incipiente antes da perda de filtração glomerular e azotemia.',
+      description: 'Painel inicial abrangente em pacientes de áreas endêmicas ou com histórico epidemiológico:\n\n' +
+        '- Hemograma: anemia normocítica normocrômica não regenerativa e trombocitopenia leve a moderada por sequestro esplênico ou consumo vascular.\n' +
+        '- Bioquímica sérica: hiperproteinemia marcante por hipergamaglobulinemia, hipoalbuminemia e inversão severa da relação albumina:globulina (A:G < 0,6).\n' +
+        '- Eletroforese de proteínas séricas (SPE): pico de base ampla policlonal em fração gama e beta-gama.\n' +
+        '- Urinálise com UPC: quantificação de proteinúria para detectar glomerulonefrite membranoproliferativa incipiente antes do surgimento de azotemia.',
       isGoldStandard: false
     },
     {
       stepNumber: 2,
       title: 'Demonstração Parasitológica Direta (Citologia Aspirativa) — Padrão Ouro Confirmatório',
-      description: 'Método padrão ouro confirmatório definitivo. Realiza-se punção aspirativa por agulha fina (PAAF) de linfonodos aumentados (poplíteos ou pré-escapulares), medula óssea (crista ilíaca ou esterno) ou imprint de lesões cutâneas ulceradas ou nódulos. As lâminas são coradas com Giemsa, Wright ou Panótico Rápido e inspecionadas sob objetiva de imersão a 1000x. A identificação inequívoca de amastigotas intracelulares no citoplasma de macrófagos (estruturas ovoides de 2 a 4 um com núcleo azul-avermelhado e cinetoplasto perpendicular em bastão) sela o diagnóstico de infecção ativa com 100% de especificidade.',
+      description: 'Método padrão ouro confirmatório definitivo de infecção ativa:\n\n' +
+        '- Amostragem citológica: punção aspirativa por agulha fina (PAAF) de linfonodos aumentados (poplíteos ou pré-escapulares), medula óssea ou imprint de úlceras e nódulos cutâneos.\n' +
+        '- Microscopia óptica (1000x com imersão): coloração por Giemsa, Wright ou Panótico Rápido.\n' +
+        '- Morfologia patognomônica: amastigotas intracelulares em macrófagos (2 a 4 um), contendo núcleo azul-avermelhado e cinetoplasto em bastonete perpendicular, conferindo 100% de especificidade.',
       isGoldStandard: true
     },
     {
       stepNumber: 3,
       title: 'Sorologia Quantitativa e Titulação de Anticorpos (RIFI e ELISA)',
-      description: 'Quantificação da resposta humoral através de Reação de Imunofluorescência Indireta (RIFI) ou ensaios imunoenzimáticos (ELISA) calibrados. Títulos muito elevados (superiores a 3 a 4 vezes o ponto de corte do laboratório) em cães com manifestações clínicas típicas apresentam forte correlação com infecção ativa de alta carga. Títulos baixos a limítrofes indicam apenas exposição ou resposta imune controlada, exigindo confirmação molecular ou acompanhamento serológico em 60 a 90 dias, sendo estritamente contraindicado iniciar tratamento apenas com base em títulos baixos.',
+      description: 'Quantificação da resposta humoral específica por RIFI ou ELISA quantitativo:\n\n' +
+        '- Títulos elevados (> 3 a 4x o ponto de corte): associados a sinais clínicos típicos, apresentam forte correlação com doença ativa de alta carga.\n' +
+        '- Títulos baixos ou limítrofes: indicam apenas exposição ou imunidade controlada; demandam confirmação molecular ou monitoramento serológico em 60 a 90 dias.\n' +
+        '- Conduta obrigatória: contraindica-se formalmente iniciar terapia leishmanicida baseando-se exclusivamente em sorologia com títulos baixos.',
       isGoldStandard: false
     },
     {
       stepNumber: 4,
       title: 'Diagnóstico Molecular por PCR Quantitativo em Tempo Real (qPCR)',
-      description: 'Detecção e quantificação de DNA de Leishmania infantum por qPCR com amplificação de alvos conservados (kDNA minicírculos ou DNA ribossomal 18S). O ensaio deve ser realizado prioritariamente em amostras de tecidos com alta carga parasitária (aspirado de medula óssea, linfonodo ou pele lesada). O sangue periférico apresenta menor sensibilidade devido à oscilação da parasitemia livre, não devendo seu resultado negativo afastar o diagnóstico em animais com suspeita sólida.',
+      description: 'Detecção e quantificação de DNA de Leishmania infantum por ensaios de qPCR:\n\n' +
+        '- Alvos de amplificação: kDNA de minicírculos ou DNA ribossomal 18S conservado.\n' +
+        '- Amostras de eleição: tecidos com alta carga parasitária (aspirado de medula óssea, linfonodos ou biópsias de pele lesada).\n' +
+        '- Limitação do sangue periférico: menor sensibilidade decorrente de parasitemia flutuante; qPCR negativo em sangue não exclui a infecção tecidual.',
       isGoldStandard: false
     },
     {
       stepNumber: 5,
       title: 'Enquadramento Estruturado no Algoritmo CLWG 2026 e Investigação de Coinfecções',
-      description: 'Aplicação do fluxograma do CLWG 2026 integrando dados clínicos, parasitológicos e sorológicos para categorizar o paciente na Classe A (não tratar), Classe B (não tratar, monitorar), Classe C (tratar doença ativa) ou Classe D (tratar com suporte de UTI). Em regiões tropicais e subtropicais, pesquisar obrigatoriamente coinfecções transmitidas por carrapatos (Ehrlichia canis, Anaplasma platys, Babesia vogeli) que agravam a trombocitopenia e a glomerulonefrite.',
+      description: 'Integração de dados clínicos, parasitológicos e sorológicos conforme diretrizes:\n\n' +
+        '- Estratificação CLWG 2026: Classe A (não tratar), Classe B (não tratar, monitorar), Classe C (tratar doença ativa) ou Classe D (tratar com suporte intensivo).\n' +
+        '- Painel de coinfecções transmitidas por carrapatos: pesquisa obrigatória de Ehrlichia canis, Anaplasma platys e Babesia vogeli, que potencializam a lesão glomerular e a trombocitopenia.',
       isGoldStandard: false
     },
     {
       stepNumber: 6,
       title: 'Estadiamento Renal Longitudinal (Diretrizes IRIS) e Biomarcadores de Dano Precoce',
-      description: 'Estadiamento da função renal conforme as diretrizes consensuais da International Renal Interest Society (IRIS). Mensuração seriada de creatinina plasmática e SDMA em pacientes estáveis e hidratados, associada ao monitoramento estrito da proteinúria pelo UPC (classificando em não proteinúrico <0,2, limítrofe 0,2-0,5 ou proteinúrico >0,5) e aferição da pressão arterial sistólica. Incorporação de uNGAL e uGGT como marcadores precoces de agressão tubular.',
+      description: 'Estadiamento funcional e morfológico nefronal pelas diretrizes consensuais da IRIS:\n\n' +
+        '- Marcadores de filtração glomerular: dosagens seriadas de creatinina sérica e SDMA com o paciente hidratado e estável.\n' +
+        '- Subestadiamento de proteinúria (UPC): não proteinúrico (< 0,2), limítrofe (0,2 a 0,5) ou proteinúrico (> 0,5), associado à aferição de pressão arterial sistólica.\n' +
+        '- Biomarcadores tubulares precoces: dosagem de uNGAL e uGGT para rastrear dano tubular pré-azotêmico.',
       isGoldStandard: false
     }
   ],
 
   treatment: {
-    consensoTerapeuticoInternacionalWAVD2025ECLWG2026: 'O consenso internacional europeu (CLWG 2026 e WAVD 2025) recomenda como terapia de primeira escolha a combinação sinérgica de um fármaco leishmanicida de ação rápida com um fármaco leishmaniostático prolongado. No protocolo internacional clássico, a primeira escolha consiste em Antimoniato de Meglumina na dose de 100 mg/kg por via subcutânea a cada 24 horas (ou fracionado em 50 mg/kg SC a cada 12 horas) durante 28 dias consecutivos, combinado com Alopurinol na dose de 10 mg/kg por via oral a cada 12 horas durante um período contínuo de 6 a 12 meses. O estudo do CLWG 2026 ressalta que o antimoniato exibe superior taxa de controle parasitológico sustentado a longo prazo em comparação à miltefosina, embora a miltefosina oral seja amplamente aceita como alternativa principal em pacientes com intolerância a injeções ou lesão renal leve a moderada.',
+    consensoTerapeuticoInternacionalWAVD2025ECLWG2026: 'O consenso internacional (CLWG 2026 e WAVD 2025) preconiza associação sinérgica entre leishmanicida rápido e leishmaniostático prolongado:\n\n' +
+      '- Antimoniato de Meglumina: 100 mg/kg SC q24h (ou 50 mg/kg SC BID) por 28 dias consecutivos; apresenta elevada taxa de controle parasitológico sustentado.\n' +
+      '- Alopurinol: 10 mg/kg VO BID continuado por 6 a 12 meses como bloqueador de replicação parasitária.\n' +
+      '- Alternativa oral: a miltefosina oral é a alternativa de primeira linha em casos de intolerância a injeções subcutâneas ou dano renal leve a moderado.',
 
-    legislacaoBrasileiraERegulamentacaoMAPA: 'No Brasil, a conduta terapêutica da leishmaniose visceral canina é submetida a rígida regulamentação legal sanitária e de saúde pública. A Portaria Interministerial n. 1.426/2008 (Ministério da Saúde e Ministério da Agricultura, Pecuária e Abastecimento - MAPA) proíbe taxativamente o tratamento de cães com medicamentos de uso humano registrados para a leishmaniose visceral humana, vedando formalmente o uso de Antimoniato de Meglumina humano (Glucantime) e Anfotericina B em caninos, com a finalidade de evitar a indução de cepas parasitárias resistentes em pacientes humanos. O único medicamento leishmanicida atualmente registrado e aprovado pelo MAPA para uso veterinário específico em cães no Brasil é a Miltefosina (Milteforan, Virbac). Qualquer plano de tratamento no território brasileiro deve respeitar estritamente essa base legal, combinando o produto registrado ao alopurinol manipulado ou comercial.',
+    legislacaoBrasileiraERegulamentacaoMAPA: 'A abordagem terapêutica no Brasil submete-se a rígida regulamentação sanitária de saúde pública:\n\n' +
+      '- Portaria Interministerial n. 1.426/2008: proíbe taxativamente o tratamento canino com medicamentos de uso humano registrados para leishmaniose visceral humana (vedando Antimoniato de Meglumina humano e Anfotericina B) para prevenir resistência cruzada em humanos.\n' +
+      '- Fármaco registrado no MAPA: a Miltefosina (Milteforan) é o único leishmanicida registrado e aprovado pelo MAPA para tratamento canino no Brasil.\n' +
+      '- Associação leishmaniostática: o protocolo oficial nacional combina miltefosina registrada com alopurinol sob rigoroso monitoramento clínico e termo de esclarecimento ao tutor.',
 
-    protocoloMiltefosinaMecanismoEPosologia: 'A miltefosina é um análogo sintético de alquilfosfocolina que interfere na biossíntese da membrana celular de Leishmania, inibe a sinalização por fosfolipase C e induz apoptose programada nos amastigotas. A posologia preconizada e validada em bula é de 2 mg/kg por via oral, administrada uma vez ao dia (a cada 24 horas) durante exatamente 28 dias consecutivos. A administração deve ser realizada impreterivelmente junto a uma refeição completa ou misturada ao alimento úmido para reduzir a agressão direta à mucosa gástrica. Os principais efeitos adversos decorrem de irritação gastrointestinal, manifestando-se por vômitos esporádicos, regurgitação, diarreia e anorexia transitória. O uso de antieméticos e protetores de mucosa gástrica pode ser associado se necessário.',
+    protocoloMiltefosinaMecanismoEPosologia: 'A miltefosina atua como análogo de alquilfosfocolina, desestruturando a membrana celular e deflagrando apoptose no parasita:\n\n' +
+      '- Posologia oficial validada: 2 mg/kg por via oral a cada 24 horas durante 28 dias consecutivos.\n' +
+      '- Manejo de administração: fornecer impreterivelmente misturada a uma refeição rica em lipídios para reduzir o contato irritativo com a mucosa gástrica.\n' +
+      '- Reações adversas comuns: êmese esporádica, regurgitação e amolecimento fecal; suporte com antieméticos (maropitant) e protetores gástricos quando indicado.',
 
-    protocoloAlopurinolManejoDaXantinuria: 'O alopurinol é um análogo de purina que atua como inibidor competitivo da enzima xantina oxidase. Nas células de Leishmania (que são incapazes de sintetizar purinas de novo e dependem de vias de salvamento), o alopurinol é incorporado ao RNA parasitário como um análogo defeituoso, interrompendo a síntese proteica e bloqueando a replicação do protozoário (efeito leishmaniostático). A dose padrão é de 10 mg/kg por via oral a cada 12 horas (BID), mantida por um período mínimo de 6 a 12 meses. O principal efeito adverso crônico é a xantinúria iatrogênica: ao inibir a xantina oxidase do hospedeiro, a conversão de xantina em ácido úrico é bloqueada, gerando acúmulo e precipitação de cristais de xantina nos túbulos renais e bexiga, deflagrando urolitíase por xantina (cálculos radiotransparentes não visíveis ao raio-X simples). O manejo preventivo exige exame de sedimento urinário a cada 60 a 90 dias, ultrassonografia abdominal seriada e transição obrigatória para dietas veterinárias formuladas com teores reduzidos de purinas caso surja cristalúria acentuada.',
+    protocoloAlopurinolManejoDaXantinuria: 'O alopurinol atua como análogo de purina e potente inibidor competitivo da xantina oxidase:\n\n' +
+      '- Ação leishmaniostática e posologia: incorpora-se ao RNA do protozoário e bloqueia a síntese proteica; administra-se na dose de 10 mg/kg VO BID por no mínimo 6 a 12 meses.\n' +
+      '- Risco de xantinúria e nefrolitíase: o bloqueio enzimático eleva a excreção de xantina insolúvel, predispondo a cristais e urólitos radiotransparentes de xantina no trato urinário.\n' +
+      '- Monitoramento preventivo: urinálise seriada a cada 60 a 90 dias, ultrassonografia abdominal periódica e transição para dieta terapêutica hipopurínica ao menor sinal de cristalúria.',
 
-    marbofloxacinaEOutrosAgentesAlternativos: 'A marbofloxacina (fluoroquinolona de terceira geração) tem sido investigada em protocolos de 2 a 4 mg/kg/dia por 28 dias em associações com alopurinol. Contudo, tanto as diretrizes da WAVD 2025 quanto o consenso CLWG 2026 ressaltam que a evidência de eficácia da marbofloxacina é fraca a moderada e sua capacidade de redução da carga parasitária é expressivamente inferior à da miltefosina e do antimoniato de meglumina, não devendo substituir os fármacos de primeira linha a menos que haja contraindicação absoluta a ambos.',
+    marbofloxacinaEOutrosAgentesAlternativos: 'Protocolos com agentes alternativos apresentam limitações documentadas em consensos recentes:\n\n' +
+      '- Marbofloxacina (2 a 4 mg/kg/dia VO por 28 dias): avaliada em combinação com alopurinol como fármaco de resgate.\n' +
+      '- Nível de evidência (WAVD 2025 e CLWG 2026): evidência de eficácia modesta e redução de carga parasitária expressivamente inferior à miltefosina e ao antimoniato; restrita a casos de intolerância absoluta aos fármacos padrão.',
 
-    usoCriticoDeCorticosteroidesEmEmergenciasImunes: 'O emprego de corticosteroides na leishmaniose canina representa um dos dilemas clínicos mais delicados na medicina veterinária interna. A imunossupressão cega é terminantemente contraindicada, pois suprime a imunidade celular Th1 residual e pode deflagrar explosão catastrófica da replicação parasitária e colapso clínico. No entanto, quando o paciente manifesta complicações fulminantes mediadas pela deposição de imunocomplexos — tais como glomerulonefrite membranoproliferativa aguda com síndrome nefrótica e proteinúria descontrolada (UPC > 3,0), vasculite necrosante com epistaxe refratária ou uveíte anterior grave com risco de cegueira imediata —, o uso temporário de glicocorticoides em doses anti-inflamatórias (prednisolona 0,5 a 1,0 mg/kg/dia) ou imunossupressoras transitórias é preconizado para conter a destruição tecidual nefronal ou ocular, devendo ser instituído obrigatoriamente sob cobertura leishmanicida plena com miltefosina.',
+    usoCriticoDeCorticosteroidesEmEmergenciasImunes: 'O uso de corticosteroides exige rigoroso critério fisiopatológico e cobertura parasitária plena:\n\n' +
+      '- Contraindicação empírica cega: a imunossupressão inadvertida desativa a resposta Th1 residual e promove explosão da replicação parasitária.\n' +
+      '- Emergências imunomediadas elegíveis: GN membranoproliferativa aguda com síndrome nefrótica grave (UPC > 3,0), vasculite necrosante com hemorragia e uveíte grave com risco de perda visual imediata.\n' +
+      '- Protocolo de resgate: prednisolona em dose anti-inflamatória a intermediária (0,5 a 1,0 mg/kg/dia), de duração estritamente limitada e obrigatoriamente sob cobertura leishmanicida plena.',
 
-    protocoloTerapeuticoEmFelinosABCD2026: 'Em gatos acometidos por leishmaniose clínica (ABCD Feline 2026), a evidência terapêutica apoia-se predominantemente em séries de casos e estudos prospectivos de pequenos grupos. O protocolo mais amplamente validado consiste na administração de Alopurinol na dose de 10 a 20 mg/kg por via oral uma vez ao dia (ou fracionado em 10 mg/kg BID). A miltefosina pode ser empregada em felinos na dose de 2 mg/kg/dia VO por 28 dias, monitorando-se rigorosamente a tolerância gastrointestinal e a função hepática e renal. O prognóstico em gatos é altamente dependente da presença de coinfecções retrovirais (FIV e FeLV) e do grau de acometimento nefronal.',
+    protocoloTerapeuticoEmFelinosABCD2026: 'Diretrizes do consenso ABCD Feline 2026 para manejo terapêutico da leishmaniose na espécie felina:\n\n' +
+      '- Alopurinol felino: 10 a 20 mg/kg VO a cada 24 horas (ou 10 mg/kg BID), sendo a opção de primeira escolha mais documentada em gatos.\n' +
+      '- Miltefosina em felinos: 2 mg/kg/dia VO por 28 dias sob estrito acompanhamento de tolerância entérica, enzimas hepáticas e creatinina.\n' +
+      '- Determinantes prognósticos: a presença de retroviroses ativas (FIV e FeLV) e a gravidade da nefropatia glomerular definem a sobrevida global.',
 
-    criteriosDeRespostaRecidivaEDesmame: 'A remissão clínica é caracterizada pela resolução das lesões dermatológicas, regressão da linfadenomegalia, recuperação do escore corporal e normalização do hemograma e das proteínas plasmáticas (relação A:G > 0,6). O tratamento com alopurinol jamais deve ser suspenso antes de 6 a 12 meses de evolução estável. A suspensão do alopurinol pode ser considerada quando o animal mantiver quadro clínico perfeito, função renal e UPC normais e títulos de anticorpos em sorologia quantitativa estáveis ou negativos em pelo menos duas coletas semestrais consecutivas. A recidiva clínica é reconhecida pela ascensão de títulos sorológicos em duas ou mais diluições, reaparecimento de proteinúria ou recrudescência de lesões cutâneas.'
+    criteriosDeRespostaRecidivaEDesmame: 'Critérios objetivos de remissão, estabilidade clínica e identificação precoce de recidivas:\n\n' +
+      '- Marcadores de remissão clínica: cicatrização de lesões dermatológicas, regressão ganglionar, ganho de escore corporal e normalização da relação A:G (> 0,6).\n' +
+      '- Critérios para suspensão do alopurinol: no mínimo 6 a 12 meses de tratamento continuado, estabilidade clínica absoluta, UPC normal e sorologia quantitativa estável em baixos títulos ou negativa em dois semestres consecutivos.\n' +
+      '- Indicadores de recidiva ativa: aumento de títulos sorológicos em duas ou mais diluições, reaparecimento de proteinúria glomerular ou recrudescência das queixas cutâneas.',
   },
 
   complications: {
-    falenciaRenalTerminal: 'A progressão da glomerulonefrite membranoproliferativa por imunocomplexos para esclerose glomerular global e fibrose túbulo-intersticial irreversível conduz à Doença Renal Crônica em estágio avançado (IRIS estágios 3 e 4), configurando a principal causa de óbito ou eutanásia justificada em cães acometidos.',
+    falenciaRenalTerminal: 'Progressão da injúria glomerular para perda funcional nefronal crônica:\n\n' +
+      '- Evolução histopatológica: a transição de glomerulonefrite membranoproliferativa para esclerose global e fibrose túbulo-intersticial irreversível culmina em DRC terminal (IRIS 3-4), representando a principal causa de mortalidade.',
 
-    urolitiaseObstrutivaPorXantina: 'A inibição sustentada da xantina oxidase pelo alopurinol sem dieta com restrição de purinas resulta em deposição de urólitos radiotransparentes de xantina em bexiga e uretra, com risco de obstrução uretral aguda, dilatação vesical dolorosa e uremia pós-renal obstrutiva.',
+    urolitiaseObstrutivaPorXantina: 'Complicação metabólica associada ao tratamento prolongado:\n\n' +
+      '- Fisiopatologia: a inibição da xantina oxidase pelo alopurinol sem restrição dietética purínica gera litíase radiotransparente de xantina, predispondo a episódios obstrutivos e uremia pós-renal aguda.',
 
-    comprometimentoVisualECegueiraBilateral: 'A evolução de uveíte anterior granulomatosa crônica não tratada pode acarretar sinequias posteriores, catarata secundária, descolamento seroso de retina e glaucoma hipertensivo secundário refratário, culminando em amaurose bilateral definitiva.',
+    comprometimentoVisualECegueiraBilateral: 'Evolução inflamatória e sequelas oculares irreversíveis:\n\n' +
+      '- Danos estruturais: uveíte anterior crônica pode progredir para sinequias posteriores, catarata, descolamento de retina e glaucoma secundário com perda visual definitiva.',
 
-    amiloidoseSecundariaERupturasVasculares: 'O estímulo inflamatório antigênico crônico prolongado pode culminar na deposição de substância amiloide A sérica (AA) no glomérulo e interstício renal, deflagrando perda proteica maciça refratária; fenômenos de vasculite necrosante sistêmica podem induzir episódios de epistaxe torrencial e hemorragias digestivas.'
+    amiloidoseSecundariaERupturasVasculares: 'Complicações vasculares e inflamatórias sistêmicas avançadas:\n\n' +
+      '- Amiloidose secundária (AA): deposição amiloide nefronal induzida por inflamação crônica sustentada, gerando síndrome nefrótica refratária.\n' +
+      '- Vasculite necrosante: rotura vascular microcapilar por imunocomplexos, deflagrando epistaxe torrencial e enteropatia hemorrágica.',
   },
 
   prevention: {
-    repelentesEInseticidasVetoriaisCaninos: 'O pilar primordial e insubstituível da prevenção é a utilização permanente e ininterrupta de inseticidas e repelentes com eficácia comprovada contra flebotomíneos (efeito anti-feeding). Recomenda-se o uso continuado de coleiras impregnadas com deltametrina a 4% (trocadas rigorosamente a cada 4 a 6 meses conforme a bula) ou pipetas tópicas à base de permetrina associada a imidacloprida ou dinotefurano (aplicadas mensalmente). A proteção repelente impede que o inseto pique o animal, bloqueando a transmissão para cães sadios e impedindo que cães infectados transmitam o parasita para o vetor.',
+    repelentesEInseticidasVetoriaisCaninos: 'O controle vetorial ininterrupto é a base essencial da prevenção em caninos (efeito anti-feeding):\n\n' +
+      '- Coleiras com deltametrina a 4%: substituição periódica a cada 4 a 6 meses conforme indicação do fabricante para proteção contínua.\n' +
+      '- Formulações tópicas pour-on / spot-on: permetrina associada a imidacloprida ou dinotefurano em aplicações mensais regulares.\n' +
+      '- Bloqueio bidirecional: impede a inoculação de novos promastigotas em animais sadios e bloqueia a transmissão de cães infectados para os flebotomíneos.',
 
-    manejoAmbientalEControleDeFocos: 'Medidas de higiene ambiental no peridomicílio são fundamentais para erradicar os criadouros de flebotomíneos, caracterizados por solo úmido e sombreado rico em matéria orgânica em decomposição (folhas secas, fezes de animais de criação, restos de podas de árvores e lixo orgânico). Recomenda-se a instalação de telas de malha fina (menores que 1 mm) em canis e janelas para barrar a entrada do inseto no período crepuscular e noturno.',
+    manejoAmbientalEControleDeFocos: 'Saneamento ambiental rigoroso para redução de criadouros de mosquitos-palha:\n\n' +
+      '- Manejo de matéria orgânica: remoção regular de folhas secas, fezes de animais e resíduos vegetais em decomposição no solo sombreado.\n' +
+      '- Telas e barreira física: colocação de telas de malha fina (< 1 mm) em canis e janelas para impedir a invasão vetorial nos horários crepusculares e noturnos.',
 
-    situacaoVacinalNoBrasil: 'No Brasil, a vacina contra leishmaniose visceral canina disponível comercialmente (Leish-Tec) teve sua fabricação e comercialização suspensas preventivamente pelo Ministério da Agricultura em 2023 por desvios de conformidade em lotes analíticos. A vacinação, quando disponível, não dispensa o uso concomitante obrigatório de coleiras e produtos repelentes, pois atua atenuando a progressão clínica sem conferir imunidade esterilizante contra a picada do flebotomíneo.',
+    situacaoVacinalNoBrasil: 'Cenário regulatório e imunológico da imunização canina no território nacional:\n\n' +
+      '- Histórico da vacina Leish-Tec: produção e distribuição comercial suspensas preventivamente pelo MAPA por inconformidades em lotes industriais.\n' +
+      '- Papel complementar da vacinação: quando recomendada, atenua a morbidade clínica, porém não confere imunidade esterilizante nem substitui as coleiras repelentes.',
 
-    alertaToxicologicoCriticoPermetrinaEmFelinos: 'ALERTA MÁXIMO DE SEGURANÇA: Produtos tópicos ou coleiras contendo permetrina e outros piretroides concentrados formulados para cães são ESTREITAMENTE CONTRAINDICADOS e potencialmente FATAIS para a espécie felina. Os gatos possuem deficiência fisiológica na enzima hepática glicuroniltransferase (UGT), sendo incapazes de metabolizar a permetrina, cuja exposição acarreta síndrome neurotóxica grave com tremores musculares intensos, convulsões intratáveis, hipertermia e óbito rápido. Para felinos, a proteção vetorial deve utilizar exclusivamente produtos registrados e seguros para a espécie, tais como coleiras à base de flumetrina formuladas para gatos ou manejo ambiental rigoroso mantendo o animal em ambientes fechados (indoor).'
+    alertaToxicologicoCriticoPermetrinaEmFelinos: 'ALERTA FARMACOLÓGICO CRÍTICO: Permetrina e piretroides caninos são formalmente contraindicados e FATAIS para felinos:\n\n' +
+      '- Mecanismo da toxicidade letal: os gatos apresentam deficiência constitucional de glicuroniltransferase (UGT) hepática, incapazes de conjugar e eliminar a permetrina.\n' +
+      '- Quadro neurotóxico agudo: tremores musculares generalizados, hiperestesia, convulsões contínuas, hipertermia grave e óbito rápido.\n' +
+      '- Alternativa aprovada para gatos: uso restrito de coleiras com flumetrina registradas para felinos ou manutenção estrita do paciente em ambiente indoor protegido.',
   },
 
   references: [

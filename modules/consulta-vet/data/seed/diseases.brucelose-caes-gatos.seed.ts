@@ -53,7 +53,14 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
   isPublished: true,
 
   quickSummary:
-    'A brucelose canina é uma enfermidade infecciosa zoonótica, crônica e insidiosa provocada predominantemente por Brucella canis, um cocobacilo Gram-negativo intracelular facultativo caracterizado por um fenótipo de lipopolissacarídeo rugoso (rough LPS) sem a cadeia O-polissacarídica clássica. Essa particularidade estrutural determina que os testes sorológicos convencionais projetados para Brucella lisa (smooth, como B. abortus e B. melitensis) falhem em identificar a infecção em cães e humanos. Embora classicamente reconhecida como causa de abortamentos no terço final da gestação (45 a 60 dias), natimortos, epididimite, orquite e atrofia testicular, B. canis frequentemente acomete animais sem histórico reprodutivo, castrados e virgens. A discospondilite — tipicamente multifocal, em cães jovens (mediana 2,5 anos) e sem febre ou leucocitose — representa a manifestação extra-reprodutiva mais comum. Estudos recentes (Moeller et al., 2025) desmistificaram o padrão radiográfico de lesões em soco ("hole-punch"), comprovando que ele não é patognomônico de Brucella. O diagnóstico requer a combinação de sorologia específica para antígeno rough (CBM, 2ME-RSAT, AGID II), PCR e cultura bacteriológica, sendo imperativo notificar o laboratório previamente devido ao elevado risco de infecção ocupacional por aerossol (nível de biossegurança BSL-3). O CDC e diretrizes internacionais ressaltam que não existe protocolo terapêutico que garanta cura microbiológica estéril: a terapia combinada (Doxiciclina associada a Gentamicina ou Enrofloxacina) e a castração controlam os sinais clínicos e diminuem a bacteremia, porém o microrganismo persiste em sítios protegidos (próstata, baço, osso e olho), impondo quarentena permanente, afastamento definitivo da reprodução e vigilância One Health contínua.',
+    'Aspectos centrais da enfermidade:\n' +
+    '- Natureza e biologia do patógeno: cocobacilo Gram-negativo intracelular facultativo caracterizado por lipopolissacarídeo rugoso (rough LPS) sem a cadeia O-polissacarídica clássica.\n' +
+    '- Falha dos testes convencionais: ensaios projetados para Brucella lisa (smooth, como B. abortus e B. melitensis) não detectam infecção por B. canis em cães e humanos.\n' +
+    '- Apresentações clínicas:\n' +
+    '- Trato reprodutivo: abortamentos tardios (45–60 dias), natimortos, epididimite, orquite e atrofia testicular.\n' +
+    '- Formas extrarreprodutivas: discospondilite multifocal juvenil (mediana 2,5 anos, afebril, sem leucocitose), uveíte e glomerulonefrite em animais mesmo castrados.\n' +
+    '- Diagnóstico laboratorial: sorologia para antígeno rough (CBM, 2ME-RSAT, AGID II), PCR e cultura com alerta compulsório prévio por risco ocupacional grave (nível BSL-3).\n' +
+    '- Realidade terapêutica e One Health: não há garantia de cura microbiológica estéril; a antibioticoterapia combinada e castração reduzem a carga bacteriana, mas o animal permanece portador.',
 
   quickDecisionStrip: [
     'Fenótipo rough: testes sorológicos para Brucella smooth (bovina/suína) NÃO detectam Brucella canis.',
@@ -65,7 +72,8 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   quickSummaryRich: {
     lead:
-      'A brucelose canina é uma zoonose bacteriana de curso arrastado cuja biologia intracelular e fenótipo rough desafiam o diagnóstico laboratorial comum. Cães castrados e assintomáticos podem atuar como portadores crônicos e transmissores ativos por anos.',
+      'A brucelose canina é uma zoonose de curso arrastado com biologia intracelular e fenótipo rough que desafiam o diagnóstico de rotina.\n' +
+      'Cães castrados e assintomáticos podem atuar como portadores crônicos e transmissores ativos por anos.',
     leadHighlights: [
       'Lipopolissacarídeo rough: ausência da cadeia O-PS gera subdiagnóstico sistemático em testes padrão.',
       'Apresentação não reprodutiva frequente: discospondilite multifocal juvenil sem febre nem leucocitose.',
@@ -76,22 +84,30 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
       {
         title: 'Morfologia Rough e Diagnóstico Sorológico Específico',
         body:
-          'B. canis carece da cadeia O-polissacarídica (O-PS) do LPS presente nas espécies smooth (B. abortus, B. suis, B. melitensis). Ensaios sorológicos exigem antígenos rough específicos (CBM, 2ME-RSAT, CPAg-AGID II). Testes para brucelose de ruminantes são inúteis.',
+          'Particularidades moleculares e sorologia:\n' +
+          '- Ausência da cadeia O-polissacarídica (O-PS) no LPS de B. canis.\n' +
+          '- Necessidade estrita de antígenos rough específicos (CBM, 2ME-RSAT, CPAg-AGID II); testes para brucelose de ruminantes são totalmente ineficazes.',
       },
       {
         title: 'Mimetismo Clínico: Discospondilite e Portadores Assintomáticos',
         body:
-          'A discospondilite canina afeta cães jovens (< 5 anos, mediana de 2,5 anos) com curso crônico (> 3 meses de dor axial), em sua maioria afebris (86%) e sem leucocitose. O padrão lítico "hole-punch" em endplates sugere B. canis, mas ocorre em outras infecções (Moeller et al., 2025).',
+          'Apresentações não reprodutivas desafiadoras:\n' +
+          '- Discospondilite juvenil crônica (< 5 anos, mediana 2,5 anos) com dor axial, afebril (86%) e sem leucocitose.\n' +
+          '- Padrão lítico "hole-punch" em endplates sugere B. canis, mas não é patognomônico (Moeller et al., 2025).',
       },
       {
         title: 'Risco Ocupacional e Biossegurança Laboratorial BSL-3',
         body:
-          'A manipulação de fluidos fetais (10¹⁰ bactérias/mL), urina de machos (10³ a 10⁶/mL) e culturas microbiológicas oferece risco extremo de aerossolização para médicos-veterinários e microbiologistas. O envio de amostras requer alerta prévio compulsório ao laboratório.',
+          'Alerta máximo de biossegurança ocupacional:\n' +
+          '- Carga massiva em fluidos fetais (10¹⁰ bactérias/mL) e urina de machos (10³ a 10⁶/mL).\n' +
+          '- Risco extremo de aerossolização em necropsias, cirurgias e culturas microbiológicas, exigindo contenção BSL-3.',
       },
       {
         title: 'Manejo One Health e Realidade Terapêutica sem Cura Estéril',
         body:
-          'O CDC e os consensos internacionais estabelecem que nenhum regime antimicrobiano elimina com segurança B. canis do organismo. Cães tratados permanecem sob risco de recidiva e transmissão silenciosa, exigindo exclusão reprodutiva definitiva e cautela com humanos imunocomprometidos.',
+          'Limitações terapêuticas e saúde única:\n' +
+          '- Nenhum regime antimicrobiano assegura eliminação microbiológica estéril de B. canis.\n' +
+          '- Animais tratados mantêm risco de recidiva e transmissão silenciosa, demandando afastamento reprodutivo definitivo.',
       },
     ],
 
@@ -101,35 +117,41 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Passo 1 — Triagem Clínica, Fatores de Risco e EPI Imediato',
           detail:
-            'Identificar histórico de abortamento tardio (45-60 dias), descargas vaginais escuras, epididimite/orquite, discospondilite juvenil multifocal ou infertilidade em canis. Adotar imediatamente luvas, avental e proteção facial completa.',
+            'Triagem e biossegurança imediata:\n' +
+            '- Histórico de abortamento tardio (45–60 dias), descargas escuras, orquite, discospondilite ou infertilidade.\n' +
+            '- Paramentação imediata com luvas, avental impermeável e proteção facial completa.',
           timing: 'Minuto 0',
           limitations: 'Cães castrados, virgens e clinicamente normais podem estar cronicamente infectados.',
         },
         {
           label: 'Passo 2 — Triagem Sorológica com Antígeno Rough Específico',
           detail:
-            'Colher soro e realizar triagem rápida específica para B. canis via 2ME-RSAT (soro tratado com 2-mercaptoetanol para inativar IgM inespecífica) ou Canine Brucella Multiplex (CBM - Cornell University).',
+            'Sorologia de triagem com antígeno rough:\n' +
+            '- Coleta de soro para 2ME-RSAT (inativação de IgM com 2-mercaptoetanol) ou Canine Brucella Multiplex (CBM - Cornell University).',
           timing: 'Hora 1 a 24',
           limitations: 'Janela imunológica de 3 a 12 semanas pós-infecção; falso-negativos em fases muito precoces.',
         },
         {
           label: 'Passo 3 — Confirmação Sorológica Específica (AGID II / CPAg)',
           detail:
-            'Amostras reagentes ou suspeitas na triagem devem ser obrigatoriamente submetidas à Imunodifusão em Gel de Ágar utilizando antígeno citoplasmático interno (CPAg-AGID II), método de altíssima especificidade (~100%).',
+            'Confirmação sorológica de alta especificidade:\n' +
+            '- Encaminhar amostras suspeitas para Imunodifusão em Gel de Ágar com antígeno citoplasmático interno (CPAg-AGID II, especificidade ~100%).',
           timing: 'Dia 2 a 5',
           limitations: 'Pode levar até 8 a 12 semanas pós-infecção para positivação; não descarta fase inicial.',
         },
         {
           label: 'Passo 4 — Diagnóstico Direto por PCR e Cultura com Notificação BSL-3',
           detail:
-            'Coletar sangue total com EDTA, sêmen, raspado vaginal, tecido abortado ou aspirado de endplate para PCR e cultura em ágar Brucella/sangue. Notificar o laboratório em destaque vermelho: "SUSPEITA DE BRUCELLA — RISCO BSL-3".',
+            'Diagnóstico direto sob contenção BSL-3:\n' +
+            '- Coleta de sangue EDTA, sêmen, corrimento ou aspirado para PCR e cultura em meio específico, notificando o laboratório sobre risco BSL-3.',
           timing: 'Dia 3 a 14',
           limitations: 'Bacteremia intermitente; antibioticoterapia prévia inibe o crescimento na cultura.',
         },
         {
           label: 'Passo 5 — Avaliação de Lesões Extrarreprodutivas e One Health',
           detail:
-            'Realizar radiografias vertebrais e ressonância magnética nos cães com dor axial (pesquisa de discospondilite multifocal), exame oftálmico com lâmpada de fenda (rastreio de uveíte) e notificar a vigilância em saúde se houver exposição humana.',
+            'Rastreio sistêmico e vigilância sanitária:\n' +
+            '- Radiografia e ressonância magnética vertebral (discospondilite), avaliação oftálmica (uveíte) e notificação de saúde pública em caso de exposição humana.',
           timing: 'Semana 1 a 2',
           limitations: 'Radiografias precoces podem ser normais (RM tem sensibilidade 37% superior).',
         },
@@ -142,35 +164,42 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Fase 1 — Isolamento Rigoroso e Suspensão Reprodutiva Definitiva',
           detail:
-            'Segregar imediatamente o animal infectado de outros cães e de indivíduos vulneráveis (gestantes, crianças, imunossuprimidos). Cancelar coberturas e emitir termo de ciência ao tutor sobre o caráter zoonótico e a ausência de cura microbiológica estéril garantida.',
+            'Medidas de contenção e termos éticos:\n' +
+            '- Segregação estrita de outros cães e de indivíduos vulneráveis (gestantes, crianças, imunossuprimidos).\n' +
+            '- Suspensão definitiva da reprodução e assinatura de termo de consentimento livre e esclarecido pelo tutor.',
           timing: 'Imediato',
           limitations: 'Desafio emocional e financeiro para tutores e criadores comerciais.',
         },
         {
           label: 'Fase 2 — Antibioticoterapia Combinada de Primeira Linha',
           detail:
-            'Iniciar regime sinérgico: Doxiciclina (5 a 10 mg/kg VO a cada 12 horas por 4 a 8 semanas, podendo atingir 12 semanas em discospondilite) associada à Gentamicina (5 mg/kg SC a cada 24 horas por 7 a 14 dias com monitoramento de função renal e urinálise).',
+            'Esquema sinérgico de primeira linha:\n' +
+            '- Doxiciclina (5 a 10 mg/kg VO q12h por 4 a 8 semanas, até 12 semanas em discospondilite).\n' +
+            '- Gentamicina (5 mg/kg SC q24h por 7 a 14 dias com monitoramento renal rigoroso).',
           timing: 'Semanas 1 a 8',
           limitations: 'Risco de nefrotoxicidade por aminoglicosídeos; monoterapia é formalmente contraindicada.',
         },
         {
           label: 'Fase 3 — Regime Alternativo Oral em Casos de Nefropatia ou Falha',
           detail:
-            'Quando aminoglicosídeos forem inviáveis por azotemia ou idade: Doxiciclina (10 mg/kg VO q12h) associada a Enrofloxacina (5 a 10 mg/kg VO q24h) ou Minociclina (12,5 mg/kg VO q12h) por 6 a 12 semanas consecutivas.',
+            'Esquema oral alternativo em nefropatas:\n' +
+            '- Doxiciclina (10 mg/kg VO q12h) associada a Enrofloxacina (5 a 10 mg/kg VO q24h) ou Minociclina (12,5 mg/kg VO q12h) por 6 a 12 semanas consecutivas.',
           timing: 'Semanas 2 a 12',
           limitations: 'Falhas terapêuticas e seleção de resistência bacteriana com fluoroquinolonas.',
         },
         {
           label: 'Fase 4 — Intervenção Cirúrgica com Paramentação Completa (EPI)',
           detail:
-            'Proceder à esterilização cirúrgica (OSH em fêmeas e orquiectomia em machos) sob condições de máxima biossegurança (luvas duplas, máscara N95 e óculos). A cirurgia remove fontes importantes de secreção genital, embora não elimine a colonização da próstata ou baço.',
+            'Intervenção cirúrgica com EPI completo:\n' +
+            '- OSH em fêmeas e orquiectomia com ablação escrotal em machos sob contenção (luvas duplas, N95, óculos); reduz eliminação mas não esteriliza próstata/baço.',
           timing: 'Após estabilização inicial',
           limitations: 'Castração não esteriliza a infecção e o macho continua eliminando bactérias na urina.',
         },
         {
           label: 'Fase 5 — Monitoramento Clínico-Sorológico Longitudinal e Vigilância Vitalícia',
           detail:
-            'Reavaliar clinicamente, realizar dosagem quantitativa de anticorpos (CBM / 2ME-RSAT) a cada 2 a 3 meses e repetir PCR. Considera-se melhora clínica satisfatória a redução de ~40% nos títulos de CBM PO1 aos 2-6 meses pós-tratamento, mantendo testagem periódica.',
+            'Vigilância longitudinal permanente:\n' +
+            '- Dosagem quantitativa seriada de anticorpos (CBM / 2ME-RSAT) a cada 2 a 3 meses e PCR periódico; queda de ~40% nos títulos denota controle clínico satisfatório.',
           timing: 'A cada 3 a 6 meses por 2 anos',
           limitations: 'Soronegativação temporária não comprova eliminação; recaídas tardias são frequentes.',
         },
@@ -180,16 +209,33 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   etiology: {
     taxonomiaEBiologiaDeBrucella:
-      'O gênero Brucella pertence à família Brucellaceae (ordem Hyphomicrobiales, classe Alphaproteobacteria) e é constituído por pequenos cocobacilos Gram-negativos, imóveis, não esporulados, não capsulados, aeróbios estritos ou microaerofílicos, intracelulares facultativos de crescimento relativamente lento em meios convencionais. Na espécie canina, o principal agente etiológico adaptado e amplamente disseminado é a Brucella canis. Contudo, os cães são suscetíveis à infecção cruzada (spillover) por outras espécies clássicas do gênero, particularmente Brucella suis (biovares 1 e 3, frequente em cães de caça e animais com acesso a carcaças de javalis e suínos ferais), Brucella abortus (adquirida em propriedades leiteiras pela ingestão de leite cru, restos placentários e carcaças bovinas) e, mais raramente, Brucella melitensis (associada a caprinos e ovinos). Essa diversidade etiológica evidencia que o termo clínico "brucelose canina" não é taxonomicamente restrito a B. canis, influenciando de maneira direta a escolha dos testes diagnósticos laboratoriais.',
+      'Classificação taxonômica e características biológicas:\n' +
+      '- Morfologia e fisiologia: cocobacilos Gram-negativos, imóveis, aeróbios estritos ou microaerofílicos, intracelulares facultativos de crescimento lento da família Brucellaceae.\n' +
+      '- Agente canino adaptado: Brucella canis é a espécie natural adaptada à transmissão enzootica em cães domésticos e canídeos silvestres.\n' +
+      '- Fenômeno de transbordamento (spillover) em cães:\n' +
+      '- Brucella suis (biovares 1 e 3): adquirida em cães de caça e consumo de carcaças ou dietas cruas de javalis e suínos ferais.\n' +
+      '- Brucella abortus: ingestão de restos placentários, carcaças ou leite cru em propriedades leiteiras bovinas.\n' +
+      '- Brucella melitensis: ocorrência mais rara associada a caprinos e ovinos infectados.',
 
     fenotipoRoughVsSmoothEImplicacoes:
-      'A membrana externa das bactérias Gram-negativas possui em sua superfície o lipopolissacarídeo (LPS), molécula constituída pelo lipídeo A, um cerne polissacarídico (core) e uma cadeia distal denominada antígeno O ou cadeia O-polissacarídica (O-PS). As espécies clássicas do gênero (B. abortus, B. melitensis e B. suis) expressam um LPS fenotipicamente liso (smooth), provido de cadeia O-PS longa e imunodominante, contra a qual se desenvolvem os principais anticorpos neutralizantes e os testes sorológicos padronizados em humanos e animais de produção. Em marcante contraste, a Brucella canis (juntamente com B. ovis em ovinos) possui um fenótipo natural permanentemente rugoso (rough LPS), caracterizado pela ausência quase completa da cadeia O-PS, expondo proteínas de membrana externa e antígenos centrais do core lipopolissacarídico. Essa discrepância molecular tem repercussões clínicas e diagnósticas profundas: os testes sorológicos convencionais formulados com antígenos lisos de B. abortus falham categoricamente em detectar anticorpos contra B. canis, gerando resultados falso-negativos sistemáticos. Ensaios específicos baseados em antígenos rugosos (CBM, 2ME-RSAT, AGID II com CPAg) são indispensáveis para o rastreio da afecção canina.',
+      'Diferenciação estrutural de membrana e repercussão diagnóstica:\n' +
+      '- Estrutura do LPS bacteriano: composto por lipídeo A, cerne polissacarídico (core) e antígeno O distal (cadeia O-polissacarídica - O-PS).\n' +
+      '- Espécies lisas clássicas (smooth): B. abortus, B. melitensis e B. suis possuem cadeia O-PS longa e imunodominante, base dos testes sorológicos convencionais.\n' +
+      '- Fenótipo rugoso natural (rough LPS): B. canis e B. ovis carecem da cadeia O-PS, expondo proteínas e antígenos centrais do core.\n' +
+      '- ARMADILHA DIAGNÓSTICA CRÍTICA: testes sorológicos padrão para Brucella lisa (bovina/suína) geram resultados 100% falso-negativos em cães infectados por B. canis; requer-se antígeno rough específico (CBM, 2ME-RSAT, AGID II).',
 
     outrasEspeciesDeBrucellaEmCaesEGatos:
-      'A infecção de cães por Brucella suis tem despertado atenção sanitária crescente em decorrência da expansão global das populações de suínos ferais (javalis e javaporcos) e da popularização da caça esportiva e de dietas cruas (BARF) à base de carne suína não inspecionada. Uma coorte longitudinal publicada em 2023 acompanhou 27 cães de caça soropositivos para B. suis: a maioria permaneceu assintomática durante todo o seguimento, com manifestações clínicas intermitentes em apenas 10 animais, persistência de títulos sorológicos elevados por longos períodos e detecção da bactéria no leite de fêmeas lactantes ao redor do parto. Em relação aos felinos domésticos, a literatura médica confirma que o gato é naturalmente refratário à Brucella canis, não constituindo reservatório epidemiológico conhecido da doença. Entretanto, infecções ocasionais por spillover de Brucella abortus foram inequivocamente documentadas, destacando-se o isolamento microbiológico de B. abortus biovar 1 a partir do corrimento uterino de uma gata apresentando piometra aberta em propriedade rural leiteira contaminada (PubMed ID 27307391).',
+      'Infecções cruzadas e particularidades por espécie hospedeira:\n' +
+      '- Relevância de B. suis em cães de caça: expansão de javalis associada à caça e dietas cruas (BARF) favorece a infecção; coorte de 27 cães revelou títulos mantidos e eliminação no leite materno.\n' +
+      '- Resistência inata da espécie felina: gatos são naturalmente refratários a B. canis e não atuam como reservatórios epidemiológicos conhecidos da afecção.\n' +
+      '- Spillover atípico de B. abortus em felinos: isolamento microbiológico de B. abortus biovar 1 documentado em gata com piometra purulenta aberta em fazenda leiteira endêmica (PubMed ID 27307391).',
 
     resistenciaFisicoQuimicaEDesinfeccao:
-      'Diferentemente de bactérias ambientais esporuladas como Clostridium tetani, os microrganismos do gênero Brucella apresentam resistência física e ambiental moderada. B. canis é prontamente inativada pelo calor úmido (autoclavagem a 121°C por 15 minutos), calor seco (160°C por 1 hora), radiação ultravioleta e exposição à dessecação e luz solar direta. Os desinfetantes químicos hospitalares e de uso veterinário comuns — incluindo hipoclorito de sódio a 0,5%–1%, compostos de amônio quaternário, álcool etílico a 70%, iodóforos e soluções de glutaraldeído — são altamente eficazes para descontaminação de superfícies inanimadas e canis, desde que haja prévia remoção mecânica exaustiva de matéria orgânica (sangue, urina, fezes e placentas), cuja presença protege as bactérias e neutraliza a ação química germicida. No entanto, dentro dos macrófagos do hospedeiro mamífero e em tecidos protegidos, a bactéria exibe longevidade biológica formidável.',
+      'Estabilidade físico-química e protocolos de desinfecção:\n' +
+      '- Resistência ambiental moderada: B. canis não forma esporos e é inativada por calor úmido (autoclave 121°C por 15 min), dessecação e luz ultravioleta.\n' +
+      '- Desinfetantes hospitalares de escolha: hipoclorito de sódio (0,5%–1%), compostos de amônio quaternário, álcool 70% e glutaraldeído.\n' +
+      '- REGRA DE OURO SANITÁRIA: a remoção mecânica prévia de matéria orgânica (placentas, urina, fezes e sangue) é obrigatória antes da aplicação química para evitar inativação do germicida.\n' +
+      '- Persistência biológica intracelular: dentro dos macrófagos e em tecidos protegidos no hospedeiro vivo, o microrganismo sobrevive por anos.',
 
     tabelaEspeciesBrucellaComparadas: {
       caption: 'Tabela 1 — Comparação Taxonômica, Estrutural e Clínica das Espécies de Brucella em Pequenos Animais',
@@ -242,16 +288,28 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   epidemiology: {
     epidemiologiaCaninaEMetaAnaliseGlobal2025:
-      'A percepção histórica de que a brucelose canina constituía uma afecção restrita a canis comerciais de reprodução foi completamente refutada pela literatura epidemiológica moderna. Em vasta revisão sistemática e meta-análise global reunindo 134 estudos publicados entre 1970 e 2025 com uma amostragem acumulada de 175.675 cães (PubMed ID 41098548), estimou-se uma soroprevalência global agregada de 7,96% (IC 95%: 6,48%–9,61%). Os autores ressaltaram, contudo, a existência de extrema heterogeneidade metodológica, geográfica e temporal entre os estudos incluídos, enfatizando que esse percentual agregado não reflete a prevalência pontual de uma clínica específica. Cães domiciliados em áreas rurais ou em propriedades agrícolas apresentaram prevalência combinada expressivamente mais elevada (cerca de 23,5%), atribuída ao contato íntimo com carcaças, abortamentos animais e manejo sanitário precário. B. canis figurou como a espécie predominante em todas as regiões biogeográficas pesquisadas.',
+      'Dados de prevalência mundial e quebra de paradigmas:\n' +
+      '- Meta-análise global contemporânea (PubMed ID 41098548): 134 estudos (1970–2025) com 175.675 cães estimaram soroprevalência global agregada de 7,96% (IC 95%: 6,48%–9,61%).\n' +
+      '- Variação biogeográfica acentuada: cães rurais apresentaram prevalência combinada mais elevada (~23,5%) devido ao acesso a carcaças e abortos.\n' +
+      '- Disseminação ampla: B. canis figura como espécie predominante em todas as regiões avaliadas, ultrapassando os limites restritos de canis comerciais.',
 
     cenarioEpidemiologicoBrasileiro:
-      'No Brasil, Brucella canis circula ativamente em populações caninas urbanas e rurais, embora não haja um inquérito epidemiológico sorológico nacional contemporâneo unificado que permita estabelecer uma taxa de prevalência fidedigna para os animais de companhia. Levantamentos seccionais em centros de controle de zoonoses, abrigos de resgate e comunidades litorâneas ou periurbanas revelam soropositividades variáveis entre 1,5% e 15%, na dependência direta da densidade populacional, do status reprodutivo dos animais e dos métodos sorológicos empregados. Estudo recente conduzido em comunidades caiçaras brasileiras identificou anticorpos anti-B. canis em 2% dos cães avaliados (3/148), todos com PCR sanguínea negativa no momento da colheita, demonstrando a presença silenciosa do agente e o risco constante de transmissão ocupacional e doméstica.',
+      'Circulação enzoótica no território brasileiro:\n' +
+      '- Prevalência nacional heterogênea: inquéritos em centros de controle de zoonoses e abrigos revelam soropositividades de 1,5% a 15% conforme a densidade populacional e status reprodutivo.\n' +
+      '- Vigilância em comunidades costeiras: estudo em comunidades caiçaras identificou 2% de cães soropositivos com PCR sanguínea negativa no momento, evidenciando infecção silenciosa.\n' +
+      '- Desafio de saúde pública: escassez de triagem sorológica de rotina na admissão de abrigos perpetua a transmissão endêmica entre animais de companhia.',
 
     particularidadesFelinasERaridadeDaInfeccao:
-      'A espécie felina possui resistência inata acentuada à colonização por Brucella canis. Ensaios experimentais antigos demonstraram que gatos inoculados por vias parenterais ou orais desenvolvem títulos baixos e transitórios de anticorpos, com bacteremia fugaz e sem manifestação de doença reprodutiva ou ortopédica clinicamente aparente. Na rotina clínica global, a brucelose natural por B. canis em gatos não configura uma entidade sindrômica estabelecida. Entretanto, infecções por outras espécies do gênero via contaminação ambiental massiva ocorrem esporadicamente: o isolamento microbiológico de Brucella abortus biovar 1 em gata com piometra purulenta (descrito por pesquisadores em propriedade com histórico de abortamento bovino) ilustra que, diante de gatas com piometra ou peritonite em áreas rurais endêmicas para brucelose bovina, a etiologia por Brucella deve figurar no diagnóstico diferencial.',
+      'Refração biológica felina e diagnósticos diferenciais rurais:\n' +
+      '- Resistência inata canina vs felina: inoculação experimental em gatos gera bacteremia fugaz e títulos transitórios sem doença clínica reprodutiva ou ortopédica.\n' +
+      '- Ausência de reservatório felino: B. canis não estabelece ciclo sustentado em populações de gatos domésticos.\n' +
+      '- Exceções em ambiente rural: relatos pontuais de piometra purulenta por B. abortus biovar 1 indicam que a bactéria deve ser considerada em fêmeas felinas expostas a rebanhos bovinos com abortamento.',
 
     desmistificacaoDoPerfilDoPaciente:
-      'O perfil clínico dos pacientes caninos acometidos por brucelose sofreu uma transformação radical nas últimas décadas. Anteriormente suspeitada apenas em matrizes reprodutoras com histórico de aborto tardio ou padreadores com orquite, B. canis é atualmente diagnosticada com frequência crescente em cães resgatados de abrigos, animais de companhia esterilizados (castrados cirurgicamente há meses ou anos) e cães jovens sem qualquer histórico de atividade reprodutiva prévia. O estudo multicêntrico de Moeller et al. (2025) avaliando cães com discospondilite por B. canis demonstrou que nenhum dos animais examinados havia sido utilizado para reprodução ou habitava canil comercial, evidenciando que a transmissão não venérea (oronasal por urina, fômites ou infecção congênita subclínica) responde por uma parcela substancial dos casos clínicos atendidos na rotina hospitalar.',
+      'Transformação do perfil clínico e demográfico do hospedeiro:\n' +
+      '- Superação do paradigma de reprodutor: a enfermidade não acomete apenas matrizes com aborto tardio ou padreadores com orquite em canis comerciais.\n' +
+      '- Apresentação em animais esterilizados: diagnósticos frequentes em cães resgatados de abrigos e animais castrados há anos que manifestam discospondilite ou uveíte crônica.\n' +
+      '- Evidência multicêntrica de Moeller et al. (2025): nenhum dos cães avaliados com discospondilite por B. canis era reprodutor, confirmando a relevância da transmissão não venérea.',
 
     tabelaPrevalenciaEEpidemiologiaCaninaVsFelina: {
       caption: 'Tabela 2 — Matriz Comparativa Epidemiológica: Espécie Canina versus Espécie Felina na Brucelose',
@@ -292,16 +350,32 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   pathogenesisTransmission: {
     viasDeTransmissaoEFontesDeInfeccao:
-      'A transmissão de Brucella canis ocorre por múltiplas vias biológicas, não se limitando ao contato sexual durante a cópula. As principais portas de entrada no hospedeiro suscetível são as mucosas oral, nasal, conjuntival e genital (vaginal ou prepucial), além de soluções de continuidade cutâneas e abrasões. A transmissão venérea permanece altamente eficiente através da penetração de microrganismos viáveis presentes no fluido seminal e secreções prostáticas durante o coito ou por inseminação artificial com sêmen fresco ou congelado infectado. Contudo, a via oronasal não venérea assume papel determinante na disseminação populacional: cães sadios adquirem a infecção ao lamber ou cheirar genitálias de animais infectados, fetos abortados, placentas, lóquios puerperais e urina contaminada. A transmissão vertical transplacentária é comum, resultando em abortamento, natimortos ou nascimento de filhotes bacteriêmicos que transmitem a infecção através da amamentação pelo leite materno.',
+      'Portas de entrada e dinâmicas de propagação:\n' +
+      '- Superfícies mucosas receptivas: transmissão eficiente pelas mucosas oral, nasal, conjuntival e genital (vaginal ou prepucial), além de pele escoriada.\n' +
+      '- Transmissão venérea clássica: disseminação por cópula ou inseminação artificial com sêmen infectado fresco ou congelado albergando bactérias viáveis.\n' +
+      '- Via oronasal não venérea: lamber ou cheirar descargas genitais, fetos abortados, placentas e urina infectada responde por grande parte dos contágios domésticos.\n' +
+      '- Transmissão vertical: passagem transplacentária determinando aborto, natimortos ou filhotes portadores que transmitem a bactéria pelo leite materno.',
 
     cargasBacterianasEMateriaisDeAltoRisco:
-      'A concentração bacteriana varia drasticamente conforme o tecido ou secreção biológica envolvida, ditando o nível de risco ocupacional e zoonótico. Os materiais associados à reprodução feminina contêm a carga bacteriana mais devastadora: a placenta, os envoltórios fetais, os tecidos dos conceptos abortados e as descargas vaginais pós-aborto atingem concentrações massivas de até 10¹⁰ organismos viáveis por mililitro (10 bilhões de bactérias/mL), persistindo a eliminação vaginal por 1 a 6 semanas após o evento obstétrico. No macho, o ejaculado seminal fresco e as secreções prostáticas albergam entre 10⁶ e 10⁸ bactérias/mL nos primeiros meses pós-infecção. A urina de machos e fêmeas infectados constitui uma fonte contínua de contaminação ambiental, contendo entre 10³ e 10⁶ organismos/mL, sendo a eliminação urinária do macho particularmente persistente em virtude da colonização crônica da glândula prostática.',
+      'Quantificação microbiológica e gradiente de infectividade:\n' +
+      '- Tecidos reprodutivos femininos de altíssimo risco: placentas, envoltórios fetais e lóquios pós-aborto concentram até 10¹⁰ UFC/mL (10 bilhões de organismos por mL).\n' +
+      '- Descarga vaginal pós-abortamento: eliminação de cargas elevadas mantida por 1 a 6 semanas consecutivas.\n' +
+      '- Fluidos masculinos: sêmen fresco e fluido prostático contêm 10⁶ a 10⁸ UFC/mL nos primeiros meses pós-infecção.\n' +
+      '- Excreção urinária contínua: urina de machos e fêmeas contém 10³ a 10⁶ bactérias/mL, sendo a eliminação do macho prolongada pela colonização crônica da próstata.',
 
     mecanismoDeInvasaoESobrevivenciaIntracelular:
-      'Após o contato com a superfície mucosal, B. canis penetra a barreira epitelial através de transcitose por células M ou através de microlesões, sendo imediatamente fagocitada por macrófagos residentes e células dendríticas subepiteliais. Ao contrário da maioria das bactérias piogênicas, Brucella canis possui mecanismos moleculares especializados de evasão imune intracelular: ela impede a fusão fagolisossômica precoce, neutraliza o estresse oxidativo intrafagossômico e direciona o vacúolo contendo a bactéria (Brucella-containing vacuole - BCV) para o retículo endoplasmático rugoso celular, convertendo-o em um nicho replicativo protegido. Essa sobrevivência no interior dos macrófagos e monócitos protege o microrganismo da ação de anticorpos séricos circulantes, do sistema complemento e de antimicrobianos hidrofílicos que apresentam baixa penetração intracelular.',
+      'Invasão epitelial e evasão da imunidade celular:\n' +
+      '- Penetração mucosal: transcitose através de células M e invasão de microlesões, seguida de fagocitose por macrófagos e células dendríticas subepiteliais.\n' +
+      '- Bloqueio da resposta imune inata: B. canis inibe a fusão fagolisossômica precoce e neutraliza a produção de espécies reativas de oxigênio intrafagossômicas.\n' +
+      '- Formação do vacúolo replicativo (BCV): tráfego intracelular direcionado para o retículo endoplasmático rugoso, criando um nicho metabólico protegido.\n' +
+      '- Escape farmacológico e humoral: o confinamento intracelular impede o acesso de anticorpos neutralizantes e antimicrobianos de baixa penetração citoplasmática.',
 
     bacteremiaCronicaETropismoTecidual:
-      'A partir dos sítios de invasão primária, os monócitos infectados migram através dos vasos linfáticos aferentes até os linfonodos regionais, onde ocorre proliferação bacteriana e consequente linfadenomegalia. Subsequentemente, o microrganismo ganha o ducto torácico e a corrente circulatória, deflagrando uma bacteremia associada a leucócitos que se inicia entre 1 e 4 semanas após a infecção e persiste de forma contínua ou intermitente por períodos prolongados, variando de 6 a 64 meses (mediana de 1 a 2 anos). Durante essa fase bacteriêmica persistente, a bactéria dissemina-se para órgãos do sistema mononuclear fagocitário (baço e fígado) e exibe tropismo acentuado por tecidos ricos em esteroides sexuais e eritritol (útero, placenta, epidídimo, testículo e próstata) e sítios anatômicos com circulação terminal (discos intervertebrais, câmaras oculares, glomérulos renais e meninges).',
+      'Disseminação hematogênica e colonização de órgãos alvo:\n' +
+      '- Disseminação linfática e ducto torácico: monócitos infectados migram aos linfonodos regionais, amplificando a carga bacteriana com linfadenomegalia generalizada.\n' +
+      '- Bacteremia prolongada associada a células: início entre 1 e 4 semanas pós-exposição, estendendo-se por 6 a 64 meses contínuos ou intermitentes (mediana de 1 a 2 anos).\n' +
+      '- Tropismo tecidual primário: órgãos ricos em esteroides sexuais e eritritol (útero, placenta, epidídimo, próstata) e baço/fígado.\n' +
+      '- Sítios de microcirculação terminal protegida: discos intervertebrais (discospondilite), câmaras oculares (uveíte), glomérulos e meninges.',
 
     tabelaCargasBacterianasEViasDeTransmissao: {
       caption: 'Tabela 3 — Cargas Bacterianas por Tecido/Fluido e Risco de Transmissão Zoonótica e Canina',
@@ -354,59 +428,120 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   pathophysiology: {
     patogeneseDaDiscospondiliteEMicrocirculacao:
-      'A discospondilite representa a complicação extra-reprodutiva mais destrutiva da infecção por Brucella canis. Sua gênese decorre da semeadura hematógena durante as ondas de bacteremia crônica: os capilares metafisários que irrigam as placas terminais cartilaginosas vertebrais (endplates) apresentam microarquitetura vascular terminal e sinuosa, caracterizada por fluxo sanguíneo lento e desprovida de colaterais anastomóticas robustas. Esse leito capilar predispõe à impactação de monócitos infectados e microtrombos bacterianos. A proliferação bacteriana local desencadeia osteomielite focal, reabsorção óssea osteoclástica e lise necrótica dos endplates vertebrais com invasão secundária do disco intervertebral avascular adjacente. Com a cronificação do processo, ocorre esclerose óssea reativa marginal, proliferação osteofítica vertebral compensatória e colapso do espaço discal, podendo haver proliferação inflamatória do tecido mole epidural e compressão mecânica de raízes nervosas e da medula espinhal.',
+      'Gênese da osteomielite e colapso discal vertebral:\n' +
+      '- Microcirculação terminal vulnerável: os capilares metafisários que irrigam os endplates cartilaginosos são sinuosos, lentos e desprovidos de colaterais, predispondo à deposição bacteriana.\n' +
+      '- Disseminação hematógena: ondas de bacteremia crônica levam à impactação de monócitos infectados na placa terminal vertebral.\n' +
+      '- Lise e necrose tecidual: proliferação bacteriana induz osteoclastogênese acelerada, reabsorção óssea lítica e invasão secundária do disco intervertebral avascular.\n' +
+      '- Evolução esclerótica e compressão: com a cronicidade, surge osteofitose proliferativa, colapso do espaço discal e tecido inflamatório epidural comprimindo raízes nervosas e medula espinhal.',
 
     fisiopatologiaDoAbortamentoEPlacentite:
-      'Nas fêmeas gestantes, a presença de eritritol e hormônios esteroides nos tecidos uteroplacentários atua como potente quimiotático e fator estimulante de replicação para B. canis. Entre o 30º e o 45º dia de gestação, a invasão maciça do trofoblasto placentário induz vasculite necrosante, trombose dos vasos coriônicos e placentite exsudativa difusa. A necrose dos vilos placentários compromete o intercâmbio de oxigênio e nutrientes entre a mãe e os fetos, deflagrando isquemia fetal, hipóxia grave e morte fetal intrauterina. Como resultado, os conceptos sofrem autólise asséptica e maceração antes da expulsão, sendo expelidos tipicamente entre o 45º e o 60º dia de gestação, acompanhados de membranas fetais espessadas, acastanhadas e friáveis. Perdas embrionárias antes do 30º dia manifestam-se clinicamente como reabsorção fetal assintomática, mimetizando falhas de concepção.',
+      'Comprometimento trofoblástico e interrupção gestacional:\n' +
+      '- Estímulo replicativo do eritritol: hormônios esteroides e eritritol nos tecidos uteroplacentários funcionam como fatores quimiotáticos para proliferação explosiva de B. canis.\n' +
+      '- Vasculite e placentite necrosante: invasão do trofoblasto entre 30 e 45 dias de gestação provoca trombose coriônica e necrose dos vilos placentários.\n' +
+      '- Isquemia e maceração fetal: o colapso na troca materno-fetal induz anóxia, morte intrauterina e expulsão de fetos autolisados entre o 45º e o 60º dia de gestação.\n' +
+      '- Reabsorção embrionária precoce: perdas antes de 30 dias manifestam-se clinicamente como falhas de concepção e infertilidade aparente.',
 
     patologiaReprodutivaMasculinaEAnticorposAntiesperma:
-      'No macho reprodutor, B. canis coloniza precocemente os túbulos seminíferos, epidídimos e glândulas prostáticas. A replicação bacteriana nas células de Sertoli e no epitélio tubular deflagra orquite e epididimite necrosante com infiltrado linfo-histiocitário intenso. O edema tecidual agudo e o aumento da pressão intratesticular provocam isquemia, degeneração tubular e ruptura da barreira hematotesticular imunologicamente privilegiada. O extravasamento de antígenos espermáticos maduros para o estroma vascular expõe essas proteínas ao reconhecimento pelo sistema imunológico do cão, deflagrando a síntese de autoanticorpos antiespermatozoides e reações de hipersensibilidade celular retardada. Esse processo autoimune secundário agrava a aglutinação espermática, a perda de motilidade e a destruição celular, culminando em atrofia testicular bilateral fibrótica e azoospermia irreversível.',
+      'Disfunção testicular, quebra de barreira e autoimunidade:\n' +
+      '- Colonização glandular primária: B. canis invade precocemente túbulos seminíferos, epidídimos e tecido prostático, replicando-se em células de Sertoli.\n' +
+      '- Ruptura da barreira hematotesticular: o edema inflamatório agudo e a necrose tubular rompem o privilégio imunológico dos testículos.\n' +
+      '- Autoimunidade antiespermatozoide: o contato de antígenos espermáticos com a circulação deflagra autoanticorpos antiesperma e reações de hipersensibilidade celular retardada.\n' +
+      '- Desfecho andrológico: aglutinação espermática massiva, perda de motilidade, atrofia testicular fibrosa bilateral e azoospermia irreversível.',
 
     glomerulonefritePorImunocomplexosEUveite:
-      'A persistência prolongada de antígenos bacterianos na circulação sanguínea durante os meses ou anos de bacteremia crônica estimula a síntese contínua de imunoglobulinas, gerando hiperglobulinemia marcante e a formação crônica de imunocomplexos circulantes solúveis (antígeno B. canis-anticorpo IgG/IgM). Esses complexos macromoleculares precipitam-se passivamente na membrana basal glomerular renal e no endotélio fenestrado dos capilares do trato uveal ocular. No rim, a fixação de complemento promove glomerulonefrite membranoproliferativa por imunocomplexos, manifestada clinicamente por proteinúria persistente, elevação da razão proteína:creatinina urinária (UPC) e risco de progressão para doença renal crônica. No globo ocular, a deposição inflamatória e a vasculite imune provocam uveíte anterior recidivante, infiltração celular da câmara anterior, precipitados ceráticos, coriorretinite e glaucoma secundário.',
+      'Repercussões inflamatórias imunes crônicas por antígenos circulantes:\n' +
+      '- Formação contínua de imunocomplexos: antígenos bacterianos persistentes estimulam hiperglobulinemia marcante com complexos antígeno-anticorpo circulantes solúveis.\n' +
+      '- Lesão glomerular renal: precipitação passiva na membrana basal glomerular e ativação de complemento culminam em glomerulonefrite membranoproliferativa com proteinúria e UPC elevada.\n' +
+      '- Inflamação uveal ocular: deposição no endotélio fenestrado capilar ocular provoca uveíte anterior recidivante, precipitados ceráticos, hipópio, coriorretinite e glaucoma secundário.',
   },
 
   clinicalSignsPathophysiology: {
     sindromeReprodutivaNaCadela:
-      'Na fêmea canina, o abortamento espontâneo entre 45 e 60 dias de gestação (terço final) constitui o sinal clássico e mais conspícuo da enfermidade. Os fetos abortados apresentam-se caracteristicamente autolisados, macerados e envolvidos por membranas placentárias verde-escuras ou acastanhadas. O aborto é invariavelmente seguido por uma descarga vaginal persistente, mucoide a mucopurulenta, de coloração verde-acinzentada ou hemorrágica escura, que perdura por 1 a 6 semanas sem odor fétido pronunciado. Perdas gestacionais mais precoces manifestam-se clinicamente como morte embrionária e reabsorção fetal, levando o tutor a relatar apenas "falha de concepção" ou infertilidade aparente. Filhotes que sobrevivem a termo frequentemente nascem mortos (natimortos) ou debilitados, sucumbindo nas primeiras 48 a 72 horas de vida com bacteremia fulminante. Ponto clínico crucial: as cadelas acometidas mantêm ciclos estrais perfeitamente regulares e conservam apetite e atitude normais, não apresentando febre ou toxicidade sistêmica na maioria dos casos.',
+      'Quadro reprodutivo clássico na fêmea canina:\n' +
+      '- Abortamento tardio característico: interrupção gestacional entre 45 e 60 dias com fetos autolisados macerados e membranas acastanhadas espessadas.\n' +
+      '- Lóquios vaginais persistentes: corrimento mucoide a mucopurulento verde-acinzentado ou hemorrágico escuro sem odor pútrido, perdurando por 1 a 6 semanas.\n' +
+      '- Perdas precoces e mortalidade neonatal: reabsorção fetal imperceptível simulando falha de concepção; filhotes a termo nascem fracos e sucumbem em 48 a 72 horas.\n' +
+      '- PARTICULARIDADE CLÍNICA: as cadelas mantêm ciclos estrais regulares, excelente apetite e ausência de febre sistêmica, mascarando a infecção.',
 
     sindromeReprodutivaNoMacho:
-      'No macho, a fase inicial da afecção manifesta-se por epididimite e orquite agudas, unilaterais ou bilaterais, acompanhadas de aumento volumétrico escrotal doloroso, calor local, marcha rígida em abdução e dermatite escrotal úmida severa induzida por lambedura incessante pelo animal. Com a evolução subaguda e crônica (semanas a meses pós-infecção), a inflamação cede e os testículos sofrem degeneração fibrosa progressiva, tornando-se pequenos, firmes, irregulares e atróficos. A prostatite crônica bacteriana é frequente, podendo ser assintomática ou provocar disúria, tenesmo fecal e hematúria intermitente. O espermograma revela deterioração drástica da qualidade seminal a partir da 5ª semana pós-infecção, com > 90% de anomalias morfológicas (cabeças destacadas, caudas dobradas, gotas citoplasmáticas), presença de leucócitos no ejaculado e aglutinação espermática massiva por autoanticorpos, culminando em infertilidade permanente.',
+      'Evolução da síndrome genital masculina:\n' +
+      '- Fase aguda inflamatória: orquite e epididimite uni ou bilateral, aumento escrotal doloroso, calor local, marcha em abdução e dermatite escrotal por lambedura.\n' +
+      '- Fase crônica degenerativa: regressão do edema com atrofia testicular fibrosa progressiva (testículos pequenos, endurecidos e irregulares) e prostatite crônica com disúria.\n' +
+      '- Deterioração seminal: espermograma a partir da 5ª semana pós-infecção revela > 90% de anormalidades morfológicas, leucocitospermia, aglutinação e infertilidade definitiva.',
 
     manifestacoesOsteoarticularesEDiscospondilite:
-      'A discospondilite representa a apresentação não reprodutiva mais comum e desafiadora de B. canis, afetando predominantemente cães jovens com menos de 5 anos de idade (mediana de 2,5 anos). Os pacientes manifestam dor axial vertebral crônica e progressiva (duração média superior a 3 meses antes do diagnóstico), hiperestesia severa à palpação da coluna espinhal, relutância em pular, subir escadas ou levantar-se, postura cifótica e marcha em passos curtos e rígidos. Se houver compressão medular ou de raízes nervosas por osteófitos, colapso de vértebras ou tecido de granulação, surgem déficits neurológicos proprioceptivos, paresia ambulatória ou não ambulatória e síndrome da cauda equina (quando acomete a junção L7-S1). O envolvimento dos espaços discais cervicais (C2-C5) e a multiplicidade de focos vertebrais são significativamente mais frequentes na discospondilite por B. canis do que em outras etiologias bacterianas (Moeller et al., 2025). Artrite séptica não erosiva e osteomielite de ossos longos também podem ocorrer.',
+      'Apresentação extrarreprodutiva de maior impacto clínico:\n' +
+      '- Perfil epidemiológico típico: cães jovens com menos de 5 anos (mediana 2,5 anos) manifestando dor vertebral crônica com duração superior a 3 meses antes da confirmação.\n' +
+      '- Manifestações clínicas: hiperestesia à palpação da coluna, relutância em pular ou subir degraus, cifose e marcha rígida com passos encurtados.\n' +
+      '- Déficits neurológicos secundários: compressão medular ou radicular provocando ataxia proprioceptiva, paresia e síndrome da cauda equina (junção L7-S1).\n' +
+      '- Padrão de Moeller et al. (2025): maior prevalência de discos cervicais (C2-C5) e lesões multifocais simultâneas em comparação a outras causas de discospondilite.',
 
     manifestacoesOcularesECardiovasculares:
-      'As repercussões oculares surgem por invasão direta de bactérias viáveis ou pela deposição de imunocomplexos circulantes no trato uveal, podendo atuar como sítio santuário para recidivas tardias pós-tratamento. Os achados incluem uveíte anterior (blefarospasmo, fotofobia, hiperemia conjuntival, miose, flare aquoso e hipópio), coriorretinite focal ou difusa, precipitados ceráticos em vidro despolido, hifema espontâneo, descolamento seroso de retina, neurite óptica e desenvolvimento de glaucoma secundário doloroso com buftalmia. No aparelho cardiovascular, a endocardite infecciosa bacteriana é uma complicação rara, porém fatal, instalando-se preferencialmente sobre a valva aórtica ou mitral em cães com bacteremia crônica prolongada, caracterizada por sopros cardíacos de início recente, febre flutuante e arritmias, cujas hemoculturas laboratoriais de rotina costumam resultar falsamente estéreis se o microbiologista não for avisado para cultivar Brucella.',
+      'Comprometimento oftalmológico e cardiovascular avançado:\n' +
+      '- Espectro oftalmológico: uveíte anterior (blefarospasmo, fotofobia, miose, flare aquoso e hipópio), coriorretinite, hifema, descolamento de retina e glaucoma secundário.\n' +
+      '- Sítio santuário ocular: o olho atua como reservatório anatômico protegido imunitariamente, viabilizando recidivas clínicas tardias após antibioticoterapia.\n' +
+      '- Endocardite infecciosa vegetativa: complicação rara porém letal em valva aórtica ou mitral, cursando com sopros recentes, febre flutuante e arritmias cardíacas graves.',
 
     manifestacoesSistemicasEAssintomaticas:
-      'Uma proporção expressiva de cães infectados por B. canis permanece assintomática ou oligossintomática por longos períodos de tempo, mantendo-se perfeitamente alertas, ativos e eutróficos enquanto disseminam ativamente o microrganismo para o ambiente e para outros animais. Quando presentes, os sinais sistêmicos são inespecíficos e insidiosos: linfadenomegalia generalizada indolor (com predileção pelos linfonodos retrofaríngeos, pré-escapulares e poplíteos), hepatoesplenomegalia discreta a moderada, perda de peso crônica, letargia moderada e relutância ao exercício. Febre verdadeira é marcadamente infrequente na brucelose canina (presente em apenas 14% dos cães com discospondilite no estudo de Long et al., 2022), contrastando com a apresentação clássica da brucelose aguda em seres humanos.',
+      'Apresentação subclínica e achados sistêmicos inespecíficos:\n' +
+      '- Estado de portador assintomático: grande proporção de cães infectados permanece ativa e eutrófica, atuando como transmissores silenciosos por anos.\n' +
+      '- Sinais constitucionais discretos: linfadenomegalia generalizada indolor (retrofaríngeos, pré-escapulares e poplíteos), hepatoesplenomegalia discreta e perda de peso crônica.\n' +
+      '- Ausência de febre: febre é rara em cães com B. canis (apenas 14% na série de Long et al., 2022), diferenciando-se da brucelose aguda humana clássica.',
   },
 
   diagnosis: {
     desafiosDiagnosticosELimitesDosTestesIsolados:
-      'O diagnóstico da brucelose canina é amplamente reconhecido como um dos mais complexos da infectologia de pequenos animais. A literatura contemporânea (Nelson & Couto 6ª ed.; VIN 2025) e as diretrizes internacionais enfatizam que nenhum teste diagnóstico isolado (sorológico, molecular ou microbiológico) detém acurácia perfeita capaz de descartar ou confirmar a afecção com 100% de sensibilidade e especificidade em uma única colheita. Os títulos de anticorpos oscilam significativamente ao longo das fases de cronicidade; a bacteremia é intermitente; o uso prévio de antimicrobianos suprime a carga bacteriana circulante; e diferentes metodologias diagnósticas detectam antígenos e imunoglobulinas distintos. Dessa forma, a investigação clínica exige uma abordagem multimodal articulando anamnese epidemiológica, triagem sorológica com antígeno rough, testes confirmatórios de alta especificidade e pesquisa direta por PCR e cultura bacteriana.',
+      'Complexidade diagnóstica e abordagem multimodal (Nelson & Couto; VIN 2025):\n' +
+      '- Ausência de teste isolado perfeito: nenhum ensaio sorológico, molecular ou microbiológico detém 100% de sensibilidade e especificidade simultâneas em uma única coleta.\n' +
+      '- Desafios biológicos intrínsecos: oscilação temporal de títulos de anticorpos, bacteremia intermitente e supressão por uso prévio empírico de antibióticos.\n' +
+      '- Estratégia multimodal recomendada: associação criteriosa de anamnese epidemiológica, triagem com antígeno rough, testes confirmatórios de alta especificidade (AGID II/CBM) e PCR/cultura.',
 
     sorologiaParaBrucellaCanisRough:
-      'A sorologia constitui o pilar primário de triagem populacional e clínica. O teste rápido de aglutinação em lâmina (RSAT - Rapid Slide Agglutination Test) é uma ferramenta rápida e acessível, porém vulnerável a reações cruzadas e resultados falso-positivos em decorrência de anticorpos inespecíficos direcionados contra Bordetella bronchiseptica, Pseudomonas aeruginosa e Staphylococcus spp. Para elevar sua especificidade, desenvolveu-se o 2ME-RSAT, no qual o soro é tratado previamente com 2-mercaptoetanol para desnaturar as pontes dissulfeto de IgM inespecíficas, preservando apenas as aglutininas IgG específicas. O teste de Imunodifusão em Gel de Ágar com antígeno proteico citoplasmático solúvel (CPAg-AGID II) representa o ensaio confirmatório de escolha: sua especificidade aproxima-se de 100%, pois o antígeno citoplasmático é compartilhado entre Brucella spp., mas não reage com os anticorpos cruzados de membrana de outras bactérias; contudo, sua sensibilidade é moderada (~50%–60%) e a soroconversão pode demandar de 8 a 12 semanas pós-infecção.',
+      'Painel sorológico com antígenos de superfície e citoplasmáticos:\n' +
+      '- RSAT (Aglutinação rápida em lâmina): alta sensibilidade para triagem, porém sujeito a reações cruzadas com Bordetella bronchiseptica, Pseudomonas e Staphylococcus.\n' +
+      '- 2ME-RSAT (Tratamento com 2-mercaptoetanol): desnatura pontes dissulfeto de IgM inespecíficas, preservando aglutininas IgG específicas e elevando a especificidade diagnóstica.\n' +
+      '- CPAg-AGID II (Imunodifusão em gel de ágar): padrão confirmatório clássico utilizando antígenos proteicos citoplasmáticos solúveis com especificidade próxima a 100%.\n' +
+      '- Janela imunológica: a soroconversão no AGID II pode demandar de 8 a 12 semanas pós-exposição.',
 
     canineBrucellaMultiplexCbmCornell:
-      'O Canine Brucella Multiplex (CBM), padronizado e validado pelo Animal Health Diagnostic Center da Cornell University, desponta atualmente como o teste sorológico de maior refinamento tecnológico para B. canis. O CBM emprega tecnologia de microesferas fluorescentes magnéticas (Luminex) para detectar simultaneamente anticorpos contra dois antígenos proteicos recombinantes altamente específicos: BP26 (proteína de membrana externa de 26 kDa) e PO1 (proteína bacteriana interna). Essa formulação supera a dependência clássica do LPS rugoso, conferindo sensibilidade analítica superior a 95% e alta especificidade. Além de sua acurácia diagnóstica inicial, o CBM é quantitativo: o monitoramento seriado dos níveis de anticorpos contra PO1 revela que uma redução de aproximadamente 40% nas intensidades de fluorescência entre 2 e 6 meses pós-tratamento associa-se intimamente com remissão clínica e redução de carga bacterêmica (Guarino et al., 2023).',
+      'Plataforma de alta precisão multiplex (Cornell University):\n' +
+      '- Tecnologia Luminex baseada em microesferas magnéticas: quantifica simultaneamente anticorpos contra antígenos recombinantes BP26 (membrana externa de 26 kDa) e PO1 (proteína interna).\n' +
+      '- Vantagem analítica superior: independe do LPS rugoso, superando reações cruzadas e conferindo sensibilidade analítica > 95% com alta especificidade.\n' +
+      '- Monitoramento terapêutico quantitativo: redução persistente de ~40% nos níveis de anticorpos contra PO1 aos 2-6 meses pós-tratamento associa-se a controle clínico e queda da bacteremia (Guarino et al., 2023).',
 
     testesRapidosPointOfCarePoc2026:
-      'A utilização de dispositivos de fluxo lateral rápidos point-of-care (POC) em clínicas e abrigos veterinários expandiu-se intensamente nos últimos anos. No entanto, estudo comparativo independente publicado em 2026 avaliando kits comerciais frente a amostras confirmadas por cultura e CBM demonstrou que a escolha da plataforma é determinante para a segurança clínica. Dispositivos baseados em antígenos proteicos ou preparações celulares específicas (como Anigen Rapid C. Brucella Ab e FASTest Brucella canis) demonstraram excelente concordância percentual positiva (PPA de 90% a 100%) e negativa (NPA de 92,5% a 100%). Em contrapartida, um teste comercial avaliado baseado em extrato bruto de LPS apresentou PPA de 0% (falhou em identificar todos os cães infectados da amostra). Os autores ressaltam que os resultados de testes POC positivos de triagem nunca devem ser considerados definitivos, exigindo confirmação por ensaios de referência (AGID II ou CBM).',
+      'Avaliação crítica de dispositivos rápidos em consultório (POC 2026):\n' +
+      '- Heterogeneidade analítica acentuada: estudo comparativo independente demonstrou que a formulação antigênica define a confiabilidade clínica do teste rápido.\n' +
+      '- Dispositivos recomendados: kits baseados em antígenos proteicos específicos (Anigen Rapid, FASTest) exibiram concordância positiva (PPA) de 90% a 100% e negativa (NPA) de 92,5% a 100%.\n' +
+      '- Alerta de falha diagnóstica: dispositivos formulados com extratos brutos de LPS apresentaram PPA de 0% em amostras confirmadas.\n' +
+      '- CONDUTA OBRIGATÓRIA: qualquer resultado positivo em teste rápido POC de consultório deve ser obrigatoriamente confirmado por AGID II ou CBM de referência.',
 
     culturaBacteriologicaEPadraoOuro:
-      'O isolamento microbiológico de Brucella canis através de cultura bacteriana representa o padrão-ouro definitivo de confirmação etiológica antemortem. As amostras biológicas de maior rendimento dependem do fenótipo do paciente: sangue total com anticoagulante (hemocultura seriada colhida com técnica asséptica estrita), sêmen fresco e urina em machos; secreção vaginal, fragmentos de placenta e tecidos fetais autolisados (estômago e pulmão fetal) em fêmeas abortantes; aspirados ósseos ou discos vertebrais em discospondilite; e aspirados de linfonodos. No entanto, uma cultura estéril ou negativa não descarta a doença, devido ao caráter intermitente da bacteremia, ao uso empírico prévio de antibióticos e à natureza fastidiosa do microrganismo, que exige incubação aeróbia prolongada (7 a 14 dias) em ágar Brucella enriquecido ou ágar sangue sob estrita vigilância microbiológica.',
+      'Isolamento microbiológico e padrão-ouro definitivo:\n' +
+      '- Confirmação etiológica antemortem: cultivo bacteriano positivo atesta inequivocamente infecção ativa por colônias de Brucella canis viáveis.\n' +
+      '- Amostras de maior rendimento: sangue total com anticoagulante (hemoculturas seriadas assépticas), sêmen, urina, secreção vaginal, fragmentos de placenta e aspirados vertebrais.\n' +
+      '- Limitações de sensibilidade: bacteremia intermitente, uso prévio de antibióticos e exigência de incubação aeróbia prolongada (7 a 14 dias) em ágar enriquecido.\n' +
+      '- ALERTA: cultura estéril ou negativa jamais descarta o diagnóstico de brucelose canina.',
 
     alertaMaximoDeBiossegurancaBsl3Laboratorial:
-      'ALERTA OBRIGATÓRIO DE BIOSSEGURANÇA: Brucella spp. é classificada globalmente pelo CDC, OMS e MAPA como um dos agentes infecciosos de maior risco ocupacional para médicos-veterinários e técnicos de laboratório, sendo uma das principais causas de infecção laboratorial acidental no mundo (Laboratory-Acquired Infections - LAI). O processamento de amostras biológicas suspeitas sem conhecimento prévio — especialmente a manipulação de placas de cultura na bancada aberta, centrifugação de tubos sem vedação aerossol e procedimentos que geram gotículas e aerossóis — provoca infecção inalatória humana grave. Por conseguinte, é dever ético e legal indeclinável do médico-veterinário alertar de forma explícita e em destaque no formulário de encaminhamento: "SUSPEITA DE BRUCELLA CANIS — AGENTE DE CLASSE DE RISCO 3 — PROCESSAR EM CABINE DE FLUXO BIOLÓGICO CLASSE II / NÍVEL DE BIOSSEGURANÇA BSL-3".',
+      'NOTIFICAÇÃO MANDATÓRIA DE BIOSSEGURANÇA (CLASSE DE RISCO 3):\n' +
+      '- Perigo ocupacional extremo: Brucella spp. é classificada por CDC, OMS e MAPA como patógeno de alto risco inalatório e principal causa de infecções laboratoriais adquiridas (LAI).\n' +
+      '- VETO PROCEDIMENTAL: proibida a manipulação de culturas bacterianas em bancada aberta comum ou centrifugação sem copos de segurança herméticos.\n' +
+      '- DEVER ÉTICO E LEGAL DO CLÍNICO: destacar na requisição em caracteres vermelhos: "SUSPEITA DE BRUCELLA CANIS — AGENTE DE RISCO 3 — PROCESSAR EM CABINE DE FLUXO BIOLÓGICO CLASSE II / BSL-3".',
 
     pcrMolecularDnaVsBacteriaViva:
-      'Os ensaios de reação em cadeia da polimerase (PCR) convencional e em tempo real (qPCR) direcionados a sequências de inserção genômicas específicas (como IS711) ou genes estruturais (bspB) oferecem alta sensibilidade e rapidez diagnóstica, detectando quantidades ínfimas de DNA bacteriano em sangue total com EDTA, sêmen, secreções vaginais e tecidos lesados. A PCR é particularmente vantajosa em amostras contaminadas ou autolisadas nas quais a cultura é inviabilizada por sobrecrescimento de bactérias secundárias. Contudo, duas ressalvas clínicas fundamentais devem ser dominadas: (1) A PCR em sangue periférico depende da presença de bacteremia; em fases crônicas sem bacteremia, a PCR sanguínea resulta negativa enquanto o sêmen ou tecidos genitais continuam fortemente positivos; (2) A PCR detecta DNA e não microrganismos vivos viáveis, podendo permanecer positiva temporariamente após a morte bacteriana pós-antimicrobianos.',
+      'Diagnóstico molecular por PCR convencional e tempo real (qPCR):\n' +
+      '- Alvos genômicos validados: sequências de inserção genômica específicas (como IS711) e genes estruturais (bspB) oferecem alta sensibilidade e rapidez.\n' +
+      '- Amostras prioritárias: sangue total em EDTA, sêmen, descargas vaginais, aspirados de endplates vertebrais e tecidos fetais abortados autolisados.\n' +
+      '- Interpretação clínica indispensável:\n' +
+      '- PCR sanguínea negativa não descarta doença: em fases crônicas com bacteremia intermitente, o sangue pode ser negativo enquanto tecidos genitais/ossos continuam positivos.\n' +
+      '- Detecção de DNA: a PCR amplifica material genético de bactérias vivas ou mortas, podendo manter-se temporariamente positiva após antibioticoterapia.',
 
     diagnosticoPorImagemDaDiscospondilite:
-      'A investigação imaginológica é mandatória diante de dor axial em cães jovens ou suspeita de discospondilite. O exame radiográfico simples da coluna vertebral revela, em estágios estabelecidos, o clássico padrão de lise necrótica dos endplates vertebrais em soco ("hole-punch lesions"), acompanhado de colapso do espaço discal intervertebral, esclerose óssea reativa perilesional e pontes osteofíticas ventrais em múltiplos espaços discais (particularmente em C2-C5, T13-L1 e L7-S1). Não obstante, estudo multicêntrico de Moeller et al. (2025) demonstrou que o padrão "hole-punch" não é exclusivo de Brucella, ocorrendo também em infecções piogênicas comuns. A Ressonância Magnética (RM) supera amplamente a radiografia na detecção precoce (identificando 37% de lesões vertebrais ocultas no raio-X convencional), exibindo hipointensidade em T1 e hiperintensidade em T2/STIR compatíveis com edema ósseo metafisário precoce (physitis) e infiltração de tecidos moles paravertebrais.',
+      'Imaginologia vertebral e desmistificação das lesões em soco:\n' +
+      '- Radiografia simples da coluna: identifica lise necrótica dos endplates vertebrais em soco ("hole-punch lesions"), colapso do espaço discal, esclerose e pontes osteofíticas ventrais.\n' +
+      '- Desmistificação de Moeller et al. (2025): o padrão "hole-punch" não é patognomônico de Brucella, ocorrendo também em discospondilites piogênicas por Staphylococcus e Streptococcus.\n' +
+      '- Superioridade da Ressonância Magnética (RM): detecta 37% de lesões vertebrais invisíveis no raio-X, evidenciando edema de medula óssea precoce (physitis em T2/STIR) e extensão epidural.',
 
     tabelaPainelDiagnosticoSorologicoEMicrobiologico: {
       caption: 'Tabela 4 — Painel Diagnóstico de Brucella canis: Métodos, Antígenos, Desempenho e Aplicação Clínica',
@@ -515,19 +650,39 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   treatment: {
     objetivosTerapeuticosEConceitoDeAusenciaDeCura:
-      'Antes de estabelecer qualquer plano farmacológico para um paciente canino infectado por Brucella canis, o médico-veterinário deve alinhar de maneira transparente e documental as expectativas com os tutores. O Centro de Controle e Prevenção de Doenças dos Estados Unidos (CDC), as diretrizes da World Small Animal Veterinary Association (WSAVA) e as referências do acervo (Nelson & Couto; VIN) estabelecem de modo consensual que a infecção canina por B. canis deve ser considerada uma enfermidade sem garantia comprovada de cura microbiológica estéril. A localização estritamente intracelular do microrganismo nos fagossomos dos macrófagos, seu crescimento lento e o sequestro anatômico em tecidos com barreira biológica restrita (glândula prostática, disco intervertebral, tecido ósseo e câmara anterior do olho) impedem que os antibióticos erradiquem 100% da população bacteriana. Portanto, os objetivos reais da terapia consistem em: (1) Suprimir os sinais clínicos (alívio da dor na discospondilite e inflamação testicular); (2) Reduzir a carga bacterêmica; (3) Diminuir temporariamente a eliminação bacteriana em secreções; e (4) Mitigar o risco zoonótico imediato.',
+      'Alinhamento prognóstico e ausência de cura microbiológica estéril:\n' +
+      '- Consenso científico internacional (CDC, WSAVA, Nelson & Couto, VIN): a brucelose canina deve ser considerada uma enfermidade sem garantia comprovada de cura microbiológica estéril.\n' +
+      '- Fatores de persistência: replicação intracelular fagossômica, metabolismo lento e sequestro em sítios protegidos (próstata, baço, discos vertebrais e câmara ocular).\n' +
+      '- Metas terapêuticas realistas:\n' +
+      '1. Alívio de manifestações clínicas (dor axial na discospondilite, orquite e uveíte).\n' +
+      '2. Redução sustentada da carga bacterêmica e da excreção ambiental em fluidos corporais.\n' +
+      '3. Mitigação do risco zoonótico para tutores e contactantes.',
 
     protocolosAntimicrobianosCombinados:
-      'A monoterapia antimicrobiana (especialmente com fluoroquinolonas ou tetraciclinas isoladas) é formalmente condenada: ensaios clínicos demonstraram que o uso isolado de enrofloxacina promove remissão clínica temporária, mas a quase totalidade dos animais permanece bacteriêmica e culture-positive, além de selecionar rapidamente cepas mutantes resistentes. Os regimes contemporâneos recomendam obrigatoriamente a terapia combinada e prolongada: (1) Protocolo de Primeira Linha (Tetraciclina + Aminoglicosídeo): Doxiciclina na dose de 5 a 10 mg/kg por via oral a cada 12 horas durante 4 a 8 semanas consecutivas (podendo estender-se por 12 semanas em cães com discospondilite ou uveíte), associada à Gentamicina na dose de 5 mg/kg por via subcutânea a cada 24 horas durante os primeiros 7 a 14 dias de tratamento. O uso de aminoglicosídeos exige monitoramento semanal rigoroso da função renal (creatinina sérica e urinálise para pesquisa de cilindros granulosos nefrotóxicos); (2) Protocolo Alternativo Oral: Doxiciclina (10 mg/kg VO q12h) associada a Enrofloxacina (5 a 10 mg/kg VO q24h) ou Marbofloxacina (2 a 4 mg/kg VO q24h) por 6 a 12 semanas consecutivas, indicado para animais nefropatas ou em situações onde a internação para injeções diárias é inviável; (3) Minociclina (12,5 mg/kg VO q12h) figura como excelente substituta da doxiciclina por alcançar níveis teciduais prostáticos superiores.',
+      'Farmacoterapia combinada prolongada (Plumb 10ª ed.):\n' +
+      '- VETO ABSOLUTO À MONOTERAPIA: o uso isolado de enrofloxacina ou doxiciclina gera remissão temporária ilusória, mantendo bacteremia e selecionando resistência bacteriana rápida.\n' +
+      '- Protocolo de Primeira Linha (Tetraciclina + Aminoglicosídeo):\n' +
+      '- Doxiciclina: 5 a 10 mg/kg VO q12h por 4 a 8 semanas (até 12 semanas em discospondilite ou uveíte).\n' +
+      '- Gentamicina: 5 mg/kg SC q24h nos primeiros 7 a 14 dias; monitorar creatinina e cilindrúria semanalmente.\n' +
+      '- Protocolo Oral Alternativo (Nefropatas): Doxiciclina (10 mg/kg VO q12h) associada a Enrofloxacina (5 a 10 mg/kg VO q24h) ou Minociclina (12,5 mg/kg VO q12h) por 6 a 12 semanas.',
 
     papelDaCirurgiaCastracaoEEnucleacao:
-      'A esterilização cirúrgica (orquiectomia bilateral com ablação escrotal em machos e ovariohisterectomia em fêmeas) constitui uma medida terapêutica adjuvante fundamental, devendo ser executada assim que o paciente estiver clinicamente estável sob cobertura antimicrobiana. A cirurgia remove as principais massas de tecido sob influência hormonal esteroide que sustentam a multiplicação massiva de B. canis, interrompe em definitivo a via de transmissão venérea e obstétrica e reduz drasticamente o volume de secreções genitais e descargas vaginais contaminantes. ALERTA CRÍTICO: a castração NÃO cura a brucelose. No cão macho, a próstata permanece infectada e atua como reservatório crônico contínuo, mantendo a eliminação bacteriana viável na urina por meses ou anos. Em casos de uveíte refratária unilateral severa com dor intratável, descolamento de retina ou glaucoma secundário cego, a enucleação cirúrgica do olho afetado deve ser considerada para controle do foco persistente de replicação bacteriana.',
+      'Manejo cirúrgico de barreira e controle de focos:\n' +
+      '- Esterilização cirúrgica prioritária: OSH em fêmeas e orquiectomia com ablação escrotal em machos sob antibioticoterapia reduzem massas teciduais sob influência esteroide e secreções genitais.\n' +
+      '- VETO AO CONCEITO DE CURA PELA CASTRAÇÃO: a orquiectomia NÃO esteriliza o macho; a próstata permanece infectada e continua excretando bactérias viáveis na urina por meses ou anos.\n' +
+      '- Enucleação em uveíte refratária: indicada em olhos cegos dolorosos com descolamento de retina ou glaucoma secundário para eliminar sítio santuário de replicação bacteriana.',
 
     precaucoesCirurgicasEEpiOcupacional:
-      'Qualquer procedimento cirúrgico executado em um paciente infectado por Brucella (incluindo castrações, biópsias ósseas, cirurgias espinhais de descompressão ou enucleações) impõe a adoção imediata de protocolos rigorosos de biossegurança ocupacional pela equipe veterinária. O contato inadvertido com sangue contaminado, secreções prostáticas ou tecidos reprodutivos representa uma rota frequente de transmissão zoonótica para cirurgiões e assistentes. Todo o corpo clínico deve utilizar Equipamentos de Proteção Individual (EPI) completos: avental cirúrgico impermeável, luvas duplas de procedimento, máscara de proteção respiratória com filtro de partículas de alta eficiência (N95 ou PFF2) e óculos de proteção facial com vedação lateral para evitar respingos em mucosa conjuntival. Todos os instrumentais cirúrgicos e campos devem ser imersos em solução desinfetante apropriada antes da lavagem e autoclavagem, e o material biológico extirpado deve ser acondicionado em recipientes herméticos identificados como risco biológico classe 3.',
+      'Biossegurança no bloco cirúrgico e proteção da equipe:\n' +
+      '- Alto risco de exposição zoonótica: procedimentos invasivos (castrações, descompressões vertebrais, biópsias) liberam sangue e fluidos com alta carga bacteriana.\n' +
+      '- Paramentação de barreira obrigatória: avental cirúrgico impermeável, luvas duplas de procedimento, máscara respiratória N95/PFF2 e óculos com vedação lateral contra aerossóis.\n' +
+      '- Descontaminação instrumental: imersão imediata de instrumentais em desinfetante adequado antes da limpeza mecânica e autoclavagem; resíduos acondicionados em sacos de risco biológico classe 3.',
 
     monitoramentoTerapeuticoECriteriosDeRecidiva:
-      'O acompanhamento longitudinal pós-tratamento deve estender-se por toda a vida do paciente, com reavaliações clínicas e laboratoriais estruturadas a cada 2 a 3 meses no primeiro ano e semestrais subsequentemente. A melhora dos sinais clínicos e a regressão da dor vertebral na discospondilite não devem ser interpretadas isoladamente como erradicação do agente. Nos centros diagnósticos que dispõem do Canine Brucella Multiplex (CBM), uma redução persistente de cerca de 40% nos níveis de anticorpos contra o antígeno PO1 entre 2 e 6 meses pós-terapia correlaciona-se com bom controle clínico e redução da carga de bacteremia (Guarino et al., 2023). Testes como 2ME-RSAT e AGID II devem ser repetidos periodicamente. Se o cão voltar a apresentar elevação nos títulos sorológicos, piora da proteinúria, retorno da dor axial ou sinais de prostatite, considera-se instalada a recidiva bacteriológica, impondo a instituição de novo ciclo antimicrobiano com regime combinado alternativo.',
+      'Vigilância longitudinal e critérios de recidiva:\n' +
+      '- Periodicidade de monitoramento: reavaliações clínicas e laboratoriais a cada 2 a 3 meses no primeiro ano e semestrais subsequentemente por toda a vida do paciente.\n' +
+      '- Marcadores de resposta pelo CBM: queda sustentada de ~40% nos níveis de anticorpos contra o antígeno PO1 entre 2 e 6 meses pós-terapia indica bom controle clínico (Guarino et al., 2023).\n' +
+      '- Diagnóstico de recidiva clínica: elevação de títulos no 2ME-RSAT/AGID II, retorno da dor axial na discospondilite ou prostatite exigem novo ciclo combinado com esquema alternativo.',
 
     tabelaProtocolosAntimicrobianosEMonitoramento: {
       caption: 'Tabela 6 — Regimes Farmacoterapêuticos Combinados e Monitoramento na Brucelose Canina',
@@ -574,27 +729,65 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
 
   complications: {
     complicacoesCriticasECronicidade:
-      'As complicações clínicas decorrentes da infecção crônica por Brucella canis manifestam-se pela incapacidade do sistema imune de debelar o foco infeccioso intracelular: (1) Discospondilite compressiva destrutiva com colapso vertebral, subluxação e paraplegia irreversível por compressão medular ou síndrome de cauda equina; (2) Insuficiência renal progressiva e azotemia secundárias a glomerulonefrite membranoproliferativa crônica induzida pelo depósito contínuo de imunocomplexos; (3) Perda permanente da visão por endoftalmite, descolamento de retina exsudativo ou glaucoma secundário intratável; (4) Endocardite bacteriana com insuficiência cardíaca congestiva aguda; (5) Formação de abscessos e cistos prostáticos refratários em cães machos; (6) Recidivas bacterêmicas intermitentes imprevisíveis meses ou anos após o término aparente da terapia antimicrobiana.',
+      'Quadro evolutivo e complicações graves da infecção crônica por Brucella canis:\n' +
+      '- Discospondilite compressiva destrutiva: colapso vertebral, subluxação e paraplegia irreversível por compressão medular ou síndrome de cauda equina.\n' +
+      '- Glomerulonefrite membranoproliferativa: insuficiência renal progressiva e azotemia secundárias ao depósito crônico e contínuo de imunocomplexos circulantes.\n' +
+      '- Sequelas oftálmicas permanentes: perda visual irreversível decorrente de endoftalmite, descolamento de retina exsudativo ou glaucoma secundário intratável.\n' +
+      '- Lesões cardiovasculares e geniturinárias: endocardite bacteriana com insuficiência cardíaca congestiva aguda e abscessos ou cistos prostáticos refratários em machos.\n' +
+      '- Recidivas bacterêmicas intermitentes: reativação imprevisível meses ou anos após o término aparente da antibioticoterapia pela persistência intracelular.',
 
     dezErrosFataisBrucelose:
-      'DEZ ERROS CLÁSSICOS E ARMADILHAS LETAIS NO DIAGNÓSTICO E MANEJO DA BRUCELOSE EM CÃES E GATOS: (1) Solicitar testes sorológicos de rotina para brucelose bovina (smooth Brucella como B. abortus) e concluir falsamente que o cão está livre da doença: Brucella canis possui lipopolissacarídeo rough e exige testes formulados com antígenos rough específicos (CBM, 2ME-RSAT, AGID II); (2) Descartar a suspeita de brucelose canina pelo fato de o animal ser castrado ou virgem: a transmissão oronasal não venérea por urina, fômites e aerossol é frequente, e animais castrados representam parcela expressiva dos pacientes com discospondilite; (3) Assumir que lesões em soco ("hole-punch") nos endplates vertebrais confirmam patognomonicamente B. canis: o estudo multicêntrico de Moeller et al. (2025) comprovou que Staphylococcus e Streptococcus provocam aspecto radiográfico idêntico, exigindo confirmação laboratorial; (4) Descartar discospondilite bacteriana pela ausência de febre ou leucocitose: 86% dos cães com discospondilite por B. canis são normotérmicos e a maioria não apresenta neutrofilia na admissão; (5) Enviar amostras de sangue, sêmen ou tecidos para cultura microbiológica sem alertar ostensivamente o laboratório: Brucella é um patógeno de alto risco ocupacional BSL-3 por aerossóis, expondo a equipe técnica a infecções laboratoriais graves se manipulado em bancada comum; (6) Prescrever monoterapia antimicrobiana com enrofloxacina ou doxiciclina isoladas: monoterapia resulta em falha microbiológica quase universal e rápida seleção de cepas resistentes; (7) Afirmar ao tutor que o cão está "curado" após a melhora clínica ou soronegativação pós-antibióticos: o CDC estabelece que não existe garantia de cura microbiológica estéril, mantendo-se o risco de recidiva tardia e transmissão; (8) Acreditar que a orquiectomia esteriliza o cão macho: a próstata permanece colonizada por B. canis e o animal continua eliminando microrganismos na urina; (9) Liberar cadelas que abortaram ou machos tratados para retorno à atividade reprodutiva: cães que tiveram brucelose confirmada devem ser excluídos permanentemente da procriação; (10) Negligenciar a investigação e a orientação de contactantes humanos: tutores expostos a abortamentos, crianças pequenas e imunossuprimidos correm risco de contrair a zoonose, devendo ser formalmente orientados a buscar avaliação médica.',
+      'Dez erros clássicos e armadilhas letais no diagnóstico e manejo da brucelose:\n' +
+      '- (1) Testagem com antígeno incompatível: solicitar sorologia para brucelose bovina (smooth Brucella como B. abortus) e presumir negatividade; B. canis possui lipopolissacarídeo rough e requer testes específicos (CBM, 2ME-RSAT, AGID II).\n' +
+      '- (2) Descarte da suspeita em animais castrados ou virgens: ignorar que a transmissão oronasal não venérea por urina e fômites é frequente, compondo parcela expressiva dos pacientes com discospondilite.\n' +
+      '- (3) Assunção patognomônica de imagem vertebral: presumir que lise em soco ("hole-punch") nos endplates confirme B. canis; Moeller et al. (2025) comprovaram que Staphylococcus e Streptococcus provocam lesões idênticas.\n' +
+      '- (4) Descarte por ausência de febre ou leucocitose: desconsiderar que 86% dos cães com discospondilite por B. canis são normotérmicos e a maioria não manifesta neutrofilia na admissão.\n' +
+      '- (5) Envio de amostras sem alerta de risco biológico: remeter sangue, sêmen ou tecidos para cultura sem avisar o laboratório; Brucella é patógeno de alto risco ocupacional BSL-3 por aerossóis.\n' +
+      '- (6) Prescrição de monoterapia antimicrobiana: utilizar enrofloxacina ou doxiciclina isoladas, o que acarreta falha microbiológica quase universal e rápida seleção de cepas resistentes.\n' +
+      '- (7) Promessa de cura microbiológica estéril: afirmar cura após melhora clínica ou soronegativação transitória; o CDC estabelece que não há garantia de cura estéril, persistindo risco de recidiva tardia.\n' +
+      '- (8) Confiança na castração como cura esterilizante: acreditar que a orquiectomia esteriliza o macho; a próstata permanece colonizada por B. canis e o cão segue eliminando bactérias na urina.\n' +
+      '- (9) Retorno de animais tratados à reprodução: permitir que cadelas que abortaram ou machos tratados voltem a cruzar; animais confirmados devem sofrer exclusão reprodutiva permanente.\n' +
+      '- (10) Negligência com a saúde dos contactantes humanos: omitir orientação a tutores expostos a abortos, crianças e imunossuprimidos; a transmissão zoonótica exige encaminhamento médico imediato.',
 
     protocoloPlantaoBrucelose10Passos:
-      'PROTOCOLO DE PLANTÃO: ABORDAGEM SEQUENCIAL EM 10 PASSOS DA BRUCELOSE NA EMERGÊNCIA E INTERNAÇÃO: (1) Passo 1 - Triagem Imediata e Reconhecimento de Risco: Identificar aborto recente no terço final, orquite/epididimite aguda ou dor espinhal axial em cão jovem; isolar o paciente imediatamente em canil individual de contenção biológica; (2) Passo 2 - Paramentação e Proteção da Equipe com EPI Completo: Proibir manipulação desprotegida; exigir uso mandatório de luvas de procedimento, máscara N95/PFF2, óculos com vedação lateral e avental impermeável por toda a equipe; (3) Passo 3 - Manejo Seguro de Materiais Biológicos de Abortamento: Recolher restos placentários, secreções uterinas e fetos com luvas duplas e pinças; acondicionar imediatamente em sacos de risco biológico herméticos para incineração ou fixação em formol se for solicitada necropsia; (4) Passo 4 - Coleta Estratégica de Amostras para Triagem Sorológica: Colher sangue total em tubo sem anticoagulante para obtenção de soro; solicitar imediatamente teste de aglutinação específico para antígeno rough (2ME-RSAT ou encaminhamento para CBM Luminex); (5) Passo 5 - Notificação Obrigatória em Amostras de Cultura (Alerta BSL-3): Se forem colhidas hemoculturas, raspado vaginal ou sêmen, escrever na guia laboratorial em letras garrafais vermelhas: "SUSPEITA DE BRUCELLA CANIS - RISCO BSL-3 POR AEROSSOL"; (6) Passo 6 - Descontaminação Ambiental Rigorosa: Lavar o ambiente com detergente neutro para remoção de toda a matéria orgânica e desinfetar com hipoclorito de sódio a 1% ou quaternário de amônio por no mínimo 20 minutos de contato; (7) Passo 7 - Início de Antibioticoterapia Combinada Hospitalar: Instituir Doxiciclina 10 mg/kg VO q12h associada a Gentamicina 5 mg/kg SC q24h (se função renal intacta) ou Enrofloxacina 10 mg/kg VO q24h; (8) Passo 8 - Avaliação Radiográfica ou Tomográfica Vertebral: Em cães com claudicação ou dor lombar/cervical, realizar estudo radiográfico ortogonal de toda a coluna para rastreamento de discospondilite multifocal e colapso discal; (9) Passo 9 - Programação de Esterilização Cirúrgica de Barreira: Agendar OSH ou orquiectomia eletiva assim que o animal estiver medicado e estável, comunicando à equipe cirúrgica os protocolos de biossegurança de campo; (10) Passo 10 - Orientação Documental One Health e Encaminhamento Médico: Emitir termo de consentimento livre e esclarecido ao tutor descrevendo o caráter zoonótico incurável da enfermidade; se houver histórico de exposição humana direta a tecidos de aborto ou secreções, orientar formalmente avaliação médica infectológica imediata.',
+      'Protocolo de plantão: abordagem sequencial em 10 passos na emergência e internação:\n' +
+      '- Passo 1 - Triagem imediata e contenção de risco: identificar aborto recente no terço final, orquite/epididimite aguda ou dor espinhal axial em cão jovem; isolar o paciente imediatamente em canil individual de contenção biológica.\n' +
+      '- Passo 2 - Paramentação e proteção da equipe com EPI: vedar manipulação desprotegida; exigir uso mandatório de luvas de procedimento, máscara N95/PFF2, óculos com vedação lateral e avental impermeável por toda a equipe.\n' +
+      '- Passo 3 - Manejo seguro de materiais biológicos de abortamento: recolher restos placentários, secreções uterinas e fetos com pinças e luvas duplas; acondicionar imediatamente em sacos herméticos de risco biológico para incineração ou fixação em formol.\n' +
+      '- Passo 4 - Coleta estratégica de amostras para triagem sorológica: colher sangue total sem anticoagulante para sorologia com antígeno rough específico (2ME-RSAT ou encaminhamento para CBM Luminex de referência).\n' +
+      '- Passo 5 - Notificação obrigatória em amostras de cultura (alerta BSL-3): na remessa de hemocultura, lavado prostático ou tecidos, rotular na guia laboratorial em destaque: "SUSPEITA DE BRUCELLA CANIS - RISCO BSL-3 POR AEROSSOL".\n' +
+      '- Passo 6 - Descontaminação ambiental imediata: lavar o recinto com detergente neutro para remoção da matéria orgânica e desinfetar com hipoclorito de sódio a 1% ou quaternário de amônio por contato mínimo de 20 minutos.\n' +
+      '- Passo 7 - Início de antibioticoterapia combinada hospitalar: instituir Doxiciclina 10 mg/kg VO q12h associada a Gentamicina 5 mg/kg SC q24h (se função renal intacta) ou Enrofloxacina 10 mg/kg VO q24h.\n' +
+      '- Passo 8 - Avaliação radiográfica ou tomográfica vertebral: em cães com claudicação ou dor lombar/cervical, realizar estudo radiográfico ortogonal de toda a coluna para rastreamento de discospondilite multifocal e colapso discal.\n' +
+      '- Passo 9 - Programação de esterilização cirúrgica de barreira: agendar OSH ou orquiectomia eletiva assim que o animal estiver medicado e clinicamente estável, comunicando à equipe os protocolos de biossegurança de campo.\n' +
+      '- Passo 10 - Orientação documental One Health e encaminhamento médico: emitir termo de consentimento livre e esclarecido descrevendo o caráter zoonótico incurável da enfermidade; orientar formalmente avaliação médica infectológica imediata para tutores expostos.',
   },
 
   prevention: {
     triagemPreReprodutivaEQuarentena:
-      'A prevenção primária da brucelose canina depende intrinsecamente de programas estruturados de triagem sorológica pré-reprodutiva. Machos padreadores e fêmeas matrizes devem ser obrigatoriamente testados através de ensaios com antígeno rough específico (CBM ou 2ME-RSAT confirmado por AGID II) no período que antecede cada cobertura planejada ou procedimento de inseminação artificial. O rastreamento deve incluir cães virgens e primíparas, uma vez que a transmissão oronasal não venérea por contato ambiental e a infecção congênita subclínica são frequentes. Todo animal recém-adquirido ou proveniente de outros criatórios, abrigos ou estados deve permanecer em quarentena estrita por no mínimo 4 a 8 semanas, sendo submetido a duas testagens sorológicas consecutivas espaçadas por 30 a 60 dias para cobrir integralmente a janela imunológica de soroconversão antes de sua introdução ao plantel.',
+      'Triagem sorológica pré-reprodutiva e quarentena de ingresso:\n' +
+      '- Testagem reprodutiva mandatória: machos padreadores e matrizes devem ser obrigatoriamente testados por ensaios com antígeno rough específico (CBM ou 2ME-RSAT confirmado por AGID II) antes de cada cobertura planejada ou inseminação artificial.\n' +
+      '- Inclusão de animais virgens e jovens: rastrear cães jovens e primíparas, considerando a elevada frequência de transmissão oronasal não venérea por contato ambiental e infecções congênitas subclínicas.\n' +
+      '- Protocolo rigoroso de quarentena: novos ingressantes devem permanecer em quarentena estrita por 4 a 8 semanas, com duas testagens sorológicas consecutivas espaçadas por 30 a 60 dias para cobrir a janela imunológica antes do contato com o plantel.',
 
     manejoSanitarioDeCriatoriosEAbandonoDaReproducao:
-      'A detecção de um único animal positivo para B. canis em um canil comercial ou abrigo não representa um caso isolado, mas sim uma emergência sanitária de rebanho. O protocolo de contenção exige: (1) Interrupção imediata de todas as cruzas, montas e vendas de filhotes no estabelecimento; (2) Isolamento físico e espacial rigoroso de todos os animais reagentes e suspeitos; (3) Testagem sorológica universal de 100% dos cães do canil com repetição a cada 30 dias até que todo o plantel permaneça soronegativo por dois testes consecutivos; (4) Descarte reprodutivo definitivo e esterilização cirúrgica incondicional de todos os cães diagnosticados como positivos; (5) Cães confirmados para brucelose JAMAIS devem retornar à reprodução, mesmo após aparente remissão clínica ou redução de títulos sorológicos, devido ao risco perpétuo de recidiva bacterêmica e disseminação.',
+      'Manejo sanitário de criatórios, contenção de surtos e descarte reprodutivo:\n' +
+      '- Bloqueio sanitário imediato: interrupção imediata de cruzas, montas e comercialização de animais ao identificar qualquer paciente positivo no estabelecimento.\n' +
+      '- Isolamento físico e testagem universal: segregação física estrita dos reagentes e triagem sorológica de 100% dos cães a cada 30 dias até a obtenção de dois testes negativos consecutivos em todo o plantel.\n' +
+      '- Descarte reprodutivo definitivo: esterilização cirúrgica incondicional de cães positivos e veto perpétuo ao retorno reprodutivo, eliminando o risco persistente de recidiva bacterêmica e disseminação.',
 
     inexistenciaDeVacinaCanina:
-      'Até o presente momento (setembro de 2026), NÃO existe qualquer vacina comercialmente aprovada, segura e eficaz contra a Brucella canis no mercado veterinário mundial. As vacinas atenuadas utilizadas em animais de produção contra B. abortus (cepa B19 ou RB51) e B. melitensis (cepa Rev 1) são formuladas para espécies lisas, induzem virulência excessiva e doença ativa em canídeos, e não conferem imunidade cruzada protetora contra o fenótipo rough de B. canis. A imunoprofilaxia ativa em cães permanece como uma lacuna tecnológica global crítica (Revisão One Health, 2026), tornando a biossegurança de manejo, a quarentena e a eutanásia ou segregação de animais positivos as únicas estratégias epidemiológicas efetivas de controle populacional.',
+      'Cenário imunoprofilático e inexistência de vacina canina:\n' +
+      '- Ausência de vacinas comerciais: inexiste qualquer vacina aprovada, segura e eficaz contra Brucella canis no mercado veterinário global até o presente momento (2026).\n' +
+      '- Ineficácia de cepas vacinais de produção: imunizantes atenuados para ruminantes (cepas B19 e RB51 de B. abortus e Rev 1 de B. melitensis) induzem doença ativa em canídeos e não conferem imunidade cruzada ao fenótipo rough.\n' +
+      '- Centralidade da biossegurança: sem imunoprofilaxia ativa, a biossegurança estrita, triagem sorológica prévia, quarentena e exclusão reprodutiva constituem as únicas ferramentas epidemiológicas eficazes.',
 
     saudePublicaOneHealthEZoonoseHumana:
-      'A Brucella canis é uma zoonose de notória relevância em Saúde Pública e One Health. Embora historicamente considerada "menos virulenta" para o ser humano que B. melitensis ou B. abortus, revisão sistemática publicada em 2025 avaliando casos humanos confirmados demonstrou que 80% das infecções humanas com fonte epidemiológica identificada decorreram de contato direto com cães domésticos infectados, enquanto 20% foram infecções ocupacionais de técnicos de laboratório. Nos seres humanos, a brucelose por B. canis manifesta-se por síndrome febril prolongada inespecífica, fadiga crônica debilitante, cefaleia, sudorese noturna, mialgia, artralgia, perda de peso e potencial evolução para discospondilite ou endocardite. O subdiagnóstico em medicina humana é alarmante, pois os hospitais e laboratórios clínicos utilizam quase exclusivamente testes sorológicos para Brucella smooth, incapazes de identificar B. canis. No Brasil, o Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Brucelose Humana aprovado pelo Ministério da Saúde em 2025 reconhece explicitamente B. canis como patógeno zoonótico emergente. Estados como Minas Gerais instituíram notificação compulsória para casos suspeitos de brucelose humana. No âmbito da saúde animal federal (Instrução Normativa MAPA nº 50/2013), B. canis não consta nominalmente na lista compulsória direta de notificação como B. suis e B. abortus, devendo o clínico consultar exigências estaduais específicas e notificar a vigilância sanitária local diante de surtos populacionais ou exposição humana comprovada.',
+      'Saúde pública, abordagem One Health e vigilância epidemiológica:\n' +
+      '- Relevância zoonótica e transmissão: 80% das infecções humanas com fonte epidemiológica identificada decorrem do contato direto com cães infectados (tecidos de abortamento, urina, secreções) e 20% de acidentes laboratoriais por aerossóis.\n' +
+      '- Quadro clínico no ser humano: síndrome febril prolongada inespecífica, fadiga crônica debilitante, sudorese noturna, mialgia, cefaleia, perda de peso e potencial evolução para discospondilite ou endocardite.\n' +
+      '- Subdiagnóstico hospitalar crônico: testes sorológicos humanos de rotina utilizam quase exclusivamente antígenos smooth (B. abortus), sendo incapazes de identificar B. canis e retardando a conduta médica.\n' +
+      '- Diretrizes oficiais e notificação: o PCDT de Brucelose Humana do Ministério da Saúde (2025) reconhece B. canis como patógeno emergente; estados como MG exigem notificação compulsória para casos humanos suspeitos.',
   },
 
   references: [
@@ -766,7 +959,9 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
       id: 'figura-1-discospondilite-hole-punch',
       title: 'Discospondilite por Brucella canis: Lesões Líticas dos Endplates em Radiografia e Ressonância',
       legend:
-        'Aspecto imaginológico clássico da discospondilite canina por B. canis exibindo lise central e irregularidade das placas terminais vertebrais ("hole-punch lesions") e estreitamento do espaço intervertebral. Conforme alertado por Moeller et al. (2025), o padrão lítico não é patognomônico e requer confirmação etiológica laboratorial sob isolamento de biossegurança.',
+        'Aspecto imaginológico da discospondilite canina por B. canis:\n' +
+        '- Lise vertebral típica: destruição osteolítica central e irregularidade das placas terminais vertebrais ("hole-punch lesions") com estreitamento do espaço discal intervertebral.\n' +
+        '- Armadilha diagnóstica: o padrão lítico não é patognomônico (Moeller et al., 2025), exigindo confirmação laboratorial sorológica e microbiológica em condições de biossegurança.',
       url: '/consulta-vet/brucelose-caes-gatos/discospondilite-lise-endplates-hole-punch-brucelose.jpg',
       aspectRatio: '3:2',
     },
@@ -774,7 +969,9 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
       id: 'figura-2-fisiopatologia-rough-lps-macrofago',
       title: 'Fisiopatologia Molecular e Fenótipo Rough de Brucella canis',
       legend:
-        'Esquema demonstrativo da infecção intracelular de B. canis em macrófagos e células dendríticas. A ausência da cadeia O-polissacarídica no lipopolissacarídeo (fenótipo rough) confere escape à imunidade inata e impede a detecção por testes sorológicos padronizados para Brucella smooth (B. abortus/B. melitensis), perpetuando bacteremia crônica de 6 a 64 meses.',
+        'Fisiopatologia celular e biologia do fenótipo rough de B. canis:\n' +
+        '- Evasão fagocítica: invasão e sobrevivência intracelular persistente no interior de macrófagos e células dendríticas, escapando da clivagem lisossomal.\n' +
+        '- Fenótipo rough: a ausência da cadeia O-polissacarídica no LPS mascara a bactéria de testes sorológicos smooth padronizados (B. abortus) e sustenta bacteremia crônica de 6 a 64 meses.',
       url: '/consulta-vet/brucelose-caes-gatos/fisiopatologia-brucella-canis-rough-lps-macrofago.jpg',
       aspectRatio: '3:2',
     },
@@ -782,7 +979,9 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
       id: 'figura-3-orquite-epididimite-dermatite-escrotal',
       title: 'Síndrome Reprodutiva no Macho: Epididimite, Orquite e Atrofia Testicular',
       legend:
-        'Manifestações clínicas no trato reprodutor do cão macho: aumento volumétrico doloroso e dermatite escrotal aguda por automutilação, evoluindo cronicamente para atrofia testicular fibrosa, espermatozoides anormais (>90%) e infertilidade por autoanticorpos antiespermatozoides.',
+        'Manifestações clínicas reprodutivas no cão macho:\n' +
+        '- Fase aguda: aumento volumétrico testicular doloroso, epididimite marcada e dermatite escrotal secundária à lambedura constante por prurido e algia.\n' +
+        '- Fase crônica: atrofia testicular fibrosa, assimetria gonadal, oligospermia com mais de 90% de espermatozoides anormais e infertilidade por autoanticorpos antiespermatozoides.',
       url: '/consulta-vet/brucelose-caes-gatos/orquite-epididimite-dermatite-escrotal-brucelose-canina.jpg',
       aspectRatio: '3:2',
     },
@@ -790,7 +989,9 @@ export const bruceloseCaesGatosRecord: DiseaseRecord = {
       id: 'figura-4-algoritmo-diagnostico-one-health',
       title: 'Algoritmo Diagnóstico Integrado e Manejo One Health na Brucelose Canina',
       legend:
-        'Fluxograma para abordagem clínica da suspeita de B. canis: triagem sorológica com antígeno rough (CBM/RSAT 2-ME), confirmação por AGID II / PCR, precauções máximas de biossegurança ocupacional (BSL-3 em laboratório), protocolo terapêutico combinado (Doxiciclina + Aminoglicosídeo/Enrofloxacina) e conscientização sobre a ausência de garantia de cura microbiológica.',
+        'Fluxograma integrado de diagnóstico e manejo One Health da brucelose canina:\n' +
+        '- Triagem e confirmação: testagem com antígeno rough específico (CBM ou 2ME-RSAT) confirmada por AGID II e PCR de sangue ou tecidos suspeitos.\n' +
+        '- Biossegurança e terapia: manipulação em nível BSL-3 em laboratório, terapia combinada de Doxiciclina com Gentamicina ou Enrofloxacina e esclarecimento sobre ausência de cura estéril.',
       url: '/consulta-vet/brucelose-caes-gatos/algoritmo-diagnostico-manejo-one-health-brucelose.jpg',
       aspectRatio: '3:2',
     },

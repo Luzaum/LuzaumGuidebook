@@ -43,7 +43,13 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
   plainLanguage: DISEASE_PLAIN_LANGUAGE['hipertireoidismo-felino'],
 
   quickSummary:
-    'O hipertireoidismo é a endocrinopatia mais comum em gatos geriátricos (>8 anos), causada em mais de 98% dos casos por hiperplasia adenomatosa multinodular ou adenoma benigno autônomo (carcinomas correspondem a apenas 1-2%). O excesso sustentado de tiroxina (T4) e tri-iodotironina (T3) acelera o metabolismo basal, induzindo perda de peso progressiva apesar de polifagia voraz, taquicardia sinusal, hiperatividade, vômitos e bócio palpável. Acomete o sistema cardiovascular gerando cardiomiopatia tireotóxica e hipertensão arterial sistêmica em até 25-30% dos pacientes. Um dos maiores desafios clínicos reside na inter-relação tireoide-rim: a tireotoxicose aumenta a taxa de filtração glomerular (hiperfiltração) e a sarcopenia reduz a massa muscular, mascarando uma Doença Renal Crônica (DRC) preexistente em até 40% dos animais. O diagnóstico confirma-se por T4 total elevado, exigindo T4 livre por diálise e TSH suprimido nos casos limítrofes. A cintilografia com tecnécio-99m é o padrão-ouro anatômico-funcional. A radioiodoterapia (I-131) é a modalidade curativa de primeira linha de escolha; o metimazol oral/transdérmico e a dieta com estrita restrição de iodo controlam a secreção hormonal, mas não destroem o nódulo progressivo.',
+    'Endocrinopatia mais comum em felinos idosos (> 8 anos) caracterizada por hipermetabolismo multissistêmico:\n\n' +
+    '- Etiopatogenia primária: hiperplasia adenomatosa multinodular ou adenoma benigno autônomo em >98% dos casos; carcinomas foliculares respondem por apenas 1 a 2%.\n' +
+    '- Manifestações clínicas capitais: perda ponderal progressiva com polifagia voraz, taquicardia sinusal marcante, hiperatividade, vômitos e nódulo tireoidiano palpável (thyroid slip).\n' +
+    '- Repercussões hemodinâmicas: cardiomiopatia tireotóxica com hipertrofia concêntrica e hipertensão arterial sistêmica (PAS >= 160 mmHg) em 25 a 30% dos gatos.\n' +
+    '- Eixo nefrorrenal e DRC mascarada: a tireotoxicose induz hiperfiltração glomerular e sarcopenia, mascarando Doença Renal Crônica subjacente em até 40% dos pacientes.\n' +
+    '- Confirmação laboratorial: T4 total sérico elevado como triagem; T4 livre por diálise de equilíbrio e TSH suprimido para casos limítrofes; cintilografia com 99mTc como padrão-ouro anatômico.\n' +
+    '- Estratégia terapêutica: Radioiodoterapia (I-131) como padrão-ouro curativo definitivo; metimazol e restrição nutricional de iodo como controle farmacológico ou dietético de manutenção.',
 
   quickDecisionStrip: [
     'Gato idoso emagrecendo com apetite voraz + taquicardia (>220 bpm) + nódulo tireoidiano palpável = suspeita máxima; palpação cuidadosa em "pinça" do sulco jugular identifica o nódulo em >80-85% dos casos.',
@@ -61,7 +67,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
   ],
 
   quickSummaryRich: {
-    lead: 'O hipertireoidismo felino é uma condição multissistêmica hipermetabólica hiperadrenérgica. Apresenta repercussões hemodinâmicas profundas no miocárdio e na circulação renal, exigindo abordagem metódica para restaurar o eutireoidismo sem precipitar colapso da filtração glomerular ou hipotireoidismo iatrogênico.',
+    lead:
+      'Condição multissistêmica hipermetabólica e hiperadrenérgica em felinos geriátricos:\n\n' +
+      '- Impacto cardiovascular e renal: repercussões hemodinâmicas profundas no miocárdio e na microcirculação glomerular.\n' +
+      '- Meta clínica primordial: restaurar o eutireoidismo sustentado sem induzir colapso da filtração renal ou hipotireoidismo iatrogênico.',
     leadHighlights: [
       'Hiperplasia adenomatosa autônoma (>98%)',
       'Desmascaramento da DRC pós-eutireoidismo',
@@ -73,22 +82,35 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
     pillars: [
       {
         title: 'Pilar 1: Diagnóstico Laboratorial Estruturado e Armadilhas',
-        body: 'O T4 total sérico é o teste de triagem primordial. Em pacientes geriátricos com nódulo palpável e clínica sugestiva, valores acima do intervalo de referência consolidam o diagnóstico. Em gatos limítrofes ou com comorbidades não tireoidianas (eutireoideo doente), a repetição em 2 a 4 semanas associada à dosagem de T4 livre por diálise em equilíbrio e TSH endógeno felino suprimido confirma o diagnóstico com alta precisão.',
+        body:
+          'Abordagem diagnóstica estratificada e conduta em casos limítrofes:\n\n' +
+          '- Triagem obrigatória: T4 total sérico elevado em pacientes geriátricos com nódulo palpável e sinais clínicos consolida o diagnóstico.\n' +
+          '- Casos duvidosos ou comorbidades (eutireoideo doente): dosagem de T4 livre por diálise em equilíbrio e TSH felino profundamente suprimido confirmam a secreção autônoma.',
         highlights: ['T4 total como triagem obrigatória', 'T4 livre por diálise para casos limítrofes', 'TSH indetectável/suprimido']
       },
       {
         title: 'Pilar 2: Inter-relação Nefrorrenal (DRC Mascarada)',
-        body: 'O excesso de T3 e T4 provoca vasodilatação renal e elevação acentuada da taxa de filtração glomerular (hiperfiltração), além de sarcopenia por catabolismo muscular, resultando em creatinina sérica artificialmente baixa. A resolução do hipertireoidismo desmascara a DRC em até 40% dos casos. O objetivo terapêutico é o eutireoidismo estável; nunca se deve permitir tireotoxicose residual para "proteger" a creatinina.',
+        body:
+          'Mecanismos de hiperfiltração e manejo nefrorrenal rigoroso:\n\n' +
+          '- Hemodinâmica glomerular: a vasodilatação renal mediada por T3/T4 e a sarcopenia catabólica reduzem artificialmente a creatinina sérica.\n' +
+          '- Desmascaramento de DRC: a restauração do eutireoidismo reduz a TFG e revela nefropatia prévia em até 40% dos gatos.\n' +
+          '- Princípio inegociável: o objetivo terapêutico é sempre o eutireoidismo estável, sendo contraindicado manter tireotoxicose ativa sob pretexto de preservar a filtração renal.',
         highlights: ['Hiperfiltração e creatinina falsamente reduzida', 'Desmascaramento em 15-40% pós-tratamento', 'Manter eutireoidismo sem hipotireoidismo']
       },
       {
         title: 'Pilar 3: Cardiomiopatia Tireotóxica e Risco Vascular',
-        body: 'A estimulação beta-adrenérgica direta e indireta causa taquicardia severa, aumento da contratilidade, hipertensão arterial sistêmica e sobrecarga diastólica/sistólica, culminando em hipertrofia ventricular concêntrica secundária. O controle álgico-cardiovascular inicial com betabloqueadores (atenolol) reduz a demanda miocárdica de oxigênio enquanto as terapias antitireoidianas diminuem os hormônios circulantes.',
+        body:
+          'Efeitos hemodinâmicos da estimulação adrenérgica crônica:\n\n' +
+          '- Sobrecarga cardíaca: taquicardia severa, aumento de contratilidade e elevação pressórica induzem hipertrofia concêntrica reversível do ventrículo esquerdo.\n' +
+          '- Manejo sintomático: betabloqueadores (atenolol) controlam arritmias e reduzem o consumo miocárdico de oxigênio durante a estabilização antitireoidiana.',
         highlights: ['Hipertrofia concêntrica reversível', 'Risco de edema pulmonar agudo e efusão pleural', 'Atenolol e controle da PAS por Doppler']
       },
       {
         title: 'Pilar 4: Escolha Terapêutica Racional (Curativa vs Manutenção)',
-        body: 'A radioiodoterapia com I-131 é a conduta curativa de eleição com mais de 95% de eficácia em dose única, poupando paratireoides e tecido normal. O metimazol/tiamazol oral ou transdérmico e a dieta restrita em iodo atuam como estabilizadores reversíveis de longo prazo quando o I-131 não está disponível ou antes de procedimentos cirúrgicos de tireoidectomia.',
+        body:
+          'Estratificação entre terapia curativa e estabilização de longo prazo:\n\n' +
+          '- Modalidade curativa de escolha: Radioiodoterapia com I-131, com taxa de sucesso superior a 95% em dose única sem lesão de paratireoides.\n' +
+          '- Terapia farmacológica e nutricional: metimazol e dieta hipoiódica controlam reversivelmente a secreção hormonal quando a cura definitiva não é acessível.',
         highlights: ['I-131 padrão-ouro curativo', 'Metimazol com titulação por gato', 'Cuidado com hipotireoidismo pós-terapia']
       }
     ],
@@ -97,7 +119,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       steps: [
         {
           label: 'Passo 1: Reconhecimento Clínico e Palpação Cervical em Pinça',
-          detail: 'Gatos >8 anos com perda de peso progressiva apesar de polifagia, hiperatividade, taquicardia sinusal (>220 bpm), arritmias, vômitos intermitentes e pelagem opaca. Realizar palpação cervical cuidadosa posicionando o polegar e o indicador no sulco jugular da laringe até a entrada torácica com extensão do pescoço; o "thyroid slip" é palpável em 80-85% dos pacientes.'
+          detail:
+            'Identificação clínica em pacientes geriátricos (> 8 anos):\n\n' +
+            '- Sinais cardinais: perda de peso progressiva com polifagia, taquicardia (> 220 bpm), arritmias, hiperatividade e vômitos.\n' +
+            '- Palpação em pinça: deslizar polegar e indicador ao longo do sulco jugular até a entrada torácica; nódulo móvel (thyroid slip) palpável em 80-85% dos casos.'
         },
         {
           label: 'Passo 2: Dosagem de T4 Total Sérico em Laboratório de Referência',
@@ -105,15 +130,24 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         },
         {
           label: 'Passo 3: Investigação de Casos Limítrofes ou Eutireoideo Doente',
-          detail: 'Se TT4 estiver na metade superior da faixa normal (2,5 a 4,0 mcg/dL) com forte suspeita clínica ou doença não tireoidiana concomitante: aguardar 2 a 4 semanas para estabilizar a comorbidade e solicitar painel tireoidiano combinado: TT4 + T4 livre por diálise em equilíbrio (fT4ed) + TSH felino. Confirma-se hipertireoidismo se TT4 limítrofe + fT4ed elevado + TSH suprimido (<0,03 ng/mL).'
+          detail:
+            'Conduta perante TT4 limítrofe (2,5 a 4,0 mcg/dL) ou doença concorrente:\n\n' +
+            '- Painel hormonal avançado: mensurar TT4, T4 livre por diálise em equilíbrio (fT4ed) e TSH endógeno felino após 2 a 4 semanas de estabilização.\n' +
+            '- Critério de confirmação: combinação de TT4 limítrofe com fT4ed elevado e TSH suprimido (< 0,03 ng/mL) fecha o diagnóstico de hipertireoidismo.'
         },
         {
           label: 'Passo 4: Avaliação Nefrorrenal, Pressórica e Sistêmica Basal',
-          detail: 'Urinálise completa por cistocentese (densidade urinária USG antes de fluidos), creatinina, ureia, SDMA, eletrólitos, ALT, FA, hemograma completo e mensuração da Pressão Arterial Sistólica (PAS) por Doppler. Estadiar o paciente conforme critérios IRIS e monitorar alterações basais pré-tratamento.'
+          detail:
+            'Estadiamento basal e triagem de comorbidades pré-tratamento:\n\n' +
+            '- Perfil laboratorial: urinálise (USG basal), creatinina, ureia, SDMA, eletrólitos, ALT, FA e hemograma.\n' +
+            '- Hemodinâmica e estadiamento IRIS: aferição da PAS por Doppler e classificação prévia para monitorar o impacto da correção hormonal.'
         },
         {
           label: 'Passo 5: Cintilografia Tireoidiana com Tecnécio-99m (Padrão-Ouro de Imagem)',
-          detail: 'Exame de imagem padrão-ouro para mapear a captação e localização do tecido tireoidiano funcionante. Diferencia doença unilateral de bilateral (presente em 70%), detecta tecido ectópico torácico/subesternal (3-5%) e identifica carcinomas tireoidianos (áreas volumosas, invasivas, heterogêneas e hipocaptantes ou com captação torácica ectópica metastática).'
+          detail:
+            'Mapeamento cintilográfico padrão-ouro com Tecnécio-99m:\n\n' +
+            '- Distribuição anatômica: diferenciação precisa entre afecção unilateral e bilateral (presente em 70% dos gatos).\n' +
+            '- Rastreio de ectopia e malignidade: identifica tecido ectópico intratorácico (3-5%) e sinais de carcinoma funcional invasivo ou metastático.'
         }
       ]
     },
@@ -122,15 +156,24 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       steps: [
         {
           label: 'Fase 1: Estabilização Inicial e Teste Terapêutico de Função Renal',
-          detail: 'Em gatos com comorbidades ou suspeita de DRC subjacente, recomenda-se iniciar terapia médica reversível com Metimazol (1,25 a 2,5 mg/gato VO q12h ou q24h) por 4 semanas. O objetivo é restaurar o eutireoidismo e observar o comportamento da creatinina sérica e da densidade urinária sem produzir hipotireoidismo iatrogênico.'
+          detail:
+            'Teste terapêutico reversível com Metimazol por 4 semanas:\n\n' +
+            '- Posologia inicial: 1,25 a 2,5 mg/gato VO q12h ou q24h, visando restauração gradual do eutireoidismo.\n' +
+            '- Monitoramento nefrorrenal: observação rigorosa da creatinina sérica e da densidade urinária para desmascaramento seguro de DRC sem gerar hipotireoidismo.'
         },
         {
           label: 'Fase 2: Escolha da Modalidade Terapêutica Definitiva',
-          detail: 'Se a função renal permanecer estável (creatinina < 2,0-2,5 mg/dL e sem azotemia descompensada): indicar Radioiodoterapia (I-131) como primeira escolha curativa. Se inviável financeiramente ou logisticamente: manter Metimazol contínuo, avaliar Tireoidectomia cirúrgica intracapsular modificada ou instituir Dieta com restrição estrita de iodo (Hill\'s y/d).'
+          detail:
+            'Definição da conduta definitiva após estabilização renal:\n\n' +
+            '- Função renal compensada: indicação de Radioiodoterapia (I-131) como primeira escolha curativa definitiva.\n' +
+            '- Alternativas de manutenção: manutenção contínua de metimazol, tireoidectomia intracapsular modificada ou dieta restrita em iodo (Hill\'s y/d).'
         },
         {
           label: 'Fase 3: Titulação Hormonal e Metas Terapêuticas',
-          detail: 'Reavaliar T4 total, creatinina, ureia, hemograma e eletrólitos a cada 2 a 4 semanas após cada alteração posológica de metimazol. Meta terapêutica: T4 total no terço inferior do intervalo de referência (1,0 a 2,5 mcg/dL), mantendo TSH mensurável normal e creatinina estável.'
+          detail:
+            'Protocolo de titulação laboratorial posológica:\n\n' +
+            '- Intervalo de reavaliação: dosar TT4, creatinina, ureia e hemograma a cada 2 a 4 semanas após ajustes de dose.\n' +
+            '- Alvo hormonal: manter T4 total no terço inferior da referência (1,0 a 2,5 mcg/dL), com TSH normal e função renal estável.'
         },
         {
           label: 'Fase 4: Manejo da Tireotoxicose Cardiovascular e Hipertensão',
@@ -138,7 +181,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         },
         {
           label: 'Fase 5: Monitoramento Crônico Longitudinal',
-          detail: 'Em gatos curados por I-131: monitorar T4 total, TSH e função renal aos 30, 90 e 180 dias, e semestralmente após (vigiar hipotireoidismo tardio). Em gatos mantidos com metimazol ou dieta y/d: reavaliações clínicas, laboratoriais e aferição de PAS a cada 3 a 6 meses continuamente por toda a vida.'
+          detail:
+            'Acompanhamento pós-terapêutico longitudinal:\n\n' +
+            '- Pacientes tratados com I-131: controle de TT4, TSH e função renal aos 30, 90 e 180 dias, e semestralmente após para triar hipotireoidismo tardio.\n' +
+            '- Pacientes em manejo crônico: reavaliação laboratorial e aferição de PAS por Doppler a cada 3 a 6 meses continuamente.'
         }
       ]
     }
@@ -146,33 +192,58 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
 
   etiology: {
     definicao:
-      'O hipertireoidismo felino é uma síndrome clínica e metabólica multissistêmica resultante da secreção autônoma e desregulada dos hormônios tireoidianos — tiroxina (T4) e tri-iodotironina (T3) — por células foliculares tireoidianas funcionalmente autônomas e independentes do controle pelo hormônio tireoestimulante hipofisário (TSH).',
+      'Síndrome clínica e metabólica resultante da tireotoxicose crônica:\n\n' +
+      '- Mecanismo central: hipersecreção autônoma de tiroxina (T4) e tri-iodotironina (T3) por células foliculares tireoidianas mutadas.\n' +
+      '- Perda do eixo hipofisário: produção hormonal desregulada e completamente independente do controle trófico pelo TSH.',
     lesaoPredominante:
-      'A patologia tireoidiana primária em aproximadamente 98% dos casos consiste em hiperplasia adenomatosa multinodular benigna ou adenoma folicular funcional bem delimitado. O carcinoma tireoidiano funcional (adenocarcinoma) é raro no momento do diagnóstico inicial, respondendo por apenas 1% a 2% das apresentações, mas pode ocorrer em gatos submetidos a manejo médico de longa duração (>4-5 anos com metimazol) pela proliferação celular sustentada.',
+      'Padrões histopatológicos dominantes no parênquima tireoidiano:\n\n' +
+      '- Lesões benignas (> 98%): hiperplasia adenomatosa multinodular e adenomas foliculares funcionais bem delimitados.\n' +
+      '- Carcinomas funcionais (1 a 2%): adenocarcinomas invasivos raros no diagnóstico inicial, mas que podem surgir por progressão clonal em gatos sob manejo clínico de longa data (> 4 a 5 anos com metimazol).',
     distribuicaoAnatomica:
-      'Acometimento bilateral está presente em aproximadamente 65% a 75% dos gatos afetados, frequentemente com assimetria volumétrica acentuada entre os lobos. Acometimento unilateral ocorre em 25% a 30%. Tecido tireoidiano ectópico funcional — derivado da descida embriológica da glândula ao longo do ducto tireoglosso desde o forâmen cego na base da língua até o mediastino anterior e pericárdio cranial — é identificado em 3% a 5% dos pacientes na cintilografia tireoidiana.',
+      'Distribuição topográfica e prevalência de tecido ectópico:\n\n' +
+      '- Padrão bilateral (65 a 75%): envolvimento de ambos os lobos tireoidianos, frequentemente assimétrico.\n' +
+      '- Padrão unilateral (25 a 30%): acometimento de um único lobo no momento do diagnóstico.\n' +
+      '- Tecido ectópico mediastinal (3 a 5%): migração anômala ao longo do ducto tireoglosso desde o forame cego até o pericárdio cranial e mediastino anterior, detectável por cintilografia.',
     fatoresDeRisco:
-      'Embora a causa primária seja uma proliferação clonal neoplásica ou hiperplásica, múltiplos estudos epidemiológicos correlacionam o hipertireoidismo a fatores nutricionais e ambientais: dietas comerciais úmidas enlatadas (associação com bisfenol A e compostos epóxi do revestimento interno das latas), variabilidade acentuada nos teores de iodo na dieta (ciclos de deficiência e excesso estimulando autonomia folicular), fitoestrógenos da soja, exposição crônica a retardantes de chama bromados (éteres difenílicos polibromados - PBDEs presentes em poeiras domésticas e móveis), uso de areias sanitárias comerciais aromatizadas e estilo de vida estritamente domiciliado.',
+      'Fatores ambientais, nutricionais e disruptores endócrinos associados:\n\n' +
+      '- Fatores dietéticos e embalagens: consumo prolongado de rações úmidas enlatadas (revestimentos com bisfenol A e resinas epóxi) e presença de fitoestrógenos de soja.\n' +
+      '- Flutuações nos teores de iodo: ciclos alternados de deficiência e sobrecarga de iodo na dieta, estimulando autonomia folicular proliferativa.\n' +
+      '- Disruptores químicos domésticos: exposição crônica a retardantes de chama bromados (PBDEs em poeira e estofados), areias sanitárias aromatizadas e vida estritamente indoor.',
     baseGenetica:
-      'Mutações somáticas com perda de regulação nos genes que codificam a subunidade alfa da proteína G estimulatória (Gs alpha) e o receptor de TSH (TSHR) geram ativação intrínseca constitutiva da cascata de sinalização adenilil-ciclase/AMPc, mantendo as células foliculares em divisão e produção hormonal contínuas, independentes de estímulo trófico hipofisário.'
+      'Mutações somáticas e desregulação da cascata de sinalização folicular:\n\n' +
+      '- Alvos moleculares: mutações constitutivas nos genes da subunidade alfa da proteína G estimulatória (Gs-alfa) e do receptor de TSH (TSHR).\n' +
+      '- Hiperativação autônoma: ativação sustentada do eixo adenilil-ciclase e AMP cíclico, promovendo replicação celular e secreção hormonal perpétua sem dependência do TSH.',
   },
 
   epidemiology: {
     prevalenciaEIdade:
-      'Trata-se da endocrinopatia mais frequente na espécie felina em todo o mundo. Acomete quase que exclusivamente felinos de meia-idade a idosos, com idade mediana ao diagnóstico de 12 a 13 anos. Mais de 95% dos pacientes diagnosticados possuem mais de 8 anos; o desenvolvimento antes dos 5 anos de idade é excepcional (<0,5%). A prevalência em gatos geriátricos (>10 anos) atendidos em clínicas de rotina varia de 6% a 10%.',
+      'Epidemiologia, prevalência clínica e faixa etária característica:\n\n' +
+      '- Frequência na rotina: endocrinopatia mais diagnosticada na clínica de felinos mundialmente, acometendo 6 a 10% dos gatos acima de 10 anos.\n' +
+      '- Idade ao diagnóstico: mediana de 12 a 13 anos de idade; mais de 95% dos casos ocorrem após os 8 anos, sendo excepcional antes dos 5 anos (< 0,5%).',
     predisposicaoRacial:
-      'Não há predisposição sexual (machos e fêmeas são afetados igualmente). No entanto, raças puras como Siamês, Himalaio, Birmanês e Tonquinês apresentam uma incidência significativamente MENOR e risco relativo reduzido de desenvolver a doença em comparação com gatos domésticos de pelo curto e pelo longo (sem raça definida - SRD), sugerindo fortes fatores genéticos protetores nessas linhagens.',
+      'Distribuição por sexo e proteção genética racial:\n\n' +
+      '- Ausência de predisposição sexual: machos e fêmeas castrados ou inteiros são igualmente acometidos.\n' +
+      '- Proteção em raças puras: gatos Siamês, Himalaio, Birmanês e Tonquinês possuem incidência expressivamente menor e risco relativo reduzido frente a gatos sem raça definida (SRD), sugerindo polimorfismos protetores.',
     comparacaoCanina:
-      'No cão, o hipertireoidismo primário por adenoma benigno espontâneo é uma entidade extremamente rara (<1% das endocrinopatias caninas). Em cães, a presença de hipertireoidismo deve imediatamente suscitar suspeita de carcinoma tireoidiano tireotóxico invasivo de grandes dimensões ou hipertireoidismo exógeno decorrente de dietas cruas comerciais à base de carne de pescoço contendo tecido tireoidiano bovino/suíno (tireotoxicose alimentar).'
+      'Diferenças etiológicas fundamentais na espécie canina:\n\n' +
+      '- Raridade de adenomas benignos: hipertireoidismo espontâneo primário ocorre em menos de 1% das endocrinopatias em cães.\n' +
+      '- Principais causas no cão: carcinomas tireoidianos invasivos de grandes dimensões altamente secretantes ou tireotoxicose alimentar por ingestão de tecidos glandulares cervicais em dietas cruas comerciais.',
   },
 
   pathogenesisTransmission: {
     autonomiaFolicular:
-      'A proliferação clonal de células foliculares funcionais resulta em síntese e liberação maciça e descontrolada de tiroxina (T4) e tri-iodotironina (T3) na circulação sistêmica. A T3 é o hormônio biologicamente ativo mais potente, exercendo ligação direta com receptores nucleares de hormônio tireoidiano (TR-alpha e TR-beta) em praticamente todos os tecidos do organismo.',
+      'Mecanismos de hipersecreção e sinalização celular autônoma:\n\n' +
+      '- Liberação hormonal descontrolada: proliferação clonal de células foliculares que secretam tiroxina (T4) e tri-iodotironina (T3) de modo contínuo.\n' +
+      '- Ação genômica ubíqua: a T3 livre liga-se aos receptores nucleares TR-alfa e TR-beta em praticamente todas as linhagens celulares, acelerando a transcrição metabólica basal.',
     eixoHPT:
-      'A elevação plasmática crônica de T4 e T3 livres exerce potente retroalimentação negativa (feedback negativo) sobre os neurônios secretores de TRH no hipotálamo e sobre os tireotrofos da hipófise anterior. Como resultado, a secreção de TSH hipofisário é profundamente inibida, atingindo concentrações séricas indetectáveis ou inferiores ao limite inferior de sensibilidade dos ensaios felinos validados (<0,03 ng/mL). Isso suprime a captação e função do tecido tireoidiano normal remanescente, que se torna funcionalmente atrófico.',
+      'Desregulação do eixo hipotálamo-hipófise-tireoide (HPT):\n\n' +
+      '- Retroalimentação negativa potente: concentrações elevadas de T4 e T3 livres inibem fortemente os neurônios de TRH hipotalâmicos e os tireotrofos hipofisários.\n' +
+      '- Supressão de TSH: níveis séricos de TSH tornam-se profundamente suprimidos ou indetectáveis (< 0,03 ng/mL em ensaios específicos).\n' +
+      '- Atrofia do tecido normal: a ausência de estímulo pelo TSH induz quiescência funcional e atrofia dos folículos tireoidianos não neoplásicos remanescentes.',
     progressaoTecidual:
-      'A doença é intrinsecamente progressiva. O bloqueio farmacológico da síntese hormonal periférica (ex.: por metimazol) ou a privação nutricional de substrato (dieta pobre em iodo) não impedem a replicação celular nem a expansão da massa neoplásica benigna. Estudos longitudinais demonstram que nódulos mantidos sob controle médico por vários anos sofrem crescimento contínuo, aumento do número de lobos acometidos e, em casos raros, desdiferenciação para carcinoma invasivo.'
+      'Natureza proliferativa contínua e evolução tumoral:\n\n' +
+      '- Falha antiproliferativa das terapias médicas: o metimazol e a dieta com restrição de iodo controlam a hormonogênese, mas não cessam a mitose clonal neoplásica.\n' +
+      '- Progressão anatômica: nódulos mantidos apenas sob bloqueio farmacológico sofrem expansão volumétrica contínua, acometimento bilateral secundário e eventual transformação maligna em carcinoma.',
   },
 
   pathophysiology: {
@@ -188,17 +259,35 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       ]
     },
     cardiopatiaTireotoxica:
-      'Os hormônios tireoidianos afetam o miocárdio por mecanismos genômicos diretos e não genômicos. A T3 up-regula a expressão gênica das cadeias pesadas de alfa-miosina (de contração rápida) e da bomba de cálcio do retículo sarcoplasmático (SERCA2), aumentando a taxa de relaxamento diastólico e a força de contração miocárdica. Concomitantemente, há up-regulation na densidade de receptores beta-1 adrenérgicos na membrana miocárdica, gerando hipersensibilidade extrema às catecolaminas circulantes. Perifericamente, ocorre vasodilatação sistêmica com queda acentuada da resistência vascular periférica (RVP), estimulando o sistema renina-angiotensina-aldosterona (SRAA) e retenção hídrica, o que eleva a volemia e o retorno venoso. Esse estado hemodinâmico hiperdinâmico permanente provoca hipertrofia concêntrica do ventrículo esquerdo (fenótipo similar à cardiomiopatia hipertrófica), disfunção diastólica, aumento do átrio esquerdo, taquicardia sinusal, arritmias atriais e ventriculares, e risco de insuficiência cardíaca congestiva (ICC) de alto ou baixo débito com efusão pleural e edema pulmonar.',
+      'Fisiopatologia da cardiomiopatia tireotóxica e estado hemodinâmico hiperdinâmico:\n\n' +
+      '- Ações miocárdicas diretas: a T3 promove up-regulation de alfa-miosina e da bomba SERCA2 do retículo sarcoplasmático, elevando a força contrátil e a velocidade de relaxamento diastólico.\n' +
+      '- Hipersensibilidade adrenérgica: proliferação na densidade de receptores beta-1 miocárdicos, potencializando a resposta às catecolaminas circulantes.\n' +
+      '- Ativação neuro-humoral periférica: vasodilatação sistêmica e queda da RVP deflagram o SRAA, gerando retenção hídrica, hipervolemia e sobrecarga de pré e pós-carga.\n' +
+      '- Remodelamento e falência cardíaca: instalação de hipertrofia ventricular concêntrica (fenocópia de CMH), dilatação atrial esquerda, taquiarritmias e risco de insuficiência cardíaca congestiva (edema pulmonar e efusão pleural).',
     eixoRenalHiperfiltracao:
-      'O excesso hormonal induz vasodilatação das arteríolas aferentes renais e elevação substancial do débito cardíaco, resultando em hiperperfusão renal e aumento acentuado da Taxa de Filtração Glomerular (TFG) em 30% a 50% (hiperfiltração glomerular). Somado a isso, o estado catabólico acelerado promove severa sarcopenia (perda de massa muscular esquelética), diminuindo a produção endógena diária de creatinina a partir da fosfocreatina. A conjunção de hiperfiltração glomerular + baixa produção muscular de creatinina resulta em concentrações séricas de creatinina e ureia artificialmente baixas. Por conseguinte, uma Doença Renal Crônica (DRC) estrutural prévia e subjacente (presente em 30% a 40% dos felinos geriátricos) fica totalmente mascarada no momento do diagnóstico inicial. A instituição do tratamento do hipertireoidismo normaliza a TFG e desacelera o fluxo renal, "desmascarando" a azotemia em 15% a 40% dos gatos após a restauração do eutireoidismo.',
+      'Hemodinâmica glomerular e mecanismos da Doença Renal Crônica mascarada:\n\n' +
+      '- Hiperfiltração glomerular: vasodilatação da arteríola aferente renal associada ao alto débito cardíaco eleva a taxa de filtração glomerular (TFG) em 30 a 50%.\n' +
+      '- Sarcopenia catabólica: proteólise muscular severa reduz a geração endógena de fosfocreatina, deprimindo a síntese basal de creatinina sérica.\n' +
+      '- Subestimação laboratorial: a soma de hiperfiltração com baixa massa muscular gera valores falsamente baixos de creatinina e ureia no sangue.\n' +
+      '- Desmascaramento da nefropatia: a resolução da tireotoxicose reajusta a TFG aos níveis basais reais, revelando azotemia e DRC oculta em 15 a 40% dos felinos tratados.',
     metabolismoECatabolismo:
-      'A estimulação generalizada da enzima Na+/K+ ATPase nas membranas celulares consome grandes quantidades de ATP, elevando o consumo celular de oxigênio e a produção de calor corpóreo (termogênese acelerada). Ocorre estimulação maciça da glicogenólise hepática, da gliconeogênese, da lipólise periférica e da proteólise muscular. O paciente consome suas próprias reservas lipídicas e musculares, apresentando perda de peso contínua e emaciação progressiva apesar de manter uma ingestão alimentar voraz (polifagia compensatória). O turnover ósseo também é acelerado por estimulação osteoclástica direta pela T3, elevando a excreção urinária de cálcio e fósforo.',
+      'Hipermetabolismo celular acelerado e consumo de reservas teciduais:\n\n' +
+      '- Termogênese e gasto energético: estimulação da Na+/K+ ATPase com alto consumo de ATP, gerando intolerância ao calor e hipertermia relativa.\n' +
+      '- Catabolismo de substratos: ativação intensa de glicogenólise, gliconeogênese, lipólise e proteólise muscular esquelética, deflagrando emaciação progressiva com polifagia compensatória.\n' +
+      '- Remodelamento esquelético: estímulo osteoclástico direto pela T3, induzindo reabsorção óssea com hipercalciúria e hiperfosfatúria secundárias.',
     comprometimentoGastrointestinalEHepatico:
-      'A hipermotilidade gástrica e intestinal encurta o tempo de trânsito digestivo, resultando em má digestão, má absorção de nutrientes, aumento da frequência evacuatória e fezes volumosas ou esteatorreicas. Episódios frequentes de vômitos ocorrem devido à distensão gástrica aguda por polifagia voraz (ingestão rápida de grandes volumes) e por estimulação direta da zona deflagradora dos quimiorreceptores no bulbo. Alterações nas enzimas hepáticas (elevações leves a moderadas de ALT, FA e AST) são detectadas em até 75% a 90% dos pacientes, causadas por hipóxia centrolobular relativa hepática, desnutrição e toxicidade celular direta dos hormônios tireoidianos.',
+      'Repercussões digestivas e disfunção enzimática hepática:\n\n' +
+      '- Hipermotilidade gastrointestinal: trânsito entérico acelerado provocando má digestão, esteatorreia e fezes volumosas de consistência pastosa.\n' +
+      '- Emese crônica: vômitos secundários à ingestão alimentar voraz excessiva (ingurgitamento gástrico) e estímulo bulbar direto da zona de gatilho quimiorreceptora.\n' +
+      '- Elevação enzimática hepática: aumento de ALT, FA e AST em 75 a 90% dos gatos por hipóxia centrolobular relativa decorrente da alta demanda de O2 e efeito tireotóxico celular direto.',
     hipertensaoArterialSistemica:
-      'A hipertensão arterial sistêmica (PAS >= 160 mmHg) é comum no hipertireoidismo felino, decorrente do tônus simpático aumentado, rigidez da parede vascular e ativação do SRAA. Pode causar lesões graves em órgãos-alvo (LOA), como retinopatia hipertensiva (hemorragia de fundo de olho, descolamento de retina e cegueira súbita bilateral), encefalopatia e progressão do dano renal proteinúrico.',
+      'Hipertensão arterial sistêmica e lesão em órgãos-alvo (LOA):\n\n' +
+      '- Gênese hemodinâmica: tônus simpático exacerbado, rigidez vascular e ativação do SRAA produzem PAS >= 160 mmHg em 25 a 30% dos pacientes.\n' +
+      '- Danos de órgãos-alvo: retinopatia hipertensiva com hemorragia e descolamento de retina (cegueira súbita), encefalopatia e aceleração da proteinúria renal.',
     formaApatica:
-      'Em 5% a 10% dos felinos, o hipertireoidismo manifesta-se de forma atípica como "hipertireoidismo apático". Esses gatos não apresentam polifagia nem hiperatividade; em vez disso, exibem anorexia profunda, adipsia, letargia intensa, fraqueza muscular com ventroflexão cervical e perda de peso acentuada, frequentemente associados a comorbidades sistêmicas graves (ICC descompensada, neoplasia oculta ou DRC terminal).'
+      'Apresentação clínica atípica de hipertireoidismo apático (5 a 10% dos casos):\n\n' +
+      '- Sinais divergentes: ausência de polifagia e agitação; os animais apresentam anorexia marcada, adipsia, letargia profunda e caquexia.\n' +
+      '- Sintomas neurológicos e comorbidades: fraqueza muscular com ventroflexão cervical por hipocalemia ou miopatia tireotóxica, habitualmente associados a ICC descompensada ou DRC terminal.',
   },
 
   clinicalSignsPathophysiology: {
@@ -233,7 +322,9 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       ]
     },
     raciocinioClinico:
-      'A abordagem diagnóstica exige a confirmação inequívoca da secreção autônoma tireoidiana através de dosagens hormonais séricas em laboratório veterinário de referência e a avaliação simultânea da repercussão nos órgãos-alvo (rim, coração e circulação retiniana). O diagnóstico jamais deve se limitar a um teste isolado quando há comorbidades associadas.',
+      'Abordagem diagnóstica estruturada e avaliação sistêmica simultânea:\n\n' +
+      '- Confirmação laboratorial: demonstração inequívoca da secreção autônoma tireoidiana através de dosagens hormonais séricas em laboratório de referência.\n' +
+      '- Rastreio de órgãos-alvo: avaliação concomitante das repercussões clínicas e hemodinâmicas nos rins, miocárdio e circulação retiniana, evitando decisões baseadas em testes isolados.',
     passosDiagnosticos: [
       {
         stepNumber: 1,
@@ -242,7 +333,9 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Primeira linha diagnóstica e teste de triagem padrão. Mede a fração livre e a fração ligada a proteínas plasmáticas.',
         purpose: 'Triagem e confirmação da maioria dos casos clínicos.',
         interpretation:
-          'Valores de TT4 acima do intervalo de referência em gatos com sinais compatíveis confirmam o diagnóstico. No entanto, em 5% a 10% dos gatos com hipertireoidismo confirmado, o TT4 pode situar-se na metade superior da faixa normal (2,5 a 4,0 mcg/dL) em razão de doença inicial leve, flutuações hormonais circadianas ou supressão transitória por doença não tireoidiana concomitante grave (efeito euthyroid sick).',
+          'Critérios de interpretação para T4 total:\n\n' +
+          '- Valores francamente elevados: fecham o diagnóstico quando associados a sinais clínicos compatíveis ou nódulo tireoidiano palpável.\n' +
+          '- Valores limítrofes (2,5 a 4,0 mcg/dL): ocorrem em 5 a 10% dos casos devido à fase inicial precoce, flutuação hormonal circadiana ou supressão por comorbidade grave (eutireoideo doente), exigindo painel complementar.',
         limitations:
           'Não exclui a doença se o resultado estiver normal em gato com forte suspeita clínica ou comorbidade grave.',
         isGoldStandard: false
@@ -254,7 +347,9 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Mede exclusivamente a fração livre metabolicamente ativa do hormônio não ligada a proteínas, utilizando método de diálise em equilíbrio.',
         purpose: 'Esclarecimento de casos duvidosos ou com TT4 normal-alto.',
         interpretation:
-          'Extremamente sensível (>98%). Quase todos os gatos hipertireoideos possuem fT4ed elevado. Todavia, sua especificidade é inferior à do TT4, pois até 10% a 12% dos gatos eutetireoideos idosos portadores de doenças não tireoidianas apresentam fT4 falso-positivo.',
+          'Sensibilidade analítica e armadilhas de especificidade do fT4ed:\n\n' +
+          '- Alta sensibilidade (> 98%): elevação consistente em praticamente todos os felinos hipertireoideos ativos.\n' +
+          '- Risco de falso-positivo: especificidade menor que o TT4, com falsos-positivos em 10 a 12% dos felinos eutetireoideos geriátricos com afecções não tireoidianas graves.',
         limitations:
           'NUNCA deve ser interpretado isoladamente sem a dosagem de TT4. Um fT4 alto com TT4 no terço inferior da normalidade aponta para doença não tireoidiana, e NÃO hipertireoidismo.',
         isGoldStandard: false
@@ -266,7 +361,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Mensuração do hormônio tireoestimulante por imunoensaio validado específico para a espécie felina.',
         purpose: 'Diferenciação hormonal refinada de casos borderline e monitoramento.',
         interpretation:
-          'No hipertireoidismo ativo não tratado, o TSH está profundamente suprimido (<0,03 ng/mL) devido ao feedback negativo hipofisário. A combinação de TT4 na metade superior da normalidade + fT4ed elevado + TSH indetectável confirma com extrema segurança o diagnóstico de hipertireoidismo subclínico/inicial. Por outro lado, um TSH normal ou mensurável (>0,05 ng/mL) afasta o hipertireoidismo com quase 100% de probabilidade em animais virgens de tratamento.',
+          'Padrão de secreção do TSH no hipertireoidismo felino:\n\n' +
+          '- Supressão profunda (< 0,03 ng/mL): feedback hipofisário negativo persistente na doença ativa não tratada.\n' +
+          '- Painel confirmatório limítrofe: combinação de TT4 normal-alto com fT4ed elevado e TSH indetectável confirma doença precoce com máxima especificidade.\n' +
+          '- Exclusão diagnóstica: TSH mensurável ou elevado (> 0,05 ng/mL) afasta a hipótese de hipertireoidismo virgem de tratamento com altíssima probabilidade.',
         limitations:
           'Alguns ensaios comerciais caninos não possuem sensibilidade analítica suficiente no limite inferior para distinguir concentrações muito baixas em felinos.',
         isGoldStandard: false
@@ -278,7 +376,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Exame de imagem nuclear de alta resolução que avalia o parênquima funcional da tireoide em comparação com a captação das glândulas salivares zigomáticas e mandibulares.',
         purpose: 'Mapeamento anatômico, quantificação funcional e identificação de tecido ectópico ou malignidade.',
         interpretation:
-          'Padrão-ouro (*isGoldStandard: true*). Razão de captação tireoide:glândula salivar >1,0 indica tecido hiperfuncional patológico. Mapeia com exatidão acometimento unilateral vs bilateral (revela que 70% são bilaterais mesmo quando apenas um lobo é palpável), identifica tecido ectópico funcional no mediastino anterior (3-5%) e diagnostica carcinomas invasivos (áreas volumosas assimétricas com captação heterogênea e metástases torácicas).',
+          'Padrão-ouro em medicina nuclear diagnóstica:\n\n' +
+          '- Critério quantitativo: razão de captação tireoide:glândula salivar > 1,0 confirma tecido hiperfuncionante autônomo.\n' +
+          '- Mapeamento anatômico de precisão: revela doença bilateral em 70% dos gatos (mesmo com nódulo palpável único) e localiza ectopias funcionais no mediastino anterior (3 a 5%).\n' +
+          '- Detecção de carcinomas: identifica massas expansivas com captação heterogênea, invasão local e focos metastáticos torácicos.',
         limitations:
           'Disponibilidade restrita a centros universitários e hospitais veterinários terciários autorizados para medicina nuclear.',
         isGoldStandard: true
@@ -290,7 +391,9 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Urinálise completa por cistocentese com mensuração da densidade urinária (USG) por refratometria, associada a dosagens séricas de creatinina, ureia, SDMA e fósforo.',
         purpose: 'Identificação de lesão renal preexistente e estabelecimento do baseline antes da intervenção.',
         interpretation:
-          'Fundamental para documentar o ponto de partida do paciente. Uma densidade urinária isostenúrica ou fracamente concentrada (<1,035) com creatinina "normal" (ex.: 1,2 mg/dL) frequentemente oculta uma DRC estagio IRIS 2 a 3 que será desmascarada após a reversão da hiperfiltração induzida pela tireotoxicose.',
+          'Avaliação funcional e identificação de DRC subclínica:\n\n' +
+          '- Interpretação da densidade urinária: USG < 1,035 com creatinina na faixa de referência (ex.: 1,2 mg/dL) sugere fortemente DRC estágio IRIS 2 a 3 preexistente.\n' +
+          '- Rastreio de desmascaramento: a reversão da hiperfiltração pós-tratamento revelará a azotemia renal basal oculta.',
         limitations:
           'A creatinina sérica isolada subestima severamente o déficit funcional em razão da hiperfiltração e da sarcopenia.',
         isGoldStandard: false
@@ -302,7 +405,9 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
           'Aferição metódica da pressão arterial sistólica utilizando técnica Doppler periférica (artéria radial ou coccígea) em ambiente calmo após aclimatação.',
         purpose: 'Detecção precoce de hipertensão arterial sistêmica secundária.',
         interpretation:
-          'PAS >= 160 mmHg configura risco moderado de lesão em órgãos-alvo; PAS >= 180 mmHg configura risco severo de dano iminente (emergência hipertensiva com risco de cegueira por descolamento de retina e hemorragias encefálicas). Deve ser repetida rotineiramente antes e após o tratamento.',
+          'Estratificação de risco e emergência hipertensiva por Doppler:\n\n' +
+          '- Risco moderado de LOA: PAS entre 160 e 179 mmHg demanda intervenção farmacológica e monitoramento contínuo.\n' +
+          '- Risco severo de LOA (PAS >= 180 mmHg): emergência hipertensiva com perigo iminente de descolamento de retina, cegueira bilateral e encefalopatia vascular.',
         limitations:
           'Estresse de contenção (efeito do avental branco) pode inflar a PAS; realizar 5 a 7 aferições consecutivas descartando a primeira.',
         isGoldStandard: false
@@ -322,9 +427,15 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       ]
     },
     drcConcomitante:
-      'Nunca manter hipertireoidismo intencionalmente em gatos com Doença Renal Crônica concomitante sob alegação de manter hiperfiltração glomerular. A tireotoxicose mantida induz glomeruloesclerose contínua, proteinúria patológica, hipertensão arterial e necrose miocárdica que aceleram a perda irreversível de néfrons funcionais (Geddes & Aguiar, 2022). O objetivo é restaurar o eutireoidismo de forma gradual, sem provocar hipotireoidismo iatrogênico.',
+      'Diretrizes de manejo na nefropatia crônica concomitante (Geddes & Aguiar, 2022):\n\n' +
+      '- REGRA DE OURO: Nunca manter hipertireoidismo intencionalmente em gatos com Doença Renal Crônica sob alegação de sustentar hiperfiltração glomerular.\n' +
+      '- Danos da tireotoxicose mantida: indução progressiva de glomeruloesclerose, proteinúria patológica, hipertensão e necrose miocárdica que aceleram a perda irreversível de néfrons funcionais.\n' +
+      '- Meta clínica: restaurar o eutireoidismo de forma gradual e controlada, prevenindo rigorosamente o hipotireoidismo iatrogênico.',
     iodoRadioativo:
-      'Radioiodoterapia com Iodo-131 (I-131): padrão-ouro e terapia curativa definitiva de eleição. O protocolo moderno exige dose de I-131 calculada de forma individualizada com base na gravidade clínica, volume nodular e captação cintilográfica (Peterson & Rishniw, 2021: dose mediana ~1,90 mCi; faixa 0,95 a 10,6 mCi) e NÃO fixa ou empírica universal, alcançando taxas de sucesso >95% com risco mínimo de hipotireoidismo iatrogênico tardio.',
+      'Radioiodoterapia com Iodo-131 (I-131) como terapia curativa definitiva de eleição:\n\n' +
+      '- Dosimetria contemporânea (Peterson & Rishniw, 2021): cálculo de dose estritamente individualizada (mediana ~1,90 mCi; faixa de 0,95 a 10,6 mCi) baseada no escore clínico, tamanho nodular e captação cintilográfica.\n' +
+      '- VETO FARMACOLÓGICO: conduta contraindica dose empírica universal ou NÃO fixa sem planejamento individualizado.\n' +
+      '- Eficácia comprovada: taxas de remissão curativa superiores a 95% em dose única, com incidência mínima de hipotireoidismo iatrogênico tardio.',
     objetivosTerapeuticos: [
       'Restaurar o estado de eutireoidismo sustentado de forma segura e progressiva.',
       'Evitar a indução de hipotireoidismo iatrogênico permanente, o qual reduz abruptamente a TFG e acelera a progressão da azotemia renal.',
@@ -336,20 +447,30 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         drug: 'Radioiodoterapia com Iodo-131 (I-131)',
         indication: 'Terapia curativa definitiva de primeira escolha para hipertireoidismo felino benigno e maligno.',
         dose: 'Individualizada com base na cintilografia e tamanho nodular (Peterson & Rishniw 2021: mediana ~1,90 mCi; faixa 0,95 a 10,6 mCi SC em dose única); doses de 10 a 30 mCi para carcinomas.',
-        mechanism: 'O radioisótopo I-131 é concentrado ativamente pelos transportadores de simporte sódio-iodeto (NIS) das células foliculares hiperativas. Emite radiação beta de curto alcance (2 mm) que induz necrose e morte das células neoplásicas autônomas, poupando as paratireoides e o tecido tireoidiano normal adjacente atrófico.',
+        mechanism:
+          'Captação e emissão beta citotóxica localizada:\n\n' +
+          '- Transporte ativo: o radioisótopo I-131 é incorporado pelas células foliculares autônomas via simporte sódio-iodeto (NIS).\n' +
+          '- Citotoxicidade seletiva: radiação beta de curto alcance (2 mm) destrói o tecido hiperativo, preservando paratireoides e folículos normais atróficos.',
         notes: 'Taxa de cura >95% com dose única. Não requer anestesia geral. Exige isolamento radiológico hospitalar regulamentado por 3 a 7 dias até decaimento da radiação ambiental. Trata tecido tireoidiano ectópico e intratorácico inacessível à cirurgia.',
         contraindications: 'Gatos com DRC descompensada estágio IRIS 4 ou azotemia grave não controlada, onde a queda irreversível da TFG pós-cura possa desencadear uremia terminal refratária.'
       },
       {
         drug: 'Metimazol / Tiamazol (Terapia Médica Reversível)',
         indication: 'Controle médico crônico contínuo ou estabilização prévia ("ensaio terapêutico renal") antes de I-131 ou tireoidectomia cirúrgica.',
-        dose: 'Dose por gato: iniciar com 1,25 a 2,5 mg/gato VO a cada 12 horas ou 2,5 mg/gato VO a cada 24 horas (esquema conservador AAHA 2023). Formulação transdérmica em gel lipossomal (Pluronic Lecithin Organogel - PLO) na face interna da pina auricular na mesma dose com luvas de procedimento.',
+        dose:
+          'Esquema posológico padronizado por felino (AAHA 2023):\n\n' +
+          '- Via oral: 1,25 a 2,5 mg/gato VO a cada 12 horas ou 2,5 mg/gato VO a cada 24 horas.\n' +
+          '- Gel transdérmico: mesma posologia aplicada na face interna da concha auricular com luvas descartáveis em gel lipossomal (PLO).',
         frequency: 'q12h ou q24h',
         duration: 'Vitalício (ou até intervenção curativa)',
         mechanism: 'Inibe competitivamente a enzima tireoperoxidase (TPO), bloqueando a oxidação do iodeto e o acoplamento das iodotirosinas para formação de T4 e T3. Não causa morte celular nem remove o adenoma, que permanece crescendo.',
         reassess: 'Reavaliar TT4, creatinina, ureia, hemograma completo e enzimas hepáticas a cada 2 a 4 semanas até estabilização da dose e meta terapêutica (T4 total entre 1,0 e 2,5 mcg/dL); após, monitorar a cada 3 a 6 meses.',
         cautions: 'Efeitos adversos leves e transitórios (vômitos, hiporexia, letargia em 10-15% dos gatos) melhoram com administração junto ao alimento ou conversão para transdérmico.',
-        contraindications: 'Suspender imediatamente e NUNCA mais reintroduzir se ocorrer: prurido e escoriações faciais graves necrosantes, hepatopatia tóxica aguda grave com icterícia, ou discrasias sanguíneas graves (agranulocitose, neutropenia severa, trombocitopenia ou anemia hemolítica imunomediada induzida por fármaco).'
+        contraindications:
+          'Critérios de suspensão definitiva imediata (interromper e nunca reintroduzir):\n\n' +
+          '- Toxicidade dermatológica: escoriações faciais graves por prurido automutilante necrosante.\n' +
+          '- Toxicidade hepática: hepatite medicamentosa aguda colestática com icterícia clínica.\n' +
+          '- Discrasias hematológicas: agranulocitose, neutropenia severa, trombocitopenia ou anemia hemolítica imunomediada induzida pelo fármaco.'
       },
       {
         drug: 'Carbimazol',
@@ -370,7 +491,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         drug: 'Tireoidectomia Cirúrgica (Técnica Intracapsular Modificada)',
         indication: 'Remoção cirúrgica do(s) lobo(s) acometido(s) quando há disponibilidade de cirurgião experiente e o I-131 não está disponível.',
         mechanism: 'Excisão física do adenoma preservando a glândula paratireoide externa/caudal e sua vascularização carotídea.',
-        cautions: 'Requer estabilização clínica e controle da tireotoxicose cardiovascular com metimazol por pelo menos 3 a 4 semanas antes da anestesia geral. Monitorar cálcio ionizado sérico a cada 12 horas nas primeiras 72 horas pós-operatórias devido ao risco iminente de hipoparatireoidismo e hipocalcemia tetânica aguda se o procedimento for bilateral.'
+        cautions:
+          'Cuidados perioperatórios e prevenção de hipocalcemia tetânica:\n\n' +
+          '- Estabilização prévia: eutiroidismo farmacológico com metimazol por 3 a 4 semanas antes da intervenção cirúrgica.\n' +
+          '- Monitoramento de cálcio ionizado: aferição a cada 12 horas nas primeiras 72 horas pós-operatórias em procedimentos bilaterais pelo risco de hipoparatireoidismo iatrogênico agudo.'
       }
     ],
     terapiaSintomaticaCardiovascular: [
@@ -378,7 +502,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         drug: 'Atenolol',
         dose: '6,25 a 12,5 mg/gato VO a cada 12 a 24 horas.',
         indication: 'Controle de taquicardia sinusal severa (>220 bpm), arritmias ventriculares hiperadrenérgicas, hipertensão e sintomas de tireotoxicose miocárdica até que o antitireoidiano reduza os níveis hormonais.',
-        cautions: 'Betabloqueador seletivo beta-1. Reduz a frequência cardíaca, o inotropismo e o consumo miocárdico de oxigênio. Contraindicado em pacientes com insuficiência cardíaca congestiva descompensada ativa com edema pulmonar/derrame pleural grave ou bradiarritmias.'
+        cautions:
+          'Ações farmacodinâmicas e contraindicações formais:\n\n' +
+          '- Mecanismo: betabloqueador beta-1 seletivo que reduz a frequência cardíaca, o inotropismo e o consumo miocárdico de O2.\n' +
+          '- Contraindicações: insuficiência cardíaca descompensada ativa com edema pulmonar, derrame pleural grave ou bradiarritmias.'
       },
       {
         drug: 'Besilato de Anlodipino',
@@ -387,7 +514,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       }
     ],
     manejoDaDRCConcomitante:
-      'A conduta padrão perante o desmascaramento da DRC pós-eutireoidismo consiste em reestadiar o paciente pelos critérios IRIS (creatinina, SDMA, razão proteína:creatinina urinária [UPC] e PAS). Se a azotemia for leve (IRIS Estágio 2: creatinina 1,6 a 2,8 mg/dL) com paciente clinicamente estável e ativo, mantém-se o eutireoidismo associando terapia nefroprotetora (dieta renal, quelantes de fósforo entéricos e hidratação). Caso surja azotemia moderada a severa (IRIS Estágio 3 a 4 ou aumento abrupto de creatinina >1,0 mg/dL associado a apatia e perda de peso), deve-se reduzir suavemente a dose do antitireoidiano para permitir que o T4 total flutue no terço superior do intervalo de referência (2,5 a 4,0 mcg/dL), restabelecendo um grau controlado de hiperfiltração renal para salvar a sobrevida do paciente.'
+      'Abordagem terapêutica escalonada perante desmascaramento de DRC pós-eutireoidismo:\n\n' +
+      '- Reestadiamento IRIS sistemático: mensurar creatinina, SDMA, razão proteína:creatinina urinária (UPC) e aferir PAS por Doppler.\n' +
+      '- Conduta em azotemia leve (IRIS Estágio 2, creatinina 1,6 a 2,8 mg/dL): manter eutireoidismo rigoroso e associar medidas nefroprotetoras padrão (dieta renal, quelantes entéricos de fósforo e hidratação parenteral/oral assistida).\n' +
+      '- Ajuste em azotemia moderada a severa (IRIS Estágio 3 a 4 ou aumento abrupto de creatinina > 1,0 mg/dL): reduzir discretamente a dose de metimazol para situar o T4 total no terço superior da normalidade (2,5 a 4,0 mcg/dL), restabelecendo nível seguro de perfusão glomerular para preservar a sobrevida.',
   },
 
   complications: {
@@ -403,12 +533,17 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       'Insuficiência Cardíaca Congestiva (ICC) e Tromboembolismo Aórtico (FATE): efusão pleural bilateral e edema pulmonar agudo gerados pela cardiomiopatia tireotóxica grave; estase sanguínea e dilatação atrial aumentam o risco de formação de trombos no átrio esquerdo com embolização para o canal aórtico trifurcado (paraplegia aguda dos membros pélvicos dolorosa, ausência de pulso femoral e coxins cianóticos).'
     ],
     prognostico:
-      'O prognóstico para gatos com hipertireoidismo benigno tratados com Radioiodoterapia (I-131) ou manejados com metimazol em dosagem adequada é excelente a muito bom, com tempo mediano de sobrevida variando de 2 a 4 anos após o diagnóstico inicial. Os principais determinantes prognósticos negativos que reduzem drasticamente a sobrevida são: a gravidade da Doença Renal Crônica preexistente ou desmascarada pós-tratamento (sobrevida significativamente menor em pacientes IRIS estágio 3 ou 4), o desenvolvimento de hipotireoidismo iatrogênico persistente associado à azotemia, a presença de carcinoma tireoidiano indiferenciado metastático e a ocorrência de insuficiência cardíaca descompensada prévia à estabilização.'
+      'Expectativa de sobrevida e fatores prognósticos determinantes:\n\n' +
+      '- Sobrevida global esperada: excelente a muito boa em adenomas tratados com I-131 ou metimazol estabilizado, com mediana de 2 a 4 anos pós-diagnóstico.\n' +
+      '- Fatores prognósticos desfavoráveis: severidade da DRC preexistente ou desmascarada (IRIS 3 ou 4), hipotireoidismo iatrogênico persistente com azotemia, insuficiência cardíaca descompensada e carcinomas tireoidianos indiferenciados com invasão local ou metástases.',
   },
 
   prevention: {
     rastreamentoGeriátrico:
-      'A prevenção primária do hipertireoidismo felino é limitada pelo desconhecimento da totalidade de seus gatilhos ambientais. A estratégia médica primordial fundamenta-se no diagnóstico e rastreamento precoce: palpação cervical cuidadosa do sulco jugular em toda consulta de rotina em gatos com idade >= 7 anos; dosagem periódica de T4 total sérico em exames laboratoriais geriátricos preventivos semestrais ou anuais em felinos acima de 8-9 anos; pesagens corporais seriadas rigorosas (perda de peso sutil é frequentemente o primeiro sinal clínico detectável antes de alterações evidentes de apetite).',
+      'Estratégias de vigilância clínica e detecção precoce em pacientes senis:\n\n' +
+      '- Palpação cervical sistemática: exame do sulco jugular em todas as consultas clínicas de felinos com idade >= 7 anos (rastreio de thyroid slip).\n' +
+      '- Painel laboratorial preventivo: dosagem anual ou semestral de T4 total sérico em gatos acima de 8 a 9 anos integrando o check-up geriátrico de rotina.\n' +
+      '- Monitoramento ponderal seriado: pesagens rigorosas em balanças pediátricas de alta sensibilidade para identificar perda ponderal insidiosa precocemente.',
     planoDomiciliarEMonitoramento: [
       'Monitoramento semanal do peso corporal do felino em balança digital pediátrica ou veterinária.',
       'Mensuração rotineira da Frequência Respiratória em Repouso (FRR) durante o sono profundo do gato: valores persistentemente superiores a 30 movimentos por minuto sinalizam descompensação cardiovascular iminente (edema pulmonar ou efusão pleural) e demandam avaliação clínica de urgência.',
@@ -434,7 +569,7 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
 
   relatedConsensusSlugs: [],
   relatedDiseaseSlugs: [
-    'doenca-renal-cronica-caes-gatos',
+    'doenca-renal-cronica-canina',
     'hipertensao-arterial-sistemica-caes-gatos',
     'diabetes-mellitus-felina',
     'cardiomiopatia-hipertrofica-caes-gatos',

@@ -109,7 +109,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
       { to: '/consulta-vet/apresentacoes-comerciais', label: 'Comerciais', icon: ShoppingBag, accent: 'cyan' },
       { to: '/consulta-vet/receituario', label: 'Receituário', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap, accent: 'orange' },
-      { to: '/consulta-vet/guias-rapidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
+      { to: '/consulta-vet/guias-rapidos', label: 'Procedimentos', icon: BookOpen, accent: 'slate' },
       { to: '/consulta-vet/referencias-rapidas', label: 'Referências clínicas', icon: Layers, accent: 'cyan' },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/favoritos', label: 'Favoritos', icon: Bookmark, accent: 'rose' },
@@ -259,4 +259,3 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
     </>
   );
 }
-

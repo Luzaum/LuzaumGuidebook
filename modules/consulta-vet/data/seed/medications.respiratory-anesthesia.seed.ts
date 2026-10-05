@@ -220,7 +220,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
     clinicalNotesRichText:
       '<p><strong>Propionato de fluticasona:</strong> Corticosteroide inalatório de escolha para manutenção da asma felina e bronquites crônicas. Exige uso de câmara espaçadora e máscara com boa vedação facial. Apresentações no Brasil: Flixotide® Spray 50 mcg/dose e 250 mcg/dose (GSK).</p>' +
       MANDATORY_FOOTER,
-    relatedDiseaseSlugs: ['asma-felina', 'bronquite-cronica', 'colapso-traqueal'],
+    relatedDiseaseSlugs: ['asma-felina', 'bronquite-cronica-caes-gatos', 'colapso-traqueal-canino'],
     references: [
       {
         id: 'ref-cohn-2010',
@@ -541,7 +541,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
     clinicalNotesRichText:
       '<p><strong>Salbutamol / Albuterol (Aerolin®):</strong> Fármaco de resgate de ação rápida. Deve estar disponível para todos os gatos com asma felina. Em crises graves, oxigenoterapia e corticoide sistêmico devem ser associados.</p>' +
       MANDATORY_FOOTER,
-    relatedDiseaseSlugs: ['asma-felina', 'bronquite-cronica', 'colapso-traqueal'],
+    relatedDiseaseSlugs: ['asma-felina', 'bronquite-cronica-caes-gatos', 'colapso-traqueal-canino'],
     references: [
       {
         id: 'ref-leemans-2010',
@@ -842,7 +842,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
     clinicalNotesRichText:
       '<p><strong>Tartarato de butorfanol:</strong> Opioide agonista kappa / antagonista mu de início rápido e curta duração. Excelente para sedação e controle de tosse não produtiva.</p>' +
       MANDATORY_FOOTER,
-    relatedDiseaseSlugs: ['colapso-traqueal', 'bronquite-cronica', 'asma-felina'],
+    relatedDiseaseSlugs: ['colapso-traqueal-canino', 'bronquite-cronica-caes-gatos', 'asma-felina'],
     references: [
       {
         id: 'ref-lumb-jones-6th',

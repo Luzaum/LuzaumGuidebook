@@ -428,7 +428,7 @@ export const gabapentinaMedicationRecord: MedicationRecord = {
     '   Posologia: Administrar 1 (uma) cápsula por via oral a cada 8 horas (três vezes ao dia), continuamente por 30 dias. Não interromper o tratamento de maneira súbita.\\n' +
     '   ATENÇÃO: Havendo necessidade de suspensão futura, a dosagem deverá ser reduzida de forma gradativa ao longo de 2 a 3 semanas sob orientação médica veterinária.',
 
-  keyStudies: [
+  clinicalStudiesCommented: [
     {
       title: 'Pharmacokinetics of oral gabapentin in Greyhounds',
       authorsYear: 'KuKanich B, Cohen RL. (2011)',

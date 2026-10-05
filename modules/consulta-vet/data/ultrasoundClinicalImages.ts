@@ -1,6 +1,7 @@
-import type { UltrasoundOrganId } from './ultrasoundReferenceData';
+import type { UltrasoundOrganId, UltrasoundSpecies } from './ultrasoundReferenceData';
 
-export type UltrasoundClinicalImage = { src: string; width: number; height: number; article: string; title: string; author: string; license: string; licenseUrl: string; figure: string; original: string; originalCaption?: string; speciesLabel: string; caption: string; changes: string };
+export type UltrasoundImagePanel = { x: number; y: number; width: number; height: number };
+export type UltrasoundClinicalImage = { src: string; width: number; height: number; panel?: UltrasoundImagePanel; article: string; title: string; author: string; license: string; licenseUrl: string; figure: string; original: string; originalCaption?: string; speciesLabel: string; caption: string; changes: string };
 
 export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundClinicalImage> = {
   "liver": {
@@ -29,42 +30,54 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "figure": "g002",
     "original": "https://www.frontiersin.org/files/Articles/1508705/xml-images/fvets-12-1508705-g002.webp",
     "speciesLabel": "Cão — mucocele, painel A",
-    "caption": "A é ultrassom: conteúdo estrelado brilhante, parede espessa/escura, líquido e gordura reativa ao redor. B a D são tomografia do mesmo animal. O conjunto aumenta a preocupação com complicação; não confirma ruptura isoladamente.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "caption": "Painel A: vesícula com conteúdo estrelado brilhante, parede alterada e reação ao redor em um cão com mucocele. A organização do conteúdo ajuda a distingui-lo de lama móvel; avalie parede, ductos e sinais clínicos para investigar complicações.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 1535,
-    "height": 1330
+    "height": 1330,
+    "panel": {
+      "x": 45,
+      "y": 20,
+      "width": 623,
+      "height": 602
+    }
   },
   "spleen": {
     "src": "/assets/consulta-vet/ultrasound-clinical/spleen.jpg",
-    "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8917151/?report=xml",
-    "title": "Accuracy of B-mode ultrasound and ARFI elastography in predicting malignancy of canine splenic lesions",
-    "author": "MaroneziMarjury Cristina; CarneiroRafael Kretzer; da CruzIgor Cezar Kniphoff; de OliveiraAna Paula Luiz; De NardiAndrigo Barboza; PavanLetícia; Del’Aguila-SilvaPriscila; UscateguiRicardo Andrés Ramirez; FelicianoMarcus Antônio Rossi",
+    "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10812759/",
+    "title": "Use of New Ultrasonography Methods for Detecting Neoplasms in Dogs and Cats: A Review",
+    "author": "Anna Carolina Mazeto Ercolin; Alex Silveira Uchôa; Luiz Paulo Nogueira Aires; Diego Rodrigues Gomes; Stefany Tagliatela Tinto; Giovanna Serpa Maciel Feliciano; Marcus Antônio Rossi Feliciano; Felisbina Luisa Queiroga",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "figure": "Fig1",
-    "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1077/8917151/479b63a7f152/41598_2022_8317_Fig1_HTML.jpg",
-    "originalCaption": "Ultrasonographic image of the spleen of two canine patients, using ARFI elastography (Virtual Touch Tissue Imaging and Quantification Elastography method). (A) Spleen with diffuse malignant alteration (multicentric lymphoma) presenting a mean shear velocity of 3.04 m/s; (B) Spleen with benign focal alteration (splenic hematoma) presenting an average shear velocity of 1.89 m/s.",
-    "speciesLabel": "Cães — linfoma e hematoma",
-    "caption": "Painel A: linfoma; B: hematoma. As imagens incluem elastografia ARFI. Contrastes e heterogeneidade se sobrepõem entre lesões; a cor desta técnica não representa Doppler.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
-    "width": 669,
-    "height": 746
+    "figure": "animals-14-00312-f001",
+    "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/884c/10812759/de0a9e93439c/animals-14-00312-g001.jpg",
+    "originalCaption": "Image of a benign splenic lesion (hematoma) in a dog: (A1,A2) B-mode of the splenic lesion with mixed and heterogeneous echogenicity; (B) ARFI elastography. Yellow asterisk indicates lesions.",
+    "speciesLabel": "Cão — hematoma esplênico, modo B",
+    "caption": "Painel A1, modo B: o asterisco marca um hematoma do baço. Sangue, coágulo e tecido adjacente produzem uma lesão de textura mista. Essa aparência também pode ocorrer em neoplasias hemorrágicas; ela não separa hematoma de hemangiossarcoma com segurança.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
+    "width": 764,
+    "height": 688,
+    "panel": {
+      "x": 6,
+      "y": 6,
+      "width": 344,
+      "height": 362
+    }
   },
   "kidneys": {
     "src": "/assets/consulta-vet/ultrasound-clinical/kidneys.jpg",
-    "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8850297/?report=xml",
-    "title": "Case Report: Imaging Features and Successful Management of Ureteral Stenosis in a Kitten With Bilateral Atypical Papillary Transitional Mucosal Hyperplasia",
-    "author": "KwonMinji; KimSungsoo; LeeKichang; YoonHakyoung",
+    "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7712280/",
+    "title": "How Ultrasound Can Be Useful for Staging Chronic Kidney Disease in Dogs: Ultrasound Findings in 855 Cases",
+    "author": "Francesca Perondi; Ilaria Lippi; Veronica Marchetti; Barbara Bruno; Antonio Borrelli; Simonetta Citi",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "figure": "F4",
-    "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/705e/8850297/1c288a887f49/fvets-08-796638-g0004.jpg",
-    "originalCaption": "Postoperative US images of left kidney. (A) Sagittal image. (B) Transverse image. Three days after surgery, the left renal pelvic height was observed to be within 2 mm on US, and a nephrostomy tube was observed normally as two parallel lines in the renal pelvis (white arrow).",
-    "speciesLabel": "Gato — rim após desobstrução",
-    "caption": "A: corte longitudinal; B: transversal. As linhas paralelas brilhantes correspondem a tubo de nefrostomia. Esta é uma imagem pós-operatória, não um modelo de rim normal.",
+    "figure": "vetsci-07-00147-f001",
+    "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/5782/7712280/e86bf8679fac/vetsci-07-00147-g001.jpg",
+    "originalCaption": "Sagittal plane of the left kidney of a 10-year-old dog with chronic kidney disease for the measurement of the cortical and medullary ratio (C/M ratio).",
+    "speciesLabel": "Cão — rim esquerdo em corte longitudinal",
+    "caption": "Rim de um cão com doença renal crônica. C identifica o córtex e M a medula: o contraste permite avaliar arquitetura e proporções. Trata-se de um exemplo de doença; as medidas desta imagem não são limites de normalidade.",
     "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
-    "width": 661,
-    "height": 257
+    "width": 712,
+    "height": 451
   },
   "stomach": {
     "src": "/assets/consulta-vet/ultrasound-clinical/stomach.jpg",
@@ -77,10 +90,16 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1753/12888347/0ae4226f9543/TVEQ_A_2622732_F0002_C.jpg",
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
     "speciesLabel": "Gato — painel A",
-    "caption": "No painel A, observe pregas do estômago vazio: contração e pregas interferem na espessura aparente. Os demais painéis mostram outros segmentos gastrointestinais.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "caption": "Painel A: corte transversal do estômago vazio de um gato. As pregas convergem para o lúmen e podem parecer espessas pela contração; interprete a parede considerando distensão e plano de corte.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 750,
-    "height": 416
+    "height": 416,
+    "panel": {
+      "x": 1,
+      "y": 2,
+      "width": 227,
+      "height": 205
+    }
   },
   "small-intestine": {
     "src": "/assets/consulta-vet/ultrasound-clinical/small-intestine.jpg",
@@ -92,11 +111,17 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "figure": "F0002",
     "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1753/12888347/0ae4226f9543/TVEQ_A_2622732_F0002_C.jpg",
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
-    "speciesLabel": "Cão e gato — painéis B, C e D",
-    "caption": "B: duodeno canino; C: jejuno felino com camadas alternadas; D: íleo felino. As camadas são interfaces acústicas; medidas e proporções variam por segmento e espécie.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "speciesLabel": "Cão — duodeno, painel B",
+    "caption": "Painel B: duodeno canino em corte longitudinal. As faixas claras e escuras mostram as camadas da parede; as marcas amarelas delimitam a espessura total. Compare espessura e estratificação no segmento correto.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 750,
-    "height": 416
+    "height": 416,
+    "panel": {
+      "x": 234,
+      "y": 2,
+      "width": 251,
+      "height": 205
+    }
   },
   "colon": {
     "src": "/assets/consulta-vet/ultrasound-clinical/colon.jpg",
@@ -108,11 +133,17 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "figure": "F0002",
     "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1753/12888347/0ae4226f9543/TVEQ_A_2622732_F0002_C.jpg",
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
-    "speciesLabel": "Cão e gato — painéis E e F",
-    "caption": "E: região ileocecocólica felina; F: cólon canino. Gás gera interface brilhante e sombra, escondendo a parede profunda. Não medir tecido que não está claramente visível.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "speciesLabel": "Cão — cólon, painel F",
+    "caption": "Painel F: cólon canino preenchido por gás. A interface superficial é brilhante e há sombra acústica abaixo, porque o gás impede a passagem do feixe. Não confunda a área oculta com ausência de parede.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 750,
-    "height": 416
+    "height": 416,
+    "panel": {
+      "x": 490,
+      "y": 213,
+      "width": 259,
+      "height": 201
+    }
   },
   "pancreas": {
     "src": "/assets/consulta-vet/ultrasound-clinical/pancreas.jpg",
@@ -173,10 +204,16 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7713/8146485/bcc5c26ea9a0/animals-11-01213-g001.jpg",
     "originalCaption": "The computed tomography (CT) appearance of a granulosa cell tumour that appears as a large, well-defined low-attenuation ovarian mass. (A) Non-enhanced CT scan shows multi cystic soft-tissue mass. (B) After contrast administration, CT scan shows mass as mildly and non-homogeneously enhanced. (C) Ultrasound longitudinal right ovarian mass with heterogeneous echotexture and multiloculated solid and cystic mass. (D) Sagittal cut of the right ovary containing polycystic structures.",
     "speciesLabel": "Cadela — massa ovariana",
-    "caption": "O painel C é ultrassom e mostra regiões sólidas e císticas; A e B são tomografia e D é a peça anatômica. Conteúdo líquido e tecido sólido produzem contrastes distintos.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "caption": "Painel C: massa ovariana em cadela, com tecido sólido heterogêneo e cavidades escuras. As cavidades contêm líquido e retornam poucos ecos; o tecido sólido tem múltiplas interfaces. A imagem do caso corresponde a tumor de células da granulosa; esse aspecto não determina sozinho o diagnóstico.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 741,
-    "height": 186
+    "height": 186,
+    "panel": {
+      "x": 404,
+      "y": 5,
+      "width": 174,
+      "height": 174
+    }
   },
   "lymph-nodes": {
     "src": "/assets/consulta-vet/ultrasound-clinical/lymph-nodes.jpg",
@@ -205,10 +242,16 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/705e/8850297/5c14a4018b53/fvets-08-796638-g0001.jpg",
     "originalCaption": "Radiographic and ultrasonography (US) images of the bilateral hydronephrosis in a cat with bilateral ureteral anomalies. (A) It is observed that both kidneys overlap below the second to fourth lumbar vertebrae in the right lateral view. (B) When the length of the second lumbar vertebra was compared with the bilateral height measured by line in ventrodorsal view, the right kidney (5.51 cm) was measured to be 3.3 times the L2 length (1.53 cm), and the left kidney (5.05 cm) was measured to be 3.6 times the L2 length (1.53 cm). (C) A transverse US image shows pyelectasis of the right kidney. The height of the right renal pelvis was measured to be 14.6 mm. (D) A transverse US image shows the pyelectasis of the left kidney. The height of the left renal pelvis was measured to be 4.8 mm. (E) Focal polypoid mural thickening was observed in the middle of the right ureter. Focally thickened ureteral wall can be seen in circumferential form, and the thickness of the ureteral wall was measured to be 2.3 mm for the dorsal part and 2.5 mm for the ventral part. (F) Focal polypoid mural thickening was observed in the middle of the left ureter. Focally thickened ureteral wall can be seen in circumferential form, and the thickness of the ureteral wall was measured to be 1.5 mm for the dorsal part and 1.8 mm for the ventral part.",
     "speciesLabel": "Gato — painéis E e F",
-    "caption": "E e F mostram espessamento ureteral polipoide; C e D, dilatação de pelve renal; A e B são radiografias. Uma lesão de parede pode obstruir sem cálculo.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "caption": "Painéis E e F: espessamento polipoide da parede dos ureteres em um gato. As setas e os marcadores delimitam a lesão; uma proliferação mural pode reduzir o lúmen e causar obstrução mesmo sem cálculo visível.",
+    "changes": "Exibição apenas do painel ultrassonográfico indicado, por enquadramento na interface; arquivo original preservado. Legenda explicativa em português.",
     "width": 708,
-    "height": 213
+    "height": 213,
+    "panel": {
+      "x": 362,
+      "y": 151,
+      "width": 345,
+      "height": 61
+    }
   },
   "testes": {
     "src": "/assets/consulta-vet/ultrasound-clinical/testes.jpg",
@@ -320,3 +363,15 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "height": 1074
   }
 };
+
+/** Display only the appropriate sonographic panel; do not modify source pixels. */
+export function getUltrasoundClinicalImage(organ: UltrasoundOrganId, species: UltrasoundSpecies): UltrasoundClinicalImage {
+  const image = ULTRASOUND_CLINICAL_IMAGES[organ];
+  if (species === 'cat' && organ === 'small-intestine') return { ...image,
+    panel: { x: 490, y: 2, width: 259, height: 205 }, speciesLabel: 'Gato — jejuno, painel C',
+    caption: 'Painel C: jejuno felino em corte longitudinal. As cinco camadas alternam tons claros e escuros, conforme suas interfaces acústicas. Avalie cada camada e a espessura total; as marcas amarelas indicam onde a medida foi feita.' };
+  if (species === 'cat' && organ === 'colon') return { ...image,
+    panel: { x: 234, y: 213, width: 251, height: 201 }, speciesLabel: 'Gato — região ileocecocólica, painel E',
+    caption: 'Painel E: região ileocecocólica felina. O cólon está identificado e contém gás, com sombra acústica abaixo do asterisco; o segmento adjacente é o íleo. Diferencie os segmentos antes de interpretar a parede e fazer medidas.' };
+  return image;
+}

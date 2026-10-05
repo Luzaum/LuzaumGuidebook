@@ -1,0 +1,38 @@
+[
+  {
+    "page": 1,
+    "file": "2-page-1-image-0-Im0.png",
+    "width": 228,
+    "height": 45
+  },
+  {
+    "page": 3,
+    "file": "2-page-3-image-0-Im0.jpg",
+    "width": 2050,
+    "height": 1157
+  },
+  {
+    "page": 4,
+    "file": "2-page-4-image-0-Im0.png",
+    "width": 2000,
+    "height": 1360
+  },
+  {
+    "page": 5,
+    "file": "2-page-5-image-0-Im0.png",
+    "width": 1500,
+    "height": 1052
+  },
+  {
+    "page": 6,
+    "file": "2-page-6-image-0-Im0.png",
+    "width": 1500,
+    "height": 1427
+  },
+  {
+    "page": 7,
+    "file": "2-page-7-image-0-Im0.jpg",
+    "width": 1500,
+    "height": 919
+  }
+]

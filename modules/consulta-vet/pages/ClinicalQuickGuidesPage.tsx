@@ -10,12 +10,12 @@ import { cn } from '../../../lib/utils';
 
 const UI_TEXT = {
   home: 'Início',
-  title: 'Guia rápido clínico',
+  title: 'Procedimentos',
   lead:
-    'Conceitos por sistema (especialidade), com guia breve, figuras, tabelas e vídeos incorporados quando disponíveis. Use a busca ou filtre por tema.',
+    'Guias de procedimentos em cães e gatos: indicações, preparo, técnica, cuidados e complicações. Busque por procedimento ou filtre por especialidade.',
   howTitle: 'Como usar',
   howBody:
-    'Cada card abre um tópico com resumo rápido e conteúdo completo. Em mobile, os cartões empilham em duas colunas quando há espaço; em telas estreitas, uma coluna.',
+    'Abra um procedimento para consultar o resumo prático ou estudar o conteúdo completo, com passos, figuras, tabelas e referências.',
   searchPlaceholder: 'Buscar por nome ou palavra-chave…',
   filterAll: 'Todos',
   empty: 'Nenhum guia corresponde à busca ou ao filtro.',

@@ -1,0 +1,44 @@
+[
+  {
+    "page": 1,
+    "file": "1-page-1-image-0-Xi0.png",
+    "width": 228,
+    "height": 45
+  },
+  {
+    "page": 1,
+    "file": "1-page-1-image-1-Xi1.png",
+    "width": 228,
+    "height": 45
+  },
+  {
+    "page": 3,
+    "file": "1-page-3-image-0-Im1.jpg",
+    "width": 2050,
+    "height": 1157
+  },
+  {
+    "page": 4,
+    "file": "1-page-4-image-0-Im2.png",
+    "width": 2000,
+    "height": 1360
+  },
+  {
+    "page": 5,
+    "file": "1-page-5-image-0-Im3.png",
+    "width": 1500,
+    "height": 1052
+  },
+  {
+    "page": 6,
+    "file": "1-page-6-image-0-Im4.png",
+    "width": 1500,
+    "height": 1427
+  },
+  {
+    "page": 7,
+    "file": "1-page-7-image-0-Im5.jpg",
+    "width": 1500,
+    "height": 919
+  }
+]

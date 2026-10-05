@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { UltrasoundReportInterpretation } from '../../modules/consulta-vet/components/UltrasoundReportInterpretation';
 import { ULTRASOUND_ORGANS } from '../../modules/consulta-vet/data/ultrasoundReferenceData';
 import { ULTRASOUND_REPORT_PATTERNS, getUltrasoundReportPatterns } from '../../modules/consulta-vet/data/ultrasoundInterpretationData';
-import { ULTRASOUND_CLINICAL_IMAGES } from '../../modules/consulta-vet/data/ultrasoundClinicalImages';
+import { ULTRASOUND_CLINICAL_IMAGES, getUltrasoundClinicalImage } from '../../modules/consulta-vet/data/ultrasoundClinicalImages';
 import { getUltrasoundDifferentialExplanations } from '../../modules/consulta-vet/data/ultrasoundClinicalMechanisms';
 
 test('cada achado tem mecanismos expansíveis e raciocínio clínico, em todos os órgãos', () => {
@@ -33,17 +33,32 @@ test('imagens veterinárias de todos os órgãos têm arquivo, legenda e atribui
     assert.ok(image.author && image.article && image.caption && image.speciesLabel);
     assert.ok(!image.license.includes('NC'));
   }
-  assert.match(ULTRASOUND_CLINICAL_IMAGES.ovaries.caption, /painel C é ultrassom/);
-  assert.match(ULTRASOUND_CLINICAL_IMAGES.ureters.caption, /A e B são radiografias/);
+  for (const organ of ULTRASOUND_ORGANS) for (const species of ['dog', 'cat'] as const) {
+    const image = getUltrasoundClinicalImage(organ.id, species);
+    if (image.panel) {
+      const { x, y, width, height } = image.panel;
+      assert.ok(x >= 0 && y >= 0 && width > 0 && height > 0);
+      assert.ok(x + width <= image.width && y + height <= image.height, organ.id);
+    }
+  }
+  assert.equal(ULTRASOUND_CLINICAL_IMAGES.ovaries.panel?.x, 404, 'Somente ultrassom, sem CT ou peça anatômica');
+  assert.equal(ULTRASOUND_CLINICAL_IMAGES.gallbladder.panel?.x, 45, 'Somente painel A de ultrassom');
+  assert.equal(ULTRASOUND_CLINICAL_IMAGES.ureters.panel?.y, 151, 'Somente ureteres E/F, sem radiografia ou rim');
+  assert.match(getUltrasoundClinicalImage('small-intestine', 'cat').speciesLabel, /Gato.*jejuno/);
+  assert.match(getUltrasoundClinicalImage('small-intestine', 'dog').speciesLabel, /Cão.*duodeno/);
 });
 
 test('leitura progride de imagem a mecanismo, diferenciais e raciocínio sem contagem ou páginas', () => {
   for (const organ of ULTRASOUND_ORGANS) for (const species of ['dog', 'cat'] as const) {
     const html = renderToStaticMarkup(<UltrasoundReportInterpretation organ={organ.id} species={species} />);
+    assert.equal((html.match(/<table\b/g) ?? []).length, 1, 'Tabela real em todos os órgãos');
+    assert.equal((html.match(/scope="col"/g) ?? []).length, 5, 'Cinco colunas na ordem solicitada');
+    assert.equal((html.match(/scope="row"/g) ?? []).length, getUltrasoundReportPatterns(organ.id, species).length);
+    assert.equal((html.match(/<td\b/g) ?? []).length, getUltrasoundReportPatterns(organ.id, species).length * 4);
     assert.ok(html.indexOf('Como vejo no ultrassom') < html.indexOf('Como a alteração se forma'));
     assert.ok(html.indexOf('Como a alteração se forma') < html.indexOf('Diferenciais'));
     assert.ok(html.indexOf('Diferenciais') < html.indexOf('O que o clínico deve pensar'));
-    assert.match(html, /explicar mecanismo/);
+    assert.match(html, /Explicar mecanismo/);
     assert.doesNotMatch(html, /cadastrad|\d+ de \d+ padrões|PDF|BSAVA|Thrall|capítulo|p\. \d/);
   }
 });

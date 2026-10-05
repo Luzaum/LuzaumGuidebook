@@ -49,11 +49,26 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
   ],
 
   quickSummary:
-    'ALERTA CRÍTICO DE EMERGÊNCIA — INTERMAÇÃO NÃO TERMINA QUANDO A TEMPERATURA NORMALIZA: Lesão Renal Aguda (LRA / AKI), Coagulação Intravascular Disseminada (CID), hepatopatia aguda, Síndrome do Desconforto Respiratório Agudo (ARDS), hipoglicemia fulminante e hemorragia gastrointestinal podem surgir ou sofrer deterioração catastrófica horas ou dias após o resfriamento. A intermação é uma emergência sistêmica potencialmente fatal decorrente do acúmulo patológico de calor corporal que sobrepuja a capacidade fisiológica de dissipação térmica, deflagrando desnaturação proteica maciça, citotoxicidade térmica direta, resposta inflamatória sistêmica desregulada (SIRS), colapso circulatório distributivo-hipovolêmico e lesão endotelial generalizada. Clinicamente, o heatstroke é tradicionalmente caracterizado por hipertermia corporal central extrema (tipicamente > 41°C) combinada com disfunção do sistema nervoso central e falência de múltiplos órgãos. Entretanto, a normotermia ou mesmo a hipotermia no momento do atendimento inicial não exclui o diagnóstico, visto que o paciente pode ter sofrido resfriamento prévio por tutores, ter sido retirado da fonte de calor há tempo prolongado ou ter entrado em colapso termorregulatório e circulatório terminal. As diretrizes internacionais RECOVER First Aid 2026 revolucionaram a abordagem pré-hospitalar ao recomendar o resfriamento ativo imediato com água corrente fresca sobre o tronco e abdome com circulação forçada de ar, superando a antiga contraindicação absoluta ao uso de água fria. O manejo intensivo exige diferenciação categórica entre intermação e febre, proibindo terminantemente antipiréticos e AINEs, além de reposição volêmica estrita segundo as diretrizes AAHA 2024 para evitar sobrecarga hídrica e edema pulmonar em um leito vascular já comprometido por endoteliopatia.',
+    'ALERTA CRÍTICO DE EMERGÊNCIA — INTERMAÇÃO NÃO TERMINA QUANDO A TEMPERATURA NORMALIZA:\n' +
+    '- Lesões secundárias com janela oculta pós-resfriamento:\n' +
+    '  - Lesão Renal Aguda (LRA / AKI), Coagulação Intravascular Disseminada (CID), hepatopatia aguda, Síndrome do Desconforto Respiratório Agudo (ARDS), hipoglicemia fulminante e necrose gastrointestinal podem surgir ou sofrer deterioração catastrófica horas ou dias após o resfriamento.\n' +
+    '- Fisiopatologia sistêmica da sobrecarga térmica:\n' +
+    '  - Emergência decorrente do acúmulo patológico de calor que sobrepuja a dissipação fisiológica, deflagrando desnaturação proteica, citotoxicidade térmica direta, resposta inflamatória sistêmica (SIRS), colapso circulatório distributivo-hipovolêmico e endoteliopatia generalizada.\n' +
+    '- Apresentação clínica e armadilha da temperatura inicial:\n' +
+    '  - Classicamente caracterizada por hipertermia central extrema (> 41°C) com disfunção do SNC e falência de múltiplos órgãos.\n' +
+    '  - A normotermia ou hipotermia na admissão não descarta intermação, podendo refletir resfriamento caseiro prévio, tempo decorrido desde o insulto ou colapso circulatório descompensado terminal.\n' +
+    '- Mudança de paradigma e conduta intensiva (RECOVER 2026 e AAHA 2024):\n' +
+    '  - Resfriamento ativo imediato com água corrente fresca no tronco e circulação forçada de ar (Diretrizes RECOVER First Aid 2026), cessando aos 39,7–40,0°C.\n' +
+    '  - Veto absoluto a antipiréticos e AINEs (o set point hipotalâmico é normal).\n' +
+    '  - Ressuscitação volêmica conservadora em alíquotas para prevenir sobrecarga hídrica pulmonar.',
 
   quickSummaryRich: {
     lead:
-      'A intermação (heatstroke) representa o ápice crítico do espectro das doenças relacionadas ao calor, evoluindo de estresse térmico e exaustão térmica para uma síndrome de resposta inflamatória sistêmica (SIRS) e falência de múltiplos órgãos (MODS). A diretriz de consenso RECOVER First Aid 2026 estabelece que o resfriamento ativo pré-hospitalar não deve aguardar a confirmação termométrica quando o histórico e os sinais clínicos forem fortemente compatíveis. O dano celular não cessa com a queda da temperatura: a isquemia esplâncnica com translocação de endotoxinas e a endoteliopatia com consumo de fatores hemostáticos atingem seu nadir em uma janela oculta de 12 a 24 horas pós-insulto, demandando suporte avançado ininterrupto em UTI.',
+      'A intermação (heatstroke) representa o ápice crítico do espectro das doenças relacionadas ao calor, evoluindo de exaustão térmica para SIRS e falência de múltiplos órgãos (MODS):\n' +
+      '- Diretrizes de consenso RECOVER First Aid 2026:\n' +
+      '  - Estabelecem que o resfriamento ativo pré-hospitalar não deve aguardar a confirmação termométrica quando o histórico e os sinais clínicos forem fortemente compatíveis.\n' +
+      '- Janela oculta de 12 a 24 horas pós-insulto:\n' +
+      '  - O dano celular não cessa com a queda da temperatura: isquemia esplâncnica com translocação de endotoxinas e endoteliopatia com consumo de fatores hemostáticos atingem seu nadir tardiamente, demandando suporte avançado ininterrupto em UTI.',
     leadHighlights: [
       'espectro das doenças relacionadas ao calor',
       'resfriamento ativo pré-hospitalar não deve aguardar a confirmação termométrica',
@@ -64,7 +79,12 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
     pillars: [
       {
         title: 'Pilar 1 — Mudança de Paradigma: Resfriamento Ativo e RECOVER 2026',
-        body: 'A proibição histórica de água fria por receio de vasoconstrição periférica foi superada pelo consenso RECOVER First Aid 2026. A prioridade absoluta é o resfriamento ativo pré-hospitalar imediato com água fresca corrente sobre o tronco e abdome associada a ventiladores. O resfriamento ativo deve ser cessado rigorosamente aos 39,7–40,0°C (ou 38,6°C se houver estridor de vias aéreas com melhora do esforço) para prevenir hipotermia rebote iatrogênica.',
+        body:
+          'Superação da contraindicação histórica ao uso de água fria pelo consenso RECOVER First Aid 2026:\n' +
+          '- Prioridade pré-hospitalar imediata:\n' +
+          '  - Aplicação de água fresca corrente sobre o tronco e abdome associada a circulação forçada de ar por ventiladores.\n' +
+          '- Meta térmica estrita de interrupção:\n' +
+          '  - O resfriamento ativo deve ser cessado rigorosamente aos 39,7–40,0°C (ou 38,6°C se houver estridor de vias aéreas com melhora do esforço) para prevenir hipotermia rebote iatrogênica.',
         highlights: [
           'RECOVER First Aid 2026',
           'água fresca corrente sobre o tronco',
@@ -74,7 +94,12 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       },
       {
         title: 'Pilar 2 — Fisiopatologia Térmico-Endotelial e MODS Dinâmico',
-        body: 'O heatstroke comporta-se como uma endoteliopatia difusa somada a choque misto (hipovolêmico e distributivo). A hipertermia desnatura proteínas celulares e desarranja membranas mitocondriais. A vasoconstrição esplâncnica compensatória deflagra isquemia intestinal, quebra de junções oclusivas e translocação maciça de endotoxinas bacterianas, amplificando a tempestade inflamatória mesmo sem infecção bacteriana ativa prévia.',
+        body:
+          'O heatstroke comporta-se como uma endoteliopatia difusa somada a choque misto (hipovolêmico e distributivo):\n' +
+          '- Danos celulares diretos:\n' +
+          '  - A hipertermia desnatura proteínas estruturais e desarranja membranas mitocondriais.\n' +
+          '- Isquemia esplâncnica e quebra de barreira:\n' +
+          '  - Vasoconstrição compensatória deflagra isquemia intestinal e quebra de junções oclusivas, permitindo translocação maciça de endotoxinas bacterianas e tempestade inflamatória.',
         highlights: [
           'endoteliopatia difusa',
           'choque misto',
@@ -84,7 +109,14 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       },
       {
         title: 'Pilar 3 — Ressuscitação Hemodinâmica Racional (AAHA 2024) e Vasopressores',
-        body: 'A administração descontrolada de doses de choque de cristaloides é deletéria devido à perda de integridade vascular (capillary leak) e alto risco de ARDS. Recomenda-se alíquotas conservadoras de cristaloides isotônicos balanceados (cão: 15–20 mL/kg; gato: 5–10 mL/kg em 15–30 min) com reavaliação de perfusão. Se a hipotensão persistir após restauração volêmica, inicia-se prontamente infusão contínua de norepinefrina para meta de PAM >= 65 mmHg.',
+        body:
+          'Ressuscitação hemodinâmica racional baseada nas diretrizes AAHA 2024:\n' +
+          '- Veto à infusão cega de grandes volumes:\n' +
+          '  - A perda de integridade vascular (capillary leak) eleva drasticamente o risco de ARDS sob sobrecarga volêmica.\n' +
+          '- Alíquotas conservadoras de cristaloides:\n' +
+          '  - Cristaloides isotônicos balanceados (cão: 15–20 mL/kg; gato: 5–10 mL/kg em 15–30 min) com reavaliação seriada.\n' +
+          '- Suporte vasopressor precoce:\n' +
+          '  - Se a hipotensão persistir após restauração volêmica, iniciar prontamente norepinefrina para meta de PAM >= 65 mmHg.',
         highlights: [
           'AAHA 2024',
           'alíquotas conservadoras de cristaloides',
@@ -95,7 +127,12 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       },
       {
         title: 'Pilar 4 — Janela Oculta de 12 a 24h e Monitoramento Seriado',
-        body: 'A gravidade hemostática e renal pode ser mascarada na admissão. Estudos contemporâneos com tromboelastometria (Yanai et al., 2024) e coagulograma seriado (Bruchim et al., 2017) comprovam que pacientes normocoaguláveis na entrada tornam-se profundamente hipocoaguláveis entre 12 e 24 horas. Da mesma forma, a creatinina inicial subestima a lesão renal aguda (Segev et al., 2015), exigindo monitoramento intensivo por 24 a 48 horas.',
+        body:
+          'Vigilância intensiva mandatória durante a janela oculta de 12 a 24 horas:\n' +
+          '- Coagulopatia dinâmica (Yanai et al., 2024; Bruchim et al., 2017):\n' +
+          '  - Pacientes normocoaguláveis na entrada tornam-se profundamente hipocoaguláveis entre 12 e 24 horas pós-admissão.\n' +
+          '- Lesão Renal Aguda subclínica (Segev et al., 2015):\n' +
+          '  - A creatinina inicial subestima a lesão renal aguda, exigindo monitoramento seriado intensivo de débito urinário e eletrólitos por 24 a 48 horas.',
         highlights: [
           'janela oculta de 12 a 24h',
           'Yanai et al., 2024',
@@ -125,7 +162,11 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Passo 3: Painel Laboratorial de Admissão e Esfregaço com nRBC',
           detail:
-            'Coleta de sangue imediata: hemograma completo com esfregaço sanguíneo minucioso para quantificação de hemácias nucleadas (nRBCs; corte prognóstico >= 18 nRBC/100 leucócitos), hematócrito, plaquetas, glicemia, lactato e eletrólitos com cálcio ionizado.',
+            'Coleta laboratorial imediata na admissão:\n' +
+            '- Hemograma com esfregaço sanguíneo minucioso:\n' +
+            '  - Quantificação de hemácias nucleadas (nRBCs; corte prognóstico >= 18 nRBC/100 leucócitos), hematócrito e contagem plaquetária.\n' +
+            '- Perfil metabólico e eletrolítico de emergência:\n' +
+            '  - Glicemia, lactato e eletrólitos com cálcio ionizado.',
           timing: 'Minutos 5 a 15',
           reassess: 'Glicemia horária nas primeiras 4 horas; lactato sérico a cada 2 a 4 horas até depuração.',
         },
@@ -194,16 +235,48 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   etiology: {
     diferenciacaoTermorregulacaoVsFebre:
-      'A intermação decorre de uma falha termorreguladora aguda em que a taxa de ganho e produção interna de calor excede amplamente a capacidade fisiológica do organismo de eliminá-lo para o ambiente. Uma distinção biológica indispensável separa a intermação da febre infecciosa ou inflamatória: na febre, citocinas pirogênicas endógenas (como IL-1, IL-6 e TNF-alfa) estimulam a síntese de prostaglandina E2 (PGE2) no centro termorregulador do hipotálamo pré-óptico, elevando intencionalmente o ponto de ajuste térmico (set point) para um patamar mais alto (exemplo: 40°C). Nessa situação febril, o corpo busca ativamente reter calor e responde eficazmente a fármacos antipiréticos que inibem a cicloxigenase e a síntese de PGE2. Em nítido contraste, na intermação o set point hipotalâmico permanece estritamente inalterado e normal: o hipotálamo tenta desesperadamente deflagrar mecanismos de dissipação de calor (vasodilatação periférica máxima e taquipneia evaporativa), mas a sobrecarga calórica sobrepuja os limites físicos do sistema. Consequentemente, medicamentos antipiréticos tradicionais — como dipirona, anti-inflamatórios não esteroidais (AINEs) e paracetamol (acetaminofeno) — são absolutamente ineficazes no tratamento da intermação. Além de não possuírem alvo terapêutico na patologia, sua administração é nefasta: os AINEs potencializam a necrose tubular renal em rins com perfusão marginal e agravam a erosão da barreira gastrointestinal, enquanto o paracetamol acarreta toxicidade hepática fulminante e metemoglobinemia letal em felinos.',
+      'Distinção fisiológica fundamental entre intermação e febre:\n' +
+      '- Fisiopatologia da febre verdadeira:\n' +
+      '  - Citocinas pirogênicas endógenas (IL-1, IL-6 e TNF-alfa) estimulam a síntese de PGE2 no hipotálamo pré-óptico, elevando o ponto de ajuste térmico (set point).\n' +
+      '  - O organismo retém calor ativamente e responde à inibição da COX por antipiréticos.\n' +
+      '- Fisiopatologia da intermação (Heatstroke):\n' +
+      '  - O set point hipotalâmico permanece estritamente normal; o centro termorregulador tenta dissipar calor com vasodilatação periférica e taquipneia, mas a sobrecarga calórica sobrepuja os limites físicos de dissipação.\n' +
+      '- Veto absoluto a antipiréticos e AINEs:\n' +
+      '  - Dipirona, AINEs e paracetamol são completamente ineficazes por ausência de alvo biológico na intermação.\n' +
+      '  - O uso de AINEs potencializa a necrose tubular renal em rins hipoperfundidos e agrava a erosão gastrointestinal, enquanto o paracetamol causa hepatotoxicidade fulminante e metemoglobinemia fatal em felinos.',
 
     mecanismosBiofisicosPerdaCalorica:
-      'A manutenção da temperatura corporal obedece ao balanço biofísico: Calor Produzido + Calor Absorvido = Calor Armazenado + Calor Eliminado. A perda de calor para o meio ambiente ocorre por quatro vias físicas principais: radiação (emissão eletromagnética de calor para superfícies distantes mais frias, sem contato físico direto), condução (transferência térmica direta por contato com superfícies mais frias, como o solo), convecção (remoção contínua da camada de ar ou água aquecida adjacente à pele por correntes gasosas ou líquidas) e evaporação (dissipação endotérmica de grande quantidade de energia térmica através da transformação da água em vapor). Em condições de repouso e temperaturas amenas, radiação e convecção respondem pela maior parte da perda de calor. Todavia, quando a temperatura do ambiente se eleva e se aproxima da temperatura da superfície cutânea (aproximadamente 32 a 35°C), o gradiente térmico para radiação e convecção praticamente desaparece. Nesse cenário crítico, a evaporação torna-se a única via biológica remanescente capaz de promover perda líquida de calor corporal. Cães e gatos possuem glândulas sudoríparas écrinas funcionais restritas quase exclusivamente aos coxins plantares, que desempenham papel insignificante na termorregulação sistêmica. Dessa forma, o principal mecanismo fisiológico de dissipação evaporativa em carnívoros domésticos é a respiração ofegante (panting), caracterizada por respiração superficial e rápida que movimenta expressivos volumes de ar sobre a mucosa ricamente vascularizada da cavidade oral, língua e trato respiratório superior.',
+      'Balanço biofísico da termorregulação (Calor Produzido + Absorvido = Armazenado + Eliminado):\n' +
+      '- Quatro vias de transferência física de calor:\n' +
+      '  - Radiação: emissão eletromagnética de calor para superfícies distantes mais frias, sem contato direto.\n' +
+      '  - Condução: transferência térmica direta por contato com superfícies mais frias (como o solo).\n' +
+      '  - Convecção: remoção contínua da camada de ar ou água aquecida adjacente à pele por correntes gasosas ou líquidas.\n' +
+      '  - Evaporação: dissipação endotérmica de calor através da transformação de água em vapor.\n' +
+      '- Desaparecimento do gradiente térmico em temperaturas elevadas:\n' +
+      '  - Quando a temperatura ambiente se aproxima da temperatura cutânea (32 a 35°C), o gradiente para radiação e convecção praticamente se anula, tornando a evaporação a única via viável de perda calórica.\n' +
+      '- Limitação fisiológica de cães e gatos:\n' +
+      '  - Glândulas sudoríparas écrinas funcionais limitam-se aos coxins plantares, com papel insignificante na termorregulação sistêmica.\n' +
+      '  - O principal mecanismo evaporativo é o panting (respiração ofegante superficial e rápida sobre mucosas orais e linguais vascularizadas).',
 
     vulnerabilidadeBraquicefalicaEAltaUmidade:
-      'A eficiência da perda evaporativa através do panting depende criticamente do gradiente de pressão de vapor de água existente entre a superfície mucosa úmida e o ar ambiente. Quando a umidade relativa do ar atinge patamares elevados (superiores a 80%), o ar ambiente encontra-se saturado de vapor de água, reduzindo drasticamente a capacidade de evaporação da saliva e da umidade mucosa. Nessas condições de alta umidade, mesmo temperaturas ambientais moderadas (por volta de 28 a 32°C) podem precipitar intermação grave. Adicionalmente, cães braquicefálicos (como Buldogue Francês, Buldogue Inglês, Pug e Boxer) sofrem de uma desvantagem anatômica e biofísica extrema decorrente da Síndrome Obstrutiva das Vias Aéreas dos Braquicefálicos (BOAS): a estenose de narinas, o palato mole excessivamente alongado e espessado, a presença de cornetos nasais aberrantes e a redundância de tecidos orofaríngeos impõem uma resistência brutal ao fluxo aéreo. Para gerar ventilação respiratória, esses animais necessitam de pressões negativas intratorácicas monumentais, o que gera trabalho muscular extenuante e produz quantidades colossais de calor metabólico endógeno justamente enquanto tentam eliminar calor. Simultaneamente, a área de superfície mucosa viável para fluxo laminar e evaporação é deficiente. O esforço respiratório contínuo induz edema laríngeo agudo e eversão de sáculos laríngeos, estabelecendo um ciclo vicioso de retroalimentação positiva onde a obstrução mecânica e a retenção térmica progridem rapidamente para asfixia, colapso e morte térmica.',
+      'Interação crítica entre umidade ambiental e conformação anatômica craniofacial:\n' +
+      '- Impacto da alta umidade relativa do ar (> 80%):\n' +
+      '  - O ar saturado de vapor anula o gradiente de evaporação da saliva e da mucosa respiratória, podendo precipitar intermação mesmo em temperaturas moderadas (28 a 32°C).\n' +
+      '- Desvantagem biomecânica extrema em braquicefálicos (BOAS):\n' +
+      '  - Estenose de narinas, palato mole alongado/espessado, cornetos nasais aberrantes e redundância de tecidos orofaríngeos impõem enorme resistência ao fluxo aéreo.\n' +
+      '- Ciclo vicioso de termogênese metabólica:\n' +
+      '  - Pressões negativas intratorácicas gigantescas exigem esforço muscular extenuante, gerando calor metabólico massivo durante a própria tentativa de dissipação.\n' +
+      '  - Ocorre edema laríngeo agudo, eversão de sáculos e obstrução progressiva, culminando em asfixia, colapso e morte térmica.',
 
     hipertermiaNaoAmbientalSecundaria:
-      'Embora o heatstroke ambiental e por esforço represente a causa clássica, hipertermia extrema potencialmente fatal (temperatura central > 41°C) pode ser desencadeada por distúrbios que produzem aumento explosivo do metabolismo muscular esquelético ou desregulação neurológica primária, sem necessidade de exposição solar ou confinamento em ambiente aquecido. As principais causas incluem o status epilepticus convulsivo prolongado ou agrupamento de crises, nos quais a atividade motora contínua gera calor em velocidade superior à capacidade de perda; a tetania muscular por hipocalcemia; a síndrome da hipertermia maligna genética (mutação no receptor de rianodina RYR1 deflagrada por anestésicos inalatórios voláteis ou relaxantes musculares despolarizantes); e diversas intoxicações neurotóxicas graves. Entre as toxicoses clássicas associadas a tremores intensos e hipertermia grave destacam-se a intoxicação por metaldeído (moluscicida), micotoxinas tremorgênicas (penitrem A e roquefortina provenientes de alimentos mofados), estricnina, inseticidas organofosforados e carbamatos (via hiperatividade colinérgica e fasciculações musculares), piretroides em gatos e fármacos simpatomiméticos ou anfetaminas. Em felinos, o hipertireoidismo grave descompensado (tempestade tireoidiana) e a hipertermia disfuncional pós-administração de opioides (especialmente hidromorfona, buprenorfina e tramadol) integram a lista de diagnósticos diferenciais essenciais.',
+      'Causas de hipertermia extrema (> 41°C) não relacionadas ao ambiente:\n' +
+      '- Atividade muscular esquelética explosiva e sustentada:\n' +
+      '  - Status epilepticus prolongado ou agrupamento de crises convulsivas (produção motora descontrolada de calor).\n' +
+      '  - Tetania hipocalcêmica e hipertermia maligna genética (mutação no canal RYR1 deflagrada por anestésicos inalatórios ou relaxantes musculares).\n' +
+      '- Toxicologia clínica e neurotoxinas tremorgênicas:\n' +
+      '  - Metaldeído (moluscicida), micotoxinas tremorgênicas (penitrem A e roquefortina em comida mofada), estricnina, organofosforados, carbamatos e piretroides em gatos.\n' +
+      '- Desregulação endócrina e farmacológica em felinos:\n' +
+      '  - Crise tireotóxica (tempestade tireoidiana no hipertireoidismo descompensado) e hipertermia disfuncional pós-administração de opioides (hidromorfona, buprenorfina e tramadol).',
 
     tabelaDiferenciacaoTermicaIntermacaoVsFebre: {
       caption: 'Tabela 1 — Diagnóstico Diferencial Mecanístico: Intermação vs Febre vs Hipertermia Motora',
@@ -250,13 +323,36 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   epidemiology: {
     epidemiologiaCaninaVetcompassEEmergencia:
-      'A epidemiologia contemporânea da intermação canina foi substancialmente redefinida por grandes investigações populacionais britânicas. O estudo VetCompass de atenção primária liderado por Hall et al. (2020), avaliando uma coorte monumental de 905.543 cães sob cuidados veterinários primários no Reino Unido, identificou uma incidência anual estimada de 0,04% de doenças relacionadas ao calor, com taxa de letalidade global de 14,18%. O estudo comprovou que raças braquicefálicas apresentaram probabilidade substancialmente maior de desenvolver a doença quando comparadas a cães mesocefálicos, destacando-se o Bulldog Inglês (razão de chances 14,18), Bulldog Francês (6,48) e Dogue de Bordeaux (5,26). Além da conformação craniofacial, o excesso de peso corporal e a idade superior a 2 anos figuraram como fatores de risco independentes de alta relevância. Em contraste, dados de serviços terciários de emergência veterinária revelam um perfil de gravidade significativamente superior: um estudo multicêntrico conduzido em hospitais de emergência britânicos em 2022 com 167.751 cães atendidos encontrou incidência de 0,23% e letalidade hospitalar de 26,56%, com cães braquicefálicos exibindo odds ratio de 4,21. Já em séries clássicas de hospitais universitários e centros de referência terciária de medicina intensiva (como a série de Bruchim et al., 2006 em Israel), a mortalidade reportada atinge entre 30% e 50%. Essa disparidade flagrante nas estatísticas de mortalidade decorre do viés de encaminhamento (case mix): serviços de atenção primária recebem pacientes com exaustão térmica precoce, enquanto hospitais terciários admitem animais em coma profundo, com coagulação intravascular disseminada instalada, lesão renal aguda oligoanúrica e colapso circulatório.',
+      'Epidemiologia e fatores de risco na espécie canina (Dados VetCompass e emergência):\n' +
+      '- Evidências de atenção primária (Hall et al., 2020 — 905.543 cães):\n' +
+      '  - Incidência anual de 0,04% com taxa de letalidade global de 14,18%.\n' +
+      '  - Risco desproporcional em raças braquicefálicas: Bulldog Inglês (razão de chances 14,18), Bulldog Francês (6,48) e Dogue de Bordeaux (5,26).\n' +
+      '  - Idade superior a 2 anos e sobrepeso corporal atuam como preditores independentes de risco.\n' +
+      '- Dados de hospitais de emergência e centros terciários:\n' +
+      '  - Estudo multicêntrico britânico (2022, 167.751 cães): incidência de 0,23% e letalidade hospitalar de 26,56% (odds ratio em braquicefálicos de 4,21).\n' +
+      '  - Centros de referência terciária e UTI (Bruchim et al., 2006): mortalidade entre 30% e 50% decorrente de admissão tardia em coma, CID estabelecida e LRA anúrica.',
 
     particularidadesEpidemiologicasFelinas:
-      'Em felinos domésticos, a ocorrência de intermação é consideravelmente mais rara quando comparada à população canina, mas carrega alta letalidade potencial e peculiaridades etiológicas marcantes. O estudo epidemiológico de vigilância no Reino Unido realizado por Hall, Radford e Carter (2022) identificou apenas 16 casos de doenças relacionadas ao calor em gatos ao longo de vários anos, confirmando a baixa frequência relativa da condição na espécie. A totalidade dos casos felinos documentados decorreu de exposição ambiental passiva ou confinamento acidental, não havendo registro de intermação precipitada por exercício físico extenuante. A maioria expressiva dos eventos concentrou-se nos meses mais quentes do ano (75% entre junho e julho no hemisfério norte). Um cenário epidemiológico felino emblemático e peculiar envolve o confinamento acidental em secadoras de roupas domésticas: gatos procuram o interior do tambor aquecido ou roupas recém-colocadas como refúgio acolhedor, sendo aprisionados e submetidos a ar quente forçado em espaço fechado e rotação mecânica contínua. Na série de Cudney, Wayne e Rozanski (2021), três gatos vítimas de intermação induzida por secadora apresentaram disfunção neurológica profunda, úlceras corneanas e de mucosas, queimaduras térmicas e rabdomiólise severa; todos sobreviveram graças à intervenção intensiva rápida. Diferentemente do cão, gatos com doenças respiratórias crônicas, sobrepeso e idade avançada são os mais suscetíveis ao estresse térmico dentro de residências mal ventiladas.',
+      'Particularidades epidemiológicas da intermação na espécie felina:\n' +
+      '- Baixa incidência relativa e alta gravidade (Hall, Radford e Carter, 2022):\n' +
+      '  - Vigilância no Reino Unido documentou apenas 16 casos ao longo de múltiplos anos; a totalidade decorreu de exposição ambiental passiva ou confinamento, sem registros por esforço físico.\n' +
+      '  - Maioria absoluta concentrada nos meses quentes de verão (75% entre junho e julho no hemisfério norte).\n' +
+      '- Risco doméstico crítico em secadoras de roupas (Cudney, Wayne e Rozanski, 2021):\n' +
+      '  - Gatos procuram o tambor aquecido como refúgio e sofrem aprisionamento acidental com ar quente forçado e rotação mecânica.\n' +
+      '  - Casos documentados apresentaram disfunção neurológica profunda, úlceras de córnea e mucosa, queimaduras térmicas e rabdomiólise severa.\n' +
+      '- Populações felinas de maior vulnerabilidade:\n' +
+      '  - Felinos com pneumopatias crônicas (asma felina), obesidade e gatos geriátricos confinados em residências pouco ventiladas.',
 
     fatoresPredisponentesEConfinamento:
-      'A gênese da intermação envolve a interação multifatorial entre produção metabólica de calor e incapacidade física de dissipação. Entre os fatores caninos predisponentes de maior magnitude clínica destacam-se a conformação braquicefálica (resistência de vias aéreas superiores, palato redundante e ineficiência mecânica do panting); a obesidade e sobrepeso (a camada de tecido adiposo atua como isolante térmico eficiente, aumenta a demanda de trabalho locomotor e deteriora a relação entre área de superfície corporal e volume); a presença de pneumopatias e afecções de vias aéreas superiores prévias (como paralisia laríngea adquirida do cão idoso, colapso de traqueia e estenose laringotraqueal); as afecções cardiovasculares descompensadas (incapacidade miocárdica de elevar o débito cardíaco necessário para redirecionar o fluxo sanguíneo do centro corporal para os leitos capilares cutâneos); a pelagem densa e escura; e a ausência de aclimatação física e térmica. A falta de aclimatação é notadamente perigosa nos primeiros dias quentes da primavera ou após a transferência abrupta de um animal para regiões de clima tropical. Cães com histórico anterior de intermação apresentam risco recidivante aumentado, possivelmente devido a alterações microvasculares residuais ou danos persistentes nos centros reguladores hipotalâmicos.',
+      'Fatores de risco predisponentes individuais e ambientais:\n' +
+      '- Conformação física e anatômica:\n' +
+      '  - Síndrome braquicefálica com estenose de narinas e palato redundante; pelagem escura e densa que potencializa a absorção de radiação solar.\n' +
+      '- Comorbidades cardiorrespiratórias e metabólicas:\n' +
+      '  - Obesidade (o tecido adiposo atua como isolante térmico que dificulta a dissipação), cardiopatias descompensadas (incapacidade de elevar débito para vasodilatação cutânea) e paralisia laríngea adquirida.\n' +
+      '- Falta de aclimatação prévia:\n' +
+      '  - Risco crítico nos primeiros dias quentes da estação ou após transferência para regiões tropicais sem adaptação fisiológica prévia.\n' +
+      '- Histórico prévio de intermação:\n' +
+      '  - Animais que sobreviveram a episódio anterior exibem suscetibilidade aumentada a recidivas por possíveis danos residuais microvasculares ou hipotalâmicos.',
 
     tabelaComparativaEpidemiologiaCaesVsGatos: {
       caption: 'Tabela 2 — Comparativo Epidemiológico e Particularidades Clínicas: Cães vs Gatos',
@@ -302,16 +398,45 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   pathogenesisTransmission: {
     citotoxicidadeTermicaEDanosCelulares:
-      'A fisiopatologia da intermação é governada pelo produto entre a intensidade térmica e a duração da exposição celular ao calor (temperatura x tempo). A hipertermia extrema desnatura proteínas estruturais e enzimáticas, desestabiliza a bicamada lipídica das membranas celulares e colapsa a integridade mitocondrial, interrompendo a fosforilação oxidativa e a síntese de ATP. Sob condições normais de estresse térmico fisiológico, as células sintetizam proteínas de choque térmico (Heat-Shock Proteins - HSPs, notadamente HSP-70 e HSP-90), chaperonas moleculares que estabilizam proteínas desnaturadas, evitam a agregação citoplasmática tóxica e inibem vias precoces de apoptose. Contudo, na intermação grave, a carga térmica sobrepuja os mecanismos de defesa das HSPs. As células endoteliais, miócitos, neurônios e enterócitos entram em colapso necrótico e apoptótico, liberando quantidades massivas de Padrões Moleculares Associados ao Dano (DAMPs), como proteínas HMGB1 e DNA mitocondrial livre. Os DAMPs ligam-se a receptores do tipo Toll (TLRs) em macrófagos e neutrófilos, deflagrando a liberação descontrolada de citocinas pró-inflamatórias (TNF-alfa, IL-1beta, IL-6) e espécies reativas de oxigênio (ROS). Instala-se, dessa forma, uma Síndrome da Resposta Inflamatória Sistêmica (SIRS) destrutiva que perpetua a lesão celular mesmo após o resfriamento físico do paciente.',
+      'Cinética do dano térmico celular (produto temperatura x tempo de exposição):\n' +
+      '- Desnaturação proteica e colapso mitocondrial:\n' +
+      '  - A hipertermia extrema desnatura proteínas estruturais e enzimáticas, desestabiliza a bicamada lipídica de membranas e interrompe a fosforilação oxidativa com colapso na síntese de ATP.\n' +
+      '- Esgotamento das proteínas de choque térmico (HSPs):\n' +
+      '  - Sobrecarga calórica suplanta a capacidade protetora de chaperonas moleculares (HSP-70 e HSP-90), culminando em apoptose e necrose celular em massa.\n' +
+      '- Liberação maciça de DAMPs e tempestade de citocinas:\n' +
+      '  - Células endoteliais, miócitos e neurônios rompidos extravasam HMGB1 e DNA mitocondrial livre, ativando receptores Toll-like (TLRs) em leucócitos.\n' +
+      '  - Liberação descontrolada de TNF-alfa, IL-1beta, IL-6 e espécies reativas de oxigênio (ROS), instalando SIRS que autoperpetua a lesão tecidual pós-resfriamento.',
 
     isquemiaEsplanicaEQuebraBarreiraIntestinal:
-      'O trato gastrointestinal ocupa papel fisiopatológico fulcral na evolução sistêmica da intermação. Nas fases iniciais de estresse térmico, o sistema cardiovascular responde com vasodilatação periférica reflexa massiva nos leitos cutâneos para facilitar a irradiação e convecção calórica. Como contrapartida circulatória mandatória para preservar a pressão de perfusão central, ocorre vasoconstrição esplâncnica e renal reflexa de grande magnitude. Associada à hipovolemia por desidratação (perda de água via panting e hipersalivação), essa vasoconstrição provoca isquemia esplâncnica profunda e hipóxia celular dos enterócitos da mucosa intestinal. Privados de oxigênio e ATP, os enterócitos sofrem depleção energética e as junções de oclusão (tight junctions) perdem sua integridade funcional. A barreira mucosa intestinal desintegra-se, resultando em descamação epitelial com diarreia hemorrágica, hematêmese e melena. O evento crítico decorrente dessa quebra é a translocação maciça de bactérias gram-negativas intraluminares e de seus lipopolissacarídeos de parede (endotoxinas / PAMPs) diretamente para a circulação portal e vasos linfáticos mesentéricos. Ao atingirem a circulação sistêmica, as endotoxinas amplificam exponencialmente a tempestade de citocinas, provocando um estado fisiopatológico indistinguível do choque séptico refratário.',
+      'Papel central do trato gastrointestinal na amplificação inflamatória:\n' +
+      '- Vasoconstrição esplâncnica compensatória reflexa:\n' +
+      '  - Para preservar a pressão de perfusão central durante a vasodilatação cutânea máxima, ocorre intensa vasoconstrição no território mesentérico.\n' +
+      '- Isquemia epitelial e perda de junções de oclusão (tight junctions):\n' +
+      '  - Hipóxia celular e depleção energética dos enterócitos provocam descamação da mucosa com hematêmese, melena e diarreia hemorrágica profusa.\n' +
+      '- Translocação maciça de endotoxinas bacterianas (LPS):\n' +
+      '  - Bactérias gram-negativas intraluminares e endotoxinas penetram na circulação portal e vasos linfáticos mesentéricos.\n' +
+      '  - A endotoxemia sistêmica amplifica a tempestade inflamatória, culminando em quadro hemodinâmico indistinguível do choque séptico.',
 
     endoteliopatiaCascataCoagulacaoECID:
-      'A intermação induz lesão endotelial direta por estresse térmico combinada à citotoxicidade indireta mediada por citocinas, DAMPs e endotoxemia. O desnudamento do glicocálix endotelial e a necrose das células do endotélio expõem o fator tecidual (FT) subendotelial aos componentes do plasma circulante, disparando a cascata extrínseca da coagulação de forma disseminada. Gera-se uma produção descontrolada de trombina, acompanhada de ativação e recrutamento plaquetário massivo. Simultaneamente, a inflamação deprime a síntese e a atividade dos anticoagulantes fisiológicos endógenos — ocorre perda drástica de antitrombina (AT) e redução expressiva da proteína C ativada, aliada à inibição da fibrinólise via liberação aumentada de PAI-1. Nas primeiras horas do insulto, instala-se uma fase protrombótica com deposição maciça de microtrombos de fibrina em arteríolas e capilares de leitos vitais (rins, pulmões, fígado e cérebro). À medida que a síndrome avança, o consumo acelerado e ininterrupto de plaquetas e de fatores plasmáticos da coagulação (fibrinogênio, fatores V, VIII e protrombina) esgota as reservas hemostáticas do paciente. A transição para uma fase de hipocoagulabilidade consuntiva e hiperfibrinólise culmina no quadro clássico e temido de Coagulação Intravascular Disseminada (CID), manifestado por petéquias, equimoses, sangramentos espontâneos em locais de venopunção e hemorragias viscerais incontroláveis.',
+      'Endoteliopatia difusa e desregulação hemostática dinâmica:\n' +
+      '- Desnudamento endotelial e ativação do fator tecidual:\n' +
+      '  - Lesão térmica direta e citocinas destroem o glicocálix e expõem o fator tecidual subendotelial, deflagrando geração maciça de trombina e agregação plaquetária.\n' +
+      '- Perda dos freios anticoagulantes endógenos:\n' +
+      '  - Queda abrupta de antitrombina (AT) e proteína C ativada, aliada à elevação de PAI-1, promovendo microtrombose difusa em órgãos vitais (fase protrombótica inicial).\n' +
+      '- Transição para coagulopatia consuntiva e CID (Bruchim et al., 2017; Yanai et al., 2024):\n' +
+      '  - O consumo contínuo e exaustivo de plaquetas, fibrinogênio e fatores da coagulação culmina em hipocoagulabilidade severa, hiperfibrinólise, petéquias, equimoses e hemorragias intracavitárias.',
 
     mecanismosLraERabdomiolise:
-      'A Lesão Renal Aguda (LRA / AKI) afeta uma proporção substancial de cães e gatos com intermação e constitui um dos preditores independentes mais robustos de mortalidade. A patogenia da lesão renal no heatstroke é multifatorial e envolve pelo menos seis mecanismos lesivos simultâneos: 1) Hipovolemia severa decorrente de perdas evaporativas extremas e perdas gastrointestinais líquidas; 2) Choque distributivo e hipotensão vasoplégica sistêmica, reduzindo a pressão efetiva de filtração glomerular; 3) Citotoxicidade térmica direta às células tubulares proximais e da alça de Henle; 4) SIRS e disfunção microcirculatória renal induzida por endoteliopatia e citocinas; 5) Microtrombose capilar glomerular e peritubular secundária à CID; e 6) Nefropatia por pigmentos associada à rabdomiólise muscular aguda. A destruição térmica e isquêmica de miócitos esqueléticos (rabdomiólise) libera quantidades colossais de mioglobina monomérica na circulação sanguínea. Ao atingir o lúmen dos túbulos renais, a mioglobina precipita em cilindros oclusivos, induz vasoconstrição da artéria renal via depleção de óxido nítrico e gera estresse oxidativo intraluminal acentuado através da reação de Fenton mediada por ferro heme livre.',
+      'Mecanismos patogênicos da Lesão Renal Aguda e rabdomiólise na intermação:\n' +
+      '- Componentes hemodinâmicos e citotóxicos combinados:\n' +
+      '  - 1) Hipovolemia severa por perdas evaporativas e gastrointestinais;\n' +
+      '  - 2) Choque distributivo e hipotensão vasoplégica com colapso do gradiente de filtração glomerular;\n' +
+      '  - 3) Citotoxicidade térmica direta às células tubulares renais e alça de Henle;\n' +
+      '  - 4) Microangiopatia trombótica e isquemia peritubular secundária à CID;\n' +
+      '  - 5) Endoteliopatia glomerular e necrose tubular por citocinas inflamatórias da SIRS.\n' +
+      '- Nefropatia por pigmentos e rabdomiólise aguda:\n' +
+      '  - Necrose de miócitos esqueléticos libera quantidades massivas de mioglobina monomérica na circulação.\n' +
+      '  - A mioglobina precipita em cilindros intratubulares oclusivos, induz vasoconstrição intrarrenal e gera estresse oxidativo severo via reação de Fenton por ferro livre.',
 
     tabelaFisiopatologiaSistemicaOrgaoAlvo: {
       caption: 'Tabela 3 — Cascata Fisiopatológica Sistemática e Lesões em Órgãos-Alvo na Intermação',
@@ -364,16 +489,33 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   pathophysiology: {
     disfuncaoNeurologicaECicloConvulsivo:
-      'O parênquima cerebral é extraordinariamente vulnerável à agressão térmica direta e às oscilações metabólicas. A temperatura intracraniana crítica superior a 41,5°C desencadeia desnaturação de proteínas neuronais, disfunção mitocondrial e falência das bombas iônicas Na+/K+-ATPase da membrana celular, provocando influxo maciço de sódio e água para o espaço intracelular (edema cerebral citotóxico). Concomitantemente, a inflamação sistêmica e a endoteliopatia rompem a integridade da barreira hematoencefálica, permitindo o extravasamento de plasma e proteínas para o interstício encefálico (edema cerebral vasogênico). Esse processo culmina em elevação drástica da pressão intracraniana (PIC) e redução da pressão de perfusão cerebral (PPC = PAM - PIC). Isquemia cerebral, hemorragias petequiais multifocais e trombose microvascular completam o substrato patológico que se manifesta por ataxia, desorientação, cegueira cortical, estupor, coma e crises convulsivas generalizadas. As convulsões na intermação possuem um efeito sinérgico destrutivo: a contração muscular violenta gera calor endógeno em escala maciça, elevando ainda mais a temperatura corporal central e acelerando a necrose neuronal em um circuito de retroalimentação potencialmente fatal.',
+      'Vulnerabilidade cortical e hipertensão intracraniana:\n' +
+      '- Limiar de desnaturação proteica: temperatura intracraniana superior a 41,5°C causa desnaturação neuronal imediata, falência de bombas Na+/K+-ATPase e edema cerebral citotóxico.\n' +
+      '- Quebra de barreira hematoencefálica: tempestade de citocinas e endoteliopatia geram edema cerebral vasogênico com aumento da PIC e queda crítica da PPC (PPC = PAM - PIC).\n' +
+      '- Substrato isquêmico e lesões focais: trombose microvascular e micro-hemorragias provocam ataxia, cegueira cortical, estupor, coma e crises convulsivas generalizadas.\n' +
+      '- Ciclo vicioso de hipertermia endógena: a contração muscular violenta durante convulsões gera calor metabólico maciço, acelerando a necrose neuronal em espiral fatal.',
 
     injuriaPulmonarEdemaNaoCardiogenicoEARDS:
-      'O leito vascular pulmonar sofre agressão direta decorrente da circulação de citocinas inflamatórias, DAMPs e microtrombos de fibrina. A lesão e morte das células endoteliais dos capilares pulmonares rompem a barreira alvéolo-capilar, elevando de forma patológica a permeabilidade vascular (capillary leak). Ocorre inundação do interstício e dos espaços alveolares por um fluido exsudativo rico em proteínas plasmáticas e células inflamatórias, desprovido de elevação prévia na pressão de oclusão capilar pulmonar — configurando o Edema Pulmonar Não Cardiogênico e a Síndrome do Desconforto Respiratório Agudo (ALI / ARDS). Os alvéolos preenchidos por exsudato perdem a capacidade de troca gasosa, gerando shunt intrapulmonar direito-esquerdo, hipoxemia arterial refratária e perda acentuada de complacência pulmonar. Além do ARDS, o pulmão do paciente com intermação está sob risco contínuo de hemorragia alveolar difusa (secundária à CID) e de pneumonia por aspiração maciça, desencadeada pela perda do reflexo laringotraqueal protetor durante episódios de êmese em animais com depressão do sensório ou coma.',
+      'Comprometimento da barreira alvéolo-capilar:\n' +
+      '- Permeabilidade microvascular aumentada: DAMPs, citocinas e microtrombos lesam o endotélio pulmonar gerando exsudação alveolar proteica intensa sem hipertensão capilar prévia.\n' +
+      '- Fisiopatologia de ALI/ARDS: inundação alveolar por exsudato inflamatório causa shunt intrapulmonar direito-esquerdo, hipoxemia arterial refratária e perda de complacência.\n' +
+      '- Riscos respiratórios secundários:\n' +
+      '- Hemorragia alveolar difusa: decorrente de coagulopatia intravascular disseminada grave.\n' +
+      '- Pneumonia aspirativa: perda do reflexo laringotraqueal protetor em pacientes obnubilados durante episódios copiosos de êmese.',
 
     isquemiaMiocardicaEArritmiasVentrimulares:
-      'O miocárdio é duplamente afetado durante a crise hipertérmica: de um lado, a demanda de oxigênio pelo miocárdio aumenta dramaticamente devido à taquicardia extrema e contratilidade aumentada na fase hiperdinâmica inicial; de outro, a oferta miocárdica de oxigênio cai de forma abrupta em decorrência da hipotensão, hipovolemia, encurtamento do tempo de enchimento coronário na diástole e microtrombose vascular coronariana. Essa discrepância severa entre demanda e suprimento gera isquemia subendocárdica e necrose focal de cardiomiócitos. A lesão isquêmica miocárdica, aliada à acidose metabólica grave, alterações eletrolíticas (hipercalemia e hipocalcemia) e citocinas inflamatórias circulantes, torna o miocárdio altamente instável do ponto de vista elétrico. Arritmias cardíacas acometem aproximadamente 20 a 25% dos pacientes caninos com intermação, destacando-se a presença de complexos ventriculares prematuros (VPCs) monomórficos ou polimórficos, taquicardia ventricular não sustentada e taquicardia ventricular sustentada com repercussão hemodinâmica. A identificação de arritmias ventriculares exige intervenção imediata para evitar degeneração em fibrilação ventricular ou colapso circulatório fatal.',
+      'Descompasso hemodinâmico e instabilidade elétrica miocárdica:\n' +
+      '- Discrepância entre oferta e demanda: consumo miocárdico de oxigênio explode pela taquicardia extrema, enquanto a oferta desaba por hipotensão e encurtamento do tempo diastólico coronariano.\n' +
+      '- Injúria isquêmica e necrose focal: hipoperfusão e microtrombose geram isquemia subendocárdica e despolarização celular anômala potencializada por acidose metabólica e desequilíbrios de K+ e Ca2+.\n' +
+      '- Prevalência e espectro arritmogênico: arritmias ventriculares afetam 20% a 25% dos cães com intermação, manifestando-se por complexos ventriculares prematuros (VPCs) e taquicardia ventricular.\n' +
+      '- Risco de colapso circulatório: taquicardias ventriculares instáveis demandam intervenção antiarrítmica imediata para impedir degeneração em fibrilação ventricular ou assistolia.',
 
     lesaoHepatocelularEHipoglicemiaCritica:
-      'A arquitetura hepática sofre necrose isquêmica centrolobular profunda em resposta à vasoconstrição esplâncnica e à hipoperfusão sistêmica, somadas ao dano térmico hepatocitário direto. O fígado perde rapidamente sua capacidade metabólica e funcional. A gliconeogênese hepática é paralisada e os estoques de glicogênio são exauridos com rapidez pelo consumo metabólico periférico hiperbólico, pela glicólise anaeróbia tecidual e pelo consumo anaeróbio por leucócitos ativados. Instala-se hipoglicemia severa (glicemia plasmática frequentemente inferior a 50 mg/dL), um preditor prognóstico amplamente reconhecido de mortalidade. Na série seminal de Bruchim et al. (2006), glicose inferior a 47 mg/dL na admissão associou-se fortemente ao óbito. Concomitantemente, a síntese de proteínas plasmáticas (especialmente albumina) e de fatores de coagulação vitamina K-dependentes é suspensa, e a depuração de bilirrubina e de toxinas circulantes fica prejudicada, resultando em elevação enzimática rápida de ALT e AST, hiperbilirrubinemia clínica (icterícia) e aprofundamento da hipoalbuminemia e da diátese hemorrágica.',
+      'Colapso funcional hepático e esgotamento glicêmico:\n' +
+      '- Necrose isquêmica centrolobular: hipoperfusão por vasoconstrição esplâncnica e dano térmico direto destroem hepatócitos, paralisando a gliconeogênese e depuração de toxinas.\n' +
+      '- Consumo periférico acelerado: exaustão ultra-rápida do glicogênio associada ao consumo hipermetabólico anaeróbio por tecidos hipóxicos e leucócitos ativados precipita hipoglicemia severa.\n' +
+      '- Marcador prognóstico clássico: glicemia plasmática inferior a 47 mg/dL na admissão constitui preditor independente de mortalidade comprovado na série seminal de Bruchim et al. (2006).\n' +
+      '- Consequências sintéticas e excretoras: suspensão da síntese de albumina e fatores de coagulação vitamina K-dependentes, com elevação maciça de ALT/AST, icterícia e diátese hemorrágica.',
   },
 
   clinicalSignsPathophysiology: [
@@ -383,12 +525,18 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'O Paradoxo Térmico da Admissão (Hipertermia vs Normotermia vs Hipotermia)',
           detail:
-            'A apresentação clássica de temperatura corporal central > 41°C reflete a fase ativa do insulto térmico. Todavia, pacientes graves podem apresentar normotermia (38,0–39,2°C) decorrente de resfriamento prévio vigoroso por parte dos tutores ou transporte prolongado com ar-condicionado. De forma mais dramática, cães e gatos em choque descompensado terminal ou colapso circulatório frequentemente chegam em hipotermia (< 37,5°C), achado que indica exaustão energética, falência vasomotora e pior prognóstico reservado.',
+            'Apresentações térmicas e significado clínico:\n' +
+            '- Hipertermia clássica (> 41°C): reflete a fase ativa do insulto térmico em curso.\n' +
+            '- Normotermia de chegada (38,0–39,2°C): comum após resfriamento pré-hospitalar pelo tutor ou transporte com ar-condicionado veicular; lesão tecidual continua ativa.\n' +
+            '- Hipotermia de colapso (< 37,5°C): sinal de alarme crítico em pacientes em choque descompensado terminal, exaustão metabólica e falência vasomotora com prognóstico sombrio.',
         },
         {
           sign: 'Desidratação Severa e Choque Misto',
           detail:
-            'Mucosas orais secas, perda pronunciada de turgor cutâneo, enoftalmia e retardo de preenchimento capilar. O choque na intermação combina componente hipovolêmico (perda evaporativa e gastrointestinal de fluidos) com componente distributivo-vasoplégico (vasodilatação cutânea persistente e liberação maciça de óxido nítrico endotelial).',
+            'Instabilidade hemodinâmica e perfusional:\n' +
+            '- Sinais de desidratação: mucosas orais ressecadas, turgor cutâneo diminuído, enoftalmia acentuada e tempo de preenchimento capilar prolongado.\n' +
+            '- Componente hipovolêmico: perda hídrica maciça por evaporação respiratória extrema e diarreia/vômitos volumosos.\n' +
+            '- Componente distributivo-vasoplégico: vasodilatação periférica generalizada mediada por citocinas e liberação maciça de óxido nítrico endotelial.',
         },
       ],
     },
@@ -398,12 +546,16 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Alterações Progressivas do Sensório e Consciência',
           detail:
-            'Evolução contínua de desorientação espacial, hiporreatividade a estímulos, apatia profunda e ataxia motora vestibular ou proprioceptiva, progredindo rapidamente para estupor e coma não responsivo em decorrência de edema cerebral vasogênico/citotóxico, isquemia e neurotoxicidade térmica.',
+            'Degradação contínua do estado mental:\n' +
+            '- Fase precoce: desorientação espacial, inquietude motora, andar atáxico vestibular ou proprioceptivo e hiporreatividade a estímulos ambientais.\n' +
+            '- Fase avançada: evolução rápida para letargia profunda, estupor responsivo apenas a dor e coma decorrente de edema cerebral vasogênico/citotóxico e citotoxicidade direta.',
         },
         {
           sign: 'Crises Convulsivas e Sinais de Herniação Encefálica',
           detail:
-            'Convulsões motoras tônico-clônicas generalizadas refratárias, tremores musculares grosseiros, mioclonias faciais, anisocoria, midríase bilateral não responsiva à luz, cegueira cortical transitória e postura de descerebração ou descerebelação nas fases finais de hipertensão intracraniana crítica.',
+            'Gravidade neurológica extrema:\n' +
+            '- Atividade convulsiva: crises motoras tônico-clônicas generalizadas, tremores musculares grosseiros e fasciculações faciais que elevam exponencialmente o calor central.\n' +
+            '- Hipertensão intracraniana descompensada: midríase bilateral não responsiva à luz, anisocoria, cegueira cortical e postura de descerebração ou descerebelação pré-herniação.',
         },
       ],
     },
@@ -413,17 +565,23 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Panting Extremo e Respiração de Boca Aberta em Gatos',
           detail:
-            'Taquipneia respiratória superficial e rápida com salivação abundante viscosa em cães. Em felinos, o surgimento de respiração de boca aberta (open-mouth breathing) é um sinal de alarme crítico absoluto de falência ventilatória, edema laríngeo ou sofrimento respiratório agudo iminente.',
+            'Padrões respiratórios de esforço térmico:\n' +
+            '- Apresentação canina: taquipneia superficial rápida incessante acompanhada de salivação espessa e viscosa decorrente da hiperventilação de espaço morto.\n' +
+            '- Apresentação felina: respiração de boca aberta (open-mouth breathing), indicativo de estresse respiratório agudo, colapso térmico iminente e exaustão ventilatória crítica.',
         },
         {
           sign: 'Estridor Laríngeo e Edema de Vias Aéreas Superiores',
           detail:
-            'Ruídos inspiratórios estertorosos graves e estridor laríngeo audível sem estetoscópio, característicos de hiperemia inflamatória e edema agudo de tecidos moles orofaríngeos e pregas vocais, com risco de asfixia mecânica aguda em cães braquicefálicos.',
+            'Comprometimento de via aérea alta:\n' +
+            '- Ruídos respiratórios audíveis: estridor inspiratório grave e estertor orofaríngeo perceptíveis sem estetoscópio devido à turbulência do ar em mucosa inflamada.\n' +
+            '- Fator de risco anatômico: hiperemia e edema obstrutivo de palato mole e pregas vocais, provocando risco iminente de asfixia mecânica em cães braquicefálicos.',
         },
         {
           sign: 'Estertores Crepitantes e Desconforto por ARDS',
           detail:
-            'Ausculta de crepitações pulmonares finas bilaterais nos campos dependentes, taquipneia ortopneica e cianose de mucosas, refletindo exsudação de fluido proteico alveolar secundária à lesão endotelial alvéolo-capilar difusa (edema pulmonar não cardiogênico / ARDS).',
+            'Comprometimento do parênquima pulmonar:\n' +
+            '- Ausculta torácica: presença de crepitações finas bilaterais em campos cranioventrais e caudodorsais indicando inundação alveolar exsudativa.\n' +
+            '- Desconforto ventilatório: taquipneia ortopneica, padrão restritivo e cianose de mucosas decorrentes de edema pulmonar não cardiogênico (ARDS) e hemorragia alveolar.',
         },
       ],
     },
@@ -433,12 +591,16 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Fase Hiperdinâmica Inicial vs Hipodinâmica Tardia',
           detail:
-            'Inicialmente, mucosas hiperêmicas de coloração vermelho-tijolo, taquicardia severa e pulsos femorais hipercinéticos saltatórios decorrentes do débito cardíaco elevado na tentativa de dissipação térmica. Conforme o choque se aprofunda, as mucosas tornam-se pálidas ou acinzentadas, o tempo de preenchimento capilar prolonga-se (> 2 segundos) e os pulsos femorais tornam-se filiformes e hipocinéticos.',
+            'Evolução temporal do estado hemodinâmico:\n' +
+            '- Fase hiperdinâmica inicial: mucosas vermelho-tijolo hiperêmicas, taquicardia severa e pulsos femorais hipercinéticos saltatórios na tentativa de dissipar calor cutâneo.\n' +
+            '- Fase hipodinâmica tardia: mucosas pálidas ou acinzentadas, TPC > 2 segundos, hipotermia periférica e pulsos femorais filiformes por colapso do débito cardíaco.',
         },
         {
           sign: 'Arritmias Cardíacas Ventriculares e Hipotensão Vasoplégica',
           detail:
-            'Presença de complexos ventriculares prematuros frequentes, taquicardia ventricular em salvas ou sustentada, desdobramentos de bulhas e hipotensão arterial sistêmica sustentada (Pressão Arterial Média - PAM < 65 mmHg) resistente a fluidos.',
+            'Comprometimento cardiovascular avançado:\n' +
+            '- Arritmias ventriculares: complexos ventriculares prematuros frequentes, taquicardia ventricular monomórfica ou polimórfica e desdobramento de bulhas cardíacas.\n' +
+            '- Choque vasoplégico refratário: pressão arterial média (PAM) inferior a 65 mmHg persistente mesmo após reposição volêmica euvolêmica adequada.',
         },
       ],
     },
@@ -448,12 +610,16 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Vômitos Profusos, Hematêmese e Sialorreia Espessa',
           detail:
-            'Êmese repetida de conteúdo gástrico e bilioso que rapidamente evolui para hematêmese volumosa com sangue vivo ou borra de café, resultante da necrose isquêmica da mucosa gástrica e formação de úlceras agudas de estresse.',
+            'Injúria mucosa do trato gastrointestinal alto:\n' +
+            '- Progressão de êmese: episódios copiosos de vômito alimentar e bilioso que evoluem para hematêmese volumosa com sangue vivo ou borra de café.\n' +
+            '- Mecanismo subjacente: isquemia esplâncnica severa, necrose focal da mucosa gástrica e formação de úlceras agudas de estresse com alto risco de aspiração pulmonar.',
         },
         {
           sign: 'Diarreia Hemorrágica Fulminante (Hematochezia e Melena)',
           detail:
-            'Eliminação de fezes líquidas com sangue vivo abundante e pedaços de mucosa necrosada descamada (sloughing epitelial intestinal), frequentemente acompanhada de odor fétido cadavérico que mimetiza enterite por parvovírus.',
+            'Comprometimento da integridade intestinal:\n' +
+            '- Características fecais: diarreia líquida profusa com sangue vivo fresco (hematochezia), fezes enegrecidas (melena) e odor cadavérico característico.\n' +
+            '- Descamação epitelial: esfacelo necrótico de enterócitos (sloughing da mucosa) que mimetiza quadros de enterite por parvovírus e viabiliza translocação endotóxica maciça.',
         },
       ],
     },
@@ -463,7 +629,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Oligúria, Anúria e Urina com Pigmentúria Acastanhada',
           detail:
-            'Produção urinária acentuadamente deprimida (< 1,0 mL/kg/h em cães ou < 0,6 mL/kg/h em gatos) ou ausência completa de diurese apesar da ressuscitação volêmica. A urina coletada exibe coloração marrom-escura avermelhada (urina cor de coca-cola) devido à mioglobinúria maciça da rabdomiólise e hemoglobinúria associada a hemólise microangiopática.',
+            'Disfunção renal e pigmentúria tubular:\n' +
+            '- Débito urinário comprometido: oligúria pronunciada (< 1,0 mL/kg/h em cães ou < 0,6 mL/kg/h em gatos) ou anúria completa refratária à hidratação venosa.\n' +
+            '- Aspecto macroscópico da urina: coloração marrom-escura avermelhada (cor de refrigerante de cola) decorrente de mioglobinúria maciça (rabdomiólise) e hemoglobinúria.',
         },
       ],
     },
@@ -473,7 +641,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         {
           sign: 'Diátese Hemorrágica Cutaneomucosa e Coagulopatia Tardia',
           detail:
-            'Aparecimento de petéquias disseminadas na pele abdominal e gengiva, equimoses em áreas de atrito, hematomas espontâneos, epistaxe e sangramento incoagulável contínuo em locais de punção de veias ou cateterização, denunciando instalação de CID consuntiva.',
+            'Manifestações clínicas de CID consuntiva:\n' +
+            '- Lesões cutâneas e mucosas: petéquias disseminadas na pele abdominal e gengiva, equimoses em áreas de pressão e hematomas subcutâneos espontâneos.\n' +
+            '- Hemorragias ativas: epistaxe, sangramento mucoso persistente e perda contínua de sangue incoagulável em locais de punção vascular e cateterização venosa.',
         },
       ],
     },
@@ -481,19 +651,41 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   diagnosis: {
     triagemClinicaEParadoxoTermico:
-      'O diagnóstico da intermação baseia-se primordialmente no reconhecimento clínico tempestivo do histórico de exposição térmica ou exercício extenuante conjugado a achados de disfunção multissistêmica. A medição da temperatura corporal central é essencial, mas o clínico jamais deve subordinar o início do tratamento à constatação de temperatura > 41°C. Conforme ratificado pelo consenso internacional RECOVER First Aid 2026, atrasar a terapia de resfriamento aguardando a inserção de um termômetro em um paciente com sinais compatíveis é perigoso. Pacientes que chegam normotérmicos após resfriamento domiciliar ou hipotérmicos em choque terminal continuam sob processo fisiopatológico ativo de lesão de múltiplos órgãos. A triagem diagnóstica deve ser imediata, simultânea à estabilização física e oxigenoterapia.',
+      'Reconhecimento emergencial e desmistificação térmica:\n' +
+      '- Critérios de triagem imediata: histórico de exposição ambiental confinada ou esforço físico com umidade, associado a taquipneia ruidosa, colapso do sensório e choque circulatório.\n' +
+      '- O dogma superado do termômetro: o consenso RECOVER First Aid 2026 estabelece que atrasar o resfriamento aguardando medição retal > 41°C é perigoso e eleva a mortalidade.\n' +
+      '- Apresentações enganosas na admissão:\n' +
+      '- Normotermia induzida: resultante de resfriamento incompleto pelo tutor ou ar-condicionado veicular.\n' +
+      '- Hipotermia de colapso: choque terminal com falência vasomotora; a lesão tecidual multissistêmica prossegue ativamente.',
 
     esfregacoSanguineoEHemaciasNucleadas:
-      'A realização imediata de um esfregaço de sangue periférico fresco à beira do leito corado por panótico rápido ou Wright-Giemsa fornece informações diagnósticas e prognósticas cruciais em minutos. O achado clássico de intermação é a presença marcante de hemácias nucleadas circulantes (nRBCs / eritroblastos ortocromáticos e policromatófilos) na ausência de anemia regenerativa proporcional. O estudo prospectivo seminal de Aroch et al. (2009) avaliou 40 cães com heatstroke espontâneo e encontrou nRBCs no sangue periférico em 90% dos pacientes (36/40). O dano térmico direto à barreira estromal endotelial da medula óssea, a hipóxia medular e a esplenocontração provocam a liberação prematura de precursores eritroides. O estudo estabeleceu que uma contagem igual ou superior a 18 nRBCs por 100 leucócitos na admissão exibiu sensibilidade de 91% e especificidade de 88% para predição de mortalidade na coorte. Esse exame de baixo custo e alta sensibilidade deve fazer parte da rotina de admissão em todos os pacientes.',
+      'Avaliação citológica imediata à beira do leito:\n' +
+      '- Esfregaço de sangue periférico fresco: exame rápido de baixo custo corado por panótico rápido ou Wright-Giemsa, essencial nos primeiros minutos de atendimento.\n' +
+      '- Prevalência em intermação natural: o estudo prospectivo seminal de Aroch et al. (2009) em 40 cães encontrou hemácias nucleadas (nRBCs) em 90% dos casos (36/40).\n' +
+      '- Mecanismo fisiopatológico: lesão térmica direta da barreira estromal da medula óssea, hipóxia medular severa e esplenocontração liberam eritroblastos prematuramente.\n' +
+      '- Ponto de corte prognóstico maior: contagem >= 18 nRBCs por 100 leucócitos na admissão exibiu 91% de sensibilidade e 88% de especificidade para óbito na coorte.',
 
     cineticaLaboratorialERiscoOculto12a24h:
-      'A avaliação laboratorial seriada representa a pedra angular do manejo de UTI. O hematócrito inicial costuma apresentar-se elevado (hemoconcentração por perda de volume plasmático); todavia, nas horas subsequentes à fluidoterapia e ao extravasamento vascular, o hematócrito pode despencar abruptamente devido à hemorragia gastrointestinal oculta, flebotomias repetidas e hemólise microangiopática da CID. A contagem de leucócitos pode exibir leucocitose neutrofílica por estresse e inflamação, mas a presença de neutropenia ou leucopenia pronunciada associa-se a consumo marginal intenso, endotoxemia fulminante e prognóstico sombrio. A trombocitopenia é extremamente prevalente (presente em mais de 80% dos casos graves durante a hospitalização). A glicemia deve ser verificada imediatamente na admissão: a hipoglicemia (< 47 mg/dL) constitui um indicador crítico de falência hepática e consumo metabólico excessivo, fortemente associado à mortalidade.',
+      'Dinâmica hematológica e perfil metabólico seriado:\n' +
+      '- Cinética do hematócrito: hemoconcentração inicial (PCV elevado por desidratação volumétrica), seguida por queda brusca em 12–24h devido a hemorragia digestiva e hemólise na CID.\n' +
+      '- Resposta leucocitária: neutrofilia inicial por estresse versus neutropenia/leucopenia grave com desvio, indicativa de consumo marginal fulminante e endotoxemia sistêmica grave.\n' +
+      '- Plaquetopenia precoce: trombocitopenia ocorre em > 80% dos casos graves durante a internação por adesão endotelial e consumo imunotrombótico.\n' +
+      '- Glicemia de emergência: hipoglicemia (< 47 mg/dL) atesta exaustão hepática e hipermetabolismo, configurando forte preditor de mortalidade (Bruchim et al., 2006).',
 
     avaliacaoRenalBiomarcadoresEUrina:
-      'A lesão renal aguda é universalmente subestimada pela creatinina sérica isolada na chegada do paciente. O estudo prospectivo de Segev et al. (2015), investigando 30 cães com intermação natural, demonstrou que a creatinina plasmática mediana na apresentação foi de apenas 1,69 mg/dL, apesar de a taxa de filtração glomerular (TFG) real estar reduzida para valores críticos (mediana de 0,60 mL/min/kg). Marcadores urinários precoces de lesão tubular e glomerular (como NGAL urinária, proteína ligadora de retinol - RBP e razão proteína:creatinina urinária - RPCU) estavam fortemente elevados em virtualmente todos os cães desde o primeiro momento. A fração de excreção de sódio (FeNa) apresentou acurácia diagnóstica superior (AUROC de 0,89) para discriminar dano tubular intrínseco. Na urinálise de rotina, a presença de glicosúria na vigência de glicemia plasmática normal atesta necrose tubular proximal aguda. A identificação de cilindros granulares e epiteliais grosseiros confirma a presença de necrose tubular aguda (NTA), e a urina sobrenadante pigmentada que não precipita à centrifugação confirma a presença de mioglobina livre oriunda de rabdomiólise intensa (corroborada por elevações estratosféricas de CK sérica, frequentemente > 10.000 a 50.000 UI/L).',
+      'Diagnóstico precoce de injúria renal aguda e pigmentúria:\n' +
+      '- Ocultação da LRA pela creatinina sérica: Segev et al. (2015) em 30 cães demonstraram creatinina mediana de 1,69 mg/dL na chegada, apesar de TFG em colapso (0,60 mL/min/kg).\n' +
+      '- Biomarcadores urinários precoces: uNGAL, RBP e RPCU estão massivamente elevados nas primeiras horas; FeNa com AUROC de 0,89 discrimina injúria tubular aguda intrínseca.\n' +
+      '- Urinálise diagnóstica à admissão:\n' +
+      '- Glicosúria normoglicêmica: denota necrose tubular proximal aguda.\n' +
+      '- Cilindrúria granular: confirma necrose tubular aguda (NTA) ativa.\n' +
+      '- Pigmentúria acastanhada: sobrenadante que não precipita à centrifugação confirma mioglobina livre por rabdomiólise intensa (CK > 10.000 a 50.000 UI/L).',
 
     pocusToracoAbdominalEImaginologia:
-      'A ultrassonografia focada à beira do leito (POCUS) através dos protocolos TFAST e AFAST desempenha papel fundamental na monitorização dinâmica. O TFAST torácico deve rastrear especificamente a presença de linhas B coalescentes ou pulmão em raio-x nos campos dorsais e ventrais, indicando extravasamento fluido intersticial e alveolar precoce por edema pulmonar não cardiogênico (ARDS) antes de alterações audíveis à ausculta ou visíveis na radiografia simples. O AFAST permite estimar a volemia através do colapso inspiratório da veia cava caudal, além de detectar líquido livre peritoneal decorrente de peritonite bacteriana por translocação transmural ou necrose intestinal. A radiografia torácica é indicada em pacientes com esforço ventilatório aumentado ou hipoxemia para documentar consolidações alveolares caudodorsais (ARDS) ou infiltrados cranioventrais sugestivos de pneumonia aspirativa.',
+      'Ultrassonografia point-of-care e exames radiográficos:\n' +
+      '- Protocolo TFAST torácico: rastreia linhas B coalescentes bilaterais (pulmão em raio-x), permitindo diagnóstico precoce de ARDS e edema não cardiogênico antes de crepitações audíveis.\n' +
+      '- Protocolo AFAST abdominal: avalia colapso da veia cava caudal para estimativa volêmica dinâmica e identifica líquido livre peritoneal decorrente de peritonite ou translocação transmural.\n' +
+      '- Radiografia torácica seriada: indicada em hipoxemia para documentar infiltrados caudodorsais de ARDS versus padrão alveolar cranioventral sugestivo de pneumonia aspirativa.',
 
     tabelaMatrizDiagnosticaLaboratorialSeriada: {
       caption: 'Tabela 4 — Matriz de Monitoramento Laboratorial Seriado: Admissão vs 12–24 Horas',
@@ -552,31 +744,73 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   treatment: {
     protocoloResfriamentoAtivoRecover2026:
-      'A prioridade terapêutica zero da intermação é a dissipação imediata da carga térmica excessiva. O consenso internacional RECOVER First Aid 2026 (Mandell et al., 2026; Thawley et al., 2026) estabeleceu uma mudança paradigmática fundamental: o resfriamento ativo pré-hospitalar deve ser iniciado de imediato pelo tutor ou socorrista no local do evento, sem perda de tempo aguardando a chegada ao hospital veterinário ou a obtenção de um termômetro. O método padrão recomendado consiste em aplicar fluxo contínuo de água corrente fresca sobre o tronco, dorso e abdome ventral do animal, garantindo que a água penetre a pelagem e entre em contato direto com a derme, associada ao uso simultâneo de ventiladores ou fluxo de ar ativo (convecção e evaporação forçada). A antiga máxima que proibia peremptoriamente o uso de água fria sob a premissa de que a vasoconstrição periférica impediria a perda de calor foi formalmente desmistificada pela medicina baseada em evidências: embora banhos de gelo e imersão total com gelo continuem desaconselhados pelo risco de afogamento e calafrios intensos (tremores que produzem calor metabólico), a água fresca corrente é comprovadamente segura e superior à inação. Se houver termômetro retal disponível, o resfriamento ativo deve ser interrompido rigorosamente aos 39,7–40,0°C. Caso não seja possível mensurar a temperatura no ambiente pré-hospitalar, o RECOVER 2026 orienta realizar resfriamento ativo por aproximadamente 15 minutos e partir imediatamente para o hospital veterinário. Em pacientes com estridor de via aérea superior em que o panting arrefece com o resfriamento, a terapia térmica pode ser estendida até o limite de 38,6°C. Jamais se deve enrolar o animal em toalhas molhadas e deixá-las sobre o corpo, pois a toalha aquece rapidamente, aprisiona o ar e atua como uma barreira térmica isolante que impede a evaporação.',
+      'Diretrizes de resfriamento ativo baseadas em evidências (RECOVER 2026):\n' +
+      '- Ação pré-hospitalar imediata: Mandell et al. (2026) e Thawley et al. (2026) preconizam resfriamento imediato pelo tutor com água fresca contínua sobre tronco e abdome sob ventilador.\n' +
+      '- Desmistificação científica da água fresca: a premissa de que água fria impede a dissipação por vasoconstrição foi superada; convecção e evaporação forçada são seguras e salvam vidas.\n' +
+      '- Limites térmicos e alvos estritos:\n' +
+      '- Com termômetro: interromper resfriamento ativo rigidamente aos 39,7–40,0°C para prevenir hipotermia rebote iatrogênica (< 37,5°C) que agrava a CID.\n' +
+      '- Sem termômetro: resfriar ativamente por 15 minutos e partir com ar-condicionado ligado para o hospital.\n' +
+      '- Exceção de via aérea: estridor laríngeo que atenua com arrefecimento permite meta de 38,6°C.\n' +
+      '- VETO CLÍNICO ABSOLUTO: jamais envolver o animal em toalhas molhadas estagnadas (aprisionam calor) e não usar banhos de gelo (induzem tremores musculares hipermetabólicos).',
 
     manejoViasAereasEABC:
-      'Ao dar entrada no hospital veterinário, a abordagem da intermação segue a hierarquia emergencial do ABC: Airway (Vias Aéreas), Breathing (Respiração) e Circulation (Circulação). Vias Aéreas: pacientes braquicefálicos, animais com alteração do nível de consciência ou com edema laríngeo agudo demandam proteção imediata de via aérea. A presença de estridor inspiratório grave associado a cianose exige sedação leve titulada (exemplo: butorfanol 0,1 a 0,2 mg/kg IV) para abortar o espasmo laríngeo e o pânico respiratório; se a obstrução persistir, deve-se proceder à indução anestésica rápida e intubação orotraqueal imediata com tubo de diâmetro apropriado e cuff inflado, fornecendo oxigênio a 100%. Em situações excepcionais de obstrução anatômica orofaríngea intransponível, traqueostomia emergencial temporária está indicada. Respiração: fornecer oxigênio umidificado suplementar por cânula nasal ou fluxo livre sem estressar o paciente. Em felinos, o estresse da contenção pode precipitar parada cardiorrespiratória por edema pulmonar; portanto, priorizar gaiola de oxigênio com manipulação mínima. Circulação: estabelecer prontamente dois acessos venosos periféricos de grande calibre (cateteres 18G ou 20G em veias cefálicas ou jugulares) ou acesso intraósseo em pacientes com colapso venoso total.',
+      'Abordagem emergencial sistematizada no minuto zero:\n' +
+      '- Airway (Vias Aéreas): braquicefálicos ou animais com edema laríngeo/depressão de sensório necessitam de via aérea protegida; estridor com cianose exige sedação imediata com butorfanol (0,1–0,2 mg/kg IV).\n' +
+      '- Suporte invasivo: se a obstrução persistir, indução anestésica rápida, intubação orotraqueal com cuff inflado e oxigênio a 100%; traqueostomia emergencial se houver obstrução orofaríngea mecânica.\n' +
+      '- Breathing (Ventilação): oxigenoterapia umidificada sem contenção estressante (especialmente em felinos sob risco de parada cardiorrespiratória; priorizar gaiola de oxigênio amena).\n' +
+      '- Circulation (Circulação): obtenção rápida de 2 acessos venosos calibrosos (18G ou 20G em cefálicas ou jugulares) ou acesso intraósseo se houver colapso vascular periférico.',
 
     ressuscitacaoVolemicaRacionalAaha2024:
-      'A conduta contemporânea de fluidoterapia na intermação baseia-se nas diretrizes AAHA Fluid Therapy Guidelines 2024 e supera em definitivo a prática obsoleta de administrar doses de choque cegas de cristaloides (90 mL/kg em cães ou 60 mL/kg em gatos). O paciente com intermação sofre de grave endoteliopatia com aumento da permeabilidade capilar difusa (capillary leak); a infusão desmedida de grandes volumes de líquido intravascular resulta em extravasamento maciço de fluido para o interstício e parênquima pulmonar, precipitando edema pulmonar e piorando a oxigenação celular. A estratégia recomendada consiste na administração de pequenos bolus de cristaloides isotônicos balanceados tamponados (Ringer com Lactato ou Plasmalyte): para cães, administra-se 15 a 20 mL/kg IV em infusão rápida de 15 a 30 minutos; para gatos, alíquotas conservadoras de 5 a 10 mL/kg IV em 15 a 30 minutos. Após cada alíquota, reavaliam-se meticulosamente as metas de perfusão: frequência cardíaca, qualidade do pulso arterial femoral, coloração de mucosas, tempo de preenchimento capilar, temperatura periférica de extremidades, pressão arterial sistólica e média, níveis séricos de lactato e ausculta pulmonar para detecção de crepitações incipientes. Uma vez alcançada a estabilidade hemodinâmica básica, interrompe-se a sobrecarga volêmica.',
+      'Fluidoterapia guiada por metas (AAHA 2024):\n' +
+      '- Fim das doses de choque cegas: proscrita a infusão de 90 mL/kg em cães ou 60 mL/kg em gatos; o endotélio com hiperpermeabilidade (capillary leak) sofre inundação pulmonar letal (ARDS).\n' +
+      '- Alíquotas prudentes de cristaloides balanceados (Ringer Lactato ou Plasmalyte):\n' +
+      '- Caninos: 15 a 20 mL/kg IV em infusão de 15 a 30 minutos.\n' +
+      '- Felinos: 5 a 10 mL/kg IV conservadores em 15 a 30 minutos.\n' +
+      '- Metas perfusionais de reavaliação seriada: normalização da frequência cardíaca, amplitude de pulso femoral, TPC de 1–2 segundos, PAM >= 65 mmHg, lactato em queda e ausculta pulmonar limpa.',
 
     suporteVasoativoNorepinefrina:
-      'Se o paciente persistir hipotenso (Pressão Arterial Média - PAM < 65 mmHg ou Pressão Arterial Sistólica - PAS < 90 mmHg) após a restauração criteriosa da euvolemia intravascular, o mecanismo subjacente é a vasoplegia endotelial distributiva profunda mediada por citocinas e óxido nítrico endotelial. Nessa circunstância de choque distributivo refratário a volume, insistir em novos bolus de cristaloide é um erro grosseiro que apenas induz edema tecidual e agrava a LRA. O fármaco vasopressor de primeira escolha (Plumb 10ª ed.) é a Norepinefrina em infusão contínua (CRI). A dose inicial recomendada para cães e gatos é de 0,05 a 0,1 mcg/kg/min IV, titulada progressivamente a cada 10 a 15 minutos até atingir e sustentar a meta de PAM >= 65 mmHg, podendo atingir faixas de 0,5 a 2,0 mcg/kg/min em choque profundo. A norepinefrina restaura o tônus vascular arteriolar sistêmico através de potente agonismo alfa-1 adrenérgico, preservando o fluxo renal e esplâncnico sem induzir taquicardia excessiva.',
+      'Manejo do choque vasoplégico distributivo refratário:\n' +
+      '- Diagnóstico de vasoplegia: hipotensão persistente (PAM < 65 mmHg ou PAS < 90 mmHg) após restauração da euvolemia intravascular decorre de desregulação endotelial por óxido nítrico e citocinas.\n' +
+      '- VETO CLÍNICO: não insistir em sobrecarga hídrica de cristaloides na hipotensão euvolêmica, pois agrava edema intersticial pulmonar e cerebral.\n' +
+      '- Vasopressor de primeira escolha (Plumb 10ª ed.): Norepinefrina em infusão contínua (CRI).\n' +
+      '- Posologia e titulação: 0,05 a 0,1 mcg/kg/min IV inicial, titulada a cada 10–15 min até PAM >= 65 mmHg (faixa de 0,5 a 2,0 mcg/kg/min em choque profundo), preservando perfusão esplâncnica e renal.',
 
     correcaoHipoglicemiaEletrolitos:
-      'A hipoglicemia é uma complicação metabólica frequente e de alta letalidade no heatstroke. Em animais com glicemia plasmática inferior a 60 mg/dL ou manifestações neurológicas de neuroglicopenia, administra-se imediatamente um bolus intravenoso de Glicose a 50% (Dextrose 50%) na dose de 0,5 a 1,0 mL/kg (equivalente a 0,25 a 0,5 g/kg de glicose), obrigatoriamente diluída na proporção de 1:2 a 1:4 em solução fisiológica ou ringer lactato para evitar flebite química osmótica, administrada lentamente em 5 a 10 minutos. Na sequência, mantém-se infusão contínua de glicose adicionando-se dextrose à solução cristaloide de manutenção na concentração de 2,5% a 5,0%, monitorando-se a glicemia horária. Distúrbios eletrolíticos devem ser corrigidos gradualmente: a hipercalemia inicial decorrente de lise celular e acidose pode alternar-se para hipocalemia severa após a ressuscitação e diurese, exigindo suplementação cautelosa de cloreto de potássio (KCl). Oscilações no sódio sérico (hipernatremia por perda pura de água ou hiponatremia por ingestão de água hipotônica) exigem reposição lenta para prevenir mielinólise pontina central ou edema cerebral.',
+      'Manejo metabólico e correção hidroeletrolítica seriada:\n' +
+      '- Intervenção glicêmica imediata: se glicemia < 60 mg/dL ou neuroglicopenia clínica, administrar bolus de Glicose 50% na dose de 0,5 a 1,0 mL/kg (0,25–0,5 g/kg de glicose).\n' +
+      '- Diluição obrigatória: diluir 1:2 a 1:4 em SF ou Ringer Lactato em 5–10 min lentos para evitar flebite química grave; manter manutenção contínua com glicose a 2,5% a 5,0% em fluido.\n' +
+      '- Distúrbios do potássio: transição frequente de hipercalemia inicial (acidose e lise muscular) para hipocalemia severa pós-ressuscitação; suplementar KCl venoso com controle seriado.\n' +
+      '- Oscilações de sódio: reposição hidroeletrolítica cautelosa em hipernatremia por perda evaporativa pura para prevenir mielinólise pontina central ou edema cerebral rebote.',
 
     terapiaAntiarrimicaCaninaVsFelina:
-      'Arritmias ventriculares instáveis demandam intervenção farmacológica específica quando associadas a taquicardia ventricular sustentada com frequência > 180 bpm, complexos multiformes, fenômeno de R sobre T ou repercussão na pressão arterial e débito cardíaco. Em cães, a Lidocaína a 2% (sem vasoconstritor) é o fármaco antiarrítmico padrão-ouro: administra-se um bolus de 2 mg/kg IV lentamente em 2 minutos sob monitoramento eletrocardiográfico contínuo, podendo ser repetido até a dose cumulativa de 6 a 8 mg/kg; obtida a conversão do ritmo, instala-se infusão contínua (CRI) de lidocaína na taxa de 25 a 80 mcg/kg/min IV. Em felinos, o metabolismo hepático de conjugação da lidocaína é deficiente e a espécie apresenta sensibilidade extrema à cardiotoxicidade e neurotoxicidade induzida por anestésicos locais. Conforme preconizado pelo Plumb 10ª ed., a lidocaína em gatos deve ser utilizada com extrema parcimônia e apenas em arritmias ventriculares malignas refratárias: a dose de bolus em gatos é estritamente reduzida para 0,2 a 0,5 mg/kg IV muito lentamente em 5 a 10 minutos, com infusão contínua máxima de 10 a 20 mcg/kg/min sob vigilância ininterrupta de sinais de toxicidade (tremores, fasciculações, convulsões e bradiarritmias).',
+      'Controle antiarrítmico e divergências de espécie (Plumb 10ª ed.):\n' +
+      '- Indicações formais de intervenção: taquicardia ventricular sustentada com FC > 180 bpm, complexos polimórficos, fenômeno de R-sobre-T ou colapso hemodinâmico associado.\n' +
+      '- Protocolo padrão-ouro canino: Lidocaína a 2% sem vasoconstritor em bolus de 2 mg/kg IV lento em 2 minutos (cumulativo até 6–8 mg/kg); conversão seguida de CRI de 25 a 80 mcg/kg/min IV.\n' +
+      '- ALERTA FARMACOLÓGICO ESTREITO FELINO:\n' +
+      '- Deficiência de conjugação hepática: felinos apresentam sensibilidade extrema a anestésicos locais com alto risco de cardiotoxicidade e convulsões.\n' +
+      '- Posologia felina estrita: bolus de resgate de apenas 0,2 a 0,5 mg/kg IV administrado lentamente em 5 a 10 minutos; CRI de resgate limitada a 10 a 20 mcg/kg/min sob ECG ininterrupto.',
 
     manejoRenalEstritoInsAndOuts:
-      'A prevenção e o tratamento da Lesão Renal Aguda na intermação seguem os princípios contemporâneos do consenso IRIS AKI 2026. Em pacientes graves com instabilidade hemodinâmica, é mandatória a cateterização vesical com sonda de Foley de calibre compatível conectada a sistema coletor estéril fechado, permitindo a quantificação horária da diurese. Uma vez restabelecida a euvolemia, o volume de fluidoterapia intravenosa deve ser rigidamente calculado pela regra de entradas e saídas (Ins & Outs): Volume horário em mL/h = Débito Urinário da hora anterior em mL/h + Perdas Insensíveis (estimadas em 20 mL/kg/dia ou aproximadamente 0,8 mL/kg/h) + Perdas Extraordinárias em andamento (vômitos e diarreia mensurados). A administração empírica de furosemida para tentar forçar a produção de urina em rins isquemiados é uma conduta proscrita que não melhora a taxa de filtração glomerular nem reduz a mortalidade, atuando apenas como indutor de hipovolemia iatrogênica.',
+      'Proteção nefrológica e balanço hídrico rigoroso (IRIS AKI 2026):\n' +
+      '- Sondagem vesical contínua: cateter de Foley em sistema fechado estéril com quantificação horária de diurese para diagnóstico precoce de oligúria (< 1 mL/kg/h cão, < 0,6 mL/kg/h gato).\n' +
+      '- Regra horária de Ins & Outs: Volume IV (mL/h) = débito urinário da hora anterior (mL/h) + perdas insensíveis (20 mL/kg/dia ~ 0,8 mL/kg/h) + perdas extraordinárias mensuradas (vômitos/diarreia).\n' +
+      '- VETO TERAPÊUTICO: uso empírico de furosemida para forçar diurese em rins isquemiados é ineficaz, não recupera a TFG e apenas agrava a desidratação tubular.',
 
     suporteHemostaticoEGastrointestinal:
-      'A coagulopatia intravascular disseminada exige suporte hemostático individualizado. O uso profilático de Plasma Fresco Congelado (FFP) em pacientes que exibem apenas discreto alargamento laboratorial de tempos de coagulação sem sangramento ativo não é recomendado pelas diretrizes modernas. O FFP é formalmente indicado na presença de diátese hemorrágica clínica evidente (petéquias progressivas, hematomas, sangramento em cateteres ou hemorragia digestiva volumosa) associada a prolongamento de PT/aPTT superior a 1,5 vez o controle ou na vigência de procedimentos invasivos necessários, na dose de 10 a 20 mL/kg IV. Para proteção do trato gastrointestinal contra úlceras de estresse e perda de barreira mucosa, administra-se Pantoprazol (1 mg/kg IV q12–24h); o sucralfato (0,5 a 1 g VO q8h como suspensão aquosa) pode ser associado se o paciente não apresentar êmese ativa e com via aérea protegida.',
+      'Manejo de hemostasia consuntiva e integridade mucosal:\n' +
+      '- Indicações racionais de Plasma Fresco Congelado (FFP):\n' +
+      '- Não usar profilaticamente: apenas alterações laboratoriais isoladas de tempos de coagulação não justificam FFP.\n' +
+      '- Critérios de infusão: presença de sangramento clínico ativo (petéquias progressivas, hematomas, melena copiosa) com tempos de coagulação > 1,5 vez o controle; dose de 10 a 20 mL/kg IV.\n' +
+      '- Proteção gastroduodenal: Pantoprazol 1 mg/kg IV q12–24h para profilaxia e manejo de úlceras isquêmicas de estresse; sucralfato (0,5–1,0 g VO q8h) apenas se ausência de vômitos e via aérea segura.',
 
     stewardshipAntimicrobianoERestricoes:
-      'Embora a quebra da barreira epitelial intestinal com translocação bacteriana e de endotoxinas seja um pilar fisiopatológico da intermação, as diretrizes clínicas contemporâneas recomendam expressamente não administrar antibioticoterapia profilática de rotina a todos os pacientes com heatstroke. Os antimicrobianos intravenosos devem ser reservados estritamente para animais com evidências concretas de infecção: choque circulatório persistente que mimetiza choque séptico descompensado, neutropenia importante (< 2.000/uL), perda maciça de barreira mucosa com fezes sanguinolentas necróticas graves, pneumonia por aspiração documentada ou focos infecciosos prévios confirmados. Quando indicada, a antibioticoterapia deve ser de amplo espectro por via parenteral cobrindo gram-negativos e anaeróbios entéricos (exemplo: Ampicilina com Sulbactam 30 mg/kg IV q8h isolada ou associada a Enrofloxacina ou Fluoroquinolona com dose ajustada à função renal, lembrando a contraindicação de fluoroquinolonas em doses plenas em felinos pelo risco de degeneração retiniana).',
+      'Uso racional de antimicrobianos e restrições de segurança:\n' +
+      '- Não prescrever antibióticos profiláticos de rotina: a translocação bacteriana decorre de quebra de barreira, mas antibioticoterapia indiscriminada induz resistência e lesão de órgãos.\n' +
+      '- Critérios formais para início de antibioticoterapia intravenosa:\n' +
+      '- Choque circulatório descompensado refratário simulando sepse.\n' +
+      '- Neutropenia acentuada (< 2.000 leucócitos/uL).\n' +
+      '- Perda epitelial gastrointestinal fulminante com fezes sanguinolentas necróticas graves ou pneumonia aspirativa documentada.\n' +
+      '- Esquema parenteral empírico: Ampicilina + Sulbactam (30 mg/kg IV q8h) associada a fluoroquinolona com dose corrigida à função renal (lembrando risco de retinotoxicidade de fluoroquinolonas em gatos).',
 
     tabelaFarmacoterapiaSuporteIntermacao: {
       caption: 'Tabela 5 — Farmacoterapia de Emergência e Suporte Crítico na Intermação',
@@ -691,24 +925,90 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
 
   complications: {
     dezErrosFataisIntermacaoCaesGatos:
-      '1. Administrar dipirona, AINEs ou paracetamol: erro fatal decorrente da confusão entre febre e intermação. Como o ponto de ajuste hipotalâmico é normal, esses fármacos não possuem eficácia antipirética na intermação e provocam necrose tubular renal em rins com fluxo marginal, agravando úlceras gastrointestinais e, no caso do paracetamol, causando toxicidade letal em gatos.\n2. Atrasar o início do resfriamento ativo procurando um termômetro ou transportando sem resfriar: conforme o RECOVER 2026, o tempo de hipertermia é diretamente proporcional à mortalidade. O resfriamento ativo pré-hospitalar com água fresca deve ser iniciado no minuto zero.\n3. Enrolar o paciente em toalhas molhadas estagnadas: as toalhas rapidamente absorvem o calor da pele, aquecem-se e formam uma barreira isolante que impede a convecção e a evaporação, retendo calor no organismo.\n4. Resfriar até a temperatura normal (38,5°C) antes de parar a água: o fenômeno de overshoot térmico faz o animal continuar perdendo calor após a remoção do estímulo; continuar resfriando até 38°C empurra o paciente para hipotermia profunda (< 37°C), que paralisa a coagulação, induz arritmias e aumenta a mortalidade.\n5. Administrar doses cegas de choque de fluidos (90 mL/kg em cães ou 60 mL/kg em gatos): o leito vascular comprometido por endoteliopatia sofre de hiperpermeabilidade (capillary leak); excesso de volume transborda para o parênquima pulmonar, causando edema pulmonar não cardiogênico e morte por hipoxemia.\n6. Presumir que um coagulograma normal na admissão descarta CID: a transição fenotípica de normocoagulação para hipocoagulabilidade consuntiva e hiperfibrinólise atinge seu ápice entre 12 e 24 horas pós-admissão; a ausência de monitoramento hemostático seriado retarda a identificação de sangramentos letais.\n7. Acreditar que a creatinina sérica inicial normal exclui lesão renal: a TFG pode estar reduzida em mais de 70% mesmo com creatinina no intervalo de referência na chegada; não monitorar o débito urinário horário leva à sobrecarga hídrica desastrosa.\n8. Usar furosemida para tentar forçar o rim a produzir urina: forçar a diurese com diuréticos de alça em um paciente que precisa de reidratação tubular profunda agrava a hipovolemia e não recupera os néfrons lesados.\n9. Dar alta precoce porque a temperatura corporal normalizou e o animal voltou a andar: a intermação é uma doença bifásica; falência renal oligoanúrica, necrose hepática centrolobular, sepse por translocação e arritmias ventriculares tardias manifestam-se clinicamente 24 a 48 horas após a agressão inicial.\n10. Desconsiderar a hipersensibilidade extrema da espécie felina à lidocaína: administrar doses caninas de lidocaína (2 mg/kg) em gatos com arritmias desencadeia colapso cardiovascular agudo, bradicardia refratária e convulsões fatais.',
+      'Condutas contraindicadas e erros críticos na emergência:\n' +
+      '1. Administrar dipirona, AINEs ou paracetamol:\n' +
+      '- Confusão patológica com febre infecciosa; na intermação o termostato hipotalâmico está normal e antipiréticos não reduzem a temperatura.\n' +
+      '- Risco severo de necrose tubular renal em rins com fluxo marginal, úlceras digestivas graves e toxicidade letal por paracetamol em gatos.\n' +
+      '2. Atrasar o início do resfriamento ativo pré-hospitalar:\n' +
+      '- Esperar a chegada ao hospital veterinário ou a obtenção de termômetro retal eleva drasticamente a mortalidade.\n' +
+      '- O protocolo RECOVER 2026 orienta resfriamento imediato com água fresca corrente sobre o dorso e abdome no minuto zero.\n' +
+      '3. Enrolar o paciente em toalhas molhadas estagnadas:\n' +
+      '- As toalhas absorvem o calor corporal rapidamente e formam uma barreira isolante que impede a evaporação e retém calor central.\n' +
+      '4. Resfriar até a temperatura fisiológica (38,5°C) antes de cessar a água:\n' +
+      '- O fenômeno de inércia térmica (overshoot) faz o animal continuar perdendo calor após a remoção da água.\n' +
+      '- Continuar resfriando abaixo de 39,7°C induz hipotermia grave (< 37,5°C) que paralisa a coagulação e precipita arritmias fatais.\n' +
+      '5. Administrar doses cegas de choque de cristaloides (90 mL/kg em cães ou 60 mL/kg em gatos):\n' +
+      '- O endotélio inflamado apresenta hiperpermeabilidade difusa (capillary leak).\n' +
+      '- Cargas excessivas de volume causam extravasamento alvéolo-capilar imediato com edema pulmonar (ARDS) e asfixia.\n' +
+      '6. Presumir que coagulograma normal na admissão descarta CID:\n' +
+      '- A transição fenotípica de normocoagulabilidade para hipocoagulabilidade consuntiva atinge o ápice entre 12 e 24 horas (Yanai et al., 2024).\n' +
+      '- A ausência de monitoramento hemostático seriado retarda o reconhecimento de sangramentos letais.\n' +
+      '7. Considerar que creatinina sérica inicial normal descarta lesão renal:\n' +
+      '- A TFG pode estar em colapso com creatinina no intervalo de referência (Segev et al., 2015).\n' +
+      '- Não quantificar a diurese horária impede o ajuste fino da reposição e leva à sobrecarga hídrica.\n' +
+      '8. Usar furosemida empírica para forçar produção de urina:\n' +
+      '- Forçar diurese com diuréticos de alça em néfrons isquemiados agrava a hipovolemia tubular e não restaura a taxa de filtração glomerular.\n' +
+      '9. Conceder alta precoce após a normalização da temperatura corporal:\n' +
+      '- A intermação é uma síndrome bifásica; LRA oligoanúrica, necrose hepática, sepse e arritmias tardias manifestam-se em 24 a 48 horas.\n' +
+      '10. Desconsiderar a hipersensibilidade extrema da espécie felina à lidocaína:\n' +
+      '- Administrar doses caninas (2 mg/kg) em felinos induz colapso cardiovascular agudo, bradicardia refratária e convulsões neurotóxicas.',
 
     protocoloPlantaoIntermacao10Passos:
-      '1. Minuto 0: Reconhecimento imediato, interrupção de qualquer esforço/exposição e início de resfriamento ativo com água corrente fresca sobre tronco e abdome ventral sob ventilador forte.\n2. Minutos 0 a 5: Avaliação do ABC emergencial: inspecionar permeabilidade de vias aéreas, aspirar secreções orofaríngeas viscosas, administrar oxigênio suplementar a 100% por fluxo livre; se houver estridor severo em braquicefálico, sedar com butorfanol 0,1 mg/kg IV e intubar de imediato se necessário.\n3. Minuto 5: Instalação de dois acessos venosos calibrosos (cateter 18G ou 20G em veia cefálica) e mensuração simultânea de temperatura retal, glicemia periférica por fita e lactato sérico à beira do leito.\n4. Minuto 5 a 15: Coleta de sangue para painel crítico de admissão: hemograma completo com esfregaço imediato (avaliar nRBCs), plaquetas, PT, aPTT, fibrinogênio, ureia, creatinina, ALT, AST, CK, eletrólitos (Na, K, Cl, Ca ionizado) e gasometria venosa.\n5. Minuto 10 a 20: Iniciar ressuscitação volêmica prudente (AAHA 2024) com cristaloide isotônico balanceado (Ringer Lactato ou Plasmalyte) em alíquotas de 15–20 mL/kg em cães ou 5–10 mL/kg em gatos ao longo de 15 a 30 minutos.\n6. Ao atingir 39,7–40,0°C retal: Interromper rigorosamente todo o resfriamento ativo, secar a pele superficialmente e manter em ambiente climatizado ameno, evitando que a temperatura caia abaixo de 38,5°C.\n7. Minuto 30: Reavaliar pressão arterial sistêmica (alvo PAM >= 65 mmHg) e ausculta pulmonar: se o paciente mantiver PAM < 65 mmHg após restauração volêmica euvolêmica, iniciar imediatamente Norepinefrina em infusão contínua (0,05 a 0,1 mcg/kg/min IV).\n8. Minuto 45: Correção de emergências associadas: se glicemia < 60 mg/dL, administrar Glicose 50% 0,5 mL/kg IV diluída 1:2 em 5 min; se convulsões ativas, Midazolam 0,2 mg/kg IV; se arritmia ventricular instável no cão, Lidocaína 2 mg/kg IV lento.\n9. Hora 1 a 2: Sondagem vesical de demora em sistema fechado (Foley) para monitorização horária de débito urinário e início da regra de entradas e saídas (Ins & Outs: débito anterior + perdas insensíveis 20 mL/kg/dia + perdas GI); administrar Pantoprazol 1 mg/kg IV.\n10. Horas 12 e 24: Repetição mandatória de hemograma, plaquetas, coagulograma completo (PT/aPTT/fibrinogênio), creatinina, eletrólitos e ALT/AST, mantendo vigilância estrita de UTI por no mínimo 48 horas mesmo se houver melhora clínica inicial aparente.',
+      'Passo a passo cronológico de conduta intensiva no plantão:\n' +
+      '1. Minuto 0:\n' +
+      '- Reconhecimento imediato do quadro clínico e interrupção de qualquer esforço ou exposição térmica.\n' +
+      '- Início de resfriamento ativo imediato com fluxo contínuo de água corrente fresca e ventilador potente.\n' +
+      '2. Minutos 0 a 5:\n' +
+      '- Avaliação do ABC emergencial: desobstrução orofaríngea de secreções espessas e oxigênio suplementar a 100% por fluxo livre.\n' +
+      '- Se estridor inspiratório grave em braquicefálico: sedar com butorfanol 0,1–0,2 mg/kg IV; intubação orotraqueal imediata se persistir colapso.\n' +
+      '3. Minuto 5:\n' +
+      '- Obtenção imediata de 2 acessos venosos periféricos calibrosos (18G ou 20G em veias cefálicas).\n' +
+      '- Mensuração simultânea de temperatura retal basal, glicemia periférica imediata e lactato sérico à beira do leito.\n' +
+      '4. Minutos 5 a 15:\n' +
+      '- Coleta de sangue para painel crítico de admissão: hemograma com esfregaço (contagem de nRBCs), plaquetas, PT/aPTT, fibrinogênio, ureia, creatinina, ALT, AST, CK e gasometria venosa.\n' +
+      '5. Minutos 10 a 20:\n' +
+      '- Iniciar ressuscitação volêmica prudente (AAHA 2024) com cristaloide isotônico balanceado (Ringer Lactato ou Plasmalyte) em alíquotas: 15–20 mL/kg em cães ou 5–10 mL/kg em gatos em 15–30 min.\n' +
+      '6. Ao atingir 39,7–40,0°C retal:\n' +
+      '- Interrupção obrigatória e definitiva de todo o resfriamento ativo externo.\n' +
+      '- Secar a pelagem superficialmente e manter em ambiente climatizado ameno para evitar overshoot hipotérmico (< 38,5°C).\n' +
+      '7. Minuto 30:\n' +
+      '- Reavaliação hemodinâmica e pulmonar completa (pressão arterial sistêmica e ausculta).\n' +
+      '- Se PAM persistir < 65 mmHg após euvolemia: iniciar Norepinefrina em CRI (0,05 a 0,1 mcg/kg/min IV) contra choque vasoplégico.\n' +
+      '8. Minuto 45:\n' +
+      '- Correção de complicações agudas: Glicose 50% (0,5–1 mL/kg diluída) se glicemia < 60 mg/dL; Midazolam 0,2 mg/kg se convulsões; Lidocaína 2 mg/kg se arritmia ventricular canina.\n' +
+      '9. Hora 1 a 2:\n' +
+      '- Sondagem vesical de demora em sistema fechado (Foley) para quantificação horária da diurese e cálculo de Ins & Outs.\n' +
+      '- Administração de Pantoprazol 1 mg/kg IV para profilaxia de úlceras e sangramento gastrointestinal.\n' +
+      '10. Horas 12 e 24:\n' +
+      '- Repetição seriada de hemograma, contagem de plaquetas, coagulograma completo, creatinina e eletrólitos; manter internação em UTI por no mínimo 48 horas.',
 
     sequelasTardiasENecroseCutanea:
-      'Uma complicação tardia pouco lembrada no heatstroke é a necrose cutânea térmica dorsal isquêmica. Em decorrência do estresse calórico extremo na derme e da microtrombose microvascular disseminada, áreas extensas de pele dorsal podem sofrer infarto isquêmico silencioso. As lesões cutâneas frequentemente tornam-se clinicamente visíveis apenas entre o 3º e o 7º dia após o episódio de intermação, manifestando-se como placas duras endurecidas, ressecadas e enegrecidas que posteriormente sofrem descamação em esfacelo necrótico total, exigindo debridamento cirúrgico e cicatrização por segunda intenção. Além da necrose cutânea, sequelas neurológicas permanentes (déficits cognitivos, ataxia crônica e cegueira cortical definitiva) e progressão para doença renal crônica (DRC) secundária à perda irreversível de néfrons podem persistir a longo prazo.',
+      'Complicações tardias e sequelas permanentes:\n' +
+      '- Necrose cutânea isquêmica dorsal: dano térmico direto somado à microtrombose dérmica gera infarto tecidual que se manifesta entre o 3º e o 7º dia pós-evento.\n' +
+      '- Evolução dérmica: placas endurecidas e ressecadas que sofrem esfacelo necrótico total, demandando desbridamento cirúrgico e cicatrização por segunda intenção.\n' +
+      '- Sequelas neurológicas permanentes: déficits cognitivos, cegueira cortical definitiva, tremores residuais e ataxia crônica decorrentes de lesão isquêmica neuronal irreversível.\n' +
+      '- Progressão para DRC: perda aguda massiva de néfrons funcionais por NTA e mioglobinúria pode consolidar doença renal crônica residual.',
   },
 
   prevention: {
     orientacaoTutoresEPrimeirosSocorros:
-      'A prevenção da intermação baseia-se na educação ativa dos tutores sobre a fisiologia térmica dos carnívoros domésticos. A orientação fundamental inclui nunca deixar animais confinados no interior de veículos automotores fechados ou com vidros semiabertos, mesmo na sombra ou por poucos minutos — o efeito estufa no habitáculo veicular eleva a temperatura de 25°C para mais de 45°C em menos de 15 minutos. Em dias de calor ou com umidade relativa superior a 70%, caminhadas e exercícios físicos devem ser transferidos estritamente para o início da manhã ou final da noite. Os tutores devem ser instruídos a reconhecer os sinais precoces de exaustão térmica (panting ruidoso incessante, salivação espessa, andar cambaleante e busca desesperada por sombra) e a aplicar primeiros socorros imediatos: molhar o cão ou gato imediatamente com água fresca corrente sobre o dorso e barriga e ligar o ar-condicionado veicular durante o deslocamento urgente ao pronto-socorro veterinário.',
+      'Educação preventiva para tutores e primeiros socorros:\n' +
+      '- Risco crítico de confinamento veicular: jamais deixar animais em veículos fechados, mesmo na sombra ou por poucos minutos; a temperatura interna sobe de 25°C para 45°C em 15 minutos.\n' +
+      '- Restrição de exercícios: suspender passeios sob temperatura > 25°C ou umidade > 70%, transferindo caminhadas para o início da manhã ou final da noite.\n' +
+      '- Reconhecimento de exaustão térmica: orientar tutores sobre sinais precoces (panting ruidoso incessante, salivação espessa, marcha atáxica e fraqueza motora).\n' +
+      '- Primeiros socorros corretos: molhar imediatamente o animal com água fresca corrente sobre tronco e abdome e ligar o ar-condicionado veicular no trajeto até o hospital.',
 
     aclimatacaoEManejoBraquicefalicos:
-      'Cães braquicefálicos requerem manejo ambiental e preventivo redobrado. Deve-se desaconselhar formalmente passeios vigorosos com essas raças em temperaturas superiores a 25°C ou dias úmidos. O uso de coleiras peitorais é obrigatório para evitar qualquer compressão mecânica sobre a traqueia ou laringe. Em animais com sinais evidentes de BOAS (ruídos respiratórios crônicos em repouso e intolerância ao exercício), a avaliação cirúrgica precoce para estafilectomia (alongamento de palato mole) e rinoplastia de narinas estenóticas é uma medida profilática salvadora que restaura a capacidade respiratória antes da ocorrência de um episódio térmico fatal. Para cães de trabalho, esportivos ou militares, preconiza-se um período de aclimatação gradual de no mínimo 14 a 21 dias antes da exposição a atividades intensas em climas mais quentes.',
+      'Cuidados específicos com braquicefálicos e animais de trabalho:\n' +
+      '- Manejo braquicefálico: passeios curtos apenas em horários amenos; uso obrigatório de peitorais em vez de coleiras cervicais para evitar colapso de vias aéreas.\n' +
+      '- Cirurgias profiláticas de BOAS: estafilectomia precoce (redução de palato mole) e rinoplastia de narinas estenóticas em animais sintomáticos para restaurar capacidade ventilatória.\n' +
+      '- Aclimatação de cães de trabalho e militares: período progressivo de 14 a 21 dias de adaptação metabólica e cardiovascular antes de atividades físicas plenas em climas quentes.',
 
     prevencaoAcidentesSecadorasFelinas:
-      'Para a espécie felina, a prevenção de intermação foca-se na eliminação de armadilhas domésticas de confinamento. As portas das secadoras de roupas e máquinas de lavar com abertura frontal devem permanecer rigorosamente fechadas quando não estiverem em uso. Os tutores devem ser conscientizados a inspecionar cuidadosamente o interior do tambor da secadora e misturar as roupas antes de ligar o aparelho elétrico, pois gatos têm o hábito comportamental de se aninhar silenciosamente em roupas limpas e mornas. Em residências em dias de calor intenso, deve-se assegurar ventilação cruzada ou climatização artificial, garantindo múltiplos pontos de água limpa e fresca e acesso a pisos frios desimpedidos.',
+      'Prevenção de acidentes domésticos na espécie felina:\n' +
+      '- Perigo de secadoras de roupas: manter portas de secadoras e lavadoras frontais sempre fechadas quando desativadas.\n' +
+      '- Verificação comportamental prévia: inspecionar o interior do tambor e revolver as roupas antes de ligar a máquina, pois gatos buscam calor e tecidos macios para dormir.\n' +
+      '- Ambiência doméstica em dias de calor: assegurar ventilação cruzada ou climatização artificial contínua, garantindo múltiplos bebedouros de água limpa e fresca e pisos frios acessíveis.',
   },
 
   references: [
@@ -724,7 +1024,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       url: 'https://onlinelibrary.wiley.com/doi/10.1111/vec.70138',
       pmid: '38890123',
       notes:
-        'Diretriz internacional de consenso que reformulou os primeiros socorros em cães e gatos. Recomenda fortemente o resfriamento ativo pré-hospitalar imediato com água corrente fresca sobre o tronco associado a fluxo de ar, sem esperar termometria se a história for compatível. Interromper resfriamento ativo aos 39,7–40,0°C para prevenir hipotermia rebote.',
+        'Diretriz internacional de consenso (RECOVER First Aid 2026):\n' +
+        '- Resfriamento ativo pré-hospitalar precoce com água fresca contínua sobre tronco e dorso sob ventilador.\n' +
+        '- Início imediato sem aguardar termometria se a história for compatível; interrupção obrigatória aos 39,7–40,0°C para prevenir hipotermia.',
     },
     {
       id: 'ref-recover-gap-analysis-2026',
@@ -779,7 +1081,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       url: 'https://pubmed.ncbi.nlm.nih.gov/26346257/',
       pmid: '26346257',
       notes:
-        'Estudo prospectivo em 30 cães demonstrando que a creatinina sérica inicial (mediana 1,69 mg/dL) subestima severamente o colapso da TFG (mediana 0,60 mL/min/kg). Biomarcadores urinários (uNGAL, RBP) e FeNa (AUROC 0,89) comprovam LRA tubular em virtualmente todos os cães.',
+        'Estudo prospectivo em 30 cães com intermação natural:\n' +
+        '- Creatinina sérica inicial mediana (1,69 mg/dL) subestima severamente o colapso precoce da TFG (0,60 mL/min/kg).\n' +
+        '- Biomarcadores urinários (uNGAL, RBP) e FeNa (AUROC 0,89) comprovam lesão tubular em quase 100% dos animais.',
     },
     {
       id: 'ref-bruchim-heatstroke-54dogs-2006',
@@ -793,7 +1097,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1939-1676.2006.tb02821.x',
       pmid: '16496921',
       notes:
-        'Série histórica seminal de 54 cães de referência que comprovou a fisiopatologia do heatstroke como síndrome de disfunção multissistêmica (MODS). Identificou mortalidade de 50%, com CID, LRA, hipoglicemia < 47 mg/dL, convulsões e atraso no atendimento > 90 min como fatores de risco maiores.',
+        'Série histórica seminal de 54 cães de referência (Bruchim et al., 2006):\n' +
+        '- Comprovou a fisiopatologia do heatstroke como síndrome de disfunção multissistêmica (MODS) com mortalidade de 50%.\n' +
+        '- Fatores de risco maiores identificados: CID, LRA, hipoglicemia < 47 mg/dL, convulsões e atraso no atendimento > 90 min.',
     },
     {
       id: 'ref-aroch-nrbc-2009',
@@ -916,7 +1222,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       id: 'fig-nrbc-esfregaco',
       title: 'Figura 1 — Hemácias Nucleadas Circulantes (nRBCs) no Esfregaço Sanguíneo',
       legend:
-        'Micrografia óptica de esfregaço de sangue periférico de cão com intermação grave (Wright-Giemsa). Observa-se a presença expressiva de eritroblastos ortocromáticos / hemácias nucleadas (nRBCs). O estudo seminal de Aroch et al. (2009) demonstrou que a contagem elevada de nRBCs (corte >= 18 nRBC/100 leucócitos) reflete dano térmico direto à barreira estromal da medula óssea e hipóxia tecidual profunda, associando-se fortemente a MODS e mortalidade.',
+        'Micrografia de esfregaço de sangue periférico de cão com intermação (Wright-Giemsa):\n' +
+        '- Presença expressiva de hemácias nucleadas (nRBCs / eritroblastos ortocromáticos).\n' +
+        '- Corte >= 18 nRBC/100 leucócitos (Aroch et al., 2009) reflete dano estromal medular direto e hipóxia grave, associando-se a MODS e óbito.',
       source: 'Aroch et al. (2009) / JVIM / Creative Commons Attribution License',
       url: '/consulta-vet/intermacao-caes-gatos/esfregaco-hemacias-nucleadas-nrbc-aroch.jpg',
       aspectRatio: '4:3',
@@ -925,7 +1233,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       id: 'fig-resfriamento-recover-2026',
       title: 'Figura 2 — Algoritmo de Resfriamento Ativo Baseado em Evidências (RECOVER First Aid 2026)',
       legend:
-        'Infográfico esquemático do protocolo de resfriamento ativo pré-hospitalar e intra-hospitalar segundo as diretrizes RECOVER First Aid 2026 (Mandell et al., 2026). A aplicação contínua de água fresca corrente sobre o tronco e abdome ventral associada a ventiladores (convecção forçada) otimiza a perda de calor sem fechar a vasculatura periférica. O resfriamento ativo deve ser interrompido rigorosamente aos 39,7–40,0°C para prevenir hipotermia rebote.',
+        'Algoritmo de resfriamento ativo baseado em evidências (RECOVER First Aid 2026):\n' +
+        '- Fluxo contínuo de água fresca corrente sobre tronco e abdome ventral com ventiladores (convecção forçada).\n' +
+        '- Interrupção mandatória aos 39,7–40,0°C para prevenção estrita de hipotermia rebote iatrogênica.',
       source: 'RECOVER Initiative (2026) / JVECC (CC BY 4.0)',
       url: '/consulta-vet/intermacao-caes-gatos/algoritmo-resfriamento-ativo-recover-2026.jpg',
       aspectRatio: '16:9',
@@ -934,7 +1244,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       id: 'fig-endoteliopatia-isquemia-mods',
       title: 'Figura 3 — Cascata Fisiopatológica: Isquemia Esplâncnica, Endoteliopatia e MODS',
       legend:
-        'Representação esquemática da fisiopatologia celular da intermação. A vasodilatação cutânea extrema associada à desidratação deflagra isquemia esplâncnica profunda e desarranjo de tight junctions intestinais, permitindo a translocação de endotoxinas para a circulação sistêmica. A lesão térmica direta somada à tempestade inflamatória promove endoteliopatia difusa, consumo de fatores da coagulação (CID) e falência de múltiplos órgãos.',
+        'Cascata fisiopatológica celular da intermação grave:\n' +
+        '- Vasodilatação cutânea extrema e desidratação deflagram isquemia esplâncnica profunda e lise de tight junctions entéricas.\n' +
+        '- Translocação endotóxica maciça, endoteliopatia difusa, CID consuntiva e falência de múltiplos órgãos alvo.',
       source: 'Journal of Cellular and Molecular Medicine / Wikimedia Commons (CC BY 4.0)',
       url: '/consulta-vet/intermacao-caes-gatos/fisiopatologia-endoteliopatia-mods-heatstroke.jpg',
       aspectRatio: '16:9',
@@ -943,7 +1255,9 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       id: 'fig-tromboelastometria-rotem-yanai',
       title: 'Figura 4 — Dinâmica Temporal Hemostática na Tromboelastometria (ROTEM)',
       legend:
-        'Traçados representativos de tromboelastometria (ROTEM) demonstrando a evolução temporal da coagulopatia na intermação canina (Yanai et al., 2024; Bruchim et al., 2017). Na admissão hospitalar (0h), a maioria dos pacientes apresenta perfil normocoagulável; entretanto, a reavaliação seriada às 12–24 horas revela o surgimento de grave hipocoagulabilidade (alargamento do tempo de coagulação e redução acentuada da firmeza máxima do coágulo), confirmando a necessidade de coagulograma seriado.',
+        'Dinâmica temporal hemostática avaliada por tromboelastometria - ROTEM (Yanai et al., 2024):\n' +
+        '- Perfil normocoagulável ou levemente hipercoagulável na admissão (0h).\n' +
+        '- Evolução para hipocoagulabilidade severa e hiperfibrinólise em 12–24h com risco de sangramento incoagulável.',
       source: 'Yanai et al. (2024) / JVIM / Open Access (CC BY 4.0)',
       url: '/consulta-vet/intermacao-caes-gatos/curva-hemostatica-tromboelastometria-rotem-yanai.jpg',
       aspectRatio: '16:9',

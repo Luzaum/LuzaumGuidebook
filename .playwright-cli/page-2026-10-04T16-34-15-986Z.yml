@@ -1,0 +1,77 @@
+- main [ref=f2e3]:
+  - generic [ref=f2e4]:
+    - heading "10. Qual Sonda Usar no Brasil? 🇧🇷 (Dispositivos Comerciais)" [level=2] [ref=f2e5]
+    - paragraph [ref=f2e6]: A medicina veterinária brasileira evoluiu significativamente. Não há mais qualquer justificativa técnica para improvisar sondas uretrais ou sondas nasogástricas humanas de PVC como primeira escolha para esofagostomias que permanecerão por semanas.
+    - note [ref=f2e7]:
+      - paragraph [ref=f2e8]: "🥇 Opção Veterinária Dedicada Nacional: Sonda Esofágica em Silicone (Tradevet Biomateriais)"
+      - paragraph [ref=f2e9]:
+        - text: A Tradevet Biomateriais comercializa no Brasil a
+        - strong [ref=f2e10]: Sonda Esofágica em Silicone – Uso Veterinário
+        - text: ", nos calibres"
+        - strong [ref=f2e11]: 12, 14, 16, 18 e 20 Fr
+        - text: . •
+        - strong [ref=f2e12]: "Material:"
+        - text: Silicone grau médico 100% biocompatível, ultra-flexível e macio, não endurece com o tempo; •
+        - strong [ref=f2e13]: "Características:"
+        - text: Linha radiopaca integral em toda a extensão para confirmação por raios X; ponta aberta arredondada e atraumática com 2 orifícios laterais alternados; marcações centimétricas nítidas; •
+        - strong [ref=f2e14]: "Conector:"
+        - text: Conexão proximal Luer Lock com tampa vedante, facilitando o acoplamento de seringas sem vazamentos; •
+        - strong [ref=f2e15]: "Dimensões:"
+        - text: Tubo de 12 Fr com 45 cm; 14 a 20 Fr com 60 cm (comprimento ajustável na inserção); •
+        - strong [ref=f2e16]: "Esterilização:"
+        - text: Esterilizada em óxido de etileno (ETO), pronta para uso cirúrgico.
+    - figure [ref=f2e17]:
+      - button [ref=f2e18]:
+        - img "Fotografia da sonda esofágica de silicone Tradevet, com marcações de comprimento e conector com tampa azul." [ref=f2e19]
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]:
+          - strong [ref=f2e22]: Sonda veterinária de silicone — Tradevet.
+          - text: "Observe as marcações centimétricas no tubo e a conexão proximal com tampa. A graduação ajuda a documentar a profundidade e acompanhar mudanças na marca externa. Foto: Tradevet Biomateriais."
+        - button "Ampliar imagem" [ref=f2e23] [cursor=pointer]:
+          - generic [ref=f2e27]: Ampliar
+    - note [ref=f2e28]:
+      - paragraph [ref=f2e29]: "🥈 Padrão Ouro Internacional: Sonda MILA em Poliuretano"
+      - paragraph [ref=f2e30]: "Fabricada pela MILA International, representa a referência global de dispositivos dedicados de esofagostomia veterinária: • Confeccionada em poliuretano termossensível (amolece à temperatura corporal, reduzindo trauma na mucosa esofágica); • Ponta cônica aberta atraumática com múltiplos orifícios laterais projetados para evitar entupimento; • Conector em \"Y\" removível (porta dupla para alimento e lavagem/medicação) e asa/flange de sutura deslizante; • Disponível nos tamanhos 10 Fr, 14 Fr e 18 Fr, compatível com os tunelizadores/introdutores cirúrgicos ETUN14 e ETUN18."
+    - figure [ref=f2e31]:
+      - button [ref=f2e32]:
+        - img "Fotografia da sonda de esofagostomia MILA em poliuretano transparente com conexão proximal em Y." [ref=f2e33]
+      - generic [ref=f2e34]:
+        - generic [ref=f2e35]:
+          - strong [ref=f2e36]: Sonda veterinária de poliuretano — MILA.
+          - text: "A fotografia mostra o tubo transparente e o conector em Y, que permite acesso para dieta, medicamentos e lavagem. A foto ilustra o modelo; confirme calibre e comprimento na embalagem. Foto: MILA International."
+        - button "Ampliar imagem" [ref=f2e37] [cursor=pointer]:
+          - generic [ref=f2e41]: Ampliar
+    - paragraph [ref=f2e42]:
+      - strong [ref=f2e43]: "Alternativas Hospitalares Humanas no Brasil (Uso Sob Cautela):"
+      - text: •
+      - strong [ref=f2e44]: "Sondas Enterais em Poliuretano (ex.: Biobase TPU):"
+      - text: Calibres variáveis conforme o modelo.
+      - emphasis [ref=f2e45]: "Atenção:"
+      - text: foram desenhadas para uso nasoentérico humano e frequentemente vêm com fio-guia metálico interno e peso distal metálico. Se usadas em esofagostomia veterinária, exigem avaliação criteriosa da ponta, nunca deixando pesos soltos no lúmen Biobase Sondas; •
+      - strong [ref=f2e46]: "Linha Freka (Fresenius Kabi Brasil):"
+      - text: Poliuretano de excelente biocompatibilidade, radiopaca, com conexões ENFit nos calibres CH/Fr 10 a 15 Fresenius Kabi Freka.
+    - figure [ref=f2e47]:
+      - button [ref=f2e48]:
+        - img "Fotografia da sonda de nutrição enteral Biobase, com conector em Y, fio-guia e peso distal visíveis." [ref=f2e49]
+      - generic [ref=f2e50]:
+        - generic [ref=f2e51]:
+          - strong [ref=f2e52]: Sonda enteral humana — Biobase.
+          - text: "Observe o conector em Y, o fio-guia e a ogiva distal. Esse dispositivo é diferente de uma sonda veterinária dedicada de esofagostomia; o peso e o guia exigem avaliação específica. Foto: Biobase."
+        - button "Ampliar imagem" [ref=f2e53] [cursor=pointer]:
+          - generic [ref=f2e57]: Ampliar
+    - figure [ref=f2e58]:
+      - button [ref=f2e59]:
+        - img "Fotografia da sonda enteral transnasal Freka com conexão em Y e guia no interior do tubo." [ref=f2e60]
+      - generic [ref=f2e61]:
+        - generic [ref=f2e62]:
+          - strong [ref=f2e63]: Sonda enteral transnasal — Freka.
+          - text: "A fotografia mostra o tubo longo e a conexão proximal em Y. Trata-se de um dispositivo para acesso transnasal humano; não deve ser confundido com uma E-tube veterinária dedicada. Foto: Fresenius Kabi."
+        - button "Ampliar imagem" [ref=f2e64] [cursor=pointer]:
+          - generic [ref=f2e68]: Ampliar
+    - note [ref=f2e69]:
+      - paragraph [ref=f2e70]: Dispositivos que DEVEM SER EVITADOS como Primeira Escolha
+      - paragraph [ref=f2e71]:
+        - strong [ref=f2e72]: "1. Sonda Nasogástrica de Levine em PVC:"
+        - text: Embora comum e de baixo custo, o PVC enrijece rapidamente em contato com os sucos gástricos e o calor corporal (geralmente após 7 a 10 dias), tornando-se duro, quebradiço e altamente ulcerogênico para o esôfago. Além disso, possui 125 cm de comprimento, sobrando metros de tubo fora do paciente.
+        - strong [ref=f2e73]: "2. Cateteres Uretrais (Borracha Vermelha / Látex ou PVC):"
+        - text: Desenvolvidos para drenagem vesical. O látex degrada-se rapidamente no trato digestório, apresenta alta citotoxicidade tecidual e pode provocar reações inflamatórias estomacais severas e ruptura do tubo.

@@ -78,6 +78,9 @@ export interface DiseaseRecord extends ContentFlag {
   treatment: EditorialSectionValue;
   complications?: EditorialSectionValue;
   figures?: EditorialClinicalFigure[] | Array<Record<string, unknown>> | Record<string, unknown>;
+  tables?: any;
+  errorsAndTrapdoors?: any;
+  clinicalProtocols?: any;
   prevention?: EditorialSectionValue;
   relatedConsensusSlugs?: string[];
   relatedDiseaseSlugs?: string[];

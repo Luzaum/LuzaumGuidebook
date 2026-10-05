@@ -107,8 +107,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'neurologia',
     selectedClassName: 'border-indigo-500 bg-indigo-500/[0.07] text-indigo-700 dark:text-indigo-300',
     iconClassName: 'text-indigo-600 dark:text-indigo-400',
-    medicationSlugs: ['fenobarbital', 'pregabalina', 'gabapentina', 'selegilina', 'fluoxetina', 'amitriptilina'],
-    keywords: ['anticonvulsivante', 'antiepiléptico', 'dor neuropática', 'neurológico', 'gabapentina', 'neurontin', 'gabapentinoide'],
+    medicationSlugs: ['fenobarbital', 'pregabalina', 'gabapentina', 'selegilina', 'fluoxetina', 'amitriptilina', 'trazodona'],
+    keywords: ['anticonvulsivante', 'antiepiléptico', 'dor neuropática', 'neurológico', 'gabapentina', 'neurontin', 'gabapentinoide', 'trazodona', 'trazodone', 'donaren', 'sari', 'ansiolítico', 'sedativo'],
   },
   {
     slug: 'diureticos-hiperosmolares',

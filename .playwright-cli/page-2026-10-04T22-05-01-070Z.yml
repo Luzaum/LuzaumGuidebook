@@ -1,0 +1,46 @@
+- generic [ref=f1e95]:
+  - banner [ref=f1e96]:
+    - generic [ref=f1e97]:
+      - generic [ref=f1e98]:
+        - button "Abrir navegação do Vetius" [ref=f1e99] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f1e101] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f1e103]
+          - generic [ref=f1e104]: Vetius
+      - generic [ref=f1e105]:
+        - button "Ativar modo escuro" [ref=f1e106] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f1e109] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=f1e110]
+          - generic [ref=f1e111]: Luis
+  - main [ref=f1e114]:
+    - generic [ref=f1e2147]:
+      - complementary [ref=f1e2148]:
+        - generic [ref=f1e2149]:
+          - button "Esconder barra lateral" [ref=f1e2150] [cursor=pointer]
+          - link [ref=f1e2155] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=f1e2156]
+          - navigation [ref=f1e2157]:
+            - link "Início" [ref=f1e2158] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f1e2162] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f1e2168] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f1e2174] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f1e2179] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f1e2184] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Procedimentos" [ref=f1e2188] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f1e2192] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f1e2198] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f1e2203] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f1e2207] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=f1e2213]

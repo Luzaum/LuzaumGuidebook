@@ -5,6 +5,9 @@ import { tetanoCaesGatosRecord } from './diseases.tetano-caes-gatos.seed';
 import { bruceloseCaesGatosRecord } from './diseases.brucelose-caes-gatos.seed';
 import { megaesofagoCaesGatosRecord } from './diseases.megaesofago-caes-gatos.seed';
 import { paralisiaLaringeaCaesGatosRecord } from './diseases.paralisia-laringea-caes-gatos.seed';
+import { enteropatiaPerdedoraDeProteinasRecord } from './diseases.enteropatia-perdedora-de-proteinas-caes-gatos.seed';
+import { enteropatiaInflamatoriaCronicaCaninaRecord } from './diseases.enteropatia-inflamatoria-cronica-canina.seed';
+import { neoplasiasIntracranianasCaesRecord } from './diseases.neoplasias-intracranianas-caes.seed';
 import { piotoraxRecord } from './diseases.piotorax.seed';
 import { quilotoraxRecord } from './diseases.quilotorax.seed';
 import { cistiteEnfisematosaCaesGatosSeed } from './diseases.cistite-enfisematosa-caes-gatos.seed';
@@ -28,7 +31,7 @@ import { colapsoTraquealCaninoRecord } from './diseases.colapso-traqueal.seed';
 import { erliquioseMonociticaCaninaRecord } from './diseases.erlichia.seed';
 import { micoplasmosesHemotropicasRecord } from './diseases.hemoplasma.seed';
 import { leishmanioseVisceralCaninaRecord } from './diseases.leishmaniose.seed';
-import { doencaRenalCronicaCaesGatosRecord } from './diseases.drc.seed';
+import { doencaRenalCronicaCaninaRecord } from './diseases.doenca-renal-cronica-canina.seed';
 import { hipertensaoArterialSistemicaRecord } from './diseases.hipertensao.seed';
 import { doencaValvarMitralDegenerativaRecord } from './diseases.dmvd.seed';
 import { sindromeCushingCaesRecord } from './diseases.sindrome-cushing-caes.seed';
@@ -97,7 +100,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   bronquiteCronicaRecord,
   granulomaEosinofilicoFelinoRecord,
   micoplasmosesHemotropicasRecord,
-  doencaRenalCronicaCaesGatosRecord,
+  doencaRenalCronicaCaninaRecord,
   hipertensaoArterialSistemicaRecord,
   doencaValvarMitralDegenerativaRecord,
   cardiomiopatiaHipertroficaRecord,
@@ -159,4 +162,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   bruceloseCaesGatosRecord,
   megaesofagoCaesGatosRecord,
   paralisiaLaringeaCaesGatosRecord,
+  enteropatiaPerdedoraDeProteinasRecord,
+  enteropatiaInflamatoriaCronicaCaninaRecord,
+  neoplasiasIntracranianasCaesRecord,
 ].map(withPlainLanguage);

@@ -233,9 +233,9 @@ export function HomePage() {
     },
     {
       to: '/consulta-vet/guias-rapidos',
-      label: 'Guia r\u00e1pido cl\u00ednico',
+      label: 'Procedimentos',
       icon: BookOpen,
-      body: 'Conceitos por sistema, figuras e v\u00eddeos',
+      body: 'Técnicas, preparo, cuidados e complicações',
       accent: 'slate' as const,
     },
     {

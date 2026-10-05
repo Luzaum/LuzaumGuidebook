@@ -4,7 +4,7 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
   id: 'med-ciproeptadina',
   slug: 'ciproeptadina',
   title: 'Ciproeptadina',
-  activeIngredient: 'Cloridrato de ciproeptadina (cloridrato de 4-(5H-dibenzo[a,d]ciclo-hepten-5-ilideno)-1-metilpiperidina)',
+  activeIngredient: 'Cloridrato de ciproeptadina',
   isControlled: false,
   controlNotice:
     'Medicamento de uso sob prescrição simples. No Brasil, a ciproeptadina não integra as listas de substâncias sob controle especial da Portaria SVS/MS nº 344/1998, não exigindo Notificação de Receita nem Receita de Controle Especial em duas vias com retenção de via. Seu emprego em cães e gatos é realizado na modalidade extra-label, podendo ser prescrito em receituário veterinário comum de via única.',
@@ -102,27 +102,23 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
   pillars: [
     {
       title: 'Fome Não é Nutrição: Prioridade da Causa, Analgesia e Sonda Alimentar',
-      subtitle: 'Orexígeno como ponte adjuvante e não como substituto de aporte calórico',
-      content:
-        'A estimulação farmacológica do apetite com ciproeptadina só é racional quando as causas subjacentes da hiporexia (dor, náusea, uremia, febre, hipocalemia ou estresse ambiental) tiverem sido ativamente identificadas e tratadas. Administrar um orexígeno a um gato nauseado ou com dor abdominal sem analgesia prévia gera aversão alimentar condicionada grave: o paciente aproxima-se do prato compelido pelo estímulo central, mas associa o odor da comida ao mal-estar físico e recusa o alimento em definitivo. Ademais, em felinos sob jejum prolongado ou com lipidose hepática estabelecida, a ciproeptadina é contraindicada como conduta isolada, pois a latência de ação e a inconstância da resposta não suprem o balanço energético negativo, sendo mandatória a colocação precoce de sonda alimentar (nasoesofágica ou esofágica) conforme ratificado pelas diretrizes internacionais ISFM (2022).',
+      desc:
+        'Orexígeno como ponte adjuvante e não como substituto de aporte calórico. A estimulação farmacológica do apetite com ciproeptadina só é racional quando as causas subjacentes da hiporexia (dor, náusea, uremia, febre, hipocalemia ou estresse ambiental) tiverem sido ativamente identificadas e tratadas. Administrar um orexígeno a um gato nauseado ou com dor abdominal sem analgesia prévia gera aversão alimentar condicionada grave: o paciente aproxima-se do prato compelido pelo estímulo central, mas associa o odor da comida ao mal-estar físico e recusa o alimento em definitivo. Ademais, em felinos sob jejum prolongado ou com lipidose hepática estabelecida, a ciproeptadina é contraindicada como conduta isolada, pois a latência de ação e a inconstância da resposta não suprem o balanço energético negativo, sendo mandatória a colocação precoce de sonda alimentar (nasoesofágica ou esofágica) conforme ratificado pelas diretrizes internacionais ISFM (2022).',
     },
     {
       title: 'O Eixo Serotoninérgico 5-HT2: Conexão entre Apetite e Toxicologia',
-      subtitle: 'Bloqueio de 5-HT2C na fome hipotalâmica e de 5-HT2A no resgate toxicológico',
-      content:
-        'A versatilidade clínica da ciproeptadina fundamenta-se no bloqueio seletivo dos receptores de serotonina 5-HT2. No núcleo arqueado do hipotálamo, a ativação fisiológica de receptores 5-HT2C estimula os neurônios POMC/CART a produzirem alfa-MSH, neurotransmissor da saciedade que inibe a ingesta alimentar. Ao bloquear 5-HT2C, a ciproeptadina neutraliza esse freio anorexígeno e permite que as vias de NPY e AgRP induzam busca alimentar. Simultaneamente, no contexto de intoxicações agudas por fármacos pró-serotoninérgicos (SSRIs, SNRIs, tramadol, 5-HTP ou mirtazapina), a hiperestimulação maciça de receptores 5-HT2A no córtex e na medula deflagra a tríade da Síndrome Serotoninérgica (hipertermia, tremores/mioclonias e instabilidade autonômica). A ciproeptadina atua bloqueando esses receptores e estancando a toxidrome, funcionando como antídoto coadjuvante de primeira linha.',
+      desc:
+        'Bloqueio de 5-HT2C na fome hipotalâmica e de 5-HT2A no resgate toxicológico. A versatilidade clínica da ciproeptadina fundamenta-se no bloqueio seletivo dos receptores de serotonina 5-HT2. No núcleo arqueado do hipotálamo, a ativação fisiológica de receptores 5-HT2C estimula os neurônios POMC/CART a produzirem alfa-MSH, neurotransmissor da saciedade que inibe a ingesta alimentar. Ao bloquear 5-HT2C, a ciproeptadina neutraliza esse freio anorexígeno e permite que as vias de NPY e AgRP induzam busca alimentar. Simultaneamente, no contexto de intoxicações agudas por fármacos pró-serotoninérgicos (SSRIs, SNRIs, tramadol, 5-HTP ou mirtazapina), a hiperestimulação maciça de receptores 5-HT2A no córtex e na medula deflagra a tríade da Síndrome Serotoninérgica (hipertermia, tremores/mioclonias e instabilidade autonômica). A ciproeptadina atua bloqueando esses receptores e estancando a toxidrome, funcionando como antídoto coadjuvante de primeira linha.',
     },
     {
       title: 'Lipofilicidade, Passagem na BHE e Resposta Paradoxal Felina',
-      subtitle: 'Cinética de distribuição no SNC e manejo de hiperexcitação / mania',
-      content:
-        'Com elevado coeficiente de partição octanol-água (XLogP3 ~4,7) e reduzida polaridade molecular, a ciproeptadina transpõe rapidamente a barreira hematoencefálica (BHE). O bloqueio concomitante dos receptores histaminérgicos H1 centrais resulta na perda da sinalização de vigília cortical, tornando a sedação e a sonolência os efeitos colaterais mais comuns. Contudo, em felinos suscetíveis, pode ocorrer uma resposta paradoxal exuberante descrita como mania felina, caracterizada por miados estridentes incessantes, desorientação, hiperatividade motora desordenada e agressividade. Essa reação é idiossincrática e decorre da desinibição de circuitos límbicos; diante de sua ocorrência, o clínico deve suspender o medicamento ou reduzir a dosagem à metade.',
+      desc:
+        'Cinética de distribuição no SNC e manejo de hiperexcitação / mania. Com elevado coeficiente de partição octanol-água (XLogP3 ~4,7) e reduzida polaridade molecular, a ciproeptadina transpõe rapidamente a barreira hematoencefálica (BHE). O bloqueio concomitante dos receptores histaminérgicos H1 centrais resulta na perda da sinalização de vigília cortical, tornando a sedação e a sonolência os efeitos colaterais mais comuns. Contudo, em felinos suscetíveis, pode ocorrer uma resposta paradoxal exuberante descrita como mania felina, caracterizada por miados estridentes incessantes, desorientação, hiperatividade motora desordenada e agressividade. Essa reação é idiossincrática e decorre da desinibição de circuitos límbicos; diante de sua ocorrência, o clínico deve suspender o medicamento ou reduzir a dosagem à metade.',
     },
     {
       title: 'Perfil Anticolinérgico Relevante e Ineficácia Comprovada em Asma e Cushing',
-      subtitle: 'Segurança visceral e revisão de usos históricos desmentidos pela literatura',
-      content:
-        'O antagonismo muscarínico exercido pela ciproeptadina impõe cuidados rigorosos em pacientes predispostos a retenção urinária, glaucoma de ângulo fechado e atonia gastrintestinal, pois o bloqueio dos receptores M3 paralisa a contração do detrusor vesical e reduz o peristaltismo entérico. Além disso, a literatura veterinária contemporânea exige a revisão de dois usos históricos outrora citados em compêndios antigos: em asma felina experimental, ensaios clínicos controlados (Schooley et al. 2007) demonstraram que mesmo doses maciças (8 mg q12h) não reduzem o infiltrado inflamatório de eosinófilos no lavado broncoalveolar, não devendo a ciproeptadina ser prescrita como monoterapia anti-inflamatória respiratória. De igual modo, ensaios em cães com hiperadrenocorticismo hipófise-dependente (Stolp et al. 1984) comprovaram total ineficácia clínica e laboratorial no controle do hipercortisolemia, devendo tais indicações constar no prontuário como obsoletas e não recomendadas.',
+      desc:
+        'Segurança visceral e revisão de usos históricos desmentidos pela literatura. O antagonismo muscarínico exercido pela ciproeptadina impõe cuidados rigorosos em pacientes predispostos a retenção urinária, glaucoma de ângulo fechado e atonia gastrintestinal, pois o bloqueio dos receptores M3 paralisa a contração do detrusor vesical e reduz o peristaltismo entérico. Além disso, a literatura veterinária contemporânea exige a revisão de dois usos históricos outrora citados em compêndios antigos: em asma felina experimental, ensaios clínicos controlados (Schooley et al. 2007) demonstraram que mesmo doses maciças (8 mg q12h) não reduzem o infiltrado inflamatório de eosinófilos no lavado broncoalveolar, não devendo a ciproeptadina ser prescrita como monoterapia anti-inflamatória respiratória. De igual modo, ensaios em cães com hiperadrenocorticismo hipófise-dependente (Stolp et al. 1984) comprovaram total ineficácia clínica e laboratorial no controle do hipercortisolemia, devendo tais indicações constar no prontuário como obsoletas e não recomendadas.',
     },
   ],
 
@@ -314,23 +310,23 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
     },
   ],
 
-  pharmacokineticsDetails: {
-    feline:
-      'Na espécie felina, a farmacocinética da ciproeptadina foi estabelecida pelo ensaio prospectivo cruzado de Norris et al. (1998) em 6 gatos hígidos sob doses de 2 mg IV e 8 mg VO. A absorção oral revelou-se ampla, com biodisponibilidade oral aparente de 101 ± 36% (a fração aparente acima de 100% decorre de variabilidade individual e limitações do modelo em coortes pequenas). A meia-vida de eliminação plasmática terminal no gato é de 12,8 ± 9,9 horas, exibindo enorme dispersão interindividual que explica por que alguns animais permanecem sedados por até 24 a 36 horas enquanto outros requerem administrações a cada 12 horas. O volume de distribuição em equilíbrio (Vdss) é extraordinariamente elevado (~106 L/kg), refletindo sua acentuada lipofilicidade e extensíssima partição tecidual para tecidos profundos e sistema nervoso central. A depuração plasmática sistêmica é de 0,9 ± 0,3 mL/kg/min. O tempo para atingir o estado de equilíbrio dinâmico (steady-state) situa-se entre 2 e 3 dias de administrações consecutivas. A molécula sofre biotransformação hepática quase total em metabólitos polares glicuronados eliminados por excreção renal, não existindo estudos farmacocinéticos felinos que validem ajustes posológicos específicos estratificados pelos estágios IRIS da doença renal.',
-    canine:
-      'Na espécie canina, inexistem ensaios farmacocinéticos modernos e robustos comparáveis ao estudo de Norris em gatos. Evidências empíricas e extrapolações toxicológicas indicam que os cães metabolizam a ciproeptadina mais rapidamente do que os felinos, apresentando depuração acelerada e meia-vida consideravelmente mais curta, o que corrobora a menor previsibilidade do estímulo orexígeno e a necessidade de posologias mais frequentes (a cada 8 a 12 horas para alergias ou a cada 4 a 6 horas em protocolos de resgate na síndrome serotoninérgica). A molécula sofre extenso metabolismo hepático inicial e seus conjugados são excretados predominantemente na urina.',
-    comparativeHighlights: [
-      'Gato exibe meia-vida de eliminação terminal longa (~13 horas) mas com enorme desvio-padrão (± 10 horas), justificando intervalo de 12 a 24 horas e titulação cautelosa.',
-      'Biodisponibilidade oral no gato é virtualmente completa (~100%), permitindo absorção consistente mesmo em pacientes com motilidade reduzida.',
-      'Volume de distribuição aparente superior a 100 L/kg comprova penetração tecidual e cerebral maciça via barreira hematoencefálica.',
-      'Cães apresentam eliminação mais célere e resposta orexígena significativamente menos confiável do que os felinos.',
-      'Hepatopatia clínica grave reduz expressivamente a depuração metabólica do fármaco em ambas as espécies, elevando as concentrações circulantes e os riscos de sedação e anticolinergismo.',
-    ],
+  pharmacokineticsData: {
+    absorption:
+      'Gatos: absorção oral virtualmente completa, com biodisponibilidade aparente de 101 ± 36% (Norris et al. 1998). Cães: absorção oral rápida, porém com resposta orexígena e antialérgica menos consistente.',
+    distribution:
+      'Volume de distribuição em equilíbrio (Vdss) extraordinariamente elevado (~106 L/kg no gato), refletindo acentuada lipofilicidade e extensíssima partição tecidual profunda.',
+    metabolism:
+      'Extensa metabolização microssomal hepática gerando metabólitos polares glicuronados inativos em ambas as espécies. Clearance sistêmico de 0,9 ± 0,3 mL/kg/min no gato.',
+    elimination:
+      'Excreção predominantemente renal dos conjugados polares. Meia-vida plasmática terminal no gato de 12,8 ± 9,9 horas com grande variação individual.',
+    cnsPenetration:
+      'Altíssima travessia da barreira hematoencefálica favorecida pelo XLogP3 elevado (~4,7), justificando sedação central e reversão de sinais cerebrais na síndrome serotoninérgica.',
+    halfLife: 'Gatos: ~12,8 horas (3 a 24 horas); Cães: substancialmente mais curta.',
   },
 
-  practicalDosingTable: {
-    title: 'Guia de Dosagem Prática e Conversão Volumétrica de Ciproeptadina',
-    colHeaders: [
+  practicalWeightTable: {
+    standardDoseText: 'Guia de Dosagem Prática e Conversão Volumétrica de Ciproeptadina',
+    headers: [
       'Paciente / Peso',
       'Dose Alvo (mg)',
       'Apevitin BC Xarope (0,8 mg/mL)',
@@ -412,7 +408,7 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
     '   Posologia: Administrar 4 (quatro) microcomprimidos (16 mg de ciproeptadina) por via retal a cada 4 a 6 horas conforme persistência dos sinais.\\n' +
     '   Modo de Preparo: Macerar finamente os 4 microcomprimidos em gral de porcelana, suspender homogeneamente em 8 mL de solução fisiológica estéril (NaCl 0,9%) e infundir na ampola retal através de sonda uretral flexível número 6 ou 8 Fr devidamente lubrificada com gel hidrossolúvel.',
 
-  keyStudies: [
+  clinicalStudiesCommented: [
     {
       title: 'Disposition of cyproheptadine in cats after intravenous or oral administration of a single dose',
       authorsYear: 'Norris CR, Boothe DM, Esparza T, Gray C, Ragsdale M. (1998)',

@@ -17,15 +17,21 @@ import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
 import { clorambucilMedicationRecord } from './medications.clorambucil.seed';
 import { diazepamMedicationRecord } from './medications.diazepam.seed';
 import { dipironaMedicationRecord } from './medications.dipirona.seed';
+import { domperidonaMedicationRecord } from './medications.domperidona.seed';
 import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed';
 import { gabapentinaMedicationRecord } from './medications.gabapentina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
 import { levetiracetamMedicationRecord } from './medications.levetiracetam.seed';
 import { marbofloxacinaMedicationRecord } from './medications.marbofloxacina.seed';
+import { maropitantMedicationRecord } from './medications.maropitant.seed';
 import { meloxicamMedicationRecord } from './medications.meloxicam.seed';
 import { metadonaMedicationRecord } from './medications.metadona.seed';
+import { metoclopramidaMedicationRecord } from './medications.metoclopramida.seed';
 import { micofenolatoMofetilaMedicationRecord } from './medications.micofenolato-mofetila.seed';
+import { miltefosinaMedicationRecord } from './medications.miltefosina.seed';
 import { mirtazapinaMedicationRecord } from './medications.mirtazapina.seed';
+import { molidustatMedicationRecord } from './medications.molidustat.seed';
+import { ondansetronaMedicationRecord } from './medications.ondansetrona.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
 import { pradofloxacinaMedicationRecord } from './medications.pradofloxacina.seed';
 import { prednisolonaMedicationRecord } from './medications.prednisolona.seed';
@@ -33,6 +39,7 @@ import { pronefraMedicationRecord } from './medications.pronefra.seed';
 import { sucralfatoMedicationRecord } from './medications.sucralfato.seed';
 import { sulfametoxazolTrimetoprimaMedicationRecord } from './medications.sulfametoxazol-trimetoprima.seed';
 import { tramadolMedicationRecord } from './medications.tramadol.seed';
+import { trazodonaMedicationRecord } from './medications.trazodona.seed';
 
 /**
  * Catálogo de Medicamentos do ConsultaVet
@@ -71,15 +78,21 @@ export const medicationsSeed: MedicationRecord[] = [
   clorambucilMedicationRecord,
   diazepamMedicationRecord,
   dipironaMedicationRecord,
+  domperidonaMedicationRecord,
   enrofloxacinaMedicationRecord,
   gabapentinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
   levetiracetamMedicationRecord,
   marbofloxacinaMedicationRecord,
+  maropitantMedicationRecord,
   meloxicamMedicationRecord,
   metadonaMedicationRecord,
+  metoclopramidaMedicationRecord,
   micofenolatoMofetilaMedicationRecord,
+  miltefosinaMedicationRecord,
   mirtazapinaMedicationRecord,
+  molidustatMedicationRecord,
+  ondansetronaMedicationRecord,
   phenobarbitalMedicationRecord,
   pradofloxacinaMedicationRecord,
   prednisolonaMedicationRecord,
@@ -87,4 +100,5 @@ export const medicationsSeed: MedicationRecord[] = [
   sucralfatoMedicationRecord,
   sulfametoxazolTrimetoprimaMedicationRecord,
   tramadolMedicationRecord,
+  trazodonaMedicationRecord,
 ].map(applyPlumbs10MedicationAudit).map(applyMedicationBookFoundations);

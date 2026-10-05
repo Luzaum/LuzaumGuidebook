@@ -108,12 +108,13 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
       "Pilar 3: Terapêutica Racional e Biossegurança Esofágica": "O tratamento exige cuidado ao administrar comprimidos, especialmente em gatos."
     }
   },
-  "doenca-renal-cronica-caes-gatos": {
-    "simple": "Os rins perdem parte de sua capacidade de funcionar ao longo do tempo. O acompanhamento ajuda a controlar os efeitos e preservar a qualidade de vida.",
+  "doenca-renal-cronica-canina": {
+    "simple": "Os rins caninos perdem progressivamente a capacidade de filtração e concentração. O acompanhamento IRIS 2026 guia nutrição, controle do fósforo e renoproteção.",
     "pillars": {
-      "Definição prática": "Diferenciar lesão persistente de alterações agudas orienta o manejo.",
-      "Gato vs cão": "Cães e gatos podem ter causas e apresentações diferentes.",
-      "Conduta base": "O tratamento depende do estágio e das complicações presentes."
+      "Pilar 1: Novo Estadiamento IRIS 2026 e Discordância Cr/SDMA": "Estágio 2 expandido e valorização do SDMA na sarcopenia.",
+      "Pilar 2: Renoproteção Antiproteinúrica e Tromboprofilaxia": "Telmisartana como primeira linha e controle do risco trombótico.",
+      "Pilar 3: Manejo Mineral-Ósseo (CKD-MBD) e Metas de Fósforo": "Quelantes entéricos com a comida para frear o hiperparatireoidismo.",
+      "Pilar 4: Anemia Precoce, Acidose e Terapias de Fronteira": "Tratar anemia com HCT <30% e corrigir acidose mais cedo."
     }
   },
   "hipertensao-arterial-sistemica-caes-gatos": {
@@ -837,6 +838,69 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
       "Analgesia Descendente Monoaminérgica": "Também age em vias nervosas que modulam a dor.",
       "No Cão, o Metabolismo Trabalha Contra": "Cães produzem pouco metabólito ativo; o uso oral não deve ser presumido eficaz como única analgesia.",
       "No Gato, a Farmacologia é Outra": "Gatos formam mais metabólito ativo; o sabor amargo pode dificultar a administração."
+    }
+  },
+  "trazodona": {
+    "simple": "É um modulador serotoninérgico (SARI) calmante para estresse situacional, viagens e visitas veterinárias. A sedação não equivale necessariamente a alívio total do medo e a resposta varia muito entre indivíduos.",
+    "pillars": {
+      "Filtra e Redireciona a Serotonina (SARI)": "Inibe SERT e bloqueia 5-HT2A, direcionando a serotonina para circuitos ansiolíticos 5-HT1A.",
+      "Atenuação Adrenérgica e Bloqueio Alfa-1": "Reduz o estado de alerta, mas pode causar vasodilatação e hipotensão arterial.",
+      "O Paradoxo do Metabólito mCPP": "Metabólito ativo agonista serotoninérgico que pode produzir desinibição comportamental e agitação paradoxal.",
+      "Sedação Não é Sinônimo de Ansiólise": "O bloqueio H1/alfa-1 tranquiliza o corpo, mas o medo subjetivo exige manejo Fear Free e dose-teste prévia."
+    }
+  },
+  "miltefosina": {
+    "simple": "É um leishmanicida oral multialvo que destrói Leishmania infantum desestruturando membranas e mitocôndrias. Não produz cura esterilizante, tem meia-vida de quase uma semana e exige controle vetorial contínuo.",
+    "pillars": {
+      "Leishmanicida, Não Esterilizante": "Reduz drasticamente a carga parasitária tecidual e melhora a clínica, mas o cão permanece infectado por toda a vida.",
+      "Mecanismo Multialvo no Parasita": "Inibe síntese de fosfatidilcolina, colapsa o ATP mitocondrial e sobrecarrega o cálcio nos acidocalcissomos.",
+      "Acúmulo e Cauda Farmacocinética": "Com meia-vida de 6,9 dias, acumula-se até o 28º dia e deixa concentrações residuais por semanas após o término.",
+      "Risco de Seleção de Resistência": "Subdosagens ou repetições sucessivas de ciclos selecionam mutantes no transportador LMT/Ros3 do protozoário."
+    }
+  },
+  "domperidona": {
+    "simple": "É um antagonista da dopamina periférico com baixa penetração no cérebro. Seu uso principal atual em cães é a imunomodulação preventiva da leishmaniose em áreas endêmicas; perdeu espaço como pró-cinético de rotina e exige atenção rigorosa ao ritmo cardíaco (prolongamento do intervalo QTc).",
+    "pillars": {
+      "Antagonismo D2 Periférico e Baixa Passagem na BHE": "Age fora do cérebro na CRTZ e trato gastrintestinal, com efluxo ativo pela P-glicoproteína que previne efeitos extrapiramidais.",
+      "Eixo Hipofisário e Hiperprolactinemia Imunomoduladora": "Estimula a liberação de prolactina pela adeno-hipófise, ativando macrófagos e direcionando a resposta celular Th1 protetora contra Leishmania.",
+      "Bloqueio hERG e Risco Eletrocardiográfico de QTc Longo": "Bloqueia canais de potássio IKr com aumento comprovado do QTc em cães; contraindicada com azólicos, macrolídeos e antiarrítmicos.",
+      "Prevenção vs Tratamento da Leishmaniose": "Eficácia preventiva comprovada em cães soronegativos (WAVD 2025 grau moderado), mas não recomendada como monoterapia na doença instalada."
+    }
+  },
+  "metoclopramida": {
+    "simple": "É um antiemético e estimulante da motilidade gastroduodenal (pró-cinético). Atua bloqueando a dopamina e ativando a serotonina 5-HT4. Em 2026, seu uso intravenoso foi atualizado: o bolus rápido de 1 mg/kg foi formalmente abandonado pelo risco de parada cardíaca, adotando-se doses de ataque conservadoras (0,05 a 0,1 mg/kg) antes da infusão contínua.",
+    "pillars": {
+      "Duplo Mecanismo Dopaminérgico e Serotoninérgico": "Bloqueia receptores D2/D3 na zona de gatilho do vômito (CRTZ) e ativa receptores 5-HT4 mioentéricos, estimulando o esvaziamento do estômago e duodeno.",
+      "Atualização Cardiovascular 2026 e Fim do Bolus de 1 mg/kg": "O bolus IV rápido de 1 mg/kg causa bradicardia severa e assistolia (Rolfi & Chesnel 2026); a nova diretriz adota dose de ataque de 0,05 a 0,1 mg/kg IV lenta para CRI.",
+      "Divergência Crítica entre Espécies (Cão vs Gato)": "Antiemético potente e confiável no cão; efeito muito inferior em gatos devido à escassez de receptores D2 na CRTZ felina. Sem efeito motor no cólon.",
+      "Efeitos Extrapiramidais e Reversão com Difenidramina": "O bloqueio D2 nos gânglios da base pode induzir rigidez, espasmos e agitação desorientada; revertida prontamente com difenidramina (2,2 mg/kg IV/IM)."
+    }
+  },
+  "molidustat": {
+    "simple": "É um medicamento oral inovador aprovado exclusivamente para gatos com anemia não regenerativa por doença renal crônica. Age enganando as células renais para produzirem sua própria eritropoietina nativa felina, eliminando o perigo de anticorpos e aplasia de medula dos tratamentos humanos antigos.",
+    "pillars": {
+      "Pseudo-Hipóxia Celular Controlada (Inibição de Pan-PHD)": "Inibe seletivamente as prolil-hidroxilases (PHD), impedindo a destruição do HIF-2α e ativando a transcrição de eritropoietina endógena.",
+      "Superação da PRCA dos Agentes Humanos (Darbepoetina/EPO)": "Produz eritropoietina 100% felina autóloga nativa, eliminando o risco letal de anticorpos neutralizantes e aplasia pura da série vermelha.",
+      "Evidência de Alta Resposta Clínica (RCT Schmidt 2026)": "Ensaio clínico multicêntrico demonstrou 67,5% de sucesso hematológico aos 28 dias (+5,25 pontos de hematócrito) vs 17,1% no placebo (p < 0,001).",
+      "Regras Rígidas de Ciclo de 28 Dias e Monitoramento de PCV": "Tratamento de no máximo 28 dias com pausa obrigatória de pelo menos 7 dias; suspender se PCV > 45%. Não redosar em caso de vômito."
+    }
+  },
+  "maropitant": {
+    "simple": "É um antiemético de amplo espectro que atua bloqueando a via final comum do reflexo do vômito (receptores NK1) no cérebro e no trato digestivo. Bloqueia eficazmente o vômito mecânico em cães e gatos, mas não elimina necessariamente a sensação subjetiva de náusea e não estimula o apetite. A injeção subcutânea deve ser mantida refrigerada para diminuir a ardência.",
+    "pillars": {
+      "Pilar 1 — Bloqueio da Via Final Comum da Êmese (Receptores NK₁)": "Antagoniza os receptores NK1 e impede a ação da substância P tanto centralmente no centro emético e NTS quanto perifericamente nas fibras aferentes vagais do trato gastrointestinal.",
+      "Pilar 2 — Antiêmese Não Significa Antináusea (Evidência 2026)": "Ensaio clínico de 2026 demonstrou bloqueio de 100% dos vômitos, porém mais de 70% dos cães ainda manifestaram sinais comportamentais de náusea intensa. Não possui efeito estimulante de apetite.",
+      "Pilar 3 — Farmacocinética Não Linear e Divergência de Doses (Cinetose vs Vômito)": "Metabolismo de primeira passagem hepático saturável (CYP2D15) exige dose 4 vezes maior para cinetose (8 mg/kg VO) em relação ao vômito agudo (2 mg/kg VO), administrada 2h antes da viagem.",
+      "Pilar 4 — Cuidados Práticos de Aplicação e Incompatibilidades": "A ardência na injeção SC é resolvida com a administração da solução diretamente gelada (2°C a 8°C); a via IV exige infusão lenta em 1 a 2 min (risco de hipotensão) e é fisicamente incompatível com pantoprazol."
+    }
+  },
+  "ondansetrona": {
+    "simple": "É um potente antináusea e antiemético que bloqueia receptores 5-HT3 no intestino e no cérebro. É especialmente eficaz contra a sensação de enjoo e salivação que o maropitant às vezes não elimina. Em cães, a via oral tem baixíssima absorção (~5%), enquanto a injeção subcutânea é altamente eficaz (~85%). Em gatos, é segura na doença renal crônica sem necessidade de corte de dose.",
+    "pillars": {
+      "Pilar 1 — Bloqueio Rápido do Canal Iônico 5-HT₃": "Diferente de receptores GPCR lentos, o 5-HT3 é um canal de íons que fecha imediatamente a despolarização dos aferentes vagais entéricos e da área postrema.",
+      "Pilar 2 — Potente Efeito Antináusea & Sinergia com Maropitant": "Reduz a aversão alimentar, salivação e lambedura labial; associa-se sinergicamente ao maropitant para controle completo da náusea e do vômito.",
+      "Pilar 3 — Quebra de Paradigma Farmacocinético Canino 2026 (SC vs VO)": "A biodisponibilidade oral em cães é de apenas ~5%, enquanto a via subcutânea atinge 85% em 15 minutos, consolidando a via SC como a grande escolha prática.",
+      "Pilar 4 — Depuração Hepática e Ausência de Ajuste por IRIS em Gatos": "A excreção renal inalterada é menor que 5%; o Consenso iCatCare 2026 não reduz a dose por estágio de DRC, mas exige atenção a hepatopatias e intervalo QT."
     }
   }
 };

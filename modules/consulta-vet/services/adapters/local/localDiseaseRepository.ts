@@ -5,6 +5,7 @@ import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../../data/publicCatalogCa
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
 import { diseaseMatchesCategoryFilter } from '../../../utils/diseaseCategories';
+import { DISEASE_SLUG_ALIASES } from '../../../utils/mergeDiseaseRecords';
 
 export class LocalDiseaseRepository implements DiseaseRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
@@ -13,7 +14,8 @@ export class LocalDiseaseRepository implements DiseaseRepository {
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<DiseaseRecord | null> {
     const diseasesSeed = await loadDiseasesEditorialSeed();
-    return diseasesSeed.find((d) => d.slug === slug) || null;
+    const canonicalSlug = DISEASE_SLUG_ALIASES[slug] || slug;
+    return diseasesSeed.find((d) => d.slug === canonicalSlug) || null;
   }
 
   async search(query: string): Promise<DiseaseRecord[]> {

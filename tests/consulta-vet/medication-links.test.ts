@@ -18,13 +18,13 @@ test('o vínculo automático cobre o catálogo atual sem inventar equivalência 
       'ampicilina-sulbactam',
       'betanecol',
       'buprenorfina',
-      'ciproeptadina',
       'clorambucil',
       'diazepam',
       'dipirona',
       'metadona',
       'micofenolato-mofetila',
       'pradofloxacina',
+      'trazodona',
     ],
   );
 });

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Sequência Técnica da Colocação com Carmalt</title>
+  <desc id="desc">Infográfico em seis etapas: da introdução oral da pinça ao flip e avanço final da sonda.</desc>
+  <defs>
+    <marker id="seq-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#d27c2c"/>
+    </marker>
+    <marker id="teal-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#146857"/>
+    </marker>
+  </defs>
+  <rect width="900" height="650" rx="24" fill="#f4f8fa"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="35" y="44" font-size="26" fill="#133b4a" font-weight="700">Sequência Técnica com Pinça Carmalt (6 Etapas)</text>
+    <text x="35" y="72" font-size="16" fill="#243e51" font-weight="400">Técnica retrógrada: visualização das etapas-chave para evitar lesão vascular e dobras</text>
+
+    <!-- Quadro 1 -->
+    <rect x="35" y="95" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="47" y="107" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="56" y="127" font-size="16" fill="#fff" font-weight="700">1</text>
+    <text x="85" y="127" font-size="17" fill="#133b4a" font-weight="700">Introdução Oral</text>
+    <rect x="55" y="145" width="220" height="42" rx="10" fill="#d7efea" stroke="#88c7bc" stroke-width="1.5"/>
+    <text x="65" y="171" font-size="13" fill="#133b4a" font-weight="600">Esôfago cervical médio</text>
+    <path d="M60 215 C100 215, 140 180, 240 180" fill="none" stroke="#718096" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="240" cy="180" r="5" fill="#4a5568"/>
+    <text x="50" y="245" font-size="13" fill="#243e51" font-weight="600">Pinça Carmalt fechada</text>
+    <text x="50" y="265" font-size="12" fill="#4a5568">Passagem pela boca → faringe</text>
+    <text x="50" y="283" font-size="12" fill="#4a5568">até o esôfago cervical médio.</text>
+
+    <!-- Quadro 2 -->
+    <rect x="320" y="95" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="332" y="107" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="341" y="127" font-size="16" fill="#fff" font-weight="700">2</text>
+    <text x="370" y="127" font-size="17" fill="#133b4a" font-weight="700">Projeção ("Tenting")</text>
+    <path d="M335 155 L565 155" fill="none" stroke="#b94956" stroke-width="4" stroke-dasharray="4,4"/>
+    <text x="340" y="148" font-size="12" fill="#b94956" font-weight="700">Veia jugular externa</text>
+    <path d="M345 220 Q440 220 460 175" fill="none" stroke="#718096" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="460" cy="175" r="6" fill="#d27c2c"/>
+    <text x="335" y="245" font-size="13" fill="#146857" font-weight="700">Ponta DORSAL à jugular</text>
+    <text x="335" y="265" font-size="12" fill="#4a5568">Giro lateral da pinça até palpar</text>
+    <text x="335" y="283" font-size="12" fill="#4a5568">metal claramente sob a pele.</text>
+
+    <!-- Quadro 3 -->
+    <rect x="605" y="95" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="617" y="107" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="626" y="127" font-size="16" fill="#fff" font-weight="700">3</text>
+    <text x="655" y="127" font-size="17" fill="#133b4a" font-weight="700">Mini-Incisão Cutânea</text>
+    <path d="M625 185 L845 185" fill="none" stroke="#cbd9df" stroke-width="6"/>
+    <text x="630" y="175" font-size="12" fill="#718096">Pele do pescoço</text>
+    <path d="M720 225 L735 170" fill="none" stroke="#718096" stroke-width="6" stroke-linecap="round"/>
+    <path d="M735 170 L730 155" fill="none" stroke="#2b6cb0" stroke-width="3"/>
+    <text x="625" y="245" font-size="13" fill="#133b4a" font-weight="600">Incisão sobre o metal</text>
+    <text x="625" y="265" font-size="12" fill="#4a5568">Lâmina 11/15 ou cut-down 5-10mm;</text>
+    <text x="625" y="283" font-size="12" fill="#4a5568">exteriorizar apenas as pontas.</text>
+
+    <!-- Quadro 4 -->
+    <rect x="35" y="350" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="47" y="362" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="56" y="382" font-size="16" fill="#fff" font-weight="700">4</text>
+    <text x="85" y="382" font-size="17" fill="#133b4a" font-weight="700">Captura da Sonda</text>
+    <path d="M60 470 L140 435" fill="none" stroke="#718096" stroke-width="6"/>
+    <path d="M135 430 L260 410" fill="none" stroke="#d27c2c" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="138" cy="432" r="5" fill="#e53e3e"/>
+    <text x="50" y="495" font-size="13" fill="#b44946" font-weight="700">Atenção ao pinçamento!</text>
+    <text x="50" y="515" font-size="12" fill="#4a5568">Segurar apenas a ponta do tubo;</text>
+    <text x="50" y="533" font-size="12" fill="#4a5568">NÃO capturar pele, músculo ou mucosa.</text>
+
+    <!-- Quadro 5 -->
+    <rect x="320" y="350" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="332" y="362" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="341" y="382" font-size="16" fill="#fff" font-weight="700">5</text>
+    <text x="370" y="382" font-size="17" fill="#133b4a" font-weight="700">Tração Retrógrada</text>
+    <path d="M345 460 L440 460 Q520 460 540 405" fill="none" stroke="#d27c2c" stroke-width="8" stroke-linecap="round" marker-end="url(#seq-arrow)"/>
+    <text x="335" y="495" font-size="13" fill="#133b4a" font-weight="600">Ponta sai pela boca</text>
+    <text x="335" y="515" font-size="12" fill="#4a5568">Carmalt + tubo saem pela boca;</text>
+    <text x="335" y="533" font-size="12" fill="#4a5568">segurar segmento externo no pescoço.</text>
+
+    <!-- Quadro 6 -->
+    <rect x="605" y="350" width="260" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="617" y="362" width="28" height="28" rx="8" fill="#133b4a"/>
+    <text x="626" y="382" font-size="16" fill="#fff" font-weight="700">6</text>
+    <text x="655" y="382" font-size="17" fill="#133b4a" font-weight="700">Manobra do "FLIP" 🔄</text>
+    <path d="M635 425 Q710 400 730 465 Q740 500 835 500" fill="none" stroke="#d27c2c" stroke-width="8" stroke-linecap="round" marker-end="url(#seq-arrow)"/>
+    <text x="625" y="495" font-size="13" fill="#146857" font-weight="700">Inversão caudal suave</text>
+    <text x="625" y="515" font-size="12" fill="#4a5568">Ponta vai da boca ao esôfago distal;</text>
+    <text x="625" y="533" font-size="12" fill="#4a5568">desfaz a alça oral; tubo desliza livre.</text>
+
+    <text x="35" y="622" font-size="14" fill="#243e51">VETIUS / ConsultaVET · Guia de Procedimentos · Esquema vetorial original passo a passo</text>
+  </g>
+</svg>

@@ -28,6 +28,13 @@ import { requestedClinicalCommercialProductsSeed } from './requestedClinicalComm
 import { lomustineCommercialProductsSeed } from './lomustineCommercialProducts.seed';
 import { pronefraNplateCommercialProductsSeed } from './pronefraNplateCommercialProducts.seed';
 import { allopurinolCommercialProductsSeed } from './allopurinolCommercialProducts.seed';
+import { donarenCommercialProductSeed } from './donarenCommercialProduct.seed';
+import { milteforanCommercialProductSeed } from './milteforanCommercialProduct.seed';
+import { domperidonaCommercialProductSeed } from './domperidonaCommercialProduct.seed';
+import { metoclopramidaCommercialProductSeed } from './metoclopramidaCommercialProduct.seed';
+import { molidustatCommercialProductSeed } from './molidustatCommercialProduct.seed';
+import { maropitantCommercialProductSeed } from './maropitantCommercialProduct.seed';
+import { ondansetronaCommercialProductSeed } from './ondansetronaCommercialProduct.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -81,6 +88,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...lomustineCommercialProductsSeed,
   ...pronefraNplateCommercialProductsSeed,
   ...allopurinolCommercialProductsSeed,
+  ...donarenCommercialProductSeed,
+  ...milteforanCommercialProductSeed,
+  ...domperidonaCommercialProductSeed,
+  ...metoclopramidaCommercialProductSeed,
+  ...molidustatCommercialProductSeed,
+  ...maropitantCommercialProductSeed,
+  ...ondansetronaCommercialProductSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',

@@ -37,7 +37,16 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
 
   plainLanguage: DISEASE_PLAIN_LANGUAGE['cistite-idiopatica-felina'],
 
-  quickSummary: 'A Cistite Idiopática Felina (CIF / FIC) é a causa individual mais prevalente de sinais do trato urinário inferior (LUTS) em gatos, respondendo por 55% a 65% de todas as apresentações clínicas em adultos jovens a meia-idade. A compreensão científica contemporânea, consolidada no consenso 2025 iCatCare Guidelines (produzido pela sociedade veterinária da antiga ISFM) e na revisão sistemática de 2025 (Macleod et al.), abandonou a visão reducionista de que a CIF é primariamente uma doença da bexiga. Trata-se, fundamentalmente, de uma síndrome dolorosa, sistêmica e complexa de desregulação da resposta à ameaça ambiental. Nela, um indivíduo biologicamente vulnerável (sensitive individual), submetido a um ambiente percebido como ameaçador, instável ou desprovido de previsibilidade (provocative environment), desenvolve ativação patológica sustentada do sistema central de resposta à ameaça (CTRS), desregulação simpática crônica com hiporreatividade do eixo hipotálamo-hipófise-adrenal, sensibilização de fibras C nociceptivas aferentes vesicais e disfunção da barreira urotelial. A bexiga atua como o principal órgão de choque somático desse circuito neuroendócrino. A CIF é um diagnóstico estrito de exclusão, exigindo a eliminação metódica de urolitíase, infecção bacteriana (incomum em gatos jovens, representando menos de 3% dos casos), tampões uretrais e neoplasias. O pilar terapêutico com maior sustentação na literatura é a Modificação Ambiental Multimodal (MEMO) associada ao manejo hídrico e dietético progressivo, enquanto a analgesia imediata (buprenorfina e gabapentina) alivia a dor aguda da crise. Fármacos historicamente prescritos de forma empírica — como antibióticos, corticosteroides, prazosina para prevenção de recidiva e suplementação isolada de glicosaminoglicanos (GAGs) — não demonstraram benefício clínico consistente em ensaios clínicos randomizados contemporâneos.',
+  quickSummary:
+    'A Cistite Idiopática Felina (CIF / FIC) é a afecção mais prevalente do trato urinário inferior felino (LUTS), respondendo por 55% a 65% das consultas de adultos jovens a meia-idade:\n' +
+    '- Conceito contemporâneo e eixo neuroendócrino (Diretrizes iCatCare 2025 e revisão Macleod et al., 2025):\n' +
+    '  - A bexiga não é a causa primária, mas sim o órgão de choque somático de uma síndrome dolorosa complexa de resposta à ameaça ambiental.\n' +
+    '  - Indivíduo biologicamente vulnerável ("sensitive individual") exposto a ambiente percebido como ameaçador ("provocative environment"), com hiperativação sustentada do sistema central de resposta à ameaça (CTRS), disautonomia simpática e hiporreatividade adrenal.\n' +
+    '- Diagnóstico estrito de exclusão:\n' +
+    '  - Ausência de teste positivo patognomônico; exclusão mandatória de urolitíase, ITU bacteriana (rara, <1% a 3% em jovens) e neoplasias.\n' +
+    '- Pilares de manejo clínico e analgesia:\n' +
+    '  - Modificação Ambiental Multimodal (MEMO), estímulo hídrico e dietético gradual e analgesia imediata da dor aguda com buprenorfina e gabapentina.\n' +
+    '  - Veto ao uso empírico de antibióticos, corticosteroides, GAGs orais ou prazosina profilática de rotina, por carência de benefício em ensaios clínicos randomizados.',
 
   quickDecisionStrip: [
     'CIF é um diagnóstico de exclusão: não existe teste diagnóstico positivo patognomônico; o diagnóstico exige afastar metidicamente urolitíase, infecções e neoplasias.',
@@ -55,7 +64,11 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
   ],
 
   quickSummaryRich: {
-    lead: 'A Cistite Idiopática Felina é uma síndrome álgica e funcional complexa resultante da interação bidirecional entre um indivíduo vulnerável e um ambiente percebido como ameaçador. A manifestação vesical (LUTS) é o reflexo periférico de um circuito neuroendócrino e autonômico desregulado, cujo manejo eficaz baseia-se na exclusão diagnóstica rigorosa, analgesia da crise e modificação ambiental multimodal (MEMO).',
+    lead:
+      'A Cistite Idiopática Felina é uma síndrome álgica e funcional complexa decorrente de desregulação neuroendócrina sistêmica:\n' +
+      '- Interação bidirecional cérebro-bexiga entre indivíduo biologicamente suscetível e ambiente percebido como ameaçador.\n' +
+      '- Manifestações de LUTS representam o reflexo somático da hiperatividade do sistema central de resposta à ameaça (CTRS).\n' +
+      '- Abordagem clínica fundamentada em diagnóstico metódico de exclusão, analgesia aguda precoce e Modificação Ambiental Multimodal (MEMO).',
     leadHighlights: [
       'Diagnóstico estrito de exclusão',
       'Circuito bidirecional top-down e bottom-up',
@@ -67,22 +80,50 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     pillars: [
       {
         title: 'Pilar 1: Modelo Fisiopatológico Bidirecional (Top-Down e Bottom-Up)',
-        body: 'A CIF rompe o paradigma do dano puramente vesical. A via top-down expressa a percepção de ameaça ambiental por um indivíduo suscetível, ativando persistentemente o sistema central de resposta à ameaça (CTRS), com hiperatividade simpática e sensibilização espinhal. A via bottom-up expressa a disfunção da permeabilidade da barreira urotelial, expondo fibras C sensoriais a solutos urinários e retroalimentando o sistema nervoso central com aferências álgicas contínuas.',
+        body:
+          'Compreensão neuro-urológica contemporânea da CIF:\n' +
+          '- Via descendente (Top-Down):\n' +
+          '  - Percepção de ameaça ambiental por felino suscetível ativa o sistema central de resposta à ameaça (CTRS), gerando eferência simpática persistente, liberação de catecolaminas e sensibilização medular.\n' +
+          '- Via ascendente (Bottom-Up):\n' +
+          '  - Aumento da permeabilidade urotelial expõe fibras C sensoriais a solutos urinários concentrados, retroalimentando o sistema nervoso central com aferências álgicas contínuas.\n' +
+          '- Bexiga como órgão efetor:\n' +
+          '  - Inflamação neurogênica secundária com liberação de substância P e neuropeptídeos, sem infecção bacteriana primária.',
         highlights: ['CTRS e desregulação simpática', 'Sensibilização central e periférica de fibras C', 'Urotélio como órgão sensorial integrado']
       },
       {
         title: 'Pilar 2: Diagnóstico Rigoroso por Exclusão e Triagem Imediata de Obstrução',
-        body: 'Não existe biomarcador positivo para CIF. A palpação vesical precoce é mandatória para descartar obstrução uretral (UO), especialmente em machos. O diagnóstico da forma não obstrutiva exige exclusão metódica de urólitos por radiografia e ultrassonografia, infecção bacteriana por urinálise e urocultura por cistocentese, e neoplasias em animais idosos. A resposta clínica a qualquer fármaco não valida o diagnóstico de CIF.',
+        body:
+          'Metodologia diagnóstica por eliminação sistemática:\n' +
+          '- Triagem emergencial de obstrução uretral (UO):\n' +
+          '  - Palpação vesical precoce e mandatória, especialmente em machos com estrangúria, para diferenciar retenção obstrutiva de cistite não obstrutiva.\n' +
+          '- Exclusão de afecções estruturais e infecciosas:\n' +
+          '  - Eliminação metódica de urólitos (radiografia/ultrassom), ITU bacteriana por cistocentese (rara em jovens) e neoplasias em idosos.\n' +
+          '- Ausência de marcador patognomônico:\n' +
+          '  - O diagnóstico de CIF consolida-se exclusivamente pela negatividade das demais causas de LUTS felino.',
         highlights: ['Palpação imediata para excluir UO', 'Exclusão de urólitos e infecções', 'Urinálise completa com sedimento fresco']
       },
       {
         title: 'Pilar 3: Modificação Ambiental Multimodal (MEMO) e Recursos Espaciais',
-        body: 'O consenso iCatCare 2025 e a revisão sistemática de Macleod et al. 2025 ratificam o MEMO como o padrão ouro terapêutico preventivo. O plano exige garantir os 5 pilares do bem-estar felino: caixas de areia na proporção N+1 distribuídas em locais distintos, separação física entre comida, água e eliminação, enriquecimento vertical, áreas de refúgio seguras e previsibilidade nas rotinas diárias e interações com tutores.',
+        body:
+          'Intervenção preventiva padrão ouro conforme consenso iCatCare 2025 e Macleod et al. (2025):\n' +
+          '- Caixas sanitárias N+1:\n' +
+          '  - Uma caixa por gato mais uma adicional, abertas, amplas, distribuídas em locais independentes com substrato fino e inodoro.\n' +
+          '- Separação tridimensional de recursos vitais:\n' +
+          '  - Afastamento físico entre alimentação, água e eliminação, eliminando pontos de bloqueio visual velado em domicílios multicat.\n' +
+          '- Previsibilidade e controle:\n' +
+          '  - Estabelecimento de rotinas estáveis, áreas seguras de refúgio vertical e redução consistente de estímulos estressores.',
         highlights: ['Caixas N+1 e substrato aglomerante', 'Recursos separados espacialmente', 'Redução de conflitos sociais e previsibilidade']
       },
       {
         title: 'Pilar 4: Racionalização Farmacológica e Fim de Condutas Empíricas',
-        body: 'A evidência clínica contemporânea desmistificou diversas condutas históricas: antibióticos não têm indicação na ausência de urocultura positiva; AINEs e corticosteroides não demonstraram benefício protetor na CIF; a amitriptilina aguda é ineficaz e potencialmente prejudicial; a prazosina não previne reobstrução uretral (estudo Reineke 2017); e GAGs orais não superam o placebo. O foco farmacológico restringe-se à analgesia da dor aguda com opioides transmucosos e gabapentina.',
+        body:
+          'Conduta medicamentosa estritamente alinhada às evidências científicas:\n' +
+          '- Veto a práticas empíricas ineficazes:\n' +
+          '  - Antibióticos são contraindicados sem urocultura positiva; AINEs e corticoides não previnem recidivas; amitriptilina na crise aguda dobra recorrência precoce.\n' +
+          '- Ineficácia comprovada de GAGs e prazosina:\n' +
+          '  - Suplementação de GAGs e prazosina profilática de rotina (Reineke et al., 2017) não superam o placebo em ensaios randomizados.\n' +
+          '- Foco no alívio da dor aguda:\n' +
+          '  - Analgesia prioritária com buprenorfina transmucosa e gabapentina oral para alívio ético da crise dolorosa.',
         highlights: ['Veto a antibióticos empíricos', 'Ineficácia de GAGs e prazosina rotineira', 'Analgesia com buprenorfina e gabapentina']
       }
     ],
@@ -92,32 +133,70 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
         {
           label: 'Etapa 1: Triagem Imediata de Volemia e Obstrução Uretral (UO)',
           timing: 'Minuto 0 da admissão',
-          detail: 'Palpação abdominal criteriosa da bexiga urinária. Se bexiga moderada a grande, rígida, turgida e dolorosa em gato com estrangúria: diagnosticar UO de emergência, avaliar ECG, potássio sérico, iniciar analgesia e desobstrução imediata. Se bexiga pequena, vazia ou facilmente compressível: classificar provisoriamente como LUTS não obstrutivo.'
+          detail:
+            'Procedimento prioritário na chegada do paciente felino:\n' +
+            '- Palpação vesical caudal imediata:\n' +
+            '  - Bexiga distendida, rígida, turgida e dolorosa em gato com esforço improdutivo: diagnosticar emergência de obstrução uretral (UO).\n' +
+            '- Ação emergencial na vigência de UO:\n' +
+            '  - Triagem de hipercalemia e arritmias ventriculares via ECG, analgesia e estabilização prévia à desobstrução mecânica.\n' +
+            '- Conduta se bexiga pequena ou compressível:\n' +
+            '  - Classificar provisoriamente como LUTS não obstrutivo e prosseguir na investigação de exclusão.'
         },
         {
           label: 'Etapa 2: Anamnese Ambiental, Dinâmica Social e Histórico de Eventos Provocadores',
           timing: 'Durante a anamnese',
-          detail: 'Investigação sistemática do ambiente doméstico: número de gatos e caixas sanitárias, localização física dos recursos, reformas recentes, novos animais ou pessoas na casa, alterações na rotina do tutor, episódios prévios de LUTS e sinais não urinários de comorbidades da Síndrome de Pandora (vômitos crônicos, hiporexia, dermatite).'
+          detail:
+            'Auditoria sistemática do território e do ambiente domiciliar:\n' +
+            '- Mapeamento de recursos e dinâmica multicat:\n' +
+            '  - Contagem de gatos residentes, número de caixas sanitárias, tipo de substrato de areia e distanciamento entre recursos vitais.\n' +
+            '- Identificação de estressores provocadores:\n' +
+            '  - Reformas, visitas, alteração na rotina do tutor ou bloqueio de passagem por felinos dominantes.\n' +
+            '- Rastreio de sinais sistêmicos associados:\n' +
+            '  - Investigação de sinais compatíveis com a Síndrome de Pandora (vômitos intermitentes, hiporexia, dermatite psicogênica).'
         },
         {
           label: 'Etapa 3: Urinálise Completa com Amostra Fresca e Mensuração da Densidade (USG)',
           timing: 'Primeiras 1 a 2 horas',
-          detail: 'Colheita preferencial por cistocentese ou micção espontânea colhida em recipiente limpo. Aferição da densidade urinária (USG) por refratometria antes de qualquer fluidoterapia; exame químico por fita reagente; e análise microscópica do sedimento urinário fresco inspecionado em até 60 minutos (para evitar precipitação artefatual de cristais por refrigeração).'
+          detail:
+            'Avaliação físico-química e citológica da urina fresca:\n' +
+            '- Densidade urinária (USG) por refratometria:\n' +
+            '  - Mensurar antes da fluidoterapia; felinos jovens com CIF exibem urina altamente concentrada (USG habitualmente > 1,040 a 1,050).\n' +
+            '- Sedimento urinário inspecionado em até 60 minutos:\n' +
+            '  - Identificação de hematúria e piúria assépticas por inflamação neurogênica.\n' +
+            '- Interpretação comedida da cristalúria:\n' +
+            '  - Cristais de estruvita ocorrem frequentemente como achado incidental em urina felina densa e não equivalem a urolitíase.'
         },
         {
           label: 'Etapa 4: Exame de Imagem do Trato Urinário (Radiografia e Ultrassonografia)',
           timing: 'Nas primeiras 24 horas',
-          detail: 'Radiografia abdominal total incluindo toda a trajetória da uretra peniana em machos para pesquisar urólitos radiopacos de estruvita e oxalato de cálcio. Ultrassonografia abdominal detalhada para descartar urólitos radiotransparentes de urato, massas vesicais, pólipos uretrais, coágulos obstrutivos e avaliar espessamento parietal focal ou difuso.'
+          detail:
+            'Mapeamento anatômico para exclusão de urólitos e lesões estruturais:\n' +
+            '- Radiografia abdominal total com membros estendidos:\n' +
+            '  - Visualização de toda a uretra peniana do macho até a extremidade para detectar cálculos radiopacos de estruvita e oxalato.\n' +
+            '- Ultrassonografia abdominal detalhada:\n' +
+            '  - Exclusão de urólitos radiotransparentes de urato, massas vesicais, pólipos inflamatórios e coágulos obstrutivos.\n' +
+            '- Avaliação parietal vesical:\n' +
+            '  - Identificação de espessamento parietal focal ou difuso compatível com cistite.'
         },
         {
           label: 'Etapa 5: Urocultura Quantitativa por Cistocentese em Casos Selecionados',
           timing: 'Conforme indicação clínica',
-          detail: 'Indicada formalmente em felinos idosos (>10 anos), animais nefropatas, diabéticos, hipertireoideos, portadores de densidade urinária persistentemente baixa (USG < 1,025), histórico prévio de cateterização uretral ou sinais persistentes por mais de 7 dias sem resposta.'
+          detail:
+            'Indicações precisas para pesquisa microbiológica:\n' +
+            '- Populações sob risco aumentado de bacteriúria:\n' +
+            '  - Felinos geriátricos (>10 anos), animais portadores de DRC, diabetes mellitus ou hipertireoidismo com USG < 1,025.\n' +
+            '- Histórico e refratariedade:\n' +
+            '  - Histórico prévio de sondagem uretral ou persistência de sinais clínicos por período superior a 7 dias sem remissão.'
         },
         {
           label: 'Etapa 6: Consolidação do Diagnóstico de Exclusão e Avaliação de Recorrência',
           timing: 'Acompanhamento longitudinal',
-          detail: 'Se todas as causas obstrutivas, anatômicas, litiásicas e infecciosas forem negativas em gato jovem com LUTS agudo: consolidar o diagnóstico de Cistite Idiopática Felina. Em cada nova recidiva ao longo da vida do felino, o raciocínio diagnóstico deve ser reiniciado para não deixar de reconhecer litíase ou neoplasia secundária adquirida.'
+          detail:
+            'Fechamento diagnóstico e vigilância longitudinal:\n' +
+            '- Diagnóstico definitivo por exclusão:\n' +
+            '  - Consolidado apenas após exclusão negativa comprovada de causas infecciosas, anatômicas, neoplásicas e litiásicas.\n' +
+            '- Reavaliação a cada nova crise:\n' +
+            '  - Reiniciar a linha de raciocínio investigativo em episódios recorrentes para não negligenciar urolitíase adquirida secundariamente.'
         }
       ]
     },
@@ -127,36 +206,72 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
         {
           label: 'Fase 1: Manejo da Crise Aguda e Analgesia Prioritária',
           timing: 'Dias 1 a 5 da crise',
-          detail: 'Instituição imediata de controle álgico multimodal para quebrar o circuito de hipersensibilidade: Buprenorfina transmucosa (0,005 a 0,02 mg/kg q8-12h) e/ou Gabapentina oral (5 a 10 mg/kg q8-12h). Repouso absoluto em ambiente silencioso e seguro, evitando procedimentos e contenções físicas estressantes.'
+          detail:
+            'Intervenção emergencial para quebra do ciclo nociceptivo:\n' +
+            '- Analgesia farmacológica multimodal precoce:\n' +
+            '  - Buprenorfina transmucosa (0,005 a 0,02 mg/kg sublingual q8-12h) e/ou Gabapentina oral (5 a 10 mg/kg q8-12h).\n' +
+            '- Ambiente acolhedor de repouso:\n' +
+            '  - Isolamento em cômodo silencioso, iluminado suavemente e livre de manipulações e contenções estressantes.'
         },
         {
           label: 'Fase 2: Auditoria e Implementação da Modificação Ambiental Multimodal (MEMO)',
           timing: 'Início imediato com consolidação em 2 a 4 semanas',
-          detail: 'Aplicação prática do consenso iCatCare 2025: caixas sanitárias na regra N+1 distribuídas em locais independentes e tranquilos; substrato preferencialmente arenoso aglomerante e inodoro; limpeza diária; recursos vitais (água, comida, descanso e eliminação) fisicamente separados para evitar bloqueios visuais em casas multicat; áreas de refúgio verticais e previsibilidade de rotinas.'
+          detail:
+            'Execução das diretrizes de ambiente seguro (iCatCare 2025):\n' +
+            '- Caixas sanitárias N+1 em locais privativos e silenciosos com areia fina inodora e recolhimento frequente.\n' +
+            '- Separação física dos recursos vitais (comida, água, caixas e descanso) para evitar bloqueios territoriais em domicílios multicat.\n' +
+            '- Enriquecimento ambiental com prateleiras verticais, esconderijos seguros e previsibilidade estrita nas rotinas diárias.'
         },
         {
           label: 'Fase 3: Otimização da Ingestão Hídrica e Manejo Dietético',
           timing: 'Manutenção contínua',
-          detail: 'Estímulo progressivo ao consumo de água para reduzir a concentração de solutos urinários: introdução de alimento úmido completo (sachês/latas), fontes de água circulante e múltiplos potes largos de cerâmica ou vidro afastados do comedouro. Transição alimentar sempre gradual ao longo de 2 a 3 semanas para evitar neofobia e aversão alimentar estressante.'
+          detail:
+            'Estratégias de diluição urinária progressiva:\n' +
+            '- Introdução paulatina de dietas úmidas completas (sachês ou patês), fontes de água circulante e potes largos de cerâmica.\n' +
+            '- Transição alimentar lenta ao longo de 2 a 3 semanas para evitar aversão alimentar e estresse induzido por neofobia.\n' +
+            '- Meta biológica de manter a densidade urinária alvo entre 1,025 e 1,035.'
         },
         {
           label: 'Fase 4: Manejo Emergencial da Obstrução Uretral (UO) em Machos',
           timing: 'Imediato se UO presente',
-          detail: 'Estabilização hemodinâmica antes de manobras de cateterismo: fluidoterapia de ressuscitação balanceada, descompressão aliviadora prévia por cistocentese com agulha fina (22G ou 23G acoplada a extensor e torneira de três vias), analgesia profunda, passagem delicada de cateter uretral com hidropropulsão estéril e manutenção de sistema coletor fechado estéril por 24 a 48 horas.'
+          detail:
+            'Sequência protocolar de desobstrução e terapia intensiva:\n' +
+            '- Estabilização hemodinâmica inicial: correção de hipercalemia e arritmias cardíacas com fluidoterapia e gluconato de cálcio a 10% IV.\n' +
+            '- Descompressão vesical prévia por cistocentese aliviadora com agulha fina (22G ou 23G) acoplada a torneira de três vias.\n' +
+            '- Desobstrução sob anestesia balanceada com hidropropulsão delicada e manutenção de cateter flexível em sistema fechado estéril por 24 a 48 horas.'
         },
         {
           label: 'Fase 5: Abordagem de Casos Crônicos Refratários e Apoio Especializado',
           timing: 'Após falha comprovada de MEMO adequado por >4 a 6 semanas',
-          detail: 'Revisão diagnóstica integral para descartar urolitíase oculta, estenose uretral ou neoplasia. Em casos verdadeiramente refratários, considerar terapia comportamental farmacológica com Amitriptilina oral (2,5 a 12,5 mg/gato q24h à noite com desmame lento e monitoramento de retenção urinária e arritmias) e suporte com felinista ou comportamentalista veterinário.'
+          detail:
+            'Manejo de felinos com sinais contínuos ou recidivas frequentes:\n' +
+            '- Revisão diagnóstica integral para afastar urolitíase oculta, estenose uretral ou neoplasias vesicais.\n' +
+            '- Terapia farmacológica comportamental de terceira linha: Amitriptilina oral (2,5 a 12,5 mg/gato VO q24h à noite com desmame lento).\n' +
+            '- Encaminhamento para médico veterinário especialista em medicina felina ou medicina comportamental.'
         }
       ]
     }
   },
 
   etiology: {
-    definicaoModernaSindromeDolorosaSistemica: 'A Cistite Idiopática Felina (CIF / FIC) é classicamente definida como uma afecção inflamatória e dolorosa estéril do trato urinário inferior felino, de causa primária não identificável pelos métodos diagnósticos convencionais. Contudo, o consenso internacional iCatCare 2025 (produzido pela sociedade veterinária da antiga International Society of Feline Medicine — ISFM) estabelece que a CIF não é primariamente uma doença da bexiga. A bexiga é o órgão efetor que manifesta os danos de uma síndrome sistêmica e neuroendócrina complexa, deflagrada pela resposta desregulada a ameaças ambientais. A própria denominação histológica de cistite é imperfeita, pois parcelas expressivas de gatos acometidos não exibem infiltrado inflamatório clássico com predomínio de neutrófilos, mas sim alterações na barreira de permeabilidade urotelial, hipervascularização submucosa e sensibilização periférica de terminações nervosas nociceptivas (Nelson & Couto, 6a ed., Cap. 44, pp. 724-729; BSAVA Manual of Canine and Feline Nephrology and Urology, 3a ed., Cap. 28, pp. 317-327).',
+    definicaoModernaSindromeDolorosaSistemica:
+      'Definição contemporânea da Cistite Idiopática Felina (CIF / FIC):\n' +
+      '- Mudança de paradigma conceitual (Diretrizes iCatCare 2025):\n' +
+      '  - Superação do conceito reducionista de doença vesical isolada; a bexiga atua como o órgão efetor somático de uma síndrome dolorosa e neuroendócrina sistêmica deflagrada pela percepção de ameaça ambiental.\n' +
+      '- Limitação da denominação histológica clássica:\n' +
+      '  - O termo cistite é imperfeito, pois parcela significativa dos felinos acometidos não exibe infiltrado neutrofílico clássico.\n' +
+      '  - As alterações predominantes compreendem quebra da barreira de permeabilidade urotelial, hipervascularização submucosa e sensibilização periférica de fibras nociceptivas (Nelson & Couto, 6a ed., Cap. 44, pp. 724-729; BSAVA Nephrology and Urology, 3a ed., Cap. 28, pp. 317-327).',
 
-    distincaoConceitualLUTSvFLUTDvsCIFvsPandora: 'A uniformização terminológica contemporânea é indispensável para evitar equívocos diagnósticos e terapêuticos na clínica felina: (1) Sinais do Trato Urinário Inferior (LUTS): termo descritivo semiológico que engloba disúria, estrangúria, hematúria macroscópica, polaquiúria e periúria (eliminação em locais inadequados); (2) Doença do Trato Urinário Inferior Felino (FLUTD / DTUIF): termo guarda-chuva histórico que abrange qualquer patologia anatômica, mineral, infecciosa ou funcional que acometa a bexiga ou uretra de gatos, não devendo ser empregado como diagnóstico final conclusivo; (3) Cistite Idiopática Felina (CIF / FIC): diagnóstico específico de exclusão, consolidado apenas quando todas as causas estruturais, litiásicas, infecciosas e neoplásicas foram investigadas e descartadas; (4) Síndrome de Pandora: construto conceitual que enfatiza a natureza multissistêmica da suscetibilidade desses pacientes, nos quais alterações do trato urinário frequentemente coexistem com manifestações cutâneas, gastrointestinais e comportamentais de estresse.',
+    distincaoConceitualLUTSvFLUTDvsCIFvsPandora:
+      'Uniformização terminológica na urologia e medicina felina:\n' +
+      '- Sinais do Trato Urinário Inferior (LUTS):\n' +
+      '  - Descritor puramente semiológico que engloba disúria, estrangúria, hematúria macroscópica, polaquiúria e periúria (eliminação fora da caixa de areia).\n' +
+      '- Doença do Trato Urinário Inferior Felino (FLUTD / DTUIF):\n' +
+      '  - Termo guarda-chuva sindrômico abrangendo qualquer causa estrutural, litiásica, infecciosa ou funcional, não devendo constituir diagnóstico final conclusivo.\n' +
+      '- Cistite Idiopática Felina (CIF / FIC):\n' +
+      '  - Diagnóstico nosológico específico de exclusão, firmado somente após afastar urolitíase, infecções, tampões uretrais e neoplasias.\n' +
+      '- Síndrome de Pandora:\n' +
+      '  - Modelo biopsicossocial que engloba a vulnerabilidade sistêmica do indivíduo sensível, no qual sinais urinários coexistem com manifestações dermatológicas, digestórias e comportamentais de estresse crônico.',
 
     tabelaComparativaFenotiposClinicosCIF: {
       kind: 'clinicalTable',
@@ -201,21 +316,76 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       ]
     },
 
-    neurofisiologiaDaMiccaoEFibrasC: 'A micção e a continência urinária são coordenadas por três circuitos neurológicos periféricos e pelo centro pontino da micção no tronco encefálico (Nelson & Couto, 6a ed., Cap. 45, pp. 730-737; BSAVA Nephrology and Urology, 3a ed., Cap. 3, pp. 24-36): (1) Inervação simpática: originada nos segmentos medulares lombares L1-L4 através do nervo hipogástrico; libera norepinefrina que estimula receptores beta-adrenérgicos no corpo da bexiga (promovendo relaxamento do músculo detrusor para armazenamento de urina) e receptores alfa-1-adrenérgicos no colo vesical e uretra proximal (promovendo contração esfincteriana lisa); (2) Inervação parassimpática: originada nos segmentos medulares sacrais S1-S3 via nervo pélvico; libera acetilcolina em receptores muscarínicos M2 e M3, deflagrando contração vigorosa do detrusor durante a micção voluntária; (3) Inervação somática: originada nos segmentos sacrais via nervo pudendo; libera acetilcolina em receptores nicotínicos no músculo uretral estriado (esfíncter externo da uretra). No contexto da CIF, o elemento fisiopatológico mais crítico são as fibras nervosas aferentes sensoriais do tipo C amielínicas. Em condições normais, a grande maioria dessas fibras permanece eletricamente silente; sob agressão química ou estímulo inflamatório, ocorre recrutamento em massa de fibras C, as quais liberam neuropeptídeos pró-inflamatórios locais (substância P, neurocinina A e peptídeo relacionado ao gene da calcitonina — CGRP), promovendo vasodilatação submucosa, edema, diapedese celular e dor visceral intensa por inflamação neurogênica.',
+    neurofisiologiaDaMiccaoEFibrasC:
+      'Circuitos neurais da micção e sensibilização das fibras C (Nelson & Couto, 6a ed., Cap. 45; BSAVA Nephrology, 3a ed., Cap. 3):\n' +
+      '- Inervação simpática (nervos hipogástricos, L1-L4):\n' +
+      '  - Liberação de norepinefrina; estimula receptores beta-adrenérgicos no corpo vesical (relaxamento do detrusor para armazenamento) e receptores alfa-1 no colo vesical/uretra proximal (contração esfincteriana lisa).\n' +
+      '- Inervação parassimpática (nervos pélvicos, S1-S3):\n' +
+      '  - Liberação de acetilcolina em receptores muscarínicos M2 e M3 no músculo detrusor, promovendo sua contração durante o esvaziamento miccional voluntário.\n' +
+      '- Inervação somática (nervos pudendos, S1-S3):\n' +
+      '  - Condução colinérgica via receptores nicotínicos no músculo estriado uretral (esfíncter uretral externo).\n' +
+      '- Sensibilização e recrutamento de fibras C sensoriais:\n' +
+      '  - Em condições fisiológicas, as fibras C amielínicas permanecem predominantemente silentes.\n' +
+      '  - Sob quebra da barreira urotelial e inflamação neurogênica, sofrem ativação maciça e disparam neuropeptídeos pró-inflamatórios retrógrados (substância P, neurocinina A e CGRP).\n' +
+      '  - Esse fenômeno gera vasodilatação submucosa, extravasamento plasmático, edema tecidual e dor visceral intensa.',
 
-    viasBidirecionaisTopDownEBottomUp: 'O consenso iCatCare 2025 ilustra que a fisiopatogenia contemporânea da CIF estrutura-se em um modelo bidirecional de amplificação mútua entre o encéfalo e a bexiga: (1) Via Top-Down (Cérebro para Bexiga): um gato geneticamente e epigeneticamente vulnerável percebe estímulos ambientais cotidianos (visitas, conflito velado com outro felino, falta de caixas sanitárias adequadas) como ameaças incontroláveis; essa percepção hiperativa o Sistema Central de Resposta à Ameaça (CTRS), envolvendo o locus coeruleus e a substância cinzenta periaquedutal no tronco encefálico. Isso desencadeia eferência simpática desregulada e persistente, liberação de catecolaminas, alteração da microcirculação vesical e rebaixamento generalizado do limiar nociceptivo, transformando estímulos fisiológicos de distensão vesical em sensações de dor intensa e urgência; (2) Via Bottom-Up (Bexiga para Cérebro): pequenas alterações na integridade da barreira urotelial permitem o contato direto de substâncias nocivas e íons potássio altamente concentrados da urina com as terminações das fibras C na lâmina própria; isso deflagra disparos aferentes contínuos que ascendem pela medula espinhal até o corno dorsal e centros corticais, amplificando o sofrimento nociceptivo e retroalimentando o CTRS com novos sinais de ameaça corporal.',
+    viasBidirecionaisTopDownEBottomUp:
+      'Modelo bidirecional encéfalo-urotélio na CIF (Diretrizes iCatCare 2025):\n' +
+      '- Via descendente (Top-Down — do encéfalo para a bexiga):\n' +
+      '  - Felino epigeneticamente vulnerável interpreta alterações cotidianas do território (visitas, reformas, conflitos velados) como ameaças incontroláveis.\n' +
+      '  - Hiperativação contínua do Sistema Central de Resposta à Ameaça (CTRS), envolvendo o locus coeruleus e a substância cinzenta periaquedutal.\n' +
+      '  - Eferência simpática sustentada, liberação de catecolaminas, disfunção endotelial microvascular vesical e redução do limiar de dor com hiperalgesia visceral.\n' +
+      '- Via ascendente (Bottom-Up — da bexiga para o encéfalo):\n' +
+      '  - Descontinuidade da barreira urotelial expõe receptores e fibras C na lâmina própria a solutos urinários concentrados e íons potássio.\n' +
+      '  - Descargas nociceptivas aferentes contínuas sobem pela medula espinhal até centros corticais, retroalimentando o CTRS e perpetuando a sensação central de ameaça corporal.',
 
-    desmistificacaoDaTeoriaDoEstressePuro: 'Um dos maiores erros conceituais na medicina felina é classificar a CIF como uma doença psicológica ou atribuir o quadro simplesmente a estresse de forma genérica e superficial. A percepção de ameaça ambiental deflagra respostas neuroendócrinas e moleculares perfeitamente mensuráveis. Pesquisas demonstraram que gatos com CIF apresentam aumento nas concentrações plasmáticas basais e induzidas de norepinefrina, associado a uma hiporreatividade paradoxal do eixo hipotálamo-hipófise-adrenal (diminuição da produção de cortisol em resposta ao ACTH), configurando uma disautonomia neuroendócrina real. Portanto, a CIF é uma síndrome neurobiológica de desregulação visceral sensível a ameaças do meio ambiente, e não uma perturbação anímica abstrata.'
+    desmistificacaoDaTeoriaDoEstressePuro:
+      'Bases neurobiológicas concretas da resposta ao estresse na CIF:\n' +
+      '- Disautonomia neuroendócrina objetiva:\n' +
+      '  - A CIF não é afecção puramente comportamental ou psicológica abstrata; gatos acometidos exibem alterações laboratoriais e morfológicas mensuráveis.\n' +
+      '- Elevação sustentada de catecolaminas plasmáticas:\n' +
+      '  - Níveis basais e induzidos de norepinefrina significativamente superiores aos controles normais.\n' +
+      '- Hipo-responsividade paradoxal do eixo HPA:\n' +
+      '  - Falha em produzir cortisol compensatório suficiente após estímulo com ACTH, acompanhada de hipoplasia adrenal relativa.\n' +
+      '- Síndrome de desregulação visceral:\n' +
+      '  - A ausência do freio anti-inflamatório do cortisol endógeno permite que o tônus simpático exacerbado mantenha a inflamação neurogênica crônica.'
   },
 
   epidemiology: {
-    prevalenciaEmGatosComLUTS: 'A CIF é amplamente reconhecida como a causa individual mais prevalente de LUTS não obstrutivo e obstrutivo na espécie felina em âmbito global. Estudos epidemiológicos prospectivos e retrospectivos multicêntricos indicam que aproximadamente 55% a 65% de todos os gatos jovens a meia-idade encaminhados a serviços clínicos e de emergência com sinais de disúria, hematúria e periúria acabam sendo diagnosticados conclusivamente com CIF após a exclusão metódica de outras afecções urológicas (Taylor et al., 2025; Nelson & Couto, 6a ed., Cap. 44).',
+    prevalenciaEmGatosComLUTS:
+      'Dados de prevalência em apresentações urológicas felinas:\n' +
+      '- Causa líder de LUTS na espécie felina:\n' +
+      '  - Responde por 55% a 65% de todas as apresentações de LUTS em gatos jovens a meia-idade em âmbitos clínico e emergencial (Taylor et al., 2025; Nelson & Couto, 6a ed., Cap. 44).\n' +
+      '- Faixa etária de maior vulnerabilidade:\n' +
+      '  - Concentra-se primariamente entre 1 e 7 anos de idade, tornando-se proporcionalmente menos frequente como causa primária em animais geriátricos.',
 
-    baixaPrevalenciaDeInfeccaoBacterianaITU: 'Um dos dados epidemiológicos mais relevantes para desmistificar a rotina clínica é a baixíssima frequência de infecção do trato urinário bacteriana (ITU) em gatos adultos previamente hígidos. Na faixa etária clássica de ocorrência de CIF (1 a 7 anos de idade), a prevalência de cistite bacteriana confirmada por urocultura é inferior a 1% a 3% de todos os casos de LUTS. A urina felina fisiológica apresenta densidade extremamente elevada (frequentemente USG > 1,050), alta concentração de ureia e compostos nitrogenados e alta osmolalidade, características que conferem forte atividade antibacteriana intrínseca. A infecção bacteriana só atinge prevalências expressivas (superiores a 30% a 50%) em gatos geriátricos (>10 a 12 anos) portadores de comorbidades debilitantes que reduzem a densidade urinária, tais como Doença Renal Crônica (DRC), Diabetes Mellitus, Hipertireoidismo ou em animais previamente submetidos a cateterização uretral ou intervenções cirúrgicas (uretrostomia).',
+    baixaPrevalenciaDeInfeccaoBacterianaITU:
+      'Epidemiologia da infecção bacteriana do trato urinário (ITU) em felinos:\n' +
+      '- Incidência extremamente reduzida em jovens e adultos hígidos:\n' +
+      '  - A ITU bacteriana verdadeira confirmada por urocultura representa menos de 1% a 3% de todos os casos de LUTS em gatos entre 1 e 7 anos de idade.\n' +
+      '- Barreiras de defesa antibacteriana intrínsecas da espécie:\n' +
+      '  - Urina fisiologicamente hiperconcentrada (densidade urinária frequentemente superior a 1,050), elevada osmolalidade e alta concentração de ureia e compostos nitrogenados inibem o crescimento bacteriano.\n' +
+      '- Cenários em que a ITU se torna relevante:\n' +
+      '  - Prevalência expressiva (>30% a 50%) apenas em pacientes geriátricos (>10 anos) ou acometidos por comorbidades que diluem a urina (Doença Renal Crônica, Diabetes Mellitus, Hipertireoidismo) e após cateterismo uretral ou uretrostomia perineal.',
 
-    fatoresDeRiscoEAssociacoesEpidemiologicas: 'O consenso iCatCare 2025 identifica um conjunto consistente de fatores de vulnerabilidade epidemiológica associados ao desenvolvimento de CIF: (1) Estilo de vida exclusivamente domiciliado (indoor estrito) associado ao sedentarismo e à falta de oportunidades para expressar comportamentos naturais de predação simulada e exploração vertical; (2) Obesidade e sobrepeso corporal, fatores que limitam a mobilidade e aumentam a inflamação sistêmica de baixo grau; (3) Casas com múltiplos gatos (multicat households) nas quais ocorrem conflitos velados de dominância territorial e bloqueios silenciosos de acesso a recursos vitais; (4) Manejo inadequado de caixas sanitárias (número insuficiente, substrato com odor químico forte, caixas fechadas sem rota de fuga ou localizadas em áreas barulhentas); (5) Falta de previsibilidade nas rotinas e interações forçadas com humanos.',
+    fatoresDeRiscoEAssociacoesEpidemiologicas:
+      'Fatores de risco identificados no consenso iCatCare 2025:\n' +
+      '- Confinamento e sedentarismo:\n' +
+      '  - Estilo de vida estritamente indoor com privação de estímulos exploratórios, ausência de brincadeiras predatórias simuladas e obesidade ou sobrepeso corporal.\n' +
+      '- Conflito social velado em casas multicat:\n' +
+      '  - Coabitação de múltiplos gatos com densidade populacional excessiva, competição invisível por recursos e bloqueios territoriais de acesso.\n' +
+      '- Manejo inadequado das caixas sanitárias:\n' +
+      '  - Quantidade insuficiente de bandejas, locais ruidosos ou sem rota de fuga, substratos com fragrâncias artificiais e higienização irregular.\n' +
+      '- Imprevisibilidade da rotina:\n' +
+      '  - Instabilidade em horários de fornecimento de alimento, reformas domiciliares e interações humanas inadequadas ou forçadas.',
 
-    diferencasSexuaisEVulnerabilidadeObstrutiva: 'A incidência da CIF não obstrutiva distribui-se de maneira equivalente entre machos e fêmeas felinas. Contudo, no que tange à evolução para Obstrução Uretral (UO), a espécie apresenta marcante disparidade anatômica sexual. A uretra peniana do macho felino é longa, curvilínea e sofre estreitamento afunilado progressivo na sua porção distal, tornando os machos dramaticamente mais propensos à obstrução mecânica luminal por tampões uretrais (urethral plugs) proteináceos, microcálculos e espasmo muscular reflexo associado a edema da mucosa inflamada.'
+    diferencasSexuaisEVulnerabilidadeObstrutiva:
+      'Disparidade sexual e predisposição à obstrução uretral (UO):\n' +
+      '- Incidência uniforme da CIF não obstrutiva:\n' +
+      '  - Machos e fêmeas são afetados em proporções equivalentes pela síndrome dolorosa não obstrutiva.\n' +
+      '- Predisposição anatômica crítica dos machos à UO:\n' +
+      '  - A uretra peniana do macho felino é longa, curvilínea e estreita-se progressivamente na porção distal.\n' +
+      '  - O gato macho apresenta vulnerabilidade extrema à oclusão mecânica completa por tampões mucoproteicos, microcálculos e espasmo muscular reflexo associado a edema da mucosa.'
   },
 
   pathogenesisTransmission: {
@@ -228,15 +398,46 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       '6. Inflamação neurogênica e dor visceral: liberação retrógrada de substância P e neuropeptídeos, promovendo hiperemia, edema parietal, micro-hemorragias e dor paroxística intensa com polaquiúria e estrangúria.',
       '7. Se macho suscetível: agregação de proteínas inflamatórias plasmáticas extravasadas, muco vesical e cristais de estruvita formando tampão mucoproteico, culminando em obstrução uretral (UO), retenção urinária dolorosa, azotemia pós-renal e hipercalemia fatal.'
     ],
-    transmissao: 'A Cistite Idiopática Felina é uma afecção médica não contagiosa, não infecciosa e estritamente adquirida por mecanismos epigenéticos, neuroendócrinos e ambientais, não apresentando qualquer potencial de transmissão horizontal ou vetorial entre animais ou humanos.'
+    transmissao:
+      'Características de transmissibilidade da CIF:\n' +
+      '- Natureza médica não infecciosa e não contagiosa:\n' +
+      '  - Trata-se de uma síndrome neuroendócrina e comportamental decorrente de fatores genéticos, epigenéticos e de manejo ambiental.\n' +
+      '- Ausência de transmissão horizontal ou vetorial:\n' +
+      '  - Não há risco de transmissão entre animais coabitantes nem potencial zoonótico para tutores.'
   },
 
   pathophysiology: {
-    urotelioComoOrgaoSensorialECamadaGAG: 'O urotélio vesical felino transcende a função clássica de barreira passiva impermeável, atuando como um tecido sensorial ativo e metabolicamente dinâmico. As células uroteliais expressam receptores para neurotransmissores (adrenérgicos, colinérgicos e purinérgicos P2X/P2Y) e canais de potencial receptor transitório (TRPV1), sendo capazes de sintetizar e liberar óxido nítrico e ATP em resposta ao estiramento e à composição química luminal. Na face apical das células em guarda-chuva uroteliais, encontra-se uma camada de glicosaminoglicanos (GAGs), proteoglicanos sulfatados e glicoproteínas cuja integridade reduz a adesão bacteriana e a retrotranslocação iônica. Embora gatos com CIF exibam defeitos funcionais na permeabilidade urotelial e excreção urinária alterada de GAGs, a teoria reducionista de que a falta de GAGs seria a causa primária da doença foi refutada cientificamente. Ensaios clínicos controlados e revisões sistemáticas (Gunn-Moore & Shenoy, 2004; Macleod et al., 2025) demonstraram que a suplementação oral de glucosamina, sulfato de condroitina ou pentosan polissulfato não oferece benefício clínico superior ao placebo, consolidando que a disfunção do urotélio é reflexo de um circuito neurogênico central e não uma avitaminose de GAG.',
+    urotelioComoOrgaoSensorialECamadaGAG:
+      'Fisiologia sensorial do urotélio e camada de glicosaminoglicanos (GAGs):\n' +
+      '- Urotélio como tecido sensorial ativo:\n' +
+      '  - Transcende a função de barreira passiva; expressa receptores adrenérgicos, colinérgicos e purinérgicos P2X/P2Y e canais TRPV1, liberando ATP e óxido nítrico em resposta a estiramento e agentes químicos luminais.\n' +
+      '- Camada de GAGs e permeabilidade transmural:\n' +
+      '  - Proteoglicanos sulfatados e glicoproteínas cobrem a face apical das células em guarda-chuva, reduzindo a adesão bacteriana e a retrotranslocação de solutos.\n' +
+      '  - Na CIF, a quebra da barreira permite influxo transmural de íons potássio e toxinas urinárias em direção à lâmina própria.\n' +
+      '- Desmistificação científica da carência de GAGs:\n' +
+      '  - Ensaios clínicos controlados e revisões sistemáticas (Gunn-Moore & Shenoy, 2004; Macleod et al., 2025) comprovaram que a reposição oral de glucosamina, condroitina ou pentosan polissulfato não supera o placebo.\n' +
+      '  - A lesão urotelial é consequência de disfunção neurogênica central e não uma deficiência nutricional primária de GAGs.',
 
-    eixoNeuroendocrinoEHiperatividadeSimpatica: 'Estudos seminais pioneiros liderados por Tony Buffington e colaboradores demonstraram que gatos acometidos por CIF exibem concentrações plasmáticas elevadas e sustentadas de catecolaminas (norepinefrina), associadas ao aumento na densidade e reatividade de receptores alfa-2-adrenérgicos centrais. Paradoxalmente, quando submetidos a testes de estresse provocador agudo, esses mesmos felinos falham em elevar proporcionalmente os teores circulantes de ACTH e cortisol plasmático em comparação a gatos hígidos, exibindo glândulas adrenais morfologicamente hipoplásicas. Essa disfunção neuroendócrina — caracterizada por hiperatividade adrenérgica e hipo-responsividade do eixo HPA — priva o organismo da ação anti-inflamatória e imunossupressora fisiológica do cortisol endógeno, permitindo que a resposta inflamatória neurogênica nos tecidos periféricos se autoalimente de forma descontrolada.',
+    eixoNeuroendocrinoEHiperatividadeSimpatica:
+      'Disregulação do eixo neuroendócrino e desbalanço autonômico (Buffington et al.):\n' +
+      '- Tônus simpático sustentado e catecolaminas aumentadas:\n' +
+      '  - Felinos com CIF apresentam elevação crônica de norepinefrina plasmática basal e reatividade exacerbada de receptores alfa-2 centrais.\n' +
+      '- Hipo-responsividade paradoxal do eixo HPA:\n' +
+      '  - Falha em elevar proporcionalmente ACTH e cortisol plasmático durante estímulos provocadores de estresse agudo.\n' +
+      '- Alterações morfológicas da glândula adrenal:\n' +
+      '  - Evidência de hipoplasia morfométrica relativa do córtex adrenal em gatos com histórico crônico de CIF.\n' +
+      '- Consequência biológica periférica:\n' +
+      '  - A deficiência relativa de cortisol circulante remove o controle fisiológico anti-inflamatório, permitindo que a cascata inflamatória neurogênica vesical se autoalimente.',
 
-    fisiopatologiaDaObstrucaoUretralAgudaUO: 'A Obstrução Uretral Felina (UO) constitui uma das emergências nefrológicas e de terapia intensiva mais graves na rotina de pequenos animais (Feline Emergency and Critical Care Medicine, 2a ed., Cap. 22). Na CIF obstrutiva, a oclusão do lúmen uretral decorre da associação entre espasmo muscular reflexo da uretra distal (mediado por receptores alfa-1 simpáticos e motoneurônios somáticos do nervo pudendo), edema inflamatório transmural da mucosa e deposição mecânica de tampões mucoproteicos (urethral plugs constituídos por matriz coloidal de muco, proteínas extravasadas e agregados de cristais de estruvita). A parada na eliminação urinária eleva abruptamente a pressão hidrostática intravesical, a qual é transmitida retrogradamente pelos ureteres até os túbulos coletores renais e a cápsula de Bowman. Quando a pressão intratubular suplanta a pressão hidrostática capilar glomerular, o gradiente de filtração glomerular colapsa (queda drástica da TFG), instalando-se Lesão Renal Aguda pós-renal com retenção maciça de ureia, creatinina, fosfatos e prótons de hidrogênio (acidose metabólica grave). O desfecho mais fatal decorre da hipercalemia progressiva: o potássio sérico elevado diminui a eletronegatividade do potencial de repouso das células miocárdicas, lentificando a condução atrioventricular e deflagrando o traçado eletrocardiográfico clássico de intoxicação potássica (achatamento e desaparecimento da onda P, alargamento do complexo QRS, ondas T apiculadas em tenda), culminando em bradicardia severa, fibrilação ventricular e assistolia em poucas horas se a descompressão e a estabilização não forem prontamente realizadas.',
+    fisiopatologiaDaObstrucaoUretralAgudaUO:
+      'Fisiopatologia da Obstrução Uretral Aguda (UO) felina (Feline Emergency and Critical Care, 2a ed., Cap. 22):\n' +
+      '- Tríade patogênica da oclusão luminal:\n' +
+      '  - Espasmo reflexo da musculatura lisa e estriada da uretra distal (nervos hipogástrico e pudendo), edema inflamatório submucoso e impactação mecânica de tampões mucoproteicos (matriz coloidal de muco, proteínas extravasadas e cristais de estruvita).\n' +
+      '- Colapso hidrostático e Lesão Renal Aguda pós-renal:\n' +
+      '  - Aumento da pressão intravesical transmitido retrogradamente a ureteres, túbulos renais e cápsula de Bowman, anulando o gradiente de filtração glomerular (queda crítica da TFG) com rápida retenção de escórias nitrogenadas, fosfatos e prótons (acidose metabólica).\n' +
+      '- Cardiotoxicidade letal da hipercalemia progressiva:\n' +
+      '  - A retenção de potássio reduz a negatividade do potencial de repouso das células cardíacas, lentificando a despolarização.\n' +
+      '  - Alterações eletrocardiográficas sequenciais: achatamento e perda de onda P, alargamento acentuado do QRS e ondas T pontiagudas em tenda, culminando em bradicardia grave, fibrilação ventricular e óbito se a descompressão imediata não for executada.',
 
     figurasClinicasIntegradas: 'As figuras a seguir ilustram os achados ultrassonográficos de cistite felina com espessamento e celularidade, a microscopia do sedimento urinário com cristais de estruvita e a técnica correta de cateterização com sistema fechado.'
   },
@@ -246,35 +447,50 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       id: 'fig-cif-01',
       title: 'Ultrassonografia Vesical Panorâmica em Felino com FLUTD / CIF',
       url: '/consulta-vet/cistite-idiopatica-felina/ultrassom-bexiga-felina-cistite-panoramica.jpg',
-      legend: 'Varredura ultrassonográfica abdominal panorâmica de bexiga urinária felina evidenciando espessamento parietal difuso da parede vesical, perda da regularidade dos contornos mucosos e acúmulo de celularidade em suspensão no lúmen, achados frequentes porém não específicos da cistite idiopática felina (Wikimedia Commons, CC BY-SA 4.0).',
+      legend:
+        'Varredura ultrassonográfica de bexiga urinária felina (Wikimedia Commons, CC BY-SA 4.0):\n' +
+        '- Espessamento parietal difuso da parede vesical com contornos mucosos irregulares.\n' +
+        '- Conteúdo intraluminal com celularidade ecogênica flutuante e debris estéreis em suspensão.',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-cif-02',
       title: 'Ultrassom Vesical: Sedimento Ecogênico e Debris Estéreis Intraluminais',
       url: '/consulta-vet/cistite-idiopatica-felina/ultrassom-bexiga-felina-sedimento-debris.jpg',
-      legend: 'Corte ultrassonográfico de bexiga urinária de gato acometido por CIF exibindo debris intraluminais ecogênicos e sedimento flutuante em suspensão no conteúdo anecogênico da urina, formado por micro-hemorragias, muco e agregados de cristais estéreis em resposta à inflamação neurogênica (Wikimedia Commons, CC BY-SA 4.0).',
+      legend:
+        'Corte ultrassonográfico vesical em gato com CIF (Wikimedia Commons, CC BY-SA 4.0):\n' +
+        '- Debris intraluminais ecogênicos em meio ao conteúdo anecogênico da urina.\n' +
+        '- Agregação de muco, micro-hemorragias e cristais estéreis precipitados por inflamação neurogênica.',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-cif-03',
       title: 'Avaliação Ultrassonográfica da Uretra Proximal em Macho Felino',
       url: '/consulta-vet/cistite-idiopatica-felina/ultrassom-uretra-proximal-felina.jpg',
-      legend: 'Imagem ultrassonográfica demonstrando a transição do colo vesical para a uretra proximal felina. A visualização detalhada permite excluir urólitos uretrais radiotransparentes e avaliar edema transmural que predispõe ao espasmo funcional e obstrução mecânica no gato macho (Wikimedia Commons, CC BY-SA 4.0).',
+      legend:
+        'Transição do colo vesical para uretra proximal em macho felino (Wikimedia Commons, CC BY-SA 4.0):\n' +
+        '- Inspeção cuidadosa para exclusão de cálculos uretrais radiotransparentes.\n' +
+        '- Avaliação de espessamento e edema parietal que predispõem a espasmo funcional e obstrução mecânica.',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-cif-04',
       title: 'Microscopia de Sedimento Urinário: Cristais de Estruvita em Tampa de Caixão',
       url: '/consulta-vet/cistite-idiopatica-felina/sedimento-urinario-cristais-estruvita-felino.jpg',
-      legend: 'Fotomicrorganografia de sedimento urinário fresco de gato corado evidenciando cristais típicos de fosfato tricomposto de amônio e magnésio (estruvita), com morfologia prismática tridimensional clássica em tampa de caixão. A cristalúria de estruvita ocorre frequentemente como achado incidental em urinas concentradas e não deve ser confundida com urolitíase (Wikimedia Commons, CC BY-SA 4.0).',
+      legend:
+        'Sedimento urinário fresco corado evidenciando cristais de estruvita (Wikimedia Commons, CC BY-SA 4.0):\n' +
+        '- Morfologia prismática clássica em tampa de caixão (fosfato tricomposto de amônio e magnésio).\n' +
+        '- Achado incidental frequente em urinas densas de felinos; não deve ser confundido isoladamente com urolitíase.',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-cif-05',
       title: 'Desobstrução Uretral e Manutenção de Cateterismo em Sistema Coletor Fechado',
       url: '/consulta-vet/cistite-idiopatica-felina/cateterizacao-uretral-desobstrucao-felina.jpg',
-      legend: 'Paciente felino macho após desobstrução uretral mecânica mantido com cateter urinário flexível acoplado a sistema coletor estéril fechado com bolsa graduada. A manutenção em sistema fechado é essencial para quantificar o débito urinário na diurese pós-obstrutiva e prevenir infecção bacteriana hospitalar ascendente (Wikimedia Commons, CC BY-SA 4.0).',
+      legend:
+        'Cateterismo uretral em macho felino pós-desobstrução (Wikimedia Commons, CC BY-SA 4.0):\n' +
+        '- Manutenção com cateter flexível acoplado obrigatoriamente a sistema coletor estéril fechado com bolsa graduada.\n' +
+        '- Monitorização fidedigna do débito urinário na diurese pós-obstrutiva e prevenção de infecção hospitalar bacteriana ascendente.',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     }
   ],
@@ -378,75 +594,203 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     {
       stepNumber: 1,
       title: 'Palpação Abdominal Vesical Imediata para Exclusão de Obstrução Uretral (UO)',
-      description: 'Primeiro procedimento obrigatório e inegociável na abordagem de qualquer felino apresentado com sinais de LUTS. Palpar com delicadeza a região caudal do abdômen. Se a bexiga urinária for palpada moderada a excessivamente distendida, firme, turgida e dolorosa em gato com histórico de estrangúria: diagnosticar Obstrução Uretral de emergência e transferir imediatamente para estabilização hemodinâmica em UTI. Se a bexiga estiver pequena, vazia ou facilmente compressível: classificar provisoriamente como LUTS não obstrutivo e prosseguir na investigação etiológica.',
+      description:
+        'Primeiro procedimento obrigatório e inegociável na abordagem do felino com LUTS:\n' +
+        '- Palpação delicada da região caudal do abdômen:\n' +
+        '  - Se a bexiga urinária for palpada moderada a excessivamente distendida, firme, turgida e dolorosa em gato com histórico de estrangúria: diagnosticar Obstrução Uretral de emergência e transferir imediatamente para estabilização hemodinâmica em UTI.\n' +
+        '- Conduta na bexiga pequena ou compressível:\n' +
+        '  - Se a bexiga estiver pequena, vazia ou facilmente compressível: classificar provisoriamente como LUTS não obstrutivo e prosseguir na investigação etiológica.',
       isGoldStandard: false
     },
     {
       stepNumber: 2,
       title: 'Anamnese Comportamental e Ambiental Detalhada (Auditoria do Território)',
-      description: 'Investigação profunda das rotinas e do ambiente domiciliar do paciente: número total de gatos residentes, número e dimensões das caixas sanitárias, tipo de substrato de areia utilizado, frequência de higienização, histórico de reformas, visitantes, novos animais na vizinhança ou mudanças climáticas bruscas. Rastrear a existência de bloqueios silenciosos de recursos vitais entre animais em casas multicat e pesquisar sinais extra-urinários de Síndrome de Pandora.',
+      description:
+        'Investigação profunda das rotinas e do ambiente domiciliar do paciente:\n' +
+        '- Censitamento e distribuição de recursos:\n' +
+        '  - Número total de gatos residentes, quantidade e dimensões das caixas sanitárias, tipo de substrato de areia utilizado e frequência de higienização.\n' +
+        '- Rastreio de eventos provocadores e estressores:\n' +
+        '  - Histórico de reformas, visitantes, novos animais na vizinhança ou mudanças climáticas bruscas.\n' +
+        '- Dinâmica multicat e comorbidades sistêmicas:\n' +
+        '  - Rastrear a existência de bloqueios silenciosos de recursos vitais entre animais em casas multicat e pesquisar sinais extra-urinários de Síndrome de Pandora.',
       isGoldStandard: false
     },
     {
       stepNumber: 3,
       title: 'Urinálise Completa com Amostra Fresca e Mensuração da Densidade por Refratometria',
-      description: 'Exame laboratorial vital na rotina de LUTS felino. A densidade urinária (USG) deve ser quantificada obrigatoriamente por refratômetro antes de qualquer fluidoterapia (frequentemente USG > 1,040 a 1,050 em gatos jovens com CIF). A avaliação em fita reagente e a microscopia do sedimento urinário fresco (analisado idealmente em até 60 minutos após a coleta para evitar precipitação artefatual de cristais induzida pela refrigeração) revelam hematúria e piúria assépticas. A presença de cristalúria de estruvita deve ser interpretada com sobriedade clínica, pois não comprova urolitíase.',
+      description:
+        'Exame laboratorial vital na rotina de LUTS felino:\n' +
+        '- Densidade urinária (USG) por refratometria:\n' +
+        '  - Deve ser quantificada obrigatoriamente por refratômetro antes de qualquer fluidoterapia (frequentemente USG > 1,040 a 1,050 em gatos jovens com CIF).\n' +
+        '- Análise físico-química e microscopia do sedimento fresco:\n' +
+        '  - Amostra analisada idealmente em até 60 minutos após a coleta para evitar precipitação artefatual de cristais induzida pela refrigeração.\n' +
+        '  - Revela hematúria e piúria assépticas por inflamação neurogênica.\n' +
+        '- Interpretação clínica da cristalúria:\n' +
+        '  - A presença de cristalúria de estruvita deve ser interpretada com sobriedade clínica, pois não comprova urolitíase.',
       isGoldStandard: false
     },
     {
       stepNumber: 4,
       title: 'Exame Radiográfico Abdominal Total Incluindo Todo o Trajeto Uretral em Machos',
-      description: 'Exame de imagem essencial para exclusão de urolitíase radiopaca (estruvita e oxalato de cálcio). A projeção radiográfica lateral do abdômen caudal deve abranger obrigatoriamente toda a trajetória anatômica da uretra peniana do macho, com membros pélvicos tracionados cranialmente, evitando que uretrólitos impactados na extremidade peniana passem despercebidos em exames restritos à cavidade peritoneal.',
+      description:
+        'Exame de imagem essencial para exclusão de urolitíase radiopaca:\n' +
+        '- Pesquisa de urólitos radiopacos:\n' +
+        '  - Detecção sensível de cálculos de estruvita e oxalato de cálcio.\n' +
+        '- Posicionamento radiográfico estrito:\n' +
+        '  - A projeção radiográfica lateral do abdômen caudal deve abranger obrigatoriamente toda a trajetória anatômica da uretra peniana do macho, com membros pélvicos tracionados cranialmente, evitando que uretrólitos impactados na extremidade peniana passem despercebidos em exames restritos à cavidade peritoneal.',
       isGoldStandard: false
     },
     {
       stepNumber: 5,
       title: 'Ultrassonografia Abdominal e Urológica Completa (Padrão Ouro de Exclusão Estrutural)',
-      description: 'Método de imagem padrão ouro confirmatório por exclusão na rotina clínica contemporânea (iCatCare 2025). Permite inspecionar a espessura e a arquitetura da parede vesical (frequentemente espessada de forma difusa na CIF), descartar massas uroteliais proliferativas, pólipos inflamatórios, coágulos sanguíneos aderidos e identificar urólitos radiotransparentes de urato de amônio não visualizáveis ao raio-X simples. Uma bexiga ultrassonograficamente normal não descarta CIF, pois a síndrome é primariamente funcional e neuroendócrina.',
+      description:
+        'Método de imagem padrão ouro confirmatório por exclusão na rotina clínica contemporânea (iCatCare 2025):\n' +
+        '- Avaliação da arquitetura e espessura vesical:\n' +
+        '  - Permite inspecionar a espessura e a integridade da parede vesical (frequentemente espessada de forma difusa na CIF).\n' +
+        '- Exclusão metódica de diagnósticos diferenciais estruturais:\n' +
+        '  - Descartar massas uroteliais proliferativas, pólipos inflamatórios, coágulos sanguíneos aderidos e identificar urólitos radiotransparentes de urato de amônio não visualizáveis ao raio-X simples.\n' +
+        '- Interpretação no contexto da CIF:\n' +
+        '  - Uma bexiga ultrassonograficamente normal não descarta CIF, pois a síndrome é primariamente funcional e neuroendócrina.',
       isGoldStandard: true
     },
     {
       stepNumber: 6,
       title: 'Urocultura Quantitativa por Cistocentese em Pacientes com Fatores de Risco',
-      description: 'Realização de cistocentese estéril guiada por ultrassom antes da introdução de qualquer antimicrobiano em gatos com maior probabilidade pré-teste de ITU: felinos com idade superior a 10 anos, animais com densidade urinária reduzida (USG < 1,025), portadores de Doença Renal Crônica, Diabetes Mellitus ou Hipertireoidismo, histórico recente de cateterização uretral e quadros clínicos com persistência de LUTS por mais de 7 dias.',
+      description:
+        'Realização de cistocentese estéril guiada por ultrassom antes da introdução de qualquer antimicrobiano:\n' +
+        '- Fatores de risco predisponentes à ITU bacteriana verdadeira:\n' +
+        '  - Felinos com idade superior a 10 anos ou com densidade urinária reduzida (USG < 1,025).\n' +
+        '- Comorbidades metabólicas e procedimentos prévios:\n' +
+        '  - Portadores de Doença Renal Crônica, Diabetes Mellitus ou Hipertireoidismo, histórico recente de cateterização uretral e quadros clínicos com persistência de LUTS por mais de 7 dias.',
       isGoldStandard: false
     }
   ],
 
   treatment: {
-    metaPrimaria: 'A meta prioritária no atendimento inicial da CIF não obstrutiva consiste no alívio imediato da dor visceral profunda através de analgesia farmacológica multimodal e na redução do estresse no ambiente clínico e domiciliar. Na forma obstrutiva, a meta primária absoluta é a estabilização hemodinâmica emergencial (correção de hipercalemia e arritmias) seguida da desobstrução uretral mecânica com hidropropulsão delicada e descompressão aliviadora.',
+    metaPrimaria:
+      'Metas prioritárias no atendimento clínico da CIF:\n' +
+      '- Forma não obstrutiva aguda:\n' +
+      '  - Alívio imediato da dor visceral profunda através de analgesia farmacológica multimodal e redução rápida do estresse no ambiente clínico e domiciliar.\n' +
+      '- Forma obstrutiva emergencial (UO):\n' +
+      '  - Estabilização hemodinâmica emergencial (correção de hipercalemia e arritmias) seguida da desobstrução uretral mecânica com hidropropulsão delicada e descompressão aliviadora.',
 
-    modificacaoAmbientalMultimodalMEMO: 'O consenso internacional iCatCare 2025 e a revisão sistemática de Macleod et al. 2025 estabelecem a Modificação Ambiental Multimodal (MEMO) como a intervenção clínica com a mais sólida e robusta sustentação de evidência científica no manejo a médio e longo prazo da CIF. O protocolo baseia-se nos princípios validados por Buffington et al. (2006): (1) Caixas sanitárias: aplicar rigorosamente a regra de ouro N+1 (uma caixa para cada gato residente no domicílio mais uma caixa adicional), utilizando recipientes amplos (comprimento de pelo menos 1,5 vez o tamanho do gato), sem tampa, posicionados em cômodos silenciosos e independentes em cada andar da residência; (2) Substrato de areia: preferência comprovada de felinos por areia fina, arenosa, aglomerante e absolutamente sem fragrâncias ou desodorizantes químicos, com remoção de excretas duas vezes ao dia e higienização integral a cada 1 a 2 semanas com sabão neutro inodoro; (3) Separação espacial de recursos vitais: comedouros, bebedouros, caixas sanitárias e áreas de repouso jamais devem ficar alinhados lado a lado; em casas multicat, devem ser distribuídos em locais afastados para eliminar pontos de bloqueio visual velado por gatos dominantes; (4) Enriquecimento tridimensional e sensorial: disponibilização de prateleiras, arranhadores verticais e horizontais, áreas elevadas de vigília, tocas de refúgio seguras e brinquedos que simulem o comportamento natural de caça e forrageamento (puzzle feeders); (5) Previsibilidade de rotina: manter horários constantes de alimentação, interações humanas calmas e previsíveis e evitar punições ou broncas por periúria.',
+    modificacaoAmbientalMultimodalMEMO:
+      'Diretrizes internacionais iCatCare 2025 e revisão sistemática de Macleod et al. (2025) — Princípios validados de Buffington et al. (2006):\n' +
+      '- Caixas sanitárias (Regra de Ouro N+1):\n' +
+      '  - Uma caixa para cada gato residente no domicílio mais uma caixa adicional (N+1).\n' +
+      '  - Recipientes amplos (comprimento de pelo menos 1,5 vez o tamanho do gato), sem tampa, posicionados em cômodos silenciosos e independentes em cada andar da residência.\n' +
+      '- Substrato de areia e higienização:\n' +
+      '  - Preferência comprovada de felinos por areia fina, arenosa, aglomerante e absolutamente sem fragrâncias ou desodorizantes químicos.\n' +
+      '  - Remoção de excretas duas vezes ao dia e higienização integral a cada 1 a 2 semanas com sabão neutro inodoro.\n' +
+      '- Separação espacial de recursos vitais:\n' +
+      '  - Comedouros, bebedouros, caixas sanitárias e áreas de repouso jamais devem ficar alinhados lado a lado.\n' +
+      '  - Em casas multicat, devem ser distribuídos em locais afastados para eliminar pontos de bloqueio visual velado por gatos dominantes.\n' +
+      '- Enriquecimento tridimensional e sensorial:\n' +
+      '  - Prateleiras verticais, arranhadores, áreas elevadas de vigília, tocas de refúgio seguras e brinquedos que simulem caça e forrageamento (puzzle feeders).\n' +
+      '- Previsibilidade de rotina:\n' +
+      '  - Manter horários constantes de alimentação, interações humanas calmas e previsíveis e evitar punições ou repreensões por periúria.',
 
-    manejoHidricoENutricional: 'A diluição urinária sustentada é uma intervenção biológica altamente benéfica na CIF, pois reduz a concentração osmolar de solutos irritantes e íons potássio em contato com o urotélio sensibilizado e favorece micções mais volumosas. A revisão sistemática de 2025 confirmou a eficácia do aumento da umidade alimentar: (1) Introdução progressiva de dietas úmidas completas (sachês ou latas), visando atingir uma densidade urinária alvo entre 1,025 e 1,035; (2) Estímulo à hidratação ativa através de fontes de água circulante, múltiplos recipientes largos de cerâmica ou vidro espalhados pela casa e adição de caldos de carne caseiros inodoros sem cebola ou temperos; (3) Regra de ouro da transição alimentar: jamais impor mudanças abruptas de ração em gatos estressados; a neofobia felina e a aversão alimentar induzidas por trocas súbitas constituem graves eventos estressores capazes de deflagrar novas crises de CIF; (4) Uso de dietas veterinárias terapêuticas urinárias multimodais (que combinam controle mineral, ácidos graxos ômega-3 e precursores de serotonina como L-triptofano e alfa-casozepina), avaliando criticamente que a acidificação excessiva não trata a causa neuroendócrina primária da CIF.',
+    manejoHidricoENutricional:
+      'Estratégias nutricionais e hidratação sustentada (Macleod et al., 2025):\n' +
+      '- Benefício biológico da diluição urinária:\n' +
+      '  - Reduz a concentração osmolar de solutos irritantes e íons potássio em contato com o urotélio sensibilizado e favorece micções mais volumosas e menos dolorosas.\n' +
+      '- Introdução progressiva de alimento úmido:\n' +
+      '  - Uso diário de sachês ou latas completos, visando atingir uma densidade urinária alvo entre 1,025 e 1,035.\n' +
+      '- Estímulo à hidratação ativa:\n' +
+      '  - Fontes de água circulante, múltiplos recipientes largos de cerâmica ou vidro espalhados pela casa e adição de caldos de carne caseiros inodoros sem cebola ou temperos.\n' +
+      '- Regra de ouro da transição alimentar:\n' +
+      '  - Jamais impor mudanças abruptas de ração em gatos estressados; a neofobia felina e a aversão alimentar induzidas por trocas súbitas constituem graves eventos estressores capazes de deflagrar novas crises de CIF.\n' +
+      '- Avaliação de dietas terapêuticas urinárias:\n' +
+      '  - Dietas veterinárias multimodais (controle mineral, ômega-3, L-triptofano e alfa-casozepina); considerar criticamente que acidificação isolada não trata a causa neuroendócrina primária da CIF.',
 
-    analgesiaFarmacologica: 'A CIF é uma síndrome visceral intensamente dolorosa; a provisão de analgesia é um dever ético e terapêutico fundamental do médico veterinário. Contudo, o consenso iCatCare 2025 ressalta que o controle álgico visa aliviar o sofrimento na fase aguda e que não há evidência de que analgésicos previnam recorrências futuras. Para o manejo da crise álgica aguda (Feline Emergency and Critical Care Medicine, 2a ed., Cap. 22): (1) Buprenorfina: opioide agonista parcial mu de excelente absorção pela mucosa oral felina, na dose de 0,005 a 0,02 mg/kg por via transmucosa oral (sublingual) a cada 8 a 12 horas durante 5 a 7 dias; (2) Gabapentina: modulador de canais de cálcio voltagem-dependentes que atenua a sensibilização central e reduz a ansiedade de transporte/admissão, na dose de 5 a 10 mg/kg por via oral a cada 8 a 12 horas; (3) Não prometer ao tutor que a analgesia cura ou evita novos episódios, reforçando que o MEMO é a base da prevenção.',
+    analgesiaFarmacologica:
+      'Protocolos analgésicos na crise dolorosa aguda (iCatCare 2025; Feline Emergency and Critical Care, 2a ed., Cap. 22):\n' +
+      '- Buprenorfina transmucosa:\n' +
+      '  - Opioide agonista parcial mu de excelente absorção pela mucosa oral felina, na dose de 0,005 a 0,02 mg/kg por via transmucosa oral (sublingual) a cada 8 a 12 horas durante 5 a 7 dias.\n' +
+      '- Gabapentina oral:\n' +
+      '  - Modulador de canais de cálcio voltagem-dependentes que atenua a sensibilização central e reduz a ansiedade de transporte e admissão, na dose de 5 a 10 mg/kg por via oral a cada 8 a 12 horas.\n' +
+      '- Esclarecimento ético ao tutor:\n' +
+      '  - A analgesia visa prioritariamente ao alívio do sofrimento ético imediato na crise; não há evidência de que analgésicos previnam recorrências futuras, sendo o MEMO o pilar preventivo basilar.',
 
-    analiseCriticaDeFarmacosControversos: 'A medicina veterinária baseada em evidências desmistificou condutas farmacológicas historicamente consagradas na rotina clínica (Taylor et al., 2025; Macleod et al., 2025): (1) Antibióticos: a administração empírica de antimicrobianos (amoxicilina-clavulanato, enrofloxacina, cefovecina) para gatos com urina com sangue é formalmente contraindicada na ausência de urocultura positiva, contribuindo para seleção de resistência microbiana e não apresentando qualquer efeito na CIF estéril; (2) Anti-inflamatórios Não Esteroidais (AINEs): o uso de meloxicam ou robenacoxib não demonstrou benefício clínico específico superior ao placebo na duração dos sinais da CIF e seu acréscimo não reduziu reobstrução em ensaios controlados (estudo de Dorsch et al.); ademais, seu uso em animais desidratados, hipovolêmicos ou azotêmicos eleva drasticamente o risco de lesão renal aguda isquêmica; (3) Corticosteroides: a prednisolona não demonstrou qualquer eficácia clínica na CIF e predispõe a infecções secundárias e intolerância à glicose, sendo contraindicada; (4) Glicosaminoglicanos (GAGs, glucosamina e pentosan polissulfato): ensaios clínicos duplo-cegos randomizados (Gunn-Moore & Shenoy, 2004) demonstraram que a suplementação de GAGs não superou o placebo na redução de recorrências; (5) Amitriptilina no episódio agudo: o ensaio randomizado clássico de Kruger et al. (2003) e estudos de Kraijer et al. (2003) comprovaram que a amitriptilina aguda (5 mg/gato/dia por 7 dias) não reduziu a hematúria ou polaquiúria e dobrou a taxa de recorrência precoce nos primeiros meses, sendo contraindicada para crises agudas; seu papel restringe-se como droga de terceira linha na CIF crônica refratária ao MEMO (Plumb\'s 10a ed.: 2,5 a 12,5 mg/gato VO q24h à noite, sob desmame lento e monitoramento de retenção urinária anticolinérgica); (6) Prazosina e bloqueadores alfa-1: o ensaio clínico prospectivo duplo-cego randomizado de Reineke et al. (2017) comprovou que a prazosina (0,25 mg/gato q12h) não reduziu as taxas de reobstrução uretral hospitalar em 1 mês ou 6 meses, levando o consenso iCatCare 2025 a não recomendar seu uso rotineiro profilático pós-desobstrução.',
+    analiseCriticaDeFarmacosControversos:
+      'Desmistificação de condutas farmacológicas com base em evidências (Taylor et al., 2025; Macleod et al., 2025):\n' +
+      '- Veto ao uso empírico de antibióticos:\n' +
+      '  - A administração empírica de antimicrobianos (amoxicilina-clavulanato, enrofloxacina, cefovecina) para urina com sangue é formalmente contraindicada na ausência de urocultura positiva, contribuindo para seleção de resistência microbiana e não apresentando efeito na CIF estéril.\n' +
+      '- Ineficácia de Anti-inflamatórios Não Esteroidais (AINEs):\n' +
+      '  - Meloxicam ou robenacoxib não demonstraram benefício clínico específico superior ao placebo na duração dos sinais da CIF nem reduziram reobstrução (estudo de Dorsch et al.); contraindicados em hipovolemia, desidratação ou azotemia pelo risco de lesão renal aguda isquêmica.\n' +
+      '- Contraindicação de corticosteroides:\n' +
+      '  - Prednisolona não demonstrou eficácia clínica na CIF e predispõe a infecções secundárias e intolerância à glicose.\n' +
+      '- Ineficácia de glicosaminoglicanos (GAGs orais):\n' +
+      '  - Ensaios clínicos duplo-cegos randomizados (Gunn-Moore & Shenoy, 2004) demonstraram que a suplementação de glicosaminoglicano (GAG, glucosamina e pentosan polissulfato) não superou o placebo na redução de recorrências.\n' +
+      '- Amitriptilina no episódio agudo:\n' +
+      '  - Ensaio randomizado clássico de Kruger et al. (2003) e estudos de Kraijer et al. (2003) comprovaram que amitriptilina aguda (5 mg/gato/dia por 7 dias) não reduziu hematúria/polaquiúria e dobrou a taxa de recorrência precoce nos primeiros meses, sendo contraindicada para crises agudas.\n' +
+      '  - Seu papel restringe-se como droga de terceira linha na CIF crônica refratária ao MEMO (Plumb\'s 10a ed.: 2,5 a 12,5 mg/gato VO q24h à noite, sob desmame lento e monitoramento de retenção urinária anticolinérgica).\n' +
+      '- Prazosina e bloqueadores alfa-1:\n' +
+      '  - Ensaio clínico prospectivo duplo-cego randomizado de Reineke et al. (2017) comprovou que prazosina (0,25 mg/gato q12h) não reduziu taxas de reobstrução uretral hospitalar em 1 ou 6 meses; o consenso iCatCare 2025 não mais recomenda seu uso rotineiro profilático pós-desobstrução.',
 
-    evidenciasEmergentes2026: 'Estudos recentes e inovadores têm explorado novas frentes terapêuticas para casos refratários de CIF: (1) Radioterapia de Baixa Dose: Kendall et al. (JVIM, 2026) avaliaram em prova de conceito 15 gatos machos com CIF grave recorrente e histórico de UO refratários a manejo convencional, submetidos a uma fração única de 6 Gy envolvendo o trato urinário inferior; 13 de 14 felinos acompanhados (93%) exibiram melhora acentuada nos escores clínicos com mediana de sobrevida livre de 548 dias, configurando uma terapia promissora para casos extremos candidatos à eutanásia; (2) Suplementação Multinutriente em RCT Piloto: Chen & Huang (Scientific Reports, publicado em 14 de setembro de 2026) demonstraram em ensaio prospectivo randomizado duplo-cego (n=30 machos com CIF sob MEMO) que a suplementação com fórmula antioxidante e moduladora reduziu a taxa de recorrência em 6 meses (13,3% vs 40%, P=0,05) e prolongou o intervalo livre de sinais clínicos, apontando potencial adjuvante que demanda validação em coortes maiores.',
+    evidenciasEmergentes2026:
+      'Inovações terapêuticas e evidências científicas contemporâneas (2026):\n' +
+      '- Radioterapia de Baixa Dose em Casos Refratários:\n' +
+      '  - Estudo de Kendall et al. (JVIM, 2026) avaliou em prova de conceito 15 gatos machos com CIF grave recorrente e histórico de UO refratários a manejo convencional, submetidos a fração única de 6 Gy envolvendo o trato urinário inferior.\n' +
+      '  - Observou-se melhora acentuada nos escores clínicos em 13 de 14 felinos acompanhados (93%), com mediana de sobrevida livre de 548 dias, configurando opção promissora para casos extremos candidatos à eutanásia.\n' +
+      '- Suplementação Multinutriente em RCT Piloto:\n' +
+      '  - Estudo de Chen & Huang (Scientific Reports, publicado em 14 de setembro de 2026) demonstrou em ensaio prospectivo randomizado duplo-cego (n=30 machos com CIF sob MEMO) que a suplementação multinutriente antioxidante e moduladora reduziu a taxa de recorrência em 6 meses (13,3% vs 40%, P=0,05) e prolongou o intervalo livre de sinais clínicos, apontando potencial adjuvante sob validação.',
 
-    protocoloDeDesobstrucaoECateterizacaoUretral: 'Manejo emergencial do paciente macho com CIF obstrutiva (Feline Emergency and Critical Care, 2a ed., Cap. 22; BSAVA Procedures 3a ed., pp. 292-294): (1) Estabilização metabólica primária com gluconato de cálcio a 10% IV se houver arritmias ou hipercalemia (K+ > 7,0 mEq/L) e fluidoterapia de reposição; (2) Cistocentese descompressiva aliviadora prévia com agulha fina (22G ou 23G) acoplada a extensor e torneira de três vias, reduzindo a pressão intravesical e facilitando a posterior desobstrução retrógrada; (3) Anestesia geral balanceada com relaxamento muscular; (4) Hidropropulsão suave com solução salina estéril morna utilizando cateter uretral delicado e flexível (Milacath ou Tomcat sem ponta rígida), evitando traumas ou lacerações da uretra peniana; (5) Manutenção de cateter permanente maleável (3,5 Fr) acoplado obrigatoriamente a sistema coletor fechado estéril com bolsa graduada durante 24 a 48 horas para quantificar a diurese pós-obstrutiva e prevenir infecção bacteriana hospitalar ascendente.'
+    protocoloDeDesobstrucaoECateterizacaoUretral:
+      'Manejo emergencial do paciente macho com CIF obstrutiva (Feline Emergency and Critical Care, 2a ed., Cap. 22; BSAVA Procedures, 3a ed., pp. 292-294):\n' +
+      '- Estabilização metabólica primária:\n' +
+      '  - Gluconato de cálcio a 10% IV (0,5 a 1,5 mL/kg lentamente sob monitorização de ECG) se houver arritmias ou hipercalemia (K+ > 7,0 mEq/L) e fluidoterapia balanceada de reposição.\n' +
+      '- Cistocentese descompressiva aliviadora prévia:\n' +
+      '  - Punção com agulha fina (22G ou 23G) acoplada a extensor e torneira de três vias, reduzindo a pressão intravesical e facilitando a desobstrução retrógrada subsequente.\n' +
+      '- Anestesia balanceada e hidropropulsão atraumática:\n' +
+      '  - Sedação e analgesia profundas com relaxamento muscular; hidropropulsão suave com solução salina estéril morna utilizando cateter flexível (Milacath ou Tomcat sem ponta rígida), evitando traumas ou lacerações na uretra peniana.\n' +
+      '- Manutenção de cateter permanente em sistema fechado:\n' +
+      '  - Sonda uretral maleável (3,5 Fr) acoplada obrigatoriamente a sistema coletor fechado estéril com bolsa graduada por 24 a 48 horas para quantificar a diurese pós-obstrutiva e prevenir infecção bacteriana hospitalar ascendente.'
   },
 
   complications: {
-    obstrucaoUretralAgudaEArritmiaFatal: 'O desenvolvimento de UO secundária a tampões mucoproteicos inflamatórios e espasmo muscular em machos é a complicação imediata mais letal da CIF, evoluindo rapidamente com acidose metabólica, hipercalemia severa, parada cardiorrespiratória e óbito se não tratada em regime de emergência.',
+    obstrucaoUretralAgudaEArritmiaFatal:
+      'Obstrução Uretral Aguda (UO) e arritmias hipercalêmicas fatais:\n' +
+      '- Oclusão mecânica da uretra peniana por tampões mucoproteicos inflamatórios e espasmo muscular reflexo em machos.\n' +
+      '- Evolução rápida para azotemia pós-renal grave, acidose metabólica descompensada, hipercalemia severa, fibrilação ventricular e parada cardíaca se não aliviada em regime de urgência.',
 
-    atoniaVesicalDoDetrusorPorSobredistensao: 'A distensão mecânica vesical excessiva e prolongada por retenção urinária rompe as junções comunicantes das miofibrilas do músculo detrusor, resultando em atonia vesical flácida secundária duradoura, necessitando de esvaziamento por cateterismo ou compressão manual suave e parassimpaticomiméticos (betanecol).',
+    atoniaVesicalDoDetrusorPorSobredistensao:
+      'Atonia miogênica do detrusor por estiramento mecânico excessivo:\n' +
+      '- Rompimento funcional das junções comunicantes das miofibrilas do músculo detrusor durante a retenção urinária prolongada.\n' +
+      '- Resulta em bexiga flácida arrefléxica de esvaziamento ineficaz, demandando cateterismo intermitente ou compressão manual suave e suporte farmacológico com betanecol.',
 
-    iatrogeniaUretralERupturaDeBexiga: 'Tentativas vigorosas e forçadas de sondagem uretral sem anestesia adequada ou uso de cateteres rígidos podem provocar perfuração uretral traumática, laceração peniana, estenose uretral cicatricial secundária e uroabdome decorrente de ruptura vesical por sobrepressão retrógrada.',
+    iatrogeniaUretralERupturaDeBexiga:
+      'Lesões iatrogênicas por manobras mecânicas intempestivas:\n' +
+      '- Perfuração e laceração uretral decorrentes de tentativas forçadas de sondagem sem anestesia ou com sondas rígidas inadequadas.\n' +
+      '- Risco de estenose uretral cicatricial secundária e extravasamento de urina para o tecido subcutâneo perineal ou uroabdome por sobrepressão hidrostática.',
 
-    deterioracaoDaQualidadeDeVidaEEutanasia: 'As crises recorrentes frequentes de LUTS doloroso, a periúria domiciliar em tapetes e camas e o estresse na administração de medicamentos geram intenso desgaste no vínculo afetivo tutor-felino, constituindo uma das maiores causas históricas de eutanásia por conveniência e abandono de gatos domiciliados.'
+    deterioracaoDaQualidadeDeVidaEEutanasia:
+      'Impacto no vínculo tutor-felino e risco de eutanásia por conveniência:\n' +
+      '- Recidivas frequentes de dor visceral, periúria em locais inadequados da residência e frustração financeira/emocional do tutor.\n' +
+      '- Constitui uma das principais causas históricas de abandono e eutanásia em felinos domésticos quando a modificação ambiental (MEMO) não é implementada adequadamente.'
   },
 
   prevention: {
-    cincoPilaresDoAmbienteFelinoSeguro: 'A prevenção primária e secundária das recidivas da CIF fundamenta-se estritamente na aplicação dos 5 pilares do ambiente felino saudável preconizados pela ISFM e iCatCare: (1) Fornecer um local seguro e protegido (áreas de refúgio elevadas e tocas); (2) Prover múltiplos recursos ambientais essenciais e fisicamente separados; (3) Proporcionar oportunidades para brincadeiras predatórias simuladas e forrageamento; (4) Garantir interações sociais humanas positivas, consistentes e previsíveis; (5) Respeitar a importância do olfato e da marcação química facial do território.',
+    cincoPilaresDoAmbienteFelinoSeguro:
+      'Prevenção fundamentada nos cinco pilares do ambiente felino saudável (ISFM / iCatCare):\n' +
+      '- 1. Prover refúgio seguro: áreas elevadas de vigília, prateleiras e tocas protegidas onde o felino não seja perturbado.\n' +
+      '- 2. Múltiplos recursos separados: estações independentes de comida, água, caixas sanitárias e áreas de repouso.\n' +
+      '- 3. Brincadeiras e forrageamento: oportunidades diárias de comportamento predatório simulado e brinquedos de enriquecimento cognitivo.\n' +
+      '- 4. Interações humanas positivas: contato calmo, previsível e respeitoso à iniciativa do felino, sem coações.\n' +
+      '- 5. Respeito ao olfato felino: preservação dos odores familiares e marcas químicas faciais, evitando fragrâncias fortes e desinfetantes agressivos.',
 
-    regrasDeOuroDasCaixasSanitarias: 'Manter a regra de número de caixas sanitárias igual ao número de gatos residentes mais uma (N+1), distribuídas em locais independentes para impedir que um gato bloqueie o caminho do outro. Utilizar caixas abertas e largas, higienizadas diariamente com pá vazada e preenchidas com areia de textura fina e sem fragrâncias.',
+    regrasDeOuroDasCaixasSanitarias:
+      'Manejo ideal das caixas sanitárias:\n' +
+      '- Proporção de bandejas sanitárias na regra de ouro N+1 (uma caixa para cada gato residente mais uma adicional).\n' +
+      '- Distribuição em cômodos distintos e silenciosos, com caixas amplas abertas e substrato de areia fina inodora limpo diariamente com pá vazada.',
 
-    hidratacaoEAlimentacaoUmidaContinua: 'Fornecer alimento úmido em temperatura morna diariamente associado a múltiplas opções de bebedouros de boca larga (evitando o toque das vibrissas nas bordas) e fontes de água corrente limpa mantidas distantes do comedouro e das caixas de areia.',
+    hidratacaoEAlimentacaoUmidaContinua:
+      'Hidratação e nutrição preventiva contínua:\n' +
+      '- Fornecer alimento úmido em temperatura morna diariamente associado a múltiplas opções de bebedouros de boca larga (evitando o toque das vibrissas nas bordas) e fontes de água corrente limpa mantidas distantes do comedouro e das caixas de areia.',
 
-    manutencaoDaPrevisibilidadeEControleSocial: 'Manter rotinas estáveis de alimentação e limpeza e manejar cuidadosamente mudanças no domicílio (reformas, introdução gradual de novos animais e uso de feromônios faciais sintéticos difusores em períodos de transição).'
+    manutencaoDaPrevisibilidadeEControleSocial:
+      'Estabilidade na rotina e controle social:\n' +
+      '- Manter rotinas estáveis de alimentação e limpeza e manejar cuidadosamente mudanças no domicílio (reformas, introdução gradual de novos animais e uso de feromônios faciais sintéticos difusores em períodos de transição).'
   },
 
   references: [
@@ -456,11 +800,17 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     },
     {
       id: 'ref-macleod-2025',
-      citation: 'Macleod B, et al. Understanding the current evidence base for the commonly recommended management strategies for recurrent feline idiopathic cystitis: a systematic review. New Zealand Veterinary Journal, 2025;73(4):233-245. DOI: 10.1080/00480169.2025.2477542.'
+      citation:
+        'Macleod B, et al. Understanding the current evidence base for the commonly recommended management strategies for recurrent feline idiopathic cystitis: a systematic review:\n' +
+        '- New Zealand Veterinary Journal, 2025;73(4):233-245.\n' +
+        '- DOI: 10.1080/00480169.2025.2477542.'
     },
     {
       id: 'ref-buffington-2006',
-      citation: 'Buffington CAT, Westropp JL, Chew DJ, Bolus RR. Clinical evaluation of multimodal environmental modification (MEMO) in the management of cats with idiopathic cystitis. Journal of Feline Medicine and Surgery, 2006;8(4):261-268. DOI: 10.1016/j.jfms.2006.02.002.'
+      citation:
+        'Buffington CAT, Westropp JL, Chew DJ, Bolus RR. Clinical evaluation of multimodal environmental modification (MEMO) in the management of cats with idiopathic cystitis:\n' +
+        '- Journal of Feline Medicine and Surgery, 2006;8(4):261-268.\n' +
+        '- DOI: 10.1016/j.jfms.2006.02.002.'
     },
     {
       id: 'ref-kruger-2003',
@@ -472,7 +822,10 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     },
     {
       id: 'ref-reineke-2017',
-      citation: 'Reineke EL, et al. Evaluation of prazosin for prevention of recurrent urethral obstruction in male cats: a prospective, randomized, double-blind, placebo-controlled clinical trial. Journal of the American Veterinary Medical Association, 2017;251(8):926-931.'
+      citation:
+        'Reineke EL, et al. Evaluation of prazosin for prevention of recurrent urethral obstruction in male cats:\n' +
+        '- A prospective, randomized, double-blind, placebo-controlled clinical trial.\n' +
+        '- Journal of the American Veterinary Medical Association, 2017;251(8):926-931.'
     },
     {
       id: 'ref-gunn-moore-2004',
@@ -488,15 +841,25 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     },
     {
       id: 'ref-chen-huang-2026',
-      citation: 'Chen WJ, Huang KW. A randomized placebo-controlled study evaluating the efficacy of a multi-nutrient supplement on lower urinary tract health in male cats with feline idiopathic cystitis. Scientific Reports, 2026;16:70935. DOI: 10.1038/s41598-026-70935-2.'
+      citation:
+        'Chen WJ, Huang KW. A randomized placebo-controlled study evaluating the efficacy of a multi-nutrient supplement on lower urinary tract health in male cats with feline idiopathic cystitis:\n' +
+        '- Scientific Reports, 2026;16:70935.\n' +
+        '- DOI: 10.1038/s41598-026-70935-2.'
     },
     {
       id: 'ref-nelson-couto-6ed',
-      citation: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. St. Louis: Elsevier, 2020; Cap. 44: Obstructive and Nonobstructive Feline Idiopathic Cystitis, pp. 724-729; Cap. 42: Bacterial Cystitis, pp. 704-712; Cap. 45: Disorders of Micturition, pp. 730-737.'
+      citation:
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. St. Louis: Elsevier, 2020:\n' +
+        '- Cap. 44: Obstructive and Nonobstructive Feline Idiopathic Cystitis, pp. 724-729.\n' +
+        '- Cap. 42: Bacterial Cystitis, pp. 704-712.\n' +
+        '- Cap. 45: Disorders of Micturition, pp. 730-737.'
     },
     {
       id: 'ref-bsava-nephrology-3ed',
-      citation: 'Elliott J, Grauer GF, Westropp JL. BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. Gloucester: British Small Animal Veterinary Association, 2017; Cap. 28: Management of non-obstructive idiopathic/interstitial cystitis in cats, pp. 317-327; Cap. 3: Control of micturition, pp. 24-36.'
+      citation:
+        'Elliott J, Grauer GF, Westropp JL. BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. Gloucester: British Small Animal Veterinary Association, 2017:\n' +
+        '- Cap. 28: Management of non-obstructive idiopathic/interstitial cystitis in cats, pp. 317-327.\n' +
+        '- Cap. 3: Control of micturition, pp. 24-36.'
     },
     {
       id: 'ref-feline-emergency-2ed',

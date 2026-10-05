@@ -64,7 +64,7 @@ test('Hipertireoidismo não recomenda hipertireoidismo terapêutico para rim', (
 
 test('Hipertireoidismo relaciona DRC, HAS, DM e CMH', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
-  assert.ok(record?.relatedDiseaseSlugs?.includes('doenca-renal-cronica-caes-gatos'));
+  assert.ok(record?.relatedDiseaseSlugs?.includes('doenca-renal-cronica-canina'));
   assert.ok(record?.relatedDiseaseSlugs?.some((s) => s.startsWith('hipertensao-arterial-sistemica')));
   assert.ok(record?.relatedDiseaseSlugs?.includes('diabetes-mellitus-felina'));
   assert.ok(record?.relatedDiseaseSlugs?.some((s) => s.startsWith('cardiomiopatia-hipertrofica')));

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="650" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+  <title id="title">Avaliação do Estoma Cervical: Saudável × Complicações</title>
+  <desc id="desc">Comparação visual didática entre estoma fisiológico, irritação leve, celulite bacteriana e abscesso/necrose por sutura isquêmica.</desc>
+  <rect width="900" height="650" rx="24" fill="#f4f8fa"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="35" y="44" font-size="26" fill="#133b4a" font-weight="700">Avaliação do Estoma Cervical: Saudável × Complicações</text>
+    <text x="35" y="72" font-size="16" fill="#243e51" font-weight="400">Inspeção em 360° antes de cada alimentação — reconhecer precocemente infecção e necrose</text>
+
+    <!-- Quadro 1: Saudável -->
+    <rect x="35" y="95" width="405" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="50" y="110" width="160" height="28" rx="8" fill="#eaf5f1" stroke="#88c7bc" stroke-width="1.5"/>
+    <text x="60" y="129" font-size="15" fill="#146857" font-weight="700">✓ ESTOMA SAUDÁVEL</text>
+    
+    <!-- Desenho do estoma saudável -->
+    <circle cx="120" cy="195" r="42" fill="#fed7d7" stroke="#feb2b2" stroke-width="2"/>
+    <circle cx="120" cy="195" r="16" fill="#d27c2c" stroke="#9c571a" stroke-width="3"/>
+    <circle cx="120" cy="195" r="9" fill="#742a2a"/>
+    <!-- Pontos de sutura -->
+    <line x1="88" y1="170" x2="100" y2="182" stroke="#2b6cb0" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="140" y1="170" x2="152" y2="182" stroke="#2b6cb0" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <text x="185" y="165" font-size="14" fill="#133b4a" font-weight="700">Características normais:</text>
+    <text x="185" y="188" font-size="13" fill="#243e51">• Bordas justapostas, róseas</text>
+    <text x="185" y="208" font-size="13" fill="#243e51">• Pele seca, sem odor</text>
+    <text x="185" y="228" font-size="13" fill="#243e51">• Suturas firmes sem isquemia</text>
+    <text x="185" y="248" font-size="13" fill="#243e51">• Ausência de dor à palpação</text>
+    <rect x="50" y="275" width="375" height="40" rx="8" fill="#f0fff4" stroke="#9ae6b4" stroke-width="1"/>
+    <text x="62" y="300" font-size="13" fill="#22543d" font-weight="600">Conduta: Manter limpeza suave diária com SF e curativo seco.</text>
+
+    <!-- Quadro 2: Irritação Leve -->
+    <rect x="460" y="95" width="405" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="475" y="110" width="180" height="28" rx="8" fill="#fffaf0" stroke="#fbd38d" stroke-width="1.5"/>
+    <text x="485" y="129" font-size="15" fill="#c05621" font-weight="700">⚠ IRRITAÇÃO LEVE / SEROSA</text>
+    
+    <!-- Desenho da irritação leve -->
+    <circle cx="545" cy="195" r="48" fill="#feb2b2" stroke="#fc8181" stroke-width="2"/>
+    <circle cx="545" cy="195" r="16" fill="#d27c2c" stroke="#9c571a" stroke-width="3"/>
+    <circle cx="545" cy="195" r="9" fill="#742a2a"/>
+    <ellipse cx="558" cy="210" rx="12" ry="5" fill="#fefcbf" opacity="0.8"/>
+    
+    <text x="610" y="165" font-size="14" fill="#133b4a" font-weight="700">Achados clínicos:</text>
+    <text x="610" y="188" font-size="13" fill="#243e51">• Halo eritematoso tênue</text>
+    <text x="610" y="208" font-size="13" fill="#243e51">• Mínimo exsudato seroso inicial</text>
+    <text x="610" y="228" font-size="13" fill="#243e51">• Sem celulite nem calor local</text>
+    <text x="610" y="248" font-size="13" fill="#243e51">• Desconforto leve / aceitável</text>
+    <rect x="475" y="275" width="375" height="40" rx="8" fill="#fffaf0" stroke="#fbd38d" stroke-width="1"/>
+    <text x="485" y="300" font-size="13" fill="#7b341e" font-weight="600">Conduta: Ajustar curativo e umidade. NÃO iniciar antibiótico!</text>
+
+    <!-- Quadro 3: Celulite / Inflamação Intensa -->
+    <rect x="35" y="350" width="405" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="50" y="365" width="180" height="28" rx="8" fill="#fff5f5" stroke="#feb2b2" stroke-width="1.5"/>
+    <text x="60" y="384" font-size="15" fill="#e53e3e" font-weight="700">✖ CELULITE BACTERIANA</text>
+    
+    <!-- Desenho celulite -->
+    <circle cx="120" cy="450" r="58" fill="#fc8181" stroke="#e53e3e" stroke-width="3"/>
+    <circle cx="120" cy="450" r="16" fill="#d27c2c" stroke="#9c571a" stroke-width="3"/>
+    <circle cx="120" cy="450" r="9" fill="#742a2a"/>
+    <path d="M100 420 Q120 400 140 420" stroke="#9b2c2c" stroke-width="3" fill="none"/>
+    
+    <text x="195" y="420" font-size="14" fill="#133b4a" font-weight="700">Achados de alarme:</text>
+    <text x="195" y="443" font-size="13" fill="#243e51">• Eritema expansivo (>1-2 cm)</text>
+    <text x="195" y="463" font-size="13" fill="#243e51">• Edema túrgido e endurecido</text>
+    <text x="195" y="483" font-size="13" fill="#243e51">• Calor local e dor importante</text>
+    <text x="195" y="503" font-size="13" fill="#243e51">• Risco elevado em imunossuprimidos</text>
+    <rect x="50" y="530" width="375" height="40" rx="8" fill="#fff5f5" stroke="#feb2b2" stroke-width="1"/>
+    <text x="60" y="555" font-size="13" fill="#9b2c2c" font-weight="600">Conduta: Aliviar tensão da sutura, colher cultura, terapia dirigida.</text>
+
+    <!-- Quadro 4: Abscesso e Necrose -->
+    <rect x="460" y="350" width="405" height="235" rx="16" fill="#fff" stroke="#cbd9df" stroke-width="2"/>
+    <rect x="475" y="365" width="220" height="28" rx="8" fill="#2d3748" stroke="#4a5568" stroke-width="1.5"/>
+    <text x="485" y="384" font-size="15" fill="#feb2b2" font-weight="700">🚨 ABSCESSO / NECROSE POR TENSÃO</text>
+    
+    <!-- Desenho abscesso / necrose -->
+    <circle cx="545" cy="450" r="60" fill="#9b2c2c" stroke="#742a2a" stroke-width="3"/>
+    <circle cx="545" cy="450" r="30" fill="#4a5568" stroke="#1a202c" stroke-width="2"/>
+    <circle cx="545" cy="450" r="16" fill="#d27c2c" stroke="#9c571a" stroke-width="3"/>
+    <ellipse cx="560" cy="475" rx="18" ry="10" fill="#faf089" stroke="#d69e2e" stroke-width="2"/>
+    
+    <text x="615" y="420" font-size="14" fill="#133b4a" font-weight="700">Sinais graves:</text>
+    <text x="615" y="443" font-size="13" fill="#243e51">• Exsudato purulento fétido</text>
+    <text x="615" y="463" font-size="13" fill="#243e51">• Tecido necrótico cinzento/escuro</text>
+    <text x="615" y="483" font-size="13" fill="#243e51">• Ponto estrangulante isquêmico</text>
+    <text x="615" y="503" font-size="13" fill="#243e51">• Possível extravasamento alimentar</text>
+    <rect x="475" y="530" width="375" height="40" rx="8" fill="#fff5f5" stroke="#e53e3e" stroke-width="1"/>
+    <text x="485" y="555" font-size="13" fill="#9b2c2c" font-weight="600">Conduta: SUSPENDER USO. Sedação, remoção, desbridamento e lavagem.</text>
+
+    <text x="35" y="622" font-size="14" fill="#243e51">VETIUS / ConsultaVET · Guia de Procedimentos · Esquema vetorial original</text>
+  </g>
+</svg>

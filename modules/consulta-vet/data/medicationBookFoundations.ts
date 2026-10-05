@@ -118,7 +118,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   'ampicilina-sulbactam': {
     plumbs: { monograph: 'Ampicillin/Sulbactam', pages: '82–84' },
-    bsava: { monograph: 'Ampicillin (e aminopenicilinas associadas)', pages: '27–28' },
+
     nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy & Cap. 25: Emergency Management of Respiratory Distress', pages: '1436–1442, 312–325' },
     ettinger: { chapter: 'Cap. 128: Sepsis and the Systemic Inflammatory Response Syndrome & Cap. 7: Antimicrobial Stewardship', pages: '642–650, 45–52' },
     topics: [
@@ -166,7 +166,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   capromorelina: {
     plumbs: { monograph: 'Capromorelin', pages: '182–184' },
-    bsava: { monograph: 'Capromorelin', pages: '61–62' },
+
     nelsonCouto: { chapter: 'Cap. 41: Acute Kidney Injury and Chronic Kidney Disease (Management of Inappetence and Cachexia)', pages: '685–692' },
     ettinger: { chapter: 'Cap. 301: Chronic Kidney Disease & Cap. 158: Nutritional Management of Renal Disease', pages: '1995–2010, 880–888' },
     topics: [
@@ -190,7 +190,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   ceftriaxona: {
     plumbs: { monograph: 'Ceftriaxone', pages: '230–231' },
-    bsava: { monograph: 'Cephalosporins (Cefalosporinas parenterais)', pages: '68–72' },
+
     nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy & Cap. 101: Disorders of the Nervous System', pages: '1436–1442, 1600–1608' },
     ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 128: Sepsis and Systemic Inflammatory Response Syndrome', pages: '45–52, 642–650' },
     topics: [
@@ -238,7 +238,6 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   dipirona: {
     plumbs: { monograph: 'Dipyrone (Metamizole)', pages: '413–415' },
-    bsava: { monograph: 'Metamizole', pages: '252–253' },
     nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles (Antipyretics and Analgesics in Dogs and Cats)', pages: '422–428' },
     ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Non-Opioid Analgesics and Antipyretics in Small Animals)', pages: '185–195' },
     topics: [
@@ -477,8 +476,6 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
 
   pronefra: {
-    plumbs: { monograph: 'Calcium, Oral / Chitosan (Intestinal Phosphate Binders)', pages: '178–180' },
-    bsava: { monograph: 'Chitosan / Calcium Carbonate', pages: '75–76' },
     productSource: 'https://br.virbac.com/products/suplemento-oral/pronefra',
     nelsonCouto: { chapter: 'Cap. 41: Acute Kidney Injury and Chronic Kidney Disease (Enteric Phosphate Binders and Uremic Sorbents)', pages: '688–695' },
     ettinger: { chapter: 'Cap. 301: Chronic Kidney Disease & Cap. 158: Nutritional Management of Renal Disease', pages: '1998–2008, 882–886' },
@@ -573,7 +570,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
   ciclosporina: {
     plumbs: { monograph: 'Cyclosporine (Systemic) & Cyclosporine Ophthalmic', pages: '322–328, 1357–1360' },
-    bsava: { monograph: 'Ciclosporin', pages: '83–85' },
+    bsava: { monograph: 'Ciclosporin', pages: '81–84' },
     nelsonCouto: { chapter: 'Cap. 72: Treatment of Primary Immune-Mediated Diseases (Immunosuppressive Drugs: Cyclosporine)', pages: '1244–1248' },
     ettinger: { chapter: 'Cap. 116: Immunosuppressive Therapy in Small Animal Medicine (Calcineurin Inhibitors: Cyclosporine)', pages: '875–880' },
     topics: [
@@ -620,7 +617,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   clorambucil: {
     plumbs: { monograph: 'Chlorambucil', pages: '243–245' },
-    bsava: { monograph: 'Chlorambucil', pages: '76–77' },
+    bsava: { monograph: 'Chlorambucil', pages: '75–76' },
     nelsonCouto: { chapter: 'Cap. 72: Chronic Enteropathies and Protein-Losing Enteropathies in Dogs & Cap. 82: Feline Alimentary Lymphoma', pages: '1150–1158, 1280–1288' },
     ettinger: { chapter: 'Cap. 250: Chronic Enteropathies in the Dog & Cap. 317: Lymphoma in the Cat', pages: '1540–1548, 1980–1988' },
     topics: [
@@ -710,6 +707,206 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
         title: 'Resgate da Síndrome Serotoninérgica, vias não enterais e revisão de indicações históricas',
         narrative:
           'Na toxicologia de pequenos animais, a ciproeptadina atua como fármaco essencial de intervenção no manejo da Síndrome Serotoninérgica (Plumb 10ª ed., Manual Merck). Diante de pacientes apresentando hipertermia, tremores, rigidez muscular, taquicardia e hiperreflexia, a dose de 1,1 mg/kg em cães e 2 a 4 mg por gato pode ser administrada por via oral ou, em animais com depressão do sensório ou emese incoercível, por via retal (PR) através da maceração dos comprimidos em solução fisiológica estéril. Concomitantemente, a literatura moderna consolidou o descarte de antigas indicações históricas: ensaios experimentais controlados (Schooley et al. 2007) comprovaram que a ciproeptadina falha em reduzir o infiltrado eosinofílico das vias aéreas em gatos com asma, devendo ser abandonada como monoterapia respiratória; de forma idêntica, estudos clínicos em cães com hiperadrenocorticismo hipófise-dependente (Stolp et al. 1984) demonstraram ausência de resposta terapêutica endocrinológica.',
+      },
+    ],
+  },
+
+  trazodona: {
+    plumbs: { monograph: 'Trazodone', pages: '1266–1269' },
+    bsava: { monograph: 'Trazodone', pages: '413–414' },
+    nelsonCouto: { chapter: 'Cap. 60: Behavioral Disorders & Cap. 4: Hospitalization and Stress Management in Dogs and Cats', pages: '985–994, 62–68' },
+    ettinger: { chapter: 'Cap. 41: Behavioral Medicine in Small Animal Practice & Cap. 129: Drug Toxicities (Serotonin Syndrome)', pages: '228–236, 590–596' },
+    topics: [
+      {
+        title: 'Mecanismo farmacodinâmico SARI: modulação serotoninérgica, bloqueio alfa-1 e o papel do metabólito mCPP',
+        narrative:
+          'A trazodona atua como um modulador serotoninérgico multifuncional pertencente à classe SARI (Serotonin Antagonist and Reuptake Inhibitor). Seu efeito ansiolítico primário decorre do potente bloqueio antagonista competitivo sobre os receptores 5-HT2A e 5-HT2C no córtex pré-frontal e sistema límbico. Sob estimulação fisiológica estressora, a via acoplada à proteína Gq ativa a fosfolipase C e a cascata IP3/DAG com influxo de cálcio intracelular, promovendo hiperexcitabilidade, vigilância exagerada e medo fóbico; ao bloquear esses receptores, a trazodona extingue esses circuitos excitatórios de estresse. Concomitantemente, inibe o transportador de recaptação de serotonina (SERT), elevando a permanência da serotonina na fenda sináptica; com os receptores 5-HT2 previamente bloqueados, essa serotonina excedente é canalizada para receptores 5-HT1A pós-sinápticos que medeiam tranquilização e redução de pânico. Em paralelo, o bloqueio alfa-1 adrenérgico central e vascular atenua a resposta autonômica ao estresse, mas introduz vasodilatação e potencial hipotensor. A biotransformação microssomal gera m-clorofenilpiperazina (mCPP), metabólito farmacologicamente ativo que exerce ação agonista direta sobre subtipos serotoninérgicos (com ênfase em 5-HT2C), o que fundamenta biologicamente os episódios ocasionais de desinibição comportamental, inquietação e agitação paradoxal descritos em cães e gatos.',
+      },
+      {
+        title: 'Farmacocinética clínica comparada: biodisponibilidade, disparidade de meia-vida e a dispersão do Tmax canino',
+        narrative:
+          'Os parâmetros farmacocinéticos da trazodona revelam particularidades marcantes entre carnívoros domésticos. No cão hígido (Jay et al. 2013), a biodisponibilidade oral absoluta é elevada (84,6 ± 13,2%), com meia-vida plasmática de eliminação surpreendentemente curta de aproximadamente 2,8 horas (166 ± 47 minutos), grande volume de distribuição (2,53 L/kg) e ampla travessia da barreira hematoencefálica. Todavia, o tempo necessário para atingir o pico sérico (Tmax) exibe uma enorme dispersão interindividual (média de 445 ± 271 minutos, oscilando entre 2 e mais de 11 horas nos indivíduos estudados). Embora o relaxamento clínico comece frequentemente em 45 a 120 minutos, essa extrema variabilidade cinotécnica justifica a recomendação formal de realizar uma dose-teste em domicílio antes de eventos fóbicos programados. Na espécie felina (Tucker et al. 2023), a biodisponibilidade oral média é de 54,9% com variação brutal entre 7% e 96%, acompanhada de meia-vida de eliminação mais longa (5,1 ± 2,6 horas). Quando associada à gabapentina no gato, a exposição oral cai para 17,2%, evidenciando interação farmacocinética que contraindica a presunção de somação linear de efeitos.',
+      },
+      {
+        title: 'Segurança clínica, interações críticas e os quatro alertas práticos essenciais de plantão',
+        narrative:
+          'O emprego seguro da trazodona exige atenção rigorosa a quatro pilares farmacológicos e diagnósticos de plantão destacados nos tratados de Ettinger (2024), Plumb (10ª ed.) e investigações recentes. Primeiro: a coadministração com inibidores da MAO (selegilina, amitraz) é estritamente contraindicada e exige intervalo prévio de washout de pelo menos 14 dias; sua combinação empírica com tramadol, antidepressivos tricíclicos ou SSRIs eleva de forma exponencial a suscetibilidade à Síndrome Serotoninérgica (hipertermia, mioclonias, rigidez extensora e agitação autonômica). Segundo: conforme demonstrado experimentalmente por Benjamin et al. (2023), a inibição da recaptação de serotonina deprime a agregação plaquetária in vitro no cão (queda média de 95% para 62%), demandando cautela em pacientes coagulopatas, trombocitopênicos ou em cirurgias de alto sangramento. Terceiro: a medicação altera transitoriamente a propriocepção e reações posturais em cães saudáveis, podendo mascarar ou simular lesões no exame neurológico de rotina. Quarto: estudos prospectivos de Brown et al. (2024) comprovaram que a trazodona prévia diminui expressivamente o cortisol sérico pós-estimulação e o delta de cortisol, devendo ser suspensa antes de testes de estimulação com ACTH para não induzir diagnósticos equivocados de hipoadrenocorticismo.',
+      },
+    ],
+  },
+
+  miltefosina: {
+    plumbs: { monograph: 'Miltefosine', pages: '887–888' },
+    bsava: { monograph: 'Miltefosine', pages: '268–269' },
+    nelsonCouto: { chapter: 'Cap. 89: Protozoal Infections (Leishmaniasis)', pages: '1378–1384' },
+    ettinger: { chapter: 'Cap. 195: Canine and Feline Leishmaniosis', pages: '1120–1128' },
+    topics: [
+      {
+        title: 'Farmacodinâmica multialvo da alquilfosfocolina: da desestruturação de membrana à apoptose do amastigota',
+        narrative:
+          'A miltefosina (hexadecilfosfocolina) constitui um alquilfosfolipídio sintético derivado da fosfatidilcolina que revolucionou a terapêutica leishmanicida por sua via exclusivamente oral. Ao penetrar ativamente nos amastigotas intracelulares através do complexo translocador de aminofosfolipídios LMT-Ros3, a droga não atua em um receptor proteico isolado, mas exerce uma ação biofísica e metabólica multissistêmica. Inibe a enzima fosfocolina-citidililtransferase (CCT) na via de Kennedy, bloqueando a síntese e renovação de fosfatidilcolina e desestruturando jangadas lipídicas (lipid rafts) da membrana parasitária e âncoras de GPI de fatores de virulência essenciais (gp63). Simultaneamente, acumula-se nas membranas mitocondriais do protozoário, colapsando a citocromo-c oxidase e dissipando o potencial bioeletroquímico transmembrana (ΔΨm), com depleção maciça de ATP e sobrecarga patológica de cálcio liberado dos acidocalcissomos. Esse colapso bioenergético ativa cascatas de morte celular programada semelhantes à apoptose (apoptosis-like cell death). Conforme enfatizado por Ettinger (2024) e Nelson & Couto (6ª ed.), essa ação é potentemente leishmanicida mas não esterilizante: o protozoário permanece em tecidos profundos e o cão infectado continua como portador crônico.',
+      },
+      {
+        title: 'Farmacocinética de permanência prolongada: meia-vida de 6,9 dias, acúmulo contínuo e a cauda de seleção de resistência',
+        narrative:
+          'A farmacocinética canina da miltefosina destaca-se pela excelente absorção oral (biodisponibilidade absoluta de ~94%), ligação proteica elevada (~93%), volume de distribuição moderado (0,48 L/kg) com tropismo pelo sistema fagocítico mononuclear e eliminação extraordinariamente lenta. A depuração sistêmica é de apenas 0,04 mL/min/kg, conferindo meia-vida terminal de eliminação de 153 a 165 horas (aproximadamente 6,4 a 6,9 dias no cão). Sob a posologia diária clássica de 2 mg/kg VO durante 28 dias, o fármaco sofre acúmulo gradual até atingir fator de concentração tecidual 7 a 8 vezes superior à dose inicial ao término do ciclo. A degradação ocorre por clivagem fosfolipídica tecidual lenta (fosfolipase D) em colina e hexadecanol, sendo a excreção renal de fármaco intacto desprezível (<0,2%). Conforme alertam Plumb’s (10ª ed.) e o consenso CLWG (2026), essa meia-vida longa gera uma "cauda farmacocinética" de declínio sérico residual que se estende por semanas após a última tomada; se houver subdosagem, má adesão do tutor ou repetição sucessiva de ciclos, parasitas residuais são expostos a concentrações subinibitórias, favorecendo a seleção de mutações pontuais no complexo de captação LMT/Ros3 e promovendo resistência adquirida e cruzada com anfotericina B.',
+      },
+      {
+        title: 'Divergências de consenso (WAVD 2025 vs CLWG 2026), toxicidade reprodutiva e regulação do MAPA no Brasil',
+        narrative:
+          'O cenário de tomada de decisão terapêutica na leishmaniose visceral canina em 2026 envolve importantes divergências científicas e regulatórias. O consenso mundial de dermatologia veterinária (WAVD 2025) mantém o regime de miltefosina associada ao alopurinol como uma das terapias de primeira escolha. Em contrapartida, o Canine Leishmaniosis Working Group (CLWG 2026) reposicionou a miltefosina + alopurinol como segunda opção frente ao antimoniato de meglumina + alopurinol, embasando-se em taxas mais expressivas de recaída clínica precoce e farmacovigilância de cepas resistentes. No Brasil, soma-se o conflito regulatório: a Portaria Interministerial nº 1.426/2008 e o MAPA (Portaria nº 837/2025) exigem o uso privativo de produtos veterinários registrados para LVC sob Notificação de Receita Veterinária (NRV em 2 vias), vedando o uso de produtos humanos. No perfil de segurança, a teratogenicidade e toxicidade testicular/prostática severas contraindicam o uso em prenhez, lactação e reprodutores, além de impor veto à manipulação por gestantes humanas. Por fim, ensaios clínicos prospectivos (Silva et al. 2018) comprovam ausência total de benefício e severa toxicidade digestiva e hematológica no tratamento da esporotricose felina, afastando qualquer indicação nesse cenário.',
+      },
+    ],
+  },
+
+  domperidona: {
+    plumbs: { monograph: 'Domperidone', pages: '421–422' },
+    bsava: { monograph: 'Domperidone', pages: '135' },
+    nelsonCouto: { chapter: 'Cap. 27: Manifestações Clínicas de Doenças Gastrointestinais & Cap. 88: Doenças Parasitárias (Leishmaniose Canina)', pages: '410–415, 1380–1385' },
+    ettinger: { chapter: 'Cap. 116: Drug Therapy in Gastrointestinal Disorders & Cap. 248: Canine Leishmaniosis', pages: '865–870, 1795–1802' },
+    topics: [
+      {
+        title: 'Antagonismo periférico D2, ausência de BHE na CRTZ e eixo hipofisário de prolactina pró-Th1',
+        narrative:
+          'A domperidona atua como um potente antagonista dopaminérgico seletivo dos receptores D2 e D3 que se destaca farmacologicamente por sua incapacidade de cruzar a barreira hematoencefálica (BHE) íntegra em concentrações significativas, comportando-se como substrato altamente eficiente da P-glicoproteína (ABCB1) endotelial. Por esse motivo, ao contrário da metoclopramida, a domperidona não produz reações distônicas extrapiramidais nem sedação central em doses terapêuticas. No entanto, atinge concentrações plenas em duas estruturas anatômicas desprovidas de BHE contínua: a zona de gatilho quimiorreceptora (CRTZ na área postrema), conferindo efeito antiemético contra emetógenos circulantes, e a adeno-hipófise, onde bloqueia os receptores D2 dos lactotrofos. Esse bloqueio suprime o freio inibitório tônico exercido pela dopamina hipotalâmica (fator PIF), deflagrando aumento sérico de prolactina. Conforme fundamentado por Ettinger (2024) e Nelson & Couto (6ª ed.), na espécie canina a prolactina atua como uma citocina imunomoduladora celular: liga-se a receptores de prolactina em macrófagos e linfócitos T auxiliares, direcionando a diferenciação para o fenótipo Th1 e induzindo a secreção de interferon-gama (IFN-γ) e ativação da óxido nítrico sintase induzível (iNOS), capacitando os macrófagos a combater patógenos intracelulares.',
+      },
+      {
+        title: 'Eletrofisiologia ventricular canina, bloqueio hERG/Kv11.1 e evidência de prolongamento do intervalo QTc',
+        narrative:
+          'Um dos marcos toxicológicos mais relevantes da domperidona reside na sua interação eletrofisiológica com a subunidade alfa dos canais de potássio dependentes de voltagem hERG (Kv11.1), condutores da corrente retificadora rápida de potássio (IKr) responsável pela repolarização da fase 3 do miocárdio ventricular. O estudo prospectivo de Donato et al. (2024) em cães saudáveis demonstrou formalmente que a administração oral de domperidona na dose terapêutica profilática padronizada (0,5 mg/kg q24h) acarreta um prolongamento estatisticamente significativo do intervalo QTc médio (de 195,4 ± 14,2 ms no basal para 205,1 ± 16,8 ms após o tratamento; p = 0,0292). Embora os animais hígidos tenham permanecido assintomáticos, o retardo na repolarização cria um gradiente transmural de dispersão refratária propício ao surgimento de pós-despolarizações precoces (EADs) e arritmias ventriculares polimórficas (Torsades de Pointes). Conforme advertem Plumb’s (10ª ed.) e BSAVA (10ª ed.), esse risco se torna potencialmente fatal se a domperidona for administrada em polifarmácia com inibidores enzimáticos do citocromo CYP3A4/CYP3A12 (como cetoconazol e itraconazol, que elevam seus níveis séricos em até 4 vezes e somam bloqueio de hERG) ou em pacientes com hipocalemia e cardiopatia estrutural.',
+      },
+      {
+        title: 'Divergência entre consensos mundiais (WAVD 2025 vs CLWG 2026) e declínio como pró-cinético de rotina',
+        narrative:
+          'A tomada de decisão clínica em relação à domperidona envolve uma distinção crucial entre prevenção e tratamento da leishmaniose canina. No âmbito profilático, o ensaio clínico randomizado duplo-cego de Sabaté et al. (2014) comprovou que ciclos de 30 dias a cada 4 meses reduzem em aproximadamente 80% o adoecimento clínico em cães soronegativos de áreas endêmicas, conferindo respaldo e recomendação de grau moderado no consenso mundial WAVD 2025. Todavia, para o tratamento de cães com leishmaniose clínica manifesta, existe uma divergência explícita: o WAVD 2025 NÃO recomenda o fármaco por considerar a evidência de eficácia fraca e insuficiente; paralelamente, o Canine Leishmaniosis Working Group (CLWG 2026) admite seu uso apenas como imunoterápico adjuvante aos leishmanicidas consolidados (miltefosina ou meglumina + alopurinol), repudiando com veemência sua prescrição em monoterapia. Por outro lado, na gastroenterologia de pequenos animais, a domperidona perdeu espaço expressivo: estudos manométricos de Orihata & Sarna (1994) evidenciaram respostas erráticas e inconsistentes no esvaziamento gástrico canino, enquanto investigações de Mangel (1983) comprovaram ineficácia motora antral na espécie felina, consolidando o maropitant e a ondansetrona como escolhas de primeira linha para êmese.',
+      },
+    ],
+  },
+
+  metoclopramida: {
+    plumbs: { monograph: 'Metoclopramide', pages: '867–869' },
+    bsava: { monograph: 'Metoclopramide', pages: '261–262' },
+    nelsonCouto: {
+      chapter:
+        'Cap. 27: Manifestações Clínicas de Doenças Gastrointestinais (Êmese e Refluxo Gastroesofágico) & Cap. 31: Distúrbios Gástricos (Hipomotilidade e Gastroparesia)',
+      pages: '412–418, 480–485',
+    },
+    ettinger: {
+      chapter:
+        'Cap. 116: Drug Therapy in Gastrointestinal Disorders (Antiemetics and Prokinetics) & Cap. 250: Diseases of the Stomach',
+      pages: '860–868, 1810–1818',
+    },
+    topics: [
+      {
+        title:
+          'Farmacodinâmica multifuncional: antagonismo D2/D3, agonismo 5-HT4 pró-cinético e bloqueio fraco 5-HT3',
+        narrative:
+          'A metoclopramida (derivado benzamídico substituído) atua através de múltiplos alvos moleculares centrais e entéricos. Seu efeito antiemético central é mediado pelo antagonismo competitivo de receptores dopaminérgicos D2 e D3 na zona de gatilho quimiorreceptora (CRTZ) da área postrema, bloqueando estímulos eméticos mediados por dopamina circulante, toxinas urêmicas e certos quimioterápicos. No trato gastrointestinal proximal, age como agonista seletivo de receptores pré-sinápticos de serotonina 5-HT4 nos neurônios motores colinérgicos intrínsecos do plexo mioentérico (plexo de Auerbach), promovendo a liberação local facilitada de acetilcolina. Esse tônus colinérgico sincronizado aumenta a pressão basal do esfíncter esofágico inferior (EEI), intensifica a amplitude e coordenação das contrações antrais gástricas e relaxa o esfíncter pilórico e o bulbo duodenal, acelerando o esvaziamento gastroduodenal. Em concentrações supraterapêuticas ou elevadas, exerce antagonismo fraco sobre receptores 5-HT3. Como enfatizam Ettinger (2024) e Nelson & Couto (6ª ed.), a droga carece de receptores alvos funcionais no cólon, sendo ineficaz em megacólon felino ou estase colônica canina, e sua eficácia antiemética no cão é muito superior à de gatos devido à escassa densidade de receptores D2 na CRTZ felina.',
+      },
+      {
+        title:
+          'Alerta cardiovascular 2026: abandono do bolus IV de 1 mg/kg e novo modelo PK de infusão contínua',
+        narrative:
+          'A prática clínica de infusão de metoclopramida passou por uma revisão de segurança em 2026. Historicamente, protocolos perioperatórios recomendavam doses de ataque de até 1 mg/kg IV rápido para prevenção de refluxo gastroesofágico em cirurgias de pequenos animais. O relato de Rolfi & Chesnel (2026) documentou bradicardia extrema (<4 bpm), assistolia sustentada e parada cardiorrespiratória transitória em cães imediatamente após bolus intravenoso de 1 mg/kg sob anestesia geral, atribuída à ativação vagal central e desequilíbrios autonômicos agudos. Paralelamente, o estudo de modelagem farmacocinética e farmacodinâmica de Martin-Flores et al. (2026) demonstrou que a infusão contínua (CRI) de metoclopramida sem bolus inicial demora aproximadamente 3,25 horas para alcançar a concentração plasmática de equilíbrio estável (~100 ng/mL). Para atingir níveis terapêuticos precoces sem risco cardiotóxico de bradicardia/assistolia, os autores estabeleceram novas doses de ataque conservadoras e lentas: 0,05 mg/kg IV lenta para infusões de 1 mg/kg/dia (0,04 mg/kg/h) e 0,1 mg/kg IV lenta para infusões de 2 mg/kg/dia (0,08 mg/kg/h), descartando em definitivo o bolus de 1 mg/kg de rotina.',
+      },
+      {
+        title:
+          'Toxicidade extrapiramidal, reversão com difenidramina e cuidados nas apresentações comerciais em gotas',
+        narrative:
+          'Por cruzar prontamente a barreira hematoencefálica lipofílica, a metoclopramida bloqueia os receptores D2 do corpo estriado nos gânglios da base, desregulando o equilíbrio inibitório-excitatório entre as vias dopaminérgica e colinérgica. Esse bloqueio pode desencadear manifestações extrapiramidais agudas em cães e gatos, caracterizadas por tremores musculares involuntários, distonia cervicofacial, opistótono, hiper-reatividade e agitação tipo acatisia (inquietude motora incoercível). Plumb’s (10ª ed.) e BSAVA (10ª ed.) prescrevem o antídoto farmacológico específico: difenidramina na dose de 2,2 mg/kg IV ou IM lenta, cujo potente antagonismo anticolinérgico muscarínico central reequilibra o circuito estriatal e cessa os espasmos em minutos. Outro risco crítico de plantão reside na discrepância volumétrica de apresentações comerciais em gotas: o produto veterinário Nausetrat® Solução Oral 5 mg/mL fornece 50 gotas por mL (1 gota ≈ 0,1 mg), enquanto o produto humano de referência Plasil® Gotas Pediátricas 4 mg/mL fornece 21 gotas por mL (1 gota ≈ 0,19 mg). Se o clínico prescrever "gotas" sem especificar a marca, o animal pode receber o dobro da dose pretendida, deflagrando toxicidade neurológica.',
+      },
+    ],
+  },
+
+  molidustat: {
+    plumbs: { monograph: 'Darbepoetin Alfa (Referência Comparativa Histórica de ESA)', pages: '342' },
+    bsava: { monograph: 'Darbepoetin alfa (Comparative reference for feline CKD anemia)', pages: '115' },
+    nelsonCouto: {
+      chapter:
+        'Cap. 45: Insuficiência Renal Crônica em Cães e Gatos (Abordagem da Anemia Não Regenerativa e Agentes Estimuladores da Eritropoiese)',
+      pages: '715–725',
+    },
+    ettinger: {
+      chapter:
+        'Cap. 240: Chronic Kidney Disease: Management and Complications (Non-regenerative Anemia and HIF Stabilizers)',
+      pages: '1585–1596',
+    },
+    topics: [
+      {
+        title:
+          'Engenharia de detecção de oxigênio: inibição de prolil-hidroxilase (HIF-PHI) e pseudo-hipóxia celular',
+        narrative:
+          'Em condições normais de normóxia renal, as enzimas prolil-hidroxilases contendo ferro e 2-oxoglutarato (PHD1, PHD2 e PHD3) hidroxilam resíduos específicos de prolina (Pro402 e Pro564) na subunidade alfa do fator induzível por hipóxia (HIF-α, principalmente HIF-2α). O HIF-α hidroxilado é prontamente reconhecido pela proteína supressora tumoral de von Hippel-Lindau (pVHL), que atua como uma ligase E3 de ubiquitina, direcionando a proteína para degradação proteassomal imediata com meia-vida inferior a 5 minutos. O molidustat atua como um inibidor seletivo e reversível de pequenas moléculas das enzimas PHD (com IC50 de aproximadamente 280 nM para PHD2). Ao inibir a hidroxilação das prolinas, o molidustat impede o reconhecimento por pVHL e a degradação proteassomal, permitindo que o HIF-2α se estabilize e transloque para o núcleo celular. Ali, dimeriza-se com a subunidade constitutiva HIF-1β, liga-se a elementos de resposta à hipóxia (HRE) no DNA e ativa a transcrição do gene da eritropoietina felina nativa, além de modular transportadores de ferro (DMT1, ferroportina) e suprimir a hepcidina, mimetizando uma resposta adaptativa fisiológica à hipóxia sem hipoxemia tecidual real.',
+      },
+      {
+        title:
+          'Superação do risco histórico de PRCA e divergência frente aos agentes estimuladores recombinantes (ESAs)',
+        narrative:
+          'A abordagem tradicional da anemia não regenerativa na DRC felina dependia do uso de agentes estimuladores da eritropoiese recombinantes humanos (rhEPO como epoetina alfa ou darbepoetina alfa). Embora eficazes no início, esses biofármacos carregam uma homologia incompleta com a EPO felina nativa (~80% de correspondência na sequência de aminoácidos). Conforme alertam Ettinger (2024), Nelson & Couto (6ª ed.) e Plumb’s (10ª ed.), entre 10% e 30% dos gatos tratados com rhEPO e até 5% a 10% com darbepoetina desenvolvem anticorpos neutralizantes anti-fármaco que reagem cruzadamente contra a eritropoietina endógena residual do paciente. Esse quadro culmina em aplasia pura de série vermelha (PRCA - Pure Red Cell Aplasia), uma complicação refratária e frequentemente fatal caracterizada por hematócritos em declínio rápido (<10%), ausência total de reticulócitos na medula e dependência transfusional permanente. O molidustat (Varenzin™) constitui um divisor de águas na nefrologia felina por ser uma molécula química não proteica e não imunogênica: ao ativar a maquinaria celular do próprio gato, a eritropoietina produzida no rim e fígado é 100% felina, autóloga e nativa, extinguindo o risco imunomediado de PRCA.',
+      },
+      {
+        title:
+          'Validação clínica multicêntrica (RCT Schmidt 2026), protocolo de 28 dias e janela de segurança hematológica',
+        narrative:
+          'A aprovação regulatória e consolidação clínica do molidustat em gatos consolidaram-se com o ensaio clínico prospectivo, multicêntrico, randomizado e cego publicado por Schmidt et al. (2026 / PMC12883063). O estudo avaliou 128 felinos com anemia associada à DRC sob a posologia de 5 mg/kg (0,2 mL/kg da suspensão a 25 mg/mL) VO a cada 24 horas por até 28 dias consecutivos. A taxa de resposta terapêutica (sucesso hematológico) no grupo molidustat foi de 67,5%, contra apenas 17,1% no grupo controle placebo (p < 0,001), com elevação média de +5,25 pontos percentuais no hematócrito no 28º dia. O consenso IRIS (2026) e as diretrizes da bula de Varenzin preconizam que o ciclo máximo contínuo é de 28 dias, devendo ser interrompido precocemente se o PCV atingir ou ultrapassar o limite superior felino (>45%), a fim de evitar sobrecarga hemodinâmica, policitemia e hiperviscosidade sanguínea. Caso a anemia retorne após o término do tratamento, exige-se uma janela mínima de descanso de pelo menos 7 dias livres de droga antes de iniciar um novo ciclo de monitoramento.',
+      },
+    ],
+  },
+  maropitant: {
+    plumbs: { monograph: 'Maropitant Citrate', pages: '799–802' },
+    bsava: { monograph: 'Maropitant', pages: '244–245' },
+    nelsonCouto: {
+      chapter: 'Cap. 27: Manifestações Clínicas dos Distúrbios Gastrointestinais (Náusea e Vômito)',
+      pages: '412–418',
+    },
+    ettinger: {
+      chapter: 'Cap. 116: Nausea, Vomiting, and Regurgitation & Cap. 250: Diseases of the Stomach',
+      pages: '860–868, 1490–1498',
+    },
+    topics: [
+      {
+        title: 'Bloqueio da via final comum da êmese: farmacodinâmica dos receptores NK₁ e substância P',
+        narrative:
+          'O maropitant atua como um antagonista competitivo altamente potente e seletivo dos receptores de neurocinina-1 (NK₁), impedindo a ligação da substância P, o neuropeptídeo efetor central do reflexo emético. Conforme detalhado por Ettinger (2024), Nelson & Couto (6ª ed.) e Plumb’s (10ª ed.), o reflexo do vômito integra estímulos periféricos (aferências vagais e esplâncnicas ativadas por irritação ou distensão do trato gastrointestinal, peritonite ou pancreatite) e estímulos de ação central (zona de gatilho quimiorreceptora / CRTZ estimulada por apomorfina, toxinas urêmicas e quimioterapia; sistema vestibular na cinetose; e córtex cerebral sob estresse). Enquanto antieméticos tradicionais (como antagonistas dopaminérgicos D₂ e serotoninérgicos 5-HT₃) bloqueiam apenas vias aferentes específicas, o maropitant age diretamente no núcleo do trato solitário (NTS) e nos núcleos motores do centro do vômito na medula oblonga. Essa localização estratégica converte o maropitant em um bloqueador da “via final comum” da êmese, conferindo-lhe uma amplitude de proteção antiemética significativamente superior contra estímulos tanto centrais quanto periféricos em cães e gatos.',
+      },
+      {
+        title: 'Antiêmese versus antináusea: a distinção clínica crítica de 2026 e a ausência de ação orexígena',
+        narrative:
+          'Um dos maiores refinamentos clínicos da farmacoterapia moderna em pequenos animais reside na dissociação entre náusea e vômito. O reflexo motor da êmese (contração retrógrada da musculatura abdominal e diafragmática, relaxamento da cárdia e expulsão gástrica) é abolido de forma quase absoluta pelo maropitant. No entanto, a sensação subjetiva de náusea (mediada por circuitos corticais, amígdala e córtex insular) não é confiavelmente suprimida pelo bloqueio isolado de NK₁. Um ensaio clínico prospectivo randomizado publicado em 2026 por Shin & Ambros (Vet Anaesth Analg) demonstrou essa disparidade de modo contundente: embora o maropitant tenha prevenido 100% dos episódios eméticos induzidos por hidromorfona e dexmedetomidina (0/31 cães vomitaram no grupo maropitant vs 32,1% no controle), 74,2% dos cães sob maropitant ainda exibiram sinais claros de náusea moderada a severa (ptialismo intenso, sialorreia profusa, lambedura compulsiva de lábios e deglutições repetidas). Adicionalmente, tanto Plumb’s (10ª ed.) quanto o Consenso iCatCare (2026) ressaltam que o maropitant NÃO possui ação orexígena direta: em ensaio clínico controlado em gatos com DRC (Quimby et al. 2015), o maropitant reduziu os episódios de vômito com significância estatística (p < 0,01), mas não produziu qualquer aumento de ingestão calórica ou ganho ponderal. Se o paciente manifestar hiporexia com náusea refratária, a conduta correta exige a associação de antagonistas 5-HT₃ (ondansetrona) e estimulantes do apetite (mirtazapina).',
+      },
+      {
+        title: 'Farmacocinética não linear, particularidades interespécie e conduta prática na injeção SC',
+        narrative:
+          'A farmacocinética do citrato de maropitant revela comportamentos singulares que orientam a prática clínica. No cão, o fármaco exibe eliminação não linear dependente da dose por saturação do citocromo microssomal hepático de alta afinidade e baixa capacidade (CYP2D15), assumindo o CYP3A12 o clearance em doses elevadas. Isso explica por que a dose oral preconizada para cinetose (8 mg/kg VO q24h) é quatro vezes superior à dose para gastrite e vômito agudo (2 mg/kg VO q24h): a saturação hepática prévia eleva a biodisponibilidade de ~24% para ~37%, garantindo níveis séricos e penetração cerebral suficientes para bloquear o input vestibular durante viagens. Em contrapartida, no gato a absorção oral é naturalmente superior (~50%) e o clearance sistêmico é quatro vezes mais lento que no cão (~276 mL/kg/h vs ~970 mL/kg/h), resultando em meia-vida terminal de 13 a 17 horas, o que fundamenta a posologia felina oral reduzida de 1 mg/kg VO q24h. Na administração subcutânea, a ardência aguda e vocalização do paciente decorrem da rápida dissociação do carreador sulfobutiléter-beta-ciclodextrina (SBECD) no tecido conectivo, liberando maropitant livre que despolariza nociceptores; a administração da solução diretamente gelada (retirada da geladeira entre 2°C e 8°C sem aquecimento manual) suprime drasticamente a percepção dolorosa. Por fim, a excreção renal inalterada é menor que 1%, tornando o fármaco excepcionalmente seguro em pacientes com doença renal crônica ou lesão renal aguda sem necessidade de escalonamento ou redução posológica.',
+      },
+    ],
+  },
+  ondansetrona: {
+    plumbs: { monograph: 'Ondansetron', pages: '956–957' },
+    bsava: { monograph: 'Ondansetron', pages: '293' },
+    nelsonCouto: {
+      chapter: 'Cap. 27: Manifestações Clínicas dos Distúrbios Gastrointestinais (Abordagem Terapêutica da Náusea e Vômito)',
+      pages: '414–417',
+    },
+    ettinger: {
+      chapter: 'Cap. 116: Nausea, Vomiting, and Regurgitation & Cap. 248: Principles of Gastrointestinal Drug Therapy',
+      pages: '862–867, 1475–1481',
+    },
+    topics: [
+      {
+        title: 'O receptor 5-HT₃ como canal iônico pentamérico e a neurobiologia da náusea versus vômito',
+        narrative:
+          'A ondansetrona é um antagonista altamente potente e seletivo do receptor 5-HT₃ de serotonina, que se distingue molecularmente de todos os demais receptores serotoninérgicos (5-HT₁ a 5-HT₇). Enquanto os demais subtipos são receptores metabotrópicos acoplados à proteína G (GPCRs), o 5-HT₃ é um canal catiônico pentamérico dependente de ligante pertencente à superfamília Cys-loop (homólogo aos receptores nicotínicos de acetilcolina e GABA-A). Sua ativação deflagra a abertura imediata de um poro aquoso central permeável ao Na⁺ e K⁺ (com influxo secundário de Ca²⁺), gerando despolarização sináptica ultrarrápida. Conforme detalhado por Ettinger (2024), Nelson & Couto (6ª ed.) e Plumb’s (10ª ed.), mais de 90% da serotonina corporal reside em células enterocromafins do trato gastrointestinal. Sob injúria tecidual mecânica, infecciosa ou tóxica (como na quimioterapia por cisplatina, gastroenterites e pancreatite), o surto de serotonina liberado ativa os canais 5-HT₃ nos terminais nervosos livres das fibras aferentes vagais subepiteliais, propagando o impulso nauseogênico visceral em direção ao núcleo do trato solitário (NTS) e área postrema no tronco encefálico. A ondansetrona bloqueia competitivamente tanto os aferentes vagais entéricos quanto os receptores 5-HT₃ do complexo emético central, atenuando a sensação aversiva subjetiva da náusea. Essa ação explica a sinergia perfeita entre ondansetrona e maropitant (antagonista NK₁): enquanto o maropitant fecha a via motora final mecânica do vômito, a ondansetrona intercepta o sinal sensorial do enjoo e ptialismo, restaurando o conforto e permitindo o retorno da ingestão alimentar voluntária.',
+      },
+      {
+        title: 'A quebra de paradigma farmacocinético em cães e gatos: validação SC canina e falha da via oral',
+        narrative:
+          'Um dos avanços mais revolucionários na farmacologia veterinária recente (2024–2026) refere-se à reavaliação crítica das vias de administração da ondansetrona. Historicamente, formulários veterinários prescreviam rotineiramente comprimidos orais para cães na dose de 0,5 a 1 mg/kg. Contudo, estudos cruzados rigorosos (Garrick et al. 2026 e Zersen et al. 2024) demonstraram que a biodisponibilidade oral no cão é extremamente baixa e errática (apenas 5,2 ± 2,1%), com até 25% dos cães doentes nunca atingindo concentrações plasmáticas quantificáveis, tornando a via oral inadequada para pacientes hospitalizados com náusea relevante. Em contrapartida monumental, o estudo de Landau et al. (julho de 2026) validou a via subcutânea (SC) na espécie canina, comprovando uma biodisponibilidade mediana de 84,6%, Tmax de apenas 15 minutos e área sob a curva indistinguível da via intravenosa (p = 0,63). Isso consolidou a via SC como a grande escolha parenteral em cães sem cateter venoso viável. Na espécie felina, Quimby et al. (2014) já haviam demonstrado que a absorção oral é moderada (~32%), mas a via subcutânea atinge 75% com absorção gradual sustentada (cinética flip-flop, t½ aparente de 3,2 horas), explicando a preferência consagrada dos consensos ISFM e iCatCare pela via subcutânea em gatos.',
+      },
+      {
+        title: 'Segurança em nefropatas versus hepatopatas, intervalo QTc e interações farmacológicas',
+        narrative:
+          'A depuração da ondansetrona é mediada quase que exclusivamente pelo metabolismo microssomal oxidativo hepático dependente do citocromo P450, sendo a excreção renal inalterada inferior a 5% em carnívoros domésticos. Por essa razão fundamental, o Consenso iCatCare (2026) e as evidências de Fitzpatrick et al. (2016) desmistificaram a necessidade de corte escalonado da dose conforme os estágios IRIS 1 a 4 na doença renal crônica felina, preconizando a manutenção de doses terapêuticas plenas (0,1 a 1 mg/kg q6–12h). Em contraste marcante, animais hepatopatas graves apresentam clearance reduzido em mais de 30% e AUC duplicada, exigindo titulação conservadora. Em termos de segurança cardiovascular, a ondansetrona atua como inibidor dose-dependente dos canais de potássio hERG/IKr, prolongando a repolarização ventricular e o intervalo QTc no eletrocardiograma em doses elevadas (≥0,88 mg/kg IV). Por esse motivo, a administração intravenosa deve ser SEMPRE LENTA (ao longo de 2 a 5 minutos, ~0,1 a 0,25 mg/kg/min). Deve-se monitorar o ritmo cardíaco na vigência de hipocalemia, hipomagnesemia e concomitância com antiarrítmicos ou psicotrópicos que prolongam QT. Por fim, a administração prévia de ondansetrona é formalmente contraindicada antes da indução de êmese por apomorfina em intoxicações (bloqueia o centro emético e risco de colapso hemodinâmico) e antagoniza o componente 5-HT₃ da analgesia espinhal descendente do tramadol.',
       },
     ],
   },

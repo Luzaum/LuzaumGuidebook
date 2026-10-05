@@ -1,3 +1,4 @@
+import { CatalogCache } from '../../catalogCache';
 import { supabase } from '@/src/lib/supabaseClient';
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
@@ -5,7 +6,7 @@ import { DiseaseRecord } from '../../../types/disease';
 import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
 import { localDiseaseRepository } from '../local/localDiseaseRepository';
-import { mergeDiseaseRecordsBySlug } from '../../../utils/mergeDiseaseRecords';
+import { DISEASE_SLUG_ALIASES, mergeDiseaseRecordsBySlug } from '../../../utils/mergeDiseaseRecords';
 import {
   CONSULTA_VET_CATEGORY_TABLE,
   CONSULTA_VET_DISEASE_CONSENSO_TABLE,
@@ -129,7 +130,7 @@ async function fetchSupabaseDiseases(): Promise<DiseaseRecord[]> {
 }
 
 export class SupabaseDiseaseRepository implements DiseaseRepository {
-  private listCache: { data: DiseaseRecord[]; timestamp: number; includeDrafts: boolean } | null = null;
+  private readonly listCache = new CatalogCache<DiseaseRecord[]>();
 
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
     if (!hasSupabaseEnv()) {
@@ -137,39 +138,30 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
     }
 
     const includeDrafts = Boolean(options?.includeDrafts);
-    const now = Date.now();
-    if (this.listCache && this.listCache.includeDrafts === includeDrafts && (now - this.listCache.timestamp) < 15000) {
-      return this.listCache.data;
-    }
+    return this.listCache.load(includeDrafts, async () => {
+      try {
+        const [remote, diseasesSeed] = await Promise.all([
+          withTimeout(fetchSupabaseDiseases(), 'carregar doenças editoriais'),
+          loadDiseasesEditorialSeed(),
+        ]);
+        const merged = mergeDiseaseRecordsBySlug(diseasesSeed, remote).sort((left, right) =>
+          left.title.localeCompare(right.title, 'pt-BR')
+        );
+        // O ConsultaVet exibe todo o acervo de doenças existente no banco.
+        // Não aplique allowlist nem o antigo status editorial `is_published` aqui.
+        const result = merged.map(applyDiseaseOverviewOverride);
 
-    try {
-      const remote = await withTimeout(
-        fetchSupabaseDiseases(),
-        'carregar doenças editoriais'
-      );
-      const diseasesSeed = await loadDiseasesEditorialSeed();
-      const merged = mergeDiseaseRecordsBySlug(diseasesSeed, remote).sort((left, right) =>
-        left.title.localeCompare(right.title, 'pt-BR')
-      );
-      // O ConsultaVet exibe todo o acervo de doenças existente no banco.
-      // Não aplique allowlist nem o antigo status editorial `is_published` aqui.
-      const result = merged.map(applyDiseaseOverviewOverride);
-      
-      this.listCache = {
-        data: result,
-        timestamp: now,
-        includeDrafts,
-      };
-      
-      return result;
-    } catch {
-      return localDiseaseRepository.list(options);
-    }
+        return result;
+      } catch {
+        return (await loadDiseasesEditorialSeed()).map(applyDiseaseOverviewOverride);
+      }
+    });
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<DiseaseRecord | null> {
     const items = await this.list(options);
-    return items.find((item) => item.slug === slug) || null;
+    const canonicalSlug = DISEASE_SLUG_ALIASES[slug] || slug;
+    return items.find((item) => item.slug === canonicalSlug) || null;
   }
 
   async search(query: string): Promise<DiseaseRecord[]> {
@@ -304,7 +296,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
       }
     }
 
-    this.listCache = null;
+    this.listCache.clear();
     const result = await this.getBySlug(normalizedSlug, { includeDrafts: true });
     if (!result) {
       throw new Error('Doença salva, mas não foi possível reler o registro editorial.');

@@ -7,6 +7,9 @@ import {
   FlaskConical,
   ChevronDown,
   AlertCircle,
+  CheckCircle2,
+  HeartHandshake,
+  Stethoscope,
 } from 'lucide-react';
 import type { MedicationRecord } from '../../types/medication';
 
@@ -469,6 +472,74 @@ export function MedicationAttentionTab({
           </div>
         ) : null}
       </section>
+
+      {/* SEÇÃO 5: Monitoramento Clínico & Laboratorial */}
+      {medication.monitoringParameters && medication.monitoringParameters.length > 0 ? (
+        <section id="parametros-monitoramento" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-sky-500 dark:border-l-sky-400">
+          <div className="flex items-center gap-3 border-b border-border/70 pb-4">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-sky-500/15 text-sky-700 dark:text-sky-400">
+              <Activity className="h-5 w-5" />
+            </span>
+            <div>
+              <h3 className="text-lg sm:text-xl font-black text-foreground">
+                Monitoramento Clínico & Laboratorial
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Parâmetros essenciais de acompanhamento de eficácia, toxicidade precoce, vigilância hematológica e bioquímica
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {medication.monitoringParameters.map((param, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-3 rounded-2xl border border-border/70 bg-background/60 p-4 transition-colors hover:border-sky-500/30 hover:bg-muted/15"
+              >
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-500/15 text-xs font-bold text-sky-700 dark:text-sky-300">
+                  {idx + 1}
+                </span>
+                <p className="text-sm leading-relaxed text-foreground/90">
+                  {param}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* SEÇÃO 6: Orientações ao Tutor / Proprietário */}
+      {medication.clientInformation && medication.clientInformation.length > 0 ? (
+        <section id="orientacoes-tutor" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-emerald-500 dark:border-l-emerald-400">
+          <div className="flex items-center gap-3 border-b border-border/70 pb-4">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-500/15 text-emerald-700 dark:text-emerald-400">
+              <HeartHandshake className="h-5 w-5" />
+            </span>
+            <div>
+              <h3 className="text-lg sm:text-xl font-black text-foreground">
+                Orientações ao Tutor / Proprietário
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Diretrizes claras de administração domiciliar, conduta em esquecimento, sinais de alerta de emergência e descarte seguro
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {medication.clientInformation.map((info, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-3.5 rounded-2xl border border-emerald-500/25 bg-emerald-500/5 p-4 text-emerald-950 dark:text-emerald-100"
+              >
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
+                <p className="text-sm leading-relaxed">
+                  {info}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

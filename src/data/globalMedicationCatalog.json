@@ -81,6 +81,718 @@
           "metadata": {}
         }
       ]
+    },
+    {
+      "slug": "trazodona",
+      "name": "Trazodona",
+      "active_ingredient": "Cloridrato de trazodona",
+      "is_controlled": true,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["VO"],
+      "notes": "Modulador serotoninérgico SARI e ansiolítico situacional Fear Free. Sujeito a controle especial (Lista C1, Portaria 344/98 - Receita em 2 vias).",
+      "tags": ["ansiolitico", "sari", "sedativo", "fear_free", "pre_visita", "neurologia"],
+      "metadata": {
+        "origin": "consultavet_clinical"
+      },
+      "presentations": [
+        {
+          "slug": "donaren-50-mg-comprimido-sulcado",
+          "pharmaceutical_form": "Comprimido revestido sulcado",
+          "commercial_name": "Donaren",
+          "concentration_text": "50 mg/comprimido",
+          "value": 50,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 60,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 72.5,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Apsen Farmacêutica",
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.5,
+              "scored": true,
+              "modified_release": false,
+              "enteric_coated": false,
+              "whole_unit_only": false
+            }
+          }
+        },
+        {
+          "slug": "donaren-100-mg-comprimido",
+          "pharmaceutical_form": "Comprimido revestido",
+          "commercial_name": "Donaren",
+          "concentration_text": "100 mg/comprimido",
+          "value": 100,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 30,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 115.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Apsen Farmacêutica",
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": false,
+              "split_increment": 1,
+              "scored": false,
+              "modified_release": false,
+              "enteric_coated": false,
+              "whole_unit_only": true
+            }
+          }
+        },
+        {
+          "slug": "trazodona-suspensao-oral-10-mg-ml",
+          "pharmaceutical_form": "Suspensão oral manipulada",
+          "commercial_name": "Trazodona Solução Magistral (Sem Xilitol)",
+          "concentration_text": "10 mg/mL",
+          "value": 10,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 30,
+          "package_unit": "mL",
+          "avg_price_brl": 65.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": false,
+          "pharmacy_compounding": true,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        }
+      ],
+      "recommended_doses": [
+        {
+          "slug": "cao-pre-visita-5-mg-kg-vo",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 5,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única 90 a 120 min antes",
+          "notes": "Ansiedade situacional pré-visita Fear Free. Realizar dose-teste prévia.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-pre-visita-50-mg-gato-vo",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 50,
+          "dose_unit": "mg/gato",
+          "frequency": "dose única 60 a 120 min antes",
+          "notes": "Manejo e transporte felino (ensaio Stevens 2016). Usar 25 mg se <2,5 kg.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "miltefosina",
+      "name": "Miltefosina",
+      "active_ingredient": "Miltefosina (Hexadecilfosfocolina)",
+      "is_controlled": true,
+      "is_active": true,
+      "species": ["cão"],
+      "routes": ["VO"],
+      "notes": "Antiprotozoário leishmanicida oral alquilfosfocolina para leishmaniose visceral canina (LVC por L. infantum). Sujeito a Notificação de Receita Veterinária (Portaria MAPA 837/2025).",
+      "tags": ["leishmanicida", "milteforan", "leishmaniose", "lvc", "infectologia", "controle_especial_mapa"],
+      "metadata": {
+        "origin": "consultavet_clinical"
+      },
+      "presentations": [
+        {
+          "slug": "milteforan-20-mg-ml-solucao-oral",
+          "pharmaceutical_form": "Solução oral",
+          "commercial_name": "Milteforan",
+          "concentration_text": "20 mg/mL (2,0% m/v)",
+          "value": 20,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 30,
+          "package_unit": "mL",
+          "avg_price_brl": 1450.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        },
+        {
+          "slug": "milteforan-20-mg-ml-frasco-60-ml",
+          "pharmaceutical_form": "Solução oral",
+          "commercial_name": "Milteforan 60 mL",
+          "concentration_text": "20 mg/mL",
+          "value": 20,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 60,
+          "package_unit": "mL",
+          "avg_price_brl": 2550.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        },
+        {
+          "slug": "milteforan-20-mg-ml-frasco-90-ml",
+          "pharmaceutical_form": "Solução oral",
+          "commercial_name": "Milteforan 90 mL",
+          "concentration_text": "20 mg/mL",
+          "value": 20,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 90,
+          "package_unit": "mL",
+          "avg_price_brl": 3500.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-lvc-2-mg-kg-vo-q24h-28d",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 2,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h por 28 dias consecutivos",
+          "notes": "Protocolo padrão mundial para Leishmaniose Visceral Canina. Administrar estritamente com alimento (0,1 mL/kg q24h = 1 mL/10 kg).",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "domperidona",
+      "name": "Domperidona",
+      "active_ingredient": "Domperidona base",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["VO"],
+      "notes": "Antagonista periférico dos receptores D2/D3. Imunomodulação profilática quadrimestral na leishmaniose canina em soronegativos e pró-cinético secundário.",
+      "tags": ["antiemetico", "procinetico", "leishmaniose", "imunomodulador", "oral"],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "domperix-1-mg-ml-suspensao-oral-100-ml",
+          "pharmaceutical_form": "Suspensão oral",
+          "commercial_name": "Domperix 1 mg/mL",
+          "concentration_text": "1 mg/mL",
+          "value": 1,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 100,
+          "package_unit": "mL",
+          "avg_price_brl": 22.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        },
+        {
+          "slug": "domperidona-10-mg-comprimidos-30-un",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Domperidona 10 mg (Genérico Humano)",
+          "concentration_text": "10 mg/comprimido",
+          "value": 10,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 30,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 18.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.5,
+              "scored": true
+            }
+          }
+        },
+        {
+          "slug": "leisguard-5-mg-ml-suspensao-oral-60-ml",
+          "pharmaceutical_form": "Suspensão oral",
+          "commercial_name": "Leisguard 5 mg/mL",
+          "concentration_text": "5 mg/mL",
+          "value": 5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 60,
+          "package_unit": "mL",
+          "avg_price_brl": 380.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-prevencao-leishmaniose-0-5-mg-kg-vo-q24h-30d",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 0.5,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h por 30 dias consecutivos a cada 4 meses",
+          "notes": "Imunomodulação preventiva em cães soronegativos de áreas endêmicas (WAVD 2025 grau moderado; Sabaté et al. 2014).",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-procinetico-antiemetico-0-1-mg-kg-vo-q12-24h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 0.1,
+          "dose_unit": "mg/kg",
+          "frequency": "q12h a q24h antes das refeições",
+          "notes": "Uso pró-cinético e antiemético secundário em declínio.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "metoclopramida",
+      "name": "Metoclopramida",
+      "active_ingredient": "Cloridrato de metoclopramida",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["VO", "SC", "IM", "IV"],
+      "notes": "Antagonista D2/D3 e pró-cinético 5-HT4. Antiemético de ação central e proximal. Alerta 2026: bolus IV de 1 mg/kg abandonado; dose de ataque em CRI de 0,05 a 0,1 mg/kg.",
+      "tags": ["antiemetico", "procinetico", "gastroenterologia", "oral", "injetavel"],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "nausetrat-5-mg-ml-solucao-oral-20-ml",
+          "pharmaceutical_form": "Solução oral (gotas)",
+          "commercial_name": "Nausetrat 5 mg/mL (Gotas)",
+          "concentration_text": "5 mg/mL (1 gota ≈ 0,1 mg)",
+          "value": 5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 20,
+          "package_unit": "mL",
+          "avg_price_brl": 24.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "nausetrat-5-mg-ml-injetavel-10-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Nausetrat Injetável 5 mg/mL",
+          "concentration_text": "5 mg/mL",
+          "value": 5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 10,
+          "package_unit": "mL",
+          "avg_price_brl": 22.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "plasil-10-mg-comprimidos-20-un",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Plasil 10 mg (Genérico Humano)",
+          "concentration_text": "10 mg/comprimido",
+          "value": 10,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 20,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 9.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.25,
+              "scored": true
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-antiemetico-intermitente-0-2-a-0-5-mg-kg-vo-sc-iv-q6-8h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 0.3,
+          "dose_unit": "mg/kg",
+          "frequency": "q6h a q8h (30 a 60 min antes da alimentação)",
+          "notes": "Controle de vômitos agudos e gastroparesia. Reduzir 50% em DRC avançada.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-infusao-continua-cri-1-a-2-mg-kg-dia-iv",
+          "species": "cão",
+          "route": "IV",
+          "dose_value": 1.0,
+          "dose_unit": "mg/kg",
+          "frequency": "CRI em 24h (ataque lento de 0,05 a 0,1 mg/kg; nunca usar bolus de 1 mg/kg)",
+          "notes": "Íleo paralítico e estase gástrica em terapia intensiva.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-antiemetico-procinetico-0-2-a-0-4-mg-kg-vo-sc-q8-12h",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 0.25,
+          "dose_unit": "mg/kg",
+          "frequency": "q8h a q12h",
+          "notes": "Efeito antiemético menor no gato. Monitorar alterações comportamentais. Ineficaz em megacólon.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "molidustat",
+      "name": "Molidustat",
+      "active_ingredient": "Molidustat sódico (BAY 85-3934)",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["gato"],
+      "routes": ["VO"],
+      "notes": "Inibidor da prolil-hidroxilase do HIF (HIF-PHI). Estimula eritropoietina nativa felina na DRC sem risco de PRCA. Uso exclusivo felino; ciclo máximo de 28 dias.",
+      "tags": ["anemia", "nefrologia", "drc-felina", "hif-phi", "oral"],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "varenzin-25-mg-ml-suspensao-oral-27-ml",
+          "pharmaceutical_form": "Suspensão oral",
+          "commercial_name": "Varenzin 25 mg/mL (Elanco)",
+          "concentration_text": "25 mg/mL (0,2 mL/kg = 5 mg/kg)",
+          "value": 25,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 27,
+          "package_unit": "mL",
+          "avg_price_brl": 480.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "liquid_oral",
+              "round_ml_to": 0.1
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "gato-anemia-drc-5-mg-kg-vo-q24h-ate-28-dias",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 5.0,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h por até 28 dias consecutivos",
+          "notes": "0,2 mL/kg q24h. Monitorar PCV no D14, D21 e D28; suspender se PCV > 45%. Intervalo mínimo de 7 dias entre ciclos. Não redosar em vômito.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "maropitant",
+      "name": "Maropitant",
+      "active_ingredient": "Citrato de maropitant monoidratado (CJ-11,972)",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["SC", "IV", "VO"],
+      "notes": "Antagonista seletivo dos receptores NK1 e bloqueador da via final comum da êmese. Antiêmese robusta; não elimina necessariamente a náusea (Shin & Ambros 2026) e não é orexígeno. Injetar SC refrigerado para suprimir ardência.",
+      "tags": ["antiemetico", "nk1", "substancia-p", "vomito-agudo", "cinetose", "drc-felina", "pancreatite", "injetavel", "oral"],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "cerenia-10-mg-ml-solucao-injetavel-20-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Cerenia 10 mg/mL (Zoetis)",
+          "concentration_text": "10 mg/mL (0,1 mL/kg = 1 mg/kg)",
+          "value": 10,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 20,
+          "package_unit": "mL",
+          "avg_price_brl": 335.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "cerenia-24-mg-comprimidos-ranhurados",
+          "pharmaceutical_form": "Comprimido ranhurado",
+          "commercial_name": "Cerenia 24 mg (Zoetis)",
+          "concentration_text": "24 mg/comprimido",
+          "value": 24,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 4,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 141.0,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.5,
+              "scored": true
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-gato-vomito-agudo-1-mg-kg-sc-iv-q24h",
+          "species": "cão",
+          "route": "SC",
+          "dose_value": 1.0,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h até 5 dias",
+          "notes": "0,1 mL/kg SC ou IV lenta. Administrar gelado por via SC para suprimir dor/ardência. Se IV, infundir em 1 a 2 minutos.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-vomito-agudo-2-mg-kg-vo-q24h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 2.0,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h até 5 dias",
+          "notes": "Dose para gastrite e vômito agudo. Oferecer com pequena porção de comida.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-cinetose-enjoo-viagem-8-mg-kg-vo-q24h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 8.0,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h 2h antes da viagem (máximo 2 dias)",
+          "notes": "Dose 4x maior decorrente de saturação microssomal hepática (CYP2D15). Administrar 2 horas antes com pequeno agrado alimentar após 1h de jejum de ração.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-vomito-drc-1-mg-kg-vo-q24h",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 1.0,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h",
+          "notes": "Diretriz iCatCare 2026. Maior absorção oral felina (~50%) e menor depuração justificam dose de 1 mg/kg. Na DRC, reduz vômitos mas não é orexígeno (Quimby 2015).",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "ondansetrona",
+      "name": "Ondansetrona",
+      "active_ingredient": "Cloridrato de ondansetrona di-hidratado (GR 38032F)",
+      "is_controlled": false,
+      "is_active": true,
+      "species": ["cão", "gato"],
+      "routes": ["IV", "SC", "VO"],
+      "notes": "Antagonista seletivo 5-HT3 de canal iônico; potente ação antináusea e antiemética. Alerta farmacocinético canino 2026: biodisponibilidade oral é irrisória (~5,2%), enquanto SC é excelente (84,6%). Não exige ajuste por IRIS na DRC felina.",
+      "tags": ["antiemetico", "antinausea", "5-ht3", "quimioterapia", "cisplatina", "parvovirose", "sindrome-vestibular", "drc-felina", "injetavel", "oral"],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "nausedron-2-mg-ml-solucao-injetavel-2-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Nausedron 2 mg/mL (Cristália)",
+          "concentration_text": "2 mg/mL (0,25 mL/kg = 0,5 mg/kg)",
+          "value": 2,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 2,
+          "package_unit": "mL",
+          "avg_price_brl": 17.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "vonau-flash-4-mg-comprimidos-orodispersiveis",
+          "pharmaceutical_form": "Comprimido orodispersível",
+          "commercial_name": "Vonau Flash 4 mg (Biolab)",
+          "concentration_text": "4 mg/comprimido",
+          "value": 4,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 10,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 43.5,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": false,
+              "scored": false
+            }
+          }
+        },
+        {
+          "slug": "vonau-flash-8-mg-comprimidos-orodispersiveis",
+          "pharmaceutical_form": "Comprimido orodispersível",
+          "commercial_name": "Vonau Flash 8 mg (Biolab)",
+          "concentration_text": "8 mg/comprimido",
+          "value": 8,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 10,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 68.0,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": false,
+              "scored": false
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-nausea-vomito-0-5-mg-kg-iv-sc-q8h",
+          "species": "cão",
+          "route": "IV",
+          "dose_value": 0.5,
+          "dose_unit": "mg/kg",
+          "frequency": "q8h a q12h",
+          "notes": "0,25 mL/kg IV lenta em 2 a 5 minutos ou SC (F = 84,6%). Evitar via oral no cão devido à absorção de apenas ~5%.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-quimioterapia-cisplatina-0-5-mg-kg-iv",
+          "species": "cão",
+          "route": "IV",
+          "dose_value": 0.5,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única 30 a 60 min antes da quimioterapia",
+          "notes": "Infusão lenta em 2 a 5 minutos. Previne 100% de vômitos e reduz 90% da náusea aguda por cisplatina (Kenward 2017).",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-sindrome-vestibular-0-5-mg-kg-iv",
+          "species": "cão",
+          "route": "IV",
+          "dose_value": 0.5,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única na admissão; repetir q8–12h se necessário",
+          "notes": "Alívio significativo da náusea e ptialismo em ~1 hora após administração (Henze et al. 2022).",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-nausea-vomito-drc-0-5-mg-kg-sc-iv-q8-12h",
+          "species": "gato",
+          "route": "SC",
+          "dose_value": 0.5,
+          "dose_unit": "mg/kg",
+          "frequency": "q8h a q12h (faixa: 0,1 a 1 mg/kg q6–12h)",
+          "notes": "Diretriz iCatCare 2026 e ISFM 2022. Biodisponibilidade SC de 75%. Não requer ajuste por estágio IRIS (depuração hepática). Se VO, usar 0,5 a 1 mg/kg.",
+          "metadata": {}
+        }
+      ]
     }
   ]
 }

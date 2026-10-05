@@ -346,6 +346,18 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
       'Cuidado em problemas urinários e glaucoma: o remédio relaxa a bexiga e pode piorar a retenção de urina, além de elevar a pressão nos olhos.',
     ],
   },
+  trazodona: {
+    whatItDoes:
+      'A trazodona atua como um ansiolítico modulador da serotonina e calmante situacional em cães e gatos, diminuindo a sensação de medo, pavor e hipervigilância para permitir que o animal enfrente com serenidade viagens, idas ao veterinário, tempestades, fogos de artifício e períodos de repouso obrigatório pós-cirúrgico.',
+    keyPoints: [
+      'Ansiolítico situacional Fear Free: administrada cerca de 90 a 120 minutos antes do evento ansiogênico, propicia relaxamento emocional sem simplesmente paralisar o animal.',
+      'Dose-teste em casa recomendada: como a absorção e a resposta variam muito entre cães, teste o remédio previamente em um dia calmo para descobrir como o paciente reage.',
+      'Segurança ambiental e prevenção de quedas: como causa sonolência e andar cambaleante temporário, bloqueie escadas, sacadas e pisos escorregadios enquanto o efeito durar.',
+      'Risco grave de interação serotoninérgica: nunca dê trazodona junto com tramadol, outros antidepressivos (fluoxetina, amitriptilina) ou inibidores de MAO (selegilina, amitraz) sem supervisão estrita.',
+      'Atenção a exames de sangue e testes hormonais: o remédio pode diminuir a agregação de plaquetas e atenuar a resposta de cortisol em testes de adrenal; avise a equipe antes da consulta.',
+      'Controle especial no Brasil: medicamento sob controle da Portaria 344/98 (Lista C1), exigindo Receita de Controle Especial em 2 vias branca com validade de 30 dias.',
+    ],
+  },
 };
 
 export function getSimplifiedMedicationDefinition(slug: string): SimplifiedMedicationDefinition | null {

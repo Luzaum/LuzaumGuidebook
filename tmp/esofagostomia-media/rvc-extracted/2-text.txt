@@ -1,0 +1,626 @@
+
+--- PAGE 1 ---
+Veterinary Radiology & Ultrasound 
+ORIGINAL RESEARCH
+Introduction and Validation of Radiographic Guidelines for 
+Identification of Nasoesophageal and Nasogastric Tube 
+Position in Dogs and Cats 
+Andrea Vila Cabaleiro1 Dan G. O’Neill2 Alessia Cordella3 Federico R. Vilaplana Grosso4 
+Sara Gioele Rizzo5 Hannah L. Matson1 Federica Porcarelli1 Jade C. Bosher6 Vedant S. Matkar1 
+Rachael G. Duggan1 Alessia Diana7 Emmelie Stock8 Harriet Pearce9 Ella Fitzgerald1 
+1 Department of Clinical Sciences and Services, The Royal Veterinary College, University of London, Hertfordshire, UK 2 Pathobiology and Population Science, 
+The Royal Veterinary College, University of London, Hertfordshire, UK 3 University of Pennsylvania School of Veterinary Medicine, Philadelphia, 
+Pennsylvania, USA 4 Department of Small Animal Clinical Sciences, University of Florida, College of Veterinary Medicine, Gainesville, Florida, USA 
+5 Ospedale Veterinario i Portoni Rossi, Bologna, Italy 6 Companion Care Eastbourne, Eastbourne, UK 7 Department of Veterinary Medical Sciences, University 
+of Bologna, Bologna, Italy 8 Department of Morphology, Imaging, Orthopedics, Rehabilitation and Nutrition, Faculty of Veterinary Medicine, Ghent University, 
+Merelbeke, Belgium 9 The Ralph Veterinary Referral Centre, Marlow, UK 
+Correspondence: Andrea Vila Cabaleiro ( avilacabaleiro@rvc.ac.uk) 
+Received: 21 February 2025 Revised: 11 December 2025 Accepted: 2 January 2026 
+Keywords: canine | feeding tubes | feline | radiography 
+ABSTRACT 
+Nasoesophageal and nasogastric feeding tubes are commonly used in dogs and cats, but inadvertent tracheal placement can 
+cause serious complications. Although radiographs are widely used for confirming tube position, standardized interpretive 
+guidelines are lacking. This study aimed to introduce and validate novel radiographic guidelines for improving tube position 
+identification. Six blinded interpreters (one radiology intern, two emergency and critical care residents, one general practitioner, 
+and two fourth-year veterinary students) with varying clinical experience assessed tube positioning on 256 lateral canine and 
+feline cervical/thoracic radiographs before and after receiving the guidelines. True tube position was determined by clinical 
+history and radiographic assessment by two board-certified radiologists. The proposed guidelines for identifying correctly 
+positioned tubes included (1) incomplete superposition of the tube on the tracheal lumen, (2) dorsal tube position relative 
+to the carina, and (3) relative to the larynx when included. The study included 129 esophageal-positioned (correct) and 127 
+tracheal-positioned (incorrect) radiographs with nasoesophageal/nasogastric tubes. The implementation of the radiographic 
+guidelines significantly improved the correct identification of tube positioning, increasing from 82.1% pre-guidelines to 95.8% 
+post-guidelines ( p < 0.001). Additionally, “uncertain” assessments decreased from 14.1% pre-guidelines to 2.4% post-guidelines 
+( p < 0.001). Before guidelines, interpreters correctly identified tube position in 89.1% of radiographs that included the larynx. 
+However, guideline implementation did not significantly impact the correct interpretation of tube position assessment when 
+the larynx was included. These results validate the clinical utility of a novel radiographic guideline to improve the accuracy and 
+confidence of identification of nasoesophageal/nasogastric tube position in dogs and cats. 
+Abbreviations: ACVECC, American College of Veterinary Emergency and Critical Care; ECVDI, European College of Veterinary Diagnostic Imaging. 
+©2026 American College of Veterinary Radiology. 
+Veterinary Radiology & Ultrasound , 2026; 67:e70138 
+https://doi.org/10.1111/vru.70138
+1of9
+
+
+--- PAGE 2 ---
+1 Introduction 
+Early enteral feeding is widely recommended in both veterinary 
+and human medicine to reduce morbidity and mortality rates 
+[ 1–4 ]. Nasoesophageal and nasogastric tubes are frequently used 
+for short-term enteral nutrition in companion animals [ 5, 6 ]. 
+However, inadvertent tracheal placement can result in severe 
+complications, including aspiration pneumonia, pulmonary 
+hemorrhage, and pneumothorax, which may be fatal if not 
+promptly addressed [ 7–13 ]. 
+Thoracic radiographs are commonly used for noninvasive assess- 
+ment of feeding tube position [ 6, 14 ]. Radiographic confirmation 
+is considered the standard practice in human medicine and 
+is widely recommended in veterinary medicine [ 7, 13, 15–18 ]. 
+Although general radiographic techniques in small animals are 
+well-documented, specific guidelines addressing radiographic 
+projection, collimation, and tube evaluation, including visualiza- 
+tion of the larynx, are lacking in veterinary medicine [ 19, 20 ]. 
+Standardized radiographic guidelines have improved veterinary 
+diagnostic accuracy in various applications, including cardiac 
+assessment, pulmonary disease diagnosis, and fracture evaluation 
+[ 21–23 ]. Without such guidelines, interpretation can be inconsis- 
+tent, particularly for less commonly performed procedures [ 24 ]. 
+This diagnostic accuracy study aimed to introduce and validate 
+novel radiographic guidelines for the accurate identification of 
+nasoesophageal and nasogastric tube position in dogs and cats. 
+We hypothesized that (1) the proposed radiographic guidelines 
+would improve the accuracy of nasoesophageal and nasogastric 
+tube position identification, and (2) interpreter accuracy would 
+improve when the larynx was included in the radiographic 
+assessment of nasoesophageal/nasogastric tube placement. 
+2 Materials and Methods 
+2.1 Patient Selection 
+This multi-institutional diagnostic accuracy study was prospec- 
+tively designed and executed, using retrospectively collected 
+lateral cervical and thoracic radiographs from dogs and cats. It 
+was approved by the Clinical Research Ethical Review Board at 
+the Royal Veterinary College (URN: SR2024-0098R0905). Medical 
+records from 10 private and academic institutions, including 
+the Queen Mother Hospital for Animals, were reviewed to 
+identify dogs and cats that underwent radiographic assessment of 
+nasoesophageal/nasogastric tube placements. Key words used for 
+the search included “nasoesophageal tube,” “nasogastric tube,”
+“tube check,” and “tube misplacement.” Dogs and cats were 
+included if they underwent a digital lateral thoracic radiographic 
+projection to assess the tube position. Radiographs were excluded 
+if they were nondiagnostic due to suboptimal quality or body posi- 
+tioning, or if the tube positioning was unclear. Final inclusion or 
+exclusion decisions were made by two board-certified veterinary 
+radiologists (E.F., European College of Veterinary Diagnostic 
+Imaging (ECVDI), and F.V.G., ECVDI and American College of 
+Veterinary Radiology) and a first-year ECVDI resident (A.V.C.). 
+2.2 Data Recording and Radiographic Image 
+Analysis 
+Patient species was recorded. Dogs belonged to a wide variety 
+of breeds, ranging from toy breeds to giant breeds, and cats 
+were predominantly domestic shorthair. Individual body 
+weights and breed documentation were not systematically 
+recorded. Radiographic studies were anonymized by removing 
+all identifying patient information. True tube position was 
+determined on the basis of clinical history and radiographic 
+reports from a board-certified veterinary radiologist. If the tube’s 
+positioning remained unclear, the images were reviewed by two 
+board-certified radiologists (E.F. and F.V.G.) to reach a consensus. 
+If consensus could not be achieved, the radiograph was excluded. 
+A power analysis determined that a minimum of 254 
+radiographs was required to achieve 80% power in detecting a 
+significant improvement ( p < 0.05) in accuracy following the 
+implementation of the proposed guidelines. No explicit search 
+timeframe for the radiographs was predefined, and instead, cases 
+were collected in reverse chronological order (January 2024 
+backwards) across the participating institutions, until the target 
+sample size determined by the pretrial power calculation was 
+reached (target: 254, included: 256). 
+The lateral thoracic radiographs of dogs and cats with 
+nasoesophageal and nasogastric tubes were compiled into a 
+PowerPoint file (Microsoft Corporation, Redmond, WA, USA, 
+2019) and randomized using a custom-coded method ( Supporting 
+Information section) within PowerPoint to ensure a balanced 
+distribution of intratracheal and intraesophageal tube images. Six 
+blinded interpreters of different ranges of experience, including 
+a radiology intern (S.G.R.), two American College of Veterinary 
+Emergency and Critical Care (ACVECC) residents (H.M. and 
+F.P.), two fourth-year veterinary students (V.M. and R.D.), and 
+a general practice veterinary surgeon (J.B.), independently 
+assessed tube positioning of a single lateral cervical and thoracic 
+radiograph on a computer workstation (Apple Mac Pro, Apple, 
+USA) equipped with a calibrated LCD flat screen monitor. Each 
+interpreter reviewed radiographs twice, with a minimum 7-day 
+interval between assessments; however, most interpreters had an 
+interval of 3–4 weeks due to clinical commitments. 
+For the second assessment, interpreters used the novel 
+radiographic guidelines developed by two of the authors 
+(E.F. and A.V.C.). The original PowerPoint was not rerandomized 
+for this phase of the study. At each assessment, interpreters 
+classified tube position as esophageal, tracheal, or uncertain. 
+2.3 Proposed Radiographic Guidelines for 
+Nasoesophageal and Nasogastric Tube Position 
+The proposed guidelines provide a systematic, rapid, and practical 
+approach for veterinarians to confirm correct esophageal tube 
+placement and avoid misinterpretation. 
+(1) Obtain a single lateral cervical and thoracic radiograph, 
+ensuring inclusion of the cervical region, particularly the larynx. 
+2of9 Veterinary Radiology & Ultrasound,2026
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 3 ---
+FIGURE 1 (A–C) Left lateral cervical and thoracic radiograph of a skeletally mature large-breed dog, including the larynx, showing a 
+nasoesophageal tube positioned in the esophagus (A). The tube exhibits incomplete superposition over the tracheal lumen and is located dorsal to 
+the mineralized lamina of the cricoid cartilage (purple arrow) and the carina (white arrow). Transverse (B) and sagittal (C) CT images of a dog, obtained 
+using a bone algorithm, clearly depict the lamina of the cricoid cartilage (purple arrows). 
+(2) Assess the tube position using the following three criteria: 
+(a) Dorsal tube position at the larynx: when the cranial neck is 
+included, the tube should pass dorsal to the larynx, using the 
+lamina of the cricoid cartilage as a landmark if visible. 
+(b) No complete overlap of the tube with the tracheal lumen: The 
+nasoesophageal tube should be distinguishable from the trachea 
+and should not fully superimpose on its lumen. 
+(c) Dorsal tube position at the carina: the tube should lie dorsal 
+to the carina, confirming its esophageal placement. 
+Examples of these three-point guidelines applied to a dog and a 
+cat are illustrated in Figures 1A–C and 2A–C , respectively. 
+2.4 Statistical Analyses 
+Data were checked and cleaned using Excel (Microsoft 
+Corporation, Redmond, WA, USA, 2019). Statistical analyses 
+were performed using Stata (version 16; Stata Corp LLC, College 
+Station, TX, USA) by an Associate Professor in Companion Ani- 
+mal Epidemiology with advanced training in statistics (D.O.N.). 
+Chi-squared tests were used to assess associations between 
+guideline provision and tube positioning accuracy, as well as the 
+effect of laryngeal visualization on accuracy. These assessments 
+were conducted separately before and after the provision of 
+guidelines. Statistical significance was set at the 5% level. Inter- 
+rater agreement using the Fleiss Kappa statistic between the six 
+raters for each of the 256 lateral cervical and thoracic radiographs 
+with three tube position options (esophagus, trachea, uncertain) 
+was calculated separately for tube positioning opinions before 
+and after provision of radiographic guidelines [ 25 ]. The Fleiss 
+Kappa results were interpreted as follows: 1.00–0.81 almost 
+perfect agreement, 0.80–0.61 substantial agreement, 0.60–0.4 
+moderate agreement, 0.40–0.21 fair agreement, 0.20–0.00 slight 
+agreement, and ≤ 0 poor agreement or no agreement [ 26 ]. 
+3 Results 
+3.1 Population 
+The study included 256 lateral cervical and thoracic radiographs 
+of dogs (186/256, 72.7%) and cats (70/256, 27.3%). Of these, 129/256 
+(50.4%) radiographs showed tubes positioned in the esophagus 
+(dogs 76/129, 58.9%; cats 53/129, 41.1%), whereas 127/256 (49.6%) 
+showed tubes positioned in the trachea (dogs 110/127, 86.6%; 
+cats 17/127, 13.4%). The larynx was included in 102/256 (39.8%) 
+radiographs (dogs 73/186, 39.2%; cats 29/70, 41.4%). In most cases 
+(239/256, 93.3%), the tube reached the level of the carina. 
+3.2 Radiographic Assessment Before and After 
+Guidelines 
+For tubes positioned in the esophagus, the provision of radio- 
+graphic guidelines significantly improved the correct interpre- 
+tation of tube position, increasing from 88.8% before guidelines 
+Veterinary Radiology & Ultrasound,2026 3of9
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 4 ---
+FIGURE 2 (A–C) Left lateral cervical and thoracic radiograph of a skeletally mature domestic shorthair cat, including the larynx, showing a 
+nasoesophageal tube positioned in the esophagus (A). The tube exhibits incomplete superposition over the tracheal lumen and is located dorsal to the 
+lamina of the cricoid cartilage (purple arrow), which is not mineralized, and the carina (white arrow). Transverse (B) and sagittal (C) CT images of a cat, 
+obtained using a bone algorithm, clearly depict the lamina of the cricoid cartilage (purple arrows). 
+to 98.7% after guidelines ( p < 0.001). Additionally, guideline 
+provision significantly reduced “uncertain” assessments from 
+8.9% before provision to 0.8% after provision ( p < 0.001). 
+For tubes positioned in the trachea, guidelines provision 
+significantly improved the correct interpretation of tube position, 
+increasing from 75.3% before guidelines to 92.8% after guidelines 
+( p < 0.001) (Figures 3 and 4 ). Furthermore, “uncertain”
+assessments decreased significantly from 19.4% before guidelines 
+to 4.1% after guidelines ( p < 0.001). 
+Overall, the implementation of the novel radiographic 
+guidelines increased the correct interpretation of 
+nasoesophageal/nasogastric tube positioning (whether 
+intraesophageal or intratracheal) from 82.1% before guidelines 
+to 95.8% after guidelines ( p < 0.001) and significantly reduced 
+“uncertain”assessments from 14.1% to 2.4% ( p < 0.001). 
+3.3 Inter-Rater Agreement Before and After 
+Guidelines 
+Inter-rater agreement between the six raters before provision of 
+radiographic guidelines was 0.59 (Fleiss Kappa statistic), showing 
+moderate agreement. The provision of radiographic guidelines 
+significantly improved the inter-rater agreement between the 
+six raters to 0.86 (Fleiss Kappa statistic), showing almost perfect 
+agreement. 
+3.4 Radiographic Assessment With and Without 
+Laryngeal Visualization 
+Before the provision of the radiographic guidelines, tube position 
+was correctly identified in significantly fewer images without 
+laryngeal inclusion (716/924, 77.5%) than in those including the 
+larynx (545/612, 89.1%) ( p < 0.001). After the implementation of 
+the guidelines, no significant difference was observed for correct 
+interpretation rates between radiographs excluding (881/924, 
+95.4%) and including the larynx (590/612, 96.4%) ( p = 0.452). An 
+example of a case that generated mixed interpretations before 
+guideline provision and in which the larynx is not included is 
+presented in Figure 5 . 
+3.5 Influence of Species on Interpreter 
+Performance and Confidence 
+Species significantly influenced diagnostic confidence and 
+accuracy. Overall, assessments of feline radiographs showed 
+higher accuracy (90.83%) and fewer “uncertain” responses 
+(7.98%) than canine radiographs (88.22% and 8.38%, respectively; 
+4of9 Veterinary Radiology & Ultrasound,2026
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 5 ---
+FIGURE 3 Right lateral cervical and thoracic radiograph of a skeletally mature small-breed dog, including the larynx, showing a nasoesophageal 
+tube incorrectly positioned in the trachea. The tube is superimposed over the nasopharynx, laryngopharynx, and tracheal lumen, passing through the 
+laryngeal lumen (purple arrow) and extending to the carina (white arrow) before following a caudodorsal bronchial path. 
+p = 0.004). Before guideline implementation, there was no 
+significant species effect ( p = 0.117). After the introduction of the 
+guidelines, however, the difference became more pronounced: 
+feline radiographs achieved 97.86% correct interpretations and 
+only 1.90% “uncertain”responses, compared with 94.98% correct 
+and 2.60% “uncertain”in canine radiographs ( p = 0.012). 
+4 Discussion 
+This is the first study to propose radiographic guidelines to 
+improve the accuracy and confidence in identifying nasoe- 
+sophageal tube positioning in dogs and cats. Various methods 
+have been described in both human and veterinary literature 
+for determining nasoesophageal tube position, including pH 
+testing, capnography, and assessing for negative pressure at 
+the thoracic inlet during placement [ 17, 18, 27 ]. However, 
+radiography remains the standard of care method for confirming 
+appropriate nasoesophageal and nasogastric tube position, as 
+the other aforementioned alternative tests have limited evidence 
+supporting their reliability [ 7, 28 ]. The proposed novel three-point 
+radiographic guidelines are designed to be rapid, straightforward, 
+and reliable, enhancing their clinical applicability and utility 
+for both radiologist and non-radiologist veterinary professionals 
+across emergency, critical care, and general practice settings. 
+The findings of this study support the first hypothesis as the 
+novel radiographic guidelines significantly increased the correct 
+identification of nasoesophageal/nasogastric tube position. The 
+guidelines enhanced the identification of tube position in both the 
+esophagus and trachea. For esophageal tube placements, correct 
+interpretation increased from 88.8% to 98.7% ( p < 0.001), with 
+“uncertain”assessmentsdecreased from 8.9% to 0.8% ( p < 0.001). 
+Similarly, for tracheal tube placements, correct interpretation 
+improved from 75.3% to 92.8% ( p < 0.001), with “uncertain”
+assessments decreasing from 19.4% to 4.1% ( p < 0.001). A notable 
+finding was the high level of uncertainty among interpreters 
+when evaluating tubes positioned in the trachea. Before the intro- 
+duction of guidelines, tracheal-positioned tubes were correctly 
+identified in a high percentage of cases (75.3%), yet 19.4% of assess- 
+ments were categorized as “uncertain.”Misplaced tracheal tube 
+lies entirely within, and superimposes on, the tracheal lumen, an 
+appearance interpreters often recognize as abnormal but cannot 
+confidently classify without explicit criteria. Esophageal tube 
+positioning more commonly shows visible separation or dorsal 
+deviation. The guidelines, especially the “no complete overlap”
+and “dorsal to carina” criteria, provided objective landmarks 
+that resolved this ambiguity (uncertain responses for tracheal 
+tubes fell to 4.1%). Additionally, this likely reflects appropriate 
+clinical caution among the interpreters, who represented a range 
+of veterinary trainees and practitioners rather than specialist 
+radiologists, given the potentially life-threatening consequences 
+of mistaking a tracheal for an esophageal placement. The 
+implementation of the guidelines has provided clearer criteria, 
+reduced uncertainty, and improved diagnostic confidence. 
+Overall, the correct interpretations of tube positioning 
+significantly increased, from 82.1% before guidelines to 95.8% 
+after guidelines ( p < 0.001), and the percentage of “uncertain”
+assessments decreased, from 14.1% before guidelines to 2.4% after 
+guidelines ( p < 0.001). These results indicate that interpreters 
+reported significantly greater confidence in their evaluations 
+following the application of the guidelines, which enhanced 
+diagnostic accuracy. To ensure the reliability of these findings, 
+the study implemented a comprehensive validation process 
+involving multiple interpreters and a large dataset of radiographs 
+Veterinary Radiology & Ultrasound,2026 5of9
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 6 ---
+FIGURE 4 Left lateral cervical and thoracic radiograph of a skeletally mature domestic shorthair cat, including the larynx, showing a 
+nasoesophageal tube incorrectly positioned in the trachea. The tube is superimposed over the nasopharynx, laryngopharynx, and tracheal lumen, 
+passing through the laryngeal lumen (purple arrow). The caudal tip of the tube does not reach the carina (white arrow). This radiograph highlights 
+the importance of including the larynx as an additional point when the tube does not extend to the carina. 
+from dogs and cats to evaluate nasoesophageal and nasogastric 
+tube placement. Our results confirm the guidelines’ effectiveness 
+in improving radiographic interpretation. As well as increasing 
+the validity (i.e., correctness) of the interpretations of tube 
+positioning, the provision of radiographic guidelines also 
+substantially improved inter-rater agreement from 0.59 before 
+provision to 0.86 after provision, suggesting strong gains 
+toward standardizing interpretation by scaffolding clinicians’ 
+decision-making processes with clear and objective criteria. 
+The second study hypothesis, that interpreter accuracy improves 
+when the larynx is included in the radiographic assessment 
+of nasoesophageal/nasogastric tube placement, was strongly 
+supported in pre-guidelines assessment. Before guidelines 
+implementation, interpreters correctly identified tube position 
+in 89.1% of radiographs that included the larynx, whereas after 
+guidelines introduction, accuracy increased to 96.4%, though this 
+improvement was not statistically significant, suggesting that 
+laryngeal inclusion already provided a high level of accuracy, 
+reflecting the benefit of seeing the cranial portion of the tube 
+course. The authors propose that post-guideline improvements 
+were largely attributed to two key points: [ 1 ] The tube should 
+not completely overlap with the tracheal lumen, and [ 2 ] the 
+tube should be positioned dorsally to the carina. In most cases 
+(239/256, 93.3%), the tube reached the level of the carina. 
+However, this is not always the case. In such cases, the carina 
+criterion cannot be applied, and inclusion of the larynx becomes 
+the decisive anatomic landmark. Additionally, the authors do 
+not suggest further advancement of the tube, given the risk of 
+tracheobronchial perforation, which can result in pulmonary 
+hemorrhage and/or pneumothorax [ 8, 13 ]. Therefore, including 
+the larynx in the radiographic assessment is recommended as 
+an additional confirmation point for improved accuracy in the 
+evaluation of tube positioning. Radiographically, the larynx is 
+easier to delineate in dogs than in cats, mainly due to size differ- 
+ences and the presence of laryngeal mineralization in older dogs, 
+chondrodystrophic breeds, and large-breed dogs. The cricoid 
+cartilage is often the most radiographically distinct structure [ 19 ]. 
+Species significantly affected diagnostic confidence and accuracy. 
+After guideline implementation, cats achieved higher accuracy 
+(97.86%) and markedly fewer uncertain responses (1.90%) than 
+dogs (94.98% and 2.60%, respectively; p = 0.012). This finding 
+initially appears counterintuitive because feline patients are 
+generally smaller and have a narrower mediastinum with 
+less fat separating structures, leading to superposition and 
+reduced contrast on radiographs [ 29, 30 ]. However, tracheal 
+misplacement, which is the scenario that generated by far the 
+6of9 Veterinary Radiology & Ultrasound,2026
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 7 ---
+FIGURE 5 Right lateral cervical and thoracic radiograph of a skeletally mature British Shorthair cat in which the larynx is not visible and the 
+nasoesophageal tube is incorrectly positioned in the trachea. The tube is superimposed on the tracheal lumen (dorsal location in the thoracic inlet), 
+and its tip extends just beyond the carina. Before guideline provision, the radiology intern and both emergency and critical care residents classified 
+the position as “uncertain,”whereas the two fourth-year students and the general practitioner correctly identified tracheal placement. After guideline 
+provision, all six interpreters correctly identified tracheal placement. This case emphasizes the importance of including the larynx in routine tube-check 
+radiographs, as it may provide the only definitive landmark when the tube tip does not reach the carina. 
+highest rate of uncertain responses before guidelines (19.4%) 
+compared to esophageal placements (8.9%), was heavily skewed 
+toward dogs (110/127 tracheal cases, 86.6%). Thus, the more 
+challenging tracheal cohort disproportionately involved larger 
+patients with inherently better soft-tissue contrast. The greater 
+relative benefit observed in the feline population, therefore, 
+occurred despite more difficult thoracic anatomy, reinforcing the 
+robustness and clinical utility of the guidelines across the full 
+spectrum of patient sizes and species encountered in practice. 
+The current study had several limitations. The effect of interpreter 
+experience on the accuracy of nasoesophageal tube interpretation 
+was not assessed due to the small number of interpreters and 
+the variability in their levels of experience. A formal subgroup 
+analysis stratified by level of expertise was not performed, 
+as the study was not powered for this comparison, and the 
+limited number of observers per category would have resulted 
+in low statistical power. Future studies with larger numbers 
+of interpreters across defined experience categories would 
+be valuable to quantify how much the guidelines reduce 
+interobserver variability and benefit less experienced clinicians 
+in particular. There was also a potential for temporal bias, 
+as interpreters may have gained experience when reviewing 
+radiographs for the second time following the introduction of 
+the guidelines. Although the minimum wash-out period was 7 
+days, most interpreters had intervals of 3–4 weeks due to clinical 
+scheduling. Although a longer fixed interval would have been 
+ideal, this was constrained by interpreter availability across 
+multiple institutions. However, the substantial improvement in 
+accuracy and the marked reduction in “uncertain” responses 
+after guideline provision strongly suggest that the observed 
+effect is primarily attributable to the guidelines rather than 
+simple familiarization with the images. The study prospectively 
+aimed for a roughly equal proportion of nasoesophageal tubes 
+positioned in the trachea and esophagus to ensure a robust 
+comparison between intended and unintended placements. 
+However, this ratio may not reflect the real-world clinical 
+scenarios. Given the life-threatening implications of tracheal 
+misplacement, the inclusion of a substantial number of tracheal 
+tube cases was considered necessary. Although the relative 
+contribution of each individual criterion was not quantitatively 
+assessed, the synergistic effect of the three-point checklist is 
+evidenced by the dramatic reduction in both misinterpretations 
+and diagnostic uncertainty. A further limitation was the use of a 
+single lateral radiograph from each animal rather than multiple 
+orthogonal projections. However, the high levels of correct 
+identification of position post-guidelines suggest that a single 
+lateral radiograph is sufficient for an accurate interpretation, sup- 
+porting the feasibility of adopting the novel guidelines in general 
+practice, where obtaining multiple projections may not always 
+be practical [ 31 ]. Individual body weights were not available, 
+precluding formal analysis of patient size independent of species. 
+Nonetheless, our dataset recorded the majority of the dog breeds, 
+ranging from toy to giant breeds based on clinical records and 
+radiographic appearance, as well as a feline population, providing 
+a wide range of patient conformations. This diversity supports 
+the robustness of the guidelines across markedly different patient 
+sizes. Additionally, the exact nasoesophageal/nasogastric tube 
+type and diameter were not recorded. However, all the tubes were 
+sufficiently radiopaque with a similar radiographic appearance 
+(typically two parallel radiopaque lines) for inclusion. The 
+consistent radiographic performance of the guidelines across 
+this heterogeneous tube population supports their applicability 
+regardless of specific tube material or size. 
+Veterinary Radiology & Ultrasound,2026 7of9
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 8 ---
+Finally, the multicenter nature of the study meant that 
+radiographs were obtained with different machines and in 
+varying clinical settings. However, the authors believe that rather 
+than being a limitation, this diversity strengthens the study’s 
+applicability across a broad range of veterinary practices. 
+In conclusion, this is the first study to establish radiographic 
+guidelines for the accurate identification of nasoesophageal 
+and nasogastric tube positions in dogs and cats. The results 
+demonstrate a strong clinical benefit from these novel guidelines, 
+improving the accuracy of tube localization and increasing 
+interpreter confidence. Consequently, these guidelines are 
+proposed as a valuable new tool in veterinary practice to 
+enhance patient safety and the overall quality of radiographic 
+evaluations. 
+Author Contributions 
+Conception and design: Andrea Vila Cabaleiro, Dan G. O’Neill, Ella 
+Fitzgerald. Acquisition of data: Andrea Vila Cabaleiro, Alessia Cordella, 
+Vilaplana Grosso, Gioele Rizzo, Emmelie Stock, Harriet Pearce, Ella 
+Fitzgerald, Alessia Diana. Analysis and interpretation of data: Andrea 
+Vila Cabaleiro, Dan G. O’Neill, Vilaplana Grosso, Gioele Rizzo, Hannah 
+L. Matson, Federica Porcarelli, Jade C. Bosher, Vedant S. Matkar, 
+Rachael G. Duggan, Ella Fitzgerald. Drafting the article: Andrea 
+Vila Cabaleiro, Dan G. O’Neill, Ella Fitzgerald. Revising article for 
+intellectual content: Andrea Vila Cabaleiro, Dan G. O’Neill, Vilaplana 
+Grosso, Hannah L. Matson, Federica Porcarelli, Ella Fitzgerald, Jade 
+C. Bosher, Vedant S. Matkar, Rachael G. Duggan, Alessia Diana, 
+Gioele Rizzo, Emmelie Stock, Harriet Pearce, Alessia Cordella. Final 
+approval of the completed article: Andrea Vila Cabaleiro, Dan G. O’Neill, 
+Alessia Cordella, Vilaplana Grosso, Gioele Rizzo, Hannah L. Matson, 
+Federica Porcarelli, Alessia Diana, Emmelie Stock, Harriet Pearce, 
+Jade C. Bosher, Ella Fitzgerald, Vedant S. Matkar, Rachael G. Duggan. 
+Agreement to be accountable for all aspects of the work in ensuring that 
+questions related to the accuracy or integrity of any part of the work 
+are appropriately investigated and resolved: Andrea Vila Cabaleiro, Dan 
+G. O’Neill, Alessia Cordella, Vilaplana Grosso, Gioele Rizzo, Hannah 
+L. Matson, Federica Porcarelli, Alessia Diana, Emmelie Stock, Harriet 
+Pearce, Jade C. Bosher, Ella Fitzgerald, Vedant S. Matkar, Rachael G. 
+Duggan. 
+Acknowledgments 
+The authors would like to thank the large group of individuals 
+involved in this study for their prompt provision of cases, which 
+made this manuscript possible, including the RVC Emergency 
+and Critical Care team, Robinson Katie, Ashley Moors, Antech 
+Imaging Services, John Mattoon, Nam Joo (Polly) Baik, and Nicholas 
+Goody. 
+Disclosure 
+An EQUATOR network was used. This research was accepted for oral 
+presentation at the EVDI Conference, Athens, Greece, September 19th, 
+2024. Abstract in proceedings page 72. 
+Conflicts of Interest 
+The authors declare no conflicts of interest. 
+Data Availability Statement 
+Public data repository with shared folder in a file hosting service 
+(Dropbox). 
+References 
+1 . J. Molina, M. Hervera, E. G. Manzanilla, C. Torrente, and C. Villaverde, 
+“Evaluation of the Prevalence and Risk Factors for Undernutrition in 
+Hospitalized Dogs,” Frontiers in Veterinary Science 5 (2018): 205, https:// 
+doi.org/10.3389/fvets.2018.00205 . 
+2 . M. A. Brunetto, M. O. Gomes, M. R. Andre, et al., “Effects of Nutritional 
+Support on Hospital Outcome in Dogs and Cats,” Journal of Veterinary 
+Emergency and Critical Care (San Antonio) 20, no. 2 (2010): 224–231, 
+https://doi.org/10.1111/j.1476-4431.2009.00507.x. 
+3 . S. A. McClave, B. E. Taylor, R. G. Martindale, et al., “Guidelines for 
+the Provision and Assessment of Nutrition Support Therapy in the Adult 
+Critically Ill Patient,”Journal of Parenteral and Enteral Nutrition 40, no. 
+2 (2016): 159–211, https://doi.org/10.1177/0148607115621863 . doi. 
+4 . S. J. Lewis, H. K. Andersen, and S. Thomas, “Early Enteral Nutrition 
+Within 24 h of Intestinal Surgery Versus Later Commencement of Feed- 
+ing: A Systematic Review and Meta-Analysis,”Journal of Gastrointestinal 
+Surgery 13, no. 3 (2009): 569–575, https://doi.org/10.1007/s11605- 008- 0592- 
+x. 
+5 . V. Parker, “Nutritional Management of Hospitalised Dogs and Cats,”
+Veterinary Nurse 4 (2013): 478–485, https://doi.org/10.12968/vetn.2013.4.8. 
+478 . 
+6 . D. L. Chan, “Nutritional Support of the Critically Ill Small Animal 
+Patient,” Veterinary Clinics of North America Small Animal Practice 50, 
+no. 6 (2020): 1411–1422, https://doi.org/10.1016/j.cvsm.2020.07.006 . 
+7 . F. Camacho and K. Humm, “Complication Rates Associated With 
+Nasoesophageal Versus Nasogastric Feeding Tube Placement in Dogs and 
+Cats: A Randomised Controlled Trial,”Journal of Small Animal Practice 
+65, no. 7 (2024): 417–423, https://doi.org/10.1111/jsap.13729 . 
+8 . A. Odunayo, M. Hoen, J. Wolf, K. Marshall, K. Osterbur, and K. 
+Maxwell, “Outcomes, Including Death, in Dogs With Pneumothorax Fol- 
+lowing Nasogastric Feeding Tube Misplacement in the Tracheobronchial 
+Tree: 13 Cases (2017–2022),”Journal of the American Veterinary Medical 
+Association 261, no. 10 (2023): 1–7, https://doi.org/10.2460/javma.22.12. 
+0585 . 
+9 . M. K. Yu, L. M. Freeman, C. R. Heinze, V. J. Parker, and D. E. Linder, 
+“Comparison of Complication Rates in Dogs With Nasoesophageal Versus 
+Nasogastric Feeding Tubes,”Journal of Veterinary Emergency and Critical 
+Care (San Antonio) 23, no. 3 (2013): 300–304, https://doi.org/10.1111/vec. 
+12048 . 
+10 . R. Agha and M. Siddiqui, “Pneumothorax After Nasogastric Tube 
+Insertion,” JRSM Short Rep 2 (2011): 28,https://doi.org/10.1258/shorts. 
+2011.010142 . 
+11 . J. Gladden, “Iatrogenic Pneumothorax Associated With Inadvertent 
+Intrapleural NGT Misplacement in Two Dogs,” Journal of the American 
+Animal Hospital Association 49, no. 6 (2013): e1–e6, https://doi.org/10. 
+5326/jaaha- ms- 6091 . 
+12 . J. B. Pillai, A. Vegas, and S. Brister, “Thoracic Complications of Naso- 
+gastric Tube: Review of Safe Practice,” Interdisciplinary CardioVascular 
+and Thoracic Surgery 4, no. 5 (2005): 429–433, https://doi.org/10.1510/ 
+icvts.2005.109488 . 
+13 . J. Rodriguez-Diaz, J. P. Sumner, and M. Miller, “Fatal Complications 
+of Nasogastric Tube Misplacement in Two Dogs,”Journal of the American 
+Animal Hospital Association 57, no. 5 (2021): 242–246, https://doi.org/10. 
+5326/jaaha- ms- 7104 . 
+14 . J. M. Herring, “A Novel Placement Technique for Nasogastric and 
+Nasoesophageal Tubes,” Journal of Veterinary Emergency and Critical 
+Care 26, no. 4 (2016): 593–597, https://doi.org/10.1111/vec.12474 . 
+15 . “Initial and Ongoing Verification of Feeding Tube Placement in Adults 
+(Applies to Blind Insertions and Placements With an Electromagnetic 
+Device),” Critical Care Nurse 2016;36(2):e8–e13, https://doi.org/10.4037/ 
+ccn2016141 . 
+16 . J. I. Boullata, A. L. Carrera, and L. Harvey, et al., “ASPEN Safe 
+Practices for Enteral Nutrition Therapy,” Journal of Parenteral and 
+8of9 Veterinary Radiology & Ultrasound,2026
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+
+--- PAGE 9 ---
+Enteral Nutrition 41, no. 1 (2017): 0148607116673053, https://doi.org/10. 
+1177/0148607116673053 . 
+17 . M. Ramesh, A. C. Brooks, and E. Thomovsky, et al., “Comparison of 
+4 Point-of-Care Techniques to Detect Correct Positioning of Nasogastric 
+Tubes in Dogs (2020–2021),”Journal of Veterinary Emergency and Critical 
+Care (San Antonio) 33, no. 5 (2023): 501–508, https://doi.org/10.1111/vec. 
+13327 . 
+18 . M. A. Longo, “Best Evidence: Nasogastric Tube Placement Verifica- 
+tion,” Journal of Pediatric Nursing 26, no. 4 (2011): 373–376, https://doi. 
+org/10.1016/j.pedn.2011.04.030 . 
+19 . R. Drees, Textbook of Veterinary Diagnostic Radiology , 8th ed. (Elsevier 
+Health Sciences, 2024). 
+20 . M. C. Muhlbauer and S. K. Kneller, Radiography of the Dog and Cat: 
+Guide to Making and Interpreting Radiographs (John Wiley & Sons, 2024). 
+21 . J. W. Buchanan and J. Bücheler, “Vertebral Scale System to Measure 
+Canine Heart Size in Radiographs,” Journal of the American Veterinary 
+Medical Association 206, no. 2 (1995): 194–199. 
+22 . W. J. Morgan, E. C. Ogden, A. Martin, and L. Singh, “Corr elation 
+Between Clinical and Radiological Diagnosis for Fractures and Dislo- 
+cations in an Accident Department,” Injury 11, no. 3 (1980): 225–227, 
+https://doi.org/10.1016/s0020-1383(80)80048-9 . 
+23 . R. Dennis, “Radiological Assessment of Lung Disease in Small 
+Animals,” In Practice 30, no. 5 (2008): 262–270, https://doi.org/10.1136/ 
+inpract.30.5.262 . 
+24 . P. V. Scrivani, “Assessing Diagnostic Accuracy in Veterinary Imaging,”
+Veterinary Radiology & Ultrasound 43, no. 5 (2002): 442–448, https://doi. 
+org/10.1111/j.1740-8261.2002.tb01031.x. 
+25 . T. R. Nichols, P. M. Wisner, G. Cripe, and L. Gulabchand, “Putting 
+the Kappa Statistic to Use,”Quality Assurance Journal 13, no. 3–4 (2010): 
+57–61, https://doi.org/10.1002/qaj.481 . 
+26 . J. R. Landis and G. G. Koch, “The Measurement of Observer 
+Agreement for Categorical Data,”Biometrics 33, no. 1 (1977): 159–174. 
+27 . M. A. Lortie and E. Charbonney, “Confirming Placement of Nasogas- 
+tric Feeding Tubes,”CMAJ 188,no. 5 (2016): E96,https://doi.org/10.1503/ 
+cmaj.150609 . 
+28 . K. Boeykens, T. Holvoet, and I. Duysburgh, “Nasogastric Tube Inser- 
+tion Length Measurement and Tip Verification in Adults: A Narrative 
+Review,”Critical Care (London, England) 27, no. 1 (2023): 317, https://doi. 
+org/10.1186/s13054- 023- 04611- 6 . 
+29 . J. Ruby, S. Secrest, and A. Sharma, “Radiographic Differentiation 
+of Mediastinal Versus Pulmonary Masses in Dogs and Cats Can be 
+Challenging,” Veterinary Radiology & Ultrasound: The Official Journal 
+of the American College of Veterinary Radiology and the International 
+Veterinary Radiology Association 61, no. 4 (2020): 385–393, https://doi.org/ 
+10.1111/vru.12859 . 
+30 . T. Schwarz and P. Scrivani, BSAV A Manual of Canine and Feline 
+Thoracic Imaging (British Small Animal Veterinary Association, 2024). 
+31 . A. Skipper, C. Gray, R. Serlin, D. O’Neill, C. Elwood, and J. Davidson, 
+“Gold Standard Care’ is an Unhelpful Term,”Veterinary Record 189, no. 8 
+(2021): 331, https://doi.org/10.1002/vetr.1113 . 
+Supporting Information 
+Additional supporting information can be found online in the Supporting 
+Information section. 
+Supporting File 1: Explanation of the custom-coded method within 
+PowerPoint for reproducibility of the randomization process. 
+Veterinary Radiology & Ultrasound,2026 9of9
+ 17408261, 2026, 1, Downloaded from https://onlinelibrary.wiley.com/doi/10.1111/vru.70138 by Anna Griffiths - Royal Veterinary College , Wiley Online Library on [27/01/2026]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

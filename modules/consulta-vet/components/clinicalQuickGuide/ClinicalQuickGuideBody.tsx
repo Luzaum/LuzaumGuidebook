@@ -1,5 +1,5 @@
 import { ReadableTable } from '../shared/ReadableTable';
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { ClinicalGuideInline } from './ClinicalGuideInline';
 import { ZoomIn } from 'lucide-react';
 import { ClinicalQuickGuideBlock } from '../../types/clinicalQuickGuide';
@@ -7,8 +7,12 @@ import { ClinicalQuickGuideYoutubeEmbed } from './ClinicalQuickGuideYoutubeEmbed
 import { ClinicalImageZoomModal } from './ClinicalImageZoomModal';
 import { cn } from '../../../../lib/utils';
 
+const PdfViewerShell = lazy(() => import('../consensus/PdfViewerShell').then((module) => ({ default: module.PdfViewerShell })));
+
 interface ClinicalQuickGuideBodyProps {
   blocks: ClinicalQuickGuideBlock[];
+  /** Stable anchors from the original guide, including when only one reading tab is rendered. */
+  blockIds?: string[];
   richText?: boolean;
   youtubeVideoId: string | null;
   youtubeTitle: string;
@@ -60,7 +64,7 @@ function FlowchartBlock({
   );
 }
 
-export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, richText = false }: ClinicalQuickGuideBodyProps) {
+export function ClinicalQuickGuideBody({ blocks, blockIds, youtubeVideoId, youtubeTitle, richText = false }: ClinicalQuickGuideBodyProps) {
   const inline = (text: string) => richText ? <ClinicalGuideInline text={text} /> : text;
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [activeImage, setActiveImage] = useState<{
@@ -88,7 +92,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
             return (
               <Tag
                 key={key}
-                id={`cqg-section-${i}`}
+                id={blockIds?.[i] ?? `cqg-section-${i}`}
                 className={cn(
                   'scroll-mt-24 font-bold tracking-tight text-foreground',
                   block.level === 2 && 'text-xl md:text-2xl',
@@ -232,6 +236,15 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                   </button>
                 </div>
               </figure>
+            );
+          case 'documentEmbed':
+            return (
+              <section key={key} aria-label={block.title} className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm">
+                {block.caption ? <p className="border-b border-border px-4 py-3 text-xs leading-relaxed text-muted-foreground">{inline(block.caption)}</p> : null}
+                <Suspense fallback={<p role="status" className="p-4 text-sm text-muted-foreground">Carregando documento…</p>}>
+                  <PdfViewerShell url={block.src} title={block.title} showExternalActions={false} searchPlaceholder="Pesquisar no documento..." />
+                </Suspense>
+              </section>
             );
           case 'videoPlaceholder':
             return (

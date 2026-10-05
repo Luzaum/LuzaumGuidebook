@@ -10,6 +10,8 @@ interface SectionAnchorNavProps {
   onActiveChange?: (id: string) => void;
   title?: string;
   variant?: 'desktop' | 'mobile';
+  /** Heading-only anchors need an activation band aligned with the sticky reading header. */
+  observerRootMargin?: string;
 }
 
 export function SectionAnchorNav({
@@ -18,6 +20,7 @@ export function SectionAnchorNav({
   onActiveChange,
   title = 'Índice desta doença',
   variant = 'desktop',
+  observerRootMargin = '-18% 0px -70% 0px',
 }: SectionAnchorNavProps) {
   const [activeId, setActiveId] = useState<string>('');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -30,7 +33,7 @@ export function SectionAnchorNav({
 
         setActiveId(visibleEntry.target.id);
       },
-      { rootMargin: '-18% 0px -70% 0px' }
+      { rootMargin: observerRootMargin }
     );
 
     sections.forEach((section) => {
@@ -39,7 +42,7 @@ export function SectionAnchorNav({
     });
 
     return () => observer.disconnect();
-  }, [sections]);
+  }, [sections, observerRootMargin]);
 
   useEffect(() => {
     if (!activeId || !onActiveChange) return;

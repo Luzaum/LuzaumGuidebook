@@ -169,15 +169,13 @@ test('valida imagens clínicas Open Access em disco e registradas no seed', () =
   const record = getRecord();
   const text = JSON.stringify(record);
 
-  const images = [
+  const clinicalImages = [
     'fluoroscopia-colapso-traqueal-kim-2024.jpg',
-    'mapeamento-anatomico-colapso-kim-2024.jpg',
-    'colapso-bronquico-kim-2024.jpg',
     'radiografia-colapso-traqueal-gato-tanaka-2022.jpg',
     'stent-traqueal-gato-tanaka-2022.jpg',
   ];
 
-  for (const img of images) {
+  for (const img of clinicalImages) {
     assert.match(text, new RegExp(img));
     const publicPath = resolve('public/consulta-vet/colapso-traqueal', img);
     const distPath = resolve('dist/consulta-vet/colapso-traqueal', img);
@@ -185,6 +183,10 @@ test('valida imagens clínicas Open Access em disco e registradas no seed', () =
     assert.ok(existsSync(distPath), 'imagem ausente em dist: ' + img);
     assert.ok(statSync(publicPath).size > 10000, 'imagem corrompida: ' + img);
   }
+
+  // Fotos de gráficos não devem ser exibidas no app
+  assert.doesNotMatch(text, /mapeamento-anatomico-colapso-kim-2024\.jpg/);
+  assert.doesNotMatch(text, /colapso-bronquico-kim-2024\.jpg/);
 });
 
 test('referências distinguem livros, estudos e revisão especializada', () => {
