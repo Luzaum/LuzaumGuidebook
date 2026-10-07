@@ -29,6 +29,7 @@ export interface EditorialReference {
   year?: string | number;
   journal?: string;
   volume?: string;
+  issue?: string;
   pages?: string;
   pmid?: string;
   doi?: string;

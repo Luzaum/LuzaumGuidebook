@@ -32,6 +32,7 @@ import { erliquioseMonociticaCaninaRecord } from './diseases.erlichia.seed';
 import { micoplasmosesHemotropicasRecord } from './diseases.hemoplasma.seed';
 import { leishmanioseVisceralCaninaRecord } from './diseases.leishmaniose.seed';
 import { doencaRenalCronicaCaninaRecord } from './diseases.doenca-renal-cronica-canina.seed';
+import { doencaRenalCronicaFelinaRecord } from './diseases.doenca-renal-cronica-felina.seed';
 import { hipertensaoArterialSistemicaRecord } from './diseases.hipertensao.seed';
 import { doencaValvarMitralDegenerativaRecord } from './diseases.dmvd.seed';
 import { sindromeCushingCaesRecord } from './diseases.sindrome-cushing-caes.seed';
@@ -101,6 +102,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   granulomaEosinofilicoFelinoRecord,
   micoplasmosesHemotropicasRecord,
   doencaRenalCronicaCaninaRecord,
+  doencaRenalCronicaFelinaRecord,
   hipertensaoArterialSistemicaRecord,
   doencaValvarMitralDegenerativaRecord,
   cardiomiopatiaHipertroficaRecord,

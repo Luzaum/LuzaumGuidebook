@@ -910,6 +910,64 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
       },
     ],
   },
+  metimazol: {
+    plumbs: { monograph: 'Methimazole', pages: '849–851' },
+    bsava: { monograph: 'Thiamazole (Methimazole)', pages: '400–401' },
+    nelsonCouto: {
+      chapter: 'Cap. 50: Distúrbios da Glândula Tireoide (Hipertireoidismo Felino)',
+      pages: '832–845',
+    },
+    ettinger: {
+      chapter: 'Cap. 289: Feline Hyperthyroidism & Cap. 290: Feline Thyroid Neoplasia',
+      pages: '1785–1798',
+    },
+    topics: [
+      {
+        title: 'Fisiopatologia tireoidiana, inibição seletiva da TPO e o conceito do "lag time" clínico',
+        narrative:
+          'O hipertireoidismo é a endocrinopatia mais frequente de gatos idosos, decorrente de hiperplasia adenomatosa multinodular funcional (em ~98% dos casos) ou carcinoma folicular funcionante (<2%). A síntese de T4 e T3 requer a captação basolateral de iodeto através do simporte de sódio/iodeto (NIS), translocação apical pela pendrina e oxidação catalisada pela tireoperoxidase (TPO) associada ao peróxido de hidrogênio (H₂O₂). A TPO governa as etapas de organificação (incorporação em resíduos tirosil da tireoglobulina formando MIT e DIT) e acoplamento oxidativo (gerando T4 e T3). Conforme exposto nos tratados de Ettinger (9ª ed.), Nelson & Couto (6ª ed.) e Plumb’s (10ª ed.), o metimazol (1-metil-2-mercaptoimidazol) e seu congênere tiamazol atuam como substratos alternativos e inibidores competitivos da TPO, suprimindo a montagem de novas moléculas hormonais. No entanto, o metimazol NÃO inibe o transporte do NIS, não bloqueia a proteólise dos estoques coloidais de tireoglobulina pré-formada e não interfere com T4/T3 já circulantes ou na desiodação periférica extratireoidiana. Essa característica molecular explica o período de latência clínica ("lag time") de 1 a 3 semanas para a reversão da tireotoxicose, período no qual os estoques foliculares pré-existentes são progressivamente consumidos até o restabelecimento do eutireoidismo.',
+      },
+      {
+        title: 'A conexão nefroendócrina felina: desmascaramento da DRC versus risco letal do hipotireoidismo iatrogênico',
+        narrative:
+          'A interação fisiopatológica entre hipertireoidismo e função renal em felinos é uma das mais críticas na rotina veterinária. O excesso de hormônios tireoidianos induz um estado hipermetabólico caracterizado por aumento do débito cardíaco, redução da resistência vascular sistêmica e hipertensão intraglomerular, promovendo hiperfiltração renal patológica que mascara uma taxa de filtração glomerular (TFG/GFR) real reduzida. Paralelamente, o hipercatabolismo muscular pronunciado acarreta perda de massa magra, deprimindo a produção endógena de creatinina. Com a restauração farmacológica do eutireoidismo pelo metimazol, a hiperfiltração cessa e a massa muscular gradativamente se regenera, desmascarando a Doença Renal Crônica (DRC) estrutural subjacente em cerca de 15% a 40% dos felinos tratados. Esse fenômeno NÃO traduz nefrotoxicidade intrínseca da medicação. O Consenso AAFP e as Diretrizes AAHA 2023 advertem categoricamente contra o erro clássico de subtratar o hipertireoidismo para "poupar" a creatinina sérica: manter a tireotoxicose residual perpetua a cardiotoxicidade, a proteinúria glomerular e a perda ponderal. Por outro lado, o verdadeiro fator de risco iatrogênico de letalidade é o HIPOTIREOIDISMO IATROGÊNICO (TT4 < 1,0 µg/dL com TSH elevado por superdosagem). Conforme demonstrado por Williams et al. (2010), o hipotireoidismo iatrogênico colapsa a perfusão renal, precipita azotemia em 57% dos gatos e reduz a sobrevida mediana de 905 para 456 dias. O alvo terapêutico inegociável é manter o TT4 dentro da metade inferior do intervalo de referência (1,0 a 2,5 µg/dL), vigiando ativamente o TSH felino.',
+      },
+      {
+        title: 'Progressão tumoral crônica sob metimazol, via transdérmica lipofílica e segurança ocupacional',
+        narrative:
+          'Um dos maiores alertas conceituais destacados na literatura veterinária especializada (Peterson et al. 2016 e Plumb’s 10ª ed.) é que o metimazol controla a secreção hormonal, mas NÃO cura nem erradica o adenoma tireoidiano. Ao longo dos anos de tratamento médico contínuo, a massa neoplásica continua sofrendo expansão celular, aumentando a proporção de tumores volumosos (de 5% para 88%), a invasão ectópica intratorácica (de 3,4% para 32,3%) e a transformação maligna suspeita para carcinoma folicular (de 0,4% para 19,3%). Por esse motivo, o Iodo Radioativo (¹³¹I) deve ser sempre apresentado como tratamento de escolha curativo definitivo para gatos com expectativa de vida longa. Quanto às vias de administração, o gel transdérmico lipofílico aplicado na face interna da pina auricular é a conduta de escolha para felinos que desenvolvem intolerância gastrintestinal (vômitos e anorexia) sob a via oral: ensaio clínico de Sartor et al. (2004) comprovou que os efeitos adversos digestivos caem de 24% para apenas 4%. No entanto, a formulação requer base lipofílica validada (evitando géis PLO arcaicos de absorção errática), limpeza prévia dos resíduos e rotação das orelhas. Por fim, a segurança do tutor é inegociável: o metimazol é um potente teratogênico (associado a bócio congênito, aplasia cutis e atresia de coanas/esôfago); mulheres grávidas ou em planejamento reprodutivo nunca devem manipular comprimidos partidos, bandejas sanitárias ou o gel transdérmico sem luvas descartáveis.',
+      },
+    ],
+  },
+  dexametasona: {
+    plumbs: { monograph: 'Dexamethasone', pages: '361–366' },
+    bsava: { monograph: 'Dexamethasone', pages: '114–115' },
+    nelsonCouto: {
+      chapter: 'Cap. 51: Distúrbios das Glândulas Adrenais (Hiperadrenocorticismo e Hipoadrenocorticismo) & Cap. 78: Doenças Imunomediadas',
+      pages: '846–870, 1220–1235',
+    },
+    ettinger: {
+      chapter: 'Cap. 293: Disorders of the Hypothalamus and Pituitary Gland & Cap. 294: Disorders of the Adrenal Gland',
+      pages: '1810–1835',
+    },
+    topics: [
+      {
+        title: 'Dissociação farmacocinética/farmacodinâmica (PK/PD): da meia-vida sérica curta à reprogramação celular prolongada',
+        narrative:
+          'A dexametasona é um glicocorticoide fluorado sintético de alta potência (~30 vezes superior à hidrocortisona e 6 a 7 vezes mais potente que a prednisolona) caracterizado pela ausência virtual de atividade mineralocorticoide. Um dos princípios farmacológicos mais cruciais para o clínico reside na marcante dissociação entre sua farmacocinética sérica e sua farmacodinâmica tecidual. Em cães, a meia-vida de eliminação plasmática (t½) é de apenas 2 a 5 horas; no entanto, a duração dos efeitos biológicos estende-se por 24 a 48 horas ou mais. Como detalhado nos tratados de Ettinger (9ª ed.), Nelson & Couto (6ª ed.) e Plumb’s (10ª ed.), o fármaco difunde-se passivamente através da membrana plasmática celular e liga-se aos receptores glicocorticoides citosólicos (GR-alfa), dissociando proteínas de choque térmico (Hsp90). O complexo hormônio-receptor transloca-se para o núcleo, onde atua por trans-repressão (inativando fatores de transcrição pró-inflamatórios como NF-kB e AP-1, bloqueando a síntese de citocinas inflamatórias IL-1, IL-2, IL-6, TNF-alfa, COX-2 e iNOS) e por trans-ativação (induzindo a transcrição de anexina-1/lipocortina-1, que inibe a fosfolipase A2). Essa reprogramação genômica celular persiste por dias mesmo após a molécula de dexametasona ter sido totalmente depurada do sangue circulante. Como consequência direta, doses repetidas em intervalos curtos acumulam efeitos biológicos profundos de imunossupressão e supressão adrenal, alertando que a ausência de fármaco no plasma não equivale à cessação de sua atividade farmacodinâmica.',
+      },
+      {
+        title: 'Uso hospitalar na IMHA e emergência addisoniana versus desmistificação em anafilaxia e TCE',
+        narrative:
+          'Na rotina hospitalar intensiva, a dexametasona desempenha papéis vitais específicos, mas que exigem discernimento estrito baseado em evidências contemporâneas. Na Anemia Hemolítica Imunomediada (IMHA) canina aguda com intolerância gastrointestinal, êmese severa ou risco de aspiração, a diretriz de consenso ACVIM (2019) padronizou a dexametasona intravenosa na dose de 0,2 a 0,4 mg/kg IV lenta a cada 24 horas como alternativa de indução imediata, com transição precoce para prednisolona oral assim que o paciente estabilizar. Na emergência da Crise Addisoniana (Hipoadrenocorticismo agudo), as Diretrizes AAHA 2023 consagram o fosfato dissódico de dexametasona (0,1 a 0,2 mg/kg IV lenta) como o único glicocorticoide admissível antes da conclusão do Teste de Estimulação por ACTH, pois sua estrutura química não apresenta reatividade cruzada nos imunoensaios de cortisol sérico (diferente da hidrocortisona e prednisolona). Em contraste direto, diretrizes recentes desmontaram dogmas empíricos arcaicos: nas Diretrizes RECOVER 2026 de Choque Anafilático Hospitalar, há recomendação forte contra o uso rotineiro prioritário de corticoides no colapso agudo, consolidando que a intervenção salvadora e inadiável é a EPINEFRINA (Adrenalina), visto que os glicocorticoides dependem de latência transcricional de horas para exercer efeitos anti-inflamatórios. Da mesma forma, as Diretrizes ACVIM de Neurotrauma (2022) baniram formalmente o uso de corticoides no Traumatismo Cranioencefálico (TCE) e herniação de disco aguda (IVDD), demonstrando aumento de morbimortalidade e hiperglicemia sem ganho neuroprotetor; o uso em sistema nervoso central permanece restrito e validado apenas no edema vasogênico peritumoral neoplásico (Poirier et al. 2025).',
+      },
+      {
+        title: 'Diagnóstico hormonal do eixo HPA (LDDST e HDDST), formulações éster e risco letal de AINEs',
+        narrative:
+          'No diagnóstico funcional endócrino, a dexametasona é a ferramenta de referência para avaliação da alça de retroalimentação negativa hipotálamo-hipófise-adrenal. No Teste de Supressão por Dexametasona em Baixa Dose (LDDST), cães hígidos suprimem o cortisol para concentrações < 1,0–1,4 µg/dL às 4h e 8h após 0,01 a 0,015 mg/kg IV; em cães com Hiperadrenocorticismo (HAC), a ausência de supressão às 8 horas confirma a síndrome com sensibilidade superior a 90% (Greco et al. 1993). Na espécie felina, devido à resistência fisiológica e menor afinidade de receptores hipofisários, a dose validada do LDDST é dez vezes maior: 0,1 mg/kg IV. O Teste de Alta Dose (HDDST, 0,1 mg/kg IV no cão e 1,0 mg/kg IV no gato) auxilia na diferenciação entre doença hipófise-dependente (PDH) e tumor adrenocortical autônomo (AT). Quanto às formulações farmacêuticas, existe um imperativo de segurança farmacotécnica: apenas o éster solúvel fosfato dissódico de dexametasona (DSP) pode ser administrado por via intravenosa; suspensões de acetato de dexametasona são ésteres insolúveis de depósito que precipitam embolia vascular se administrados por via IV. Por fim, o alerta de segurança mais grave e inegociável na clínica veterinária é a CONTRAINDICAÇÃO ABSOLUTA DA ASSOCIAÇÃO COM AINEs: a sinergia na inibição de prostaglandinas citoprotetoras gástricas e no fluxo sanguíneo mucoso induz úlcera péptica catastrófica, perfuração colônica aguda e peritonite séptica fulminante, exigindo sempre washout profilático mínimo de 3 a 7 dias entre essas classes.',
+      },
+    ],
+  },
 };
 
 export function applyMedicationBookFoundations(medication: MedicationRecord): MedicationRecord {

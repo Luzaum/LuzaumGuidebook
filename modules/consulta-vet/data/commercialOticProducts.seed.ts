@@ -35,6 +35,8 @@ import { metoclopramidaCommercialProductSeed } from './metoclopramidaCommercialP
 import { molidustatCommercialProductSeed } from './molidustatCommercialProduct.seed';
 import { maropitantCommercialProductSeed } from './maropitantCommercialProduct.seed';
 import { ondansetronaCommercialProductSeed } from './ondansetronaCommercialProduct.seed';
+import { metimazolCommercialProductSeed } from './metimazolCommercialProduct.seed';
+import { dexametasonaCommercialProductSeed } from './dexametasonaCommercialProduct.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -95,6 +97,8 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...molidustatCommercialProductSeed,
   ...maropitantCommercialProductSeed,
   ...ondansetronaCommercialProductSeed,
+  ...metimazolCommercialProductSeed,
+  ...dexametasonaCommercialProductSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',

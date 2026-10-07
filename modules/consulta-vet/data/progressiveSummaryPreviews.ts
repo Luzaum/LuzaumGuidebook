@@ -85,11 +85,12 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
     }
   },
   "bronquite-cronica-caes-gatos": {
-    "simple": "É uma inflamação persistente dos canais de ar dos pulmões. A tosse dura muito tempo e precisa ter sua causa investigada.",
+    "simple": "É uma inflamação brônquica crônica caracterizada por tosse persistente por mais de dois meses em cães e gatos, exigindo controle ambiental e terapia inalatória.",
     "pillars": {
-      "Definição operacional": "É necessário excluir outras causas de tosse persistente.",
-      "Citologia": "A análise das células das vias aéreas caracteriza a inflamação.",
-      "Conduta prática": "Controlar inflamação e irritantes; antibióticos dependem de evidência de infecção."
+      "Pilar 1: Conceito Temporal e Diferenciação Canina vs Felina": "Critério de dois meses no cão e distinção estrita entre bronquite neutrofílica e asma alérgica felina.",
+      "Pilar 2: Dinâmica Mecânica, Lei de Poiseuille e Ciclo Vicioso": "Estenose luminal eleva exponencialmente a resistência aérea e precipita colapso dinâmico das vias condutoras.",
+      "Pilar 3: Diagnóstico Fenotípico e Padrão-Ouro (BAL e Imagem)": "Lavado broncoalveolar com contagem diferencial e imagem avançada após estabilização clínica.",
+      "Pilar 4: Farmacoterapia de Precisão, Terapias Inalatórias e Stewardship": "Fluticasona inalatória prioritária, broncodilatador restrito a resgate e veto a antibióticos empíricos."
     }
   },
   "granuloma-eosinofilico-felino": {
@@ -115,6 +116,15 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
       "Pilar 2: Renoproteção Antiproteinúrica e Tromboprofilaxia": "Telmisartana como primeira linha e controle do risco trombótico.",
       "Pilar 3: Manejo Mineral-Ósseo (CKD-MBD) e Metas de Fósforo": "Quelantes entéricos com a comida para frear o hiperparatireoidismo.",
       "Pilar 4: Anemia Precoce, Acidose e Terapias de Fronteira": "Tratar anemia com HCT <30% e corrigir acidose mais cedo."
+    }
+  },
+  "doenca-renal-cronica-felina": {
+    "simple": "A perda progressiva de néfrons afeta idosos. Rastreamento a partir dos 7 anos, controle estrito de fósforo, manejo de cálcio ionizado e bloqueio do SRAA preservam a sobrevida.",
+    "pillars": {
+      "Pilar 1: Paradigma iCatCare 2026 e Rastreamento Precoce (>=7 Anos)": "Rastreio sistemático a partir dos 7 anos, monitoramento de perda de peso insidiosa e sarcopenia mascarando a creatinina.",
+      "Pilar 2: Fisiopatologia do Néfron Remanescente, P e Hipercalcemia (iCa)": "Hiperfiltração glomerular por angiotensina II, impacto do fósforo na sobrevida e risco de hipercalcemia ionizada pós-dieta.",
+      "Pilar 3: Estadiamento IRIS Estável, Subestadiamento e Diagnóstico": "Estadiamento exclusivo em paciente euvolêmico e hidratado, subestadiamento rigoroso de proteinúria (UPC) e controle pressórico.",
+      "Pilar 4: Terapia de Precisão, Manejo Nutricional e Stewardship Antimicrobiano": "Protagonismo da dieta renal, molidustat para anemia e veto estrito a antibióticos na bacteriúria assintomática."
     }
   },
   "hipertensao-arterial-sistemica-caes-gatos": {
@@ -843,64 +853,82 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
   "trazodona": {
     "simple": "É um modulador serotoninérgico (SARI) calmante para estresse situacional, viagens e visitas veterinárias. A sedação não equivale necessariamente a alívio total do medo e a resposta varia muito entre indivíduos.",
     "pillars": {
-      "Filtra e Redireciona a Serotonina (SARI)": "Inibe SERT e bloqueia 5-HT2A, direcionando a serotonina para circuitos ansiolíticos 5-HT1A.",
-      "Atenuação Adrenérgica e Bloqueio Alfa-1": "Reduz o estado de alerta, mas pode causar vasodilatação e hipotensão arterial.",
-      "O Paradoxo do Metabólito mCPP": "Metabólito ativo agonista serotoninérgico que pode produzir desinibição comportamental e agitação paradoxal.",
-      "Sedação Não é Sinônimo de Ansiólise": "O bloqueio H1/alfa-1 tranquiliza o corpo, mas o medo subjetivo exige manejo Fear Free e dose-teste prévia."
+      "Modulação Serotoninérgica SARI (5-HT2A + SERT)": "Inibe recaptação de serotonina e bloqueia receptores 5-HT2A, direcionando a transmissão para circuitos ansiolíticos 5-HT1A.",
+      "Atenuação do Arousal Adrenérgico e Bloqueio Alfa-1": "Bloqueia receptores alfa-1 adrenérgicos, reduzindo o estado de vigília e reatividade, com risco de hipotensão arterial transitória.",
+      "O Paradoxo Farmacológico do Metabólito mCPP": "Metabólito ativo agonista não seletivo de serotonina pode desencadear agitação paradoxal e desinibição comportamental atípica.",
+      "Sedação ≠ Ansiólise & Variabilidade Farmacocinética": "A tranquilização motora não assegura extinção do medo subjetivo; requer dose-teste prévia e técnicas de manejo Fear Free."
     }
   },
   "miltefosina": {
     "simple": "É um leishmanicida oral multialvo que destrói Leishmania infantum desestruturando membranas e mitocôndrias. Não produz cura esterilizante, tem meia-vida de quase uma semana e exige controle vetorial contínuo.",
     "pillars": {
-      "Leishmanicida, Não Esterilizante": "Reduz drasticamente a carga parasitária tecidual e melhora a clínica, mas o cão permanece infectado por toda a vida.",
-      "Mecanismo Multialvo no Parasita": "Inibe síntese de fosfatidilcolina, colapsa o ATP mitocondrial e sobrecarrega o cálcio nos acidocalcissomos.",
-      "Acúmulo e Cauda Farmacocinética": "Com meia-vida de 6,9 dias, acumula-se até o 28º dia e deixa concentrações residuais por semanas após o término.",
-      "Risco de Seleção de Resistência": "Subdosagens ou repetições sucessivas de ciclos selecionam mutantes no transportador LMT/Ros3 do protozoário."
+      "Leishmanicida, Não Esterilizante": "Reduz drasticamente a carga parasitária tecidual e alivia sintomas, mas não elimina o parasita do organismo canino.",
+      "Mecanismo Biofísico Multialvo": "Desestabiliza membranas fosfolipídicas, inibe biossíntese de fosfatidilcolina e colapsa a integridade mitocondrial do protozoário.",
+      "Permanência Ultra-Prolongada (t½ ~6,9 dias)": "Meia-vida de quase uma semana promove acúmulo contínuo até o 28º dia do ciclo de tratamento oral.",
+      "A Cauda Farmacocinética e Risco de Resistência": "Eliminação lenta gera cauda subterapêutica por semanas, exigindo controle vetorial rigoroso para prevenir seleção de cepas resistentes."
     }
   },
   "domperidona": {
-    "simple": "É um antagonista da dopamina periférico com baixa penetração no cérebro. Seu uso principal atual em cães é a imunomodulação preventiva da leishmaniose em áreas endêmicas; perdeu espaço como pró-cinético de rotina e exige atenção rigorosa ao ritmo cardíaco (prolongamento do intervalo QTc).",
+    "simple": "É um antagonista da dopamina periférico com baixa penetração no cérebro. Seu uso principal atual em cães é a imunomodulação preventiva da leishmaniose em áreas endêmicas.",
     "pillars": {
-      "Antagonismo D2 Periférico e Baixa Passagem na BHE": "Age fora do cérebro na CRTZ e trato gastrintestinal, com efluxo ativo pela P-glicoproteína que previne efeitos extrapiramidais.",
+      "Antagonismo D₂ Periférico e Baixa Passagem na BHE": "Age fora do cérebro na CRTZ e trato gastrintestinal, com efluxo ativo pela P-glicoproteína que previne efeitos extrapiramidais.",
       "Eixo Hipofisário e Hiperprolactinemia Imunomoduladora": "Estimula a liberação de prolactina pela adeno-hipófise, ativando macrófagos e direcionando a resposta celular Th1 protetora contra Leishmania.",
-      "Bloqueio hERG e Risco Eletrocardiográfico de QTc Longo": "Bloqueia canais de potássio IKr com aumento comprovado do QTc em cães; contraindicada com azólicos, macrolídeos e antiarrítmicos.",
-      "Prevenção vs Tratamento da Leishmaniose": "Eficácia preventiva comprovada em cães soronegativos (WAVD 2025 grau moderado), mas não recomendada como monoterapia na doença instalada."
+      "Bloqueio hERG/Kv11.1 e Risco Eletrocardiográfico de QTc": "Bloqueia canais de potássio IKr com aumento comprovado do QTc em cães; contraindicada com azólicos, macrolídeos e antiarrítmicos.",
+      "Prevenção vs Tratamento: Divergência Crítica (WAVD 2025 vs CLWG 2026)": "Eficácia preventiva comprovada em cães soronegativos (WAVD 2025), mas não recomendada como monoterapia na doença instalada."
     }
   },
   "metoclopramida": {
     "simple": "É um antiemético e estimulante da motilidade gastroduodenal (pró-cinético). Atua bloqueando a dopamina e ativando a serotonina 5-HT4. Em 2026, seu uso intravenoso foi atualizado: o bolus rápido de 1 mg/kg foi formalmente abandonado pelo risco de parada cardíaca, adotando-se doses de ataque conservadoras (0,05 a 0,1 mg/kg) antes da infusão contínua.",
     "pillars": {
-      "Duplo Mecanismo Dopaminérgico e Serotoninérgico": "Bloqueia receptores D2/D3 na zona de gatilho do vômito (CRTZ) e ativa receptores 5-HT4 mioentéricos, estimulando o esvaziamento do estômago e duodeno.",
-      "Atualização Cardiovascular 2026 e Fim do Bolus de 1 mg/kg": "O bolus IV rápido de 1 mg/kg causa bradicardia severa e assistolia (Rolfi & Chesnel 2026); a nova diretriz adota dose de ataque de 0,05 a 0,1 mg/kg IV lenta para CRI.",
-      "Divergência Crítica entre Espécies (Cão vs Gato)": "Antiemético potente e confiável no cão; efeito muito inferior em gatos devido à escassez de receptores D2 na CRTZ felina. Sem efeito motor no cólon.",
-      "Efeitos Extrapiramidais e Reversão com Difenidramina": "O bloqueio D2 nos gânglios da base pode induzir rigidez, espasmos e agitação desorientada; revertida prontamente com difenidramina (2,2 mg/kg IV/IM)."
+      "Antagonismo D₂ Central no Circuito Emético": "Bloqueia receptores D2 na zona de gatilho do vômito (CRTZ) e centro emético, conferindo eficácia antiemética no cão.",
+      "Pró-cinese Proximal via Agonismo 5-HT₄ e Liberação de ACh": "Ativa receptores 5-HT4 mioentéricos, estimulando liberação de acetilcolina e acelerando esvaziamento de estômago e duodeno.",
+      "Não é Pró-cinético Distal nem de Cólon": "Ação motora restrita ao trato gastrointestinal superior; não estimula motilidade colônica nem alivia constipação distal.",
+      "Eficácia e Toxicidade Nascem do Mesmo Alvo D₂": "Bloqueio dopaminérgico central pode produzir sedação ou reações extrapiramidais agudas, prontamente revertidas com difenidramina."
     }
   },
   "molidustat": {
     "simple": "É um medicamento oral inovador aprovado exclusivamente para gatos com anemia não regenerativa por doença renal crônica. Age enganando as células renais para produzirem sua própria eritropoietina nativa felina, eliminando o perigo de anticorpos e aplasia de medula dos tratamentos humanos antigos.",
     "pillars": {
-      "Pseudo-Hipóxia Celular Controlada (Inibição de Pan-PHD)": "Inibe seletivamente as prolil-hidroxilases (PHD), impedindo a destruição do HIF-2α e ativando a transcrição de eritropoietina endógena.",
-      "Superação da PRCA dos Agentes Humanos (Darbepoetina/EPO)": "Produz eritropoietina 100% felina autóloga nativa, eliminando o risco letal de anticorpos neutralizantes e aplasia pura da série vermelha.",
-      "Evidência de Alta Resposta Clínica (RCT Schmidt 2026)": "Ensaio clínico multicêntrico demonstrou 67,5% de sucesso hematológico aos 28 dias (+5,25 pontos de hematócrito) vs 17,1% no placebo (p < 0,001).",
-      "Regras Rígidas de Ciclo de 28 Dias e Monitoramento de PCV": "Tratamento de no máximo 28 dias com pausa obrigatória de pelo menos 7 dias; suspender se PCV > 45%. Não redosar em caso de vômito."
+      "Pseudo-Hipóxia Molecular Controlada": "Inibe enzimas prolil-hidroxilases (PHD), estabilizando o fator HIF-2α e simulando hipóxia para estimular síntese de EPO.",
+      "Reativação da EPO Felina Autóloga (Sem PRCA)": "Estimula produção de eritropoietina nativa felina, eliminando o risco de anticorpos neutralizantes e aplasia pura da medula.",
+      "Eritropoiese Fisiológica e Ordenada": "Promove elevação gradual e fisiológica da massa eritrocitária em gatos com anemia crônica não regenerativa por DRC.",
+      "Ciclos Monitorados de até 28 Dias": "Uso restrito a ciclos de 28 dias com monitoramento semanal de hematócrito e pausa obrigatória de pelo menos 7 dias."
     }
   },
   "maropitant": {
-    "simple": "É um antiemético de amplo espectro que atua bloqueando a via final comum do reflexo do vômito (receptores NK1) no cérebro e no trato digestivo. Bloqueia eficazmente o vômito mecânico em cães e gatos, mas não elimina necessariamente a sensação subjetiva de náusea e não estimula o apetite. A injeção subcutânea deve ser mantida refrigerada para diminuir a ardência.",
+    "simple": "É um antiemético de amplo espectro que bloqueia a via final comum do reflexo do vômito (receptores NK1) no cérebro e trato digestivo. Controla o vômito em cães e gatos, mas não elimina a náusea nem estimula o apetite. A injeção subcutânea deve ser refrigerada para diminuir a dor.",
     "pillars": {
-      "Pilar 1 — Bloqueio da Via Final Comum da Êmese (Receptores NK₁)": "Antagoniza os receptores NK1 e impede a ação da substância P tanto centralmente no centro emético e NTS quanto perifericamente nas fibras aferentes vagais do trato gastrointestinal.",
-      "Pilar 2 — Antiêmese Não Significa Antináusea (Evidência 2026)": "Ensaio clínico de 2026 demonstrou bloqueio de 100% dos vômitos, porém mais de 70% dos cães ainda manifestaram sinais comportamentais de náusea intensa. Não possui efeito estimulante de apetite.",
-      "Pilar 3 — Farmacocinética Não Linear e Divergência de Doses (Cinetose vs Vômito)": "Metabolismo de primeira passagem hepático saturável (CYP2D15) exige dose 4 vezes maior para cinetose (8 mg/kg VO) em relação ao vômito agudo (2 mg/kg VO), administrada 2h antes da viagem.",
-      "Pilar 4 — Cuidados Práticos de Aplicação e Incompatibilidades": "A ardência na injeção SC é resolvida com a administração da solução diretamente gelada (2°C a 8°C); a via IV exige infusão lenta em 1 a 2 min (risco de hipotensão) e é fisicamente incompatível com pantoprazol."
+      "Bloqueio da Via Final Comum da Êmese (NK₁ Central e Periférico)": "Antagoniza receptores NK1 e impede que a substância P ative centros eméticos centrais e fibras vagais periféricas.",
+      "Diferenciação Crítica: Antiêmese Não Significa Antináusea": "Bloqueia eficazmente o reflexo motor do vômito, mas não extingue necessariamente a sensação neurovegetativa de náusea.",
+      "Modulação Antinociceptiva Visceral e Poupança de Anestésico (MAC)": "A modulação de substância P reduz nocicepção visceral e proporciona redução demonstrada de 15% a 24% na CAM anestésica.",
+      "Farmacocinética Não Linear Canina e Eliminação Não Renal (<1%)": "Metabolismo saturável de primeira passagem hepática por CYP2D15; excreção renal ínfima dispensa corte de dose na DRC."
     }
   },
   "ondansetrona": {
-    "simple": "É um potente antináusea e antiemético que bloqueia receptores 5-HT3 no intestino e no cérebro. É especialmente eficaz contra a sensação de enjoo e salivação que o maropitant às vezes não elimina. Em cães, a via oral tem baixíssima absorção (~5%), enquanto a injeção subcutânea é altamente eficaz (~85%). Em gatos, é segura na doença renal crônica sem necessidade de corte de dose.",
+    "simple": "É um potente antináusea e antiemético que bloqueia receptores 5-HT3 no intestino e cérebro, aliviando o enjoo e a salivação. Em cães, a via subcutânea tem biodisponibilidade muito superior à oral (~85% vs ~5%). Em gatos, é segura na doença renal crônica sem necessidade de ajuste por IRIS.",
     "pillars": {
-      "Pilar 1 — Bloqueio Rápido do Canal Iônico 5-HT₃": "Diferente de receptores GPCR lentos, o 5-HT3 é um canal de íons que fecha imediatamente a despolarização dos aferentes vagais entéricos e da área postrema.",
-      "Pilar 2 — Potente Efeito Antináusea & Sinergia com Maropitant": "Reduz a aversão alimentar, salivação e lambedura labial; associa-se sinergicamente ao maropitant para controle completo da náusea e do vômito.",
-      "Pilar 3 — Quebra de Paradigma Farmacocinético Canino 2026 (SC vs VO)": "A biodisponibilidade oral em cães é de apenas ~5%, enquanto a via subcutânea atinge 85% em 15 minutos, consolidando a via SC como a grande escolha prática.",
-      "Pilar 4 — Depuração Hepática e Ausência de Ajuste por IRIS em Gatos": "A excreção renal inalterada é menor que 5%; o Consenso iCatCare 2026 não reduz a dose por estágio de DRC, mas exige atenção a hepatopatias e intervalo QT."
+      "Bloqueio Rápido do Canal Iônico 5-HT₃ (Periférico e Central)": "Canal iônico regulado por ligante que bloqueia instantaneamente a despolarização vagal entérica e da área postrema.",
+      "Potente Ação Antináusea & Sinergismo com Maropitant": "Reduz náusea, salivação e lambedura labial; age sinergicamente com o maropitant no controle emético completo.",
+      "Quebra de Paradigma Farmacocinético Canino 2026 (SC 85% vs VO 5%)": "Baixíssima absorção oral (~5%) em cães; via subcutânea atinge 85% de biodisponibilidade em 15 minutos.",
+      "Depuração Hepática Sem Corte de Dose em DRC Felina (iCatCare 2026)": "Excreção renal menor que 5%; consenso dispensa corte de dose em gatos com DRC, exigindo cautela hepatobiliar."
+    }
+  },
+  "metimazol": {
+    "simple": "É o principal fármaco para hipertireoidismo felino, bloqueando a síntese de novos hormônios tireoidianos (T4 e T3). Controla a sobrecarga metabólica e cardíaca, mas não destrói o adenoma. Requer monitoramento renal para dosar sem desmascarar azotemia grave nem induzir hipotireoidismo iatrogênico.",
+    "pillars": {
+      "Inibição Seletiva da Tireoperoxidase (TPO)": "Bloqueia a síntese de novos hormônios tireoidianos nas etapas de oxidação e acoplamento, sem destruir o tecido tireoidiano.",
+      "Reversibilidade Farmacológica e Caráter \"Trial\" Renal": "Permite avaliar com segurança se a reversão da tireotoxicose desmascara insuficiência renal crônica subjacente antes de terapias definitivas.",
+      "Controle da Tireotoxicose Sem Cura Estrutural": "Controla os sinais clínicos hormonais, mas o tecido adenomatoso continua crescendo com o tempo, sem cura estrutural.",
+      "Titulação Fina e Prevenção do Hipotireoidismo Iatrogênico": "O alvo é TT4 entre 1,0–2,5 µg/dL; hipotireoidismo iatrogênico reduz filtração glomerular, agrava azotemia e piora sobrevida."
+    }
+  },
+  "dexametasona": {
+    "simple": "É um glicocorticoide sintético de alta potência (~30x hidrocortisona) e longa ação (24–48h), sem retenção de sódio. Contraindicada com AINEs e no trauma cranioencefálico agudo. No choque anafilático, adrenalina é a prioridade vital, pois dexametasona leva horas para iniciar ação genômica.",
+    "pillars": {
+      "Reprogramação Genômica e Transrepressão Inflamatória": "Inibe transcrição de citocinas inflamatórias (NF-κB e AP-1) com potência ~30x superior à hidrocortisona e sem ação mineralocorticoide.",
+      "Dissociação Farmacocinética/Farmacodinâmica (Longa Duração)": "Meia-vida plasmática curta (2–5 horas no cão), mas reprogramação transcricional e efeito biológico sustentado por 24 a 48 horas.",
+      "Superioridade Diagnóstica no Eixo HPA (Não Interfere no Cortisol)": "Fármaco de escolha na suspeita de Addison em crise por não reagir com ensaios de cortisol, e padrão nos testes de supressão.",
+      "Quebra de Paradigmas Clínicos (Consensos RECOVER & ACVIM 2026)": "Contraindicada no trauma de crânio e coluna; na anafilaxia grave, adrenalina é o pilar imediato enquanto corticoides têm papel tardio."
     }
   }
 };

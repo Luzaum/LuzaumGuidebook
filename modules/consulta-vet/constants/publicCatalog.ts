@@ -17,6 +17,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'granuloma-eosinofilico-felino',
   'micoplasmoses-hemotropicas',
   'doenca-renal-cronica-canina',
+  'doenca-renal-cronica-felina',
   'hipertensao-arterial-sistemica-caes-gatos',
   'doenca-valvar-mitral-degenerativa-caes',
   'cardiomiopatia-hipertrofica-caes-gatos',

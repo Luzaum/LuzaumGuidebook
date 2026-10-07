@@ -135,6 +135,41 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       '- Oferecer os medicamentos quelantes de fósforo misturados diretamente na comida, no momento exato em que o cão se alimenta.\n' +
       '- Garantir livre acesso a água fresca em múltiplos potes pela casa e pesar o cão a cada 15 dias para vigiar a perda de massa magra.',
   },
+  'doenca-renal-cronica-felina': {
+    whatIsIt:
+      'A doença renal crônica felina é o desgaste lento, silencioso e progressivo dos rins do gato ao longo do tempo:\n\n' +
+      '- Desgaste silencioso e irreversível: os filtros dos rins vão perdendo a capacidade de eliminar toxinas e de reter água, acumulando impurezas no sangue e provocando perda de líquido.\n' +
+      '- O gato começa a emagrecer antes dos outros sintomas: a perda de peso sutil e a perda de músculo nas costas iniciam anos antes do gato manifestar vômitos ou sede excessiva.\n' +
+      '- Ração renal é o tratamento mais poderoso: trocar o alimento para uma dieta renal de qualidade com controle de fósforo é a medida comprovada que mais aumenta o tempo e a qualidade de vida do gato.',
+    keyPoints: [
+      'Todo gato com 7 anos ou mais deve fazer check-up renal anual, mesmo parecendo completamente saudável.',
+      'A perda de peso insidiosa e a coluna vertebral mais saliente são os primeiros sinais de alerta de desgaste dos rins.',
+      'A dieta renal prescrita é o remédio mais eficaz contra a progressão da doença; nunca misture com carnes ou petiscos comuns.',
+      'Gatos renais podem desenvolver excesso de cálcio no sangue com dietas renais, exigindo acompanhamento veterinário do cálcio ionizado.',
+      'Remédios modernos como telmisartana protegem os rins contra a perda de proteínas e controlam a pressão alta com comodidade.',
+      'Soro na pele (subcutâneo) não deve ser aplicado de rotina em todo gato; o excesso de líquido pode sobrecarregar o coração.',
+    ],
+    whatIs:
+      'Entendendo o desgaste crônico dos rins nos felinos:\n\n' +
+      '- Perda contínua de néfrons: por causas genéticas (como cistos em persas), infecções passadas ou pelo próprio envelhecimento, os filtros dos rins diminuem em número e não se regeneram.\n' +
+      '- Retenção de toxinas e fósforo: com menos filtros trabalhando, o fósforo e as toxinas urêmicas acumulam-se no organismo, enquanto a urina sai clara e sem concentração adequada.',
+    warningSigns:
+      'Sinais de alerta no gato que exigem consulta veterinária sem demora:\n\n' +
+      '- Caixa de areia com torrões de xixi muito maiores que o normal e potes de água esvaziando mais rápido.\n' +
+      '- Espinha e ossos da bacia ficando salientes ao toque, perda de peso na balança e pelagem sem brilho com aspecto arrepiado.\n' +
+      '- Vômitos frequentes de baba ou espuma branca (muitas vezes confundidos com bolas de pelo), perda de apetite e lambedura labial constante (náusea).\n' +
+      '- Olhar vidrado ou pupilas dilatadas que podem indicar pressão alta afetando os olhos.',
+    diagnosis:
+      'Como o veterinário descobre e classifica a doença renal do gato:\n\n' +
+      '- Exames de sangue completos: creatinina e SDMA avaliados em conjunto com a hidratação e a massa muscular, além de fósforo, cálcio ionizado e hemograma para checar anemia.\n' +
+      '- Exame de urina com densidade e UPC: para avaliar a perda de proteínas e a capacidade de concentrar o xixi.\n' +
+      '- Medição da pressão arterial e ultrassom abdominal: para checar se a pressão está elevada e avaliar o tamanho e as alterações dos rins.',
+    homeCare:
+      'Cuidados indispensáveis da família em casa para proteger o gato:\n\n' +
+      '- Oferecer água fresca e corrente em fontes elétricas tipo cascata e espalhar recipientes de louça ou vidro pela casa longe da caixa de areia.\n' +
+      '- Dar preferência a alimentos úmidos (sachês ou latas) de fórmula renal e nunca dar medicamentos por via forçada que causem aversão à comida.\n' +
+      '- Proibir lírios e plantas tóxicas em casa e jamais administrar analgésicos humanos (como paracetamol ou anti-inflamatórios) que destroem os rins dos gatos.',
+  },
   'hipertensao-arterial-sistemica-caes-gatos': {
     whatIsIt:
       'A hipertensão arterial é a pressão sanguínea persistentemente alta. Muitas vezes é consequência de outras doenças (DRC, Cushing, hipertireoidismo) e ataca olhos, rins, coração e cérebro em silêncio.',
@@ -310,12 +345,26 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'bronquite-cronica-caes-gatos': {
     whatIsIt:
-      'A bronquite crônica é tosse quase diária por pelo menos dois meses, sem outra causa identificada. É inflamação persistente das vias aéreas pequenas, diferente da asma felina.',
+      'A bronquite crônica em cães e gatos é uma inflamação persistente e desgastante dos brônquios (os canos que levam ar aos pulmões):\n\n' +
+      '- Falha na esteira de limpeza: os pulmões possuem cílios microscópicos que funcionam como uma esteira rolante para expulsar poeira e muco; na bronquite crônica, essa esteira quebra, acumulando catarro grosso que o animal não consegue eliminar.\n' +
+      '- Tosse que não passa: define-se pela presença de tosse quase diária por pelo menos dois meses consecutivos, após descartar problemas de coração, vermes de pulmão e infecções.\n' +
+      '- Diferença entre cães e gatos: no cão, a doença causa tosse seca e engasgos com dano na cartilagem dos brônquios (broncomalácia); no gato, a tosse costuma ser confundida com tentativas de vomitar bolas de pelo, mas pode evoluir com crises perigosas de falta de ar.',
     keyPoints: [
-      'Diagnóstico de exclusão — descartar coração, parasitas e infecção antes de rotular.',
-      'Comum em cães pequenos de meia-idade a idosos.',
-      'Corticoide inalatório e controle ambiental são base; antibiótico só se infecção comprovada.',
+      'Tosse por mais de 2 meses seguidos exige investigação completa dos pulmões e do coração antes de tomar qualquer remédio.',
+      'Gato tossindo parece que vai vomitar bola de pelo: ele se agacha, estica o pescoço rente ao chão e tosse com força; isso é problema respiratório e não estomacal.',
+      'A bombinha com espaçador (máscara facial) é o melhor tratamento de manutenção: o remédio vai direto para o pulmão sem causar os efeitos colaterais dos comprimidos no corpo.',
+      'Antibiótico não cura bronquite crônica de rotina: a inflamação geralmente é estéril; antibióticos só devem ser usados quando exames confirmam bactérias ativas.',
+      'Fumaça de cigarro, vape, incensos, velas perfumadas e poeira de areia sanitária pioram muito a doença e devem ser eliminados de casa.',
+      'Cães com tosse crônica devem usar exclusivamente peitoral para passear: puxões na coleira de pescoço esmagam a traqueia e disparam crises violentas de tosse.',
     ],
+    whatIs:
+      'A bronquite crônica é uma inflamação contínua das vias aéreas dos pulmões com excesso de muco grosso e tosse frequente por mais de dois meses.',
+    warningSigns:
+      'Tosse diária que parece engasgo, esforço com a barriga para soltar o ar, chiado no peito, desmaio logo após tossir muito forte, e respiração com a boca aberta no gato (emergência grave).',
+    diagnosis:
+      'O diagnóstico é feito por exclusão com raio-X de tórax, ecocardiograma do coração, exames de fezes para vermes pulmonares e lavado broncoalveolar com anestesia para examinar as células do catarro ao microscópio.',
+    homeCare:
+      'Eliminar fumaça, perfumes e aerossóis de casa, trocar areia do gato por tipo sem pó e sem cheiro, usar peitoral em cães, manter o peso do animal magro e aplicar a bombinha inalatória com carinho e reforço positivo todos os dias.',
   },
   'granuloma-eosinofilico-felino': {
     whatIsIt:

@@ -15,6 +15,7 @@ import { ciclosporinaMedicationRecord } from './medications.ciclosporina.seed';
 import { ciproeptadinaMedicationRecord } from './medications.ciproeptadina.seed';
 import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
 import { clorambucilMedicationRecord } from './medications.clorambucil.seed';
+import { dexametasonaMedicationRecord } from './medications.dexametasona.seed';
 import { diazepamMedicationRecord } from './medications.diazepam.seed';
 import { dipironaMedicationRecord } from './medications.dipirona.seed';
 import { domperidonaMedicationRecord } from './medications.domperidona.seed';
@@ -26,6 +27,7 @@ import { marbofloxacinaMedicationRecord } from './medications.marbofloxacina.see
 import { maropitantMedicationRecord } from './medications.maropitant.seed';
 import { meloxicamMedicationRecord } from './medications.meloxicam.seed';
 import { metadonaMedicationRecord } from './medications.metadona.seed';
+import { metimazolMedicationRecord } from './medications.metimazol.seed';
 import { metoclopramidaMedicationRecord } from './medications.metoclopramida.seed';
 import { micofenolatoMofetilaMedicationRecord } from './medications.micofenolato-mofetila.seed';
 import { miltefosinaMedicationRecord } from './medications.miltefosina.seed';
@@ -76,6 +78,7 @@ export const medicationsSeed: MedicationRecord[] = [
   ciproeptadinaMedicationRecord,
   clindamicinaMedicationRecord,
   clorambucilMedicationRecord,
+  dexametasonaMedicationRecord,
   diazepamMedicationRecord,
   dipironaMedicationRecord,
   domperidonaMedicationRecord,
@@ -87,6 +90,7 @@ export const medicationsSeed: MedicationRecord[] = [
   maropitantMedicationRecord,
   meloxicamMedicationRecord,
   metadonaMedicationRecord,
+  metimazolMedicationRecord,
   metoclopramidaMedicationRecord,
   micofenolatoMofetilaMedicationRecord,
   miltefosinaMedicationRecord,

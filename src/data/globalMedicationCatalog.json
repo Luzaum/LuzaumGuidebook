@@ -10,10 +10,18 @@
       "active_ingredient": "Amoxicilina tri-hidratada + clavulanato de potássio",
       "is_controlled": false,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["VO"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "VO"
+      ],
       "notes": "Exemplo canônico para importação global.",
-      "tags": ["antibiotico", "oral"],
+      "tags": [
+        "antibiotico",
+        "oral"
+      ],
       "metadata": {
         "origin": "example"
       },
@@ -88,10 +96,22 @@
       "active_ingredient": "Cloridrato de trazodona",
       "is_controlled": true,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["VO"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "VO"
+      ],
       "notes": "Modulador serotoninérgico SARI e ansiolítico situacional Fear Free. Sujeito a controle especial (Lista C1, Portaria 344/98 - Receita em 2 vias).",
-      "tags": ["ansiolitico", "sari", "sedativo", "fear_free", "pre_visita", "neurologia"],
+      "tags": [
+        "ansiolitico",
+        "sari",
+        "sedativo",
+        "fear_free",
+        "pre_visita",
+        "neurologia"
+      ],
       "metadata": {
         "origin": "consultavet_clinical"
       },
@@ -135,7 +155,7 @@
           "per_unit": "comprimido",
           "package_quantity": 30,
           "package_unit": "comprimidos",
-          "avg_price_brl": 115.0,
+          "avg_price_brl": 115,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -163,7 +183,7 @@
           "per_unit": "mL",
           "package_quantity": 30,
           "package_unit": "mL",
-          "avg_price_brl": 65.0,
+          "avg_price_brl": 65,
           "pharmacy_veterinary": false,
           "pharmacy_human": false,
           "pharmacy_compounding": true,
@@ -204,10 +224,21 @@
       "active_ingredient": "Miltefosina (Hexadecilfosfocolina)",
       "is_controlled": true,
       "is_active": true,
-      "species": ["cão"],
-      "routes": ["VO"],
+      "species": [
+        "cão"
+      ],
+      "routes": [
+        "VO"
+      ],
       "notes": "Antiprotozoário leishmanicida oral alquilfosfocolina para leishmaniose visceral canina (LVC por L. infantum). Sujeito a Notificação de Receita Veterinária (Portaria MAPA 837/2025).",
-      "tags": ["leishmanicida", "milteforan", "leishmaniose", "lvc", "infectologia", "controle_especial_mapa"],
+      "tags": [
+        "leishmanicida",
+        "milteforan",
+        "leishmaniose",
+        "lvc",
+        "infectologia",
+        "controle_especial_mapa"
+      ],
       "metadata": {
         "origin": "consultavet_clinical"
       },
@@ -223,7 +254,7 @@
           "per_unit": "mL",
           "package_quantity": 30,
           "package_unit": "mL",
-          "avg_price_brl": 1450.0,
+          "avg_price_brl": 1450,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -245,7 +276,7 @@
           "per_unit": "mL",
           "package_quantity": 60,
           "package_unit": "mL",
-          "avg_price_brl": 2550.0,
+          "avg_price_brl": 2550,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -267,7 +298,7 @@
           "per_unit": "mL",
           "package_quantity": 90,
           "package_unit": "mL",
-          "avg_price_brl": 3500.0,
+          "avg_price_brl": 3500,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -298,10 +329,21 @@
       "active_ingredient": "Domperidona base",
       "is_controlled": false,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["VO"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "VO"
+      ],
       "notes": "Antagonista periférico dos receptores D2/D3. Imunomodulação profilática quadrimestral na leishmaniose canina em soronegativos e pró-cinético secundário.",
-      "tags": ["antiemetico", "procinetico", "leishmaniose", "imunomodulador", "oral"],
+      "tags": [
+        "antiemetico",
+        "procinetico",
+        "leishmaniose",
+        "imunomodulador",
+        "oral"
+      ],
       "metadata": {
         "origin": "consulta-vet-curated"
       },
@@ -317,7 +359,7 @@
           "per_unit": "mL",
           "package_quantity": 100,
           "package_unit": "mL",
-          "avg_price_brl": 22.0,
+          "avg_price_brl": 22,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -339,7 +381,7 @@
           "per_unit": "comprimido",
           "package_quantity": 30,
           "package_unit": "comprimidos",
-          "avg_price_brl": 18.0,
+          "avg_price_brl": 18,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -363,7 +405,7 @@
           "per_unit": "mL",
           "package_quantity": 60,
           "package_unit": "mL",
-          "avg_price_brl": 380.0,
+          "avg_price_brl": 380,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -404,10 +446,24 @@
       "active_ingredient": "Cloridrato de metoclopramida",
       "is_controlled": false,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["VO", "SC", "IM", "IV"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "VO",
+        "SC",
+        "IM",
+        "IV"
+      ],
       "notes": "Antagonista D2/D3 e pró-cinético 5-HT4. Antiemético de ação central e proximal. Alerta 2026: bolus IV de 1 mg/kg abandonado; dose de ataque em CRI de 0,05 a 0,1 mg/kg.",
-      "tags": ["antiemetico", "procinetico", "gastroenterologia", "oral", "injetavel"],
+      "tags": [
+        "antiemetico",
+        "procinetico",
+        "gastroenterologia",
+        "oral",
+        "injetavel"
+      ],
       "metadata": {
         "origin": "consulta-vet-curated"
       },
@@ -423,7 +479,7 @@
           "per_unit": "mL",
           "package_quantity": 20,
           "package_unit": "mL",
-          "avg_price_brl": 24.0,
+          "avg_price_brl": 24,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -445,7 +501,7 @@
           "per_unit": "mL",
           "package_quantity": 10,
           "package_unit": "mL",
-          "avg_price_brl": 22.0,
+          "avg_price_brl": 22,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -467,7 +523,7 @@
           "per_unit": "comprimido",
           "package_quantity": 20,
           "package_unit": "comprimidos",
-          "avg_price_brl": 9.0,
+          "avg_price_brl": 9,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -496,7 +552,7 @@
           "slug": "cao-infusao-continua-cri-1-a-2-mg-kg-dia-iv",
           "species": "cão",
           "route": "IV",
-          "dose_value": 1.0,
+          "dose_value": 1,
           "dose_unit": "mg/kg",
           "frequency": "CRI em 24h (ataque lento de 0,05 a 0,1 mg/kg; nunca usar bolus de 1 mg/kg)",
           "notes": "Íleo paralítico e estase gástrica em terapia intensiva.",
@@ -520,10 +576,20 @@
       "active_ingredient": "Molidustat sódico (BAY 85-3934)",
       "is_controlled": false,
       "is_active": true,
-      "species": ["gato"],
-      "routes": ["VO"],
+      "species": [
+        "gato"
+      ],
+      "routes": [
+        "VO"
+      ],
       "notes": "Inibidor da prolil-hidroxilase do HIF (HIF-PHI). Estimula eritropoietina nativa felina na DRC sem risco de PRCA. Uso exclusivo felino; ciclo máximo de 28 dias.",
-      "tags": ["anemia", "nefrologia", "drc-felina", "hif-phi", "oral"],
+      "tags": [
+        "anemia",
+        "nefrologia",
+        "drc-felina",
+        "hif-phi",
+        "oral"
+      ],
       "metadata": {
         "origin": "consulta-vet-curated"
       },
@@ -539,7 +605,7 @@
           "per_unit": "mL",
           "package_quantity": 27,
           "package_unit": "mL",
-          "avg_price_brl": 480.0,
+          "avg_price_brl": 480,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -556,7 +622,7 @@
           "slug": "gato-anemia-drc-5-mg-kg-vo-q24h-ate-28-dias",
           "species": "gato",
           "route": "VO",
-          "dose_value": 5.0,
+          "dose_value": 5,
           "dose_unit": "mg/kg",
           "frequency": "q24h por até 28 dias consecutivos",
           "notes": "0,2 mL/kg q24h. Monitorar PCV no D14, D21 e D28; suspender se PCV > 45%. Intervalo mínimo de 7 dias entre ciclos. Não redosar em vômito.",
@@ -570,10 +636,27 @@
       "active_ingredient": "Citrato de maropitant monoidratado (CJ-11,972)",
       "is_controlled": false,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["SC", "IV", "VO"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "SC",
+        "IV",
+        "VO"
+      ],
       "notes": "Antagonista seletivo dos receptores NK1 e bloqueador da via final comum da êmese. Antiêmese robusta; não elimina necessariamente a náusea (Shin & Ambros 2026) e não é orexígeno. Injetar SC refrigerado para suprimir ardência.",
-      "tags": ["antiemetico", "nk1", "substancia-p", "vomito-agudo", "cinetose", "drc-felina", "pancreatite", "injetavel", "oral"],
+      "tags": [
+        "antiemetico",
+        "nk1",
+        "substancia-p",
+        "vomito-agudo",
+        "cinetose",
+        "drc-felina",
+        "pancreatite",
+        "injetavel",
+        "oral"
+      ],
       "metadata": {
         "origin": "consulta-vet-curated"
       },
@@ -589,7 +672,7 @@
           "per_unit": "mL",
           "package_quantity": 20,
           "package_unit": "mL",
-          "avg_price_brl": 335.0,
+          "avg_price_brl": 335,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -611,7 +694,7 @@
           "per_unit": "comprimido",
           "package_quantity": 4,
           "package_unit": "comprimidos",
-          "avg_price_brl": 141.0,
+          "avg_price_brl": 141,
           "pharmacy_veterinary": true,
           "pharmacy_human": false,
           "pharmacy_compounding": false,
@@ -630,7 +713,7 @@
           "slug": "cao-gato-vomito-agudo-1-mg-kg-sc-iv-q24h",
           "species": "cão",
           "route": "SC",
-          "dose_value": 1.0,
+          "dose_value": 1,
           "dose_unit": "mg/kg",
           "frequency": "q24h até 5 dias",
           "notes": "0,1 mL/kg SC ou IV lenta. Administrar gelado por via SC para suprimir dor/ardência. Se IV, infundir em 1 a 2 minutos.",
@@ -640,7 +723,7 @@
           "slug": "cao-vomito-agudo-2-mg-kg-vo-q24h",
           "species": "cão",
           "route": "VO",
-          "dose_value": 2.0,
+          "dose_value": 2,
           "dose_unit": "mg/kg",
           "frequency": "q24h até 5 dias",
           "notes": "Dose para gastrite e vômito agudo. Oferecer com pequena porção de comida.",
@@ -650,7 +733,7 @@
           "slug": "cao-cinetose-enjoo-viagem-8-mg-kg-vo-q24h",
           "species": "cão",
           "route": "VO",
-          "dose_value": 8.0,
+          "dose_value": 8,
           "dose_unit": "mg/kg",
           "frequency": "q24h 2h antes da viagem (máximo 2 dias)",
           "notes": "Dose 4x maior decorrente de saturação microssomal hepática (CYP2D15). Administrar 2 horas antes com pequeno agrado alimentar após 1h de jejum de ração.",
@@ -660,7 +743,7 @@
           "slug": "gato-vomito-drc-1-mg-kg-vo-q24h",
           "species": "gato",
           "route": "VO",
-          "dose_value": 1.0,
+          "dose_value": 1,
           "dose_unit": "mg/kg",
           "frequency": "q24h",
           "notes": "Diretriz iCatCare 2026. Maior absorção oral felina (~50%) e menor depuração justificam dose de 1 mg/kg. Na DRC, reduz vômitos mas não é orexígeno (Quimby 2015).",
@@ -674,10 +757,28 @@
       "active_ingredient": "Cloridrato de ondansetrona di-hidratado (GR 38032F)",
       "is_controlled": false,
       "is_active": true,
-      "species": ["cão", "gato"],
-      "routes": ["IV", "SC", "VO"],
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "IV",
+        "SC",
+        "VO"
+      ],
       "notes": "Antagonista seletivo 5-HT3 de canal iônico; potente ação antináusea e antiemética. Alerta farmacocinético canino 2026: biodisponibilidade oral é irrisória (~5,2%), enquanto SC é excelente (84,6%). Não exige ajuste por IRIS na DRC felina.",
-      "tags": ["antiemetico", "antinausea", "5-ht3", "quimioterapia", "cisplatina", "parvovirose", "sindrome-vestibular", "drc-felina", "injetavel", "oral"],
+      "tags": [
+        "antiemetico",
+        "antinausea",
+        "5-ht3",
+        "quimioterapia",
+        "cisplatina",
+        "parvovirose",
+        "sindrome-vestibular",
+        "drc-felina",
+        "injetavel",
+        "oral"
+      ],
       "metadata": {
         "origin": "consulta-vet-curated"
       },
@@ -693,7 +794,7 @@
           "per_unit": "mL",
           "package_quantity": 2,
           "package_unit": "mL",
-          "avg_price_brl": 17.0,
+          "avg_price_brl": 17,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -738,7 +839,7 @@
           "per_unit": "comprimido",
           "package_quantity": 10,
           "package_unit": "comprimidos",
-          "avg_price_brl": 68.0,
+          "avg_price_brl": 68,
           "pharmacy_veterinary": false,
           "pharmacy_human": true,
           "pharmacy_compounding": false,
@@ -790,6 +891,405 @@
           "dose_unit": "mg/kg",
           "frequency": "q8h a q12h (faixa: 0,1 a 1 mg/kg q6–12h)",
           "notes": "Diretriz iCatCare 2026 e ISFM 2022. Biodisponibilidade SC de 75%. Não requer ajuste por estágio IRIS (depuração hepática). Se VO, usar 0,5 a 1 mg/kg.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "metimazol",
+      "name": "Metimazol",
+      "active_ingredient": "Metimazol / Tiamazol (3-metil-1H-imidazol-2-tiona)",
+      "is_controlled": false,
+      "is_active": true,
+      "species": [
+        "gato",
+        "cão"
+      ],
+      "routes": [
+        "VO",
+        "Tópico"
+      ],
+      "notes": "Tionamida antitireoidiana; inibidor seletivo e reversível da tireoperoxidase (TPO). Controle crônico do hipertireoidismo felino e trial renal antes de radioiodo ou tireoidectomia. Não cura o adenoma estrutural. Monitorar função renal (evitar hipotireoidismo iatrogênico) e hemograma precoce.",
+      "tags": [
+        "antitireoidiano",
+        "metimazol",
+        "tiamazol",
+        "felimazole",
+        "tapazol",
+        "hipertireoidismo-felino",
+        "tireotoxicose",
+        "endocrinologia",
+        "oral",
+        "transdermico"
+      ],
+      "metadata": {
+        "origin": "consulta-vet-curated"
+      },
+      "presentations": [
+        {
+          "slug": "felimazole-2-5-mg-comprimidos-revestidos",
+          "pharmaceutical_form": "Comprimido revestido",
+          "commercial_name": "Felimazole 2,5 mg (Dechra)",
+          "concentration_text": "2,5 mg/comprimido",
+          "value": 2.5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 100,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 385,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": false,
+              "scored": false
+            }
+          }
+        },
+        {
+          "slug": "felimazole-5-mg-comprimidos-revestidos",
+          "pharmaceutical_form": "Comprimido revestido",
+          "commercial_name": "Felimazole 5 mg (Dechra)",
+          "concentration_text": "5 mg/comprimido",
+          "value": 5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 100,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 630,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": false,
+              "scored": false
+            }
+          }
+        },
+        {
+          "slug": "tapazol-5-mg-comprimidos",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Tapazol 5 mg (Biolab / Aspen)",
+          "concentration_text": "5 mg/comprimido",
+          "value": 5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 100,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 62,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "scored": false
+            }
+          }
+        },
+        {
+          "slug": "metimazol-gel-transdermico-25-mg-ml",
+          "pharmaceutical_form": "Gel transdérmico",
+          "commercial_name": "Metimazol Gel Lipofílico Transdérmico 25 mg/mL (Manipulação)",
+          "concentration_text": "25 mg/mL (0,1 mL = 2,5 mg)",
+          "value": 25,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 30,
+          "package_unit": "mL",
+          "avg_price_brl": 110,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": false,
+          "pharmacy_compounding": true,
+          "metadata": {
+            "dose_engine": {
+              "administration_mode": "topical",
+              "round_ml_to": 0.05
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "gato-hipertireoidismo-padrao-2-5-mg-gato-vo-q12h",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 2.5,
+          "dose_unit": "mg/animal",
+          "frequency": "q12h continuamente",
+          "notes": "Protocolo padrão ouro (Trepanier 2003: eutireoidismo em 87% vs 54% q24h). 1 comp de Felimazole 2,5 mg inteiro q12h. Reavaliar TT4, hemograma e perfil renal em 2 a 3 semanas.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-hipertireoidismo-conservador-1-25-mg-gato-vo-q12h",
+          "species": "gato",
+          "route": "VO",
+          "dose_value": 1.25,
+          "dose_unit": "mg/animal",
+          "frequency": "q12h (ou q24h na 1ª semana)",
+          "notes": "Diretriz AAHA 2023 para pacientes geriátricos ou com DRC limítrofe. Previne queda abrupta de taxa de filtração glomerular.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-hipertireoidismo-transdermico-2-5-mg-gato-q12h",
+          "species": "gato",
+          "route": "Tópico",
+          "dose_value": 2.5,
+          "dose_unit": "mg/animal",
+          "frequency": "q12h na pina auricular",
+          "notes": "Alternativa de escolha para intolerância gastrintestinal (vômitos/anorexia caem de 24% para 4% segundo Sartor 2004). Aplicar na face interna da orelha com luvas descartáveis; alternar orelhas.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-carcinoma-tireoidiano-0-1-mg-kg-vo-q12h",
+          "species": "cão",
+          "route": "VO",
+          "dose_value": 0.1,
+          "dose_unit": "mg/kg",
+          "frequency": "q12h continuamente",
+          "notes": "Ponte para estabilização de tireotoxicose em neoplasia tireoidiana funcional antes de cirurgia ou radioiodo. Não cura o tumor.",
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "slug": "dexametasona",
+      "name": "Dexametasona",
+      "active_ingredient": "Dexametasona (base / fosfato dissódico)",
+      "is_controlled": false,
+      "is_active": true,
+      "species": [
+        "cão",
+        "gato"
+      ],
+      "routes": [
+        "IV",
+        "IM",
+        "SC",
+        "VO"
+      ],
+      "notes": "Glicocorticoide fluorado sintético de longa ação biológica (24–48h) e alta potência (~30x hidrocortisona). Contraindicado com AINEs e em TCE. Priorizar epinefrina em choque anafilático agudo hospitalar.",
+      "tags": [
+        "anti-inflamatorio",
+        "imunossupressor",
+        "corticoide",
+        "emergencia",
+        "diagnostico",
+        "endocrinologia"
+      ],
+      "metadata": {
+        "origin": "consulta-vet-monograph",
+        "reference": "Plumb's 10th ed. pp. 361-366 (PDF 388-393); BSAVA 10th ed. pp. 114-115; Nelson & Couto 6th ed.; ACVIM 2019 IMHA; AAHA 2023 Addison; RECOVER 2026"
+      },
+      "presentations": [
+        {
+          "slug": "azium-solucao-injetavel-2-mg-ml-10-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Azium® Solução Injetável 2 mg/mL (MSD)",
+          "concentration_text": "2 mg/mL (fosfato dissódico)",
+          "value": 2,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 10,
+          "package_unit": "mL",
+          "avg_price_brl": 28,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "MSD Saúde Animal",
+            "dose_engine": {
+              "administration_mode": "liquid_injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "azium-0-5-mg-comprimidos",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Azium® 0,5 mg Comprimidos (MSD)",
+          "concentration_text": "0,5 mg/comprimido",
+          "value": 0.5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 20,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 22,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "MSD Saúde Animal",
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.25,
+              "scored": true
+            }
+          }
+        },
+        {
+          "slug": "dexagard-0-5-mg-comprimidos",
+          "pharmaceutical_form": "Comprimido",
+          "commercial_name": "Dexagard® 0,5 mg Comprimidos (Pearson)",
+          "concentration_text": "0,5 mg/comprimido",
+          "value": 0.5,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "comprimido",
+          "package_quantity": 20,
+          "package_unit": "comprimidos",
+          "avg_price_brl": 19,
+          "pharmacy_veterinary": true,
+          "pharmacy_human": false,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Pearson Saúde Animal",
+            "dose_engine": {
+              "administration_mode": "tablet",
+              "allow_split": true,
+              "split_increment": 0.5,
+              "scored": true
+            }
+          }
+        },
+        {
+          "slug": "decadron-injetavel-2-mg-ml-1-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Decadron® 2 mg/mL Injetável Ampola 1 mL (Aché)",
+          "concentration_text": "2 mg/mL (fosfato dissódico)",
+          "value": 2,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 1,
+          "package_unit": "ampola",
+          "avg_price_brl": 14,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Aché",
+            "dose_engine": {
+              "administration_mode": "liquid_injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        },
+        {
+          "slug": "decadron-injetavel-4-mg-ml-2-5-ml",
+          "pharmaceutical_form": "Solução injetável",
+          "commercial_name": "Decadron® 4 mg/mL Injetável Frasco-Ampola 2,5 mL (Aché)",
+          "concentration_text": "4 mg/mL (fosfato dissódico)",
+          "value": 4,
+          "value_unit": "mg",
+          "per_value": 1,
+          "per_unit": "mL",
+          "package_quantity": 2.5,
+          "package_unit": "mL",
+          "avg_price_brl": 25,
+          "pharmacy_veterinary": false,
+          "pharmacy_human": true,
+          "pharmacy_compounding": false,
+          "metadata": {
+            "manufacturer": "Aché",
+            "dose_engine": {
+              "administration_mode": "liquid_injectable",
+              "round_ml_to": 0.05
+            }
+          }
+        }
+      ],
+      "dosing_protocols": [
+        {
+          "slug": "cao-antiinflamatorio-curto-0-07-0-14-mg-kg-q24-48h",
+          "species": "cão",
+          "route": "VO, IV lenta, IM, SC",
+          "dose_value": 0.1,
+          "dose_unit": "mg/kg",
+          "frequency": "q24–48h por 3 a 5 dias",
+          "notes": "Faixa 0,07 a 0,14 mg/kg. Duração biológica celular estendida de 24 a 48h. Transicionar para prednisolona se terapia mantida.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-antiinflamatorio-curto-0-14-0-28-mg-kg-q24-48h",
+          "species": "gato",
+          "route": "VO, IV lenta, IM, SC",
+          "dose_value": 0.2,
+          "dose_unit": "mg/kg",
+          "frequency": "q24–48h por 3 a 5 dias",
+          "notes": "Faixa 0,14 a 0,28 mg/kg. Gatos necessitam de doses maiores por menor densidade de receptores hepáticos. Monitorar glicemia.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-acvim-imha-inducao-parenteral-0-2-0-4-mg-kg-iv-q24h",
+          "species": "cão",
+          "route": "IV lenta",
+          "dose_value": 0.3,
+          "dose_unit": "mg/kg",
+          "frequency": "q24h por 24 a 48h",
+          "notes": "Protocolo hospitalar ACVIM 2019 (faixa 0,2 a 0,4 mg/kg IV lenta) para cães com vômitos ou intolerância oral na crise hemolítica grave.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-crise-addisoniana-pre-acth-0-1-0-2-mg-kg-iv",
+          "species": "cão",
+          "route": "IV lenta",
+          "dose_value": 0.15,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única emergencial",
+          "notes": "Diretriz AAHA 2023. Fármaco de escolha pré-teste de estimulação por ACTH porque o fosfato dissódico NÃO cruza no ensaio de cortisol.",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-crise-addisoniana-pre-acth-0-1-0-2-mg-kg-iv-im",
+          "species": "gato",
+          "route": "IV lenta ou IM",
+          "dose_value": 0.15,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única emergencial",
+          "notes": "Estabilização emergencial na crise hipoadrenocortical felina. Não interfere na dosagem de cortisol sérico basal e pós-ACTH.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-edema-cerebral-peritumoral-0-1-0-3-mg-kg-iv-sc-q12-24h",
+          "species": "cão",
+          "route": "IV lenta ou SC",
+          "dose_value": 0.2,
+          "dose_unit": "mg/kg",
+          "frequency": "q12–24h",
+          "notes": "Redução comprovada de edema vasogênico peritumoral neoplásico (Poirier et al. 2025). CONTRAINDICADO em trauma cranioencefálico (TCE) e discopatia aguda.",
+          "metadata": {}
+        },
+        {
+          "slug": "cao-lddst-teste-supressao-baixa-dose-0-01-mg-kg-iv",
+          "species": "cão",
+          "route": "IV em bolus",
+          "dose_value": 0.01,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única diagnóstica",
+          "notes": "Coletar cortisol sérico basal (T0), 4h e 8h pós-injeção. Padrão ouro no diagnóstico de Hiperadrenocorticismo canino (Greco et al. 1993).",
+          "metadata": {}
+        },
+        {
+          "slug": "gato-lddst-teste-supressao-baixa-dose-0-1-mg-kg-iv",
+          "species": "gato",
+          "route": "IV em bolus",
+          "dose_value": 0.1,
+          "dose_unit": "mg/kg",
+          "frequency": "dose única diagnóstica",
+          "notes": "Dose 10 vezes maior que a canina (0,1 mg/kg IV) devido à menor sensibilidade do eixo hipofisário felino. Coletar cortisol T0, 4h e 8h.",
           "metadata": {}
         }
       ]
