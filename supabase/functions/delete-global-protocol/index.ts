@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { canDeleteGlobalProtocol } from '../_shared/globalProtocolAuthorization.ts'
 
 type DeleteRequestBody = {
   globalProtocolId?: string
@@ -30,27 +31,6 @@ function parseCsvEnv(value: string | undefined): string[] {
     .split(',')
     .map((entry) => entry.trim())
     .filter(Boolean)
-}
-
-function isTruthyFlag(value: unknown): boolean {
-  if (value === true) return true
-  if (typeof value === 'string') {
-    const normalized = value.trim().toLowerCase()
-    return normalized === 'true' || normalized === '1' || normalized === 'yes'
-  }
-  return false
-}
-
-function readMetadataFlag(record: Record<string, unknown> | null | undefined, keys: string[]): boolean {
-  for (const key of keys) {
-    if (isTruthyFlag(record?.[key])) return true
-  }
-  return false
-}
-
-function isPrivilegedRole(role: string): boolean {
-  const normalized = readText(role).toLowerCase()
-  return normalized === 'owner' || normalized === 'admin'
 }
 
 Deno.serve(async (request) => {
@@ -91,7 +71,6 @@ Deno.serve(async (request) => {
 
     const body = await request.json() as DeleteRequestBody
     const globalProtocolId = readText(body.globalProtocolId)
-    const currentClinicId = readText(body.clinicId)
     if (!globalProtocolId) {
       return json(400, { error: 'globalProtocolId e obrigatorio.' })
     }
@@ -119,46 +98,20 @@ Deno.serve(async (request) => {
       membershipRole = readText(membership?.role)
     }
 
-    let currentClinicMembershipRole = ''
-    if (currentClinicId) {
-      const { data: currentMembership } = await adminClient
-        .from('memberships')
-        .select('role')
-        .eq('clinic_id', currentClinicId)
-        .eq('user_id', user.id)
-        .maybeSingle()
-
-      currentClinicMembershipRole = readText(currentMembership?.role)
-    }
-
-    const userMetadata = (user.user_metadata || {}) as Record<string, unknown>
-    const appMetadata = (user.app_metadata || {}) as Record<string, unknown>
     const allowlistedIds = parseCsvEnv(Deno.env.get('GLOBAL_PROTOCOL_PUBLISHER_IDS'))
     const allowlistedEmails = parseCsvEnv(Deno.env.get('GLOBAL_PROTOCOL_PUBLISHER_EMAILS')).map((entry) => entry.toLowerCase())
-    const userEmail = readText(user.email).toLowerCase()
 
-    const canDelete =
-      readMetadataFlag(userMetadata, ['is_admin', 'global_protocol_publisher', 'global_content_admin']) ||
-      readMetadataFlag(appMetadata, ['is_admin', 'global_protocol_publisher', 'global_content_admin']) ||
-      readText(appMetadata.role) === 'admin' ||
-      allowlistedIds.includes(user.id) ||
-      (!!userEmail && allowlistedEmails.includes(userEmail)) ||
-      isPrivilegedRole(membershipRole) ||
-      isPrivilegedRole(currentClinicMembershipRole) ||
-      readText(globalProtocol.published_by_user_id) === user.id ||
-      false
+    const canDelete = canDeleteGlobalProtocol({
+      user,
+      sourceClinicRole: membershipRole,
+      publishedByUserId: readText(globalProtocol.published_by_user_id),
+      allowedIds: allowlistedIds,
+      allowedEmails: allowlistedEmails,
+    })
 
     if (!canDelete) {
       return json(403, {
         error: 'Sem permissao para excluir protocolo global.',
-        debug: {
-          sourceClinicId,
-          currentClinicId,
-          membershipRole,
-          currentClinicMembershipRole,
-          publishedByUserId: readText(globalProtocol.published_by_user_id),
-          userId: user.id,
-        },
       })
     }
 

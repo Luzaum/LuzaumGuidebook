@@ -37,6 +37,8 @@ import { maropitantCommercialProductSeed } from './maropitantCommercialProduct.s
 import { ondansetronaCommercialProductSeed } from './ondansetronaCommercialProduct.seed';
 import { metimazolCommercialProductSeed } from './metimazolCommercialProduct.seed';
 import { dexametasonaCommercialProductSeed } from './dexametasonaCommercialProduct.seed';
+import { eltrombopagCommercialProductsSeed } from './eltrombopagCommercialProducts.seed';
+import { mycophenolateCommercialProductsSeed } from './mycophenolateCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -99,6 +101,8 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...ondansetronaCommercialProductSeed,
   ...metimazolCommercialProductSeed,
   ...dexametasonaCommercialProductSeed,
+  ...eltrombopagCommercialProductsSeed,
+  ...mycophenolateCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -1151,31 +1155,73 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     manufacturer: 'Virbac',
     commercialClass: 'dermatologic',
     commercialSubclass: 'skin_atopy',
-    commercialSubclasses: ['skin_atopy', 'skin_pruritus'],
+    commercialSubclasses: ['skin_atopy', 'skin_pruritus', 'systemic_immunosuppressive'],
     imageUrl:
       'https://vet-uk.virbac.com/files/live/sites/virbac-b2b-uk/files/pictures/Packshots/Cyclavance/84023601-83928702_CYLAVANCE-15ML-UK-IE_WEB_600X600_face.png',
     species: ['dog'],
     presentations: ['15 mL', '30 mL', '50 mL', 'Solução oral 100 mg/mL'],
     activeComponents: ['ciclosporina 100 mg/mL'],
+    searchAliases: [
+      'cyclavance',
+      'ciclosporina',
+      'ciclosporina virbac',
+      'ciclosporina solucao oral',
+      'ciclosporina gotas',
+      'ahim',
+      'imha',
+      'anemia hemolitica imunomediada',
+      'dermatite atopica',
+      'imunossupressor',
+      'plumbs',
+      'acvim',
+    ],
     labelCompositionSummary:
-      'Ciclosporina 100 mg/mL em solução oral. No Brasil, a página comercial consultada está direcionada a cães.',
+      'Ciclosporina 100 mg/mL em solução oral para microemulsão (Virbac). Acompanha seringa dosadora graduada em peso corporal (kg).',
     labelDirections:
-      '0,05 mL/kg VO a cada 24 horas, equivalente a 5 mg/kg VO SID. Administrar 2 horas antes ou 2 horas depois da alimentação. Duração usual 30 a 90 dias conforme avaliação.',
+      'Dermatite atópica canina (rótulo): 0,05 mL/kg VO a cada 24 horas (5 mg/kg VO SID), administrado 2 horas antes ou depois da refeição. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM / Plumb’s): quando indicado segundo imunossupressor em casos graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg por via oral a cada 12 horas (5 mg/kg VO BID / q12h; equivalente a 0,05 mL/kg q12h de Cyclavance), associado a glicocorticoides e sob estrito monitoramento hematológico.',
+    dosageGuidance: {
+      labelDose: 'Dermatite atópica: 5 mg/kg VO SID (0,05 mL/kg SID). AHIM (Consenso ACVIM/Plumb’s): pensar em 5 mg/kg VO BID (0,05 mL/kg a cada 12h) como 2º imunossupressor.',
+      plumbs: {
+        dog: [
+          {
+            title: 'Dermatite Atópica Canina (Rótulo / Plumb’s)',
+            dose: '5 mg/kg (0,05 mL/kg) VO a cada 24 horas (SID)',
+            note: 'Administrar 2 horas antes ou após a alimentação. Após 4 a 6 semanas de controle, titular gradualmente para dias alternados ou 2x/semana.',
+          },
+          {
+            title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019 / Plumb’s)',
+            dose: '5 mg/kg (0,05 mL/kg) VO a cada 12 horas (q12h / BID)',
+            note: 'Opção de segundo agente imunossupressor recomendada pelo Consenso ACVIM em AHIM grave, queda acelerada de PCV, dependência transfusional ou necessidade de poupar esteroides. Pode-se pensar e prescrever 5 mg/kg BID. Monitorar resposta hematológica e concentrações em sangue total (TDM ponto C2).',
+          },
+          {
+            title: 'Furunculose Anal / Fístula Perianal Canina',
+            dose: '5 mg/kg VO a cada 12 a 24 horas',
+            note: 'Imunossupressão contínua até cicatrização dos trajetos fistulosos; associação com cetoconazol reduz dose e custo.',
+          },
+        ],
+      },
+      notes: [
+        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM e a literatura de hematologia (Plumb’s) respaldam pensar e utilizar 5 mg/kg VO BID (a cada 12 horas) quando necessária terapia de segundo agente imunossupressor associada à corticoterapia.',
+        'Administrar preferencialmente em jejum (2 horas antes ou após a alimentação) para absorção ideal, ou com pequena porção de comida se houver vômito.',
+        'A associação com cetoconazol (2,5 a 5 mg/kg/dia) reduz a depuração de ciclosporina em 50% a 70%, permitindo economizar na dose prescrita sob monitoramento hepático.',
+      ],
+    },
     plumbsContext:
-      'Para cães: 5 mg/kg VO SID por cerca de 30 dias, depois tentar reduzir para dias alternados e, se possível, duas vezes por semana. Benefício completo pode levar 4 a 6 semanas.',
+      'A ciclosporina atua inibindo a calcineurina e a via de transcrição da IL-2 mediada por NFAT em linfócitos T. Para dermatite atópica, o protocolo preconiza 5 mg/kg VO SID com desmame subsequente. Para imunossupressão sistêmica em Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019 / Plumb’s), pode-se pensar e prescrever 5 mg/kg VO BID (a cada 12 horas) como segundo imunossupressor em pacientes graves, instáveis ou refratários.',
     clinicalUse:
-      'Dermatite atópica crônica, manutenção e redução de dependência de corticoide. Não é melhor escolha para alívio imediato.',
+      'Dermatite atópica crônica canina; e terapia imunossupressora extra-bula de resgate / segundo agente em Anemia Hemolítica Imunomediada (AHIM / IMHA), fístula perianal e poliartrite imunomediada.',
     reassessment:
-      'Reavaliar em 4 a 6 semanas, controlando infecções secundárias e ajustando para menor frequência eficaz quando possível.',
+      'Em dermatologia: reavaliar em 4 a 6 semanas. Em AHIM: hemograma semanal com reticulócitos, esferócitos e PCV; monitorar TDM (níveis séricos de ciclosporina) se houver refratariedade ou suspeita de toxicidade.',
     prescriptionExample:
-      'Administrar 5 mg/kg VO SID, longe da alimentação, por 30 dias; depois tentar reduzir frequência conforme resposta.',
+      'Cyclavance 100 mg/mL solução oral (Virbac): 1) Dermatite Atópica: Administrar ___ mL (0,05 mL/kg = 5 mg/kg) VO a cada 24 horas (SID); 2) AHIM (segundo imunossupressor): Administrar ___ mL (0,05 mL/kg = 5 mg/kg) VO a cada 12 horas (BID) associado ao protocolo esteroidal.',
     safetyAlert:
-      'Evitar em neoplasia, infecção ativa importante ou imunossupressão. Atenção a vômito, diarreia, hiperplasia gengival, papilomatose, vacinação e interações com azóis/macrolídeos.',
+      'Evitar em neoplasia maligna ativa, infecções bacterianas ou fúngicas graves não controladas. Atenção a êmese, fezes pastosas, hiperplasia gengival e interações com inibidores ou indutores de CYP3A (azóis e fenobarbital). Monitorar hematócrito e função hepática.',
     price: {
       averageLabel: 'R$ 425,00 a R$ 1.085,00',
       rangeLabel: '15 mL cerca de R$ 425-530; 30 mL R$ 700-850; 50 mL R$ 995-1.085',
       sourceDate: PRICE_SOURCE_DATE,
     },
+    catalogMedicationId: 'med-ciclosporina',
   },
   {
     labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cortavance',
@@ -6260,20 +6306,46 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     manufacturer: 'Elanco / Novartis',
     commercialClass: 'dermatologic',
     commercialSubclass: 'skin_atopy',
+    commercialSubclasses: ['skin_atopy', 'systemic_immunosuppressive'],
     species: ['dog', 'cat'],
     presentations: ['Atopica cápsulas/solução conforme mercado'],
     activeComponents: ['ciclosporina'],
+    searchAliases: [
+      'atopica',
+      'ciclosporina',
+      'ahim',
+      'imha',
+      'anemia hemolitica imunomediada',
+      'dermatite atopica',
+      'elanco',
+      'novartis',
+      'plumbs',
+      'acvim',
+    ],
     productPageUrl: 'https://my.elanco.com/us/atopica-dog',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/20ecde4d-45f4-4421-ae7b-0252212cb737/AtopicaDogPackaging.png',
-    labelCompositionSummary: 'Ciclosporina veterinária; apresentação brasileira deve ser confirmada antes de regra automática.',
-    labelDirections: 'Plumb\'s/Atopica: cães com dermatite atópica 5 mg/kg VO SID por 30 dias e depois reduzir para dias alternados/2x semana; gatos com dermatite alérgica 7 mg/kg VO SID.',
-    dosageGuidance: { labelDose: 'Cães: 5 mg/kg VO SID por 30 dias; depois reduzir frequência. Gatos: 7 mg/kg VO SID para dermatite alérgica.', plumbs: { dog: [{ title: 'Dermatite atópica', dose: '5 mg/kg VO SID por 30 dias', note: 'Depois reduzir para dias alternados ou 2x/semana na menor frequência eficaz.' }], cat: [{ title: 'Dermatite alérgica felina', dose: '7 mg/kg VO SID', note: 'Após controle, tentar reduzir para dias alternados ou 2x/semana; testar FeLV/FIV e evitar carne crua/caça.' }] } },
-    plumbsContext: 'Ciclosporina é inibidor de calcineurina imunomodulador/imunossupressor; há interações relevantes com azóis e outros fármacos.',
-    clinicalUse: 'Dermatite atópica canina e doença alérgica/inflamatória selecionada conforme espécie/apresentação.',
-    reassessment: 'Reavaliar prurido, infecções secundárias, vômitos/diarreia, hiperplasia gengival e necessidade de associação terapêutica.',
-    prescriptionExample: 'Atopica [apresentação], administrar por via oral na dose calculada: cães 5 mg/kg SID; gatos 7 mg/kg SID, com reavaliação para reduzir frequência.',
+    labelCompositionSummary: 'Ciclosporina veterinária para microemulsão (cápsulas moles ou solução oral).',
+    labelDirections: 'Dermatite atópica canina: 5 mg/kg VO SID por 30 dias e depois reduzir para dias alternados/2x semana; gatos com dermatite alérgica 7 mg/kg VO SID. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM / Plumb’s): quando indicado segundo imunossupressor em cães graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg VO a cada 12 horas (5 mg/kg VO BID).',
+    dosageGuidance: {
+      labelDose: 'Dermatite atópica: cães 5 mg/kg VO SID; gatos 7 mg/kg VO SID. AHIM (Consenso ACVIM/Plumb’s): pensar em 5 mg/kg VO BID como 2º imunossupressor.',
+      plumbs: {
+        dog: [
+          { title: 'Dermatite atópica', dose: '5 mg/kg VO SID por 30 dias', note: 'Depois reduzir para dias alternados ou 2x/semana na menor frequência eficaz.' },
+          { title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM 2019 / Plumb’s)', dose: '5 mg/kg VO a cada 12 horas (BID / q12h)', note: 'Recomendação de 2º imunossupressor em cães graves ou dependentes de transfusão. Pode-se pensar e prescrever 5 mg/kg BID.' },
+        ],
+        cat: [{ title: 'Dermatite alérgica felina', dose: '7 mg/kg VO SID', note: 'Após controle, tentar reduzir para dias alternados ou 2x/semana; testar FeLV/FIV e evitar carne crua/caça.' }],
+      },
+      notes: [
+        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM e o Plumb’s respaldam pensar e utilizar 5 mg/kg VO BID como segundo imunossupressor.',
+      ],
+    },
+    plumbsContext: 'Ciclosporina é inibidor de calcineurina imunomodulador/imunossupressor. Em AHIM canina, pode-se pensar em 5 mg/kg VO BID (Consenso ACVIM). Há interações relevantes com azóis e outros fármacos.',
+    clinicalUse: 'Dermatite atópica canina, dermatopatia alérgica felina e terapia de 2º agente em Anemia Hemolítica Imunomediada (AHIM / IMHA).',
+    reassessment: 'Reavaliar prurido, escore de fezes, hemograma/PCV em AHIM e necessidade de ajuste de dose ou intervalo.',
+    prescriptionExample: 'Atopica: 1) Dermatite atópica: 5 mg/kg VO SID; 2) AHIM (segundo imunossupressor): 5 mg/kg VO a cada 12 horas (BID) associado a corticosteroide.',
     safetyAlert: 'Cautela com neoplasia, infecção sistêmica, demodicose, vacinas vivas, azóis e hepatopatia.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Fonte brasileira/foto não consolidada', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
+    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Fonte brasileira/foto não consolidada', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' },
+    catalogMedicationId: 'med-ciclosporina',
   },
   {
     id: 'surosolve-elanco',

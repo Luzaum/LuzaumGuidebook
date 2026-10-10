@@ -82,6 +82,7 @@ export type CommercialMedicationSubclass =
   | 'sedative_anesthetic'
   | 'neuro_anticonvulsant'
   | 'neuro_pain'
+  | 'neuro_immunosuppressive'
   | 'cardio_inotrope'
   | 'cardio_loop_diuretic'
   | 'cardio_raas_aldosterone'
@@ -118,7 +119,8 @@ export type CommercialMedicationSubclass =
   | 'dental_toothpaste_gel'
   | 'dental_gum_support'
   | 'dental_plaque_supplement'
-  | 'dental_antibiotic';
+  | 'dental_antibiotic'
+  | 'systemic_immunosuppressive';
 
 export interface CommercialMedicationPrice {
   averageLabel: string;

@@ -17,28 +17,22 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint, TypeScript and database payloads
+        run: npm run lint
+
+      - name: Clinical calculator validations
+        run: |
+          npm run validate:hemogasovet
+          npm run validate:fluidoterapia-vet
+
       - name: Build
         run: npm run build
 
-      - name: Validate Supabase Payload Whitelists
-        run: npm run validate:dbpayloads
-
-      - name: Validate Drug Profiles (PRs - normal mode)
-        if: github.event_name == 'pull_request'
-        run: npm run validate:profiles
-
-      - name: Validate Drug Profiles (main - strict mode)
-        if: github.event_name != 'pull_request'
-        run: npm run validate:profiles:strict
-
-      - name: Validate References Catalog
-        run: npm run validate:refs
-
-      - name: Validate Rulesets
-        run: npm run validate:rulesets
+      - name: Regression tests and distributed clinical assets
+        run: npm test

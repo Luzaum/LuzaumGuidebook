@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-09-20T01:17:13.664Z",
+    "generatedAt": "2026-10-07T14:55:58.259Z",
     "sources": [
       "Código: modules/consulta-vet/data/receituarioSeed.ts",
       "Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json"
@@ -26,9 +26,9 @@
       "recipe": 21,
       "term": 4
     },
-    "incomplete": 13,
+    "incomplete": 7,
     "withoutSource": 16,
-    "withUnlinkedMedication": 13,
+    "withUnlinkedMedication": 7,
     "withGenericRecommendations": 3
   },
   "models": [
@@ -595,14 +595,97 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-maropitant",
+          "activeIngredient": "Citrato de maropitant monoidratado (CJ-11,972)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-cerenia-inj-20ml"
+        },
+        {
+          "id": "pres-cerenia-comp"
+        },
+        {
+          "id": "pres-marovet-inj-20ml"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-maro-dog-sc",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle e prevenção de vômitos agudos — via parenteral SC ou IV lenta"
+        },
+        {
+          "id": "dose-maro-dog-po",
+          "value": 2,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Vômito agudo de múltiplas etiologias em cães — administração oral"
+        },
+        {
+          "id": "dose-maro-dog-motion",
+          "value": 8,
+          "max": 8,
+          "unit": "mg/kg",
+          "indication": "Prevenção de enjoo de movimento / cinetose em viagens de carro ou avião (Cães)"
+        },
+        {
+          "id": "dose-maro-cat-vomito",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Tratamento do vômito — regime parenteral rotulado"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle de vômitos por via oral em felinos — diretriz de medicina felina iCatCare 2026"
+        },
+        {
+          "id": "dose-maro-cat-drc",
+          "value": 4,
+          "max": 4,
+          "unit": "mg/por gato",
+          "indication": "Vômitos urêmicos na Doença Renal Crônica felina (estágios IRIS 2 a 4) — protocolo Quimby"
+        },
+        {
+          "id": "dose-maro-dog-cisplatin-chemo",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de êmese induzida por quimioterapia altamente emetogênica (cisplatina / doxorrubicina)"
+        },
+        {
+          "id": "dose-maro-dog-parvovirus",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Suporte antiemético na gastroenterite viral por Parvovírus canino (PVE)"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de vômito — uso oral extra-label"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Hepatopatia funcional avançada: por ser depurado quase exclusivamente por biotransformação hepática saturável (CYP2D15 e CYP3A12), animais com insuficiência hepática descompensada exigem redução posológica de 25% a 50% e monitoramento clínico.",
+        "Dor e desconforto à injeção subcutânea: muito frequente (especialmente em felinos). Manter o frasco sob refrigeração de 2°C a 8°C antes do uso para fortalecer o complexo maropitant-SBECD e atenuar a dor.",
+        "Administração intravenosa rápida (bolus IV): risco de vasodilatação periférica aguda, bradicardia reflexa e hipotensão arterial transitória. Injetar estritamente de forma lenta em 1 a 2 minutos.",
+        "Associação com acepromazina e anestésicos gerais inalatórios: potencialização de hipotensão arterial por somação de vasodilatação periférica.",
+        "Diferenciação mandatória entre êmese e náusea: animais tratados podem cessar o vômito mecânico mas manter náusea intensa (salivação, lip licking e inapetência); avaliar associação de ondansetrona.",
+        "Presença de corpos estranhos obstrutivos e abdômen agudo cirúrgico: a cessação do vômito pode gerar falsa impressão de cura clínica.",
+        "Fêmeas gestantes ou lactantes: segurança teratogênica não estabelecida de forma conclusiva; utilizar apenas sob estrita análise risco-benefício pelo médico-veterinário.",
+        "Interferência dermatológica em testes intradérmicos: dados recentes (2026) demonstram que maropitant 1 mg/kg IV pode aumentar o tamanho de pápulas no teste intradérmico alérgico canino."
+      ],
       "recommendations": [
         "• Oferecer dieta veterinária altamente digestível em pequenas porções, divididas em 4 a 6 refeições ao dia.",
         "• Reiniciar a alimentação precocemente assim que o vômito estiver controlado.",
@@ -617,11 +700,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-colapso-traqueia-cao",
@@ -715,38 +797,38 @@
       "doses": [
         {
           "id": "dose-pred-dog-anti",
-          "value": 0.5,
-          "max": 1,
+          "value": 0.25,
+          "max": 0.5,
           "unit": "mg/kg",
           "indication": "Anti-inflamatório e Antialérgico Geral"
         },
         {
           "id": "dose-pred-cat-anti",
-          "value": 0.5,
-          "max": 1.5,
+          "value": 0.25,
+          "max": 0.5,
           "unit": "mg/kg",
           "indication": "Anti-inflamatório e Antialérgico Felino"
         },
         {
           "id": "dose-pred-dog-imuno",
-          "value": 2,
-          "max": 3,
+          "value": 1,
+          "max": 1.5,
           "unit": "mg/kg",
           "indication": "Imunossupressão Padrão (IMHA, ITP, Pênfigo, Poliartrite)"
         },
         {
           "id": "dose-pred-cat-imuno",
-          "value": 2,
-          "max": 4,
+          "value": 1,
+          "max": 1.5,
           "unit": "mg/kg",
           "indication": "Imunossupressão Felina (IMHA, ITP, Pênfigo, Complexo Eosinofílico)"
         },
         {
           "id": "dose-pred-reposicao",
-          "value": 0.05,
-          "max": 0.2,
+          "value": 0.1,
+          "max": 0.22,
           "unit": "mg/kg",
-          "indication": "Reposição Glicocorticoide Crônica no Hipoadrenocorticismo (Addison)"
+          "indication": "Reposição glicocorticoide — hipoadrenocorticismo canino"
         },
         {
           "id": "dose-pred-cat-reposicao",
@@ -981,14 +1063,94 @@
       "medications": [
         {
           "enteredName": "GABAPENTINA",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-gabapentina",
+          "activeIngredient": "Gabapentina (ácido 1-(aminometil)ciclo-hexanoacético)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-gaba-caps-magistral"
+        },
+        {
+          "id": "pres-gaba-susp-magistral"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-300"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-400"
+        },
+        {
+          "id": "pres-gaba-comp-600"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-gaba-dog-neuropathic-start",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou sensibilização central — Início e titulação progressiva"
+        },
+        {
+          "id": "dose-gaba-dog-neuropathic-maintenance",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Dor neuropática crônica estabelecida ou osteoartrite com sensibilização central"
+        },
+        {
+          "id": "dose-gaba-dog-epilepsy-adj",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Epilepsia idiopática refratária canina — Anticonvulsivante adjuvante (add-on)"
+        },
+        {
+          "id": "dose-gaba-dog-storm-phobia",
+          "value": 25,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Fobia de tempestades, trovões, fogos de artifício e eventos sonoros aversivos"
+        },
+        {
+          "id": "dose-gaba-dog-previsit",
+          "value": 10,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Ansiedade situacional pré-visita clínica, hospitalização e manuseio estressante em cães"
+        },
+        {
+          "id": "dose-gaba-cat-neuropathic",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou osteoartrite felina com componente neuropático"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-healthy",
+          "value": 50,
+          "max": 100,
+          "unit": "mg/gato/dose fixa por animal",
+          "indication": "Ansiólise pré-visita clínica, transporte e manuseio em gatos jovens e saudáveis"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-ckd",
+          "value": 10,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Ansiólise pré-visita clínica em gatos idosos ou com Doença Renal Crônica (DRC IRIS 2 a 4)"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Medicamento de Controle Especial no Brasil: enquadrado na Lista C1 da Portaria SVS/MS nº 344/1998, exigindo Notificação de Receita em duas vias branca com validade de 30 dias contados da prescrição.",
+        "Farmacocinética canina de meia-vida curta: a meia-vida no cão é de aproximadamente 2 a 4 horas (KuKanich & Cohen 2011), e não de 9 horas como sugerido em fontes antigas; esquemas a cada 12 horas geram flutuação plasmática excessiva, sendo o intervalo de 8 horas (q8h) farmacocineticamente superior para dor crônica.",
+        "Doença Renal Crônica (DRC): a depuração da gabapentina é predominantemente renal em cães e quase exclusiva em gatos; em gatos com DRC estágios IRIS 2 a 4 a exposição sistêmica dobra ou triplica (Quimby et al. 2022), exigindo redução da dose pré-visita para aproximadamente 10 mg/kg.",
+        "Sedação e ataxia motora dose-dependentes: sonolência e fraqueza proprioceptiva transitória de membros pélvicos são os efeitos mais comuns; iniciar com doses baixas e titular gradualmente para permitir tolerância farmacodinâmica.",
+        "Interferência laboratorial com testes de proteinúria: a gabapentina pode gerar resultados falso-positivos de proteína em fitas reagentes urinárias convencionais (dipstick); confirmar com relação proteína:creatinina urinária (UPC) se clinicamente indicado.",
+        "Associação com outros depressores centrais: potencialização de sonolência e hipotensão com opioides, trazodona, fenobarbital ou benzodiazepínicos; monitorar o paciente."
+      ],
       "recommendations": [
         "• Manter repouso absoluto até nova avaliação.",
         "• Utilizar caixa de transporte, cercado pequeno ou ambiente restrito, sem móveis sobre os quais o animal possa subir.",
@@ -1043,11 +1205,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-trauma-vertebromedular-gato",
@@ -1061,14 +1222,94 @@
       "medications": [
         {
           "enteredName": "GABAPENTINA",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-gabapentina",
+          "activeIngredient": "Gabapentina (ácido 1-(aminometil)ciclo-hexanoacético)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-gaba-caps-magistral"
+        },
+        {
+          "id": "pres-gaba-susp-magistral"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-300"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-400"
+        },
+        {
+          "id": "pres-gaba-comp-600"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-gaba-dog-neuropathic-start",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou sensibilização central — Início e titulação progressiva"
+        },
+        {
+          "id": "dose-gaba-dog-neuropathic-maintenance",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Dor neuropática crônica estabelecida ou osteoartrite com sensibilização central"
+        },
+        {
+          "id": "dose-gaba-dog-epilepsy-adj",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Epilepsia idiopática refratária canina — Anticonvulsivante adjuvante (add-on)"
+        },
+        {
+          "id": "dose-gaba-dog-storm-phobia",
+          "value": 25,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Fobia de tempestades, trovões, fogos de artifício e eventos sonoros aversivos"
+        },
+        {
+          "id": "dose-gaba-dog-previsit",
+          "value": 10,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Ansiedade situacional pré-visita clínica, hospitalização e manuseio estressante em cães"
+        },
+        {
+          "id": "dose-gaba-cat-neuropathic",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou osteoartrite felina com componente neuropático"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-healthy",
+          "value": 50,
+          "max": 100,
+          "unit": "mg/gato/dose fixa por animal",
+          "indication": "Ansiólise pré-visita clínica, transporte e manuseio em gatos jovens e saudáveis"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-ckd",
+          "value": 10,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Ansiólise pré-visita clínica em gatos idosos ou com Doença Renal Crônica (DRC IRIS 2 a 4)"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Medicamento de Controle Especial no Brasil: enquadrado na Lista C1 da Portaria SVS/MS nº 344/1998, exigindo Notificação de Receita em duas vias branca com validade de 30 dias contados da prescrição.",
+        "Farmacocinética canina de meia-vida curta: a meia-vida no cão é de aproximadamente 2 a 4 horas (KuKanich & Cohen 2011), e não de 9 horas como sugerido em fontes antigas; esquemas a cada 12 horas geram flutuação plasmática excessiva, sendo o intervalo de 8 horas (q8h) farmacocineticamente superior para dor crônica.",
+        "Doença Renal Crônica (DRC): a depuração da gabapentina é predominantemente renal em cães e quase exclusiva em gatos; em gatos com DRC estágios IRIS 2 a 4 a exposição sistêmica dobra ou triplica (Quimby et al. 2022), exigindo redução da dose pré-visita para aproximadamente 10 mg/kg.",
+        "Sedação e ataxia motora dose-dependentes: sonolência e fraqueza proprioceptiva transitória de membros pélvicos são os efeitos mais comuns; iniciar com doses baixas e titular gradualmente para permitir tolerância farmacodinâmica.",
+        "Interferência laboratorial com testes de proteinúria: a gabapentina pode gerar resultados falso-positivos de proteína em fitas reagentes urinárias convencionais (dipstick); confirmar com relação proteína:creatinina urinária (UPC) se clinicamente indicado.",
+        "Associação com outros depressores centrais: potencialização de sonolência e hipotensão com opioides, trazodona, fenobarbital ou benzodiazepínicos; monitorar o paciente."
+      ],
       "recommendations": [
         "• Manter repouso absoluto até nova avaliação.",
         "• Utilizar caixa de transporte, cercado pequeno ou ambiente restrito, sem móveis sobre os quais o animal possa subir.",
@@ -1123,11 +1364,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-hernia-disco-cao",
@@ -1141,14 +1381,94 @@
       "medications": [
         {
           "enteredName": "GABAPENTINA",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-gabapentina",
+          "activeIngredient": "Gabapentina (ácido 1-(aminometil)ciclo-hexanoacético)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-gaba-caps-magistral"
+        },
+        {
+          "id": "pres-gaba-susp-magistral"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-300"
+        },
+        {
+          "id": "pres-gaba-caps-neurontin-400"
+        },
+        {
+          "id": "pres-gaba-comp-600"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-gaba-dog-neuropathic-start",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou sensibilização central — Início e titulação progressiva"
+        },
+        {
+          "id": "dose-gaba-dog-neuropathic-maintenance",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Dor neuropática crônica estabelecida ou osteoartrite com sensibilização central"
+        },
+        {
+          "id": "dose-gaba-dog-epilepsy-adj",
+          "value": 10,
+          "max": 20,
+          "unit": "mg/kg",
+          "indication": "Epilepsia idiopática refratária canina — Anticonvulsivante adjuvante (add-on)"
+        },
+        {
+          "id": "dose-gaba-dog-storm-phobia",
+          "value": 25,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Fobia de tempestades, trovões, fogos de artifício e eventos sonoros aversivos"
+        },
+        {
+          "id": "dose-gaba-dog-previsit",
+          "value": 10,
+          "max": 30,
+          "unit": "mg/kg",
+          "indication": "Ansiedade situacional pré-visita clínica, hospitalização e manuseio estressante em cães"
+        },
+        {
+          "id": "dose-gaba-cat-neuropathic",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Dor crônica neuropática ou osteoartrite felina com componente neuropático"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-healthy",
+          "value": 50,
+          "max": 100,
+          "unit": "mg/gato/dose fixa por animal",
+          "indication": "Ansiólise pré-visita clínica, transporte e manuseio em gatos jovens e saudáveis"
+        },
+        {
+          "id": "dose-gaba-cat-previsit-ckd",
+          "value": 10,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Ansiólise pré-visita clínica em gatos idosos ou com Doença Renal Crônica (DRC IRIS 2 a 4)"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Medicamento de Controle Especial no Brasil: enquadrado na Lista C1 da Portaria SVS/MS nº 344/1998, exigindo Notificação de Receita em duas vias branca com validade de 30 dias contados da prescrição.",
+        "Farmacocinética canina de meia-vida curta: a meia-vida no cão é de aproximadamente 2 a 4 horas (KuKanich & Cohen 2011), e não de 9 horas como sugerido em fontes antigas; esquemas a cada 12 horas geram flutuação plasmática excessiva, sendo o intervalo de 8 horas (q8h) farmacocineticamente superior para dor crônica.",
+        "Doença Renal Crônica (DRC): a depuração da gabapentina é predominantemente renal em cães e quase exclusiva em gatos; em gatos com DRC estágios IRIS 2 a 4 a exposição sistêmica dobra ou triplica (Quimby et al. 2022), exigindo redução da dose pré-visita para aproximadamente 10 mg/kg.",
+        "Sedação e ataxia motora dose-dependentes: sonolência e fraqueza proprioceptiva transitória de membros pélvicos são os efeitos mais comuns; iniciar com doses baixas e titular gradualmente para permitir tolerância farmacodinâmica.",
+        "Interferência laboratorial com testes de proteinúria: a gabapentina pode gerar resultados falso-positivos de proteína em fitas reagentes urinárias convencionais (dipstick); confirmar com relação proteína:creatinina urinária (UPC) se clinicamente indicado.",
+        "Associação com outros depressores centrais: potencialização de sonolência e hipotensão com opioides, trazodona, fenobarbital ou benzodiazepínicos; monitorar o paciente."
+      ],
       "recommendations": [
         "• Manter o cão em repouso estrito durante pelo menos 4 semanas.",
         "• Utilizar caixa de transporte grande, cercado pequeno ou cômodo sem móveis.",
@@ -1222,11 +1542,10 @@
       "followUp": "• Retornar imediatamente ao local de repouso após urinar ou defecar.",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-sindrome-vestibular-cao",
@@ -1240,14 +1559,97 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-maropitant",
+          "activeIngredient": "Citrato de maropitant monoidratado (CJ-11,972)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-cerenia-inj-20ml"
+        },
+        {
+          "id": "pres-cerenia-comp"
+        },
+        {
+          "id": "pres-marovet-inj-20ml"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-maro-dog-sc",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle e prevenção de vômitos agudos — via parenteral SC ou IV lenta"
+        },
+        {
+          "id": "dose-maro-dog-po",
+          "value": 2,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Vômito agudo de múltiplas etiologias em cães — administração oral"
+        },
+        {
+          "id": "dose-maro-dog-motion",
+          "value": 8,
+          "max": 8,
+          "unit": "mg/kg",
+          "indication": "Prevenção de enjoo de movimento / cinetose em viagens de carro ou avião (Cães)"
+        },
+        {
+          "id": "dose-maro-cat-vomito",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Tratamento do vômito — regime parenteral rotulado"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle de vômitos por via oral em felinos — diretriz de medicina felina iCatCare 2026"
+        },
+        {
+          "id": "dose-maro-cat-drc",
+          "value": 4,
+          "max": 4,
+          "unit": "mg/por gato",
+          "indication": "Vômitos urêmicos na Doença Renal Crônica felina (estágios IRIS 2 a 4) — protocolo Quimby"
+        },
+        {
+          "id": "dose-maro-dog-cisplatin-chemo",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de êmese induzida por quimioterapia altamente emetogênica (cisplatina / doxorrubicina)"
+        },
+        {
+          "id": "dose-maro-dog-parvovirus",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Suporte antiemético na gastroenterite viral por Parvovírus canino (PVE)"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de vômito — uso oral extra-label"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Hepatopatia funcional avançada: por ser depurado quase exclusivamente por biotransformação hepática saturável (CYP2D15 e CYP3A12), animais com insuficiência hepática descompensada exigem redução posológica de 25% a 50% e monitoramento clínico.",
+        "Dor e desconforto à injeção subcutânea: muito frequente (especialmente em felinos). Manter o frasco sob refrigeração de 2°C a 8°C antes do uso para fortalecer o complexo maropitant-SBECD e atenuar a dor.",
+        "Administração intravenosa rápida (bolus IV): risco de vasodilatação periférica aguda, bradicardia reflexa e hipotensão arterial transitória. Injetar estritamente de forma lenta em 1 a 2 minutos.",
+        "Associação com acepromazina e anestésicos gerais inalatórios: potencialização de hipotensão arterial por somação de vasodilatação periférica.",
+        "Diferenciação mandatória entre êmese e náusea: animais tratados podem cessar o vômito mecânico mas manter náusea intensa (salivação, lip licking e inapetência); avaliar associação de ondansetrona.",
+        "Presença de corpos estranhos obstrutivos e abdômen agudo cirúrgico: a cessação do vômito pode gerar falsa impressão de cura clínica.",
+        "Fêmeas gestantes ou lactantes: segurança teratogênica não estabelecida de forma conclusiva; utilizar apenas sob estrita análise risco-benefício pelo médico-veterinário.",
+        "Interferência dermatológica em testes intradérmicos: dados recentes (2026) demonstram que maropitant 1 mg/kg IV pode aumentar o tamanho de pápulas no teste intradérmico alérgico canino."
+      ],
       "recommendations": [
         "• Manter o cão em ambiente pequeno, silencioso, acolchoado e com iluminação suave.",
         "• Bloquear completamente o acesso a escadas, piscinas, varandas, sofás e camas.",
@@ -1308,11 +1710,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-sindrome-vestibular-gato",
@@ -1326,14 +1727,97 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-maropitant",
+          "activeIngredient": "Citrato de maropitant monoidratado (CJ-11,972)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-cerenia-inj-20ml"
+        },
+        {
+          "id": "pres-cerenia-comp"
+        },
+        {
+          "id": "pres-marovet-inj-20ml"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-maro-dog-sc",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle e prevenção de vômitos agudos — via parenteral SC ou IV lenta"
+        },
+        {
+          "id": "dose-maro-dog-po",
+          "value": 2,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Vômito agudo de múltiplas etiologias em cães — administração oral"
+        },
+        {
+          "id": "dose-maro-dog-motion",
+          "value": 8,
+          "max": 8,
+          "unit": "mg/kg",
+          "indication": "Prevenção de enjoo de movimento / cinetose em viagens de carro ou avião (Cães)"
+        },
+        {
+          "id": "dose-maro-cat-vomito",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Tratamento do vômito — regime parenteral rotulado"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Controle de vômitos por via oral em felinos — diretriz de medicina felina iCatCare 2026"
+        },
+        {
+          "id": "dose-maro-cat-drc",
+          "value": 4,
+          "max": 4,
+          "unit": "mg/por gato",
+          "indication": "Vômitos urêmicos na Doença Renal Crônica felina (estágios IRIS 2 a 4) — protocolo Quimby"
+        },
+        {
+          "id": "dose-maro-dog-cisplatin-chemo",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de êmese induzida por quimioterapia altamente emetogênica (cisplatina / doxorrubicina)"
+        },
+        {
+          "id": "dose-maro-dog-parvovirus",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Suporte antiemético na gastroenterite viral por Parvovírus canino (PVE)"
+        },
+        {
+          "id": "dose-maro-cat-po",
+          "value": 1,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Prevenção de vômito — uso oral extra-label"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Hepatopatia funcional avançada: por ser depurado quase exclusivamente por biotransformação hepática saturável (CYP2D15 e CYP3A12), animais com insuficiência hepática descompensada exigem redução posológica de 25% a 50% e monitoramento clínico.",
+        "Dor e desconforto à injeção subcutânea: muito frequente (especialmente em felinos). Manter o frasco sob refrigeração de 2°C a 8°C antes do uso para fortalecer o complexo maropitant-SBECD e atenuar a dor.",
+        "Administração intravenosa rápida (bolus IV): risco de vasodilatação periférica aguda, bradicardia reflexa e hipotensão arterial transitória. Injetar estritamente de forma lenta em 1 a 2 minutos.",
+        "Associação com acepromazina e anestésicos gerais inalatórios: potencialização de hipotensão arterial por somação de vasodilatação periférica.",
+        "Diferenciação mandatória entre êmese e náusea: animais tratados podem cessar o vômito mecânico mas manter náusea intensa (salivação, lip licking e inapetência); avaliar associação de ondansetrona.",
+        "Presença de corpos estranhos obstrutivos e abdômen agudo cirúrgico: a cessação do vômito pode gerar falsa impressão de cura clínica.",
+        "Fêmeas gestantes ou lactantes: segurança teratogênica não estabelecida de forma conclusiva; utilizar apenas sob estrita análise risco-benefício pelo médico-veterinário.",
+        "Interferência dermatológica em testes intradérmicos: dados recentes (2026) demonstram que maropitant 1 mg/kg IV pode aumentar o tamanho de pápulas no teste intradérmico alérgico canino."
+      ],
       "recommendations": [
         "• Manter o gato exclusivamente dentro de casa.",
         "• Colocar em ambiente pequeno, silencioso, acolchoado e sem locais altos.",
@@ -1374,11 +1858,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     }
   ]
 }

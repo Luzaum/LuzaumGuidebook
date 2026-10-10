@@ -1,0 +1,11 @@
+const fs = require('node:fs');
+const cp = require('node:child_process');
+const suffix = process.argv[2] || 'browser';
+const code = fs.readFileSync(__dirname + (suffix === 'ready' ? '/browser-ready.js' : '/browser-diagnostics.js'), 'utf8');
+const cli = 'C:/Users/luzau/AppData/Local/npm-cache/_npx/31e32ef8478fbf80/node_modules/@playwright/cli/playwright-cli.js';
+const result = cp.spawnSync(process.execPath, [cli, '-s=vetius-diagnostics', 'run-code', code], {encoding:'utf8', timeout:240000, maxBuffer:16*1024*1024});
+fs.writeFileSync(__dirname+'/'+suffix+'.log', (result.stdout||'')+(result.stderr||''));
+const match = result.stdout?.match(/### Result\s*\n([\s\S]*?)\n### /);
+if (match) fs.writeFileSync(__dirname+'/'+suffix+'-results.json', JSON.stringify(JSON.parse(match[1]),null,2));
+console.log({exit:result.status, dataSaved:!!match, error:result.error?.message});
+if (!match) console.log(result.stdout, result.stderr);

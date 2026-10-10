@@ -1,4 +1,5 @@
 import { createClient } from 'npm:@supabase/supabase-js@2'
+import { hasTrustedGlobalPermission } from '../_shared/globalProtocolAuthorization.ts'
 
 type PublishMode = 'new' | 'update'
 
@@ -148,22 +149,6 @@ function parseCsvEnv(value: string | undefined): string[] {
     .filter(Boolean)
 }
 
-function isTruthyFlag(value: unknown): boolean {
-  if (value === true) return true
-  if (typeof value === 'string') {
-    const normalized = value.trim().toLowerCase()
-    return normalized === 'true' || normalized === '1' || normalized === 'yes'
-  }
-  return false
-}
-
-function readMetadataFlag(record: Record<string, unknown> | null | undefined, keys: string[]): boolean {
-  for (const key of keys) {
-    if (isTruthyFlag(record?.[key])) return true
-  }
-  return false
-}
-
 function isGlobalMedicationReference(value: string | null | undefined): boolean {
   return String(value || '').startsWith('global:')
 }
@@ -290,19 +275,12 @@ Deno.serve(async (request) => {
       .eq('user_id', user.id)
       .maybeSingle()
 
-    const userMetadata = (user.user_metadata || {}) as Record<string, unknown>
-    const appMetadata = (user.app_metadata || {}) as Record<string, unknown>
     const allowlistedIds = parseCsvEnv(Deno.env.get('GLOBAL_PROTOCOL_PUBLISHER_IDS'))
     const allowlistedEmails = parseCsvEnv(Deno.env.get('GLOBAL_PROTOCOL_PUBLISHER_EMAILS')).map((entry) => entry.toLowerCase())
-    const userEmail = readText(user.email).toLowerCase()
 
     const canPublish =
       membership?.role === 'owner' ||
-      readMetadataFlag(userMetadata, ['is_admin', 'global_protocol_publisher', 'global_content_admin']) ||
-      readMetadataFlag(appMetadata, ['is_admin', 'global_protocol_publisher', 'global_content_admin']) ||
-      readText(appMetadata.role) === 'admin' ||
-      allowlistedIds.includes(user.id) ||
-      (!!userEmail && allowlistedEmails.includes(userEmail))
+      hasTrustedGlobalPermission(user, allowlistedIds, allowlistedEmails)
 
     if (!canPublish) {
       return json(403, { error: 'Sem permissão para publicar protocolo global.' })

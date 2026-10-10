@@ -7,7 +7,7 @@ import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
 import { RelationshipSelector } from '../components/editorial/RelationshipSelector';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
 import { StatusBadge } from '../components/shared/StatusBadge';
-import { useConsultaVetEditorialAccess } from '../hooks/useConsultaVetEditorialAccess';
+import { useConsensusEditorialAccess } from '../hooks/useConsensusEditorialAccess';
 import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { getConsensoRepository } from '../services/consensoRepository';
@@ -99,7 +99,7 @@ export function EditorialConsensosPage() {
     const consensoRepository = useMemo(() => getConsensoRepository(), []);
     const diseaseRepository = useMemo(() => getDiseaseRepository(), []);
     const medicationRepository = useMemo(() => getMedicationRepository(), []);
-    const { isLoading: isLoadingAccess, canManage } = useConsultaVetEditorialAccess();
+    const { isLoading: isLoadingAccess, canManage, isGlobalEditor, userId } = useConsensusEditorialAccess();
 
     const [items, setItems] = useState<ConsensusRecord[]>([]);
     const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
@@ -117,11 +117,12 @@ export function EditorialConsensosPage() {
     const load = async (nextSlug?: string | null) => {
         setIsLoadingData(true);
         try {
-            const [consensoData, diseaseData, medicationData] = await Promise.all([
+            const [allConsensos, diseaseData, medicationData] = await Promise.all([
                 consensoRepository.list(undefined, { includeDrafts: true }),
                 diseaseRepository.list({ includeDrafts: true }),
                 medicationRepository.list({ includeDrafts: true }),
             ]);
+            const consensoData = isGlobalEditor ? allConsensos : allConsensos.filter(item => item.createdBy === userId);
 
             setItems(consensoData);
             setDiseases(diseaseData);
@@ -168,9 +169,11 @@ export function EditorialConsensosPage() {
     };
 
     useEffect(() => {
+        if (isLoadingAccess) return;
+        if (!canManage) { setIsLoadingData(false); return; }
         void load();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isLoadingAccess, canManage, isGlobalEditor, userId]);
 
     const filteredItems = items.filter((item) => {
         const normalized = query.trim().toLowerCase();

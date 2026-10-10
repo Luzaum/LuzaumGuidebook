@@ -13,7 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { glob } from 'glob';
+import { glob } from 'node:fs/promises';
 
 // Whitelists from clinicRecords.ts
 const MEDICATION_ALLOWED_FIELDS = [
@@ -261,7 +261,7 @@ async function validateSupabasePayloads(): Promise<ValidationResult> {
         .map((dir) => path.join(process.cwd(), dir))
         .filter((dir) => fs.existsSync(dir));
     const fileLists = await Promise.all(
-        roots.map((cwd) => glob('**/*.{ts,tsx,js,jsx}', { cwd, absolute: true, ignore: ['**/node_modules/**'] }))
+        roots.map(async (cwd) => (await Array.fromAsync(glob('**/*.{ts,tsx,js,jsx}', { cwd, exclude: ['**/node_modules/**'] }))).map((file) => path.join(cwd, file)))
     );
     const files = fileLists.flat();
 

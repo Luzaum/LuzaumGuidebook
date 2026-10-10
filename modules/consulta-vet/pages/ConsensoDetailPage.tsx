@@ -132,7 +132,7 @@ export function ConsensoDetailPage() {
     let isMounted = true;
 
     const resolvePermissions = async () => {
-      const canEdit = await canManageConsensusSharedDetails();
+      const canEdit = await canManageConsensusSharedDetails(consenso?.id);
       if (!isMounted) return;
       setCanEditSharedDetails(canEdit);
     };
@@ -142,7 +142,7 @@ export function ConsensoDetailPage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [consenso?.id]);
 
   useEffect(() => {
     let isMounted = true;

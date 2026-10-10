@@ -113,6 +113,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   sedative_anesthetic: 'Sedativos / anestesia clínica',
   neuro_anticonvulsant: 'Anticonvulsivantes',
   neuro_pain: 'Dor neuropática',
+  neuro_immunosuppressive: 'Imunossupressão neurológica',
   cardio_inotrope: 'Inotrópicos',
   cardio_loop_diuretic: 'Diuréticos de alça',
   cardio_raas_aldosterone: 'SRAA / aldosterona',
@@ -150,6 +151,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   dental_gum_support: 'Gengiva sensível / pós-procedimento',
   dental_plaque_supplement: 'Suporte contra placa e halitose',
   dental_antibiotic: 'Antibióticos odontológicos',
+  systemic_immunosuppressive: 'Imunossupressores sistêmicos (doenças autoimunes / IMPDH)',
 };
 
 const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicationSubclass[]> = {
@@ -167,6 +169,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'skin_antifungal_shampoo',
     'skin_wound_healing',
     'skin_seborrhea',
+    'systemic_immunosuppressive',
   ],
   gastrointestinal: [
     'gi_antiemetic',
@@ -181,7 +184,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'gi_hepatobiliary',
     'gi_orexigenic',
   ],
-  neurologic: ['neuro_anticonvulsant', 'neuro_pain'],
+  neurologic: ['neuro_anticonvulsant', 'neuro_pain', 'neuro_immunosuppressive', 'systemic_immunosuppressive'],
   cardiologic: [
     'cardio_inotrope',
     'cardio_loop_diuretic',
@@ -193,7 +196,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   ],
   pneumologic: ['pneumo_bronchodilator', 'pneumo_antitussive'],
   urologic: ['uro_urinary_support', 'uro_urinary_urate'],
-  renal: ['renal_ckd_support', 'endocrine_erythropoiesis', 'uro_urinary_urate'],
+  renal: ['renal_ckd_support', 'endocrine_erythropoiesis', 'uro_urinary_urate', 'systemic_immunosuppressive'],
   orthopedic: ['ortho_joint_support', 'ortho_antiinflammatory'],
   endocrine: ['endocrine_insulin', 'endocrine_sglt2', 'endocrine_lipid_lowering', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
   ophthalmologic: [
@@ -209,11 +212,11 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   ],
   infectious: ['infectious_antifungal', 'infectious_antibiotic', 'infectious_leishmaniasis'],
   analgesic: ['analgesic_nonopioid', 'analgesic_opioid_combo', 'neuro_pain', 'sedative_anesthetic'],
-  antiinflammatory: ['ortho_antiinflammatory'],
+  antiinflammatory: ['ortho_antiinflammatory', 'systemic_immunosuppressive'],
   nutraceutical: ['nutra_omega3', 'nutra_general_support', 'nutra_mineral_vitamin', 'gi_probiotic'],
   reproductive: ['repro_antigalactogenic'],
-  oncologic: ['oncologic_tki', 'oncologic_chemotherapy', 'emergency_thrombopoietin'],
-  emergency: ['sedative_anesthetic', 'endocrine_diagnostic', 'emergency_thrombopoietin'],
+  oncologic: ['oncologic_tki', 'oncologic_chemotherapy', 'emergency_thrombopoietin', 'systemic_immunosuppressive'],
+  emergency: ['sedative_anesthetic', 'endocrine_diagnostic', 'emergency_thrombopoietin', 'systemic_immunosuppressive'],
   parasiticide: [
     'parasite_oral_isoxazoline_dog',
     'parasite_oral_endectocide_dog',

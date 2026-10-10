@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import { normalizeInternalRedirect } from '../lib/internalRedirect'
 
 export default function AuthCallback() {
   const nav = useNavigate()
@@ -9,7 +10,7 @@ export default function AuthCallback() {
   const nextPath = useMemo(() => {
     const params = new URLSearchParams(location.search)
     const target = params.get('next') || '/app'
-    return target.startsWith('/') ? target : '/app'
+    return normalizeInternalRedirect(target)
   }, [location.search])
 
   useEffect(() => {

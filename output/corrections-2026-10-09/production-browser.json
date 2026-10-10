@@ -1,0 +1,32 @@
+{
+  "results": [
+    {
+      "path": "/",
+      "contentReadyMs": 710,
+      "catalogReadyMs": 710,
+      "resources": 27,
+      "encodedBytes": 4312202,
+      "overflow": false
+    },
+    {
+      "path": "/calculadora-energetica",
+      "contentReadyMs": 589,
+      "catalogReadyMs": 927,
+      "resources": 41,
+      "encodedBytes": 3391155,
+      "overflow": false
+    },
+    {
+      "path": "/calculadora-energetica",
+      "viewport": "390x844",
+      "contentReadyMs": 751,
+      "overflow": false
+    }
+  ],
+  "login": {
+    "rendered": true,
+    "showsPercent": true,
+    "pageErrors": []
+  },
+  "pageErrors": []
+}

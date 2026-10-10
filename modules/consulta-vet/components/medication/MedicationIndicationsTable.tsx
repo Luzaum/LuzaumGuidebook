@@ -77,7 +77,7 @@ function ExpandableBlock({
   variant = 'default',
 }: {
   label: string;
-  icon?: React.ElementType;
+  icon?: React.ComponentType<{ className?: string }>;
   children: React.ReactNode;
   variant?: 'default' | 'rationale';
 }) {

@@ -682,7 +682,8 @@ function sanitizeDoseUnitsAndSafety(medicationSlug: string, dose: MedicationDose
         patched.doseMin = 5;
       }
       patched.maximumDose = '5 mg/kg/dia';
-      patched.notes = (patched.notes ? `${patched.notes} ` : '') + 'Teto estrito de 5 mg/kg/dia pelo risco de retinopatia e cegueira permanente em gatos.';
+      const safetyNote = 'Teto estrito de 5 mg/kg/dia pelo risco de retinopatia e cegueira permanente em gatos.';
+      if (!patched.notes?.includes(safetyNote)) patched.notes = (patched.notes ? `${patched.notes} ` : '') + safetyNote;
     } else if (patched.species === 'both' && (patched.doseMax && patched.doseMax > 5)) {
       // Separar para espécie canina para não expor gatos a 10 mg/kg
       patched.species = 'dog';
@@ -702,7 +703,7 @@ function sanitizeDoseUnitsAndSafety(medicationSlug: string, dose: MedicationDose
     patched.doseUnit = 'mg';
   } else if (medicationSlug === 'sucralfato') {
     patched.perWeightUnit = 'animal';
-    if (!patched.notes?.includes('mg/animal')) {
+    if (!patched.notes?.includes('Dose fixa por animal de acordo com a faixa de peso (≤20 kg ou >20 kg).')) {
       patched.notes = (patched.notes ? `${patched.notes} ` : '') + 'Dose fixa por animal de acordo com a faixa de peso (≤20 kg ou >20 kg).';
     }
   }
@@ -752,8 +753,23 @@ export function applyMedicationClinicalCorrections(medication: MedicationRecord)
   });
 
   // 6. Refinamentos específicos por medicamento
-  let attentionData = medication.attentionData;
+  let attentionData = medication.attentionData ?? {
+    precautions: [
+      ...medication.contraindications.map((text) => ({ condition: text, alertLevel: 'contraindicated' as const, physiologicalExplanation: text, clinicalAction: '' })),
+      ...medication.cautions.map((text) => ({ condition: text, alertLevel: 'caution' as const, physiologicalExplanation: text, clinicalAction: '' })),
+    ],
+  };
   let generalInfoData = medication.generalInfoData;
+  if (!generalInfoData?.routesDetailed?.length) {
+    generalInfoData = {
+      ...generalInfoData,
+      routesDetailed: [...new Set(doses.map((dose) => dose.route))].map((route) => ({
+        route,
+        technique: doses.filter((dose) => dose.route === route).map((dose) => dose.notes).filter(Boolean).join('\n\n'),
+        nursingCare: clientInformation?.join('\n\n') || '',
+      })),
+    };
+  }
 
   if (slug === 'fenobarbital') {
     attentionData = attentionData ? {

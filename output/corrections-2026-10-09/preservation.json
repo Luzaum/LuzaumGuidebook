@@ -1,0 +1,244 @@
+{
+  "medications": 41,
+  "diseases": 78,
+  "allPreviousRecordIds": true,
+  "allPreviousReferenceIds": true,
+  "dosesAndCalculationsUnchanged": true,
+  "diseaseContentUnchanged": true,
+  "changedMedicationFields": [
+    {
+      "slug": "acetilcisteina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "alopurinol",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "amitriptilina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "ampicilina-sulbactam",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "buprenorfina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "capromorelina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "ceftriaxona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "ciclosporina",
+      "fields": [
+        "references",
+        "clinicalFoundationsData"
+      ]
+    },
+    {
+      "slug": "ciproeptadina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "clindamicina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "clorambucil",
+      "fields": [
+        "references",
+        "clinicalFoundationsData"
+      ]
+    },
+    {
+      "slug": "dexametasona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "dipirona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "domperidona",
+      "fields": [
+        "generalInfoData",
+        "references"
+      ]
+    },
+    {
+      "slug": "enrofloxacina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "gabapentina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "hidroxido-de-aluminio",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "levetiracetam",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "marbofloxacina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "maropitant",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "meloxicam",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "metadona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "metimazol",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "metoclopramida",
+      "fields": [
+        "generalInfoData",
+        "references"
+      ]
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "miltefosina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "mirtazapina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "molidustat",
+      "fields": [
+        "generalInfoData",
+        "references"
+      ]
+    },
+    {
+      "slug": "ondansetrona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "fenobarbital",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "pradofloxacina",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "prednisolona",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "pronefra",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "sucralfato",
+      "fields": [
+        "references",
+        "clinicalFoundationsData"
+      ]
+    },
+    {
+      "slug": "sulfametoxazol-trimetoprima",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "tramadol",
+      "fields": [
+        "references"
+      ]
+    },
+    {
+      "slug": "trazodona",
+      "fields": [
+        "references"
+      ]
+    }
+  ]
+}

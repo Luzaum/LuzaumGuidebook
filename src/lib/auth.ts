@@ -1,5 +1,6 @@
 import { supabase } from './supabaseClient'
 import { resolveSupabaseAuthEmail } from './authIdentifier'
+import { normalizeInternalRedirect } from './internalRedirect'
 
 function resolveAppBaseUrl() {
   const explicitAppUrl = String(import.meta.env.VITE_PUBLIC_APP_URL || '').trim()
@@ -28,7 +29,7 @@ function resolveAuthCallbackUrl(nextPath?: string) {
   const callbackUrl = new URL(explicitUrl || fallbackBase)
 
   if (nextPath && nextPath.trim()) {
-    callbackUrl.searchParams.set('next', nextPath.trim())
+    callbackUrl.searchParams.set('next', normalizeInternalRedirect(nextPath))
   }
 
   return callbackUrl.toString()
@@ -96,7 +97,7 @@ export async function signInWithGoogleToken(idToken: string) {
 
 export async function requestPasswordReset(identifier: string, nextPath = '/login') {
   const email = resolveSupabaseAuthEmail(identifier)
-  const redirectPath = nextPath.startsWith('/') ? nextPath : '/login'
+  const redirectPath = normalizeInternalRedirect(nextPath, '/login')
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: resolveAppUrl('/reset-password') + `?next=${encodeURIComponent(redirectPath)}`,
   })

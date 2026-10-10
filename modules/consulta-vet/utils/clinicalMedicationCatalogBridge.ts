@@ -284,7 +284,7 @@ function mapPresentationOption(
     concentration_text: option?.label || presentation.label,
     additional_component: null,
     presentation_unit: null,
-    commercial_name: presentation.label.split('—')[0]?.trim() || medication.title,
+    commercial_name: presentation.label?.split('—')[0]?.trim() || medication.title,
     value: concentrationValue,
     value_unit: concentrationUnit || null,
     per_value: 1,

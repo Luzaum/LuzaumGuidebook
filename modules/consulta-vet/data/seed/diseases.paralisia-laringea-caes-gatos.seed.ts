@@ -1308,3 +1308,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
     },
   ],
 };
+
+// The structured bibliography is also consumed by the editorial renderer.
+// Keep the original references field for existing consumers.
+paralisiaLaringeaCaesGatosRecord.editorialReferences = paralisiaLaringeaCaesGatosRecord.references;

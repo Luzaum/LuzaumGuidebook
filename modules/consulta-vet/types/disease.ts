@@ -86,6 +86,8 @@ export interface DiseaseRecord extends ContentFlag {
   relatedDiseaseSlugs?: string[];
   relatedMedicationSlugs?: string[];
   references?: EditorialReference[];
+  /** Alias editorial legado; manter junto de `references` quando fornecido. */
+  editorialReferences?: EditorialReference[];
   isPublished?: boolean;
   createdAt?: string;
   updatedAt?: string;

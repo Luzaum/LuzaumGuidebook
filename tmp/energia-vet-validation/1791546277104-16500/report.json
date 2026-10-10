@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-10-09T11:45:07.258Z",
+  "outputDir": "C:\\Users\\luzau\\OneDrive\\Documentos\\GitHub\\LuzaumGuidebook\\tmp\\energia-vet-validation\\1791546277104-16500",
+  "checks": {
+    "energyChecks": {
+      "hasBookSource": true,
+      "automaticNeuteredProfile": true,
+      "hasRer": true,
+      "noExpectedAdultWeight": true
+    },
+    "targetChecks": {
+      "imageVisible": true,
+      "automaticWeightLoss": true
+    },
+    "foodChecks": {
+      "taxonomyVisible": true,
+      "nutritionalDataVisible": true
+    },
+    "formulationChecks": {
+      "dryMatter": true,
+      "asFed": true,
+      "partition": true
+    },
+    "summaryChecks": {
+      "clinicalTable": true,
+      "contribution": true,
+      "partition": true
+    },
+    "feedingChecks": {
+      "quickModeDoesNotSave": true,
+      "finishLabel": true
+    },
+    "responsiveChecks": {
+      "energy": true,
+      "target": true,
+      "food": true,
+      "formulation": true,
+      "summary": true,
+      "feeding": true
+    }
+  }
+}

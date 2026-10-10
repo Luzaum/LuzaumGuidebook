@@ -142,7 +142,11 @@ function publicReferenceUrl(reference: EditorialReference): string | null {
 
   const sourceText = `${reference.citationText || ''} ${reference.citation || ''}`;
   const doi = sourceText.match(/\bDOI:\s*(10\.\d{4,9}\/[-._;()/:A-Z0-9]+)/i)?.[1];
-  if (doi) return `https://doi.org/${doi.replace(/[.,;]+$/, '')}`;
+  if (doi) {
+    let normalized = doi.replace(/[.,;]+$/, '');
+    while (normalized.endsWith(')') && (normalized.match(/\)/g)?.length ?? 0) > (normalized.match(/\(/g)?.length ?? 0)) normalized = normalized.slice(0, -1);
+    return `https://doi.org/${normalized}`;
+  }
 
   const pmid = sourceText.match(/\bPMID:\s*(\d{5,10})/i)?.[1];
   return pmid ? `https://pubmed.ncbi.nlm.nih.gov/${pmid}/` : null;

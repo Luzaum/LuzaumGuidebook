@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { CONSULTA_VET_LOGO_ALT, CONSULTA_VET_LOGO_SIDEBAR_CLASS, CONSULTA_VET_LOGO_SRC } from '../../constants/branding';
-import { canManageConsultaVetEditorial } from '../../services/consultaVetEditorialPermissions';
+import { getConsensusEditorialAccess } from '../../services/consensusSharedDetailsPermissions';
 import {
   ConsultaVetNavAccent,
   consultaVetNavPillTransition,
@@ -42,6 +42,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
   const location = useLocation();
   const reduceMotion = useReducedMotion();
   const [canManageEditorial, setCanManageEditorial] = useState(false);
+  const [canManageOwnConsensos, setCanManageOwnConsensos] = useState(false);
   const [isHoverPreview, setIsHoverPreview] = useState(false);
   const hoverCloseTimerRef = useRef<number | null>(null);
 
@@ -52,9 +53,10 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
     let isMounted = true;
 
     const run = async () => {
-      const next = await canManageConsultaVetEditorial();
+      const next = await getConsensusEditorialAccess();
       if (!isMounted) return;
-      setCanManageEditorial(next);
+      setCanManageEditorial(next.isGlobalEditor);
+      setCanManageOwnConsensos(next.canManage);
     };
 
     void run();
@@ -118,10 +120,12 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
 
     if (canManageEditorial) {
       baseLinks.push({ to: '/consulta-vet/editorial', label: 'Editorial', icon: ShieldCheck, accent: 'slate' });
+    } else if (canManageOwnConsensos) {
+      baseLinks.push({ to: '/consulta-vet/editorial/consensos', label: 'Meus consensos', icon: FileText, accent: 'violet' });
     }
 
     return baseLinks;
-  }, [canManageEditorial]);
+  }, [canManageEditorial, canManageOwnConsensos]);
 
   return (
     <>

@@ -1,0 +1,639 @@
+[
+  {
+    "name": "brace-expansion",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "2.0.2",
+    "installedVersion": "2.0.2",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "brace-expansion: Zero-step sequence causes process hang and memory exhaustion",
+        "url": "https://github.com/advisories/GHSA-f886-m6hf-6m8v",
+        "range": ">=2.0.0 <2.0.3",
+        "severity": "moderate"
+      },
+      {
+        "title": "brace-expansion: DoS via exponential-time expansion of consecutive non-expanding {} groups",
+        "url": "https://github.com/advisories/GHSA-3jxr-9vmj-r5cp",
+        "range": ">=2.0.0 <2.1.2",
+        "severity": "high"
+      },
+      {
+        "title": "brace-expansion: DoS via unbounded expansion length causing an out-of-memory process crash",
+        "url": "https://github.com/advisories/GHSA-mh99-v99m-4gvg",
+        "range": ">=2.0.0 <2.1.3",
+        "severity": "high"
+      },
+      {
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+        "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+        "range": ">=2.0.0 <2.1.4",
+        "severity": "high"
+      },
+      {
+        "title": "brace-expansion: Quadratic-time expansion of the `{a},b}` rewrite causes CPU denial of service",
+        "url": "https://github.com/advisories/GHSA-q2hr-2g5m-vwhr",
+        "range": ">=2.0.0 <2.1.7",
+        "severity": "moderate"
+      },
+      {
+        "title": "brace-expansion: DoS via uncontrolled recursion on nested brace groups causing stack exhaustion",
+        "url": "https://github.com/advisories/GHSA-qhr7-859c-m2p7",
+        "range": ">=2.0.0 <2.1.6",
+        "severity": "high"
+      },
+      {
+        "title": "brace-expansion: DoS via uncontrolled recursion in parseCommaParts causing stack exhaustion",
+        "url": "https://github.com/advisories/GHSA-6j4f-fj2g-mc7p",
+        "range": ">=2.0.0 <2.1.5",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "braces",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "3.0.3",
+    "installedVersion": "3.0.3",
+    "fix": {
+      "name": "tailwindcss",
+      "version": "4.3.3",
+      "isSemVerMajor": true
+    },
+    "advisories": [
+      {
+        "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+        "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+        "range": "<=3.0.3",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "chokidar",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "3.6.0",
+    "installedVersion": "3.6.0",
+    "fix": {
+      "name": "tailwindcss",
+      "version": "4.3.3",
+      "isSemVerMajor": true
+    },
+    "advisories": []
+  },
+  {
+    "name": "dompurify",
+    "severity": "moderate",
+    "direct": true,
+    "lockVersion": "3.2.6",
+    "installedVersion": "3.4.14",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+        "url": "https://github.com/advisories/GHSA-v8jm-5vwx-cfxm",
+        "range": ">=3.1.3 <3.2.7",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify contains a Cross-site Scripting vulnerability",
+        "url": "https://github.com/advisories/GHSA-v2wj-7wpq-c8vv",
+        "range": ">=3.1.3 <=3.3.1",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: FORBID_TAGS bypassed by function-based ADD_TAGS predicate (asymmetry with FORBID_ATTR fix)",
+        "url": "https://github.com/advisories/GHSA-h7mw-gpvr-xq4m",
+        "range": "<3.4.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify has a SAFE_FOR_TEMPLATES bypass in RETURN_DOM mode",
+        "url": "https://github.com/advisories/GHSA-crv5-9vww-q3g8",
+        "range": ">=1.0.10 <3.4.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: Prototype Pollution to XSS Bypass via CUSTOM_ELEMENT_HANDLING Fallback",
+        "url": "https://github.com/advisories/GHSA-v9jr-rg53-9pgp",
+        "range": ">=3.0.1 <3.4.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: Cross-realm IN_PLACE sanitization leaves executable markup intact via realm-bound `instanceof` checks",
+        "url": "https://github.com/advisories/GHSA-hpcv-96wg-7vj8",
+        "range": "<=3.4.5",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: IN_PLACE mode preserves attributes of a clobbered root element, allowing XSS via attacker-controlled root DOM",
+        "url": "https://github.com/advisories/GHSA-r47g-fvhr-h676",
+        "range": "<=3.4.5",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify IN_PLACE Sanitization Bypass via Attached Shadow Root Inside <template>.content",
+        "url": "https://github.com/advisories/GHSA-rp9w-3fw7-7cwq",
+        "range": "<=3.4.6",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: Permanent `ALLOWED_ATTR` pollution via `setConfig()` bypassing the hook clone-guard (incomplete fix of the 3.4.7 hook-pollution patch)",
+        "url": "https://github.com/advisories/GHSA-cmwh-pvxp-8882",
+        "range": "<=3.4.10",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: Trusted Types policy survives `clearConfig()` and can poison later `RETURN_TRUSTED_TYPE` output",
+        "url": "https://github.com/advisories/GHSA-vxr8-fq34-vvx9",
+        "range": "<3.4.9",
+        "severity": "low"
+      },
+      {
+        "title": "DOMPurify: SAFE_FOR_TEMPLATES bypass - template expressions survive sanitization inside <template> content when using DOM output modes",
+        "url": "https://github.com/advisories/GHSA-gvmj-g25r-r7wr",
+        "range": ">=3.0.0 <=3.4.7",
+        "severity": "low"
+      },
+      {
+        "title": "DOMPurify: `IN_PLACE` mode trusts attacker-controlled `nodeName` on live non-form nodes, allowing script retention and XSS via attacker-supplied DOM objects",
+        "url": "https://github.com/advisories/GHSA-x4vx-rjvf-j5p4",
+        "range": "<=3.4.6",
+        "severity": "low"
+      },
+      {
+        "title": "DOMPurify: Hook mutation of `data.allowedTags` / `data.allowedAttributes` permanently pollutes `DEFAULT_ALLOWED_TAGS` / `DEFAULT_ALLOWED_ATTR`",
+        "url": "https://github.com/advisories/GHSA-76mc-f452-cxcm",
+        "range": "<3.4.7",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify's ADD_TAGS function form bypasses FORBID_TAGS due to short-circuit evaluation",
+        "url": "https://github.com/advisories/GHSA-39q2-94rc-95cp",
+        "range": "<=3.3.3",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify ADD_ATTR predicate skips URI validation",
+        "url": "https://github.com/advisories/GHSA-cjmm-f4jc-qw8r",
+        "range": "<=3.3.1",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify USE_PROFILES prototype pollution allows event handlers",
+        "url": "https://github.com/advisories/GHSA-cj63-jhhr-wcxv",
+        "range": "<=3.3.1",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify is vulnerable to mutation-XSS via Re-Contextualization ",
+        "url": "https://github.com/advisories/GHSA-h8r8-wccr-v5f2",
+        "range": "<3.3.2",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: IN_PLACE hook removal leaves a detached subtree executable, causing XSS",
+        "url": "https://github.com/advisories/GHSA-55q2-fjhq-7xh7",
+        "range": "<=3.4.12",
+        "severity": "moderate"
+      },
+      {
+        "title": "DOMPurify: `CUSTOM_ELEMENT_HANDLING` bypasses `afterSanitizeElements` for allowed custom elements.",
+        "url": "https://github.com/advisories/GHSA-c2j3-45gr-mqc4",
+        "range": "<=3.4.11",
+        "severity": "low"
+      },
+      {
+        "title": "DOMPurify: IN_PLACE returns a force-removed rawtext root whose text carries attacker markup — pure HTML reparse executes",
+        "url": "https://github.com/advisories/GHSA-6688-9rhm-gjv2",
+        "range": "<=3.4.15",
+        "severity": "low"
+      }
+    ]
+  },
+  {
+    "name": "fast-glob",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "3.3.3",
+    "installedVersion": "3.3.3",
+    "fix": true,
+    "advisories": []
+  },
+  {
+    "name": "fflate",
+    "severity": "moderate",
+    "direct": false,
+    "lockVersion": "0.8.2",
+    "installedVersion": "0.8.2",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "fflate unzipSync can enter an infinite loop when parsing malformed ZIP64 archives",
+        "url": "https://github.com/advisories/GHSA-px8p-9vwx-vf98",
+        "range": ">=0.8.0 <0.8.3",
+        "severity": "moderate"
+      },
+      {
+        "title": "fflate unzipSync can enter an infinite loop when parsing malformed ZIP64 archives",
+        "url": "https://github.com/advisories/GHSA-px8p-9vwx-vf98",
+        "range": ">=0.6.0 <0.6.11",
+        "severity": "moderate"
+      }
+    ]
+  },
+  {
+    "name": "glob",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "10.4.5",
+    "installedVersion": "10.4.5",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "glob CLI: Command injection via -c/--cmd executes matches with shell:true",
+        "url": "https://github.com/advisories/GHSA-5j98-mcp5-4vw2",
+        "range": ">=10.2.0 <10.5.0",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "jspdf",
+    "severity": "critical",
+    "direct": true,
+    "lockVersion": "4.0.0",
+    "installedVersion": "4.2.1",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "jsPDF has PDF Injection in AcroFormChoiceField that allows Arbitrary JavaScript Execution",
+        "url": "https://github.com/advisories/GHSA-pqxr-3g65-p328",
+        "range": "<=4.0.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF Vulnerable to Denial of Service (DoS) via Unvalidated BMP Dimensions in BMPDecoder",
+        "url": "https://github.com/advisories/GHSA-95fx-jjr5-f39c",
+        "range": "<=4.0.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF Vulnerable to Stored XMP Metadata Injection (Spoofing & Integrity Violation)",
+        "url": "https://github.com/advisories/GHSA-vm32-vv63-w422",
+        "range": "<=4.0.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "jsPDF has Shared State Race Condition in addJS Plugin",
+        "url": "https://github.com/advisories/GHSA-cjw8-79x6-5cj4",
+        "range": "<=4.0.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "jsPDF has a PDF Object Injection via Unsanitized Input in addJS Method",
+        "url": "https://github.com/advisories/GHSA-9vjf-qc39-jprp",
+        "range": "<4.2.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF Affected by Client-Side/Server-Side Denial of Service via Malicious GIF Dimensions",
+        "url": "https://github.com/advisories/GHSA-67pg-wm7f-q7fj",
+        "range": "<4.2.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF has a PDF Injection in AcroForm module allows Arbitrary JavaScript Execution (RadioButton.createOption and \"AS\" property)",
+        "url": "https://github.com/advisories/GHSA-p5xg-68wr-hm3m",
+        "range": "<4.2.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF has a PDF Object Injection via FreeText color",
+        "url": "https://github.com/advisories/GHSA-7x6v-j9x4-qf24",
+        "range": "<=4.2.0",
+        "severity": "high"
+      },
+      {
+        "title": "jsPDF has HTML Injection in New Window paths",
+        "url": "https://github.com/advisories/GHSA-wfv2-pwc8-crg5",
+        "range": "<=4.2.0",
+        "severity": "critical"
+      }
+    ]
+  },
+  {
+    "name": "micromatch",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "4.0.8",
+    "installedVersion": "4.0.8",
+    "fix": {
+      "name": "tailwindcss",
+      "version": "4.3.3",
+      "isSemVerMajor": true
+    },
+    "advisories": []
+  },
+  {
+    "name": "minimatch",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "9.0.5",
+    "installedVersion": "9.0.5",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+        "url": "https://github.com/advisories/GHSA-3ppc-4f35-3m26",
+        "range": ">=9.0.0 <9.0.6",
+        "severity": "high"
+      },
+      {
+        "title": "minimatch has ReDoS: matchOne() combinatorial backtracking via multiple non-adjacent GLOBSTAR segments",
+        "url": "https://github.com/advisories/GHSA-7r86-cg39-jmmj",
+        "range": ">=9.0.0 <9.0.7",
+        "severity": "high"
+      },
+      {
+        "title": "minimatch ReDoS: nested *() extglobs generate catastrophically backtracking regular expressions",
+        "url": "https://github.com/advisories/GHSA-23c5-xmqv-rm74",
+        "range": ">=9.0.0 <9.0.7",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "nanoid",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "3.3.11",
+    "installedVersion": "3.3.11",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "nanoid: non-secure generators can loop indefinitely with negative size",
+        "url": "https://github.com/advisories/GHSA-28wg-ghj8-5hjv",
+        "range": "<3.3.16",
+        "severity": "high"
+      },
+      {
+        "title": "nanoid: custom generators can loop indefinitely when size is zero",
+        "url": "https://github.com/advisories/GHSA-2v37-7h3g-55p8",
+        "range": "<3.3.18",
+        "severity": "high"
+      },
+      {
+        "title": "nanoid: Integer Overflow or Wraparound",
+        "url": "https://github.com/advisories/GHSA-xwg4-73v4-xw9w",
+        "range": "<3.3.12",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "picomatch",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "4.0.3",
+    "installedVersion": "4.0.3",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching",
+        "url": "https://github.com/advisories/GHSA-3v7f-55p6-f55p",
+        "range": "<2.3.2",
+        "severity": "moderate"
+      },
+      {
+        "title": "Picomatch has a ReDoS vulnerability via extglob quantifiers",
+        "url": "https://github.com/advisories/GHSA-c2c7-rcm5-vvqj",
+        "range": "<2.3.2",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "postcss",
+    "severity": "high",
+    "direct": true,
+    "lockVersion": "8.5.6",
+    "installedVersion": "8.5.26",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "PostCSS has XSS via Unescaped </style> in its CSS Stringify Output",
+        "url": "https://github.com/advisories/GHSA-qx2v-qp2m-jg93",
+        "range": "<8.5.10",
+        "severity": "moderate"
+      },
+      {
+        "title": "PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments",
+        "url": "https://github.com/advisories/GHSA-6g55-p6wh-862q",
+        "range": "<=8.5.11",
+        "severity": "high"
+      },
+      {
+        "title": "PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset",
+        "url": "https://github.com/advisories/GHSA-fxqj-rqcc-2cmp",
+        "range": "<=8.5.22",
+        "severity": "moderate"
+      },
+      {
+        "title": "PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure",
+        "url": "https://github.com/advisories/GHSA-r28c-9q8g-f849",
+        "range": "<=8.5.17",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "postcss-selector-parser",
+    "severity": "moderate",
+    "direct": false,
+    "lockVersion": "6.1.2",
+    "installedVersion": "6.1.2",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "postcss-selector-parser allows denial of service through uncontrolled AST recursion",
+        "url": "https://github.com/advisories/GHSA-w9m9-85wc-3x92",
+        "range": ">=6.1.0 <6.1.3",
+        "severity": "low"
+      },
+      {
+        "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+        "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+        "range": "<7.1.6",
+        "severity": "moderate"
+      }
+    ]
+  },
+  {
+    "name": "react-router",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "7.12.0",
+    "installedVersion": "7.12.0",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "React Router's vendored turbo-stream v2 allows arbitrary constructor invocation via TYPE_ERROR deserialization leading to Unauth RCE",
+        "url": "https://github.com/advisories/GHSA-49rj-9fvp-4h2h",
+        "range": ">=7.0.0 <=7.14.1",
+        "severity": "high"
+      },
+      {
+        "title": "React Router vulnerable to XSS in unstable RSC redirect handling via javascript: redirect targets",
+        "url": "https://github.com/advisories/GHSA-8646-j5j9-6r62",
+        "range": ">=7.7.0 <7.13.2",
+        "severity": "high"
+      },
+      {
+        "title": "React Router vulnerable to DoS via unbounded path expansion in __manifest endpoint",
+        "url": "https://github.com/advisories/GHSA-8x6r-g9mw-2r78",
+        "range": ">=7.0.0 <7.15.0",
+        "severity": "high"
+      },
+      {
+        "title": "React Router vulnerable to Denial of Service via reflected user input in single-fetch",
+        "url": "https://github.com/advisories/GHSA-rxv8-25v2-qmq8",
+        "range": ">=7.0.0 <7.14.0",
+        "severity": "high"
+      },
+      {
+        "title": "React Router: Potential CSRF via PUT/PATCH/DELETE document requests",
+        "url": "https://github.com/advisories/GHSA-84g9-w2xq-vcv6",
+        "range": ">=7.12.0 <7.15.1",
+        "severity": "low"
+      },
+      {
+        "title": "React Router: Open redirect via backslash in <Link> and useNavigate (CVE-2025-68470 bypass)",
+        "url": "https://github.com/advisories/GHSA-wrjc-x8rr-h8h6",
+        "range": ">=6.0.0 <7.18.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "React Router: RSCErrorHandler Missing Protocol Validation (XSS)",
+        "url": "https://github.com/advisories/GHSA-h8fp-f39c-q6mh",
+        "range": ">=7.11.0 <7.18.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "React Router: Arbitrary Constructor Injection via deserializeErrors() in React Router SSR Hydration",
+        "url": "https://github.com/advisories/GHSA-337j-9hxr-rhxg",
+        "range": ">=6.4.0 <7.18.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "React Router: Unauthenticated Denial of Service via Inefficient Route Matching",
+        "url": "https://github.com/advisories/GHSA-chx6-hx7r-mcp5",
+        "range": ">=7.0.0 <7.18.0",
+        "severity": "high"
+      },
+      {
+        "title": "React Router's same-origin redirect with path starting // causes open redirect via protocol-relative URL reinterpretation",
+        "url": "https://github.com/advisories/GHSA-2j2x-hqr9-3h42",
+        "range": ">=7.0.0 <7.14.1",
+        "severity": "moderate"
+      },
+      {
+        "title": "React Router: RSC Mode CSRF Bypass Allows Action Execution Before 400 Response",
+        "url": "https://github.com/advisories/GHSA-qwww-vcr4-c8h2",
+        "range": ">=7.12.0 <7.18.2",
+        "severity": "high"
+      },
+      {
+        "title": "React Router: Open redirect leading to XSS",
+        "url": "https://github.com/advisories/GHSA-jjmj-jmhj-qwj2",
+        "range": ">=7.9.6 <=7.12.0",
+        "severity": "moderate"
+      },
+      {
+        "title": "React Router has stored XSS via unescaped Location header in prerendered redirect HTML",
+        "url": "https://github.com/advisories/GHSA-f22v-gfqf-p8f3",
+        "range": ">=7.5.1 <7.13.2",
+        "severity": "moderate"
+      }
+    ]
+  },
+  {
+    "name": "react-router-dom",
+    "severity": "high",
+    "direct": true,
+    "lockVersion": "7.12.0",
+    "installedVersion": "7.18.3",
+    "fix": true,
+    "advisories": []
+  },
+  {
+    "name": "source-map-js",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "1.2.1",
+    "installedVersion": "1.2.1",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "source-map-js allows event-loop denial of service through indexed source-map section offsets",
+        "url": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q",
+        "range": ">=1.0.0 <1.2.2",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "tailwindcss",
+    "severity": "high",
+    "direct": true,
+    "lockVersion": "3.4.17",
+    "installedVersion": "3.4.19",
+    "fix": {
+      "name": "tailwindcss",
+      "version": "4.3.3",
+      "isSemVerMajor": true
+    },
+    "advisories": []
+  },
+  {
+    "name": "ws",
+    "severity": "high",
+    "direct": false,
+    "lockVersion": "8.19.0",
+    "installedVersion": "8.19.0",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "ws: Uninitialized memory disclosure",
+        "url": "https://github.com/advisories/GHSA-58qx-3vcg-4xpx",
+        "range": ">=8.0.0 <8.20.1",
+        "severity": "moderate"
+      },
+      {
+        "title": "ws: Memory exhaustion DoS from tiny fragments and data chunks",
+        "url": "https://github.com/advisories/GHSA-96hv-2xvq-fx4p",
+        "range": ">=8.0.0 <8.21.0",
+        "severity": "high"
+      }
+    ]
+  },
+  {
+    "name": "yaml",
+    "severity": "moderate",
+    "direct": false,
+    "lockVersion": "2.8.1",
+    "installedVersion": "2.8.1",
+    "fix": true,
+    "advisories": [
+      {
+        "title": "yaml is vulnerable to Stack Overflow via deeply nested YAML collections",
+        "url": "https://github.com/advisories/GHSA-48c2-rrv3-qjmp",
+        "range": ">=2.0.0 <2.8.3",
+        "severity": "moderate"
+      }
+    ]
+  }
+]

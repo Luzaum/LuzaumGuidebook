@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
 import { getSession, requestPasswordReset, signIn, signInWithGoogle } from '../lib/auth'
+import { normalizeInternalRedirect } from '../lib/internalRedirect'
 
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
   if (!target) return null
-  if (!target.startsWith('/') || target.startsWith('//') || target.startsWith('/login')) return '/hub'
-  return target
+  if (target.startsWith('/login')) return '/hub'
+  return normalizeInternalRedirect(target, '/hub')
 }
 
 export default function Login() {
@@ -31,7 +32,7 @@ export default function Login() {
     const params = new URLSearchParams(location.search)
     const rawError = params.get('error_description') || params.get('error')
     if (rawError) {
-      setError(decodeURIComponent(rawError))
+      setError(rawError)
     }
   }, [location.search])
 

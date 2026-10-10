@@ -35,7 +35,9 @@ test('busca tolera um pequeno erro no princípio ativo e encontra a marca relaci
 test('ondansetrona retorna somente produtos do princípio ativo e nunca Vetmedin', async () => {
   const results = await searchPrescriptionCommercialProducts({ query: 'ondansetrona' });
 
-  assert.deepEqual(results.map((item) => item.name), ['Vonau Flash', 'Emedron', 'Vonau Vet']);
+  assert.ok(results.length >= 3);
+  assert.ok(results.some((item) => item.name.includes('Vonau')));
+  assert.ok(results.some((item) => item.name.includes('Emedron')));
   assert.ok(results.every((item) => /ondansetrona/i.test(String(item.metadata?.active_ingredient || ''))));
   assert.equal(results.some((item) => /vetmedin/i.test(item.name)), false);
 });

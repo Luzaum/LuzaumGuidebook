@@ -16,6 +16,7 @@ export interface ConsensusRecord {
   isPublished: boolean;
   createdAt: string;
   updatedAt: string;
+  createdBy?: string | null;
 
   // Campos legados opcionais para compatibilidade gradual com seed local.
   shortTitle?: string;

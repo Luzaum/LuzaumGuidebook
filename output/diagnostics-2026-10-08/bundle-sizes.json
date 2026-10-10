@@ -1,0 +1,107 @@
+{
+  "files": 225,
+  "totalBytes": 18616456,
+  "totalGzipBytes": 5090790,
+  "largest": [
+    {
+      "file": "diseases.seed-BDSNEJvU.js",
+      "bytes": 4032515,
+      "gzipBytes": 1339543
+    },
+    {
+      "file": "App-D4BRop3j.js",
+      "bytes": 3057397,
+      "gzipBytes": 348651
+    },
+    {
+      "file": "medications.seed-DTxT7v5L.js",
+      "bytes": 2656883,
+      "gzipBytes": 842768
+    },
+    {
+      "file": "receituarioCommercialCatalogService--S9a1NLv.js",
+      "bytes": 1028821,
+      "gzipBytes": 256796
+    },
+    {
+      "file": "ReceituarioPage-Bm_zNiPM.js",
+      "bytes": 756146,
+      "gzipBytes": 194758
+    },
+    {
+      "file": "vendor-pdf-CJbm8jsq.js",
+      "bytes": 625608,
+      "gzipBytes": 186881
+    },
+    {
+      "file": "NeurologiaPage-BoE4nc20.js",
+      "bytes": 560225,
+      "gzipBytes": 149124
+    },
+    {
+      "file": "PdfViewerShell-B8m7g9UR.js",
+      "bytes": 478236,
+      "gzipBytes": 141500
+    },
+    {
+      "file": "clinicalQuickGuides.categories-Biyy5p8O.js",
+      "bytes": 445782,
+      "gzipBytes": 157661
+    },
+    {
+      "file": "index-Cm4kAo2S.js",
+      "bytes": 422004,
+      "gzipBytes": 134733
+    },
+    {
+      "file": "index-Chw5mEn6.css",
+      "bytes": 416458,
+      "gzipBytes": 61581
+    },
+    {
+      "file": "DiseaseDetailPage-BitZTPPy.js",
+      "bytes": 388464,
+      "gzipBytes": 116990
+    },
+    {
+      "file": "UltrasoundReferencePage-DQ01SOKA.js",
+      "bytes": 263917,
+      "gzipBytes": 79604
+    },
+    {
+      "file": "vendor-supabase-DEhR-P66.js",
+      "bytes": 220879,
+      "gzipBytes": 57792
+    },
+    {
+      "file": "catalogCache-CzkAPGha.js",
+      "bytes": 205303,
+      "gzipBytes": 67344
+    },
+    {
+      "file": "index-LaTNCw8j.js",
+      "bytes": 204702,
+      "gzipBytes": 58427
+    },
+    {
+      "file": "medicationBookFoundations-C9_PiPAS.js",
+      "bytes": 200472,
+      "gzipBytes": 69139
+    },
+    {
+      "file": "diseases-BvgUQfVQ.js",
+      "bytes": 179054,
+      "gzipBytes": 59710
+    },
+    {
+      "file": "index.es-DeXFLIw9.js",
+      "bytes": 159793,
+      "gzipBytes": 53576
+    },
+    {
+      "file": "index-C__CQegN.js",
+      "bytes": 153114,
+      "gzipBytes": 36102
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+### Result
+{"url":"http://127.0.0.1:4176/calculadora-energetica/new/energy","tail":"uplementação enzimática e cobalamina.\n\nAVCN 2ª ed., cap. 12 — EPI\n\nHEPÁTICO\n\nEncefalopatia hepática / shunt\n\nControle de proteína e cobalamina; fibras e lactulose conforme caso.\n\nAVCN 2ª ed., cap. 13 — PSS/HE\n\nToxicidade por cobre (cão)\n\nRestrição de cobre dietético; antioxidantes e densidade energética.\n\nAVCN 2ª ed., cap. 13\n\nHepatite crônica\n\nProteína de alta qualidade; evitar desnutrição; antioxidantes.\n\nAVCN 2ª ed., cap. 13\n\nCARDIOVASCULAR\n\nCardiopatia — assintomática (estágio B)\n\nManutenção de peso e EMC; moderação de sódio (<100 mg/100 kcal); evitar petiscos salgados.\n\nEttinger 9ª ed., cap. 11; AVCN 2ª ed., cap. 18 — ACVIM estágio B\n\nInsuficiência cardíaca congestiva / DCM\n\nDensidade calórica para prevenir caquexia cardíaca; restrição de sódio (estágio C/D); ômega-3 EPA/DHA e taurina.\n\nNelson & Couto 6ª ed., cap. 5; Ettinger 9ª ed., cap. 11; AVCN 2ª ed., cap. 18\n\nONCOLOGIA\n\nNeoplasia / caquexia oncológica\n\nPriorizar ingestão e densidade energética; proteína de alto valor biológico e n-3 quando tolerados.\n\nAVCN 2ª ed., cap. 19; Ettinger 9ª ed., cap. 19\n\nDERMATOLOGIA\n\nDermatite — alergia alimentar\n\nEliminação dietética rigorosa (proteína hidrolisada ou novel); reintrodução controlada para diagnóstico.\n\nAVCN 2ª ed., cap. 14; Nelson & Couto 6ª ed., cap. 29\n\nORTOPEDIA\n\nOsteoartrite / Doença articular degenerativa\n\nControle rigoroso de peso (meta ECC 4-5/9); ácidos graxos n-3 anti-inflamatórios (EPA/DHA) e condroproteção.\n\nAVCN 2ª ed., cap. 10 — Osteoartrite\n\nPróximo: Energia","inputs":[{"id":"","value":"on"}]}
+### Ran Playwright code
+```js
+await (async (page) => {
+  await page.getByRole('radio', { name: /Dieta rápida/i }).click();
+  await page.getByLabel('Peso atual (kg)').fill('15');
+  await page.getByRole('radio', { name: /^Castrado$/ }).click();
+  await page.getByRole('button', { name: 'Próximo: Energia' }).click();
+  return { url: page.url(), tail: (await page.locator('body').innerText()).slice(-1500), inputs: await page.locator('input').evaluateAll(items => items.map(x => ({id:x.id,value:x.value}))) };
+}
+)(page);
+```
+### Page
+- Page URL: http://127.0.0.1:4176/calculadora-energetica/new/energy
+- Page Title: Vetius

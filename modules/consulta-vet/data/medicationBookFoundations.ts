@@ -1024,13 +1024,94 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
     });
   }
 
-  const bookRefIds = bookReferences.map((reference) => reference.id!);
-
   // Preservar todas as referências existentes excluindo apenas as de livros que serão substituídas de forma idempotente
-  const existingRefs = (medication.references ?? []).filter(
-    (reference) => !bookRefIds.includes(reference.id ?? '')
-  );
-  const updatedReferences = [...existingRefs, ...bookReferences];
+  const existingRefs = (medication.references ?? []).map((reference) =>
+    bookReferences.find((book) => book.id === reference.id) ?? reference);
+  const updatedReferences = [...existingRefs, ...bookReferences.filter((book) =>
+    !existingRefs.some((reference) => reference.id === book.id))];
+  // Preserve the study metadata already authored in the monograph when its
+  // bibliography entry was omitted. Do not invent URLs, DOI or PMID values.
+  for (const study of medication.clinicalStudiesCommented ?? []) {
+    if (study.referenceId && !updatedReferences.some((ref) => ref.id === study.referenceId)) {
+      updatedReferences.push({
+        id: study.referenceId,
+        title: study.title,
+        citationText: `${study.authorsYear}. ${study.title}. ${study.journal || ''}`,
+        sourceType: study.studyDesign,
+        notes: study.mainFindings,
+      });
+    }
+  }
+  for (const topic of medication.clinicalFoundationsData ?? []) {
+    for (const study of topic.studies ?? []) {
+      if (study.referenceId && !updatedReferences.some((ref) => ref.id === study.referenceId)) {
+        updatedReferences.push({ id: study.referenceId, citationText: study.citation,
+          sourceType: study.sourceType, notes: study.summaryText });
+      }
+    }
+  }
+  if (medication.slug === 'maropitant' && !updatedReferences.some((ref) => ref.id === 'ref-maro-zoetis-bula')) {
+    if (medication.leafletUrl) updatedReferences.push({ id: 'ref-maro-zoetis-bula',
+      citationText: 'Zoetis Brasil. Cerenia. Bula do fabricante.',
+      sourceType: 'Bula do fabricante', url: medication.leafletUrl });
+    updatedReferences.push({ id: 'ref-maro-hickman-2008',
+      citationText: 'Hickman et al. Safety, pharmacokinetics and use of the novel NK-1 receptor antagonist maropitant (Cerenia) for the prevention of emesis and motion sickness in cats. 2008.',
+      sourceType: 'Estudo experimental', doi: '10.1111/j.1365-2885.2008.00952.x',
+      url: 'https://doi.org/10.1111/j.1365-2885.2008.00952.x' });
+    updatedReferences.push({ id: 'ref-maro-icatcare-2026',
+      citationText: '2026 iCatCare consensus guidelines on the diagnosis and management of chronic kidney disease in cats.',
+      sourceType: 'Consenso internacional', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13554608/' });
+  }
+  if (medication.slug === 'domperidona') {
+    if (!updatedReferences.some((ref) => ref.id === 'ref-domp-wavd-2025')) updatedReferences.push({
+      id: 'ref-domp-wavd-2025',
+      citationText: 'Saridomichelakis et al. WAVD consensus guidelines for canine leishmaniosis. Veterinary Dermatology. 2025;36(6):723–787.',
+      sourceType: 'Consenso internacional',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/40745695/',
+      doi: '10.1111/vde.70006',
+    });
+    for (const [alias, source] of [
+      ['ref-domp-plumbs-10ed', `ref-book-foundations-plumbs-${medication.slug}`],
+      ['ref-domp-bsava-10ed', `ref-book-foundations-bsava-${medication.slug}`],
+    ]) {
+      const reference = updatedReferences.find((ref) => ref.id === source);
+      if (reference && !updatedReferences.some((ref) => ref.id === alias)) updatedReferences.push({ ...reference, id: alias });
+    }
+  }
+  // Retain legacy reference identifiers used by doses, pointing them to the
+  // same already-authored formulary entry rather than dropping the links.
+  const requestedReferenceIds = new Set([
+    ...medication.doses.flatMap((dose) => dose.referenceIds ?? []),
+    ...(medication.detailedIndications ?? []).flatMap((item) => item.referenceIds ?? []),
+  ]);
+  for (const id of requestedReferenceIds) {
+    if (updatedReferences.some((ref) => ref.id === id)) continue;
+    const aliases: Record<string, string> = {
+      'ref-metoclo-martin-flores-2026': 'ref-meto-martin-flores-2026',
+      'ref-metoclo-rolfi-2026': 'ref-meto-rolfi-2026',
+      'ref-milte-wavd-2025': 'ref-wavd-2025-consensus',
+      'ref-milte-clwg-2026': 'ref-clwg-2026-recommendations',
+      'ref-trazo-kim-2022': 'ref-kim-2022-trazodone-previsit',
+      'ref-trazo-gruen-2014': 'ref-gruen-2014-trazodone-confinement',
+      'ref-trazo-orlando-2016': 'ref-stevens-2016-trazodone-cat',
+      'ref-trazo-gilbert-gregory-2016': 'ref-gilbert-gregory-2016-hospitalization',
+    };
+    const source = /plumbs?-10(?:ed)?/.test(id) ? bookReferences.find((ref) => ref.id?.includes('-plumbs-'))
+      : /bsava-10(?:ed)?/.test(id) ? bookReferences.find((ref) => ref.id?.includes('-bsava-'))
+      : /ettinger-9(?:ed)?/.test(id) ? bookReferences.find((ref) => ref.id?.includes('-ettinger-'))
+      : updatedReferences.find((ref) => ref.id === aliases[id]);
+    if (source) updatedReferences.push({ ...source, id });
+  }
+  const missingPublishedReferences: Record<string, EditorialReference> = {
+    'ref-moli-fda-varenzin-2023': { citationText: 'FDA. FDA Conditionally Approves First Drug for Anemia in Cats with Chronic Kidney Disease. 1 May 2023.', sourceType: 'Informação regulatória', url: 'https://www.fda.gov/news-events/press-announcements/fda-conditionally-approves-first-drug-anemia-cats-chronic-kidney-disease' },
+    'ref-ondan-icatcare-2026': { citationText: '2026 iCatCare consensus guidelines on the diagnosis and management of chronic kidney disease in cats.', sourceType: 'Consenso internacional', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC13554608/' },
+    'ref-ondan-isfm-2022': { citationText: 'Taylor et al. 2022 ISFM Consensus Guidelines on Management of the Inappetent Hospitalised Cat.', sourceType: 'Consenso internacional', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11107985/' },
+    'ref-ondan-shin-2026': { citationText: 'Shin CW, Ambros B. Effectiveness of dimenhydrinate and maropitant in preventing preoperative emesis and nausea in healthy dogs sedated with hydromorphone and dexmedetomidine: a randomized, blinded trial. 2026.', sourceType: 'Ensaio clínico randomizado', url: 'https://pubmed.ncbi.nlm.nih.gov/42208176/', notes: 'Estudo de dimenidrinato e maropitant; não constitui avaliação direta de eficácia da associação com ondansetrona.' },
+    'ref-milte-hasany-2024': { citationText: 'Hasany et al. (2024) — citação presente na indicação original de miltefosina para esporotricose.', sourceType: 'Referência pendente de validação', notes: 'A publicação exata não foi localizada na revisão de 09/10/2026. Identificador preservado para rastreabilidade; esta entrada não confirma eficácia clínica, posologia ou segurança. Necessária revisão editorial da indicação original.' },
+  };
+  for (const id of requestedReferenceIds) {
+    if (!updatedReferences.some((ref) => ref.id === id) && missingPublishedReferences[id]) updatedReferences.push({ ...missingPublishedReferences[id], id });
+  }
   const fallbackDoseReferenceId = entry.plumbs
     ? `ref-book-foundations-plumbs-${medication.slug}`
     : updatedReferences.find((reference) => reference.id)?.id;
@@ -1095,13 +1176,29 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
     }));
     clinicalFoundationsData = [...bookTopics, ...studyTopics];
   } else {
-    clinicalFoundationsData = bookTopics;
+    const referencedStudies = updatedReferences.filter((ref) =>
+      ref.id && ref.notes && /ensaio|estudo clínico|estudo experimental|meta-análise/i.test(ref.sourceType || ''));
+    const referenceTopics = referencedStudies.map((ref) => ({
+      id: `${medication.slug}-reference-study-${ref.id}`,
+      title: ref.title || ref.citationText || ref.id!,
+      narrative: `${ref.citationText || ref.title || ''} ${ref.notes}`,
+      referenceIds: [ref.id!],
+      studies: [{
+        citation: ref.citationText || ref.title || ref.id!,
+        referenceId: ref.id!,
+        sourceType: ref.sourceType || undefined,
+        summaryText: ref.notes!,
+        clinicalConclusion: ref.notes!,
+        url: ref.url || undefined,
+      }],
+    }));
+    clinicalFoundationsData = [...bookTopics, ...priorFoundations, ...referenceTopics];
   }
 
-  return {
+  return repairMedicationReferences({
     ...medication,
     doses,
-    references: updatedReferences,
+    references: updatedReferences.map((reference) => ({ ...reference, url: reference.url ?? null })),
     clinicalFoundationsData,
-  };
+  });
 }

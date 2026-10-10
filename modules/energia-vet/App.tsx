@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import {
@@ -12,19 +12,19 @@ import {
   Utensils,
 } from 'lucide-react';
 
-import Dashboard from './pages/Dashboard';
-import NewCalculation from './pages/NewCalculation';
-import Patients from './pages/Patients';
-import Foods from './pages/Foods';
-import CommercialDietsPage from './pages/CommercialDietsPage';
-import Reports from './pages/Reports';
-import BcsGuide from './pages/BcsGuide';
-import NaturalFoods from './pages/NaturalFoods';
-import PatientHistoryDetail from './pages/PatientHistoryDetail';
-import ReportDetail from './pages/ReportDetail';
-import Hospitalized from './pages/Hospitalized';
-import HumanOmega3Page from './pages/HumanOmega3Page';
-import SupplementCatalogPage from './pages/SupplementCatalogPage';
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const NewCalculation = lazy(() => import('./pages/NewCalculation'));
+const Patients = lazy(() => import('./pages/Patients'));
+const Foods = lazy(() => import('./pages/Foods'));
+const CommercialDietsPage = lazy(() => import('./pages/CommercialDietsPage'));
+const Reports = lazy(() => import('./pages/Reports'));
+const BcsGuide = lazy(() => import('./pages/BcsGuide'));
+const NaturalFoods = lazy(() => import('./pages/NaturalFoods'));
+const PatientHistoryDetail = lazy(() => import('./pages/PatientHistoryDetail'));
+const ReportDetail = lazy(() => import('./pages/ReportDetail'));
+const Hospitalized = lazy(() => import('./pages/Hospitalized'));
+const HumanOmega3Page = lazy(() => import('./pages/HumanOmega3Page'));
+const SupplementCatalogPage = lazy(() => import('./pages/SupplementCatalogPage'));
 import { cn } from './lib/utils';
 import './index.css';
 
@@ -199,7 +199,9 @@ export default function App() {
   return (
     <>
       <Layout>
-        <AnimatedRoutes />
+        <Suspense fallback={<div className="p-6" role="status" aria-live="polite">Carregando seção…</div>}>
+          <AnimatedRoutes />
+        </Suspense>
       </Layout>
       <Toaster position="top-right" richColors />
     </>

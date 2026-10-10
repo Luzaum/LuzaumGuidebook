@@ -1,9 +1,9 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Fish, Leaf, Stethoscope, Users, Utensils } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
-import { getCommercialFoods, getDatasetStats, getTopAuditIssues } from '../lib/genutriData'
+import type { getDatasetStats, getTopAuditIssues } from '../lib/genutriData'
 import { getSavedPatients, getSavedReports } from '../lib/persistence'
 
 const BASE_ROUTE = '/calculadora-energetica'
@@ -11,16 +11,28 @@ const BASE_ROUTE = '/calculadora-energetica'
 export default function Dashboard() {
   const savedReports = useMemo(() => getSavedReports().slice(0, 5), [])
   const savedPatients = useMemo(() => getSavedPatients().slice(0, 5), [])
-  const auditIssues = useMemo(() => getTopAuditIssues(4), [])
-  const stats = useMemo(() => getDatasetStats(), [])
-  const commercialFoodCount = useMemo(() => getCommercialFoods().length, [])
+  const [overview, setOverview] = useState<{
+    stats: ReturnType<typeof getDatasetStats>
+    auditIssues: ReturnType<typeof getTopAuditIssues>
+    commercialFoodCount: number
+  } | null>(null)
+  const [catalogError, setCatalogError] = useState(false)
+  useEffect(() => {
+    let active = true
+    import('../lib/genutriData').then((catalog) => {
+      if (active) setOverview({ stats: catalog.getDatasetStats(), auditIssues: catalog.getTopAuditIssues(4), commercialFoodCount: catalog.getCommercialFoods().length })
+    }).catch(() => { if (active) setCatalogError(true) })
+    return () => { active = false }
+  }, [])
+  const auditIssues = overview?.auditIssues ?? []
+  const catalogStatus = catalogError ? 'Catálogo indisponível; recarregue a página.' : 'Carregando catálogo…'
 
   const destinations = [
-    { name: 'Rações comerciais', description: `${commercialFoodCount} rações de manutenção e terapêuticas`, icon: Utensils, path: `${BASE_ROUTE}/commercial` },
+    { name: 'Rações comerciais', description: overview ? `${overview.commercialFoodCount} rações de manutenção e terapêuticas` : catalogStatus, icon: Utensils, path: `${BASE_ROUTE}/commercial` },
     { name: 'Hospitalizados & Sondas', description: 'RER, transição e osmolaridade', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized` },
     { name: 'Base natural TACO/USDA', description: 'Ingredientes para dieta caseira', icon: Leaf, path: `${BASE_ROUTE}/foods/natural` },
     { name: 'Pacientes', description: 'Histórico clínico e evolução', icon: Users, path: `${BASE_ROUTE}/patients` },
-    { name: 'Catálogo completo', description: `${stats.foods} alimentos e micronutrientes`, icon: FileText, path: `${BASE_ROUTE}/foods` },
+    { name: 'Catálogo completo', description: overview ? `${overview.stats.foods} alimentos e micronutrientes` : catalogStatus, icon: FileText, path: `${BASE_ROUTE}/foods` },
   ]
 
   return (

@@ -97,13 +97,10 @@ function isLuishvet25User(user: unknown): boolean {
   if (!user || typeof user !== 'object') return false;
   const row = user as {
     email?: string | null;
-    user_metadata?: Record<string, unknown> | null;
+    email_confirmed_at?: string | null;
   };
   const email = String(row.email || '').trim().toLowerCase();
-  const metadata = row.user_metadata || {};
-  const login = String(metadata.login || metadata.username || '').trim().toLowerCase();
-
-  return email === 'luishvet25@gmail.com' || email === 'luishvet25@vetius.link' || login === 'luishvet25';
+  return Boolean(row.email_confirmed_at) && (email === 'luishvet25@gmail.com' || email === 'luishvet25@vetius.link');
 }
 
 function mapRow(row: ConsensusRow): ConsensusRecord {
@@ -125,6 +122,7 @@ function mapRow(row: ConsensusRow): ConsensusRecord {
     isPublished: row.is_published,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+    createdBy: row.created_by ?? null,
     shortTitle: row.title,
     sourceOrganization: row.organization || '',
     summary: row.description || '',
@@ -304,6 +302,8 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
       file_path: filePath,
       file_url: publicUrl || null,
       is_published: isLuishvet25User(authData.user) ? true : input.isPublished ?? true,
+      created_by: authData.user.id,
+      updated_by: authData.user.id,
     };
 
     const { data, error } = await supabase
@@ -603,8 +603,8 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
     if (!authData.user) {
       throw new Error('Faça login para editar os detalhes compartilhados.');
     }
-    if (!(await canManageConsensusSharedDetails())) {
-      throw new Error('Somente perfis owner podem editar os detalhes compartilhados deste consenso.');
+    if (!(await canManageConsensusSharedDetails(consensusDocumentId))) {
+      throw new Error('Somente o autor do consenso ou um administrador editorial pode editar estes detalhes compartilhados.');
     }
 
     const currentUserId = authData.user.id;

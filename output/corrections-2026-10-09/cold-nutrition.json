@@ -1,0 +1,26 @@
+[
+  {
+    "run": 1,
+    "contentReadyMs": 882,
+    "catalogReadyMs": 893,
+    "pageErrors": [],
+    "resources": 39,
+    "encodedBytes": 5489943
+  },
+  {
+    "run": 2,
+    "contentReadyMs": 1301,
+    "catalogReadyMs": 1312,
+    "pageErrors": [],
+    "resources": 39,
+    "encodedBytes": 5489943
+  },
+  {
+    "run": 3,
+    "contentReadyMs": 781,
+    "catalogReadyMs": 792,
+    "pageErrors": [],
+    "resources": 39,
+    "encodedBytes": 5489943
+  }
+]

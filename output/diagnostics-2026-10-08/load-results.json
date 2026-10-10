@@ -1,0 +1,41 @@
+{
+  "scope": "local Vite preview static files; not CDN, API or database capacity",
+  "urls": [
+    "/",
+    "/login",
+    "/calculadora-energetica",
+    "/assets/index-B6QmHTH5.js"
+  ],
+  "results": [
+    {
+      "concurrency": 1,
+      "requests": 120,
+      "errors": 0,
+      "durationMs": 3621.8251,
+      "requestsPerSecond": 33.1324668328131,
+      "p50Ms": 23.698300000000017,
+      "p95Ms": 90.52410000000009,
+      "maxMs": 163.22170000000006
+    },
+    {
+      "concurrency": 6,
+      "requests": 120,
+      "errors": 0,
+      "durationMs": 1968.4586,
+      "requestsPerSecond": 60.961404014288135,
+      "p50Ms": 88.4347000000007,
+      "p95Ms": 172.59270000000015,
+      "maxMs": 209.52149999999983
+    },
+    {
+      "concurrency": 12,
+      "requests": 120,
+      "errors": 0,
+      "durationMs": 1935.7474000000002,
+      "requestsPerSecond": 61.991559435905735,
+      "p50Ms": 185.6823000000004,
+      "p95Ms": 255.7525000000005,
+      "maxMs": 279.3278
+    }
+  ]
+}

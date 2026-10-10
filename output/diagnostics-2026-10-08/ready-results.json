@@ -1,0 +1,82 @@
+{
+  "results": [
+    {
+      "device": "desktop",
+      "round": 1,
+      "ready": true,
+      "readyWallMs": 14973,
+      "textLength": 967,
+      "text": "Vetius\nEntrar\nNutriçãoVET\nNutrição clínica\nVisão geral\nCalculadora energética\nRações comerciais\nHospitalizados\nPacientes\nBase de alimentos\nRelatórios\nGuia de ECC\n\nVETIUS CLINICAL SUITE\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutriciona",
+      "fcpMs": 1536,
+      "lcpMs": 15908,
+      "cls": 0.00006773148148148148,
+      "resourceBytes": 5669797,
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "round": 2,
+      "ready": true,
+      "readyWallMs": 17432,
+      "textLength": 967,
+      "text": "Vetius\nEntrar\nNutriçãoVET\nNutrição clínica\nVisão geral\nCalculadora energética\nRações comerciais\nHospitalizados\nPacientes\nBase de alimentos\nRelatórios\nGuia de ECC\n\nVETIUS CLINICAL SUITE\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutriciona",
+      "fcpMs": 3888,
+      "lcpMs": 17552,
+      "cls": 0.00006773148148148148,
+      "resourceBytes": 5669797,
+      "overflow": false
+    },
+    {
+      "device": "desktop",
+      "round": 3,
+      "ready": true,
+      "readyWallMs": 15125,
+      "textLength": 967,
+      "text": "Vetius\nEntrar\nNutriçãoVET\nNutrição clínica\nVisão geral\nCalculadora energética\nRações comerciais\nHospitalizados\nPacientes\nBase de alimentos\nRelatórios\nGuia de ECC\n\nVETIUS CLINICAL SUITE\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutriciona",
+      "fcpMs": 4472,
+      "lcpMs": 4472,
+      "cls": 0.00006773148148148148,
+      "resourceBytes": 5669797,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "round": 1,
+      "ready": true,
+      "readyWallMs": 3819,
+      "textLength": 890,
+      "text": "Entrar\nNutriçãoVET\nNutrição clínica\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutricional ideal para cada paciente.\n\nIniciar novo plano\nInternados\nÁrea de trabalho\nAtalhos rápidos para rotinas clínicas.\nRações comerciais\n246 rações de ma",
+      "fcpMs": 3280,
+      "lcpMs": 4312,
+      "cls": 0,
+      "resourceBytes": 5666953,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "round": 2,
+      "ready": true,
+      "readyWallMs": 695,
+      "textLength": 890,
+      "text": "Entrar\nNutriçãoVET\nNutrição clínica\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutricional ideal para cada paciente.\n\nIniciar novo plano\nInternados\nÁrea de trabalho\nAtalhos rápidos para rotinas clínicas.\nRações comerciais\n246 rações de ma",
+      "fcpMs": 620,
+      "lcpMs": 888,
+      "cls": 0,
+      "resourceBytes": 5666953,
+      "overflow": false
+    },
+    {
+      "device": "mobile",
+      "round": 3,
+      "ready": true,
+      "readyWallMs": 8918,
+      "textLength": 890,
+      "text": "Entrar\nNutriçãoVET\nNutrição clínica\n\nNUTRIÇÃO CLÍNICA VETERINÁRIA\n\nAcompanhamento nutricional baseado em evidências\n\nUm fluxo de cálculos completo para formular, avaliar e prescrever o plano nutricional ideal para cada paciente.\n\nIniciar novo plano\nInternados\nÁrea de trabalho\nAtalhos rápidos para rotinas clínicas.\nRações comerciais\n246 rações de ma",
+      "fcpMs": 2460,
+      "lcpMs": 8796,
+      "cls": 0,
+      "resourceBytes": 870637,
+      "overflow": false
+    }
+  ]
+}
