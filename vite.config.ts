@@ -42,13 +42,24 @@ export default defineConfig(() => {
     base: '/',
     server: {
       port: 5173,
-      host: '127.0.0.1',
+      host:
+        process.env.CODESPACES === 'true' ||
+        Boolean(process.env.GITPOD_WORKSPACE_URL) ||
+        Boolean(process.env.STACKBLITZ)
+          ? '0.0.0.0'
+          : '127.0.0.1',
       // Fixa o cliente HMR em localhost (compatível com acesso pelo 127.0.0.1).
       // NÃO fixar `port` aqui: se 5173 estiver ocupada o Vite sobe em 5174+ e o HMR deve usar a MESMA
       // porta — senão o browser mistura origens e ainda tenta 5173 (426 Upgrade Required / WS quebrado).
-      hmr: {
-        host: 'localhost',
-      },
+      // Em GitHub Codespaces, usa WSS (porta 443) no túnel HTTPS da nuvem.
+      hmr:
+        process.env.CODESPACES === 'true'
+          ? { clientPort: 443 }
+          : Boolean(process.env.GITPOD_WORKSPACE_URL) || Boolean(process.env.STACKBLITZ)
+            ? true
+            : {
+                host: 'localhost',
+              },
       fs: {
         // Junction Usuário → PROJETOS VET: permitir servir pelo caminho resolvido.
         strict: true,

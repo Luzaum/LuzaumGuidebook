@@ -1,0 +1,43 @@
+{
+  "name": "Vetius — Cloud Dev Environment (Node 24)",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "24"
+    }
+  },
+  "updateContentCommand": "npm install",
+  "postCreateCommand": "node .devcontainer/setup-cloud.mjs",
+  "postAttachCommand": {
+    "server": "npm run dev"
+  },
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "Vetius App (Vite Dev Server)",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "files.eol": "\n",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      },
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    },
+    "codespaces": {
+      "openFiles": [
+        "README.md",
+        "App.tsx",
+        "modules/registry.ts"
+      ]
+    }
+  }
+}

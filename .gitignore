@@ -40,6 +40,7 @@ supabase/.branches/
 
 # Windows: arquivo acidental com nome reservado (quebra git add/stash)
 /nul
+/NUL.css
 
 # PDFs de referência clínica (grandes; manter local ou usar Git LFS)
 modules/antibioticoterapia-vet/docs/sources/*.pdf
