@@ -1,0 +1,568 @@
+[
+  {
+    "slug": "sindrome-cushing-caes",
+    "path": ".quickSummaryRich.treatmentFlow.steps[1].reassess",
+    "input": "PU/PD, apetite, panting, pele, infecções — Cushing Clinical Score ALIVE (0–15)",
+    "segments": [
+      {
+        "type": "text",
+        "value": "PU/PD, apetite, panting, pele, infecções — Cushing Clinical Score ALIVE "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 0
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 2
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 3
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 4
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 5
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 6
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 7
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 8
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 9
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 10
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 11
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 12
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 13
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 14
+      },
+      {
+        "type": "text",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "slug": "sindrome-cushing-caes",
+    "path": ".treatment.trilostano.ajuste",
+    "input": "Sinais clínicos primários; Cushing Clinical Score ALIVE (0–15). NÃO auto-aumentar aos 14 dias se clínica OK (Macfarlane et al.; BSAVA trilostane guidance).",
+    "segments": [
+      {
+        "type": "text",
+        "value": "Sinais clínicos primários; Cushing Clinical Score ALIVE "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 0
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 2
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 3
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 4
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 5
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 6
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 7
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 8
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 9
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 10
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 11
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 12
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 13
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 14
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": ". NÃO auto-aumentar aos 14 dias se clínica OK "
+      },
+      {
+        "type": "reference",
+        "index": 10
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "slug": "bronquite-cronica-caes-gatos",
+    "path": ".pathogenesisTransmission.leiDePoiseuilleEResistenciaDeViasAereas",
+    "input": "Física dos fluidos e impacto geométrico da redução luminal brônquica:\n\n- A Lei de Poiseuille: a resistência ao fluxo aéreo em tubos condutores cilíndricos é inversamente proporcional à quarta potência do raio da via aérea (R é proporcional a 1/r^4), o que equivale a dizer que o fluxo é proporcional a r^4 para um mesmo gradiente de pressão.\n- Consequência de pequenas variações de calibre: se o raio de um pequeno brônquio reduz à metade (0,5 do raio original) por espessamento inflamatório parietal, edema ou acúmulo de muco, o fluxo resultante cai para (0,5)^4 = 0,0625, ou seja, sobra apenas 1/16 do fluxo original.\n- Gravidade desproporcional em pequenos condutos: essa relação matemática explica por que discretos graus de infiltrado celular ou secreções provocam obstruções funcionais dramáticas e dispneia súbita, especialmente na espécie felina.",
+    "segments": [
+      {
+        "type": "text",
+        "value": "Física dos fluidos e impacto geométrico da redução luminal brônquica:\n\n- A Lei de Poiseuille: a resistência ao fluxo aéreo em tubos condutores cilíndricos é inversamente proporcional à quarta potência do raio da via aérea "
+      },
+      {
+        "type": "text",
+        "value": "(R é proporcional a 1/r^4)"
+      },
+      {
+        "type": "text",
+        "value": ", o que equivale a dizer que o fluxo é proporcional a r^4 para um mesmo gradiente de pressão.\n- Consequência de pequenas variações de calibre: se o raio de um pequeno brônquio reduz à metade "
+      },
+      {
+        "type": "text",
+        "value": "(0,5 do raio original)"
+      },
+      {
+        "type": "text",
+        "value": " por espessamento inflamatório parietal, edema ou acúmulo de muco, o fluxo resultante cai para "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 4
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": "^4 = 0,0625, ou seja, sobra apenas 1/16 do fluxo original.\n- Gravidade desproporcional em pequenos condutos: essa relação matemática explica por que discretos graus de infiltrado celular ou secreções provocam obstruções funcionais dramáticas e dispneia súbita, especialmente na espécie felina."
+      }
+    ]
+  },
+  {
+    "slug": "hipoadrenocorticismo-addison",
+    "path": ".clinicalSignsPathophysiology[0].findings[0].clinicalMeaning",
+    "input": "USG baixa/isostenúrica (1,008–1,020) pode mimetizar DRC primária.",
+    "segments": [
+      {
+        "type": "text",
+        "value": "USG baixa/isostenúrica "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 0
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": " pode mimetizar DRC primária."
+      }
+    ]
+  },
+  {
+    "slug": "diabetes-mellitus-felina",
+    "path": ".quickSummaryRich.treatmentFlow.steps[3].detail",
+    "input": "Peso, ALIVE DCS (0–12), resolução PU/PD; monitor contínuo de glicose domiciliar; evitar curva hospitalar de rotina (AAHA 2026; iCatCare 2025).",
+    "segments": [
+      {
+        "type": "text",
+        "value": "Peso, ALIVE DCS "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 0
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 1
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 2
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 3
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 4
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 5
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 6
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 7
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 8
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 9
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 10
+      },
+      {
+        "type": "text",
+        "value": ", "
+      },
+      {
+        "type": "reference",
+        "index": 11
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": ", resolução PU/PD; monitor contínuo de glicose domiciliar; evitar curva hospitalar de rotina "
+      },
+      {
+        "type": "reference",
+        "index": 0
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "slug": "intermacao-caes-gatos",
+    "path": ".epidemiology.epidemiologiaCaninaVetcompassEEmergencia",
+    "input": "Epidemiologia e fatores de risco na espécie canina (Dados VetCompass e emergência):\n- Evidências de atenção primária (Hall et al., 2020 — 905.543 cães):\n  - Incidência anual de 0,04% com taxa de letalidade global de 14,18%.\n  - Risco desproporcional em raças braquicefálicas: Bulldog Inglês (razão de chances 14,18), Bulldog Francês (6,48) e Dogue de Bordeaux (5,26).\n  - Idade superior a 2 anos e sobrepeso corporal atuam como preditores independentes de risco.\n- Dados de hospitais de emergência e centros terciários:\n  - Estudo multicêntrico britânico (2022, 167.751 cães): incidência de 0,23% e letalidade hospitalar de 26,56% (odds ratio em braquicefálicos de 4,21).\n  - Centros de referência terciária e UTI (Bruchim et al., 2006): mortalidade entre 30% e 50% decorrente de admissão tardia em coma, CID estabelecida e LRA anúrica.",
+    "segments": [
+      {
+        "type": "text",
+        "value": "Epidemiologia e fatores de risco na espécie canina "
+      },
+      {
+        "type": "text",
+        "value": "(Dados VetCompass e emergência)"
+      },
+      {
+        "type": "text",
+        "value": ":\n- Evidências de atenção primária "
+      },
+      {
+        "type": "text",
+        "value": "(Hall et al., 2020 — 905.543 cães)"
+      },
+      {
+        "type": "text",
+        "value": ":\n  - Incidência anual de 0,04% com taxa de letalidade global de 14,18%.\n  - Risco desproporcional em raças braquicefálicas: Bulldog Inglês "
+      },
+      {
+        "type": "text",
+        "value": "(razão de chances 14,18)"
+      },
+      {
+        "type": "text",
+        "value": ", Bulldog Francês "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 5
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": " e Dogue de Bordeaux "
+      },
+      {
+        "type": "text",
+        "value": "("
+      },
+      {
+        "type": "reference",
+        "index": 4
+      },
+      {
+        "type": "text",
+        "value": ")"
+      },
+      {
+        "type": "text",
+        "value": ".\n  - Idade superior a 2 anos e sobrepeso corporal atuam como preditores independentes de risco.\n- Dados de hospitais de emergência e centros terciários:\n  - Estudo multicêntrico britânico "
+      },
+      {
+        "type": "text",
+        "value": "(2022, 167.751 cães)"
+      },
+      {
+        "type": "text",
+        "value": ": incidência de 0,23% e letalidade hospitalar de 26,56% "
+      },
+      {
+        "type": "text",
+        "value": "(odds ratio em braquicefálicos de 4,21)"
+      },
+      {
+        "type": "text",
+        "value": ".\n  - Centros de referência terciária e UTI "
+      },
+      {
+        "type": "reference",
+        "index": 5
+      },
+      {
+        "type": "text",
+        "value": ": mortalidade entre 30% e 50% decorrente de admissão tardia em coma, CID estabelecida e LRA anúrica."
+      }
+    ]
+  }
+]

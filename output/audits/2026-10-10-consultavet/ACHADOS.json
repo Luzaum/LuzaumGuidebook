@@ -1,0 +1,392 @@
+[
+  {
+    "id": "C01",
+    "prioridade": "P1",
+    "titulo": "Falso positivo universal no LDDST felino",
+    "doencas": [
+      "sindrome-cushing-gatos"
+    ],
+    "local": "diseases.sindrome-cushing-gatos.seed.ts:51 e :333; quickDecisionStrip[4], prevention.errosComuns[0]",
+    "problema": "A ficha afirma 100% de falsos positivos e falsos diagnósticos universais com 0,01 mg/kg. Isso confunde um protocolo inadequado para triagem rotineira com uma taxa universal de erro.",
+    "evidencia": "Ettinger, 9ª edição (2024), capítulo 294, PDF 2177–2178, páginas impressas 2025–2026 do acervo. A página 2025 informa ausência de supressão em cerca de 20% dos gatos saudáveis com a dose canina. A imagem da página foi conferida.",
+    "correcao": "Manter a dose felina usual de 0,1 mg/kg para o protocolo descrito; substituir 100% por explicação da perda de especificidade e do risco de falsos positivos, sem generalização universal."
+  },
+  {
+    "id": "C02",
+    "prioridade": "P1",
+    "titulo": "Redução automática e contraditória da insulina",
+    "doencas": [
+      "sindrome-cushing-gatos"
+    ],
+    "local": "diseases.sindrome-cushing-gatos.seed.ts:55, :127 e :291",
+    "problema": "A faixa rápida manda reduzir 30–50%; o fluxo e a farmacoterapia mandam 25–30% no início. A resistência é descrita como desaparecendo subitamente em todos os casos, gerando uma regra de ajuste independente da glicemia.",
+    "evidencia": "Ettinger, 9ª edição (2024), capítulo 294, PDF 2177–2178, páginas impressas 2025–2026 do acervo. O livro descreve respostas variáveis: redução média em um pequeno grupo, mas um gato precisou de aumento. [AAHA 2023](https://www.aaha.org/resources/2023-aaha-selected-endocrinopathies-of-dogs-and-cats-guidelines/feline-hyperadrenocorticismhypercortisolism/) recomenda acompanhamento individualizado.",
+    "correcao": "Unificar resumo, fluxo e protocolo. Explicar a necessidade de vigilância intensiva para hipoglicemia e ajuste individual pelo acompanhamento glicêmico; não transformar a média de uma série em redução universal."
+  },
+  {
+    "id": "C03",
+    "prioridade": "P2",
+    "titulo": "Trilostano q24h declarado totalmente ineficaz em gatos",
+    "doencas": [
+      "sindrome-cushing-gatos"
+    ],
+    "local": "quickDecisionStrip[7], pilares e prevention.errosComuns[3]",
+    "problema": "q12h é chamado obrigatório, e q24h é descrito como falha completa por metabolismo acelerado.",
+    "evidencia": "Ettinger, 9ª edição (2024), capítulo 294, PDF 2177–2178, páginas impressas 2025–2026 do acervo. O livro admite esquemas q12h e q24h e informa ausência de estudos farmacocinéticos felinos. A [série original de 15 gatos](https://doi.org/10.1111/jvim.12178) utilizou esquemas diários e duas vezes ao dia. A preferência atual por administrações mais frequentes não prova ineficácia universal de q24h.",
+    "correcao": "Distinguir regime inicial preferido, resposta clínica e ajustes. Retirar a explicação farmacocinética sem suporte e a declaração de falha completa."
+  },
+  {
+    "id": "C04",
+    "prioridade": "P1",
+    "titulo": "Localização toracolombar associada a tetraparesia",
+    "doencas": [
+      "doenca-do-disco-intervertebral-gatos"
+    ],
+    "local": "diseases.doenca-do-disco-intervertebral-gatos.seed.ts:159; pathophysiology",
+    "problema": "O parágrafo atribui tetraparesia a extrusões toracolombares e lombares caudais. Isso contradiz a localização neuroanatômica descrita.",
+    "evidencia": "Practical Guide to Canine and Feline Neurology, 3ª edição, PDF 73, página impressa 59, tabelas 4.6 e 4.7: tetraparesia em lesões cervicais; paraparesia/paraplegia em T3–L3. A página e as tabelas foram verificadas visualmente.",
+    "correcao": "Relacionar déficits aos segmentos afetados: tetraparesia cervical, paraparesia/paraplegia toracolombar e sinais compatíveis com L4–S3/lombossacro quando aplicável."
+  },
+  {
+    "id": "C05",
+    "prioridade": "P1",
+    "titulo": "Exigência universal de biópsia transmural, IHC e PARR",
+    "doencas": [
+      "triade-felina"
+    ],
+    "local": "diseases.triade-felina.seed.ts:99; quickDecisionStrip[7]",
+    "problema": "A ficha atribui ao consenso ACVIM a impossibilidade de diferenciar LPE e LGITL sem os três procedimentos em todos os pacientes.",
+    "evidencia": "[Consenso ACVIM felino de 2023](https://pmc.ncbi.nlm.nih.gov/articles/PMC10229359/) permite biópsias endoscópicas adequadas em muitos casos; IHC e PARR entram na investigação integrada, especialmente de resultados ambíguos. O consenso não estabelece a tríplice exigência universal.",
+    "correcao": "Explicar qualidade, quantidade e local das amostras; indicar quando a abordagem endoscópica é suficiente e quando a cirurgia e os testes complementares acrescentam valor."
+  },
+  {
+    "id": "C06",
+    "prioridade": "P1",
+    "titulo": "fTLI limítrofe tratado como confirmação de IPE",
+    "doencas": [
+      "triade-felina"
+    ],
+    "local": "diseases.triade-felina.seed.ts:592; diagnóstico",
+    "problema": "A expressão fTLI <12 µg/L atesta IPE inclui a faixa inconclusiva e transforma um resultado limítrofe em diagnóstico definitivo.",
+    "evidencia": "[Texas A&M GI Laboratory — TLI](https://vetmed.tamu.edu/gilab/service/assays/tli/): fTLI ≤8 µg/L diagnóstico; 8,1–11,9 inconclusivo. A ficha de IPE do próprio app já distingue corretamente esses limites.",
+    "correcao": "Separar faixa diagnóstica da faixa inconclusiva; contextualizar repetição, condições da amostra e sinais clínicos. Corrigir também a interpretação causal automática de destruição acinar terminal."
+  },
+  {
+    "id": "C07",
+    "prioridade": "P1",
+    "titulo": "Spec fPL histórico apresentado como intervalo atual e definitivo",
+    "doencas": [
+      "triade-felina"
+    ],
+    "local": "diseases.triade-felina.seed.ts:85, :98, :151, :432 e :580",
+    "problema": "A ficha usa 3,5–5,3 e ≥5,4 µg/L como cortes atuais de Spec fPL e diz que o resultado confirma categoricamente pancreatite ativa. Um valor isolado não tem essa certeza; intervalos dependem do ensaio e de sua versão.",
+    "evidencia": "[Texas A&M GI Laboratory — PLI](https://vetmed.tamu.edu/gilab/service/assays/pli/): Spec fPL ≤4,4, 4,5–8,7 e ≥8,8 µg/L; [comunicado IDEXX](https://www.idexx.no/files/service-update-spec-fpl-reference-intervals-en-uk.pdf) documenta atualização desde julho de 2023. Valores antigos podem aparecer legitimamente em estudos históricos, mas precisam dessa identificação.",
+    "correcao": "Identificar laboratório/ensaio, data e referência; usar os intervalos aplicáveis ao laudo e integrar clínica, imagem e biomarcador. Rotular os resultados de estudos antigos como históricos, sem substituição global de todo fPLI."
+  },
+  {
+    "id": "C08",
+    "prioridade": "P1",
+    "titulo": "Corte antigo de cTLI na enteropatia canina",
+    "doencas": [
+      "enteropatia-inflamatoria-cronica-canina",
+      "insuficiencia-pancreatica-exocrina-caes-gatos"
+    ],
+    "local": "diseases.enteropatia-inflamatoria-cronica-canina.seed.ts:386",
+    "problema": "A tabela diferencial da enteropatia mantém cTLI <2,5 µg/L como critério, enquanto a ficha de IPE já apresenta ≤5,5 para o ensaio atualizado. O leitor recebe regras divergentes para a mesma investigação.",
+    "evidencia": "[Texas A&M GI Laboratory — TLI](https://vetmed.tamu.edu/gilab/service/assays/tli/) descreve mudança do ensaio em março de 2024 e os novos limiares caninos.",
+    "correcao": "Sincronizar os limiares entre fichas e sempre explicitar ensaio, laboratório e faixa inconclusiva. Preservar o corte antigo apenas ao discutir dados históricos que o utilizaram."
+  },
+  {
+    "id": "C09",
+    "prioridade": "P2",
+    "titulo": "ELISA/PCR usados no algoritmo de falha da giardíase",
+    "doencas": [
+      "giardiase-caes-gatos"
+    ],
+    "local": "quickDecisionStrip[11]; fluxos e treatment.monitoramentoPosTratamento/falhaReinfecaoAlgoritmo",
+    "problema": "A ficha recomenda repetir coproscopia/ELISA após ≥7–14 dias e inclui ELISA/PCR na investigação de falha, embora outros blocos reconheçam positividade residual. A orientação rápida permanece ambígua e contraditória.",
+    "evidencia": "[CAPC — Giardia, versão consultada em 10/10/2026](https://capcvet.org/guidelines/giardia/) recomenda flotação com centrifugação, quando indicada, 24–48 horas após tratamento se sinais persistem; ELISA/PCR podem permanecer positivos e não devem orientar falha ou reinfecção.",
+    "correcao": "Separar investigação inicial de diarreia, controle clínico e avaliação pós-tratamento. Não usar antígeno/PCR residual como critério de falha; padronizar o algoritmo em resumo e corpo."
+  },
+  {
+    "id": "C10",
+    "prioridade": "P2",
+    "titulo": "LDDST canino descrito como confirmação automática",
+    "doencas": [
+      "sindrome-cushing-caes"
+    ],
+    "local": "diseaseOverviewOverrides.ts:38; diseases.sindrome-cushing-caes.seed.ts:112 e tabelas",
+    "problema": "O corpo apresenta limitações, mas o pilar e o fluxo resumem cortisol acima do corte como confirmação. O contexto e a probabilidade pré-teste ficam insuficientes no texto de maior destaque.",
+    "evidencia": "Ettinger, 9ª edição, capítulo 293, PDF 2162–2164, páginas impressas 2010–2012: sensibilidade e especificidade variáveis, falso positivo em doenças não adrenais. [AAHA — diagnóstico canino](https://www.aaha.org/resources/2023-aaha-selected-endocrinopathies-of-dogs-and-cats-guidelines/diagnostic-testing-and-monitoring-2/) reforça seleção clínica do paciente.",
+    "correcao": "Usar resultado compatível/sustenta a suspeita no contexto clínico; distinguir diagnóstico, exclusão e diferenciação PDH/ADH, evitando a promessa de confirmação isolada."
+  },
+  {
+    "id": "C11",
+    "prioridade": "P2",
+    "titulo": "Amostra de 35,3 animais e desenho de estudo incorreto",
+    "doencas": [
+      "hipotireoidismo-congenito-caes-gatos"
+    ],
+    "local": "diseases.hipotireoidismo-congenito.seed.ts:48",
+    "problema": "A faixa rápida menciona maior coorte multicêntrica de 35,3 animais e agrupa referências distintas como uma única coorte. O número é impossível como contagem e a atribuição não é rastreável.",
+    "evidencia": "[Golinelli et al., 2022](https://pubmed.ncbi.nlm.nih.gov/35324868/) é relato de três irmãos British Shorthair, não uma coorte multicêntrica de 35,3 animais. Os demais artigos precisam ser individualizados antes de atribuir outro N.",
+    "correcao": "Informar espécie, N, desenho, autoria e desfecho de cada estudo separadamente; não corrigir o número por suposição."
+  },
+  {
+    "id": "C12",
+    "prioridade": "P2",
+    "titulo": "Atualização de estágio IRIS datada incorretamente",
+    "doencas": [
+      "doenca-renal-cronica-canina"
+    ],
+    "local": "diseases.doenca-renal-cronica-canina.seed.ts:71 e quickDecisionStrip[0]",
+    "problema": "O texto apresenta 1,4–2,8 mg/dL no estágio 2 como expansão nova de 2026 e diz que um cão com 2,5 deixou de ser estágio 3 agora. Esses limites já constavam em 2023.",
+    "evidencia": "[Documento IRIS 2023 de estadiamento](https://ebvminpractice.org/wp-content/uploads/2025/08/2_iris_staging_of_ckd_2023.pdf), de autoria IRIS e hospedado em cópia externa; [diretrizes oficiais atuais](https://www.iris-kidney.com/iris-guidelines-1). A edição 2026 existe; o problema é a cronologia dessa mudança específica.",
+    "correcao": "Manter os limites corretos e corrigir a narrativa histórica. Identificar quais mudanças são realmente de 2026, sem invalidar a atualização toda."
+  },
+  {
+    "id": "C13",
+    "prioridade": "P2",
+    "titulo": "Cinomose sem limitações relevantes da RT-PCR",
+    "doencas": [
+      "cinomose-canina"
+    ],
+    "local": "diagnosis.examesEConfirmacao.Testes específicos; registro remoto",
+    "problema": "O texto indica materiais e bom rendimento inicial, mas não explica detecção de cepa vacinal, relação entre resultado e fase clínica, nem falso negativo por baixa carga/local de coleta.",
+    "evidencia": "Greene’s Infectious Diseases, 5ª edição (2023), capítulo 22, PDF 958, seção Molecular Diagnosis: most assays não distinguem cepa vacinal/selvagem e há limitações de amostra. [NDSU Veterinary Diagnostic Laboratory](https://www.vdl.ndsu.edu/tests/canine-distemper-virus-pcr/) confirma possível detecção após vacinação recente.",
+    "correcao": "Adicionar histórico vacinal, tipo de ensaio, seleção/qualidade da amostra e conduta frente a negativo com suspeita alta; substituir referência à página inicial do MSD pelo capítulo específico."
+  },
+  {
+    "id": "C14",
+    "prioridade": "P2",
+    "titulo": "Via bacteriana ascendente tratada como quase universal",
+    "doencas": [
+      "triade-felina"
+    ],
+    "local": "diseases.triade-felina.seed.ts:94; quickDecisionStrip[2]",
+    "problema": "Colangite neutrofílica quase sempre envolve enterobactérias ascendentes confunde associação bacteriana com uma via causal praticamente comprovada.",
+    "evidencia": "Ettinger, 9ª edição, capítulo 225, PDF 1400–1401, páginas impressas 1248–1249: a via de chegada das bactérias é controversa; translocação/rota portal e ascensão são modelos discutidos.",
+    "correcao": "Apresentar a associação bacteriana e as vias propostas, explicitando a incerteza mecanística e a investigação/cultura quando indicada."
+  },
+  {
+    "id": "R01",
+    "prioridade": "P1",
+    "titulo": "Números clínicos convertidos em referências bibliográficas",
+    "doencas": [
+      "bronquite-cronica-caes-gatos",
+      "sindrome-cushing-caes",
+      "hipoadrenocorticismo-addison",
+      "diabetes-mellitus-felina",
+      "intermacao-caes-gatos"
+    ],
+    "local": "utils/editorialReferenceMarkers.ts:33, :55 e :235",
+    "problema": "O parser interpreta números entre parênteses como listas/intervalos bibliográficos. (0,5)^4 vira referência 5; (0–15) vira 15 referências; (1,008–1,020) perde a densidade; (6,48)/(5,26) perdem as razões de chances. O efeito ocorre nos blocos que usam EditorialRichText; alguns campos são texto simples e não passam pelo parser.",
+    "evidencia": "Reprodução com os textos e referências reais das fichas, registrada em evidencias-marcadores.json. A conversão é demonstrada nos segmentos do parser e no HTML do bloco de bronquite/intermação; no clinicalMeaning de Addison há diferença entre apresentação ampla com rich text e compacta com texto simples.",
+    "correcao": "Reservar marcadores explícitos com ID estável para citações. Preservar decimais, intervalos e expressões matemáticas. Nunca descartar partes desconhecidas de um token numérico."
+  },
+  {
+    "id": "R02",
+    "prioridade": "P1",
+    "titulo": "Planos diagnósticos inteiros desaparecem",
+    "doencas": [
+      "sindrome-cushing-gatos",
+      "micoplasmoses-hemotropicas",
+      "cardiomiopatia-restritiva-felina"
+    ],
+    "local": "DiseaseSectionRenderer.tsx:71 e :1543; diagnosis.passosDiagnosticos",
+    "problema": "Cada ficha tem cinco etapas. A última não possui description, então every rejeita a lista inteira. O fallback mantém somente strings e remove os cinco objetos, deixando o título sem plano.",
+    "evidencia": "Renderização React real de cada seção com as referências correspondentes: 15 etapas ausentes. Ausência das descrições e títulos confirmada no HTML e confrontada com o schema.",
+    "correcao": "Normalizar itens individualmente; aceitar description opcional com fallback seguro. Validar o conteúdo no cadastro e impedir que um item inválido elimine seus irmãos."
+  },
+  {
+    "id": "R03",
+    "prioridade": "P1",
+    "titulo": "Sinais clínicos estruturados não aparecem",
+    "doencas": [
+      "obstrucao-funcional-fluxo-urinario-caes",
+      "intermacao-caes-gatos"
+    ],
+    "local": "DiseaseSectionRenderer.tsx:52 e :1544; clinicalSignsPathophysiology",
+    "problema": "Obstrução usa name/frequency/description; intermação usa sign/detail. O renderer aceita finding/mechanism, rejeita o conjunto e elimina objetos no fallback. Nas duas fichas, o componente auditado produz a seção sem os grupos e suas explicações cadastradas.",
+    "evidencia": "HTML das seções e schema: oito achados na obstrução e 13 na intermação não exibidos no componente auditado.",
+    "correcao": "Converter os formatos para um schema comum e renderizar cada achado com mecanismo, relevância e prioridade. Acrescentar validação de conteúdo efetivamente visível."
+  },
+  {
+    "id": "R04",
+    "prioridade": "P1",
+    "titulo": "Seção de complicações da trombocitopenia fica vazia",
+    "doencas": [
+      "trombocitopenia-caes-gatos"
+    ],
+    "local": "diseases.trombocitopenia-caes-gatos.seed.ts:490; DiseaseSectionRenderer.tsx:1548",
+    "problema": "As seis complicações são objetos complication/frequency/clinicalImplication. O fallback filtra somente strings; desaparecem hemorragia GI/SNC, complicações oculares, Evans, tromboembolismo e recidiva.",
+    "evidencia": "Seis registros no dado; zero texto correspondente na renderização da seção. Não é falta de autoria: é perda de conteúdo no componente.",
+    "correcao": "Adicionar suporte/normalização para complicações estruturadas e verificar se o renderer produziu conteúdo útil."
+  },
+  {
+    "id": "R05",
+    "prioridade": "P2",
+    "titulo": "80 figuras de 19 fichas não são renderizadas",
+    "doencas": [
+      "cistite-enfisematosa-caes-gatos",
+      "trombocitopenia-caes-gatos",
+      "anemia-caes-gatos",
+      "leishmaniose-caes-gatos",
+      "cistite-idiopatica-felina",
+      "discinesia-paroxistica-caes-gatos",
+      "platinosomose-felina",
+      "triade-felina",
+      "sepse-canina",
+      "sepse-felina",
+      "lesao-renal-aguda-felina",
+      "pielonefrite-caes-gatos",
+      "lesao-renal-aguda-canina",
+      "intermacao-caes-gatos",
+      "polirradiculoneurite-caes-gatos",
+      "tetano-caes-gatos",
+      "brucelose-caes-gatos",
+      "megaesofago-caes-gatos",
+      "paralisia-laringea-caes-gatos"
+    ],
+    "local": "DiseaseSectionRenderer.tsx:104 e :1520; DiseaseDetailPage.tsx:567",
+    "problema": "Essas listas usam url/legend/caption/source sem kind. normalizeClinicalFigure exige kind e src/url conforme o tipo; nenhuma imagem é reconhecida. O fallback elimina os objetos. Fichas afetadas constam na cobertura individual.",
+    "evidencia": "Foram renderizadas todas as 27 listas de figuras existentes. Em 19 listas, os 80 registros produziram zero tags img. Isso comprova ausência de exibição; não avalia disponibilidade remota, correspondência científica ou direitos das imagens.",
+    "correcao": "Padronizar o schema de imagens, preservar legenda e atribuição de fonte e validar imagens visíveis antes de avaliar seu conteúdo científico."
+  },
+  {
+    "id": "R06",
+    "prioridade": "P2",
+    "titulo": "Tabelas com columns/rows incompatíveis",
+    "doencas": [
+      "discinesia-paroxistica-caes-gatos",
+      "platinosomose-felina",
+      "obstrucao-funcional-fluxo-urinario-caes"
+    ],
+    "local": "DiseaseSectionRenderer.tsx:75; tabelas nas seções etiologia/diagnóstico/tratamento",
+    "problema": "Há 11 tabelas nas seções principais com columns em vez de headers. Nenhuma é reconhecida como tabela. Linhas de objetos podem sumir; linhas de arrays e colunas podem se fragmentar em texto sem as relações comparativas.",
+    "evidencia": "Normalizador rejeita as 11 estruturas. HTML confirma zero table nas seções afetadas de obstrução, e zero tabela nas etiologias/tratamentos citados de discinesia e platinosomose.",
+    "correcao": "Usar headers/rows normalizados ou implementar columns com mapeamento por chave. Preservar correspondência coluna/célula e testar conteúdo, inclusive em tela pequena."
+  },
+  {
+    "id": "R07",
+    "prioridade": "P1",
+    "titulo": "Tabelas e protocolos de paralisia laríngea não entram na página",
+    "doencas": [
+      "paralisia-laringea-caes-gatos"
+    ],
+    "local": "DiseaseDetailPage.tsx:523–578; campos tables/errorsAndTrapdoors/clinicalProtocols",
+    "problema": "A página renderiza as seções padronizadas e figuras, mas não esses três campos de topo. Seis tabelas, dez armadilhas e um conjunto de protocolos clínicos ficam fora da página. Trechos mandam consultar Tabela 1–6 sem disponibilizá-las.",
+    "evidencia": "Confronto entre dados e JSX da página; contagem feita no registro final. O conteúdo não chega ao DiseaseSectionRenderer.",
+    "correcao": "Integrar tabelas, armadilhas e protocolos às seções adequadas ou criar blocos explícitos, com navegação e referências internas que funcionem."
+  },
+  {
+    "id": "R08",
+    "prioridade": "P1",
+    "titulo": "Jornadas e mecanismos fisiológicos descartados",
+    "doencas": [
+      "insulinoma-caes-gatos",
+      "cetoacidose-diabetica-caes-gatos"
+    ],
+    "local": "pathophysiology/pathogenesisTransmission.fluxo*.etapas; diagnosis.jornadaDiagnostica",
+    "problema": "Listas fase/evento e etapa/acao/nota não têm renderer compatível e são filtradas como objetos. Duas jornadas diagnósticas de cinco passos e dois fluxos fisiológicos de seis etapas perdem seu conteúdo.",
+    "evidencia": "22 itens identificados e ausentes no HTML das respectivas seções.",
+    "correcao": "Normalizar as jornadas/fluxos ou renderizar os campos específicos com ordem, ações e critérios de decisão."
+  },
+  {
+    "id": "R09",
+    "prioridade": "P2",
+    "titulo": "Oito tabelas de decisão rápida nunca são exibidas",
+    "doencas": [
+      "giardiase-caes-gatos",
+      "coccidiose-caes-gatos",
+      "hiperparatireoidismo-caes-gatos",
+      "sepse-canina",
+      "obstrucao-funcional-fluxo-urinario-caes",
+      "sepse-felina",
+      "lesao-renal-aguda-felina",
+      "lesao-renal-aguda-canina"
+    ],
+    "local": "DiseaseQuickSummaryPanel.tsx; quickSummaryRich.tabelaDecisaoClinicaRapida",
+    "problema": "O campo está preenchido em oito fichas, mas o painel utiliza lead, pilares e dois fluxos. Não há ramo que exiba a tabela de decisão rápida.",
+    "evidencia": "Busca integral do componente e comparação das chaves consumidas com os dados; os oito slugs constam na cobertura.",
+    "correcao": "Decidir sua posição junto aos fluxos e integrá-la ao painel com schema validado; evitar tabelas cadastradas sem consumidor."
+  },
+  {
+    "id": "R10",
+    "prioridade": "P2",
+    "titulo": "Protocolos medicamentosos da fístula remota desaparecem",
+    "doencas": [
+      "fistula-perianal"
+    ],
+    "local": "treatment.drugProtocolExamples; DiseaseSectionRenderer.tsx:1548",
+    "problema": "Cinco protocolos protocolName/details/species não são reconhecidos como protocolos drug. O texto específico de ciclosporina, associação com cetoconazol, tacrolimo, corticoide e lactulose é descartado.",
+    "evidencia": "Lista de cinco objetos no registro remoto incorporado ao catálogo e ausência na renderização de tratamento.",
+    "correcao": "Converter o schema remoto, preservando dose, espécie, condições de uso e monitorização; integrar os dois registros de fístula sem perder informação."
+  },
+  {
+    "id": "R11",
+    "prioridade": "P2",
+    "titulo": "Abas rápidas prometem fluxos que não existem",
+    "doencas": [
+      "trombocitopenia-caes-gatos",
+      "linfoma-cutaneo-caes-gatos"
+    ],
+    "local": "DiseaseQuickSummaryPanel.tsx: abas diagnosis/treatment",
+    "problema": "Trombocitopenia não tem nenhum dos dois fluxos; linfoma cutâneo não tem fluxo terapêutico. As abas mostram indisponível, apesar de haver conteúdo clínico no corpo.",
+    "evidencia": "Verificação de quickSummaryRich nas 78 fichas locais e das condições de renderização do painel. Os três registros remotos sem quickSummaryRich usam outro caminho; não foram contados como abas vazias.",
+    "correcao": "Completar os fluxos quando úteis ou oferecer navegação explícita para o conteúdo existente, sem insinuar ausência de tratamento."
+  },
+  {
+    "id": "R12",
+    "prioridade": "P2",
+    "titulo": "Citações numéricas fora da bibliografia e referências cruzadas erradas",
+    "doencas": [
+      "diabetes-mellitus-canina",
+      "dermatite-atopica-canina",
+      "doenca-do-disco-intervertebral-caes",
+      "doenca-do-disco-intervertebral-gatos"
+    ],
+    "local": "referências e citações numéricas no corpo",
+    "problema": "Detectadas 23 ocorrências de citações numéricas com índices inexistentes nas quatro fichas. Na DDIV felina, números de uma bibliografia anterior parecem ter sido mantidos; uma menção a Fowler aponta para índice 9, cujo item atual é BSAVA. Tokens 1F também não seguem o esquema numérico suportado.",
+    "evidencia": "Contagens locais: diabetes canina 3, dermatite atópica 2, DDIV canina 5, DDIV felina 13. O detector bruto produziu 32 candidatos; nove eram números clínicos/periódicos e NÃO foram contabilizados como citações inválidas confirmadas.",
+    "correcao": "Migrar citações para IDs estáveis; resolver cada menção pela obra correta; validar existência e vínculo sem remover silenciosamente parte da referência."
+  },
+  {
+    "id": "R13",
+    "prioridade": "P2",
+    "titulo": "Catálogo duplica versões da mesma doença",
+    "doencas": [
+      "doenca-renal-cronica",
+      "doenca-renal-cronica-canina",
+      "doenca-renal-cronica-felina",
+      "fistula-perianal",
+      "fistula-perianal-furunculose-anal"
+    ],
+    "local": "utils/mergeDiseaseRecords.ts:12; repositórios local/Supabase",
+    "problema": "Cinco registros remotos resultam em três adicionais ao seed: cinomose, DRC geral e fístula. DRC geral e fístula coexistem com fichas locais mais completas. A única alias registrada é colapso traqueal. Falha remota muda o catálogo para 78 registros locais.",
+    "evidencia": "Consulta de leitura ao banco configurado, adaptação de dados legados e execução da função real de merge: 81 slugs. O total é da fotografia consultada; não pressupõe todos os registros privados de outras contas.",
+    "correcao": "Definir entradas canônicas por espécie e finalidade, redirecionar slugs legados após preservar conteúdo exclusivo e explicitar disponibilidade/versão. Não tratar cinomose como duplicata."
+  },
+  {
+    "id": "R14",
+    "prioridade": "P2",
+    "titulo": "Resumo do cartão e detalhe local usam transformações distintas",
+    "doencas": [
+      "sindrome-cushing-caes"
+    ],
+    "local": "services/adapters/local/localDiseaseRepository.ts:12 e :18; diseaseOverviewOverrides.ts",
+    "problema": "list aplica overrides nos stubs; getBySlug retorna o seed sem override. O modo Supabase aplica overrides na lista consolidada. Portanto, revisar só um dos resumos pode deixar outra versão divergente em uso.",
+    "evidencia": "Leitura dos caminhos reais dos repositórios. O problema arquitetural é confirmado; todas as divergências clínicas entre previews, plainLanguage e corpo ainda não foram avaliadas.",
+    "correcao": "Centralizar a seleção do texto editorial e a aplicação dos overrides; derivar cartão, resumo simples e resumo clínico de uma versão rastreável."
+  },
+  {
+    "id": "R15",
+    "prioridade": "P3",
+    "titulo": "Informação urgente compete com texto extenso e versões repetidas",
+    "doencas": [],
+    "local": "resumos, QuickDecisionStrip, corpo e previews",
+    "problema": "As fichas combinam definição simples, preview, lead, pilares, faixa rápida e corpo. Há longos blocos narrativos e afirmações absolutas; a repetição dificulta identificar qual regra deve orientar a ação e favorece contradições como C02/C08.",
+    "evidencia": "Inspeção dos dados e da composição dos componentes. Trata-se de recomendação editorial: não houve teste de usabilidade com participantes nem avaliação visual autenticada de todas as telas.",
+    "correcao": "Abrir com urgência/primeira decisão, seguir com confirmação e diferenciais, depois terapia/monitorização e aprofundamento. Padronizar condição → ação → reavaliação; separar hipótese mecanística de fato e não usar fatal/obrigatório como substituto de critérios."
+  }
+]

@@ -1,0 +1,4501 @@
+{
+  "results": [
+    {
+      "slug": "cinomose-canina",
+      "title": "Cinomose Canina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 1703,
+          "textChars": 467
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 789,
+          "textChars": 200
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 1296,
+          "textChars": 291
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 6015,
+          "textChars": 649
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 5961,
+          "textChars": 840
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 5560,
+          "textChars": 963
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 7559,
+          "textChars": 1181
+        },
+        {
+          "section": "complications",
+          "htmlChars": 0,
+          "textChars": 0
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 1523,
+          "textChars": 297
+        }
+      ]
+    },
+    {
+      "slug": "colapso-traqueal-canino",
+      "title": "Colapso Traqueal em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 22203,
+          "textChars": 5373
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 9501,
+          "textChars": 2006
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 8881,
+          "textChars": 1663
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 8282,
+          "textChars": 1798
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 29383,
+          "textChars": 5930
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 28320,
+          "textChars": 7549
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 73164,
+          "textChars": 18033
+        },
+        {
+          "section": "complications",
+          "htmlChars": 13735,
+          "textChars": 1630
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 4256,
+          "textChars": 762
+        }
+      ]
+    },
+    {
+      "slug": "doenca-renal-cronica",
+      "title": "Doença Renal Crônica",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 1657,
+          "textChars": 421
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 501,
+          "textChars": 144
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 445,
+          "textChars": 76
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 614,
+          "textChars": 254
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 3499,
+          "textChars": 517
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 5037,
+          "textChars": 685
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 5569,
+          "textChars": 801
+        },
+        {
+          "section": "complications",
+          "htmlChars": 0,
+          "textChars": 0
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 1178,
+          "textChars": 193
+        }
+      ]
+    },
+    {
+      "slug": "fistula-perianal",
+      "title": "Fístula perianal",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 6026,
+          "textChars": 2360
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 3909,
+          "textChars": 725
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2167,
+          "textChars": 405
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 4061,
+          "textChars": 1320
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 12335,
+          "textChars": 2139
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 19686,
+          "textChars": 3817
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 16447,
+          "textChars": 4282
+        },
+        {
+          "section": "complications",
+          "htmlChars": 0,
+          "textChars": 0
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 4162,
+          "textChars": 583
+        }
+      ]
+    },
+    {
+      "slug": "leishmaniose-visceral-canina",
+      "title": "Leishmaniose visceral canina (leishmaniose canina por L. infantum)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 4857,
+          "textChars": 2493
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 3576,
+          "textChars": 1617
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2877,
+          "textChars": 951
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1122,
+          "textChars": 762
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 8920,
+          "textChars": 1506
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 19673,
+          "textChars": 5143
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 45734,
+          "textChars": 10732
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10207,
+          "textChars": 3816
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 36676,
+          "textChars": 6081
+        }
+      ]
+    },
+    {
+      "slug": "babesiose-canina",
+      "title": "Babesiose canina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 7772,
+          "textChars": 2483
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 5423,
+          "textChars": 1579
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 4476,
+          "textChars": 2220
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 5499,
+          "textChars": 1899
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 6455,
+          "textChars": 1885
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 19602,
+          "textChars": 7269
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 14488,
+          "textChars": 4477
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9624,
+          "textChars": 2474
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 8260,
+          "textChars": 2272
+        }
+      ]
+    },
+    {
+      "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+      "title": "Doenças do trato urinário inferior felino (DTUIF)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8668,
+          "textChars": 1271
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 3635,
+          "textChars": 1206
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3337,
+          "textChars": 864
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 987,
+          "textChars": 627
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 23410,
+          "textChars": 4531
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 23086,
+          "textChars": 4382
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 17517,
+          "textChars": 3651
+        },
+        {
+          "section": "complications",
+          "htmlChars": 14561,
+          "textChars": 4240
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 9215,
+          "textChars": 2118
+        }
+      ]
+    },
+    {
+      "slug": "fistula-perianal-furunculose-anal",
+      "title": "Fístula perianal / furunculose anal",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 4395,
+          "textChars": 2031
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2087,
+          "textChars": 847
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3672,
+          "textChars": 1260
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 3001,
+          "textChars": 1248
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 5166,
+          "textChars": 1313
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 14722,
+          "textChars": 4474
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 14061,
+          "textChars": 3988
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8599,
+          "textChars": 1982
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6909,
+          "textChars": 1857
+        }
+      ]
+    },
+    {
+      "slug": "sindrome-cushing-caes",
+      "title": "Síndrome de Cushing — Cão",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 15612,
+          "textChars": 2684
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 6002,
+          "textChars": 547
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 7592,
+          "textChars": 581
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 36097,
+          "textChars": 3926
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 27040,
+          "textChars": 3405
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 26511,
+          "textChars": 3017
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 44261,
+          "textChars": 1958
+        },
+        {
+          "section": "complications",
+          "htmlChars": 12217,
+          "textChars": 3452
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 9925,
+          "textChars": 1106
+        }
+      ]
+    },
+    {
+      "slug": "sindrome-cushing-gatos",
+      "title": "Síndrome de Cushing — Gato",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 2477,
+          "textChars": 1241
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2917,
+          "textChars": 1191
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 13152,
+          "textChars": 2051
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 17139,
+          "textChars": 3708
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 6541,
+          "textChars": 1424
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 1669,
+          "textChars": 303
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 11679,
+          "textChars": 2708
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8615,
+          "textChars": 1997
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6731,
+          "textChars": 1842
+        }
+      ]
+    },
+    {
+      "slug": "erliquiose-monocitica-canina",
+      "title": "Erliquiose monocítica canina (Ehrlichia canis)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 2394,
+          "textChars": 648
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 3203,
+          "textChars": 850
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 8876,
+          "textChars": 1489
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 16299,
+          "textChars": 1635
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 19981,
+          "textChars": 4211
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 36825,
+          "textChars": 7464
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 13591,
+          "textChars": 1952
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11108,
+          "textChars": 4020
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 3015,
+          "textChars": 789
+        }
+      ]
+    },
+    {
+      "slug": "asma-felina",
+      "title": "Asma felina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 4795,
+          "textChars": 1017
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 1779,
+          "textChars": 539
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2572,
+          "textChars": 810
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1048,
+          "textChars": 524
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 15220,
+          "textChars": 3870
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 34628,
+          "textChars": 8258
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 35609,
+          "textChars": 7489
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9925,
+          "textChars": 3534
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 1092,
+          "textChars": 336
+        }
+      ]
+    },
+    {
+      "slug": "bronquite-cronica-caes-gatos",
+      "title": "Bronquite crônica em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 39295,
+          "textChars": 9159
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 12526,
+          "textChars": 2334
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 22610,
+          "textChars": 4493
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 22801,
+          "textChars": 4298
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 26002,
+          "textChars": 6183
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 81179,
+          "textChars": 17621
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 97414,
+          "textChars": 19594
+        },
+        {
+          "section": "complications",
+          "htmlChars": 21229,
+          "textChars": 3728
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10819,
+          "textChars": 1866
+        }
+      ]
+    },
+    {
+      "slug": "granuloma-eosinofilico-felino",
+      "title": "Complexo do granuloma eosinofílico felino",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 5460,
+          "textChars": 1044
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 1722,
+          "textChars": 482
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2456,
+          "textChars": 694
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1113,
+          "textChars": 753
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 14943,
+          "textChars": 3593
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 21326,
+          "textChars": 5230
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 16557,
+          "textChars": 3543
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9785,
+          "textChars": 2928
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 1735,
+          "textChars": 333
+        }
+      ]
+    },
+    {
+      "slug": "micoplasmoses-hemotropicas",
+      "title": "Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 10019,
+          "textChars": 3118
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2471,
+          "textChars": 1075
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 4382,
+          "textChars": 1886
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 4034,
+          "textChars": 1302
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 4612,
+          "textChars": 1152
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 1640,
+          "textChars": 274
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 14274,
+          "textChars": 4345
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8861,
+          "textChars": 2012
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 9368,
+          "textChars": 2083
+        }
+      ]
+    },
+    {
+      "slug": "doenca-renal-cronica-canina",
+      "title": "Doença renal crônica em cães (DRC canina)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 39752,
+          "textChars": 8066
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 9436,
+          "textChars": 1857
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 22472,
+          "textChars": 4482
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 14661,
+          "textChars": 2887
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 22496,
+          "textChars": 5194
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 54080,
+          "textChars": 9900
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 73489,
+          "textChars": 12527
+        },
+        {
+          "section": "complications",
+          "htmlChars": 15573,
+          "textChars": 2427
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 9157,
+          "textChars": 1496
+        }
+      ]
+    },
+    {
+      "slug": "doenca-renal-cronica-felina",
+      "title": "Doença renal crônica em felinos (DRC felina)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 30560,
+          "textChars": 7614
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 10785,
+          "textChars": 2102
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 16316,
+          "textChars": 3135
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 30452,
+          "textChars": 7241
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 30082,
+          "textChars": 6353
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 66136,
+          "textChars": 10954
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 94954,
+          "textChars": 17114
+        },
+        {
+          "section": "complications",
+          "htmlChars": 16619,
+          "textChars": 2775
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10522,
+          "textChars": 1889
+        }
+      ]
+    },
+    {
+      "slug": "hipertensao-arterial-sistemica-caes-gatos",
+      "title": "Hipertensão arterial sistêmica (HAS)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 30811,
+          "textChars": 10129
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2018,
+          "textChars": 622
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3052,
+          "textChars": 796
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1113,
+          "textChars": 589
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 19692,
+          "textChars": 4164
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 35676,
+          "textChars": 8051
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 9384,
+          "textChars": 1504
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9046,
+          "textChars": 2661
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 677,
+          "textChars": 322
+        }
+      ]
+    },
+    {
+      "slug": "doenca-valvar-mitral-degenerativa-caes",
+      "title": "Doença valvar mitral degenerativa (DMVD / endocardiose)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 11211,
+          "textChars": 1762
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 6162,
+          "textChars": 1348
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11672,
+          "textChars": 1550
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 4111,
+          "textChars": 986
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 26248,
+          "textChars": 5633
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 55562,
+          "textChars": 10810
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 67732,
+          "textChars": 11787
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10870,
+          "textChars": 3381
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 4514,
+          "textChars": 894
+        }
+      ]
+    },
+    {
+      "slug": "cardiomiopatia-hipertrofica-caes-gatos",
+      "title": "Cardiomiopatia hipertrófica (CMH)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 2909,
+          "textChars": 1004
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 4130,
+          "textChars": 1149
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 4081,
+          "textChars": 1318
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1056,
+          "textChars": 532
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 23469,
+          "textChars": 6094
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 23318,
+          "textChars": 6815
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 28469,
+          "textChars": 4153
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9924,
+          "textChars": 3306
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2879,
+          "textChars": 960
+        }
+      ]
+    },
+    {
+      "slug": "cardiomiopatia-dilatada-caes-gatos",
+      "title": "Cardiomiopatia dilatada (CMD)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8857,
+          "textChars": 1537
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 7209,
+          "textChars": 985
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 7533,
+          "textChars": 851
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 946,
+          "textChars": 586
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 27238,
+          "textChars": 6993
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 23230,
+          "textChars": 7009
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 16818,
+          "textChars": 2829
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11230,
+          "textChars": 3508
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 3218,
+          "textChars": 704
+        }
+      ]
+    },
+    {
+      "slug": "arritmias-cardiacas-caes-gatos",
+      "title": "Arritmias cardíacas em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 50962,
+          "textChars": 2766
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 21861,
+          "textChars": 1742
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 15806,
+          "textChars": 1003
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 24344,
+          "textChars": 2210
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 32683,
+          "textChars": 6112
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 88041,
+          "textChars": 15484
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 247704,
+          "textChars": 20484
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11663,
+          "textChars": 3414
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14033,
+          "textChars": 1283
+        }
+      ]
+    },
+    {
+      "slug": "cardiomiopatia-restritiva-felina",
+      "title": "Cardiomiopatia restritiva felina (CMR / RCM)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8043,
+          "textChars": 2815
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2303,
+          "textChars": 907
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3934,
+          "textChars": 1678
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 3205,
+          "textChars": 1452
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 6574,
+          "textChars": 1771
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 814,
+          "textChars": 45
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 16513,
+          "textChars": 4093
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8592,
+          "textChars": 1975
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6736,
+          "textChars": 2071
+        }
+      ]
+    },
+    {
+      "slug": "hipoadrenocorticismo-addison",
+      "title": "Hipoadrenocorticismo (Doença de Addison)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 3874,
+          "textChars": 952
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 3390,
+          "textChars": 843
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 5300,
+          "textChars": 1148
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 922,
+          "textChars": 562
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 15463,
+          "textChars": 2792
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 14879,
+          "textChars": 3418
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 25096,
+          "textChars": 5733
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9954,
+          "textChars": 2699
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 783,
+          "textChars": 428
+        }
+      ]
+    },
+    {
+      "slug": "diabetes-mellitus-canina",
+      "title": "Diabetes Mellitus Canino",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 22572,
+          "textChars": 1287
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2225,
+          "textChars": 254
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 31172,
+          "textChars": 1064
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 6897,
+          "textChars": 1091
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 44120,
+          "textChars": 2692
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 26536,
+          "textChars": 1296
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 86355,
+          "textChars": 7296
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10319,
+          "textChars": 2830
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 8155,
+          "textChars": 1180
+        }
+      ]
+    },
+    {
+      "slug": "diabetes-mellitus-felina",
+      "title": "Diabetes Mellitus Felino",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 16979,
+          "textChars": 1083
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 4728,
+          "textChars": 161
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 34085,
+          "textChars": 1100
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 7587,
+          "textChars": 823
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 49046,
+          "textChars": 2832
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 19234,
+          "textChars": 1169
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 82284,
+          "textChars": 7285
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10748,
+          "textChars": 3259
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7973,
+          "textChars": 1066
+        }
+      ]
+    },
+    {
+      "slug": "hipertireoidismo-felino",
+      "title": "Hipertireoidismo felino",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 16390,
+          "textChars": 2199
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 9356,
+          "textChars": 1177
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 10047,
+          "textChars": 1397
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 35408,
+          "textChars": 5908
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 7111,
+          "textChars": 1909
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 38912,
+          "textChars": 12282
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 40326,
+          "textChars": 9773
+        },
+        {
+          "section": "complications",
+          "htmlChars": 13772,
+          "textChars": 3068
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 12747,
+          "textChars": 3158
+        }
+      ]
+    },
+    {
+      "slug": "hipotireoidismo-adquirido-caes-gatos",
+      "title": "Hipotireoidismo adquirido (cão e gato)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8287,
+          "textChars": 1096
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 9266,
+          "textChars": 1319
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 6234,
+          "textChars": 1010
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 22359,
+          "textChars": 3058
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 40205,
+          "textChars": 5273
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 22982,
+          "textChars": 2979
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 13169,
+          "textChars": 770
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11217,
+          "textChars": 3497
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10148,
+          "textChars": 945
+        }
+      ]
+    },
+    {
+      "slug": "hipotireoidismo-congenito-caes-gatos",
+      "title": "Hipotireoidismo congênito (cão e gato)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 18870,
+          "textChars": 5069
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2771,
+          "textChars": 832
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3989,
+          "textChars": 1746
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 34390,
+          "textChars": 8365
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 6746,
+          "textChars": 1710
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 18068,
+          "textChars": 5321
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 6813,
+          "textChars": 1910
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8730,
+          "textChars": 1879
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 8338,
+          "textChars": 1849
+        }
+      ]
+    },
+    {
+      "slug": "tumores-mamarios-caes-gatos",
+      "title": "Tumores mamários em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 3861,
+          "textChars": 1154
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2782,
+          "textChars": 934
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3483,
+          "textChars": 688
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 892,
+          "textChars": 532
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 11509,
+          "textChars": 2127
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 29435,
+          "textChars": 6112
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 10925,
+          "textChars": 3208
+        },
+        {
+          "section": "complications",
+          "htmlChars": 13441,
+          "textChars": 4574
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2561,
+          "textChars": 825
+        }
+      ]
+    },
+    {
+      "slug": "mastite-caes-gatos",
+      "title": "Mastite em cadelas e gatas",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 14107,
+          "textChars": 4669
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 5474,
+          "textChars": 1983
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 12439,
+          "textChars": 3437
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 6375,
+          "textChars": 3141
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 42377,
+          "textChars": 13194
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 29016,
+          "textChars": 14598
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 43960,
+          "textChars": 11711
+        },
+        {
+          "section": "complications",
+          "htmlChars": 13702,
+          "textChars": 2885
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10714,
+          "textChars": 2593
+        }
+      ]
+    },
+    {
+      "slug": "miastenia-gravis-caes-gatos",
+      "title": "Miastenia gravis adquirida (cão e gato)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 14329,
+          "textChars": 2238
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 8136,
+          "textChars": 1430
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 12582,
+          "textChars": 919
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 10752,
+          "textChars": 1676
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 32536,
+          "textChars": 7168
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 23118,
+          "textChars": 6615
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 33066,
+          "textChars": 4723
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11919,
+          "textChars": 3227
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7535,
+          "textChars": 871
+        }
+      ]
+    },
+    {
+      "slug": "sindromes-miastenicas-congenitas-caes-gatos",
+      "title": "Síndromes miastênicas congênitas (cão e gato)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 12401,
+          "textChars": 3040
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2348,
+          "textChars": 875
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3448,
+          "textChars": 1686
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 3051,
+          "textChars": 1298
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 5711,
+          "textChars": 1553
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 18540,
+          "textChars": 5699
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 12010,
+          "textChars": 3714
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8424,
+          "textChars": 2272
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6834,
+          "textChars": 1849
+        }
+      ]
+    },
+    {
+      "slug": "leucemia-viral-felina",
+      "title": "Leucemia viral felina (FeLV)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 11959,
+          "textChars": 1003
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 5997,
+          "textChars": 647
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11397,
+          "textChars": 1072
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 15696,
+          "textChars": 1797
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 17006,
+          "textChars": 3446
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 20230,
+          "textChars": 5812
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 29311,
+          "textChars": 3438
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11900,
+          "textChars": 4721
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 17461,
+          "textChars": 1176
+        }
+      ]
+    },
+    {
+      "slug": "peritonite-infecciosa-felina",
+      "title": "Peritonite infecciosa felina (PIF/FIP)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 9540,
+          "textChars": 1316
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 5675,
+          "textChars": 767
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 9869,
+          "textChars": 1351
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 32774,
+          "textChars": 6581
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 32092,
+          "textChars": 5458
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 81563,
+          "textChars": 15899
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 31017,
+          "textChars": 3143
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8920,
+          "textChars": 4592
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7982,
+          "textChars": 1093
+        }
+      ]
+    },
+    {
+      "slug": "imunodeficiencia-felina-fiv",
+      "title": "Vírus da imunodeficiência felina (FIV)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 15710,
+          "textChars": 1592
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 12017,
+          "textChars": 1445
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 16405,
+          "textChars": 1495
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 35767,
+          "textChars": 3798
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 39840,
+          "textChars": 7354
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 25220,
+          "textChars": 6632
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 46820,
+          "textChars": 6136
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10695,
+          "textChars": 4304
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 22210,
+          "textChars": 2503
+        }
+      ]
+    },
+    {
+      "slug": "insuficiencia-pancreatica-exocrina-caes-gatos",
+      "title": "Insuficiência pancreática exócrina (IPE/EPI)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 17096,
+          "textChars": 1520
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 13893,
+          "textChars": 1132
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11952,
+          "textChars": 852
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 43250,
+          "textChars": 5374
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 34325,
+          "textChars": 7110
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 55237,
+          "textChars": 10668
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 36791,
+          "textChars": 5112
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10774,
+          "textChars": 4383
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14181,
+          "textChars": 1617
+        }
+      ]
+    },
+    {
+      "slug": "giardiase-caes-gatos",
+      "title": "Giardíase em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 66641,
+          "textChars": 5386
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 18677,
+          "textChars": 1973
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 24657,
+          "textChars": 1230
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 16804,
+          "textChars": 1330
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 24065,
+          "textChars": 4964
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 77703,
+          "textChars": 13473
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 185995,
+          "textChars": 12104
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11237,
+          "textChars": 4214
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 19829,
+          "textChars": 866
+        }
+      ]
+    },
+    {
+      "slug": "coccidiose-caes-gatos",
+      "title": "Cistoisosporose em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 73658,
+          "textChars": 4896
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 17826,
+          "textChars": 1476
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 28786,
+          "textChars": 1244
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 13945,
+          "textChars": 992
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 26607,
+          "textChars": 5424
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 94241,
+          "textChars": 14778
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 185115,
+          "textChars": 10285
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10791,
+          "textChars": 3708
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 31329,
+          "textChars": 1188
+        }
+      ]
+    },
+    {
+      "slug": "hiperparatireoidismo-caes-gatos",
+      "title": "Hiperparatireoidismo em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 98092,
+          "textChars": 6268
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 50329,
+          "textChars": 3198
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 33715,
+          "textChars": 1523
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 103916,
+          "textChars": 5725
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 81361,
+          "textChars": 7778
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 121196,
+          "textChars": 8823
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 215982,
+          "textChars": 11618
+        },
+        {
+          "section": "complications",
+          "htmlChars": 12393,
+          "textChars": 5380
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 39686,
+          "textChars": 2183
+        }
+      ]
+    },
+    {
+      "slug": "insulinoma-caes-gatos",
+      "title": "Insulinoma em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 38518,
+          "textChars": 1607
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 29152,
+          "textChars": 2609
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 28454,
+          "textChars": 873
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 50759,
+          "textChars": 2657
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 66730,
+          "textChars": 5680
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 96509,
+          "textChars": 8073
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 223770,
+          "textChars": 9895
+        },
+        {
+          "section": "complications",
+          "htmlChars": 12180,
+          "textChars": 3259
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14390,
+          "textChars": 613
+        }
+      ]
+    },
+    {
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "title": "Cetoacidose diabética em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 46119,
+          "textChars": 2170
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 35922,
+          "textChars": 5357
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 37401,
+          "textChars": 1303
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 116881,
+          "textChars": 18796
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 53988,
+          "textChars": 5153
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 77143,
+          "textChars": 11110
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 235526,
+          "textChars": 16834
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10178,
+          "textChars": 3155
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 22526,
+          "textChars": 1286
+        }
+      ]
+    },
+    {
+      "slug": "prostatite-caes-gatos",
+      "title": "Prostatite em cães e gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 15553,
+          "textChars": 1339
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 11660,
+          "textChars": 1184
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 15222,
+          "textChars": 940
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 32647,
+          "textChars": 4036
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 35818,
+          "textChars": 4968
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 34556,
+          "textChars": 6031
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 38246,
+          "textChars": 3303
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11706,
+          "textChars": 4694
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14823,
+          "textChars": 1405
+        }
+      ]
+    },
+    {
+      "slug": "gengivoestomatite-cronica-felina",
+      "title": "Gengivoestomatite crônica felina (GECF)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 17336,
+          "textChars": 1153
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 4110,
+          "textChars": 352
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 13796,
+          "textChars": 898
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 34128,
+          "textChars": 4548
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 26279,
+          "textChars": 3490
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 29678,
+          "textChars": 5397
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 36771,
+          "textChars": 3731
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11118,
+          "textChars": 4495
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 8719,
+          "textChars": 1065
+        }
+      ]
+    },
+    {
+      "slug": "doenca-periodontal-caes",
+      "title": "Doença Periodontal Canina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8634,
+          "textChars": 1391
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 9448,
+          "textChars": 1257
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 12679,
+          "textChars": 1277
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1768,
+          "textChars": 1167
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 24559,
+          "textChars": 5458
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 14714,
+          "textChars": 3122
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 19223,
+          "textChars": 2445
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10975,
+          "textChars": 5060
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2467,
+          "textChars": 495
+        }
+      ]
+    },
+    {
+      "slug": "doenca-periodontal-gatos",
+      "title": "Doença Periodontal Felina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 8683,
+          "textChars": 1202
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 8370,
+          "textChars": 1047
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 14414,
+          "textChars": 1314
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 1239,
+          "textChars": 639
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 20305,
+          "textChars": 3273
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 14330,
+          "textChars": 2738
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 16133,
+          "textChars": 2182
+        },
+        {
+          "section": "complications",
+          "htmlChars": 12067,
+          "textChars": 4656
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 1756,
+          "textChars": 273
+        }
+      ]
+    },
+    {
+      "slug": "dermatite-atopica-canina",
+      "title": "Dermatite Atópica Canina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 19438,
+          "textChars": 1315
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 5018,
+          "textChars": 345
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 39262,
+          "textChars": 1162
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 7436,
+          "textChars": 757
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 44159,
+          "textChars": 2664
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 28909,
+          "textChars": 1566
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 67796,
+          "textChars": 2717
+        },
+        {
+          "section": "complications",
+          "htmlChars": 7306,
+          "textChars": 477
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7788,
+          "textChars": 1839
+        }
+      ]
+    },
+    {
+      "slug": "sindrome-cutanea-atopica-felina",
+      "title": "Síndrome Cutânea Atópica Felina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 14195,
+          "textChars": 897
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 6192,
+          "textChars": 258
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 30136,
+          "textChars": 1056
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 6115,
+          "textChars": 796
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 41816,
+          "textChars": 2700
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 17908,
+          "textChars": 1197
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 52428,
+          "textChars": 2704
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9740,
+          "textChars": 491
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7690,
+          "textChars": 1741
+        }
+      ]
+    },
+    {
+      "slug": "doenca-do-disco-intervertebral-caes",
+      "title": "Doença do Disco Intervertebral — Cães",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 19388,
+          "textChars": 1418
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 6142,
+          "textChars": 441
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 21678,
+          "textChars": 1018
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 13591,
+          "textChars": 844
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 82470,
+          "textChars": 5268
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 19762,
+          "textChars": 1688
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 67906,
+          "textChars": 2630
+        },
+        {
+          "section": "complications",
+          "htmlChars": 10961,
+          "textChars": 465
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7544,
+          "textChars": 1595
+        }
+      ]
+    },
+    {
+      "slug": "doenca-do-disco-intervertebral-gatos",
+      "title": "Doença do Disco Intervertebral — Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 12966,
+          "textChars": 1208
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 7225,
+          "textChars": 310
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11139,
+          "textChars": 739
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 910,
+          "textChars": 550
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 25334,
+          "textChars": 2552
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 5372,
+          "textChars": 846
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 19376,
+          "textChars": 2345
+        },
+        {
+          "section": "complications",
+          "htmlChars": 2826,
+          "textChars": 337
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6779,
+          "textChars": 1475
+        }
+      ]
+    },
+    {
+      "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+      "title": "Coagulação intravascular disseminada (CID/DIC)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 54510,
+          "textChars": 8094
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 29829,
+          "textChars": 2968
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 19288,
+          "textChars": 2781
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 34988,
+          "textChars": 4998
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 53755,
+          "textChars": 16486
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 52974,
+          "textChars": 32091
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 125233,
+          "textChars": 17419
+        },
+        {
+          "section": "complications",
+          "htmlChars": 17916,
+          "textChars": 2206
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 16224,
+          "textChars": 2120
+        }
+      ]
+    },
+    {
+      "slug": "sindrome-mielodisplasica-caes-gatos",
+      "title": "Síndrome mielodisplásica (MDS)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 50286,
+          "textChars": 9121
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 15333,
+          "textChars": 1922
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 15044,
+          "textChars": 2077
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 64480,
+          "textChars": 10343
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 43296,
+          "textChars": 11063
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 34164,
+          "textChars": 17517
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 67445,
+          "textChars": 9510
+        },
+        {
+          "section": "complications",
+          "htmlChars": 37677,
+          "textChars": 4059
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14160,
+          "textChars": 2041
+        }
+      ]
+    },
+    {
+      "slug": "linfoma-cutaneo-caes-gatos",
+      "title": "Linfoma cutâneo",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 28354,
+          "textChars": 5849
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 27132,
+          "textChars": 2637
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3343,
+          "textChars": 1447
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 12240,
+          "textChars": 1908
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 20975,
+          "textChars": 2736
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 36132,
+          "textChars": 15441
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 52008,
+          "textChars": 6258
+        },
+        {
+          "section": "complications",
+          "htmlChars": 17544,
+          "textChars": 2623
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 4583,
+          "textChars": 734
+        }
+      ]
+    },
+    {
+      "slug": "megacolon-caes-gatos",
+      "title": "Megacólon",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 46779,
+          "textChars": 12718
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 16497,
+          "textChars": 5050
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11908,
+          "textChars": 1735
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 12866,
+          "textChars": 4254
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 30949,
+          "textChars": 8814
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 29970,
+          "textChars": 15552
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 39963,
+          "textChars": 10693
+        },
+        {
+          "section": "complications",
+          "htmlChars": 3424,
+          "textChars": 1697
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10613,
+          "textChars": 2285
+        }
+      ]
+    },
+    {
+      "slug": "linfoma-mediastinal-caes-gatos",
+      "title": "Linfoma Mediastinal em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 41625,
+          "textChars": 10938
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 18550,
+          "textChars": 4366
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 11431,
+          "textChars": 2288
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 14338,
+          "textChars": 3485
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 50902,
+          "textChars": 14311
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 34198,
+          "textChars": 17695
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 101827,
+          "textChars": 17812
+        },
+        {
+          "section": "complications",
+          "htmlChars": 4417,
+          "textChars": 914
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2681,
+          "textChars": 789
+        }
+      ]
+    },
+    {
+      "slug": "piotorax-caes-gatos",
+      "title": "Piotórax em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 41428,
+          "textChars": 12786
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 14657,
+          "textChars": 3135
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 14320,
+          "textChars": 2918
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 14242,
+          "textChars": 5030
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 49184,
+          "textChars": 15823
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 33658,
+          "textChars": 17155
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 111187,
+          "textChars": 21164
+        },
+        {
+          "section": "complications",
+          "htmlChars": 9232,
+          "textChars": 1725
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14411,
+          "textChars": 2060
+        }
+      ]
+    },
+    {
+      "slug": "quilotorax-caes-gatos",
+      "title": "Quilotórax em Gatos e Cães",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 42162,
+          "textChars": 14514
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 17692,
+          "textChars": 3527
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 14161,
+          "textChars": 2759
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 11608,
+          "textChars": 4689
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 48947,
+          "textChars": 13195
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 32804,
+          "textChars": 16301
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 72230,
+          "textChars": 17654
+        },
+        {
+          "section": "complications",
+          "htmlChars": 5639,
+          "textChars": 1158
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 4077,
+          "textChars": 1125
+        }
+      ]
+    },
+    {
+      "slug": "cistite-enfisematosa-caes-gatos",
+      "title": "Cistite Enfisematosa em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 59050,
+          "textChars": 10289
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 25500,
+          "textChars": 2854
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 9649,
+          "textChars": 1787
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 13997,
+          "textChars": 2188
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 33752,
+          "textChars": 8798
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 25558,
+          "textChars": 11140
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 90224,
+          "textChars": 15103
+        },
+        {
+          "section": "complications",
+          "htmlChars": 15878,
+          "textChars": 2038
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 15382,
+          "textChars": 1871
+        }
+      ]
+    },
+    {
+      "slug": "trombocitopenia-caes-gatos",
+      "title": "Trombocitopenia em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 65035,
+          "textChars": 11090
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 30801,
+          "textChars": 3208
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 9909,
+          "textChars": 2047
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 13613,
+          "textChars": 2059
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 37830,
+          "textChars": 9515
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 34022,
+          "textChars": 17519
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 81366,
+          "textChars": 10494
+        },
+        {
+          "section": "complications",
+          "htmlChars": 280,
+          "textChars": 15
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2592,
+          "textChars": 888
+        }
+      ]
+    },
+    {
+      "slug": "anemia-caes-gatos",
+      "title": "Anemia em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 65287,
+          "textChars": 14119
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 23964,
+          "textChars": 3038
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 17769,
+          "textChars": 2410
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 10242,
+          "textChars": 1932
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 56175,
+          "textChars": 18347
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 41604,
+          "textChars": 24853
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 67716,
+          "textChars": 7836
+        },
+        {
+          "section": "complications",
+          "htmlChars": 18753,
+          "textChars": 2476
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 24199,
+          "textChars": 3015
+        }
+      ]
+    },
+    {
+      "slug": "leishmaniose-caes-gatos",
+      "title": "Leishmaniose em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 39840,
+          "textChars": 11357
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 16256,
+          "textChars": 2780
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 13452,
+          "textChars": 2335
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 15536,
+          "textChars": 2592
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 49800,
+          "textChars": 14454
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 18895,
+          "textChars": 7138
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 35805,
+          "textChars": 5430
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8907,
+          "textChars": 1503
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 15850,
+          "textChars": 2244
+        }
+      ]
+    },
+    {
+      "slug": "cistite-idiopatica-felina",
+      "title": "Cistite Idiopática Felina (CIF / FIC)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 43088,
+          "textChars": 10372
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 18531,
+          "textChars": 2963
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 13433,
+          "textChars": 1894
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 18933,
+          "textChars": 3573
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 35791,
+          "textChars": 10532
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 20101,
+          "textChars": 8292
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 53659,
+          "textChars": 8673
+        },
+        {
+          "section": "complications",
+          "htmlChars": 6800,
+          "textChars": 1839
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7752,
+          "textChars": 1949
+        }
+      ]
+    },
+    {
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "title": "Discinesia Paroxística em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 20550,
+          "textChars": 6203
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 4342,
+          "textChars": 1527
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 12503,
+          "textChars": 2313
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 2217,
+          "textChars": 1452
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 40606,
+          "textChars": 12427
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 28268,
+          "textChars": 13850
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 55467,
+          "textChars": 10572
+        },
+        {
+          "section": "complications",
+          "htmlChars": 3672,
+          "textChars": 1459
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 5206,
+          "textChars": 1613
+        }
+      ]
+    },
+    {
+      "slug": "platinosomose-felina",
+      "title": "Platinosomose Felina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 22705,
+          "textChars": 3608
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 11442,
+          "textChars": 1890
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 14884,
+          "textChars": 2695
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 17937,
+          "textChars": 2882
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 36407,
+          "textChars": 11281
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 26404,
+          "textChars": 11986
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 53606,
+          "textChars": 7991
+        },
+        {
+          "section": "complications",
+          "htmlChars": 15365,
+          "textChars": 2219
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 14819,
+          "textChars": 1993
+        }
+      ]
+    },
+    {
+      "slug": "triade-felina",
+      "title": "Tríade Felina",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 29397,
+          "textChars": 7111
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 16024,
+          "textChars": 2136
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 17272,
+          "textChars": 2206
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 53062,
+          "textChars": 11429
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 36459,
+          "textChars": 11205
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 29264,
+          "textChars": 14846
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 112271,
+          "textChars": 17501
+        },
+        {
+          "section": "complications",
+          "htmlChars": 25384,
+          "textChars": 3303
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 20303,
+          "textChars": 2594
+        }
+      ]
+    },
+    {
+      "slug": "anemia-hemolitica-imunomediada-canina",
+      "title": "Anemia Hemolítica Imunomediada em Cães (AHIM / IMHA)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 7748,
+          "textChars": 3373
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 4821,
+          "textChars": 2275
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 15086,
+          "textChars": 4030
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 18148,
+          "textChars": 6360
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 5293,
+          "textChars": 3319
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 24428,
+          "textChars": 8880
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 80339,
+          "textChars": 20889
+        },
+        {
+          "section": "complications",
+          "htmlChars": 6718,
+          "textChars": 2145
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 7079,
+          "textChars": 1529
+        }
+      ]
+    },
+    {
+      "slug": "sepse-canina",
+      "title": "Sepse e Choque Séptico em Cães",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 35992,
+          "textChars": 14584
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 2569,
+          "textChars": 1583
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 22547,
+          "textChars": 6653
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 6646,
+          "textChars": 4893
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 20491,
+          "textChars": 9059
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 18859,
+          "textChars": 8353
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 38337,
+          "textChars": 16350
+        },
+        {
+          "section": "complications",
+          "htmlChars": 3772,
+          "textChars": 2375
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 3486,
+          "textChars": 2098
+        }
+      ]
+    },
+    {
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "title": "Obstrução Funcional do Fluxo Urinário em Cães (FOO)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 36037,
+          "textChars": 9552
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 6901,
+          "textChars": 1782
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2229,
+          "textChars": 961
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 2193,
+          "textChars": 934
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 310,
+          "textChars": 30
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 12011,
+          "textChars": 2927
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 21875,
+          "textChars": 7191
+        },
+        {
+          "section": "complications",
+          "htmlChars": 5120,
+          "textChars": 2772
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 6516,
+          "textChars": 3022
+        }
+      ]
+    },
+    {
+      "slug": "sepse-felina",
+      "title": "Sepse e Choque Séptico em Felinos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 23906,
+          "textChars": 10185
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 15767,
+          "textChars": 6565
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2234,
+          "textChars": 966
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 7006,
+          "textChars": 4595
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 19339,
+          "textChars": 7289
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 22496,
+          "textChars": 9518
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 43701,
+          "textChars": 17538
+        },
+        {
+          "section": "complications",
+          "htmlChars": 8305,
+          "textChars": 5105
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2700,
+          "textChars": 1298
+        }
+      ]
+    },
+    {
+      "slug": "lesao-renal-aguda-felina",
+      "title": "Lesão Renal Aguda em Felinos (LRA / AKI)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 22433,
+          "textChars": 9892
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 21236,
+          "textChars": 9508
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 2451,
+          "textChars": 1183
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 17714,
+          "textChars": 6805
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 1750,
+          "textChars": 980
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 18969,
+          "textChars": 7333
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 40386,
+          "textChars": 16528
+        },
+        {
+          "section": "complications",
+          "htmlChars": 13350,
+          "textChars": 7233
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 2922,
+          "textChars": 1520
+        }
+      ]
+    },
+    {
+      "slug": "pielonefrite-caes-gatos",
+      "title": "Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 32021,
+          "textChars": 14751
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 24849,
+          "textChars": 9997
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 5231,
+          "textChars": 3963
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 23527,
+          "textChars": 9986
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 4411,
+          "textChars": 2031
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 31491,
+          "textChars": 13267
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 42851,
+          "textChars": 16116
+        },
+        {
+          "section": "complications",
+          "htmlChars": 11902,
+          "textChars": 6295
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 3150,
+          "textChars": 1748
+        }
+      ]
+    },
+    {
+      "slug": "lesao-renal-aguda-canina",
+      "title": "Lesão Renal Aguda em Cães (LRA / IRA / AKI)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 21685,
+          "textChars": 8107
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 17042,
+          "textChars": 6645
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 3807,
+          "textChars": 1927
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 17679,
+          "textChars": 4874
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 3882,
+          "textChars": 1508
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 22260,
+          "textChars": 6792
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 46492,
+          "textChars": 14439
+        },
+        {
+          "section": "complications",
+          "htmlChars": 5274,
+          "textChars": 2466
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 3283,
+          "textChars": 1391
+        }
+      ]
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "title": "Intermação em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 36821,
+          "textChars": 7618
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 32069,
+          "textChars": 5682
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 33964,
+          "textChars": 7574
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 22153,
+          "textChars": 3430
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 310,
+          "textChars": 30
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 46015,
+          "textChars": 8428
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 87383,
+          "textChars": 17097
+        },
+        {
+          "section": "complications",
+          "htmlChars": 40717,
+          "textChars": 5843
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 15119,
+          "textChars": 2132
+        }
+      ]
+    },
+    {
+      "slug": "polirradiculoneurite-caes-gatos",
+      "title": "Polirradiculoneurite Aguda em Cães e Gatos (ACP / AIP)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 46315,
+          "textChars": 11599
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 24108,
+          "textChars": 5041
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 25774,
+          "textChars": 5602
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 31864,
+          "textChars": 6034
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 19516,
+          "textChars": 3160
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 57468,
+          "textChars": 12254
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 65703,
+          "textChars": 11847
+        },
+        {
+          "section": "complications",
+          "htmlChars": 53958,
+          "textChars": 5704
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 13688,
+          "textChars": 2193
+        }
+      ]
+    },
+    {
+      "slug": "tetano-caes-gatos",
+      "title": "Tétano em Cães e Gatos (Clostridium tetani)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 50459,
+          "textChars": 11777
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 30981,
+          "textChars": 6767
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 34064,
+          "textChars": 7818
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 40303,
+          "textChars": 7357
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 33117,
+          "textChars": 4503
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 60796,
+          "textChars": 13459
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 86696,
+          "textChars": 15757
+        },
+        {
+          "section": "complications",
+          "htmlChars": 54596,
+          "textChars": 6697
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 17103,
+          "textChars": 2955
+        }
+      ]
+    },
+    {
+      "slug": "brucelose-caes-gatos",
+      "title": "Brucelose em Cães e Gatos (Brucella canis)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 34270,
+          "textChars": 6195
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 26064,
+          "textChars": 4813
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 34225,
+          "textChars": 5861
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 20601,
+          "textChars": 3027
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 23430,
+          "textChars": 3462
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 67206,
+          "textChars": 12725
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 37393,
+          "textChars": 6216
+        },
+        {
+          "section": "complications",
+          "htmlChars": 42028,
+          "textChars": 5676
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 19195,
+          "textChars": 3308
+        }
+      ]
+    },
+    {
+      "slug": "megaesofago-caes-gatos",
+      "title": "Megaesôfago em Cães e Gatos",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 48757,
+          "textChars": 7846
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 26448,
+          "textChars": 3794
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 20796,
+          "textChars": 2933
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 32555,
+          "textChars": 4944
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 28224,
+          "textChars": 5271
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 36046,
+          "textChars": 6922
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 53302,
+          "textChars": 9178
+        },
+        {
+          "section": "complications",
+          "htmlChars": 66098,
+          "textChars": 7972
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 24410,
+          "textChars": 4227
+        }
+      ]
+    },
+    {
+      "slug": "paralisia-laringea-caes-gatos",
+      "title": "Paralisia Laríngea em Cães e Gatos (GOLPP / LPPN)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 46872,
+          "textChars": 6855
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 20517,
+          "textChars": 3366
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 4932,
+          "textChars": 1367
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 34209,
+          "textChars": 5278
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 27434,
+          "textChars": 3645
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 54284,
+          "textChars": 7384
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 71242,
+          "textChars": 9932
+        },
+        {
+          "section": "complications",
+          "htmlChars": 58523,
+          "textChars": 7710
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 38548,
+          "textChars": 5229
+        }
+      ]
+    },
+    {
+      "slug": "enteropatia-perdedora-de-proteinas-caes-gatos",
+      "title": "Enteropatia perdedora de proteínas em cães e gatos (PLE)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 43171,
+          "textChars": 7388
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 15204,
+          "textChars": 1749
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 17388,
+          "textChars": 2199
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 43567,
+          "textChars": 7110
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 22481,
+          "textChars": 2945
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 52411,
+          "textChars": 18736
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 93971,
+          "textChars": 15606
+        },
+        {
+          "section": "complications",
+          "htmlChars": 26959,
+          "textChars": 3238
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 19356,
+          "textChars": 3734
+        }
+      ]
+    },
+    {
+      "slug": "enteropatia-inflamatoria-cronica-canina",
+      "title": "Enteropatias inflamatórias crônicas em cães (CIE / antiga IBD)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 35076,
+          "textChars": 7208
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 15806,
+          "textChars": 2306
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 17300,
+          "textChars": 2763
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 30803,
+          "textChars": 6065
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 16258,
+          "textChars": 2742
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 56097,
+          "textChars": 19925
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 74958,
+          "textChars": 14024
+        },
+        {
+          "section": "complications",
+          "htmlChars": 18380,
+          "textChars": 2882
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 17220,
+          "textChars": 3638
+        }
+      ]
+    },
+    {
+      "slug": "neoplasias-intracranianas-caes",
+      "title": "Neoplasias intracranianas em cães (tumores encefálicos)",
+      "sections": [
+        {
+          "section": "etiology",
+          "htmlChars": 54157,
+          "textChars": 11910
+        },
+        {
+          "section": "epidemiology",
+          "htmlChars": 16664,
+          "textChars": 2931
+        },
+        {
+          "section": "pathogenesisTransmission",
+          "htmlChars": 23019,
+          "textChars": 4507
+        },
+        {
+          "section": "pathophysiology",
+          "htmlChars": 18929,
+          "textChars": 3520
+        },
+        {
+          "section": "clinicalSignsPathophysiology",
+          "htmlChars": 29818,
+          "textChars": 7588
+        },
+        {
+          "section": "diagnosis",
+          "htmlChars": 65583,
+          "textChars": 12847
+        },
+        {
+          "section": "treatment",
+          "htmlChars": 76376,
+          "textChars": 14840
+        },
+        {
+          "section": "complications",
+          "htmlChars": 15401,
+          "textChars": 2481
+        },
+        {
+          "section": "prevention",
+          "htmlChars": 10258,
+          "textChars": 1860
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "slug": "fistula-perianal",
+      "section": "treatment",
+      "path": "treatment.drugProtocolExamples",
+      "count": 5,
+      "keys": [
+        "details",
+        "species",
+        "protocolName"
+      ],
+      "example": "Cinco miligramas por quilograma por via oral a cada vinte e quatro horas como ponto de partida sustentado por consenso recente, com ajuste individual e manutenção por tempo suficiente para remissão. Alguns estudos e textos clássicos utilizaram quatro a sete vírgula cinco miligramas por quilograma a cada doze horas, especialmente em fases mais intensas ou em protocolos mais antigos.",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "sindrome-cushing-gatos",
+      "section": "diagnosis",
+      "path": "diagnosis.passosDiagnosticos",
+      "count": 5,
+      "keys": [
+        "stepNumber",
+        "title",
+        "description",
+        "purpose",
+        "interpretation"
+      ],
+      "example": "Suspeição Clínica em Diabéticos Resistentes e Avaliação Geral",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "micoplasmoses-hemotropicas",
+      "section": "diagnosis",
+      "path": "diagnosis.passosDiagnosticos",
+      "count": 5,
+      "keys": [
+        "stepNumber",
+        "title",
+        "description",
+        "purpose",
+        "interpretation",
+        "limitations"
+      ],
+      "example": "Hemograma Completo e Índices Eritrocitários",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "cardiomiopatia-restritiva-felina",
+      "section": "diagnosis",
+      "path": "diagnosis.passosDiagnosticos",
+      "count": 5,
+      "keys": [
+        "stepNumber",
+        "title",
+        "purpose",
+        "description",
+        "interpretation",
+        "limitations"
+      ],
+      "example": "Estabilização de Emergência e Triagem Ultrassonográfica (TFAST)",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "insulinoma-caes-gatos",
+      "section": "pathophysiology",
+      "path": "pathophysiology.fluxoDiagnosticoFisiologico.etapas",
+      "count": 6,
+      "keys": [
+        "fase",
+        "evento"
+      ],
+      "example": "Neuroglicopenia se glicemia < limiar individual",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "insulinoma-caes-gatos",
+      "section": "diagnosis",
+      "path": "diagnosis.jornadaDiagnostica",
+      "count": 5,
+      "keys": [
+        "etapa",
+        "acao",
+        "nota"
+      ],
+      "example": "Glicemia em todo paciente com convulsão/ataxia/colapso geriátrico.",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "section": "pathogenesisTransmission",
+      "path": "pathogenesisTransmission.fluxoFisiologico.etapas",
+      "count": 6,
+      "keys": [
+        "fase",
+        "evento"
+      ],
+      "example": "Lipólise maciça e liberação de ácidos graxos livres",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "section": "diagnosis",
+      "path": "diagnosis.jornadaDiagnostica",
+      "count": 5,
+      "keys": [
+        "etapa",
+        "acao",
+        "nota"
+      ],
+      "example": "Glicemia POC + BHB portátil no sangue total em todo paciente diabético doente ou sob SGLT2.",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "trombocitopenia-caes-gatos",
+      "section": "complications",
+      "path": "complications",
+      "count": 6,
+      "keys": [
+        "complication",
+        "frequency",
+        "clinicalImplication"
+      ],
+      "example": "Hemorragia gastrointestinal grave e choque hipovolêmico",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "section": "etiology",
+      "path": "etiology.tabelaFenotiposCaninosPorRaca.rows",
+      "count": 8,
+      "keys": [
+        "breed",
+        "gene",
+        "trigger",
+        "phenotype",
+        "evidence"
+      ],
+      "example": "Cavalier King Charles Spaniel (CKCS)",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "section": "etiology",
+      "path": "etiology.tabelaClassificacaoEtiologicaDellwig.columns",
+      "count": 4,
+      "keys": [
+        "key",
+        "label"
+      ],
+      "example": "Mecanismo Fisiopatológico Proposto",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "section": "etiology",
+      "path": "etiology.tabelaClassificacaoEtiologicaDellwig.rows",
+      "count": 5,
+      "keys": [
+        "category",
+        "prevalence",
+        "mechanism",
+        "clinicalFeatures"
+      ],
+      "example": "Discinesia Paroxística Idiopática (PID)",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "platinosomose-felina",
+      "section": "etiology",
+      "path": "etiology.tabelaCicloBiologicoEHospedeiros.columns",
+      "count": 4,
+      "keys": [
+        "key",
+        "label"
+      ],
+      "example": "Papel Biológico e Implicação Clínica",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "platinosomose-felina",
+      "section": "etiology",
+      "path": "etiology.tabelaCicloBiologicoEHospedeiros.rows",
+      "count": 5,
+      "keys": [
+        "stage",
+        "host",
+        "parasiteForm",
+        "clinicalRole"
+      ],
+      "example": "Gatos infectados eliminam ovos maduros na bile, que alcançam o duodeno e são expelidos nas fezes; período pré-patente médio de 8 a 12 semanas.",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "platinosomose-felina",
+      "section": "treatment",
+      "path": "treatment.tabelaEficaciaAntiparasitaria.columns",
+      "count": 4,
+      "keys": [
+        "key",
+        "label"
+      ],
+      "example": "Nível de Evidência e Desfecho em Necropsia",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology",
+      "count": 3,
+      "keys": [
+        "system",
+        "title",
+        "findings"
+      ],
+      "example": "Achados do Trato Urinário Inferior e Padrão Miccional",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[0].findings",
+      "count": 5,
+      "keys": [
+        "name",
+        "frequency",
+        "description"
+      ],
+      "example": "Jato inicial normal seguido de interrupção em spurts",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[1].findings",
+      "count": 2,
+      "keys": [
+        "name",
+        "frequency",
+        "description"
+      ],
+      "example": "Azotemia pós-renal e hipercalemia emergencial",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[2].findings",
+      "count": 1,
+      "keys": [
+        "name",
+        "frequency",
+        "description"
+      ],
+      "example": "Exame neurológico geral estritamente normal",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[0].findings",
+      "count": 2,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "O Paradoxo Térmico da Admissão (Hipertermia vs Normotermia vs Hipotermia)",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[1].findings",
+      "count": 2,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Alterações Progressivas do Sensório e Consciência",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[2].findings",
+      "count": 3,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Panting Extremo e Respiração de Boca Aberta em Gatos",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[3].findings",
+      "count": 2,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Fase Hiperdinâmica Inicial vs Hipodinâmica Tardia",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[4].findings",
+      "count": 2,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Vômitos Profusos, Hematêmese e Sialorreia Espessa",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[5].findings",
+      "count": 1,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Oligúria, Anúria e Urina com Pigmentúria Acastanhada",
+      "suspectedLoss": true,
+      "objectString": false
+    },
+    {
+      "slug": "intermacao-caes-gatos",
+      "section": "clinicalSignsPathophysiology",
+      "path": "clinicalSignsPathophysiology[6].findings",
+      "count": 1,
+      "keys": [
+        "sign",
+        "detail"
+      ],
+      "example": "Diátese Hemorrágica Cutaneomucosa e Coagulopatia Tardia",
+      "suspectedLoss": true,
+      "objectString": false
+    }
+  ]
+}

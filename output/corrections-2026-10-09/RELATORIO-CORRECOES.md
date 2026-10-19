@@ -6,7 +6,7 @@ Este relatório atualiza o diagnóstico de `output/diagnostics-2026-10-08/RELATO
 
 As falhas reproduzidas nos testes foram corrigidas. A suíte final, executada depois da compilação, apresentou **1.132 testes: 1.129 aprovados, nenhuma falha e três ignorados**. TypeScript, lint, validação de payloads, HemoGasoVet, FluidoterapiaVET e build passaram.
 
-A comparação com a cópia anterior confirmou **41 medicamentos, 78 doenças, todos os registros e identificadores de referências anteriores, e todas as doses com seus valores, unidades, vias, frequências e demais campos preservados**. As notas de segurança deixaram de ser acrescentadas repetidamente. Foram adicionadas estruturas de apresentação e referências que estavam ausentes, aproveitando o conteúdo já cadastrado.
+A comparação com a cópia anterior confirmou **41 medicamentos, 78 doenças, todos os registros e queroidentificadores de referências anteriores, e todas as doses com seus valores, unidades, vias, frequências e demais campos preservados**. As notas de segurança deixaram de ser acrescentadas repetidamente. Foram adicionadas estruturas de apresentação e referências que estavam ausentes, aproveitando o conteúdo já cadastrado.
 
 As correções de autorização estão implementadas e testadas localmente. **A proteção do ambiente publicado depende da implantação da migration e das duas Edge Functions corrigidas.** Ainda existem cinco alertas altos na cadeia de compilação do Tailwind e uma citação clínica pendente de revisão, detalhados abaixo.
 

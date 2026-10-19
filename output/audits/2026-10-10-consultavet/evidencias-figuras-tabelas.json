@@ -1,0 +1,933 @@
+[
+  {
+    "slug": "babesiose-canina",
+    "kind": "local-image",
+    "path": ".epidemiology.figuraVetor",
+    "src": "/assets/consulta-vet/diseases/babesiose/rhipicephalus-sanguineus-female-male.jpg",
+    "exists": true
+  },
+  {
+    "slug": "babesiose-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.microscopiaMerozoitos",
+    "src": "/assets/consulta-vet/diseases/babesiose/babesia-canis-dog-walker.jpg",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".etiology.figuraSinais",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-1-sinais-dtuif.png",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".diagnosis.algoritmoConsenso",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-4-algoritmo-dtuif.png",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".diagnosis.obstrucaoUretral",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-16-algoritmo-obstrucao.png",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".treatment.hipercalemia",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-18-hipercalemia.png",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".prevention.figuraManejoAmbiental",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-34-manejo-ambiental.png",
+    "exists": true
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "kind": "local-image",
+    "path": ".prevention.figuraAgua",
+    "src": "/images/consulta-vet/dtuif-felina-icatcare-2025/figura-38-ingestao-hidrica.png",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-cushing-caes",
+    "kind": "local-image",
+    "path": ".etiology.figuraEixoHPA",
+    "src": "/assets/consulta-vet/diseases/sindrome-cushing-caes/eixo-hpa-animals-2024.png",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-cushing-caes",
+    "kind": "local-image",
+    "path": ".treatment.cirurgia.figuraHipofisectomia",
+    "src": "/assets/consulta-vet/diseases/sindrome-cushing-caes/mri-hipofisectomia-tanaka-2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-cushing-gatos",
+    "kind": "local-image",
+    "path": ".pathogenesisTransmission.figuraPeleFragil",
+    "src": "/assets/consulta-vet/diseases/sindrome-cushing-gatos/laceracao-pele-fragil-hardy-fig3.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-cushing-gatos",
+    "kind": "local-image",
+    "path": ".pathogenesisTransmission.figuraCtPituitaria",
+    "src": "/assets/consulta-vet/diseases/sindrome-cushing-gatos/ct-pituitaria-hardy-fig4.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-cushing-gatos",
+    "kind": "local-image",
+    "path": ".pathogenesisTransmission.figuraLaceracaoExtensa",
+    "src": "/assets/consulta-vet/diseases/sindrome-cushing-gatos/laceracao-extensa-hardy-fig7.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathogenesisTransmission.figuraCicloCarrapato",
+    "src": "/assets/consulta-vet/ciclo-rhipicephalus-sanguineus-1600.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathogenesisTransmission.figuraCarrapato",
+    "src": "/assets/consulta-vet/fig-26-2-carrapato-marrom.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.desenvolvimentoCelular",
+    "src": "/assets/consulta-vet/fig-26-3-desenvolvimento-e-canis.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figurasHemorragicas.petequiasAbdominais",
+    "src": "/assets/consulta-vet/fig-26-4-petequias-abdominais.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figurasHemorragicas.petequiasMucosas",
+    "src": "/assets/consulta-vet/fig-26-5-petequias-mucosas.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figurasHemorragicas.epistaxe",
+    "src": "/assets/consulta-vet/fig-26-6-epistaxe.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figurasHemorragicas.hifema",
+    "src": "/assets/consulta-vet/fig-26-7-hifema.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".diagnosis.morulaTvmdl",
+    "src": "/assets/consulta-vet/tvmdl-morula-e-canis-esfregaco.jpg",
+    "exists": true
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "kind": "local-image",
+    "path": ".diagnosis.morulaDetalhada",
+    "src": "/assets/consulta-vet/fig-26-1-morula-e-ciclo-celular.jpg",
+    "exists": true
+  },
+  {
+    "slug": "asma-felina",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraRxTcAsmaFelina",
+    "src": "/assets/consulta-vet/diseases/asma-felina/rx-tc-asma-felina-painel-abcd.png",
+    "exists": true
+  },
+  {
+    "slug": "asma-felina",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraRxPrePosToracocentese",
+    "src": "/assets/consulta-vet/diseases/asma-felina/rx-pre-pos-toracocentese-gato.png",
+    "exists": true
+  },
+  {
+    "slug": "bronquite-cronica-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraRxPadraoBronquial",
+    "src": "/assets/consulta-vet/diseases/bronquite-cronica/rx-padrao-bronquial-donuts-tramlines.png",
+    "exists": true
+  },
+  {
+    "slug": "bronquite-cronica-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraTcBronquiteCronica",
+    "src": "/assets/consulta-vet/diseases/bronquite-cronica/tc-torax-bronquite-cronica.png",
+    "exists": true
+  },
+  {
+    "slug": "bronquite-cronica-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraCitologiaCurschmann",
+    "src": "/assets/consulta-vet/diseases/bronquite-cronica/citologia-curschmann-spirals.png",
+    "exists": true
+  },
+  {
+    "slug": "doenca-valvar-mitral-degenerativa-caes",
+    "kind": "local-image",
+    "path": ".diagnosis.dmvdRadiografiaToraxNormalVsCardiomegalia",
+    "src": "/assets/consulta-vet/dmvd-rx-torax-normal-vs-cardiomegalia-ortocanis.png",
+    "exists": true
+  },
+  {
+    "slug": "arritmias-cardiacas-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraHolterGatosSaudaveis",
+    "src": "/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudaveis-cofaru-2026.png",
+    "exists": true
+  },
+  {
+    "slug": "arritmias-cardiacas-caes-gatos",
+    "kind": "local-image",
+    "path": ".treatment.figuraEstratificacaoUrgencia",
+    "src": "/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/estratificacao-urgencia-arritmias.svg",
+    "exists": true
+  },
+  {
+    "slug": "hipoadrenocorticismo-addison",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraFisiopatologiaCrise",
+    "src": "/consulta-vet/clinical-guides/addison-clinical.png",
+    "exists": true
+  },
+  {
+    "slug": "miastenia-gravis-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.mgFiguraBloqueioJnm",
+    "src": "/assets/consulta-vet/diseases/miastenia-gravis/mg-junction-block-illustration.bmp",
+    "exists": true
+  },
+  {
+    "slug": "leucemia-viral-felina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraPatogenese",
+    "src": "/assets/consulta-vet/diseases/leucemia-viral-felina/felv-pathophysiology-infection.jpg",
+    "exists": true
+  },
+  {
+    "slug": "leucemia-viral-felina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraRespostaImune",
+    "src": "/assets/consulta-vet/diseases/leucemia-viral-felina/felv-immune-response-outcomes.jpg",
+    "exists": true
+  },
+  {
+    "slug": "peritonite-infecciosa-felina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraUveite",
+    "src": "/assets/consulta-vet/diseases/peritonite-infecciosa-felina/fip-uveitis-response-gs441524.jpg",
+    "exists": true
+  },
+  {
+    "slug": "imunodeficiencia-felina-fiv",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraEstagios",
+    "src": "/assets/consulta-vet/diseases/imunodeficiencia-felina-fiv/fiv-infection-stages-westman.jpg",
+    "exists": true
+  },
+  {
+    "slug": "imunodeficiencia-felina-fiv",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraCd4Cd8",
+    "src": "/assets/consulta-vet/diseases/imunodeficiencia-felina-fiv/fiv-cd4-cd8-timeline-westman.jpg",
+    "exists": true
+  },
+  {
+    "slug": "imunodeficiencia-felina-fiv",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraGingivoestomatite",
+    "src": "/assets/consulta-vet/diseases/imunodeficiencia-felina-fiv/fiv-gingivostomatitis-westman.jpg",
+    "exists": true
+  },
+  {
+    "slug": "imunodeficiencia-felina-fiv",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraAlgoritmo",
+    "src": "/assets/consulta-vet/diseases/imunodeficiencia-felina-fiv/fiv-diagnostic-algorithm-westman.jpg",
+    "exists": true
+  },
+  {
+    "slug": "giardiase-caes-gatos",
+    "kind": "local-image",
+    "path": ".treatment.figuraCiuca2021",
+    "src": "/assets/consulta-vet/diseases/giardiase-caes-gatos/ciuca-2021-efficacy-table.jpg",
+    "exists": true
+  },
+  {
+    "slug": "coccidiose-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraAttia2024",
+    "src": "/assets/consulta-vet/diseases/coccidiose-caes-gatos/attia-2024-oocistos-felis.png",
+    "exists": true
+  },
+  {
+    "slug": "coccidiose-caes-gatos",
+    "kind": "local-image",
+    "path": ".diagnosis.figuraFerreira2019",
+    "src": "/assets/consulta-vet/diseases/coccidiose-caes-gatos/ferreira-2019-cistos-tecido.webp",
+    "exists": true
+  },
+  {
+    "slug": "hiperparatireoidismo-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraRubberJaw",
+    "src": "/assets/consulta-vet/diseases/hiperparatireoidismo-caes-gatos/van-bruggen-floating-teeth.jpg",
+    "exists": true
+  },
+  {
+    "slug": "insulinoma-caes-gatos",
+    "kind": "local-image",
+    "path": ".epidemiology.figuraSinaisClinicos",
+    "src": "/assets/consulta-vet/diseases/insulinoma-caes-gatos/kraai-2026-clinical-signs.jpeg",
+    "exists": true
+  },
+  {
+    "slug": "insulinoma-caes-gatos",
+    "kind": "local-image",
+    "path": ".epidemiology.figuraPredisposicaoRacial",
+    "src": "/assets/consulta-vet/diseases/insulinoma-caes-gatos/kraai-2025-breed-prevalence.png",
+    "exists": true
+  },
+  {
+    "slug": "prostatite-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraHistopatologia",
+    "src": "/assets/consulta-vet/diseases/prostatite-caes-gatos/prostatite-espectro-histopatologia-palmieri-2022.webp",
+    "exists": true
+  },
+  {
+    "slug": "gengivoestomatite-cronica-felina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraFenotipos",
+    "src": "/assets/consulta-vet/diseases/gengivoestomatite-cronica-felina/fcgs-fenotipos-soltero-rivera-2023.jpg",
+    "exists": true
+  },
+  {
+    "slug": "gengivoestomatite-cronica-felina",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraImunologia",
+    "src": "/assets/consulta-vet/diseases/gengivoestomatite-cronica-felina/fcgs-imuno-histoquimica-arzi-2020.jpg",
+    "exists": true
+  },
+  {
+    "slug": "dermatite-atopica-canina",
+    "kind": "figures",
+    "records": 1,
+    "recognized": 1,
+    "images": 1
+  },
+  {
+    "slug": "sindrome-cutanea-atopica-felina",
+    "kind": "figures",
+    "records": 1,
+    "recognized": 1,
+    "images": 1
+  },
+  {
+    "slug": "doenca-do-disco-intervertebral-caes",
+    "kind": "figures",
+    "records": 2,
+    "recognized": 2,
+    "images": 2
+  },
+  {
+    "slug": "doenca-do-disco-intervertebral-gatos",
+    "kind": "figures",
+    "records": 1,
+    "recognized": 1,
+    "images": 1
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".etiology.figuraFisiopatologiaGeral",
+    "src": "/consulta-vet/cid/fig1-fisiopatologia-geral-yang-2025.webp",
+    "exists": true
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".etiology.figuraImunotromboseSepse",
+    "src": "/consulta-vet/cid/fig2-imunotrombose-sepse-unar-2023.jpg",
+    "exists": true
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraMicrocirculacaoChoque",
+    "src": "/consulta-vet/cid/fig4-microcirculacao-choque-cooper-2021.webp",
+    "exists": true
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraMicrotrombosPulmonares",
+    "src": "/consulta-vet/cid/fig3-microtrombos-pulmonares-goddard-2026.webp",
+    "exists": true
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraPotencialHemostaticoSepse",
+    "src": "/consulta-vet/cid/fig7-potencial-hemostatico-sepse-sotos-2023.webp",
+    "exists": true
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "kind": "local-image",
+    "path": ".complications.figuraPetequiasEquimoses",
+    "src": "/consulta-vet/cid/fig5-petequias-equimoses-dosenberry-2025.webp",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "figures",
+    "records": 6,
+    "recognized": 6,
+    "images": 6
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraEsfregacoDisplasia",
+    "src": "/consulta-vet/sindrome-mielodisplasica/esfregaco-displasia-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraMedulaBiopsiaReticulina",
+    "src": "/consulta-vet/sindrome-mielodisplasica/medula-biopsia-reticulina-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraSobrevidaMdsVsAml",
+    "src": "/consulta-vet/sindrome-mielodisplasica/curva-sobrevida-mds-vs-aml-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[0]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/esfregaco-displasia-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[1]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/medula-biopsia-reticulina-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[2]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/leucemia-mieloide-comparacao-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[3]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/biopsia-medular-leucemia-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[4]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/curva-sobrevida-mds-vs-aml-meredith2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[5]",
+    "src": "/consulta-vet/sindrome-mielodisplasica/locais-coleta-medula-ossea-vetius.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".epidemiology.figuraLinfocitoseDiferencial",
+    "src": "/consulta-vet/linfoma-cutaneo/fig7-linfocitose-cutanea-felina-diferencial-mdpi-2022.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".clinicalSignsPathophysiology.figuraEvolucaoRadioterapia",
+    "src": "/consulta-vet/linfoma-cutaneo/fig1-evolucao-clinica-radioterapia-deveau-2019.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".clinicalSignsPathophysiology.figuraDespigmentacaoMucocutanea",
+    "src": "/consulta-vet/linfoma-cutaneo/fig2-despigmentacao-mucocutanea-canvetj-2021.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".clinicalSignsPathophysiology.figuraLabiosMucosaOral",
+    "src": "/consulta-vet/linfoma-cutaneo/fig3-labios-mucosa-oral-eritema-canvetj-2021.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".clinicalSignsPathophysiology.figuraCoxinsPatas",
+    "src": "/consulta-vet/linfoma-cutaneo/fig4-despigmentacao-coxins-patas-canvetj-2021.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".complications.figuraHistopatologiaTropismo",
+    "src": "/consulta-vet/linfoma-cutaneo/fig5-histopatologia-tropismo-epitelial-lee-2026.jpg",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "kind": "local-image",
+    "path": ".complications.figuraCitologiaAtipias",
+    "src": "/consulta-vet/linfoma-cutaneo/fig6-citologia-fna-atipias-uropodio-lee-2026.jpg",
+    "exists": true
+  },
+  {
+    "slug": "megacolon-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraRadiografiaNormal",
+    "src": "/consulta-vet/megacolon/fvets-09-1033090-g0001.webp",
+    "exists": true
+  },
+  {
+    "slug": "megacolon-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraRadiografiaMegacolon",
+    "src": "/consulta-vet/megacolon/fvets-09-1033090-g0002.webp",
+    "exists": true
+  },
+  {
+    "slug": "megacolon-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraHistopatologiaRemodelamento",
+    "src": "/consulta-vet/megacolon/fvets-09-1033090-g0008.webp",
+    "exists": true
+  },
+  {
+    "slug": "megacolon-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraQuantificacaoHistologica",
+    "src": "/consulta-vet/megacolon/fvets-09-1033090-g0009.webp",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 5,
+    "images": 5
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".etiology.figura1CitometriaFluxo",
+    "src": "/consulta-vet/linfoma-mediastinal/citometria-fluxo-linfoma-vs-timoma.webp",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraRadiografiaToracica",
+    "src": "/consulta-vet/linfoma-mediastinal/radiografia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraTomografiaComputadorizada",
+    "src": "/consulta-vet/linfoma-mediastinal/tomografia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".pathophysiology.figuraCitologiaEImunocitoquimica",
+    "src": "/consulta-vet/linfoma-mediastinal/citologia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".treatment.figura5EvolucaoQuimioterapica",
+    "src": "/consulta-vet/linfoma-mediastinal/evolucao-radiografica-quimioterapia-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[0]",
+    "src": "/consulta-vet/linfoma-mediastinal/citometria-fluxo-linfoma-vs-timoma.webp",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[1]",
+    "src": "/consulta-vet/linfoma-mediastinal/radiografia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[2]",
+    "src": "/consulta-vet/linfoma-mediastinal/tomografia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[3]",
+    "src": "/consulta-vet/linfoma-mediastinal/citologia-linfoma-mediastinal-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[4]",
+    "src": "/consulta-vet/linfoma-mediastinal/evolucao-radiografica-quimioterapia-yu2022.png",
+    "exists": true
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 5,
+    "images": 5
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[0]",
+    "src": "/consulta-vet/piotorax/radiografia-piotorax-felino-sim2021.jpg",
+    "exists": true
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[1]",
+    "src": "/consulta-vet/piotorax/citologia-piotorax-felino-sim2021.jpg",
+    "exists": true
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[2]",
+    "src": "/consulta-vet/piotorax/dreno-toracico-6f-heier2022.jpg",
+    "exists": true
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[3]",
+    "src": "/consulta-vet/piotorax/radiografia-piotorax-grave-jang2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[4]",
+    "src": "/consulta-vet/piotorax/tomografia-piotorax-mediastinal-jang2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 5,
+    "images": 5
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[0]",
+    "src": "/consulta-vet/quilotorax/aspecto-macroscopico-quilo-terai2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[1]",
+    "src": "/consulta-vet/quilotorax/ct-linfangiografia-vazamento-terai2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[2]",
+    "src": "/consulta-vet/quilotorax/anatomia-ducto-toracico-wellcome.jpg",
+    "exists": true
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[3]",
+    "src": "/consulta-vet/quilotorax/histopatologia-canais-linfaticos-terai2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "kind": "local-image",
+    "path": ".figures[4]",
+    "src": "/consulta-vet/quilotorax/linfangiografia-reconstrucao-terai2025.jpg",
+    "exists": true
+  },
+  {
+    "slug": "cistite-enfisematosa-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "trombocitopenia-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "anemia-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "leishmaniose-caes-gatos",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "cistite-idiopatica-felina",
+    "kind": "figures",
+    "records": 5,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "discinesia-paroxistica-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "discinesia-paroxistica-caes-gatos",
+    "kind": "columns-table",
+    "path": ".etiology.tabelaFenotiposCaninosPorRaca",
+    "recognized": false,
+    "rows": 8
+  },
+  {
+    "slug": "discinesia-paroxistica-caes-gatos",
+    "kind": "columns-table",
+    "path": ".etiology.tabelaClassificacaoEtiologicaDellwig",
+    "recognized": false,
+    "rows": 5
+  },
+  {
+    "slug": "discinesia-paroxistica-caes-gatos",
+    "kind": "columns-table",
+    "path": ".treatment.tabelaFarmacologiaNeuromoduladora",
+    "recognized": false,
+    "rows": 6
+  },
+  {
+    "slug": "platinosomose-felina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "platinosomose-felina",
+    "kind": "columns-table",
+    "path": ".etiology.tabelaCicloBiologicoEHospedeiros",
+    "recognized": false,
+    "rows": 5
+  },
+  {
+    "slug": "platinosomose-felina",
+    "kind": "columns-table",
+    "path": ".treatment.tabelaEficaciaAntiparasitaria",
+    "recognized": false,
+    "rows": 4
+  },
+  {
+    "slug": "triade-felina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "sepse-canina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".quickSummaryRich.tabelaDecisaoClinicaRapida",
+    "recognized": false,
+    "rows": 6
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".etiology.tabelaComparativaInervacaoMiccao",
+    "recognized": false,
+    "rows": 3
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".etiology.tabelaComparativaCaesVsGatosFoo",
+    "recognized": false,
+    "rows": 6
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".diagnosis.tabelaTestesDiagnosticosComparados",
+    "recognized": false,
+    "rows": 8
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".diagnosis.tabelaDiagnosticoDiferencialObstrutivo",
+    "recognized": false,
+    "rows": 6
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".treatment.tabelaGuiaFarmacologicoFoo",
+    "recognized": false,
+    "rows": 5
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "kind": "columns-table",
+    "path": ".treatment.tabelaManejoEscalonadoUti",
+    "recognized": false,
+    "rows": 4
+  },
+  {
+    "slug": "sepse-felina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "lesao-renal-aguda-felina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "pielonefrite-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "lesao-renal-aguda-canina",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "intermacao-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "polirradiculoneurite-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "tetano-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "brucelose-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "megaesofago-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  },
+  {
+    "slug": "paralisia-laringea-caes-gatos",
+    "kind": "figures",
+    "records": 4,
+    "recognized": 0,
+    "images": 0
+  }
+]

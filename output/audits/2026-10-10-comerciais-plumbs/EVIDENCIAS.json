@@ -1,0 +1,440 @@
+{
+  "data": "2026-10-10",
+  "total": 426,
+  "sem_bloco_plumbs_exibivel": 177,
+  "parciais_na_especie_cadastrada": 6,
+  "lacunas_prioritarias": [
+    {
+      "slug": "apoquel-oclacitinib",
+      "produto": "Apoquel",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Oclacitinib",
+      "paginas_pdf": "976",
+      "paginas_impressas": "949",
+      "observacao": "Há regime canino de indução e manutenção no livro. A ficha tem dose no modo de uso, mas nenhum registro plumbs.dog; o painel informa indevidamente falta de indicação em cães.",
+      "dose_atual": "0,4 a 0,6 mg/kg VO a cada 12 horas por até 14 dias;",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "cytopoint-lokivetmab",
+      "produto": "Cytopoint",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Lokivetmab",
+      "paginas_pdf": "799",
+      "paginas_impressas": "772",
+      "observacao": "Livro apresenta dose SC canina e intervalo de repetição; cadastrar para cão, sem extrapolar a indicação para gatos.",
+      "dose_atual": "Dose mínima de 2 mg/kg SC",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "hixizine-hidroxizina",
+      "produto": "Hixizine / hidroxizina",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Hydroxyzine",
+      "paginas_pdf": "658",
+      "paginas_impressas": "631",
+      "observacao": "Há regimes para cão e gato; a orientação quantitativa já existe em labelDirections, mas falta nos dois blocos Plumb’s.",
+      "dose_atual": "Cães: 2 mg/kg VO a cada 12 horas, podendo haver uso de 3 mg/kg BID",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "difenidramina-difenidrin",
+      "produto": "Difenidramina",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Diphenhydramine",
+      "paginas_pdf": "437",
+      "paginas_impressas": "410",
+      "observacao": "Há dose oral e orientações parenterais para cães/gatos; manter indicação e via separadas, sem extrapolar o regime oral para injetável.",
+      "dose_atual": "Cães e gatos: 2 a 4 mg/kg VO a cada 8 a 12 horas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "alergovet-c-clemastina",
+      "produto": "Alergovet C",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Clemastine",
+      "paginas_pdf": "307",
+      "paginas_impressas": "280",
+      "observacao": "Livro descreve regime canino e dose fixa por gato. Confirmar a expressão em clemastina base versus fumarato antes de converter para os comprimidos comerciais.",
+      "dose_atual": "Dose de bula: 0,07 mg/kg, podendo dividir a dose diária em duas administrações a cada 12 horas, com tabela por peso",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "prednisolona-humana-predsim-genericos",
+      "produto": "Prednisolona humana",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "PrednisoLONE/Prednisone",
+      "paginas_pdf": "1088,1089",
+      "paginas_impressas": "1061,1062",
+      "observacao": "Faltam blocos por espécie e finalidade. Separar anti-inflamatório, imunossupressor e outras indicações; não transformar faixa diária em dose repetida a cada tomada.",
+      "dose_atual": "Cães: 0,5 a 1 mg/kg VO SID, podendo dividir BID em crise por poucos dias",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "azium-dexametasona",
+      "produto": "Azium",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Dexamethasone",
+      "paginas_pdf": "391,392",
+      "paginas_impressas": "364,365",
+      "observacao": "Há regimes por espécie, via e indicação. A orientação comercial atual é genérica; conferir sal/formulação antes de transpor o regime.",
+      "dose_atual": "Quando usado, considerar dose anti-inflamatória baixa, geralmente em torno de 0,05 a 0,1 mg/kg conforme caso",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "oralguard-clindamicina",
+      "produto": "Oralguard",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Clindamycin",
+      "paginas_pdf": "311,312",
+      "paginas_impressas": "284,285",
+      "observacao": "Há doses por espécie e indicação. A ficha já tem dose de bula; incluir a referência do livro como fonte distinta, sem sobrescrever a bula brasileira pela americana.",
+      "dose_atual": "Cães infecções dentárias/tecidos moles: 5 mg/kg VO a cada 12 h por 7 a 14 dias",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "optimmune",
+      "produto": "Optimmune",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Cyclosporine Ophthalmic",
+      "paginas_pdf": "1384",
+      "paginas_impressas": "1357",
+      "observacao": "Há aplicação da pomada 0,2% para KCS/ceratite em cães. Não usar dose sistêmica de ciclosporina nem converter pomada em gota de solução.",
+      "dose_atual": "Cães: cerca de 0,5 cm no olho afetado q12h.",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "mellis-vet",
+      "produto": "Mellis Vet",
+      "tipo": "Falta quantitativa real na orientação felina e no bloco Plumb’s",
+      "monografia": "Meloxicam",
+      "paginas_pdf": "854,855",
+      "paginas_impressas": "827,828",
+      "observacao": "Para gatos, o texto atual remete apenas à apresentação felina/tempo curto; a entrada plumbs.cat é um placeholder e é removida pelo filtro. O livro descreve regimes felinos, inclusive ataque/manutenção, e ressalvas regulatórias/renais. A transposição exige selecionar indicação e formulação oral felina e conferir a bula brasileira.",
+      "dose_atual": "Cães: 0,2 mg/kg D1, depois 0,1 mg/kg SID. Gatos: apresentação felina, tempo curto.",
+      "plumbs_cao": 1,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "nausetrat-injetavel",
+      "produto": "Nausetrat® Injetável 5 mg/mL (Cloridrato de Metoclopramida)",
+      "tipo": "Falta do bloco Plumb’s felino; dose existente em outro campo",
+      "monografia": "Metoclopramide",
+      "paginas_pdf": "896",
+      "paginas_impressas": "869",
+      "observacao": "Existe dose quantitativa felina em labelDose, mas não plumbs.cat. O livro descreve uso felino extra-bula e limitações de eficácia; não copiar automaticamente a CRI canina.",
+      "dose_atual": "Cães: 0,2 a 0,5 mg/kg SC, IM ou IV lenta q8h; ou CRI de 1 a 2 mg/kg/dia (0,042 a 0,083 mg/kg/h). Gatos: 0,17 a 0,33 mg/kg SC, IM ou IV lenta q8h.",
+      "plumbs_cao": 1,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "ograx-3-500",
+      "produto": "Ograx-3 500",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fatty Acids, Omega-3",
+      "paginas_pdf": "529,530",
+      "paginas_impressas": "502,503",
+      "observacao": "Há orientação terapêutica por doença, espécie e EPA+DHA, com bases de peso distintas. Não usar o peso total do óleo/cápsula. Os teores da linha Organnact estão cadastrados como aproximados: confirmar antes da conversão. Dose de rótulo já existe, referência terapêutica do livro não está estruturada.",
+      "dose_atual": "Dose de rótulo: 1 cápsula para cada 9 kg, por via oral, a cada 24 horas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "ograx-3-1000",
+      "produto": "Ograx-3 1000",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fatty Acids, Omega-3",
+      "paginas_pdf": "529,530",
+      "paginas_impressas": "502,503",
+      "observacao": "Há orientação terapêutica por doença, espécie e EPA+DHA, com bases de peso distintas. Não usar o peso total do óleo/cápsula. Os teores da linha Organnact estão cadastrados como aproximados: confirmar antes da conversão. Dose de rótulo já existe, referência terapêutica do livro não está estruturada.",
+      "dose_atual": "Dose de rótulo: 1 cápsula para cada 18 kg, por via oral, a cada 24 horas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "ograx-3-1500",
+      "produto": "Ograx-3 1500",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fatty Acids, Omega-3",
+      "paginas_pdf": "529,530",
+      "paginas_impressas": "502,503",
+      "observacao": "Há orientação terapêutica por doença, espécie e EPA+DHA, com bases de peso distintas. Não usar o peso total do óleo/cápsula. Os teores da linha Organnact estão cadastrados como aproximados: confirmar antes da conversão. Dose de rótulo já existe, referência terapêutica do livro não está estruturada.",
+      "dose_atual": "Dose de rótulo: 1 cápsula para cada 33 kg, por via oral, a cada 24 horas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "omega-3-dog-500-organnact",
+      "produto": "Omega 3 Dog 500 mg",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fatty Acids, Omega-3",
+      "paginas_pdf": "529,530",
+      "paginas_impressas": "502,503",
+      "observacao": "Há orientação terapêutica por doença, espécie e EPA+DHA, com bases de peso distintas. Não usar o peso total do óleo/cápsula. Os teores da linha Organnact estão cadastrados como aproximados: confirmar antes da conversão. Dose de rótulo já existe, referência terapêutica do livro não está estruturada.",
+      "dose_atual": "Dose de rótulo: 1 a 2 cápsulas ao dia para cada 10 kg",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "omega-3-dog-1000-organnact",
+      "produto": "Omega 3 Dog 1000 mg",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fatty Acids, Omega-3",
+      "paginas_pdf": "529,530",
+      "paginas_impressas": "502,503",
+      "observacao": "Há orientação terapêutica por doença, espécie e EPA+DHA, com bases de peso distintas. Não usar o peso total do óleo/cápsula. Os teores da linha Organnact estão cadastrados como aproximados: confirmar antes da conversão. Dose de rótulo já existe, referência terapêutica do livro não está estruturada.",
+      "dose_atual": "Dose de rótulo: 1 a 2 cápsulas ao dia para cada 20 kg",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "bravecto-comprimido-caes",
+      "produto": "Bravecto Comprimido Mastigável",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fluralaner",
+      "paginas_pdf": "578",
+      "paginas_impressas": "551",
+      "observacao": "Livro apresenta regimes diferentes para cão oral e gato tópico; preservar apresentação, espécie, dose mínima e intervalo específico. Não transpor Bravecto mensal para a apresentação de 12 semanas.",
+      "dose_atual": "Administrar 1 comprimido por via oral a cada 12 semanas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "bravecto-transdermal-gatos",
+      "produto": "Bravecto Transdermal Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fluralaner",
+      "paginas_pdf": "578",
+      "paginas_impressas": "551",
+      "observacao": "Livro apresenta regimes diferentes para cão oral e gato tópico; preservar apresentação, espécie, dose mínima e intervalo específico. Não transpor Bravecto mensal para a apresentação de 12 semanas.",
+      "dose_atual": "Aplicar topicamente na pele conforme faixa de peso, com intervalo de proteção de até 12 semanas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "simparic-caes-sarolaner",
+      "produto": "Simparic Cães",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Sarolaner",
+      "paginas_pdf": "1173",
+      "paginas_impressas": "1146",
+      "observacao": "Há dose mensal canina do produto de um único ativo. Não usar como equivalente do Simparic Trio.",
+      "dose_atual": "Administrar por via oral, 1 comprimido conforme faixa de peso, mensalmente",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "credeli-caes-lotilaner",
+      "produto": "Credeli Cães",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Lotilaner",
+      "paginas_pdf": "811",
+      "paginas_impressas": "784",
+      "observacao": "Livro tem regimes diferentes para cães e gatos, incluindo necessidade de alimento e tabelas por apresentação. Não extrapolar comprimido/dose canina para gato.",
+      "dose_atual": "Administrar por via oral uma vez ao mês, com alimento ou logo após refeição, conforme faixa de peso",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "credeli-gatos-lotilaner",
+      "produto": "Credeli Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Lotilaner",
+      "paginas_pdf": "811",
+      "paginas_impressas": "784",
+      "observacao": "Livro tem regimes diferentes para cães e gatos, incluindo necessidade de alimento e tabelas por apresentação. Não extrapolar comprimido/dose canina para gato.",
+      "dose_atual": "Administrar 1 comprimido por via oral mensalmente, por faixa de peso, preferencialmente com alimento",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "revolution-selamectina",
+      "produto": "Revolution 6%/12%",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Selamectin",
+      "paginas_pdf": "1175",
+      "paginas_impressas": "1148",
+      "observacao": "Há dose mínima e regimes por espécie/parasita; aplicação mensal é apenas parte do protocolo.",
+      "dose_atual": "Aplicar topicamente uma vez ao mês, conforme espécie, concentração e faixa de peso",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "advantage-caes-gatos",
+      "produto": "Advantage Cães e Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Imidacloprid/Combinations, Topical",
+      "paginas_pdf": "1483",
+      "paginas_impressas": "1456",
+      "observacao": "A monografia apresenta aplicação e tabela de volumes por espécie/peso. Confirmar concentração/versão brasileira antes de cadastrar volumes, sem herdar dados de Max3/Advocate.",
+      "dose_atual": "Aplicar topicamente, mensalmente, conforme faixa de peso e bula",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "frontline-topspot-caes-gatos",
+      "produto": "Frontline TopSpot Cães/Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fipronil/Combinations, Topical",
+      "paginas_pdf": "1480,1481",
+      "paginas_impressas": "1453,1454",
+      "observacao": "Livro descreve aplicação, intervalo e apresentações; separar spray de spot-on. Para Fiprolex, aproveitar referência do ativo somente após confirmar concentração e aplicador do produto local.",
+      "dose_atual": "Aplicar 1 pipeta tópica conforme espécie e peso, no intervalo definido em bula",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "frontline-spray-caes-gatos",
+      "produto": "Frontline Spray Cães/Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fipronil/Combinations, Topical",
+      "paginas_pdf": "1480,1481",
+      "paginas_impressas": "1453,1454",
+      "observacao": "Livro descreve aplicação, intervalo e apresentações; separar spray de spot-on. Para Fiprolex, aproveitar referência do ativo somente após confirmar concentração e aplicador do produto local.",
+      "dose_atual": "Aplicar conforme número de borrifadas indicado na bula para o peso do animal, contra o sentido do pelo, evitando olhos, boca e mucosas",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "fiprolex-drop-spot",
+      "produto": "Fiprolex Drop Spot",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Fipronil/Combinations, Topical",
+      "paginas_pdf": "1480,1481",
+      "paginas_impressas": "1453,1454",
+      "observacao": "Livro descreve aplicação, intervalo e apresentações; separar spray de spot-on. Para Fiprolex, aproveitar referência do ativo somente após confirmar concentração e aplicador do produto local.",
+      "dose_atual": "Aplicar pipeta tópica conforme espécie e faixa de peso, seguindo bula Ceva",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "capstar-caes-gatos-nitenpiram",
+      "produto": "Capstar Cães/Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Nitenpyram",
+      "paginas_pdf": "962",
+      "paginas_impressas": "935",
+      "observacao": "Há tabela de dose por peso e espécie; não confundir controle de pulgas adultas com prevenção prolongada ou uso em miíase.",
+      "dose_atual": "Pode repetir após 24 horas se indicado, conforme bula e avaliação veterinária",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    },
+    {
+      "slug": "canex-original-caes-gatos",
+      "produto": "Canex Original Cães e Gatos",
+      "tipo": "Ausência do bloco Plumb’s; já existe orientação em outro campo",
+      "monografia": "Pyrantel",
+      "paginas_pdf": "1120",
+      "paginas_impressas": "1093",
+      "observacao": "Há regimes por espécie/parasita e por pirantel base. Confirmar quantidade de base versus sal pamoato por comprimido antes da conversão.",
+      "dose_atual": "Bula reproduzida informa 1 comprimido para cada 10 kg em cães e 1 comprimido para cada 2,5 kg em gatos",
+      "plumbs_cao": 0,
+      "plumbs_gato": 0
+    }
+  ],
+  "grupos_da_tela_exemplos": [
+    {
+      "slug": "nausetrat-injetavel",
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "groups": [
+        {
+          "key": "dog",
+          "label": "Cão",
+          "entries": [
+            {
+              "title": "Infusão Intravenosa Contínua (CRI Hospitalar)",
+              "dose": "1 a 2 mg/kg/dia IV lenta contínua (0,042 a 0,083 mg/kg/h)",
+              "note": "Modelagem PK 2026: administrar ataque conservador de 0,05 mg/kg IV (para CRI 1 mg/kg/dia) ou 0,1 mg/kg IV (para CRI 2 mg/kg/dia) imediatamente antes da bomba. NUNCA usar ataque de 1 mg/kg pelo risco de assistolia."
+            }
+          ]
+        },
+        {
+          "key": "cat-missing",
+          "label": "Gato",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        }
+      ]
+    },
+    {
+      "slug": "apoquel-oclacitinib",
+      "species": [
+        "dog"
+      ],
+      "groups": [
+        {
+          "key": "dog-missing",
+          "label": "Cão",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        },
+        {
+          "key": "cat-missing",
+          "label": "Gato",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        }
+      ]
+    },
+    {
+      "slug": "hixizine-hidroxizina",
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "groups": [
+        {
+          "key": "dog-missing",
+          "label": "Cão",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        },
+        {
+          "key": "cat-missing",
+          "label": "Gato",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        }
+      ]
+    },
+    {
+      "slug": "mellis-vet",
+      "species": [
+        "dog",
+        "cat"
+      ],
+      "groups": [
+        {
+          "key": "dog",
+          "label": "Cão",
+          "entries": [
+            {
+              "title": "Dor/inflamação",
+              "dose": "0,2 mg/kg D1, depois 0,1 mg/kg VO SID",
+              "note": "Dose clássica de meloxicam em cães."
+            }
+          ]
+        },
+        {
+          "key": "cat-missing",
+          "label": "Gato",
+          "entries": [],
+          "missingMessage": "Sem indicação de uso para essa espécie."
+        }
+      ]
+    }
+  ],
+  "metodo": "Seed final após enriquecimentos e filtros; funções reais de agrupamento extraídas da página; conferência dirigida das monografias do acervo. Sem sessão autenticada, sem gravação do aplicativo."
+}

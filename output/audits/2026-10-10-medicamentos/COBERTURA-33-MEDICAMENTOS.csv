@@ -1,0 +1,34 @@
+﻿slug;medicamento;regimes;apresentacoes;varredura_estrutural;renderizacao_componentes;conferencia_clinica;achados;aprovacao_clinica
+acetilcisteina;Acetilcisteína;4;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;;Não estabelecida
+alopurinol;Alopurinol;6;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08,M12;Não estabelecida
+amantadina;Amantadina (Cloridrato de Amantadina);7;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08,M13;Não estabelecida
+amitriptilina;Amitriptilina (Cloridrato de Amitriptilina);7;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M03,M08;Não estabelecida
+amoxicilina-clavulanato;Amoxicilina + clavulanato;5;5;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08,M12,M13;Não estabelecida
+ampicilina-sulbactam;Ampicilina + Sulbactam (Injetável);4;2;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de unidades e intervalo na azotemia; restante pendente";M05,M08;Não estabelecida
+betanecol;Betanecol (Cloreto de Betanecol);6;5;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de dose por animal; restante pendente";M08,M11,M13;Não estabelecida
+buprenorfina;Buprenorfina (Cloridrato de Buprenorfina);5;5;Realizada;Falha: general;"Conferência dirigida de formulações/via SC e falha de Info; restante pendente";M02;Não estabelecida
+capromorelina;Capromorelina (Elura™ / Entyce™);3;2;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08;Não estabelecida
+ceftriaxona;Ceftriaxona;6;3;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;;Não estabelecida
+ciclosporina;Ciclosporina (Ciclosporina A / CsA);9;3;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M01,M03,M04,M08,M09;Não estabelecida
+ciproeptadina;Ciproeptadina;7;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M03,M04,M08;Não estabelecida
+clindamicina;Clindamicina;7;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+clorambucil;Clorambucil (Clorambucila);9;2;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de cuidados de manipulação; restante pendente";M01,M03,M04,M08,M10;Não estabelecida
+diazepam;Diazepam;8;5;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de unidades de bolus/resgate/CRI; restante pendente";M05,M06,M08,M13;Não estabelecida
+dipirona;Dipirona (metamizol);5;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;;Não estabelecida
+enrofloxacina;Enrofloxacina;4;5;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+fenobarbital;Fenobarbital;5;6;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09,M12;Não estabelecida
+gabapentina;Gabapentina;8;5;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M03,M04,M08;Não estabelecida
+hidroxido-de-aluminio;Hidróxido de Alumínio;3;3;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;;Não estabelecida
+levetiracetam;Levetiracetam;8;8;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08,M13;Não estabelecida
+marbofloxacina;Marbofloxacina;9;7;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+meloxicam;Meloxicam;6;10;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de ataque/manutenção e estudo de DRC; restante pendente";M07,M08,M09;Não estabelecida
+metadona;Metadona (Cloridrato de Metadona);5;2;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M06,M08;Não estabelecida
+micofenolato-mofetila;Micofenolato de Mofetila (MMF);8;5;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08,M13;Não estabelecida
+mirtazapina;Mirtazapina;7;6;Realizada;Componentes renderizados sem exceção;"Conferência dirigida de dose fixa, teto, Mirataz e estudo de 2025; restante pendente";M03,M08,M09,M11,M14;Não estabelecida
+pradofloxacina;Pradofloxacina;6;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+prednisolona;Prednisolona;7;7;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+pronefra;Pronefra®;2;1;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+sucralfato;Sucralfato (Sacarose Octassulfatada de Alumínio);6;3;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M01,M03,M04,M08,M10;Não estabelecida
+sulfametoxazol-trimetoprima;Trimetoprima + Sulfonamida (TMP-SDZ / TMP-SMX);8;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;;Não estabelecida
+tramadol;Tramadol (Cloridrato de Tramadol);4;7;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M09;Não estabelecida
+trazodona;Trazodona (Cloridrato de Trazodona);8;4;Realizada;Componentes renderizados sem exceção;Conferência clínica integral pendente;M08;Não estabelecida

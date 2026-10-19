@@ -1,0 +1,261 @@
+[
+  {
+    "id": "M01",
+    "prioridade": "P1",
+    "titulo": "Receita e tabela de dipirona aparecem em três outros medicamentos",
+    "medicamentos": [
+      "ciclosporina",
+      "clorambucil",
+      "sucralfato"
+    ],
+    "tipo": "Exibição reproduzida",
+    "local": "modules/consulta-vet/components/medication/MedicationMarketTab.tsx:30 e :79",
+    "evidencia": "As três fichas não possuem samplePrescriptionText nem practicalWeightTable. O componente preenche ambas com Novalgina 500 mg/mL, 25 mg/kg e tabela de gotas/comprimidos/injetável. Confirmado no HTML das três fichas. O botão de copiar usa o mesmo texto.",
+    "impacto": "A prescrição e o guia por peso apresentados sob a ficha do outro princípio ativo são incorretos. Isso não representa uma dose farmacológica válida para esses três medicamentos.",
+    "correcao": "Eliminar o preenchimento genérico com outro fármaco. Exibir ausência de modelo/tabela e cadastrar somente exemplos próprios, com espécie, indicação, formulação e contexto.",
+    "fontes": []
+  },
+  {
+    "id": "M02",
+    "prioridade": "P1",
+    "titulo": "A aba Info de buprenorfina lança exceção",
+    "medicamentos": [
+      "buprenorfina"
+    ],
+    "tipo": "Falha de renderização reproduzida",
+    "local": "modules/consulta-vet/components/medication/MedicationGeneralInfoTab.tsx:146; data/seed/medications.buprenorfina.seed.ts:454",
+    "evidencia": "TypeError: Cannot read properties of undefined (reading map). O cadastro usa diluentsCompatible/incompatibilities/infusionRate/storageRequirements; o componente exige compatibleFluids/incompatibleFluids/infusionRateGuidance/preparationNotes.",
+    "impacto": "A aba não consegue renderizar suas informações; compatibilidade, administração e prescrição ficam indisponíveis nesse fluxo.",
+    "correcao": "Normalizar as duas representações na entrada, validar os campos e proteger listas ausentes. Preservar as orientações clínicas existentes.",
+    "fontes": []
+  },
+  {
+    "id": "M03",
+    "prioridade": "P1",
+    "titulo": "Sete quadros de interações deixam de mostrar as listas cadastradas",
+    "medicamentos": [
+      "amitriptilina",
+      "ciclosporina",
+      "ciproeptadina",
+      "clorambucil",
+      "gabapentina",
+      "mirtazapina",
+      "sucralfato"
+    ],
+    "tipo": "Omissão de exibição reproduzida",
+    "local": "modules/consulta-vet/components/medication/MedicationAttentionTab.tsx:418–473",
+    "evidencia": "Há 52 entradas em medication.interactions nesses sete registros, mas a seção utiliza apenas attentionData.drugInteractionsDetailed e retorna null quando essa lista falta. Os títulos permanecem no HTML sem as respectivas interações.",
+    "impacto": "O quadro destinado à consulta de interações fica vazio. Algumas advertências aparecem em outras partes da ficha; isso não substitui a lista omitida e não demonstra ausência de interações.",
+    "correcao": "Converter as listas simples ou criar uma apresentação alternativa. Distinguir informação ainda não cadastrada de ausência de interação conhecida.",
+    "fontes": []
+  },
+  {
+    "id": "M04",
+    "prioridade": "P1",
+    "titulo": "Cinco quadros de efeitos adversos omitem conteúdo disponível",
+    "medicamentos": [
+      "ciclosporina",
+      "ciproeptadina",
+      "clorambucil",
+      "gabapentina",
+      "sucralfato"
+    ],
+    "tipo": "Omissão de exibição reproduzida",
+    "local": "modules/consulta-vet/components/medication/MedicationAttentionTab.tsx:132 e :205–253",
+    "evidencia": "Os cinco medicamentos somam 30 entradas em adverseEffects. Sem adverseEffectsDetailed, o componente não apresenta essas entradas no quadro de efeitos adversos. Confirmado por dados e renderização.",
+    "impacto": "O leitor encontra uma seção de segurança sem eventos já descritos no cadastro, inclusive mielossupressão de clorambucil e eventos de ciclosporina.",
+    "correcao": "Usar uma alternativa de renderização sem atribuir frequência ou conduta inventada. Exibir os dados detalhados quando disponíveis.",
+    "fontes": []
+  },
+  {
+    "id": "M05",
+    "prioridade": "P1",
+    "titulo": "A detecção de CRI transforma três doses intermitentes em taxas horárias",
+    "medicamentos": [
+      "ampicilina-sulbactam",
+      "diazepam"
+    ],
+    "tipo": "Corrupção de unidade no processamento",
+    "local": "modules/consulta-vet/data/medicationClinicalCorrections.ts:648–657",
+    "evidencia": "includes(\"cri\") reconhece o ID dose-amp-sulb-sepsis-crit e a palavra \"crise\" nas frequências de dose-diaz-dog-status-iv e dose-diaz-dog-rectal. Os seeds têm mg por kg; o catálogo processado contém doseUnit=\"mg/kg/h\", perWeightUnit=\"h\" nesses três regimes.",
+    "impacto": "Bolus/resgate e dose intermitente passam a ter dimensão de infusão. Os resumos rápidos próprios evitam a exposição direta desses campos nos casos examinados; os dados efetivos continuam errados para outros consumidores.",
+    "correcao": "Usar modalidade de administração explícita ou reconhecimento de termo completo. Manter bolus em mg/kg e distinguir infusão contínua. Conferir novamente dados após as sobreposições.",
+    "fontes": [
+      "C:/Users/luzau/OneDrive/Documentos/Livros/Plumb's Veterinary Drug Handbook, 10th edition.pdf — PDF 110 / p. 83: 22–30 mg/kg IV q6–8h da associação total; PDF 407 / p. 380: bolus e resgate retal de diazepam em mg/kg."
+    ]
+  },
+  {
+    "id": "M06",
+    "prioridade": "P2",
+    "titulo": "As taxas de CRI também recebem /h duplicado na formatação",
+    "medicamentos": [
+      "diazepam",
+      "metadona"
+    ],
+    "tipo": "Erro dimensional de representação",
+    "local": "modules/consulta-vet/utils/medicationRules.ts:26 e :39; modules/consulta-vet/data/medicationClinicalCorrections.ts:655–656",
+    "evidencia": "Nos regimes realmente contínuos, doseUnit já contém mg/kg/h e perWeightUnit contém h. buildClinicalDoseLabel concatena ambos e gera mg/kg/h/h. A sonda também reproduziu esse rótulo em doses classificadas incorretamente como CRI.",
+    "impacto": "A notação temporal perde clareza e não deve orientar cálculo de bomba. Os seletores da calculadora não estão montados na tela pública atual.",
+    "correcao": "Definir unidades estruturadas de massa, peso e tempo; formatar uma única vez e apresentar mg/h ou mL/h após conversão, conforme o regime.",
+    "fontes": []
+  },
+  {
+    "id": "M07",
+    "prioridade": "P1",
+    "titulo": "Meloxicam: o resultado sobre proteinúria é omitido do estudo usado para segurança renal",
+    "medicamentos": [
+      "meloxicam"
+    ],
+    "tipo": "Explicação clínica incompleta",
+    "local": "modules/consulta-vet/data/seed/medications.meloxicam.seed.ts:422, :789–799 e :903",
+    "evidencia": "Atenção e Fundamentos enfatizam ausência de diferenças de creatinina/TFG/biomarcadores no estudo de KuKanich. Não apresentam o aumento de UPC e sua implicação. A lista efetiva de monitoramento também não inclui UPC.",
+    "impacto": "A interpretação transmite segurança renal mais ampla do que o ensaio sustenta. Ausência de diferença na função excretora não equivale à ausência de outros efeitos renais.",
+    "correcao": "Acrescentar o sinal de proteinúria, eventos digestivos e monitoramento de UPC. Explicar seleção individual e incerteza, sem transformar DRC estável em contraindicação automática.",
+    "fontes": [
+      "https://pubmed.ncbi.nlm.nih.gov/32594827/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC10741344/"
+    ]
+  },
+  {
+    "id": "M08",
+    "prioridade": "P2",
+    "titulo": "83 apresentações têm nome cadastrado, mas título comercial vazio na tela",
+    "medicamentos": [
+      "amantadina",
+      "amitriptilina",
+      "ampicilina-sulbactam",
+      "betanecol",
+      "capromorelina",
+      "ciclosporina",
+      "ciproeptadina",
+      "clorambucil",
+      "diazepam",
+      "gabapentina",
+      "levetiracetam",
+      "meloxicam",
+      "metadona",
+      "micofenolato-mofetila",
+      "mirtazapina",
+      "sucralfato",
+      "trazodona",
+      "alopurinol",
+      "amoxicilina-clavulanato"
+    ],
+    "tipo": "Exibição e esquema incompatíveis",
+    "local": "modules/consulta-vet/components/medication/MedicationMarketTab.tsx:202; modules/consulta-vet/utils/medicationRules.ts:110",
+    "evidencia": "83 de 147 apresentações, em 19 fichas, usam name e não label. O título usa exclusivamente pres.label; não existe alternativa com name. O validador editorial exige label, embora esses registros sejam publicados.",
+    "impacto": "O usuário vê concentração/via sem o nome no título da apresentação. O esquema também dificulta edição/importação desses registros.",
+    "correcao": "Padronizar o nome na entrada e manter compatibilidade com cadastros existentes. Revalidar apresentações antes de publicar.",
+    "fontes": []
+  },
+  {
+    "id": "M09",
+    "prioridade": "P2",
+    "titulo": "Canal veterinário é confundido com forma injetável",
+    "medicamentos": [
+      "ciclosporina",
+      "clindamicina",
+      "enrofloxacina",
+      "marbofloxacina",
+      "meloxicam",
+      "mirtazapina",
+      "pradofloxacina",
+      "prednisolona",
+      "pronefra",
+      "tramadol",
+      "fenobarbital"
+    ],
+    "tipo": "Exibição reproduzida",
+    "local": "modules/consulta-vet/components/medication/MedicationMarketTab.tsx:85–96",
+    "evidencia": "A condição formLower.includes(\"injet\") || channel === \"veterinary\" rotula 40 apresentações de 11 fichas como \"Solução Injetável Estéril\". Inclui Cyclavance oral, Optimmune oftálmico, Mirtz oral, Mirataz transdérmico e comprimidos. As vias cadastradas podem continuar corretas na linha seguinte.",
+    "impacto": "A mesma apresentação passa a trazer informações conflitantes de forma e via. O canal de aquisição não determina a forma farmacêutica.",
+    "correcao": "Derivar a forma de campo validado e tratar canal separadamente. Preservar suspensão, solução oral, pomada, cápsula e comprimido.",
+    "fontes": []
+  },
+  {
+    "id": "M10",
+    "prioridade": "P2",
+    "titulo": "A palavra comprimido vira automaticamente Comprimido Sulcado",
+    "medicamentos": [
+      "clorambucil",
+      "sucralfato"
+    ],
+    "tipo": "Generalização de exibição",
+    "local": "modules/consulta-vet/components/medication/MedicationMarketTab.tsx:92–96",
+    "evidencia": "Qualquer form contendo \"comprim\" que não caiu na condição anterior recebe \"Comprimido Sulcado\", sem consultar scoringInfo. Exemplos reproduzidos: Leukeran 2 mg (form: comprimido revestido) e Sucrafilm 1 g (mastigável/dispersível). A regra alcança outros registros também.",
+    "impacto": "A ficha sugere uma característica de partição que o cadastro não estabelece. Clorambucil exige cuidados específicos de exposição ao manipular comprimidos.",
+    "correcao": "Mostrar a forma real. Só afirmar sulco/divisibilidade quando documentado; manter alerta de manipulação de citotóxico.",
+    "fontes": [
+      "C:/Users/luzau/OneDrive/Documentos/Livros/Plumb's Veterinary Drug Handbook, 10th edition.pdf — PDF 271 / p. 244, Dosages, nota 2: manipulação/partição exige salvaguardas de exposição."
+    ]
+  },
+  {
+    "id": "M11",
+    "prioridade": "P2",
+    "titulo": "Calculadora latente multiplica doses fixas e ignora teto absoluto",
+    "medicamentos": [
+      "betanecol",
+      "mirtazapina"
+    ],
+    "tipo": "Falha reproduzida em componente não montado",
+    "local": "modules/consulta-vet/hooks/useDoseCalculator.ts:53–56; modules/consulta-vet/components/medication/DoseCalculatorCard.tsx",
+    "evidencia": "O hook multiplica doseMin/doseMax pelo peso sem considerar perWeightUnit e não aplica maximumDose. Com peso de 4 kg, a dose fixa de Mirtz 2 mg resulta em 8 mg; com 40 kg, o regime canino de mirtazapina resulta em 44–52 mg apesar do teto cadastrado de 30 mg. Há 11 regimes por animal habilitados: seis de betanecol e cinco de mirtazapina. Não foi encontrado ponto de montagem pública do cartão.",
+    "impacto": "A matemática fica incorreta se esse componente for habilitado/reutilizado. Não foi demonstrado que usuários recebem esses cálculos na interface atual.",
+    "correcao": "Implementar dose fixa, por kg, por superfície e por tempo explicitamente, com limites estruturados. Bloquear regimes não suportados antes de montar a calculadora.",
+    "fontes": [
+      "C:/Users/luzau/OneDrive/Documentos/Livros/Plumb's Veterinary Drug Handbook, 10th edition.pdf — PDF 158–159 / p. 131–132: betanecol por cão/gato; PDF 922 / p. 895: mirtazapina por gato e teto canino de 30 mg."
+    ]
+  },
+  {
+    "id": "M12",
+    "prioridade": "P2",
+    "titulo": "Atualizações remotas de doses/apresentações podem ser descartadas pelo tamanho da lista",
+    "medicamentos": [
+      "alopurinol",
+      "amoxicilina-clavulanato",
+      "fenobarbital"
+    ],
+    "tipo": "Risco editorial reproduzido",
+    "local": "modules/consulta-vet/services/adapters/supabase/supabaseMedicationRepository.ts:137–138",
+    "evidencia": "A mesclagem escolhe a lista maior; em empate, escolhe a local. Uma sonda usando a função real mudou frequências e nomes remotos mantendo a quantidade, e ambas as alterações foram descartadas. Os três slugs listados têm registros remotos públicos nesta leitura.",
+    "impacto": "Uma correção editorial legítima pode não chegar ao catálogo, embora outros campos remotos sejam aplicados. A sonda demonstra o mecanismo; não prova que uma correção concreta já foi perdida.",
+    "correcao": "Definir precedência/versionamento explícitos e mesclar por ID. Não usar quantidade de itens como evidência de atualidade ou qualidade.",
+    "fontes": []
+  },
+  {
+    "id": "M13",
+    "prioridade": "P2",
+    "titulo": "Oito estudos comentados não são incorporados aos blocos de evidência",
+    "medicamentos": [
+      "amantadina",
+      "betanecol",
+      "diazepam",
+      "levetiracetam",
+      "micofenolato-mofetila",
+      "amoxicilina-clavulanato"
+    ],
+    "tipo": "Omissão no processamento",
+    "local": "modules/consulta-vet/data/medicationBookFoundations.ts:1153–1158; modules/consulta-vet/pages/MedicationDetailPage.tsx:463",
+    "evidencia": "Quando priorHasStudies é verdadeiro, a rotina mantém priorFoundations e não converte estudos adicionais de clinicalStudiesCommented. Oito IDs de seis fichas ficam sem bloco correspondente. O componente MedicationClinicalStudiesSection existe, mas não é montado na página.",
+    "impacto": "Os comentários desses estudos ficam fora do fluxo de evidências; a referência ou menção narrativa pode existir em outro local. Isso não significa que os 155 estudos cadastrados estejam todos ocultos.",
+    "correcao": "Mesclar por referenceId e mostrar os estudos ainda não incorporados, evitando duplicação. Verificar se retirar um comentário foi decisão editorial explícita.",
+    "fontes": []
+  },
+  {
+    "id": "M14",
+    "prioridade": "P2",
+    "titulo": "Mirtazapina: o ensaio de 2025 é descrito com dose, autoria e conclusão imprecisas",
+    "medicamentos": [
+      "mirtazapina"
+    ],
+    "tipo": "Inconsistência clínica/bibliográfica",
+    "local": "modules/consulta-vet/data/seed/medications.mirtazapina.seed.ts:708, :856–865 e dose-mirt-dog-appetite-conservative-2025",
+    "evidencia": "O bloco renderizado atribui o trabalho a \"Theodoro D, Quimby JM\" e usa título diferente. A fonte real é Theodoro SS e colaboradores. O app atribui o resultado prospectivo à faixa uniforme de 0,5–0,6 mg/kg e a menor sedação versus doses altas; o ensaio utilizou faixas por peso com exposição variável e não comparou aleatoriamente dose baixa com dose alta.",
+    "impacto": "O leitor recebe uma recomendação com grau de comprovação maior que o desenho permite. A evidência de estímulo alimentar no primeiro dia não valida por si só toda a faixa, duração ou superioridade de tolerabilidade proposta.",
+    "correcao": "Corrigir autoria/título e separar dose mediana retrospectiva do protocolo prospectivo. Identificar inferência clínica como tal e retirar a comparação de sedação não testada.",
+    "fontes": [
+      "https://www.mdpi.com/2076-2615/15/17/2538",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC12427372/"
+    ]
+  }
+]

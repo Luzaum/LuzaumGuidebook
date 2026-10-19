@@ -1,0 +1,82 @@
+﻿slug,doenca,origem,secoes_com_dado,secoes_renderizadas_sem_excecao,achados_confirmados_no_escopo,revisao_clinica,aprovacao_clinica,nota
+anemia-caes-gatos,Anemia em Cães e Gatos,seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+anemia-hemolitica-imunomediada-canina,Anemia Hemolítica Imunomediada em Cães (AHIM / IMHA),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+arritmias-cardiacas-caes-gatos,Arritmias cardíacas em cães e gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+asma-felina,Asma felina,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+babesiose-canina,Babesiose canina,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+bronquite-cronica-caes-gatos,Bronquite crônica em cães e gatos,seed local,9,9,R01,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+brucelose-caes-gatos,Brucelose em Cães e Gatos (Brucella canis),seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cardiomiopatia-dilatada-caes-gatos,Cardiomiopatia dilatada (CMD),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cardiomiopatia-hipertrofica-caes-gatos,Cardiomiopatia hipertrófica (CMH),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cardiomiopatia-restritiva-felina,Cardiomiopatia restritiva felina (CMR / RCM),seed local,9,9,R02,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cetoacidose-diabetica-caes-gatos,Cetoacidose diabética em cães e gatos,seed local,9,9,R08,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cinomose-canina,Cinomose Canina,remota adicional,8,9,C13,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cistite-enfisematosa-caes-gatos,Cistite Enfisematosa em Cães e Gatos,seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+cistite-idiopatica-felina,Cistite Idiopática Felina (CIF / FIC),seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+coccidiose-caes-gatos,Cistoisosporose em cães e gatos,seed local,9,9,R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+coagulacao-intravascular-disseminada-caes-gatos,Coagulação intravascular disseminada (CID/DIC),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+colapso-traqueal-canino,Colapso Traqueal em Cães e Gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+granuloma-eosinofilico-felino,Complexo do granuloma eosinofílico felino,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+dermatite-atopica-canina,Dermatite Atópica Canina,seed local,9,9,R12,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+diabetes-mellitus-canina,Diabetes Mellitus Canino,seed local,9,9,R12,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+diabetes-mellitus-felina,Diabetes Mellitus Felino,seed local,9,9,R01,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+discinesia-paroxistica-caes-gatos,Discinesia Paroxística em Cães e Gatos,seed local,9,9,R05; R06,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-do-disco-intervertebral-caes,Doença do Disco Intervertebral — Cães,seed local,9,9,R12,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-do-disco-intervertebral-gatos,Doença do Disco Intervertebral — Gatos,seed local,9,9,C04; R12,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-periodontal-caes,Doença Periodontal Canina,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-periodontal-gatos,Doença Periodontal Felina,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-renal-cronica,Doença Renal Crônica,remota adicional,8,9,R13,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-renal-cronica-canina,Doença renal crônica em cães (DRC canina),seed local,9,9,C12; R13,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-renal-cronica-felina,Doença renal crônica em felinos (DRC felina),seed local,9,9,R13,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doenca-valvar-mitral-degenerativa-caes,Doença valvar mitral degenerativa (DMVD / endocardiose),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+doencas-trato-urinario-inferior-felino-dtuif,Doenças do trato urinário inferior felino (DTUIF),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+enteropatia-perdedora-de-proteinas-caes-gatos,Enteropatia perdedora de proteínas em cães e gatos (PLE),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+enteropatia-inflamatoria-cronica-canina,Enteropatias inflamatórias crônicas em cães (CIE / antiga IBD),seed local,9,9,C08,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+erliquiose-monocitica-canina,Erliquiose monocítica canina (Ehrlichia canis),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+fistula-perianal,Fístula perianal,remota adicional,8,9,R10; R13,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+fistula-perianal-furunculose-anal,Fístula perianal / furunculose anal,seed local,9,9,R13,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+gengivoestomatite-cronica-felina,Gengivoestomatite crônica felina (GECF),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+giardiase-caes-gatos,Giardíase em cães e gatos,seed local,9,9,C09; R09,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hiperparatireoidismo-caes-gatos,Hiperparatireoidismo em cães e gatos,seed local,9,9,R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hipertensao-arterial-sistemica-caes-gatos,Hipertensão arterial sistêmica (HAS),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hipertireoidismo-felino,Hipertireoidismo felino,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hipoadrenocorticismo-addison,Hipoadrenocorticismo (Doença de Addison),seed local,9,9,R01,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hipotireoidismo-adquirido-caes-gatos,Hipotireoidismo adquirido (cão e gato),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+hipotireoidismo-congenito-caes-gatos,Hipotireoidismo congênito (cão e gato),seed local,9,9,C11,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+insuficiencia-pancreatica-exocrina-caes-gatos,Insuficiência pancreática exócrina (IPE/EPI),seed local,9,9,C08,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+insulinoma-caes-gatos,Insulinoma em cães e gatos,seed local,9,9,R08,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+intermacao-caes-gatos,Intermação em Cães e Gatos,seed local,9,9,R01; R03; R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+leishmaniose-caes-gatos,Leishmaniose em Cães e Gatos,seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+leishmaniose-visceral-canina,Leishmaniose visceral canina (leishmaniose canina por L. infantum),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+lesao-renal-aguda-canina,Lesão Renal Aguda em Cães (LRA / IRA / AKI),seed local,9,9,R05; R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+lesao-renal-aguda-felina,Lesão Renal Aguda em Felinos (LRA / AKI),seed local,9,9,R05; R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+leucemia-viral-felina,Leucemia viral felina (FeLV),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+linfoma-cutaneo-caes-gatos,Linfoma cutâneo,seed local,9,9,R11,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+linfoma-mediastinal-caes-gatos,Linfoma Mediastinal em Cães e Gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+mastite-caes-gatos,Mastite em cadelas e gatas,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+megacolon-caes-gatos,Megacólon,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+megaesofago-caes-gatos,Megaesôfago em Cães e Gatos,seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+miastenia-gravis-caes-gatos,Miastenia gravis adquirida (cão e gato),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+micoplasmoses-hemotropicas,Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais,seed local,9,9,R02,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+neoplasias-intracranianas-caes,Neoplasias intracranianas em cães (tumores encefálicos),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+obstrucao-funcional-fluxo-urinario-caes,Obstrução Funcional do Fluxo Urinário em Cães (FOO),seed local,9,9,R03; R06; R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+paralisia-laringea-caes-gatos,Paralisia Laríngea em Cães e Gatos (GOLPP / LPPN),seed local,9,9,R05; R07,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+peritonite-infecciosa-felina,Peritonite infecciosa felina (PIF/FIP),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+pielonefrite-caes-gatos,Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica),seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+piotorax-caes-gatos,Piotórax em Cães e Gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+platinosomose-felina,Platinosomose Felina,seed local,9,9,R05; R06,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+polirradiculoneurite-caes-gatos,Polirradiculoneurite Aguda em Cães e Gatos (ACP / AIP),seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+prostatite-caes-gatos,Prostatite em cães e gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+quilotorax-caes-gatos,Quilotórax em Gatos e Cães,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sepse-canina,Sepse e Choque Séptico em Cães,seed local,9,9,R05; R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sepse-felina,Sepse e Choque Séptico em Felinos,seed local,9,9,R05; R09,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sindrome-cutanea-atopica-felina,Síndrome Cutânea Atópica Felina,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sindrome-cushing-caes,Síndrome de Cushing — Cão,seed local,9,9,C10; R01; R14,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sindrome-cushing-gatos,Síndrome de Cushing — Gato,seed local,9,9,C01; C02; C03; R02,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sindrome-mielodisplasica-caes-gatos,Síndrome mielodisplásica (MDS),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+sindromes-miastenicas-congenitas-caes-gatos,Síndromes miastênicas congênitas (cão e gato),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+trombocitopenia-caes-gatos,Trombocitopenia em Cães e Gatos,seed local,9,9,R04; R05; R11,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+triade-felina,Tríade Felina,seed local,9,9,C05; C06; C07; C14; R05,trechos selecionados confrontados; revisão integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+tumores-mamarios-caes-gatos,Tumores mamários em cães e gatos,seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+tetano-caes-gatos,Tétano em Cães e Gatos (Clostridium tetani),seed local,9,9,R05,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.
+imunodeficiencia-felina-fiv,Vírus da imunodeficiência felina (FIV),seed local,9,9,,revisão clínica integral pendente,não emitida,Sem achado listado não significa conteúdo correto/completo.

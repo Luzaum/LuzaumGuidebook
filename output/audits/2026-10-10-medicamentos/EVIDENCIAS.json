@@ -1,0 +1,2176 @@
+{
+  "data": "2026-10-10",
+  "catalogo_publico": 33,
+  "regimes": 202,
+  "apresentacoes": 147,
+  "estudos_comentados": 155,
+  "renderizacao": [
+    {
+      "slug": "acetilcisteina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20037,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 39692,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 52953,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 70638,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 37796,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 28570,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 9767,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "amantadina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 24728,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 56142,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 58224,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 65335,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 38915,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 24510,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12038,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "amitriptilina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 25828,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 50557,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 57805,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 35716,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 34297,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 8824,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "ampicilina-sulbactam",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 22648,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 70668,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 50673,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 64719,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 25701,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 31074,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10492,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "betanecol",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 24462,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 53304,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 44414,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 64119,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 44191,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 21175,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10983,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "buprenorfina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 19896,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 39116,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 55027,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "error": "TypeError: Cannot read properties of undefined (reading 'map')"
+        },
+        {
+          "key": "market",
+          "chars": 45544,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 30814,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12967,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "capromorelina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 17273,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 40968,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 45761,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 58431,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 26428,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 30465,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10808,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 3
+    },
+    {
+      "slug": "ceftriaxona",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 22617,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 60772,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 43608,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 65969,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 33603,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 30645,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12355,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "ciclosporina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 27874,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 38302,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 16202,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 29446,
+          "objectString": false,
+          "novalgina": true
+        },
+        {
+          "key": "foundations",
+          "chars": 47024,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 6524,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": true,
+      "fallbackWeightTable": true,
+      "studies": 0
+    },
+    {
+      "slug": "ciproeptadina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 26201,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 36405,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 11853,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 37403,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 34146,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 6704,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "clindamicina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 24392,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 83716,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 63584,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 65826,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 38800,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 36574,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 11533,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "clorambucil",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 25723,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 41779,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 12272,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 24357,
+          "objectString": false,
+          "novalgina": true
+        },
+        {
+          "key": "foundations",
+          "chars": 41615,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 7401,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": true,
+      "fallbackWeightTable": true,
+      "studies": 0
+    },
+    {
+      "slug": "diazepam",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 24206,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 65948,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 48350,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 69075,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 43744,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 19831,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 11043,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "dipirona",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20977,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 70510,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 76303,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 66093,
+          "objectString": false,
+          "novalgina": true
+        },
+        {
+          "key": "market",
+          "chars": 36175,
+          "objectString": false,
+          "novalgina": true
+        },
+        {
+          "key": "foundations",
+          "chars": 23677,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10705,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "enrofloxacina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 19783,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 36140,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 46874,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 66741,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 44072,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 28665,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10519,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "gabapentina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 28536,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 33044,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 10049,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 41481,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 43743,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 8043,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 8
+    },
+    {
+      "slug": "hidroxido-de-aluminio",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 17740,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 40398,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 63635,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 61085,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 33175,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 31465,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10721,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 3
+    },
+    {
+      "slug": "levetiracetam",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 24313,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 68644,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 51281,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 68750,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 59260,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 27682,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 11207,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "marbofloxacina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 21805,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 60904,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 43882,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 64276,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 54940,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 33890,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10597,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "meloxicam",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 25094,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 68006,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 60049,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 65884,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 69751,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 27344,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 9971,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "metadona",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20626,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 39788,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 67941,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 71270,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 29478,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 30083,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12418,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 28289,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 83462,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 61700,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 65326,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 44630,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 28923,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 13252,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "mirtazapina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 21875,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 46904,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 58429,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 47317,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 31595,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 8860,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "pradofloxacina",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20072,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 39194,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 53985,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 67761,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 40355,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 36095,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12742,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "prednisolona",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 23184,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 70494,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 66264,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 68067,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 52786,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 27666,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 12947,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 5
+    },
+    {
+      "slug": "pronefra",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20118,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 39348,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 49714,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 60864,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 22918,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 24847,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 8678,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "sucralfato",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 25417,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 30704,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 13743,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 29087,
+          "objectString": false,
+          "novalgina": true
+        },
+        {
+          "key": "foundations",
+          "chars": 25121,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 5185,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": true,
+      "fallbackWeightTable": true,
+      "studies": 0
+    },
+    {
+      "slug": "sulfametoxazol-trimetoprima",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 22401,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 81314,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 67698,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 66775,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 37929,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 32313,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 11697,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "tramadol",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 19970,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 42236,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 70294,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 68820,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 54944,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 33217,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10249,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "trazodona",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 27793,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 50448,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 76326,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 66487,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 38050,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 42693,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 9282,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 8
+    },
+    {
+      "slug": "alopurinol",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 20554,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 0,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 44391,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 55025,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 32698,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 34104,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 7532,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 22016,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 67066,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 45640,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 59523,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 37179,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 31736,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 11865,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 4
+    },
+    {
+      "slug": "fenobarbital",
+      "components": [
+        {
+          "key": "summary",
+          "chars": 18502,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "indications",
+          "chars": 52526,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "attention",
+          "chars": 71136,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "general",
+          "chars": 66625,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "market",
+          "chars": 45018,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "foundations",
+          "chars": 32616,
+          "objectString": false,
+          "novalgina": false
+        },
+        {
+          "key": "pk",
+          "chars": 10270,
+          "objectString": false,
+          "novalgina": false
+        }
+      ],
+      "fallbackPrescription": false,
+      "fallbackWeightTable": false,
+      "studies": 6
+    }
+  ],
+  "sondas": {
+    "method": "Actual hook source; React state replaced with supplied weight and useMemo evaluated directly. No mounted UI or clipboard actions.",
+    "probes": [
+      {
+        "slug": "mirtazapina",
+        "id": "dose-mirt-cat-inappetence-br",
+        "weight": 4,
+        "label": "Hiporexia e anorexia em gatos — Apresentação veterinária aprovada no Brasil (Mirtz 2 mg) • 2 mg/animal • VO • q48h",
+        "result": {
+          "doseUnit": "mg",
+          "doseMinMg": 8,
+          "doseMaxMg": 8,
+          "doseCalculatedMg": 8
+        },
+        "maximumDose": null
+      },
+      {
+        "slug": "mirtazapina",
+        "id": "dose-mirt-dog-appetite-formulatory",
+        "weight": 40,
+        "label": "Estimulação de apetite e controle de náusea em cães — Diretriz de Formulário (Plumb / BSAVA) • 1.1 a 1.3 mg/kg • VO • q24h",
+        "result": {
+          "doseUnit": "mg",
+          "doseMinMg": 44,
+          "doseMaxMg": 52
+        },
+        "maximumDose": "30 mg/cão/dia (limite teto independente do peso corporal)"
+      },
+      {
+        "slug": "diazepam",
+        "id": "dose-diaz-dog-status-iv",
+        "weight": 10,
+        "label": "Status Epilepticus e Crises Convulsivas Agudas em Cães (Bolus IV de Resgate) • 0.5 a 1 mg/kg/h/h • Intravenosa (IV lenta) • Dose única de emergência; pode repetir 1 vez após 2 min se a crise persistir",
+        "result": {
+          "doseUnit": "mg/kg/h",
+          "doseMinMg": 5,
+          "doseMaxMg": 10
+        },
+        "maximumDose": null
+      },
+      {
+        "slug": "ampicilina-sulbactam",
+        "id": "dose-amp-sulb-sepsis-crit",
+        "weight": 10,
+        "label": "Sepse Abdominal / Peritonite Séptica / Paciente Crítico UTI • 30 mg/kg/h/h • IV lenta diluída • A cada 6 a 8 horas (q6h a q8h)",
+        "result": {
+          "doseUnit": "mg/kg/h",
+          "doseMinMg": 300,
+          "doseMaxMg": 300,
+          "doseCalculatedMg": 300
+        },
+        "maximumDose": null
+      }
+    ],
+    "mergeSameLength": {
+      "remoteDoseAccepted": false,
+      "remotePresentationAccepted": false
+    }
+  },
+  "estudos_sem_bloco": {
+    "amantadina": [
+      "ref-norkus-2015",
+      "ref-siao-2011"
+    ],
+    "betanecol": [
+      "ref-el-salmy-1985"
+    ],
+    "diazepam": [
+      "ref-musulin-2011"
+    ],
+    "levetiracetam": [
+      "ref-fredso-2016"
+    ],
+    "micofenolato-mofetila": [
+      "ref-yau-2014",
+      "ref-grobman-2017"
+    ],
+    "amoxicilina-clavulanato": [
+      "ref-iscaid-respiratory-2017"
+    ]
+  },
+  "unidades_incorretas": [
+    {
+      "slug": "ampicilina-sulbactam",
+      "dose": "dose-amp-sulb-sepsis-crit",
+      "doseUnit": "mg/kg/h",
+      "perWeightUnit": "h"
+    },
+    {
+      "slug": "diazepam",
+      "dose": "dose-diaz-dog-status-iv",
+      "doseUnit": "mg/kg/h",
+      "perWeightUnit": "h"
+    },
+    {
+      "slug": "diazepam",
+      "dose": "dose-diaz-dog-rectal",
+      "doseUnit": "mg/kg/h",
+      "perWeightUnit": "h"
+    }
+  ],
+  "apresentacoes_sem_titulo": [
+    {
+      "slug": "amantadina",
+      "id": "pres-mantidan-comp-100",
+      "nome_cadastrado": "Mantidan® 100 mg Comprimidos"
+    },
+    {
+      "slug": "amantadina",
+      "id": "pres-amant-gen-comp-100",
+      "nome_cadastrado": "Cloridrato de Amantadina 100 mg Genérico"
+    },
+    {
+      "slug": "amantadina",
+      "id": "pres-amant-susp-mag-10",
+      "nome_cadastrado": "Cloridrato de Amantadina 10 mg/mL Suspensão Oral Palatável"
+    },
+    {
+      "slug": "amantadina",
+      "id": "pres-amant-caps-mag-custom",
+      "nome_cadastrado": "Cloridrato de Amantadina Cápsulas Magistrais Veterinárias"
+    },
+    {
+      "slug": "amitriptilina",
+      "id": "pres-amytril-25mg",
+      "nome_cadastrado": "Amytril® 25 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "amitriptilina",
+      "id": "pres-amitriptilina-75mg",
+      "nome_cadastrado": "Cloridrato de Amitriptilina 75 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "amitriptilina",
+      "id": "pres-amitriptilina-mag-caps",
+      "nome_cadastrado": "Amitriptilina Cloridrato Cápsulas Magistrais Veterinárias"
+    },
+    {
+      "slug": "amitriptilina",
+      "id": "pres-amitriptilina-mag-sol",
+      "nome_cadastrado": "Amitriptilina Solução Oral Magistral 5 mg/mL (Veículo Adoçado)"
+    },
+    {
+      "slug": "ampicilina-sulbactam",
+      "id": "pres-amp-sulb-15g",
+      "nome_cadastrado": "Ampicilina Sódica + Sulbactam Sódico 1,5 g Injetável (Frasco-ampola Pó Liofilizado)"
+    },
+    {
+      "slug": "ampicilina-sulbactam",
+      "id": "pres-amp-sulb-30g",
+      "nome_cadastrado": "Ampicilina Sódica + Sulbactam Sódico 3,0 g Injetável (Frasco-ampola Pó Liofilizado)"
+    },
+    {
+      "slug": "betanecol",
+      "id": "pres-beth-susp-5",
+      "nome_cadastrado": "Cloreto de Betanecol 5 mg/mL Suspensão Oral Manipulada"
+    },
+    {
+      "slug": "betanecol",
+      "id": "pres-liberan-comp-5",
+      "nome_cadastrado": "Liberan® 5 mg Comprimidos Sulcados"
+    },
+    {
+      "slug": "betanecol",
+      "id": "pres-liberan-comp-10",
+      "nome_cadastrado": "Liberan® 10 mg Comprimidos Sulcados"
+    },
+    {
+      "slug": "betanecol",
+      "id": "pres-liberan-comp-25",
+      "nome_cadastrado": "Liberan® 25 mg Comprimidos"
+    },
+    {
+      "slug": "betanecol",
+      "id": "pres-beth-caps-manip",
+      "nome_cadastrado": "Cloreto de Betanecol Cápsulas Veterinárias Manipuladas (1,25 mg a 25 mg)"
+    },
+    {
+      "slug": "capromorelina",
+      "id": "pres-elura-20mg-ml",
+      "nome_cadastrado": "Elura™ 20 mg/mL Solução Oral para Gatos (Frasco com 15 mL)"
+    },
+    {
+      "slug": "capromorelina",
+      "id": "pres-entyce-30mg-ml",
+      "nome_cadastrado": "Entyce® 30 mg/mL Solução Oral para Cães (Frascos de 10, 15 ou 30 mL)"
+    },
+    {
+      "slug": "ciclosporina",
+      "id": "pres-cyclavance-100",
+      "nome_cadastrado": "Cyclavance® 100 mg/mL Solução Oral Veterinária"
+    },
+    {
+      "slug": "ciclosporina",
+      "id": "pres-optimmune-pomada",
+      "nome_cadastrado": "Optimmune® 0,2% Pomada Oftálmica Veterinária"
+    },
+    {
+      "slug": "ciclosporina",
+      "id": "pres-atopica-caps",
+      "nome_cadastrado": "Atopica® Cápsulas Moles para Microemulsão"
+    },
+    {
+      "slug": "ciproeptadina",
+      "id": "pres-cipro-caps-magistral",
+      "nome_cadastrado": "Ciproeptadina Cápsulas Magistrais Veterinárias Fracionadas"
+    },
+    {
+      "slug": "ciproeptadina",
+      "id": "pres-cipro-susp-magistral",
+      "nome_cadastrado": "Ciproeptadina Suspensão Oral Veterinária Sem Açúcar e Sem Álcool"
+    },
+    {
+      "slug": "ciproeptadina",
+      "id": "pres-cipro-apevitin-xpe",
+      "nome_cadastrado": "Apevitin BC Xarope (0,8 mg/mL de Cloridrato de Ciproeptadina)"
+    },
+    {
+      "slug": "ciproeptadina",
+      "id": "pres-cipro-cobavital-comp",
+      "nome_cadastrado": "Cobavital Microcomprimidos (Ciproeptadina 4 mg + Cobamamida 1 mg)"
+    },
+    {
+      "slug": "clorambucil",
+      "id": "pres-leukeran-2mg",
+      "nome_cadastrado": "Leukeran® 2 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "clorambucil",
+      "id": "pres-clorambucil-comp-magistral",
+      "nome_cadastrado": "Clorambucil Cápsulas Magistrais de Alta Precisão"
+    },
+    {
+      "slug": "diazepam",
+      "id": "pres-uni-diazepax-inj-5",
+      "nome_cadastrado": "Uni-Diazepax® 5 mg/mL Solução Injetável"
+    },
+    {
+      "slug": "diazepam",
+      "id": "pres-valium-comp-5",
+      "nome_cadastrado": "Valium® 5 mg Comprimidos Sulcados"
+    },
+    {
+      "slug": "diazepam",
+      "id": "pres-valium-comp-10",
+      "nome_cadastrado": "Valium® 10 mg Comprimidos Sulcados"
+    },
+    {
+      "slug": "diazepam",
+      "id": "pres-diazepam-teuto-inj-5",
+      "nome_cadastrado": "Diazepam Teuto 5 mg/mL Solução Injetável"
+    },
+    {
+      "slug": "diazepam",
+      "id": "pres-compaz-comp-5",
+      "nome_cadastrado": "Compaz® 5 mg Comprimidos Sulcados"
+    },
+    {
+      "slug": "gabapentina",
+      "id": "pres-gaba-caps-magistral",
+      "nome_cadastrado": "Gabapentina Cápsulas Magistrais Veterinárias Fracionadas"
+    },
+    {
+      "slug": "gabapentina",
+      "id": "pres-gaba-susp-magistral",
+      "nome_cadastrado": "Gabapentina Suspensão Oral Veterinária Sem Xilitol"
+    },
+    {
+      "slug": "gabapentina",
+      "id": "pres-gaba-caps-neurontin-300",
+      "nome_cadastrado": "Neurontin 300 mg Cápsulas / Gabapentina Genérico 300 mg"
+    },
+    {
+      "slug": "gabapentina",
+      "id": "pres-gaba-caps-neurontin-400",
+      "nome_cadastrado": "Neurontin 400 mg Cápsulas / Gabapentina Genérico 400 mg"
+    },
+    {
+      "slug": "gabapentina",
+      "id": "pres-gaba-comp-600",
+      "nome_cadastrado": "Neurontin 600 mg Comprimidos Revestidos Divisíveis"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-keppra-comp-250",
+      "nome_cadastrado": "Keppra® 250 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-keppra-comp-750",
+      "nome_cadastrado": "Keppra® 750 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-keppra-sol-100",
+      "nome_cadastrado": "Keppra® 100 mg/mL Solução Oral"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-keppra-xr-500",
+      "nome_cadastrado": "Keppra XR® 500 mg Comprimidos de Liberação Prolongada"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-keppra-xr-750",
+      "nome_cadastrado": "Keppra XR® 750 mg Comprimidos de Liberação Prolongada"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-antara-iv-100",
+      "nome_cadastrado": "Antara IV® 100 mg/mL Solução para Diluição e Infusão"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-levetiracetam-gen-comp",
+      "nome_cadastrado": "Levetiracetam Genérico 250 mg e 750 mg Comprimidos"
+    },
+    {
+      "slug": "levetiracetam",
+      "id": "pres-levetiracetam-gen-sol",
+      "nome_cadastrado": "Levetiracetam Genérico 100 mg/mL Solução Oral"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-maxicam-comp-05",
+      "nome_cadastrado": "Maxicam® Comprimidos 0,5 mg"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-maxicam-comp-2",
+      "nome_cadastrado": "Maxicam® Comprimidos 2,0 mg"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-maxicam-sol-1",
+      "nome_cadastrado": "Maxicam® Solução Oral 1 mg/mL (0,1%)"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-maxicam-inj-02",
+      "nome_cadastrado": "Maxicam® 0,2% Injetável (2 mg/mL)"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-flamavet-02",
+      "nome_cadastrado": "Flamavet® 0,2 mg Comprimidos"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-flamavet-05",
+      "nome_cadastrado": "Flamavet® 0,5 mg Comprimidos"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-flamavet-2",
+      "nome_cadastrado": "Flamavet® 2,0 mg Comprimidos"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-mellis-02",
+      "nome_cadastrado": "Mellis Vet® 0,2 mg Comprimidos Palatáveis"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-mellis-05",
+      "nome_cadastrado": "Mellis Vet® 0,5 mg Comprimidos Palatáveis"
+    },
+    {
+      "slug": "meloxicam",
+      "id": "pres-mellis-2",
+      "nome_cadastrado": "Mellis Vet® 2,0 mg Comprimidos Palatáveis"
+    },
+    {
+      "slug": "metadona",
+      "id": "pres-mytedom-injetavel",
+      "nome_cadastrado": "Mytedom® Solução Injetável 10 mg/mL (Cristália)"
+    },
+    {
+      "slug": "metadona",
+      "id": "pres-comfortan-vet",
+      "nome_cadastrado": "Comfortan® / Synthadon® 10 mg/mL Solução Injetável (Veterinário Internacional)"
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "id": "pres-mmf-comp-500",
+      "nome_cadastrado": "CellCept® 500 mg Comprimidos Revestidos"
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "id": "pres-mmf-gen-comp-500",
+      "nome_cadastrado": "Micofenolato de Mofetila 500 mg Genérico"
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "id": "pres-mmf-caps-mag-custom",
+      "nome_cadastrado": "Micofenolato de Mofetila Cápsulas Magistrais Veterinárias"
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "id": "pres-mmf-susp-mag-100",
+      "nome_cadastrado": "Micofenolato de Mofetila 100 mg/mL Suspensão Oral Manipulada"
+    },
+    {
+      "slug": "micofenolato-mofetila",
+      "id": "pres-mmf-inj-500",
+      "nome_cadastrado": "CellCept IV® 500 mg Pó Liofilizado para Solução Injetável"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-mirtz-2mg",
+      "nome_cadastrado": "Mirtz 2 mg Comprimidos Palatáveis para Gatos"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-mirataz-td",
+      "nome_cadastrado": "Mirataz 20 mg/g (2%) Pomada Transdérmica Felina"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-remeron-soltab-15mg",
+      "nome_cadastrado": "Remeron SolTab 15 mg Comprimidos Orodispersíveis"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-mirtazapine-gen-15mg",
+      "nome_cadastrado": "Mirtazapina 15 mg Comprimidos Revestidos (Genérico)"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-mirtazapine-mag-susp-5mg",
+      "nome_cadastrado": "Mirtazapina Suspensão Oral Manipulada Veterinária 5 mg/mL (Veículo Palatável)"
+    },
+    {
+      "slug": "mirtazapina",
+      "id": "pres-mirtazapine-mag-caps",
+      "nome_cadastrado": "Mirtazapina Cápsulas Magistrais Veterinárias (0,5 mg a 15 mg)"
+    },
+    {
+      "slug": "sucralfato",
+      "id": "pres-sucrafilm-comp-1g",
+      "nome_cadastrado": "Sucrafilm® 1 g Comprimidos Mastigáveis"
+    },
+    {
+      "slug": "sucralfato",
+      "id": "pres-sucrafilm-susp-200",
+      "nome_cadastrado": "Sucrafilm® 200 mg/mL (1 g / 5 mL) Suspensão Oral"
+    },
+    {
+      "slug": "sucralfato",
+      "id": "pres-sucralfato-mag-pasta",
+      "nome_cadastrado": "Sucralfato Pasta Oral Palatável / Suspensão Manipulada"
+    },
+    {
+      "slug": "trazodona",
+      "id": "pres-trazo-donaren-50",
+      "nome_cadastrado": "Donaren 50 mg Comprimidos Revestidos Sulcados (Apsen)"
+    },
+    {
+      "slug": "trazodona",
+      "id": "pres-trazo-donaren-100",
+      "nome_cadastrado": "Donaren 100 mg Comprimidos Revestidos (Apsen)"
+    },
+    {
+      "slug": "trazodona",
+      "id": "pres-trazo-caps-magistral",
+      "nome_cadastrado": "Cloridrato de Trazodona Cápsulas Magistrais Veterinárias (10 mg a 100 mg)"
+    },
+    {
+      "slug": "trazodona",
+      "id": "pres-trazo-susp-magistral",
+      "nome_cadastrado": "Cloridrato de Trazodona Suspensão Oral Veterinária 10 mg/mL"
+    },
+    {
+      "slug": "alopurinol",
+      "id": "pres-zyloric-100mg",
+      "nome_cadastrado": "Zyloric 100 mg Comprimidos"
+    },
+    {
+      "slug": "alopurinol",
+      "id": "pres-zyloric-300mg",
+      "nome_cadastrado": "Zyloric 300 mg Comprimidos"
+    },
+    {
+      "slug": "alopurinol",
+      "id": "pres-allopurinol-mag-caps",
+      "nome_cadastrado": "Alopurinol Cápsulas Magistrais Veterinárias"
+    },
+    {
+      "slug": "alopurinol",
+      "id": "pres-allopurinol-mag-susp",
+      "nome_cadastrado": "Alopurinol Suspensão Oral Veterinária 20 mg/mL ou 50 mg/mL (Veículo Palatável)"
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "id": "pres-synulox-50mg",
+      "nome_cadastrado": "Synulox® 50 mg Comprimidos Palatáveis (Zoetis)"
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "id": "pres-synulox-250mg",
+      "nome_cadastrado": "Synulox® 250 mg Comprimidos Palatáveis (Zoetis)"
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "id": "pres-agemoxi-cl-50mg",
+      "nome_cadastrado": "Agemoxi CL® 50 mg Comprimidos Palatáveis (Agener União)"
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "id": "pres-agemoxi-cl-250mg",
+      "nome_cadastrado": "Agemoxi CL® 250 mg Comprimidos Palatáveis (Agener União)"
+    },
+    {
+      "slug": "amoxicilina-clavulanato",
+      "id": "pres-susp-oral-625mg-ml",
+      "nome_cadastrado": "Amoxicilina + Clavulanato 62,5 mg/mL Suspensão Oral (4:1)"
+    }
+  ],
+  "limites": "Renderização estática dos componentes, sem sessão autenticada, sem validação visual responsiva e sem execução de prescrição."
+}
