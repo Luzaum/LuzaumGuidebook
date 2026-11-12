@@ -114,7 +114,7 @@ export function UltrasoundReferencePage() {
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <Link to="/consulta-vet/referencias-rapidas" className="transition-colors hover:text-primary">
-          Referências clínicas
+          Mini-apps
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <span className="text-foreground">Ultrassom</span>

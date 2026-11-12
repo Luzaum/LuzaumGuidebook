@@ -1,6 +1,17 @@
 /** Prévias editoriais; os textos originais permanecem integralmente disponíveis. */
 export interface ProgressiveSummaryPreview { simple: string; clinical?: string; attention?: string; indications?: string; pillars: Record<string, string>; }
 export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPreview> = {
+  "cetamina": {
+    "simple": "É um fármaco multirregime derivado da arilciclohexilamina que atua conforme a dose: em doses altas produz anestesia dissociativa e contenção química; em doses baixas (infusão contínua) interrompe a amplificação medular da dor (somação temporal das fibras nociceptivas) e atua no estado de mal epiléptico refratário e na neuroplasticidade sináptica rápida.",
+    "clinical": "Antagonista não competitivo dependente do uso e do canal aberto do receptor NMDA e inibidor de canais HCN1. Distingue-se em Cetamina Racêmica (1:1 R/S), Escetamina Injetável S(+) (3 a 4 vezes maior afinidade NMDA) e Escetamina Intranasal. Em doses subanestésicas, desinibe interneurônios GABAérgicos e ativa a via neurotrófica AMPA–BDNF–TrkB–mTORC1.",
+    "attention": "Paradoxo hemodinâmico: eleva pressão arterial e frequência cardíaca em pacientes com reserva simpática íntegra, mas causa depressão miocárdica direta se houver depleção de catecolaminas (choque circulatório grave). Contraindicada isolada em cães sem relaxante muscular; risco de laringoespasmo em gatos, apneia em bolus rápido, lesão hepática em infusões repetidas e uropatia química. Uso restrito a estabelecimentos de saúde (Portaria 344/98 e Instrução Normativa MAPA 35/2017).",
+    "pillars": {
+      "Bloqueio do Canal NMDA Aberto e Dissociação Talamocortical": "Bloqueia o poro do canal NMDA aberto e canais neuronais HCN1, desconectando vias talamocorticais do sistema límbico com potente analgesia somatossensorial.",
+      "Paradoxo do Antagonista Excitatório e Via BDNF–mTORC1": "Em dose subanestésica, bloqueia interneurônios GABAérgicos, gera onda de glutamato, estimula receptores AMPA e aciona BDNF–TrkB–mTORC1 para sinaptogênese acelerada.",
+      "Controle da Sensibilização Medular e do Mal Epiléptico Refratário": "Extingue a sensibilização central medular perioperatória em taxa constante (0,12 a 0,6 mg/kg/h) e bloqueia receptores NMDA externalizados no estado de mal epiléptico refratário.",
+      "Paradoxo Hemodinâmico, Órgãos-Alvo e Restrição Hospitalar": "Estimula o sistema simpático indireto, mas exibe efeito inotrópico negativo direto no choque exaurido; requer vigilância para laringoespasmo, função hepática e integridade urotelial."
+    }
+  },
   "intermacao-caes-gatos": {
     simple: "O corpo acumula calor demais e começa a sofrer lesões. É uma emergência: mesmo depois de esfriar, o animal pode apresentar complicações e precisa de acompanhamento.",
     clinical: "A lesão pelo calor pode comprometer circulação, coagulação e órgãos; a normalização da temperatura não encerra o risco.",
@@ -860,12 +871,11 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
     }
   },
   "miltefosina": {
-    "simple": "É um leishmanicida oral multialvo que destrói Leishmania infantum desestruturando membranas e mitocôndrias. Não produz cura esterilizante, tem meia-vida de quase uma semana e exige controle vetorial contínuo.",
+    "simple": "O Milteforan é uma solução oral para cães com leishmaniose visceral. Pode melhorar os sinais e reduzir a carga parasitária. Mantenha o acompanhamento e a proteção contra o mosquito-palha após o tratamento.",
     "pillars": {
-      "Leishmanicida, Não Esterilizante": "Reduz drasticamente a carga parasitária tecidual e alivia sintomas, mas não elimina o parasita do organismo canino.",
-      "Mecanismo Biofísico Multialvo": "Desestabiliza membranas fosfolipídicas, inibe biossíntese de fosfatidilcolina e colapsa a integridade mitocondrial do protozoário.",
-      "Permanência Ultra-Prolongada (t½ ~6,9 dias)": "Meia-vida de quase uma semana promove acúmulo contínuo até o 28º dia do ciclo de tratamento oral.",
-      "A Cauda Farmacocinética e Risco de Resistência": "Eliminação lenta gera cauda subterapêutica por semanas, exigindo controle vetorial rigoroso para prevenir seleção de cepas resistentes."
+      "Tratamento oral": "A dose de bula é 2 mg/kg (0,1 mL/kg da solução de 20 mg/mL) a cada 24 horas por 28 dias, com alimento.",
+      "Acompanhamento renal": "A leishmaniose pode causar glomerulopatia. Monitore a função renal e a proteinúria.",
+      "Prevenção de transmissão": "Cães tratados podem continuar infectantes para flebotomíneos mesmo com melhora clínica."
     }
   },
   "domperidona": {

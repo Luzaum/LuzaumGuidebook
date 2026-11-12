@@ -492,8 +492,6 @@ export const metimazolMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO VETERINÁRIO DE CONTROLE SIMPLES\n\nPaciente: Felino (Gato) | Idade: 11 anos | Peso: 3,8 kg\nDiagnóstico: Hipertireoidismo Felino Primário Espontâneo\n\nUSO VETERINÁRIO — VIA ORAL\n\n1. FELIMAZOLE® 2,5 mg (Dechra) ------------------------------------------------ 1 Frasco c/ 100 comprimidos revestidos\n   Administrar 1 (um) comprimido por via oral, a cada 12 horas (q12h), continuamente.\n\nORIENTAÇÕES CLÍNICAS ESSENCIAIS AO TUTOR:\n- Administrar o comprimido inteiro, sem mastigar, partir ou esmagar, preferencialmente junto a uma pequena porção de alimento nos mesmos horários todos os dias.\n- NÃO suspender o tratamento por conta própria: o metimazol não destrói o adenoma e a tireotoxicose retorna em 48 a 72 horas após a interrupção da medicação.\n- Mulheres grávidas ou em planejamento de gestação NUNCA devem manusear os comprimidos ou a caixa de areia do animal sem o uso de luvas protetoras de borracha/látex (risco teratogênico).\n- Retorno agendado em exatamente 2 a 3 semanas para exame clínico e dosagem de T4 total, TSH felino, hemograma completo, ureia, creatinina, fósforo e enzimas hepáticas.\n- Entrar em contato imediatamente com o hospital veterinário se o animal manifestar vômitos persistentes, febre, fraqueza severa, amarelão (icterícia), manchas arroxeadas ou prurido violento na cabeça/pescoço com automutilação.',
 
   pharmacokineticsData: {
     absorption:

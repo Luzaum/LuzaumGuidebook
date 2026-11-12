@@ -735,26 +735,63 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
     ],
   },
 
-  miltefosina: {
-    plumbs: { monograph: 'Miltefosine', pages: '887–888' },
-    bsava: { monograph: 'Miltefosine', pages: '268–269' },
-    nelsonCouto: { chapter: 'Cap. 89: Protozoal Infections (Leishmaniasis)', pages: '1378–1384' },
-    ettinger: { chapter: 'Cap. 195: Canine and Feline Leishmaniosis', pages: '1120–1128' },
+  'acido-tranexamico': {
+    plumbs: { monograph: 'Tranexamic Acid', pages: '1264–1266' },
+    bsava: { monograph: 'Tranexamic acid', pages: '412' },
     topics: [
       {
-        title: 'Farmacodinâmica multialvo da alquilfosfocolina: da desestruturação de membrana à apoptose do amastigota',
-        narrative:
-          'A miltefosina (hexadecilfosfocolina) constitui um alquilfosfolipídio sintético derivado da fosfatidilcolina que revolucionou a terapêutica leishmanicida por sua via exclusivamente oral. Ao penetrar ativamente nos amastigotas intracelulares através do complexo translocador de aminofosfolipídios LMT-Ros3, a droga não atua em um receptor proteico isolado, mas exerce uma ação biofísica e metabólica multissistêmica. Inibe a enzima fosfocolina-citidililtransferase (CCT) na via de Kennedy, bloqueando a síntese e renovação de fosfatidilcolina e desestruturando jangadas lipídicas (lipid rafts) da membrana parasitária e âncoras de GPI de fatores de virulência essenciais (gp63). Simultaneamente, acumula-se nas membranas mitocondriais do protozoário, colapsando a citocromo-c oxidase e dissipando o potencial bioeletroquímico transmembrana (ΔΨm), com depleção maciça de ATP e sobrecarga patológica de cálcio liberado dos acidocalcissomos. Esse colapso bioenergético ativa cascatas de morte celular programada semelhantes à apoptose (apoptosis-like cell death). Conforme enfatizado por Ettinger (2024) e Nelson & Couto (6ª ed.), essa ação é potentemente leishmanicida mas não esterilizante: o protozoário permanece em tecidos profundos e o cão infectado continua como portador crônico.',
+        title: 'Por que o coágulo está falhando?',
+        narrative: 'Comece pela fonte da hemorragia e pela perfusão do paciente. Uma ruptura vascular continua perdendo sangue até ser controlada. Plaquetas ou fibrinogênio baixos podem deixar o coágulo fraco desde o início. Na hiperfibrinólise, o coágulo chega a se formar, mas a fibrina é degradada cedo demais. É nesse terceiro problema que o tranexâmico atua. Eles podem coexistir. Por isso, planeje controle da fonte, ressuscitação e reposição dirigida aos déficits encontrados enquanto avalia se há motivo para inibir a lise.',
       },
       {
-        title: 'Farmacocinética de permanência prolongada: meia-vida de 6,9 dias, acúmulo contínuo e a cauda de seleção de resistência',
-        narrative:
-          'A farmacocinética canina da miltefosina destaca-se pela excelente absorção oral (biodisponibilidade absoluta de ~94%), ligação proteica elevada (~93%), volume de distribuição moderado (0,48 L/kg) com tropismo pelo sistema fagocítico mononuclear e eliminação extraordinariamente lenta. A depuração sistêmica é de apenas 0,04 mL/min/kg, conferindo meia-vida terminal de eliminação de 153 a 165 horas (aproximadamente 6,4 a 6,9 dias no cão). Sob a posologia diária clássica de 2 mg/kg VO durante 28 dias, o fármaco sofre acúmulo gradual até atingir fator de concentração tecidual 7 a 8 vezes superior à dose inicial ao término do ciclo. A degradação ocorre por clivagem fosfolipídica tecidual lenta (fosfolipase D) em colina e hexadecanol, sendo a excreção renal de fármaco intacto desprezível (<0,2%). Conforme alertam Plumb’s (10ª ed.) e o consenso CLWG (2026), essa meia-vida longa gera uma "cauda farmacocinética" de declínio sérico residual que se estende por semanas após a última tomada; se houver subdosagem, má adesão do tutor ou repetição sucessiva de ciclos, parasitas residuais são expostos a concentrações subinibitórias, favorecendo a seleção de mutações pontuais no complexo de captação LMT/Ros3 e promovendo resistência adquirida e cruzada com anfotericina B.',
+        title: 'Como interpretar a resposta do exame e a do paciente',
+        narrative: 'TEG e ROTEM acompanham a formação, a firmeza e a dissolução do coágulo. Um índice de lise elevado pode ajudar a identificar o alvo do TXA. Use o método e a referência do laboratório, porque o traçado também muda com a força inicial do coágulo. Depois da intervenção, compare o exame com a perfusão e a perda de sangue observada. Se a lise caiu, mas o paciente segue instável ou perde sangue, reavalie a fonte e os demais componentes da hemostasia.',
       },
       {
-        title: 'Divergências de consenso (WAVD 2025 vs CLWG 2026), toxicidade reprodutiva e regulação do MAPA no Brasil',
-        narrative:
-          'O cenário de tomada de decisão terapêutica na leishmaniose visceral canina em 2026 envolve importantes divergências científicas e regulatórias. O consenso mundial de dermatologia veterinária (WAVD 2025) mantém o regime de miltefosina associada ao alopurinol como uma das terapias de primeira escolha. Em contrapartida, o Canine Leishmaniosis Working Group (CLWG 2026) reposicionou a miltefosina + alopurinol como segunda opção frente ao antimoniato de meglumina + alopurinol, embasando-se em taxas mais expressivas de recaída clínica precoce e farmacovigilância de cepas resistentes. No Brasil, soma-se o conflito regulatório: a Portaria Interministerial nº 1.426/2008 e o MAPA (Portaria nº 837/2025) exigem o uso privativo de produtos veterinários registrados para LVC sob Notificação de Receita Veterinária (NRV em 2 vias), vedando o uso de produtos humanos. No perfil de segurança, a teratogenicidade e toxicidade testicular/prostática severas contraindicam o uso em prenhez, lactação e reprodutores, além de impor veto à manipulação por gestantes humanas. Por fim, ensaios clínicos prospectivos (Silva et al. 2018) comprovam ausência total de benefício e severa toxicidade digestiva e hematológica no tratamento da esporotricose felina, afastando qualquer indicação nesse cenário.',
+        title: 'Como os estudos se encaixam',
+        narrative: 'Mays selecionou cães que já tinham hiperfibrinólise e encontrou efeito em um teste que desafia o coágulo. Sigrist partiu do diagnóstico de hemoabdômen e, entre os cães testados, não encontrou esse padrão na admissão nem benefício demonstrado nos sinais de perda persistente. Na cirurgia de coluna, um estudo pequeno viu menor perda durante infusão numa técnica específica, enquanto um ensaio maior não demonstrou benefício com uma dose única prévia. A pergunta que guia a leitura é qual paciente, qual procedimento e qual desfecho o estudo realmente avaliou.',
+      },
+      {
+        title: 'Da dose ao preparo',
+        narrative: 'O BSAVA descreve dose IV intermitente lenta e dose oral em cães. O Plumb descreve também infusão contínua e regimes para contextos específicos. Antes de preparar, escreva a dose em mg/kg, converta para mg com o peso, depois divida pela concentração da ampola. Para 10 kg e uma referência de 10 mg/kg, são 100 mg ou 2 mL da ampola de 50 mg/mL, antes da diluição. Quando houver manutenção, confira separadamente mg/kg/h, duração, total e concentração final da bomba.',
+      },
+    ],
+  },
+  miltefosina: {
+    bsava: { monograph: 'Miltefosine', pages: '268–269' },
+    nelsonCouto: { chapter: 'Cap. 98: Polysystemic Protozoal Infections — Leishmaniasis', pages: '1519' },
+    topics: [
+      {
+        title: 'O que sustentam os formulários veterinários',
+        narrative: 'O Plumb (10ª ed., pp. 887–888) descreve ação leishmanicida, hipóteses de efeito sobre membranas e mitocôndrias, eliminação lenta e monitoramento renal e hepático. O BSAVA (10ª ed., pp. 268–269) confirma a apresentação oral de 20 mg/mL, o uso com alimento, as restrições reprodutivas e a posologia canina de 2 mg/kg a cada 24 horas por 28 dias.',
+      },
+      {
+        title: 'Resposta clínica, persistência e resistência',
+        narrative: 'O Greene’s (5ª ed., capítulo de leishmaniose, PDF pp. 543–544) contextualiza o acúmulo da miltefosina durante o ciclo e a possibilidade de seleção de resistência. Gonçalves et al. (2021) documentaram redução de suscetibilidade à miltefosina e à anfotericina B em isolados de um único cão após ciclos repetidos. O estudo não estima a frequência de resistência na população canina.',
+      },
+      {
+        title: 'Associação com alopurinol nas diretrizes internacionais',
+        narrative: 'O LeishVet descreve alopurinol a 10 mg/kg por via oral a cada 12 horas por pelo menos 6–12 meses, conforme estágio e tolerância, associado a um ciclo de miltefosina. O CLWG (2026) descreve 12 meses de alopurinol quando se escolhe essa associação. A bula brasileira do Milteforan define o ciclo da miltefosina. Avalie a regulação brasileira separadamente antes de aplicar protocolos internacionais.',
+      },
+      {
+        title: 'Antes da primeira dose — confirme a doença e defina o estágio',
+        narrative: 'Um teste positivo mostra evidência de infecção ou resposta imune. Para decidir tratar, procure sinais e alterações atribuíveis à leishmaniose. Lesões de pele, emagrecimento, linfonodos aumentados, uveíte, anemia, excesso de globulinas ou perda de proteína na urina ajudam a compor o quadro. O Nelson & Couto descreve a identificação de amastigotas em citologia de linfonodo, medula ou lesão. Quando a sorologia é baixa ou discordante, escolha o tecido e a técnica confirmatória conforme a apresentação. Investigue outras causas e coinfecções relevantes na região. Classifique separadamente a gravidade da leishmaniose e o comprometimento renal.',
+      },
+      {
+        title: 'Escolha da conduta por cenário clínico',
+        narrative: 'Na infecção subclínica, o cão tem evidência de infecção sem sinais ou alterações laboratoriais atribuíveis à doença. A WAVD orienta evitar leishmanicidas nesse cenário. No estágio I existe doença leve, por exemplo dermatite papular, e a evidência para tratar é escassa. O LeishVet admite seguimento individualizado, inclusive sem terapia imediata. Nos estágios II e III, as diretrizes internacionais descrevem esquemas combinados, com manejo da proteinúria e das demais complicações em paralelo. No estágio IV, nefropatia avançada, síndrome nefrótica ou outras complicações graves exigem decisão individual, estabilização e prognóstico discutido com o tutor.',
+      },
+      {
+        title: 'Da balança à seringa — cálculo e administração',
+        narrative: 'Primeiro multiplique o peso por 2 para obter os miligramas de uma dose. Depois divida por 20, que é a concentração em miligramas por mililitro. Em um cão de 12 kg, a conta é 24 mg ÷ 20 mg/mL = 1,2 mL por dia. O ciclo precisa de 33,6 mL. Calcule o volume completo antes de escolher a apresentação. Separe uma parte da refeição, deposite a dose medida e confira que o cão comeu toda essa parte antes de oferecer o restante. Oriente o tutor a anotar doses, recusas e vômitos para que o prescritor consiga decidir como proceder.',
+      },
+      {
+        title: 'Como avaliar melhora, falha e recaída',
+        narrative: 'Melhora clínica é a recuperação dos sinais, como apetite e lesões. Melhora laboratorial é a tendência favorável em exames como creatinina, UPC e relação albumina:globulina. Melhora parasitológica é a redução do parasito ou de seu DNA na amostra. Essas respostas podem ocorrer em ritmos diferentes. Registre o ponto de partida e compare em retornos. Piora progressiva, perda de peso, lesões recorrentes ou aumento de proteinúria justificam nova investigação. Recidiva pode decorrer de persistência da infecção, exposição inadequada ou outros fatores. O retorno de sinais, sozinho, não identifica resistência.',
+      },
+      {
+        title: 'Como os estudos se encaixam',
+        narrative: 'No retorno de um cão tratado, três perguntas ajudam a conduzir a consulta. Ele está melhor? Essa melhora vai durar? Ele ainda pode infectar o mosquito-palha? Miró e Woerly ajudam a interpretar a melhora clínica nas primeiras semanas ou meses. Manna mostra o que um acompanhamento curto pode perder: alguns cães voltam a adoecer depois de parecerem recuperados. Nogueira mede algo que o exame clínico sozinho não revela, ao verificar se os insetos ainda adquiriam o parasito. Juntos, esses trabalhos explicam por que a melhora observada no consultório orienta o seguimento, enquanto o risco de recaída e de transmissão exige retornos e proteção contra picadas.',
       },
     ],
   },
@@ -968,6 +1005,19 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
       },
     ],
   },
+  cetamina: {
+    plumbs: { monograph: 'Ketamine', pages: '714–719' },
+    bsava: { monograph: 'Ketamine', pages: '212–214' },
+    nelsonCouto: {
+      chapter: 'Cap. 62: Distúrbios Convulsivos Idiopáticos e Sintomáticos (Estado de Mal Epiléptico Refratário) & Cap. 64: Manejo Multimodal da Dor',
+      pages: '1012–1025, 1045–1055',
+    },
+    ettinger: {
+      chapter: 'Cap. 43: Avaliação e Manejo da Dor (Antagonistas NMDA e Sensibilização Central) & Cap. 320: Estado de Mal Epiléptico',
+      pages: '240–252, 1985–1996',
+    },
+    topics: [],
+  },
 };
 
 export function applyMedicationBookFoundations(medication: MedicationRecord): MedicationRecord {
@@ -1159,7 +1209,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
     const studyTopics = medication.clinicalStudiesCommented.map((study, idx) => ({
       id: `${medication.slug}-study-topic-${study.referenceId || idx + 1}`,
       title: `${study.title} (${study.authorsYear.split('(')[0].trim()})`,
-      narrative: `${study.studyDesign}. ${study.mainFindings}`,
+      narrative: study.methodology || `${study.studyDesign}. ${study.mainFindings}`,
       narrativeHighlights: [study.sampleSize, study.journal].filter(Boolean),
       referenceIds: [study.referenceId].filter(Boolean),
       studies: [
@@ -1167,7 +1217,9 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
           citation: `${study.authorsYear}. ${study.title}. ${study.journal}.`,
           referenceId: study.referenceId,
           sourceType: study.studyDesign,
-          summaryText: study.mainFindings,
+          summaryText: study.limitations
+            ? `${study.mainFindings} Limitações da evidência. ${study.limitations}`
+            : study.mainFindings,
           summaryHighlights: [study.sampleSize, study.journal].filter(Boolean),
           metrics: [study.sampleSize].filter(Boolean),
           clinicalConclusion: study.clinicalTakeaway,

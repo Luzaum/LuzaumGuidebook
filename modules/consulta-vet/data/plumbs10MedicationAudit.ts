@@ -236,13 +236,7 @@ export const PLUMBS_10_MONOGRAPH_AUDIT: Record<string, PlumbsMonographAudit> = {
     title: 'Miltefosine',
     printedPage: 887,
     pdfPage: 914,
-    doseIds: [
-      'dose-milte-dog-leish-standard',
-      'dose-milte-dog-leish-titration',
-      'dose-milte-dog-lomentospora',
-      'dose-milte-cat-experimental',
-      'dose-milte-cat-sporotrichosis-contraindicated',
-    ],
+    doseIds: ['dose-milte-dog-leish-standard'],
   },
   domperidona: {
     title: 'Domperidone',
@@ -295,6 +289,21 @@ export const PLUMBS_10_MONOGRAPH_AUDIT: Record<string, PlumbsMonographAudit> = {
       'dose-dex-cat-lddst',
       'dose-dex-cat-hddst',
       'dose-dex-dog-cat-recover-alergia',
+    ],
+  },
+  cetamina: {
+    title: 'Ketamine',
+    printedPage: 714,
+    pdfPage: 741,
+    doseIds: [
+      'dose-cetamina-dog-coinducao-iv',
+      'dose-cetamina-cat-coinducao-iv',
+      'dose-cetamina-cat-contencao-im',
+      'dose-cetamina-dog-contencao-im',
+      'dose-cetamina-both-bolus-analgesico-ataque',
+      'dose-cetamina-both-cri-transop',
+      'dose-cetamina-both-status-epilepticus-acvim',
+      'dose-cetamina-both-sc-dor-cronica',
     ],
   },
 };

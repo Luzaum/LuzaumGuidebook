@@ -199,7 +199,6 @@ export function MedicationQuickSummaryPanel({
             Indicações de Uso Resumidas
           </h3>
 
-          <SummaryPreview preview={preview?.indications ?? clinicalPreview?.points[0]}>
           <div className="grid gap-4 sm:grid-cols-2">
             {quickIndications.map((item, idx) => {
               const isDog = item.species === 'dog' || item.species === 'both';
@@ -275,7 +274,6 @@ export function MedicationQuickSummaryPanel({
               );
             })}
           </div>
-          </SummaryPreview>
         </div>
 
         {/* Banner de Segurança: Aviso Clínico Importante - dinâmico por medicamento */}

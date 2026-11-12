@@ -562,8 +562,6 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO VETERINÁRIO DE CONTROLE SIMPLES\n\nPaciente: Canino (Cão) | Raça: Buldogue Francês | Peso: 10 kg\nDiagnóstico: Reação Alérgica Aguda Grave / Urticária Facial Extensa\n\nUSO VETERINÁRIO — VIA ORAL\n\n1. DEXAGARD® 0,5 mg (Pearson) ------------------------------------------------ 1 Cartucho c/ 20 comprimidos\n   Administrar 2 (dois) comprimidos por via oral (dose total de 1,0 mg = 0,1 mg/kg), a cada 24 horas, durante 3 (três) dias consecutivos, junto à alimentação.\n\nORIENTAÇÕES DE SEGURANÇA AO TUTOR:\n- Oferecer o medicamento junto a uma refeição completa para atenuar desconforto estomacal.\n- É comum e esperado o animal apresentar aumento temporário de sede (polidipsia), maior volume urinário (poliúria) e aumento do apetite durante o tratamento.\n- NUNCA administrar anti-inflamatórios como dipirona em doses altas, cetoprofeno, meloxicam ou aspirina concomitantemente com este medicamento (risco altíssimo de úlcera e hemorragia estomacal grave).\n- Interromper a administração e entrar em contato com o médico-veterinário imediatamente se notar febre, prostração, vômitos, fezes escuras tipo borra de café ou sangue vivo.\n- Após os 3 dias recomendados, suspender o medicamento conforme prescrito.',
 
   pharmacokineticsData: {
     absorption:

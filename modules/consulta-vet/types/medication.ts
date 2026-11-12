@@ -119,6 +119,7 @@ export interface MedicationDetailedIndication {
   monitoring?: string;
   referenceIds: string[];
   evidenceLevel?: string;
+  highlights?: string[];
 }
 
 export interface MedicationPharmacokinetics {
@@ -154,7 +155,7 @@ export interface MedicationPrecautionDetailed {
 
 export interface MedicationAdverseEffectDetailed {
   effect: string;
-  frequency: 'common' | 'uncommon' | 'rare' | 'very_rare' | 'overdose';
+  frequency: 'very_common' | 'common' | 'uncommon' | 'rare' | 'very_rare' | 'unknown' | 'overdose';
   mechanism: string;
   clinicalManagement: string;
 }
@@ -167,7 +168,7 @@ export interface MedicationDoseReductionGuideline {
 
 export interface MedicationDrugInteractionDetailed {
   drugOrClass: string;
-  severity: 'contraindicated' | 'major' | 'moderate' | 'minor';
+  severity: 'contraindicated' | 'major' | 'moderate' | 'minor' | 'informational';
   clinicalEffect: string;
   pharmacologicalMechanism: string;
 }
@@ -189,6 +190,8 @@ export interface MedicationClinicalStudyCommented {
   journal?: string;
   studyDesign: string;
   sampleSize?: string;
+  methodology?: string;
+  limitations?: string;
   mainFindings: string;
   clinicalTakeaway: string;
   referenceId?: string;
@@ -311,9 +314,6 @@ export interface MedicationRecord extends ContentFlag {
 
   /** Subtítulo descritivo de segurança e atenção */
   attentionSubtitle?: string;
-
-  /** Modelo de prescrição pronto e específico para cópia */
-  samplePrescriptionText?: string;
 
   /** Tabela prática de conversão por faixa de peso e calibrador */
   practicalWeightTable?: {

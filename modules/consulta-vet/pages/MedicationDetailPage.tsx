@@ -244,7 +244,6 @@ export function MedicationDetailPage() {
         { id: 'apresentacoes-comerciais', label: '1. Apresentações comerciais' },
         { id: 'tabela-posologia-pratica', label: '2. Guia e posologia prática' },
         { id: 'bulas-fontes-oficiais', label: '3. Bulas e fontes oficiais' },
-        { id: 'modelo-receita', label: '4. Modelo de prescrição' },
       ];
     }
 

@@ -110,6 +110,7 @@ export type CommercialMedicationSubclass =
   | 'oncologic_tki'
   | 'oncologic_chemotherapy'
   | 'emergency_thrombopoietin'
+  | 'emergency_antifibrinolytic'
   | 'repro_antigalactogenic'
   | 'ortho_joint_support'
   | 'ortho_antiinflammatory'

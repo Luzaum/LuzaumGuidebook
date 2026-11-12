@@ -290,29 +290,6 @@ export const molidustatMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO SIMPLES DE USO VETERINÁRIO (MEDICAMENTO NÃO CONTROLADO)\n' +
-    'EMITIDO EM 1 VIA PARA DISPENSAÇÃO EM FARMÁCIA VETERINÁRIA\n\n' +
-    'CLÍNICA VETERINÁRIA [NOME DA CLÍNICA] — Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\n' +
-    'Endereço: [Logradouro, Bairro, Cidade, UF] — Tel: [(XX) XXXXX-XXXX]\n\n' +
-    'PACIENTE: [Nome do Gato], Espécie: Felina, Raça: [Raça], Sexo: [M/F], Idade: [Anos], Peso Atual: [4,0 kg]\n' +
-    'TUTOR: [Nome Completo do Tutor], CPF: [000.000.000-00], Endereço: [Logradouro, Cidade, UF]\n\n' +
-    'PRESCRIÇÃO:\n' +
-    '1. VARENZIN™ 25 mg/mL (molidustat sódico) suspensão oral para gatos ----------- 1 frasco de 27 mL\n' +
-    '   (Acompanha seringa dosadora graduada em mililitros)\n' +
-    '   Posologia: Administrar 0,8 mL (equivalente a 20 mg de molidustat, na dose de 5 mg/kg) por via oral, uma vez ao dia (a cada 24 horas), durante até 28 dias consecutivos ininterruptos.\n\n' +
-    'ORIENTAÇÕES E CUIDADOS OBRIGATÓRIOS AO TUTOR:\n' +
-    '1. Agitar vigorosamente o frasco antes de aspirar cada dose com a seringa fornecida.\n' +
-    '2. Administrar o líquido diretamente no canto da boca do gato.\n' +
-    '3. NÃO desmontar nem lavar a seringa com água e detergente. Limpar apenas a ponta externa com papel toalha seco limpo.\n' +
-    '4. REGRA DO VÔMITO: Se o gato vomitar logo após tomar o remédio, NÃO repetir a dose no mesmo dia. Administrar apenas a próxima dose no horário normal do dia seguinte.\n' +
-    '5. SEPARAÇÃO DE REMÉDIOS: Se o gato toma suplemento de ferro ou quelante de fósforo no alimento (como hidróxido de alumínio ou carbonato de cálcio), fornecer esses medicamentos com pelo menos 1 a 2 horas de intervalo em relação ao Varenzin.\n' +
-    '6. CALENDÁRIO DE EXAMES: Trazer o gato para coleta de sangue e contagem de hematócrito (PCV) nos DIAS 14, 21 e 28 do tratamento. O medicamento será suspenso imediatamente caso o hematócrito ultrapasse os limites normais.\n' +
-    '7. Caso seja necessário um novo ciclo no futuro, deve-se aguardar um intervalo de descanso de no mínimo 7 dias entre os ciclos.\n' +
-    '8. Descartar o restante do frasco 28 dias após a primeira abertura.\n\n' +
-    '[Localidade - UF], [Data do Atendimento]\n' +
-    '________________________________________________________\n' +
-    'Dr(a). [Nome do Médico Veterinário] — CRMV-[UF] nº [XXXXX]',
 
   clinicalStudiesCommented: [
     {

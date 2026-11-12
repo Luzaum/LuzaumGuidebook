@@ -428,10 +428,6 @@ export const MEDICATION_CONTROL_NOTICES: Record<string, { isControlled: boolean;
     isControlled: true,
     controlNotice: 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1 / RDC Anvisa nº 1.036/2026).',
   },
-  miltefosina: {
-    isControlled: true,
-    controlNotice: 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1 / RDC Anvisa nº 1.036/2026).',
-  },
   mirtazapina: {
     isControlled: true,
     controlNotice: 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1 / RDC Anvisa nº 1.036/2026).',

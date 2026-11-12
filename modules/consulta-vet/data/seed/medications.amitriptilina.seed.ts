@@ -800,20 +800,6 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO DE CONTROLE ESPECIAL (EM 2 VIAS)\n\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome Completo], Médico(a) Veterinário(a), CRMV-[UF] [Número]\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Animal], Espécie: Felina / Canina, Raça: [Raça], Peso: [0,0] kg\n\n' +
-    'USO ORAL\n' +
-    '1. Cloridrato de Amitriptilina [Dosagem prescrita: ex. 2,5 mg ou 10 mg] ---------------- 30 cápsulas\n' +
-    '   (Manipulação veterinária em cápsulas gelatinosas íntegras)\n' +
-    '   Posologia: Administrar 1 (uma) cápsula por via oral, a cada 24 horas, rigorosamente no período da noite, após pequena refeição, durante 30 (trinta) dias consecutivos.\n\n' +
-    'ORIENTAÇÕES IMPORTANTES AO TUTOR:\n' +
-    '- Jamais abrir ou quebrar as cápsulas, pois o medicamento tem gosto intensamente amargo e provoca salivação copiosa.\n' +
-    '- Sonolência e lentidão são reações normais nas primeiras duas semanas de tratamento.\n' +
-    '- Caso note que o animal não consegue urinar ou apresente a barriga distendida e dolorida, suspenda o medicamento e contate o veterinário imediatamente.\n' +
-    '- Não interrompa o tratamento sem orientação profissional expressa.',
 
   clinicalStudiesCommented: [
     {

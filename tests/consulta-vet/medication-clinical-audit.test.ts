@@ -21,7 +21,15 @@ test('toda opção pública é uma molécula, possui dose e recebe classificaç�
     const medicationReferenceIds = new Set((medication.references || []).map((reference) => reference.id));
 
     for (const dose of medication.doses) {
-      assert.ok(Number.isFinite(dose.doseMin) && dose.doseMin > 0, `${slug}/${dose.id}: dose mínima inválida`);
+      const isContraindicatedWarningRow =
+        dose.calculatorEnabled === false &&
+        dose.doseMin === 0 &&
+        dose.doseMax === 0 &&
+        /contraindicad/i.test(`${dose.id} ${dose.indication} ${dose.frequency}`);
+      assert.ok(
+        Number.isFinite(dose.doseMin) && (dose.doseMin > 0 || isContraindicatedWarningRow),
+        `${slug}/${dose.id}: dose mínima inválida`,
+      );
       assert.ok(dose.doseMax === undefined || dose.doseMax >= dose.doseMin, `${slug}/${dose.id}: faixa invertida`);
       assert.ok(dose.route.trim(), `${slug}/${dose.id}: via ausente`);
       assert.ok(dose.frequency.trim(), `${slug}/${dose.id}: frequência ausente`);

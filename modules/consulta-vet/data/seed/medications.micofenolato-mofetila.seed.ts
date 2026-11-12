@@ -742,33 +742,6 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
     },
   },
 
-  samplePrescriptionText: `RECEITA MÉDICA-VETERINÁRIA (RECEITA SIMPLES)
-
-Paciente: Luke | Espécie: Canina | Raça: Pug | Idade: 4 anos | Peso: 10 kg
-Tutor: Juliana Peixoto Costa | CPF: 987.654.321-99
-Endereço: Alameda dos Ipês, 88 — Curitiba/PR
-
-USO ORAL AMBULATORIAL (FORMULAÇÃO MAGISTRAL VETERINÁRIA)
-
-1. Micofenolato de Mofetila (MMF) 100 mg ---------------------------- 60 cápsulas gelatinosas
-   Princípio ativo: Micofenolato de mofetila 100 mg por cápsula
-   Excipiente gastroprotetor inerte q.s.p. 1 cápsula
-   Posologia: Administrar uma (1) cápsula por via oral a cada 12 horas (q12h), nos mesmos horários (ex.: às 08h00 e às 20h00), fornecida imediatamente junto ou logo após pequena porção de refeição úmida, durante 30 dias ininterruptos.
-
-ORIENTAÇÕES CRÍTICAS DE SEGURANÇA E BIOSSEGURANÇA AO TUTOR:
-1. Advertência de Medicamento Perigoso: O micofenolato é um imunossupressor potente com ação teratogênica comprovada. Mulheres gestantes, lactantes ou que estejam tentando engravidar são expressamente PROIBIDAS de manusear este medicamento.
-2. Modo de Manuseio: Administrar a cápsula inteira com o auxílio de luvas descartáveis. NUNCA abrir, romper, mastigar ou dissolver o conteúdo das cápsulas. Lavar rigorosamente as mãos com água e sabão após a administração.
-3. Efeitos Adversos Gastrointestinais: Diarreia com muco, fezes amolecidas e vômitos podem ocorrer nos primeiros 14 dias de uso. Caso o animal apresente diarreia líquida profusa ou fezes com sangue vivo (vermelho escuro ou aspecto de borra de café), suspender imediatamente o medicamento e contatar a clínica veterinária.
-4. Risco de Infecções Oportunistas: Por modular a imunidade, relate prontamente sintomas de febre, tosse, apatia intensa, lesões de pele ou alterações na micção.
-5. Armazenamento: Conservar o frasco bem fechado, em temperatura ambiente fresca (15°C a 30°C), protegido da luz solar e longe do alcance de crianças e de outros animais.
-
-Retorno e Monitoramento: Retorno ambulatorial agendado para 14 dias para realização de hemograma completo e dosagem de enzimas hepáticas e albumina.
-
-Curitiba, 28 de setembro de 2026.
-
-___________________________________________________________
-Dra. Camila Vasconcelos Rocha — Médica-Veterinária
-CRMV-PR nº 18.940 | Telefone: (41) 99123-4567`,
 
   clinicalNotesRichText: `
 <h3>1. Fisiologia Molecular: Síntese de Novo de Purinas e a Seletividade da IMPDH Tipo II</h3>

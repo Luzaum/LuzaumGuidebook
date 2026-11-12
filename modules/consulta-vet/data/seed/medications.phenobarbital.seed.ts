@@ -900,20 +900,6 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
     attentionSubtitle:
       'O fenobarbital é o anticonvulsivante de primeira escolha em pequenos animais, porém sua margem terapêutica estreita exige monitoramento sérico periódico (TDM), vigilância estrita quanto a hepatopatias, ajuste de dose por comorbidades e protocolo rígido de desmame gradual.',
 
-    samplePrescriptionText:
-      'RECEITUÁRIO DE CONTROLE ESPECIAL (LISTA C1 - EM 2 VIAS)\n' +
-      '1ª Via: Retenção da Farmácia / 2ª Via: Orientação ao Tutor\n\n' +
-      'USO ORAL:\n' +
-      '1. Convless® Solução Oral 20 mg/mL (Agener União) ----------------- 1 frasco (60 mL)\n' +
-      '   Administrar 1,25 mL (equivalente a 25 mg para cão de 10 kg na dose de 2,5 mg/kg) por via oral, utilizando a seringa dosadora graduada fornecida, rigorosamente a cada 12 horas (pontualmente às 08:00h e às 20:00h), uso contínuo e vitalício.\n\n' +
-      'OU ALTERNATIVA EM COMPRIMIDOS:\n' +
-      '1. Gardenal® 100 mg (Sanofi) ------------------------------------ 1 caixa (20 comprimidos)\n' +
-      '   Administrar 1/4 de comprimido (25 mg para cão de 10 kg) por via oral, a cada 12 horas (pontualmente às 08:00h e às 20:00h), uso contínuo e vitalício.\n\n' +
-      'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\n' +
-      '• NUNCA interromper, pular ou atrasar o medicamento: a retirada abrupta pode desencadear convulsões ininterruptas em salva (status epilepticus) com risco fatal.\n' +
-      '• Não dobrar a dose caso esqueça uma tomada. Retomar no próximo horário normal.\n' +
-      '• Sedação leve e instabilidade para caminhar (ataxia) são comuns nos primeiros 10 a 14 dias de tratamento e tendem a diminuir com a adaptação neural.\n' +
-      '• Retorno agendado em 14 dias para coleta de sangue e dosagem sérica de fenobarbital (TDM) e enzimas hepáticas.',
 
     practicalWeightTable: {
       standardDoseText:

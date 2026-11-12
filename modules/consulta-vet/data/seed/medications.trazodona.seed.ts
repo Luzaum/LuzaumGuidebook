@@ -521,34 +521,6 @@ export const trazodonaMedicationRecord: MedicationRecord = {
     },
   },
 
-  samplePrescriptionText:
-    'MODELO 1 — ANSIEDADE SITUACIONAL PRÉ-VISITA E TRANSPORTE FEAR FREE (CÃO 10 KG):\n' +
-    'RECEITA DE CONTROLE ESPECIAL — 2 VIAS (LISTA C1 DA PORTARIA SVS/MS Nº 344/1998)\n\n' +
-    'USO ORAL\n' +
-    '1. Donaren (cloridrato de trazodona) 50 mg comprimidos revestidos sulcados ------------------ 1 caixa (60 comprimidos)\n' +
-    '   Posologia: Administrar 1 (um) comprimido (50 mg, equivalente a 5 mg/kg) por via oral, envolto em pequena porção de alimento palatável ou petisco pastoso, rigorosamente 1 hora e meia a 2 horas antes da saída de casa para a clínica veterinária ou do início de eventos de estresse sonoro (fogos de artifício, tempestades).\n' +
-    '   Orientações Mandatórias ao Tutor:\n' +
-    '   - Realizar preferencialmente uma dose-teste prévia em domicílio num dia calmo, sem visitas ou estímulos estressantes, para averiguar a resposta individual e descartar sedação excessiva, ataxia ou eventual excitação paradoxal.\n' +
-    '   - Durante o período de ação do medicamento (que perdura por 6 a 12 horas), mantenha o animal em piso antiderrapante e com acesso estritamente bloqueado a escadas, lajes, sacadas, piscinas e sofás altos.\n' +
-    '   - Não associar por conta própria a outros medicamentos sedativos, tramadol, antidepressivos ou analgésicos fortes sem prévia autorização veterinária.\n' +
-    '   - Caso observe tremores musculares finos, febre, rigidez, salivação contínua ou agitação extrema, suspenda o uso e procure imediatamente atendimento hospitalar veterinário.\n' +
-    '   - Receita de Controle Especial em 2 vias com validade de 30 dias a partir da data de emissão.\n\n' +
-    'MODELO 2 — MANEJO CAT FRIENDLY, TRANSPORTE E CONSULTA (GATO ADULTO 4 KG):\n' +
-    'RECEITA DE CONTROLE ESPECIAL — 2 VIAS (LISTA C1 DA PORTARIA SVS/MS Nº 344/1998)\n\n' +
-    'USO ORAL\n' +
-    '1. Donaren (cloridrato de trazodona) 50 mg comprimidos revestidos sulcados ------------------ 1 caixa (60 comprimidos)\n' +
-    '   Posologia: Administrar 1 (um) comprimido inteiro de 50 mg (ou 1/2 comprimido de 25 mg para gatos abaixo de 2,5 kg) por via oral, envolvido em petisco altamente palatável (churu) ou administrado com aplicador oral de comprimidos, aproximadamente 1 a 2 horas antes de colocar o felino na caixa de transporte para ida à consulta.\n' +
-    '   Orientações ao Tutor:\n' +
-    '   - Mantenha o gato em cômodo silencioso e com luz suave antes da colocação na caixa de transporte.\n' +
-    '   - O felino pode apresentar andar cambaleante leve e protusão visível da terceira pálpebra (pele esbranquiçada no canto interno dos olhos), o que representa um efeito farmacológico esperado e reversível.\n' +
-    '   - Nunca force a ingestão com água na boca de felinos para evitar aspiração traqueal acidental.\n' +
-    '   - Receita válida por 30 dias a partir da data de emissão em território nacional.\n\n' +
-    'MODELO 3 — SUSPENSÃO ORAL MAGISTRAL ISENTA DE XILITOL PARA CÃES MINIATURA (3 KG):\n' +
-    'RECEITA DE CONTROLE ESPECIAL — 2 VIAS (LISTA C1 DA PORTARIA SVS/MS Nº 344/1998)\n\n' +
-    'USO ORAL — FORMULAÇÃO MAGISTRAL VETERINÁRIA\n' +
-    '1. Cloridrato de trazodona suspensão oral 10 mg/mL (em veículo aquoso aromatizado sem açúcar, sem álcool e estritamente ISENTO DE XILITOL) ------------------ 1 frasco de 30 mL com seringa dosadora de 1 mL\n' +
-    '   Posologia: Administrar 1,5 mL (15 mg da droga, dose de 5 mg/kg) por via oral 90 a 120 minutos antes do evento de estresse (ou a cada 12 horas conforme prescrição médica).\n' +
-    '   ATENÇÃO FARMÁCIA MAGISTRAL: Formulação estritamente isenta de xilitol (adoçante tóxico letal para a espécie canina). Agitar bem antes de dosar.',
 
   attentionData: {
     attentionSubtitle:

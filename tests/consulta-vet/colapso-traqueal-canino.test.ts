@@ -6,7 +6,6 @@ import { diseasesSeed } from '../../modules/consulta-vet/data/seed/diseases.seed
 import { CONSULTA_VET_PUBLIC_DISEASE_SLUGS } from '../../modules/consulta-vet/constants/publicCatalog';
 import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../modules/consulta-vet/data/publicCatalogCardStubs';
 import { DISEASE_PLAIN_LANGUAGE } from '../../modules/consulta-vet/data/seed/diseasePlainLanguage';
-import { RECEITUARIO_PROTOCOL_MODELS } from '../../modules/consulta-vet/data/receituarioProtocolModels';
 
 const SLUG = 'colapso-traqueal-canino';
 
@@ -59,18 +58,6 @@ test('oferece protocolos acionáveis com dose, mecanismo, duração e reavaliaç
   assert.match(text, /mechanism/);
   assert.match(text, /reassess/);
   assert.ok(treatment.planoDeReavaliacao);
-});
-
-test('mantém a codeína coerente entre a ficha clínica e o receituário', () => {
-  const template = RECEITUARIO_PROTOCOL_MODELS.find((item) => item.id === 'seed-colapso-traqueia-cao');
-  assert.ok(template, 'o protocolo de receituário deve existir');
-
-  const text = JSON.stringify(template);
-  assert.match(text, /Codeína/);
-  assert.match(text, /"min":1,"max":2/);
-  assert.match(text, /a cada 6 a 12 horas/);
-  assert.match(text, /reavaliação em 48 a 72 horas/i);
-  assert.match(text, /Não associar a hidrocodona, butorfanol ou outro antitussígeno opioide/);
 });
 
 test('mostra as opções farmacológicas dentro da ordem de prioridade', () => {

@@ -26,7 +26,7 @@ export function OncologyReferencePage() {
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <Link to="/consulta-vet/referencias-rapidas" className="transition-colors hover:text-primary">
-          Referências clínicas
+          Mini-apps
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <span className="text-foreground">Oncologia</span>
@@ -43,7 +43,7 @@ export function OncologyReferencePage() {
         <div className="min-w-0 flex-1">
           <ConsultaVetPageHero
             title="Oncologia"
-            description="Área de superfície corporal, doses dinâmicas e tabelas de referência para cães e gatos."
+            description="Superfície corporal e esquemas de quimioterapia convencional e metronômica para cães e gatos."
             icon={Calculator}
             accent="violet"
             compact
@@ -64,7 +64,7 @@ export function OncologyReferencePage() {
             )}
           >
             <Calculator className="h-3.5 w-3.5" />
-            <span>Calculadora & Doses Dinâmicas</span>
+            <span>Calculadora e esquemas</span>
           </button>
           <button
             type="button"
@@ -77,13 +77,8 @@ export function OncologyReferencePage() {
             )}
           >
             <Table2 className="h-3.5 w-3.5" />
-            <span>Tabela BSAVA Oficial (Fig. 7.3 & 7.4)</span>
+            <span>Tabela de superfície corporal</span>
           </button>
-        </div>
-
-        <div className="px-3 text-xs text-muted-foreground">
-          Fonte canônica:{' '}
-          <span className="font-semibold text-foreground">BSAVA Manual of Small Animal Oncology</span>
         </div>
       </div>
 
@@ -120,7 +115,7 @@ export function OncologyReferencePage() {
         <div className="flex items-center gap-2">
           <BookOpen className="h-4 w-4 text-primary" />
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            Fontes Bibliográficas & Citações Oficiais
+            Referências bibliográficas
           </h2>
         </div>
 

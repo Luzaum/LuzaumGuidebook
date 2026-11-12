@@ -1,0 +1,229 @@
+- main [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - link "Referências clínicas" [ref=f1e5] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=f1e8]:
+      - img "Pulmões e alvéolos em azul e coral" [ref=f1e9]
+      - generic [ref=f1e10]:
+        - heading "SARA / SDRA" [level=1] [ref=f1e11]
+        - paragraph [ref=f1e12]: Critérios respiratórios ARDSVet em cães e gatos.
+    - generic [ref=f1e13]:
+      - generic [ref=f1e14]:
+        - generic [ref=f1e15]:
+          - paragraph [ref=f1e16]: 01 · PACIENTE E SUPORTE
+          - heading "Contexto da avaliação" [level=2] [ref=f1e17]
+        - button "Limpar" [ref=f1e18] [cursor=pointer]
+      - generic [ref=f1e22]:
+        - group "Espécie" [ref=f1e23]:
+          - generic [ref=f1e25]:
+            - button [ref=f1e26] [cursor=pointer]:
+              - strong [ref=f1e31]: Cão
+            - button [ref=f1e32] [cursor=pointer]:
+              - strong [ref=f1e36]: Gato
+        - generic [ref=f1e38]:
+          - generic [ref=f1e39]:
+            - text: Suporte respiratório
+            - 'button "Ajuda: Suporte, PEEP e alto fluxo" [ref=f1e40] [cursor=pointer]'
+          - combobox [ref=f1e44]:
+            - option "Não informado" [selected]
+            - option "Ventilação invasiva"
+            - option "Alto fluxo nasal"
+            - option "Oxigênio convencional"
+            - option "Ar ambiente"
+    - generic [ref=f1e45]:
+      - generic [ref=f1e46]:
+        - generic [ref=f1e47]:
+          - paragraph [ref=f1e48]: 02 · CRITÉRIOS CLÍNICOS
+          - heading "Verifique cada domínio" [level=2] [ref=f1e49]
+        - 'button "Ajuda: Complacência, V/Q e shunt" [ref=f1e50] [cursor=pointer]'
+      - paragraph [ref=f1e54]: Deixe pendente o que ainda não foi avaliado. Nenhum critério é preenchido automaticamente.
+      - generic [ref=f1e55]:
+        - 'group "1 Agressão aguda conhecida ou suspeita Ajuda: Agressão predisponente" [ref=f1e56]':
+          - generic [ref=f1e57]:
+            - generic [ref=f1e58]: "1"
+            - text: Agressão aguda conhecida ou suspeita
+            - 'button "Ajuda: Agressão predisponente" [ref=f1e59] [cursor=pointer]'
+          - paragraph [ref=f1e63]: Sepse, aspiração, pancreatite, trauma ou outra agressão compatível.
+          - generic [ref=f1e64]:
+            - button "Sim" [ref=f1e65] [cursor=pointer]
+            - button "Não" [ref=f1e66] [cursor=pointer]
+            - button "Pendente" [pressed] [ref=f1e67] [cursor=pointer]
+        - 'group "2 Início ou piora em até 7 dias Ajuda: Janela de sete dias" [ref=f1e68]':
+          - generic [ref=f1e69]:
+            - generic [ref=f1e70]: "2"
+            - text: Início ou piora em até 7 dias
+            - 'button "Ajuda: Janela de sete dias" [ref=f1e71] [cursor=pointer]'
+          - paragraph [ref=f1e75]: Desconforto respiratório novo ou agravado após a agressão.
+          - generic [ref=f1e76]:
+            - button "Sim" [ref=f1e77] [cursor=pointer]
+            - button "Não" [ref=f1e78] [cursor=pointer]
+            - button "Pendente" [pressed] [ref=f1e79] [cursor=pointer]
+        - 'group "3 Infiltrados pulmonares difusos Ajuda: Infiltrados difusos e POCUS" [ref=f1e80]':
+          - generic [ref=f1e81]:
+            - generic [ref=f1e82]: "3"
+            - text: Infiltrados pulmonares difusos
+            - 'button "Ajuda: Infiltrados difusos e POCUS" [ref=f1e83] [cursor=pointer]'
+          - paragraph [ref=f1e87]: Documentados em radiografia, tomografia ou ultrassom torácico.
+          - generic [ref=f1e88]:
+            - button "Sim" [ref=f1e89] [cursor=pointer]
+            - button "Não" [ref=f1e90] [cursor=pointer]
+            - button "Pendente" [pressed] [ref=f1e91] [cursor=pointer]
+        - 'group "4 Causa cardíaca esquerda descartada Ajuda: Origem cardíaca do edema" [ref=f1e92]':
+          - generic [ref=f1e93]:
+            - generic [ref=f1e94]: "4"
+            - text: Causa cardíaca esquerda descartada
+            - 'button "Ajuda: Origem cardíaca do edema" [ref=f1e95] [cursor=pointer]'
+          - paragraph [ref=f1e99]: Insuficiência cardíaca esquerda excluída como causa dos infiltrados.
+          - generic [ref=f1e100]:
+            - button "Sim" [ref=f1e101] [cursor=pointer]
+            - button "Não" [ref=f1e102] [cursor=pointer]
+            - button "Pendente" [pressed] [ref=f1e103] [cursor=pointer]
+        - 'group "5 Sobrecarga volêmica descartada Ajuda: Sobrecarga volêmica" [ref=f1e104]':
+          - generic [ref=f1e105]:
+            - generic [ref=f1e106]: "5"
+            - text: Sobrecarga volêmica descartada
+            - 'button "Ajuda: Sobrecarga volêmica" [ref=f1e107] [cursor=pointer]'
+          - paragraph [ref=f1e111]: Sobrecarga de volume excluída como causa dos infiltrados.
+          - generic [ref=f1e112]:
+            - button "Sim" [ref=f1e113] [cursor=pointer]
+            - button "Não" [ref=f1e114] [cursor=pointer]
+            - button "Pendente" [pressed] [ref=f1e115] [cursor=pointer]
+      - group [ref=f1e116]:
+        - 'generic "Achado de suporte opcional: lavado de vias aéreas" [ref=f1e117] [cursor=pointer]'
+    - generic [ref=f1e118]:
+      - generic [ref=f1e119]:
+        - generic [ref=f1e120]:
+          - paragraph [ref=f1e121]: 03 · OXIGENAÇÃO
+          - heading "Calcule a relação" [level=2] [ref=f1e122]
+        - 'button "Ajuda: P/F, S/F e FiO₂" [ref=f1e123] [cursor=pointer]'
+      - generic [ref=f1e127]:
+        - group "Método de avaliação" [ref=f1e128]:
+          - generic [ref=f1e130]:
+            - button "P/F · Gasometria arterial" [pressed] [ref=f1e131] [cursor=pointer]
+            - button "S/F · Oximetria" [ref=f1e132] [cursor=pointer]
+        - paragraph [ref=f1e133]: Prefira gasometria arterial quando disponível. Os valores precisam corresponder ao mesmo suporte respiratório.
+      - generic [ref=f1e134]:
+        - generic [ref=f1e135]:
+          - generic [ref=f1e136]: PaO₂ arterial (mmHg)
+          - textbox "PaO₂ arterial (mmHg)" [ref=f1e137]:
+            - /placeholder: "Ex.: 80"
+        - generic [ref=f1e138]:
+          - generic [ref=f1e139]: SpO₂ (%) · opcional para risco
+          - textbox "SpO₂ (%) · opcional para risco" [ref=f1e140]:
+            - /placeholder: "Ex.: 93"
+        - generic [ref=f1e141]:
+          - generic [ref=f1e142]: FiO₂ (%) · não L/min
+          - textbox "FiO₂ (%) · não L/min" [ref=f1e143]:
+            - /placeholder: "Ex.: 40"
+      - 'group "FiO₂ conhecida / medida de forma confiável? Ajuda: P/F, S/F e FiO₂" [ref=f1e144]':
+        - generic [ref=f1e145]:
+          - text: FiO₂ conhecida / medida de forma confiável?
+          - 'button "Ajuda: P/F, S/F e FiO₂" [ref=f1e146] [cursor=pointer]'
+        - generic [ref=f1e150]:
+          - button "Sim" [ref=f1e151] [cursor=pointer]
+          - button "Não" [ref=f1e152] [cursor=pointer]
+          - button "Pendente" [pressed] [ref=f1e153] [cursor=pointer]
+        - paragraph [ref=f1e154]: No alto fluxo acima do limiar, informe a concentração ajustada. Cateter convencional a 2 L/min não permite estimar uma FiO₂.
+      - generic [ref=f1e156]:
+        - generic [ref=f1e157]:
+          - text: Altitude do local
+          - 'button "Ajuda: Correção para altitude" [ref=f1e158] [cursor=pointer]'
+        - combobox [ref=f1e162]:
+          - option "Selecione" [selected]
+          - option "Até 1.000 m"
+          - option "Acima de 1.000 m"
+    - region "Critérios insuficientes ou não preenchidos" [ref=f1e163]:
+      - paragraph [ref=f1e164]: INTERPRETAÇÃO
+      - status [ref=f1e165]: Critérios insuficientes ou não preenchidos
+      - generic [ref=f1e166]:
+        - generic [ref=f1e167]:
+          - generic [ref=f1e168]: Relação PaO₂/FiO₂
+          - paragraph [ref=f1e169]: —
+          - paragraph
+        - generic [ref=f1e170]:
+          - heading "Conferência clínica" [level=3] [ref=f1e171]
+          - list [ref=f1e172]:
+            - listitem [ref=f1e173]:
+              - text: "Agressão aguda conhecida ou suspeita:"
+              - strong [ref=f1e174]: Pendente
+            - listitem [ref=f1e175]:
+              - text: "Início ou piora em até 7 dias:"
+              - strong [ref=f1e176]: Pendente
+            - listitem [ref=f1e177]:
+              - text: "Infiltrados pulmonares difusos:"
+              - strong [ref=f1e178]: Pendente
+            - listitem [ref=f1e179]:
+              - text: "Causa cardíaca esquerda descartada:"
+              - strong [ref=f1e180]: Pendente
+            - listitem [ref=f1e181]:
+              - text: "Sobrecarga volêmica descartada:"
+              - strong [ref=f1e182]: Pendente
+      - generic [ref=f1e183]:
+        - heading "O que impede a classificação completa" [level=3] [ref=f1e184]
+        - list [ref=f1e185]:
+          - listitem [ref=f1e186]: Selecione cão ou gato.
+          - listitem [ref=f1e187]: Informe o suporte respiratório.
+          - listitem [ref=f1e188]: "FiO₂ desconhecida: não é possível calcular uma relação válida. Fluxo convencional não determina FiO₂."
+          - listitem [ref=f1e189]: Informe FiO₂ entre 21 e 100%, na unidade indicada.
+          - listitem [ref=f1e190]: Informe a faixa de altitude.
+          - listitem [ref=f1e191]: Informe PaO₂ arterial válida em mmHg (0 < PaO₂ ≤ 760).
+      - paragraph [ref=f1e192]: A relação de oxigenação isolada não confirma SARA. Estes critérios não fornecem pontuação prognóstica, mortalidade ou indicação automática de tratamento.
+      - group [ref=f1e193]:
+        - generic "Resumo para prontuário" [ref=f1e194] [cursor=pointer]
+      - generic [ref=f1e195]:
+        - button "Copiar avaliação" [ref=f1e196] [cursor=pointer]
+        - button "Imprimir" [ref=f1e200] [cursor=pointer]
+        - status
+    - generic [ref=f1e205]:
+      - generic [ref=f1e206]:
+        - heading "Entenda os mecanismos" [level=2] [ref=f1e207]
+        - 'button "Ajuda: Complacência, V/Q e shunt" [ref=f1e208] [cursor=pointer]'
+      - generic [ref=f1e212]:
+        - button "1 Agressão aguda" [ref=f1e213] [cursor=pointer]:
+          - generic [ref=f1e214]: "1"
+          - text: Agressão aguda
+        - button "2 Inflamação alveolocapilar" [ref=f1e215] [cursor=pointer]:
+          - generic [ref=f1e216]: "2"
+          - text: Inflamação alveolocapilar
+        - button "3 Edema rico em proteínas" [ref=f1e217] [cursor=pointer]:
+          - generic [ref=f1e218]: "3"
+          - text: Edema rico em proteínas
+        - button "4 Perda de surfactante e aeração" [ref=f1e219] [cursor=pointer]:
+          - generic [ref=f1e220]: "4"
+          - text: Perda de surfactante e aeração
+        - button "5 Desequilíbrio V/Q e shunt" [ref=f1e221] [cursor=pointer]:
+          - generic [ref=f1e222]: "5"
+          - text: Desequilíbrio V/Q e shunt
+        - button "6 Hipoxemia" [ref=f1e223] [cursor=pointer]:
+          - generic [ref=f1e224]: "6"
+          - text: Hipoxemia
+      - paragraph [ref=f1e225]:
+        - text: "SARA e sepse: interprete a disfunção respiratória no contexto da infecção e das causas alternativas."
+        - 'button "Ajuda: Relação com sepse" [ref=f1e226] [cursor=pointer]'
+      - table "Limites de oxigenação · usar somente com as condições de medida atendidas" [ref=f1e231]:
+        - caption [ref=f1e232]: Limites de oxigenação · usar somente com as condições de medida atendidas
+        - rowgroup [ref=f1e233]:
+          - row [ref=f1e234]:
+            - columnheader "Faixa" [ref=f1e235]
+            - columnheader "P/F" [ref=f1e236]
+            - columnheader "S/F · SpO₂ ≤97%" [ref=f1e237]
+        - rowgroup [ref=f1e238]:
+          - row [ref=f1e239]:
+            - cell "Leve/moderada" [ref=f1e240]
+            - cell ">100 a 300" [ref=f1e241]
+            - cell ">150 a 315" [ref=f1e242]
+          - row [ref=f1e243]:
+            - cell "Grave" [ref=f1e244]
+            - cell "≤100" [ref=f1e245]
+            - cell "≤150" [ref=f1e246]
+          - row [ref=f1e247]:
+            - cell "Acima do limite" [ref=f1e248]
+            - cell ">300" [ref=f1e249]
+            - cell ">315" [ref=f1e250]
+      - heading "Referências" [level=3] [ref=f1e251]
+      - link "Balakrishnan et al., 2025 · Definições ARDSVet ↗" [ref=f1e252] [cursor=pointer]:
+        - /url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12491761/
+      - link "Goggs et al., 2026 · Consenso de sepse ↗" [ref=f1e253] [cursor=pointer]:
+        - /url: https://pmc.ncbi.nlm.nih.gov/articles/PMC13490290/
+      - link "Stastny et al., 2025 · Aplicações clínicas ↗" [ref=f1e254] [cursor=pointer]:
+        - /url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12491756/

@@ -820,8 +820,6 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'USO VETERINÁRIO — RECEITUÁRIO SIMPLES\n\nPaciente: [Nome do Animal] | Espécie: [Canina / Felina] | Peso: [XX] kg\nTutor: [Nome do Tutor]\n\n1. PREDNISOLONA [Apresentação Selecionada: 5 mg / 20 mg / Solução 3 mg/mL] ............ [X frascos ou caixas]\n   Administrar por via oral a dose de [X] mg (equivalente a [X] comprimido(s) ou [X] mL da solução) a cada [12 / 24] horas, durante [X] dias.\n\nORIENTAÇÕES ESSENCIAIS DE SEGURANÇA AO TUTOR:\n- Administrar preferencialmente junto a uma pequena porção de alimento para minimizar o desconforto gástrico.\n- Não associar outros anti-inflamatórios (como meloxicam, carprofeno, cetoprofeno) nem aspirina sem autorização expressa do médico-veterinário (risco grave de úlcera gástrica e hemorragia).\n- Garantir água limpa e fresca à vontade em recipientes de fácil acesso, pois é esperado aumento da sede e do volume urinário (poliúria e polidipsia).\n- NUNCA interromper este medicamento repentinamente se o tratamento tiver duração superior a 14 dias. A redução da dose (desmame) deve ser feita gradualmente sob supervisão profissional para evitar insuficiência hormonal adrenal.\n- Notificar imediatamente a clínica veterinária diante de vômitos escuros com aspecto de borra de café, fezes pretas e pastosas (melena), fraqueza acentuada ou febre.',
 
   references: [
     {

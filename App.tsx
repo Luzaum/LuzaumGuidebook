@@ -52,9 +52,6 @@ const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
   import('./modules/consulta-vet/pages/ClinicalQuickGuideDetailPage').then((m) => ({ default: m.ClinicalQuickGuideDetailPage }))
 )
 
-const ConsultaVetReceituarioPage = lazy(() =>
-  import('./modules/consulta-vet/pages/ReceituarioPage').then((m) => ({ default: m.ReceituarioPage }))
-)
 const ConsultaVetQuickReferencesPage = lazy(() =>
   import('./modules/consulta-vet/pages/QuickReferencesPage').then((m) => ({ default: m.QuickReferencesPage }))
 )
@@ -69,6 +66,12 @@ const ConsultaVetVhsReferencePage = lazy(() =>
 )
 const ConsultaVetUltrasoundReferencePage = lazy(() =>
   import('./modules/consulta-vet/pages/quickReferences/UltrasoundReferencePage').then((m) => ({ default: m.UltrasoundReferencePage }))
+)
+const ConsultaVetAppleScorePage = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/AppleScorePage').then((m) => ({ default: m.AppleScorePage }))
+)
+const ConsultaVetArdsVetPage = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/ArdsVetPage').then((m) => ({ default: m.ArdsVetPage }))
 )
 
 const Login = lazy(() => import('./src/routes/Login'))
@@ -162,7 +165,6 @@ const appRoutes = (
     <Route path="/neurologia/*" element={<ProtectedRoute><NeurologiaPage /></ProtectedRoute>} />
     <Route path="/consulta-vet" element={<ProtectedRoute><ConsultaVetShell /></ProtectedRoute>}>
       <Route index element={<ConsultaVetHomePage />} />
-      <Route path="receituario" element={<ConsultaVetReceituarioPage />} />
       <Route path="doencas" element={<ConsultaVetDiseasesPage />} />
       <Route path="doencas/:slug" element={<ConsultaVetDiseaseDetailPage />} />
       <Route path="medicamentos" element={<ConsultaVetMedicationsPage />} />
@@ -192,6 +194,8 @@ const appRoutes = (
         <Route path="oncologia" element={<ConsultaVetOncologyReferencePage />} />
         <Route path="vhs" element={<ConsultaVetVhsReferencePage />} />
         <Route path="ultrassom" element={<ConsultaVetUltrasoundReferencePage />} />
+        <Route path="apple" element={<ConsultaVetAppleScorePage />} />
+        <Route path="sara" element={<ConsultaVetArdsVetPage />} />
       </Route>
       <Route path="referências-rápidas" element={<Navigate to="/consulta-vet/referencias-rapidas" replace />} />
       <Route path="*" element={<ConsultaVetNotFound />} />

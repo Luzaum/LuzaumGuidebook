@@ -49,7 +49,7 @@ Ideal para **edições rápidas de arquivos** em qualquer computador sem esperar
 | **Antibioticoterapia Vet** | `/antibioticoterapia` | `modules/antibioticoterapia-vet` | Escolha antimicrobiana por síndrome, espectro, dose, cultura e uso racional |
 | **CRI VET** | `/crivet` | `modules/crivet` | Cálculo de infusões contínuas (CRI) com concentração, taxa e diluição |
 | **Neurologia (NeuroVet)** | `/neurologia` | `modules/neurologia` | Exame neurológico passo a passo, neurolocalização e escala MGCS |
-| **ConsultaVET & Receituário** | `/consulta-vet` | `modules/consulta-vet` | Doenças, medicamentos, apresentações comerciais, consensos, guias rápidos e receituário |
+| **ConsultaVET** | `/consulta-vet` | `modules/consulta-vet` | Doenças, medicamentos, apresentações comerciais, consensos e guias rápidos |
 
 ---
 
@@ -79,7 +79,7 @@ LuzaumGuidebook/
 ├── scripts/                # Scripts de validação clínica, lint e automação
 ├── src/                    # Autenticação, cliente Supabase, rotas de conta e clínicas
 ├── supabase/               # Migrations e configurações do Supabase
-├── tests/                  # Testes automatizados (Receituário, Nutrição, Segurança)
+├── tests/                  # Testes automatizados (ConsultaVET, Nutrição, Segurança)
 ├── App.tsx                 # Roteamento principal da SPA
 └── vite.config.ts          # Configuração do Vite (compatível com local e nuvem)
 ```

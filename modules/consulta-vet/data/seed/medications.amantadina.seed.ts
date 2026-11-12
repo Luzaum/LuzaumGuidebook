@@ -675,34 +675,6 @@ export const amantadinaMedicationRecord: MedicationRecord = {
     },
   },
 
-  samplePrescriptionText: `RECEITA DE CONTROLE ESPECIAL — 2 VIAS
-(Portaria SVS/MS nº 344/1998 — Lista C1 | RDC ANVISA nº 1.036/2026)
-
-Paciente: Thor | Espécie: Canina | Raça: Labrador Retriever | Idade: 9 anos | Peso: 20 kg
-Tutor: Carlos Eduardo da Silva | CPF: 123.456.789-00
-Endereço: Rua das Palmeiras, 150 — São Paulo/SP
-
-USO VETERINÁRIO EXTRA-LABEL AMBULATORIAL (VIA ORAL)
-
-1. Mantidan® 100 mg (Cloridrato de Amantadina) --------------------------- 1 caixa com 30 comprimidos
-   Princípio ativo: Cloridrato de amantadina 100 mg por comprimido
-   Apresentação: Comprimidos de uso humano (Momenta Farmacêutica / Eurofarma)
-   Posologia: Administrar um (1) comprimido de 100 mg por via oral a cada 24 horas (q24h), no mesmo horário, preferencialmente fornecido logo após pequena refeição, durante 30 dias consecutivos.
-
-ORIENTAÇÕES ESPECÍFICAS AO RESPONSÁVEL:
-1. Finalidade: Este medicamento atua no sistema nervoso central para reduzir a hipersensibilidade e a amplificação da dor crônica (sensibilização central), funcionando como adjuvante ao tratamento da osteoartrite.
-2. Tempo para início de efeito: A amantadina NÃO é um analgésico de efeito imediato; sua ação benéfica decorre da remodelação dos circuitos de dor e manifesta-se tipicamente após 7 a 21 dias de tratamento ininterrupto. Não interrompa o uso nos primeiros dias sob a impressão de ausência de resposta.
-3. Modo de administração: Administrar juntamente com alimento úmido para prevenir náuseas ou fezes amolecidas. Nunca fracionar comprimidos sem vinco adequado.
-4. Sinais de atenção: Comunicar imediatamente ao médico-veterinário caso o animal apresente agitação motora extrema, inquietação incomum, tremores musculares generalizados, dificuldade de caminhar (ataxia) ou vômitos persistentes.
-5. Manter fora do alcance de crianças e animais domésticos. Armazenar em local seco, fresco e protegido da luz solar direta.
-
-Retorno e Reavaliação: Retorno ambulatorial agendado para 21 a 30 dias após o início para avaliação funcional com questionário CBPI e checagem de parâmetros renais séricos.
-
-São Paulo, 28 de setembro de 2026.
-
-___________________________________________________________
-Dr. Roberto Menezes de Oliveira — Médico-Veterinário
-CRMV-SP nº 24.580 | Telefone: (11) 98765-4321`,
 
   clinicalNotesRichText: `
 <h3>1. Fisiologia Aprofundada da Sensibilização Central e do Fenômeno de Wind-Up</h3>

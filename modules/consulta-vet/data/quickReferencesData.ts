@@ -1,9 +1,9 @@
 /**
- * Dados e constantes oficiais para a seção de Referências Rápidas - Oncologia
+ * Dados de referência para a seção de Oncologia do ConsultaVET.
  * Fontes:
  * - BSAVA Manual of Canine and Feline Oncology (3rd Edition), Capítulo 7: Principles of chemotherapy.
  * - BSAVA Small Animal Formulary, Part A: Canine and Feline (10th Edition), Apêndice I e II.
- * - Withrow and MacEwen's Small Animal Clinical Oncology (6th Edition), Capítulo 12.
+ * - Withrow and MacEwen's Small Animal Clinical Oncology (6th Edition), Capítulos 12, 15 e 33.
  */
 
 export type Species = 'canine' | 'feline';
@@ -13,32 +13,45 @@ export interface BsaTableRow {
   bsaM2: number;
 }
 
+export type OncologyRegimen = 'conventional' | 'metronomic';
+
+export interface OncologyDose {
+  rates: readonly [number, number?];
+  basis: 'mg/m²' | 'mg/kg' | 'UI/m²' | 'UI/kg' | 'mg';
+  schedule: string;
+  route?: string;
+  species?: Species;
+  dogWeight?: 'under15' | 'atLeast15';
+}
+
 export interface OncologyDrug {
   id: string;
   name: string;
   class: string;
+  regimen: OncologyRegimen;
   route: string;
-  standardDoseUnit: 'mg/m²' | 'mg/kg' | 'UI/m²' | 'UI/kg';
-  standardDoseDisplay: string;
-  frequency: string;
-  applicableSpecies: Species[];
-  /** Regra especial de corte para animais pequenos */
-  smallPatientRule?: {
-    thresholdKg: number;
-    description: string;
-    adjustedDoseDisplay: string;
-  };
-  calculateDose: (params: { weightKg: number; bsaM2: number; species: Species }) => {
-    calculatedDose: number;
-    unit: string;
-    doseFormulaUsed: string;
-    isSmallPatientAdjusted: boolean;
-    note?: string;
-  };
+  doses: OncologyDose[];
+  source: string;
+  sourceUrl?: string;
+  indication: string;
   keyNotes: string[];
   vesicant: boolean;
-  nadirDays: string;
+  nadirDays?: string;
   precautions: string[];
+}
+
+export function calculateOncologyDose(dose: OncologyDose, weightKg: number, bsaM2: number): number[] {
+  if (!Number.isFinite(weightKg) || weightKg <= 0) return [];
+  const multiplier = dose.basis.endsWith('/m²') ? bsaM2 : dose.basis.endsWith('/kg') ? weightKg : 1;
+  return dose.rates.flatMap((rate) => rate === undefined ? [] : [rate * multiplier]);
+}
+
+export function getOncologyDoses(drug: OncologyDrug, species: Species, weightKg: number): OncologyDose[] {
+  const dogWeight = weightKg < 15 ? 'under15' : 'atLeast15';
+  return drug.doses.filter((dose) =>
+    (!dose.species || dose.species === species) &&
+    (!dose.dogWeight || weightKg <= 0 || dose.dogWeight === dogWeight)
+  );
 }
 
 /**
@@ -173,45 +186,25 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Doxorrubicina (Adriamicina)',
     class: 'Antraciclina / Antibiótico Antitumoral',
     route: 'IV estrito (infusão lenta em 20–30 min em NaCl 0,9%)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '30 mg/m² IV a cada 3 semanas (cães >15 kg)',
-    frequency: 'A cada 3 semanas (ciclos de 21 dias)',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 15,
-      description:
-        'Cães <15 kg e gatos têm toxicidade severa quando dosados por m². O BSAVA preconiza dose ponderal de 1 mg/kg IV.',
-      adjustedDoseDisplay: '1 mg/kg IV (para cães <15 kg e felinos)',
-    },
-    calculateDose: ({ weightKg, bsaM2, species }) => {
-      if (species === 'feline' || weightKg < 15) {
-        return {
-          calculatedDose: Number((weightKg * 1.0).toFixed(2)),
-          unit: 'mg',
-          doseFormulaUsed: '1,0 mg/kg (regra BSAVA de proteção para cães <15 kg e felinos)',
-          isSmallPatientAdjusted: true,
-          note: 'Dose calculada por peso corporal (mg/kg) para evitar toxicidade e mielossupressão grave.',
-        };
-      }
-      return {
-        calculatedDose: Number((bsaM2 * 30).toFixed(2)),
-        unit: 'mg',
-        doseFormulaUsed: '30 mg/m² (dose padrão BSAVA para cães ≥15 kg)',
-        isSmallPatientAdjusted: false,
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [30], basis: 'mg/m²', schedule: 'A cada 21 dias · cães ≥15 kg', species: 'canine', dogWeight: 'atLeast15' },
+      { rates: [1], basis: 'mg/kg', schedule: 'A cada 21 dias · cães <15 kg', species: 'canine', dogWeight: 'under15' },
+      { rates: [1], basis: 'mg/kg', schedule: 'A cada 21 dias', species: 'feline' },
+    ],
+    source: 'Withrow, 6ª ed., cap. 12, p. 193; BSAVA Oncologia, 3ª ed., pp. 75–76.',
+    indication: 'Referência de ciclo convencional. A calculadora usa 15 kg como corte em cães, com base no Withrow. O manual BSAVA descreve 10 kg.',
     keyNotes: [
       'Vesicante extremo: risco de necrose tecidual grave por extravasamento.',
       'Cardiotoxicidade cumulativa em cães (dose cumulativa limite ~180–240 mg/m²). Realizar ecocardiograma prévio se cardiopata.',
       'Nefrotoxicidade em gatos (monitorar creatinina e urina rotineiramente).',
-      'Pré-medicação com maropitant (1 mg/kg SC) recomendada para diminuir êmese aguda.',
       'Dexrazoxano disponível como cardioprotetor (proporção 10:1 em relação à doxorrubicina, 30 min antes).',
     ],
     vesicant: true,
     nadirDays: '7 a 10 dias (neutropenia)',
     precautions: [
       'Somente puncionar cateter com técnica de punção única ("first-stick"); nunca usar veia já puncionada no mesmo dia.',
-      'Diluir exclusivamente em solução fisiológica 0,9% (evitar solução de Ringer Lactato / Hartmann).',
+      'A referência descreve diluição em solução fisiológica 0,9%.',
     ],
   },
   {
@@ -219,35 +212,10 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Vincristina',
     class: 'Alcalóide da Vinca / Inibidor Mitótico',
     route: 'IV estrito (bolus lento ou infusão curta)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '0,5 a 0,7 mg/m² IV a cada 1 a 2 semanas',
-    frequency: 'Semanal ou a cada 2 semanas (conforme protocolo CHOP/COP)',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description:
-        'Em animais <10 kg ou raças sensíveis ao gene MDR1/ABCB1 (Collie, Pastor Australiano), iniciar na faixa inferior (0,5 mg/m²) ou limitar ao teto máximo de 1,0 mg total.',
-      adjustedDoseDisplay: '0,5 mg/m² ou dose teto de 1 mg',
-    },
-    calculateDose: ({ bsaM2, weightKg }) => {
-      const doseStd = bsaM2 * 0.7;
-      const capped = Math.min(doseStd, 1.0);
-      const isCapped = doseStd > 1.0;
-      const isSmall = weightKg < 10;
-      return {
-        calculatedDose: Number((isSmall ? bsaM2 * 0.5 : capped).toFixed(3)),
-        unit: 'mg',
-        doseFormulaUsed: isSmall
-          ? '0,50 mg/m² (faixa conservadora para paciente <10 kg)'
-          : isCapped
-          ? 'Teto máximo clínico de 1,0 mg (dose por m² calculada daria ' + doseStd.toFixed(2) + ' mg)'
-          : '0,70 mg/m² (dose padrão BSAVA)',
-        isSmallPatientAdjusted: isSmall || isCapped,
-        note: isCapped
-          ? 'A dose foi limitada ao teto de segurança usual de 1,0 mg para prevenir neurotoxicidade periférica.'
-          : undefined,
-      };
-    },
+    regimen: 'conventional',
+    doses: [{ rates: [0.5, 0.75], basis: 'mg/m²', schedule: 'Semanal ou conforme o protocolo combinado' }],
+    source: 'BSAVA Oncologia, 3ª ed., p. 74.',
+    indication: 'Linfoma (CHOP/COP) e outros protocolos específicos. Avaliar ajuste individual em cães com variante ABCB1.',
     keyNotes: [
       'Vesicante moderado a severo: necrose e ulceração se extravasar.',
       'Neurotoxicidade periférica (fraqueza de membros pélvicos, íleo paralítico e constipação).',
@@ -266,34 +234,17 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Ciclofosfamida',
     class: 'Agente Alquilante (Oxazafosforina)',
     route: 'Oral (comprimidos) ou IV',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '200 a 250 mg/m² PO/IV a cada 3 semanas (ou 50 mg/m² em dias alternados)',
-    frequency: 'A cada 3 semanas (bolus no CHOP) ou metronômica / contínua',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description:
-        'Comprimidos não podem ser partidos ou esmagados. Ajustar para cápsulas manipuladas exatas ou redistribuir a dose total em 3–4 dias.',
-      adjustedDoseDisplay: 'Manipulação exata ou dose fracionada em 3 a 4 dias consecutivos',
-    },
-    calculateDose: ({ bsaM2, weightKg }) => {
-      const dose = bsaM2 * 250;
-      return {
-        calculatedDose: Number(dose.toFixed(1)),
-        unit: 'mg',
-        doseFormulaUsed: '250 mg/m² dose de pulso q3w (ou ~50 mg/m² dias alternados)',
-        isSmallPatientAdjusted: weightKg < 10,
-        note:
-          weightKg < 10
-            ? 'Atenção: Comprimidos comerciais NÃO devem ser partidos. Utilize farmácia de manipulação citotóxica para a dose exata.'
-            : 'Se comprimidos comerciais forem utilizados, ajustar ao múltiplo mais próximo sem fracionar o comprimido.',
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [200, 250], basis: 'mg/m²', schedule: 'Dose total por ciclo a cada 21 dias' },
+      { rates: [50], basis: 'mg/m²', route: 'VO', schedule: 'A cada 48 h ou 3–4 dias consecutivos na semana, conforme o protocolo linfoide' },
+      { rates: [250, 300], basis: 'mg/m²', route: 'VO', schedule: 'COP felino · dose total a cada 21 dias, no dia após a vincristina', species: 'feline' },
+    ],
+    source: 'BSAVA Formulary, 10ª ed., pp. 102–103; BSAVA Oncologia, 3ª ed., p. 73; Withrow, 6ª ed., tabela 33.12.',
+    indication: 'Neoplasias linfoides. O fracionamento da dose oral total e os dias de administração dependem do protocolo.',
     keyNotes: [
       'Metabolito acroleína é irritante vesical e pode causar Cistite Hemorrágica Estéril.',
-      'Protocolo protetor BSAVA: Administrar furosemida (1 mg/kg PO q12h por 48h) e garantir água à vontade.',
-      'Urinálise com fita reagente antes de cada dose: suspender se hematúria macro/microscópica.',
-      'Substituição recomendada em caso de cistite: Clorambucila (5 mg/m² PO alternada ou 20 mg/m² q2w).',
+      'Monitorar hemograma e sinais urinários. Diante de hematúria ou disúria, interromper e investigar cistite; a alternativa depende do protocolo.',
     ],
     vesicant: false,
     nadirDays: '7 a 10 dias (recuperação até o 21º dia)',
@@ -307,32 +258,13 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Carboplatina',
     class: 'Composto de Coordenação de Platina',
     route: 'IV (infusão lenta de 5 a 10 minutos)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: 'Cães: 300 mg/m² IV q3w | Gatos: 200–250 mg/m² IV q3w',
-    frequency: 'A cada 3 semanas (21 dias)',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description:
-        'Em gatos e cães pequenos, a depuração depende estritamente da TFG (taxa de filtração glomerular). Em azotemia, reduzir a dose em 20–30%.',
-      adjustedDoseDisplay: 'Ajuste proporcional à função renal (AUC / GFR)',
-    },
-    calculateDose: ({ bsaM2, species }) => {
-      const doseRate = species === 'feline' ? 200 : 300;
-      return {
-        calculatedDose: Number((bsaM2 * doseRate).toFixed(1)),
-        unit: 'mg',
-        doseFormulaUsed:
-          species === 'feline'
-            ? '200 mg/m² (faixa de segurança felina BSAVA: 200–250 mg/m²)'
-            : '300 mg/m² (dose padrão canina BSAVA)',
-        isSmallPatientAdjusted: false,
-        note:
-          species === 'feline'
-            ? 'Diferente da cisplatina (que é fatal em gatos), a carboplatina é segura para uso felino.'
-            : 'Diurese salina forçada não é obrigatória para carboplatina, ao contrário da cisplatina.',
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [300], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'canine' },
+      { rates: [200, 250], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'feline' },
+    ],
+    source: 'BSAVA Oncologia, 3ª ed., pp. 62 e 77.',
+    indication: 'Exemplo de uso: osteossarcoma apendicular canino em adjuvância. Avaliar função renal antes de definir a dose.',
     keyNotes: [
       'Segura em felinos (ao contrário da cisplatina que causa edema pulmonar letal em gatos).',
       'Excreção predominantemente renal; monitorar perfil renal (ureia, creatinina, densidade).',
@@ -342,8 +274,8 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     vesicant: false,
     nadirDays: 'Cão: 11 a 14 dias | Gato: 14 a 21 dias (nadir mais tardio)',
     precautions: [
-      'Fazer hemograma aos 14 dias para identificar o pico de mielossupressão (nadir).',
-      'Suspender ou adiar se contagem de neutrófilos < 2.000/μL ou plaquetas < 100.000/μL.',
+      'Programar o hemograma de nadir conforme a espécie e o protocolo.',
+      'Conferir hemograma antes do próximo ciclo e aplicar os critérios do protocolo para adiar ou ajustar a dose.',
     ],
   },
   {
@@ -351,46 +283,24 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Lomustina (CCNU)',
     class: 'Nitrosoureia (Agente Alquilante Lipofílico)',
     route: 'Oral (cápsulas)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: 'Cães: 60 a 90 mg/m² PO q3–4w | Gatos: 50 a 60 mg/m² PO q3–4w',
-    frequency: 'A cada 3 a 4 semanas',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description:
-        'Cães <10 kg podem requerer dosagem ponderal (1,5 a 2,0 mg/kg) para evitar toxicidade acumulada severa.',
-      adjustedDoseDisplay: '1,5 a 2,0 mg/kg PO',
-    },
-    calculateDose: ({ bsaM2, weightKg, species }) => {
-      const isSmall = species === 'canine' && weightKg < 10;
-      if (isSmall) {
-        return {
-          calculatedDose: Number((weightKg * 1.8).toFixed(1)),
-          unit: 'mg',
-          doseFormulaUsed: '1,8 mg/kg PO (faixa BSAVA para cães pequenos 1,5–2,0 mg/kg)',
-          isSmallPatientAdjusted: true,
-          note: 'Ajuste ponderal para evitar superdosagem por disponibilidade fixa de cápsulas comerciais.',
-        };
-      }
-      const rate = species === 'feline' ? 55 : 70;
-      return {
-        calculatedDose: Number((bsaM2 * rate).toFixed(1)),
-        unit: 'mg',
-        doseFormulaUsed:
-          species === 'feline' ? '55 mg/m² PO (faixa felina 50–60 mg/m²)' : '70 mg/m² PO (faixa canina 60–90 mg/m²)',
-        isSmallPatientAdjusted: false,
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [60, 90], basis: 'mg/m²', schedule: 'A cada 3 semanas', species: 'canine' },
+      { rates: [50, 60], basis: 'mg/m²', schedule: 'A cada 5–6 semanas', species: 'feline' },
+    ],
+    source: 'BSAVA Oncologia, 3ª ed., pp. 73–74; Withrow, 6ª ed., cap. 15, p. 267.',
+    indication: 'Exemplos de uso: linfoma cutâneo, mastocitoma e tumores do SNC, conforme protocolo.',
     keyNotes: [
       'Atravessa a barreira hematoencefálica (excelente para neoplasias do SNC e linfoma cutâneo).',
-      'Hepatotoxicidade crônica cumulativa em cães (indispensável associar SAMe / Silimarina).',
+      'Risco de hepatotoxicidade cumulativa em cães; acompanhar enzimas hepáticas durante o tratamento.',
       'Mielossupressão severa, tardia e cumulativa (trombocitopenia persistente).',
       'Fibrose pulmonar irreversível descrita em gatos.',
+      'O Withrow relata estudos metronômicos em cães com toxicidade relevante e benefício clínico incerto. Os cálculos deste cartão são para ciclos convencionais.',
     ],
     vesicant: false,
     nadirDays: '7 a 14 dias (neutrófilos) e até 21 a 28 dias (plaquetas)',
     precautions: [
-      'NUNCA abrir as cápsulas de lomustina.',
+      'Manter as cápsulas de lomustina intactas durante o manuseio.',
       'Avaliar ALT/FA antes de cada sessão; suspender se elevação contínua.',
     ],
   },
@@ -399,29 +309,16 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Crisantaspase (L-Asparaginase)',
     class: 'Enzima Específica de Fase G1',
     route: 'IM ou SC (evitar IV pelo risco de anafilaxia)',
-    standardDoseUnit: 'UI/m²',
-    standardDoseDisplay: '10.000 UI/m² IM/SC ou 400 UI/kg IM/SC',
-    frequency: 'Indução ou resgate de linfoma (conforme protocolo)',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description: 'Em animais pequenos, a dose baseada em kg (400 UI/kg) é segura e de fácil conversão.',
-      adjustedDoseDisplay: '400 UI/kg IM ou SC',
-    },
-    calculateDose: ({ bsaM2, weightKg }) => {
-      const doseByBsa = bsaM2 * 10000;
-      const doseByWeight = weightKg * 400;
-      return {
-        calculatedDose: Math.round(doseByBsa),
-        unit: 'UI',
-        doseFormulaUsed: '10.000 UI/m² IM/SC (equivalente alternativo: 400 UI/kg = ' + Math.round(doseByWeight) + ' UI)',
-        isSmallPatientAdjusted: weightKg < 10,
-        note: 'Preferir via intramuscular profunda; causa menor incidência de reações que vias intraperitoneal ou IV.',
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [400], basis: 'UI/kg', schedule: 'Indução ou resgate, conforme protocolo' },
+      { rates: [10000], basis: 'UI/m²', schedule: 'Esquema alternativo de indução ou resgate' },
+    ],
+    source: 'Withrow, 6ª ed., cap. 12, p. 197; BSAVA Oncologia, 3ª ed., p. 78.',
+    indication: 'Doenças linfoproliferativas. As duas bases de cálculo são opções de protocolo e geram valores distintos.',
     keyNotes: [
       'Inibe a síntese protéica privando os blastos de asparagina exógena.',
-      'Poupadora de medula óssea (quase sem mielossupressão; ideal para pacientes neutropênicos).',
+      'Mielossupressão é incomum. Avaliar o hemograma e a condição clínica antes da administração.',
       'Alto potencial de imunogenicidade e reações de anafilaxia por ser proteína bacteriana.',
       'Pancreatite aguda e distúrbios de coagulação raros.',
     ],
@@ -437,32 +334,17 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     name: 'Vinblastina',
     class: 'Alcalóide da Vinca',
     route: 'IV estrito (injeção lenta em via venosa segura)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '2,0 mg/m² IV a cada 1 a 2 semanas',
-    frequency: 'A cada 1 a 2 semanas (protocolo padrão para Mastocitoma)',
-    applicableSpecies: ['canine', 'feline'],
-    smallPatientRule: {
-      thresholdKg: 10,
-      description: 'Em cães <10 kg, monitorar nadir estrito antes da dose seguinte; pode-se iniciar com 1,5–1,8 mg/m².',
-      adjustedDoseDisplay: '1,5 a 2,0 mg/m²',
-    },
-    calculateDose: ({ bsaM2, weightKg }) => {
-      const isSmall = weightKg < 10;
-      const dose = bsaM2 * (isSmall ? 1.75 : 2.0);
-      return {
-        calculatedDose: Number(dose.toFixed(2)),
-        unit: 'mg',
-        doseFormulaUsed: isSmall ? '1,75 mg/m² IV (faixa conservadora para <10 kg)' : '2,0 mg/m² IV (dose padrão BSAVA)',
-        isSmallPatientAdjusted: isSmall,
-      };
-    },
+    regimen: 'conventional',
+    doses: [{ rates: [2], basis: 'mg/m²', schedule: 'Semanal ou conforme o protocolo' }],
+    source: 'BSAVA Oncologia, 3ª ed., p. 74.',
+    indication: 'Mastocitoma e alguns protocolos de linfoma.',
     keyNotes: [
       'Vesicante grave: mesmo risco de necrose que a vincristina e doxorrubicina.',
       'Fármaco de primeira linha para Mastocitoma de alto grau ou não ressecável (associado a prednisolona).',
       'Mais mielossupressora que a vincristina, porém menos neurotóxica.',
     ],
     vesicant: true,
-    nadirDays: '4 a 7 dias',
+    nadirDays: '4 a 9 dias',
     precautions: [
       'Técnica first-stick mandatória para infusão venosa.',
       'Hemograma obrigatório pré-dose para checagem de neutrófilos segmentados.',
@@ -470,54 +352,42 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
   },
   {
     id: 'clorambucila',
-    name: 'Clorambucila (Leukeran)',
+    name: 'Clorambucila (Clorambucil, Leukeran)',
     class: 'Agente Alquilante de Ação Lenta',
     route: 'Oral (comprimidos)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '3 a 5 mg/m² PO em dias alternados (ou 20 mg/m² q2w)',
-    frequency: 'Dias alternados contínuos ou pulsado a cada 2 semanas',
-    applicableSpecies: ['canine', 'feline'],
-    calculateDose: ({ bsaM2 }) => {
-      const doseDaily = bsaM2 * 4.0;
-      const dosePulse = bsaM2 * 20.0;
-      return {
-        calculatedDose: Number(doseDaily.toFixed(2)),
-        unit: 'mg (dias alternados)',
-        doseFormulaUsed: '4,0 mg/m² PO dias alternados (ou ' + Number(dosePulse.toFixed(1)) + ' mg q2w pulsado)',
-        isSmallPatientAdjusted: false,
-        note: 'Comprimido comercial disponível em 2 mg; não partir. Mandatório manipular doses intermediárias.',
-      };
-    },
+    regimen: 'conventional',
+    doses: [
+      { rates: [15, 20], basis: 'mg/m²', schedule: 'A cada 14 dias · com prednisolona', species: 'canine' },
+      { rates: [2, 6], basis: 'mg/m²', schedule: 'A cada 24–48 h · alternativa para linfoma canino', species: 'canine' },
+      { rates: [20], basis: 'mg/m²', schedule: 'A cada 14 dias · com prednisolona', species: 'feline' },
+      { rates: [2], basis: 'mg', schedule: 'A cada 48 h · alternativa para linfoma alimentar felino de baixo grau', species: 'feline' },
+    ],
+    source: 'BSAVA Formulary, 10ª ed., pp. 75–76; Withrow, 6ª ed., cap. 33, p. 721.',
+    indication: 'Linfoma. Em gatos, os esquemas exibidos referem-se ao linfoma alimentar de baixo grau.',
     keyNotes: [
       'Excelente tolerância gastrointestinal.',
-      'Substituto ideal da ciclofosfamida quando o paciente desenvolve cistite hemorrágica estéril.',
-      'Indicação primordial: Linfoma felino de pequenas células (alimentar / baixo grau) associado a prednisolona.',
+      'Pode substituir a ciclofosfamida em protocolos específicos, com dose própria para a indicação.',
+      'Monitorar citopenias tardias durante o uso prolongado.',
     ],
     vesicant: false,
-    nadirDays: '7 a 14 dias (cumulativo com uso crônico)',
+    nadirDays: 'Mielossupressão tardia; monitorar durante o tratamento',
     precautions: [
       'Comprimidos não podem ser divididos. Manter refrigerado (2°C a 8°C).',
-      'Acompanhar plaquetometria a cada 3–4 semanas.',
+      'Acompanhar hemograma e plaquetas de forma seriada, conforme o protocolo.',
     ],
   },
   {
     id: 'mitoxantrona',
     name: 'Mitoxantrona',
     class: 'Antracenodiona Sintética',
-    route: 'IV lenta (20 a 30 minutos diluído em NaCl 0,9%)',
-    standardDoseUnit: 'mg/m²',
-    standardDoseDisplay: '5 a 6 mg/m² IV a cada 3 semanas (gatos: 6–6,5 mg/m²)',
-    frequency: 'A cada 3 semanas (21 dias)',
-    applicableSpecies: ['canine', 'feline'],
-    calculateDose: ({ bsaM2, species }) => {
-      const rate = species === 'feline' ? 6.0 : 5.5;
-      return {
-        calculatedDose: Number((bsaM2 * rate).toFixed(2)),
-        unit: 'mg',
-        doseFormulaUsed: rate + ' mg/m² IV (faixa BSAVA)',
-        isSmallPatientAdjusted: false,
-      };
-    },
+    route: 'IV em 15–20 min, diluída em NaCl 0,9%',
+    regimen: 'conventional',
+    doses: [
+      { rates: [5.5], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'canine' },
+      { rates: [6.5], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'feline' },
+    ],
+    source: 'BSAVA Oncologia, 3ª ed., p. 76.',
+    indication: 'Exemplos de uso: resgate de linfoma e carcinoma urotelial, conforme protocolo.',
     keyNotes: [
       'Coloração azulada marcante; pode colorir temporariamente a esclera e urina do paciente de azul-esverdeado.',
       'Alternativa à doxorrubicina com risco substancialmente menor de cardiotoxicidade.',
@@ -526,18 +396,75 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     vesicant: false,
     nadirDays: '7 a 10 dias',
     precautions: [
-      'Monitorar hemograma completo no nadir aos 10 dias.',
+      'Monitorar hemograma na janela de nadir e prevenir extravasamento devido ao risco de irritação tecidual.',
       'Informar tutores sobre a coloração verde-azulada da urina por 24-48 horas.',
     ],
   },
+  {
+    id: 'ciclofosfamida-metronomica-canina',
+    name: 'Ciclofosfamida',
+    class: 'Agente alquilante',
+    regimen: 'metronomic',
+    route: 'VO',
+    doses: [{ rates: [10, 15], basis: 'mg/m²', schedule: 'A cada 24 h, em uso contínuo', species: 'canine' }],
+    source: 'BSAVA Formulary, 10ª ed., pp. 102–103; Withrow, 6ª ed., cap. 15.',
+    indication: 'Protocolos selecionados para tumores sólidos em cães. A dose e a associação variam com o tumor e o protocolo.',
+    keyNotes: [
+      'Em sarcoma de tecidos moles com ressecção incompleta, Elmslie et al. estudaram 10 mg/m² com piroxicam. O estudo também incluiu administração em dias alternados, com eficácia comparativa incerta.',
+      'Acompanhar hemograma, urinálise e sinais urinários pela possibilidade de toxicidade cumulativa e cistite hemorrágica estéril.',
+    ],
+    vesicant: false,
+    precautions: ['Diante de hematúria ou disúria, interromper e investigar. Manter a formulação oral intacta durante o manuseio.'],
+  },
+  {
+    id: 'clorambucila-metronomica-canina',
+    name: 'Clorambucila (Clorambucil)',
+    class: 'Agente alquilante',
+    regimen: 'metronomic',
+    route: 'VO',
+    doses: [{ rates: [4], basis: 'mg/m²', schedule: 'A cada 24 h, em uso contínuo', species: 'canine' }],
+    source: 'BSAVA Formulary, 10ª ed., pp. 75–76; Withrow, 6ª ed., cap. 15, p. 267; Therapeutic Strategies in Veterinary Oncology, cap. 3.',
+    indication: 'Protocolo estudado em cães com tumores espontâneos, incluindo carcinoma urotelial de bexiga.',
+    keyNotes: ['Acompanhar hemograma e plaquetas em série pelo risco de mielossupressão cumulativa.'],
+    vesicant: false,
+    precautions: ['Manusear comprimidos intactos e usar formulação apropriada à dose prescrita.'],
+  },
+  {
+    id: 'ciclofosfamida-metronomica-felina',
+    name: 'Ciclofosfamida',
+    class: 'Agente alquilante',
+    regimen: 'metronomic',
+    route: 'VO',
+    doses: [{ rates: [15], basis: 'mg/m²', schedule: 'A cada 24 h, em uso contínuo', species: 'feline' }],
+    source: 'Petrucci et al., estudo retrospectivo multicêntrico de carcinoma mamário metastático felino.',
+    sourceUrl: 'https://doi.org/10.1177/1098612X20964416',
+    indication: 'Esquema estudado em 11 gatas com carcinoma mamário metastático. Evidência limitada a esse contexto.',
+    keyNotes: ['Acompanhar hemograma e sinais urinários ao longo do tratamento.'],
+    vesicant: false,
+    precautions: ['Manusear a formulação oral intacta. Investigar sinais de toxicidade antes de prosseguir com o esquema.'],
+  },
+  {
+    id: 'clorambucila-metronomica-felina',
+    name: 'Clorambucila (Clorambucil)',
+    class: 'Agente alquilante',
+    regimen: 'metronomic',
+    route: 'VO',
+    doses: [{ rates: [0.4, 0.6], basis: 'mg/kg', schedule: 'A cada 48 h, em uso contínuo', species: 'feline' }],
+    source: 'Petrucci et al., estudo retrospectivo multicêntrico de carcinoma mamário metastático felino.',
+    sourceUrl: 'https://doi.org/10.1177/1098612X20964416',
+    indication: 'Esquema estudado em quatro gatas com carcinoma mamário metastático. Evidência limitada a esse contexto.',
+    keyNotes: ['Acompanhar hemograma e plaquetas em série pelo risco de mielossupressão cumulativa.'],
+    vesicant: false,
+    precautions: ['Manusear comprimidos intactos e usar formulação apropriada à dose prescrita.'],
+  },
 ];
 
-/** Resumo de Diretrizes de Biossegurança e Regras de Ouro BSAVA */
+/** Diretrizes de biossegurança e monitorização */
 export const BSAVA_SAFETY_GUIDELINES = [
   {
-    title: 'A Regra de Ouro dos Pacientes Pequenos (<10 kg e <15 kg)',
+    title: 'Dose por peso ou superfície corporal',
     summary:
-      'Animais com menos de 10 kg (ou <15 kg para antraciclinas) têm volume de distribuição proporcionalmente menor e metabolização diferenciada em relação à área corpórea. A dosagem estrita por m² superestima a dose e resulta em mielossupressão extrema e toxicidade gastrointestinal com risco de vida. Nesses casos, converte-se para mg/kg (ex.: Doxorrubicina 1 mg/kg em vez de 30 mg/m²).',
+      'A base de cálculo depende do fármaco, da espécie e do protocolo. Para doxorrubicina, o Withrow descreve opções de redução em cães pequenos e gatos; o corte de peso varia entre referências.',
   },
   {
     title: 'Técnica de Punção Única ("First-Stick") para Vesicantes',
@@ -550,14 +477,14 @@ export const BSAVA_SAFETY_GUIDELINES = [
       'Comprimidos citotóxicos (ex.: Ciclofosfamida, Clorambucila, Lomustina) nunca devem ser cortados, partidos ou esmagados. Essa prática libera aerossóis mutagênicos no ambiente clínico e a distribuição do princípio ativo no comprimido não é uniforme. Se o peso do animal exigir dose intermediária, encomende a formulação exata em farmácia de manipulação veterinária habilitada.',
   },
   {
-    title: 'Proteção Vesical Contra Cistite Hemorrágica Estéril',
+    title: 'Monitorização urinária com ciclofosfamida',
     summary:
-      'A ciclofosfamida gera acroleína, que se acumula na bexiga urinária causando ulceração e sangramento severo estéril. O protocolo profilático do BSAVA exige coadministração de furosemida (1 mg/kg PO q12h no dia do fármaco e seguintes), acesso irrestrito a água limpa e micções frequentes. Em caso de hematúria, suspender imediatamente.',
+      'A acroleína pode provocar cistite hemorrágica estéril. Acompanhe sinais urinários e urinálise, sobretudo durante o uso contínuo. Diante de hematúria ou disúria, interrompa e investigue; a profilaxia deve seguir o protocolo e a avaliação individual.',
   },
   {
     title: 'Janela de Nadir e Monitorização Laboratorial',
     summary:
-      'O nadir dos neutrófilos ocorre tipicamente entre o 7º e o 10º dia pós-quimioterapia para a maioria dos agentes (11–14 dias no cão e 14–21 dias no gato para carboplatina). Não realizar nova sessão de quimioterapia sem conferir neutrófilos (>2.000/μL) e plaquetas (>100.000/μL).',
+      'O nadir dos neutrófilos ocorre tipicamente entre o 7º e o 10º dia pós-quimioterapia para a maioria dos agentes (11–14 dias no cão e 14–21 dias no gato para carboplatina). Avalie neutrófilos e plaquetas conforme o protocolo. Em esquemas metronômicos, programe monitorização seriada de toxicidade cumulativa.',
   },
 ];
 
@@ -567,7 +494,7 @@ export const BSAVA_BIBLIOGRAPHIC_SOURCES = [
     title: 'BSAVA Manual of Canine and Feline Oncology',
     edition: '3rd Edition',
     authors: 'John M. Dobson & B. Duncan X. Lascelles',
-    chapter: 'Chapter 7: Principles of Chemotherapy (pp. 60–87)',
+    chapter: 'Cap. 7, Principles of Chemotherapy',
     details:
       'Tabelas de Conversão de Peso para Área de Superfície Corporal (Figuras 7.3 e 7.4), Princípios de Dosagem, Toxicidades, Manejo e Perfis Farmacológicos.',
   },
@@ -575,16 +502,16 @@ export const BSAVA_BIBLIOGRAPHIC_SOURCES = [
     title: 'BSAVA Small Animal Formulary, Part A: Canine and Feline',
     edition: '10th Edition',
     authors: 'Fergus Allerton (Editor-in-Chief)',
-    chapter: 'Appendix I: General Information & Appendix II: Protocols (pp. 455–468)',
+    chapter: 'Monografias de clorambucil e ciclofosfamida e apêndice de protocolos',
     details:
-      'Tabelas canônicas de BSA, Fórmulas de conversão k*(BW^2/3), Protocolos CHOP/COP para linfoma e protocolos para mastocitoma.',
+      'Posologia por espécie e indicação, incluindo esquemas metronômicos em cães.',
   },
   {
     title: "Withrow and MacEwen's Small Animal Clinical Oncology",
     edition: '6th Edition',
     authors: 'David M. Vail, Douglas H. Thamm, Julius M. Liptak',
-    chapter: 'Chapter 12: Cancer Chemotherapy (pp. 189–218)',
+    chapter: 'Caps. 12, 15 e 33',
     details:
-      'Farmacocinética de agentes citotóxicos em pequenos animais, limites de corte ponderais e depuração renal da carboplatina.',
+      'Quimioterapia convencional, estudos metronômicos e protocolos para tumores hematopoiéticos.',
   },
 ];

@@ -11,6 +11,7 @@ import { betanecolMedicationRecord } from './medications.betanecol.seed';
 import { buprenorfinaMedicationRecord } from './medications.buprenorfina.seed';
 import { capromorelinaMedicationRecord } from './medications.capromorelina.seed';
 import { ceftriaxonaMedicationRecord } from './medications.ceftriaxona.seed';
+import { cetaminaMedicationRecord } from './medications.cetamina.seed';
 import { ciclosporinaMedicationRecord } from './medications.ciclosporina.seed';
 import { ciproeptadinaMedicationRecord } from './medications.ciproeptadina.seed';
 import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
@@ -31,6 +32,7 @@ import { metimazolMedicationRecord } from './medications.metimazol.seed';
 import { metoclopramidaMedicationRecord } from './medications.metoclopramida.seed';
 import { micofenolatoMofetilaMedicationRecord } from './medications.micofenolato-mofetila.seed';
 import { miltefosinaMedicationRecord } from './medications.miltefosina.seed';
+import { acidoTranexamicoMedicationRecord } from './medications.acido-tranexamico.seed';
 import { mirtazapinaMedicationRecord } from './medications.mirtazapina.seed';
 import { molidustatMedicationRecord } from './medications.molidustat.seed';
 import { ondansetronaMedicationRecord } from './medications.ondansetrona.seed';
@@ -74,6 +76,7 @@ export const medicationsSeed: MedicationRecord[] = [
   buprenorfinaMedicationRecord,
   capromorelinaMedicationRecord,
   ceftriaxonaMedicationRecord,
+  cetaminaMedicationRecord,
   ciclosporinaMedicationRecord,
   ciproeptadinaMedicationRecord,
   clindamicinaMedicationRecord,
@@ -94,6 +97,7 @@ export const medicationsSeed: MedicationRecord[] = [
   metoclopramidaMedicationRecord,
   micofenolatoMofetilaMedicationRecord,
   miltefosinaMedicationRecord,
+  acidoTranexamicoMedicationRecord,
   mirtazapinaMedicationRecord,
   molidustatMedicationRecord,
   ondansetronaMedicationRecord,

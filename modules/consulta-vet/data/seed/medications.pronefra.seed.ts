@@ -694,8 +694,6 @@ export const pronefraMedicationsSeed: MedicationRecord[] = [
     },
 
     // 9. Modelo Pronto de Prescrição Veterinária
-    samplePrescriptionText:
-      'USO ORAL\\n\\n1. Pronefra® Suspensão Oral Oleosa (Frasco com 60 mL e seringa dosadora)\\n   - Posologia para Gatos: Administrar 1 mL para cada 4 kg de peso corporal, por via oral, a cada 12 horas, misturado à alimentação ou logo antes/após as refeições.\\n   - Posologia para Cães: Administrar 1 mL para cada 5 kg de peso corporal, por via oral, a cada 12 horas, misturado à alimentação ou logo antes/após as refeições.\\n\\nOrientações e Cuidados ao Tutor:\\n- Agitar vigorosamente o frasco fechado durante 15 segundos antes de cada aplicação para homogeneizar os minerais.\\n- O produto DEVE ser fornecido junto com o alimento; administrá-lo em jejum anula o efeito quelante sobre o fósforo da comida.\\n- Se o animal recusar a comida ou parar de se alimentar, NÃO forçar a administração do Pronefra e comunicar imediatamente o médico-veterinário assistente.\\n- Manter água filtrada fresca disponível continuamente.\\n- Manter intervalo mínimo de 2 horas entre a administração do Pronefra e de outros medicamentos de uso oral (especialmente antibióticos e medicamentos de tireoide).\\n- Retorno em 30 a 45 dias para coleta de sangue e reavaliação de fósforo e cálcio séricos.',
 
     // 10. Referências Científicas Completas
     references: [

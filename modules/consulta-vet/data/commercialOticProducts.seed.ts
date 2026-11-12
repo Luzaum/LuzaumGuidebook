@@ -30,6 +30,7 @@ import { pronefraNplateCommercialProductsSeed } from './pronefraNplateCommercial
 import { allopurinolCommercialProductsSeed } from './allopurinolCommercialProducts.seed';
 import { donarenCommercialProductSeed } from './donarenCommercialProduct.seed';
 import { milteforanCommercialProductSeed } from './milteforanCommercialProduct.seed';
+import { transaminCommercialProductSeed } from './transaminCommercialProduct.seed';
 import { domperidonaCommercialProductSeed } from './domperidonaCommercialProduct.seed';
 import { metoclopramidaCommercialProductSeed } from './metoclopramidaCommercialProduct.seed';
 import { molidustatCommercialProductSeed } from './molidustatCommercialProduct.seed';
@@ -94,6 +95,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...allopurinolCommercialProductsSeed,
   ...donarenCommercialProductSeed,
   ...milteforanCommercialProductSeed,
+  transaminCommercialProductSeed,
   ...domperidonaCommercialProductSeed,
   ...metoclopramidaCommercialProductSeed,
   ...molidustatCommercialProductSeed,
@@ -7077,46 +7079,152 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   {
     id: 'helfine-plus-caes-agener',
     slug: 'helfine-plus-caes',
-    name: 'Helfine Plus Cães',
+    name: 'Helfine® Plus Cães (Hellfine Plus)',
     manufacturer: 'Agener União',
     commercialClass: 'parasiticide',
     commercialSubclass: 'parasite_dewormer_dog',
+    commercialSubclasses: ['parasite_dewormer_dog', 'parasite_giardia'],
+    searchAliases: [
+      'helfine',
+      'hellfine',
+      'helfine plus',
+      'hellfine plus',
+      'helfine caes',
+      'hellfine caes',
+      'helfine plus caes',
+      'hellfine plus caes',
+      'helfine normal',
+      'hellfine normal',
+      'vermifugo agener caes',
+      'praziquantel pirantel febantel',
+    ],
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/antiparasitarios/helfine-plus-caes/',
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/helfine-plus-caes',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-hel2-1.jpg',
     species: ['dog'],
-    presentations: ['Helfine Plus Cães 4 comprimidos'],
-    activeComponents: ['praziquantel', 'pamoato de pirantel', 'febantel'],
-    labelCompositionSummary: 'Vermífugo oral palatável e bissulcado para cães.',
-    labelDirections: 'Cães: 1 comp/10 kg em dose única; repetir após 15 dias. Giardia: 1 comp/10 kg q24h por 3 dias.',
-    dosageGuidance: { labelDose: 'Cães: 1 comp/10 kg dose única; Giardia: SID por 3 dias.', plumbs: { dog: [{ title: 'Vermifugação', dose: '1 comprimido/10 kg VO dose única; repetir em 15 dias', note: 'Dose de bula.' }, { title: 'Giardia', dose: '1 comprimido/10 kg VO SID por 3 dias', note: 'Associar higiene ambiental.' }] } },
-    plumbsContext: 'Associação de praziquantel, pirantel e febantel cobre cestódeos/nematódeos e protocolo de giardíase conforme produto.',
-    clinicalUse: 'Vermifugação de rotina, cestódeos/nematódeos e giardíase conforme diagnóstico/suspeita.',
-    reassessment: 'Reavaliar fezes, reinfecção, higiene ambiental e necessidade de coproparasitológico.',
-    prescriptionExample: 'Helfine Plus Cães, administrar 1 comprimido para cada 10 kg por via oral conforme protocolo.',
-    safetyAlert: 'Seguir idade/peso mínimos. Em Giardia, tratar ambiente, banho e potes; não tratar diarreia crônica só com vermífugo sem diagnóstico.',
-    price: { averageLabel: 'R$ 44,00', rangeLabel: '4 comprimidos: R$ 38,00 a R$ 54,00', sourceDate: '2026-09-06' }
+    presentations: [
+      'Cartucho com 4 comprimidos palatáveis e bissulcados (660 mg cada — 1 comp/10 kg)',
+      'Display hospitalar com 15 blisters de 4 comprimidos (60 comprimidos)',
+    ],
+    activeComponents: [
+      'praziquantel 50 mg',
+      'pamoato de pirantel 144 mg (equivalente a 50 mg de pirantel base)',
+      'febantel 150 mg',
+    ],
+    labelCompositionSummary:
+      'Cada comprimido de 660 mg contém: Praziquantel 50,00 mg + Pamoato de Pirantel 144,00 mg (eq. a 50 mg de pirantel base) + Febantel 150,00 mg + palatabilizante e excipientes q.s.p. 660,00 mg. Fornece dose padrão de 5 mg/kg de praziquantel, 14,4 mg/kg de pamoato de pirantel e 15 mg/kg de febantel (1 comprimido para cada 10 kg).',
+    labelDirections:
+      'Cães: administrar por via oral, diretamente na boca ou misturado ao alimento (não requer jejum prévio). Verminoses gerais (nematódeos e cestódeos): 1 comprimido para cada 10 kg de peso corporal em dose única, repetindo após 15 dias. Tabela prática por peso: até 2,5 kg = 1/4 comp; de 2,6 a 5,0 kg = 1/2 comp; de 5,1 a 7,5 kg = 3/4 comp; de 7,6 a 10,0 kg = 1 comp. Giardíase (Giardia spp.): 1 comprimido para cada 10 kg VO a cada 24 horas (SID) durante 3 dias consecutivos.',
+    dosageGuidance: {
+      labelDose:
+        'Cães: 1 comprimido/10 kg VO em dose única para verminoses (repetir após 15 dias). Para Giardia spp.: 1 comprimido/10 kg VO a cada 24 horas (SID) por 3 dias consecutivos.',
+      plumbs: {
+        dog: [
+          {
+            title: 'Vermifugação de amplo espectro (nematódeos e cestódeos)',
+            dose: '1 comprimido/10 kg VO em dose única; repetir em 15 dias',
+            note: 'Até 2,5 kg: 1/4 cp; 2,6–5 kg: 1/2 cp; 5,1–7,5 kg: 3/4 cp; 7,6–10 kg: 1 cp (entrega 5 mg/kg PZQ + 14,4 mg/kg pamoato de pirantel + 15 mg/kg febantel).',
+          },
+          {
+            title: 'Giardíase (Giardia spp.)',
+            dose: '1 comprimido/10 kg VO a cada 24 horas (SID) por 3 dias consecutivos',
+            note: 'O febantel é metabolizado em febendazol e oxfendazol; associar banho no 1º e 3º dias e desinfecção ambiental com amônia quaternária.',
+          },
+        ],
+      },
+      notes: [
+        'Na linha da Agener União, toda a família é rotulada como "Helfine® Plus": a versão Cães possui 3 ativos (praziquantel + pirantel + febantel), enquanto a versão Gatos possui 2 ativos (praziquantel + pirantel, sem febantel).',
+        'Pode ser utilizado em filhotes a partir de 4 semanas de idade, respeitando a fração correspondente ao peso corporal.',
+        'Para Dipylidium caninum, associar obrigatoriamente controle de pulgas (hospedeiro intermediário) para evitar reinfecção imediata.',
+      ],
+    },
+    plumbsContext:
+      'Associação sinérgica de praziquantel (cestocida), pamoato de pirantel (agonista colinérgico nicotínico nematocida) e febantel (pró-benzimidazólico convertido em febendazol/oxfendazol), cobrindo Toxocara canis, Toxascaris leonina, Ancylostoma spp., Trichuris vulpis, Dipylidium caninum, Taenia spp., Echinococcus spp. e protocolo de 3 dias para Giardia spp.',
+    clinicalUse:
+      'Vermifugação preventiva e terapêutica de amplo espectro para cães (nematódeos e cestódeos) e tratamento de giardíase canina (protocolo de 3 dias).',
+    reassessment:
+      'Reavaliar consistência fecal, ganho ponderal, controle ambiental e exame coproparasitológico (FAUST / centrífugo-flutuação ou ELISA para Giardia) após o término do protocolo.',
+    prescriptionExample:
+      'Helfine® Plus Cães (Agener União): 1) Vermifugação: Administrar ___ comprimido(s) (1 comp/10 kg) por via oral em dose única e repetir a mesma dose após 15 dias; 2) Giardíase: Administrar ___ comprimido(s) (1 comp/10 kg) por via oral a cada 24 horas (SID) durante 3 dias consecutivos, associando higiene ambiental e banho.',
+    safetyAlert:
+      'Uso exclusivo em cães (não administrar a versão canina com febantel em gatos). Não utilizar nas primeiras 4 semanas de gestação sem avaliação de risco/benefício. Em casos de Giardia, não prolongar além da dose recomendada sem confirmação diagnóstica.',
+    price: {
+      averageLabel: 'R$ 38,00 a R$ 54,00',
+      rangeLabel: 'Cartucho com 4 comprimidos palatáveis: Cobasi / Petlove / Petz entre R$ 37,90 e R$ 53,90',
+      sourceDate: '2026-09-06',
+    },
+    catalogMedicationId: 'editorial:praziquantel',
   },
   {
     id: 'helfine-plus-gatos-agener',
     slug: 'helfine-plus-gatos',
-    name: 'Helfine Plus Gatos',
+    name: 'Helfine® Plus Gatos (Helfine / Hellfine Felino)',
     manufacturer: 'Agener União',
     commercialClass: 'parasiticide',
     commercialSubclass: 'parasite_dewormer_cat',
+    commercialSubclasses: ['parasite_dewormer_cat'],
+    searchAliases: [
+      'helfine',
+      'hellfine',
+      'helfine normal',
+      'hellfine normal',
+      'helfine gatos',
+      'hellfine gatos',
+      'helfine plus gatos',
+      'hellfine plus gatos',
+      'helfine sem febantel',
+      'vermifugo agener gatos',
+      'praziquantel pirantel gatos',
+    ],
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/antiparasitarios/helfine-plus-gatos/',
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/helfine-plus-gatos',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-hel-1.jpg',
     species: ['cat'],
-    presentations: ['Helfine Plus Gatos 2 comprimidos'],
-    activeComponents: ['praziquantel', 'pamoato de pirantel'],
-    labelCompositionSummary: 'Vermífugo oral felino com praziquantel e pamoato de pirantel.',
-    labelDirections: 'Bula Agener: gatos, 1 comprimido/4 kg VO em dose única; repetir após 15 dias. Até 1 kg: 1/4 comp; 1,1-2 kg: 1/2 comp; 2,1-3 kg: 3/4 comp; 3,1-4 kg: 1 comp.',
-    dosageGuidance: { labelDose: 'Gatos: 1 comp/4 kg VO dose única; repetir após 15 dias.', plumbs: { cat: [{ title: 'Vermifugação felina', dose: '1 comprimido/4 kg VO dose única', note: 'Até 1 kg: 1/4 comp; 1,1-2 kg: 1/2; 2,1-3 kg: 3/4; 3,1-4 kg: 1 comp.' }] } },
-    plumbsContext: 'Antiparasitários felinos devem respeitar ativo, peso, idade e segurança por espécie.',
-    clinicalUse: 'Vermifugação felina conforme espectro do produto.',
-    reassessment: 'Reavaliar fezes, peso, idade, risco ambiental e coproparasitológico.',
-    prescriptionExample: 'Helfine Plus Gatos: administrar 1 comprimido para cada 4 kg VO em dose única; repetir em 15 dias.',
-    safetyAlert: 'Não usar dose canina em gatos. Confirmar peso, idade e estado clínico antes de vermifugar.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Dose/preço não consolidados', sourceDate: '2026-06-07' }
+    presentations: [
+      'Cartucho com 2 comprimidos palatáveis e bissulcados (1 comp/4 kg)',
+      'Display hospitalar com 20 blisters de 2 comprimidos (40 comprimidos)',
+    ],
+    activeComponents: [
+      'praziquantel 20 mg',
+      'pamoato de pirantel 230 mg (equivalente a 80 mg de pirantel base)',
+    ],
+    labelCompositionSummary:
+      'Cada comprimido contém: Praziquantel 20,00 mg + Pamoato de Pirantel 230,00 mg (equivalente a 80 mg de pirantel base) + palatabilizante e excipientes q.s.p. Fórmula dupla isenta de febantel (equivalente farmacológico ao Drontal Gatos / Duprantel Gatos), fornecendo 5 mg/kg de praziquantel e 57,5 mg/kg de pamoato de pirantel (20 mg/kg de pirantel base) na razão de 1 comprimido para cada 4 kg.',
+    labelDirections:
+      'Bula Agener União (Gatos): administrar por via oral em dose única na proporção de 1 comprimido para cada 4 kg de peso corporal, diretamente na boca ou misturado ao alimento úmido/ração (não requer jejum). Repetir a administração após 15 dias. Tabela de peso da bula: até 1,0 kg = 1/4 comprimido; de 1,1 a 2,0 kg = 1/2 comprimido; de 2,1 a 3,0 kg = 3/4 comprimido; de 3,1 a 4,0 kg = 1 comprimido.',
+    dosageGuidance: {
+      labelDose:
+        'Gatos: 1 comprimido/4 kg VO em dose única; repetir após 15 dias (até 1 kg: 1/4 comp; 1,1–2 kg: 1/2 comp; 2,1–3 kg: 3/4 comp; 3,1–4 kg: 1 comp).',
+      plumbs: {
+        cat: [
+          {
+            title: 'Vermifugação felina (cestódeos e nematódeos)',
+            dose: '1 comprimido/4 kg VO em dose única; repetir após 15 dias',
+            note: 'Até 1 kg: 1/4 cp; 1,1–2 kg: 1/2 cp; 2,1–3 kg: 3/4 cp; 3,1–4 kg: 1 cp (fornece ~5 mg/kg de praziquantel e ~57,5 mg/kg de pamoato de pirantel).',
+          },
+        ],
+      },
+      notes: [
+        'Na linha comercial da Agener União não há embalagem rotulada apenas como "Helfine" sem "Plus": o Helfine® Plus Gatos é a formulação dupla sem febantel (Praziquantel 20 mg + Pamoato de Pirantel 230 mg), equivalente às versões "normais" (não-Plus) de outras marcas como Drontal Gatos e Duprantel Gatos.',
+        'Controlar simultaneamente a infestação por pulgas para interromper o ciclo do Dipylidium caninum.',
+      ],
+    },
+    plumbsContext:
+      'Associação clássica felina de praziquantel (20 mg) e pamoato de pirantel (230 mg), segura e eficaz contra Toxocara cati, Toxascaris leonina, Ancylostoma tubaeforme, Ancylostoma braziliense, Dipylidium caninum, Taenia taeniaeformis e Mesocestoides spp.',
+    clinicalUse:
+      'Tratamento e controle das verminoses gastrointestinais por nematódeos e cestódeos em gatos adultos e filhotes (a partir de 6 semanas de idade).',
+    reassessment:
+      'Reavaliar exame coproparasitológico, escore corporal, controle de pulgas e higiene da caixa de areia.',
+    prescriptionExample:
+      'Helfine® Plus Gatos (Agener União): Administrar ___ comprimido(s) (na dose de 1 comprimido para cada 4 kg de peso: até 1 kg = 1/4 cp; 1,1–2 kg = 1/2 cp; 2,1–3 kg = 3/4 cp; 3,1–4 kg = 1 cp) por via oral em dose única, repetindo a administração após 15 dias.',
+    safetyAlert:
+      'Produto exclusivo para gatos. Nunca substituir pelo Helfine Plus Cães em felinos (a apresentação canina contém febantel e doses incompatíveis com gatos). Não administrar em filhotes com menos de 6 semanas de idade. Pode ocorrer sialorreia transitória caso o gato mastigue o comprimido amargo.',
+    price: {
+      averageLabel: 'R$ 24,00 a R$ 30,00',
+      rangeLabel: 'Cartucho com 2 comprimidos palatáveis: Cobasi / Petlove / Petz entre R$ 24,64 e R$ 29,90',
+      sourceDate: '2026-09-06',
+    },
+    catalogMedicationId: 'editorial:praziquantel',
   },
   {
     id: 'mectimax-agener',
@@ -7142,25 +7250,74 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   },
   {
     id: 'ectocid-agener',
-    slug: 'ectocid',
-    name: 'Ectocid',
+    slug: 'ectocid-caes-fipronil-agener',
+    name: 'Ectocid® Cães (Spot-On)',
     manufacturer: 'Agener União',
     commercialClass: 'parasiticide',
     commercialSubclass: 'parasite_topical_classic',
+    commercialSubclasses: ['parasite_topical_classic', 'skin_pruritus'],
+    searchAliases: [
+      'ectocid',
+      'ectocid agener',
+      'ectocid caes',
+      'ectocid spot on',
+      'ectocid pipeta',
+      'fipronil 13%',
+      'fipronil 130 mg/ml',
+      'fipronil agener',
+      'antipulgas agener',
+      'carrapaticida agener',
+      'dapp',
+    ],
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/antiparasitarios/ectocid/',
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/ectocid-caes',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2024/04/ECTOCID-familia-e-pipetas.png',
     species: ['dog'],
-    presentations: ['Ectocid 0,67 mL', 'Ectocid 1,34 mL', 'Ectocid 2,68 mL', 'Ectocid 4,02 mL'],
-    activeComponents: ['fipronil 13%'],
-    labelCompositionSummary: 'Ectoparasiticida tópico spot-on para cães à base de fipronil 13%.',
-    labelDirections: 'Bula Agener: dose única tópica. Até 10 kg: pipeta 0,67 mL; 10-20 kg: 1,34 mL; 20-40 kg: 2,68 mL; acima de 40 kg: 4,02 mL.',
-    dosageGuidance: { labelDose: 'Cães: dose única spot-on por peso: até 10 kg 0,67 mL; 10-20 kg 1,34 mL; 20-40 kg 2,68 mL; >40 kg 4,02 mL.', plumbs: { dog: [{ title: 'Pulgas/carrapatos', dose: '1 pipeta tópica conforme peso', note: 'Até 10 kg 0,67 mL; 10-20 kg 1,34 mL; 20-40 kg 2,68 mL; >40 kg 4,02 mL.' }] } },
-    plumbsContext: 'Fipronil tópico para cães; evitar exposição de gatos ao produto recém-aplicado até secagem e seguir intervalo de reaplicação da bula.',
-    clinicalUse: 'Tratamento e controle de pulgas e carrapatos em cães.',
-    reassessment: 'Reavaliar infestação, reação cutânea e risco de exposição de gatos ao produto.',
-    prescriptionExample: 'Ectocid: aplicar 1 pipeta spot-on conforme peso do cão, afastando os pelos e depositando sobre a pele.',
-    safetyAlert: 'Produto para cães. Não aplicar em gatos. Evitar lambedura e contato com gatos até secagem completa.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Composição/dose/preço não consolidados', sourceDate: '2026-06-07' }
+    presentations: [
+      'Até 10 kg: pipeta 0,67 mL (fipronil 87,1 mg)',
+      '10 a 20 kg: pipeta 1,34 mL (fipronil 174,2 mg)',
+      '20 a 40 kg: pipeta 2,68 mL (fipronil 348,4 mg)',
+      'Acima de 40 kg: pipeta 4,02 mL (fipronil 522,6 mg)',
+    ],
+    activeComponents: ['fipronil 13% (130 mg/mL)'],
+    labelCompositionSummary:
+      'Cada 1,00 mL contém: Fipronil 130,00 mg (13%) e veículo q.s.p. 1,00 mL. Ectoparasiticida tópico spot-on de dose única para cães, fornecendo dose mínima aproximada de 8,7 a 13 mg/kg de fipronil conforme a faixa de peso.',
+    labelDirections:
+      'Uso exclusivamente externo (tópico spot-on) em cães. Quebrar a ponta da pipeta na linha tracejada, afastar os pelos na região cervical (entre a nuca e a base do pescoço, à frente das escápulas) até expor a pele e aplicar todo o conteúdo diretamente sobre a pele em um ou mais pontos para evitar escorrimento. Posologia por faixa de peso: até 10 kg = 1 pipeta de 0,67 mL; de 10 a 20 kg = 1 pipeta de 1,34 mL; de 20 a 40 kg = 1 pipeta de 2,68 mL; acima de 40 kg = 1 pipeta de 4,02 mL.',
+    dosageGuidance: {
+      labelDose:
+        'Cães (a partir de 4 meses): aplicar 1 pipeta tópica (spot-on) na pele da nuca/região interescapular a cada 28–30 dias conforme o peso: até 10 kg (0,67 mL); 10–20 kg (1,34 mL); 20–40 kg (2,68 mL); >40 kg (4,02 mL).',
+      plumbs: {
+        dog: [
+          {
+            title: 'Tratamento e controle de pulgas (Ctenocephalides felis) e carrapatos (Rhipicephalus sanguineus) / DAPP',
+            dose: '1 pipeta spot-on conforme faixa de peso a cada 4 semanas (28–30 dias)',
+            note: 'Até 10 kg: 0,67 mL (87,1 mg); 10–20 kg: 1,34 mL (174,2 mg); 20–40 kg: 2,68 mL (348,4 mg); >40 kg: 4,02 mL (522,6 mg).',
+          },
+        ],
+      },
+      notes: [
+        'Como o fipronil se distribui pela camada lipídica da epiderme e glândulas sebáceas, recomenda-se respeitar intervalo de 48 horas antes e após banhos para não prejudicar a difusão cutânea.',
+        'Não indicado para cães filhotes com menos de 4 meses de idade nem para cadelas em lactação conforme bula do fabricante.',
+        'Associar manejo ambiental (aspiração e tratamento de fômites/ambiente) e tratamento simultâneo de todos os animais contactantes.',
+      ],
+    },
+    plumbsContext:
+      'Inseticida e acaricida fenilpirazol tópico (fipronil 13%) que bloqueia os canais de cloro mediados por GABA e glutamato nos invertebrados, promovendo morte de pulgas e carrapatos por hiperexcitação neural sem absorção sistêmica relevante em cães.',
+    clinicalUse:
+      'Tratamento e prevenção de infestações por pulgas (Ctenocephalides felis felis) e carrapatos (Rhipicephalus sanguineus) em cães, atuando também como adjuvante no controle da Dermatite Alérgica à Picada de Pulga (DAPP).',
+    reassessment:
+      'Reavaliar controle de ectoparasitas e lesões de DAPP após 3 a 4 semanas. Caso ocorra reinfestação precoce por alta pressão ambiental ou banhos frequentes com xampus desengordurantes, revisar manejo ambiental ou considerar transição para isoxazolina sistêmica.',
+    prescriptionExample:
+      'Ectocid® Cães (Agener União) — [selecionar pipeta conforme o peso: até 10 kg (0,67 mL) / 10 a 20 kg (1,34 mL) / 20 a 40 kg (2,68 mL) / >40 kg (4,02 mL)]: Aplicar todo o conteúdo de 1 pipeta diretamente sobre a pele seca na região da nuca (entre as escápulas), afastando bem os pelos, a cada 30 dias. Evitar dar banho 48 horas antes e após a aplicação.',
+    safetyAlert:
+      'Uso exclusivo em cães (a partir de 4 meses de idade). NÃO APLICAR EM GATOS nem em coelhos (risco de neurotoxicidade grave e letal em coelhos). Evitar usar em cadelas lactantes. Impedir que o animal ou outros pets lambam o local até a secagem completa (a ingestão acidental do veículo causa hipersalivação e êmese transitórias).',
+    price: {
+      averageLabel: 'R$ 29,00 a R$ 60,00 por pipeta',
+      rangeLabel:
+        'Até 10 kg (0,67 mL): R$ 29,00 a R$ 35,00; 10-20 kg (1,34 mL): R$ 38,00 a R$ 45,00; 20-40 kg (2,68 mL): R$ 45,00 a R$ 52,00; >40 kg (4,02 mL): R$ 52,00 a R$ 60,00',
+      sourceDate: ECTO_PRICE_SOURCE_DATE,
+    },
   },
   {
     id: 'petpril-agener',
@@ -7904,6 +8061,81 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/hidrapet-omega/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2021/11/hidra-1.jpg',
     price: { averageLabel: 'R$ 115,00', rangeLabel: 'Frasco 60 cápsulas: R$ 98,00 a R$ 138,00', sourceDate: '2026-09-06' }
+  },
+  {
+    id: 'cortishamp-agener-uniao',
+    slug: 'cortishamp-shampoo-hidrocortisona-agener',
+    name: 'Cortishamp® (Cortshamp) Shampoo',
+    manufacturer: 'Agener União (Linha Dr. Clean / Agener Derma)',
+    commercialClass: 'dermatologic',
+    commercialSubclass: 'skin_pruritus',
+    commercialSubclasses: ['skin_pruritus', 'skin_atopy', 'skin_hydration', 'skin_barrier'],
+    searchAliases: [
+      'cortshamp',
+      'cortishamp',
+      'cort shamp',
+      'cort-shamp',
+      'cortishamp agener',
+      'cortshamp agener',
+      'xampu hidrocortisona',
+      'shampoo hidrocortisona',
+      'acetato de hidrocortisona 1%',
+      'dr clean cortishamp',
+    ],
+    species: ['dog', 'cat'],
+    presentations: ['Frasco com 125 mL (1% acetato de hidrocortisona + queratina hidrolisada + lipossomas)'],
+    activeComponents: [
+      'acetato de hidrocortisona 1% (1,0 g/100 mL)',
+      'queratina hidrolisada 5% (5,0 g/100 mL)',
+      'lipossomas 0,5% (vitaminas A 1%, E 1%, C 4% e ômegas 3 e 6 5%)',
+    ],
+    labelCompositionSummary:
+      'Cada 100 mL contém: acetato de hidrocortisona 1,0 g (1%), queratina hidrolisada 5,0 g, lipossomas 0,5 g (contendo 1% de vitamina A, 1% de vitamina E, 4% de vitamina C e 5% de ômegas 3 e 6 para liberação gradual na derme), essência 0,3 g e veículo q.s.p. 100,0 mL.',
+    labelDirections:
+      'Uso tópico. Agitar antes de usar. Molhar a pelagem do animal com água morna e aplicar Cortishamp® em quantidade suficiente para formar espuma abundante, massageando bem por todo o corpo. Deixar o produto agir por 10 minutos antes de enxaguar completamente. Frequência: banhos diários ou em dias alternados nas crises agudas, reduzindo para 1 a 2 vezes por semana conforme melhora clínica e orientação do médico-veterinário.',
+    dosageGuidance: {
+      labelDose:
+        'Uso tópico no banho: aplicar sobre a pelagem molhada, massagear, deixar agir por 10 minutos e enxaguar bem. Iniciar em dias alternados (ou SID em crises intensas) e reduzir para 1 a 2 vezes por semana conforme controle do prurido.',
+      plumbs: {
+        dog: [
+          {
+            title: 'Dermatoses pruriginosas / dermatites alérgicas (DAPP, atopia, contato)',
+            dose: 'Banho terapêutico (tempo de contato de 10 min) a cada 24–48 h na crise aguda; manutenção 1 a 2x/semana',
+            note: 'A hidrocortisona 1% tópica em xampu com enxágue promove ação anti-inflamatória e antipruriginosa local com mínima absorção sistêmica quando respeitado o enxágue.',
+          },
+        ],
+        cat: [
+          {
+            title: 'Dermatoses alérgicas e pruriginosas responsivas a corticosteroides tópicos',
+            dose: 'Banho terapêutico (tempo de contato de 10 min) em dias alternados ou 1 a 2x/semana conforme tolerância felina',
+            note: 'Enxaguar criteriosamente para evitar ingestão por lambedura pós-banho.',
+          },
+        ],
+      },
+      notes: [
+        'Respeitar rigorosamente o tempo de pausa de 10 minutos antes do enxágue para permitir a ação do acetato de hidrocortisona 1% e a deposição dos lipossomas com vitaminas A, C, E e ômegas 3 e 6 na epiderme.',
+        'Recomenda-se o uso de luvas de borracha pelo aplicador durante o banho.',
+        'Não utilizar como monoterapia na presença de piodermite bacteriana, malasseziose ou demodicose não controladas.',
+      ],
+    },
+    plumbsContext:
+      'Corticosteroide tópico de baixa potência (acetato de hidrocortisona 1%) associado a queratina hidrolisada e lipossomas restauradores de barreira. Excelente opção adjuvante e poupadora de corticoide sistêmico no manejo de crises de prurido e eritema em cães e gatos.',
+    clinicalUse:
+      'Controle da inflamação cutânea e alívio do prurido associados a dermatoses responsivas a corticosteroides; terapia tópica adjuvante nas dermatites alérgicas (dermatite atópica, DAPP e dermatite alérgica de contato) em cães e gatos.',
+    reassessment:
+      'Reavaliar em 7 a 14 dias. Caso surjam pústulas, colaretes epidérmicos, odor fétido, alopecia progressiva ou irritação local, realizar citologia cutânea para descartar infecção secundária bacteriana ou por Malassezia.',
+    prescriptionExample:
+      'Cortishamp® Shampoo (125 mL): Dar banho molhando bem a pelagem, aplicar o produto massageando até formar espuma, deixar agir por 10 minutos e enxaguar abundantemente. Realizar banhos em dias alternados na primeira semana e, após, 1 a 2 vezes por semana conforme orientação veterinária (usar luvas durante a aplicação).',
+    safetyAlert:
+      'Uso exclusivamente externo. Evitar contato com olhos, boca e mucosas (em caso de contato acidental, lavar com água abundante por 15 minutos). Não aplicar sobre feridas abertas extensas, úlceras cutâneas ou infecções bacterianas/fúngicas primárias sem cobertura específica. Usar luvas impermeáveis durante a aplicação.',
+    productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/dermatologicos/cortishamp/',
+    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/cortishamp',
+    imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_derma_cortishamp.jpg',
+    price: {
+      averageLabel: 'R$ 95,00 a R$ 128,00',
+      rangeLabel: 'Frasco 125 mL: Cobasi / Petlove / Petz entre R$ 94,90 e R$ 127,90',
+      sourceDate: PRICE_SOURCE_DATE,
+    },
   }
 ];
 

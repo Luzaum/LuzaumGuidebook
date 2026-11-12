@@ -104,7 +104,8 @@ async function fetchSupabaseMedications(includeDrafts = false): Promise<Medicati
 
 function mergeMedicationSeedWithRemote(
   localItems: MedicationRecord[],
-  supabaseItems: MedicationRecord[]
+  supabaseItems: MedicationRecord[],
+  includeDrafts: boolean,
 ): MedicationRecord[] {
   const localBySlug = new Map<string, MedicationRecord>();
   localItems.forEach((item) => {
@@ -117,6 +118,13 @@ function mergeMedicationSeedWithRemote(
     const local = localBySlug.get(remote.slug);
     if (!local) return remote;
 
+    // A ficha publicada de 2026 substitui a linha legada do seed de março.
+    // O editor continua a carregar o registro remoto para permitir a sua revisão.
+    if (!includeDrafts && remote.slug === 'miltefosina' &&
+        remote.doses.some((dose) => dose.id === 'dose-miltefosina-lvc')) {
+      return { ...local, id: remote.id, isPublished: remote.isPublished };
+    }
+
     return {
       ...local,
       ...remote,
@@ -128,7 +136,6 @@ function mergeMedicationSeedWithRemote(
       clinicalStudiesCommented: remote.clinicalStudiesCommented && remote.clinicalStudiesCommented.length > 0 ? remote.clinicalStudiesCommented : local.clinicalStudiesCommented,
       monitoringParameters: remote.monitoringParameters && remote.monitoringParameters.length > 0 ? remote.monitoringParameters : local.monitoringParameters,
       clientInformation: remote.clientInformation && remote.clientInformation.length > 0 ? remote.clientInformation : local.clientInformation,
-      samplePrescriptionText: remote.samplePrescriptionText || local.samplePrescriptionText,
       practicalWeightTable: remote.practicalWeightTable || local.practicalWeightTable,
       pillars: remote.pillars && remote.pillars.length > 0 ? remote.pillars : local.pillars,
       quickSummaryHighlights: remote.quickSummaryHighlights && remote.quickSummaryHighlights.length > 0 ? remote.quickSummaryHighlights : local.quickSummaryHighlights,
@@ -178,7 +185,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
           withTimeout(fetchSupabaseMedications(includeDrafts), 'carregar medicamentos editoriais'),
           loadMedicationsEditorialSeed(),
         ]);
-        const merged = mergeMedicationSeedWithRemote(medicationsSeed, remote).map(applyMedicationBookFoundations).sort((left, right) =>
+        const merged = mergeMedicationSeedWithRemote(medicationsSeed, remote, includeDrafts).map(applyMedicationBookFoundations).sort((left, right) =>
           left.title.localeCompare(right.title, 'pt-BR')
         );
         const result = filterPublicMedications(merged, includeDrafts);
@@ -192,7 +199,8 @@ export class SupabaseMedicationRepository implements MedicationRepository {
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
     const items = await this.list(options);
-    return items.find((item) => item.slug === slug) || null;
+    const normalizedSlug = slug === 'ondansetron' ? 'ondansetrona' : slug;
+    return items.find((item) => item.slug === normalizedSlug) || null;
   }
 
   async search(query: string): Promise<MedicationRecord[]> {

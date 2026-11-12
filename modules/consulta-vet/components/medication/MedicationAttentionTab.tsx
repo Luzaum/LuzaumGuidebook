@@ -14,14 +14,20 @@ import {
 import type { MedicationRecord } from '../../types/medication';
 
 const FREQUENCY_ORDER: Record<string, number> = {
+  very_common: 0,
   common: 1,
   uncommon: 2,
   rare: 3,
   very_rare: 4,
+  unknown: 4,
   overdose: 5,
 };
 
 const FREQUENCY_META: Record<string, { label: string; badgeClass: string }> = {
+  very_common: {
+    label: 'Muito comum',
+    badgeClass: 'bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30',
+  },
   common: {
     label: 'Comum',
     badgeClass: 'bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30',
@@ -37,6 +43,10 @@ const FREQUENCY_META: Record<string, { label: string; badgeClass: string }> = {
   very_rare: {
     label: 'Extremamente Raro',
     badgeClass: 'bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30',
+  },
+  unknown: {
+    label: 'Frequência indeterminada',
+    badgeClass: 'bg-muted text-muted-foreground border border-border',
   },
   overdose: {
     label: 'Superdosagem',
@@ -436,7 +446,9 @@ export function MedicationAttentionTab({
                             : 'text-blue-600 dark:text-blue-400'
                         }`}
                       >
-                        {isContra ? 'Contraindicado' : isMajor ? 'Risco Alto' : 'Moderado'}
+                        {isContra ? 'Contraindicado' : isMajor ? 'Risco Alto' :
+                          inter.severity === 'informational' ? 'Contexto clínico' :
+                          inter.severity === 'minor' ? 'Risco baixo' : 'Moderado'}
                       </span>
 
                       <span className="mt-1 block text-[14px] font-semibold leading-6 text-foreground">

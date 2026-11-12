@@ -781,34 +781,6 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'USO VETERINÁRIO — PRESCRIÇÃO CONTROLADA MAPA (SIPEAGRO) / LISTA C1 PORTARIA 344/98\\n\\n' +
-    'MODELO 1 — GATO COM DOENÇA RENAL CRÔNICA E HIPOREXIA (MIRTZ 2 MG):\\n' +
-    'NOTIFICAÇÃO DE RECEITA VETERINÁRIA (NRV — 2 VIAS)\\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Paciente], Espécie: Felina, Idade: 11 anos, Peso: 3,8 kg\\n\\n' +
-    'USO ORAL\\n' +
-    '1. Mirtz 2 mg Comprimidos Palatáveis para Gatos (Agener União) ------------ 1 frasco (12 comprimidos)\\n' +
-    '   Posologia: Administrar 1 (um) comprimido palatável por via oral a cada 48 horas (dia sim, dia não), preferencialmente no mesmo horário, durante 3 semanas consecutivas.\\n\\n' +
-    'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\\n' +
-    '- Não administrar o comprimido todos os dias. O intervalo de 48 horas é estritamente necessário para que o organismo do gato elimine a medicação com segurança.\\n' +
-    '- O medicamento visa resgatar o apetite voluntário e controlar o enjoo urêmico; ofereça o alimento úmido ou terapêutico preferido do gato 1 a 2 horas após a medicação.\\n' +
-    '- Caso note miados excessivos, agitação motora ou tremores, comunique imediatamente a clínica veterinária.\\n' +
-    '- Retorno programado em 21 dias para reavaliação de peso corporal, creatinina e estadiamento renal IRIS.\\n\\n' +
-    '--------------------------------------------------------------------------------\\n\\n' +
-    'MODELO 2 — CÃO HOSPITALIZADO EM CONVALESCENÇA COM INAPETÊNCIA (HUMANA LISTA C1):\\n' +
-    'RECEITA DE CONTROLE ESPECIAL (2 VIAS BRANCA — PORTARIA SVS/MS Nº 344/1998 LISTA C1)\\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome Completo], Médico(a) Veterinário(a), CRMV-[UF] [Número]\\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Paciente], Espécie: Canina, Raça: Labrador, Peso: 30,0 kg\\n\\n' +
-    'USO ORAL\\n' +
-    '1. Mirtazapina 15 mg Comprimidos Revestidos (Genérico Humano) ------------ 1 caixa (30 comprimidos)\\n' +
-    '   Posologia: Fornecer 1 (um) comprimido por via oral uma vez ao dia (a cada 24 horas), à noite após uma pequena porção de refeição, durante 7 a 10 dias consecutivos.\\n\\n' +
-    'ORIENTAÇÕES AO TUTOR:\\n' +
-    '- Medicamento sujeito a controle especial com retenção de receita na drogaria humana.\\n' +
-    '- Fornecer à noite, pois o remédio pode induzir sonolência nas primeiras horas pós-dose.\\n' +
-    '- Não ultrapassar a dose de 1 comprimido por dia.',
 
   clinicalStudiesCommented: [
     {

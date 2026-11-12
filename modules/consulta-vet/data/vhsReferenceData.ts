@@ -102,6 +102,21 @@ export const VHS_SOURCE = {
   authors: 'Joanna Dukes-McEwan; eds. Tobias Schwarz e Peter Scrivani',
 } as const;
 
+export const VHS_IMAGE_SOURCE = {
+  src: '/consulta-vet/reference-apps/vhs-measurement.jpg',
+  originalUrl: 'https://commons.wikimedia.org/wiki/File:Vertebral_heart_score.jpg',
+  directImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Vertebral_heart_score.jpg',
+  thumbnailUrl:
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCQnWxtAH5H6xxavYeA1nQSBPfPDC5kxBwRI3EPvxovnZ6qMoPium69cVn&s=10',
+  title: 'Vertebral heart score.jpg',
+  author: 'Uwe Gille (adaptada da radiografia original de Ophélie Tissier, Radiographie thoracique chien.jpg)',
+  repository: 'Wikimedia Commons',
+  license: 'CC BY-SA 4.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  methodReference:
+    'Buchanan JW, Bücheler J. Vertebral scale system to measure canine heart size in radiographs. J Am Vet Med Assoc. 1995;206(2):194–199.',
+} as const;
+
 export function calculateVhs(longAxisV: number, shortAxisV: number): number {
   if (!Number.isFinite(longAxisV) || !Number.isFinite(shortAxisV) || longAxisV <= 0 || shortAxisV <= 0) {
     return 0;

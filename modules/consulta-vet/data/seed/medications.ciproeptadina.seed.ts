@@ -384,29 +384,6 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'USO VETERINÁRIO — RECEITUÁRIO SIMPLES (VIA ÚNICA)\\n\\n' +
-    'MODELO 1 — ESTIMULAÇÃO DO APETITE EM GATO HIPORÉXICO CONVALESCENTE (4 KG):\\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Felino], Espécie: Felina, Raça: SRD, Peso: 4,0 kg\\n\\n' +
-    'PRESCRIÇÃO:\\n' +
-    '1. Ciproeptadina 1 mg ---------------------------------------------------------------------------------- 10 cápsulas gelatinosas\\n' +
-    '   (Manipulação veterinária em farmácia magistral com veículo inerte seguro)\\n' +
-    '   Posologia: Administrar 1 (uma) cápsula por via oral a cada 12 horas, durante 3 a 5 dias, até a estabilização do consumo alimentar espontâneo.\\n\\n' +
-    'ORIENTAÇÕES AO TUTOR:\\n' +
-    '- A medicação atua como um estímulo transitório para o apetite e não cura a causa básica da inapetência; manter o alimento úmido fresco e palatável.\\n' +
-    '- Observar sinais de sonolência excessiva, dificuldade de equilíbrio, pupilas excessivamente dilatadas ou alterações de comportamento.\\n' +
-    '- Caso o animal apresente miados excessivos e agitação contínua (reação paradoxal), suspender imediatamente o medicamento e avisar o veterinário.\\n' +
-    '- Não associar à mirtazapina ou a outros antidepressivos sem expressa autorização profissional.\\n' +
-    '- Caso o felino permaneça mais de 48 horas em jejum ou recusa alimentar severa, retornar com urgência para instituir suporte nutricional por sonda enteral.\\n\\n' +
-    'Data de emissão: [DD/MM/AAAA] — Assinatura e Carimbo do Médico Veterinário\\n\\n' +
-    '------------------------------------------------------------------------------------------------------\\n\\n' +
-    'MODELO 2 — RESGATE TOXICOLÓGICO DE SÍNDROME SEROTONINÉRGICA EM CÃO (15 KG):\\n' +
-    'PRESCRIÇÃO HOSPITALAR / EMERGÊNCIA:\\n' +
-    '1. Cloridrato de Ciproeptadina 4 mg (Cobavital ou Genérico) ----------------------------------------------- 12 microcomprimidos\\n' +
-    '   Posologia: Administrar 4 (quatro) microcomprimidos (16 mg de ciproeptadina) por via retal a cada 4 a 6 horas conforme persistência dos sinais.\\n' +
-    '   Modo de Preparo: Macerar finamente os 4 microcomprimidos em gral de porcelana, suspender homogeneamente em 8 mL de solução fisiológica estéril (NaCl 0,9%) e infundir na ampola retal através de sonda uretral flexível número 6 ou 8 Fr devidamente lubrificada com gel hidrossolúvel.',
 
   clinicalStudiesCommented: [
     {

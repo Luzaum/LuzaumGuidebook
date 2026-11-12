@@ -18,7 +18,7 @@ Este arquivo fornece contexto imediato para agentes de IA (incluindo **ChatGPT W
 - **Antibioticoterapia Vet:** `modules/antibioticoterapia-vet/` (rota `/antibioticoterapia`)
 - **CRI VET:** `modules/crivet/` e `pages/Crivet.tsx` (rota `/crivet`)
 - **Neurologia (NeuroVet):** `modules/neurologia/` e `pages/NeurologiaPage.tsx` (rota `/neurologia`)
-- **ConsultaVET & Receituário:** `modules/consulta-vet/` (rota `/consulta-vet` e sub-rotas `doencas`, `medicamentos`, `consensos`, `receituario`, `editorial`, `manejo-emergencial`, `guias-rapidos`, `referencias-rapidas`)
+- **ConsultaVET:** `modules/consulta-vet/` (rota `/consulta-vet` e sub-rotas `doencas`, `medicamentos`, `consensos`, `editorial`, `manejo-emergencial`, `guias-rapidos`, `referencias-rapidas`)
 - **Autenticação, Perfis e Multi-Clínica (Supabase):** `src/components/`, `src/lib/`, `src/routes/`
 
 ## 3. Comandos de Setup e Validação (Quality Gate)
@@ -37,7 +37,6 @@ Ao realizar alterações pelo ChatGPT Work / Codex ou em qualquer ambiente cloud
    ```bash
    npm run validate:hemogasovet
    npm run validate:fluidoterapia-vet
-   npm run test:receituario
    npm run test:nutrition
    npm run test:neurologia
    ```

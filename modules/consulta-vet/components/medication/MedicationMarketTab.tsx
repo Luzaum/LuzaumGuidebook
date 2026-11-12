@@ -1,13 +1,11 @@
 import { ReadableTable } from '../shared/ReadableTable';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShoppingBag,
   ExternalLink,
   FileText,
   Building2,
-  Copy,
-  Check,
   Droplets,
   Pill,
   Syringe,
@@ -23,93 +21,33 @@ export function MedicationMarketTab({
 }: {
   medication: MedicationRecord;
 }) {
-  const [copiedPrescription, setCopiedPrescription] = useState(false);
-
-  const samplePrescription =
-    medication.samplePrescriptionText ||
-    (medication.slug === 'fenobarbital'
-      ? 'RECEITUÁRIO DE CONTROLE ESPECIAL (LISTA C1 - 2 VIAS)\n\n' +
-        'USO ORAL:\n' +
-        '1. Convless® Solução Oral 20 mg/mL (Agener União) ------------ 1 frasco (100 mL)\n' +
-        '   Administrar 1,25 mL (25 mg) por via oral, utilizando a seringa dosadora graduada, a cada 12 horas (rigorosamente nos horários das 08h e 20h), de uso contínuo.\n\n' +
-        'OU EM COMPRIMIDOS:\n' +
-        '1. Gardenal® 100 mg (Sanofi) -------------------------------- 1 caixa (20 comprimidos)\n' +
-        '   Administrar 1/4 de comprimido (25 mg para cão de 10 kg) por via oral a cada 12 horas, de uso contínuo.\n\n' +
-        'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\n' +
-        '• NUNCA interromper ou atrasar as doses pelo risco de crises refratárias em salva ou status epilepticus.\n' +
-        '• Retornar em 14 a 21 dias para dosagem sérica de fenobarbital (TDM) e perfil bioquímico hepático.'
-      : 'USO ORAL:\n' +
-        '1. Novalgina® Gotas 500 mg/mL ------------------------- 1 frasco\n' +
-        '   Administrar 1 gota por kg de peso corporal (25 mg/kg) por via oral a cada 8 horas, durante 3 dias seguidos para controle de dor e febre.\n\n' +
-        'OU EM COMPRIMIDOS:\n' +
-        '1. Novalgina® Comprimidos 500 mg --------------------- 1 caixa\n' +
-        '   Administrar 1/2 comprimido (para cão de 10 kg) por via oral a cada 8 horas, durante 3 dias.');
-
-  const handleCopyPrescription = () => {
-    navigator.clipboard.writeText(samplePrescription);
-    setCopiedPrescription(true);
-    setTimeout(() => setCopiedPrescription(false), 2500);
-  };
-
-  const defaultWeightHeaders = [
-    'Peso do Animal',
-    'Dose Total (25 mg/kg)',
-    'Gotas 500 mg/mL (1 gota/kg)',
-    'Comprimidos 500 mg',
-    'Injetável 500 mg/mL (0,05 mL/kg)',
-  ];
-
-  type PracticalWeightTableRow = {
-    weight: string;
-    totalDose: string;
-    col1: string;
-    col2: string;
-    col3: string;
-    col4?: string;
-  };
-
-  const defaultWeightRows: PracticalWeightTableRow[] = [
-    { weight: '2 kg', totalDose: '50 mg', col1: '2 gotas (0,10 mL)', col2: 'Inadequado (usar gotas)', col3: '0,10 mL' },
-    { weight: '5 kg', totalDose: '125 mg', col1: '5 gotas (0,25 mL)', col2: '1/4 comprimido', col3: '0,25 mL' },
-    { weight: '10 kg', totalDose: '250 mg', col1: '10 gotas (0,50 mL)', col2: '1/2 comprimido', col3: '0,50 mL' },
-    { weight: '15 kg', totalDose: '375 mg', col1: '15 gotas (0,75 mL)', col2: '3/4 comprimido', col3: '0,75 mL' },
-    { weight: '20 kg', totalDose: '500 mg', col1: '20 gotas (1,00 mL)', col2: '1 comprimido inteiro', col3: '1,00 mL' },
-    { weight: '30 kg', totalDose: '750 mg', col1: '30 gotas (1,50 mL)', col2: '1 + 1/2 comprimido', col3: '1,50 mL' },
-    { weight: '40 kg', totalDose: '1.000 mg', col1: '40 gotas (2,00 mL)', col2: '2 comprimidos (ou 1 comp de 1g)', col3: '2,00 mL' },
-  ];
-
-  const tableHeaders = medication.practicalWeightTable?.headers || defaultWeightHeaders;
-  const tableRows = medication.practicalWeightTable?.rows || defaultWeightRows;
-  const calibrator = medication.practicalWeightTable?.dropletCalibrator;
+  const weightTable = medication.practicalWeightTable;
+  const calibrator = weightTable?.dropletCalibrator;
+  const hasVeterinaryPresentation = medication.presentations.some((presentation) => presentation.channel === 'veterinary');
 
   const getFormLabel = (pres: MedicationPresentation) => {
     const formLower = pres.form.toLowerCase();
     if (formLower.includes('gota') || (pres.dropsPerMl && pres.dropsPerMl > 0)) {
       return 'Solução Oral em Gotas';
     }
-    if (formLower.includes('injet') || pres.channel === 'veterinary') {
+    if (formLower.includes('injet')) {
       return 'Solução Injetável Estéril';
     }
-    if (formLower.includes('comprim')) {
+    if (formLower.includes('sulcado')) {
       return 'Comprimido Sulcado';
     }
     return pres.form;
   };
 
   const getConcentrationDisplay = (pres: MedicationPresentation) => {
-    const isDrops = pres.form.toLowerCase().includes('gota') || (pres.dropsPerMl && pres.dropsPerMl > 0);
-    if (isDrops) {
-      const drops = pres.dropsPerMl || 20;
-      const mgPerDrop = (pres.concentrationValue / drops).toFixed(1).replace('.0', '');
-      return `${pres.concentrationValue} mg/mL • ${drops} gotas = 1 mL (${mgPerDrop} mg/gota)`;
-    }
-    if (pres.form.toLowerCase().includes('solu') && pres.concentrationUnit?.toLowerCase().includes('ml')) {
-      return `${pres.concentrationValue} mg/mL (Solução oral com seringa graduada)`;
+    if (pres.dropsPerMl && pres.dropsPerMl > 0 && pres.concentrationValue && pres.concentrationUnit?.toLowerCase() === 'mg/ml') {
+      const mgPerDrop = Number((pres.concentrationValue / pres.dropsPerMl).toFixed(2));
+      return `${pres.concentrationValue} mg/mL • ${pres.dropsPerMl} gotas = 1 mL (${mgPerDrop} mg/gota)`;
     }
     if (pres.concentrationUnit?.includes('comprimido')) {
       return `${pres.concentrationValue} mg por comprimido`;
     }
-    return `${pres.concentrationValue} ${pres.concentrationUnit}`;
+    return [pres.concentrationValue, pres.concentrationUnit].filter(Boolean).join(' ');
   };
 
   const getCommercialSearchUrl = (pres: MedicationPresentation) => {
@@ -199,7 +137,7 @@ export function MedicationMarketTab({
                     </div>
 
                     <h4 className="text-sm sm:text-base font-bold text-foreground leading-snug">
-                      {pres.label}
+                      {pres.label || pres.name}
                     </h4>
 
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
@@ -249,7 +187,7 @@ export function MedicationMarketTab({
                     {pres.scoringInfo && (
                       <div className="rounded-xl bg-background/80 p-3.5 border border-border/70 space-y-1">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block">
-                          Fracionamento & Posologia Prática
+                          Preparo, fracionamento e uso prático
                         </span>
                         <p className="text-xs leading-relaxed text-foreground/90">
                           {pres.scoringInfo}
@@ -289,32 +227,32 @@ export function MedicationMarketTab({
       </section>
 
       {/* SEÇÃO 2 (VEM NO FINAL): Guia de Conversão Rápida / Tabela Prática */}
-      <section id="tabela-posologia-pratica" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      {weightTable && <section id="tabela-posologia-pratica" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
             <Droplets className="h-5 w-5" />
           </span>
           <div>
             <h3 className="text-lg font-bold text-foreground">
-              {calibrator?.title || 'Guia de Conversão Rápida (Gotas & Posologia)'}
+              {calibrator?.title || 'Guia de posologia por peso'}
             </h3>
             <p className="text-xs text-muted-foreground">
-              {calibrator?.note || medication.practicalWeightTable?.standardDoseText || 'Relação de gotejamento padrão e tabela de posologia prática por peso corporal'}
+              {calibrator?.note || weightTable.standardDoseText}
             </p>
           </div>
         </div>
 
         {/* 3 Cards com a Relação Matemática */}
-        <div className="grid gap-4 sm:grid-cols-3">
+        {calibrator && <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 block">
               Equivalência / Concentração
             </span>
             <p className="text-base font-black text-foreground">
-              {calibrator?.concentration || '1 mL = 20 gotas'}
+              {calibrator.concentration}
             </p>
             <p className="text-xs text-muted-foreground">
-              {calibrator ? 'Apresentação comercial e veículo de dispensação' : 'Gotejador calibrado oficial para soluções líquidas 500 mg/mL'}
+              Apresentação comercial e veículo de dispensação
             </p>
           </div>
 
@@ -323,10 +261,10 @@ export function MedicationMarketTab({
               Teor por Unidade / Gota
             </span>
             <p className="text-base font-black text-amber-600 dark:text-amber-400">
-              {calibrator?.dropletRatio || '1 gota = 25 mg'}
+              {calibrator.dropletRatio}
             </p>
             <p className="text-xs text-muted-foreground">
-              {calibrator ? 'Cálculo exato de princípio ativo por volume fracionado' : 'Cálculo: 500 mg ÷ 20 gotas = exatamente 25 mg por gota'}
+              Quantidade de princípio ativo por volume
             </p>
           </div>
 
@@ -335,20 +273,20 @@ export function MedicationMarketTab({
               Regra Prática de Dosagem
             </span>
             <p className="text-base font-black text-emerald-600 dark:text-emerald-400">
-              {calibrator?.practicalRule || '1 gota para cada 1 kg'}
+              {calibrator.practicalRule}
             </p>
             <p className="text-xs text-muted-foreground">
-              {medication.practicalWeightTable?.standardDoseText || 'Para dose padrão recomendada calculada por quilograma'}
+              {weightTable.standardDoseText}
             </p>
           </div>
-        </div>
+        </div>}
 
         {/* Tabela de correspondência prática por peso */}
         <div className="overflow-x-auto rounded-2xl border border-border">
           <ReadableTable className="w-full min-w-[720px] text-left text-xs border-collapse">
             <thead>
               <tr className="bg-muted/60 border-b border-border text-muted-foreground font-semibold">
-                {tableHeaders.map((header, idx) => (
+                {weightTable.headers.map((header, idx) => (
                   <th
                     key={idx}
                     className={`py-3 px-4 ${
@@ -369,13 +307,13 @@ export function MedicationMarketTab({
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60">
-              {tableRows.map((row, i) => (
+              {weightTable.rows.map((row, i) => (
                 <tr key={i} className="hover:bg-muted/30 transition-colors">
                   <td className="py-2.5 px-4 font-bold text-foreground">{row.weight}</td>
                   <td className="py-2.5 px-4 font-mono text-muted-foreground">{row.totalDose}</td>
                   <td className="py-2.5 px-4 font-semibold text-amber-800 dark:text-amber-200">{row.col1}</td>
                   <td className="py-2.5 px-4 text-foreground/90">{row.col2}</td>
-                  <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col3}</td>
+                  {row.col3 && <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col3}</td>}
                   {row.col4 ? (
                     <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col4}</td>
                   ) : null}
@@ -384,9 +322,9 @@ export function MedicationMarketTab({
             </tbody>
           </ReadableTable>
         </div>
-      </section>
+      </section>}
 
-      {/* SEÇÃO 3: Bulas Oficiais, Links de Fabricantes & Prescrição Pronta */}
+      {/* SEÇÃO 3: Bulas Oficiais e Links de Fabricantes */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Bulas & Links Oficiais */}
         <section id="bulas-fontes-oficiais" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
@@ -398,7 +336,7 @@ export function MedicationMarketTab({
               <h3 className="text-base font-bold text-foreground">
                 Bulas & Fontes Oficiais
               </h3>
-              <p className="text-xs text-muted-foreground">Documentos regulatórios e bulário ANVISA</p>
+              <p className="text-xs text-muted-foreground">Documentos regulatórios e informações do fabricante</p>
             </div>
           </div>
 
@@ -416,10 +354,10 @@ export function MedicationMarketTab({
                     <span className="font-bold text-foreground block">
                       {medication.slug === 'fenobarbital'
                         ? 'Bula Técnica Oficial do Convless® 20 mg/mL (MAPA)'
-                        : `Bula Oficial de ${medication.title} (PDF ANVISA)`}
+                        : `Bula Oficial de ${medication.title} (PDF)`}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
-                      Bula completa para o paciente e profissional de saúde
+                      {hasVeterinaryPresentation ? 'Informações de uso e segurança para o médico-veterinário' : 'Informações de uso e segurança'}
                     </span>
                   </div>
                 </div>
@@ -459,54 +397,12 @@ export function MedicationMarketTab({
                 {medication.genericBrandsNote ||
                   (medication.slug === 'fenobarbital'
                     ? 'O fenobarbital conta com formulação de uso veterinário exclusivo com seringa dosadora (Convless® 20 mg/mL - Agener União) e formulações de uso humano sob receita de controle especial (Gardenal® 50/100 mg - Sanofi, Fenocris® injetável - Cristália, além de genéricos União Química, Teuto e EMS).'
-                    : `${medication.title} é amplamente produzida por laboratórios farmacêuticos certificados, mantendo formulações orais e parenterais sob estrito controle analítico.`)}
+                    : 'Consulte as apresentações listadas nesta ficha e confirme o registro de cada produto.')}
               </p>
             </div>
           </div>
         </section>
 
-        {/* Modelo de Prescrição Veterinária Pronta para Cópia */}
-        <section id="modelo-receita" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
-          <div className="flex items-center justify-between border-b border-border/70 pb-4">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-                <FileText className="h-5 w-5" />
-              </span>
-              <div>
-                <h3 className="text-base font-bold text-foreground">
-                  Prescrição Modelo Pronta
-                </h3>
-                <p className="text-xs text-muted-foreground">Copie ou use como base na prescrição</p>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleCopyPrescription}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted px-3 py-1.5 text-xs font-semibold text-foreground transition hover:bg-accent"
-            >
-              {copiedPrescription ? (
-                <>
-                  <Check className="h-3.5 w-3.5 text-emerald-500" />
-                  <span className="text-emerald-600 dark:text-emerald-400">Copiado!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="h-3.5 w-3.5" />
-                  <span>Copiar</span>
-                </>
-              )}
-            </button>
-          </div>
-
-          <div className="relative rounded-2xl bg-muted/50 p-4 font-mono text-xs text-foreground/90 border border-border whitespace-pre-line leading-relaxed">
-            {samplePrescription}
-          </div>
-
-          <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-            <span>Texto pronto e formatado para colar em prontuário ou receituário impresso.</span>
-          </div>
-        </section>
       </div>
     </div>
   );

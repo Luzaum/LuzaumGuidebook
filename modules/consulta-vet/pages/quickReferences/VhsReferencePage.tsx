@@ -5,6 +5,7 @@ import { ConsultaVetPageHero } from '../../components/layout/ConsultaVetPageHero
 import {
   calculateVhs,
   interpretVhs,
+  VHS_IMAGE_SOURCE,
   VHS_REFERENCES,
   VHS_SOURCE,
   VhsSpecies,
@@ -46,7 +47,7 @@ export function VhsReferencePage() {
         <Link to="/consulta-vet" className="transition-colors hover:text-primary">Início</Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <Link to="/consulta-vet/referencias-rapidas" className="transition-colors hover:text-primary">
-          Referências clínicas
+          Mini-apps
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
         <span className="text-foreground">VHS</span>
@@ -73,13 +74,36 @@ export function VhsReferencePage() {
 
       <section className="grid gap-5 xl:grid-cols-[minmax(0,1.12fr)_minmax(340px,.88fr)]" aria-labelledby="vhs-method-title">
         <figure className="overflow-hidden rounded-3xl border border-border/70 bg-card shadow-sm">
-          <img
-            src="/consulta-vet/reference-apps/vhs-measurement.svg"
-            alt="Esquema da medição do VHS: eixo longo da carina ao ápice, eixo curto perpendicular e transposição a partir de T4."
-            className="aspect-[16/9] w-full object-cover"
-          />
+          <div className="flex items-center justify-center bg-neutral-950">
+            <img
+              src={VHS_IMAGE_SOURCE.src}
+              alt="Radiografia torácica lateral canina demonstrando a mensuração do VHS: eixo longo (L = 5,3) da carina ao ápice, eixo curto (S = 3,5) perpendicular e transposição na coluna a partir da borda cranial de T4 (VHS = 5,3 + 3,5 = 8,8)."
+              width={497}
+              height={355}
+              className="max-h-[420px] w-full object-contain"
+            />
+          </div>
           <figcaption className="border-t border-border/60 px-4 py-3 text-[11px] leading-relaxed text-muted-foreground sm:px-5">
-            Ilustração original do ConsultaVET, sem reprodução de figura de terceiros. Método adaptado da descrição e das Figuras 9.15–9.16 do BSAVA Thoracic Imaging, 2ª ed.
+            Radiografia torácica lateral canina demonstrando a aferição do VHS a partir da borda cranial de T4 (L = 5,3 v; S = 3,5 v; VHS = 8,8 v).{' '}
+            <strong className="font-semibold text-foreground">Fonte da imagem:</strong>{' '}
+            <a
+              href={VHS_IMAGE_SOURCE.originalUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-primary underline underline-offset-2 hover:opacity-80"
+            >
+              {VHS_IMAGE_SOURCE.repository} — {VHS_IMAGE_SOURCE.title}
+            </a>{' '}
+            ({VHS_IMAGE_SOURCE.author}; licença{' '}
+            <a
+              href={VHS_IMAGE_SOURCE.licenseUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-primary underline underline-offset-2 hover:opacity-80"
+            >
+              {VHS_IMAGE_SOURCE.license}
+            </a>
+            ). Método original: {VHS_IMAGE_SOURCE.methodReference}
           </figcaption>
         </figure>
 
@@ -233,11 +257,14 @@ export function VhsReferencePage() {
 
         <div className="rounded-2xl border border-border/70 bg-card p-4">
           <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.17em] text-primary">
-            <BookOpen className="h-4 w-4" aria-hidden /> Fonte do livro
+            <BookOpen className="h-4 w-4" aria-hidden /> Fontes e referências
           </div>
           <p className="mt-3 text-sm font-bold text-foreground">{VHS_SOURCE.title}</p>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
             {VHS_SOURCE.edition}, {VHS_SOURCE.year}. {VHS_SOURCE.chapter}; {VHS_SOURCE.pages}.
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            <strong className="font-semibold text-foreground">Imagem radiográfica:</strong> {VHS_IMAGE_SOURCE.author} ({VHS_IMAGE_SOURCE.repository}, {VHS_IMAGE_SOURCE.license}).
           </p>
           <div className="mt-3 flex gap-2 text-[11px] leading-relaxed text-muted-foreground">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden />

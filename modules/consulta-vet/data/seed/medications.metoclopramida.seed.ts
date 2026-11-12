@@ -565,32 +565,6 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
     },
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO SIMPLES DE USO VETERINÁRIO (MEDICAMENTO NÃO CONTROLADO)\n' +
-    'EMITIDO EM 1 VIA PARA DISPENSAÇÃO EM FARMÁCIA VETERINÁRIA OU COMERCIAL\n\n' +
-    'CLÍNICA VETERINÁRIA [NOME DA CLÍNICA] — Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\n' +
-    'Endereço: [Logradouro, Bairro, Cidade, UF] — Tel: [(XX) XXXXX-XXXX]\n\n' +
-    'PACIENTE: [Nome do Cão/Gato], Espécie: [Canina/Felina], Raça: [Raça], Sexo: [M/F], Peso: [10,0 kg]\n' +
-    'TUTOR: [Nome Completo do Tutor], CPF: [000.000.000-00], Endereço: [Logradouro, Cidade, UF]\n\n' +
-    'PRESCRIÇÃO:\n' +
-    'OPÇÃO 1 (PRODUTO VETERINÁRIO LÍQUIDO — NAUSETRAT 5 mg/mL):\n' +
-    '1. NAUSETRAT® 5 mg/mL solução oral --------------------------------------- 1 frasco conta-gotas de 20 mL\n' +
-    '   Posologia: Administrar 0,5 mL (ou 25 gotas do frasco original, equivalente a 2,5 mg na dose de 0,25 mg/kg) por via oral a cada 8 horas, preferencialmente 30 a 45 minutos antes das refeições, durante 3 a 5 dias consecutivos.\n\n' +
-    'OPÇÃO 2 (INFUSÃO CONTÍNUA HOSPITALAR CRI EM CÃO DE 10 kg — DOSE 2 mg/kg/dia):\n' +
-    '1. CLORIDRATO DE METOCLOPRAMIDA 5 mg/mL injetável ------------------------- 1 ampola de 10 mL\n' +
-    '   Protocolo de Infusão Hospitalar:\n' +
-    '   a) Dose de Ataque Lenta (0,1 mg/kg): aspirar 0,2 mL (1,0 mg) e infundir por via intravenosa estritamente lenta ao longo de 10 minutos.\n' +
-    '   b) Taxa de Manutenção em Bomba de Seringa (2 mg/kg/dia = 0,833 mg/h): infundir a solução concentrada a 0,167 mL/h (equivalente a 20 mg em 24 horas), em equipo protegido da luz.\n\n' +
-    'OPÇÃO 3 (COMPRIMIDOS HUMANOS DE 10 mg PARA CÃES ACIMA DE 20 kg):\n' +
-    '1. PLASIL® (ou Metoclopramida Genérica) 10 mg comprimidos ----------------- 1 caixa com 20 comprimidos\n' +
-    '   Posologia (para cão de 20 kg): Fornecer 1/2 comprimido (5,0 mg na dose de 0,25 mg/kg) por via oral a cada 8 horas, 30 minutos antes do alimento, por 3 a 5 dias.\n\n' +
-    'ALERTAS OBRIGATÓRIOS AO PROPRIETÁRIO:\n' +
-    '- Não administrar caso haja suspeita de que o animal tenha engolido ossos, brinquedos, pedras ou outros corpos estranhos.\n' +
-    '- Se o animal apresentar tremores musculares, inquietação intensa, andar compulsivo, rigidez de pescoço ou agitação, suspender a medicação imediatamente e retornar ao hospital veterinário.\n' +
-    '- Não redosar caso o animal vomite imediatamente após a administração sem orientação veterinária.\n\n' +
-    '[Localidade - UF], [Data do Atendimento]\n' +
-    '________________________________________________________\n' +
-    'Dr(a). [Nome do Médico Veterinário] — CRMV-[UF] nº [XXXXX]',
 
   clinicalStudiesCommented: [
     {

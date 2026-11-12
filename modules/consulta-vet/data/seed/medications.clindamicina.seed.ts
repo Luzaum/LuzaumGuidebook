@@ -847,8 +847,6 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Texto Modelo de Prescrição Veterinária Pronto
-    samplePrescriptionText:
-      'USO ORAL\n1. Clinbacter® 150 mg (Cloridrato de clindamicina palatável) — Caixa com 14 comprimidos bissulcados\n   - Administrar 1 (um) comprimido, por via oral, a cada 12 horas, durante o período determinado para o controle do foco infeccioso (dose de 10 mg/kg/dose para cão de 15 kg).\n   - Instruções ao tutor:\n     a) Administrar preferencialmente junto ou logo após uma pequena porção de alimento se o animal apresentar sensibilidade gástrica ou náuseas.\n     b) Reavaliar com o médico-veterinário caso ocorram episódios persistentes de vômito, fezes amolecidas ou ausência de melhora clínica após 3 a 4 dias.\n\nORIENTAÇÃO OBRIGATÓRIA PARA PACIENTES FELINOS (PREVENÇÃO DE ESTENOSE ESOFÁGICA):\n"Após administrar qualquer comprimido ou cápsula a um gato, fornecer IMEDIATAMENTE uma pequena quantidade de alimento úmido (sachê/patê) ou cerca de 3 a 5 mL de água fresca com uma seringa para garantir que a medicação seja conduzida com segurança até o estômago. NUNCA administrar o comprimido a seco. Caso o gato apresente dificuldade de engolir, engasgos, salivação constante ou regurgitação de alimentos, contatar imediatamente o veterinário."',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas
     clinicalFoundationsData: [

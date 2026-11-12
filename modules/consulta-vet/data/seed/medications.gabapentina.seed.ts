@@ -407,26 +407,6 @@ export const gabapentinaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'USO VETERINÁRIO — RECEITA DE CONTROLE ESPECIAL (PORTARIA SVS/MS Nº 344/1998 — LISTA C1 — 2 VIAS BRANCA)\\n\\n' +
-    'MODELO 1 — ANSIÓLISE FELINA PRÉ-VISITA CLÍNICA (GATO ADULTO SAUDÁVEL 4 KG):\\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Felino], Espécie: Felina, Raça: SRD, Peso: 4,0 kg\\n\\n' +
-    'PRESCRIÇÃO:\\n' +
-    '1. Gabapentina 100 mg ---------------------------------------------------------------------------------- 2 cápsulas gelatinosas\\n' +
-    '   (Manipular em cápsulas com veículo inerte em farmácia veterinária autorizada)\\n' +
-    '   Posologia: Administrar 1 (uma) cápsula por via oral cerca de 90 a 120 minutos antes de colocar o paciente na caixa de transporte para o deslocamento até o hospital veterinário.\\n\\n' +
-    'DADOS DA FARMÁCIA DISPENSADORA / RETENÇÃO DE VIA:\\n' +
-    'Primeira via: Retenção da Farmácia / Segunda via: Orientação do Tutor.\\n' +
-    'Data de emissão: [DD/MM/AAAA] — Assinatura e Carimbo do Médico Veterinário\\n\\n' +
-    '------------------------------------------------------------------------------------------------------\\n\\n' +
-    'MODELO 2 — DOR NEUROPÁTICA CRÔNICA POR DISCOPATIA EM CÃO (15 KG):\\n' +
-    'PRESCRIÇÃO:\\n' +
-    '1. Gabapentina 150 mg ---------------------------------------------------------------------------------- 90 cápsulas\\n' +
-    '   (Manipulação veterinária em cápsulas fracionadas sob medida)\\n' +
-    '   Posologia: Administrar 1 (uma) cápsula por via oral a cada 8 horas (três vezes ao dia), continuamente por 30 dias. Não interromper o tratamento de maneira súbita.\\n' +
-    '   ATENÇÃO: Havendo necessidade de suspensão futura, a dosagem deverá ser reduzida de forma gradativa ao longo de 2 a 3 semanas sob orientação médica veterinária.',
 
   clinicalStudiesCommented: [
     {

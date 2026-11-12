@@ -225,13 +225,6 @@ export function HomePage() {
       accent: 'amber' as const,
     },
     {
-      to: '/consulta-vet/receituario',
-      label: 'Receituário',
-      icon: FileText,
-      body: 'Receitas prontas e termos editáveis em A4',
-      accent: 'sky' as const,
-    },
-    {
       to: '/consulta-vet/guias-rapidos',
       label: 'Procedimentos',
       icon: BookOpen,
@@ -240,7 +233,7 @@ export function HomePage() {
     },
     {
       to: '/consulta-vet/referencias-rapidas',
-      label: 'Referências clínicas',
+      label: 'Mini-apps',
       icon: Layers,
       body: 'Mini-apps, cálculos e tabelas clínicas',
       accent: 'cyan' as const,

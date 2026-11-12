@@ -656,8 +656,6 @@ export const amoxicilinaClavulanatoMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Texto Modelo de Prescrição Veterinária Pronto
-    samplePrescriptionText:
-      'USO ORAL\n1. Amoxicilina + Clavulanato de Potássio 250 mg — Comprimidos Palatáveis Veterinários (Proporção 4:1 - 200 mg de amoxicilina + 50 mg de clavulanato)\n   - Administrar [FRACAO_COMPRIMIDO] ([DOSE_MG] mg da associação total, na proporção de 12,5 mg/kg total = 10 mg/kg amoxicilina + 2,5 mg/kg clavulanato), por via oral, a cada 12 horas, junto ao alimento, durante [NUMERO_DIAS] dias consecutivos.\n   - Instruções ao tutor:\n     a) Manter os comprimidos guardados dentro do blister de alumínio fechado até o instante da tomada (o clavulanato estraga rapidamente em contato com o ar e a umidade).\n     b) Oferecer preferencialmente junto com a refeição para proteger o estômago e evitar náuseas.\n     c) Não interromper precocemente nem prolongar a medicação sem retorno clínico.\n   - Monitoramento: acompanhar regressão dos sinais clínicos, aspecto das fezes e ausência de vômitos.',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas (Zero Asteriscos)
     clinicalFoundationsData: [

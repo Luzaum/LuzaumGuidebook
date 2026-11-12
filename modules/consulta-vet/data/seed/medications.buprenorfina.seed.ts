@@ -864,8 +864,6 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 9. Modelo Pronto de Prescrição Veterinária
-    samplePrescriptionText:
-      'NOTIFICAÇÃO DE RECEITA VETERINÁRIA — CONTROLE ESPECIAL (LISTA A1 - PORTARIA MAPA Nº 837/2025)\n\nPaciente: Luna | Espécie: Felina | Raça: Siamês | Peso: 3,5 kg | Idade: 3 anos\nTutor: Roberto Camargo | Data: 16/09/2026\n\nPrescrição Oral Transmucosa:\n1. Cloridrato de Buprenorfina Solução 0,3 mg/mL (Frasco de 10 mL manipulado ou comercial) ---------- 1 frasco\n   - Posologia: Administrar 0,23 mL (equivalente a 0,07 mg de buprenorfina) por via oral transmucosa (OTM), a cada 8 horas, durante 4 dias consecutivos.\n\nOrientações e Cuidados ao Tutor:\n- FORMA CORRETA DE APLICAÇÃO: Utilizar exclusivamente a seringa de 1 mL (sem agulha) fornecida para medir exatamente 0,23 mL. Injetar o líquido suavemente na gengiva ou na parte interna da bochecha da gata. Não forçar a gata a engolir e NUNCA misturar o remédio com a comida ou leite (se for engolido, o medicamento perde o efeito analgésico).\n- Não utilizar a via subcutânea (por baixo da pele) com essa solução líquida, pois a absorção é falha.\n- Fique atento a sinais normais como pupilas dilatadas (midríase) e ronronar aumentado. Caso note febre alta (corpo excessivamente quente), sedação exagerada ou dificuldade para respirar, entre em contato imediatamente com a equipe veterinária.\n- Medicamento entorpecente de controle especial. Guardar em local seguro, trancado e fora do alcance de crianças e de outros animais.',
 
     // 10. Referências Científicas Completas
     references: [

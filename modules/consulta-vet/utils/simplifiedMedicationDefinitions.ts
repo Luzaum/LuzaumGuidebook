@@ -101,6 +101,14 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
     whatItDoes: 'A ondansetrona bloqueia receptores 5-HT₃ envolvidos na náusea e no vômito por vias vagais e centrais. É complementar ao maropitant — não substitui a mesma via.',
     keyPoints: ['Em cães, VO tem biodisponibilidade baixa — preferir IV/SC quando efeito previsível é necessário.', 'Útil quando náusea persiste apesar de maropitant.', 'Cautela em hepatopatia, QT longo e distúrbios eletrolíticos.'],
   },
+  ondansetrona: {
+    whatItDoes: 'A ondansetrona bloqueia receptores 5-HT₃ envolvidos na náusea e no vômito por vias vagais periféricas e centrais (ZQG). É complementar e sinérgica ao maropitant no controle multimodal da náusea intensa.',
+    keyPoints: [
+      'Em cães, a via oral tem biodisponibilidade baixa (<10%) — preferir via IV lenta ou SC (~85% de biodisponibilidade) quando efeito previsível é necessário.',
+      'Em gatos com DRC (Consenso iCatCare 2026), não exige redução rotineira por estágio IRIS por ter depuração predominantemente hepática.',
+      'Administrar por via IV sempre de forma lenta (2 a 5 minutos) e com cautela em hepatopatia grave, QT longo e distúrbios eletrolíticos.',
+    ],
+  },
   dipirona: {
     whatItDoes: 'A dipirona é convertida em metabólitos ativos que reduzem sinais de dor, febre e espasmo por mecanismos múltiplos. Funciona melhor como parte de analgesia multimodal.',
     keyPoints: ['Não substitui opioide ou anestesia regional em dor intensa.', 'Evidência de analgesia isolada insuficiente em estudos perioperatórios caninos.', 'Faz sentido quando há componente visceral ou espasmo.'],
@@ -356,6 +364,18 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
       'Risco grave de interação serotoninérgica: nunca dê trazodona junto com tramadol, outros antidepressivos (fluoxetina, amitriptilina) ou inibidores de MAO (selegilina, amitraz) sem supervisão estrita.',
       'Atenção a exames de sangue e testes hormonais: o remédio pode diminuir a agregação de plaquetas e atenuar a resposta de cortisol em testes de adrenal; avise a equipe antes da consulta.',
       'Controle especial no Brasil: medicamento sob controle da Portaria 344/98 (Lista C1), exigindo Receita de Controle Especial em 2 vias branca com validade de 30 dias.',
+    ],
+  },
+  cetamina: {
+    whatItDoes:
+      'A cetamina é um anestésico dissociativo e modulador glutamatérgico que bloqueia o poro aberto dos receptores NMDA. Funciona com múltiplos perfis conforme a dose: em doses mais altas "desconecta" a percepção cerebral para induzir anestesia e contenção química; em doses baixas contínuas interrompe a amplificação da dor na medula espinhal (somação temporal das fibras nervosas); e em emergências neurológicas interrompe o estado de mal epiléptico refratário e estimula rápida neuroplasticidade sináptica (via AMPA–BDNF–mTORC1).',
+    keyPoints: [
+      'Três entidades não intercambiáveis: Cetamina Racêmica (mistura 50% R e 50% S), Escetamina Injetável S(+) (afinidade 3 a 4 vezes maior pelo receptor NMDA e cerca do dobro da potência anestésica) e Escetamina Intranasal (de uso supervisionado).',
+      'Uso associado obrigatório em cães: em cães, a cetamina nunca deve ser administrada sozinha para anestesia, pois causa rigidez muscular acentuada e tremores; deve ser associada sempre a propofol, benzodiazepínicos ou agonistas alfa-2 adrenérgicos.',
+      'Paradoxo cardiovascular: embora costume elevar a pressão arterial e os batimentos cardíacos por estimular a liberação de catecolaminas endógenas, em animais em choque descompensado com reservas simpáticas esgotadas ela exibe efeito depressor direto sobre o músculo cardíaco.',
+      'Proteção das vias aéreas e dos olhos: em gatos, aplicar lidocaína tópica na laringe antes da intubação orotraqueal e lubrificar os olhos com frequência, pois o animal permanece com os olhos abertos e a pupila dilatada sob dissociação.',
+      'Vigilância do fígado e da bexiga: infusões muito prolongadas ou repetidas requerem acompanhamento das enzimas hepáticas e atenção para evitar irritação urotelial na parede da bexiga.',
+      'Legislação e controle especial: substância psicotrópica sujeita a controle especial estrito (Portaria 344/98 e Instrução Normativa MAPA 35/2017), com uso restrito a estabelecimentos médico-veterinários e retenção de receita.',
     ],
   },
 };

@@ -47,3 +47,22 @@ test('todas as monografias têm ao menos uma referência pública verificável',
   );
   assert.deepEqual(withoutLinkedEvidence.map((medication) => medication.slug), []);
 });
+
+test('Milteforan vincula a bula e a única dose calculável à solução canina de 20 mg/mL', () => {
+  const medication = medicationsSeed.find((item) => item.slug === 'miltefosina');
+  assert.ok(medication);
+  const [product, ...otherProducts] = getCommercialProductsForMedication(medication, commercialOticProductsSeed);
+  assert.equal(product?.slug, 'milteforan');
+  assert.equal(otherProducts.length, 0);
+  assert.equal(product.labelUrl, medication.leafletUrl);
+  assert.deepEqual(medication.species, ['dog']);
+  assert.match(medication.controlNotice ?? '', /SIPEAGRO/);
+  const [dose, ...otherDoses] = medication.doses.filter((item) => item.calculatorEnabled);
+  assert.equal(otherDoses.length, 0);
+  assert.ok(dose);
+  const presentation = medication.presentations.find((item) => item.id === dose.presentationId);
+  assert.equal(presentation?.commercialProductSlug, product.slug);
+  assert.equal(presentation?.concentrationValue, 20);
+  assert.deepEqual([dose.species, dose.doseMin, dose.doseMax, dose.route], ['dog', 2, 2, 'VO']);
+  assert.equal(dose.duration, '28 dias consecutivos');
+});

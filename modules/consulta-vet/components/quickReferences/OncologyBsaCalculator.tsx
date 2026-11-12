@@ -1,13 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  AlertTriangle,
   Calculator,
-  Check,
   ChevronDown,
   ChevronUp,
   Clock,
-  Info,
   Search,
   ShieldAlert,
   Sparkles,
@@ -17,7 +14,9 @@ import {
   BSAVA_ONCOLOGY_DRUGS,
   BSAVA_SAFETY_GUIDELINES,
   calculateBsa,
-  OncologyDrug,
+  calculateOncologyDose,
+  getOncologyDoses,
+  OncologyRegimen,
   Species,
 } from '../../data/quickReferencesData';
 
@@ -27,6 +26,15 @@ interface OncologyBsaCalculatorProps {
   onWeightChange: (weight: number) => void;
   onSpeciesChange: (species: Species) => void;
 }
+
+import { OncologyHelpButton } from './OncologyHelpButton';
+
+const formatDose = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 3 });
+
+const REGIMENS: Record<OncologyRegimen, string> = {
+  conventional: 'Convencional',
+  metronomic: 'Metronômica',
+};
 
 const PRESET_WEIGHTS: Record<Species, number[]> = {
   canine: [2, 5, 8, 12, 15, 20, 25, 30, 40],
@@ -40,27 +48,22 @@ export function OncologyBsaCalculator({
   onSpeciesChange,
 }: OncologyBsaCalculatorProps) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [regimen, setRegimen] = useState<OncologyRegimen | null>(null);
   const [expandedDrugId, setExpandedDrugId] = useState<string | null>(null);
   const [showAllGuidelines, setShowAllGuidelines] = useState(false);
 
   const bsa = useMemo(() => calculateBsa(currentWeightKg, species), [currentWeightKg, species]);
 
-  const isUnder10Kg = currentWeightKg > 0 && currentWeightKg < 10;
-  const isUnder15Kg = currentWeightKg > 0 && currentWeightKg < 15;
-
   const filteredDrugs = useMemo(() => {
-    const q = searchTerm.toLowerCase().trim();
-    return BSAVA_ONCOLOGY_DRUGS.filter((d) => {
-      if (!d.applicableSpecies.includes(species)) return false;
-      if (!q) return true;
-      return (
-        d.name.toLowerCase().includes(q) ||
-        d.class.toLowerCase().includes(q) ||
-        d.route.toLowerCase().includes(q) ||
-        d.standardDoseDisplay.toLowerCase().includes(q)
-      );
-    });
-  }, [searchTerm, species]);
+    const normalize = (value: string) =>
+      value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    const q = normalize(searchTerm.trim());
+    return BSAVA_ONCOLOGY_DRUGS
+      .filter((drug) => drug.regimen === regimen)
+      .filter((drug) => normalize([drug.name, drug.class, drug.route, drug.indication].join(' ')).includes(q))
+      .map((drug) => ({ drug, doses: getOncologyDoses(drug, species, currentWeightKg) }))
+      .filter(({ doses }) => doses.length > 0);
+  }, [currentWeightKg, regimen, searchTerm, species]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = parseFloat(e.target.value);
@@ -90,7 +93,7 @@ export function OncologyBsaCalculator({
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-base font-bold text-foreground">Calculadora de Superfície Corpórea (BSA)</h3>
-                  <p className="text-xs text-muted-foreground">Fórmula oficial BSAVA: K × Peso²⁄³ (m²)</p>
+                  <p className="text-xs text-muted-foreground">Estimativa em m² com o peso em kg</p>
                 </div>
               </div>
 
@@ -106,7 +109,7 @@ export function OncologyBsaCalculator({
                       : 'text-muted-foreground hover:text-foreground'
                   )}
                 >
-                  Cão (K=10.1)
+                  Cão
                 </button>
                 <button
                   type="button"
@@ -118,7 +121,7 @@ export function OncologyBsaCalculator({
                       : 'text-muted-foreground hover:text-foreground'
                   )}
                 >
-                  Gato (K=10.0)
+                  Gato
                 </button>
               </div>
             </div>
@@ -196,7 +199,7 @@ export function OncologyBsaCalculator({
             </span>
             <div className="my-2 flex items-baseline justify-center gap-1.5">
               <span className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                {bsa > 0 ? bsa.toFixed(3) : '0.000'}
+                {bsa.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
               </span>
               <span className="text-xl font-bold text-muted-foreground">m²</span>
             </div>
@@ -207,89 +210,68 @@ export function OncologyBsaCalculator({
             </p>
           </div>
         </div>
-
-        {/* Alerta de Paciente Pequeno (<10kg ou <15kg) */}
-        <AnimatePresence>
-          {isUnder15Kg && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="mt-5 overflow-hidden"
-            >
-              <div
-                className={cn(
-                  'rounded-2xl border p-4 text-xs leading-relaxed',
-                  isUnder10Kg
-                    ? 'border-amber-500/30 bg-amber-500/[0.08] text-amber-950 dark:text-amber-100'
-                    : 'border-sky-500/30 bg-sky-500/[0.08] text-sky-950 dark:text-sky-100'
-                )}
-              >
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
-                  <div className="space-y-1">
-                    <p className="font-bold">
-                      {isUnder10Kg
-                        ? 'Alerta Crítico BSAVA: Paciente < 10 kg'
-                        : 'Alerta Farmacológico BSAVA: Paciente < 15 kg'}
-                    </p>
-                    <p className="text-muted-foreground dark:text-amber-200/80">
-                      {isUnder10Kg
-                        ? 'Animais pequenos apresentam maior toxicidade e mielossupressão grave se dosados estritamente por m². O BSAVA recomenda conversão para dosagem ponderal (mg/kg) para Doxorrubicina (1 mg/kg) e redução de faixas para Vincristina e Lomustina.'
-                        : 'Para Doxorrubicina e Epirrubicina, cães com menos de 15 kg devem receber 1 mg/kg em vez de 30 mg/m² para evitar toxicidade aguda grave.'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* Seção de Fármacos Oncológicos e Doses Calculadas */}
       <div className="space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-lg font-bold text-foreground">Doses Oncológicas Calculadas</h3>
+            <h3 className="text-lg font-bold text-foreground">Esquemas de quimioterapia</h3>
             <p className="text-xs text-muted-foreground">
-              Valores calculados em tempo real para {currentWeightKg > 0 ? `${currentWeightKg} kg` : 'o peso inserido'}{' '}
-              ({bsa > 0 ? `${bsa} m²` : '0 m²'})
+              {species === 'canine' ? 'Cães' : 'Gatos'} · {currentWeightKg > 0
+                ? formatDose.format(currentWeightKg) + ' kg · ' + formatDose.format(bsa) + ' m²'
+                : 'Informe o peso para calcular os totais.'}
             </p>
           </div>
 
-          <div className="relative w-full sm:w-64">
+          {regimen ? (
+            <div className="relative w-full sm:w-64">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
+              aria-label="Filtrar quimioterápico"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Filtrar quimioterápico..."
               className="h-9 w-full rounded-xl border border-border/80 bg-background pl-9 pr-3 text-xs outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
-          </div>
+            </div>
+          ) : null}
         </div>
 
+        <div className="flex flex-wrap justify-center gap-5 py-6" role="group" aria-label="Modalidade de quimioterapia">
+          {(['conventional', 'metronomic'] as const).map((option) => (
+            <div key={option} className="flex items-center gap-2">
+            <button
+              type="button"
+              aria-pressed={regimen === option}
+              onClick={() => {
+                setRegimen(option);
+                setExpandedDrugId(null);
+              }}
+              className={cn(
+                'min-h-16 min-w-[240px] rounded-2xl border-2 px-6 py-4 text-lg font-bold transition-colors',
+                regimen === option ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground',
+              )}
+            >
+              Quimioterapia {REGIMENS[option].toLocaleLowerCase('pt-BR')}
+            </button>
+            <OncologyHelpButton id={option} label={`Quimioterapia ${REGIMENS[option]}`} />
+            </div>
+          ))}
+        </div>
         {/* Lista de Cards de Fármacos */}
         <div className="grid gap-3.5 md:grid-cols-2">
-          {filteredDrugs.map((drug) => {
+          {filteredDrugs.map(({ drug, doses }) => {
             const isExpanded = expandedDrugId === drug.id;
-            const doseResult = drug.calculateDose({ weightKg: currentWeightKg, bsaM2: bsa, species });
 
             return (
-              <div
-                key={drug.id}
-                className={cn(
-                  'relative rounded-2xl border bg-card/80 p-4 transition-all duration-200',
-                  doseResult.isSmallPatientAdjusted
-                    ? 'border-amber-500/30 shadow-[0_4px_20px_-10px_rgba(245,158,11,0.15)]'
-                    : 'border-border/80 hover:border-primary/30 hover:shadow-sm'
-                )}
-              >
+              <div key={drug.id} className="rounded-2xl border border-border/80 bg-card/80 p-4">
                 {/* Cabeçalho do Fármaco */}
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-bold text-foreground">{drug.name}</h4>
+                      <h4 className="text-sm font-bold text-foreground">{drug.name}</h4><OncologyHelpButton id={drug.id} label={drug.name} />
                       {drug.vesicant && (
                         <span
                           title="Vesicante: Extravasamento causa necrose grave. Punção única recomendada."
@@ -303,46 +285,49 @@ export function OncologyBsaCalculator({
                     <p className="text-xs text-muted-foreground">{drug.class}</p>
                   </div>
 
-                  {/* Valor Calculado em Destaque */}
-                  <div className="text-right">
-                    <div className="flex items-baseline justify-end gap-1">
-                      <span className="text-xl font-black text-foreground">
-                        {currentWeightKg > 0 ? doseResult.calculatedDose : '—'}
-                      </span>
-                      <span className="text-xs font-bold text-muted-foreground">{doseResult.unit}</span>
-                    </div>
-                    <p className="text-[10px] font-medium text-muted-foreground">{drug.frequency}</p>
-                  </div>
+                  <span className="text-[11px] font-semibold text-primary">{REGIMENS[drug.regimen]}</span>
                 </div>
 
-                {/* Fórmula e Regra Utilizada */}
-                <div className="mt-3 rounded-xl border border-border/60 bg-muted/40 p-2.5 text-xs">
-                  <div className="flex items-start gap-2">
-                    <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-muted-foreground" />
-                    <div className="space-y-0.5">
-                      <p className="font-semibold text-foreground">{doseResult.doseFormulaUsed}</p>
-                      {doseResult.note && (
-                        <p className="text-[11px] text-amber-700 dark:text-amber-300">{doseResult.note}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{drug.indication}</p>
 
-                {/* Via e Nadir */}
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/50 pt-2.5 text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-medium text-foreground">Via:</span>
-                    <span>{drug.route}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    <span>Nadir: {drug.nadirDays}</span>
-                  </div>
-                </div>
+                <ul className="mt-3 space-y-2">
+                  {doses.map((dose) => {
+                    const rate = dose.rates.filter((value) => value !== undefined)
+                      .map((value) => formatDose.format(value)).join('–');
+                    const total = calculateOncologyDose(dose, currentWeightKg, bsa)
+                      .map((value) => formatDose.format(value)).join('–');
+                    return (
+                      <li key={dose.schedule} className="flex flex-wrap justify-between gap-2 rounded-xl border border-border/60 bg-muted/40 p-2.5 text-xs">
+                        <div>
+                          <p className="font-semibold text-foreground">{rate} {dose.basis} · {dose.route ?? drug.route}</p>
+                          <p className="text-muted-foreground">{dose.schedule}</p>
+                        </div>
+                        {total && dose.basis !== 'mg' && (
+                          <p className="font-bold text-foreground">
+                            Total calculado {total} {dose.basis.startsWith('UI') ? 'UI' : 'mg'}
+                          </p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {drug.nadirDays && (
+                  <p className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
+                    <Clock className="h-3 w-3 shrink-0" />
+                    Nadir e monitorização · {drug.nadirDays}
+                  </p>
+                )}
+                <p className="mt-3 text-[11px] text-muted-foreground">
+                  {drug.sourceUrl ? (
+                    <a href={drug.sourceUrl} target="_blank" rel="noreferrer" className="underline">{drug.source}</a>
+                  ) : drug.source}
+                </p>
 
                 {/* Botão de Expansão para Detalhes / Cuidados */}
                 <button
                   type="button"
+                  aria-expanded={isExpanded}
                   onClick={() => setExpandedDrugId(isExpanded ? null : drug.id)}
                   className="mt-3 flex w-full items-center justify-center gap-1 rounded-lg py-1 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/10"
                 >
@@ -353,7 +338,7 @@ export function OncologyBsaCalculator({
                     </>
                   ) : (
                     <>
-                      <span>Ver notas clínicas & precauções BSAVA</span>
+                      <span>Ver notas clínicas e precauções</span>
                       <ChevronDown className="h-3.5 w-3.5" />
                     </>
                   )}
@@ -396,9 +381,9 @@ export function OncologyBsaCalculator({
           })}
         </div>
 
-        {filteredDrugs.length === 0 && (
+        {regimen && filteredDrugs.length === 0 && (
           <div className="rounded-2xl border border-dashed border-border p-8 text-center text-xs text-muted-foreground">
-            Nenhum quimioterápico encontrado para a busca "{searchTerm}".
+            Nenhum esquema encontrado para a espécie, modalidade e busca selecionadas..
           </div>
         )}
       </div>

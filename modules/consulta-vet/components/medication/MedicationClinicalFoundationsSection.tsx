@@ -128,9 +128,9 @@ function EvidenceFindingBlock({
 
       <div className="mt-3 rounded-xl bg-background/80 p-3 border border-cyan-600/20">
         <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-800 dark:text-cyan-300 block mb-0.5">
-          Impacto Clínico Direto
+          O que este estudo ajuda a decidir
         </span>
-        <p className="text-xs font-semibold leading-relaxed text-foreground">
+        <p className="text-xs leading-relaxed text-foreground">
           {clinicalConclusion}
         </p>
       </div>

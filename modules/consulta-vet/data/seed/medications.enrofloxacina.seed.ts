@@ -809,8 +809,6 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 9. Modelo Pronto de Prescrição Veterinária
-    samplePrescriptionText:
-      'RECEITUÁRIO SIMPLES — USO VETERINÁRIO\\n\\n1. Enrofloxacina Comprimidos Palatáveis 50 mg\\n   - Posologia: Administrar [inserir número de comprimidos] por via oral, a cada 24 horas, durante [inserir número de dias] dias consecutivos.\\n\\nOrientações e Cuidados ao Tutor:\\n- Administrar preferencialmente no mesmo horário todos os dias, de preferência em jejum ou com pequena quantidade de alimento não lácteo se houver desconforto gástrico.\\n- NUNCA associar no mesmo horário com suplementos minerais de cálcio, ferro, zinco ou protetores estomacais (manter intervalo obrigatório de pelo menos 2 horas).\\n- Manter água fresca potável continuamente à disposição do animal para garantir hidratação ideal.\\n- ATENÇÃO ESPECIAL EM GATOS: A dose prescrita respeita o teto de segurança da espécie. Caso note pupilas dilatadas que não fecham na luz, desorientação ou perda visual súbita, suspenda o medicamento imediatamente e procure o hospital veterinário.\\n- Não interromper o tratamento antes do prazo estipulado, mesmo que os sintomas desapareçam, para evitar retorno da infecção e surgimento de bactérias resistentes.',
 
     // 10. Referências Científicas Completas
     references: [

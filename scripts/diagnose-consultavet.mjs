@@ -139,8 +139,7 @@ async function testDevServer() {
     '/consulta-vet/categorias',
     '/consulta-vet/editorial',
     '/consulta-vet/manejo-emergencial',
-    '/consulta-vet/guias-rapidos',
-    '/consulta-vet/receituario'
+    '/consulta-vet/guias-rapidos'
   ];
 
   let success = 0;

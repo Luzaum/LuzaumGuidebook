@@ -531,8 +531,6 @@ export const capromorelinaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Modelo de Prescrição Veterinária Pronto
-    samplePrescriptionText:
-      'USO ORAL\n1. Elura™ 20 mg/mL Solução Oral (Capromorelina) — Frasco com 15 mL (Uso Veterinário)\n   - Administrar [VOLUME] mL ([DOSE_MG] mg de capromorelina, na proporção de 0,1 mL para cada 1 kg de peso corporal), por via oral, uma vez ao dia (a cada 24 horas), preferencialmente cerca de 30 minutos antes da refeição programada, durante o período orientado na avaliação clínica.\n   - Instruções ao tutor:\n     a) Utilizar exclusivamente a seringa dosadora graduada que acompanha o frasco.\n     b) Administrar lentamente pelo canto da boca do gato.\n     c) Caso o gato vomite nos primeiros 15 minutos após a administração, a dose pode ser repetida.\n     d) Lavar a seringa com água corrente e sabão neutro e secar antes de guardar.\n     e) Lavar bem as mãos após a administração.\n   - Monitoramento: acompanhar o peso corporal semanalmente, consumo de alimento e sinais de desidratação, fraqueza ou salivação excessiva.',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas (Zero Asteriscos)
     clinicalFoundationsData: [

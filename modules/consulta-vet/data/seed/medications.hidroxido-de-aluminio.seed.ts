@@ -639,8 +639,6 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Texto Modelo de Prescrição Veterinária Pronto
-    samplePrescriptionText:
-      'USO ORAL\n1. Hidróxido de Alumínio Gel Seco USP — Pó puro oral em sachês de [DOSE_SACHE_MG: ex. 90 mg]\n   - Administrar 1 (um) sachê, misturado completamente e homogeneizado ao alimento úmido, a cada 12 horas, junto às duas principais refeições do paciente (dose total diária calculada conforme a recomendação IRIS de 30 a 60 mg/kg/dia).\n   - Instruções obrigatórias ao tutor:\n     a) A medicação DEVE ser oferecida estritamente misturada ao alimento no momento da refeição; se o paciente não se alimentar, não administrar a dose isolada em jejum.\n     b) Respeitar um intervalo mínimo de pelo menos 2 (duas) horas entre o hidróxido de alumínio e quaisquer outros medicamentos orais (como enrofloxacina, doxiciclina, ferro, gabapentina ou levotiroxina).\n     c) NUNCA administrar simultaneamente com suplementos ou xaropes contendo citrato de potássio.\n     d) Manter vasilhas de água limpa e fresca permanentemente acessíveis para evitar ressecamento das fezes.\n     e) Retornar para reavaliação laboratorial de fósforo sérico e cálcio em 4 a 6 semanas. Contatar imediatamente o médico-veterinário caso o animal apresente fezes excessivamente duras, tremores musculares ou fraqueza nas patas.',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas
     clinicalFoundationsData: [

@@ -874,8 +874,6 @@ export const pradofloxacinaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 9. Modelo Pronto de Prescrição Veterinária
-    samplePrescriptionText:
-      'RECEITUÁRIO SIMPLES — USO VETERINÁRIO\n\nPaciente: Nino | Espécie: Felina | Raça: Siamês | Peso: 4,0 kg | Idade: 4 anos\nTutor: Mariana Albuquerque\n\nPrescrição Oral:\n1. Pradofloxacina (Veraflox®) Suspensão Oral 25 mg/mL (2,5%) ---------- 1 frasco de 15 mL\n   - Posologia: Administrar exatamente 0,8 mL (equivalente a 20 mg de pradofloxacina) por via oral, a cada 24 horas, durante 7 dias consecutivos.\n\nOrientações e Cuidados ao Tutor:\n- Agitar vigorosamente o frasco antes de cada administração para homogeneizar a suspensão.\n- Utilizar exclusivamente a seringa dosadora graduada fornecida na embalagem para medir o volume exato de 0,8 mL. NUNCA utilizar colheres domésticas ou tentar converter em gotas.\n- Administrar preferencialmente afastado de grandes refeições (preferencialmente em jejum ou sempre com o mesmo pequeno petisco de rotina, sem laticínios).\n- Jamais associar no mesmo horário com antiácidos, protetores gástricos (sucralfato), produtos lácteos ou suplementos de cálcio/ferro/zinco; manter intervalo mínimo obrigatório de pelo menos 2 horas.\n- Notificação sobre o produto: O Veraflox foi descontinuado comercialmente no Brasil pela fabricante por decisão corporativa; utilize exclusivamente frascos remanescentes dentro do prazo de validade.\n- Cumprir integralmente os 7 dias de tratamento prescritos, mesmo diante de melhora precoce dos sintomas, prevenindo a seleção de bactérias resistentes.',
 
     // 10. Referências Científicas Completas
     references: [

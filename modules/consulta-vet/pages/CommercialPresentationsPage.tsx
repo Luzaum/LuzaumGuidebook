@@ -30,7 +30,12 @@ import {
   groupCommercialDoseEntries,
   shouldGroupCommercialDoseEntries,
 } from '../utils/commercialDoseGrouping';
-import { filterAndRankCommercialProducts } from '../services/receituarioCommercialCatalogService';
+import { filterAndRankCommercialProducts } from '../services/commercialCatalogSearch';
+
+// Registros distintos podem compartilhar o mesmo ID comercial.
+const productCardKeys = new Map(
+  commercialOticProductsSeed.map((product, index) => [product, index]),
+);
 
 const UI_TEXT = {
   title: 'Apresentações Comerciais',
@@ -141,6 +146,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   oncologic_tki: 'Inibidores de tirosina quinase',
   oncologic_chemotherapy: 'Quimioterápicos / agentes citotóxicos',
   emergency_thrombopoietin: 'Agonistas de TPO / Trombopoiese (PTI)',
+  emergency_antifibrinolytic: 'Antifibrinolíticos',
   repro_antigalactogenic: 'Antigalactogênicos',
   ortho_joint_support: 'Suporte articular',
   ortho_antiinflammatory: 'Anti-inflamatórios ortopédicos',
@@ -216,7 +222,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   nutraceutical: ['nutra_omega3', 'nutra_general_support', 'nutra_mineral_vitamin', 'gi_probiotic'],
   reproductive: ['repro_antigalactogenic'],
   oncologic: ['oncologic_tki', 'oncologic_chemotherapy', 'emergency_thrombopoietin', 'systemic_immunosuppressive'],
-  emergency: ['sedative_anesthetic', 'endocrine_diagnostic', 'emergency_thrombopoietin', 'systemic_immunosuppressive'],
+  emergency: ['sedative_anesthetic', 'endocrine_diagnostic', 'emergency_thrombopoietin', 'emergency_antifibrinolytic', 'systemic_immunosuppressive'],
   parasiticide: [
     'parasite_oral_isoxazoline_dog',
     'parasite_oral_endectocide_dog',
@@ -894,7 +900,7 @@ export function CommercialPresentationsPage() {
         ) : (
           <div className="grid gap-5">
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} onZoomImage={setZoomedProduct} />
+              <ProductCard key={productCardKeys.get(product)} product={product} onZoomImage={setZoomedProduct} />
             ))}
             {products.length === 0 ? (
               <div className="rounded-2xl border border-border bg-card py-16 text-center">

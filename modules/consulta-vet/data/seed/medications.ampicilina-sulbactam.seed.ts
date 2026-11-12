@@ -658,8 +658,6 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Texto Modelo de Prescrição Hospitalar Pronto
-    samplePrescriptionText:
-      'USO HOSPITALAR INTRAVENOSO\n1. Ampicilina Sódica + Sulbactam Sódico 1,5 g (Pó liofilizado para injeção - proporção 2:1)\n   - Reconstituir o frasco de 1,5 g adicionando 3,2 mL de água para injeção estéril (concentração final: 375 mg/mL da associação total, correspondendo a 250 mg/mL de ampicilina e 125 mg/mL de sulbactam).\n   - Administrar [VOLUME] mL ([DOSE_MG] mg da associação total, equivalente a [DOSE_AMP] mg de ampicilina + [DOSE_SULB] mg de sulbactam), diluídos em 30 a 50 mL de Solução Fisiológica 0,9%, por via intravenosa, em infusão lenta ao longo de 20 a 30 minutos, a cada 8 horas, durante o período de internação hospitalar.\n   - ATENÇÃO ENFERMAGEM: NUNCA misturar no mesmo frasco ou equipo com aminoglicosídeos (Amicacina ou Gentamicina) pelo risco de inativação química mútua.\n   - Reavaliar diariamente resposta clínica, leucograma, radiografias e função renal, realizando o descalonamento antimicrobiano assim que houver resultado de cultura e antibiograma.',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas (Zero Asteriscos)
     clinicalFoundationsData: [

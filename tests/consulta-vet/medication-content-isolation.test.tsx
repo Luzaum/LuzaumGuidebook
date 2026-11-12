@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { MemoryRouter } from 'react-router-dom';
 import { medicationsSeed } from '../../modules/consulta-vet/data/seed/medications.seed';
 import { CONSULTA_VET_PUBLIC_MEDICATION_SLUGS } from '../../modules/consulta-vet/constants/publicCatalog';
 import { applyMedicationBookFoundations, MEDICATION_BOOK_FOUNDATIONS } from '../../modules/consulta-vet/data/medicationBookFoundations';
@@ -9,6 +10,7 @@ import { MedicationClinicalFoundationsSection } from '../../modules/consulta-vet
 import { MedicationQuickSummaryPanel } from '../../modules/consulta-vet/components/medication/MedicationQuickSummaryPanel';
 import { MedicationPharmacologicalClassificationSection } from '../../modules/consulta-vet/components/medication/MedicationPharmacologicalClassificationSection';
 import { MedicationPharmacokineticsSection } from '../../modules/consulta-vet/components/medication/MedicationPharmacokineticsSection';
+import { MedicationMarketTab } from '../../modules/consulta-vet/components/medication/MedicationMarketTab';
 
 test('todo medicamento público possui explicações próprias com fontes resolvíveis e estudos clínicos', () => {
   for (const slug of Object.keys(MEDICATION_BOOK_FOUNDATIONS)) {
@@ -84,7 +86,7 @@ test('identificadores PubMed de assuntos alheios foram retirados e vínculos int
   }
 });
 
-test('dipirona preserva monografia padrão-ouro completa com todas as doses, tabela de peso e prescrições', () => {
+test('dipirona preserva monografia padrão-ouro completa com todas as doses e tabela de peso', () => {
   const medication = medicationsSeed.find((record) => record.slug === 'dipirona')!;
   // Preserva todas as 5 doses clínicas detalhadas (cão pós-op, febre, cólica, gato pós-op, febre)
   assert.equal(medication.doses.length, 5);
@@ -100,8 +102,6 @@ test('dipirona preserva monografia padrão-ouro completa com todas as doses, tab
   assert.ok(medication.practicalWeightTable.rows.length >= 7);
   assert.equal(medication.practicalWeightTable.dropletCalibrator?.dropletRatio, '1 gota = 25 mg');
   // Modelos de prescrição veterinária
-  assert.ok(medication.samplePrescriptionText);
-  assert.match(medication.samplePrescriptionText, /Novalgina® Gotas 500 mg\/mL/);
   // Preservação de referências indexadas e estudos clínicos
   const refIds = (medication.references ?? []).map((r) => r.id);
   assert.ok(refIds.includes('ref-teixeira-2013'));
@@ -131,4 +131,31 @@ test('dados das abas têm campos obrigatórios e farmacocinética renderiza toda
     const html = renderToStaticMarkup(<MedicationPharmacokineticsSection data={medication.pharmacokineticsData} />);
     assert.match(html, /Farmacocinética Aplicada/);
   }
+});
+
+test('Milteforan exibe metodologia e limitações e mantém doses de literatura fora da calculadora', () => {
+  const medication = medicationsSeed.find((item) => item.slug === 'miltefosina');
+  assert.ok(medication);
+  const studies = medication.clinicalStudiesCommented ?? [];
+  assert.ok(studies.length >= 9);
+  for (const study of studies) {
+    const topic = medication.clinicalFoundationsData?.find((item) => item.referenceIds?.includes(study.referenceId!));
+    assert.ok(study.methodology && topic?.narrative.includes(study.methodology), study.title);
+    assert.ok(study.limitations && topic.studies[0].summaryText.includes(study.limitations), study.title);
+  }
+  assert.deepEqual(
+    medication.doses.filter((dose) => dose.calculatorEnabled).map((dose) => dose.id),
+    ['dose-milte-dog-leish-standard'],
+  );
+  const range = medication.doses.find((dose) => dose.id === 'dose-milte-dog-leishvet-range');
+  assert.deepEqual([range?.doseMin, range?.doseMax], [2, 2.5]);
+});
+
+test('Mercado usa a forma oral e a tabela em mL do Milteforan sem herdar dados de dipirona', () => {
+  const medication = medicationsSeed.find((item) => item.slug === 'miltefosina');
+  assert.ok(medication);
+  const html = renderToStaticMarkup(<MemoryRouter><MedicationMarketTab medication={medication} /></MemoryRouter>);
+  assert.match(html, /solução oral/i);
+  assert.match(html, /Volume Diário \(mL\)/);
+  assert.doesNotMatch(html, /injetável|Novalgina|500 mg\/mL|mg\/gota|1 mL = 20 gotas/i);
 });

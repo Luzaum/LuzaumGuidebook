@@ -679,21 +679,6 @@ export const alopurinolMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'USO VETERINÁRIO — RECEITUÁRIO SIMPLES (1 VIA)\\n\\n' +
-    'IDENTIFICAÇÃO DO EMITENTE: Dr(a). [Nome Completo], Médico(a) Veterinário(a), CRMV-[UF] [Número]\\n' +
-    'IDENTIFICAÇÃO DO TUTOR: [Nome do Tutor], CPF: [000.000.000-00], Endereço: [Endereço Completo]\\n' +
-    'IDENTIFICAÇÃO DO PACIENTE: [Nome do Animal], Espécie: Canina, Raça: Dálmata, Peso: 20,0 kg\\n\\n' +
-    'USO ORAL\\n' +
-    '1. Alopurinol 300 mg ------------------------------------------------ 60 comprimidos\\n' +
-    '   (Apresentação comercial humana ou manipulação veterinária palatável)\\n' +
-    '   Posologia: Administrar 1 (um) comprimido por via oral a cada 12 horas, junto com a refeição, durante 4 semanas consecutivas, para dissolução médica de urólitos de urato.\\n\\n' +
-    'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\\n' +
-    '- O medicamento deve ser fornecido estritamente em conjunto com a dieta terapêutica de restrição de purinas prescrita para o paciente.\\n' +
-    '- Jamais ofereça carnes vermelhas, miúdos, vísceras ou petiscos ricos em células, pois o uso de alopurinol sem dieta com baixa purina pode provocar cálculos de xantina.\\n' +
-    '- Mantenha fontes de água limpa e fresca permanentemente disponíveis e estimule a ingestão hídrica abundante.\\n' +
-    '- Caso o animal apresente esforço para urinar sem saída de urina, dor na barriga ou sangue na urina, suspenda a medicação e procure o hospital veterinário imediatamente.\\n' +
-    '- Retorno obrigatório em 4 semanas para reavaliação de urinálise completa e ultrassonografia abdominal.',
 
   clinicalStudiesCommented: [
     {

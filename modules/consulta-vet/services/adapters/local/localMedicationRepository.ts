@@ -15,12 +15,13 @@ export class LocalMedicationRepository implements MedicationRepository {
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<MedicationRecord | null> {
+    const normalizedSlug = slug === 'ondansetron' ? 'ondansetrona' : slug;
     const medicationsSeed = await loadMedicationsEditorialSeed();
     if (!options?.includeDrafts) {
-      if (!isPublicMedicationSlug(slug)) return null;
-      return filterPublicMedications(medicationsSeed, false).find((m) => m.slug === slug) || null;
+      if (!isPublicMedicationSlug(normalizedSlug)) return null;
+      return filterPublicMedications(medicationsSeed, false).find((m) => m.slug === normalizedSlug) || null;
     }
-    return medicationsSeed.find((m) => m.slug === slug) || null;
+    return medicationsSeed.find((m) => m.slug === normalizedSlug) || null;
   }
 
   async search(query: string): Promise<MedicationRecord[]> {

@@ -807,22 +807,6 @@ export const tramadolMedicationsSeed: MedicationRecord[] = [
     attentionSubtitle:
       'O tramadol apresenta farmacocinética drasticamente diferente entre cães e gatos. Exige atenção estrita quanto à ineficácia oral isolada em cães com dor crônica, amargor severo em felinos, redução do limiar epiléptico e contraindicação com antidepressivos pelo risco de Síndrome Serotoninérgica letal.',
 
-    samplePrescriptionText:
-      'RECEITUÁRIO DE CONTROLE ESPECIAL (LISTA C1 - EM 2 VIAS)\n' +
-      '1ª Via: Retenção da Farmácia / Drogaria | 2ª Via: Orientação ao Tutor\n\n' +
-      'USO ORAL:\n' +
-      '1. Cronidor® 40 mg (Agener União — Uso Veterinário Exclusivo) ------- 1 cartucho (10 comprimidos)\n' +
-      '   Administrar 1/2 comprimido (equivalente a 20 mg para cão de 10 kg na dose de 2 mg/kg) por via oral, a cada 8 horas (às 08:00h, 16:00h e 24:00h), durante 5 dias consecutivos, integrado ao protocolo pós-cirúrgico com dipirona.\n\n' +
-      'OU ALTERNATIVA EM SOLUÇÃO ORAL (HUMANA / DROGARIA):\n' +
-      '1. Tramadol Gotas 100 mg/mL (Teuto, Medley ou Tramal®) ------------- 1 frasco (10 mL)\n' +
-      '   Administrar 8 gotas (equivalente a 20 mg para cão de 10 kg na concentração de 40 gotas/mL = 2,5 mg/gota) por via oral, a cada 8 horas, durante 5 dias.\n\n' +
-      'PARA FELINOS (COM CUIDADO DE ENCAPSULAMENTO):\n' +
-      '1. Cloridrato de Tramadol 8 mg em Cápsulas Gelatinosas Mini nº 4 --- 1 frasco (20 cápsulas)\n' +
-      '   Administrar 1 cápsula por via oral a cada 12 horas para gato de 4 kg (dose de 2 mg/kg), durante 14 dias.\n\n' +
-      'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\n' +
-      '• NUNCA associar o tramadol com medicamentos antidepressivos humanos (fluoxetina, amitriptilina, trazodona) ou coleiras à base de amitraz, pelo risco grave de intoxicação (Síndrome Serotoninérgica).\n' +
-      '• Não administrar gotas puras na boca de gatos: o sabor extremamente amargo causa salivação profusa imediata, náusea e estresse severo.\n' +
-      '• Sonolência leve é comum nas primeiras doses; caso o animal apresente instabilidade excessiva, tremores ou desorientação, suspender o uso e contatar o médico-veterinário.',
 
     practicalWeightTable: {
       standardDoseText:

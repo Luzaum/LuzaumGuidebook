@@ -488,34 +488,6 @@ export const domperidonaMedicationRecord: MedicationRecord = {
     ],
   },
 
-  samplePrescriptionText:
-    'RECEITUÁRIO SIMPLES DE USO VETERINÁRIO (USO EXTRABULA)\n' +
-    'EMITIDO EM VIA ÚNICA (MEDICAMENTO NÃO CONTROLADO NO BRASIL)\n\n' +
-    'CLÍNICA VETERINÁRIA [NOME DA CLÍNICA] — Dr(a). [Nome do Médico Veterinário], CRMV-[UF] nº [XXXXX]\n' +
-    'Endereço: [Logradouro, Bairro, Cidade, UF] — Tel: [(XX) XXXXX-XXXX]\n\n' +
-    'PACIENTE: [Nome do Cão], Espécie: Canina, Raça: [Raça], Sexo: [M/F], Peso: [10,0 kg]\n' +
-    'TUTOR: [Nome Completo do Tutor], CPF: [000.000.000-00], Endereço: [Logradouro, Cidade, UF]\n\n' +
-    'PRESCRIÇÃO:\n' +
-    'OPÇÃO A (USO DA SUSPENSÃO HUMANA DE 1 mg/mL — MAIS COMUM NO BRASIL):\n' +
-    '1. DOMPERIX® (domperidona 1 mg/mL) suspensão oral --------------------------- 2 frascos de 100 mL\n' +
-    '   (Apresentação de uso humano — comercializada em farmácias comuns)\n' +
-    '   Posologia (Imunomodulação Preventiva na Leishmaniose Canina em Cão Soronegativo):\n' +
-    '   Administrar 5,0 mL (equivalente a 5,0 mg de domperidona, na dose de 0,5 mg/kg) por via oral, uma vez ao dia (a cada 24 horas), durante 30 dias consecutivos.\n' +
-    '   Administrar junto com uma porção de alimento. Repetir este ciclo de 30 dias a cada 4 meses, após prévia confirmação sorológica negativa para leishmaniose.\n\n' +
-    'OPÇÃO B (USO DA SUSPENSÃO VETERINÁRIA LEISGUARD® 5 mg/mL — SE IMPORTADO/DISPONÍVEL):\n' +
-    '1. LEISGUARD® (domperidona 5 mg/mL) suspensão oral veterinária -------------- 1 frasco de 60 mL\n' +
-    '   Posologia: Administrar 1,0 mL (equivalente a 5,0 mg de domperidona, na dose de 0,5 mg/kg = 0,1 mL/kg) por via oral, uma vez ao dia (q24h), durante 30 dias consecutivos.\n\n' +
-    'OPÇÃO C (USO DOS COMPRIMIDOS HUMANOS DE 10 mg PARA CÃES DE MÉDIO/GRANDE PORTE):\n' +
-    '1. DOMPERIDONA 10 mg comprimidos -------------------------------------------- 1 caixa com 30 comprimidos\n' +
-    '   Posologia (para cão de 20 kg): Fornecer 1 comprimido (10 mg) por via oral a cada 24 horas durante 30 dias consecutivos.\n' +
-    '   Posologia (para cão de 10 kg): Fornecer 1/2 comprimido (5 mg) por via oral a cada 24 horas durante 30 dias consecutivos.\n\n' +
-    'ALERTAS OBRIGATÓRIOS AO PROPRIETÁRIO:\n' +
-    '- A domperidona NÃO substitui o uso ininterrupto da coleira repelente contra flebotomíneos (Lutzomyia longipalpis).\n' +
-    '- Este protocolo é profilático em animais negativos; se o cão apresentar sintomas de leishmaniose, suspender e realizar exames laboratoriais imediatamente.\n' +
-    '- Contraindicado fornecer simultaneamente com antifúngicos (cetoconazol, itraconazol), eritromicina ou medicamentos cardíacos sem autorização prévia.\n\n' +
-    '[Localidade - UF], [Data do Atendimento]\n' +
-    '________________________________________________________\n' +
-    'Dr(a). [Nome do Médico Veterinário] — CRMV-[UF] nº [XXXXX]',
 
   clinicalStudiesCommented: [
     {

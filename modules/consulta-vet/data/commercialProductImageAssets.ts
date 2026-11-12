@@ -355,4 +355,5 @@ export const commercialProductImageAssets: Record<string, string> = {
   "micofenolato-mofetila-generico-humano": "https://product-data.raiadrogasil.io/images/16723049.webp",
   "micofenolato-mofetila-manipulado-veterinario": "/assets/consulta-vet/commercial-products/micofenolato-mofetila-manipulado-veterinario.svg",
   "myfortic-micofenolato-sodio-novartis": "https://product-data.raiadrogasil.io/images/14981926.webp",
+  "cortishamp-agener-uniao": "/assets/consulta-vet/commercial-products/cortishamp-agener-uniao.svg",
 };

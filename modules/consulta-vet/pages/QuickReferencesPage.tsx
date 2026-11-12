@@ -5,18 +5,25 @@ import { ChevronRight, Grid2X2 } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 
 type ReferenceApp = {
-  id: 'oncologia' | 'vhs' | 'ultrassom';
+  id: 'oncologia' | 'vhs' | 'ultrassom' | 'apple' | 'sara';
   name: string;
   to: string;
   iconSrc: string;
 };
 
 export const REFERENCE_APPS: ReferenceApp[] = [
+  { id: 'sara', name: 'SARA / SDRA', to: '/consulta-vet/referencias-rapidas/sara', iconSrc: '/consulta-vet/reference-apps/sara-lungs.png' },
+  {
+    id: 'apple',
+    name: 'APPLE Score',
+    to: '/consulta-vet/referencias-rapidas/apple',
+    iconSrc: '/consulta-vet/reference-apps/apple.png',
+  },
   {
     id: 'oncologia',
     name: 'Oncologia',
     to: '/consulta-vet/referencias-rapidas/oncologia',
-    iconSrc: '/consulta-vet/reference-apps/oncologia.png',
+    iconSrc: '/consulta-vet/reference-apps/oncologia-chemo.png',
   },
   {
     id: 'vhs',
@@ -45,11 +52,11 @@ export function QuickReferencesPage() {
           Início
         </Link>
         <ChevronRight className="h-3 w-3" aria-hidden />
-        <span className="text-foreground">Referências clínicas</span>
+        <span className="text-foreground">Mini-apps</span>
       </nav>
 
       <ConsultaVetPageHero
-        title="Referências clínicas"
+        title="Mini-apps"
         description="Abra uma ferramenta clínica para consultar cálculos e valores de referência durante o atendimento."
         icon={Grid2X2}
         accent="cyan"

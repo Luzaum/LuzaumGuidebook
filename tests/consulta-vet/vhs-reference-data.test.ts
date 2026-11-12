@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import test from 'node:test';
 import {
   calculateVhs,
   interpretVhs,
+  VHS_IMAGE_SOURCE,
   VHS_REFERENCES,
   VHS_SOURCE,
 } from '../../modules/consulta-vet/data/vhsReferenceData';
@@ -51,4 +54,16 @@ test('faixas de raças derivadas permanecem identificadas como média ± 2 DP', 
   assert.ok(breeds.length >= 15);
   assert.ok(breeds.every((reference) => reference.intervalBasis === 'derived-2sd'));
   assert.match(VHS_SOURCE.pages, /179–180/);
+});
+
+test('imagem de referência do VHS está presente e com fonte atribuída', () => {
+  const imagePath = path.join(process.cwd(), 'public', VHS_IMAGE_SOURCE.src);
+  const legacySvgPath = path.join(process.cwd(), 'public/consulta-vet/reference-apps/vhs-measurement.svg');
+
+  assert.equal(fs.existsSync(imagePath), true);
+  assert.equal(fs.existsSync(legacySvgPath), false);
+  assert.match(VHS_IMAGE_SOURCE.author, /Uwe Gille.*Ophélie Tissier/i);
+  assert.match(VHS_IMAGE_SOURCE.repository, /Wikimedia Commons/i);
+  assert.equal(VHS_IMAGE_SOURCE.license, 'CC BY-SA 4.0');
+  assert.match(VHS_IMAGE_SOURCE.methodReference, /Buchanan.*Bücheler.*1995/i);
 });

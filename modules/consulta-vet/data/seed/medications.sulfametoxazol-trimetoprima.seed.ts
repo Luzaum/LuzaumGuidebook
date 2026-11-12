@@ -815,8 +815,6 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
     },
 
     // 10. Texto Modelo de Prescrição Veterinária Pronto
-    samplePrescriptionText:
-      'USO ORAL\n1. Ibatrim Oral® 240 mg/mL (Sulfadiazina 200 mg/mL + Trimetoprima 40 mg/mL) — Frasco com 20 mL ou 50 mL\n   - Administrar [VOLUME_ML] mL (equivalente a 15 mg/kg da associação total = 2,5 mg/kg de trimetoprima + 12,5 mg/kg de sulfadiazina), por via oral, a cada 12 horas, durante [NUMERO_DIAS: 3 a 5] dias consecutivos.\n   - Instruções ao tutor:\n     a) Agitar vigorosamente o frasco antes de cada tomada e utilizar seringa graduada em mL para medição exata do volume prescrito.\n     b) Manter vasilhas de água limpa e fresca permanentemente acessíveis ao paciente durante todo o tratamento para garantir hidratação contínua e proteger os rins.\n     c) Suspender o medicamento imediatamente e contatar o médico-veterinário se o paciente apresentar: secreção ocular espessa, vermelhidão nos olhos, febre, claudicação (mancar), inchaço no focinho ou perda de apetite persistente.\n   - Observação legal: Este regime corresponde a 15 mg/kg da combinação total respaldado por diretrizes internacionais (ISCAID UTI), podendo diferir da posologia descrita na bula do fabricante.',
 
     // 11. Fundamentos Clínicos & Evidências Publicadas Comentadas
     clinicalFoundationsData: [

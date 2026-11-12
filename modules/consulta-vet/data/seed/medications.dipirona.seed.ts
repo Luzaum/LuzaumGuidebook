@@ -939,13 +939,6 @@ export const dipironaMedicationRecord: MedicationRecord = {
   attentionSubtitle:
     'A dipirona possui excelente perfil terapêutico e gastrointestinal em carnívoros, mas seu uso requer vigilância rigorosa quanto à velocidade de infusão intravenosa, volemia prévia e limites posológicos e temporais em felinos e hepatopatas.',
 
-  samplePrescriptionText:
-    'USO ORAL:\n' +
-    '1. Novalgina® Gotas 500 mg/mL ------------------------- 1 frasco\n' +
-    '   Administrar 1 gota por kg de peso corporal (25 mg/kg) por via oral a cada 8 horas, durante 3 dias seguidos para controle de dor e febre.\n\n' +
-    'OU EM COMPRIMIDOS:\n' +
-    '1. Novalgina® Comprimidos 500 mg --------------------- 1 caixa\n' +
-    '   Administrar 1/2 comprimido (para cão de 10 kg) por via oral a cada 8 horas, durante 3 dias.',
 
   practicalWeightTable: {
     standardDoseText:
