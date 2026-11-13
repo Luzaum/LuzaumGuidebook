@@ -213,7 +213,7 @@ const sections: Block[] = [
       '• Traqueia (localizada imediatamente medial e ventral ao esôfago cervical).'
   ),
   p(
-    'Hackett & Mazzaferro (2025) enfatizam: "Palpe e delimite a veia jugular externa ocluindo-a temporariamente na entrada torácica. Mantenha o dedo indicador sobre a ponta de metal da Carmalt, assegurando que o ponto de punção esteja situado dorsal à jugular. Se você não palpar com extrema nitidez o metal sob a pele, nunca faça a incisão" [2, pp. 159–160].'
+    'Hackett & Mazzaferro (2025) enfatizam: "Palpe e delimite a veia jugular externa ocluindo-a temporariamente na entrada torácica. Mantenha o dedo indicador sobre a ponta de metal da Carmalt, assegurando que o ponto de punção esteja situado dorsal à jugular. Se você não palpar com extrema nitidez o metal sob a pele, nunca faça a incisão" [2].'
   ),
 
   h('8. Diferenças Entre Cães e Gatos', 2),
@@ -442,7 +442,7 @@ const sections: Block[] = [
   photo(
     'rvc-cao-esofago.jpg',
     'Figura 1 do artigo: radiografia lateral de cão com sonda nasoesofágica no esôfago e dois cortes de tomografia da cartilagem cricoide.',
-    '**Figura 1 — cão, posicionamento esofágico.** Em A, a sonda nasal está no esôfago. B e C são cortes de tomografia que ilustram a lâmina da cartilagem cricoide. Fonte: Vila Cabaleiro et al., 2026, p. 3 [6].',
+    '**Figura 1 — cão, posicionamento esofágico.** Em A, a sonda nasal está no esôfago. B e C são cortes de tomografia que ilustram a lâmina da cartilagem cricoide. Fonte: Vila Cabaleiro et al., 2026 [6].',
     2050, 1157
   ),
   p('**O que observar:** a seta roxa aponta a lâmina da cricoide mineralizada; o tubo passa dorsalmente a ela. No tórax, o tubo não fica inteiramente sobreposto ao lúmen traqueal e passa dorsal à carina, assinalada pela seta branca. Os cortes de tomografia à direita ajudam a reconhecer o marco anatômico; não são exames exigidos para a conferência rotineira.'),
@@ -450,7 +450,7 @@ const sections: Block[] = [
   photo(
     'rvc-gato-esofago.png',
     'Figura 2 do artigo: radiografia lateral de gato com sonda nasoesofágica no esôfago e cortes tomográficos da cartilagem cricoide.',
-    '**Figura 2 — gato, posicionamento esofágico.** A mostra o trajeto da sonda nasal; B e C apresentam a cricoide em tomografia. Fonte: Vila Cabaleiro et al., 2026, p. 4 [6].',
+    '**Figura 2 — gato, posicionamento esofágico.** A mostra o trajeto da sonda nasal; B e C apresentam a cricoide em tomografia. Fonte: Vila Cabaleiro et al., 2026 [6].',
     2000, 1360
   ),
   p('**O que observar:** neste gato, a cricoide não está mineralizada, mas a seta roxa indica sua posição. O tubo passa dorsal à laringe e pode ser separado do lúmen traqueal ao longo do trajeto. A seta branca identifica a carina, com a sonda dorsal a ela. Esse exemplo confirma o trajeto esofágico de uma sonda nasal; não define a profundidade ideal de uma sonda de esofagostomia.'),
@@ -458,7 +458,7 @@ const sections: Block[] = [
   photo(
     'rvc-cao-traqueia.png',
     'Figura 3 do artigo: sonda nasal inserida na traqueia de um cão, atravessando a laringe e seguindo um trajeto brônquico.',
-    '**Figura 3 — cão, posicionamento traqueal incorreto.** A sonda percorre a via aérea e segue um trajeto brônquico após alcançar a carina. Fonte: Vila Cabaleiro et al., 2026, p. 5 [6].',
+    '**Figura 3 — cão, posicionamento traqueal incorreto.** A sonda percorre a via aérea e segue um trajeto brônquico após alcançar a carina. Fonte: Vila Cabaleiro et al., 2026 [6].',
     1500, 1052
   ),
   p('**Por que está incorreto:** a seta roxa mostra a passagem pelo lúmen da laringe, em vez de um trajeto dorsal a ela. A sonda fica sobreposta à traqueia, alcança a carina indicada pela seta branca e continua por um brônquio em direção caudodorsal. Acompanhar somente a ponta pode ocultar esse erro; é necessário seguir o percurso desde o pescoço. **Não administrar dieta, água ou medicamentos por uma sonda posicionada na via aérea.**'),
@@ -466,7 +466,7 @@ const sections: Block[] = [
   photo(
     'rvc-gato-traqueia.png',
     'Figura 4 do artigo: sonda nasal na traqueia de um gato, com a ponta terminando antes da carina.',
-    '**Figura 4 — gato, posicionamento traqueal com sonda curta.** A ponta não alcança a carina. Fonte: Vila Cabaleiro et al., 2026, p. 6 [6].',
+    '**Figura 4 — gato, posicionamento traqueal com sonda curta.** A ponta não alcança a carina. Fonte: Vila Cabaleiro et al., 2026 [6].',
     1500, 1427
   ),
   p('**O que resolve a dúvida:** a seta roxa evidencia a passagem pelo lúmen laríngeo e o restante do tubo se sobrepõe ao lúmen traqueal. A carina está marcada pela seta branca, mas a ponta termina cranialmente a ela; por isso, o terceiro critério não pode ser aplicado. Neste caso, incluir a laringe na radiografia é especialmente útil para identificar a inserção respiratória. Uma ponta curta não torna o posicionamento seguro.'),
@@ -474,11 +474,11 @@ const sections: Block[] = [
   photo(
     'rvc-gato-sem-laringe.jpg',
     'Figura 5 do artigo: radiografia de gato sem visualização da laringe, mostrando sonda nasal incorretamente inserida na traqueia.',
-    '**Figura 5 — gato, inserção traqueal sem a laringe visível.** A seta branca marca a carina; a ponta ultrapassa discretamente esse nível. Fonte: Vila Cabaleiro et al., 2026, p. 7 [6].',
+    '**Figura 5 — gato, inserção traqueal sem a laringe visível.** A seta branca marca a carina; a ponta ultrapassa discretamente esse nível. Fonte: Vila Cabaleiro et al., 2026 [6].',
     1500, 919
   ),
   p('**Armadilha de interpretação:** na entrada do tórax, a sonda pode parecer dorsal, mas permanece sobreposta ao lúmen traqueal. No estudo, esse exemplo gerou avaliações de posição incerta antes da apresentação dos critérios. Não decida pela aparência de um pequeno trecho do tubo: avalie o trajeto completo e os marcos disponíveis. Quando o campo não permite esclarecer a posição, obtenha uma projeção adequada antes de usar a sonda.'),
-  box('info', 'Aplicação à esofagostomia', 'As figuras acima são de **sondas nasoesofágicas**, introduzidas pelo nariz. A sonda de esofagostomia entra diretamente pelo estoma cervical e não percorre a região laríngea da mesma forma. Para a E-tube, confirme o trajeto esofágico, a ausência de alças e a ponta com os orifícios no esôfago torácico distal, antes da cárdia, conforme o capítulo de confirmação radiográfica.'),
+  box('info', 'Aplicação à esofagostomia', 'As figuras acima são de **sondas nasoesofágicas**, introduzidas pelo nariz. A sonda de esofagostomia entra diretamente pelo estoma cervical e não percorre a região laríngea da mesma forma. Para a E-tube, confirme o trajeto esofágico, a ausência de alças e a ponta com os orifícios no esôfago torácico distal, antes da cárdia, conforme a seção de confirmação radiográfica.'),
 
   h('17. Fixação e curativo cervical', 2),
   p(
@@ -814,9 +814,9 @@ const sections: Block[] = [
 
   h('30. Referências Bibliográficas e Diretrizes Clínicas Oficiais', 2),
   list([
-    '**[1] Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3ª ed. British Small Animal Veterinary Association; 2024.** *Oesophagostomy tube placement*, pp. 223–226. Acesso institucional BSAVA Library.',
-    '**[2] Hackett TB, Mazzaferro EM. Veterinary Emergency and Critical Care Procedures. 3ª ed. John Wiley & Sons; 2025.** Cap. 5: *Nutritional Support and Orogastric Lavage — Esophagostomy Tubes*, pp. 157–166.',
-    '**[3] Chan DL. Nutritional Support for the Critically Ill Feline Patient. In: Drobatz KJ, Reineke E, Costello MF, Culp WTN, eds. Feline Emergency and Critical Care Medicine. 2ª ed. Wiley-Blackwell; 2023.** Cap. 9, pp. 83–89.',
+    '**[1] Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3ª ed. British Small Animal Veterinary Association; 2024.** Acesso institucional BSAVA Library.',
+    '**[2] Hackett TB, Mazzaferro EM. Veterinary Emergency and Critical Care Procedures. 3ª ed. John Wiley & Sons; 2025.**',
+    '**[3] Chan DL. In: Drobatz KJ, Reineke E, Costello MF, Culp WTN, eds. Feline Emergency and Critical Care Medicine. 2ª ed. Wiley-Blackwell; 2023.**',
     '**[4] Taylor S, Chan DL, Villaverde C, et al. 2022 ISFM Consensus Guidelines on Management of the Inappetent Hospitalised Cat.** *Journal of Feline Medicine and Surgery*, 24(7):614–640, 2022. DOI: 10.1177/1098612X221106353. Texto completo de acesso aberto no PMC.',
     '**[5] AAHA. 2021 AAHA Nutrition and Weight Management Guidelines for Dogs and Cats: Feeding Plans for Hospitalized Patients.** Diretriz Oficial AAHA.',
     '**[6] Vila Cabaleiro A, et al. Introduction and Validation of Radiographic Guidelines for Identification of Nasoesophageal and Nasogastric Tube Position in Dogs and Cats.** *Veterinary Radiology & Ultrasound*, 67:e70138, 2026. DOI: 10.1111/vru.70138. PubMed.',

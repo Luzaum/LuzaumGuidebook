@@ -290,7 +290,14 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     presentations: ['Creme 30 g'],
     activeComponents: ['sulfadiazina de prata 1% (10 mg/g)'],
     labelCompositionSummary: 'Genérico de sulfadiazina de prata 10 mg/g — 1%.',
-    labelDirections: 'Aplicar camada fina sobre lesão limpa, conforme bula humana e orientação veterinária.',
+    labelDirections: 'Após higienização com solução fisiológica ou PHMB, aplicar camada fina de 1 a 2 mm recobrindo a lesão a cada 12 a 24 horas (uso tópico extrabula; impedir lambedura por 20–30 minutos).',
+    dosageGuidance: {
+      labelDose: 'Cães e gatos (extrabula): camada fina de 1–2 mm sobre lesão limpa a cada 12–24 horas; impedir lambedura por 20–30 minutos.',
+      plumbs: {
+        dog: [{ title: 'Queimaduras e infecção bacteriana localizada', dose: '1–2x/dia, camada de 1–2 mm' }],
+        cat: [{ title: 'Queimaduras e infecção bacteriana localizada', dose: '1–2x/dia, camada de 1–2 mm' }],
+      },
+    },
     plumbsContext: 'Mesma orientação de sulfadiazina de prata tópica.',
     clinicalUse: 'Alternativa genérica para queimaduras e infecção superficial localizada.',
     reassessment: 'Reavaliar quando leito estiver limpo e granulando.',
@@ -318,7 +325,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['sulfadiazina de prata 1%', 'nitrato de cério 0,4%'],
     labelCompositionSummary:
       'Associação de sulfadiazina de prata 1% com nitrato de cério 0,4%. Produto diferente da sulfadiazina pura; não intercambiável automaticamente.',
-    labelDirections: 'Aplicar conforme bula sobre lesão limpa.',
+    labelDirections: 'Após higienização com solução fisiológica ou PHMB, aplicar camada fina de 1 a 2 mm recobrindo toda a lesão, 1 vez ao dia (ou 2 vezes ao dia se muito exsudativa). Impedir lambedura por 20–30 minutos.',
     dosageGuidance: {
       labelDose: 'Após higienização, camada fina de 1–2 mm recobrindo a lesão, 1x/dia (ou 2x/dia se muito exsudativa). Impedir lambedura 20–30 min.',
     },
@@ -326,7 +333,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     clinicalUse: 'Lesões selecionadas com indicação de sulfadiazina de prata; avaliar se associação com cério é desejável.',
     reassessment: 'Reavaliar resposta e necessidade de continuidade.',
     prescriptionExample:
-      'Aplicar Dermacerium em camada fina sobre lesão limpa, conforme orientação veterinária.',
+      'Aplicar Dermacerium em camada fina de 1–2 mm sobre lesão previamente limpa, 1 a 2 vezes ao dia (impedir lambedura por 20–30 min).',
     safetyAlert:
       'Não intercambiável automaticamente com sulfadiazina de prata pura. ' + COLLAGENASE_SILVER_ALERT,
     price: { averageLabel: 'R$ 56,00', rangeLabel: 'Bisnaga 30 g: R$ 45,00 a R$ 68,00', sourceDate: '2026-09-06' },
@@ -449,7 +456,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     presentations: ['Creme 60 g'],
     activeComponents: ['nistatina 100.000 UI/g', 'óxido de zinco 20%'],
     labelCompositionSummary: 'Nistatina 100.000 UI/g associada a óxido de zinco 200 mg/g (20%).',
-    labelDirections: 'Aplicar conforme bula humana sobre pele limpa e seca.',
+    labelDirections: 'Após higienização e secagem cuidadosa da área afetada, aplicar camada fina recobrindo toda a região irritada, 2 a 3 vezes ao dia, somente quando citologia confirmar presença de leveduras (Candida / Malassezia).',
     dosageGuidance: {
       labelDose: 'Camada fina 2–3x/dia sobre pele limpa e seca, somente se citologia indicar Candida/leveduras.',
     },
@@ -854,14 +861,14 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     ],
     labelCompositionSummary:
       'Nistatina + neomicina + tiostreptona + triancinolona. Bula veterinária para cães e gatos.',
-    labelDirections: 'Usar conforme bula veterinária para dermatoses/otite específicas.',
+    labelDirections: 'Uso otológico (cães e gatos): limpar e secar previamente o conduto auditivo e instilar 3 a 5 gotas no ouvido afetado, 1 a 3 vezes ao dia, por 5 a 7 dias em casos agudos (ou até 21 dias se crônico). Uso cutâneo: aplicar película fina sobre a lesão 1 a 2 vezes ao dia. Preencher glândula anal após drenagem quando indicado.',
     dosageGuidance: {
-      labelDose: 'Otológico/tópico: aplicar quantidade suficiente no ouvido ou lesão diagnosticada, conforme bula veterinária (nistatina + neomicina + tiostreptona + triancinolona).',
+      labelDose: 'Otológico: 3 a 5 gotas por ouvido 1–3x/dia (5–7 dias agudo; até 21 dias crônico). Tópico cutâneo: camada fina 1–2x/dia.',
     },
     plumbsContext: 'Não cadastrar como cicatrizante universal.',
     clinicalUse: 'Dermatoses específicas, otite e inflamações com componente bacteriano/fúngico sensível.',
     reassessment: 'Reavaliar integridade timpânica em uso otológico.',
-    prescriptionExample: 'Aplicar Panolog conforme orientação veterinária sobre lesão diagnosticada.',
+    prescriptionExample: 'Panolog: em otite externa após limpeza, instilar 3 a 5 gotas no ouvido afetado 1 a 3 vezes ao dia por 5 a 7 dias; em pele, aplicar camada fina 1 a 2 vezes ao dia, evitando lambedura por 20 minutos.',
     safetyAlert: CORTICOSTEROID_TOPICAL_ALERT,
     price: { averageLabel: 'R$ 165,00', rangeLabel: 'Bisnaga 15 mL: R$ 145,00 a R$ 189,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.amorepets.com.br/produto/panolog-pomada-15ml-elanco.html',
@@ -886,14 +893,14 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     ],
     labelCompositionSummary:
       'Dexametasona + neomicina + bacitracina + griseofulvina + benzocaína. Bula veterinária.',
-    labelDirections: 'Usar conforme bula veterinária em dermatoses específicas.',
+    labelDirections: 'Aplicar película fina de creme cobrindo a lesão diagnosticada 2 a 4 vezes ao dia durante 7 a 10 dias (prolongar por até 48 horas após remissão clínica). Em otites, após limpeza prévia, introduzir pequena quantidade no conduto e massagear suavemente a base da orelha.',
     dosageGuidance: {
-      labelDose: 'Camada fina sobre lesão diagnosticada (dexametasona + neomicina + bacitracina + griseofulvina + benzocaína). Evitar áreas lambíveis.',
+      labelDose: 'Tópico cutâneo: película fina 2–4x/dia por 7–10 dias sobre lesão diagnosticada (manter 48 h após cura clínica). Evitar lambedura.',
     },
     plumbsContext: 'Combina antibióticos, antifúngico e corticoide.',
     clinicalUse: 'Dermatoses inflamatórias selecionadas com diagnóstico confirmado.',
     reassessment: 'Especial cautela em gatos.',
-    prescriptionExample: 'Aplicar Crema 6A conforme orientação veterinária sobre lesão diagnosticada.',
+    prescriptionExample: 'Crema 6A: aplicar película fina sobre a lesão 2 a 4 vezes ao dia por 7 a 10 dias (impedir lambedura com colar elizabetano; atenção redobrada em felinos pela benzocaína).',
     safetyAlert:
       CORTICOSTEROID_TOPICAL_ALERT +
       ' Benzocaína pode causar reações e representa risco se ingerida.',
@@ -918,14 +925,14 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     presentations: ['Creme 20 g'],
     activeComponents: ['gentamicina', 'miconazol', 'betametasona'],
     labelCompositionSummary: 'Gentamicina + miconazol + betametasona. Bula veterinária.',
-    labelDirections: 'Usar conforme bula em dermatoses inflamatórias associadas a bactérias ou fungos sensíveis.',
+    labelDirections: 'Aplicar película fina cobrindo toda a extensão da lesão diagnosticada, 2 a 3 vezes ao dia, durante 7 a 10 dias. Manter o tratamento por 48 horas após o desaparecimento dos sinais clínicos.',
     dosageGuidance: {
-      labelDose: 'Camada fina sobre lesão diagnosticada (gentamicina + miconazol + betametasona). Evitar áreas lambíveis.',
+      labelDose: 'Camada fina sobre lesão diagnosticada 2–3x/dia por 7–10 dias (manter por 48 h após desaparecimento dos sinais). Impedir lambedura.',
     },
     plumbsContext: 'Não usar automaticamente em feridas cirúrgicas, úlceras ou demodicose.',
     clinicalUse: 'Dermatoses inflamatórias com componente bacteriano ou fúngico sensível.',
     reassessment: 'Evitar em áreas que o animal consegue lamber.',
-    prescriptionExample: 'Aplicar Dermotrat em camada fina sobre lesão diagnosticada, conforme bula.',
+    prescriptionExample: 'Dermotrat Creme: aplicar camada fina sobre a lesão 2 a 3 vezes ao dia por 7 a 10 dias (continuar 48 h após remissão clínica; usar colar elizabetano para impedir lambedura).',
     safetyAlert: CORTICOSTEROID_TOPICAL_ALERT,
     price: { averageLabel: 'R$ 48,50', rangeLabel: 'Bisnaga 20 g: R$ 41,00 a R$ 56,00 (Cobasi/Petlove)', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.petz.com.br/produto/dermotrat-creme-ourofino-20-g',
@@ -1069,12 +1076,15 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     presentations: ['Shampoo 250 mL'],
     activeComponents: ['shampoo hipoalergênico / seborreia'],
     labelCompositionSummary: 'Shampoo Virbac Spherulites para seborreia e pelagem sensível.',
-    labelDirections: 'Usar conforme rótulo; enxaguar completamente.',
+    labelDirections: 'Molhar completamente a pelagem, aplicar quantidade suficiente para gerar espuma em todo o corpo, massagear, aguardar tempo de contato de 5 a 10 minutos e enxaguar abundantemente. Frequência usual: 1 a 2 vezes por semana.',
+    dosageGuidance: {
+      labelDose: 'Banho terapêutico 1–2x/semana com tempo de contato de 5–10 minutos antes do enxágue completo.',
+    },
     plumbsContext: 'Hidratação e higiene em pele sensível/seborreica.',
     clinicalUse: 'Seborreia leve, pelagem sensível e manutenção dermatológica.',
     reassessment: 'Associar terapia específica se infecção ou prurido intenso persistirem.',
     prescriptionExample:
-      'Dar banho com Sebocalm Spherulites conforme orientação; enxaguar completamente.',
+      'Sebocalm Spherulites: dar banho 1 a 2 vezes por semana, massageando até formar espuma, mantendo contato por 5 a 10 minutos e enxaguando completamente.',
     safetyAlert: 'Adjuvante; não substitui terapia antimicrobiana documentada.',
     price: { averageLabel: 'R$ 145,00', rangeLabel: 'Frasco 250 mL: R$ 125,00 a R$ 168,00', sourceDate: '2026-09-06' },
     productPageUrl:

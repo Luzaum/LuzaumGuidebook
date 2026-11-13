@@ -357,7 +357,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     'anemia-caes-gatos',
     'leucemia-viral-felina',
     'imunodeficiencia-felina-fiv',
-    'babesiose-canina'
+    'babesiose-caes-gatos'
   ],
   relatedMedicationSlugs: [
     'doxiciclina',

@@ -9,11 +9,11 @@ const SIMETHICONE_SAFETY_ALERT =
   'Não mascarar abdome agudo. Investigar antes de usar quando houver distensão abdominal grave ou progressiva, dor intensa/persistente, vômitos persistentes, choque, massa abdominal palpavel, suspeita de obstrução, corpo estranho, perfuração, peritonite ou GDV.';
 
 const SIMETHICONE_RX =
-  'Simeticona/dimeticona: administrar dose equivalente a ___ mg por animal, por via oral, a cada 8 horas, por ___ dias. Converter gotas/mL conforme a bula da apresentacao em maos.';
+  'Simeticona/dimeticona: administrar 40 a 125 mg por animal por via oral a cada 8 horas por 3 a 5 dias (em 75 mg/mL: 0,53 mL = 40 mg [~13 gotas Luftal / 16 gotas padrão 30 gotas/mL / 8 gotas Airela]; 1 mL = 75 mg; 1,66 mL = 125 mg).';
 
 const SIMETHICONE_DOSAGE = {
   labelDose:
-    'Cães e gatos: 40-125 mg/animal VO q8h. Em 75 mg/mL: 40 mg = 0,53 mL; 75 mg = 1 mL; 125 mg = 1,66 mL. Ajustar gotas conforme bula.',
+    'Cães e gatos: 40–125 mg/animal VO q8h (ou 20–25 mg/kg VO q8–12h em pacientes muito pequenos). Em 75 mg/mL: 40 mg = 0,53 mL (~16 gotas em frasco de 30 gotas/mL); 75 mg = 1 mL; 125 mg = 1,66 mL.',
   plumbs: {
     dog: [
       {

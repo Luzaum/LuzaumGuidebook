@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { BookOpen, Calculator, ChevronLeft, ChevronRight, Table2 } from 'lucide-react';
+import { Calculator, ChevronLeft, ChevronRight, Table2 } from 'lucide-react';
 import { ConsultaVetPageHero } from '../../components/layout/ConsultaVetPageHero';
 import { OncologyBsaCalculator } from '../../components/quickReferences/OncologyBsaCalculator';
 import { OncologyBsaTable } from '../../components/quickReferences/OncologyBsaTable';
-import { BSAVA_BIBLIOGRAPHIC_SOURCES, Species } from '../../data/quickReferencesData';
+import { Species } from '../../data/quickReferencesData';
 import { cn } from '../../../../lib/utils';
 
 type OncologySubView = 'calculator' | 'table';
@@ -110,33 +110,6 @@ export function OncologyReferencePage() {
           )}
         </motion.div>
       </AnimatePresence>
-
-      <div className="space-y-4 rounded-3xl border border-border/70 bg-card/40 p-6 backdrop-blur-sm">
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-4 w-4 text-primary" />
-          <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            Referências bibliográficas
-          </h2>
-        </div>
-
-        <div className="grid gap-3.5 md:grid-cols-3">
-          {BSAVA_BIBLIOGRAPHIC_SOURCES.map((source) => (
-            <div
-              key={`${source.title}-${source.edition}`}
-              className="space-y-2 rounded-2xl border border-border/60 bg-background/50 p-4 text-xs"
-            >
-              <div>
-                <p className="font-bold text-foreground">{source.title}</p>
-                <p className="text-[11px] text-primary">
-                  {source.edition} • {source.authors}
-                </p>
-              </div>
-              <p className="font-medium text-muted-foreground">{source.chapter}</p>
-              <p className="text-[11px] leading-relaxed text-muted-foreground/80">{source.details}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PanelLeftClose, PanelLeftOpen, ArrowLeft, X } from 'lucide-react';
 import { cn } from '../../../lib/utils';
+import { transfusaoIcon } from '../../registry';
 import { TRANSFUSION_NAV_ITEMS, type TransfusionPage } from '../navConfig';
 import { TransfusionIcon } from './TransfusionIcon';
 
@@ -65,7 +66,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
           )}
           aria-label="Início — Transfusão"
         >
-          <TransfusionIcon name="products" />
+          <img src={transfusaoIcon} alt="" className="h-9 w-9 shrink-0 rounded-lg" />
           {(!collapsed || isMobile) && (
             <div className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-bold text-foreground">Hemoterapia</span>

@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight, Eye, EyeOff, Loader2 } from 'lucide-react'
-import { AnimatePresence, motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { ArrowRight, Eye, EyeOff, Loader2 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const cn = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ')
 
@@ -46,87 +46,6 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
 
 Input.displayName = 'Input'
 
-type AuthSlide = {
-  id: string
-  src: string
-  alt: string
-  title: string
-  subtitle: string
-}
-
-export const AUTH_SLIDES_4K: AuthSlide[] = [
-  {
-    id: 'slide-01',
-    src: '/images/auth/jadevermelho.jpg',
-    alt: 'Dog portrait with warm light',
-    title: 'Acesso seguro em qualquer plantão',
-    subtitle: 'Seus dados clínicos ficam protegidos e sincronizados na nuvem.',
-  },
-  {
-    id: 'slide-02',
-    src: 'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Happy golden retriever',
-    title: 'Continue de onde parou',
-    subtitle: 'Abra o Vetius em qualquer dispositivo e retome seu trabalho.',
-  },
-  {
-    id: 'slide-03',
-    src: 'https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Curious puppy in close-up',
-    title: 'Conta única para todos os módulos',
-    subtitle: 'Seu perfil acompanha você em toda a plataforma.',
-  },
-  {
-    id: 'slide-04',
-    src: '/images/auth/whisk.png',
-    alt: 'Dog running in open field',
-    title: 'Fluxo rápido e intuitivo',
-    subtitle: 'Menos cliques para emitir receitas com qualidade.',
-  },
-  {
-    id: 'slide-05',
-    src: 'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog resting calmly',
-    title: 'Nuvem para nunca perder dados',
-    subtitle: 'Tudo salvo com confiabilidade para sua rotina clínica.',
-  },
-  {
-    id: 'slide-06',
-    src: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog face outdoors',
-    title: 'Escala com segurança',
-    subtitle: 'Base pronta para clínicas, equipes e crescimento.',
-  },
-  {
-    id: 'slide-07',
-    src: 'https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog lying on grass',
-    title: 'Experiência premium',
-    subtitle: 'Interface moderna para usar com foco total no paciente.',
-  },
-  {
-    id: 'slide-08',
-    src: 'https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog by the sea',
-    title: 'Autenticação prática',
-    subtitle: 'Entrar com e-mail ou Google em segundos.',
-  },
-  {
-    id: 'slide-09',
-    src: 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog portrait in city light',
-    title: 'Padrão profissional',
-    subtitle: 'Tudo preparado para uso clínico diário.',
-  },
-  {
-    id: 'slide-10',
-    src: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=3840&q=80',
-    alt: 'Dog and owner outdoors',
-    title: 'Pronto para atender melhor',
-    subtitle: 'Login e cadastro com transições fluidas e confiáveis.',
-  },
-]
-
 type AuthMode = 'login' | 'signup'
 
 type TravelConnectSignInProps = {
@@ -143,24 +62,6 @@ type TravelConnectSignInProps = {
   restrictedAccess?: boolean
 }
 
-const slideMotionVariants = {
-  enter: (direction: 1 | -1) => ({
-    opacity: 0,
-    x: direction > 0 ? 64 : -64,
-    scale: 1.04,
-  }),
-  center: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-  },
-  exit: (direction: 1 | -1) => ({
-    opacity: 0,
-    x: direction > 0 ? -64 : 64,
-    scale: 0.98,
-  }),
-}
-
 export default function TravelConnectSignIn({
   mode = 'login',
   loading = false,
@@ -171,12 +72,9 @@ export default function TravelConnectSignIn({
   onForgotPassword,
   onGoToSignup,
   onGoToLogin,
-  onBackToVetius,
   restrictedAccess = false,
 }: TravelConnectSignInProps) {
   const isLogin = mode === 'login'
-  const [activeSlide, setActiveSlide] = useState(0)
-  const [slideDirection, setSlideDirection] = useState<1 | -1>(1)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -185,24 +83,7 @@ export default function TravelConnectSignIn({
   const [googleLoading, setGoogleLoading] = useState(false)
   const [forgotLoading, setForgotLoading] = useState(false)
 
-  const slideCount = AUTH_SLIDES_4K.length
   const currentError = errorMessage || localError
-  const active = useMemo(() => AUTH_SLIDES_4K[activeSlide], [activeSlide])
-
-  const paginateSlide = useCallback(
-    (direction: 1 | -1) => {
-      if (slideCount <= 1) return
-      setSlideDirection(direction)
-      setActiveSlide((prev) => (prev + direction + slideCount) % slideCount)
-    },
-    [slideCount]
-  )
-
-  useEffect(() => {
-    if (slideCount <= 1) return
-    const timer = window.setInterval(() => paginateSlide(1), 6500)
-    return () => window.clearInterval(timer)
-  }, [paginateSlide, slideCount])
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault()
@@ -228,9 +109,9 @@ export default function TravelConnectSignIn({
         throw new Error('Informe seu usuário ou email para recuperar a senha.')
       }
       await onForgotPassword(normalizedEmail)
-      setResetMessage('Enviamos um link de recuperacao para seu email.')
+      setResetMessage('Enviamos um link de recuperação para seu e-mail.')
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao solicitar recuperacao de senha.'
+      const message = error instanceof Error ? error.message : 'Falha ao solicitar recuperação de senha.'
       setLocalError(message)
     } finally {
       setForgotLoading(false)
@@ -253,118 +134,39 @@ export default function TravelConnectSignIn({
   }
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-[#060818] via-[#0b1024] to-[#0d1a2e] p-4 md:p-8">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-4">
-        <button
-          type="button"
-          onClick={onBackToVetius}
-          className="inline-flex h-10 items-center justify-center rounded-full border border-slate-400/40 bg-slate-900/60 px-5 text-sm font-semibold text-slate-100 backdrop-blur-xl transition hover:border-[#72ff58]/55 hover:bg-slate-900/75"
-        >
-          Voltar para Vetius
-        </button>
-
+    <div className="relative isolate min-h-dvh w-full overflow-x-hidden bg-[#081329] text-white">
+      <img src="/HERO.png" alt="As três gatinhas do Vetius no jardim" className="absolute inset-0 -z-20 h-full w-full object-cover object-[65%_center]" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#061125]/65 via-[#061125]/10 to-transparent" />
+      <div className="mx-auto grid min-h-dvh w-full max-w-[1800px] items-center gap-6 px-4 py-8 sm:px-8 lg:grid-cols-[minmax(360px,510px)_1fr] lg:px-14 lg:py-12">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="grid w-full overflow-hidden rounded-3xl border border-slate-800 bg-[#090b13] text-white shadow-[0_24px_90px_rgba(0,0,0,0.45)] md:grid-cols-2"
+          transition={{ duration: 0.35 }}
+          className="w-full max-w-[510px] justify-self-center overflow-hidden rounded-[28px] border border-cyan-400/50 bg-[#0b1531] shadow-[0_24px_90px_rgba(0,0,0,0.4)] lg:justify-self-start"
         >
-          {/* Column 1: Carousel Banner */}
-          <div className="relative hidden h-[640px] overflow-hidden border-r border-slate-800 md:block">
-            <AnimatePresence mode="wait" custom={slideDirection}>
-              <motion.img
-                key={active.id}
-                src={active.src}
-                alt={active.alt}
-                className="absolute inset-0 h-full w-full object-cover"
-                variants={slideMotionVariants}
-                custom={slideDirection}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
-              />
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/90 via-[#020617]/35 to-[#020617]/28" />
-
-            {slideCount > 1 ? (
-              <>
-                <button
-                  type="button"
-                  aria-label="Foto anterior"
-                  onClick={() => paginateSlide(-1)}
-                  className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/35 bg-white/14 p-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:bg-white/22"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Proxima foto"
-                  onClick={() => paginateSlide(1)}
-                  className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/35 bg-white/14 p-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl transition hover:bg-white/22"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </>
-            ) : null}
-
-            <div className="absolute bottom-0 left-0 right-0 z-10 space-y-4 p-8">
-              <div>
-                <h2 className="text-2xl font-bold leading-tight">{active.title}</h2>
-                <p className="mt-2 max-w-md text-sm text-slate-200">{active.subtitle}</p>
-              </div>
-
-              {slideCount > 1 ? (
-                <div className="flex flex-wrap items-center gap-1.5">
-                  {AUTH_SLIDES_4K.map((slide, index) => (
-                    <button
-                      key={slide.id}
-                      type="button"
-                      aria-label={`Ir para foto ${index + 1}`}
-                      aria-current={activeSlide === index ? 'true' : undefined}
-                      onClick={() => {
-                        setSlideDirection(index > activeSlide ? 1 : -1)
-                        setActiveSlide(index)
-                      }}
-                      className={cn(
-                        'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-transparent p-0 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80',
-                        activeSlide === index && 'bg-white/10'
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          'block h-2 w-2 rounded-full transition-all',
-                          activeSlide === index
-                            ? 'scale-125 bg-white shadow-[0_0_10px_rgba(255,255,255,0.65)]'
-                            : 'bg-white/45'
-                        )}
-                      />
-                    </button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-
           {/* Column 2: Form */}
-          <div className="flex min-h-[640px] flex-col justify-center p-6 sm:p-10">
+          <div className="flex flex-col justify-center p-6 sm:p-9">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
               className="mx-auto w-full max-w-md"
             >
-              <div className="mb-8">
-                <h1 className="text-3xl font-bold">
+              <div className="mb-6">
+                <div className="mb-5 flex items-center gap-3">
+                  <img src="/apps/vetius-emblema.png" alt="Logo Vetius" className="h-14 w-14 rounded-xl object-contain" />
+                  <span className="text-xl font-extrabold tracking-wide">Vetius</span>
+                </div>
+                <p className="mb-5 text-2xl font-extrabold leading-tight sm:text-3xl">Medicina Veterinária de <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Alta Precisão</span></p>
+                <h1 className="text-xl font-bold">
                   {restrictedAccess ? 'Entrar no Vetius' : isLogin ? 'Bem-vindo de volta' : 'Criar conta Vetius'}
                 </h1>
                 <p className="mt-2 text-sm text-slate-400">
                   {restrictedAccess
-                    ? 'Use sua conta cadastrada no Supabase para acessar todos os módulos.'
+                    ? 'Entre com sua conta para acessar as ferramentas clínicas.'
                     : isLogin
                     ? 'Entre para continuar seu trabalho clínico com segurança.'
-                    : 'Cadastre sua conta para salvar seu trabalho na nuvem.'}
+                    : 'Crie sua conta para acessar a base clínica e os Mini-apps.'}
                 </p>
               </div>
 
@@ -397,7 +199,7 @@ export default function TravelConnectSignIn({
                       <div className="w-full border-t border-slate-800" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase tracking-[0.18em]">
-                      <span className="bg-[#090b13] px-2 text-slate-400">ou</span>
+                      <span className="bg-[#0b1531] px-2 text-slate-400">ou</span>
                     </div>
                   </div>
                 </>
@@ -431,6 +233,7 @@ export default function TravelConnectSignIn({
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       autoComplete={isLogin ? 'current-password' : 'new-password'}
+                      minLength={isLogin ? undefined : 6}
                       required
                       className="pr-10"
                     />
@@ -448,7 +251,7 @@ export default function TravelConnectSignIn({
                 <Button
                   type="submit"
                   className="h-11 w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-500 hover:to-indigo-500 justify-center"
-                  disabled={loading}
+                  disabled={loading || googleLoading || forgotLoading}
                 >
                   {loading ? (
                     <>
@@ -464,9 +267,9 @@ export default function TravelConnectSignIn({
                 </Button>
               </form>
 
-              {currentError ? <p className="mt-4 text-sm text-red-400">{currentError}</p> : null}
-              {successMessage ? <p className="mt-4 text-sm text-emerald-400">{successMessage}</p> : null}
-              {resetMessage ? <p className="mt-4 text-sm text-emerald-400">{resetMessage}</p> : null}
+              {currentError ? <p role="alert" className="mt-4 text-sm text-red-400">{currentError}</p> : null}
+              {successMessage ? <p role="status" className="mt-4 text-sm text-emerald-400">{successMessage}</p> : null}
+              {resetMessage ? <p role="status" className="mt-4 text-sm text-emerald-400">{resetMessage}</p> : null}
 
               {restrictedAccess ? (
                 <p className="mt-6 text-center text-sm text-slate-500">
@@ -500,13 +303,14 @@ export default function TravelConnectSignIn({
                     onClick={onGoToLogin}
                     className="text-slate-300 transition-colors hover:text-white"
                   >
-                    Ja tem conta? <span className="font-semibold text-blue-400">Entrar</span>
+                    Já tem conta? <span className="font-semibold text-blue-400">Entrar</span>
                   </button>
                 )}
               </div>}
             </motion.div>
           </div>
         </motion.div>
+        <div aria-hidden="true" className="hidden lg:block" />
       </div>
     </div>
   )

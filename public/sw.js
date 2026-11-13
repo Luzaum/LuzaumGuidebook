@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vetius-cache-v3';
+const CACHE_NAME = 'vetius-cache-v5';
 const ASSETS = [
   '/manifest.json'
 ];

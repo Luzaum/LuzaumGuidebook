@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { BookOpen, FlaskConical } from 'lucide-react';
 import type { MedicationRecord } from '../../types/medication';
 import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
+import { sanitizeReferenceText } from '../../utils/referenceSanitizer';
 
 function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -76,7 +77,8 @@ function EvidenceFindingBlock({
   summaryHighlights,
   metrics,
   clinicalConclusion,
-}: EvidenceBlockProps & { refIndex?: number }) {
+  onReferenceClick,
+}: EvidenceBlockProps & { refIndex?: number; onReferenceClick?: (referenceId: string) => void }) {
   return (
     <div
       data-clinical-visual="evidence"
@@ -92,7 +94,7 @@ function EvidenceFindingBlock({
               Evidência publicada
             </p>
             <p className="text-xs sm:text-sm font-bold text-cyan-950 dark:text-cyan-100">
-              {citation}
+              {sanitizeReferenceText(citation)}
             </p>
           </div>
         </div>
@@ -107,6 +109,10 @@ function EvidenceFindingBlock({
             href={`#${referenceId}`}
             onClick={(e) => {
               e.preventDefault();
+              if (onReferenceClick) {
+                onReferenceClick(referenceId);
+                return;
+              }
               const target = document.getElementById(referenceId);
               if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -153,8 +159,10 @@ function EvidenceFindingBlock({
 
 export function MedicationClinicalFoundationsSection({
   medication,
+  onReferenceClick,
 }: {
   medication?: MedicationRecord;
+  onReferenceClick?: (referenceId: string) => void;
 }) {
   const customFoundations = medication?.clinicalFoundationsData;
   const allRefs = medication?.references ?? [];
@@ -216,6 +224,10 @@ export function MedicationClinicalFoundationsSection({
                             href={`#${id}`}
                             onClick={(e) => {
                               e.preventDefault();
+                              if (onReferenceClick) {
+                                onReferenceClick(id);
+                                return;
+                              }
                               const target = document.getElementById(id);
                               if (target) {
                                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -245,6 +257,7 @@ export function MedicationClinicalFoundationsSection({
                   summaryHighlights={study.summaryHighlights || []}
                   metrics={study.metrics || []}
                   clinicalConclusion={study.clinicalConclusion}
+                  onReferenceClick={onReferenceClick}
                 />
               ))}
             </article>

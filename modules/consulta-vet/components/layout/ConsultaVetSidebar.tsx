@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { CONSULTA_VET_LOGO_ALT, CONSULTA_VET_LOGO_SIDEBAR_CLASS, CONSULTA_VET_LOGO_SRC } from '../../constants/branding';
-import { getConsensusEditorialAccess } from '../../services/consensusSharedDetailsPermissions';
+import { canManageConsultaVetEditorial } from '../../services/consultaVetEditorialPermissions';
 import {
   ConsultaVetNavAccent,
   consultaVetNavPillTransition,
@@ -42,7 +42,6 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
   const location = useLocation();
   const reduceMotion = useReducedMotion();
   const [canManageEditorial, setCanManageEditorial] = useState(false);
-  const [canManageOwnConsensos, setCanManageOwnConsensos] = useState(false);
   const [isHoverPreview, setIsHoverPreview] = useState(false);
   const hoverCloseTimerRef = useRef<number | null>(null);
 
@@ -53,10 +52,9 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
     let isMounted = true;
 
     const run = async () => {
-      const next = await getConsensusEditorialAccess();
+      const next = await canManageConsultaVetEditorial();
       if (!isMounted) return;
-      setCanManageEditorial(next.isGlobalEditor);
-      setCanManageOwnConsensos(next.canManage);
+      setCanManageEditorial(next);
     };
 
     void run();
@@ -119,12 +117,10 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
 
     if (canManageEditorial) {
       baseLinks.push({ to: '/consulta-vet/editorial', label: 'Editorial', icon: ShieldCheck, accent: 'slate' });
-    } else if (canManageOwnConsensos) {
-      baseLinks.push({ to: '/consulta-vet/editorial/consensos', label: 'Meus consensos', icon: FileText, accent: 'violet' });
     }
 
     return baseLinks;
-  }, [canManageEditorial, canManageOwnConsensos]);
+  }, [canManageEditorial]);
 
   return (
     <>
@@ -181,8 +177,8 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
                     'h-8 w-auto max-h-full max-w-full object-contain object-left transition-[filter,transform] duration-200 ease-out group-hover:brightness-105 group-hover:drop-shadow-md dark:group-hover:brightness-110 md:h-auto md:w-full',
                     CONSULTA_VET_LOGO_SIDEBAR_CLASS
                   )}
-                  width={220}
-                  height={72}
+                  width={1254}
+                  height={1254}
                   decoding="async"
                 />
               </Link>

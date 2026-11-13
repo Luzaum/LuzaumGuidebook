@@ -1,15 +1,26 @@
 /** Prévias editoriais; os textos originais permanecem integralmente disponíveis. */
 export interface ProgressiveSummaryPreview { simple: string; clinical?: string; attention?: string; indications?: string; pillars: Record<string, string>; }
 export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPreview> = {
-  "cetamina": {
-    "simple": "É um fármaco multirregime derivado da arilciclohexilamina que atua conforme a dose: em doses altas produz anestesia dissociativa e contenção química; em doses baixas (infusão contínua) interrompe a amplificação medular da dor (somação temporal das fibras nociceptivas) e atua no estado de mal epiléptico refratário e na neuroplasticidade sináptica rápida.",
-    "clinical": "Antagonista não competitivo dependente do uso e do canal aberto do receptor NMDA e inibidor de canais HCN1. Distingue-se em Cetamina Racêmica (1:1 R/S), Escetamina Injetável S(+) (3 a 4 vezes maior afinidade NMDA) e Escetamina Intranasal. Em doses subanestésicas, desinibe interneurônios GABAérgicos e ativa a via neurotrófica AMPA–BDNF–TrkB–mTORC1.",
-    "attention": "Paradoxo hemodinâmico: eleva pressão arterial e frequência cardíaca em pacientes com reserva simpática íntegra, mas causa depressão miocárdica direta se houver depleção de catecolaminas (choque circulatório grave). Contraindicada isolada em cães sem relaxante muscular; risco de laringoespasmo em gatos, apneia em bolus rápido, lesão hepática em infusões repetidas e uropatia química. Uso restrito a estabelecimentos de saúde (Portaria 344/98 e Instrução Normativa MAPA 35/2017).",
+  "butorfanol": {
+    "simple": "Opioide misto (agonista κ e antagonista/agonista parcial funcional µ) muito útil para sedação, contenção amigável e controle da tosse em cães, porém com analgesia leve e curta (45–120 min).",
+    "clinical": "A ativação dos receptores κ gera sedação rápida e antitussígeno central, enquanto o efeito teto analgésico e a alta afinidade pelo receptor µ limitam seu uso em dor moderada a intensa e podem antagonizar agonistas µ plenos.",
+    "attention": "Sedação não garante analgesia cirúrgica: o paciente pode parecer quieto enquanto sente dor. Não utilizar isolado em cirurgias invasivas ou dor moderada a grave. Uso controlado (Lista A1 — Portaria MAPA 837/2025).",
     "pillars": {
-      "Bloqueio do Canal NMDA Aberto e Dissociação Talamocortical": "Bloqueia o poro do canal NMDA aberto e canais neuronais HCN1, desconectando vias talamocorticais do sistema límbico com potente analgesia somatossensorial.",
-      "Paradoxo do Antagonista Excitatório e Via BDNF–mTORC1": "Em dose subanestésica, bloqueia interneurônios GABAérgicos, gera onda de glutamato, estimula receptores AMPA e aciona BDNF–TrkB–mTORC1 para sinaptogênese acelerada.",
-      "Controle da Sensibilização Medular e do Mal Epiléptico Refratário": "Extingue a sensibilização central medular perioperatória em taxa constante (0,12 a 0,6 mg/kg/h) e bloqueia receptores NMDA externalizados no estado de mal epiléptico refratário.",
-      "Paradoxo Hemodinâmico, Órgãos-Alvo e Restrição Hospitalar": "Estimula o sistema simpático indireto, mas exibe efeito inotrópico negativo direto no choque exaurido; requer vigilância para laringoespasmo, função hepática e integridade urotelial."
+      "Sedação Central e Sinergismo": "Promove sedação leve a moderada previsível isoladamente e sinergismo robusto com dexmedetomidina, acepromazina, midazolam ou alfaxalona, permitindo redução de dose de indutores.",
+      "Antinocicepção κ com Efeito Teto": "Oferece analgesia visceral branda e somática leve por 45 a 120 minutos; aumentos de dose acima de ~0,4–0,5 mg/kg saturam receptores κ sem ganho analgésico proporcional.",
+      "Antagonismo Funcional µ": "Compete com agonistas µ plenos (morfina, metadona, fentanil), podendo reverter analgesia µ prévia ou depressão respiratória excessiva sem exigir espera fixa de 4 horas para resgate µ subsequente.",
+      "Supressão Central da Tosse": "Deprime o centro bulbar da tosse em cães (0,5–1 mg/kg VO q6–12h ou 0,05–0,1 mg/kg parenteral), indicado em tosse seca irritativa como colapso traqueal."
+    }
+  },
+  "cetamina": {
+    "simple": "Anestésico dissociativo e analgésico preventivo. Promove anestesia somática em doses de indução e bloqueia a sensibilização central (wind-up) e crises convulsivas refratárias em doses baixas.",
+    "clinical": "Antagonista não competitivo do canal do receptor NMDA e bloqueador de canais HCN1. Em infusão contínua subanestésica, extingue a somação temporal medular e poupa anestésicos inalatórios e opioides.",
+    "attention": "Contraindicada isolada em cães (risco de rigidez e convulsões). Cuidado com o paradoxo hemodinâmico no choque com depleção simpática. Dessensibilizar a laringe com lidocaína em gatos para prevenir laringoespasmo. Uso restrito hospitalar (Lista B1).",
+    "pillars": {
+      "Bloqueio do Canal NMDA e Dissociação Talamocortical": "Bloqueia o poro aberto do canal NMDA e canais neuronais HCN1, desconectando as vias talamocorticais do sistema límbico com potente analgesia somática.",
+      "Modulação Anti-Hiperalgésica e Bloqueio de Wind-Up": "Extingue a somação temporal medular em taxa constante (0,12 a 0,6 mg/kg/h), prevenindo a sensibilização central e reduzindo o consumo de opioides.",
+      "Resgate no Estado de Mal Epiléptico Refratário": "Bloqueia os receptores NMDA externalizados após a falha gabaérgica, contendo a excitotoxicidade cálcio-dependente sem causar hipotensão severa.",
+      "Perfil Hemodinâmico e Cuidados de Via Aérea": "Estimula o sistema simpático indireto em animais estáveis, mas pode descompensar o choque terminal. Exige atenção à laringe em felinos e proteção corneana."
     }
   },
   "intermacao-caes-gatos": {
@@ -21,14 +32,6 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
       "Pilar 2 — Fisiopatologia Térmico-Endotelial e MODS Dinâmico": "O calor lesa células e vasos e pode comprometer vários órgãos.",
       "Pilar 3 — Ressuscitação Hemodinâmica Racional (AAHA 2024) e Vasopressores": "O suporte circulatório exige reavaliação frequente para evitar sobrecarga e corrigir hipotensão persistente.",
       "Pilar 4 — Janela Oculta de 12 a 24h e Monitoramento Seriado": "Complicações podem surgir depois da melhora inicial; exames seriados ajudam a reconhecê-las."
-    }
-  },
-  "babesiose-canina": {
-    "simple": "É uma infecção, geralmente transmitida por carrapatos, que destrói células do sangue e pode deixar o cão fraco e anêmico.",
-    "pillars": {
-      "Pilar 1: Duplo Mecanismo de Hemólise e Trombocitopenia": "Pode causar anemia e queda das plaquetas.",
-      "Pilar 2: Estratificação Morfológica e Terapêutica Guiada por Espécie": "Identificar a espécie de Babesia ajuda a escolher o tratamento.",
-      "Pilar 3: Monitoramento de Órgãos-Alvo e Complicações Sistêmicas": "Casos graves exigem acompanhar rins, circulação e necessidade de transfusão."
     }
   },
   "doencas-trato-urinario-inferior-felino-dtuif": {

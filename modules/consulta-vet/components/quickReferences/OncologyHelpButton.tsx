@@ -38,11 +38,11 @@ export function OncologyHelpButton({ id, label }: { id: string; label: string })
     ['Cuidados que decorrem da ação', drug?.keyNotes.join(' ') ?? ''],
   ] : [];
   return <>
-    <button type="button" aria-label={`Ajuda: ${label}`} aria-haspopup="dialog" onClick={() => dialog.current?.showModal()} className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary/40 bg-primary/10 text-lg font-bold text-primary hover:bg-primary/20">?</button>
+    <button type="button" aria-label={`Ajuda: ${label}`} aria-haspopup="dialog" onClick={() => dialog.current?.showModal()} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-violet-500/40 bg-violet-500/10 text-sm font-bold text-violet-700 hover:bg-violet-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-300">?</button>
     <dialog ref={dialog} aria-labelledby={heading} className="m-auto max-h-[85vh] w-[min(760px,calc(100vw-32px))] overflow-y-auto rounded-3xl border border-border bg-background p-6 text-foreground shadow-xl backdrop:bg-black/50">
       <div className="mb-5 flex items-start justify-between gap-4"><h2 id={heading} className="text-xl font-bold">{label}</h2><button type="button" onClick={() => dialog.current?.close()} className="rounded-lg border border-border px-3 py-2 text-sm">Fechar ×</button></div>
       {sections.map(([title, text], i) => <section key={i} className="mb-5"><h3 className="mb-2 font-bold text-primary">{title}</h3><p className="text-sm leading-7">{text}</p></section>)}
-      <footer className="border-t border-border pt-4 text-xs leading-6 text-muted-foreground">Fontes do acervo: BSAVA Manual of Canine and Feline Oncology, 3ª ed., cap. 7{mechanism ? `, pp. ${mechanism[3]}` : ''}. {(id === 'metronomic' || drug?.regimen === 'metronomic') && 'Therapeutic Strategies in Veterinary Oncology (2023), cap. 3, Metronomic Chemotherapy, pp. 41 em diante.'}{drug && <p>Referência específica do esquema: {drug.source}</p>}</footer>
+      <footer className="border-t border-border pt-4 text-xs leading-6 text-muted-foreground">Fontes do acervo: BSAVA Manual of Canine and Feline Oncology, 3ª ed. {(id === 'metronomic' || drug?.regimen === 'metronomic') && 'Therapeutic Strategies in Veterinary Oncology (2023).'} {drug && <p>Referência específica do esquema: {drug.source}</p>}</footer>
     </dialog>
   </>;
 }

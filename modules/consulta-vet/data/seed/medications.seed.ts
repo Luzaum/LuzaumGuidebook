@@ -9,6 +9,7 @@ import { amoxicilinaClavulanatoMedicationRecord } from './medications.amoxicilin
 import { ampicilinaSulbactamMedicationRecord } from './medications.ampicilina-sulbactam.seed';
 import { betanecolMedicationRecord } from './medications.betanecol.seed';
 import { buprenorfinaMedicationRecord } from './medications.buprenorfina.seed';
+import { butorfanolMedicationRecord } from './medications.butorfanol.seed';
 import { capromorelinaMedicationRecord } from './medications.capromorelina.seed';
 import { ceftriaxonaMedicationRecord } from './medications.ceftriaxona.seed';
 import { cetaminaMedicationRecord } from './medications.cetamina.seed';
@@ -74,6 +75,7 @@ export const medicationsSeed: MedicationRecord[] = [
   ampicilinaSulbactamMedicationRecord,
   betanecolMedicationRecord,
   buprenorfinaMedicationRecord,
+  butorfanolMedicationRecord,
   capromorelinaMedicationRecord,
   ceftriaxonaMedicationRecord,
   cetaminaMedicationRecord,

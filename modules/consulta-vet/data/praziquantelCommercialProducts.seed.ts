@@ -79,7 +79,13 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     clinicalUse: 'Vermifugação felina econômica para nematódeos e cestódeos conforme bula Duprat.',
     reassessment: 'Reavaliar reinfecção, pulgas (Dipylidium) e contactantes.',
     prescriptionExample:
-      'Duprantel Gatos: administrar ___ comprimido(s) por via oral em dose única, conforme tabela de peso da bula.',
+      'Duprantel Gatos: administrar em dose única por via oral conforme faixa de peso — até 1 kg: 1/4 cp; 1,1 a 2 kg: 1/2 cp; 2,1 a 3 kg: 3/4 cp; 3,1 a 4 kg: 1 cp.',
+    eligibility: {
+      minAge: 'A partir de 4 semanas de idade (ou conforme peso mínimo calculado a partir de 0,5 kg para fracionamento seguro).',
+      minWeight: 'Dose fracionável até 1 kg (1/4 cp); 1 comprimido trata até 4 kg.',
+      pregnancyLactation: 'Pode ser utilizado em fêmeas gestantes e lactantes na rotina de vermifugação felina.',
+      restrictions: 'Uso exclusivo para gatos. Repetir dose após 15 dias se indicado pelo ciclo parasitário.',
+    },
     safetyAlert:
       'Contraindicado em hipersensibilidade. Cautela em animais debilitados. Não confundir com apresentação canina.',
     price: priceRange(13.92, 24.69, 'Agropetweb R$ 14,90; Estância Pet R$ 14,13; Terra Zoo R$ 24,69 — caixa 4 cp'),
@@ -123,7 +129,13 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     clinicalUse: 'Vermifugação canina de amplo espectro (nematódeos + cestódeos) conforme bula Duprat.',
     reassessment: 'Reavaliar coproparasitológico, reinfecção ambiental e controle de pulgas se Dipylidium.',
     prescriptionExample:
-      'Duprantel Plus Cães: administrar ___ comprimido(s) por via oral em dose única conforme peso.',
+      'Duprantel Plus Cães: administrar em dose única por via oral — até 2 kg: 1/4 cp; 2,1 a 5 kg: 1/2 cp; 5,1 a 10 kg: 1 cp (acrescentar 1/2 cp a cada 5 kg adicionais).',
+    eligibility: {
+      minAge: 'A partir de 2 a 3 semanas de vida em cães (respeitando peso mínimo de fracionamento seguro e hidratação adequada do filhote).',
+      minWeight: 'Dose fracionável até 2 kg (1/4 comprimido); 1 comprimido trata até 10 kg.',
+      pregnancyLactation: 'Evitar nas primeiras 4 semanas de gestação devido ao componente febantel; pode ser usado no terço final e lactação sob avaliação clínica.',
+      restrictions: 'Uso exclusivo em cães (não administrar em gatos — formulação específica para cães).',
+    },
     safetyAlert:
       'Não usar em gatos. Contraindicado em hipersensibilidade; cautela em debilitados.',
     price: priceRange(15, 35, 'Varejo veterinário variável — blister 2 cp; confirmar apresentação'),
@@ -180,7 +192,13 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     clinicalUse: 'Verminoses e giardíase em cães de porte médio/grande conforme bula Elanco.',
     reassessment: 'Reavaliar fezes, resposta clínica e reinfecção. Em Giardia, revisar banho e limpeza ambiental.',
     prescriptionExample:
-      'Drontal Plus 35 kg: administrar ___ comprimido(s) por via oral conforme peso; dose única ou q24h × 3 dias se Giardia.',
+      'Drontal Plus 35 kg: administrar 1 comprimido para cães de 17,6 a 35 kg (ou 1/2 comprimido de 15 a 17,5 kg; >35 kg associar com apresentação de 10 kg para completar 1 cp/10 kg). Dose única para verminoses ou q24h × 3 dias se Giardia.',
+    eligibility: {
+      minAge: 'A partir de 3 semanas de vida (respeitando a faixa de peso mínimo de 15 kg da apresentação de 35 kg).',
+      minWeight: 'Mínimo de 15 kg para fracionamento em 1/2 comprimido (para cães de 2 a 15 kg, usar Drontal Plus 10 kg).',
+      pregnancyLactation: 'Não utilizar nas primeiras 4 semanas de gestação; após esse período e durante a lactação, apenas sob avaliação benefício/risco.',
+      restrictions: 'Uso exclusivo para cães grandes (contraindicado em gatos e cães pequenos pelo risco de sobredosagem).',
+    },
     safetyAlert:
       'Não usar em gatos. Filhotes <3 semanas ou <2 kg contraindicados. Cautela em gestação (primeiras 4 semanas), renal/hepática ou debilitados.',
     price: priceRange(101.71, 139.9, 'Caiuna Pet R$ 101,71; Cobasi R$ 116,55; Dog&Cat R$ 123,90 — 2 cp 35 kg'),
@@ -202,8 +220,14 @@ export function enrichPraziquantelCommercialProduct(
       catalogMedicationId: 'editorial:praziquantel',
       labelCompositionSummary:
         'Cada comprimido (339 mg): praziquantel 20 mg + pamoato de pirantel 230 mg. 1 comprimido trata 4 kg (~5 mg/kg PZQ).',
+      eligibility: product.eligibility ?? {
+        minAge: 'A partir de 2 semanas de vida (15 dias) em gatinhos e adultos.',
+        minWeight: 'Peso mínimo de 1,0 kg para o comprimido convencional (1–2 kg = 1/2 cp).',
+        pregnancyLactation: 'Pode ser usado durante a lactação; na gestação, utilizar preferencialmente no terço final ou sob critério clínico.',
+        restrictions: 'Uso exclusivo em gatos. Administrar por via oral em dose única; repetir em 15–21 dias se alto desafio parasitário.',
+      },
       dosageGuidance: {
-        labelDose: '1 comprimido/4 kg VO dose única (tabela por peso na bula).',
+        labelDose: '1 comprimido/4 kg VO dose única (1–2 kg: 1/2 cp; 2,1–4 kg: 1 cp; 4,1–6 kg: 1,5 cp; 6,1–8 kg: 2 cp).',
         plumbs: {
           cat: [
             {

@@ -378,6 +378,18 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
       'Legislação e controle especial: substância psicotrópica sujeita a controle especial estrito (Portaria 344/98 e Instrução Normativa MAPA 35/2017), com uso restrito a estabelecimentos médico-veterinários e retenção de receita.',
     ],
   },
+  butorfanol: {
+    whatItDoes:
+      'O butorfanol é um opioide sintético agonista-antagonista misto (agonista predominante de receptores κ e antagonista/agonista parcial funcional de receptores µ). Na clínica de cães e gatos, destaca-se pela sedação rápida e segura em protocolos de contenção e pré-medicação, pelo efeito antitussígeno central em cães e pela capacidade de reverter parcialmente efeitos indesejáveis de opioides µ plenos, mas fornece analgesia apenas leve e de curta duração (45 a 120 minutos).',
+    keyPoints: [
+      'Sedação não equivale a analgesia cirúrgica: o paciente pode ficar quieto ou sonolento mesmo sem controle adequado da dor intensa; não utilizar como analgésico único em cirurgias invasivas.',
+      'Efeito teto analgésico: doses acima de ~0,4–0,5 mg/kg aumentam pouco ou nada a analgesia, prolongando apenas sedação e efeitos adversos.',
+      'Interação com agonistas µ plenos: se administrado após morfina, metadona ou fentanil, antagoniza a analgesia mediada por µ; contudo, após butorfanol prévio, um agonista µ pleno pode ser titulado conforme a dor sem aguardar 4 horas fixas.',
+      'Atenção à bula comercial: as apresentações veterinárias brasileiras a 10 mg/mL (Torbugesic®, Butorfin®) possuem bula registrada para equinos e são empregadas extrabula em cães e gatos em miligramas de butorfanol base.',
+      'Vigilância térmica e neurológica: pode causar hipotermia leve em cães e hipertermia branda autolimitada em gatos; mutação ABCB1 (MDR1) requer cautela e monitoramento de sedação mais intensa.',
+      'Controle especial Lista A1: segue a Portaria MAPA nº 837/2025 para produtos veterinários (Notificação de Receita Veterinária branca em 2 vias) e Portaria SVS/MS nº 344/1998 quando utilizado produto humano extrabula.',
+    ],
+  },
 };
 
 export function getSimplifiedMedicationDefinition(slug: string): SimplifiedMedicationDefinition | null {

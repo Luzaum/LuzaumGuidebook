@@ -169,7 +169,7 @@ const tabPlanejamento: ClinicalQuickGuideBlock[] = [
   p('Esse é o ponto em que muitas biópsias oncológicas dão errado. Imagine uma massa na face lateral da coxa. Não escolha simplesmente “o ponto mais fácil para cortar”. Pergunte:'),
   box('tip', 'A pergunta que define o trajeto', '==“Se isso for um sarcoma agressivo, qual será minha futura linha de ressecção?”== A biópsia deve então ocupar uma pequena parte dessa futura linha.'),
   p('O BSAVA estabelece princípios rigorosos: a incisão deve permanecer dentro do provável campo cirúrgico/radioterápico, ser tão curta quanto possível e ser orientada de modo que não amplie a área que posteriormente precisará ser retirada. Em membros e cauda, recomenda-se tradicionalmente **orientação paralela ao eixo longitudinal do membro**.'),
-  figure('trajeto.svg', 'Incisão longitudinal contida no campo planejado comparada com uma incisão transversal.', 'Figura 1 — Planejamento da incisão em um membro. O contorno tracejado representa o campo hipotético de ressecção. Em membros, a incisão deve ser longitudinal ao eixo longo. Uma incisão transversal extravasa o campo cirúrgico e impede o fechamento primário na cirurgia definitiva. Esquema baseado em Withrow & MacEwen (Cap. 9) e BSAVA Oncology (Cap. 6).'),
+  figure('trajeto.svg', 'Incisão longitudinal contida no campo planejado comparada com uma incisão transversal.', 'Figura 1 — Planejamento da incisão em um membro. O contorno tracejado representa o campo hipotético de ressecção. Em membros, a incisão deve ser longitudinal ao eixo longo. Uma incisão transversal extravasa o campo cirúrgico e impede o fechamento primário na cirurgia definitiva. Esquema baseado em Withrow & MacEwen e BSAVA Oncology.'),
   steps('Regras anatômicas para planejar a via de acesso', [
     '**Imagine a futura ressecção antes de marcar a pele:** projete mentalmente a margem lateral e profunda necessária para uma ressecção curativa.',
     '**Em membros e cauda, siga rigorosamente o eixo longitudinal:** incisões transversais forçam uma elipse definitiva imensa, frequentemente impossível de fechar sem enxertos ou amputação.',
@@ -262,7 +262,7 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
 
   h('17. Passo 4 — Retirada da cunha com bisturi frio'),
   p('Com lâmina fria de bisturi (nº 10 ou 15), retire uma **cunha suficientemente profunda e volumosa para preservar a arquitetura tecidual**. Uma amostra muito superficial pode ser pior do que nenhuma amostragem.'),
-  figure('cunha.svg', 'Corte convergente em cunha no tecido tumoral viável.', 'Figura 3 — Forma conceitual da cunha diagnóstica. Os planos de incisão convergem em “V” no interior de tecido tumoral viável e a base é liberada sob visão direta. Você deseja obter epitélio/tecido superficial quando relevante + tecido tumoral sólido viável em profundidade, e não apenas crosta ou debris inflamatórios superficiais. Esquema baseado em Withrow & MacEwen (Cap. 9).'),
+  figure('cunha.svg', 'Corte convergente em cunha no tecido tumoral viável.', 'Figura 3 — Forma conceitual da cunha diagnóstica. Os planos de incisão convergem em “V” no interior de tecido tumoral viável e a base é liberada sob visão direta. Você deseja obter epitélio/tecido superficial quando relevante + tecido tumoral sólido viável em profundidade, e não apenas crosta ou debris inflamatórios superficiais. Esquema baseado em Withrow & MacEwen.'),
   steps('Técnica de corte convergente sob visão direta', [
     '**Selecione parênquima sólido viável:** se a massa tiver crosta ou úlcera superficial, alcance a porção sólida profunda.',
     '**Primeiro plano de corte com bisturi:** realize incisão linear firme e profunda na massa.',
@@ -476,11 +476,11 @@ const tabErros: ClinicalQuickGuideBlock[] = [
 
   h('38. Mapa das fontes do projeto e evidências científicas'),
   p('O conteúdo deste guia técnico foi construído com base nas principais obras de referência e diretrizes de sociedades veterinárias mundiais e nacionais:'),
-  table('Obras de referência técnica utilizadas no guia', ['Fonte consultada', 'Capítulo / Seção', 'Contribuição clínica incorporada'], [
-    ['Withrow & MacEwen’s Small Animal Clinical Oncology (6ª ed., 2020)', 'Cap. 9 — Biopsy and Sentinel Lymph Node Mapping Principles (pp. 158–163)', 'Indicações, técnica em cunha, incorporação de trajeto, interface normal-tumor, fixação em formol 1:10 e discordância diagnóstica.'],
-    ['BSAVA Manual of Canine and Feline Oncology (3ª ed., 2011)', 'Cap. 2 — How to make a diagnosis (pp. 10–13); Cap. 6 — Principles of oncological surgery (pp. 46–48); Cap. 14 — Soft tissue sarcomas (pp. 180–181); Cap. 15a — Oral tumours (p. 194)', 'Princípio dos compartimentos anatômicos, orientação longitudinal de incisão em membros, contraindicação de cautério na amostra e FISS em felinos.'],
-    ['BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)', 'Skin biopsy – punch biopsy (pp. 255–256)', 'Manipulação atraumática de biópsias, cuidados de transporte e distinção explícita entre preparo de massa tumoral vs dermatose.'],
-    ['Nelson & Couto: Small Animal Internal Medicine (6ª ed., 2020)', 'Cap. 29 — Disorders of the Oral Cavity (pp. 447–449); Cap. 26 — Manifestações orais (p. 390)', 'Indicação mandatória de biópsia incisional profunda em tumores orais e TC prévia para avaliação óssea.']
+  table('Obras de referência técnica utilizadas no guia', ['Fonte consultada', 'Contribuição clínica incorporada'], [
+    ['Withrow & MacEwen’s Small Animal Clinical Oncology (6ª ed., 2020)', 'Indicações, técnica em cunha, incorporação de trajeto, interface normal-tumor, fixação em formol 1:10 e discordância diagnóstica.'],
+    ['BSAVA Manual of Canine and Feline Oncology (3ª ed., 2011)', 'Princípio dos compartimentos anatômicos, orientação longitudinal de incisão em membros, contraindicação de cautério na amostra e FISS em felinos.'],
+    ['BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)', 'Manipulação atraumática de biópsias, cuidados de transporte e distinção explícita entre preparo de massa tumoral vs dermatose.'],
+    ['Nelson & Couto: Small Animal Internal Medicine (6ª ed., 2020)', 'Indicação mandatória de biópsia incisional profunda em tumores orais e TC prévia para avaliação óssea.']
   ]),
   list([
     '**Kamstock DA et al. (2011)** — *Recommended guidelines for submission, trimming, margin evaluation, and reporting of tumor biopsy specimens in veterinary surgical pathology*. Vet Pathol. 48(1):19–31. Diretrizes de consenso do comitê de oncologia do ACVP para padronização de requisições, fixação e relatórios histopatológicos. [PubMed](https://pubmed.ncbi.nlm.nih.gov/21123864/) · [DOI](https://doi.org/10.1177/0300985810389316).',
@@ -495,15 +495,15 @@ const tabErros: ClinicalQuickGuideBlock[] = [
 
   h('39. Bibliografia principal completa (Formato ABNT)'),
   list([
-    'BEXFIELD, N.; RIGGS, J. (Eds.). **BSAVA Guide to Procedures in Small Animal Practice**. 3. ed. Gloucester: British Small Animal Veterinary Association, 2024. pp. 255–256.',
-    'DOBSON, J. M.; LASCELLES, B. D. X. (Eds.). **BSAVA Manual of Canine and Feline Oncology**. 3. ed. Gloucester: British Small Animal Veterinary Association, 2011. pp. 10–13, 46–48, 180–181, 194.',
+    'BEXFIELD, N.; RIGGS, J. (Eds.). **BSAVA Guide to Procedures in Small Animal Practice**. 3. ed. Gloucester: British Small Animal Veterinary Association, 2024.',
+    'DOBSON, J. M.; LASCELLES, B. D. X. (Eds.). **BSAVA Manual of Canine and Feline Oncology**. 3. ed. Gloucester: British Small Animal Veterinary Association, 2011.',
     'FERRARIS, E. I. et al. Multiple preoperative biopsies may increase histologic grade accuracy in canine soft tissue sarcoma: a prospective study. **The Veterinary Journal**, v. 316, p. 106596, 2026. DOI: 10.1016/j.tvjl.2026.106596.',
     'FONSECA-ALVES, C. E. et al. Canine cutaneous and subcutaneous soft tissue sarcoma in dogs: a consensus report from the Brazilian Association of Veterinary Oncology. **Frontiers in Veterinary Science**, v. 13, p. 1750148, 2026. DOI: 10.3389/fvets.2026.1750148.',
     'HO, L.; LIM, W. Z.; THOMPSON, J.-L. Case Report: Surgical resection of high-grade extradural thoracic vertebral chondrosarcoma in a dog. **Frontiers in Veterinary Science**, v. 13, p. 1767307, 2026. DOI: 10.3389/fvets.2026.1767307.',
     'KAMSTOCK, D. A. et al. Recommended guidelines for submission, trimming, margin evaluation, and reporting of tumor biopsy specimens in veterinary surgical pathology. **Veterinary Pathology**, v. 48, n. 1, p. 19–31, 2011. DOI: 10.1177/0300985810389316.',
-    'NELSON, R. W.; COUTO, C. G. **Small Animal Internal Medicine**. 6. ed. St. Louis: Elsevier, 2020. pp. 390, 447–449.',
+    'NELSON, R. W.; COUTO, C. G. **Small Animal Internal Medicine**. 6. ed. St. Louis: Elsevier, 2020.',
     'POLTON, G. et al. Melanoma of the dog and cat: consensus and guidelines. **Frontiers in Veterinary Science**, v. 11, p. 1359426, 2024. DOI: 10.3389/fvets.2024.1359426.',
-    'VAIL, D. M.; THAMM, D. H.; LIPTAK, J. M. (Eds.). **Withrow & MacEwen’s Small Animal Clinical Oncology**. 6. ed. St. Louis: Elsevier, 2020. Cap. 9: Biopsy and Sentinel Lymph Node Mapping Principles, pp. 158–163.',
+    'VAIL, D. M.; THAMM, D. H.; LIPTAK, J. M. (Eds.). **Withrow & MacEwen’s Small Animal Clinical Oncology**. 6. ed. St. Louis: Elsevier, 2020.',
     'VINCENTI, S. et al. Combined cross-sectional and tangential margin evaluation of different tumor types in dogs and cats. **Frontiers in Veterinary Science**, v. 12, p. 1629994, 2025. DOI: 10.3389/fvets.2025.1629994.',
     'WRIGHT, A. L.; PERALTA, S.; FIANI, N. Case report: Spontaneous mandibular body regeneration following unilateral subtotal mandibulectomy in a 3-month-old French bulldog. **Frontiers in Veterinary Science**, v. 10, p. 1281232, 2023. DOI: 10.3389/fvets.2023.1281232.'
   ])

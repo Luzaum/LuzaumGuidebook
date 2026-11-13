@@ -12,9 +12,9 @@ export const convlessCommercialProductSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oral palatável 20 mg/mL (2%) — frasco 60 mL com seringa dosadora'],
     activeComponents: ['fenobarbital 20 mg/mL'],
     labelCompositionSummary: 'Cada 1 mL contém 20 mg de fenobarbital. Solução oral veterinária palatável, pronta para uso e indicada exclusivamente para cães.',
-    labelDirections: 'Cães: 1,3 a 6 mg/kg por via oral a cada 12 horas, ou a critério do médico-veterinário. Volume por dose (mL) = peso (kg) × dose (mg/kg) ÷ 20.',
+    labelDirections: 'Cães: 1,3 a 6 mg/kg por via oral a cada 12 horas (dose inicial usual: 2,5 a 3 mg/kg q12h). Volume por dose (mL) = peso (kg) × dose (mg/kg) ÷ 20 (equivalente a 0,065 a 0,30 mL/kg).',
     dosageGuidance: {
-      labelDose: 'Dose de bula — cães: 1,3 a 6 mg/kg VO q12h. Convless® 20 mg/mL: 0,065 a 0,30 mL/kg por dose.',
+      labelDose: 'Dose de bula — cães: 1,3 a 6 mg/kg VO q12h (dose inicial usual: 2,5–3 mg/kg VO q12h). Convless® 20 mg/mL: 0,065 a 0,30 mL/kg por dose.',
       plumbs: {
         dog: [{
           title: 'Dose inicial usual do fenobarbital na literatura',

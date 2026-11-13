@@ -35,7 +35,7 @@ function resolveAuthCallbackUrl(nextPath?: string) {
   return callbackUrl.toString()
 }
 
-export async function signUp(identifier: string, password: string, nextPath = '/hub') {
+export async function signUp(identifier: string, password: string, nextPath = '/consulta-vet') {
   const email = resolveSupabaseAuthEmail(identifier)
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -66,7 +66,7 @@ export async function signIn(identifier: string, password: string) {
   return data
 }
 
-export async function signInWithGoogle(nextPath = '/app') {
+export async function signInWithGoogle(nextPath = '/consulta-vet') {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {

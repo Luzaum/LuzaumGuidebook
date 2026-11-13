@@ -1,16 +1,16 @@
 ﻿import {
   Heart,
   Cat,
-  TestTube,
-  Syringe,
   Pill,
   Brain,
   LucideIcon,
   Activity,
-  Stethoscope,
 } from 'lucide-react'
 
 export type ModuleStatus = 'internal' | 'iframe' | 'planned'
+
+export const fluidoterapiaIcon = '/consulta-vet/reference-apps/thumbnails/fluidoterapia-vet-gota.webp'
+export const transfusaoIcon = '/consulta-vet/reference-apps/thumbnails/transfusao-sanguinea-gota.webp'
 
 export interface Module {
   id: string
@@ -40,25 +40,16 @@ export const modules: Module[] = [
     route: '/fluidoterapia-vet',
     status: 'internal',
     icon: Activity,
-    iconImage: '/apps/fluidoterapia.png',
+    iconImage: fluidoterapiaIcon,
   },
   {
     id: 'transfusão-sanguinea',
     title: 'Transfusão Sanguínea',
     description: 'Planeje transfusões com volume, compatibilidade, produtos sanguíneos e monitorização.',
-    route: '/transfusão-sanguinea',
+    route: '/transfusao-sanguinea',
     status: 'internal',
     icon: Heart,
-    iconImage: '/apps/transfusao.png',
-  },
-  {
-    id: 'hemogasovet',
-    title: 'HemoGasoVet',
-    description: 'Interprete hemogasometria, equilíbrio ácido-base, eletrólitos e oxigenação com clareza.',
-    route: '/hemogasovet',
-    status: 'internal',
-    icon: TestTube,
-    iconImage: '/apps/hemogasovetzx.png',
+    iconImage: transfusaoIcon,
   },
   {
     id: 'escalas-dor',
@@ -67,7 +58,7 @@ export const modules: Module[] = [
     route: '/dor',
     status: 'internal',
     icon: Cat,
-    iconImage: '/apps/dor.png',
+    iconImage: '/consulta-vet/reference-apps/escalas-dor.png',
   },
   {
     id: 'antibioticoterapia',
@@ -79,15 +70,6 @@ export const modules: Module[] = [
     iconImage: '/apps/ATB.png',
   },
   {
-    id: 'crivet',
-    title: 'CRI VET',
-    description: 'Monte infusões contínuas com concentração, velocidade e cálculos conferíveis.',
-    route: '/crivet',
-    status: 'internal',
-    icon: Syringe,
-    iconImage: '/apps/CRIVET.png',
-  },
-  {
     id: 'neurologia',
     title: 'Neurologia',
     description: 'Conduza o exame neurológico, localize a lesão e aplique a escala MGCS.',
@@ -95,15 +77,6 @@ export const modules: Module[] = [
     status: 'internal',
     icon: Brain,
     iconImage: '/apps/NEURO.png',
-  },
-  {
-    id: 'consulta-vet',
-    title: 'ConsultaVET',
-    description: 'Consulte doenças, fármacos, produtos comerciais, consensos e modelos de prescrição.',
-    route: '/consulta-vet',
-    status: 'internal',
-    icon: Stethoscope,
-    iconImage: '/apps/consulta-vet-logo.png',
   },
 
 ]

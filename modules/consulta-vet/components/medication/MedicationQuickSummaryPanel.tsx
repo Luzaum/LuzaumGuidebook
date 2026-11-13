@@ -1,7 +1,4 @@
-import { PROGRESSIVE_SUMMARY_PREVIEWS } from '../../data/progressiveSummaryPreviews';
-import { CONCISE_MEDICATION_SUMMARIES } from '../../data/conciseClinicalSummaries';
-import { SummaryPreview } from '../shared/SummaryPreview';
-import React, { useMemo } from 'react';
+import React, { useId, useMemo, useState } from 'react';
 import {
   Clock,
   AlertTriangle,
@@ -11,10 +8,17 @@ import {
   Thermometer,
   Syringe,
   Info,
-  FileText,
+  Scale,
+  Calculator,
+  X,
 } from 'lucide-react';
-import type { MedicationRecord, MedicationQuickIndication } from '../../types/medication';
+import type { MedicationRecord } from '../../types/medication';
 import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
+import {
+  calculateQuickIndicationDose,
+  formatPatientDoseNumber,
+  type QuickIndicationWithSource,
+} from '../../utils/quickIndicationDoseCalculator';
 
 function sortHighlightsLongestFirst(terms: string[]): string[] {
   return [...new Set(terms.map((t) => t.trim()).filter(Boolean))].sort((a, b) => b.length - a.length);
@@ -76,22 +80,50 @@ export function HighlightedText({ text, highlights }: { text: string; highlights
 
 export function MedicationQuickSummaryPanel({
   medication,
+  patientWeightInput: controlledWeightInput,
+  onPatientWeightInputChange,
 }: {
   medication: MedicationRecord;
+  patientWeightInput?: string;
+  onPatientWeightInputChange?: (value: string) => void;
 }) {
-  const quickIndications: MedicationQuickIndication[] = useMemo(() => {
+  const weightInputId = useId();
+  const [internalWeightInput, setInternalWeightInput] = useState('');
+  const patientWeightInput = controlledWeightInput ?? internalWeightInput;
+  const setPatientWeightInput = onPatientWeightInputChange ?? setInternalWeightInput;
+
+  const trimmedWeight = patientWeightInput.trim();
+  const parsedWeight = trimmedWeight === '' ? NaN : Number(trimmedWeight.replace(',', '.'));
+  const isValidWeight = Number.isFinite(parsedWeight) && parsedWeight > 0 && parsedWeight <= 200;
+  const weightValidationError =
+    trimmedWeight !== '' && !isValidWeight
+      ? Number.isFinite(parsedWeight) && parsedWeight > 200
+        ? 'Informe um peso de até 200 kg.'
+        : 'Informe um peso válido maior que 0 kg.'
+      : null;
+
+  const quickIndications: QuickIndicationWithSource[] = useMemo(() => {
     if (medication.quickIndications && medication.quickIndications.length > 0) {
       return medication.quickIndications;
     }
     if (medication.doses && medication.doses.length > 0) {
-      return medication.doses.map((d) => ({
-        condition: d.indication,
-        species: d.species,
-        doseSummary: `${d.doseMin}${d.doseMax && d.doseMax !== d.doseMin ? ` a ${d.doseMax}` : ''} ${d.doseUnit}/${d.perWeightUnit} ${d.frequency}`,
-        route: d.route,
-        duration: d.duration || 'Conforme indicação e resposta clínica',
-        clinicalContext: d.clinicalContext || d.notes,
-      }));
+      return medication.doses.map((d) => {
+        const rawUnit = String(d.doseUnit || '').trim();
+        const rawPer = String(d.perWeightUnit || '').trim();
+        const unitLabel =
+          !rawPer || rawUnit.includes('/') || /dose fixa/i.test(rawPer)
+            ? rawUnit
+            : `${rawUnit}/${rawPer}`;
+        return {
+          condition: d.indication,
+          species: d.species,
+          doseSummary: `${d.doseMin}${d.doseMax && d.doseMax !== d.doseMin ? ` a ${d.doseMax}` : ''} ${unitLabel} ${d.frequency}`.trim(),
+          route: d.route,
+          duration: d.duration || 'Conforme indicação e resposta clínica',
+          clinicalContext: d.clinicalContext || d.notes,
+          sourceDose: d,
+        };
+      });
     }
     return medication.indications.map((ind) => ({
       condition: ind,
@@ -128,9 +160,307 @@ export function MedicationQuickSummaryPanel({
     ];
   }, [medication]);
 
+  const warningItems = useMemo(() => {
+    if (medication.clinicalWarningItems && medication.clinicalWarningItems.length > 0) {
+      return medication.clinicalWarningItems;
+    }
+    if (medication.cautions && medication.cautions.length > 0) {
+      return medication.cautions.map((caution) => {
+        const colonIdx = caution.indexOf(':');
+        if (colonIdx > 0 && colonIdx < 65) {
+          return {
+            label: `${caution.slice(0, colonIdx).trim()}:`,
+            text: caution.slice(colonIdx + 1).trim(),
+          };
+        }
+        return { label: 'Atenção clínica:', text: caution };
+      });
+    }
+    return [];
+  }, [medication.clinicalWarningItems, medication.cautions]);
+
   const highlights = medication.quickSummaryHighlights ?? [];
-  const preview = PROGRESSIVE_SUMMARY_PREVIEWS[medication.slug];
-  const clinicalPreview = CONCISE_MEDICATION_SUMMARIES[medication.slug];
+  const plainSummaryText =
+    medication.plainLanguageSummary || `${medication.title}: ${medication.mechanismOfAction}`;
+  const plainSummaryParagraphs = useMemo(
+    () => plainSummaryText.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
+    [plainSummaryText]
+  );
+
+  const plainLanguageBlock = (
+    <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md md:rounded-2xl md:p-6">
+      <p className="text-xs font-bold uppercase tracking-wider text-amber-200 flex items-center gap-2 mb-3">
+        <Info className="h-4 w-4" />
+        Em palavras simples
+      </p>
+      <div className="space-y-2.5 text-sm font-medium leading-6 text-white/95">
+        {plainSummaryParagraphs.map((paragraph, idx) => (
+          <p key={idx}>
+            <HighlightedText text={paragraph} highlights={highlights} />
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+
+  const pillarsBlock = (
+    <div>
+      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3.5">
+        Pilares Terapêuticos Essenciais
+      </h3>
+      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+        {pillars.map((pillar) => {
+          const Icon = pillar.icon;
+          return (
+            <div
+              key={pillar.title}
+              className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xs transition hover:border-white/20 hover:bg-white/10 md:rounded-2xl md:p-4"
+            >
+              <div className="flex items-center gap-2.5 text-amber-300 mb-2">
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="text-xs font-bold uppercase tracking-wide">{pillar.title}</span>
+              </div>
+              <div className="text-xs leading-relaxed text-slate-300">
+                <p>{pillar.desc}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  const quickIndicationsBlock = (
+    <div className="space-y-4">
+      <h3 className="text-center text-lg sm:text-xl font-bold text-white">
+        Indicações de Uso
+      </h3>
+
+      {/* Caixa de número para o peso do paciente em kg */}
+      <div className="flex flex-col items-center gap-1.5">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-xl border border-white/15 bg-black/30 px-3.5 py-2 backdrop-blur-sm shadow-xs transition focus-within:border-amber-400/50 focus-within:bg-black/40">
+          <label
+            htmlFor={weightInputId}
+            className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 cursor-pointer"
+          >
+            <Scale className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <span>Peso do paciente:</span>
+          </label>
+          <div className="flex items-center gap-1.5">
+            <input
+              id={weightInputId}
+              type="number"
+              inputMode="decimal"
+              min="0.05"
+              max="200"
+              step="0.1"
+              value={patientWeightInput}
+              onChange={(event) => setPatientWeightInput(event.target.value)}
+              placeholder="Ex: 10"
+              aria-label="Peso do paciente em kg"
+              className="w-24 rounded-lg border border-white/20 bg-white/10 px-2.5 py-1 text-sm font-bold text-white placeholder:font-normal placeholder:text-slate-400 outline-none transition focus:border-amber-400 focus:bg-white/15"
+            />
+            <span className="text-xs font-bold text-amber-300">kg</span>
+          </div>
+          {trimmedWeight !== '' && (
+            <button
+              type="button"
+              onClick={() => setPatientWeightInput('')}
+              className="inline-flex h-6 w-6 items-center justify-center rounded-md text-slate-400 transition hover:bg-white/10 hover:text-white"
+              title="Limpar peso"
+              aria-label="Limpar peso"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          )}
+        </div>
+        {weightValidationError && (
+          <p className="text-[11px] font-medium text-amber-300" role="alert">
+            {weightValidationError}
+          </p>
+        )}
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        {quickIndications.map((item, idx) => {
+          const isDog = item.species === 'dog' || item.species === 'both';
+          const isCat = item.species === 'cat' || item.species === 'both';
+          const isCenteredOddLast =
+            quickIndications.length > 1 &&
+            quickIndications.length % 2 === 1 &&
+            idx === quickIndications.length - 1;
+          const calculatedDose = isValidWeight
+            ? calculateQuickIndicationDose(item, parsedWeight)
+            : null;
+
+          return (
+            <div
+              key={idx}
+              className={`flex flex-col justify-between rounded-xl border border-white/15 bg-black/25 p-4 backdrop-blur-sm transition hover:border-amber-400/30 hover:bg-black/35 md:rounded-2xl md:p-5 ${
+                isCenteredOddLast ? 'sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc(50%-0.5rem)]' : ''
+              }`.trim()}
+            >
+              <div className="space-y-3">
+                {/* Top row: Title + Species badges */}
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <h4 className="text-sm sm:text-base font-bold text-white">
+                    {item.condition}
+                  </h4>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {isDog && (
+                      <span className="inline-flex items-center rounded-md bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold text-blue-300 border border-blue-500/30">
+                        Cães
+                      </span>
+                    )}
+                    {isCat && (
+                      <span className="inline-flex items-center rounded-md bg-purple-500/20 px-2 py-0.5 text-[10px] font-bold text-purple-300 border border-purple-500/30">
+                        Gatos
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Contexto clínico completo sem corte */}
+                {item.clinicalContext && (
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    {item.clinicalContext}
+                  </p>
+                )}
+              </div>
+
+              {/* Detalhes de dose, via e duração + cálculo para o paciente ancorados no final do card */}
+              <div className="mt-4 space-y-3">
+                <div className="pt-3.5 border-t border-white/10 space-y-2.5 rounded-xl bg-white/5 p-3.5">
+                  <div className="flex items-start gap-2.5">
+                    <Syringe className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                        Dose de Ataque / Manutenção
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-amber-200">
+                        {item.doseSummary}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 pt-1 text-xs border-t border-white/10">
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
+                        Via
+                      </span>
+                      <span className="text-slate-200 font-medium">
+                        {item.route}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
+                        Duração
+                      </span>
+                      <span className="text-emerald-300 font-medium">
+                        {item.duration}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dose calculada para o paciente no final do card */}
+                {calculatedDose && (
+                  <div
+                    aria-live="polite"
+                    className={
+                      calculatedDose.status === 'contraindicated'
+                        ? 'rounded-xl border border-rose-400/35 bg-rose-500/15 p-3'
+                        : calculatedDose.status === 'unavailable'
+                        ? 'rounded-xl border border-white/10 bg-white/5 p-3'
+                        : 'rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-3'
+                    }
+                  >
+                    <div
+                      className={`flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider mb-1.5 ${
+                        calculatedDose.status === 'contraindicated'
+                          ? 'text-rose-300'
+                          : calculatedDose.status === 'unavailable'
+                          ? 'text-slate-400'
+                          : 'text-emerald-300'
+                      }`}
+                    >
+                      <Calculator className="h-3.5 w-3.5 shrink-0" />
+                      <span>
+                        Dose para este paciente ({formatPatientDoseNumber(parsedWeight)} kg)
+                      </span>
+                    </div>
+
+                    {calculatedDose.status === 'unavailable' ? (
+                      <p className="text-xs text-slate-300">
+                        Sem cálculo automático por peso para esta indicação (consultar posologia acima).
+                      </p>
+                    ) : (
+                      <div className="space-y-1">
+                        {calculatedDose.items.map((doseItem, dIdx) => (
+                          <div key={dIdx} className="text-xs sm:text-sm leading-snug">
+                            <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
+                              {doseItem.label && (
+                                <span className="text-xs font-semibold text-slate-200">
+                                  {doseItem.label}:
+                                </span>
+                              )}
+                              <span
+                                className={`font-extrabold ${
+                                  calculatedDose.status === 'contraindicated'
+                                    ? 'text-rose-200'
+                                    : 'text-emerald-200'
+                                }`}
+                              >
+                                {doseItem.doseText}
+                              </span>
+                            </div>
+                            {doseItem.note && (
+                              <p
+                                className={`mt-0.5 text-[11px] ${
+                                  doseItem.isWarning ? 'font-medium text-amber-300' : 'text-slate-300/90'
+                                }`}
+                              >
+                                {doseItem.note}
+                              </p>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  const warningsBlock =
+    warningItems.length > 0 ? (
+      <div className="space-y-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-100 md:rounded-2xl md:p-5">
+        <div className="flex items-center gap-2 text-amber-300">
+          <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+          <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">
+            Aviso Clínico Importante
+          </span>
+        </div>
+
+        <div className="space-y-2.5 text-xs sm:text-sm pl-1">
+          {warningItems.map((item, idx) => (
+            <div key={idx} className="flex items-start gap-2.5">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
+                {idx + 1}
+              </span>
+              <p className="text-slate-200 leading-relaxed">
+                <strong className="text-white font-semibold">{item.label}</strong> {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ) : null;
 
   return (
     <section
@@ -138,170 +468,17 @@ export function MedicationQuickSummaryPanel({
       className="scroll-mt-24 overflow-hidden rounded-[20px] border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl md:rounded-3xl"
     >
       <div className="space-y-5 p-4 md:space-y-8 md:p-8 lg:p-10">
-        {/* Cabeçalho do Resumo Rápido - Limpo, sem estrelas nem tags repetitivas */}
+        {/* Cabeçalho do Resumo Rápido */}
         <div className="border-b border-white/10 pb-4">
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/20 text-amber-300 ring-1 ring-amber-500/30">
-              <FileText className="h-5 w-5" />
-            </span>
-            <h2 className="text-lg font-black tracking-tight text-white md:text-2xl">
-              Resumo Clínico Executivo
-            </h2>
-          </div>
+          <h2 className="text-lg font-black tracking-tight text-white md:text-2xl">
+            Resumo Clínico Executivo
+          </h2>
         </div>
 
-        {/* Lead / Em Palavras Simples mas Aprofundado */}
-        <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md md:rounded-2xl md:p-6">
-          <p className="text-xs font-bold uppercase tracking-wider text-amber-200 flex items-center gap-2 mb-3">
-            <Info className="h-4 w-4" />
-            Em palavras simples
-          </p>
-          <div className="text-sm font-medium leading-6 text-white/95">
-            <SummaryPreview preview={preview?.simple}>
-            <HighlightedText
-              text={
-                medication.plainLanguageSummary ||
-                `${medication.title}: ${medication.mechanismOfAction}`
-              }
-              highlights={highlights}
-            />
-            </SummaryPreview>
-          </div>
-        </div>
-
-        {/* 4 Pilares de Ação Farmacológica */}
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3.5">
-            Pilares Terapêuticos Essenciais
-          </h3>
-          <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-            {pillars.map((pillar) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.title}
-                  className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xs transition hover:border-white/20 hover:bg-white/10 md:rounded-2xl md:p-4"
-                >
-                  <div className="flex items-center gap-2.5 text-amber-300 mb-2">
-                    <Icon className="h-4 w-4 shrink-0" />
-                    <span className="text-xs font-bold uppercase tracking-wide">{pillar.title}</span>
-                  </div>
-                  <div className="text-xs leading-relaxed text-slate-300"><SummaryPreview preview={preview?.pillars[pillar.title]}><p>{pillar.desc}</p></SummaryPreview></div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* SEÇÃO: Indicações de Uso Resumidas */}
-        <div className="space-y-4">
-          <h3 className="text-lg sm:text-xl font-bold text-white">
-            Indicações de Uso Resumidas
-          </h3>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {quickIndications.map((item, idx) => {
-              const isDog = item.species === 'dog' || item.species === 'both';
-              const isCat = item.species === 'cat' || item.species === 'both';
-
-              return (
-                <div
-                  key={idx}
-                  className="flex flex-col justify-between rounded-xl border border-white/15 bg-black/25 p-4 backdrop-blur-sm transition hover:border-amber-400/30 hover:bg-black/35 md:rounded-2xl md:p-5"
-                >
-                  <div className="space-y-3">
-                    {/* Top row: Title + Species badges */}
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <h4 className="text-sm sm:text-base font-bold text-white">
-                        {item.condition}
-                      </h4>
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        {isDog && (
-                          <span className="inline-flex items-center rounded-md bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold text-blue-300 border border-blue-500/30">
-                            Cães
-                          </span>
-                        )}
-                        {isCat && (
-                          <span className="inline-flex items-center rounded-md bg-purple-500/20 px-2 py-0.5 text-[10px] font-bold text-purple-300 border border-purple-500/30">
-                            Gatos
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Contexto clínico completo sem corte */}
-                    {item.clinicalContext && (
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                        {item.clinicalContext}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Detalhes de dose, via e duração em bloco destacado */}
-                  <div className="mt-4 pt-3.5 border-t border-white/10 space-y-2.5 rounded-xl bg-white/5 p-3.5">
-                    <div className="flex items-start gap-2.5">
-                      <Syringe className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-slate-400 block">
-                          Dose de Ataque / Manutenção
-                        </span>
-                        <span className="text-xs sm:text-sm font-bold text-amber-200">
-                          {item.doseSummary}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3 pt-1 text-xs border-t border-white/10">
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
-                          Via
-                        </span>
-                        <span className="text-slate-200 font-medium">
-                          {item.route}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
-                          Duração
-                        </span>
-                        <span className="text-emerald-300 font-medium">
-                          {item.duration}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Banner de Segurança: Aviso Clínico Importante - dinâmico por medicamento */}
-        {medication.clinicalWarningItems && medication.clinicalWarningItems.length > 0 && (
-          <div className="space-y-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-100 md:rounded-2xl md:p-5">
-            <div className="flex items-center gap-2 text-amber-300">
-              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
-              <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">
-                Aviso Clínico Importante
-              </span>
-            </div>
-
-            <SummaryPreview preview={preview?.attention ?? (clinicalPreview ? clinicalPreview.points.slice(1).join(" ") : undefined)}>
-            <div className="space-y-2.5 text-xs sm:text-sm pl-1">
-              {medication.clinicalWarningItems.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
-                    {idx + 1}
-                  </span>
-                  <p className="text-slate-200 leading-relaxed">
-                    <strong className="text-white font-semibold">{item.label}</strong> {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-            </SummaryPreview>
-          </div>
-        )}
+        {plainLanguageBlock}
+        {quickIndicationsBlock}
+        {pillarsBlock}
+        {warningsBlock}
       </div>
     </section>
   );

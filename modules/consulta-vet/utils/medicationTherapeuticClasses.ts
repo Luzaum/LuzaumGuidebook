@@ -95,8 +95,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-300',
     iconClassName: 'text-cyan-600 dark:text-cyan-400',
-    medicationSlugs: ['dipirona', 'metadona', 'buprenorfina', 'tramadol', 'lidocaina', 'amantadina', 'gabapentina', 'cetamina'],
-    keywords: ['analgésico', 'antipirético', 'dipirona', 'metamizol', 'anestésico local', 'anestésico dissociativo', 'cetamina', 'ketamine', 'escetamina', 'esketamine', 'cetamin', 'dopalen', 'ketamin', 'spravato', 'nmda', 'metadona', 'mytedom', 'comfortan', 'synthadon', 'tramadol', 'opioide', 'buprenorfina', 'buprenex', 'vetergesic', 'temgesic', 'restiva', 'transtec', 'gabapentina', 'neurontin'],
+    medicationSlugs: ['dipirona', 'metadona', 'buprenorfina', 'butorfanol', 'tramadol', 'lidocaina', 'amantadina', 'gabapentina', 'cetamina'],
+    keywords: ['analgésico', 'antipirético', 'dipirona', 'metamizol', 'anestésico local', 'anestésico dissociativo', 'cetamina', 'ketamine', 'escetamina', 'esketamine', 'cetamin', 'dopalen', 'ketamin', 'spravato', 'nmda', 'metadona', 'mytedom', 'comfortan', 'synthadon', 'tramadol', 'opioide', 'buprenorfina', 'buprenex', 'vetergesic', 'temgesic', 'restiva', 'transtec', 'butorfanol', 'butorphanol', 'torbugesic', 'butorfin', 'torbutrol', 'antitussígeno', 'gabapentina', 'neurontin'],
   },
   {
     slug: 'neurologicos-anticonvulsivantes',

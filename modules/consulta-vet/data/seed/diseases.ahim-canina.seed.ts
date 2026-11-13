@@ -494,7 +494,7 @@ export const anemiaHemoliticaImunomediadaCaninaRecord: DiseaseRecord = {
     'acvim-ahim-tratamento-canino-2019',
     'curative-risco-trombotico-2022',
   ],
-  relatedDiseaseSlugs: ['babesiose-canina', 'micoplasmoses-hemotropicas', 'trombocitopenia-caes-gatos', 'anemia-caes-gatos'],
+  relatedDiseaseSlugs: ['babesiose-caes-gatos', 'micoplasmoses-hemotropicas', 'trombocitopenia-caes-gatos', 'anemia-caes-gatos'],
   relatedMedicationSlugs: ['prednisolona'],
   references: [
     {

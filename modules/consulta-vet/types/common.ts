@@ -89,8 +89,35 @@ export interface EditorialClinicalFigure {
   src: string;
   alt: string;
   caption?: string;
+  /** Legenda resumida opcional para miniatura em grade; o zoom exibe sempre `caption` completo. */
+  shortCaption?: string;
   /** Ajuste editorial da visualizacao: diagramas/citologia podem precisar de mais area que fotos clínicas simples. */
   display?: 'compact' | 'default' | 'wide' | 'full';
+}
+
+export interface EditorialAlgorithmDetailBlock {
+  label: string;
+  content: string;
+  tone?: 'default' | 'warning' | 'danger' | 'evidence' | 'tip';
+}
+
+export interface EditorialAlgorithmStep {
+  stepNumber: number;
+  phaseBadge?: string;
+  speciesTag?: 'dog' | 'cat' | 'both';
+  title: string;
+  quickSummary: string;
+  quickFacts?: Array<{ label: string; value: string }>;
+  details: EditorialAlgorithmDetailBlock[];
+}
+
+/** Algoritmo clínico interativo (clicar na etapa para expandir racional, mecanismo, doses e evidências). */
+export interface EditorialInteractiveAlgorithm {
+  kind: 'interactiveAlgorithm';
+  mode: 'diagnosis' | 'treatment';
+  title: string;
+  subtitle?: string;
+  steps: EditorialAlgorithmStep[];
 }
 
 export type EditorialSectionValue =
@@ -98,6 +125,7 @@ export type EditorialSectionValue =
   | string[]
   | EditorialDrugProtocol[]
   | EditorialDiagnosticStep[]
+  | EditorialInteractiveAlgorithm
   | Record<
       string,
       | string
@@ -107,6 +135,7 @@ export type EditorialSectionValue =
       | EditorialDiagnosticStep[]
       | EditorialClinicalTable
       | EditorialClinicalFigure
+      | EditorialInteractiveAlgorithm
       | any
     >;
 

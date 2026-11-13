@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stethoscope, Target } from 'lucide-react';
+import { Stethoscope } from 'lucide-react';
 import type { MedicationGeneralInfoData } from '../../types/medication';
 
 interface MedicationPharmacologicalClassificationSectionProps {
@@ -13,7 +13,19 @@ export function MedicationPharmacologicalClassificationSection({
   activeIngredient,
   pharmacologicClass,
 }: MedicationPharmacologicalClassificationSectionProps) {
-  if (!classification) return null;
+  const chemicalClass =
+    classification?.chemicalClass ||
+    activeIngredient ||
+    pharmacologicClass ||
+    'Composto Farmacológico';
+  const chemicalClassDescription = classification?.chemicalClassDescription;
+  const therapeuticClass =
+    classification?.therapeuticClass ||
+    pharmacologicClass ||
+    'Ação Terapêutica Veterinária';
+  const therapeuticClassDescription = classification?.therapeuticClassDescription;
+
+  if (!classification && !pharmacologicClass && !activeIngredient) return null;
 
   return (
     <section id="classificacao-farmacologica" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
@@ -24,15 +36,15 @@ export function MedicationPharmacologicalClassificationSection({
         </span>
         <div>
           <h3 className="text-lg font-bold text-foreground">
-            Classificação Farmacológica & Mecânica
+            Classificação Farmacológica
           </h3>
           <p className="text-xs text-muted-foreground">
-            Taxonomia química, ação terapêutica e caracterização aprofundada dos sítios moleculares
+            Taxonomia química e ação terapêutica principal
           </p>
         </div>
       </div>
 
-      {/* Grid de 2 Cards Amplos de Classificação (Sem código ATCvet) */}
+      {/* Grid de 2 Cards Amplos de Classificação */}
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Classe Química */}
         <div className="rounded-2xl border border-border/70 bg-muted/20 p-5 space-y-1.5">
@@ -40,11 +52,11 @@ export function MedicationPharmacologicalClassificationSection({
             Classe Química
           </span>
           <p className="text-sm sm:text-base font-bold text-foreground leading-snug">
-            {classification.chemicalClass || pharmacologicClass || 'Composto Farmacológico'}
+            {chemicalClass}
           </p>
-          {(classification.chemicalClassDescription) && (
+          {chemicalClassDescription && (
             <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-              {classification.chemicalClassDescription}
+              {chemicalClassDescription}
             </p>
           )}
         </div>
@@ -55,74 +67,14 @@ export function MedicationPharmacologicalClassificationSection({
             Ação Terapêutica Principal
           </span>
           <p className="text-sm sm:text-base font-bold text-foreground leading-snug">
-            {classification.therapeuticClass || 'Ação Terapêutica Específica'}
+            {therapeuticClass}
           </p>
-          {(classification.therapeuticClassDescription) && (
+          {therapeuticClassDescription && (
             <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-              {classification.therapeuticClassDescription}
+              {therapeuticClassDescription}
             </p>
           )}
         </div>
-      </div>
-
-      {/* Sítios & Receptores-Alvo (Cards amplos de largura completa com 100% de visibilidade) */}
-      <div className="space-y-4 pt-2">
-        <div className="flex items-center gap-2">
-          <Target className="h-4 w-4 text-purple-600 dark:text-purple-400" />
-          <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
-            Sítios Moleculares & Receptores-Alvo Detalhados
-          </h4>
-        </div>
-
-        {classification.detailedTargets && classification.detailedTargets.length > 0 ? (
-          <div className="space-y-4">
-            {classification.detailedTargets.map((item, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-border/80 bg-muted/20 p-5 sm:p-6 transition hover:border-purple-500/30 hover:bg-muted/30 space-y-4"
-              >
-                {/* Linha de topo com identificador numérico e título do alvo */}
-                <div className="flex items-center gap-3 border-b border-border/60 pb-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-purple-500/15 text-xs font-black text-purple-700 dark:text-purple-300">
-                    0{idx + 1}
-                  </span>
-                  <h5 className="text-sm sm:text-base font-bold text-foreground">
-                    {item.target}
-                  </h5>
-                </div>
-
-                {/* Grid espaçosa de 2 colunas para Ação e Relevância Clínica */}
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-                      Mecanismo Molecular & Ação Enzimática
-                    </span>
-                    <p className="text-xs sm:text-sm leading-relaxed text-foreground/90">
-                      {item.action}
-                    </p>
-                  </div>
-
-                  <div className="rounded-xl border border-purple-500/25 bg-purple-500/5 p-4 dark:bg-purple-950/20 space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 block">
-                      Relevância & Impacto Clínico Prático
-                    </span>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed text-foreground/85">
-                      {item.clinicalSignificance}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid gap-3 sm:grid-cols-2">
-            {classification.receptorTargets?.map((target, idx) => (
-              <div key={idx} className="rounded-xl border border-border bg-muted/20 p-4">
-                <p className="text-sm font-semibold text-foreground">{target}</p>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

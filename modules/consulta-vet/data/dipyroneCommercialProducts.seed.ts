@@ -91,8 +91,8 @@ export const dipyroneCommercialProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'analgesic_nonopioid',
     species: ['dog', 'cat'],
     presentations: [
-      'Comprimido simples 500 mg — embalagens com 30, 100 ou 240 comprimidos conforme bula vigente',
-      'Comprimido simples 1.000 mg (1 g) — embalagens com 10, 20 ou 100 comprimidos conforme bula vigente',
+      'Comprimido simples 500 mg — embalagens com 10, 20, 30, 100 ou 240 comprimidos',
+      'Comprimido simples 1.000 mg (1 g) — embalagens com 10, 20 ou 100 comprimidos',
     ],
     activeComponents: ['dipirona monoidratada'],
     searchAliases: ['dipirona', 'metamizol', 'dipirona 500 mg', 'dipirona 1000 mg', 'dipirona 1 g'],

@@ -26,7 +26,6 @@ import {
   ShieldCheck,
   Siren,
   Smile,
-  Sparkles,
   Stethoscope,
   Syringe,
   Utensils,
@@ -144,7 +143,7 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
   dermatologia: {
     label: 'Dermatologia',
     icon: '',
-    Icon: Sparkles,
+    Icon: Shield,
     borderActive: 'border-pink-500',
     textActive: 'text-pink-600 dark:text-pink-400',
     bgActive: 'bg-pink-500/[0.06]',

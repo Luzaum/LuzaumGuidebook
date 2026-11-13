@@ -188,7 +188,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Biossimilar de insulina glargina U100. Carpule 3 mL para uso em caneta compatível. Produto humano; uso veterinário extrabula.',
     labelDirections:
-      'Bula humana: SC conforme prescrição. Em veterinária, aplicar q12h em gatos na maioria dos protocolos, com caneta/refil U100.',
+      'Bula humana (SC); em veterinária, aplicar 0,25–0,5 UI/kg SC a cada 12 horas em gatos (início prático frequente: 1 UI/gato SC q12h) ou 0,25–0,5 UI/kg SC q12h em cães selecionados, com caneta/refil U100.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
       'Plumb\'s 10ª ed., Insulin Glargine (pp. 658–661): mesmo raciocínio clínico da glargina U100; biossimilar exige cautela na troca de marca.',
@@ -319,7 +319,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
       'Diabetes mellitus em pacientes selecionados quando glargina U100/PZI/NPH/lente não forem ideais ou houver necessidade de perfil diferente.',
     reassessment: 'Reavaliar rapidamente após inicio/troca, idealmente com CGM ou curva, e antes se hipoglicemia ou anorexia.',
     prescriptionExample:
-      'Toujeo SoloStar glargina U300: aplicar ___ UI SC q12-24h, somente com a caneta original, conforme orientação veterinária.',
+      'Toujeo SoloStar glargina U300: iniciar em 0,5 UI/kg SC a cada 12–24 horas (ou 2 UI/gato q24h como ponto de partida felino), somente com a caneta original, ajustando por curva glicêmica ou CGM.',
     safetyAlert:
       'ALERTA U300: não aspirar com seringa U100/U40, não converter manualmente e não tratar como 3x mais forte de forma linear. Risco grave de erro de dose.',
     price: {
@@ -572,7 +572,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['insulina degludeca 100 UI/mL'],
     labelCompositionSummary:
       'Insulina degludeca U100 de ação ultralonga. Produto humano; uso veterinário extra-label ainda menos consolidado que glargina/lente/NPH.',
-    labelDirections: 'Uso SC com caneta/refil compatível; dose deve ser individualizada por endocrinologista/veterinário responsavel.',
+    labelDirections: 'Uso SC com caneta/refil compatível; ponto de partida extrabula descrito em cães e gatos selecionados: 0,25–0,5 UI/kg SC a cada 24 horas, titulado por curva glicêmica/CGM.',
     dosageGuidance: {
       labelDose:
         'Extra-bula — Cães/gatos selecionados: iniciar 0,25–0,5 UI/kg SC q24h com curva/CGM; não usar como escolha inicial de rotina.',

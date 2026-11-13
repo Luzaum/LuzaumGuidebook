@@ -264,7 +264,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
     labelCompositionSummary:
       'Cada comprimido revestido contém 10 mg de cloridrato de ondansetrona di-hidratado (equivalente a 8 mg de ondansetrona base).',
     labelDirections:
-      'Administrar por via oral a cada 8 a 12 horas conforme prescrição médico-veterinária.',
+      'Uso oral extrabula veterinário: 0,5 a 1 mg/kg VO a cada 8 a 12 horas em gatos (biodisponibilidade ~32%) ou cães selecionados (alerta: biodisponibilidade oral canina de ~5%, preferindo IV/SC em vômitos ativos).',
     dosageGuidance: {
       labelDose:
         'Cães e gatos: 0,5 a 1 mg/kg VO a cada 8 a 12 horas (com alerta de biodisponibilidade canina de ~5%).',

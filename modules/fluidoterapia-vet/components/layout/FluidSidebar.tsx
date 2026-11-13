@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Activity, Beaker, BookOpen, Brain, Droplet, Settings, Stethoscope, Syringe, Zap } from 'lucide-react';
+import { fluidoterapiaIcon } from '../../../registry';
 import { cn } from '../../lib/utils';
 
 export type Tab =
@@ -34,9 +35,9 @@ export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
   return (
     <div className="flex h-full w-64 flex-col border-r border-slate-800 bg-slate-900 text-slate-300">
       <div className="p-6">
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70 p-3">
+        <div className="p-3">
           <img
-            src="/apps/fluidoterapia.png"
+            src={fluidoterapiaIcon}
             alt="Fluidoterapia Vet"
             className="mx-auto h-auto w-full rounded-xl object-contain"
           />

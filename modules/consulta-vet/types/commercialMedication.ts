@@ -136,6 +136,13 @@ export interface CommercialMedicationDoseEntry {
   note?: string;
 }
 
+export interface CommercialMedicationEligibility {
+  minAge: string;
+  minWeight?: string;
+  pregnancyLactation?: string;
+  restrictions?: string;
+}
+
 export interface CommercialMedicationDosageGuidance {
   labelDose?: string;
   plumbs?: Partial<Record<VetSpecies, CommercialMedicationDoseEntry[]>>;
@@ -159,6 +166,7 @@ export interface CommercialMedicationProduct {
   searchAliases?: string[];
   labelCompositionSummary: string;
   labelDirections: string;
+  eligibility?: CommercialMedicationEligibility;
   dosageGuidance?: CommercialMedicationDosageGuidance;
   plumbsContext: string;
   clinicalUse: string;

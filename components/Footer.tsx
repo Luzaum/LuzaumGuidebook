@@ -19,7 +19,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/apps/VETIUS.png"
+                src="/apps/vetius-emblema.png"
                 alt="Vetius Logo"
                 className="h-8 w-auto mix-blend-multiply dark:mix-blend-screen"
               />

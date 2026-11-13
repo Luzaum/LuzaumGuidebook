@@ -1,4 +1,4 @@
-import React, { useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Bookmark,
@@ -10,13 +10,17 @@ import {
   Pill,
   Search,
   Stethoscope,
+  X,
   Zap,
 } from 'lucide-react';
 import { ConsultaVetShortcutGrid } from '../components/home/ConsultaVetShortcutGrid';
+import { HomeSearchResults } from '../components/home/HomeSearchResults';
 import { EntityCard } from '../components/shared/EntityCard';
+import { CONSULTA_VET_LOGO_SRC } from '../constants/branding';
 import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getMedicationRepository } from '../services/medicationRepository';
+import type { ClinicalSearchLists } from '../services/homeSearch';
 import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
@@ -24,17 +28,11 @@ import { useRecents } from '../hooks/useRecents';
 import { buildResumeState, formatSpeciesList } from '../utils/navigation';
 import { RecentRecord } from '../types/recents';
 
-type SearchResults = {
-  diseases: DiseaseRecord[];
-  medications: MedicationRecord[];
-  consensos: ConsensusRecord[];
-};
-
 const UI_TEXT = {
-  title: 'ConsultaVET',
+  title: 'Vetius',
   heroBody:
     'Base cl\u00ednica para consulta r\u00e1pida de doen\u00e7as, medicamentos, guias r\u00e1pidos por sistema, cartilhas de manejo emergencial e consensos, com navega\u00e7\u00e3o conectada, favoritos e retomada de leitura.',
-  searchPlaceholder: 'Buscar doen\u00e7a, medicamento ou consenso...',
+  searchPlaceholder: 'Buscar no Vetius…',
   shortcuts: 'Atalhos principais',
   continueTitle: 'Continuar de onde parou',
   diseaseLabel: 'Doen\u00e7as',
@@ -44,27 +42,15 @@ const UI_TEXT = {
   favoritesLabel: 'Favoritos',
   recentsLabel: 'Recentes',
   noOrganization: 'Sem organiza\u00e7\u00e3o',
-  searchResults: 'Resultados da busca',
-  searchEmptyDisease: 'Nenhuma doen\u00e7a encontrada.',
-  searchEmptyMedication: 'Nenhum medicamento encontrado.',
-  searchEmptyConsenso: 'Nenhum consenso encontrado.',
   featuredDiseases: 'Doen\u00e7as em destaque',
   usefulMedications: 'Medicamentos \u00fateis',
   recentConsensos: 'Consensos recentes',
   viewAll: 'Ver todos',
-  shortcutsBody: 'Acesso r\u00e1pido aos fluxos centrais do m\u00f3dulo.',
-  searchSectionBody: 'Resultados curtos e objetivos para triagem de conte\u00fado.',
 } as const;
-
-type ListCache = {
-  diseases: DiseaseRecord[];
-  medications: MedicationRecord[];
-  consensos: ConsensusRecord[];
-};
 
 function buildContinueItem(
   latest: RecentRecord | undefined,
-  cache: ListCache | null
+  cache: ClinicalSearchLists | null
 ):
   | {
       kind: 'disease';
@@ -105,109 +91,36 @@ export function HomePage() {
   const medicationRepository = useMemo(() => getMedicationRepository(), []);
   const consensoRepository = useMemo(() => getConsensoRepository(), []);
   const { recents } = useRecents();
-  const listsCacheRef = useRef<ListCache | null>(null);
-
-  const [diseases, setDiseases] = useState<DiseaseRecord[]>([]);
-  const [medications, setMedications] = useState<MedicationRecord[]>([]);
-  const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
+  const [clinicalLists, setClinicalLists] = useState<ClinicalSearchLists | null>(null);
+  const [clinicalUnavailable, setClinicalUnavailable] = useState(false);
   const [query, setQuery] = useState('');
-  const deferredQuery = useDeferredValue(query);
-  const [searchResults, setSearchResults] = useState<SearchResults>({ diseases: [], medications: [], consensos: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [searchError, setSearchError] = useState<string | null>(null);
-  const [continueItem, setContinueItem] = useState<
-    | { kind: 'disease'; item: DiseaseRecord; state?: { pageNumber?: number; sectionId?: string } }
-    | { kind: 'medication'; item: MedicationRecord; state?: { pageNumber?: number; sectionId?: string } }
-    | { kind: 'consensus'; item: ConsensusRecord; state?: { pageNumber?: number; sectionId?: string } }
-    | null
-  >(null);
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
+  const searchQuery = query.trim();
+  const deferredQuery = useDeferredValue(searchQuery);
+  const isLoading = !clinicalLists;
+  const diseases = clinicalLists?.diseases.slice(0, 3) ?? [];
+  const medications = clinicalLists?.medications.slice(0, 3) ?? [];
+  const consensos = clinicalLists?.consensos.slice(0, 3) ?? [];
+  const continueItem = buildContinueItem(recents[0], clinicalLists);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const loadData = async () => {
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-          diseaseRepository.list(),
-          medicationRepository.list(),
-          consensoRepository.list(),
-        ]);
-
-        if (!isMounted) return;
-
-        listsCacheRef.current = {
-          diseases: loadedDiseases,
-          medications: loadedMedications,
-          consensos: loadedConsensos,
-        };
-
-        setDiseases(loadedDiseases.slice(0, 3));
-        setMedications(loadedMedications.slice(0, 3));
-        setConsensos(loadedConsensos.slice(0, 3));
-      } catch (loadError) {
-        if (!isMounted) return;
-        setError('Não foi possível carregar o conteúdo clínico.');
-        listsCacheRef.current = null;
-      } finally {
-        if (isMounted) setIsLoading(false);
-      }
-    };
-
-    void loadData();
-
-    return () => {
-      isMounted = false;
-    };
+    let cancelled = false;
+    void Promise.allSettled([
+      diseaseRepository.list(),
+      medicationRepository.list(),
+      consensoRepository.list(),
+    ]).then(([diseaseSource, medicationSource, consensoSource]) => {
+      if (cancelled) return;
+      setClinicalUnavailable([diseaseSource, medicationSource, consensoSource].some((source) => source.status === 'rejected'));
+      setClinicalLists({
+        diseases: diseaseSource.status === 'fulfilled' ? diseaseSource.value : [],
+        medications: medicationSource.status === 'fulfilled' ? medicationSource.value : [],
+        consensos: consensoSource.status === 'fulfilled' ? consensoSource.value : [],
+      });
+    });
+    return () => { cancelled = true; };
   }, [consensoRepository, diseaseRepository, medicationRepository]);
 
-  useEffect(() => {
-    if (isLoading || !listsCacheRef.current) return;
-    setContinueItem(buildContinueItem(recents[0], listsCacheRef.current));
-  }, [recents, isLoading]);
-
-  useEffect(() => {
-    const normalizedQuery = deferredQuery.trim();
-    if (!normalizedQuery) {
-      setSearchResults({ diseases: [], medications: [], consensos: [] });
-      setSearchError(null);
-      return;
-    }
-
-    let isMounted = true;
-
-    const loadSearch = async () => {
-      setSearchError(null);
-      try {
-        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-          diseaseRepository.search(normalizedQuery),
-          medicationRepository.search(normalizedQuery),
-          consensoRepository.search(normalizedQuery),
-        ]);
-
-        if (!isMounted) return;
-
-        setSearchResults({
-          diseases: loadedDiseases.slice(0, 3),
-          medications: loadedMedications.slice(0, 3),
-          consensos: loadedConsensos.slice(0, 3),
-        });
-      } catch {
-        if (!isMounted) return;
-        setSearchResults({ diseases: [], medications: [], consensos: [] });
-        setSearchError('A busca não pôde ser concluída. Verifique a conexão e tente novamente.');
-      }
-    };
-
-    void loadSearch();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [consensoRepository, diseaseRepository, medicationRepository, deferredQuery]);
 
   const shortcuts = [
     {
@@ -280,10 +193,16 @@ export function HomePage() {
           className="consultavet-hero-orb pointer-events-none absolute -right-16 top-1/2 h-44 w-44 -translate-y-1/2 rounded-full bg-primary/[0.08] blur-3xl"
         />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-3 px-5 py-6 text-center md:px-8 md:py-7">
+          <img
+            src={CONSULTA_VET_LOGO_SRC}
+            alt=""
+            width={112}
+            height={112}
+            className="size-[96px] rounded-2xl object-contain md:size-[112px]"
+          />
           <h1 className="m-0 text-3xl font-extrabold tracking-[-0.035em] text-foreground md:text-[2.5rem] md:leading-none">
-            <span className="text-foreground">Consulta</span>
             <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
-              VET
+              {UI_TEXT.title}
             </span>
           </h1>
           <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{UI_TEXT.heroBody}</p>
@@ -293,14 +212,34 @@ export function HomePage() {
               aria-hidden
             />
             <input
-              type="text"
+              type="search"
+              ref={searchInputRef}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={UI_TEXT.searchPlaceholder}
               aria-label={UI_TEXT.searchPlaceholder}
-              className="h-12 w-full rounded-2xl border border-border/90 bg-background/90 pl-11 pr-4 text-sm text-foreground shadow-[0_10px_30px_-22px_hsl(var(--foreground)/0.4)] outline-none ring-0 backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted-foreground/80 hover:border-primary/35 hover:bg-background focus:border-primary/70 focus:bg-background focus:shadow-[0_12px_35px_-20px_hsl(var(--primary)/0.55)] md:text-[15px]"
+              aria-controls={searchQuery ? 'vetius-search-results' : undefined}
+              className="h-12 w-full rounded-2xl border border-border/90 bg-background/90 pl-11 pr-12 text-sm text-foreground shadow-[0_10px_30px_-22px_hsl(var(--foreground)/0.4)] outline-none ring-0 backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted-foreground/80 hover:border-primary/35 hover:bg-background focus:border-primary/70 focus:bg-background focus:shadow-[0_12px_35px_-20px_hsl(var(--primary)/0.55)] md:text-[15px] [&::-webkit-search-cancel-button]:hidden"
             />
+            {query && (
+              <button
+                type="button"
+                aria-label="Limpar busca"
+                onClick={() => {
+                  setQuery('');
+                  searchInputRef.current?.focus();
+                }}
+                className="absolute right-1 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <X className="size-4" aria-hidden />
+              </button>
+            )}
           </div>
+          <HomeSearchResults
+            query={searchQuery ? deferredQuery || searchQuery : ''}
+            clinicalLists={clinicalLists}
+            clinicalUnavailable={clinicalUnavailable}
+          />
         </div>
       </section>
 
@@ -330,13 +269,13 @@ export function HomePage() {
         </section>
       )}
 
-      {!isLoading && error && (
+      {clinicalUnavailable && (
         <section className="rounded-2xl border border-destructive/30 bg-destructive/10 px-6 py-5">
-          <p className="text-sm text-destructive">{error}</p>
+          <p className="text-sm text-destructive">Não foi possível carregar parte do conteúdo clínico.</p>
         </section>
       )}
 
-      {!isLoading && !error && continueItem && !query.trim() && (
+      {continueItem && (
         <section className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/[0.07] to-primary/[0.02] p-6 shadow-md shadow-primary/10 md:p-7">
           <div className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-primary">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15">
@@ -383,94 +322,7 @@ export function HomePage() {
         </section>
       )}
 
-      {!isLoading && !error && (query.trim() ? (
-        <section className="space-y-8">
-          {searchError ? (
-            <div className="rounded-2xl border border-destructive/30 bg-destructive/10 px-5 py-4 text-sm text-destructive" role="alert">
-              {searchError}
-            </div>
-          ) : null}
-          <div className="grid gap-8 xl:grid-cols-3">
-            <div>
-              <div className="mb-4 flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-                <Stethoscope className="h-5 w-5 text-primary" />
-                {UI_TEXT.diseaseLabel}
-              </div>
-              <div className="space-y-4">
-                {!searchError && searchResults.diseases.length > 0 ? (
-                  searchResults.diseases.map((disease) => (
-                    <EntityCard
-                      key={disease.id}
-                      to={`/consulta-vet/doencas/${disease.slug}`}
-                      title={disease.title}
-                      subtitle={`${disease.category} \u2022 ${formatSpeciesList(disease.species)}`}
-                      description={disease.quickSummary}
-                      entityType="disease"
-                      entityId={disease.id}
-                    />
-                  ))
-                ) : !searchError ? (
-                  <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
-                    {UI_TEXT.searchEmptyDisease}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-4 flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-                <Pill className="h-5 w-5 text-emerald-600" />
-                {UI_TEXT.medicationLabel}
-              </div>
-              <div className="space-y-4">
-                {!searchError && searchResults.medications.length > 0 ? (
-                  searchResults.medications.map((medication) => (
-                    <EntityCard
-                      key={medication.id}
-                      to={`/consulta-vet/medicamentos/${medication.slug}`}
-                      title={medication.title}
-                      subtitle={medication.pharmacologicClass}
-                      description={medication.indications.join(', ')}
-                      entityType="medication"
-                      entityId={medication.id}
-                    />
-                  ))
-                ) : !searchError ? (
-                  <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
-                    {UI_TEXT.searchEmptyMedication}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-4 flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
-                <FileText className="h-5 w-5 text-violet-600" />
-                {UI_TEXT.consensoLabel}
-              </div>
-              <div className="space-y-4">
-                {!searchError && searchResults.consensos.length > 0 ? (
-                  searchResults.consensos.map((consenso) => (
-                    <EntityCard
-                      key={consenso.id}
-                      to={`/consulta-vet/consensos/${consenso.slug}`}
-                      title={consenso.title}
-                      subtitle={`${consenso.organization || UI_TEXT.noOrganization}${consenso.year ? ` \u2022 ${consenso.year}` : ''}`}
-                      description={consenso.description || ''}
-                      entityType="consensus"
-                      entityId={consenso.id}
-                    />
-                  ))
-                ) : !searchError ? (
-                  <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
-                    {UI_TEXT.searchEmptyConsenso}
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : (
+      {!isLoading && (
         <section className="grid gap-8 xl:grid-cols-3">
           <div>
             <div className="mb-4 flex items-center justify-between">
@@ -550,7 +402,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
-      ))}
+      )}
     </div>
   );
 }

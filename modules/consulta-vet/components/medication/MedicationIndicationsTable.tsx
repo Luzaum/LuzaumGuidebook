@@ -11,7 +11,6 @@ import {
   Activity,
   FileText,
   BookOpen,
-  Sparkles,
   ChevronRight,
   ChevronLeft,
 } from 'lucide-react';
@@ -19,6 +18,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '../../../../lib/utils';
 import type { MedicationDetailedIndication } from '../../types/medication';
 import type { EditorialReference } from '../../types/common';
+import { sanitizeReferenceText } from '../../utils/referenceSanitizer';
 
 interface MedicationIndicationsTableProps {
   indications: MedicationDetailedIndication[];
@@ -87,182 +87,201 @@ function NumericReferenceButton({
   );
 }
 
-/** Termos clínicos e farmacológicos essenciais destacados automaticamente para aprendizado */
-const DEFAULT_EDUCATIONAL_TERMS = [
-  'receptores NMDA pós-sinápticos',
-  'receptores sinápticos inibitórios GABA-A',
-  'receptores excitatórios NMDA',
-  'canais marcapasso HCN1',
-  'receptores NMDA',
-  'receptor NMDA',
-  'antagonista NMDA',
-  'bloqueio NMDA',
-  'canais NMDA',
-  'receptores GABA-A',
-  'receptor GABA-A',
-  'receptores AMPA',
-  'receptor AMPA',
-  'subunidade GluN2B',
-  'receptores opioides mu',
-  'canais HCN1',
-  'receptores alfa-2',
-  'complexo TrkB–mTORC1',
-  'via BDNF–TrkB–mTORC1',
-  'fator eEF2',
-  'mTORC1',
-  'BDNF',
-  'TrkB',
-  'eEF2',
-  'sinaptogênese cortical',
-  'sinaptogênese rápida',
-  'sinaptogênese',
-  'plasticidade glutamatérgica',
-  'somação temporal medular',
-  'somação temporal',
-  'fenômeno de "wind-up"',
-  'fenômeno de wind-up',
-  'wind-up',
-  'fibras C nociceptivas',
-  'fibras C',
-  'sensibilização central',
-  'sensibilização medular',
-  'hiperalgesia induzida por opioides',
-  'dor neuropática refratária',
-  'alodinia',
-  'hiperalgesia',
-  'poupança de opioides',
-  'corno dorsal da medula espinhal',
-  'potenciação nociceptiva de longo prazo',
-  'desconexão talamocortical',
-  'dissociação talamocortical',
-  'inconsciência dissociativa',
-  'estado cataléptico',
-  'analgesia somática',
-  'analgesia visceral',
-  'delírio de despertar',
-  'delírio de emergência',
-  'laringoespasmo reflexo',
-  'laringoespasmo',
-  'reflexo laríngeo',
-  'cartilagens aritenoides',
-  'lidocaína tópica',
-  'lidocaína a 2%',
-  'resistência vascular sistêmica',
-  'barorreflexo',
-  'pressão de perfusão cerebral',
-  'inotrópico negativo',
-  'depleção de catecolaminas',
-  'tônus simpático',
-  'reserva simpática',
-  'bolus pré-incisional',
-  'bolus de ataque',
-  'infusão contínua',
-  'desmame escalonado',
-  'infusão contínua subanestésica',
-  'co-indução',
-  'indução dissociativa',
-  'protocolo multimodal quádruplo',
-  'protocolo multimodal',
-  'contenção química intramuscular',
-  'estado de mal epiléptico refratário',
-  'crises agrupadas em salva',
-  'excitotoxicidade neuronal',
-  'internalização endocítica',
-  'externalização maciça',
-  'edema citotóxico',
-  'sedação dissociativa',
-  'agitação psicomotora extrema',
-  'agitação psicomotora',
-  'depressão resistente ao tratamento',
-  'ideação suicida aguda',
-  'escetamina S(+)',
-  'cetamina racêmica',
-  'arcetamina R(-)',
-  'escetamina intranasal',
-  'Spravato®',
-  'dexmedetomidina',
-  'propofol',
-  'alfaxalona',
-  'metadona',
-  'butorfanol',
-  'midazolam',
-  'diazepam',
-  'atipamezole',
-  'cistite ulcerativa hemorrágica',
-  'cistite ulcerativa',
-  'lesão hepatocelular',
-  'uropatia ulcerativa',
-  'hepatotoxicidade',
-  'rigidez extensora',
-];
 
-function escapeRegExp(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+type PointTone = 'warning' | 'practice' | 'evidence' | 'mechanism' | 'default';
+
+interface StructuredPoint {
+  label: string;
+  body: string;
+  tone: PointTone;
 }
 
-/** Grifa-texto dinâmico para fixação e aprendizado dos termos essenciais */
-function renderEducationalHighlightedText(
-  text: string,
-  customHighlights: string[] = [],
-  variant: TabKey = 'context'
-): React.ReactNode {
+const CLINICAL_HIGHLIGHT_REGEX =
+  /(\b\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:mg\/kg(?:\/h)?|µg\/kg|mcg\/kg|mL\/kg(?:\/min)?|ng\/mL|mg\/mL|L\/kg|%|min(?:utos?)?|horas?|h)\b|\b(?:contraindicad[oa]s?|inadequad[oa]s?|nunca|obrigatóri[oa]s?|efeito teto|hipoxemia|bradicardia|depressão respiratória|oxigenoterapia|resgate analgésico|reversão parcial|passagem de primeira|primeira passagem)\b|\b(?:receptores?\s*(?:κ|µ|δ|NMDA|GABA|α2)|agonistas?\s*(?:κ|µ(?:\s*plenos?)?|alfa-?2)|antagonis(?:mo|ta)\s*(?:funcional\s*)?(?:µ|NMDA)?|somação temporal|CAM|Vdss|clearance|SpO2|EtCO2|IV|IM|SC|VO|OTM|CRI)\b|\b(?:butorfanol|cetamina|escetamina|dexmedetomidina|medetomidina|xilazina|acepromazina|midazolam|diazepam|alfaxalona|propofol|metadona|morfina|buprenorfina|hidromorfona|fentanil|naloxona|isoflurano|Lumb\s*&\s*Jones|Plumb[’']?s|BSAVA|ISFM\s*2022|AAHA\s*2022|ACVIM\s*\d{4})\b)/gi;
+
+function renderClinicalHighlights(text: string): React.ReactNode {
   if (!text) return null;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  const regex = new RegExp(CLINICAL_HIGHLIGHT_REGEX.source, 'gi');
+  let match: RegExpExecArray | null;
+  let key = 0;
 
-  const allTerms = [...new Set([...customHighlights, ...DEFAULT_EDUCATIONAL_TERMS])]
-    .map((t) => t.trim())
-    .filter((t) => t.length > 2)
-    .sort((a, b) => b.length - a.length);
-
-  type Seg = { mark: boolean; value: string };
-  let segments: Seg[] = [{ mark: false, value: text }];
-
-  for (const term of allTerms) {
-    const nextSegs: Seg[] = [];
-    const r = new RegExp(escapeRegExp(term), 'gi');
-
-    for (const seg of segments) {
-      if (seg.mark) {
-        nextSegs.push(seg);
-        continue;
-      }
-
-      let last = 0;
-      let m: RegExpExecArray | null;
-      while ((m = r.exec(seg.value)) !== null) {
-        if (m.index > last) {
-          nextSegs.push({ mark: false, value: seg.value.slice(last, m.index) });
-        }
-        nextSegs.push({ mark: true, value: m[0] });
-        last = m.index + m[0].length;
-      }
-      if (last < seg.value.length) {
-        nextSegs.push({ mark: false, value: seg.value.slice(last) });
-      }
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
     }
-    segments = nextSegs;
+    const token = match[0];
+    const lower = token.toLowerCase();
+
+    let cls = 'font-semibold text-sky-700 dark:text-sky-300';
+    if (
+      /^\d/.test(token) ||
+      /mg\/kg|µg\/kg|mcg\/kg|ml\/kg|ng\/ml|mg\/ml|l\/kg|%|min|hora/i.test(lower)
+    ) {
+      cls =
+        'inline rounded px-1.5 py-0.5 font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-200 border border-emerald-500/25';
+    } else if (
+      /contraindicad|inadequad|nunca|obrigatóri|efeito teto|hipoxemia|bradicardia|depressão|oxigenoterapia|resgate|reversão|primeira passagem/i.test(
+        lower
+      )
+    ) {
+      cls =
+        'inline rounded px-1.5 py-0.5 font-bold bg-amber-500/15 text-amber-800 dark:text-amber-200 border border-amber-500/25';
+    } else if (
+      /receptor|agonista|antagonis|somação|cam|vdss|clearance|spo2|etco2|\b(?:iv|im|sc|vo|otm|cri)\b/i.test(
+        lower
+      )
+    ) {
+      cls =
+        'inline rounded px-1 py-0.5 font-semibold bg-purple-500/15 text-purple-800 dark:text-purple-200 border border-purple-500/20';
+    }
+
+    parts.push(
+      <span key={key++} className={cls}>
+        {token}
+      </span>
+    );
+    lastIndex = match.index + token.length;
   }
 
-  const markClassName =
-    variant === 'mechanism'
-      ? 'mx-0.5 inline-block rounded bg-purple-200/90 text-purple-950 dark:bg-purple-900/50 dark:text-purple-100 border border-purple-300/80 dark:border-purple-700/60 px-1.5 py-0.5 text-xs sm:text-[13px] font-bold shadow-2xs'
-      : variant === 'rationale'
-      ? 'mx-0.5 inline-block rounded bg-emerald-200/90 text-emerald-950 dark:bg-emerald-900/50 dark:text-emerald-100 border border-emerald-300/80 dark:border-emerald-700/60 px-1.5 py-0.5 text-xs sm:text-[13px] font-bold shadow-2xs'
-      : 'mx-0.5 inline-block rounded bg-sky-200/90 text-sky-950 dark:bg-sky-900/50 dark:text-sky-100 border border-sky-300/80 dark:border-sky-700/60 px-1.5 py-0.5 text-xs sm:text-[13px] font-bold shadow-2xs';
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
 
-  return (
-    <>
-      {segments.map((seg, i) =>
-        seg.mark ? (
-          <mark key={i} className={markClassName}>
-            {seg.value}
-          </mark>
-        ) : (
-          <React.Fragment key={i}>{seg.value}</React.Fragment>
-        )
-      )}
-    </>
-  );
+  return parts;
 }
+
+function classifyPointTone(text: string, tab: TabKey): { tone: PointTone; label: string } {
+  if (
+    /contraindicad|inadequado|inadequada|nunca|evitar|cuidado|atenção|risco|exigindo|efeito teto|alerta|proibid|alterar|retenção|hipoxemia|bradicardia|mascarar/i.test(
+      text
+    )
+  ) {
+    return { tone: 'warning', label: 'Atenção & Limitação' };
+  }
+  if (
+    /portanto|recomenda|deve(?:-se)?|preferir|substitu|titular|protocolo|reserva-se|observar estritamente|prioridade|assegura|garante/i.test(
+      text
+    )
+  ) {
+    return { tone: 'practice', label: 'Conduta Prática' };
+  }
+  if (
+    /estudo|ensaio|consenso|Lumb\s*&\s*Jones|Plumb|BSAVA|ISFM|AAHA|ACVIM|et al\.|\(\d{4}\)/i.test(
+      text
+    )
+  ) {
+    return { tone: 'evidence', label: 'Evidência & Referência' };
+  }
+  if (tab === 'mechanism') {
+    return { tone: 'mechanism', label: 'Mecanismo & Via' };
+  }
+  if (tab === 'context') {
+    return { tone: 'evidence', label: 'Indicação & Cenário' };
+  }
+  return { tone: 'practice', label: 'Racional Clínico' };
+}
+
+function parseStructuredModalPoints(rawText: string, tab: TabKey): StructuredPoint[] {
+  const blocks = rawText
+    .split(/\n\s*\n/)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const rawSentences: string[] = [];
+
+  for (const block of blocks) {
+    // Se já vier separado por marcadores explícitos
+    if (block.includes('•')) {
+      const bullets = block
+        .split('•')
+        .map((s) => s.trim())
+        .filter(Boolean);
+      rawSentences.push(...bullets);
+      continue;
+    }
+
+    // Divide sentenças longas com segurança sem quebrar et al., 6ª ed., p. 382, etc.
+    const protectedText = block
+      .replace(/\b(et al|ed|pp?|Cap|Fig|Vol|spp|Dr|Sr|Sra|nº|aprox|máx|mín)\./gi, '$1__DOT__')
+      .replace(/(?<=\d)\.(?=\d)/g, '__DOT__');
+
+    const splitSentences = protectedText
+      .split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÀÂÊÔÃÕÇ(])/)
+      .map((s) => s.replace(/__DOT__/g, '.').trim())
+      .filter(Boolean);
+
+    if (splitSentences.length <= 1) {
+      rawSentences.push(block);
+    } else {
+      rawSentences.push(...splitSentences);
+    }
+  }
+
+  return rawSentences.map((sentence) => {
+    const colonIdx = sentence.indexOf(':');
+    const hasInlineHeader =
+      colonIdx > 3 && colonIdx < 64 && !/^https?:/i.test(sentence.slice(0, colonIdx + 2));
+    const { tone, label: inferredLabel } = classifyPointTone(sentence, tab);
+
+    if (hasInlineHeader) {
+      return {
+        label: sentence.slice(0, colonIdx).replace(/\*\*/g, '').trim(),
+        body: sentence.slice(colonIdx + 1).trim(),
+        tone,
+      };
+    }
+
+    return {
+      label: inferredLabel,
+      body: sentence,
+      tone,
+    };
+  });
+}
+
+const POINT_TONE_STYLES: Record<
+  PointTone,
+  {
+    stripe: string;
+    badge: string;
+    titleText: string;
+    bgAccent: string;
+  }
+> = {
+  warning: {
+    stripe: 'border-l-amber-500',
+    badge: 'bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/30',
+    titleText: 'text-amber-700 dark:text-amber-300',
+    bgAccent: 'bg-amber-500/[0.05]',
+  },
+  practice: {
+    stripe: 'border-l-emerald-500',
+    badge: 'bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border-emerald-500/30',
+    titleText: 'text-emerald-700 dark:text-emerald-300',
+    bgAccent: '',
+  },
+  evidence: {
+    stripe: 'border-l-sky-500',
+    badge: 'bg-sky-500/15 text-sky-800 dark:text-sky-300 border-sky-500/30',
+    titleText: 'text-sky-700 dark:text-sky-300',
+    bgAccent: '',
+  },
+  mechanism: {
+    stripe: 'border-l-purple-500',
+    badge: 'bg-purple-500/15 text-purple-800 dark:text-purple-300 border-purple-500/30',
+    titleText: 'text-purple-700 dark:text-purple-300',
+    bgAccent: '',
+  },
+  default: {
+    stripe: 'border-l-primary',
+    badge: 'bg-primary/10 text-primary border-primary/25',
+    titleText: 'text-primary',
+    bgAccent: '',
+  },
+};
 
 /** Modal Pop-up Fluido com Design System Vetius */
 function IndicationDetailModal({
@@ -371,14 +390,11 @@ function IndicationDetailModal({
       ? indication.mechanismOfAction || 'Mecanismo farmacológico detalhado em revisão editorial.'
       : indication.clinicalRationale || 'Racional clínico e condutas práticas em revisão editorial.';
 
-  const paragraphs = activeContentText
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+  const structuredPoints = parseStructuredModalPoints(activeContentText, activeTab);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6"
       role="dialog"
       aria-modal="true"
     >
@@ -388,17 +404,17 @@ function IndicationDetailModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm"
+        className="fixed inset-0 bg-black/65 dark:bg-black/80 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Caixa do Pop-up */}
+      {/* Caixa do Pop-up Ampliada */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.94, y: 16 }}
+        initial={{ opacity: 0, scale: 0.95, y: 16 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.94, y: 16 }}
+        exit={{ opacity: 0, scale: 0.95, y: 16 }}
         transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 flex w-full max-w-3xl flex-col max-h-[90vh] overflow-hidden rounded-2xl sm:rounded-3xl border border-border/90 bg-background text-foreground shadow-2xl"
+        className="relative z-10 flex w-full max-w-5xl h-[90vh] max-h-[92vh] flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-border/90 bg-background text-foreground shadow-2xl"
       >
         {/* Cabeçalho do Modal */}
         <div className="border-b border-border/80 bg-muted/20 px-5 pt-5 pb-4 sm:px-7 sm:pt-6">
@@ -406,15 +422,6 @@ function IndicationDetailModal({
             <div className="space-y-1.5 min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 <SpeciesBadge species={indication.species} />
-                {indication.evidenceLevel && (
-                  <span className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-background px-2.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                    <FileText className="h-3 w-3 text-muted-foreground/80" />
-                    {indication.evidenceLevel}
-                  </span>
-                )}
-                <span className="inline-flex items-center gap-1 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
-                  <Sparkles className="h-3 w-3" /> Aprofundamento Clínico
-                </span>
               </div>
               <h3 className="text-base sm:text-xl font-black text-foreground leading-snug tracking-tight">
                 {indication.indication}
@@ -495,55 +502,112 @@ function IndicationDetailModal({
               transition={{ duration: 0.18, ease: 'easeOut' }}
               className="space-y-4"
             >
-              {/* Box de Instrução Didática */}
-              <div className="rounded-xl border border-border/60 bg-muted/30 px-3.5 py-2 text-xs text-muted-foreground flex items-center justify-between gap-2">
-                <span className="flex items-center gap-1.5">
-                  <BookOpen className="h-3.5 w-3.5 text-primary" />
-                  Os termos destacados em cores representam conceitos-chave de farmacologia e conduta clínica.
-                </span>
-                <span className="font-bold text-[10px] uppercase text-primary shrink-0">
-                  Grifa-texto ativo
-                </span>
-              </div>
+              {/* Conteúdo estruturado com listras alternadas, código de cores e grifa-texto */}
+              <div className="overflow-hidden rounded-2xl border border-border/80 divide-y divide-border/60 shadow-2xs">
+                {structuredPoints.map((point, pIdx) => {
+                  const toneStyle = POINT_TONE_STYLES[point.tone];
+                  const zebraBg =
+                    point.tone === 'warning'
+                      ? toneStyle.bgAccent
+                      : pIdx % 2 === 0
+                      ? 'bg-background/95'
+                      : 'bg-muted/35';
 
-              {/* Parágrafos formatados com grifa-texto */}
-              <div className="space-y-3.5 text-sm sm:text-[15px] leading-relaxed text-foreground/90">
-                {paragraphs.length > 0 ? (
-                  paragraphs.map((p, pIdx) => (
-                    <p key={pIdx} className="leading-relaxed">
-                      {renderEducationalHighlightedText(p, indication.highlights, activeTab)}
-                    </p>
-                  ))
-                ) : (
-                  <p className="leading-relaxed">
-                    {renderEducationalHighlightedText(
-                      activeContentText,
-                      indication.highlights,
-                      activeTab
-                    )}
-                  </p>
-                )}
-              </div>
+                  return (
+                    <div
+                      key={pIdx}
+                      className={cn(
+                        'border-l-4 px-4 py-3.5 sm:px-5 sm:py-4 transition-colors',
+                        toneStyle.stripe,
+                        zebraBg
+                      )}
+                    >
+                      <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                        <span
+                          className={cn(
+                            'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+                            toneStyle.badge
+                          )}
+                        >
+                          {pIdx + 1}. {point.label}
+                        </span>
+                      </div>
 
-              {/* Referências Bibliográficas vinculadas */}
-              {indication.referenceIds && indication.referenceIds.length > 0 && (
-                <div className="mt-5 rounded-xl border border-border/60 bg-muted/20 p-3.5 sm:p-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                      <FileText className="h-3.5 w-3.5 text-primary" />
-                      Referências Clínicas desta Conduta:
-                    </span>
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      {indication.referenceIds.map((refId) => (
-                        <NumericReferenceButton
-                          key={refId}
-                          refId={refId}
-                          index={getRefIndex(refId)}
-                          citation={getRefCitation(refId)}
-                          onClick={onReferenceClick}
-                        />
-                      ))}
+                      <p
+                        className={cn(
+                          'text-sm sm:text-[15px] leading-relaxed',
+                          point.tone === 'warning'
+                            ? 'text-amber-950 dark:text-amber-100/95'
+                            : 'text-foreground/90'
+                        )}
+                      >
+                        {renderClinicalHighlights(point.body)}
+                      </p>
                     </div>
+                  );
+                })}
+              </div>
+
+              {/* Referências Clínicas desta Conduta por Extenso */}
+              {indication.referenceIds && indication.referenceIds.length > 0 && (
+                <div className="mt-5 rounded-2xl border border-border/80 bg-muted/20 p-4 sm:p-5 space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-primary" />
+                    Referências Clínicas desta Conduta
+                  </span>
+
+                  <div className="space-y-2.5 pt-1">
+                    {indication.referenceIds.map((refId) => {
+                      const refIndex = getRefIndex(refId);
+                      const ref = references.find((r) => r.id === refId);
+                      const citation = sanitizeReferenceText(
+                        ref?.citationText || ref?.citation || 'Referência bibliográfica'
+                      );
+                      const cleanNotes = sanitizeReferenceText(ref?.notes);
+                      const sourceType = ref?.sourceType || 'Literatura Científica';
+                      const url =
+                        ref?.url ||
+                        (ref?.doi ? `https://doi.org/${ref.doi}` : undefined) ||
+                        (ref?.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${ref.pmid}/` : undefined) ||
+                        `https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(citation.slice(0, 160))}`;
+
+                      return (
+                        <div
+                          key={refId}
+                          className="flex items-start gap-2.5 rounded-xl border border-border/60 bg-background/80 p-3 text-xs"
+                        >
+                          <span className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                            {refIndex + 1}
+                          </span>
+                          <div className="min-w-0 flex-1 space-y-1">
+                            <div className="flex flex-wrap items-center gap-1.5">
+                              <span className="inline-block rounded-md bg-primary/[0.08] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">
+                                {sourceType}
+                              </span>
+                            </div>
+                            <p className="text-foreground/90 leading-relaxed font-medium">
+                              {citation}
+                            </p>
+                            {cleanNotes && (
+                              <p className="text-muted-foreground leading-relaxed">
+                                {cleanNotes}
+                              </p>
+                            )}
+                            {url && (
+                              <a
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-[11px] font-semibold text-primary hover:underline pt-0.5"
+                              >
+                                <span>Acessar publicação / fonte oficial</span>
+                                <ExternalLink className="h-3 w-3" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -646,16 +710,10 @@ export function MedicationIndicationsTable({
             key={item.id || idx}
             className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/75 backdrop-blur-xs p-4 sm:p-6 shadow-xs transition-all duration-200 hover:border-primary/40 hover:shadow-md"
           >
-            {/* Top Bar: Espécie + Evidência + Referências */}
+            {/* Top Bar: Espécie + Referências */}
             <div className="flex flex-wrap items-center justify-between gap-2.5">
               <div className="flex flex-wrap items-center gap-2">
                 <SpeciesBadge species={item.species} />
-                {item.evidenceLevel && (
-                  <span className="inline-flex items-center gap-1 rounded-full border border-border/70 bg-muted/40 px-2.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                    <FileText className="h-3 w-3 text-muted-foreground/80" />
-                    {item.evidenceLevel}
-                  </span>
-                )}
               </div>
 
               {item.referenceIds && item.referenceIds.length > 0 && (
@@ -734,14 +792,10 @@ export function MedicationIndicationsTable({
 
             {/* Botões Interativos de Aprofundamento (Abrem em Pop-up com animação fluida) */}
             <div className="mt-4 pt-3.5 border-t border-border/60">
-              <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="mb-2">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                   <BookOpen className="h-3.5 w-3.5 text-primary" />
-                  Aprofundamento & Racional Clínico:
-                </span>
-                <span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1">
-                  <ExternalLink className="h-3 w-3 text-primary" />
-                  Abre em janela detalhada com grifa-texto
+                  Aprofundamento & Racional Clínico
                 </span>
               </div>
 

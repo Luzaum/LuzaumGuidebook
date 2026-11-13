@@ -261,7 +261,7 @@ export function VhsReferencePage() {
           </div>
           <p className="mt-3 text-sm font-bold text-foreground">{VHS_SOURCE.title}</p>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-            {VHS_SOURCE.edition}, {VHS_SOURCE.year}. {VHS_SOURCE.chapter}; {VHS_SOURCE.pages}.
+            {VHS_SOURCE.edition}, {VHS_SOURCE.year}.
           </p>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
             <strong className="font-semibold text-foreground">Imagem radiográfica:</strong> {VHS_IMAGE_SOURCE.author} ({VHS_IMAGE_SOURCE.repository}, {VHS_IMAGE_SOURCE.license}).

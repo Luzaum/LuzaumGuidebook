@@ -36,7 +36,7 @@ export const metoclopramidaCommercialProductSeed: CommercialMedicationProduct[] 
     labelCompositionSummary:
       'Cada 100 mL contém cloridrato de metoclopramida 500 mg (equivalente a 5 mg/mL) e veículo q.s.p. 100 mL. Frasco conta-gotas de 20 mL. Bula oficial calibrada em: 1 gota ≈ 0,1 mg de metoclopramida.',
     labelDirections:
-      'Bula oficial UCBVET: Administrar por via oral 1 a 4 gotas para cada 1 kg de peso corporal (correspondendo a 0,1 a 0,4 mg/kg), a cada 8 horas, preferencialmente 30 a 45 minutos antes das refeições, ou a critério do médico-veterinário.',
+      'Bula oficial UCBVET: Administrar por via oral 1 a 4 gotas para cada 1 kg de peso corporal (0,1 a 0,4 mg/kg; dose usual 0,25 mg/kg = 2,5 gotas/kg = 0,05 mL/kg), a cada 8 horas, preferencialmente 30 a 45 minutos antes das refeições.',
     dosageGuidance: {
       labelDose:
         'Cães e gatos: 0,1 a 0,4 mg/kg VO a cada 8 horas (1 a 4 gotas/kg q8h). Dose média usual: 0,25 mg/kg VO q8h (2,5 gotas/kg).',

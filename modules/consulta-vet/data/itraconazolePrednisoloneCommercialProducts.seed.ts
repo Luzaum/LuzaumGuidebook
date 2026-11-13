@@ -96,7 +96,7 @@ export const itraconazolePrednisoloneCommercialProductsSeed: CommercialMedicatio
   }),
   humanItraconazole({
     id: 'itraconazol-germed-100mg', slug: 'itraconazol-germed-100mg', name: 'Itraconazol Germed 100 mg', manufacturer: 'Germed Pharma',
-    presentations: ['Caixa com 4, 10 ou 15 cápsulas', 'Embalagens hospitalares conforme bula'],
+    presentations: ['Caixa com 4, 10 ou 15 cápsulas (100 mg cada)', 'Embalagem hospitalar com 30 cápsulas (100 mg cada)'],
     labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/pro/Bula-Itraconazol-Germed-Pharma-Profissional-Consulta-Remedios.pdf',
     price: { averageLabel: 'R$ 36,50', rangeLabel: '15 cápsulas: R$ 29,90 a R$ 45,00 (genérico Germed)', sourceDate: '2026-09-06' },
   }),

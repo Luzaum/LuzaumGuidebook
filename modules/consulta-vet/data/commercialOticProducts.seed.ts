@@ -131,7 +131,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Composição publicada por 100 mL: ácido salicílico 200 mg, agentes tensoativos ceruminolíticos e mucolíticos 2%, extratos vegetais 0,2%, monossacarídeos 0,15% e veículo q.s.p. A Virbac também descreve DSS, EDTA dissódico e cloroxilenol.',
     labelDirections:
-      'Uso tópico otológico: aplicar no conduto auditivo, massagear a base da orelha e remover excesso. Frequência conforme orientação veterinária.',
+      'Instilar 1 a 3 mL (ou quantidade suficiente para preencher o conduto) em cada orelha, massagear a base por 1 minuto e remover o excesso com algodão/gaze. Manutenção: 1 a 2 vezes por semana. Pré-tratamento de otite: aplicar 10–15 min antes da medicação otológica.',
     plumbsContext:
       'Limpador ceruminolítico/mucolítico com antisséptico leve; útil 10 a 15 minutos antes da limpeza quando houver cerúmen ou secreção.',
     clinicalUse:
@@ -139,7 +139,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se houver dor, secreção purulenta, odor persistente, prurido intenso ou recorrência.',
     prescriptionExample:
-      'Aplicar quantidade suficiente no conduto auditivo, massagear a base da orelha e remover excesso com algodão/gaze. Usar conforme orientação veterinária.',
+      'Epiotic SIS: aplicar 1–3 mL no conduto auditivo, massagear a base da orelha por 1 minuto e remover o excesso com algodão/gaze, 1 a 2 vezes por semana (ou 10–15 min antes da medicação otológica).',
     safetyAlert:
       'Evitar uso sem avaliação quando houver dor intensa, sinais vestibulares ou suspeita de tímpano rompido.',
     price: {
@@ -167,7 +167,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'A página da Agener/Vetsmart publica Tris-EDTA, ácido salicílico, glicerina, extrato de aloe vera, óleo de calêndula, dioctil sulfossuccinato de sódio, glicerol, essência e água. Concentrações não publicadas na fonte oficial aberta.',
     labelDirections:
-      'Higiene rotineira 1 a 2 vezes por semana, ou conforme critério veterinário. Pode ser usado antes de tratamentos otológicos.',
+      'Instilar 1 a 3 mL até preencher o conduto, massagear a base por 1 minuto e remover o excesso com gaze/algodão: higiene rotineira 1 a 2 vezes por semana (ou 10–15 min antes de medicações otológicas).',
     plumbsContext:
       'Encaixa como ceruminolítico/adjuvante de limpeza; aplicar antes da limpeza aumenta contato com cerúmen. Evitar se tímpano não foi avaliado.',
     clinicalUse:
@@ -175,7 +175,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se dor, eritema, prurido, secreção ou odor persistirem após poucos dias, ou antes se houver piora.',
     prescriptionExample:
-      'Aplicar no conduto auditivo, massagear a base da orelha e remover excesso. Usar 1 a 2 vezes por semana ou antes da medicação otológica, conforme orientação.',
+      'Clean-up: instilar 1–3 mL no conduto auditivo, massagear a base por 1 minuto e remover o excesso, 1 a 2 vezes por semana ou 15 min antes da medicação otológica.',
     safetyAlert:
       'Verificar integridade timpânica; suspender se houver piora de dor, eritema, prurido ou irritação.',
     price: {
@@ -203,7 +203,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'A página oficial aberta informa Tris-EDTA e clorexidina, sem porcentagem ou quantidade por 100 mL. Cadastrar concentração como não publicada.',
     labelDirections:
-      'Usar a cada 12 ou 24 horas por pelo menos 14 dias, ou sob orientação veterinária. Em animais predispostos a otite, pode ser usado 1 a 2 vezes por semana por tempo indeterminado.',
+      'Instilar quantidade suficiente (1–3 mL) no conduto auditivo, massagear a base e remover o excesso a cada 12 ou 24 horas por no mínimo 14 dias. Manutenção em predispostos: 1 a 2 vezes por semana.',
     plumbsContext:
       'Não é ceruminolítico puro; funciona melhor como limpador antisséptico com Tris-EDTA e clorexidina antes de terapias direcionadas.',
     clinicalUse:
@@ -211,7 +211,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se odor, secreção ou prurido persistirem após limpeza, pois pode haver otite bacteriana, Malassezia ou doença de base.',
     prescriptionExample:
-      'Aplicar no conduto auditivo, massagear a base da orelha e remover excesso. Usar a cada 12-24 h por pelo menos 14 dias ou conforme orientação.',
+      'SeptClean Oto: aplicar 1–3 mL no conduto auditivo, massagear a base e remover o excesso a cada 12–24 h por pelo menos 14 dias (manutenção: 1–2x/semana).',
     safetyAlert:
       'Por conter clorexidina e Tris-EDTA, evitar uso agressivo em canal ulcerado, dor intensa ou tímpano não avaliado.',
     price: {
@@ -283,7 +283,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se a limpeza diária for necessária por muitos dias, pois isso sugere doença de base não controlada.',
     prescriptionExample:
-      'Preencher o conduto, massagear a base da orelha e remover excesso com algodão. Usar conforme orientação, inclusive como adjuvante durante terapia.',
+      'Aurivet Clean pH Neutro: preencher o conduto (1–3 mL), massagear a base da orelha e remover excesso com algodão, 1 a 2 vezes por semana ou 1x/dia antes da medicação otológica.',
     safetyAlert:
       'Apesar do pH neutro, contém docusato, EDTA e emulsionantes; evitar uso indiscriminado em dor intensa, úlceração ou suspeita de otite média.',
     price: {
@@ -347,7 +347,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Composição publicada por 100 mL: pantenol 0,50 g, ácido glicirrízico 0,20 g, ácido lático 0,20 g, óleo essencial de menta 0,03 g e óleo essencial de camomila 0,02 g. Composição completa inclui água, glicerina, cocoanfoacetato de sódio e conservantes.',
     labelDirections:
-      'Instilar no conduto, massagear e retirar excesso da parte externa com algodão ou gaze. Uso semanal ou conforme orientação.',
+      'Instilar quantidade suficiente (1–2 mL) no conduto, massagear a base por 1 minuto e retirar o excesso da parte externa com algodão ou gaze, 1 vez por semana (ou a cada 3–7 dias na limpeza de rotina).',
     plumbsContext:
       'Ceruminólise leve por glicerina/tensoativos; não equivale a produto com docusato ou Tris-EDTA.',
     clinicalUse:
@@ -355,7 +355,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se odor ou prurido persistirem, pois pode haver Malassezia, bactéria, ácaro ou doença alérgica.',
     prescriptionExample:
-      'Instilar no conduto, massagear a base e remover excesso com algodão/gaze. Usar semanalmente ou conforme orientação.',
+      'Oto Clean Up: instilar 1–2 mL no conduto, massagear a base e remover excesso com algodão/gaze, 1 vez por semana.',
     safetyAlert:
       'Óleos essenciais podem irritar pacientes sensíveis; suspender se houver piora de eritema ou prurido.',
     price: {
@@ -383,7 +383,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Composição publicada por 100 mL: extrato de própolis 1,00 g, ácido glicirrízico 0,20 g, óleo essencial de menta 0,03 g e óleo essencial de camomila 0,02 g.',
     labelDirections:
-      'Aplicar 1 mL em cada conduto, massagear a base da orelha, deixar o animal balançar a cabeça e remover excesso. Uso semanal conforme orientação.',
+      'Aplicar 1 mL em cada conduto, massagear a base da orelha, deixar o animal balançar a cabeça e remover excesso com gaze/algodão, 1 vez por semana (manutenção de higiene).',
     plumbsContext:
       'Limpador suave; não é ceruminolítico de alta potência.',
     clinicalUse:
@@ -419,7 +419,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Composição publicada por 100 mL: pantenol 0,50 g, aloe vera 0,50 g, Mentha piperita 0,50 g, Adansonia digitata hidrolisada/baobá 0,50 g e fitoesfingosina 0,02 g. Composição completa inclui água, glicerina, lauramido-propil betaína e conservantes.',
     labelDirections:
-      'Instilar até preencher o conduto, massagear e remover excesso. Pode ser aplicado diariamente conforme critério veterinário.',
+      'Instilar até preencher o conduto (1–2 mL), massagear a base e remover excesso com gaze/algodão, 1 a 2 vezes por semana (ou 1x/dia por curto período durante otites sensíveis).',
     plumbsContext:
       'Mais voltado a limpeza/tolerabilidade do que a ceruminólise intensa.',
     clinicalUse:
@@ -427,7 +427,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Uso diário prolongado deve ser reavaliado; procurar causa primária da produção de cerúmen/irritação.',
     prescriptionExample:
-      'Preencher o conduto, massagear a base e remover excesso com algodão/gaze. Frequência conforme orientação veterinária.',
+      'K-TREAT Oto Micelar: preencher o conduto (1–2 mL), massagear a base e remover excesso com algodão/gaze, 1 a 2 vezes por semana (ou 1x/dia em orelhas sensíveis em protocolo ativo).',
     safetyAlert:
       'Menta e tensoativos podem arder em ouvido ulcerado.',
     price: {
@@ -455,7 +455,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Agener/Vetsmart publicam ácido lático, alantoína, aloe vera, trolamina, polissorbato, cloreto de sódio, conservantes, fenoxietanol/parabenos e água purificada, sem quantidades por 100 mL.',
     labelDirections:
-      'Aplicar diretamente no pavilhão auricular e no conduto, 1 a 2 vezes por semana ou conforme orientação.',
+      'Aplicar quantidade suficiente diretamente no pavilhão auricular e no conduto (1–2 mL), massagear a base e secar o excesso, 1 a 2 vezes por semana.',
     plumbsContext:
       'Limpador suave/hidratante; ceruminólise leve.',
     clinicalUse:
@@ -1994,7 +1994,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Ectoparasiticida oral da classe das isoxazolinas. A bula informa dose mínima em torno de 2,5 mg/kg de afoxolaner.',
     labelDirections:
-      'Administrar 1 tablete mastigável inteiro por via oral, uma vez ao mês, conforme faixa de peso da embalagem.',
+      'Administrar 1 tablete mastigável inteiro por via oral, a cada 30 dias, escolhendo a apresentação para o peso atual: 2–4 kg (11,3 mg), 4,1–10 kg (28,3 mg), 10,1–25 kg (68 mg) ou 25,1–50 kg (136 mg).',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 2,0 kg.',
+      pregnancyLactation: 'Segurança em reprodução, gestação e lactação não estabelecida em bula; usar apenas após avaliação clínica de risco-benefício.',
+      restrictions: 'Exclusivo para cães (não usar em gatos). Cautela em cães com histórico de convulsões ou doença neurológica.',
+    },
     plumbsContext:
       'Isoxazolina oral para controle mensal de pulgas e carrapatos. A classe exige cautela em pacientes com histórico neurológico.',
     clinicalUse:
@@ -2042,7 +2048,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Endectocida oral com isoxazolina e lactona macrocíclica. Dose mínima descrita: 2,5 mg/kg de afoxolaner e 0,5 mg/kg de milbemicina oxima.',
     labelDirections:
-      'Administrar 1 tablete inteiro por via oral, uma vez ao mês, conforme faixa de peso. Não fracionar sem respaldo de bula.',
+      'Administrar 1 tablete mastigável inteiro por via oral a cada 30 dias: 2–3,5 kg (9,4/1,9 mg), 3,6–7,5 kg (18,8/3,8 mg), 7,6–15 kg (37,5/7,5 mg), 15,1–30 kg (75/15 mg) ou 30,1–60 kg (150/30 mg). Para >60 kg, combinar tabletes.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 2,0 kg.',
+      pregnancyLactation: 'Segurança em cadelas gestantes, lactantes ou reprodutoras não avaliada em bula.',
+      restrictions: 'Exclusivo para cães (não usar em gatos). Testar Dirofilaria antes de iniciar em regiões endêmicas. Cautela neurológica (isoxazolina).',
+    },
     plumbsContext:
       'Opção mensal ampla quando se deseja cobrir ectoparasitas, nematódeos e prevenção de dirofilariose.',
     clinicalUse:
@@ -2073,12 +2085,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://cobasi.vtexassets.com/arquivos/ids/1101297/Nexgard Combo Antipulgas com 3_frente.webp?v=639131550986000000',
     species: ['cat'],
-    presentations: ['Aplicadores tópicos mensais por faixa de peso, a partir de 2 meses e 0,8 kg'],
+    presentations: [
+      'Gatos 0,8 a <2,5 kg: aplicador 0,3 mL (esafoxolaner 3,6 mg + eprinomectina 1,2 mg + praziquantel 24,9 mg)',
+      'Gatos 2,5 a 7,5 kg: aplicador 0,9 mL (esafoxolaner 10,8 mg + eprinomectina 3,6 mg + praziquantel 74,7 mg)',
+      'Gatos >7,5 kg: combinar aplicadores para atingir dose mínima',
+    ],
     activeComponents: ['esafoxolaner', 'eprinomectina', 'praziquantel'],
     labelCompositionSummary:
       'Endectocida tópico felino combinando isoxazolina, lactona macrocíclica e cestocida.',
     labelDirections:
-      'Aplicar 1 aplicador tópico na pele, conforme faixa de peso, uma vez ao mês.',
+      'Aplicar o conteúdo de 1 aplicador diretamente na pele seca da nuca, uma vez ao mês (a cada 30 dias): gatos de 0,8 a <2,5 kg = 0,3 mL; gatos de 2,5 a 7,5 kg = 0,9 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas (2 meses) de vida.',
+      minWeight: 'Peso mínimo de 0,8 kg.',
+      pregnancyLactation: 'Segurança durante gestação e lactação não estabelecida em bula.',
+      restrictions: 'Exclusivo para gatos (não usar em cães). Não aplicar em pele lesionada e evitar lambedura até secagem completa.',
+    },
     plumbsContext:
       'Produto felino de amplo espectro para ectoparasitas e vermes, útil quando há risco misto ou administração oral difícil.',
     clinicalUse:
@@ -2118,9 +2140,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     ],
     activeComponents: ['fluralaner'],
     labelCompositionSummary:
-      'Isoxazolina oral com dose de bula de 25 a 56 mg/kg de fluralaner, conforme faixa de peso.',
+      'Isoxazolina oral com dose de 25 a 56 mg/kg de fluralaner: 2–4,5 kg (112,5 mg), >4,5–10 kg (250 mg), >10–20 kg (500 mg), >20–40 kg (1.000 mg) e >40–56 kg (1.400 mg).',
     labelDirections:
-      'Administrar 1 comprimido por via oral a cada 12 semanas. Não administrar em intervalo menor que 8 semanas.',
+      'Administrar 1 comprimido mastigável por via oral (com ou próximo ao alimento) a cada 12 semanas: 2–4,5 kg (112,5 mg), >4,5–10 kg (250 mg), >10–20 kg (500 mg), >20–40 kg (1.000 mg), >40–56 kg (1.400 mg). Não repetir em intervalo menor que 8 semanas.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 2,0 kg.',
+      pregnancyLactation: 'Pode ser utilizado em cães reprodutores e em cadelas gestantes e lactantes.',
+      restrictions: 'Seguro para raças sensíveis à mutação MDR1 (como Collies). Cautela em histórico de convulsões.',
+    },
     plumbsContext:
       'Fluralaner oferece controle prolongado de ectoparasitas; por ser isoxazolina, manter alerta neurológico.',
     clinicalUse:
@@ -2158,7 +2186,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['fluralaner'],
     labelCompositionSummary: 'Isoxazolina tópica felina à base de fluralaner.',
     labelDirections:
-      'Aplicar topicamente na pele conforme faixa de peso, com intervalo de proteção de até 12 semanas.',
+      'Aplicar 1 pipeta na pele da nuca (base do crânio) a cada 12 semanas: 1,2–2,8 kg (0,4 mL / 112,5 mg); >2,8–6,25 kg (0,89 mL / 250 mg); >6,25–12,5 kg (1,79 mL / 500 mg). Para >12,5 kg, combinar pipetas.',
+    eligibility: {
+      minAge: 'A partir de 11 semanas de vida em gatinhos.',
+      minWeight: 'Peso mínimo de 1,2 kg.',
+      pregnancyLactation: 'Segurança não estabelecida em gatas prenhes, lactantes ou reprodutoras.',
+      restrictions: 'Exclusivo para gatos. Evitar lambedura até secagem completa e não banhar por 3 dias após aplicação.',
+    },
     plumbsContext:
       'Opção tópica felina de longa duração contra pulgas. Não confundir com Bravecto Plus, que inclui moxidectina.',
     clinicalUse:
@@ -2196,7 +2230,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Endectocida tópico felino com fluralaner e moxidectina; bula descreve 40 a 94 mg/kg de fluralaner e 2 a 4,7 mg/kg de moxidectina.',
     labelDirections:
-      'Aplicar topicamente conforme faixa de peso. Usar quando houver ou houver risco de infestação mista.',
+      'Aplicar 1 pipeta na pele seca da nuca (base do crânio) a cada 12 semanas: 1,2–2,8 kg (0,4 mL); >2,8–6,25 kg (0,89 mL); >6,25–12,5 kg (1,79 mL). Para >12,5 kg, combinar pipetas.',
+    eligibility: {
+      minAge: 'A partir de 9 semanas de vida em gatinhos.',
+      minWeight: 'Peso mínimo de 1,2 kg.',
+      pregnancyLactation: 'Segurança não estabelecida em gatas gestantes, lactantes ou reprodutoras.',
+      restrictions: 'Exclusivo para gatos. Não banhar por 3 dias após a aplicação e impedir lambedura do local até secar. Não cobre cestódeos (tênias).',
+    },
     plumbsContext:
       'Cobre pulgas e alguns endoparasitas/ácaros, mas não substitui produto com praziquantel quando o alvo for cestódeo.',
     clinicalUse:
@@ -2204,7 +2244,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se houver suspeita de Dipylidium ou Taenia, considerar cestocida específico e controle de pulgas.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Bravecto Plus correspondente ao peso do gato, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Bravecto Plus para a faixa de peso (1,2–2,8 kg: 0,4 mL; >2,8–6,25 kg: 0,89 mL; >6,25–12,5 kg: 1,79 mL) na pele da nuca, a cada 12 semanas.',
     safetyAlert:
       'Não cobre cestódeos como produtos com praziquantel. Cautela neurológica por fluralaner.',
     price: {
@@ -2237,7 +2277,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['sarolaner'],
     labelCompositionSummary: 'Isoxazolina oral mensal à base de sarolaner.',
     labelDirections:
-      'Administrar por via oral, 1 comprimido conforme faixa de peso, mensalmente. Informações técnicas indicam efeito sustentado por até 35 dias.',
+      'Administrar 1 comprimido por via oral a cada 30 dias (duração de até 35 dias): 1,3–2,5 kg (5 mg), 2,6–5 kg (10 mg), 5,1–10 kg (20 mg), 10,1–20 kg (40 mg), 20,1–40 kg (80 mg) ou 40,1–60 kg (120 mg). Para >60 kg, combinar comprimidos.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,3 kg.',
+      pregnancyLactation: 'Segurança em cadelas gestantes, lactantes ou machos reprodutores não estabelecida.',
+      restrictions: 'Exclusivo para cães (não usar em gatos). Cautela em cães com histórico de convulsões.',
+    },
     plumbsContext:
       'Isoxazolina mensal para ectoparasitas e sarnas; manter cautela em pacientes com histórico neurológico.',
     clinicalUse:
@@ -2284,7 +2330,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Endectocida oral com isoxazolina, lactona macrocíclica e pirantel para cobertura de ectoparasitas, nematódeos e dirofilariose.',
     labelDirections:
-      'Administrar 1 comprimido por via oral, uma vez ao mês, conforme faixa de peso.',
+      'Administrar 1 comprimido por via oral a cada 30 dias: 1,25–2,5 kg (3/0,06/12,5 mg), 2,6–5 kg (6/0,12/25 mg), 5,1–10 kg (12/0,24/50 mg), 10,1–20 kg (24/0,48/100 mg), 20,1–40 kg (48/0,96/200 mg) ou 40,1–60 kg (72/1,44/300 mg).',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,25 kg.',
+      pregnancyLactation: 'Segurança em reprodução, gestação e lactação não estabelecida.',
+      restrictions: 'Exclusivo para cães. Recomenda-se testar Dirofilaria antes de iniciar em áreas endêmicas. Cautela neurológica (sarolaner).',
+    },
     plumbsContext:
       'Produto mensal amplo para cães; útil quando se deseja reduzir múltiplas medicações preventivas em uma tomada.',
     clinicalUse:
@@ -2314,12 +2366,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://cobasi.vtexassets.com/arquivos/ids/1082144/Antipulgas Credeli 225mg Cães 5,5 a 11kg 3 comprimidos.webp?v=638899140307630000',
     species: ['dog'],
-    presentations: ['Comprimidos mastigáveis por faixa de peso'],
+    presentations: [
+      'Cães 1,3 a 2,5 kg: lotilaner 56,25 mg',
+      'Cães >2,5 a 5,5 kg: lotilaner 112,5 mg',
+      'Cães >5,5 a 11 kg: lotilaner 225 mg',
+      'Cães >11 a 22 kg: lotilaner 450 mg',
+      'Cães >22 a 45 kg: lotilaner 900 mg',
+    ],
     activeComponents: ['lotilaner'],
     labelCompositionSummary:
-      'Isoxazolina oral à base de lotilaner. Dose mínima referenciada em Plumb’s: 20 mg/kg VO mensal com alimento.',
+      'Isoxazolina oral à base de lotilaner (dose mínima de 20 mg/kg VO mensal com alimento).',
     labelDirections:
-      'Administrar por via oral uma vez ao mês, com alimento ou logo após refeição, conforme faixa de peso.',
+      'Administrar 1 comprimido por via oral a cada 30 dias, sempre com alimento ou até 30 minutos após a refeição: 1,3–2,5 kg (56,25 mg), >2,5–5,5 kg (112,5 mg), >5,5–11 kg (225 mg), >11–22 kg (450 mg) ou >22–45 kg (900 mg).',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,3 kg.',
+      pregnancyLactation: 'Segurança em reprodução, gestação e lactação não estabelecida.',
+      restrictions: 'Exclusivo para cães. Deve ser administrado com alimento para atingir biodisponibilidade ideal. Cautela neurológica.',
+    },
     plumbsContext:
       'Lotilaner é isoxazolina; administrar com alimento melhora exposição. Manter cautela neurológica.',
     clinicalUse:
@@ -2352,13 +2416,19 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: [
       '0,9 a 2,0 kg: lotilaner 12 mg',
       '2,1 a 8,0 kg: lotilaner 48 mg',
-      '>=8,1 kg: combinação adequada conforme peso',
+      '>8,0 kg: combinar comprimidos para atingir mínimo de 6 mg/kg',
     ],
     activeComponents: ['lotilaner'],
     labelCompositionSummary:
       'Isoxazolina oral felina à base de lotilaner para controle de pulgas por 30 dias.',
     labelDirections:
-      'Administrar 1 comprimido por via oral mensalmente, por faixa de peso, preferencialmente com alimento.',
+      'Administrar 1 comprimido por via oral a cada 30 dias junto ao alimento ou em até 30 min após a refeição: 0,9–2,0 kg (12 mg) ou 2,1–8,0 kg (48 mg).',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 0,9 kg.',
+      pregnancyLactation: 'Segurança em gatas reprodutoras, prenhes e lactantes não estabelecida.',
+      restrictions: 'Exclusivo para gatos. Administrar obrigatoriamente junto com alimento ou logo após comer.',
+    },
     plumbsContext:
       'Opção oral felina antipulgas; não cobre carrapatos, ácaros ou vermes como produtos endectocidas.',
     clinicalUse:
@@ -2387,12 +2457,25 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.zoetis.com.br/global-assets/private/revolution-6.pdf',
     imageUrl: 'https://www.zoetis.com.br/_locale-assets/img/animais-de-companhia/fotos-produtos/revolution-pack-1-pipeta-a-zoetis.jpg',
     species: ['dog', 'cat'],
-    presentations: ['Revolution 6% e 12%, pipetas por espécie e peso'],
+    presentations: [
+      'Cães e gatos ≤2,5 kg (6% — Rosa): pipeta 0,25 mL (15 mg)',
+      'Gatos 2,6 a 7,5 kg (6% — Azul): pipeta 0,75 mL (45 mg)',
+      'Cães 2,6 a 5,0 kg (12% — Lilás): pipeta 0,25 mL (30 mg)',
+      'Cães 5,1 a 10 kg (12% — Marrom): pipeta 0,50 mL (60 mg)',
+      'Cães 10,1 a 20 kg (12% — Vermelho): pipeta 1,0 mL (120 mg)',
+      'Cães 20,1 a 40 kg (12% — Verde): pipeta 2,0 mL (240 mg)',
+    ],
     activeComponents: ['selamectina'],
     labelCompositionSummary:
-      'Endectocida tópico à base de selamectina; dose mínima de bula de 6 mg/kg.',
+      'Endectocida tópico à base de selamectina (dose mínima de 6 mg/kg em cães e gatos).',
     labelDirections:
-      'Aplicar topicamente uma vez ao mês, conforme espécie, concentração e faixa de peso.',
+      'Aplicar todo o conteúdo de 1 pipeta na pele seca da nuca, 1 vez ao mês: Cães/gatos ≤2,5 kg = 0,25 mL (6%); Gatos 2,6–7,5 kg = 0,75 mL (6%); Cães 2,6–5 kg = 0,25 mL (12%); 5,1–10 kg = 0,5 mL; 10,1–20 kg = 1,0 mL; 20,1–40 kg = 2,0 mL.',
+    eligibility: {
+      minAge: 'A partir de 6 semanas de vida (cães e gatos).',
+      minWeight: 'Sem peso mínimo restritivo além dos filhotes ≤2,5 kg (pipeta 6% 15 mg), a partir de 6 semanas.',
+      pregnancyLactation: 'Pode ser utilizado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'Conferir a cor/concentração correta (6% para gatos e cães até 2,5 kg; 12% exclusivo cães ≥2,6 kg). Seguro em Collies MDR1. Evitar banho por 2 horas após aplicação.',
+    },
     plumbsContext:
       'Lactona macrocíclica tópica útil em gatos para pulgas e ácaro de ouvido; não é a opção mais forte para carrapatos.',
     clinicalUse:
@@ -2421,12 +2504,25 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.bayer.com/sites/default/files/2020-11/AdvocateCao.pdf',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/798dbb9f-252c-41be-8399-ed8c24603bd6/Pack-Advocate.png?w=828&q=75&auto=format',
     species: ['dog', 'cat'],
-    presentations: ['Pipetas por espécie e faixa de peso'],
+    presentations: [
+      'Cães até 4 kg: pipeta 0,4 mL (imidacloprida 40 mg + moxidectina 10 mg)',
+      'Cães 4 a 10 kg: pipeta 1,0 mL (imidacloprida 100 mg + moxidectina 25 mg)',
+      'Cães 10 a 25 kg: pipeta 2,5 mL (imidacloprida 250 mg + moxidectina 62,5 mg)',
+      'Cães 25 a 40 kg: pipeta 4,0 mL (imidacloprida 400 mg + moxidectina 100 mg)',
+      'Gatos até 4 kg: pipeta 0,4 mL (imidacloprida 40 mg + moxidectina 4 mg)',
+      'Gatos 4 a 8 kg: pipeta 0,8 mL (imidacloprida 80 mg + moxidectina 8 mg)',
+    ],
     activeComponents: ['imidacloprida', 'moxidectina'],
     labelCompositionSummary:
-      'Endectocida tópico com neonicotinoide e lactona macrocíclica. Apresentações são separadas para cães e gatos.',
+      'Endectocida tópico com imidacloprida e moxidectina (apresentações separadas para cães e gatos).',
     labelDirections:
-      'Aplicar topicamente uma vez ao mês, conforme espécie e faixa de peso.',
+      'Aplicar na pele seca da nuca/escápulas 1 vez ao mês: Cães ≤4 kg = 0,4 mL; 4–10 kg = 1,0 mL; 10–25 kg = 2,5 mL; 25–40 kg = 4,0 mL (dividir em 3–4 pontos no dorso em >10 kg). Gatos ≤4 kg = 0,4 mL; 4–8 kg = 0,8 mL.',
+    eligibility: {
+      minAge: 'Cães: a partir de 7 semanas de vida. Gatos: a partir de 9 semanas de vida.',
+      minWeight: 'Cães: mínimo 1,0 kg. Gatos: mínimo 1,0 kg.',
+      pregnancyLactation: 'Uso em fêmeas prenhes ou lactantes deve ser evitado sem avaliação veterinária de risco-benefício.',
+      restrictions: 'NUNCA usar Advocate Cães em gatos (concentração de moxidectina 2,5x maior). Evitar contato oral em cães MDR1 (moxidectina tóxica se ingerida).',
+    },
     plumbsContext:
       'Boa opção tópica quando se deseja cobertura contra pulgas, sarnas/nematódeos e prevenção de Dirofilaria.',
     clinicalUse:
@@ -2456,12 +2552,21 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://cobasi.vteximg.com.br/arquivos/ids/210453-368-368/Antipulgas-Advantage-Caes-e-Gatos-04ml-ate-4kg-Bayer.jpg?v=638455256431530000',
     species: ['dog', 'cat'],
-    presentations: ['Pipetas tópicas por faixa de peso'],
+    presentations: [
+      'Cães e gatos até 4 kg: pipeta 0,4 mL (imidacloprida 40 mg)',
+      'Cães >4 kg e gatos >4 kg: 0,8 mL (gatos) ou 1,0 mL / 2,5 mL / 4,0 mL (cães 4–10, 10–25 e >25 kg)',
+    ],
     activeComponents: ['imidacloprida'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico à base de imidacloprida para prevenção e tratamento de infestações por pulgas.',
+      'Ectoparasiticida tópico à base de imidacloprida 10% (10 mg/kg mínimo) para pulgas.',
     labelDirections:
-      'Aplicar topicamente, mensalmente, conforme faixa de peso e bula.',
+      'Aplicar topicamente na pele seca da nuca a cada 30 dias: Gatos e cães ≤4 kg = 0,4 mL; Gatos >4 kg = 0,8 mL; Cães 4–10 kg = 1,0 mL; 10–25 kg = 2,5 mL; >25 kg = 4,0 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida em cães e gatos.',
+      minWeight: 'Sem peso mínimo restritivo abaixo de 4 kg após 8 semanas de idade (pipeta 0,4 mL).',
+      pregnancyLactation: 'Pode ser usado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'Não cobre carrapatos nem vermes. Não banhar 48 horas após a aplicação; impedir lambedura até secar.',
+    },
     plumbsContext:
       'Produto antipulgas simples; não cobre carrapatos nem vermes.',
     clinicalUse:
@@ -2490,12 +2595,23 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Advantage-Max3-para-Caes-Paciente-Consulta-Remedios.pdf',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/d20d50b4-c66f-40e4-a91a-cd262a734033/Pack_Max3.png?w=828&q=75&auto=format',
     species: ['dog'],
-    presentations: ['Pipetas tópicas mensais por faixa de peso'],
+    presentations: [
+      'Cães até 4 kg: pipeta 0,4 mL (imidacloprida 40 mg + permetrina 200 mg)',
+      'Cães >4 a 10 kg: pipeta 1,0 mL (imidacloprida 100 mg + permetrina 500 mg)',
+      'Cães >10 a 25 kg: pipeta 2,5 mL (imidacloprida 250 mg + permetrina 1.250 mg)',
+      'Cães >25 a 40 kg: pipeta 4,0 mL (imidacloprida 400 mg + permetrina 2.000 mg)',
+    ],
     activeComponents: ['imidacloprida', 'permetrina'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico com imidacloprida 100 mg/mL e permetrina 500 mg/mL conforme bula reproduzida.',
+      'Ectoparasiticida tópico canino com imidacloprida 100 mg/mL e permetrina 500 mg/mL.',
     labelDirections:
-      'Aplicar topicamente uma vez ao mês, conforme faixa de peso do cão.',
+      'Aplicar na pele seca (base do pescoço/dorso) a cada 30 dias (repelência a flebótomos pode exigir a cada 14–21 dias em áreas de alto risco): ≤4 kg = 0,4 mL; 4–10 kg = 1,0 mL; 10–25 kg = 2,5 mL; 25–40 kg = 4,0 mL.',
+    eligibility: {
+      minAge: 'A partir de 7 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,5 kg.',
+      pregnancyLactation: 'Pode ser utilizado em cadelas gestantes e lactantes.',
+      restrictions: 'EXCLUSIVO PARA CÃES — ALTAMENTE TÓXICO E LETAL PARA GATOS (permetrina). Manter gatos afastados até secagem completa.',
+    },
     plumbsContext:
       'Produto com permetrina, útil como repelente vetorial em cães, mas perigoso para gatos.',
     clinicalUse:
@@ -2525,12 +2641,21 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/04eb16f8-ce93-4c58-9721-f7aa0510f938/Embalagens_Seresto%202025.png?w=1920&q=75&auto=format',
     species: ['dog', 'cat'],
-    presentations: ['Coleira para cães até 8 kg/gatos', 'Coleira para cães acima de 8 kg'],
+    presentations: [
+      'Coleira 38 cm (12,5 g): cães até 8 kg e gatos até 8 kg (imidacloprida 1,25 g + flumetrina 0,56 g)',
+      'Coleira 70 cm (45 g): cães acima de 8 kg (imidacloprida 4,5 g + flumetrina 2,03 g)',
+    ],
     activeComponents: ['imidacloprida', 'flumetrina'],
     labelCompositionSummary:
-      'Coleira de liberação contínua com imidacloprida e flumetrina.',
+      'Coleira de liberação contínua com imidacloprida e flumetrina com proteção de até 8 meses.',
     labelDirections:
-      'Colocar 1 coleira ajustada ao pescoço e substituir conforme período de proteção indicado, até 8 meses.',
+      'Ajustar 1 coleira no pescoço deixando folga de 2 dedos entre pele e coleira, cortar a ponta excedente deixando cerca de 2 cm e trocar a cada 8 meses: ≤8 kg (cães e gatos) = coleira 38 cm; >8 kg (cães) = coleira 70 cm.',
+    eligibility: {
+      minAge: 'Cães: a partir de 7 semanas de vida. Gatos: a partir de 10 semanas de vida.',
+      minWeight: 'Sem peso mínimo fixo além da idade mínima (modelo 38 cm para animais até 8 kg; modelo 70 cm para cães >8 kg).',
+      pregnancyLactation: 'Segurança em cadelas e gatas prenhes ou lactantes não estabelecida.',
+      restrictions: 'Evitar que o animal morda a coleira; usar somente produto de procedência oficial.',
+    },
     plumbsContext:
       'Útil para adesão prolongada; risco prático importante é produto falsificado ou irritação local.',
     clinicalUse:
@@ -2559,12 +2684,21 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.msd-saude-animal.com.br/produto/scalibor/',
     imageUrl: 'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2020/07/scalibor-e1594307847267.jpg',
     species: ['dog'],
-    presentations: ['Coleira 48 cm', 'Coleira 65 cm'],
+    presentations: [
+      'Coleira 48 cm (19 g): cães pequenos e médios (deltametrina 0,76 g)',
+      'Coleira 65 cm (25 g): cães grandes (deltametrina 1,0 g)',
+    ],
     activeComponents: ['deltametrina'],
     labelCompositionSummary:
-      'Coleira ectoparasiticida/repelente à base de deltametrina.',
+      'Coleira ectoparasiticida/repelente à base de deltametrina a 4%.',
     labelDirections:
-      'Colocar 1 coleira no pescoço do cão, ajustar e cortar a sobra conforme orientação do fabricante.',
+      'Ajustar 1 coleira no pescoço deixando folga de 2 dedos e cortar o excesso deixando ~5 cm da fivela (48 cm para cães P/M; 65 cm para cães G). Proteção contra flebótomos/moscas/carrapatos por até 4 meses (trocar a cada 4 meses em área de leishmaniose).',
+    eligibility: {
+      minAge: 'A partir de 3 meses (12 semanas) de vida.',
+      minWeight: 'Sem peso mínimo em kg além da idade mínima de 3 meses.',
+      pregnancyLactation: 'Pode ser utilizada em cadelas gestantes.',
+      restrictions: 'EXCLUSIVO PARA CÃES (não usar em gatos — piretroide). Não usar se houver lesões extensas no pescoço; remover ao dar banho se recomendado e recolocar seco.',
+    },
     plumbsContext:
       'Piretroide canino com foco vetorial; não usar em gatos.',
     clinicalUse:
@@ -2572,7 +2706,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Verificar ajuste, irritação local e estratégia de prevenção de leishmaniose conforme risco regional.',
     prescriptionExample:
-      'Colocar 1 coleira Scalibor do tamanho adequado no cão e substituir conforme período de proteção do fabricante.',
+      'Colocar 1 coleira Scalibor (48 cm P/M ou 65 cm G) ajustada com folga de 2 dedos e trocar a cada 4 meses.',
     safetyAlert:
       'Não usar em gatos. Atenção a domicílios com gatos contactantes e a irritação local.',
     price: {
@@ -2594,12 +2728,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://cobasi.vtexassets.com/arquivos/ids/927800/antipulgas-vectra-3d-caes-10-a-25-kg-ceva-36-ml.jpg?v=638421324517470000',
     species: ['dog'],
-    presentations: ['Pipetas tópicas por faixa de peso'],
+    presentations: [
+      'Cães 1,5 a 4 kg: pipeta 0,8 mL',
+      'Cães >4 a 10 kg: pipeta 1,6 mL',
+      'Cães >10 a 25 kg: pipeta 3,6 mL',
+      'Cães >25 a 40 kg: pipeta 4,7 mL',
+      'Cães >40 kg: pipeta 8,0 mL (ou combinação para atingir dose mínima)',
+    ],
     activeComponents: ['permetrina', 'dinotefuran', 'piriproxifen'],
     labelCompositionSummary:
-      'Tópico canino com permetrina, dinotefuran e piriproxifen.',
+      'Tópico canino com permetrina, dinotefuran e piriproxifen para pulgas, carrapatos e flebótomos.',
     labelDirections:
-      'Aplicar pipeta tópica conforme faixa de peso e bula Ceva.',
+      'Aplicar o conteúdo de 1 pipeta mensalmente ao longo da linha média dorsal (base da cauda até escápulas em linha contínua): 1,5–4 kg = 0,8 mL; >4–10 kg = 1,6 mL; >10–25 kg = 3,6 mL; >25–40 kg = 4,7 mL; >40 kg = 8,0 mL.',
+    eligibility: {
+      minAge: 'A partir de 7 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,5 kg.',
+      pregnancyLactation: 'Segurança em cadelas prenhes e lactantes não estabelecida.',
+      restrictions: 'EXCLUSIVO PARA CÃES — ALTAMENTE TÓXICO E LETAL PARA GATOS (permetrina). Manter gatos isolados do cão até secar completamente.',
+    },
     plumbsContext:
       'Produto repelente/ectoparasiticida para cães com permetrina; alerta vermelho para gatos.',
     clinicalUse:
@@ -2607,7 +2753,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar risco vetorial, presença de gatos contactantes e eficácia em carrapatos.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Vectra 3D correspondente ao peso do cão, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Vectra 3D para a faixa de peso (1,5–4 kg: 0,8 mL; >4–10 kg: 1,6 mL; >10–25 kg: 3,6 mL; >25–40 kg: 4,7 mL), tópica ao longo do dorso, a cada 30 dias.',
     safetyAlert:
       'Não usar em gatos por conter permetrina. Evitar contato com gatos até secagem completa.',
     price: {
@@ -2628,12 +2774,18 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/927801/antipulgas-vectra-gatos-ate-10-kg-ceva-1-ml.jpg?v=638421322197230000',
     species: ['cat'],
-    presentations: ['Pipetas tópicas para gatos'],
+    presentations: ['Gatos até 10 kg: pipeta única de 1,0 mL (dinotefuran 222 mg + piriproxifen 19,4 mg)'],
     activeComponents: ['dinotefuran', 'piriproxifen'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico felino com adulticida e regulador de crescimento de pulgas.',
+      'Ectoparasiticida tópico felino com adulticida (dinotefuran) e regulador de crescimento de pulgas (piriproxifen).',
     labelDirections:
-      'Aplicar pipeta tópica conforme faixa de peso e bula Ceva.',
+      'Aplicar 1 pipeta única de 1,0 mL diretamente sobre a pele seca na base da cabeça (nuca) de gatos até 10 kg, a cada 30 dias (>10 kg: associar pipeta complementar).',
+    eligibility: {
+      minAge: 'Bula brasileira relata não testado em gatos abaixo de 5 meses de idade (referência internacional cita ≥7 semanas e ≥0,6 kg).',
+      minWeight: 'Peso mínimo de 0,6 kg; apresentação única cobre gatos até 10 kg.',
+      pregnancyLactation: 'Segurança não testada em gatas prenhes e lactantes.',
+      restrictions: 'Exclusivo para gatos. Impedir lambedura do local até secar completamente; evitar banho nas primeiras 48 horas.',
+    },
     plumbsContext:
       'Produto felino para pulgas, sem cobertura para vermes ou ácaros como Revolution/NexGard Combo.',
     clinicalUse:
@@ -2641,7 +2793,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se houver otite por ácaro ou verminose, escolher produto de espectro maior.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Vectra Gatos correspondente ao peso, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Vectra Gatos (1,0 mL para gatos até 10 kg) na pele seca da nuca, a cada 30 dias.',
     safetyAlert:
       'Usar apenas apresentação felina. Não substituir por Vectra 3D, que é canino e contém permetrina.',
     price: {
@@ -2662,12 +2814,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://integracao.bartofil.com.br/manual-bula/Frontline_Plus_C%C3%A3o_M_10a20kg_97849.pdf',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011408/941514--1-.jpg?v=638138072976430000',
     species: ['dog', 'cat'],
-    presentations: ['Pipetas tópicas separadas por espécie e faixa de peso'],
+    presentations: [
+      'Gatos (dose única >1 kg): pipeta 0,5 mL',
+      'Cães 1 a 10 kg: pipeta 0,67 mL',
+      'Cães 10,1 a 20 kg: pipeta 1,34 mL',
+      'Cães 20,1 a 40 kg: pipeta 2,68 mL',
+      'Cães 40,1 a 60 kg: pipeta 4,02 mL (>60 kg combinar 4,02 mL + pipeta menor)',
+    ],
     activeComponents: ['fipronil', 'S-metopreno'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico com fipronil e regulador de crescimento S-metopreno.',
+      'Ectoparasiticida tópico com fipronil 9,8% e regulador de crescimento (S)-metopreno.',
     labelDirections:
-      'Aplicar 1 pipeta tópica conforme espécie e faixa de peso, seguindo intervalo de bula.',
+      'Aplicar todo o conteúdo de 1 pipeta na pele seca entre as escápulas a cada 30 dias (proteção contra carrapatos até 4 sem e pulgas 4–8 sem): Gatos = 0,5 mL; Cães 1–10 kg = 0,67 mL; 10,1–20 kg = 1,34 mL; 20,1–40 kg = 2,68 mL; 40,1–60 kg = 4,02 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida em cães e gatos.',
+      minWeight: 'Cães: peso mínimo de 2,0 kg (pipeta 0,67 mL cobre 1–10 kg na rotulagem de mercado). Gatos: mínimo 1,0 kg.',
+      pregnancyLactation: 'Pode ser utilizado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'NÃO usar em coelhos. Respeitar 48 h sem banho antes e após a aplicação.',
+    },
     plumbsContext:
       'Tópico clássico com ação em adultos e fases ambientais de pulgas; menos abrangente que endectocidas modernos.',
     clinicalUse:
@@ -2675,7 +2839,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar infestação ambiental e uso em todos contactantes; falhas costumam envolver ambiente ou banho inadequado.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Frontline Plus correta para espécie/peso, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Frontline Plus (gatos: 0,5 mL; cães 1–10 kg: 0,67 mL; 10,1–20 kg: 1,34 mL; 20,1–40 kg: 2,68 mL; 40,1–60 kg: 4,02 mL) sobre a pele seca entre as escápulas a cada 30 dias.',
     safetyAlert:
       'Não trocar apresentação cão/gato sem conferir bula. Não cobre vermes.',
     price: {
@@ -2696,12 +2860,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.boehringer-ingelheim.com/br/pdf/frontline-topspot-gatospdf',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011400/920681--1-.jpg?v=638137317579700000',
     species: ['dog', 'cat'],
-    presentations: ['Pipetas tópicas por espécie e faixa de peso'],
+    presentations: [
+      'Gatos: pipeta 0,5 mL (fipronil 50 mg)',
+      'Cães 1 a 10 kg: pipeta 0,67 mL (fipronil 67 mg)',
+      'Cães 10,1 a 20 kg: pipeta 1,34 mL (fipronil 134 mg)',
+      'Cães 20,1 a 40 kg: pipeta 2,68 mL (fipronil 268 mg)',
+      'Cães 40,1 a 60 kg: pipeta 4,02 mL (fipronil 402 mg)',
+    ],
     activeComponents: ['fipronil'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico clássico à base de fipronil.',
+      'Ectoparasiticida tópico clássico à base de fipronil 10%.',
     labelDirections:
-      'Aplicar 1 pipeta tópica conforme espécie e peso, no intervalo definido em bula.',
+      'Aplicar 1 pipeta na pele seca da nuca/escápulas a cada 30 dias: Gatos = 0,5 mL; Cães 1–10 kg = 0,67 mL; 10,1–20 kg = 1,34 mL; 20,1–40 kg = 2,68 mL; 40,1–60 kg = 4,02 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida em cães e gatos.',
+      minWeight: 'Peso mínimo de 1,0 kg.',
+      pregnancyLactation: 'Pode ser usado em fêmeas gestantes e lactantes.',
+      restrictions: 'NÃO usar em coelhos. Evitar banho 48 horas antes e após aplicação.',
+    },
     plumbsContext:
       'Fipronil tópico para ectoparasitas; sem ação contra vermes.',
     clinicalUse:
@@ -2709,7 +2885,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar banho, aplicação correta e carga ambiental se houver reinfestação.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Frontline TopSpot correta para espécie/peso, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Frontline TopSpot (gatos: 0,5 mL; cães 1–10 kg: 0,67 mL; 10,1–20 kg: 1,34 mL; 20,1–40 kg: 2,68 mL; 40,1–60 kg: 4,02 mL) sobre a pele seca entre as escápulas a cada 30 dias.',
     safetyAlert:
       'Não cobre vermes. Confirmar apresentação correta e evitar lambedura.',
     price: {
@@ -2730,22 +2906,31 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://frontline.com.br/',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1011402/929603--1-.jpg?v=639130713224070000',
     species: ['dog', 'cat'],
-    presentations: ['Spray 100 mL', 'Spray 250 mL'],
+    presentations: [
+      'Spray 100 mL (frasco dosador pequeno: cada borrifada = 0,5 mL → 6 a 12 borrifadas/kg)',
+      'Spray 250 mL (frasco dosador grande: cada borrifada = 1,5 mL → 2 a 4 borrifadas/kg)',
+    ],
     activeComponents: ['fipronil'],
     labelCompositionSummary:
-      'Fenilpirazol em apresentação spray para cães e gatos. A dose depende do volume e do número de borrifadas por kg descrito na bula da apresentação.',
+      'Fipronil 0,25% (2,5 mg/mL) em spray para cães e gatos. Dose de bula: 3 a 6 mL/kg (7,5 a 15 mg/kg de fipronil) conforme comprimento do pelo (3 mL/kg em pelo curto; até 6 mL/kg em pelo longo).',
     labelDirections:
-      'Aplicar conforme número de borrifadas indicado na bula para o peso do animal, contra o sentido do pelo, evitando olhos, boca e mucosas.',
+      'Calcular 3 a 6 mL/kg conforme pelagem: Frasco 100 mL = 6 a 12 borrifadas/kg (0,5 mL/borrifada); Frasco 250 mL = 2 a 4 borrifadas/kg (1,5 mL/borrifada). Borrifar a 10–20 cm contra o sentido do pelo até umedecer a pele, massagear com luvas, aplicar na face/orelhas umedecendo a luva (sem borrifar direto nos olhos/boca) e deixar secar naturalmente. Repetir mensalmente para carrapatos/DAPP ou a cada 1–3 meses para pulgas.',
+    eligibility: {
+      minAge: 'A partir de 2 dias de vida (cães e gatos recém-nascidos).',
+      minWeight: 'Sem peso mínimo fixo (ajustar em balança exata na razão de 3–6 mL/kg: ex. filhote de 500 g no frasco 100 mL recebe 3 a 6 borrifadas).',
+      pregnancyLactation: 'Seguro para fêmeas gestantes e lactantes.',
+      restrictions: 'Usar luvas. Produto inflamável (álcool): não usar secador ou chama próxima; não banhar 48 h antes/depois; impedir lambedura até secar.',
+    },
     plumbsContext:
-      'Spray de fipronil pode ser útil em pacientes pequenos/filhotes quando a apresentação é indicada e o cálculo de borrifadas é feito corretamente.',
+      'Spray de fipronil pode ser útil em filhotes muito jovens (≥2 dias) e pacientes leves onde o ajuste por kg evita sobredose.',
     clinicalUse:
-      'Controle de pulgas e carrapatos em cães e gatos, especialmente quando a apresentação spray é mais adequada que pipeta.',
+      'Controle de pulgas e carrapatos em cães e gatos, especialmente neonatos/filhotes a partir de 2 dias de vida ou ninhadas.',
     reassessment:
-      'Reavaliar controle ambiental, contactantes e técnica de aplicação. Conferir se o tutor consegue aplicar com luvas e evitar mucosas.',
+      'Reavaliar controle ambiental, contactantes e técnica de umedecimento até a pele.',
     prescriptionExample:
-      'Frontline Spray: aplicar conforme número de borrifadas por kg indicado na bula, usando luvas, evitando olhos, boca e mucosas. Deixar secar naturalmente e repetir conforme orientação veterinária.',
+      'Frontline Spray (fipronil 2,5 mg/mL): calcular 3 mL/kg (pelo curto) a 6 mL/kg (pelo longo). Frasco 100 mL: aplicar 6 a 12 borrifadas por kg (ou frasco 250 mL: 2 a 4 borrifadas por kg) no sentido contrário ao pelo até umedecer a pele, usando luvas e evitando olhos/boca. Deixar secar naturalmente sem secador; repetir a cada 30 dias.',
     safetyAlert:
-      'Não aplicar em olhos, boca ou mucosas. Usar luvas e seguir exatamente a bula da apresentação comprada para número de borrifadas por kg.',
+      'Não aplicar diretamente em olhos, boca ou mucosas (na face, aplicar com luva umedecida). Inflamável enquanto úmido. Proibido em coelhos.',
     price: {
       averageLabel: 'R$ 135,00 a R$ 210,00',
       rangeLabel: 'Estimativa conforme volume: Cobasi exibiu 100 mL perto de R$ 135,00 e 250 mL perto de R$ 210,39 em compra programada',
@@ -2765,12 +2950,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'https://products-info-public.s3-sa-east-1.amazonaws.com/bulas/bayer/81350779_V9_Leaflet_DRONTAL%2BPL_bula-SAC.pdf',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1077297/DrontalPlus-Sabor_10kg-2cps-1.webp?v=638862988851730000',
     species: ['dog'],
-    presentations: ['Comprimidos por faixa de peso'],
+    presentations: [
+      'Cães 2 a 5 kg: 1/2 comprimido (Drontal Plus 10 kg)',
+      'Cães 5,1 a 10 kg: 1 comprimido (Drontal Plus 10 kg)',
+      'Cães 10,1 a 15 kg: 1,5 comprimido; 15,1 a 20 kg: 2 comprimidos (1 cp/10 kg)',
+    ],
     activeComponents: ['praziquantel', 'pamoato de pirantel', 'febantel'],
     labelCompositionSummary:
-      'Vermífugo oral amplo para cães, combinando cestocida, nematocida e febantel.',
+      'Vermífugo oral amplo para cães: praziquantel 50 mg + pamoato de pirantel 144 mg + febantel 150 mg por comprimido de 10 kg.',
     labelDirections:
-      'Em geral, 1 comprimido por 10 kg em dose única para verminoses; para Giardia spp., administrar por 3 dias consecutivos conforme bula.',
+      'Administrar 1 comprimido/10 kg VO (2–5 kg = 1/2 cp; 5,1–10 kg = 1 cp; 10,1–15 kg = 1,5 cp; 15,1–20 kg = 2 cp; +1/2 cp a cada 5 kg). Verminoses: dose única. Giardíase: mesma dose q24h por 3 dias consecutivos.',
+    eligibility: {
+      minAge: 'A partir de 2 semanas de vida (15 dias).',
+      minWeight: 'Peso mínimo de 2,0 kg (meio comprimido trata cães de 2 a 5 kg).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas gestantes (preferencialmente último terço/10 dias antes do parto) e lactantes.',
+      restrictions: 'Exclusivo para cães. Em giardíase, associar higienização ambiental e banho.',
+    },
     plumbsContext:
       'Boa opção para nematódeos, cestódeos e indicação de Giardia por bula, lembrando que giardíase exige manejo ambiental.',
     clinicalUse:
@@ -2778,7 +2973,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Em Giardia, reavaliar fezes/sinais, higiene ambiental, banho e contactantes.',
     prescriptionExample:
-      'Administrar Drontal Plus conforme peso em dose única; em Giardia, repetir por 3 dias consecutivos conforme bula.',
+      'Administrar Drontal Plus (2–5 kg: 1/2 cp; 5,1–10 kg: 1 cp; 10,1–20 kg: 1,5–2 cp) VO em dose única para verminoses, ou q24h por 3 dias consecutivos para Giardia.',
     safetyAlert:
       'Não usar em gatos na apresentação canina. Giardia não é vermifugação comum: exige diagnóstico e manejo ambiental.',
     price: {
@@ -2799,12 +2994,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://vet.elanco.com/br/produtos/drontal',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1004506/Drontal-Gatos-4-comprimidos.jpg?v=638866303578270000',
     species: ['cat'],
-    presentations: ['Comprimidos para gatos por faixa de peso'],
+    presentations: [
+      'Gatos 1 a 2 kg: 1/2 comprimido',
+      'Gatos 2,1 a 4 kg: 1 comprimido (praziquantel 20 mg + pirantel 230 mg)',
+      'Gatos 4,1 a 6 kg: 1,5 comprimido; 6,1 a 8 kg: 2 comprimidos',
+    ],
     activeComponents: ['praziquantel', 'pamoato de pirantel'],
     labelCompositionSummary:
-      'Vermífugo oral felino para cestódeos e nematódeos.',
+      'Vermífugo oral felino para cestódeos e nematódeos (praziquantel 20 mg + pamoato de pirantel 230 mg por comprimido).',
     labelDirections:
-      'Drontal Gatos: administrar por via oral conforme peso; dose usual 1 comprimido/4 kg em dose única.',
+      'Administrar VO em dose única na proporção de 1 comprimido/4 kg: 1–2 kg = 1/2 cp; 2,1–4 kg = 1 cp; 4,1–6 kg = 1,5 cp; 6,1–8 kg = 2 cp.',
+    eligibility: {
+      minAge: 'A partir de 2 semanas (15 dias) de vida.',
+      minWeight: 'Peso mínimo de 1,0 kg.',
+      pregnancyLactation: 'Pode ser utilizado em lactantes; na gestação, usar com avaliação clínica.',
+      restrictions: 'Exclusivo para gatos. Se houver Dipylidium, controlar pulgas simultaneamente.',
+    },
     plumbsContext:
       'Opção oral para vermes redondos e chatos em gatos; não cobre pulgas, ácaros ou dirofilariose.',
     clinicalUse:
@@ -2812,7 +3017,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se houver Dipylidium, controlar pulgas; se gato não aceita comprimido, considerar apresentação tópica.',
     prescriptionExample:
-      'Administrar Drontal Gatos conforme peso e bula da apresentação comprada.',
+      'Administrar Drontal Gatos VO em dose única (1–2 kg: 1/2 cp; 2,1–4 kg: 1 cp; 4,1–6 kg: 1,5 cp; 6,1–8 kg: 2 cp).',
     safetyAlert:
       'Confirmar peso e apresentação. Não substitui controle de pulgas em Dipylidium.',
     price: {
@@ -2835,12 +3040,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/1df3ee4c-219e-4ebe-9a73-2f601535f86d/drontal_gatos_spoton_elanco-removebg-preview.png',
     species: ['cat'],
-    presentations: ['Pipetas tópicas por faixa de peso'],
+    presentations: [
+      'Gatos 0,5 a 2,5 kg: pipeta 0,35 mL (praziquantel 30 mg + emodepsida 7,5 mg)',
+      'Gatos >2,5 a 5,0 kg: pipeta 0,70 mL (praziquantel 60 mg + emodepsida 15 mg)',
+      'Gatos >5,0 a 8,0 kg: pipeta 1,12 mL (praziquantel 96 mg + emodepsida 24 mg)',
+    ],
     activeComponents: ['praziquantel', 'emodepsida'],
     labelCompositionSummary:
-      'Vermífugo tópico felino com praziquantel e emodepsida.',
+      'Vermífugo tópico felino com praziquantel e emodepsida (0,14 mL/kg).',
     labelDirections:
-      'Aplicar todo o conteúdo da pipeta diretamente sobre a pele seca na nuca, conforme faixa de peso.',
+      'Aplicar todo o conteúdo de 1 pipeta na pele seca da nuca, dose única: 0,5–2,5 kg = 0,35 mL; >2,5–5 kg = 0,70 mL; >5–8 kg = 1,12 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 0,5 kg.',
+      pregnancyLactation: 'Pode ser utilizado durante a gestação e lactação.',
+      restrictions: 'Exclusivo para gatos. Impedir lambedura do local nas primeiras horas.',
+    },
     plumbsContext:
       'Alternativa tópica útil quando o gato não aceita comprimido.',
     clinicalUse:
@@ -2870,12 +3085,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://assets.elanco.com/8e0bf1c2-1ae4-001f-9257-f2be3c683fb1/290e150a-3eec-4fb0-ab13-d39775118369/profender-packshot-desktop-632x375-update.jpg',
     species: ['cat'],
-    presentations: ['Pipetas tópicas 0,35 mL, 0,70 mL e 1,12 mL conforme peso'],
+    presentations: [
+      'Gatos 0,5 a 2,5 kg: pipeta 0,35 mL',
+      'Gatos >2,5 a 5,0 kg: pipeta 0,70 mL',
+      'Gatos >5,0 a 8,0 kg: pipeta 1,12 mL',
+    ],
     activeComponents: ['emodepsida', 'praziquantel'],
     labelCompositionSummary:
-      'Vermífugo tópico felino para nematódeos e cestódeos. Bula técnica descreve dose mínima de 3 mg/kg de emodepsida e 12 mg/kg de praziquantel.',
+      'Vermífugo tópico felino para nematódeos e cestódeos: dose mínima de 3 mg/kg de emodepsida e 12 mg/kg de praziquantel (0,14 mL/kg).',
     labelDirections:
-      'Aplicar 0,14 mL/kg ou pipeta correspondente ao peso, diretamente na pele da nuca.',
+      'Aplicar 0,14 mL/kg diretamente na pele da nuca (dose única): 0,5–2,5 kg = 0,35 mL; >2,5–5 kg = 0,70 mL; >5–8 kg = 1,12 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 0,5 kg (2,2 lbs / ~1 kg na bula norte-americana; 0,5 kg na europeia/brasileira).',
+      pregnancyLactation: 'Segurança estabelecida na gestação e lactação (monitorar gatos debilitados).',
+      restrictions: 'Exclusivo para gatos. Aplicar apenas em pele íntegra na base do crânio; impedir lambedura.',
+    },
     plumbsContext:
       'Produto tópico para vermes em gatos, útil em pacientes de difícil administração oral.',
     clinicalUse:
@@ -2883,7 +3108,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Controlar pulgas quando houver Dipylidium e reavaliar exposição ambiental.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Profender correspondente ao peso do gato, tópica, em dose única conforme bula.',
+      'Aplicar 1 pipeta de Profender (0,5–2,5 kg: 0,35 mL; >2,5–5 kg: 0,70 mL; >5–8 kg: 1,12 mL) sobre a pele seca da nuca, em dose única.',
     safetyAlert:
       'Evitar lambedura e contato ocular. Usar com cautela em gatos debilitados; confirmar peso mínimo e apresentação.',
     price: {
@@ -2905,12 +3130,23 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl:
       'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/8b787fc9-0b65-4f94-a4e2-19e88ab38315/Milbemax_Familia_SKUs.png?w=828&q=75&auto=format',
     species: ['dog', 'cat'],
-    presentations: ['Minicomprimidos por espécie e peso'],
+    presentations: [
+      'Cães 0,5 a 5 kg (2,5/25 mg): 0,5–2,5 kg = 1/2 cp; >2,5–5 kg = 1 cp',
+      'Cães >5 a 50 kg (12,5/125 mg): >5–25 kg = 1 cp; >25–50 kg = 2 cp',
+      'Gatos 0,5 a 2 kg (4/10 mg): 0,5–1 kg = 1/2 cp; >1–2 kg = 1 cp',
+      'Gatos >2 a 8 kg (16/40 mg): >2–4 kg = 1/2 cp; >4–8 kg = 1 cp',
+    ],
     activeComponents: ['milbemicina oxima', 'praziquantel'],
     labelCompositionSummary:
-      'Vermífugo oral com milbemicina oxima e praziquantel, com apresentações separadas para cães e gatos.',
+      'Vermífugo oral com milbemicina oxima e praziquantel (apresentações separadas para cães e gatos).',
     labelDirections:
-      'Administrar por faixa de peso conforme bula; mensal quando o objetivo for prevenção de dirofilariose.',
+      'Administrar VO com ou após o alimento em dose única (ou mensal na prevenção de dirofilariose): Cães 0,5–2,5 kg = 1/2 cp (P); >2,5–5 kg = 1 cp (P); >5–25 kg = 1 cp (G); >25–50 kg = 2 cp (G). Gatos 0,5–1 kg = 1/2 cp (4/10 mg); 1,1–2 kg = 1 cp; >2–4 kg = 1/2 cp (16/40 mg); >4–8 kg = 1 cp (16/40 mg).',
+    eligibility: {
+      minAge: 'Cães: a partir de 2 semanas de vida. Gatos: a partir de 6 semanas de vida.',
+      minWeight: 'Peso mínimo de 0,5 kg (cães e gatos).',
+      pregnancyLactation: 'Pode ser utilizado em fêmeas reprodutoras, gestantes e lactantes.',
+      restrictions: 'Conferir apresentação específica para cães ou gatos. Em cães MDR1, usar rigorosamente na dose indicada (não exceder margem).',
+    },
     plumbsContext:
       'Combina vermífugo para redondos/chatos com prevenção de Dirofilaria quando usado mensalmente.',
     clinicalUse:
@@ -2918,7 +3154,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Avaliar risco regional de Dirofilaria e status do paciente antes de protocolo preventivo em animal de risco.',
     prescriptionExample:
-      'Administrar Milbemax correspondente à espécie/peso conforme bula; para dirofilariose, usar mensalmente quando indicado.',
+      'Administrar Milbemax VO na apresentação por espécie/peso (cães: 0,5–5 kg ou >5–25 kg; gatos: 0,5–2 kg ou >2–8 kg); repetir mensalmente se prevenção de dirofilariose.',
     safetyAlert:
       'Não cobre pulgas/carrapatos. Confirmar apresentação para espécie e peso.',
     price: {
@@ -2944,7 +3180,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Vermífugo oral amplo para cães com pirantel, praziquantel, febantel e ivermectina.',
     labelDirections:
-      'Bula Endogard: Endogard 2,5 = 1 comp/2,5 kg; Endogard 10 = 1 comp/10 kg; Endogard 30 = 1 comp/30 kg. Giardia: uma dose q24h por 3 dias.',
+      'Endogard 2,5 = 1 cp/2,5 kg (até 1,25 kg = 1/2 cp); Endogard 10 = 1 cp/10 kg (até 5 kg = 1/2 cp); Endogard 30 = 1 cp/30 kg (até 15 kg = 1/2 cp). Verminoses: dose única. Giardíase: mesma dose q24h por 3 dias. Dirofilariose: 1 dose mensal.',
+    eligibility: {
+      minAge: 'A partir de 2 semanas (15 dias) de vida.',
+      minWeight: 'Peso mínimo prático ~0,5–1,25 kg (Endogard 2,5 permite fracionamento ao meio para até 1,25 kg).',
+      pregnancyLactation: 'Seguro para cadelas gestantes e lactantes.',
+      restrictions: 'Exclusivo para cães. A dose de ivermectina (0,006 mg/kg) é segura inclusive para Collies e Pastores Shetland.',
+    },
     plumbsContext:
       'Produto amplo para vermes intestinais, Giardia e prevenção de verme do coração conforme bula/programa.',
     clinicalUse:
@@ -2952,7 +3194,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Em Giardia, associar higiene ambiental e reavaliação. Em dirofilariose, avaliar risco e testagem.',
     prescriptionExample:
-      'Administrar Endogard na apresentação correspondente ao peso, conforme bula e objetivo clínico.',
+      'Administrar Endogard VO na dose por peso (2,5 mg: 1 cp/2,5 kg; 10 mg: 1 cp/10 kg; 30 mg: 1 cp/30 kg) — dose única para vermes ou q24h por 3 dias para Giárdia.',
     safetyAlert:
       'Não usar em gatos. Atenção a raças/pacientes com risco MDR1 por conter ivermectina.',
     price: {
@@ -2973,12 +3215,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/924447/vermifugo-canex-premium-caes-ate-40kg-nova-embalagem.jpg?v=638133010331200000',
     species: ['dog'],
-    presentations: ['Comprimidos por faixa de peso'],
+    presentations: [
+      'Canex Premium 450 mg: 1 comprimido para cada 5 kg (até 2,5 kg = 1/2 cp)',
+      'Canex Premium 900 mg: 1 comprimido para cada 10 kg (até 5 kg = 1/2 cp)',
+      'Canex Premium 3.600 mg: 1 comprimido para cada 40 kg (até 20 kg = 1/2 cp)',
+    ],
     activeComponents: ['ivermectina', 'pamoato de pirantel', 'febantel', 'praziquantel'],
     labelCompositionSummary:
       'Vermífugo oral amplo canino com ivermectina, pirantel, febantel e praziquantel.',
     labelDirections:
-      'Administrar conforme faixa de peso e bula Ceva. Alguns varejos listam apresentação de 1 comprimido para até 40 kg.',
+      'Administrar VO em dose única (ou mensalmente para prevenção de Dirofilaria): 450 mg = 1 cp/5 kg; 900 mg = 1 cp/10 kg; 3.600 mg = 1 cp/40 kg (cães até 20 kg podem usar 1/2 cp de 3.600 mg).',
+    eligibility: {
+      minAge: 'A partir de 3 semanas de vida (contraindicado para cães com menos de 2 semanas).',
+      minWeight: 'Sem peso mínimo restritivo para 450 mg fracionado (≤2,5 kg = 1/2 cp de 450 mg), respeitando idade ≥3 semanas.',
+      pregnancyLactation: 'Contraindicado nas primeiras 3 semanas de gestação e durante as 2 semanas pós-parto (lactação inicial).',
+      restrictions: 'Exclusivo para cães. Cautela em raças com mutação MDR1 devido à ivermectina.',
+    },
     plumbsContext:
       'Cobre nematódeos, cestódeos e larvas de Dirofilaria conforme bula, mas exige cautela por ivermectina.',
     clinicalUse:
@@ -2986,7 +3238,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Avaliar risco de dirofilariose e repetir exames/protocolo conforme plano preventivo.',
     prescriptionExample:
-      'Administrar Canex Premium conforme faixa de peso e bula da apresentação adquirida.',
+      'Administrar Canex Premium VO em dose única na apresentação por peso (450 mg: 1 cp/5 kg; 900 mg: 1 cp/10 kg; 3.600 mg: 1 cp/40 kg).',
     safetyAlert:
       'Não usar em gatos. Alerta para raças MDR1 e uso responsável de ivermectina.',
     price: {
@@ -3007,12 +3259,22 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1050424/Vermifugo-Canex-Giardia-30-comprimidos.jpg?v=638306597921800000',
     species: ['dog'],
-    presentations: ['Comprimidos por faixa de peso'],
+    presentations: [
+      'Até 5 kg: 1/2 comprimido (900 mg)',
+      '5,1 a 10 kg: 1 comprimido (900 mg = pirantel 144 mg + febantel 150 mg + praziquantel 50 mg)',
+      '10,1 a 15 kg: 1,5 comprimido; 15,1 a 20 kg: 2 comprimidos',
+    ],
     activeComponents: ['pamoato de pirantel', 'febantel', 'praziquantel'],
     labelCompositionSummary:
-      'Vermífugo oral palatável para cães com pirantel, febantel e praziquantel.',
+      'Vermífugo oral palatável para cães com pirantel 14,4 mg/kg + febantel 15 mg/kg + praziquantel 5 mg/kg.',
     labelDirections:
-      'Canex Giárdia: cada comprimido trata 10 kg. Verminoses: dose única. Giardia spp.: 1 comprimido/10 kg VO q24h por 3 dias consecutivos.',
+      '1 comprimido/10 kg VO (≤5 kg: 1/2 cp; 5,1–10 kg: 1 cp; 10,1–15 kg: 1,5 cp; 15,1–20 kg: 2 cp). Verminoses: dose única. Giárdia: q24h por 3 dias consecutivos.',
+    eligibility: {
+      minAge: 'Restrição oficial desta bula específica: segurança não determinada para cães abaixo de 2 anos de idade (usar outras apresentações/alternativas em filhotes).',
+      minWeight: 'Peso mínimo prático ~2–5 kg (≤5 kg = 1/2 comprimido).',
+      pregnancyLactation: 'Contraindicado na gestação e lactação (segurança não estabelecida na bula desta apresentação).',
+      restrictions: 'Exclusivo para cães. Em Giárdia, associar higienização ambiental e banho.',
+    },
     plumbsContext:
       'Febantel dá suporte à indicação para Giardia por bula, mas giardíase exige diagnóstico e manejo ambiental.',
     clinicalUse:
@@ -3020,7 +3282,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Em diarreia recorrente, confirmar diagnóstico, banho, limpeza ambiental, contactantes e reavaliação clínica.',
     prescriptionExample:
-      'Administrar Canex Giárdia conforme peso e esquema de bula para o alvo clínico.',
+      'Administrar Canex Giárdia VO na proporção de 1 cp/10 kg (≤5 kg: 1/2 cp; 5,1–10 kg: 1 cp) em dose única para vermes ou q24h por 3 dias consecutivos para Giárdia.',
     safetyAlert:
       'Não tratar Giardia como vermifugação comum isolada; exige higiene ambiental e reavaliação.',
     price: {
@@ -3046,7 +3308,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Anti-helmíntico oral à base de pamoato de pirantel; bula Ceva lista 145 mg de pamoato de pirantel por comprimido.',
     labelDirections:
-      'Bula reproduzida informa 1 comprimido para cada 10 kg em cães e 1 comprimido para cada 2,5 kg em gatos.',
+      'Administrar VO em dose única (sem necessidade de jejum): Cães = 1 comprimido/10 kg (até 5 kg = 1/2 cp); Gatos = 1 comprimido/2,5 kg (até 1,25 kg = 1/2 cp).',
+    eligibility: {
+      minAge: 'A partir de 2 a 4 semanas de vida em filhotes de cães e gatos (reforçar após 15 dias em infestações por nematódeos).',
+      minWeight: 'Cães e gatos ≤1,25–2,5 kg podem usar fração (1/2 comprimido = 1,25 kg em gatos / 5 kg em cães).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'Espectro limitado a nematódeos (vermes redondos); não trata tênias/cestódeos.',
+    },
     plumbsContext:
       'Vermífugo mais simples para nematódeos; não cobre cestódeos como produtos com praziquantel.',
     clinicalUse:
@@ -3054,7 +3322,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se houver suspeita de Dipylidium/Taenia, escolher produto com praziquantel e controlar pulgas.',
     prescriptionExample:
-      'Administrar Canex Original conforme peso e bula: cães 1 comp/10 kg; gatos 1 comp/2,5 kg.',
+      'Administrar Canex Original VO em dose única: cães 1 cp/10 kg (≤5 kg: 1/2 cp); gatos 1 cp/2,5 kg (≤1,25 kg: 1/2 cp).',
     safetyAlert:
       'Não cobre cestódeos; evitar escolha automática quando há segmentos de tênia ou pulgas.',
     price: {
@@ -3075,12 +3343,23 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/184349/Antipulgas-Fiprolex-Drop-Spot-0.67ml-ate-10kg-Caes-Ceva--2-.jpg?v=638152836343300000',
     species: ['dog', 'cat'],
-    presentations: ['Pipetas tópicas por espécie e peso'],
+    presentations: [
+      'Gatos: pipeta 0,5 mL',
+      'Cães 1 a 10 kg: pipeta 0,67 mL',
+      'Cães 11 a 20 kg: pipeta 1,34 mL',
+      'Cães 21 a 40 kg: pipeta 2,68 mL; >40 kg: pipeta 4,02 mL',
+    ],
     activeComponents: ['fipronil'],
     labelCompositionSummary:
-      'Ectoparasiticida tópico à base de fipronil, com apresentações específicas para cães e gatos.',
+      'Ectoparasiticida tópico à base de fipronil 10%, com apresentações específicas para cães e gatos.',
     labelDirections:
-      'Aplicar pipeta tópica conforme espécie e faixa de peso, seguindo bula Ceva.',
+      'Aplicar 1 pipeta na pele seca entre a nuca e escápulas mensalmente: Gatos = 0,5 mL; Cães 1–10 kg = 0,67 mL; 11–20 kg = 1,34 mL; 21–40 kg = 2,68 mL; >40 kg = 4,02 mL.',
+    eligibility: {
+      minAge: 'Cães: a partir de 1 mês (4 semanas) de vida. Gatos: a partir de 3 meses (12 semanas) de vida.',
+      minWeight: 'Cães: peso mínimo de 1,0 kg. Gatos: uso padrão após 3 meses (~1 kg).',
+      pregnancyLactation: 'Não recomendado em fêmeas prenhes ou lactantes sem supervisão veterinária.',
+      restrictions: 'PROIBIDO PARA COELHOS. Não banhar 48 horas antes e após a aplicação.',
+    },
     plumbsContext:
       'Alternativa tópica clássica à base de fipronil; não cobre vermes.',
     clinicalUse:
@@ -3088,7 +3367,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar aplicação, banho e ambiente se houver falha de controle.',
     prescriptionExample:
-      'Aplicar 1 pipeta de Fiprolex correta para espécie/peso, tópica, conforme bula.',
+      'Aplicar 1 pipeta de Fiprolex Drop Spot (gatos: 0,5 mL; cães 1–10 kg: 0,67 mL; 11–20 kg: 1,34 mL; 21–40 kg: 2,68 mL; >40 kg: 4,02 mL) sobre a pele seca da nuca, a cada 30 dias.',
     safetyAlert:
       'Confirmar apresentação para espécie. Não cobre vermes nem dirofilariose.',
     price: {
@@ -3110,12 +3389,21 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelUrl: 'https://integracao.bartofil.com.br/manual-bula/Capstar_Elanco_Pet_57mg_Para_Caes_de_11%2C5kg_a_57kg_124731.pdf',
     imageUrl: 'https://cobasi.vtexassets.com/arquivos/ids/1042272/capstar-57-mg-frente.jpg?v=638918952347000000',
     species: ['dog', 'cat'],
-    presentations: ['Comprimidos 11,4 mg', 'Comprimidos 57 mg'],
+    presentations: [
+      'Capstar 11,4 mg: cães e gatos de 1,0 a 11,4 kg',
+      'Capstar 57 mg: cães de 11,4 a 57 kg',
+    ],
     activeComponents: ['nitenpiram'],
     labelCompositionSummary:
-      'Neonicotinoide oral adulticida contra pulgas. Apresentações usuais de 11,4 mg e 57 mg conforme peso/espécie.',
+      'Neonicotinoide oral adulticida contra pulgas (mínimo 1 mg/kg): 11,4 mg (até 11,4 kg) e 57 mg (cães 11,4–57 kg).',
     labelDirections:
-      'Administrar por via oral em dose única, com ou sem alimento. Pode repetir após 24 horas se indicado, conforme bula e avaliação veterinária.',
+      'Administrar 1 comprimido VO em dose única, com ou sem alimento: cães e gatos de 1–11,4 kg = 1 cp de 11,4 mg; cães de 11,4–57 kg = 1 cp de 57 mg (>57 kg combinar apresentações). Pode repetir após 24 horas se houver nova infestação por pulgas adultas.',
+    eligibility: {
+      minAge: 'A partir de 4 semanas de vida em cães e gatos.',
+      minWeight: 'Peso mínimo de 1,0 kg (2 lbs).',
+      pregnancyLactation: 'Seguro para fêmeas gestantes e lactantes.',
+      restrictions: 'Ação rápida sem efeito residual mensal: para controle contínuo, associar ectoparasiticida residual.',
+    },
     plumbsContext:
       'Produto para derrubar pulgas adultas rapidamente; não tem duração mensal/trimestral e deve ser associado a estratégia preventiva quando há risco de reinfestação.',
     clinicalUse:
@@ -3123,7 +3411,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se usado em DAPP ou infestação intensa, associar controle ambiental, contactantes e produto residual mensal/trimestral.',
     prescriptionExample:
-      'Capstar 11,4 mg ou 57 mg conforme peso: dar 1 comprimido por via oral, dose única, para eliminação rápida de pulgas adultas. Pode repetir após 24 horas se necessário, conforme orientação veterinária.',
+      'Capstar VO dose única (cães e gatos 1–11,4 kg: 1 cp de 11,4 mg; cães 11,4–57 kg: 1 cp de 57 mg) para eliminação rápida de pulgas adultas; pode repetir após 24 horas se reinfestação.',
     safetyAlert:
       'Não usar como único controle de pulgas em ambiente infestado. Associar produto residual e controle ambiental para prevenir reinfestação.',
     price: {
@@ -3156,7 +3444,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém fipronil 12,500 g, moxidectina 3,000 g e veículo q.s.p. 100,000 mL.',
     labelDirections:
-      'Aplicar 1 flaconete por via tópica, conforme faixa de peso, diretamente sobre a pele seca entre a nuca e as escápulas. Aplicar todo o conteúdo e não fracionar.',
+      'Aplicar todo o conteúdo de 1 flaconete na pele seca entre a nuca e as escápulas a cada 30 dias (não fracionar): ≤5 kg = 0,31 mL; 5,1–10 kg = 0,67 mL; 10,1–20 kg = 1,34 mL; 20,1–40 kg = 2,68 mL; 40,1–60 kg = 4,02 mL.',
+    eligibility: {
+      minAge: 'Não avaliado em filhotes com menos de 33 dias de vida (recomenda-se uso a partir de ≥5 semanas).',
+      minWeight: 'Sem peso mínimo fixo abaixo de 5 kg além da idade mínima (menor flaconete: ≤5 kg = 0,31 mL).',
+      pregnancyLactation: 'Segurança não avaliada em cadelas gestantes ou lactantes.',
+      restrictions: 'EXCLUSIVO PARA CÃES (não usar em gatos). Não fracionar flaconetes; evitar banho 48 h após aplicação; cautela MDR1 em caso de lambedura oral.',
+    },
     plumbsContext:
       'Associação tópica de fenilpirazol com lactona macrocíclica. Útil quando se deseja ectoparasiticida com cobertura adicional para helmintos gastrintestinais em cães.',
     clinicalUse:
@@ -3164,7 +3458,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar controle ambiental de pulgas, exposição a carrapatos e parasitismo intestinal. Em Dipylidium ou DAPP, controlar pulgas em contactantes e ambiente.',
     prescriptionExample:
-      'Banni Cães [faixa de peso correta], aplicar 1 flaconete por via tópica, diretamente sobre a pele seca, afastando os pelos na região entre a nuca e as escápulas. Aplicar todo o conteúdo. Não fracionar. Evitar banho por 48 horas após a aplicação. Repetir conforme protocolo indicado pelo médico-veterinário e bula. Não usar em gatos.',
+      'Banni Cães (≤5 kg: 0,31 mL; 5,1–10 kg: 0,67 mL; 10,1–20 kg: 1,34 mL; 20,1–40 kg: 2,68 mL; 40,1–60 kg: 4,02 mL): aplicar todo o flaconete sobre a pele seca entre a nuca e as escápulas a cada 30 dias; evitar banho por 48 horas.',
     safetyAlert:
       'Não usar em gatos. Confirmar peso atual e apresentação correta; não fracionar flaconete de outra faixa de peso.',
     price: {
@@ -3196,7 +3490,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém praziquantel 8,300 g, moxidectina 0,830 g, fipronil 12,500 g e veículo q.s.p. 100,000 mL.',
     labelDirections:
-      'Aplicar 1 flaconete por via tópica diretamente sobre a pele seca da nuca, próximo à base do crânio, afastando bem os pelos. Aplicar todo o conteúdo em um único ponto.',
+      'Aplicar todo o conteúdo de 1 flaconete na pele seca da nuca (base do crânio) a cada 30 dias: ≤2,5 kg = 0,3 mL; 2,6–7,5 kg = 0,9 mL; >7,5 kg = combinar flaconetes.',
+    eligibility: {
+      minAge: 'A partir de 30 dias (1 mês) de vida.',
+      minWeight: 'Cobre filhotes e adultos a partir da faixa ≤2,5 kg (flaconete 0,3 mL) após 30 dias de vida.',
+      pregnancyLactation: 'Segurança não avaliada em fêmeas reprodutoras, prenhes ou lactantes.',
+      restrictions: 'Exclusivo para gatos (não usar em cães). Aplicar em ponto único na nuca; impedir lambedura até secagem completa e evitar banho por 48 h.',
+    },
     plumbsContext:
       'Endectocida tópico felino com cobertura combinada para ectoparasitas, nematódeos e cestódeos. A presença de praziquantel diferencia de produtos que cobrem apenas nematódeos.',
     clinicalUse:
@@ -3204,7 +3504,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar risco de reinfestação por pulgas e Dipylidium. Em gatos acima de 7,5 kg, calcular combinação de flaconetes conforme bula e peso atual.',
     prescriptionExample:
-      'Banni 3 Gatos [faixa de peso correta], aplicar 1 flaconete por via tópica, diretamente sobre a pele seca da nuca, próximo à base do crânio, afastando bem os pelos para garantir contato com a pele. Aplicar todo o conteúdo em um único ponto. Não fracionar. Evitar banho ou lambedura da região até secagem completa. Repetir conforme protocolo indicado, respeitando a bula.',
+      'Banni 3 Gatos (≤2,5 kg: 0,3 mL; 2,6–7,5 kg: 0,9 mL; >7,5 kg: combinar flaconetes): aplicar 1 flaconete na pele seca da nuca a cada 30 dias, impedindo lambedura até secar.',
     safetyAlert:
       'Produto felino. Evitar lambedura até secagem completa. Para gatos acima de 7,5 kg, usar combinação de flaconetes conforme peso e bula.',
     price: {
@@ -3232,7 +3532,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada comprimido de 700 mg contém fembendazol 200 mg, pamoato de pirantel 144 mg, praziquantel 50 mg e excipiente q.s.p. 700 mg.',
     labelDirections:
-      'Verminose comum: dose única VO conforme peso. Giardíase: 1 comprimido para cada 4 kg, VO, a cada 24 horas, por 3 dias consecutivos.',
+      'Verminoses comuns (dose única VO): até 5 kg = 1/2 cp; 6–10 kg = 1 cp; 11–20 kg = 2 cp; 21–30 kg = 3 cp; 31–40 kg = 4 cp; >40 kg = 1 cp/10 kg (repetir em 15–30 dias). Giardíase: 1 comprimido/4 kg VO q24h por 3 dias consecutivos.',
+    eligibility: {
+      minAge: 'Cães: a partir de 4 semanas de vida. Gatos: a partir de 6 semanas de vida.',
+      minWeight: 'Sem peso mínimo fixo em kg (≤5 kg = 1/2 cp; filhotes pequenos preferir Vetmax Plus Suspensão 0,5 mL/kg).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'No esquema de Giárdia (1 cp/4 kg por 3 dias), confirmar pesagem exata e associar higiene ambiental.',
+    },
     plumbsContext:
       'Associação de benzimidazol, pirantel e praziquantel para nematódeos e cestódeos. Em Giardia, protocolo de bula exige 3 dias e manejo ambiental.',
     clinicalUse:
@@ -3240,7 +3546,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Repetir em 15 a 30 dias quando indicado. Em Dipylidium caninum, tratar pulgas no animal, contactantes e ambiente. Em giardíase, reavaliar fezes, higiene ambiental e contactantes.',
     prescriptionExample:
-      'Vetmax Plus 700 mg, administrar por via oral, dose única, conforme peso: até 5 kg, 1/2 comprimido; 6 a 10 kg, 1 comprimido; 11 a 20 kg, 2 comprimidos; 21 a 30 kg, 3 comprimidos; 31 a 40 kg, 4 comprimidos; acima de 40 kg, 1 comprimido para cada 10 kg. Para giardíase: 1 comprimido para cada 4 kg, VO, a cada 24 horas, durante 3 dias consecutivos.',
+      'Vetmax Plus 700 mg VO — Verminoses (dose única): até 5 kg = 1/2 cp; 6–10 kg = 1 cp; 11–20 kg = 2 cp; 21–30 kg = 3 cp; 31–40 kg = 4 cp; >40 kg = 1 cp/10 kg. Giardíase: 1 cp/4 kg VO q24h por 3 dias consecutivos.',
     safetyAlert:
       'Ajustar dose pelo peso atual. Para Giardia, associar higiene ambiental, remoção de fezes, banho no último dia quando indicado e manejo dos contactantes.',
     price: {
@@ -3266,7 +3572,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 5 mL contém fembendazol 200 mg, pamoato de pirantel 144 mg, praziquantel 50 mg e excipiente q.s.p. 5 mL.',
     labelDirections:
-      'Administrar por via oral, em dose única, puro ou misturado a pequena quantidade de alimento, sem necessidade de jejum. Pode repetir após 15 ou 30 dias se indicado.',
+      'Administrar VO em dose única (puro ou misturado a pequena porção de alimento; repetir após 15–30 dias): até 5 kg = 2,5 mL; 6–10 kg = 5 mL; 11–20 kg = 10 mL; 21–30 kg = 15 mL; 31–40 kg = 20 mL; >40 kg = 5 mL/10 kg (0,5 mL/kg). Giardíase: 0,5 mL/kg (2 mL/4 kg) q24h por 3 dias.',
+    eligibility: {
+      minAge: 'Cães: a partir de 4 semanas de vida. Gatos: a partir de 6 semanas de vida.',
+      minWeight: 'Sem peso mínimo restritivo em kg após a idade mínima (calculado em 0,5 mL/kg na seringa dosadora).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas e gatas gestantes e lactantes.',
+      restrictions: 'Agitar vigorosamente antes de cada dose e medir em seringa graduada.',
+    },
     plumbsContext:
       'Mesma associação anti-helmíntica do comprimido em apresentação líquida, útil para pacientes pequenos, filhotes ou dificuldade de administração de comprimidos.',
     clinicalUse:
@@ -3274,7 +3586,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar carga parasitária, coproparasitológico e necessidade de repetição em 15 a 30 dias. Em cestódeos associados a pulgas, tratar pulgas junto.',
     prescriptionExample:
-      'Vetmax Plus Suspensão Oral, administrar por via oral, dose única, conforme peso: até 5 kg, 2,5 mL; 6 a 10 kg, 5 mL; 11 a 20 kg, 10 mL; 21 a 30 kg, 15 mL; 31 a 40 kg, 20 mL; acima de 40 kg, 5 mL para cada 10 kg. Pode ser oferecido puro ou misturado a pequena quantidade de alimento. Repetir em 15 a 30 dias se indicado.',
+      'Vetmax Plus Suspensão Oral VO em dose única (até 5 kg: 2,5 mL; 6–10 kg: 5 mL; 11–20 kg: 10 mL; 21–30 kg: 15 mL; 31–40 kg: 20 mL; >40 kg: 5 mL/10 kg); repetir em 15–30 dias se indicado.',
     safetyAlert:
       'Agitar antes do uso quando aplicável e medir com seringa dosadora. Ajustar pelo peso atual para evitar subdose.',
     price: {
@@ -4659,12 +4971,18 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Giardicid suspensão 50 mL', 'Giardicid 50', 'Giardicid 500'],
     activeComponents: ['metronidazol', 'sulfadimethoxina'],
     labelCompositionSummary: 'Metronidazol + sulfadimethoxina em suspensão ou comprimidos.',
-    labelDirections: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo q12h por 5 dias; Giardicid 500 em cães usualmente 25 mg/kg q12h. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg q12h por 5 dias.',
+    labelDirections: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo q12h por 5 dias; Giardicid 500 em cães usualmente 25 mg/kg q12h. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg (0,25–0,5 mL/kg) q12h por 5 dias.',
+    eligibility: {
+      minAge: 'Sem idade mínima fixa em bula, porém exige cálculo rigoroso por kg em filhotes jovens (geralmente ≥4 semanas; evitar em neonatos pela neurotoxicidade do metronidazol).',
+      minWeight: 'Sem peso mínimo fixo; ajustar exatamente em mg/kg ou 0,25–0,5 mL/kg na suspensão oral com seringa graduada.',
+      pregnancyLactation: 'Evitar ou contraindicar na gestação e lactação (metronidazol e sulfadimetoxina atravessam barreira placentária).',
+      restrictions: 'Reduzir dose em hepatopatia grave; suspender imediatamente se ataxia, nistagmo ou tremores.',
+    },
     dosageGuidance: { labelDose: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg q12h por 5 dias.', plumbs: { dog: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Evitar uso prolongado.' }], cat: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Monitorar neurotoxicidade.' }] } },
     plumbsContext: 'Metronidazol tem risco de neurotoxicidade em doses altas/prolongadas; reduzir muito em hepatopatia importante.',
     clinicalUse: 'Giardíase, coccidiose/protozoários e infecções entéricas sensíveis quando há diagnóstico ou forte suspeita.',
     reassessment: 'Suspender e reavaliar se ataxia, tremores, nistagmo, vômitos persistentes ou apatia importante.',
-    prescriptionExample: 'Giardicid [suspensão, 50 ou 500], administrar por via oral conforme peso, a cada 12 horas, por 5 dias.',
+    prescriptionExample: 'Giardicid Suspensão (cães: 0,5 mL/kg; gatos: 0,25–0,5 mL/kg) ou comprimidos 50/500 (12,5–25 mg/kg), administrar VO a cada 12 horas por 5 dias.',
     safetyAlert: 'Não usar como antidiarreico genérico. Cautela em hepatopatas, gestantes, filhotes jovens e pacientes neurológicos.',
     price: { averageLabel: 'R$ 88 a R$ 191', rangeLabel: 'Giardicid 50/500 conforme apresentação', sourceDate: '2026-05-28' },
     imageUrl: 'https://images.tcdn.com.br/img/img_prod/1087789/giardicid_suspensao_50ml_71_2_13642f5a6f1b02fa5d45a5edbdf77bbf.jpg'
@@ -4682,12 +5000,18 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Flagyl 250 mg', 'Suspensão humana conforme produto', 'Metronidazol manipulado'],
     activeComponents: ['metronidazol'],
     labelCompositionSummary: 'Nitroimidazol humano/manipulado; antibacteriano anaeróbio e antiprotozoário.',
-    labelDirections: 'Bula humana não orienta dose veterinária; usar literatura e diagnóstico.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 7 a 15 mg/kg VO q12-24h conforme indicação.', plumbs: { dog: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Evitar doses altas/prolongadas.' }], cat: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Sabor ruim; considerar manipulado.' }] } },
+    labelDirections: 'Uso extra-bula veterinário: 7 a 15 mg/kg VO q12–24h por 5–7 dias em infecções anaeróbias ou giardíase (evitar ultrapassar 25 mg/kg/dia em gatos ou uso prolongado).',
+    eligibility: {
+      minAge: 'Uso extra-bula; evitar em neonatos e filhotes lactentes (<4–6 semanas) pelo risco aumentado de toxicidade neurológica.',
+      minWeight: 'Sem peso mínimo fixo; ajustar rigorosamente em mg/kg (preferir suspensão manipulada para <2 kg).',
+      pregnancyLactation: 'Contraindicado em gestantes e lactantes (teratogênico e excretado no leite).',
+      restrictions: 'Cautela em hepatopatia (reduzir dose em 50%); suspender imediatamente diante de ataxia, nistagmo ou convulsões.',
+    },
+    dosageGuidance: { labelDose: 'Cães e gatos: 7 a 15 mg/kg VO q12-24h por 5 a 7 dias.', plumbs: { dog: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Evitar doses altas/prolongadas.' }], cat: [{ title: 'Anaeróbios/protozoários', dose: '7 a 15 mg/kg VO q12-24h', note: 'Sabor ruim; considerar manipulado.' }] } },
     plumbsContext: 'Pode causar neurotoxicidade mesmo em doses moderadas/prolongadas; sinais incluem ataxia e nistagmo.',
     clinicalUse: 'Giardíase selecionada, anaeróbios e colite específica quando há indicação.',
     reassessment: 'Suspender se ataxia, nistagmo, tremores, convulsões, hipersalivação, apatia ou vômitos persistentes.',
-    prescriptionExample: 'Metronidazol [concentração], administrar por via oral na dose calculada, pelo intervalo e duração prescritos.',
+    prescriptionExample: 'Metronidazol (7–15 mg/kg): administrar VO na dose calculada em mg/kg a cada 12–24 horas por 5 a 7 dias.',
     safetyAlert: 'Não usar como remédio genérico para diarreia. Evitar/cautela em hepatopatia grave, encefalopatia hepática, gestação e pacientes neurológicos.',
     price: { averageLabel: 'Variável', rangeLabel: 'Depende de concentração, marca e manipulação', sourceDate: '2026-05-28' },
     imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/320696f8b/metronidazol-250-mg-c-20-comprimidos.jpg'
@@ -6066,15 +6390,25 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     imageUrl: 'https://images.contentstack.io/v3/assets/blt6f84e20c72a89efa/blt6087128bb7c9084b/686fec6f3486028655c9c3a9/img-revolution-plus-product-update.webp',
     labelUrl: 'https://www2.zoetis.com.br/content/pt/pages/Especies/Caes-e-Gatos/Veterinario/Bulario/_assets/Revolution-Plus.pdf',
     species: ['cat'],
-    presentations: ['Pipetas para gatos por faixa de peso'],
+    presentations: [
+      'Gatos 1,25 a 2,5 kg: pipeta 0,25 mL (selamectina 15 mg + sarolaner 2,5 mg)',
+      'Gatos 2,6 a 5,0 kg: pipeta 0,50 mL (selamectina 30 mg + sarolaner 5 mg)',
+      'Gatos 5,1 a 10,0 kg: pipeta 1,0 mL (selamectina 60 mg + sarolaner 10 mg)',
+    ],
     activeComponents: ['selamectina', 'sarolaner'],
-    labelCompositionSummary: 'Endectocida tópico felino com selamectina + sarolaner.',
-    labelDirections: 'Gatos: aplicação tópica mensal conforme tabela de peso; bula cita dose mínima de selamectina e sarolaner por faixa.',
-    dosageGuidance: { labelDose: 'Gatos: 1 pipeta tópica mensal conforme peso.', plumbs: { cat: [{ title: 'Antiparasitário mensal felino', dose: 'Selamectina mínimo 6 mg/kg + sarolaner mínimo 1 mg/kg, tópico mensal', note: 'Usar pipeta correta por faixa de peso.' }] } },
+    labelCompositionSummary: 'Endectocida tópico felino com selamectina (mín. 6 mg/kg) + sarolaner (mín. 1 mg/kg).',
+    labelDirections: 'Gatos: aplicar 1 pipeta na pele seca da base do pescoço a cada 30 dias: ≤2,5 kg = 0,25 mL; 2,6–5 kg = 0,5 mL; 5,1–10 kg = 1,0 mL.',
+    eligibility: {
+      minAge: 'A partir de 8 semanas de vida.',
+      minWeight: 'Peso mínimo de 1,25 kg.',
+      pregnancyLactation: 'Segurança não estabelecida em gatas prenhes, lactantes ou reprodutoras.',
+      restrictions: 'Exclusivo para gatos. Cautela neurológica (sarolaner); impedir lambedura até secagem completa.',
+    },
+    dosageGuidance: { labelDose: 'Gatos: ≤2,5 kg = 0,25 mL; 2,6–5 kg = 0,5 mL; 5,1–10 kg = 1,0 mL na nuca a cada 30 dias.', plumbs: { cat: [{ title: 'Antiparasitário mensal felino', dose: 'Selamectina mínimo 6 mg/kg + sarolaner mínimo 1 mg/kg, tópico mensal', note: '≤2,5 kg: 0,25 mL; 2,6–5 kg: 0,5 mL; 5,1–10 kg: 1,0 mL.' }] } },
     plumbsContext: 'Associação de lactona macrocíclica com isoxazolina. Manter alerta neurológico por sarolaner.',
     clinicalUse: 'Controle mensal de pulgas, carrapatos, ácaros e vermes conforme bula felina.',
     reassessment: 'Reavaliar infestação, prurido, tolerância cutânea e exposição ambiental mensalmente.',
-    prescriptionExample: 'Revolution Plus, aplicar 1 pipeta correspondente ao peso do gato, topicamente, a cada 30 dias.',
+    prescriptionExample: 'Revolution Plus (≤2,5 kg: 0,25 mL; 2,6–5 kg: 0,5 mL; 5,1–10 kg: 1,0 mL): aplicar 1 pipeta na pele seca da nuca a cada 30 dias.',
     safetyAlert: 'Somente gatos. Evitar ingestão oral; cautela em histórico neurológico e em gestantes/lactantes, pois segurança pode não estar estabelecida.',
     price: { averageLabel: 'Cerca de R$ 110 por pipeta', rangeLabel: 'Varia conforme faixa de peso e varejo', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6092,7 +6426,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['ProHeart SR-12 solução injetável reconstituída'],
     activeComponents: ['moxidectina'],
     labelCompositionSummary: 'Moxidectina de longa ação para prevenção anual de dirofilariose em cães.',
-    labelDirections: 'Cães: 0,05 mL/kg SC da suspensão reconstituída, equivalente a 1 mL/20 kg e 0,5 mg/kg de moxidectina.',
+    labelDirections: 'Cães: 0,05 mL/kg SC da suspensão reconstituída (0,5 mg/kg de moxidectina = 1 mL/20 kg) aplicada pelo médico-veterinário. Cães de 6–9 meses exigem reforço após 6 meses; cães >9 meses recebem dose única anual (12 meses).',
+    eligibility: {
+      minAge: 'A partir de 6 meses (24 semanas) de vida.',
+      minWeight: 'Peso mínimo de ~1,5–2 kg para dosagem precisa de 0,05 mL/kg (ex.: 2 kg = 0,1 mL).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas prenhes e lactantes conforme bula.',
+      restrictions: 'Aplicação exclusivamente clínica/hospitalar (nunca liberar para o tutor aplicar). Testar obrigatoriamente para Dirofilaria antes da aplicação em regiões endêmicas.',
+    },
     dosageGuidance: { labelDose: 'Cães: 0,05 mL/kg SC, aplicação anual em clínica.', plumbs: { dog: [{ title: 'Prevenção de dirofilariose', dose: '0,5 mg/kg SC (0,05 mL/kg) a cada 12 meses', note: 'Uso clínico; testar conforme risco regional.' }] } },
     plumbsContext: 'Moxidectina é lactona macrocíclica/endectocida. Produto de longa ação, não domiciliar.',
     clinicalUse: 'Prevenção anual de Dirofilaria immitis e auxílio em ancilostomídeos conforme bula.',
@@ -6245,15 +6585,26 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://vet.elanco.com/br/produtos/comfortis',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/dd7cdc7a-20ee-49d6-834d-3850d9eda302/Asset%20154x%20%282%29%20%281%29.png?w=828&q=75&auto=format',
     species: ['dog', 'cat'],
-    presentations: ['Comfortis comprimidos por faixa de peso'],
+    presentations: [
+      'Cães 2,3–4,5 kg / Gatos 2,8–5,4 kg: Comfortis 140 mg',
+      'Cães 4,6–9 kg / Gatos 5,5–11 kg: Comfortis 270 mg',
+      'Cães 9,1–18 kg: Comfortis 425 mg (ou 560 mg conforme versão)',
+      'Cães 18,1–27 kg: Comfortis 810 mg; Cães 27,1–54 kg: Comfortis 1.620 mg',
+    ],
     activeComponents: ['spinosad'],
-    labelCompositionSummary: 'Antipulgas oral mensal à base de spinosad para cães e gatos.',
-    labelDirections: 'Cães e gatos: administrar comprimido conforme faixa de peso, uma vez ao mês, preferencialmente com alimento.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 1 comprimido mensal por faixa de peso.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: 'Dose por faixa de peso mensal', note: 'Não cobre carrapatos.' }], cat: [{ title: 'Pulgas adultas', dose: 'Dose por faixa de peso mensal', note: 'Confirmar peso/idade mínimos na bula.' }] } },
+    labelCompositionSummary: 'Antipulgas oral mensal à base de spinosad (dose mínima 30 mg/kg em cães; 50 mg/kg em gatos).',
+    labelDirections: 'Administrar 1 comprimido VO a cada 30 dias junto com alimento: Cães 2,3–4,5 kg = 140 mg; 4,6–9 kg = 270 mg; 9,1–18 kg = 560 mg; 18,1–27 kg = 810 mg; 27,1–54 kg = 1.620 mg. Gatos 1,4–2,7 kg = 90/140 mg (1/2 de 270 mg? usar apresentação de 90 mg se disponível, 140 mg para 2,8–5,4 kg; 270 mg para 5,5–11 kg).',
+    eligibility: {
+      minAge: 'A partir de 14 semanas de vida em cães e gatos.',
+      minWeight: 'Cães: mínimo de 2,3 kg. Gatos: mínimo de 1,4 kg.',
+      pregnancyLactation: 'Usar com cautela em fêmeas prenhes e lactantes; estudos relatam aumento de vômitos/baixo peso neonatal em superdosagens.',
+      restrictions: 'NÃO associar a doses altas extra-bula de ivermectina (risco severo de neurotoxicidade). Administrar sempre com alimento.',
+    },
+    dosageGuidance: { labelDose: 'Cães (≥30 mg/kg): 2,3–4,5 kg = 140 mg; 4,6–9 kg = 270 mg; 9,1–18 kg = 560 mg; 18,1–27 kg = 810 mg; 27,1–54 kg = 1.620 mg VO mensal c/ alimento. Gatos (≥50 mg/kg): 1,4–2,7 kg = 90 mg; 2,8–5,4 kg = 140 mg; 5,5–11 kg = 270 mg.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: '30 a 60 mg/kg VO mensal com alimento', note: 'Não cobre carrapatos.' }], cat: [{ title: 'Pulgas adultas', dose: '50 a 100 mg/kg VO mensal com alimento', note: 'Mínimo ≥14 semanas e ≥1,4 kg.' }] } },
     plumbsContext: 'Spinosad é antipulgas oral; não é isoxazolina e não cobre carrapatos como lotilaner/sarolaner.',
     clinicalUse: 'Eliminação de pulgas e prevenção de reinfestação por cerca de um mês.',
     reassessment: 'Reavaliar infestação ambiental e resposta clínica após 30 dias.',
-    prescriptionExample: 'Comfortis, administrar 1 comprimido correspondente ao peso, por via oral, mensalmente.',
+    prescriptionExample: 'Comfortis VO a cada 30 dias com alimento (Cães 4,6–9 kg: 270 mg; 9,1–18 kg: 560 mg; 18,1–27 kg: 810 mg; 27,1–54 kg: 1.620 mg | Gatos 2,8–5,4 kg: 140 mg; 5,5–11 kg: 270 mg).',
     safetyAlert: 'Cautela com uso concomitante de ivermectina em doses altas; confirmar bula e espécie/peso.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Varia por faixa de peso', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6538,12 +6889,18 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Invicto 11,4 mg', 'Invicto 57 mg'],
     activeComponents: ['nitenpiram'],
     labelCompositionSummary: 'Nitenpiram oral de ação rápida contra pulgas adultas.',
-    labelDirections: 'Administrar comprimido conforme espécie/peso; efeito rápido, sem proteção residual mensal prolongada.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 1 mg/kg VO dose única. Invicto 11,4 mg: até 11,4 kg; Invicto 57 mg: 11,4 a 57 kg.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única por faixa de peso', note: 'Knockdown rápido, sem efeito mensal prolongado.' }], cat: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única; Invicto 11,4 mg até 11,4 kg', note: 'Confirmar apresentação felina/baixo peso.' }] } },
+    labelDirections: 'Administrar 1 comprimido VO em dose única (1 mg/kg mínimo): cães e gatos de 1,0 a 11,4 kg = Invicto 11,4 mg; cães de 11,4 a 57 kg = Invicto 57 mg. Pode repetir após 24 horas se houver reinfestação.',
+    eligibility: {
+      minAge: 'A partir de 4 semanas de vida em cães e gatos.',
+      minWeight: 'Peso mínimo de 1,0 kg.',
+      pregnancyLactation: 'Pode ser utilizado em fêmeas gestantes e lactantes.',
+      restrictions: 'Knockdown rápido em pulgas adultas sem proteção residual mensal.',
+    },
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 mg/kg VO dose única. Invicto 11,4 mg: 1–11,4 kg; Invicto 57 mg: 11,4–57 kg.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única por faixa de peso', note: 'Knockdown rápido, sem efeito mensal prolongado.' }], cat: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única; Invicto 11,4 mg 1–11,4 kg', note: 'Uso a partir de 4 semanas e ≥1 kg.' }] } },
     plumbsContext: 'Nitenpiram elimina pulgas adultas rapidamente; não substitui controle ambiental e preventivo residual.',
     clinicalUse: 'Infestação por pulgas adultas e necessidade de redução rápida da carga parasitária.',
     reassessment: 'Reavaliar controle ambiental, reinfestação e necessidade de produto residual.',
-    prescriptionExample: 'Invicto [11,4 ou 57 mg], administrar por via oral conforme peso e espécie.',
+    prescriptionExample: 'Invicto VO dose única (cães e gatos 1–11,4 kg: 1 cp 11,4 mg; cães 11,4–57 kg: 1 cp 57 mg); repetir após 24 h se nova infestação.',
     safetyAlert: 'Pode haver prurido/agitação transitória pela morte das pulgas. Não confundir com isoxazolina mensal.',
     price: { averageLabel: 'R$ 68 a R$ 237', rangeLabel: 'Varia por apresentação/display', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -7115,6 +7472,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'Cada comprimido de 660 mg contém: Praziquantel 50,00 mg + Pamoato de Pirantel 144,00 mg (eq. a 50 mg de pirantel base) + Febantel 150,00 mg + palatabilizante e excipientes q.s.p. 660,00 mg. Fornece dose padrão de 5 mg/kg de praziquantel, 14,4 mg/kg de pamoato de pirantel e 15 mg/kg de febantel (1 comprimido para cada 10 kg).',
     labelDirections:
       'Cães: administrar por via oral, diretamente na boca ou misturado ao alimento (não requer jejum prévio). Verminoses gerais (nematódeos e cestódeos): 1 comprimido para cada 10 kg de peso corporal em dose única, repetindo após 15 dias. Tabela prática por peso: até 2,5 kg = 1/4 comp; de 2,6 a 5,0 kg = 1/2 comp; de 5,1 a 7,5 kg = 3/4 comp; de 7,6 a 10,0 kg = 1 comp. Giardíase (Giardia spp.): 1 comprimido para cada 10 kg VO a cada 24 horas (SID) durante 3 dias consecutivos.',
+    eligibility: {
+      minAge: 'A partir de 4 semanas de vida em filhotes (mesmo antes do desmame).',
+      minWeight: 'Sem peso mínimo restritivo além da idade mínima (≤2,5 kg = 1/4 comprimido bissulcado).',
+      pregnancyLactation: 'Pode ser utilizado em cadelas gestantes (idealmente 10 dias antes do parto) e lactantes simultaneamente ao tratamento dos filhotes.',
+      restrictions: 'EXCLUSIVO PARA CÃES (contém febantel; em gatos usar Helfine® Plus Gatos).',
+    },
     dosageGuidance: {
       labelDose:
         'Cães: 1 comprimido/10 kg VO em dose única para verminoses (repetir após 15 dias). Para Giardia spp.: 1 comprimido/10 kg VO a cada 24 horas (SID) por 3 dias consecutivos.',
@@ -7145,7 +7508,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar consistência fecal, ganho ponderal, controle ambiental e exame coproparasitológico (FAUST / centrífugo-flutuação ou ELISA para Giardia) após o término do protocolo.',
     prescriptionExample:
-      'Helfine® Plus Cães (Agener União): 1) Vermifugação: Administrar ___ comprimido(s) (1 comp/10 kg) por via oral em dose única e repetir a mesma dose após 15 dias; 2) Giardíase: Administrar ___ comprimido(s) (1 comp/10 kg) por via oral a cada 24 horas (SID) durante 3 dias consecutivos, associando higiene ambiental e banho.',
+      'Helfine® Plus Cães (Agener União) VO — até 2,5 kg: 1/4 cp; 2,6–5 kg: 1/2 cp; 5,1–7,5 kg: 3/4 cp; 7,6–10 kg: 1 cp. 1) Vermifugação: dose única com reforço após 15 dias; 2) Giardíase: mesma dose a cada 24 horas por 3 dias consecutivos com higiene ambiental.',
     safetyAlert:
       'Uso exclusivo em cães (não administrar a versão canina com febantel em gatos). Não utilizar nas primeiras 4 semanas de gestação sem avaliação de risco/benefício. Em casos de Giardia, não prolongar além da dose recomendada sem confirmação diagnóstica.',
     price: {
@@ -7191,7 +7554,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada comprimido contém: Praziquantel 20,00 mg + Pamoato de Pirantel 230,00 mg (equivalente a 80 mg de pirantel base) + palatabilizante e excipientes q.s.p. Fórmula dupla isenta de febantel (equivalente farmacológico ao Drontal Gatos / Duprantel Gatos), fornecendo 5 mg/kg de praziquantel e 57,5 mg/kg de pamoato de pirantel (20 mg/kg de pirantel base) na razão de 1 comprimido para cada 4 kg.',
     labelDirections:
-      'Bula Agener União (Gatos): administrar por via oral em dose única na proporção de 1 comprimido para cada 4 kg de peso corporal, diretamente na boca ou misturado ao alimento úmido/ração (não requer jejum). Repetir a administração após 15 dias. Tabela de peso da bula: até 1,0 kg = 1/4 comprimido; de 1,1 a 2,0 kg = 1/2 comprimido; de 2,1 a 3,0 kg = 3/4 comprimido; de 3,1 a 4,0 kg = 1 comprimido.',
+      'Gatos: administrar por via oral em dose única na proporção de 1 comprimido para cada 4 kg de peso corporal, diretamente na boca ou misturado ao alimento úmido/ração (não requer jejum). Repetir a administração após 15 dias. Tabela prática por peso: até 1,0 kg = 1/4 comprimido; de 1,1 a 2,0 kg = 1/2 comprimido; de 2,1 a 3,0 kg = 3/4 comprimido; de 3,1 a 4,0 kg = 1 comprimido.',
+    eligibility: {
+      minAge: 'A partir de 6 semanas de vida em gatinhos (mesmo antes do desmame).',
+      minWeight: 'Sem peso mínimo restritivo além da idade mínima (≤1,0 kg = 1/4 comprimido bissulcado).',
+      pregnancyLactation: 'Pode ser administrado a gatas gestantes e lactantes.',
+      restrictions: 'EXCLUSIVO PARA GATOS (nunca usar Helfine Plus Cães em felinos devido ao febantel e dosagem incompatível). Controlar pulgas simultaneamente em Dipylidium.',
+    },
     dosageGuidance: {
       labelDose:
         'Gatos: 1 comprimido/4 kg VO em dose única; repetir após 15 dias (até 1 kg: 1/4 comp; 1,1–2 kg: 1/2 comp; 2,1–3 kg: 3/4 comp; 3,1–4 kg: 1 comp).',
@@ -7216,7 +7585,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar exame coproparasitológico, escore corporal, controle de pulgas e higiene da caixa de areia.',
     prescriptionExample:
-      'Helfine® Plus Gatos (Agener União): Administrar ___ comprimido(s) (na dose de 1 comprimido para cada 4 kg de peso: até 1 kg = 1/4 cp; 1,1–2 kg = 1/2 cp; 2,1–3 kg = 3/4 cp; 3,1–4 kg = 1 cp) por via oral em dose única, repetindo a administração após 15 dias.',
+      'Helfine® Plus Gatos (Agener União) VO em dose única (até 1 kg = 1/4 cp; 1,1–2 kg = 1/2 cp; 2,1–3 kg = 3/4 cp; 3,1–4 kg = 1 cp), repetindo após 15 dias.',
     safetyAlert:
       'Produto exclusivo para gatos. Nunca substituir pelo Helfine Plus Cães em felinos (a apresentação canina contém febantel e doses incompatíveis com gatos). Não administrar em filhotes com menos de 6 semanas de idade. Pode ocorrer sialorreia transitória caso o gato mastigue o comprimido amargo.',
     price: {
@@ -7239,12 +7608,18 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Mectimax 3 mg', 'Mectimax 12 mg'],
     activeComponents: ['ivermectina'],
     labelCompositionSummary: 'Ivermectina oral em comprimidos.',
-    labelDirections: 'Cães: 0,2 mg/kg q7d por 2 a 4 administrações para sarna sarcóptica/otodécica/carrapatos/nematódeos; demodicose 0,6 mg/kg q24h por 2 a 3 meses. Gatos: sarna otodécica 0,3 mg/kg q7d por 2 a 4 administrações.',
-    dosageGuidance: { labelDose: 'Cães: sarna/nematódeos 0,2 mg/kg VO q7d por 2–4 administrações; demodicose 0,6 mg/kg VO q24h por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 administrações.', plumbs: { dog: [{ title: 'Sarna/nematódeos', dose: '0,2 mg/kg VO q7d, 2 a 4 administrações', note: 'Dose de bula.' }, { title: 'Demodicose', dose: '0,6 mg/kg VO q24h por 2 a 3 meses', note: 'Não liberar sem alerta MDR1/toxicidade.' }], cat: [{ title: 'Sarna otodécica', dose: '0,3 mg/kg VO q7d, 2 a 4 administrações', note: 'Monitorar neurotoxicidade.' }] } },
+    labelDirections: 'Cães: 0,2 mg/kg (1 cp 3 mg/15 kg ou 1 cp 12 mg/60 kg) VO q7d por 2–4 administrações para sarna sarcóptica/otodécica/carrapatos/nematódeos; demodicose 0,5–0,6 mg/kg VO q24h (3 mg/5 kg) por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 administrações.',
+    eligibility: {
+      minAge: 'Contraindicado para cães com menos de 6 semanas (1,5 mês) de vida.',
+      minWeight: 'Cães e gatos ≥1,5–2 kg com fracionamento preciso em mg/kg (3 mg = 1 cp/15 kg na dose 0,2 mg/kg).',
+      pregnancyLactation: 'Contraindicado em fêmeas gestantes e lactantes.',
+      restrictions: 'CONTRAINDICADO EM COLLIES, BORDER COLLIE, PASTOR SHETLAND, OLD ENGLISH SHEEPDOG, AUSTRALIAN SHEPHERD E MESTIÇOS (risco fatal por mutação MDR1). Não associar com spinosad (Comfortis) nem inibidores de P-gp.',
+    },
+    dosageGuidance: { labelDose: 'Cães: sarna/nematódeos 0,2 mg/kg (1 cp 3 mg/15 kg ou 12 mg/60 kg) VO q7d por 2–4 doses; demodicose 0,6 mg/kg (1 cp 3 mg/5 kg) VO q24h por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 doses.', plumbs: { dog: [{ title: 'Sarna/nematódeos', dose: '0,2 mg/kg VO q7d, 2 a 4 administrações', note: '1 cp de 3 mg trata 15 kg (7,5 kg = 1/2 cp); 1 cp de 12 mg trata 60 kg (30 kg = 1/2 cp).' }, { title: 'Demodicose', dose: '0,6 mg/kg VO q24h por 2 a 3 meses', note: '1 cp de 3 mg trata 5 kg. Nunca liberar em raças MDR1.' }], cat: [{ title: 'Sarna otodécica', dose: '0,3 mg/kg VO q7d, 2 a 4 administrações', note: 'Ajustar fração de 3 mg pelo peso e monitorar neurotoxicidade.' }] } },
     plumbsContext: 'Ivermectina em doses altas pode causar toxicidade neurológica, especialmente em cães MDR1/ABCB1.',
     clinicalUse: 'Sarnas e parasitoses sensíveis; demodicose exige cautela e hoje compete com alternativas mais seguras.',
     reassessment: 'Monitorar tremores, ataxia, midríase, cegueira, depressão, hipersalivação e resposta parasitológica.',
-    prescriptionExample: 'Mectimax [3 ou 12 mg], administrar conforme espécie, peso e indicação, com alertas de segurança.',
+    prescriptionExample: 'Mectimax (3 mg: 1 cp/15 kg a 0,2 mg/kg ou 1 cp/5 kg a 0,6 mg/kg; 12 mg: 1 cp/60 kg a 0,2 mg/kg): administrar VO na dose calculada em mg/kg, exclusivamente após descartar mutação/raça MDR1.',
     safetyAlert: 'Alerta máximo em Collie, Pastor de Shetland, Australian Shepherd, Border Collie e mestiços MDR1; pacientes neurológicos; filhotes; uso com spinosad, macrolídeos, azóis e inibidores de P-gp.',
     price: { averageLabel: 'R$ 35,00', rangeLabel: '3 mg 4 comp: R$ 22,00 a R$ 32,00; 12 mg 4 comp: R$ 48,00 a R$ 66,00', sourceDate: '2026-09-06' }
   },
@@ -7284,6 +7659,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'Cada 1,00 mL contém: Fipronil 130,00 mg (13%) e veículo q.s.p. 1,00 mL. Ectoparasiticida tópico spot-on de dose única para cães, fornecendo dose mínima aproximada de 8,7 a 13 mg/kg de fipronil conforme a faixa de peso.',
     labelDirections:
       'Uso exclusivamente externo (tópico spot-on) em cães. Quebrar a ponta da pipeta na linha tracejada, afastar os pelos na região cervical (entre a nuca e a base do pescoço, à frente das escápulas) até expor a pele e aplicar todo o conteúdo diretamente sobre a pele em um ou mais pontos para evitar escorrimento. Posologia por faixa de peso: até 10 kg = 1 pipeta de 0,67 mL; de 10 a 20 kg = 1 pipeta de 1,34 mL; de 20 a 40 kg = 1 pipeta de 2,68 mL; acima de 40 kg = 1 pipeta de 4,02 mL.',
+    eligibility: {
+      minAge: 'A partir de 4 meses (16 semanas) de vida.',
+      minWeight: 'Sem peso mínimo abaixo de 10 kg após os 4 meses de idade (primeira pipeta 0,67 mL cobre cães até 10 kg).',
+      pregnancyLactation: 'Pode ser usado em cadelas gestantes sob supervisão veterinária; NÃO utilizar em cadelas lactantes (segurança não estabelecida na lactação).',
+      restrictions: 'EXCLUSIVO PARA CÃES — não aplicar em gatos nem em coelhos (letal). Evitar banhos 48 horas antes e após aplicação.',
+    },
     dosageGuidance: {
       labelDose:
         'Cães (a partir de 4 meses): aplicar 1 pipeta tópica (spot-on) na pele da nuca/região interescapular a cada 28–30 dias conforme o peso: até 10 kg (0,67 mL); 10–20 kg (1,34 mL); 20–40 kg (2,68 mL); >40 kg (4,02 mL).',

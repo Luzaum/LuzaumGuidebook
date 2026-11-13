@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronDown, ListTree } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 
@@ -20,29 +20,113 @@ export function SectionAnchorNav({
   onActiveChange,
   title = 'Índice desta doença',
   variant = 'desktop',
-  observerRootMargin = '-18% 0px -70% 0px',
 }: SectionAnchorNavProps) {
-  const [activeId, setActiveId] = useState<string>('');
+  const [activeId, setActiveId] = useState<string>(() => sections[0]?.id ?? '');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const manualLockUntilRef = useRef<number>(0);
+
+  const sectionsKey = useMemo(() => sections.map((s) => s.id).join('|'), [sections]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries.find((entry) => entry.isIntersecting);
-        if (!visibleEntry?.target?.id) return;
+    if (sections.length === 0) {
+      setActiveId('');
+      return;
+    }
+    setActiveId((prev) => (sections.some((s) => s.id === prev) ? prev : sections[0].id));
+  }, [sections, sectionsKey]);
 
-        setActiveId(visibleEntry.target.id);
-      },
-      { rootMargin: observerRootMargin }
-    );
+  const computeActiveSection = useCallback(() => {
+    if (Date.now() < manualLockUntilRef.current) return;
+    if (sections.length === 0) return;
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) observer.observe(element);
+    const existing = sections
+      .map((section) => ({ id: section.id, element: document.getElementById(section.id) }))
+      .filter((item): item is { id: string; element: HTMLElement } => Boolean(item.element));
+
+    if (existing.length === 0) return;
+
+    const scrollContainer =
+      (existing[0].element.closest('.consulta-vet-main-scroll') as HTMLElement | null) ||
+      (document.querySelector('.consulta-vet-main-scroll') as HTMLElement | null);
+
+    let containerTop = 0;
+    let isAtBottom = false;
+
+    if (scrollContainer) {
+      containerTop = scrollContainer.getBoundingClientRect().top;
+      isAtBottom =
+        scrollContainer.scrollHeight > scrollContainer.clientHeight &&
+        scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 28;
+    } else {
+      isAtBottom =
+        document.documentElement.scrollHeight > window.innerHeight &&
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 28;
+    }
+
+    if (isAtBottom) {
+      const lastVisible = [...existing].reverse().find((item) => item.element.getBoundingClientRect().height > 0);
+      if (lastVisible) {
+        setActiveId((prev) => (prev === lastVisible.id ? prev : lastVisible.id));
+        return;
+      }
+    }
+
+    const activationOffset = variant === 'mobile' ? 150 : 170;
+    const triggerY = containerTop + activationOffset;
+
+    let currentId = existing[0].id;
+    for (const item of existing) {
+      const rect = item.element.getBoundingClientRect();
+      if (rect.height === 0) continue;
+      if (rect.top <= triggerY) {
+        currentId = item.id;
+      } else {
+        break;
+      }
+    }
+
+    setActiveId((prev) => (prev === currentId ? prev : currentId));
+  }, [sections, variant]);
+
+  useEffect(() => {
+    let rafId: number | null = null;
+    const scheduleUpdate = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        computeActiveSection();
+      });
+    };
+
+    const scrollContainer = document.querySelector('.consulta-vet-main-scroll') as HTMLElement | null;
+
+    scrollContainer?.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+
+    const mutationObserver = new MutationObserver(() => {
+      scheduleUpdate();
     });
+    if (scrollContainer) {
+      mutationObserver.observe(scrollContainer, { childList: true, subtree: true });
+    }
 
-    return () => observer.disconnect();
-  }, [sections, observerRootMargin]);
+    computeActiveSection();
+    const t1 = window.setTimeout(computeActiveSection, 80);
+    const t2 = window.setTimeout(computeActiveSection, 240);
+    const t3 = window.setTimeout(computeActiveSection, 420);
+
+    return () => {
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
+      scrollContainer?.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+      mutationObserver.disconnect();
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
+  }, [computeActiveSection, sectionsKey]);
 
   useEffect(() => {
     if (!activeId || !onActiveChange) return;
@@ -54,6 +138,7 @@ export function SectionAnchorNav({
     const element = document.getElementById(id);
     if (!element) return;
 
+    manualLockUntilRef.current = Date.now() + 650;
     const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
     const scrollToSection = () => {
       element.scrollIntoView({
@@ -74,7 +159,7 @@ export function SectionAnchorNav({
 
           const containerTop = scrollContainer.getBoundingClientRect().top;
           const elementTop = element.getBoundingClientRect().top;
-          const mobileNavOffset = 64;
+          const mobileNavOffset = 112;
           scrollContainer.scrollTo({
             top: Math.max(0, scrollContainer.scrollTop + elementTop - containerTop - mobileNavOffset),
             behavior,

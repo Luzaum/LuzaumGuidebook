@@ -39,7 +39,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Déficit de resposta à ameaça contralateral com reflexo pupilar preservado (I, II)',
     mentalStatus: 'Letargia, desorientação, estupor ou comportamento aberrante',
-    referenceBook: "de Lahunta (5ª ed, Cap. 18) & Dewey (3ª ed, Cap. 3, p. 34)",
+    referenceBook: "de Lahunta (5ª ed.) & Dewey (3ª ed.)",
   },
   {
     id: 'TRONCO_ENCEFALICO',
@@ -56,7 +56,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Déficits múltiplos característicos dos pares III a XII',
     mentalStatus: 'Obtundação grave, estupor a coma profundo',
-    referenceBook: "de Lahunta (5ª ed, Cap. 8) & Dewey (3ª ed, Cap. 3, p. 36)",
+    referenceBook: "de Lahunta (5ª ed.) & Dewey (3ª ed.)",
   },
   {
     id: 'CEREBELO',
@@ -73,7 +73,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Ameaça ausente com visão e PLR normais; possível nistagmo pendular/vestibulocerebelar',
     mentalStatus: 'Alerta e responsivo (consciência intacta)',
-    referenceBook: "de Lahunta (5ª ed, Cap. 13) & Dewey (3ª ed, Cap. 3, p. 37)",
+    referenceBook: "de Lahunta (5ª ed.) & Dewey (3ª ed.)",
   },
   {
     id: 'MEDULA_C1_C5',
@@ -90,7 +90,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Normais (exceto possível síndrome de Horner por trato simpático tectotegmentoespinhal)',
     mentalStatus: 'Alerta e normal',
-    referenceBook: "Dewey & da Costa (3ª ed, Tab. 3.4, p. 43) & de Lahunta (Cap. 9)",
+    referenceBook: "Dewey & da Costa (3ª ed.) & de Lahunta",
   },
   {
     id: 'MEDULA_C6_T2',
@@ -108,7 +108,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Normais (exceto síndrome de Horner)',
     mentalStatus: 'Alerta e normal',
-    referenceBook: "Dewey & da Costa (3ª ed, Tab. 3.4, p. 43) & de Lahunta (Cap. 9)",
+    referenceBook: "Dewey & da Costa (3ª ed.) & de Lahunta",
   },
   {
     id: 'MEDULA_T3_L3',
@@ -126,7 +126,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Normais',
     mentalStatus: 'Alerta e normal',
-    referenceBook: "Dewey & da Costa (3ª ed, Tab. 3.4, p. 43) & de Lahunta (Cap. 9)",
+    referenceBook: "Dewey & da Costa (3ª ed.) & de Lahunta",
   },
   {
     id: 'MEDULA_L4_S3',
@@ -144,7 +144,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Normais',
     mentalStatus: 'Alerta e normal',
-    referenceBook: "Dewey & da Costa (3ª ed, Tab. 3.4, p. 43) & de Lahunta (Cap. 9)",
+    referenceBook: "Dewey & da Costa (3ª ed.) & de Lahunta",
   },
   {
     id: 'NEUROMUSCULAR',
@@ -161,7 +161,7 @@ const REGION_GUIDES: AnatomicalRegionGuide[] = [
     ],
     cranialNerves: 'Possível acometimento de pares (ex.: n. facial, faríngeo/laríngeo em polirradiculoneurite / miastenia)',
     mentalStatus: 'Alerta e responsivo (a não ser por exaustão sistêmica)',
-    referenceBook: "Dewey & da Costa (3ª ed, Tab. 3.5, p. 45) & de Lahunta (Cap. 5)",
+    referenceBook: "Dewey & da Costa (3ª ed.) & de Lahunta",
   },
 ]
 

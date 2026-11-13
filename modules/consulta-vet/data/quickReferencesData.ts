@@ -192,7 +192,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [1], basis: 'mg/kg', schedule: 'A cada 21 dias · cães <15 kg', species: 'canine', dogWeight: 'under15' },
       { rates: [1], basis: 'mg/kg', schedule: 'A cada 21 dias', species: 'feline' },
     ],
-    source: 'Withrow, 6ª ed., cap. 12, p. 193; BSAVA Oncologia, 3ª ed., pp. 75–76.',
+    source: 'Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.; BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Referência de ciclo convencional. A calculadora usa 15 kg como corte em cães, com base no Withrow. O manual BSAVA descreve 10 kg.',
     keyNotes: [
       'Vesicante extremo: risco de necrose tecidual grave por extravasamento.',
@@ -214,7 +214,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     route: 'IV estrito (bolus lento ou infusão curta)',
     regimen: 'conventional',
     doses: [{ rates: [0.5, 0.75], basis: 'mg/m²', schedule: 'Semanal ou conforme o protocolo combinado' }],
-    source: 'BSAVA Oncologia, 3ª ed., p. 74.',
+    source: 'BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Linfoma (CHOP/COP) e outros protocolos específicos. Avaliar ajuste individual em cães com variante ABCB1.',
     keyNotes: [
       'Vesicante moderado a severo: necrose e ulceração se extravasar.',
@@ -240,7 +240,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [50], basis: 'mg/m²', route: 'VO', schedule: 'A cada 48 h ou 3–4 dias consecutivos na semana, conforme o protocolo linfoide' },
       { rates: [250, 300], basis: 'mg/m²', route: 'VO', schedule: 'COP felino · dose total a cada 21 dias, no dia após a vincristina', species: 'feline' },
     ],
-    source: 'BSAVA Formulary, 10ª ed., pp. 102–103; BSAVA Oncologia, 3ª ed., p. 73; Withrow, 6ª ed., tabela 33.12.',
+    source: 'BSAVA Small Animal Formulary, 10ª ed.; BSAVA Manual of Canine and Feline Oncology, 3ª ed.; Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.',
     indication: 'Neoplasias linfoides. O fracionamento da dose oral total e os dias de administração dependem do protocolo.',
     keyNotes: [
       'Metabolito acroleína é irritante vesical e pode causar Cistite Hemorrágica Estéril.',
@@ -263,7 +263,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [300], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'canine' },
       { rates: [200, 250], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'feline' },
     ],
-    source: 'BSAVA Oncologia, 3ª ed., pp. 62 e 77.',
+    source: 'BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Exemplo de uso: osteossarcoma apendicular canino em adjuvância. Avaliar função renal antes de definir a dose.',
     keyNotes: [
       'Segura em felinos (ao contrário da cisplatina que causa edema pulmonar letal em gatos).',
@@ -288,7 +288,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [60, 90], basis: 'mg/m²', schedule: 'A cada 3 semanas', species: 'canine' },
       { rates: [50, 60], basis: 'mg/m²', schedule: 'A cada 5–6 semanas', species: 'feline' },
     ],
-    source: 'BSAVA Oncologia, 3ª ed., pp. 73–74; Withrow, 6ª ed., cap. 15, p. 267.',
+    source: 'BSAVA Manual of Canine and Feline Oncology, 3ª ed.; Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.',
     indication: 'Exemplos de uso: linfoma cutâneo, mastocitoma e tumores do SNC, conforme protocolo.',
     keyNotes: [
       'Atravessa a barreira hematoencefálica (excelente para neoplasias do SNC e linfoma cutâneo).',
@@ -314,7 +314,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [400], basis: 'UI/kg', schedule: 'Indução ou resgate, conforme protocolo' },
       { rates: [10000], basis: 'UI/m²', schedule: 'Esquema alternativo de indução ou resgate' },
     ],
-    source: 'Withrow, 6ª ed., cap. 12, p. 197; BSAVA Oncologia, 3ª ed., p. 78.',
+    source: 'Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.; BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Doenças linfoproliferativas. As duas bases de cálculo são opções de protocolo e geram valores distintos.',
     keyNotes: [
       'Inibe a síntese protéica privando os blastos de asparagina exógena.',
@@ -336,7 +336,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     route: 'IV estrito (injeção lenta em via venosa segura)',
     regimen: 'conventional',
     doses: [{ rates: [2], basis: 'mg/m²', schedule: 'Semanal ou conforme o protocolo' }],
-    source: 'BSAVA Oncologia, 3ª ed., p. 74.',
+    source: 'BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Mastocitoma e alguns protocolos de linfoma.',
     keyNotes: [
       'Vesicante grave: mesmo risco de necrose que a vincristina e doxorrubicina.',
@@ -362,7 +362,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [20], basis: 'mg/m²', schedule: 'A cada 14 dias · com prednisolona', species: 'feline' },
       { rates: [2], basis: 'mg', schedule: 'A cada 48 h · alternativa para linfoma alimentar felino de baixo grau', species: 'feline' },
     ],
-    source: 'BSAVA Formulary, 10ª ed., pp. 75–76; Withrow, 6ª ed., cap. 33, p. 721.',
+    source: 'BSAVA Small Animal Formulary, 10ª ed.; Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.',
     indication: 'Linfoma. Em gatos, os esquemas exibidos referem-se ao linfoma alimentar de baixo grau.',
     keyNotes: [
       'Excelente tolerância gastrointestinal.',
@@ -386,7 +386,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
       { rates: [5.5], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'canine' },
       { rates: [6.5], basis: 'mg/m²', schedule: 'A cada 21 dias', species: 'feline' },
     ],
-    source: 'BSAVA Oncologia, 3ª ed., p. 76.',
+    source: 'BSAVA Manual of Canine and Feline Oncology, 3ª ed.',
     indication: 'Exemplos de uso: resgate de linfoma e carcinoma urotelial, conforme protocolo.',
     keyNotes: [
       'Coloração azulada marcante; pode colorir temporariamente a esclera e urina do paciente de azul-esverdeado.',
@@ -407,7 +407,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     regimen: 'metronomic',
     route: 'VO',
     doses: [{ rates: [10, 15], basis: 'mg/m²', schedule: 'A cada 24 h, em uso contínuo', species: 'canine' }],
-    source: 'BSAVA Formulary, 10ª ed., pp. 102–103; Withrow, 6ª ed., cap. 15.',
+    source: 'BSAVA Small Animal Formulary, 10ª ed.; Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.',
     indication: 'Protocolos selecionados para tumores sólidos em cães. A dose e a associação variam com o tumor e o protocolo.',
     keyNotes: [
       'Em sarcoma de tecidos moles com ressecção incompleta, Elmslie et al. estudaram 10 mg/m² com piroxicam. O estudo também incluiu administração em dias alternados, com eficácia comparativa incerta.',
@@ -423,7 +423,7 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
     regimen: 'metronomic',
     route: 'VO',
     doses: [{ rates: [4], basis: 'mg/m²', schedule: 'A cada 24 h, em uso contínuo', species: 'canine' }],
-    source: 'BSAVA Formulary, 10ª ed., pp. 75–76; Withrow, 6ª ed., cap. 15, p. 267; Therapeutic Strategies in Veterinary Oncology, cap. 3.',
+    source: 'BSAVA Small Animal Formulary, 10ª ed.; Withrow & MacEwen’s Small Animal Clinical Oncology, 6ª ed.; Therapeutic Strategies in Veterinary Oncology.',
     indication: 'Protocolo estudado em cães com tumores espontâneos, incluindo carcinoma urotelial de bexiga.',
     keyNotes: ['Acompanhar hemograma e plaquetas em série pelo risco de mielossupressão cumulativa.'],
     vesicant: false,
@@ -462,31 +462,36 @@ export const BSAVA_ONCOLOGY_DRUGS: OncologyDrug[] = [
 /** Diretrizes de biossegurança e monitorização */
 export const BSAVA_SAFETY_GUIDELINES = [
   {
+    id: 'dose',
     title: 'Dose por peso ou superfície corporal',
     summary:
       'A base de cálculo depende do fármaco, da espécie e do protocolo. Para doxorrubicina, o Withrow descreve opções de redução em cães pequenos e gatos; o corte de peso varia entre referências.',
   },
   {
+    id: 'vesicants',
     title: 'Técnica de Punção Única ("First-Stick") para Vesicantes',
     summary:
       'Doxorrubicina, Vincristina e Vinblastina provocam necrose tecidual severa com destruição muscular e esfacelamento se extravasarem. O cateter venoso periférico deve ser introduzido de primeira tentativa ("first-stick"), testado com solução salina estéril sem resistência, mantendo refluxo sanguíneo antes, durante e após a infusão. Nunca utilizar veias puncionadas para coleta no mesmo dia.',
   },
   {
+    id: 'tablets',
     title: 'Proibição Absoluta de Fracionar Comprimidos Citotóxicos',
     summary:
       'Comprimidos citotóxicos (ex.: Ciclofosfamida, Clorambucila, Lomustina) nunca devem ser cortados, partidos ou esmagados. Essa prática libera aerossóis mutagênicos no ambiente clínico e a distribuição do princípio ativo no comprimido não é uniforme. Se o peso do animal exigir dose intermediária, encomende a formulação exata em farmácia de manipulação veterinária habilitada.',
   },
   {
+    id: 'urinary',
     title: 'Monitorização urinária com ciclofosfamida',
     summary:
       'A acroleína pode provocar cistite hemorrágica estéril. Acompanhe sinais urinários e urinálise, sobretudo durante o uso contínuo. Diante de hematúria ou disúria, interrompa e investigue; a profilaxia deve seguir o protocolo e a avaliação individual.',
   },
   {
+    id: 'nadir',
     title: 'Janela de Nadir e Monitorização Laboratorial',
     summary:
       'O nadir dos neutrófilos ocorre tipicamente entre o 7º e o 10º dia pós-quimioterapia para a maioria dos agentes (11–14 dias no cão e 14–21 dias no gato para carboplatina). Avalie neutrófilos e plaquetas conforme o protocolo. Em esquemas metronômicos, programe monitorização seriada de toxicidade cumulativa.',
   },
-];
+] as const;
 
 /** Citações bibliográficas formais */
 export const BSAVA_BIBLIOGRAPHIC_SOURCES = [
@@ -494,15 +499,15 @@ export const BSAVA_BIBLIOGRAPHIC_SOURCES = [
     title: 'BSAVA Manual of Canine and Feline Oncology',
     edition: '3rd Edition',
     authors: 'John M. Dobson & B. Duncan X. Lascelles',
-    chapter: 'Cap. 7, Principles of Chemotherapy',
+    chapter: 'Principles of Chemotherapy',
     details:
-      'Tabelas de Conversão de Peso para Área de Superfície Corporal (Figuras 7.3 e 7.4), Princípios de Dosagem, Toxicidades, Manejo e Perfis Farmacológicos.',
+      'Conversão de Peso para Área de Superfície Corporal, Princípios de Dosagem, Toxicidades, Manejo e Perfis Farmacológicos.',
   },
   {
     title: 'BSAVA Small Animal Formulary, Part A: Canine and Feline',
     edition: '10th Edition',
     authors: 'Fergus Allerton (Editor-in-Chief)',
-    chapter: 'Monografias de clorambucil e ciclofosfamida e apêndice de protocolos',
+    chapter: 'Formulário de Oncologia e Protocolos',
     details:
       'Posologia por espécie e indicação, incluindo esquemas metronômicos em cães.',
   },
@@ -510,7 +515,7 @@ export const BSAVA_BIBLIOGRAPHIC_SOURCES = [
     title: "Withrow and MacEwen's Small Animal Clinical Oncology",
     edition: '6th Edition',
     authors: 'David M. Vail, Douglas H. Thamm, Julius M. Liptak',
-    chapter: 'Caps. 12, 15 e 33',
+    chapter: 'Clinical Oncology',
     details:
       'Quimioterapia convencional, estudos metronômicos e protocolos para tumores hematopoiéticos.',
   },

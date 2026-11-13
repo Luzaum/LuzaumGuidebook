@@ -423,7 +423,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     slug: 'hidroxido-aluminio-manipulado',
     name: 'Hidroxido de Aluminio Manipulado',
     manufacturer: 'Manipulado veterinário',
-    presentations: ['Po USP', 'Suspensão manipulada 60, 80, 90 ou 100 mg/mL', 'Capsulas/saches conforme prescricao'],
+    presentations: ['Po USP', 'Suspensão manipulada 60, 80, 90 ou 100 mg/mL', 'Capsulas ou saches manipulados em mg por dose (30 a 100 mg/kg/dia divididos nas refeicoes)'],
     activeComponents: ['hidroxido de aluminio em concentração manipulada'],
     labelCompositionSummary:
       'Fórmula manipulada sob prescricao. O po USP e descrito como apresentacao pratica por ser relativamente insipido e permitir mistura direta ao alimento.',

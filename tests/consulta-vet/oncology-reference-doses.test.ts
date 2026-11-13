@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { calculateOncologyVolumes, getOncologyPresentations } from '../../modules/consulta-vet/data/oncologyPresentations';
 import {
   BSAVA_ONCOLOGY_DRUGS,
   calculateOncologyDose,
@@ -11,6 +12,21 @@ function getDrug(id: string) {
   assert.ok(drug, id);
   return drug;
 }
+
+test('todos os esquemas têm apresentação e o volume respeita forma, via e unidade', () => {
+  for (const drug of BSAVA_ONCOLOGY_DRUGS) assert.ok(getOncologyPresentations(drug.id).length, drug.id);
+
+  const [injectable, solid, oralLiquid] = getOncologyPresentations('ciclofosfamida');
+  assert.deepEqual(calculateOncologyVolumes([100, 125], 'mg', injectable, 20, false), [5, 6.25]);
+  assert.deepEqual(calculateOncologyVolumes([50], 'mg', injectable, 20, true), []);
+  assert.deepEqual(calculateOncologyVolumes([50], 'mg', solid, 50, true), []);
+  assert.deepEqual(calculateOncologyVolumes([5], 'mg', oralLiquid, 2, true), [2.5]);
+  assert.deepEqual(calculateOncologyVolumes([5], 'mg', oralLiquid, 0, true), []);
+  assert.deepEqual(calculateOncologyVolumes([5], 'mg', oralLiquid, Infinity, true), []);
+  assert.deepEqual(calculateOncologyVolumes([5], 'UI', oralLiquid, 2, true), []);
+  assert.deepEqual(calculateOncologyVolumes([4000], 'UI', getOncologyPresentations('crisantaspase')[0], 5000, false), [0.8]);
+  assert.ok(getOncologyPresentations('ciclofosfamida-metronomica-canina').every((option) => option.kind !== 'injectable'));
+});
 
 test('ciclofosfamida convencional e metronômica usam doses e intervalos próprios', () => {
   const conventional = getDrug('ciclofosfamida');

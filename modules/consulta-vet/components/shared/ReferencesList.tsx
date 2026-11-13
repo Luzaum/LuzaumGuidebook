@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink, Link2 } from 'lucide-react';
 import { EditorialReference } from '../../types/common';
+import { sanitizeReferenceText } from '../../utils/referenceSanitizer';
 
 interface ReferencesListProps {
   references?: EditorialReference[];
@@ -8,6 +9,30 @@ interface ReferencesListProps {
   className?: string;
   /** Dentro de DiseaseSectionFrame: sem card externo nem título duplicado */
   variant?: 'standalone' | 'embedded';
+}
+
+function resolveReferenceUrl(reference: EditorialReference, citation: string): string {
+  if (reference.url) return reference.url;
+  if (reference.doi) return `https://doi.org/${reference.doi}`;
+  if (reference.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${reference.pmid}/`;
+
+  const doiMatch = citation.match(/\b10\.\d{4,9}\/[-._;()/:A-Z0-9]+/i)?.[0];
+  if (doiMatch) {
+    return `https://doi.org/${doiMatch.replace(/[.,;]+$/, '')}`;
+  }
+
+  const pmidMatch = citation.match(/\bPMID:\s*(\d{5,9})/i)?.[1];
+  if (pmidMatch) {
+    return `https://pubmed.ncbi.nlm.nih.gov/${pmidMatch}/`;
+  }
+
+  const query = encodeURIComponent(
+    (reference.title || citation).replace(/\s+/g, ' ').trim().slice(0, 180)
+  );
+  if (/formulário|tratado|livro|manual/i.test(reference.sourceType || '')) {
+    return `https://scholar.google.com/scholar?q=${query}`;
+  }
+  return `https://pubmed.ncbi.nlm.nih.gov/?term=${query}`;
 }
 
 export function ReferencesList({
@@ -20,50 +45,85 @@ export function ReferencesList({
 
   const list = (
     <div className="divide-y divide-border/70">
-        {references.map((reference, index) => (
+      {references.map((reference, index) => {
+        const rawCitation =
+          reference.citationText ||
+          reference.citation ||
+          [
+            reference.authors,
+            reference.title,
+            reference.journal,
+            reference.year,
+            reference.volume,
+          ]
+            .filter(Boolean)
+            .join('. ');
+        const citation = sanitizeReferenceText(rawCitation);
+        const notes = sanitizeReferenceText(reference.notes);
+        const sourceType = sanitizeReferenceText(reference.sourceType);
+        const evidenceLevel = sanitizeReferenceText(reference.evidenceLevel);
+        const href = resolveReferenceUrl(reference, citation);
+
+        return (
           <article
             key={reference.id || `${reference.citationText}-${index}`}
             id={reference.id || `reference-${index + 1}`}
-            className="scroll-mt-24 py-5 transition-colors duration-500 first:pt-0 last:pb-0 target:rounded-2xl target:bg-primary/[0.05] target:ring-2 target:ring-primary/25 target:ring-offset-2 target:ring-offset-background"
+            className="scroll-mt-24 py-4 transition-colors duration-500 first:pt-0 last:pb-0 target:rounded-2xl target:bg-primary/[0.05] target:ring-2 target:ring-primary/25 target:ring-offset-2 target:ring-offset-background"
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div className="w-full min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-border bg-muted/45 px-2 text-xs font-bold text-foreground">
-                    {index + 1}
-                  </span>
-                  {reference.sourceType ? (
-                    <span className="max-w-full break-words rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                      {reference.sourceType}
-                    </span>
+              <div className="flex items-start gap-3 min-w-0 flex-1">
+                <span className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-border bg-muted/70 px-1.5 text-xs font-bold text-foreground mt-0.5">
+                  {index + 1}
+                </span>
+                <div className="min-w-0 flex-1">
+                  {sourceType || evidenceLevel ? (
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      {sourceType ? (
+                        <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary">
+                          {sourceType}
+                        </span>
+                      ) : null}
+                      {evidenceLevel ? (
+                        <span className="rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-amber-800 dark:text-amber-200">
+                          Evidência: {evidenceLevel}
+                        </span>
+                      ) : null}
+                    </div>
                   ) : null}
-                  {reference.evidenceLevel ? (
-                    <span className="max-w-full break-words rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-3 py-1 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-800 dark:text-amber-200">
-                      Evidência: {reference.evidenceLevel}
-                    </span>
+                  <p className="break-words text-[14px] leading-relaxed text-foreground/90 [overflow-wrap:anywhere]">
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline hover:text-primary transition-colors cursor-pointer"
+                      title="Abrir referência em nova aba"
+                    >
+                      <span className="group-hover:underline">{citation}</span>
+                      <ExternalLink className="inline-block ml-1.5 h-3.5 w-3.5 text-muted-foreground group-hover:text-primary transition-colors align-baseline" />
+                    </a>
+                  </p>
+                  {notes ? (
+                    <p className="mt-1.5 max-w-[82ch] break-words text-xs leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
+                      {notes}
+                    </p>
                   ) : null}
                 </div>
-                <p className="mt-3 break-words text-[15px] leading-7 text-foreground/92 [overflow-wrap:anywhere]">{reference.citationText || reference.citation || [reference.authors, reference.title, reference.journal, reference.year, reference.volume, reference.pages].filter(Boolean).join('. ')}</p>
-                {reference.notes ? (
-                  <p className="mt-2 max-w-[82ch] break-words text-sm leading-7 text-muted-foreground [overflow-wrap:anywhere]">{reference.notes}</p>
-                ) : null}
               </div>
 
-              {reference.url ? (
-                <a
-                  href={reference.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary sm:min-h-0 sm:w-auto sm:justify-start"
-                >
-                  <Link2 className="h-4 w-4" />
-                  Abrir fonte
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              ) : null}
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-9 shrink-0 items-center justify-center gap-1.5 rounded-lg border border-border bg-background/80 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary hover:bg-primary/[0.04] self-start sm:ml-2"
+              >
+                <Link2 className="h-3.5 w-3.5" />
+                {reference.url ? 'Abrir fonte' : 'Buscar fonte'}
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
             </div>
           </article>
-        ))}
+        );
+      })}
     </div>
   );
 

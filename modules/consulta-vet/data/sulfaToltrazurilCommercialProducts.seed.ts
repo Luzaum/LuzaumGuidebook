@@ -122,7 +122,13 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Toltrazuril 5% (50 mg/mL). Bula brasileira indicada para coccidiose suína (*Cystoisospora suis*).',
     labelDirections:
-      'Suínos (bula): 0,4 mL/kg VO dose única (= 25 mg/kg), preferencialmente no 3º–4º dia de vida; ou 1 mL/leitão (~2,5 kg). Não aplicar dose suína a cães/gatos.',
+      'Suínos (bula): 0,4 mL/kg VO dose única (= 25 mg/kg), preferencialmente no 3º–4º dia de vida; ou 1 mL/leitão (~2,5 kg). Em cães e gatos (extrabula, 50 mg/mL): cães 10–30 mg/kg (0,2–0,6 mL/kg) VO q24h por 1–3 dias; gatos 20–30 mg/kg (0,4–0,6 mL/kg) VO em dose única, repetindo em 10 dias.',
+    eligibility: {
+      minAge: 'Suínos (bula): 3º–4º dia de vida. Cães e gatos (extrabula): uso descrito em filhotes jovens sob cálculo estrito por kg (geralmente a partir de 2 semanas de vida; monitorar hidratação em neonatos).',
+      minWeight: 'Sem peso mínimo fixo; dosar por peso exato (0,2 a 0,6 mL/kg na concentração de 50 mg/mL = 10 a 30 mg/kg).',
+      pregnancyLactation: 'Segurança não estabelecida em cadelas e gatas gestantes ou lactantes (uso extrabula apenas se benefício superar risco).',
+      restrictions: 'Apresentação suína de grande volume; medir com seringa de 1 mL em filhotes. Agitar antes de usar; frasco aberto válido por 180 dias (bula).',
+    },
     dosageGuidance: {
       labelDose: 'Leitões (bula): 0,4 mL/kg VO dose única (25 mg/kg de toltrazuril).',
       ...TOLTRAZURIL_DOG_CAT_DOSAGE,
@@ -159,7 +165,13 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Cada 100 mL contém 5 g de toltrazuril (50 mg/mL). Indicado para coccidiose por *Cystoisospora suis* em leitões.',
     labelDirections:
-      'Suínos (bula): 1 mL/leitão no 3º dia de vida (≈20–35 mg/kg para leitão de 1,5–2,5 kg), dose única. Agitar antes de usar.',
+      'Suínos (bula): 1 mL/leitão no 3º dia de vida (≈20–35 mg/kg para leitão de 1,5–2,5 kg), dose única. Em cães e gatos (extrabula, 50 mg/mL): cães 10–30 mg/kg (0,2–0,6 mL/kg) VO q24h por 1–3 dias; gatos 20–30 mg/kg (0,4–0,6 mL/kg) VO dose única (repetir após 10 dias). Agitar antes de usar.',
+    eligibility: {
+      minAge: 'Suínos (bula): 3º dia de vida. Cães e gatos (extrabula): descrito para filhotes jovens sob cálculo exato por peso (geralmente ≥2 semanas; atenção ao suporte hídrico em neonatos).',
+      minWeight: 'Dosar rigorosamente em balança (0,2 a 0,6 mL/kg na suspensão 50 mg/mL = 10 a 30 mg/kg).',
+      pregnancyLactation: 'Segurança não estabelecida em cadelas/gatas gestantes ou lactantes (extrabula).',
+      restrictions: 'Apresentação veterinária suína; não usar a dose fixa de 1 mL/leitão em cães ou gatos.',
+    },
     dosageGuidance: {
       labelDose: 'Leitões (bula): 1 mL/leitão VO dose única no terço inicial da vida.',
       ...TOLTRAZURIL_DOG_CAT_DOSAGE,
@@ -196,7 +208,13 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Toltrazuril 50 mg/mL. Indicado para prevenção e tratamento de coccidiose (*Isospora suis*) em leitões a partir de 1 dia.',
     labelDirections:
-      'Suínos (bula): 1 mL/1,25 kg VO dose única. Não extrapolar tabela suína para cães/gatos.',
+      'Suínos (bula): 1 mL/1,25 kg VO dose única. Em cães e gatos (extrabula, 50 mg/mL): cães 10–30 mg/kg (0,2–0,6 mL/kg) VO q24h por 1–3 dias; gatos 20–30 mg/kg (0,4–0,6 mL/kg) VO dose única (repetir em 10 dias). Não extrapolar tabela suína.',
+    eligibility: {
+      minAge: 'Suínos (bula): a partir de 1 dia de vida. Cães e gatos (extrabula): uso pediátrico descrito geralmente a partir de 2 semanas de idade sob cálculo exato mg/kg.',
+      minWeight: 'Sem peso mínimo fixo; calcular 0,2 a 0,6 mL/kg com seringa graduada.',
+      pregnancyLactation: 'Segurança não estabelecida em cadelas e gatas prenhes ou lactantes (extrabula).',
+      restrictions: 'Apresentação suína 50 mg/mL; agitar vigorosamente antes de aspirar.',
+    },
     dosageGuidance: {
       labelDose: 'Leitões (bula): 1 mL para cada 1,25 kg VO em dose única.',
       ...TOLTRAZURIL_DOG_CAT_DOSAGE,
@@ -231,6 +249,12 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
       'Cada 100 mL: sulfametoxazol 4,0 g + trimetoprima 0,8 g (48 mg/mL da associação total).',
     labelDirections:
       'Cães e gatos: 1 mL/kg VO q24h OU 0,5 mL/kg VO q12h por 3–5 dias. Agitar antes de usar; pode administrar puro, na água ou no alimento.',
+    eligibility: {
+      minAge: 'Contraindicado em recém-nascidos e filhotes lactentes muito jovens (evitar <4–6 semanas pelo risco de hiperbilirrubinemia e toxicidade por sulfas).',
+      minWeight: 'Sem peso mínimo fixo após 4–6 semanas; medir exatamente 0,5–1 mL/kg em seringa graduada.',
+      pregnancyLactation: 'Contraindicado em fêmeas gestantes e lactantes.',
+      restrictions: 'Garantir hidratação contínua (prevenção de cristalúria); evitar em insuficiência renal/hepática grave e histórico de hipersensibilidade a sulfonamidas.',
+    },
     dosageGuidance: {
       labelDose: '1 mL/kg q24h ou 0,5 mL/kg q12h por 3–5 dias (= 48 mg/kg/dia da associação).',
       ...SMX_TMP_DOG_CAT_DOSAGE,
@@ -245,7 +269,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     reassessment:
       'Reavaliar em 48–72 h. Uso >7 dias: hemograma, perfil hepatorrenal; Schirmer basal em cães.',
     prescriptionExample:
-      'Afectrim 100 mL: administrar ___ mL/kg VO q12h ou q24h por ___ dias, conforme diagnóstico e bula.',
+      'Afectrim 100 mL (48 mg/mL SMX+TMP): administrar 1 mL/kg VO q24h ou 0,5 mL/kg VO q12h por 3 a 5 dias (coccidiose/infecções bacterianas; em tratamentos >7 dias monitorar Schirmer e hemograma).',
     safetyAlert:
       'Contraindicado em gestantes/recém-nascidos, lesão hepática/renal e hipersensibilidade a sulfas. Não associar com cálcio, antiácidos ou anticoagulantes.',
     price: priceRange(56.9, 56.9, 'Cobasi — frasco 100 mL (fonte única consultada)'),
@@ -269,9 +293,15 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Cada 100 mL: sulfametoxazol 4,0 g + trimetoprima 0,8 g. Antibacteriano e antiprotozoário de amplo espectro.',
     labelDirections:
-      'Cães e gatos: 1 mL/kg VO q12h por 4–5 dias. Cães >20 kg: 30 mL q12h conforme bula.',
+      'Cães e gatos: 1 mL/kg VO q12h por 4–5 dias (= 48 mg/kg/dia da associação SMX+TMP, dividida q12h). Cães >20 kg: 30 mL VO q12h (= 1.440 mg SMX+TMP/dose) por 4–5 dias, ajustando se cálculo exato Plumb\'s (15–30 mg/kg VO q12h) indicar volume menor.',
+    eligibility: {
+      minAge: 'Evitar em recém-nascidos e filhotes <4–6 semanas de idade.',
+      minWeight: 'Sem peso mínimo fixo após 4–6 semanas (medir 0,31–1 mL/kg em seringa graduada; teto bula de 30 mL/dose q12h).',
+      pregnancyLactation: 'Contraindicado em fêmeas gestantes e lactantes.',
+      restrictions: 'Manter hidratação adequada; monitorar teste de Schirmer em uso prolongado (risco de KCS em cães).',
+    },
     dosageGuidance: {
-      labelDose: '1 mL/kg VO q12h por 4–5 dias (= 48 mg/kg/dia da associação, dividido q12h).',
+      labelDose: '1 mL/kg VO q12h por 4–5 dias (= 48 mg/kg/dia da associação, dividido q12h; cães >20 kg até 30 mL q12h).',
       ...SMX_TMP_DOG_CAT_DOSAGE,
     },
     plumbsContext: SMX_TMP_PLUMBS_CONTEXT,
@@ -280,7 +310,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     reassessment:
       'Reavaliar resposta clínica; monitorar hidratação, função renal e sinais de hipersensibilidade.',
     prescriptionExample:
-      'Sultrim 100 mL: administrar 1 mL/kg VO a cada 12 horas por 4–5 dias (ajustar em cães >20 kg conforme bula).',
+      'Sultrim 100 mL (48 mg/mL SMX+TMP): administrar 1 mL/kg (ou 0,31–0,63 mL/kg pelo cálculo Plumb\'s de 15–30 mg/kg) VO a cada 12 horas por 4–5 dias (máximo bula de 30 mL q12h em cães >20 kg).',
     safetyAlert:
       'Manter água disponível. Cautela em doença renal/hepática. Risco de KCS em cães em uso prolongado (Plumb\'s).',
     price: priceRange(13.7, 36.5, 'Pet Online BH R$ 13,70; Casa do Compadre R$ 36,50 — frasco 100 mL'),
@@ -308,9 +338,9 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Medicamento humano. Bactrim F: 800 mg SMX + 160 mg TMP por comprimido. Proporção fixa 5:1 entre SMX e TMP.',
     labelDirections:
-      'Posologia humana conforme bula Anvisa. Uso veterinário é extrabula; calcular mg/kg da associação total, não apenas de um componente.',
+      'Uso veterinário extrabula (calcular pela soma SMX + TMP: 480 mg no comprimido simples, 960 mg no Bactrim F ou 48 mg/mL na suspensão). Cães e gatos: 15 mg/kg VO q12h (ou 30 mg/kg VO q24h); piodermite superficial em cães: 15–30 mg/kg VO q12h; coccidiose: 15–30 mg/kg VO q12–24h; toxoplasmose: 15 mg/kg VO q12h por 4 semanas.',
     dosageGuidance: {
-      labelDose: 'Humano: conforme bula Roche/Anvisa por indicação e peso do paciente.',
+      labelDose: 'Extrabula veterinário (soma SMX+TMP): cães e gatos 15 mg/kg VO q12h ou 30 mg/kg VO q24h (15–30 mg/kg q12h em piodermite/coccidiose).',
       ...SMX_TMP_DOG_CAT_DOSAGE,
       notes: [
         ...(SMX_TMP_DOG_CAT_DOSAGE.notes || []),

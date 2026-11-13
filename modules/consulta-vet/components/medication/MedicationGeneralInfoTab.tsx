@@ -34,7 +34,7 @@ export function MedicationGeneralInfoTab({
           </span>
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-sky-400">
-              Módulo de Informações Gerais
+              Administração & Compatibilidade
             </span>
             <h2 className="text-xl sm:text-2xl font-black text-white">
               Vias, Compatibilidade, Espécies & Prescrição
@@ -143,7 +143,7 @@ export function MedicationGeneralInfoTab({
                 Soluções de Infusão Compatíveis
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-foreground/90">
-                {dilutionGuide.compatibleFluids.map((fluid, idx) => (
+                {(dilutionGuide.compatibleFluids || dilutionGuide.diluentsCompatible || []).map((fluid, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-emerald-500 font-bold">•</span>
                     <span>{fluid}</span>
@@ -159,7 +159,7 @@ export function MedicationGeneralInfoTab({
                 Incompatibilidades Físico-Químicas & Alertas
               </h4>
               <ul className="space-y-2 text-xs sm:text-sm text-foreground/90">
-                {dilutionGuide.incompatibleFluids.map((fluid, idx) => (
+                {(dilutionGuide.incompatibleFluids || dilutionGuide.incompatibilities || []).map((fluid, idx) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="text-rose-500 font-bold">•</span>
                     <span>{fluid}</span>
@@ -177,7 +177,7 @@ export function MedicationGeneralInfoTab({
                 Diretriz de Velocidade de Infusão
               </span>
               <p className="text-xs sm:text-sm leading-relaxed text-foreground">
-                {dilutionGuide.infusionRateGuidance}
+                {dilutionGuide.infusionRateGuidance || dilutionGuide.infusionRate}
               </p>
             </div>
 
@@ -187,7 +187,7 @@ export function MedicationGeneralInfoTab({
                 Armazenamento, Inspeção & Estabilidade
               </span>
               <p className="text-xs sm:text-sm leading-relaxed text-foreground/90">
-                {dilutionGuide.preparationNotes}
+                {dilutionGuide.preparationNotes || dilutionGuide.storageRequirements}
               </p>
             </div>
           </div>
@@ -303,8 +303,12 @@ export function MedicationGeneralInfoTab({
                     </span>
                   </div>
                   <div className="flex items-center gap-2 pt-2 border-t border-emerald-500/20 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
-                    <BookmarkCheck className="h-4 w-4" />
-                    <span>Dispensação em via única ao tutor</span>
+                    <BookmarkCheck className="h-4 w-4 shrink-0" />
+                    <span>
+                      {pType?.retentionRequired
+                        ? 'Retenção obrigatória de receita (controle especial)'
+                        : 'Prescrição veterinária em via única (sem retenção)'}
+                    </span>
                   </div>
                 </div>
 

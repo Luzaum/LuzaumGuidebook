@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import { normalizeInternalRedirect } from '../lib/internalRedirect'
 
 export default function ResetPassword() {
   const nav = useNavigate()
@@ -15,8 +16,8 @@ export default function ResetPassword() {
 
   const nextPath = useMemo(() => {
     const params = new URLSearchParams(location.search)
-    const next = params.get('next') || '/app'
-    return next.startsWith('/') ? next : '/app'
+    const next = params.get('next') || '/consulta-vet'
+    return normalizeInternalRedirect(next)
   }, [location.search])
 
   useEffect(() => {

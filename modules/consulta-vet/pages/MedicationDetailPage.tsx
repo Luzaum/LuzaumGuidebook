@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useSearchParams, useParams } from 'react-router-dom';
 import {
+  Activity,
   ChevronRight,
   ExternalLink,
   FileText,
@@ -37,7 +38,7 @@ import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
 import { includesRelatedSlug } from '../utils/relatedContent';
 
-type MedicationTab = 'medicamento' | 'info' | 'atencao' | 'mercado';
+type MedicationTab = 'medicamento' | 'farmacocinetica' | 'info' | 'atencao' | 'mercado';
 
 function ProductResourceLink({ href, label }: { href?: string | null; label: string }) {
   if (!href) return null;
@@ -75,29 +76,85 @@ export function MedicationDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [quickIndicationWeight, setQuickIndicationWeight] = useState('');
   const lastSavedSectionRef = useRef<string>('');
 
   const resumeState = (location.state as ResumeLocationState | null) || null;
+  const skipNextTabScrollResetRef = useRef(Boolean(resumeState?.sectionId));
+
+  const scrollPageToTop = useCallback(() => {
+    const scrollContainer = document.querySelector('.consulta-vet-main-scroll') as HTMLElement | null;
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
 
   // Tab State: Local state for instant switching without reloads, synced silently with query
   const [activeTab, setActiveTab] = useState<MedicationTab>(() => {
     const tabParam = searchParams.get('tab');
-    if (tabParam === 'info' || tabParam === 'atencao' || tabParam === 'mercado') {
+    if (
+      tabParam === 'farmacocinetica' ||
+      tabParam === 'info' ||
+      tabParam === 'atencao' ||
+      tabParam === 'mercado'
+    ) {
       return tabParam;
     }
     return 'medicamento';
   });
 
-  const handleTabChange = (tab: MedicationTab) => {
-    setActiveTab(tab);
-    const updated = new URLSearchParams(searchParams);
-    if (tab === 'medicamento') {
-      updated.delete('tab');
-    } else {
-      updated.set('tab', tab);
+  useEffect(() => {
+    if (skipNextTabScrollResetRef.current) {
+      skipNextTabScrollResetRef.current = false;
+      return;
     }
-    setSearchParams(updated, { replace: true });
-  };
+
+    scrollPageToTop();
+    const timeoutId = window.setTimeout(scrollPageToTop, 200);
+    return () => window.clearTimeout(timeoutId);
+  }, [activeTab, scrollPageToTop]);
+
+  const handleTabChange = useCallback(
+    (tab: MedicationTab, options?: { resetScroll?: boolean }) => {
+      if (options?.resetScroll === false) {
+        skipNextTabScrollResetRef.current = true;
+      } else {
+        scrollPageToTop();
+      }
+      setActiveTab(tab);
+      const updated = new URLSearchParams(searchParams);
+      if (tab === 'medicamento') {
+        updated.delete('tab');
+      } else {
+        updated.set('tab', tab);
+      }
+      setSearchParams(updated, { replace: true });
+    },
+    [scrollPageToTop, searchParams, setSearchParams]
+  );
+
+  const handleReferenceClick = useCallback(
+    (refId: string) => {
+      const scrollToTarget = () => {
+        const target = document.getElementById(refId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          target.classList.add('ring-2', 'ring-primary', 'transition-all');
+          window.setTimeout(() => target.classList.remove('ring-2', 'ring-primary'), 2000);
+        }
+      };
+
+      if (activeTab !== 'medicamento') {
+        handleTabChange('medicamento', { resetScroll: false });
+        window.setTimeout(scrollToTarget, 260);
+        return;
+      }
+
+      scrollToTarget();
+    },
+    [activeTab, handleTabChange]
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -170,13 +227,19 @@ export function MedicationDetailPage() {
   useEffect(() => {
     if (!medication || !resumeState?.sectionId) return;
 
+    const pharmaSections = new Set(['farmacocinetica', 'classificacao-farmacologica', 'fundamentos-clinicos']);
+    if (pharmaSections.has(resumeState.sectionId) && activeTab !== 'farmacocinetica') {
+      handleTabChange('farmacocinetica', { resetScroll: false });
+      return;
+    }
+
     const timeoutId = window.setTimeout(() => {
       const element = document.getElementById(resumeState.sectionId || '');
       element?.scrollIntoView({ block: 'start' });
     }, 150);
 
     return () => window.clearTimeout(timeoutId);
-  }, [medication, resumeState?.sectionId]);
+  }, [activeTab, handleTabChange, medication, resumeState?.sectionId]);
 
   const handleCopyLink = async () => {
     try {
@@ -190,29 +253,76 @@ export function MedicationDetailPage() {
 
   const abbrevExpanded = useMemo(() => new Set<string>(), [medication?.slug]);
 
+  const effectiveDetailedIndications = useMemo(() => {
+    if (!medication) return [];
+    if (medication.detailedIndications && medication.detailedIndications.length > 0) {
+      return medication.detailedIndications;
+    }
+    if (medication.doses && medication.doses.length > 0) {
+      return medication.doses.map((d) => {
+        const unitLabel = d.perWeightUnit
+          ? `${d.doseUnit}/${d.perWeightUnit}`
+          : d.doseUnit;
+        const doseRange = `${d.doseMin}${d.doseMax && d.doseMax !== d.doseMin ? ` a ${d.doseMax}` : ''} ${unitLabel}`;
+        return {
+          id: d.id,
+          indication: d.indication,
+          clinicalContext:
+            d.clinicalContext ||
+            d.notes ||
+            `Aplicação clínica em ${d.species === 'dog' ? 'cães' : d.species === 'cat' ? 'gatos' : 'cães e gatos'} pela via ${d.route}.`,
+          species: d.species,
+          dose: doseRange,
+          route: d.route,
+          frequency: d.frequency,
+          duration: d.duration || 'Conforme indicação e resposta clínica',
+          mechanismOfAction: medication.mechanismOfAction,
+          clinicalRationale:
+            d.notes ||
+            d.clinicalContext ||
+            'Individualizar a posologia segundo o peso corporal, função orgânica e resposta clínica do paciente.',
+          monitoring: d.monitoring,
+          referenceIds: d.referenceIds || [],
+          evidenceLevel: d.evidenceLevel,
+        };
+      });
+    }
+    return [];
+  }, [medication]);
+
   const sections = useMemo(() => {
     if (!medication) return [];
 
     if (activeTab === 'medicamento') {
-      return [
-        { id: 'resumo-rapido', label: '1. Resumo rápido' },
-        medication.detailedIndications && medication.detailedIndications.length > 0
-          ? { id: 'indicacoes-clinicas', label: '2. Indicações clínicas' }
-          : null,
-        { id: 'fundamentos-clinicos', label: '3. Fundamentos e evidências' },
-        medication.pharmacokineticsData
-          ? { id: 'farmacocinetica', label: '4. Farmacocinética aplicada' }
-          : null,
-        medication.generalInfoData?.pharmacologicalClassification
-          ? { id: 'classificacao-farmacologica', label: '5. Classificação farmacológica' }
-          : null,
-        relatedDiseases.length > 0 || relatedConsensos.length > 0
-          ? { id: 'conteudo-relacionado', label: '6. Conteúdo relacionado' }
-          : null,
-        medication.references && medication.references.length > 0
-          ? { id: 'referencias-bibliograficas', label: '7. Referências bibliográficas' }
-          : null,
-      ].filter(Boolean) as Array<{ id: string; label: string }>;
+      const items: Array<{ id: string; label: string }> = [
+        { id: 'resumo-rapido', label: 'Resumo rápido' },
+      ];
+      if (effectiveDetailedIndications.length > 0) {
+        items.push({ id: 'indicacoes-clinicas', label: 'Indicações clínicas' });
+      }
+      if (relatedDiseases.length > 0 || relatedConsensos.length > 0) {
+        items.push({ id: 'conteudo-relacionado', label: 'Conteúdo relacionado' });
+      }
+      if (medication.references && medication.references.length > 0) {
+        items.push({ id: 'referencias-bibliograficas', label: 'Referências bibliográficas' });
+      }
+      return items.map((item, idx) => ({ id: item.id, label: `${idx + 1}. ${item.label}` }));
+    }
+
+    if (activeTab === 'farmacocinetica') {
+      const items: Array<{ id: string; label: string }> = [];
+      if (medication.pharmacokineticsData) {
+        items.push({ id: 'farmacocinetica', label: 'Farmacocinética aplicada' });
+      }
+      if (
+        medication.generalInfoData?.pharmacologicalClassification ||
+        medication.pharmacologicClass ||
+        medication.activeIngredient
+      ) {
+        items.push({ id: 'classificacao-farmacologica', label: 'Classificação farmacológica' });
+      }
+      items.push({ id: 'fundamentos-clinicos', label: 'Fundamentos e evidências' });
+      return items.map((item, idx) => ({ id: item.id, label: `${idx + 1}. ${item.label}` }));
     }
 
     if (activeTab === 'info') {
@@ -233,23 +343,26 @@ export function MedicationDetailPage() {
         medication.monitoringParameters && medication.monitoringParameters.length > 0
           ? { id: 'parametros-monitoramento', label: '5. Monitoramento clínico' }
           : null,
-        medication.clientInformation && medication.clientInformation.length > 0
-          ? { id: 'orientacoes-tutor', label: '6. Orientações ao tutor' }
-          : null,
       ].filter(Boolean) as Array<{ id: string; label: string }>;
     }
 
     if (activeTab === 'mercado') {
-      return [
-        { id: 'apresentacoes-comerciais', label: '1. Apresentações comerciais' },
-        { id: 'tabela-posologia-pratica', label: '2. Guia e posologia prática' },
-        { id: 'bulas-fontes-oficiais', label: '3. Bulas e fontes oficiais' },
+      const items: Array<{ id: string; label: string }> = [
+        { id: 'apresentacoes-comerciais', label: 'Apresentações comerciais' },
       ];
+      if (medication.practicalWeightTable) {
+        items.push({ id: 'tabela-posologia-pratica', label: 'Guia e posologia prática' });
+      }
+      if (medication.officialSiteUrl || medication.leafletUrl || medication.priceReference) {
+        items.push({ id: 'bulas-fontes-oficiais', label: 'Bulas e fontes oficiais' });
+      }
+      return items.map((item, idx) => ({ id: item.id, label: `${idx + 1}. ${item.label}` }));
     }
 
     return [];
   }, [
     activeTab,
+    effectiveDetailedIndications.length,
     medication,
     relatedConsensos.length,
     relatedDiseases.length,
@@ -300,22 +413,29 @@ export function MedicationDetailPage() {
       activeColor: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25',
     },
     {
+      id: 'farmacocinetica' as const,
+      label: 'Farmacocinética',
+      icon: Activity,
+      badge: null,
+      activeColor: 'bg-purple-600 text-white shadow-md shadow-purple-600/25',
+    },
+    {
       id: 'info' as const,
-      label: 'Info',
+      label: 'Administração/Compatibilidade',
       icon: Info,
       badge: null,
       activeColor: 'bg-sky-600 text-white shadow-md shadow-sky-600/25',
     },
     {
       id: 'atencao' as const,
-      label: 'Atenção',
+      label: 'Efeitos adversos/Contraindicações',
       icon: AlertTriangle,
       badge: null,
       activeColor: 'bg-amber-600 text-white shadow-md shadow-amber-600/25',
     },
     {
       id: 'mercado' as const,
-      label: 'Mercado',
+      label: 'Apresentações comerciais',
       icon: ShoppingBag,
       badge: `${medication.presentations.length}`,
       activeColor: 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25',
@@ -324,11 +444,10 @@ export function MedicationDetailPage() {
 
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
-      <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
-        <div className="w-full min-w-0 flex-1 px-3 py-2.5 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
+      <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto flex w-full max-w-[1840px] flex-col px-3 py-2.5 md:px-6 md:py-5 xl:px-8 2xl:px-10">
         {/* Breadcrumb de navegação */}
         <nav
-          className="consulta-vet-breadcrumb mb-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
+          className="consulta-vet-breadcrumb mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
           aria-label="Navegação estrutural"
         >
           <Link to="/consulta-vet" className="transition-colors hover:text-primary">
@@ -342,50 +461,50 @@ export function MedicationDetailPage() {
           <span className="truncate text-foreground">{medication.title}</span>
         </nav>
 
-        {/* Header Compacto & Limpo: Apenas tag de Espécies, sem Terapêutica Geral e sem tabela inferior de metadados */}
-        <ConsultaVetSurface accent="emerald" className="rounded-[20px] p-4 shadow-xs md:rounded-3xl md:p-7 xl:p-8">
-          <div className="flex flex-col gap-4 md:gap-6 lg:flex-row lg:items-start lg:justify-between">
-            <div className="min-w-0 flex-1 space-y-3">
+        {/* Header Compacto & Largura Total */}
+        <ConsultaVetSurface accent="emerald" className="w-full rounded-2xl px-4 py-3 shadow-xs md:px-6 md:py-4">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1 space-y-1.5">
               {/* Única tag permitida: Canino / Felino */}
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center rounded-full bg-emerald-500/15 border border-emerald-500/25 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                <span className="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
                   {formatSpeciesList(medication.species)}
                 </span>
               </div>
 
-              {/* Título Menor e Elegante */}
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-tight text-foreground">
+              {/* Título Compacto */}
+              <h1 className="text-lg font-extrabold leading-snug tracking-tight text-foreground sm:text-xl lg:text-2xl">
                 {medication.title}
               </h1>
 
               {/* Subtítulo Clínico Direto */}
-              <p className="max-w-[85ch] text-xs sm:text-sm font-medium leading-relaxed text-muted-foreground">
+              <p className="text-xs font-medium leading-snug text-muted-foreground">
                 <strong className="text-foreground">{medication.activeIngredient}</strong> &bull; {medication.pharmacologicClass}
               </p>
             </div>
 
             {/* Ações da Monografia: Compartilhar, Favoritar */}
-            <div className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end">
+            <div className="flex shrink-0 items-center gap-1.5">
               <button
                 type="button"
                 onClick={handleCopyLink}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
                 title={copiedLink ? 'Link copiado!' : 'Copiar link da monografia'}
               >
-                <Share2 className="h-4 w-4" />
+                <Share2 className="h-3.5 w-3.5" />
               </button>
               <FavoriteButton
                 entityType="medication"
                 entityId={medication.id}
-                className="h-9 w-9 border border-border bg-background/80 p-2"
+                className="h-8 w-8 border border-border bg-background/80 p-1.5"
               />
             </div>
           </div>
         </ConsultaVetSurface>
 
-        {/* NAVEGADOR DE ABAS PRINCIPAIS (Transição ultra-limpa e instantânea) */}
-        <div className="consulta-vet-medication-tabs sticky top-0 z-20 mb-5 mt-4 md:top-2 md:mb-8 md:mt-7">
-          <div className="grid grid-cols-4 items-center gap-1 overflow-hidden rounded-xl border border-border/80 bg-background/95 p-1 shadow-md backdrop-blur-md md:flex md:gap-2 md:overflow-x-auto md:rounded-2xl md:p-1.5">
+        {/* NAVEGADOR DE ABAS PRINCIPAIS (Largura Total, 1 única linha sem sobreposição) */}
+        <div className="consulta-vet-medication-tabs sticky top-0 z-20 mb-4 mt-3 md:top-2 md:mb-6 md:mt-4">
+          <div className="flex w-full flex-nowrap items-center justify-between gap-1.5 overflow-x-auto rounded-xl border border-border/80 bg-background/95 p-1.5 shadow-md backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:gap-2 md:rounded-2xl">
             {tabsConfig.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -396,7 +515,7 @@ export function MedicationDetailPage() {
                   type="button"
                   onClick={() => handleTabChange(tab.id)}
                   className={cn(
-                    'relative flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-0.5 py-1 text-[9px] font-bold transition-all duration-200 whitespace-nowrap md:flex-row md:gap-2 md:rounded-xl md:px-4 md:py-2.5 md:text-sm',
+                    'flex shrink-0 min-w-fit flex-auto items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-all duration-200 md:rounded-xl md:px-4 md:py-2 md:text-xs xl:text-[13px]',
                     isActive
                       ? tab.activeColor
                       : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
@@ -407,7 +526,7 @@ export function MedicationDetailPage() {
                   {tab.badge && (
                     <span
                       className={cn(
-                        'absolute right-1 top-1 rounded-full px-1 py-0 text-[8px] font-bold md:static md:px-1.5 md:py-0.2 md:text-[10px]',
+                        'rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none',
                         isActive
                           ? 'bg-white/25 text-white'
                           : 'bg-muted text-muted-foreground'
@@ -422,19 +541,22 @@ export function MedicationDetailPage() {
           </div>
         </div>
 
-        {/* NAVEGADOR DE SEÇÕES MOBILE (TOC RESPONSIVO) */}
-        {sections.length > 0 && (
-          <SectionAnchorNav
-            sections={sections}
-            variant="mobile"
-            title="Índice deste medicamento"
-            onActiveChange={handleActiveSectionChange}
-            className="top-[3.25rem] mt-2 mb-4"
-          />
-        )}
+        {/* CORPO ABAIXO DAS ABAS: Conteúdo principal à esquerda + Índice do medicamento à direita */}
+        <div className="flex flex-col xl:flex-row xl:gap-6 2xl:gap-8">
+          <div className="w-full min-w-0 flex-1">
+            {/* NAVEGADOR DE SEÇÕES MOBILE (TOC RESPONSIVO) */}
+            {sections.length > 0 && (
+              <SectionAnchorNav
+                sections={sections}
+                variant="mobile"
+                title="Índice deste medicamento"
+                onActiveChange={handleActiveSectionChange}
+                className="top-[3.5rem] mt-1 mb-4"
+              />
+            )}
 
-        {/* CONTEÚDO DAS 4 ABAS COM ANIMAÇÃO FLUIDA E SEM RELOAD */}
-        <main className="pb-10 md:pb-16">
+            {/* CONTEÚDO DAS 5 ABAS COM ANIMAÇÃO FLUIDA E SEM RELOAD */}
+            <main className="pb-10 md:pb-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -448,30 +570,22 @@ export function MedicationDetailPage() {
               {activeTab === 'medicamento' && (
                 <div className="space-y-5 md:space-y-10">
                   {/* 1. Resumo Rápido + Indicações de Uso Resumidas */}
-                  <MedicationQuickSummaryPanel medication={medication} />
+                  <MedicationQuickSummaryPanel
+                    medication={medication}
+                    patientWeightInput={quickIndicationWeight}
+                    onPatientWeightInputChange={setQuickIndicationWeight}
+                  />
 
                   {/* 2. Tabela Completa de Indicações Clínicas Detalhadas com Mecanismos de Ação e Citações */}
-                  {medication.detailedIndications && medication.detailedIndications.length > 0 && (
+                  {effectiveDetailedIndications.length > 0 && (
                     <MedicationIndicationsTable
-                      indications={medication.detailedIndications}
+                      indications={effectiveDetailedIndications}
                       references={medication.references}
+                      onReferenceClick={handleReferenceClick}
                     />
                   )}
 
-                  {/* 3. Fundamentos Clínicos & Evidências Publicadas Interligadas (Estilo CID) */}
-                  <MedicationClinicalFoundationsSection medication={medication} />
-
-                  {/* 4. Farmacocinética Aprofundada (ADME, Stats) */}
-                  <MedicationPharmacokineticsSection data={medication.pharmacokineticsData} />
-
-                  {/* 5. Classificação Farmacológica & Mecânica (Sítios & Receptores-Alvo) */}
-                  <MedicationPharmacologicalClassificationSection
-                    classification={medication.generalInfoData?.pharmacologicalClassification}
-                    activeIngredient={medication.activeIngredient}
-                    pharmacologicClass={medication.pharmacologicClass}
-                  />
-
-                  {/* 5. Conteúdo Relacionado (Doenças e Consensos) */}
+                  {/* 3. Conteúdo Relacionado (Doenças e Consensos) */}
                   {(relatedDiseases.length > 0 || relatedConsensos.length > 0) && (
                     <MedicationSectionFrame sectionId="conteudo-relacionado" title="Conteúdo & Casos Relacionados">
                       <div className="grid gap-6 md:grid-cols-2">
@@ -535,38 +649,60 @@ export function MedicationDetailPage() {
                 </div>
               )}
 
-              {/* ABA 2: INFO */}
+              {/* ABA 2: FARMACOCINÉTICA */}
+              {activeTab === 'farmacocinetica' && (
+                <div className="space-y-5 md:space-y-10">
+                  {/* 1. Farmacocinética Aprofundada (ADME, Stats) */}
+                  <MedicationPharmacokineticsSection data={medication.pharmacokineticsData} />
+
+                  {/* 2. Classificação Farmacológica */}
+                  <MedicationPharmacologicalClassificationSection
+                    classification={medication.generalInfoData?.pharmacologicalClassification}
+                    activeIngredient={medication.activeIngredient}
+                    pharmacologicClass={medication.pharmacologicClass}
+                  />
+
+                  {/* 3. Fundamentos Clínicos & Evidências Publicadas Interligadas */}
+                  <MedicationClinicalFoundationsSection
+                    medication={medication}
+                    onReferenceClick={handleReferenceClick}
+                  />
+                </div>
+              )}
+
+              {/* ABA 3: ADMINISTRAÇÃO/COMPATIBILIDADE */}
               {activeTab === 'info' && (
                 <MedicationGeneralInfoTab medication={medication} />
               )}
 
-              {/* ABA 3: ATENÇÃO */}
+              {/* ABA 4: EFEITOS ADVERSOS/CONTRAINDICAÇÕES */}
               {activeTab === 'atencao' && (
                 <MedicationAttentionTab medication={medication} />
               )}
 
-              {/* ABA 4: MERCADO */}
+              {/* ABA 5: APRESENTAÇÕES COMERCIAIS */}
               {activeTab === 'mercado' && (
                 <MedicationMarketTab medication={medication} />
               )}
             </motion.div>
           </AnimatePresence>
         </main>
-      </div>
+          </div>
 
-      {/* NAVEGADOR DE SEÇÕES DESKTOP (STICKY SIDEBAR TOC) */}
-      {sections.length > 0 && (
-        <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
-          <SectionAnchorNav
-            sections={sections}
-            variant="desktop"
-            title="Índice do medicamento"
-            onActiveChange={handleActiveSectionChange}
-            className="w-60 2xl:w-64"
-          />
+          {/* NAVEGADOR DE SEÇÕES DESKTOP (STICKY SIDEBAR TOC ABAIXO DAS ABAS) */}
+          {sections.length > 0 && (
+            <div className="hidden w-56 shrink-0 2xl:w-60 xl:block">
+              <SectionAnchorNav
+                sections={sections}
+                variant="desktop"
+                title="Índice do medicamento"
+                onActiveChange={handleActiveSectionChange}
+                className="top-20 w-56 2xl:w-60"
+              />
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </div>
     </AbbreviationExpandedContext.Provider>
   );
 }

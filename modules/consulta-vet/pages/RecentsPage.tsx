@@ -137,7 +137,7 @@ export function RecentsPage() {
           <h2 className="mb-2 text-lg font-medium text-foreground">{UI_TEXT.emptyTitle}</h2>
           <p className="text-muted-foreground">{UI_TEXT.emptyBody}</p>
           <Link to="/consulta-vet" className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-            Ir para o início da Consulta Vet
+            Ir para o início do Vetius
           </Link>
         </div>
       ) : (

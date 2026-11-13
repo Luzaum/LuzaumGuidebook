@@ -44,7 +44,7 @@ import { hipotireoidismoCongenitoRecord } from './diseases.hipotireoidismo-conge
 import { dtuifFelinaRecord } from './diseases.dtuif-felina.seed';
 import { diabetesMellitusCaninaRecord } from './diseases.diabetes-mellitus-canina.seed';
 import { diabetesMellitusFelinaRecord } from './diseases.diabetes-mellitus-felina.seed';
-import { babesioseCaninaRecord } from './diseases.babesiose.seed';
+import { babesioseCaesGatosRecord } from './diseases.babesiose-caes-gatos.seed';
 import { cardiomiopatiaHipertroficaRecord } from './diseases.cardiomiopatia-hipertrofica.seed';
 import { cardiomiopatiaDilatadaRecord } from './diseases.cardiomiopatia-dilatada.seed';
 import { arritmiasCardiacasCaesGatosRecord } from './diseases.arritmias-cardiacas-caes-gatos.seed';
@@ -89,7 +89,7 @@ function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
 }
 
 export const diseasesSeed: DiseaseRecord[] = [
-  babesioseCaninaRecord,
+  babesioseCaesGatosRecord,
   dtuifFelinaRecord,
   fistulaPerianalFurunculoseAnalRecord,
   sindromeCushingCaesRecord,

@@ -4,7 +4,7 @@
  * Ao adicionar/remover slugs públicos, atualizar também `data/publicCatalogCardStubs.ts` (cartões de lista sem carregar seed completo).
  */
 export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
-  'babesiose-canina',
+  'babesiose-caes-gatos',
   'doencas-trato-urinario-inferior-felino-dtuif',
   'fistula-perianal-furunculose-anal',
   'sindrome-cushing-caes',
@@ -95,6 +95,7 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'ampicilina-sulbactam',
   'betanecol',
   'buprenorfina',
+  'butorfanol',
   'capromorelina',
   'ceftriaxona',
   'cetamina',

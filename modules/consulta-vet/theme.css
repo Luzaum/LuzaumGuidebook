@@ -266,16 +266,23 @@
 /* Allow flex/grid descendants to shrink to their local scroll viewport. */
 .consulta-vet-theme .consulta-vet-main-scroll :where(section, article, .grid > *, .flex > *) { min-width: 0; }
 .consulta-vet-theme .cv-clinical-figure { min-width: 0; }
-.consulta-vet-theme .cv-clinical-figure img { height: auto; max-height: 42rem; object-fit: contain; }
-.consulta-vet-theme .cv-figure-compact img { max-height: 22rem; }
+.consulta-vet-theme .cv-clinical-figure img { height: auto; max-height: 18rem; object-fit: contain; }
+.consulta-vet-theme .cv-figure-gallery .cv-clinical-figure img { max-height: 13.5rem; }
+.consulta-vet-theme .cv-figure-compact img { max-height: 13.5rem; }
 .consulta-vet-theme .cv-figure-full img { max-height: none; }
-.consulta-vet-theme .cv-figure-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); gap: 1.5rem; align-items: start; }
-.consulta-vet-theme .cv-figure-span { grid-column: 1 / -1; }
-@media print {
-  .consulta-vet-theme .cv-table-hint { display: none; }
-  .consulta-vet-theme .cv-table-scroll { overflow: visible; }
-  .consulta-vet-theme .cv-table-scroll > table { min-width: 0 !important; }
-  .consulta-vet-theme .cv-table-scroll :is(th, td) { min-width: 0; font-size: 9pt; }
+.consulta-vet-theme .cv-figure-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.cv-figure-gallery > * {
+  flex: 1 1 17rem;
+  max-width: 24rem;
+  min-width: 0;
 }
 .consulta-vet-theme .cv-editorial-table { container-type: inline-size; }
 .consulta-vet-theme .cv-table-cards { display: none; }

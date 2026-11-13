@@ -8,20 +8,38 @@ interface EditorialClinicalTableBlockProps {
   /** Classes opcionais para o cabeçalho (ex.: tinte por tema de secção) */
   headerTintClass?: string;
   className?: string;
+  hideCaption?: boolean;
+}
+
+function renderTableMarks(text: string) {
+  if (!text.includes('==')) return text;
+  return text.split(/(==[^=\n]+==)/g).map((part, idx) => {
+    if (part.startsWith('==') && part.endsWith('==') && part.length >= 5) {
+      return (
+        <mark
+          key={idx}
+          className="consulta-vet-readable-highlight inline rounded bg-amber-200/75 px-1 py-px font-semibold text-amber-950 [box-decoration-break:clone] dark:bg-amber-400/25 dark:text-amber-100"
+        >
+          {part.slice(2, -2)}
+        </mark>
+      );
+    }
+    return part.replace(/==/g, '');
+  });
 }
 
 function renderTableText(text: string) {
-  if (!text || (!text.includes('**') && !text.includes('*'))) return text;
+  if (!text || (!text.includes('**') && !text.includes('*') && !text.includes('=='))) return text;
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, idx) => {
     if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
       return (
         <strong key={idx} className="font-semibold text-foreground">
-          {part.slice(2, -2)}
+          {renderTableMarks(part.slice(2, -2))}
         </strong>
       );
     }
-    return part.replace(/\*\*/g, '');
+    return <React.Fragment key={idx}>{renderTableMarks(part.replace(/\*\*/g, ''))}</React.Fragment>;
   });
 }
 
@@ -32,6 +50,7 @@ export function EditorialClinicalTableBlock({
   table,
   headerTintClass = 'bg-muted/[0.18]',
   className,
+  hideCaption = false,
 }: EditorialClinicalTableBlockProps) {
   const tableMinWidth =
     table.headers.length <= 2
@@ -45,7 +64,7 @@ export function EditorialClinicalTableBlock({
         className
       )}
     >
-      {table.caption ? (
+      {!hideCaption && table.caption ? (
         <p className="break-words border-b border-border/55 bg-muted/[0.12] px-4 py-2.5 text-sm font-semibold text-foreground [overflow-wrap:anywhere]">
           {renderTableText(table.caption)}
         </p>

@@ -68,7 +68,7 @@ export function ConsultaVetShell() {
 
             </button>
 
-            <span className="text-sm font-semibold text-foreground">Menu do ConsultaVet</span>
+            <span className="text-sm font-semibold text-foreground">Menu do Vetius</span>
 
           </div>
 

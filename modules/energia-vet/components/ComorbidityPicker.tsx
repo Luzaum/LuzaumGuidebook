@@ -59,7 +59,9 @@ export function ComorbidityPicker({ species, value, onChange, disabled }: Comorb
                       </p>
                     )}
                     {option.bookChapter && (
-                      <p className="mt-1 text-[10px] leading-4 text-muted-foreground/80">{option.bookChapter}</p>
+                      <p className="mt-1 text-[10px] leading-4 text-muted-foreground/80">
+                        {option.bookChapter.replace(/,?\s*cap\.\s*\d+(?:\s*e\s*cap\.\s*\d+)?/gi, '')}
+                      </p>
                     )}
                   </button>
                 )

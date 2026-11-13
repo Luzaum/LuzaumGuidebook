@@ -183,7 +183,7 @@ export const hepatoprotectiveCommercialProductsSeed: CommercialMedicationProduct
     activeComponents: ['silimarina/cardo-mariano', 'colina', 'metionina'],
     labelCompositionSummary: 'Suplemento lipotropico/hepatobiliar com silimarina, colina e metionina.',
     labelDirections: 'Fontes comerciais: cães 4 mL/15 kg ate TID; gatos ate 5 kg 2 mL ate TID; gatos acima de 5 kg 4 mL ate TID.',
-    dosageGuidance: { labelDose: 'Cães: 4 mL/15 kg ate TID. Gatos: 2-4 mL ate TID, conforme peso/fonte.' },
+    dosageGuidance: { labelDose: 'Cães: 4 mL/15 kg VO até TID (q8h). Gatos: até 5 kg = 2 mL até TID; >5 kg = 4 mL até TID.' },
     plumbsContext: 'Sem dose Plumb propria; metionina/colina não devem ser tratadas como hepatoprotetor universal.',
     clinicalUse: 'Suporte nutricional/lipotropico em cães e gatos, com revisao de dieta e encefalopatia hepática.',
     reassessment: 'Reavaliar dieta, sinais neurologicos, apetite, vômito e perfil hepatico.',

@@ -503,6 +503,38 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
               </SourceTextBlock>
             )}
 
+            {product.eligibility ? (
+              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/[0.08] px-3.5 py-3 text-sm">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-800 dark:text-emerald-200">
+                  Elegibilidade de uso (idade mínima, peso e restrições)
+                </p>
+                <dl className="mt-2 grid gap-1.5 text-[13px] leading-relaxed text-emerald-950 dark:text-emerald-50">
+                  <div>
+                    <dt className="inline font-semibold">A partir de (idade): </dt>
+                    <dd className="inline">{product.eligibility.minAge}</dd>
+                  </div>
+                  {product.eligibility.minWeight ? (
+                    <div>
+                      <dt className="inline font-semibold">Peso mínimo: </dt>
+                      <dd className="inline">{product.eligibility.minWeight}</dd>
+                    </div>
+                  ) : null}
+                  {product.eligibility.pregnancyLactation ? (
+                    <div>
+                      <dt className="inline font-semibold">Gestação / lactação: </dt>
+                      <dd className="inline">{product.eligibility.pregnancyLactation}</dd>
+                    </div>
+                  ) : null}
+                  {product.eligibility.restrictions ? (
+                    <div>
+                      <dt className="inline font-semibold">Restrições e cuidados: </dt>
+                      <dd className="inline">{product.eligibility.restrictions}</dd>
+                    </div>
+                  ) : null}
+                </dl>
+              </div>
+            ) : null}
+
             {notes.length ? (
               <SourceTextBlock label="Notas de dose">
                 <ul className="space-y-1">

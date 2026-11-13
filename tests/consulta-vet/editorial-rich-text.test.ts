@@ -38,3 +38,20 @@ test('EditorialRichText limpa asteriscos duplos soltos ou desbalanceados', () =>
   const output = renderText(input);
   assert.equal(output.includes('**'), false);
 });
+
+test('EditorialRichText converte marcadores ==...== em destaque mark visivel sem expor sinais literais', () => {
+  const input = 'Regra de ouro: ==esfregaço negativo não descarta babesiose==.';
+  const output = renderText(input);
+  assert.equal(output.includes('=='), false);
+  assert.match(output, /<mark class="[^"]*consulta-vet-readable-highlight[^"]*">esfregaço negativo não descarta babesiose<\/mark>/);
+});
+
+test('EditorialRichText preserva ==...== mesmo com parenteses, numeros ou referencias internas sem vazar ==', () => {
+  const input =
+    '- ==Revisão sistemática e meta-análise global (Unar et al., 2023)==: detectou ==13% (13/100)== buscando ==piroplasmas grandes (> 2,5 µm)==.';
+  const output = renderText(input);
+  assert.equal(output.includes('=='), false, 'Nunca deve exibir == literais com parenteses internos');
+  assert.match(output, /<mark class="[^"]*">13% \(13\/100\)<\/mark>/);
+  assert.match(output, /<mark class="[^"]*">piroplasmas grandes \(&gt; 2,5 µm\)<\/mark>/);
+  assert.match(output, /Revisão sistemática e meta-análise global/);
+});

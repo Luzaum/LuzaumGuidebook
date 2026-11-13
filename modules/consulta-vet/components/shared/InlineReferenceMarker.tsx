@@ -23,7 +23,7 @@ export function InlineReferenceMarker({
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={(e) => { e.preventDefault(); e.stopPropagation(); onClick(); }}
       title={citationText}
       aria-label={`Ir para referência ${label}`}
       className={cn(

@@ -55,7 +55,7 @@ export function buildEnergyCalculationExplanation(
       `Peso utilizado: ${weightKg.toFixed(2)} kg (${weightBasisLabel(result.weightBasis)}).`,
       `Fórmula alométrica: RER = ${BOOK_RER_CONSTANT} × (peso em kg)^${exponent}.`,
       `Cálculo: ${BOOK_RER_CONSTANT} × ${weightKg.toFixed(2)}^${exponent} = ${BOOK_RER_CONSTANT} × ${pow.toFixed(2)} ≈ ${rer.toFixed(0)} kcal/dia.`,
-      `Referência: ${BOOK_ENERGY_SOURCE.title}, ${BOOK_ENERGY_SOURCE.chapter}.`,
+      `Referência: ${BOOK_ENERGY_SOURCE.title}.`,
     ],
   })
 
@@ -154,7 +154,7 @@ export function buildEnergyCalculationExplanation(
     summaryKcalDay,
     sourceCitation: source
       ? `${source.title} (${source.year}${source.guidelineVersion ? ` · ${source.guidelineVersion}` : ''})`
-      : `${BOOK_ENERGY_SOURCE.title}, ${BOOK_ENERGY_SOURCE.chapter}`,
+      : `${BOOK_ENERGY_SOURCE.title}`,
     physiologicalProfileLabel: bookProfile?.label ?? result.clinicalProfileLabel,
     physiologicalProfileDescription: bookProfile?.description,
   }

@@ -37,7 +37,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
     labelCompositionSummary:
       'Cada 1 mL contém 2,0 mg de dexametasona base (como fosfato dissódico de dexametasona), veículo aquoso estéril q.s.p. 1 mL. Frasco-ampola de vidro âmbar contendo 10 mL.',
     labelDirections:
-      'Administrar por via intravenosa (IV lenta), intramuscular (IM) ou subcutânea (SC) conforme prescrição e indicação clínica veterinária. Doses variam conforme o objetivo: anti-inflamatório (0,07 a 0,14 mg/kg), imunossupressor (0,2 a 0,4 mg/kg IV lenta q24h) ou teste diagnóstico endócrino.',
+      'Administrar por via intravenosa (IV lenta), intramuscular (IM) ou subcutânea (SC). Anti-inflamatório: cães 0,07–0,14 mg/kg (0,035–0,07 mL/kg) e gatos 0,14–0,28 mg/kg (0,07–0,14 mL/kg) q24–48h. Imunossupressor inicial (ex.: IMHA): 0,2–0,4 mg/kg (0,1–0,2 mL/kg) IV lenta q24h.',
     dosageGuidance: {
       labelDose:
         'Cães: 0,07 a 0,14 mg/kg IV/IM q24h (0,035 a 0,07 mL/kg). Gatos: 0,14 a 0,28 mg/kg IV/IM q24h (0,07 a 0,14 mL/kg). Imunossupressão inicial: 0,2 a 0,4 mg/kg IV lenta q24h.',

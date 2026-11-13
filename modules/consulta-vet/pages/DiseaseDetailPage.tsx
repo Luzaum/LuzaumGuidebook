@@ -24,7 +24,6 @@ import { EditorialSectionValue } from '../types/common';
 import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
 import { getDiseaseCategorySlugs } from '../utils/diseaseCategories';
-import { getSpecialtyVisual } from '../utils/specialtyVisuals';
 import { includesRelatedSlug } from '../utils/relatedContent';
 
 type ResumeLocationState = {
@@ -199,7 +198,6 @@ export function DiseaseDetailPage() {
       { id: 'treatment', label: UI_TEXT.treatment },
       disease.complications ? { id: 'complications', label: UI_TEXT.complications } : null,
       { id: 'prevention', label: UI_TEXT.prevention },
-      disease.figures ? { id: 'figures', label: 'Figuras clínicas' } : null,
       relatedConsensos.length > 0 || relatedMedications.length > 0 ? { id: 'related', label: UI_TEXT.related } : null,
       disease.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
     ].filter(Boolean) as Array<{ id: string; label: string }>;
@@ -266,82 +264,72 @@ export function DiseaseDetailPage() {
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <DiseaseReferenceProvider references={disease.references}>
-    <div className="consulta-vet-detail-page consulta-vet-disease-detail mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
-      <div className="w-full min-w-0 flex-1 px-3 py-2.5 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
-        <nav
-          className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
-          aria-label="Navegação estrutural"
-        >
-          <Link to="/consulta-vet" className="transition-colors hover:text-primary">
-            {UI_TEXT.home}
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <Link to="/consulta-vet/doencas" className="transition-colors hover:text-primary">
-            {UI_TEXT.diseases}
-          </Link>
-          <ChevronRight className="h-3 w-3" />
-          <span className="truncate text-foreground">{disease.title}</span>
-        </nav>
+    <div className="consulta-vet-detail-page consulta-vet-disease-detail mx-auto flex w-full max-w-[1840px] flex-col px-3 py-2.5 md:px-8 md:py-6 xl:px-10 2xl:px-12">
+      <nav
+        className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
+        aria-label="Navegação estrutural"
+      >
+        <Link to="/consulta-vet" className="transition-colors hover:text-primary">
+          {UI_TEXT.home}
+        </Link>
+        <ChevronRight className="h-3 w-3" />
+        <Link to="/consulta-vet/doencas" className="transition-colors hover:text-primary">
+          {UI_TEXT.diseases}
+        </Link>
+        <ChevronRight className="h-3 w-3" />
+        <span className="truncate text-foreground">{disease.title}</span>
+      </nav>
 
-        <ConsultaVetSurface accent="primary" className="p-4 shadow-sm sm:p-5 md:p-6">
-          {disease.isDemonstrative && disease.warningLabel ? (
-            <div className="mb-3.5 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-              <AlertTriangle className="h-3.5 w-3.5" />
-              {disease.warningLabel}
-            </div>
-          ) : null}
-
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-                  {formatSpeciesList(disease.species)}
-                </span>
-                {getDiseaseCategorySlugs(disease).map((catSlug) => {
-                  const visual = getSpecialtyVisual(catSlug);
-                  return (
-                    <span
-                      key={catSlug}
-                      className="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
-                    >
-                      {visual.label}
-                    </span>
-                  );
-                })}
-              </div>
-
-              <h1 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2rem]">
-                {disease.title}
-              </h1>
-              {disease.subtitle ? (
-                <p className="mt-1 max-w-[80ch] text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                  {disease.subtitle}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="flex shrink-0 items-center gap-1.5 self-start pt-0.5">
-              <button
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
-                title={UI_TEXT.copyLink}
-                type="button"
-                onClick={handleCopyLink}
-              >
-                <Share2 className="h-4 w-4" />
-              </button>
-              <FavoriteButton entityType="disease" entityId={disease.id} className="h-9 w-9 border border-border bg-background/80 p-2" />
-            </div>
+      <ConsultaVetSurface accent="primary" className="w-full p-4 shadow-sm sm:p-5 md:p-6">
+        {disease.isDemonstrative && disease.warningLabel ? (
+          <div className="mb-3.5 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+            <AlertTriangle className="h-3.5 w-3.5" />
+            {disease.warningLabel}
           </div>
-        </ConsultaVetSurface>
+        ) : null}
 
-        <SectionAnchorNav
-          sections={sections}
-          variant="mobile"
-          onActiveChange={handleActiveSectionChange}
-          className="mt-3"
-        />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                {formatSpeciesList(disease.species)}
+              </span>
+            </div>
 
-        <div className="space-y-4 pb-8 pt-4 md:space-y-7 md:pt-5">
+            <h1 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2rem]">
+              {disease.title}
+            </h1>
+            {disease.subtitle ? (
+              <p className="mt-1 max-w-[96ch] text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                {disease.subtitle}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5 self-start pt-0.5">
+            <button
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
+              title={UI_TEXT.copyLink}
+              type="button"
+              onClick={handleCopyLink}
+            >
+              <Share2 className="h-4 w-4" />
+            </button>
+            <FavoriteButton entityType="disease" entityId={disease.id} className="h-9 w-9 border border-border bg-background/80 p-2" />
+          </div>
+        </div>
+      </ConsultaVetSurface>
+
+      <div className="flex flex-col xl:flex-row xl:gap-8">
+        <div className="w-full min-w-0 flex-1">
+          <SectionAnchorNav
+            sections={sections}
+            variant="mobile"
+            onActiveChange={handleActiveSectionChange}
+            className="mt-3"
+          />
+
+          <div className="space-y-4 pb-8 pt-4 md:space-y-7 md:pt-5">
           {disease.slug === 'intermacao-caes-gatos' ? (
             <div className="relative overflow-hidden rounded-[20px] border border-red-500/50 bg-gradient-to-r from-red-950/95 via-rose-950/90 to-red-950/95 p-4 text-white shadow-xl sm:p-5">
               <div className="flex items-start gap-3">
@@ -481,6 +469,7 @@ export function DiseaseDetailPage() {
                         data={disease.quickSummaryRich}
                         slug={disease.slug}
                         plainLanguage={disease.plainLanguage}
+                        quickDecisionItems={disease.quickDecisionStrip}
                       />
                     ) : (
                       <div className="max-w-[108ch] text-white/95">
@@ -493,7 +482,9 @@ export function DiseaseDetailPage() {
             })()}
           </section>
 
-          <QuickDecisionStrip slug={disease.slug} items={disease.quickDecisionStrip || []} />
+          {!disease.quickSummaryRich?.integratedOverview ? (
+            <QuickDecisionStrip slug={disease.slug} items={disease.quickDecisionStrip || []} />
+          ) : null}
 
           {disease.slug === 'doenca-renal-cronica-canina' ||
           disease.slug === 'doenca-renal-cronica-caes-gatos' ||
@@ -564,16 +555,6 @@ export function DiseaseDetailPage() {
               <DiseaseSectionFrame sectionId="prevention" title={UI_TEXT.prevention}>
                 <DiseaseSectionRenderer id="prevention" hideTitle title={UI_TEXT.prevention} data={disease.prevention} />
               </DiseaseSectionFrame>
-              {disease.figures ? (
-                <DiseaseSectionFrame sectionId="figures" title="Figuras e imagens clínicas">
-                  <DiseaseSectionRenderer
-                    id="figures"
-                    hideTitle
-                    title="Figuras e imagens clínicas"
-                    data={disease.figures as EditorialSectionValue}
-                  />
-                </DiseaseSectionFrame>
-              ) : null}
             </div>
           </EditorialPanel>
 
@@ -637,11 +618,12 @@ export function DiseaseDetailPage() {
               <ReferencesList references={disease.references} variant="embedded" />
             </DiseaseSectionFrame>
           ) : null}
+          </div>
         </div>
-      </div>
 
-      <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
-        <SectionAnchorNav sections={sections} variant="desktop" onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
+        <div className="hidden w-60 shrink-0 pt-4 xl:block 2xl:w-64">
+          <SectionAnchorNav sections={sections} variant="desktop" onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
+        </div>
       </div>
     </div>
     </DiseaseReferenceProvider>

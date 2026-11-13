@@ -56,14 +56,32 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'O diagnóstico precoce e o tratamento com doxiciclina por 28 dias oferecem boa chance de cura.',
     ],
   },
-  'babesiose-canina': {
+  'babesiose-caes-gatos': {
     whatIsIt:
-      'A babesiose é uma doença parasitária do sangue transmitida principalmente por carrapatos. O parasita destrói glóbulos vermelhos, causando anemia, fraqueza e, nos casos graves, falência de órgãos.',
+      'A babesiose é uma infecção sanguínea causada por protozoários do gênero Babesia que invadem e destroem os glóbulos vermelhos (hemácias), gerando anemia hemolítica, queda de plaquetas e resposta inflamatória sistêmica capaz de sobrecarregar rins, fígado e outros órgãos.',
     keyPoints: [
-      'Febre, apatia, urina escura e mucosas pálidas são sinais frequentes.',
-      'Carrapatos são o principal vetor — controle ectoparasitário contínuo é fundamental.',
-      'O tratamento depende da espécie de Babesia identificada; casos graves podem exigir hospitalização.',
+      'Cães: no Brasil predomina Babesia vogeli (tratada com dipropionato de imidocarb), mas B. gibsoni também circula e exige atovaquona + azitromicina.',
+      'Gatos: B. felis pode causar anemia crônica silenciosa sem febre, enquanto detecções moleculares incidentais no Brasil exigem correlação clínica cautelosa.',
+      'Esfregaço negativo não exclui a doença e positividade sem sinais não prova causalidade: associe hematologia, PCR com especiação e investigação de coinfecções.',
     ],
+    whatIs:
+      'Entendendo a babesiose em cães e gatos:\n\n' +
+      '- Parasita intraeritrocitário: protozoário que se multiplica dentro das hemácias, reduzindo a oferta de oxigênio aos tecidos e deflagrando hemólise e tromboinflamação.\n' +
+      '- Espécies distintas exigem condutas distintas: grandes Babesia (como B. vogeli) e pequenas Babesia (como B. gibsoni e B. felis) respondem a antiprotozoários completamente diferentes.',
+    warningSigns:
+      'Sinais de alerta para atendimento veterinário imediato:\n\n' +
+      '- Mucosas pálidas, brancas ou amareladas (icterícia), fraqueza súbita, taquipneia ou taquicardia.\n' +
+      '- Urina escura (vermelho-vinho ou cor de café), febre, inapetência ou petéquias.\n' +
+      '- Prostração extrema, desorientação, convulsões ou redução acentuada do débito urinário.',
+    diagnosis:
+      'Como o médico-veterinário confirma a espécie e a gravidade:\n\n' +
+      '- Triagem inicial: hemograma completo (anemia, regeneração reticulocitária, plaquetopenia), esfregaço sanguíneo (incluindo sangue capilar de ponta de orelha), bioquímica sérica e urinálise.\n' +
+      '- Confirmação molecular: PCR em sangue EDTA com identificação de espécie e pesquisa simultânea de coinfecções (Ehrlichia canis, Anaplasma spp., Rangelia vitalii e hemoplasmas).',
+    homeCare:
+      'Cuidados essenciais do tutor durante o manejo e a prevenção:\n\n' +
+      '- Seguir rigorosamente dose, via e associação com alimento gorduroso quando prescrita atovaquona, sem nunca substituir formulações de primaquina ou imidocarb por conta própria.\n' +
+      '- Manter controle ectoparasitário contínuo adequado para cada espécie (jamais aplicar permetrina canina em gatos) e evitar brigas com mordeduras.\n' +
+      '- Realizar os retornos hematológicos e a PCR de acompanhamento tardia para confirmar recuperação medular e controle parasitário.',
   },
   'colapso-traqueal-canino': {
     whatIsIt:

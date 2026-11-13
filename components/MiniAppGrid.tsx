@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { Card } from './ui/card'
+import { fluidoterapiaIcon, transfusaoIcon } from '../modules/registry'
 import {
-  Heart,
   Syringe,
   Scissors,
   Pill,
@@ -27,14 +27,14 @@ const miniApps: Array<{
     id: 'fluidoterapia-vet',
     title: 'Fluidoterapia Vet',
     description: 'Cálculos e protocolos clínicos de fluidoterapia veterinária',
-    icon: <img src="/apps/fluidoterapia.png" alt="Fluidoterapia Vet" className="h-12 w-12 rounded-lg object-cover" />,
+    icon: <img src={fluidoterapiaIcon} alt="" className="h-12 w-12 rounded-lg object-contain" />,
     implemented: true,
   },
   {
     id: 'transfusão-sanguinea',
     title: 'Transfusão Sanguínea',
     description: 'Cálculo de transfusão sanguínea e compatibilidade',
-    icon: <Heart className="h-6 w-6" />,
+    icon: <img src={transfusaoIcon} alt="" className="h-12 w-12 rounded-lg object-contain" />,
     implemented: true,
   },
   {

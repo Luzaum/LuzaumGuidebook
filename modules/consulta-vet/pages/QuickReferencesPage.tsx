@@ -1,47 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRight, Grid2X2 } from 'lucide-react';
+import { cn } from '../../../lib/utils';
+import { preloadMiniApp } from '../../miniAppLoaders';
+import { REFERENCE_APPS } from '../data/referenceApps';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 
-type ReferenceApp = {
-  id: 'oncologia' | 'vhs' | 'ultrassom' | 'apple' | 'sara';
-  name: string;
-  to: string;
-  iconSrc: string;
-};
-
-export const REFERENCE_APPS: ReferenceApp[] = [
-  { id: 'sara', name: 'SARA / SDRA', to: '/consulta-vet/referencias-rapidas/sara', iconSrc: '/consulta-vet/reference-apps/sara-lungs.png' },
-  {
-    id: 'apple',
-    name: 'APPLE Score',
-    to: '/consulta-vet/referencias-rapidas/apple',
-    iconSrc: '/consulta-vet/reference-apps/apple.png',
-  },
-  {
-    id: 'oncologia',
-    name: 'Oncologia',
-    to: '/consulta-vet/referencias-rapidas/oncologia',
-    iconSrc: '/consulta-vet/reference-apps/oncologia-chemo.png',
-  },
-  {
-    id: 'vhs',
-    name: 'VHS',
-    to: '/consulta-vet/referencias-rapidas/vhs',
-    iconSrc: '/consulta-vet/reference-apps/vhs.png',
-  },
-  {
-    id: 'ultrassom',
-    name: 'Ultrassom',
-    to: '/consulta-vet/referencias-rapidas/ultrassom',
-    iconSrc: '/consulta-vet/reference-apps/ultrassom.png',
-  },
-];
-
 export function QuickReferencesPage() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <div className="mx-auto w-full max-w-[1360px] space-y-6 p-4 md:p-8">
       <nav
@@ -57,7 +22,7 @@ export function QuickReferencesPage() {
 
       <ConsultaVetPageHero
         title="Mini-apps"
-        description="Abra uma ferramenta clínica para consultar cálculos e valores de referência durante o atendimento."
+        description="Acesse os aplicativos clínicos, calculadoras, escores e referências para o atendimento."
         icon={Grid2X2}
         accent="cyan"
         compact
@@ -67,40 +32,44 @@ export function QuickReferencesPage() {
         <h2 id="reference-apps-title" className="sr-only">
           Mini-apps disponíveis
         </h2>
-        <div className="grid grid-cols-5 gap-x-2 gap-y-6 sm:gap-x-5 lg:gap-x-7">
-          {REFERENCE_APPS.map((app, index) => (
-            <motion.div
-              key={app.id}
-              initial={reduceMotion ? false : { opacity: 0, y: 12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={reduceMotion ? { duration: 0 } : { delay: index * 0.055, duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="min-w-0"
-            >
+        <div className="grid grid-cols-2 gap-x-4 gap-y-7 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-x-5 lg:gap-x-7">
+          {REFERENCE_APPS.map((app) => {
+            const showIconFrame = app.id !== 'fluidoterapia-vet' && app.id !== 'transfusão-sanguinea';
+            return (
               <Link
+                key={app.id}
                 to={app.to}
+                onPointerEnter={() => preloadMiniApp(app.to)}
+                onFocus={() => preloadMiniApp(app.to)}
                 className="group flex min-w-0 flex-col items-center gap-2.5 rounded-2xl px-1 py-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
                 aria-label={`Abrir mini-app ${app.name}`}
               >
-                <span className="relative block aspect-square w-full max-w-[132px] overflow-hidden rounded-[25%] bg-muted shadow-[0_14px_34px_-18px_hsl(var(--foreground)/0.65)] ring-1 ring-white/15 transition duration-300 group-hover:-translate-y-1 group-hover:scale-[1.025] group-hover:shadow-[0_20px_42px_-18px_hsl(var(--primary)/0.55)] group-active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none">
+                <span className={cn(
+                  'relative block aspect-square w-full max-w-[132px] overflow-hidden rounded-[25%] bg-[#05091c] transition duration-300 group-hover:-translate-y-1 group-hover:scale-[1.025] group-active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none',
+                  showIconFrame && 'shadow-[0_14px_34px_-18px_hsl(var(--foreground)/0.65)] ring-1 ring-white/15 group-hover:shadow-[0_20px_42px_-18px_hsl(var(--primary)/0.55)]',
+                )}>
                   <img
                     src={app.iconSrc}
                     alt=""
-                    loading="eager"
+                    width={264}
+                    height={264}
                     decoding="async"
                     draggable={false}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/20"
-                  />
+                  {showIconFrame && (
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/20"
+                    />
+                  )}
                 </span>
-                <span className="line-clamp-2 min-h-[2.5rem] w-full text-[9px] font-bold leading-tight tracking-[-0.015em] text-foreground transition-colors group-hover:text-primary sm:text-sm sm:tracking-normal">
+                <span className="line-clamp-2 min-h-[2.5rem] w-full text-xs font-bold leading-tight tracking-[-0.015em] text-foreground transition-colors group-hover:text-primary sm:text-sm sm:tracking-normal">
                   {app.name}
                 </span>
               </Link>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

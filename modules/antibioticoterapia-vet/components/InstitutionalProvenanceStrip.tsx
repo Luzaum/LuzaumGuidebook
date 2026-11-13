@@ -8,19 +8,12 @@ interface InstitutionalProvenanceStripProps {
   variant?: 'compact' | 'full'
 }
 
-function pageLabel(pageStart?: number, pageEnd?: number): string | null {
-  if (!pageStart) return null
-  if (!pageEnd || pageEnd === pageStart) return `Página consultada: ${pageStart}`
-  return `Páginas consultadas: ${pageStart}–${pageEnd}`
-}
-
 export function InstitutionalProvenanceStrip({
   mapping,
   contextLabel,
   variant = 'full',
 }: InstitutionalProvenanceStripProps) {
   const source = getVersionedSource(mapping.versionedSourceId)
-  const pages = pageLabel(mapping.locator.pageStart ?? undefined, mapping.locator.pageEnd ?? undefined)
   const compact = variant === 'compact'
 
   if (!source) return null
@@ -38,9 +31,6 @@ export function InstitutionalProvenanceStrip({
         <span className="bg-white px-2 py-1 text-[10px] font-bold text-emerald-900">
           {source.versionLabel}
         </span>
-        {pages ? (
-          <span className="bg-white px-2 py-1 text-[10px] font-bold text-slate-600">{pages}</span>
-        ) : null}
       </div>
 
       <p className={`${compact ? 'mt-2 text-xs' : 'mt-3 text-sm'} font-black text-slate-900`}>

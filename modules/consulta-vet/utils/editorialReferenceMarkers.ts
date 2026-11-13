@@ -207,6 +207,16 @@ export type EditorialRichTextSegment =
   | { type: 'text'; value: string }
   | { type: 'reference'; index: number };
 
+function pushTextSegment(segments: EditorialRichTextSegment[], value: string) {
+  if (!value) return;
+  const last = segments[segments.length - 1];
+  if (last && last.type === 'text') {
+    last.value += value;
+  } else {
+    segments.push({ type: 'text', value });
+  }
+}
+
 export function splitEditorialRichText(value: string, references?: EditorialReference[]): EditorialRichTextSegment[] {
   const segments: EditorialRichTextSegment[] = [];
   const input = String(value || '');
@@ -218,7 +228,7 @@ export function splitEditorialRichText(value: string, references?: EditorialRefe
 
   while ((match = combined.exec(input)) !== null) {
     if (match.index > cursor) {
-      segments.push({ type: 'text', value: input.slice(cursor, match.index) });
+      pushTextSegment(segments, input.slice(cursor, match.index));
     }
 
     const explicitToken = match[1];
@@ -229,12 +239,12 @@ export function splitEditorialRichText(value: string, references?: EditorialRefe
       if (index !== null) {
         segments.push({ type: 'reference', index });
       } else {
-        segments.push({ type: 'text', value: match[0] });
+        pushTextSegment(segments, match[0]);
       }
     } else if (parentheticalToken !== undefined) {
       if (references?.length && looksLikeNumericBibliography(parentheticalToken)) {
         if (!pushLinkedNumericCitationSegments(segments, parentheticalToken, references)) {
-          segments.push({ type: 'text', value: match[0] });
+          pushTextSegment(segments, match[0]);
         }
       } else {
         const resolved =
@@ -245,7 +255,7 @@ export function splitEditorialRichText(value: string, references?: EditorialRefe
         if (resolved !== null) {
           segments.push({ type: 'reference', index: resolved });
         } else {
-          segments.push({ type: 'text', value: match[0] });
+          pushTextSegment(segments, match[0]);
         }
       }
     }
@@ -254,7 +264,7 @@ export function splitEditorialRichText(value: string, references?: EditorialRefe
   }
 
   if (cursor < input.length) {
-    segments.push({ type: 'text', value: input.slice(cursor) });
+    pushTextSegment(segments, input.slice(cursor));
   }
 
   return segments;

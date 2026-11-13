@@ -7,8 +7,8 @@ import { normalizeInternalRedirect } from '../lib/internalRedirect'
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
   if (!target) return null
-  if (target.startsWith('/login')) return '/hub'
-  return normalizeInternalRedirect(target, '/hub')
+  if (target.startsWith('/login')) return '/consulta-vet'
+  return normalizeInternalRedirect(target, '/consulta-vet')
 }
 
 export default function Login() {
@@ -25,7 +25,7 @@ export default function Login() {
       typeof (location.state as { from?: string } | null)?.from === 'string'
         ? normalizeTargetPath((location.state as { from?: string }).from)
         : null
-    return queryTarget ?? stateTarget ?? '/hub'
+    return queryTarget ?? stateTarget ?? '/consulta-vet'
   }, [location.search, location.state])
 
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function Login() {
   }
 
   if (checkingSession) {
-    return <div className="p-6">Carregando autenticacao...</div>
+    return <div className="p-6">Carregando autenticação...</div>
   }
 
   return (

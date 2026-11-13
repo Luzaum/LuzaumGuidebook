@@ -29,6 +29,8 @@ export interface DiseaseQuickSummaryRich {
   /** Texto-base; `highlights` sao substrings destacadas com efeito marca-texto. */
   lead: string;
   leadHighlights?: string[];
+  /** Modo integrado e enxuto: funde o resumo inicial com Palavras Simples, omite bloco redundante de "Visão clínica" e traz Decisão Rápida para dentro do card colorido. */
+  integratedOverview?: boolean;
   /** Blocos lado a lado (ex.: definicao / populacao / conduta imediata). */
   pillars?: { title: string; body: string; highlights?: string[] }[];
   diagnosticFlow?: DiseaseQuickSummaryFlowType;

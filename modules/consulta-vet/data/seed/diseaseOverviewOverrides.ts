@@ -3,15 +3,6 @@ import type { DiseaseQuickSummaryRich, DiseaseRecord } from '../../types/disease
 type DiseaseOverview = Pick<DiseaseQuickSummaryRich, 'lead' | 'leadHighlights' | 'pillars'>;
 
 const OVERVIEWS: Record<string, DiseaseOverview> = {
-  'babesiose-canina': {
-    lead: 'A babesiose canina é uma infecção dos glóbulos vermelhos causada por protozoários do gênero Babesia. A transmissão ocorre principalmente por carrapatos, embora transfusão, transmissão materna e contato com sangue também possam participar conforme a espécie do parasita. A destruição das hemácias provoca anemia hemolítica, que pode variar de discreta a rapidamente fatal, e desencadear inflamação sistêmica, alterações da coagulação e lesão de órgãos. A apresentação, a gravidade e a resposta ao tratamento dependem da espécie de Babesia, da região geográfica, da imunidade do cão e de coinfecções.',
-    leadHighlights: ['infecção dos glóbulos vermelhos', 'anemia hemolítica', 'espécie de Babesia'],
-    pillars: [
-      { title: 'O que acontece', body: 'O parasita invade as hemácias; a ruptura e a remoção imunológica dessas células reduzem o transporte de oxigênio e podem produzir icterícia, hemoglobinúria e esplenomegalia.', highlights: ['invade as hemácias'] },
-      { title: 'Quando suspeitar', body: 'Febre, apatia, mucosas pálidas ou amareladas, urina escura e queda rápida do hematócrito, especialmente em cão exposto a carrapatos, exigem investigação imediata.', highlights: ['mucosas pálidas ou amareladas'] },
-      { title: 'Como confirmar e conduzir', body: 'Esfregaço sanguíneo pode demonstrar o agente, mas testes moleculares aumentam a sensibilidade e ajudam a identificar a espécie. O tratamento antiparasitário deve ser associado ao suporte da anemia e das complicações.', highlights: ['identificar a espécie'] },
-    ],
-  },
   'doencas-trato-urinario-inferior-felino-dtuif': {
     lead: 'Doenças do trato urinário inferior felino são um conjunto de afecções da bexiga e da uretra que produzem sinais semelhantes, como urinar muitas vezes em pequeno volume, dor ou esforço para urinar, sangue na urina e eliminação fora da caixa. O termo descreve uma síndrome clínica, não um diagnóstico final. As principais causas incluem cistite idiopática felina, cálculos, tampões uretrais, infecção bacteriana, alterações anatômicas e neoplasia. Em gatos jovens e de meia-idade, a cistite idiopática é frequente e envolve interação entre estresse, ambiente, sistema nervoso e barreira da bexiga.',
     leadHighlights: ['conjunto de afecções da bexiga e da uretra', 'não um diagnóstico final', 'cistite idiopática felina'],

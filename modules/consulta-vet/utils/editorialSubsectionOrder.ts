@@ -157,6 +157,15 @@ export const DIAGNOSTIC_SUBSECTION_PRIORITY: string[] = [
   'dmvdTosseCardiacaVsRespiratoria',
   'dmvdDiferenciaisDiagnosticos',
   'dmvdSeguimentoMonitorizacao',
+  /* Babesiose — algoritmo interativo #1 (prioridade 101 acima) → síntese → painéis → imagem → diferenciais */
+  'tabelaMestreExamesLaboratoriais',
+  'tabelaLeucograma',
+  'tabelaBioquimicaSerica',
+  'tabelaUrinaliseEPigmenturia',
+  'tabelaHemostasia',
+  'imagemEAnatomopatologia',
+  'tabelaDiagnosticosDiferenciaisCaes',
+  'diferenciaisFelinosERangeliose',
 ];
 
 export function sortDiagnosticSubsectionEntries(entries: [string, unknown][]): [string, unknown][] {

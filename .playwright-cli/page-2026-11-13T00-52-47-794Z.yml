@@ -1,0 +1,23 @@
+- generic [ref=e4]:
+  - button "Voltar para Vetius" [ref=e5] [cursor=pointer]
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - heading "Bem-vindo de volta" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Entre para continuar seu trabalho clínico com segurança.
+    - button "Entrar com Google" [ref=e13] [cursor=pointer]
+    - generic [ref=e19]: ou
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: Usuário ou e-mail *
+        - textbox "Usuário ou e-mail *" [ref=e27]:
+          - /placeholder: "ex.: usuário ou nome@gmail.com"
+      - generic [ref=e28]:
+        - generic [ref=e29]: Senha *
+        - generic [ref=e30]:
+          - textbox "Senha *" [ref=e31]:
+            - /placeholder: Digite sua senha
+          - button "Mostrar senha" [ref=e32] [cursor=pointer]
+      - button "Entrar" [ref=e36] [cursor=pointer]
+    - generic [ref=e39]:
+      - button "Esqueceu sua senha?" [ref=e40] [cursor=pointer]
+      - button "Não tem conta? Criar conta" [ref=e41] [cursor=pointer]

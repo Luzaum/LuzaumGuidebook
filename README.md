@@ -44,12 +44,12 @@ Ideal para **edições rápidas de arquivos** em qualquer computador sem esperar
 | **NutriçãoVET** | `/calculadora-energetica` | `modules/energia-vet` | Necessidades energéticas, organização de dietas e acompanhamento nutricional |
 | **Fluidoterapia Vet** | `/fluidoterapia-vet` | `modules/fluidoterapia-vet` | Reposição, manutenção, perdas contínuas e protocolos de fluidoterapia |
 | **Transfusão Sanguínea** | `/transfusao-sanguinea` | `modules/transfusao-sanguinea` | Planejamento transfusional, volume, compatibilidade e monitorização |
-| **HemoGasoVet** | `/hemogasovet` | `modules/hemogasovet` | Interpretação de hemogasometria, equilíbrio ácido-base, eletrólitos e oxigenação |
 | **Escalas de Dor** | `/dor` | `modules/escalas-dor` | Escalas de avaliação álgica e estruturação de analgesia por espécie |
 | **Antibioticoterapia Vet** | `/antibioticoterapia` | `modules/antibioticoterapia-vet` | Escolha antimicrobiana por síndrome, espectro, dose, cultura e uso racional |
-| **CRI VET** | `/crivet` | `modules/crivet` | Cálculo de infusões contínuas (CRI) com concentração, taxa e diluição |
 | **Neurologia (NeuroVet)** | `/neurologia` | `modules/neurologia` | Exame neurológico passo a passo, neurolocalização e escala MGCS |
-| **ConsultaVET** | `/consulta-vet` | `modules/consulta-vet` | Doenças, medicamentos, apresentações comerciais, consensos e guias rápidos |
+| **Vetius — início e base clínica** | `/consulta-vet` | `modules/consulta-vet` | Doenças, medicamentos, apresentações comerciais, consensos, guias rápidos e Mini-apps |
+
+A entrada `/` abre a base clínica após autenticação. Sem sessão, o usuário vai para `/login`, com Google ou usuário/e-mail e senha. O antigo `/hub` redireciona para `/consulta-vet/referencias-rapidas`, o catálogo de Mini-apps. Os módulos mantidos conservam suas próprias rotas e interfaces. O nome interno `consulta-vet` permanece para preservar links, favoritos e notas existentes.
 
 ---
 
@@ -72,9 +72,9 @@ LuzaumGuidebook/
 ├── .github/workflows/      # CI/CD e Quality Gate (GitHub Actions)
 ├── components/             # Componentes globais de UI e navegação
 ├── layouts/                # Layouts principais da aplicação (AppLayout)
-├── modules/                # Módulos clínicos especializados (ConsultaVET, CRI, Neuro, etc.)
-│   └── registry.ts         # Registro centralizado de módulos ativos no Hub
-├── pages/                  # Páginas de entrada (LandingPage, Hub, Neurologia, Crivet, etc.)
+├── modules/                # Base clínica Vetius e módulos especializados
+│   └── registry.ts         # Registro centralizado dos seis módulos em Mini-apps
+├── pages/                  # Entradas dos módulos, incluindo Neurologia e Transfusão
 ├── public/                 # Assets estáticos e ícones de módulos
 ├── scripts/                # Scripts de validação clínica, lint e automação
 ├── src/                    # Autenticação, cliente Supabase, rotas de conta e clínicas

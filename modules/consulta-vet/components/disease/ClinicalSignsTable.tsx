@@ -62,7 +62,7 @@ function MobileFindingSummary({ item, visual, expandable }: { item: NormalizedFi
         </span>
         <span className="mt-1 block text-[14px] font-semibold leading-6 text-foreground">{item.finding}</span>
         {item.clinicalMeaning ? (
-          <span className="mt-1 block text-[12px] leading-5 text-muted-foreground">{item.clinicalMeaning}</span>
+          <span className="mt-1 block text-[12px] leading-5 text-muted-foreground"><EditorialRichText value={item.clinicalMeaning} /></span>
         ) : null}
       </span>
       {expandable ? (

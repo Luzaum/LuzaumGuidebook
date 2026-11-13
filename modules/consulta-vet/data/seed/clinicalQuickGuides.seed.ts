@@ -651,28 +651,20 @@ const guiaAbdominocentese: ClinicalQuickGuide = {
     },
     {
       type: 'table',
-      caption: 'Localização de figuras e capítulos úteis na literatura de referência',
-      headers: ['Livro de Referência', 'Capítulo / Seção', 'Páginas / Figuras de Destaque'],
+      caption: 'Literatura de referência consultada',
+      headers: ['Livro de Referência', 'Escopo Clínico'],
       rows: [
         [
           'BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)',
-          'Abdominocentesis',
-          'Páginas 43–44: Figura A.1 (abordagem de ponto único) e Figura A.2 (abordagem em quatro quadrantes).'
+          'Abdominocentese (abordagem de ponto único e abordagem em quatro quadrantes).'
         ],
         [
           'Veterinary Emergency and Critical Care Procedures (3ª ed., 2025) — Hackett & Mazzaferro',
-          'Cap. 7: Abdominocentesis and Diagnostic Peritoneal Lavage',
-          'Páginas 211–216: Figuras 7.1 a 7.6 demonstrando material, posicionamento, assepsia, quatro quadrantes, aspiração e armazenamento.'
-        ],
-        [
-          'Veterinary Emergency and Critical Care Procedures (3ª ed., 2025) — Hackett & Mazzaferro',
-          'Diagnostic Peritoneal Lavage (DPL/LPD)',
-          'Páginas 216–226: Figuras 7.7 a 7.25 mostrando detalhadamente lavagem peritoneal diagnóstica, inserção de cateter fenestrado e técnica over-the-wire.'
+          'Abdominocentese e Lavagem Peritoneal Diagnóstica (LPD), inserção de cateter fenestrado e técnica over-the-wire.'
         ],
         [
           'BSAVA Manual of Canine and Feline Emergency and Critical Care (3ª ed.)',
-          'Cap. 11/12 — Abdome Agudo / Peritonite',
-          'Figura 11.1 (citologia de efusão séptica com bactérias intracelulares) e Figura 11.2 (esquema de LPD).'
+          'Abdome Agudo / Peritonite (citologia de efusão séptica com bactérias intracelulares e esquema de LPD).'
         ]
       ]
     },
@@ -1747,9 +1739,9 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Seção: Blood sampling – (a) arterial, pp. 74–76 (Referência central de padronização do procedimento).',
-        'Johnson LR. Canine and Feline Respiratory Medicine. 2nd ed. Wiley-Blackwell; 2020. Chapter 2 – Respiratory Diagnostics: Blood Gas Analysis, pp. 18–20.',
-        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018. Chapter 7 – General approach to respiratory distress: Blood gas artifacts and sample handling, p. 115.',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024 (Referência central de padronização do procedimento).',
+        'Johnson LR. Canine and Feline Respiratory Medicine. 2nd ed. Wiley-Blackwell; 2020.',
+        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018.',
         'Sasaki K, Shiga T, Gómez de Segura IÁ. Advantages of a Novel Device for Arterial Catheter Securement in Anesthetized Dogs. Front Vet Sci. 2019;6:171. (Artigo Open Access sob licença CC BY).',
         'Rodan I, Dowgray N, Carney HC, et al. 2022 AAFP/ISFM Cat Friendly Veterinary Interaction Guidelines: Approach and Handling Techniques. J Feline Med Surg. 2022;24(11):1093–1132.'
       ]
@@ -2403,9 +2395,9 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Bone marrow aspiration, pp. 101–106 (Referência central de padronização do procedimento).',
-        'Vaden SL, Knoll JS, Smith FWK, Tilley LP. Exames Laboratoriais e Procedimentos Diagnósticos em Cães e Gatos. Editora Roca; 2013. Seção: Biopsia e Aspirado de Medula Óssea (Laurel E. Williams), pp. 192–195.',
-        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 87 – Disorders of Hemostasis, p. 1395 e Chapter 73 – Common Immune-Mediated Diseases, pp. 1242–1243.',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024 (Referência central de padronização do procedimento).',
+        'Vaden SL, Knoll JS, Smith FWK, Tilley LP. Exames Laboratoriais e Procedimentos Diagnósticos em Cães e Gatos. Editora Roca; 2013.',
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020.',
         'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019. Bone Marrow Sampling and Analysis: Indications, Core Biopsy and Hemodilution.',
         'Byers CG. Diagnostic bone marrow sampling in cats: currently accepted best practices. J Feline Med Surg. 2017;19(7):759–767. (Artigo Open Access / SAGE).',
         'Defarges A, Abrams-Ogg A, Foster RA, Bienzle D. Comparison of sternal, iliac, and humeral bone marrow aspiration in Beagle dogs. Vet Clin Pathol. 2013;42(2):170–176.',
@@ -3060,15 +3052,15 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Urethral catheterization – (b) bitch: pp. 286–289; (e) queen: pp. 294–296. (Referência primária para posicionamento, técnica digital e abordagem felina).',
-        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025. Chapter 6: Urinary Catheter Placement, Urohydropulsion, and Temporary Antepubic Cystostomy Catheter Placement — bitch: pp. 181–186; queen: pp. 191–194.',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. (Referência primária para posicionamento, técnica digital e abordagem felina).',
+        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025.',
         'Dornbusch JA, et al. A dual-catheter technique is more effective than a traditional blind technique for urethral catheterization in female dogs weighing less than 10 kg: A randomized controlled trial. J Am Vet Med Assoc (JAVMA). 2022;260(S3):S42–S47. / Can Vet J. 2022.',
         'Weese JS, Blondeau J, Boothe D, et al. International Society for Companion Animal Infectious Diseases (ISCAID) guidelines for the diagnosis and management of bacterial urinary tract infections in dogs and cats. Vet J. 2019;247:8–25. (Diretrizes globais sobre prevenção de CAUTI, uso racional de antimicrobianos e bacteriúria).',
         'Sparkes AH, et al. ISFM/iCatCare Consensus Guidelines on the Diagnosis and Management of Feline Lower Urinary Tract Disease. J Feline Med Surg. 2025;27(1):1098612X241309176. (Padronização de sistemas fechados de coleta e alívio gravitacional).',
         'Robben JH. Modified Seldinger technique for urethral catheterization using a soft Foley catheter in female dogs. J Vet Emerg Crit Care. 2020;30(5):597–600.',
-        'Zatelli A, D’Ippolito P. Atlas of Canine and Feline Urinalysis. Wiley-Blackwell; 2017. Chapter 1: Urine Collection Methods — Catheterization in female dogs and cats using otoscopic cones, pp. 25–30.',
-        'Silverstein DC, Hopper K, eds. Small Animal Critical Care Medicine. 3rd ed. Elsevier; 2023. Chapter 89: Monitoring Urine Output and Urinary Catheter Management in the ICU, pp. 485–492.',
-        'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019. Chapter 187: Urethral Catheterization — indications, materials, Foley management, pp. 1211–1218.'
+        'Zatelli A, D’Ippolito P. Atlas of Canine and Feline Urinalysis. Wiley-Blackwell; 2017.',
+        'Silverstein DC, Hopper K, eds. Small Animal Critical Care Medicine. 3rd ed. Elsevier; 2023.',
+        'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019.'
       ]
     }
   ],
@@ -3699,14 +3691,14 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Cerebrospinal fluid sampling – (a) cerebellomedullary cistern: pp. 129–133; (b) lumbar cistern: pp. 133–135. (Referência primária para posicionamento, técnica do triângulo e punção lombar).',
-        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 59 – Diagnostic Tests for Nervous System and Neuromuscular Disorders, pp. 1068–1072. (Landmarks anatômicos, volume máximo seguro e citologia).',
-        'de Lahunta A, Glass E, Kent M. de Lahunta’s Veterinary Neuroanatomy and Clinical Neurology. 5th ed. Elsevier; 2021. Chapter 4 – Cerebrospinal Fluid and Hydrocephalus, pp. 79–91. (Fisiopatologia liquórica, regra das tentativas e segurança).',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. (Referência primária para posicionamento, técnica do triângulo e punção lombar).',
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. (Landmarks anatômicos, volume máximo seguro e citologia).',
+        'de Lahunta A, Glass E, Kent M. de Lahunta’s Veterinary Neuroanatomy and Clinical Neurology. 5th ed. Elsevier; 2021. (Fisiopatologia liquórica, regra das tentativas e segurança).',
         'Danciu C, et al. Major complications associated with cerebrospinal fluid collection in dogs: 11 cases (2010–2023). J Vet Intern Med. 2025;39(2):e70165. Open Access CC BY 4.0. (Maior coorte mundial avaliando segurança em 7.545 coletas e herniação cerebelar).',
         'Sivolapenko O, et al. Magnetic resonance imaging evaluation of needle trajectory during cerebellomedullary cisternal puncture in dogs with and without Chiari-like malformation. J Anat. 2022;241(1):13–21.',
         'Fentem R, et al. Success rate and complications associated with cerebellomedullary and lumbar cerebrospinal fluid collection in dogs: a prospective study of 102 cases. Vet Rec. 2021;189(12):e787.',
-        'Cunningham JG, Klein BG. Cunningham’s Textbook of Veterinary Physiology. 6th ed. Elsevier; 2020. Chapter 15 – Cerebrospinal Fluid and the Blood-Brain Barrier, pp. 150–153.',
-        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018. Chapter 9 – Emergency Neurological Procedures: CSF collection, pp. 147–148.',
+        'Cunningham JG, Klein BG. Cunningham’s Textbook of Veterinary Physiology. 6th ed. Elsevier; 2020.',
+        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018.',
         'Gama FGV, et al. Colheita de líquido cefalorraquidiano em cães: modificação de técnica prévia baseada em marcos ósseos diretos. Semina: Cienc Agrar. 2009;30(3):685–692.'
       ]
     }
@@ -4283,13 +4275,13 @@ const guiaDesobstrucaoUretral: ClinicalQuickGuide = {
       items: [
         'Taylor SS, Sparkes AH, et al. 2025 iCatCare Consensus Guidelines on the Diagnosis and Management of Feline Lower Urinary Tract Diseases. J Feline Med Surg (JFMS). 2025;27(1):1098612X241309176. (Consenso global mais recente para medicina felina, atualizando fluidoterapia, prazosina, cistocentese, atracúrio e MEMO).',
         'Lulich JP, Osborne CA, et al. ACVIM Small Animal Consensus Recommendations on the Treatment and Prevention of Uroliths in Dogs and Cats. J Vet Intern Med. 2016;30(5):1564–1574.',
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Urethral catheterization – tomcat with blocked urethra (pp. 292–294) & Urethral retrograde urohydropulsion in a male dog (pp. 296–298).',
-        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025. Chapter 6: Urinary Catheter Placement, Urohydropulsion, and Temporary Antepubic Cystostomy Catheter Placement (pp. 173–209).',
-        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 43: Canine and Feline Urolithiasis (pp. 712–724) & Chapter 44: Obstructive and Nonobstructive Feline Idiopathic Cystitis (pp. 724–729).',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024.',
+        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025.',
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020.',
         'Er J, Fick J, Long Mays K. Management of obstructive urolithiasis with percutaneous pigtail cystostomy catheter placement in three male dogs. Front Vet Sci. 2023;10:1200406. Open Access CC BY. (Demonstração da retro-hidropropulsão e resgate por cistostomia temporária).',
         'Kim J, et al. Evaluation of retrograde urohydropulsion using computed tomography in 45 male dogs with urethral calculi. J Vet Med Sci. 2022;84(10):1343–1348. (Estatísticas de sucesso na 1ª vs. 2ª tentativa de hidropropulsão e cálculos residuais na uretra membranosa).',
-        'Fascetti AJ, Delaney SJ, eds. Applied Veterinary Clinical Nutrition. 2nd ed. Wiley-Blackwell; 2024. Chapter 16: Nutritional Management of Lower Urinary Tract Disease — urethral plugs and idiopathic cystitis (pp. 412–433).',
-        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018. Chapter 8: Renal and urinary tract emergencies (pp. 123–135).'
+        'Fascetti AJ, Delaney SJ, eds. Applied Veterinary Clinical Nutrition. 2nd ed. Wiley-Blackwell; 2024.',
+        'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018.'
       ]
     }
   ],
@@ -4361,7 +4353,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Este guia padroniza a técnica baseando-se nas mais respeitadas diretrizes internacionais de procedimentos e emergência: o BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024, pp. 284–286 e 296–298), o Veterinary Emergency and Critical Care Procedures (3ª ed., 2025, Cap. 6, pp. 173–180), o Textbook of Small Animal Emergency Medicine (2019, Cap. 187, pp. 1210–1215), o Atlas of Canine and Feline Urinalysis (2017) e o consenso ISCAID sobre prevenção de infecções do trato urinário associadas a cateter (CAUTI).'
+        'Este guia padroniza a técnica baseando-se nas mais respeitadas diretrizes internacionais de procedimentos e emergência: o BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024), o Veterinary Emergency and Critical Care Procedures (3ª ed., 2025), o Textbook of Small Animal Emergency Medicine (2019), o Atlas of Canine and Feline Urinalysis (2017) e o consenso ISCAID sobre prevenção de infecções do trato urinário associadas a cateter (CAUTI).'
     },
 
     { type: 'heading', level: 2, text: '2. Quando Sondar um Cão Macho? Indicações Clínicas e de UTI 🎯' },
@@ -4900,12 +4892,12 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024. Urethral catheterization – (a) male dog: pp. 284–286; Urethral retrograde urohydropulsion in a male dog: pp. 296–298.',
-        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025. Chapter 6: Urinary Catheter Placement, Urohydropulsion, and Temporary Antepubic Cystostomy Catheter Placement (male dogs: pp. 175–180; urohydropulsion: pp. 195–200).',
-        'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC, eds. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019. Chapter 187: Urethral Catheterization (Including Urohydropulsion), pp. 1210–1215.',
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. British Small Animal Veterinary Association; 2024.',
+        'Johnson CA, ed. Veterinary Emergency and Critical Care Procedures. 3rd ed. Wiley-Blackwell; 2025.',
+        'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC, eds. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019.',
         'Weese JS, Blondeau J, Boothe D, et al. International Society for Companion Animal Infectious Diseases (ISCAID) guidelines for the diagnosis and management of bacterial urinary tract infections in dogs and cats. Vet J. 2019;247:8–25. (Diretrizes vigentes de CAUTI, bacteriúria assintomática e uso racional de antimicrobianos).',
-        'Barkan E, et al. Atlas of Canine and Feline Urinalysis. Wiley-Blackwell; 2017. Chapter 1: Sample Collection and Handling (male catheterization, length estimation and artifactual hematuria, pp. 15–19).',
-        'Bartges JW, Callens AJ, eds. BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. British Small Animal Veterinary Association; 2017. Chapter 27: Interventional urology and hydrophilic guidewire urethral stenting, pp. 315–316.',
+        'Barkan E, et al. Atlas of Canine and Feline Urinalysis. Wiley-Blackwell; 2017.',
+        'Bartges JW, Callens AJ, eds. BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. British Small Animal Veterinary Association; 2017.',
         'Maeta N, et al. Dysuria Associated with Non-Neoplastic Bone Hyperplasia of the Os Penis in a Pug Dog. Vet Sci. 2021;8(1):6. Open Access CC BY 4.0. (Demonstração tomográfica do sulco uretral inextensível do os penis e barreira anatômica na uretrocistografia).',
         'Powell LL. Urinary Catheter Placement in Dogs. Clinician’s Brief. Peer-reviewed procedural review.',
         'Kim J, et al. Evaluation of retrograde urohydropulsion using computed tomography in 45 male dogs with urethral calculi. J Vet Med Sci. 2022;84(10):1343–1348. (Sucesso global de 86,7% na hidropropulsão e análise dos pontos de impactação).'

@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
+import { miniAppLoaders } from './modules/miniAppLoaders'
 import { ThemeProvider } from './utils/theme'
 import { AppLayout } from './layouts/AppLayout'
 import { ProtectedRoute } from './src/components/ProtectedRoute'
@@ -7,18 +8,14 @@ import { ClinicProvider } from './src/components/ClinicProvider'
 import { RequireClinic } from './src/components/RequireClinic'
 import { AuthSessionProvider } from './src/components/AuthSessionProvider'
 
-const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })))
-const Hub = lazy(() => import('./pages/Hub').then((m) => ({ default: m.Hub })))
 const ModuleIframe = lazy(() => import('./pages/ModuleIframe').then((m) => ({ default: m.ModuleIframe })))
-const EnergiaVetPage = lazy(() => import('./modules/energia-vet/App'))
-const FluidoterapiaVetPage = lazy(() => import('./modules/fluidoterapia-vet'))
-const AntibioticoterapiaVetPage = lazy(() => import('./modules/antibioticoterapia-vet'))
-const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
-const HemogasoVetPage = lazy(() => import('./modules/hemogasovet'))
-const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
-const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
+const EnergiaVetPage = lazy(miniAppLoaders['/calculadora-energetica'])
+const FluidoterapiaVetPage = lazy(miniAppLoaders['/fluidoterapia-vet'])
+const AntibioticoterapiaVetPage = lazy(miniAppLoaders['/antibioticoterapia'])
+const TransfusaoSanguineaPage = lazy(miniAppLoaders['/transfusao-sanguinea'])
+const NeurologiaPage = lazy(miniAppLoaders['/neurologia'])
+const EscalasDorPage = lazy(miniAppLoaders['/dor'])
 
-const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
 const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
 const ConsultaVetHomePage = lazy(() => import('./modules/consulta-vet/pages/HomePage').then((m) => ({ default: m.HomePage })))
 const ConsultaVetDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/DiseasesPage').then((m) => ({ default: m.DiseasesPage })))
@@ -55,24 +52,11 @@ const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
 const ConsultaVetQuickReferencesPage = lazy(() =>
   import('./modules/consulta-vet/pages/QuickReferencesPage').then((m) => ({ default: m.QuickReferencesPage }))
 )
-const ConsultaVetReferenceAppsLayout = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/ReferenceAppsLayout').then((m) => ({ default: m.ReferenceAppsLayout }))
-)
-const ConsultaVetOncologyReferencePage = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/OncologyReferencePage').then((m) => ({ default: m.OncologyReferencePage }))
-)
-const ConsultaVetVhsReferencePage = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/VhsReferencePage').then((m) => ({ default: m.VhsReferencePage }))
-)
-const ConsultaVetUltrasoundReferencePage = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/UltrasoundReferencePage').then((m) => ({ default: m.UltrasoundReferencePage }))
-)
-const ConsultaVetAppleScorePage = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/AppleScorePage').then((m) => ({ default: m.AppleScorePage }))
-)
-const ConsultaVetArdsVetPage = lazy(() =>
-  import('./modules/consulta-vet/pages/quickReferences/ArdsVetPage').then((m) => ({ default: m.ArdsVetPage }))
-)
+const ConsultaVetOncologyReferencePage = lazy(miniAppLoaders['/consulta-vet/referencias-rapidas/oncologia'])
+const ConsultaVetVhsReferencePage = lazy(miniAppLoaders['/consulta-vet/referencias-rapidas/vhs'])
+const ConsultaVetUltrasoundReferencePage = lazy(miniAppLoaders['/consulta-vet/referencias-rapidas/ultrassom'])
+const ConsultaVetAppleScorePage = lazy(miniAppLoaders['/consulta-vet/referencias-rapidas/apple'])
+const ConsultaVetArdsVetPage = lazy(miniAppLoaders['/consulta-vet/referencias-rapidas/sara'])
 
 const Login = lazy(() => import('./src/routes/Login'))
 const Signup = lazy(() => import('./src/routes/Signup'))
@@ -101,7 +85,7 @@ function ConsultaVetNotFound() {
     <main className="mx-auto flex min-h-[60dvh] w-full max-w-2xl items-center justify-center p-6">
       <div className="w-full rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8">
         <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">Erro 404</p>
-        <h1 className="text-2xl font-bold text-foreground">Página não encontrada no Consulta Vet</h1>
+        <h1 className="text-2xl font-bold text-foreground">Página não encontrada no Vetius</h1>
         <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
           O endereço pode ter mudado ou o conteúdo ainda não está disponível.
         </p>
@@ -136,15 +120,15 @@ function LegacyEnergiaVetRedirect() {
 
 const appRoutes = (
   <Route element={<AppLayout />}>
-    <Route path="/" element={<LandingPage />} />
-    <Route path="/hub" element={<ProtectedRoute><Hub /></ProtectedRoute>} />
+    <Route path="/" element={<Navigate to="/consulta-vet" replace />} />
+    <Route path="/hub" element={<Navigate to="/consulta-vet/referencias-rapidas" replace />} />
     <Route path="/app" element={<ProtectedClinicRoute><AccountHome /></ProtectedClinicRoute>} />
     <Route path="/conta" element={<ProtectedRoute><Navigate to="/app" replace /></ProtectedRoute>} />
     <Route path="/conta/perfil" element={<ProtectedRoute><AccountProfile /></ProtectedRoute>} />
     <Route path="/conta/configuracoes" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/configurações" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/clinica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
-    <Route path="/calculadora-energetica/*" element={<EnergiaVetPage />} />
+    <Route path="/calculadora-energetica/*" element={<ProtectedRoute><EnergiaVetPage /></ProtectedRoute>} />
     <Route path="/commercial" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
     <Route path="/racoes" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
     <Route path="/racoes-comerciais" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
@@ -156,12 +140,10 @@ const appRoutes = (
     <Route path="/fluidoterapia-vet" element={<ProtectedRoute><FluidoterapiaVetPage /></ProtectedRoute>} />
     <Route path="/transfusao-sanguinea" element={<ProtectedRoute><TransfusaoSanguineaPage /></ProtectedRoute>} />
     <Route path="/transfusão-sanguinea" element={<ProtectedRoute><TransfusaoSanguineaPage /></ProtectedRoute>} />
-    <Route path="/hemogasovet/*" element={<ProtectedRoute><HemogasoVetPage /></ProtectedRoute>} />
     <Route path="/dor/*" element={<ProtectedRoute><EscalasDorPage /></ProtectedRoute>} />
     <Route path="/dor-mobile" element={<Navigate to="/dor" replace />} />
     <Route path="/neuro-mobile/*" element={<LegacyNeuroMobileRedirect />} />
     <Route path="/antibioticoterapia" element={<ProtectedRoute><AntibioticoterapiaVetPage /></ProtectedRoute>} />
-    <Route path="/crivet" element={<ProtectedRoute><CrivetPage /></ProtectedRoute>} />
     <Route path="/neurologia/*" element={<ProtectedRoute><NeurologiaPage /></ProtectedRoute>} />
     <Route path="/consulta-vet" element={<ProtectedRoute><ConsultaVetShell /></ProtectedRoute>}>
       <Route index element={<ConsultaVetHomePage />} />
@@ -189,7 +171,7 @@ const appRoutes = (
       <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
       <Route path="guias-rápidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
       <Route path="guias-rápidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
-      <Route path="referencias-rapidas" element={<ConsultaVetReferenceAppsLayout />}>
+      <Route path="referencias-rapidas">
         <Route index element={<ConsultaVetQuickReferencesPage />} />
         <Route path="oncologia" element={<ConsultaVetOncologyReferencePage />} />
         <Route path="vhs" element={<ConsultaVetVhsReferencePage />} />
@@ -215,27 +197,20 @@ function AppContent() {
       void Promise.allSettled(imports)
     }
 
-    const prefetchHubRoute = () => {
-      void import('./pages/Hub')
-    }
-
     const win = window as Window & {
       requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number
       cancelIdleCallback?: (id: number) => void
     }
 
     let authTimeoutId: number | undefined
-    let hubTimeoutId: number | undefined
     let idleId: number | undefined
 
     if (typeof win.requestIdleCallback === 'function') {
       idleId = win.requestIdleCallback(() => {
         prefetchAuthRoutes()
-        hubTimeoutId = window.setTimeout(prefetchHubRoute, 4000)
       }, { timeout: 2500 })
     } else {
       authTimeoutId = window.setTimeout(prefetchAuthRoutes, 1500)
-      hubTimeoutId = window.setTimeout(prefetchHubRoute, 5500)
     }
 
     return () => {
@@ -243,7 +218,6 @@ function AppContent() {
         win.cancelIdleCallback(idleId)
       }
       if (authTimeoutId !== undefined) window.clearTimeout(authTimeoutId)
-      if (hubTimeoutId !== undefined) window.clearTimeout(hubTimeoutId)
     }
   }, [])
 

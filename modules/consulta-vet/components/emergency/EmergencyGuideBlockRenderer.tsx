@@ -1,6 +1,6 @@
 import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
-import { AlertTriangle, CheckCircle2, ClipboardList, FunctionSquare, Info, ListOrdered, Sparkles, Target } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ClipboardList, FunctionSquare, Info, ListOrdered, Target } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { EmergencyGuideBlock } from '../../types/emergencyGuide';
 
@@ -91,7 +91,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
           );
         }
         if (block.type === 'steps' || block.type === 'keyPoints') {
-          const Icon = block.type === 'steps' ? ListOrdered : Sparkles;
+          const Icon = block.type === 'steps' ? ListOrdered : Info;
           return (
             <div key={i} className={cn('rounded-2xl border border-border/80 bg-muted/[0.2] px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
@@ -200,7 +200,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
             <div key={i} className={cn('rounded-2xl border border-primary/20 bg-primary/[0.04] px-4 py-4', blockLayoutClass(block.type))}>
               {block.title ? (
                 <p className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-primary">
-                  <Sparkles className="h-4 w-4" />
+                  <Info className="h-4 w-4" />
                   {block.title}
                 </p>
               ) : null}

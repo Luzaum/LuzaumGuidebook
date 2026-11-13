@@ -1,5 +1,5 @@
 /** Preserve internal paths, query strings and hashes without accepting another origin. */
-export function normalizeInternalRedirect(value: string | null | undefined, fallback = '/app'): string {
+export function normalizeInternalRedirect(value: string | null | undefined, fallback = '/consulta-vet'): string {
   const target = String(value || '').trim();
   if (!target.startsWith('/') || target.startsWith('//') || /[\\\u0000-\u001f\u007f]/.test(target)) return fallback;
   try {

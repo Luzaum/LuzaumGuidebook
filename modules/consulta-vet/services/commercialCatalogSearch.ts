@@ -1,4 +1,5 @@
 import type { CommercialMedicationProduct } from '../types/commercialMedication';
+import { fuzzyTokenScore } from '../utils/fuzzySearch';
 import { normalizeMedicationSearch } from '../utils/medicationSearch';
 
 function normalizeSearchTerm(value: unknown): string {
@@ -71,42 +72,6 @@ function phraseOccursAtWordBoundary(query: unknown, candidate: unknown): boolean
   const queryPhrase = normalizedTokenPhrase(query);
   const candidatePhrase = normalizedTokenPhrase(candidate);
   return !!queryPhrase && (` ${candidatePhrase} `).includes(` ${queryPhrase} `);
-}
-
-function tokenEditDistance(left: string, right: string): number {
-  const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
-  for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
-    const current = [leftIndex];
-    for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
-      current[rightIndex] = Math.min(
-        current[rightIndex - 1] + 1,
-        previous[rightIndex] + 1,
-        previous[rightIndex - 1] + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
-      );
-    }
-    previous.splice(0, previous.length, ...current);
-  }
-  return previous[right.length];
-}
-
-function maximumTypoDistance(token: string): number {
-  if (token.length >= 9) return 2;
-  if (token.length >= 4) return 1;
-  return 0;
-}
-
-function fuzzyTokenScore(queryTokens: string[], candidateTokens: string[]): number | null {
-  if (!queryTokens.length || !candidateTokens.length) return null;
-  let total = 0;
-  for (const queryToken of queryTokens) {
-    const bestDistance = candidateTokens.reduce(
-      (best, candidateToken) => Math.min(best, tokenEditDistance(queryToken, candidateToken)),
-      Number.POSITIVE_INFINITY,
-    );
-    if (bestDistance > maximumTypoDistance(queryToken)) return null;
-    total += bestDistance;
-  }
-  return total;
 }
 
 function fieldMatchScore(queryPhrase: string, fields: unknown[]): number {

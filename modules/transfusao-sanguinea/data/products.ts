@@ -30,8 +30,8 @@ export const PRODUCT_SOURCES = {
 } as const;
 
 export const BOOK_REFERENCES = [
-  'Macintire et al. Manual of Small Animal Emergency and Critical Care Medicine, 2ª ed., cap. 14, tabela 14.3, pp. 339–341 (PDF pp. 355–357).',
-  'Feline Emergency and Critical Care Medicine, 2ª ed., tabela 5.3, p. 37 e capítulo 28, p. 302 (PDF pp. 55 e 320).',
+  'Macintire et al. Manual of Small Animal Emergency and Critical Care Medicine, 2ª ed.',
+  'Feline Emergency and Critical Care Medicine, 2ª ed.',
 ];
 
 export const PRODUCT_GUIDES: ProductGuide[] = [

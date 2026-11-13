@@ -32,7 +32,13 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     labelCompositionSummary:
       'Fenbendazol 100 mg/mL (suspensão oral a 10%). A apresentação brasileira é indicada em bula para bovinos e cães.',
     labelDirections:
-      'Cães: 100 mg/kg VO em dose única ou 50 mg/kg VO a cada 24 horas durante 3 dias consecutivos. Agitar antes de usar. A bula também inclui giardíase entre as indicações caninas.',
+      'Cães: 100 mg/kg VO em dose única (1 mL/kg) ou 50 mg/kg VO a cada 24 horas durante 3 dias consecutivos (0,5 mL/kg/dia). Agitar antes de usar. A bula também inclui giardíase entre as indicações caninas.',
+    eligibility: {
+      minAge: 'A partir de 2 semanas de vida em cães (uso pediátrico rotineiro para nematódeos intestinais; sob cálculo rigoroso em peso em balança).',
+      minWeight: 'Sem peso mínimo fixo; dosar por peso exato (0,5 mL/kg na dose de 50 mg/kg ou 1 mL/kg na dose de 100 mg/kg).',
+      pregnancyLactation: 'Alta margem de segurança; protocolos veterinários utilizam fenbendazol no terço final da gestação em cadelas (50 mg/kg/dia a partir do 40º dia até 14º dia pós-parto) para reduzir transmissão vertical de Toxocara canis e Ancylostoma.',
+      restrictions: 'Uso exclusivo por via oral. Após aberto o frasco de 20 mL, bula brasileira recomenda utilizar todo o conteúdo imediatamente; agitar vigorosamente antes de aspirar.',
+    },
     dosageGuidance: {
       labelDose:
         'Cães: 100 mg/kg VO em dose única (1 mL/kg) OU 50 mg/kg VO q24h por 3 dias (0,5 mL/kg/dose).',
@@ -120,7 +126,13 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     labelCompositionSummary:
       'Pasta oral equina pronta para uso; ponazuril 150 mg/g (15% p/p). Produto aprovado nos EUA exclusivamente para equinos.',
     labelDirections:
-      'Bula equina: 15 mg/kg VO como dose de ataque apenas no dia 1; depois 5 mg/kg VO q24h nos dias 2–28 para mieloencefalite protozoária equina. Este esquema NÃO é a dose de cães e gatos.',
+      'Bula equina: 15 mg/kg VO como dose de ataque apenas no dia 1; depois 5 mg/kg VO q24h nos dias 2–28 para mieloencefalite protozoária equina. Em cães e gatos (extrabula, pasta 150 mg/g): coccidiose 20 mg/kg VO q24h por 3 dias em cães (0,133 g/kg/dia) ou 20–50 mg/kg VO q24h por 1–3 dias em gatos.',
+    eligibility: {
+      minAge: 'Cães e gatos (extrabula): empregado a partir de 2 a 3 semanas de vida em filhotes e ninhadas com isosporose/coccidiose sob cálculo exato por peso.',
+      minWeight: 'Sem peso mínimo fixo; calcular rigorosamente por peso em balança (ex.: 20 mg/kg na pasta 150 mg/g = 0,133 g de pasta/kg = ~0,13 mL/kg).',
+      pregnancyLactation: 'Segurança não estabelecida pela bula em fêmeas prenhes ou lactantes (uso extrabula apenas quando o benefício superar o risco).',
+      restrictions: 'Produto equino concentrado (150 mg/g); nunca usar o êmbolo calibrado de equinos diretamente para cães/gatos — pesar/aspirar a fração calculada com seringa graduada.',
+    },
     dosageGuidance: {
       labelDose:
         'Equinos (bula dos EUA): 15 mg/kg VO no dia 1; depois 5 mg/kg VO q24h por mais 27 dias.',
@@ -225,6 +237,12 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     },
     plumbsContext:
       'Plumb’s 10ª ed., monografia Toltrazuril (pp. 1255–1257): descreve uso extrabula para coccidiose em cães e gatos e adverte que toltrazuril e ponazuril não devem ser tratados como o mesmo fármaco.',
+    eligibility: {
+      minAge: 'Bezerros (bula): a partir da 3ª semana de vida. Cães e gatos (extrabula): amplamente empregado em filhotes jovens a partir de 2 semanas de idade sob cálculo exato mg/kg.',
+      minWeight: 'Dosar rigorosamente por peso em balança (10–30 mg/kg = 0,2 a 0,6 mL/kg na apresentação 50 mg/mL).',
+      pregnancyLactation: 'Segurança não estabelecida em cadelas e gatas gestantes ou lactantes (uso extrabula apenas quando benefício superar risco).',
+      restrictions: 'Apresentação bovina (não usar a dose bovina de 3 mL/10 kg diretamente); agitar antes de usar e medir em seringa graduada.',
+    },
     clinicalUse:
       'Referência comercial de toltrazuril para protocolos antiprotozoários extrabula em pequenos animais, após confirmação diagnóstica. A indicação oficial brasileira deste produto permanece bovina.',
     reassessment:
@@ -259,7 +277,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     labelCompositionSummary:
       'Cada comprimido contém sulfametoxazol 500 mg + trimetoprima 100 mg (600 mg de princípios ativos por comprimido; excipiente q.s.p. 700 mg).',
     labelDirections:
-      'Bula: 1 comprimido/20 kg VO a cada 24 horas por 5–7 dias. Tabela: 5–9 kg = 1/4; 10–14 kg = 1/2; 15–19 kg = 3/4; 20 kg ou mais = 1 comprimido por dia, ajustando ao peso sob orientação veterinária.',
+      'Bula: 1 comprimido/20 kg VO a cada 24 horas por 5–7 dias. Tabela: 5–9 kg = 1/4 comprimido; 10–14 kg = 1/2 comprimido; 15–19 kg = 3/4 comprimido; 20 kg = 1 comprimido/dia (1/4 de comprimido adicional a cada 5 kg).',
     dosageGuidance: {
       labelDose:
         '1 comprimido/20 kg VO q24h por 5–7 dias (equivale a 30 mg/kg da associação sulfametoxazol + trimetoprima).',
@@ -314,7 +332,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     reassessment:
       'Reavaliar resposta em 48–72 horas. Se o tratamento ultrapassar 7 dias, considerar hemograma e perfil hepatorrenal; em cães, teste de Schirmer basal e acompanhamento conforme risco.',
     prescriptionExample:
-      'Sulfaprim Comprimidos (500 mg + 100 mg): administrar 1 comprimido para cada 20 kg por via oral a cada 24 horas, durante 5–7 dias, conforme bula e diagnóstico.',
+      'Sulfaprim Comprimidos (500 mg + 100 mg): administrar 1 comprimido para cada 20 kg (5–9 kg: 1/4 cp; 10–14 kg: 1/2 cp; 15–19 kg: 3/4 cp) por via oral a cada 24 horas, durante 5–7 dias.',
     safetyAlert:
       'Bula: não administrar a cães ou gatos com menos de 15 meses, a fêmeas prenhes/lactantes ou a pacientes com hipersensibilidade a sulfas/trimetoprima. Plumb’s alerta para KCS, hipersensibilidade, hepatotoxicidade, citopenias e cristalúria; manter hidratação e cautela em doença renal/hepática.',
     price: {
@@ -351,7 +369,13 @@ export function enrichRequestedAntiparasiticCommercialProduct(
       labelCompositionSummary:
         'Tablete mastigável de afoxolaner para cães. As quatro apresentações fornecem dose mínima de 2,5 mg/kg quando escolhidas pela faixa de peso da bula.',
       labelDirections:
-        'Administrar 1 tablete inteiro VO uma vez ao mês conforme a faixa de peso. Pode ser oferecido com ou sem alimento; observar o consumo completo. Se a dose for perdida ou houver vômito em até 2 horas, a bula orienta administrar nova dose completa.',
+        'Administrar 1 tablete inteiro VO uma vez ao mês pela faixa de peso exata: 2–4 kg (11,3 mg); 4,1–10 kg (28,3 mg); 10,1–25 kg (68 mg); 25,1–50 kg (136 mg); >50 kg combinar tabletes inteiros. Pode ser oferecido com ou sem alimento; se houver vômito em até 2 horas, administrar nova dose completa.',
+      eligibility: {
+        minAge: 'A partir de 8 semanas de idade.',
+        minWeight: 'A partir de 2,0 kg de peso corporal.',
+        pregnancyLactation: 'Segurança não avaliada pela bula em cães reprodutores, fêmeas gestantes ou lactantes.',
+        restrictions: 'Uso exclusivo em cães (não usar em gatos). Não partir o tablete. Cautela em pacientes com histórico de convulsões ou doença neurológica (classe isoxazolina).',
+      },
       dosageGuidance: {
         labelDose: 'Dose mínima de afoxolaner 2,5 mg/kg VO, uma vez ao mês, pela faixa de peso da embalagem.',
         plumbs: {
@@ -375,7 +399,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
       reassessment:
         'Confirmar consumo completo, adesão mensal e controle ambiental. Reavaliar imediatamente tremores, ataxia, convulsão ou outra alteração neurológica.',
       prescriptionExample:
-        'NexGard: administrar 1 tablete inteiro correspondente à faixa de peso do cão por via oral a cada 30 dias, continuamente enquanto houver risco de exposição.',
+        'NexGard: administrar 1 tablete inteiro correspondente à faixa de peso (2–4 kg: 11,3 mg; 4,1–10 kg: 28,3 mg; 10,1–25 kg: 68 mg; 25,1–50 kg: 136 mg) por via oral a cada 30 dias, continuamente enquanto houver risco de exposição.',
       safetyAlert:
         'Não usar em gatos. Bula: cães a partir de 8 semanas e 2 kg. Usar com cautela em histórico de convulsões/doença neurológica; segurança não avaliada em reprodução, gestação ou lactação.',
       evidenceLevel: 'Bula oficial brasileira do NexGard + Plumb’s Veterinary Drug Handbook, 10ª ed.',
@@ -399,20 +423,26 @@ export function enrichRequestedAntiparasiticCommercialProduct(
       labelCompositionSummary:
         'Cada comprimido contém febantel 150 mg + praziquantel 50 mg + pamoato de pirantel 144 mg. A dose de bula corresponde a 15 mg/kg + 5 mg/kg + 14,4 mg/kg, respectivamente.',
       labelDirections:
-        'Administrar 1 comprimido/10 kg VO. Verminoses intestinais: dose única. Giardíase: a mesma dose q24h por 3 dias consecutivos. Tabela da bula: 2–5 kg = 1/2; 5–10 kg = 1; acrescentar 1/2 comprimido a cada 5 kg.',
+        'Administrar 1 comprimido/10 kg VO. Verminoses intestinais: dose única. Giardíase: a mesma dose q24h por 3 dias consecutivos. Tabela da bula: 2–5 kg = 1/2 cp; 5,1–10 kg = 1 cp; 10,1–15 kg = 1,5 cp; 15,1–20 kg = 2 cp (acrescentar 1/2 cp a cada 5 kg).',
+      eligibility: {
+        minAge: 'A partir de 3 semanas de idade (bula brasileira Elanco).',
+        minWeight: 'A partir de 2,0 kg de peso corporal.',
+        pregnancyLactation: 'Não utilizar nas primeiras 4 semanas de gestação; após esse período e durante a lactação, usar apenas se estritamente indicado.',
+        restrictions: 'Uso exclusivo em cães (não usar em gatos). Cautela em disfunção hepática ou renal grave.',
+      },
       dosageGuidance: {
         labelDose:
-          '1 comprimido/10 kg VO: dose única para verminoses; q24h por 3 dias para giardíase. Não administrar abaixo de 2 kg.',
+          '1 comprimido/10 kg VO (2–5 kg = 1/2 cp; 5,1–10 kg = 1 cp; +1/2 cp a cada 5 kg): dose única para verminoses; q24h por 3 dias para giardíase. Não administrar abaixo de 2 kg.',
         plumbs: {
           dog: [
             {
               title: 'Nematódeos e cestódeos',
-              dose: 'Usar a apresentação e a tabela de peso da bula em dose única.',
+              dose: '1 comprimido para cada 10 kg VO em dose única (febantel 15 mg/kg + praziquantel 5 mg/kg + pamoato de pirantel 14,4 mg/kg).',
             },
             {
               title: 'Giardia spp.',
-              dose: 'Usar a dose da tabela de peso q24h por 3 dias.',
-              note: 'O Plumb’s reproduz este esquema para cães; associar higiene ambiental e reavaliação.',
+              dose: '1 comprimido para cada 10 kg VO q24h por 3 dias consecutivos.',
+              note: 'O Plumb’s reproduz este esquema para cães; associar banho no 3º dia, higiene ambiental e reavaliação.',
             },
           ],
         },

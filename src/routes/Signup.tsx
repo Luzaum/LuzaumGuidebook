@@ -2,12 +2,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
 import { getSession, signInWithGoogle, signUp } from '../lib/auth'
+import { normalizeInternalRedirect } from '../lib/internalRedirect'
 
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
   if (!target) return null
-  if (!target.startsWith('/') || target.startsWith('//') || target.startsWith('/signup')) return '/hub'
-  return target
+  if (!target.startsWith('/') || target.startsWith('//') || target.startsWith('/signup')) return '/consulta-vet'
+  return normalizeInternalRedirect(target, '/consulta-vet')
 }
 
 export default function Signup() {
@@ -25,7 +26,7 @@ export default function Signup() {
       typeof (location.state as { from?: string } | null)?.from === 'string'
         ? normalizeTargetPath((location.state as { from?: string }).from)
         : null
-    return queryTarget ?? stateTarget ?? '/hub'
+    return queryTarget ?? stateTarget ?? '/consulta-vet'
   }, [location.search, location.state])
 
   useEffect(() => {
@@ -59,7 +60,11 @@ export default function Signup() {
     setMsg('')
 
     try {
-      await signUp(payload.email, payload.password, nextPath)
+      const data = await signUp(payload.email, payload.password, nextPath)
+      if (data.session) {
+        nav(nextPath, { replace: true })
+        return
+      }
       setMsg('Conta criada! Verifique seu e-mail para confirmar o acesso.')
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Falha ao criar conta.'
@@ -77,7 +82,7 @@ export default function Signup() {
   }
 
   if (checkingSession) {
-    return <div className="p-6">Carregando autenticacao...</div>
+    return <div className="p-6">Carregando autenticação...</div>
   }
 
   return (

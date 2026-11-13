@@ -228,7 +228,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
       'Uso veterinário extra-label. Bula humana: 15 mL VO 2×/dia — não usar como referência veterinária. Calcular em mg/kg.',
     clinicalUse: 'Alternativa de xarope 2% puro para iodeto de potássio oral em uso selecionado.',
     prescriptionExample:
-      'Iodeton (20 mg/mL): administrar ___ mL VO conforme prescrição, correspondendo a ___ mg/kg, junto ao alimento.',
+      'Iodeton (20 mg/mL): iniciar em 2,5 mg/kg VO q24h (0,125 mL/kg) junto ao alimento em gatos em associação ao itraconazol, titulando até 5–20 mg/kg/dia conforme tolerância; em cães, 40 mg/kg (2 mL/kg) VO q12h.',
     safetyAlert: `${KI_HUMAN_SYRUP_ALERT} Bula humana contraindica gestação, crianças, distúrbios tireoidianos e diabetes — avaliar risco/benefício veterinário. ${KI_IODISM_ALERT}`,
     price: {
       averageLabel: 'R$ 17,34',
@@ -251,7 +251,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     labelDirections: 'Bula humana: 15 mL 2×/dia. Uso veterinário extra-label com cálculo em mg/kg.',
     clinicalUse: 'Xarope 2% puro; disponibilidade comercial incerta em 06/08/2026.',
     prescriptionExample:
-      'Iodenax (20 mg/mL): administrar ___ mL VO conforme prescrição, correspondendo a ___ mg/kg.',
+      'Iodenax (20 mg/mL): iniciar em 2,5 mg/kg VO q24h (0,125 mL/kg) junto ao alimento em gatos, titulando até 5–20 mg/kg/dia se bem tolerado; em cães, 40 mg/kg (2 mL/kg) VO q12h.',
     safetyAlert: `${KI_HUMAN_SYRUP_ALERT} Contém açúcar. Confirmar estoque antes de prescrever. ${KI_IODISM_ALERT}`,
     price: { averageLabel: 'R$ 22,00', rangeLabel: 'Frasco 100 mL xarope 20 mg/mL: R$ 18,00 a R$ 26,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://consultaremedios.com.br/iodenax/p',

@@ -61,7 +61,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
     reassessment:
       'Dosagem da concentração sérica de fenobarbital (alvo terapêutico: 15 a 35 µg/mL) realizada após 10 a 14 dias do início ou de mudança de dose, repetida em aproximadamente 6 semanas (avaliação de autoindução em cães) e posteriormente a cada 6 meses com hemograma, ALT, FA, albumina e ácidos biliares.',
     prescriptionExample:
-      'GARDENAL® 100 mg — caixa com 20 comprimidos sulcados. Administrar via oral ___ comprimido(s) a cada 12 horas, em horários rigorosamente fixos, de uso contínuo. Não suspender nem alterar a dosagem sem expressa orientação veterinária.',
+      'GARDENAL® 100 mg — caixa com 20 comprimidos sulcados. Administrar 2,5 a 3 mg/kg (ou dose calculada pelo peso) por via oral a cada 12 horas, em horários rigorosamente fixos, de uso contínuo. Não suspender nem alterar a dose sem desmame monitorado e dosagem sérica.',
     safetyAlert:
       'MEDICAMENTO CONTROLADO (Portaria 344/98 — Lista C1 / Receita de Controle Especial em duas vias). Contraindicado em hepatopatia avançada ou disfunção hepática prévia grave. Pode causar sedação, ataxia, polifagia, poliúria e polidipsia nas primeiras 2 a 4 semanas. Risco grave de crises em salva ou status epilepticus se interrompido abruptamente.',
     price: {
@@ -163,7 +163,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
     reassessment:
       'Monitorar frequência de crises por diário neurológico. Não requer dosagem sérica de rotina na mesma frequência que o fenobarbital, mas creatinina e ureia devem ser checadas em pacientes nefropatas (eliminação primariamente renal). Reavaliar após 4 a 8 meses para verificar possível tolerância crônica.',
     prescriptionExample:
-      'KEPPRA® 250 mg — caixa com 30 comprimidos revestidos sulcados. Administrar via oral ___ comprimido(s) a cada 8 horas, continuamente, em horários rigorosamente controlados. Não interromper sem prévia orientação veterinária.',
+      'KEPPRA® 250 mg — caixa com 30 comprimidos revestidos sulcados. Administrar 20 a 30 mg/kg (ou 20 a 40 mg/kg em gatos) por via oral a cada 8 horas, continuamente, em horários rigorosamente controlados. Não interromper abruptamente sem plano de desmame.',
     safetyAlert:
       'Medicamento de controle especial no Brasil (Portaria 344/98 — Lista C1 / Receita de Controle Especial em duas vias). Excelente segurança sistêmica, mas exige estrita pontualidade no intervalo de 8 horas para a formulação convencional para evitar crises por escape plasmático. Ajustar dose em insuficiência renal moderada a grave.',
     price: {

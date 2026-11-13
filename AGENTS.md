@@ -7,18 +7,16 @@ Este arquivo fornece contexto imediato para agentes de IA (incluindo **ChatGPT W
 - **Stack:** React 19 + TypeScript 5.8 + Vite 6 + Tailwind CSS + Shadcn/UI + Supabase (`@supabase/supabase-js`)
 - **Node.js:** Versão `24` (definida em `.nvmrc` e `netlify.toml`)
 - **Roteamento Principal:** `App.tsx` (React Router v7)
-- **Registro de Módulos do Hub:** `modules/registry.ts`
+- **Registro de Módulos dos Mini-apps:** `modules/registry.ts`
 
 ## 2. Mapa dos Módulos Clínicos
 - **NutriçãoVET (Calculadora Energética):** `modules/energia-vet/` (rota `/calculadora-energetica`)
 - **Fluidoterapia Vet:** `modules/fluidoterapia-vet/` (rota `/fluidoterapia-vet`)
 - **Transfusão Sanguínea:** `modules/transfusao-sanguinea/` e `pages/TransfusaoSanguineaPage.tsx` (rota `/transfusao-sanguinea`)
-- **HemoGasoVet:** `modules/hemogasovet/` (rota `/hemogasovet`)
 - **Escalas de Dor:** `modules/escalas-dor/` (rota `/dor`)
 - **Antibioticoterapia Vet:** `modules/antibioticoterapia-vet/` (rota `/antibioticoterapia`)
-- **CRI VET:** `modules/crivet/` e `pages/Crivet.tsx` (rota `/crivet`)
 - **Neurologia (NeuroVet):** `modules/neurologia/` e `pages/NeurologiaPage.tsx` (rota `/neurologia`)
-- **ConsultaVET:** `modules/consulta-vet/` (rota `/consulta-vet` e sub-rotas `doencas`, `medicamentos`, `consensos`, `editorial`, `manejo-emergencial`, `guias-rapidos`, `referencias-rapidas`)
+- **Vetius (base clínica):** `modules/consulta-vet/` (rota `/consulta-vet` e sub-rotas `doencas`, `medicamentos`, `consensos`, `editorial`, `manejo-emergencial`, `guias-rapidos`, `referencias-rapidas`)
 - **Autenticação, Perfis e Multi-Clínica (Supabase):** `src/components/`, `src/lib/`, `src/routes/`
 
 ## 3. Comandos de Setup e Validação (Quality Gate)
@@ -35,7 +33,6 @@ Ao realizar alterações pelo ChatGPT Work / Codex ou em qualquer ambiente cloud
    ```
 3. **Validações clínicas específicas (quando alterar os módulos correspondentes):**
    ```bash
-   npm run validate:hemogasovet
    npm run validate:fluidoterapia-vet
    npm run test:nutrition
    npm run test:neurologia
@@ -49,3 +46,7 @@ Ao realizar alterações pelo ChatGPT Work / Codex ou em qualquer ambiente cloud
 - **Idioma da UI:** Português (pt-BR), preservando acentuação correta em textos clínicos e de interface.
 - **Variáveis de Ambiente:** Nunca comitar chaves reais em `.env` ou `.env.local`. O cliente Supabase (`src/lib/supabaseClient.ts`) possui fallback seguro caso `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` não estejam definidos no ambiente de teste/CI.
 - **Preservação Clínica:** Não remover dados clínicos, tabelas de doses ou consensos existentes sem solicitação explícita.
+
+## 5. Acervo Bibliográfico Local (`C:\LIVROS`)
+- **Local padrão dos livros veterinários:** `C:\LIVROS`
+- Sempre que adicionar ou revisar monografias de medicamentos, doenças, protocolos anestésicos ou consensos no Vetius / ConsultaVET, consultar diretamente os tratados disponíveis em `C:\LIVROS` — com destaque para **`Plumb's Veterinary Drug Handbook, 10th edition.pdf`**, **`Lumb and Jones.pdf`** (*Veterinary Anesthesia and Analgesia*), **`BSAVA Small Animal Formulary, Part A, Canine and Feline, 10th Edition (VetBooks.ir).pdf`**, **`Essentials of small animal anesthesia and analgesia.pdf`**, **`NELSON E COUTO 6_compressed (2) (1).pdf`** e **`Ettinger’s Textbook of Veterinary Internal Medicine, 9ed 2024.pdf`** — para conferir páginas impressas, doses, farmacocinética, compatibilidades e peculiaridades entre cães e gatos.

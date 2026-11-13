@@ -573,7 +573,7 @@ export const sepseCaninaRecord: DiseaseRecord = {
   ],
   relatedDiseaseSlugs: [
     'coagulacao-intravascular-disseminada-caes-gatos',
-    'babesiose-canina',
+    'babesiose-caes-gatos',
     'piotorax-caes-gatos',
     'cistite-enfisematosa-caes-gatos',
     'anemia-hemolitica-imunomediada-canina',

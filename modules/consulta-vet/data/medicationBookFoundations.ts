@@ -1031,7 +1031,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
   if (entry.plumbs) {
     bookReferences.push({
       id: `ref-book-foundations-plumbs-${medication.slug}`,
-      citationText: `Plumb’s Veterinary Drug Handbook, 10ª edição. Monografia: ${entry.plumbs.monograph}. p. ${entry.plumbs.pages}.`,
+      citationText: 'Plumb’s Veterinary Drug Handbook, 10ª edição.',
       sourceType: 'Formulário farmacológico',
       url: 'https://search.worldcat.org/isbn/9781394172207',
       notes: 'Fonte de referência farmacológica, doses e intervalos para cães e gatos.',
@@ -1041,7 +1041,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
   if (entry.bsava) {
     bookReferences.push({
       id: `ref-book-foundations-bsava-${medication.slug}`,
-      citationText: `BSAVA Small Animal Formulary, Part A: Canine and Feline, 10ª edição. Monografia: ${entry.bsava.monograph}. p. ${entry.bsava.pages}.`,
+      citationText: 'BSAVA Small Animal Formulary, Part A: Canine and Feline, 10ª edição.',
       sourceType: 'Formulário farmacológico',
       notes: 'Diretrizes britânicas de posologia e segurança em pequenos animais.',
     });
@@ -1050,7 +1050,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
   if (entry.nelsonCouto) {
     bookReferences.push({
       id: `ref-book-foundations-nelson-couto-${medication.slug}`,
-      citationText: `Nelson RW, Couto CG. Medicina Interna de Pequenos Animais, 6ª edição. Guanabara Koogan / Elsevier. ${entry.nelsonCouto.chapter}. p. ${entry.nelsonCouto.pages}.`,
+      citationText: 'Nelson RW, Couto CG. Medicina Interna de Pequenos Animais, 6ª edição. Guanabara Koogan / Elsevier.',
       sourceType: 'Tratado de Medicina Interna',
       notes: 'Referência clínica de fisiopatologia, conduta diagnóstica e protocolos terapêuticos.',
     });
@@ -1059,7 +1059,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
   if (entry.ettinger) {
     bookReferences.push({
       id: `ref-book-foundations-ettinger-${medication.slug}`,
-      citationText: `Ettinger SJ, Feldman EC, Côté É. Textbook of Veterinary Internal Medicine, 9ª edição (2024). Elsevier. ${entry.ettinger.chapter}. p. ${entry.ettinger.pages}.`,
+      citationText: 'Ettinger SJ, Feldman EC, Côté É. Textbook of Veterinary Internal Medicine, 9ª edição (2024). Elsevier.',
       sourceType: 'Tratado de Medicina Interna',
       notes: 'Diretrizes internacionais e farmacoterapia avançada em medicina interna de cães e gatos.',
     });

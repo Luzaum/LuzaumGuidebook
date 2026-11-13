@@ -126,7 +126,7 @@ export default function EnergyStep() {
       litterSize: profile.requiresLitterSize ? litterSize : undefined,
       lactationWeek: profile.requiresLactationWeek ? lactationWeek : undefined,
       merFormula: [energyResult.methodSummary],
-      notes: `${BOOK_ENERGY_SOURCE.title}, ${BOOK_ENERGY_SOURCE.chapter}.`,
+      notes: `${BOOK_ENERGY_SOURCE.title}.`,
     })
     setTarget({ targetEnergy: finalEnergy })
     setDiet({
@@ -281,7 +281,7 @@ export default function EnergyStep() {
         </section>
 
         <p className="text-xs leading-5 text-muted-foreground">
-          Fonte: {BOOK_ENERGY_SOURCE.title}, {BOOK_ENERGY_SOURCE.chapter}, páginas {BOOK_ENERGY_SOURCE.pages}.{' '}
+          Fonte: {BOOK_ENERGY_SOURCE.title}.{' '}
           {BOOK_ENERGY_SOURCE.note}
         </p>
         <div className="flex justify-between border-t border-border/60 pt-4">

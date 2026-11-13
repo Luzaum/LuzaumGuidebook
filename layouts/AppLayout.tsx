@@ -129,16 +129,14 @@ export function AppLayout() {
     decodedPathname.startsWith('/fluidoterapia') ||
     decodedPathname.startsWith('/dor') ||
     decodedPathname.startsWith('/antibioticoterapia') ||
-    decodedPathname.startsWith('/hemogasovet') ||
     decodedPathname.startsWith('/calculadora-energetica') ||
-    decodedPathname.startsWith('/crivet') ||
     decodedPathname.startsWith('/consulta-vet') ||
     decodedPathname.startsWith('/neurologia') ||
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
   const isFullBleedRoute =
     isActive('/') ||
-    isActive('/hub') ||
+    isActive('/consulta-vet/referencias-rapidas') ||
     isImmersiveModuleRoute ||
     isInternalScrollShellRoute
   const usesOwnMobileBottomNav =
@@ -243,7 +241,7 @@ export function AppLayout() {
               size={76}
               className="h-20 w-20 select-none object-contain drop-shadow-[0_0_24px_rgba(16,185,129,0.2)] transition-all duration-500 group-hover:scale-105"
             />
-            <span className="neon-wave neon-wave-glow -mt-2 text-2xl font-black tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+            <span className="neon-wave neon-wave-glow text-2xl font-black tracking-wider bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
               Vetius
             </span>
           </Link>
@@ -255,17 +253,17 @@ export function AppLayout() {
           <div>
             <button
               onClick={() => {
-                navigate('/hub')
+                navigate('/consulta-vet/referencias-rapidas')
                 if (isMobile) setSidebarOpen(false)
               }}
               className={`flex min-h-11 w-full items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                isActive('/hub')
+                isActive('/consulta-vet/referencias-rapidas')
                   ? 'bg-gradient-to-r from-emerald-600/20 to-teal-600/10 border-emerald-500/25 text-emerald-400'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 hover:border-slate-850/60'
               }`}
             >
               <Home className="h-5 w-5" />
-              <span>Hub Principal</span>
+              <span>Mini-apps</span>
             </button>
           </div>
 
@@ -479,6 +477,11 @@ export function AppLayout() {
               </Link>
             </div>
             
+            {!decodedPathname.startsWith('/consulta-vet') && (
+              <Link to="/consulta-vet/referencias-rapidas" className="ml-3 inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold text-primary hover:bg-muted">
+                Mini-apps
+              </Link>
+            )}
             {/* Right Side: Theme and User Menu */}
             <div className="flex items-center gap-3 ml-auto">
               <ThemeToggle />
@@ -516,13 +519,13 @@ export function AppLayout() {
           <div className="app-mobile-bottom-nav fixed bottom-0 left-0 right-0 z-40 flex min-h-16 h-[calc(4rem+env(safe-area-inset-bottom,0px))] items-start justify-around border-t border-slate-850 bg-[#05060b] px-2 pb-[env(safe-area-inset-bottom,0px)] pt-2 shadow-lg">
             {/* Hub */}
             <button
-              onClick={() => navigate('/hub')}
+              onClick={() => navigate('/consulta-vet/referencias-rapidas')}
               className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
-                isActive('/hub') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
+                isActive('/consulta-vet/referencias-rapidas') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               <Home className="h-5 w-5" />
-              <span className="text-[10px] mt-1">Hub</span>
+              <span className="text-[10px] mt-1">Mini-apps</span>
             </button>
 
             {/* ConsultaVET */}
@@ -533,7 +536,7 @@ export function AppLayout() {
               }`}
             >
               <Stethoscope className="h-5 w-5" />
-              <span className="text-[10px] mt-1">Consulta</span>
+              <span className="text-[10px] mt-1">Início</span>
             </button>
 {/* Menu Drawer */}
             <button

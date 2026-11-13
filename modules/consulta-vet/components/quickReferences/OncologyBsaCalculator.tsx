@@ -1,18 +1,17 @@
 import React, { useMemo, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import {
   Calculator,
   ChevronDown,
-  ChevronUp,
   Clock,
   Search,
   ShieldAlert,
-  Sparkles,
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
+import { calculateOncologyVolumes, getOncologyPresentations } from '../../data/oncologyPresentations';
+import './oncologyRegimens.css';
 import {
   BSAVA_ONCOLOGY_DRUGS,
-  BSAVA_SAFETY_GUIDELINES,
   calculateBsa,
   calculateOncologyDose,
   getOncologyDoses,
@@ -28,8 +27,10 @@ interface OncologyBsaCalculatorProps {
 }
 
 import { OncologyHelpButton } from './OncologyHelpButton';
+import { OncologySafetyGuide } from './OncologySafetyGuide';
 
 const formatDose = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 3 });
+const formatVolume = new Intl.NumberFormat('pt-BR', { maximumSignificantDigits: 5 });
 
 const REGIMENS: Record<OncologyRegimen, string> = {
   conventional: 'Convencional',
@@ -50,7 +51,7 @@ export function OncologyBsaCalculator({
   const [searchTerm, setSearchTerm] = useState('');
   const [regimen, setRegimen] = useState<OncologyRegimen | null>(null);
   const [expandedDrugId, setExpandedDrugId] = useState<string | null>(null);
-  const [showAllGuidelines, setShowAllGuidelines] = useState(false);
+  const [presentations, setPresentations] = useState<Record<string, { index: number; concentration: string }>>({});
 
   const bsa = useMemo(() => calculateBsa(currentWeightKg, species), [currentWeightKg, species]);
 
@@ -74,345 +75,283 @@ export function OncologyBsaCalculator({
     }
   };
 
-  const handleStep = (delta: number) => {
-    const next = Math.max(0.2, Number((currentWeightKg + delta).toFixed(1)));
-    onWeightChange(Math.min(next, 100));
-  };
-
   return (
     <div className="space-y-6">
-      {/* Bloco Central: Calculadora de Superfície Corporal */}
-      <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card/90 p-5 shadow-sm backdrop-blur-md md:p-7">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          {/* Coluna Esquerda: Entrada de Dados */}
-          <div className="flex-1 space-y-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex w-full min-w-0 items-center gap-2.5 sm:w-auto">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Calculator className="h-5 w-5" />
+      <section aria-labelledby="oncology-bsa-heading" className="overflow-hidden rounded-2xl border border-border/80 bg-card">
+        <div className="flex items-center gap-2.5 border-b border-border/70 px-5 py-4">
+          <Calculator className="h-4 w-4 text-primary" aria-hidden="true" />
+          <h2 id="oncology-bsa-heading" className="font-bold text-foreground">Superfície corporal</h2>
+        </div>
+        <div className="grid md:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
+          <div className="space-y-4 p-5 sm:p-6">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <fieldset className="min-w-0">
+                <legend className="mb-2 text-sm font-medium text-foreground">Espécie</legend>
+                <div className="grid grid-cols-2 rounded-xl bg-muted/60 p-1">
+                  {(['canine', 'feline'] as const).map((option) => (
+                    <button
+                      key={option}
+                      type="button"
+                      aria-pressed={species === option}
+                      onClick={() => onSpeciesChange(option)}
+                      className={cn(
+                        'min-h-9 rounded-lg px-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+                        species === option ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',
+                      )}
+                    >
+                      {option === 'canine' ? 'Cão' : 'Gato'}
+                    </button>
+                  ))}
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-base font-bold text-foreground">Calculadora de Superfície Corpórea (BSA)</h3>
-                  <p className="text-xs text-muted-foreground">Estimativa em m² com o peso em kg</p>
-                </div>
-              </div>
-
-              {/* Seletor Cão / Gato */}
-              <div className="grid w-full grid-cols-2 rounded-xl border border-border/80 bg-muted/40 p-1 sm:flex sm:w-auto">
-                <button
-                  type="button"
-                  onClick={() => onSpeciesChange('canine')}
-                  className={cn(
-                    'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
-                    species === 'canine'
-                      ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  Cão
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onSpeciesChange('feline')}
-                  className={cn(
-                    'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
-                    species === 'feline'
-                      ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  Gato
-                </button>
+              </fieldset>
+              <div className="min-w-0">
+                <label htmlFor="patient-weight-input" className="mb-2 block text-sm font-medium text-foreground">Peso (kg)</label>
+                <input
+                  id="patient-weight-input"
+                  type="number"
+                  step="0.1"
+                  min="0.2"
+                  max="120"
+                  value={currentWeightKg || ''}
+                  onChange={handleInputChange}
+                  placeholder="Ex.: 12,5"
+                  className="h-11 w-full rounded-xl border border-border bg-background px-3 text-base font-semibold tabular-nums text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
               </div>
             </div>
-
-            {/* Input de Peso e Controles de Passo */}
-            <div className="space-y-2">
-              <label htmlFor="patient-weight-input" className="block text-xs font-medium text-muted-foreground">
-                Peso do Paciente (kg)
-              </label>
-              <div className="flex items-center gap-2">
-                <div className="relative flex-1">
-                  <input
-                    id="patient-weight-input"
-                    type="number"
-                    step="0.1"
-                    min="0.2"
-                    max="100"
-                    value={currentWeightKg || ''}
-                    onChange={handleInputChange}
-                    placeholder="Ex: 12.5"
-                    className="h-12 w-full rounded-2xl border border-border/90 bg-background px-4 text-lg font-bold text-foreground shadow-inner outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground">
-                    kg
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1">
+            <details className="text-sm text-muted-foreground">
+              <summary className="w-fit cursor-pointer rounded-sm font-medium hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Pesos predefinidos</summary>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {PRESET_WEIGHTS[species].map((weight) => (
                   <button
+                    key={weight}
                     type="button"
-                    onClick={() => handleStep(-1)}
-                    disabled={currentWeightKg <= 0.5}
-                    className="flex h-12 w-11 items-center justify-center rounded-2xl border border-border/80 bg-background text-foreground transition-colors hover:bg-muted active:scale-95 disabled:opacity-40"
-                    title="-1 kg"
+                    aria-pressed={currentWeightKg === weight}
+                    onClick={() => onWeightChange(weight)}
+                    className="rounded-lg border border-border px-2.5 py-1.5 text-xs hover:bg-muted aria-pressed:border-primary aria-pressed:text-primary"
                   >
-                    -1
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleStep(1)}
-                    className="flex h-12 w-11 items-center justify-center rounded-2xl border border-border/80 bg-background text-foreground transition-colors hover:bg-muted active:scale-95"
-                    title="+1 kg"
-                  >
-                    +1
-                  </button>
-                </div>
-              </div>
-
-              {/* Botões de Peso Rápido */}
-              <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                <span className="text-[11px] font-medium text-muted-foreground">Predefinições:</span>
-                {PRESET_WEIGHTS[species].map((pw) => (
-                  <button
-                    key={pw}
-                    type="button"
-                    onClick={() => onWeightChange(pw)}
-                    className={cn(
-                      'rounded-lg border px-2 py-1 text-xs font-medium transition-colors',
-                      currentWeightKg === pw
-                        ? 'border-primary bg-primary/10 text-primary'
-                        : 'border-border/70 bg-background/60 text-muted-foreground hover:border-border hover:text-foreground'
-                    )}
-                  >
-                    {pw} kg
+                    {formatDose.format(weight)} kg
                   </button>
                 ))}
               </div>
-            </div>
+            </details>
           </div>
-
-          {/* Coluna Direita: Painel de Exibição de BSA */}
-          <div className="flex shrink-0 flex-col justify-center rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.08] via-primary/[0.04] to-transparent p-6 text-center lg:min-w-[280px]">
-            <span className="text-xs font-bold uppercase tracking-wider text-primary">
-              Área de Superfície Corpórea
-            </span>
-            <div className="my-2 flex items-baseline justify-center gap-1.5">
-              <span className="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl">
-                {bsa.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}
-              </span>
-              <span className="text-xl font-bold text-muted-foreground">m²</span>
-            </div>
-            <p className="text-[11px] text-muted-foreground">
-              {species === 'canine'
-                ? `BSA = 0,101 × (${currentWeightKg > 0 ? currentWeightKg : 0})²⁄³`
-                : `BSA = 0,100 × (${currentWeightKg > 0 ? currentWeightKg : 0})²⁄³`}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Seção de Fármacos Oncológicos e Doses Calculadas */}
-      <div className="space-y-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-foreground">Esquemas de quimioterapia</h3>
+          <div className="flex flex-col justify-center gap-2 border-t border-border/70 bg-primary/5 p-5 md:border-l md:border-t-0 md:px-7">
+            <label htmlFor="oncology-bsa-result" className="text-sm font-semibold text-primary">Superfície corporal estimada</label>
+            <output id="oncology-bsa-result" htmlFor="patient-weight-input" className="text-3xl font-bold tabular-nums tracking-tight text-foreground">
+              {bsa > 0 ? `${bsa.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 })} m²` : '—'}
+            </output>
             <p className="text-xs text-muted-foreground">
-              {species === 'canine' ? 'Cães' : 'Gatos'} · {currentWeightKg > 0
-                ? formatDose.format(currentWeightKg) + ' kg · ' + formatDose.format(bsa) + ' m²'
-                : 'Informe o peso para calcular os totais.'}
+              {bsa > 0
+                ? `${species === 'canine' ? '0,101' : '0,100'} × (${formatDose.format(currentWeightKg)} kg)²⁄³`
+                : 'Informe o peso para calcular.'}
             </p>
           </div>
-
-          {regimen ? (
-            <div className="relative w-full sm:w-64">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="text"
-              aria-label="Filtrar quimioterápico"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Filtrar quimioterápico..."
-              className="h-9 w-full rounded-xl border border-border/80 bg-background pl-9 pr-3 text-xs outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-            />
-            </div>
-          ) : null}
         </div>
+      </section>
 
-        <div className="flex flex-wrap justify-center gap-5 py-6" role="group" aria-label="Modalidade de quimioterapia">
-          {(['conventional', 'metronomic'] as const).map((option) => (
-            <div key={option} className="flex items-center gap-2">
-            <button
-              type="button"
-              aria-pressed={regimen === option}
-              onClick={() => {
-                setRegimen(option);
-                setExpandedDrugId(null);
-              }}
-              className={cn(
-                'min-h-16 min-w-[240px] rounded-2xl border-2 px-6 py-4 text-lg font-bold transition-colors',
-                regimen === option ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground',
-              )}
-            >
-              Quimioterapia {REGIMENS[option].toLocaleLowerCase('pt-BR')}
-            </button>
-            <OncologyHelpButton id={option} label={`Quimioterapia ${REGIMENS[option]}`} />
-            </div>
-          ))}
-        </div>
-        {/* Lista de Cards de Fármacos */}
-        <div className="grid gap-3.5 md:grid-cols-2">
-          {filteredDrugs.map(({ drug, doses }) => {
-            const isExpanded = expandedDrugId === drug.id;
-
-            return (
-              <div key={drug.id} className="rounded-2xl border border-border/80 bg-card/80 p-4">
-                {/* Cabeçalho do Fármaco */}
-                <div className="flex items-start justify-between gap-3">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <h4 className="text-sm font-bold text-foreground">{drug.name}</h4><OncologyHelpButton id={drug.id} label={drug.name} />
-                      {drug.vesicant && (
-                        <span
-                          title="Vesicante: Extravasamento causa necrose grave. Punção única recomendada."
-                          className="flex items-center gap-1 rounded-md border border-rose-500/30 bg-rose-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-rose-600 dark:text-rose-400"
-                        >
-                          <ShieldAlert className="h-3 w-3" />
-                          Vesicante
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-muted-foreground">{drug.class}</p>
-                  </div>
-
-                  <span className="text-[11px] font-semibold text-primary">{REGIMENS[drug.regimen]}</span>
-                </div>
-
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{drug.indication}</p>
-
-                <ul className="mt-3 space-y-2">
-                  {doses.map((dose) => {
-                    const rate = dose.rates.filter((value) => value !== undefined)
-                      .map((value) => formatDose.format(value)).join('–');
-                    const total = calculateOncologyDose(dose, currentWeightKg, bsa)
-                      .map((value) => formatDose.format(value)).join('–');
-                    return (
-                      <li key={dose.schedule} className="flex flex-wrap justify-between gap-2 rounded-xl border border-border/60 bg-muted/40 p-2.5 text-xs">
-                        <div>
-                          <p className="font-semibold text-foreground">{rate} {dose.basis} · {dose.route ?? drug.route}</p>
-                          <p className="text-muted-foreground">{dose.schedule}</p>
-                        </div>
-                        {total && dose.basis !== 'mg' && (
-                          <p className="font-bold text-foreground">
-                            Total calculado {total} {dose.basis.startsWith('UI') ? 'UI' : 'mg'}
-                          </p>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-
-                {drug.nadirDays && (
-                  <p className="mt-3 flex items-center gap-1 text-xs text-muted-foreground">
-                    <Clock className="h-3 w-3 shrink-0" />
-                    Nadir e monitorização · {drug.nadirDays}
-                  </p>
-                )}
-                <p className="mt-3 text-[11px] text-muted-foreground">
-                  {drug.sourceUrl ? (
-                    <a href={drug.sourceUrl} target="_blank" rel="noreferrer" className="underline">{drug.source}</a>
-                  ) : drug.source}
-                </p>
-
-                {/* Botão de Expansão para Detalhes / Cuidados */}
+      <section aria-labelledby="oncology-regimens-heading" className="space-y-4">
+        <h2 id="oncology-regimens-heading" className="text-lg font-bold text-foreground">Esquemas de quimioterapia</h2>
+        {regimen && <p className="text-sm text-muted-foreground">Confira a concentração no rótulo. Para injetáveis, o volume exibido é o aspirado antes de eventual diluição para infusão.</p>}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="mx-auto grid w-full max-w-3xl gap-3 sm:grid-cols-2" role="group" aria-label="Modalidade de quimioterapia">
+            {(['conventional', 'metronomic'] as const).map((option) => (
+              <div key={option} className={cn('oncology-regimen relative isolate flex items-center gap-2 overflow-hidden rounded-2xl border p-2', option === 'conventional' ? 'oncology-regimen--violet border-violet-500/30' : 'oncology-regimen--teal border-teal-500/30', regimen === option && 'ring-2 ring-current')}>
                 <button
                   type="button"
-                  aria-expanded={isExpanded}
-                  onClick={() => setExpandedDrugId(isExpanded ? null : drug.id)}
-                  className="mt-3 flex w-full items-center justify-center gap-1 rounded-lg py-1 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/10"
+                  aria-pressed={regimen === option}
+                  onClick={() => {
+                    setRegimen(option);
+                    setExpandedDrugId(null);
+                  }}
+                  className="min-h-[4.5rem] flex-1 rounded-xl px-3 text-center text-base font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
                 >
-                  {isExpanded ? (
-                    <>
-                      <span>Menos detalhes</span>
-                      <ChevronUp className="h-3.5 w-3.5" />
-                    </>
-                  ) : (
-                    <>
-                      <span>Ver notas clínicas e precauções</span>
-                      <ChevronDown className="h-3.5 w-3.5" />
-                    </>
-                  )}
+                  Quimioterapia {REGIMENS[option].toLocaleLowerCase('pt-BR')}
                 </button>
+                <OncologyHelpButton id={option} label={`Quimioterapia ${REGIMENS[option]}`} />
+              </div>
+            ))}
+          </div>
+          {regimen && (
+            <div className="relative ml-auto w-full sm:w-64">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+              <input
+                type="search"
+                aria-label="Buscar quimioterápico"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Buscar quimioterápico"
+                className="h-10 w-full rounded-xl border border-border bg-background pl-9 pr-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
+          )}
+        </div>
 
-                {/* Painel Expansível de Detalhes */}
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="overflow-hidden"
+        {filteredDrugs.length > 0 && (
+          <div className="grid gap-5">
+            {filteredDrugs.map(({ drug, doses }) => {
+              const isExpanded = expandedDrugId === drug.id;
+              const detailsId = `oncology-details-${drug.id}`;
+              const options = getOncologyPresentations(drug.id);
+              const selection = presentations[drug.id] ?? { index: 0, concentration: '' };
+              const presentation = options[selection.index];
+              const concentration = presentation?.kind !== 'solid'
+                ? presentation?.concentration ?? Number(selection.concentration.replace(',', '.'))
+                : 0;
+
+              return (
+                <article key={drug.id} className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm">
+                  <header className="border-b border-border/70 bg-gradient-to-r from-primary/5 to-transparent px-4 py-3 sm:px-5">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-lg font-bold tracking-tight text-foreground">{drug.name}</h3>
+                        <OncologyHelpButton id={drug.id} label={drug.name} />
+                        {drug.vesicant && (
+                          <span className="inline-flex items-center gap-1 rounded-md bg-rose-500/10 px-1.5 py-0.5 text-xs font-semibold text-rose-700 dark:text-rose-400">
+                            <ShieldAlert className="h-3 w-3" aria-hidden="true" />
+                            Vesicante
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">{drug.class}</p>
+                    </div>
+                  </header>
+
+                  <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(16rem,0.46fr)]">
+                    <ul className="min-w-0 divide-y divide-border/70 px-4 sm:px-5">
+                      {doses.map((dose) => {
+                        const rate = dose.rates.filter((value) => value !== undefined)
+                          .map((value) => formatDose.format(value)).join('–');
+                        const totals = calculateOncologyDose(dose, currentWeightKg, bsa);
+                        const total = totals.map((value) => formatDose.format(value)).join('–');
+                        const doseUnit = dose.basis.startsWith('UI') ? 'UI' : 'mg';
+                        const route = dose.route ?? drug.route;
+                        const oralOnly = /^(?:VO\b|oral\b)/i.test(route) && !/\bIV\b/.test(route);
+                        const volumes = calculateOncologyVolumes(totals, doseUnit, presentation, concentration, oralOnly);
+                        const volume = volumes.map((value) => formatVolume.format(value)).join('–');
+
+                        return (
+                          <li key={dose.schedule} className="grid gap-3 py-4 text-sm sm:grid-cols-[minmax(0,1fr)_minmax(9rem,0.7fr)] sm:items-start">
+                            <div>
+                              <p className="font-semibold tabular-nums text-foreground">{rate} {dose.basis}</p>
+                              <p className="mt-1 text-sm text-foreground">{route}</p>
+                              <p className="text-xs leading-relaxed text-muted-foreground">{dose.schedule}</p>
+                            </div>
+                            {total && (dose.basis !== 'mg' || volume) && (
+                              <div className="rounded-xl bg-primary/5 px-3 py-2.5">
+                                <span className="block text-xs text-muted-foreground">Dose calculada</span>
+                                <span className="text-lg font-bold tabular-nums text-foreground">{total} {doseUnit}</span>
+                                {volume && (
+                                  <p className="mt-1 text-xs text-muted-foreground">
+                                    {presentation?.kind === 'injectable' ? 'Volume a aspirar (injetável)' : 'Volume oral'} · <strong className="text-foreground">{volume} mL</strong>
+                                  </p>
+                                )}
+                                {oralOnly && presentation?.kind === 'injectable' && (
+                                  <p className="mt-1 text-xs text-muted-foreground">Selecione uma apresentação oral para este esquema.</p>
+                                )}
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+
+                    <div className="min-w-0 space-y-3 border-t border-border/70 bg-muted/25 p-4 lg:border-l lg:border-t-0 lg:p-5">
+                      <label className="block text-xs font-semibold text-foreground">
+                        Apresentação e concentração
+                        <select
+                          aria-label={`Apresentação de ${drug.name}`}
+                          value={selection.index}
+                          onChange={(event) => setPresentations((previous) => ({
+                            ...previous, [drug.id]: { index: Number(event.target.value), concentration: '' },
+                          }))}
+                          className="mt-1 min-h-10 w-full min-w-0 rounded-lg border border-border bg-background px-2 text-sm"
+                        >
+                          {options.map((option, index) => <option key={option.label} value={index}>{option.label}</option>)}
+                        </select>
+                      </label>
+                      {presentation && presentation.kind !== 'solid' && presentation.concentration === undefined && (
+                        <label className="block text-xs text-muted-foreground">
+                          Concentração confirmada ({presentation.unit})
+                          <input
+                            type="text"
+                            inputMode="decimal"
+                            value={selection.concentration}
+                            onChange={(event) => {
+                              const value = event.target.value;
+                              if (!/^\d*(?:[.,]\d*)?$/.test(value)) return;
+                              setPresentations((previous) => ({ ...previous, [drug.id]: { ...selection, concentration: value } }));
+                            }}
+                            className="mt-1 min-h-9 w-full rounded-lg border border-border bg-background px-2 text-sm text-foreground"
+                          />
+                        </label>
+                      )}
+                      {presentation?.kind === 'solid' && <p className="text-xs text-muted-foreground">Dose em mg. Mantenha comprimidos e cápsulas íntegros.</p>}
+                      {presentation?.source && <a href={presentation.source} target="_blank" rel="noreferrer" className="block text-xs text-primary underline">Fonte da apresentação</a>}
+                    </div>
+                  </div>
+
+                  <footer className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-border/70 px-4 py-2 sm:px-5">
+                    {drug.nadirDays && (
+                      <p className="flex items-start gap-2 text-xs text-muted-foreground">
+                        <Clock className="mt-0.5 h-3 w-3 shrink-0" aria-hidden="true" />
+                        Nadir e monitorização · {drug.nadirDays}
+                      </p>
+                    )}
+                    <button
+                      type="button"
+                      aria-expanded={isExpanded}
+                      aria-controls={detailsId}
+                      aria-label={`${isExpanded ? 'Recolher' : 'Ver'} detalhes de ${drug.name}`}
+                      onClick={() => setExpandedDrugId(isExpanded ? null : drug.id)}
+                      className="inline-flex min-h-9 items-center gap-1 rounded-lg px-2 text-xs font-semibold text-primary hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      <div className="mt-3 space-y-2 border-t border-border/60 pt-3 text-xs leading-relaxed text-muted-foreground">
+                      Detalhes do fármaco
+                      <ChevronDown className={cn('h-4 w-4', isExpanded && 'rotate-180')} aria-hidden="true" />
+                    </button>
+                  </footer>
+                  <div id={detailsId} hidden={!isExpanded} className="space-y-3 border-t border-border/70 p-4 sm:p-5 text-sm leading-relaxed text-muted-foreground">
+                    {isExpanded && (
+                      <>
+                        <div className="flex items-center justify-between gap-3">
+                          <p><strong className="text-foreground">Indicação</strong> · {drug.indication}</p>
+                        </div>
                         <div>
-                          <p className="font-bold text-foreground">Notas Clínicas:</p>
-                          <ul className="mt-1 list-disc space-y-0.5 pl-4">
-                            {drug.keyNotes.map((note, idx) => (
-                              <li key={idx}>{note}</li>
-                            ))}
+                          <h4 className="font-semibold text-foreground">Informações importantes</h4>
+                          <ul className="list-disc space-y-1 pl-5">
+                            {drug.keyNotes.map((note) => <li key={note}>{note}</li>)}
                           </ul>
                         </div>
                         {drug.precautions.length > 0 && (
                           <div>
-                            <p className="font-bold text-amber-700 dark:text-amber-400">Precauções Críticas:</p>
-                            <ul className="mt-1 list-disc space-y-0.5 pl-4 text-amber-900/90 dark:text-amber-200/90">
-                              {drug.precautions.map((prec, idx) => (
-                                <li key={idx}>{prec}</li>
-                              ))}
+                            <h4 className="font-semibold text-amber-800 dark:text-amber-300">Precauções/Alertas</h4>
+                            <ul className="list-disc space-y-1 pl-5">
+                              {drug.precautions.map((precaution) => <li key={precaution}>{precaution}</li>)}
                             </ul>
                           </div>
                         )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
-
-        {regimen && filteredDrugs.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-border p-8 text-center text-xs text-muted-foreground">
-            Nenhum esquema encontrado para a espécie, modalidade e busca selecionadas..
+                        <p className="text-xs">
+                          {drug.sourceUrl ? (
+                            <a href={drug.sourceUrl} target="_blank" rel="noreferrer" className="underline">{drug.source}</a>
+                          ) : drug.source}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         )}
-      </div>
 
-      {/* Diretrizes de Biossegurança e Regras de Ouro */}
-      <div className="rounded-3xl border border-border/80 bg-card/70 p-5 backdrop-blur-sm md:p-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <h4 className="text-sm font-bold text-foreground">Regras de Ouro & Biossegurança BSAVA</h4>
-          </div>
-          <button
-            type="button"
-            onClick={() => setShowAllGuidelines((v) => !v)}
-            className="text-xs font-semibold text-primary hover:underline"
-          >
-            {showAllGuidelines ? 'Recolher' : 'Expandir todas'}
-          </button>
-        </div>
+        {filteredDrugs.length === 0 && (
+          <p className="text-sm text-muted-foreground">
+            {regimen ? 'Nenhum esquema encontrado para a espécie, modalidade e busca selecionadas.' : 'Selecione uma modalidade para consultar os esquemas.'}
+          </p>
+        )}
+      </section>
 
-        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {(showAllGuidelines ? BSAVA_SAFETY_GUIDELINES : BSAVA_SAFETY_GUIDELINES.slice(0, 3)).map((g, idx) => (
-            <div key={idx} className="rounded-2xl border border-border/70 bg-background/50 p-3.5 text-xs space-y-1.5">
-              <p className="font-bold text-foreground">{g.title}</p>
-              <p className="text-muted-foreground leading-relaxed">{g.summary}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <OncologySafetyGuide />
     </div>
   );
 }

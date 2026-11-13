@@ -1030,7 +1030,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
   },
   relatedConsensusSlugs: ['curative-risco-trombotico-2022', 'veccs-sepse-definicao-caes-gatos-2026'],
   relatedDiseaseSlugs: [
-    'babesiose-canina',
+    'babesiose-caes-gatos',
     'erliquiose-monocitica-canina',
     'leishmaniose-visceral-canina',
     'peritonite-infecciosa-felina',

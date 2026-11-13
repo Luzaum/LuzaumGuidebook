@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TransfusionSidebar } from './components/TransfusionSidebar';
-import { TransfusionIcon } from './components/TransfusionIcon';
+import { transfusaoIcon } from '../registry';
 import { TransfusionMobileNav } from './components/TransfusionMobileNav';
 import { KnowledgeModal } from './components/KnowledgeModal';
 import { titleForTransfusionPage, type TransfusionPage } from './navConfig';
@@ -104,7 +104,7 @@ export const TransfusionLayout: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-1 bg-red-500/10 text-red-500 border border-red-500/10 px-3 py-1.5 rounded-xl text-xs font-bold shadow-inner">
-              <TransfusionIcon name="products" className="h-7 w-7" /> Hemoterapia Veterinária
+              <img src={transfusaoIcon} alt="" className="h-7 w-7 shrink-0 rounded-md" /> Hemoterapia Veterinária
             </div>
           </div>
         </header>

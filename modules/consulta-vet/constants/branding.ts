@@ -1,7 +1,7 @@
 /** Logo principal do módulo (arquivo em `public/apps/`). */
-export const CONSULTA_VET_LOGO_SRC = '/apps/consulta-vet-logo.png';
+export const CONSULTA_VET_LOGO_SRC = '/apps/vetius-emblema.png';
 
-export const CONSULTA_VET_LOGO_ALT = 'ConsultaVET — base clínica para consulta rápida';
+export const CONSULTA_VET_LOGO_ALT = 'Vetius — base clínica para consulta rápida';
 
 /**
  * Sidebar estreita (~18rem): a arte escala com a coluna (largura total, altura máxima modesta).

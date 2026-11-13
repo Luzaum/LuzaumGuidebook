@@ -11,7 +11,6 @@ import {
   Dog,
   FlaskConical,
   ShieldAlert,
-  Sparkles,
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import {
@@ -19,6 +18,7 @@ import {
   EditorialClinicalTable,
   EditorialDiagnosticStep,
   EditorialDrugProtocol,
+  EditorialInteractiveAlgorithm,
   EditorialSectionValue,
   EditorialSystemGroup,
   EditorialTreatmentPriorityStep,
@@ -33,6 +33,7 @@ import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/
 import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
 import { EditorialRichText } from '../shared/EditorialRichText';
 import { ClinicalSignsTable } from './ClinicalSignsTable';
+import { ClinicalInteractiveAlgorithm } from './ClinicalInteractiveAlgorithm';
 import { DiagnosticPathway } from './DiagnosticPathway';
 import { TreatmentMonitoringPanel, TreatmentPriorityPanel, TreatmentPriorityRichPanel } from './TreatmentSectionVisual';
 
@@ -101,6 +102,13 @@ function isClinicalTable(value: unknown): value is EditorialClinicalTable {
   return normalizeClinicalTable(value) !== null;
 }
 
+export function normalizeInteractiveAlgorithm(value: unknown): EditorialInteractiveAlgorithm | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const v = value as Record<string, unknown>;
+  if (v.kind !== 'interactiveAlgorithm' || !Array.isArray(v.steps) || v.steps.length === 0) return null;
+  return v as unknown as EditorialInteractiveAlgorithm;
+}
+
 export function normalizeClinicalFigure(value: unknown): EditorialClinicalFigure | null {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
   const v = value as Record<string, unknown>;
@@ -112,6 +120,7 @@ export function normalizeClinicalFigure(value: unknown): EditorialClinicalFigure
     src: src.trim(),
     alt: typeof v.alt === 'string' && v.alt.trim() ? v.alt : typeof v.caption === 'string' && v.caption.trim() ? v.caption : 'Figura clínica',
     caption: typeof v.caption === 'string' ? v.caption : undefined,
+    shortCaption: typeof v.shortCaption === 'string' && v.shortCaption.trim() ? v.shortCaption.trim() : undefined,
     display: v.display === 'compact' || v.display === 'wide' || v.display === 'full' ? v.display : 'default',
   };
 }
@@ -130,7 +139,7 @@ function figureViewportClass(display: EditorialClinicalFigure['display']) {
 }
 
 function figureGridSpanClass(figure: EditorialClinicalFigure, isOnlyInGroup = false) {
-  if (isOnlyInGroup || figure.display === 'full' || figure.display === 'wide') {
+  if (isOnlyInGroup || figure.display === 'full') {
     return 'cv-figure-span';
   }
   return '';
@@ -153,14 +162,16 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
     };
   }, [isOpen]);
 
+  const cardCaption = figure.shortCaption || figure.caption;
+
   return (
     <>
-      <figure className="cv-clinical-figure space-y-3 mx-auto w-full max-w-4xl flex flex-col items-center">
+      <figure className="cv-clinical-figure space-y-2 mx-auto w-full max-w-md flex flex-col items-center">
         <button
           type="button"
           aria-label={`Ampliar imagem: ${figure.alt}`}
           onClick={() => setIsOpen(true)}
-          className="group relative w-full overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30 flex items-center justify-center"
+          className="group relative w-full overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-1.5 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-2 cursor-zoom-in transition-all duration-200 hover:border-primary/40 hover:bg-muted/30 flex items-center justify-center"
         >
           <div className={cn('relative w-full flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden', figureViewportClass(figure.display))}>
             <img
@@ -168,18 +179,18 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
               alt={figure.alt}
               loading="lazy"
               decoding="async"
-              className="h-auto w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+              className="h-auto w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </div>
-          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-end justify-end p-3">
-            <span className="opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 bg-background/85 dark:bg-background/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-md border border-border/50">
-              Clique para ampliar
+          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-end justify-end p-2">
+            <span className="bg-background/90 text-foreground text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm border border-border/60">
+              Ampliar
             </span>
           </div>
         </button>
-        {figure.caption ? (
-          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground max-w-3xl mx-auto">
-            <EditorialRichText value={figure.caption} />
+        {cardCaption ? (
+          <figcaption className="text-center text-xs leading-snug text-muted-foreground line-clamp-2 max-w-sm mx-auto">
+            <EditorialRichText value={cardCaption} />
           </figcaption>
         ) : null}
       </figure>
@@ -227,8 +238,8 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
   );
 }
 
-function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual }) {
-  return <EditorialClinicalTableBlock table={table} headerTintClass={visual.headerTintClass} />;
+function ClinicalComparisonTable({ table, visual, hideCaption = false }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual; hideCaption?: boolean }) {
+  return <EditorialClinicalTableBlock table={table} headerTintClass={visual.headerTintClass} hideCaption={hideCaption} />;
 }
 
 const BULLET_LINE_RE = /^\s*[-•*]\s+/;
@@ -367,7 +378,7 @@ function ClinicalCallout({
     containerClass = 'border-l-4 border-l-emerald-600 bg-emerald-500/[0.08] dark:border-l-emerald-400 dark:bg-emerald-500/[0.12] border border-emerald-500/25';
     titleClass = 'text-emerald-950 dark:text-emerald-100';
     badgeClass = 'bg-emerald-500/15 text-emerald-900 dark:bg-emerald-400/20 dark:text-emerald-200';
-    Icon = Sparkles;
+    Icon = CheckCircle2;
   } else if (alertType === 'myth') {
     containerClass = 'border-l-4 border-l-purple-600 bg-purple-500/[0.07] dark:border-l-purple-400 dark:bg-purple-500/[0.10] border border-purple-500/25';
     titleClass = 'text-purple-950 dark:text-purple-100';
@@ -470,7 +481,8 @@ function classifyChild(rawText: string, isNested = false): ParsedChild {
   if (alert) return { type: 'alert', ...alert, isNested };
 
   // Species detection
-  const dogMatch = rawText.match(/^(?:Em\s+C[ãa]es|C[ãa]es|Caninos|Esp[ée]cie\s+Canina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
+  const plainForSpecies = rawText.replace(/^==([^=]+)==/, "$1").trim();
+  const dogMatch = plainForSpecies.match(/^(?:Em\s+C[ãa]es|C[ãa]es|Caninos|Esp[ée]cie\s+Canina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
   if (dogMatch) {
     const rest = dogMatch[1].trim();
     const innerAlert = classifyAlert(rest);
@@ -480,7 +492,7 @@ function classifyChild(rawText: string, isNested = false): ParsedChild {
     return { type: 'species', species: 'dog', title: 'Cães', text: rest, isNested };
   }
 
-  const catMatch = rawText.match(/^(?:Em\s+Gatos|Gatos|Felinos|Esp[ée]cie\s+Felina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
+  const catMatch = plainForSpecies.match(/^(?:Em\s+Gatos|Gatos|Felinos|Esp[ée]cie\s+Felina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
   if (catMatch) {
     const rest = catMatch[1].trim();
     const innerAlert = classifyAlert(rest);
@@ -1428,11 +1440,13 @@ function tryRenderTreatmentRichObject(
 
   const renderLeaf = (value: unknown, key?: string): React.ReactNode => {
     if (typeof value === 'string') return <StructuredNarrative value={value} visual={visual} />;
+    const algorithm = normalizeInteractiveAlgorithm(value);
+    if (algorithm) return <ClinicalInteractiveAlgorithm algorithm={algorithm} visual={visual} />;
     const figure = normalizeClinicalFigure(value);
     if (figure) return <ClinicalFigureBlock figure={figure} />;
     const tableObj = normalizeClinicalTable(value);
     if (tableObj) {
-      return <ClinicalComparisonTable table={tableObj} visual={visual} />;
+      return <ClinicalComparisonTable table={tableObj} visual={visual} hideCaption />;
     }
     if (Array.isArray(value) && value.length > 0) {
       if (value.every((x) => typeof x === 'string')) {
@@ -1512,7 +1526,11 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
   const useDiagnosticOrder = id === 'diagnostics-unified' || id === 'diagnosis';
 
-  const renderContent = (content: EditorialSectionValue | string | string[] | unknown, key?: string): React.ReactNode => {
+  const renderContent = (
+    content: EditorialSectionValue | string | string[] | unknown,
+    key?: string,
+    hideTableCaption = false
+  ): React.ReactNode => {
     if (typeof content === 'string') {
       return <StructuredNarrative value={content} visual={visual} />;
     }
@@ -1529,7 +1547,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
               : 'cv-figure-gallery'
           )}>
             {figures.map((fig, idx) => (
-              <div key={fig.src || `figure-${idx}`} className={isSingle ? 'w-full' : figureGridSpanClass(fig, content.length === 1)}>
+              <div key={fig.src || `figure-${idx}`} className={isSingle ? 'w-full' : figureGridSpanClass(fig, false)}>
                 <ClinicalFigureBlock figure={fig} />
               </div>
             ))}
@@ -1549,11 +1567,13 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
     }
 
     if (content && typeof content === 'object') {
+      const algorithm = normalizeInteractiveAlgorithm(content);
+      if (algorithm) return <ClinicalInteractiveAlgorithm algorithm={algorithm} visual={visual} />;
       const figure = normalizeClinicalFigure(content);
       if (figure) return <ClinicalFigureBlock figure={figure} />;
       const tableObj = normalizeClinicalTable(content);
       if (tableObj) {
-        return <ClinicalComparisonTable table={tableObj} visual={visual} />;
+        return <ClinicalComparisonTable table={tableObj} visual={visual} hideCaption={hideTableCaption} />;
       }
 
       if (id === 'treatment') {
@@ -1601,7 +1621,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
               if (useDiagnosticOrder) {
                 return (
                   <DiagnosticSubsection key={k} index={idx} title={translateEditorialSubsectionKey(k)} visual={visual}>
-                    {renderContent(value as EditorialSectionValue, k)}
+                    {renderContent(value as EditorialSectionValue, k, true)}
                   </DiagnosticSubsection>
                 );
               }
@@ -1613,7 +1633,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                   subsectionKey={k}
                   visual={visual}
                 >
-                  {renderContent(value as EditorialSectionValue, k)}
+                  {renderContent(value as EditorialSectionValue, k, true)}
                 </FlowSubsection>
               );
             } else {
@@ -1623,7 +1643,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                   key={`figures-grid-${idx}`}
                   className={cn(
                     isSingleFigure
-                      ? 'w-full'
+                      ? 'mx-auto w-full max-w-md'
                       : 'cv-figure-gallery'
                   )}
                 >
