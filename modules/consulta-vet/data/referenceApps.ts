@@ -14,7 +14,6 @@ const moduleThumbnails: Record<string, string> = {
   'energia-vet': 'nutricao',
   'escalas-dor': 'escalas-dor',
   antibioticoterapia: 'antibioticoterapia',
-  neurologia: 'neurologia',
 };
 
 export const REFERENCE_APPS: ReferenceApp[] = [
