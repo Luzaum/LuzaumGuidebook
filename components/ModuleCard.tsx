@@ -60,7 +60,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
               key={module.iconImage}
               src={module.iconImage}
               alt={module.title}
-              className={module.id === 'antibioticoterapia' ? 'h-full max-w-full rounded-xl bg-black object-contain' : 'h-full w-full object-contain'}
+              className={module.id === 'antibioticoterapia' ? 'h-full max-w-full rounded-xl bg-[#0b1732] object-contain' : 'h-full w-full object-contain'}
               draggable={false}
               loading="lazy"
               onLoad={() => setHasImageError(false)}

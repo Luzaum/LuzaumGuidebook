@@ -48,7 +48,7 @@ export function QuickReferencesPage() {
               >
                 <span className={cn(
                   'relative block aspect-square w-full max-w-[132px] overflow-hidden rounded-[25%] transition duration-300 group-hover:-translate-y-1 group-hover:scale-[1.025] group-active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none',
-                  !isNeurology && (isAntibioticotherapy ? 'bg-black' : 'bg-[#05091c]'),
+                  !isNeurology && (isAntibioticotherapy ? 'bg-[#0b1732]' : 'bg-[#05091c]'),
                   showIconFrame && 'shadow-[0_14px_34px_-18px_hsl(var(--foreground)/0.65)] ring-1 ring-white/15 group-hover:shadow-[0_20px_42px_-18px_hsl(var(--primary)/0.55)]',
                 )}>
                   <img

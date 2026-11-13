@@ -416,7 +416,7 @@ html.dark .abv-theme .abv-sidebar-logo-btn:focus-visible {
 
 /* Logo ~3× o tamanho anterior (pedido UI); limita ao largo da sidebar */
 .abv-theme .abv-sidebar-logo-img {
-  background-color: #000;
+  background-color: #0b1732;
   flex-shrink: 0;
   width: min(15rem, 100%);
   height: auto;
