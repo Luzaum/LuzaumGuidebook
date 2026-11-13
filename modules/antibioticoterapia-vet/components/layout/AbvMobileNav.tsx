@@ -78,7 +78,7 @@ export function AbvMobileDrawer({ open, onClose, activeTab, setActiveTab }: AbvM
             <img
               src="/apps/ATB.png"
               alt=""
-              className="h-[6.75rem] w-auto max-w-[min(15rem,55%)] shrink-0 rounded-md object-contain"
+              className="h-[6.75rem] w-auto max-w-[min(15rem,55%)] shrink-0 rounded-md bg-black object-contain"
             />
             <span className="truncate text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--sidebar-primary)' }}>
               Antibioticoterapia Vet
