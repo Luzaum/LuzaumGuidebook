@@ -34,8 +34,8 @@ export function QuickReferencesPage() {
         </h2>
         <div className="grid grid-cols-2 gap-x-4 gap-y-7 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 sm:gap-x-5 lg:gap-x-7">
           {REFERENCE_APPS.map((app) => {
-            const isNeurology = app.id === 'neurologia';
-            const showIconFrame = !isNeurology && app.id !== 'fluidoterapia-vet' && app.id !== 'transfusão-sanguinea';
+            const transparentIcon = app.id === 'neurologia' || app.id === 'antibioticoterapia';
+            const showIconFrame = !transparentIcon && app.id !== 'fluidoterapia-vet' && app.id !== 'transfusão-sanguinea';
             return (
               <Link
                 key={app.id}
@@ -47,7 +47,7 @@ export function QuickReferencesPage() {
               >
                 <span className={cn(
                   'relative block aspect-square w-full max-w-[132px] overflow-hidden rounded-[25%] transition duration-300 group-hover:-translate-y-1 group-hover:scale-[1.025] group-active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none',
-                  !isNeurology && 'bg-[#05091c]',
+                  !transparentIcon && 'bg-[#05091c]',
                   showIconFrame && 'shadow-[0_14px_34px_-18px_hsl(var(--foreground)/0.65)] ring-1 ring-white/15 group-hover:shadow-[0_20px_42px_-18px_hsl(var(--primary)/0.55)]',
                 )}>
                   <img
