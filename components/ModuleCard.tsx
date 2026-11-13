@@ -12,6 +12,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
   const Icon = module.icon
   const isPlanned = module.status === 'planned'
   const isAvailable = module.status === 'internal' || module.status === 'iframe'
+  const hasNavyBackground = module.id === 'antibioticoterapia' || module.id === 'energia-vet'
   const [hasImageError, setHasImageError] = useState(false)
 
   useEffect(() => {
@@ -60,7 +61,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
               key={module.iconImage}
               src={module.iconImage}
               alt={module.title}
-              className={module.id === 'antibioticoterapia' ? 'h-full max-w-full rounded-xl bg-[#0b1732] object-contain' : 'h-full w-full object-contain'}
+              className={hasNavyBackground ? 'h-full max-w-full rounded-xl bg-[#0b1732] object-contain' : 'h-full w-full object-contain'}
               draggable={false}
               loading="lazy"
               onLoad={() => setHasImageError(false)}

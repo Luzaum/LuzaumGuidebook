@@ -20,7 +20,7 @@ const miniApps: Array<{
     id: 'energia-vet',
     title: 'NutriçãoVET',
     description: 'Fluxo nutricional veterinario com calculo, pacientes, dietas e relatorios',
-    icon: <img src="/apps/nutricaovet.png" alt="NutriçãoVET" className="h-12 w-12 rounded-lg object-contain" />,
+    icon: <img src="/apps/nutricaovet.png" alt="NutriçãoVET" className="h-12 w-12 rounded-lg bg-[#0b1732] object-contain" />,
     implemented: true,
   },
   {

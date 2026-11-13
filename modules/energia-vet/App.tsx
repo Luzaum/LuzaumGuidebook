@@ -63,7 +63,7 @@ function Sidebar() {
           className="energia-vet-sidebar-brand flex items-center gap-3 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${MODULE_NAME} — ir para o início`}
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-primary/10">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#0b1732]">
             <img src={MODULE_LOGO} alt="" className="h-10 w-10 object-contain" width={40} height={40} decoding="async" />
           </span>
           <span className="min-w-0">
@@ -110,7 +110,7 @@ function MobileHeader() {
   return (
     <header className="flex h-16 shrink-0 items-center border-b border-border bg-card/95 px-4 backdrop-blur lg:hidden">
       <Link to={modulePath('/')} className="flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring">
-        <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
+        <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-[#0b1732]">
           <img src={MODULE_LOGO} alt="" className="h-8 w-8 object-contain" />
         </span>
         <span>

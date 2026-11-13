@@ -11,7 +11,6 @@ type ReferenceApp = {
 
 const THUMBNAIL_ROOT = '/consulta-vet/reference-apps/thumbnails';
 const moduleThumbnails: Record<string, string> = {
-  'energia-vet': 'nutricao',
   'escalas-dor': 'escalas-dor',
 };
 
