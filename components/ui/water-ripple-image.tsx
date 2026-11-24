@@ -11,6 +11,7 @@ type Params = {
 
 export type WaterRippleImageProps = Partial<Params> & {
   className?: string;
+  coverPositionX?: number;
 };
 
 const VERT = `
@@ -36,6 +37,7 @@ uniform float u_scale;
 uniform float u_illumination;
 uniform float u_surface_distortion;
 uniform float u_water_distortion;
+uniform float u_cover_position_x;
 
 #define PI 3.14159265358979323846
 
@@ -103,13 +105,16 @@ void main() {
 
   vec2 img_uv = vUv;
   img_uv -= .5;
-  if (u_ratio > u_img_ratio) {
+  if (u_cover_position_x >= 0.) {
+    vec2 cover_scale = min(vec2(u_ratio / u_img_ratio, u_img_ratio / u_ratio), vec2(1.));
+    img_uv *= cover_scale;
+    img_uv.x += (1. - cover_scale.x) * (u_cover_position_x - .5);
+  } else if (u_ratio > u_img_ratio) {
     img_uv.x = img_uv.x * u_ratio / u_img_ratio;
   } else {
     img_uv.y = img_uv.y * u_img_ratio / u_ratio;
   }
-  float scale_factor = 1.4;
-  img_uv *= scale_factor;
+  if (u_cover_position_x < 0.) img_uv *= 1.4;
   img_uv += .5;
   img_uv.y = 1. - img_uv.y;
 
@@ -126,6 +131,7 @@ void main() {
   float edge_width = .02;
   float edge_alpha = smoothstep(0., edge_width, img_uv.x) * smoothstep(1., 1. - edge_width, img_uv.x);
   edge_alpha *= smoothstep(0., edge_width, img_uv.y) * smoothstep(1., 1. - edge_width, img_uv.y);
+  if (u_cover_position_x >= 0.) edge_alpha = 1.;
   color *= edge_alpha;
   opacity *= edge_alpha;
 
@@ -170,6 +176,7 @@ export default function WaterRippleImage({
   waterDistortion = 0.02,
   src = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
   className = "",
+  coverPositionX = -1,
 }: WaterRippleImageProps) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -212,39 +219,37 @@ export default function WaterRippleImage({
     gl.uniform1f(uniformsRef.current["u_illumination"], illumination);
     gl.uniform1f(uniformsRef.current["u_surface_distortion"], surfaceDistortion);
     gl.uniform1f(uniformsRef.current["u_water_distortion"], waterDistortion);
+    gl.uniform1f(uniformsRef.current["u_cover_position_x"], coverPositionX);
   };
 
-  const loadTexture = (source: string) =>
-    new Promise<void>((resolve, reject) => {
-      const gl = glRef.current;
-      if (!gl) return reject(new Error("WebGL context unavailable"));
+  const loadTexture = (source: string) => {
+    const gl = glRef.current;
+    if (!gl) return;
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        imageRef.current = img;
-        if (textureRef.current) gl.deleteTexture(textureRef.current);
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const texture = gl.createTexture();
+      if (!texture) return;
+      if (textureRef.current) gl.deleteTexture(textureRef.current);
+      imageRef.current = img;
+      textureRef.current = texture;
 
-        const texture = gl.createTexture();
-        if (!texture) return reject(new Error("Failed to create texture"));
-        textureRef.current = texture;
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 0);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
 
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 0);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
-
-        gl.uniform1i(uniformsRef.current["u_image_texture"], 0);
-        resize();
-        resolve();
-      };
-      img.onerror = () => reject(new Error(`Failed to load image: ${source}`));
-      img.src = source;
-    });
+      gl.uniform1i(uniformsRef.current["u_image_texture"], 0);
+      resize();
+    };
+    img.src = source;
+    return () => { img.onload = null; };
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -279,8 +284,6 @@ export default function WaterRippleImage({
     gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
     updateParams();
-    loadTexture(src).catch((error) => console.error(error));
-
     resize();
     const observer = new ResizeObserver(() => resize());
     const wrapper = wrapperRef.current;
@@ -288,8 +291,10 @@ export default function WaterRippleImage({
     window.addEventListener("resize", resize);
 
     const render = () => {
-      gl.uniform1f(uniformsRef.current["u_time"], performance.now());
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (textureRef.current) {
+        gl.uniform1f(uniformsRef.current["u_time"], performance.now());
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      }
       animationRef.current = requestAnimationFrame(render);
     };
     animationRef.current = requestAnimationFrame(render);
@@ -299,6 +304,8 @@ export default function WaterRippleImage({
       window.removeEventListener("resize", resize);
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
       if (textureRef.current) gl.deleteTexture(textureRef.current);
+      textureRef.current = null;
+      gl.deleteBuffer(vbo);
       gl.useProgram(null);
       if (programRef.current) gl.deleteProgram(programRef.current);
     };
@@ -306,11 +313,9 @@ export default function WaterRippleImage({
 
   useEffect(() => {
     updateParams();
-  }, [blueish, scale, illumination, surfaceDistortion, waterDistortion]);
+  }, [blueish, scale, illumination, surfaceDistortion, waterDistortion, coverPositionX]);
 
-  useEffect(() => {
-    loadTexture(src).catch((error) => console.error(error));
-  }, [src]);
+  useEffect(() => loadTexture(src), [src]);
 
   return (
     <div ref={wrapperRef} className={`relative w-full h-full overflow-hidden ${className}`}>

@@ -46,14 +46,14 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
     'Cortisol basal NÃO é exame de triagem — baixa sensibilidade e especificidade (Bugbee et al., 2023).',
     '~35% dos PDH NÃO suprimem no LDDST (escape) — ausência de supressão não confirma ADH isoladamente (Behrend, VIN 2022).',
     'ACTHST falso-negativo até ~41% em ADH — não descarta hiperadrenocorticismo espontâneo (Bugbee et al., 2023).',
-    'Washout glicocorticoide 2–4 semanas antes de testar espontâneo quando iatrogênia é possível (Behrend, VIN 2022).',
+    'intervalo de suspensão glicocorticoide 2–4 semanas antes de testar espontâneo quando iatrogênia é possível (Behrend, VIN 2022).',
     'eACTH: plasma resfriado, centrifugar e congelar imediatamente — ACTH baixo favorece ADH (Bugbee et al., 2023).',
     'Tamanho da massa adrenal ≠ malignidade — carcinoma pode ser pequeno; adenoma pode ser grande (van Bokhorst et al., 2023).',
-    'Trilostano: 1 mg/kg q12h OU 2 mg/kg q24h COM alimento — sinais clínicos guiam ajuste, não número isolado (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
-    'NÃO aumentar trilostano automaticamente aos 14 dias se clínica já melhorou (BSAVA trilostane guidance; Macfarlane et al.).',
+    'Trilostano: 1 mg/kg q12h OU 2 mg/kg q24h COM alimento — sinais clínicos guiam ajuste, não número isolado (Bugbee et al., 2023).',
+    'NÃO aumentar trilostano automaticamente aos 14 dias se clínica já melhorou (Macfarlane et al.).',
     'ACTHST monitoramento: 1 mcg/kg IV, cortisol 3–5 h pós-pílula — NÃO é teste diagnóstico inicial (Bugbee et al., 2023).',
     'Cortisol pré-pílula é auxiliar, não universal — não substitui clínica + ACTHST seriado (Macfarlane et al.).',
-    'Red flags para suspender trilostano: anorexia, vômito, letargia, diarreia, colapso — risco de hipoadrenocorticismo iatrogênico (Plumb\'s, 10ª ed.).',
+    'sinais de alerta para suspender trilostano: anorexia, vômito, letargia, diarreia, colapso — risco de hipoadrenocorticismo iatrogênico.',
     'Mitotano é alternativa especializada, NÃO primeira linha de rotina (Bugbee et al., 2023).',
     'Selegilina e cetoconazol NÃO são tratamento de rotina atual (Bugbee et al., 2023).',
   ],
@@ -77,7 +77,7 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
       {
         title: 'Tratamento guiado por clínica',
         body:
-          'Trilostano com alimento; monitorar 10–14 d, 30 d, 90 d e q3–6 mo; ACTHST 3–5 h pós-dose só para monitoramento (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
+          'Trilostano com alimento; monitorar 10–14 d, 30 d, 90 d e q3–6 mo; ACTHST 3–5 h pós-dose só para monitoramento (Bugbee et al., 2023).',
         highlights: ['trilostano', 'clínica', 'monitoramento'],
       },
     ],
@@ -88,13 +88,13 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
           label: 'Confirmar indicação clínica',
           timing: 'Primeira consulta',
           detail:
-            '≥2 sinais AAHA: PU/PD, polifagia, abdômen pendular, alopecia simétrica, panting, fraqueza, pele fina, calcinose (8–15%) (Bugbee et al., 2023; Behrend, VIN 2022). ALP ≠ triagem isolada.',
+            '≥2 sinais AAHA: PU/PD, polifagia, abdômen pendular, alopecia simétrica, respiração ofegante, fraqueza, pele fina, calcinose (8–15%) (Bugbee et al., 2023; Behrend, VIN 2022). ALP ≠ triagem isolada.',
         },
         {
           label: 'Excluir iatrogênia',
           timing: 'Antes de testar',
           detail:
-            'Anamnese minuciosa: oral, tópico, otológico, oftálmico, injetável. Washout 2–4 semanas se possível. ACTHST confirma iatrogênia quando cortisol pós-ACTH suprimido (Behrend, VIN 2022).',
+            'Anamnese minuciosa: oral, tópico, otológico, oftálmico, injetável. intervalo de suspensão 2–4 semanas se possível. ACTHST confirma iatrogênia quando cortisol pós-ACTH suprimido (Behrend, VIN 2022).',
         },
         {
           label: 'Banco mínimo',
@@ -132,13 +132,13 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
           dose: '1 mg/kg PO q12h OU 2 mg/kg PO q24h com alimento',
           duration: 'Reavaliar em 10–14 dias',
           detail:
-            'Primeira linha médica na maioria dos PDH e ADH não operáveis (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
+            'Primeira linha médica na maioria dos PDH e ADH não operáveis (Bugbee et al., 2023).',
         },
         {
           label: 'Ajuste por clínica',
-          reassess: 'PU/PD, apetite, panting, pele, infecções — Cushing Clinical Score ALIVE (0–15)',
+          reassess: 'PU/PD, apetite, respiração ofegante, pele, infecções — Cushing Clinical Score ALIVE (0–15)',
           detail:
-            'Sinais clínicos são primários para ajuste. NÃO aumentar automaticamente aos 14 dias se clínica já melhorou (BSAVA trilostane guidance; Macfarlane et al.).',
+            'Sinais clínicos são primários para ajuste. NÃO aumentar automaticamente aos 14 dias se clínica já melhorou (Macfarlane et al.).',
         },
         {
           label: 'Monitoramento laboratorial',
@@ -147,9 +147,9 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
             'ACTHST 1 mcg/kg IV, cortisol 3–5 h pós-pílula — só monitoramento, não diagnóstico. Cortisol pré-pílula auxiliar, não universal (Bugbee et al., 2023; Macfarlane et al.).',
         },
         {
-          label: 'Red flags — suspender trilostano',
+          label: 'sinais de alerta — suspender trilostano',
           detail:
-            'Anorexia, vômito, letargia, diarreia, colapso, hiponatremia — suspender e ACTHST urgente; risco hipoadrenocorticismo iatrogênico (Plumb\'s, 10ª ed.).',
+            'Anorexia, vômito, letargia, diarreia, colapso, hiponatremia — suspender e ACTHST urgente; risco hipoadrenocorticismo iatrogênico.',
         },
         {
           label: 'Alternativas cirúrgicas/especializadas',
@@ -179,36 +179,36 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
       ],
     },
     eixoHPA:
-      'Eixo hipotálamo–hipófise–adrenal: CRH → ACTH → cortisol com retroalimentação negativa. No Cushing, o freio falha — por tumor hipofisário (PDH), adrenal autônomo (ADH) ou supressão iatrogênica do eixo (Cunningham, 6ª ed.; Nelson & Couto, 6ª ed.).',
+      'Eixo hipotálamo–hipófise–adrenal: CRH → ACTH → cortisol com retroalimentação negativa. No Cushing, o freio falha — por tumor hipofisário (PDH), adrenal autônomo (ADH) ou supressão iatrogênica do eixo.',
     figuraEixoHPA: {
       kind: 'clinicalFigure' as const,
       src: '/assets/consulta-vet/diseases/sindrome-cushing-caes/eixo-hpa-animals-2024.png',
-      alt: 'Esquema do eixo hipotálamo–hipófise–adrenal (HPA) e feedback negativo do cortisol',
+      alt: 'Esquema do eixo hipotálamo–hipófise–adrenal (HPA) e retroalimentação negativa do cortisol',
       display: 'wide',
       caption:
-        'Eixo HPA: CRH estimula ACTH; ACTH estimula síntese adrenal de cortisol; cortisol exerce feedback negativo sobre hipotálamo e hipófise. Fonte: Behavioral, Physiological, and Pathological Approaches of Cortisol in Dogs, Animals 2024, CC BY 4.0.',
+        'Eixo HPA: CRH estimula ACTH; ACTH estimula síntese adrenal de cortisol; cortisol exerce retroalimentação negativa sobre hipotálamo e hipófise. Fonte: Behavioral, Physiological, and Pathological Approaches of Cortisol in Dogs, Animals 2024, CC BY 4.0.',
     },
   },
   epidemiology: {
     prevalencia:
       'Endocrinopatia comum em cães de meia-idade a idosos (~7–12 anos). PDH predomina (~80–85%); ADH ~15–20% (Niessen et al., 2025; Bugbee et al., 2023).',
     racas:
-      'PDH: Poodle miniatura, Dachshund, Boxer, Boston Terrier, Beagle citados. ADH: predileção relativa por cães maiores; algumas séries citam fêmeas em ADH (Nelson & Couto, 6ª ed.).',
+      'PDH: Poodle miniatura, Dachshund, Boxer, Boston Terrier, Beagle citados. ADH: predileção relativa por cães maiores; algumas séries citam fêmeas em ADH.',
     iatrogenico:
       'Proporção crescente conforme uso de glicocorticoides na população — incluir tópicos e otológicos na anamnese (Behrend, VIN 2022).',
   },
   pathogenesisTransmission: {
     transmissao: 'Não contagioso. Cada caso reflete neoplasia endócrina ou exposição a glicocorticoide (Niessen et al., 2025).',
-    patogenesePDH: 'Adenoma hipofisário secreta ACTH → hiperplasia zona fasciculada → cortisol crônico elevado com feedback inadequado (Cunningham, 6ª ed.).',
-    patogeneseADH: 'Tumor adrenal autônomo → cortisol ↑ → ACTH ↓ → adrenal contralateral atrófica (Nelson & Couto, 6ª ed.).',
+    patogenesePDH: 'Adenoma hipofisário secreta ACTH → hiperplasia zona fasciculada → cortisol crônico elevado com retroalimentação inadequada.',
+    patogeneseADH: 'Tumor adrenal autônomo → cortisol ↑ → ACTH ↓ → adrenal contralateral atrófica.',
     mucoceleAssociacao:
       'Associação estatística vesícula biliar/mucocele em Cushing — NÃO causal comprovada; monitorar ultrassom (Bugbee et al., 2023).',
   },
   pathophysiology: {
     metabolismo:
-      'Cortisol crônico → catabolismo proteico (fraqueza, atrofia muscular, abdômen pendular), resistência insulínica, hiperlipidemia, hepatomegalia vacuolar (Cunningham, 6ª ed.).',
+      'Cortisol crônico → catabolismo proteico (fraqueza, atrofia muscular, abdômen pendular), resistência insulínica, hiperlipidemia, hepatomegalia vacuolar.',
     renal:
-      'Reduz sensibilidade a ADH → poliúuria/polidipsia; USG frequentemente <1,020 no cão (Nelson & Couto, 6ª ed.).',
+      'Reduz sensibilidade a ADH → poliúuria/polidipsia; USG frequentemente <1,020 no cão.',
     dermatologico:
       'Pele fina, alopecia simétrica, comedões, calcinosis cutis 8–15%, falha crescimento pós-tosa. ALP esteróide (isoforma induzida) em 85–95% (Bugbee et al., 2023).',
     renalProteinuria:
@@ -245,7 +245,7 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
         ['PU/PD', 'Ausente', 'Leve', 'Moderado', 'Marcado'],
         ['Pele/pelagem', 'Normal', 'Alopecia leve', 'Alopecia moderada + pele fina', 'Calcinose/francamente alterada'],
         ['Abdômen/musculatura', 'Normal', 'Leve pendular', 'Moderado pendular/fraqueza', 'Atrofia marcada'],
-        ['Apetite/panting', 'Normal', 'Polifagia ou panting ocasional', 'Polifagia + panting frequente', 'Polifagia extrema + panting constante'],
+        ['Apetite/respiração ofegante', 'Normal', 'Polifagia ou respiração ofegante ocasional', 'Polifagia + respiração ofegante frequente', 'Polifagia extrema + respiração ofegante constante'],
         ['Complicações', 'Nenhuma', 'ITU/piodermite leve', 'Proteinúuria/DM secundário', 'Tromboembolismo/crise'],
       ],
     },
@@ -289,7 +289,7 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
     {
       system: 'musculoskeletal',
       findings: [{
-        finding: 'Abdômen pendular, fraqueza, panting',
+        finding: 'Abdômen pendular, fraqueza, respiração ofegante',
         mechanism: 'Catabolismo muscular + redistribuição adiposa abdominal.',
         clinicalMeaning: 'Tríade clássica com PU/PD e alopecia.',
         priority: 'common',
@@ -376,8 +376,8 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
   },
   treatment: {
     trilostano: {
-      dose: '1 mg/kg PO q12h OU 2 mg/kg PO q24h COM alimento (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
-      ajuste: 'Sinais clínicos primários; Cushing Clinical Score ALIVE (0–15). NÃO auto-aumentar aos 14 dias se clínica OK (Macfarlane et al.; BSAVA trilostane guidance).',
+      dose: '1 mg/kg PO q12h OU 2 mg/kg PO q24h COM alimento (Bugbee et al., 2023).',
+      ajuste: 'Sinais clínicos primários; Cushing Clinical Score ALIVE (0–15). NÃO auto-aumentar aos 14 dias se clínica OK (Macfarlane et al.).',
       monitoramento: [
         '10–14 dias após início/ajuste',
         '30 dias, 90 dias, depois q3–6 meses',
@@ -385,10 +385,10 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
         'Cortisol pré-pílula: auxiliar, não universal (Macfarlane et al.)',
         'Eletrólitos, bioquímica, urinálise seriados',
       ],
-      redFlags: 'Anorexia, vômito, letargia, diarreia, colapso → suspender trilostano imediatamente (Plumb\'s, 10ª ed.).',
+      redFlags: 'Anorexia, vômito, letargia, diarreia, colapso → suspender trilostano imediatamente.',
     },
     mitotano:
-      'Alternativa especializada, NÃO rotina. Adrenocorticolítico — indução ~50 mg/kg/dia dividido q12h com alimento; manutenção semanal. Exige experiência e monitoramento intensivo (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
+      'Alternativa especializada, NÃO rotina. Adrenocorticolítico — indução ~50 mg/kg/dia dividido q12h com alimento; manutenção semanal. Exige experiência e monitoramento intensivo (Bugbee et al., 2023).',
     selegilinaCetoconazol:
       'Selegilina e cetoconazol NÃO são tratamento de rotina atual — eficácia imprevisível e efeitos adversos (Bugbee et al., 2023).',
     cirurgia: {
@@ -428,13 +428,13 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
   },
   prevention: {
     deteccaoPrecoce:
-      'Não banalizar PU/PD, panting crônico e alopecia simétrica em cãos de meia-idade. Forma espontânea não tem profilaxia; iatrogênia: menor dose eficaz e menor tempo de glicocorticoide (Bugbee et al., 2023).',
+      'Não banalizar PU/PD, respiração ofegante crônica e alopecia simétrica em cães de meia-idade. Forma espontânea não tem profilaxia; iatrogênia: menor dose eficaz e menor tempo de glicocorticoide (Bugbee et al., 2023).',
     errosComuns: [
       'ALP elevada = Cushing confirmado.',
       'Testar sem ≥2 sinais clínicos compatíveis.',
       'Usar cortisol basal como triagem.',
       'UCCR elevado = diagnóstico confirmado (UCCR exclui, não confirma).',
-      'Confundir iatrogênico com espontâneo sem washout/anamnese.',
+      'Confundir iatrogênico com espontâneo sem intervalo de suspensão/anamnese.',
       'Ausência de supressão LDDST = ADH automaticamente (~35% PDH não suprimem).',
       'ACTHST normal exclui ADH (FN até 41%).',
       'Assumir malignidade adrenal pelo tamanho da massa.',
@@ -444,7 +444,7 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
       'Mitotano como primeira linha de rotina.',
       'Prescrever selegilina/cetoconazol como padrão.',
       'Clopidogrel universal em todo Cushing proteinúurico (Milenkovic et al., 2026).',
-      'Ignorar red flags de hipocortisolismo medicamentoso.',
+      'Ignorar sinais de alerta de hipocortisolismo medicamentoso.',
     ],
   },
   relatedConsensusSlugs: [],

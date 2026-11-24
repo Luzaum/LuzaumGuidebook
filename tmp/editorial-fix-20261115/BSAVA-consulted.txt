@@ -1,0 +1,1356 @@
+
+PDF 37
+BSAVA Manual of Canine and Feline Nephrology and Urology
+28
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+ACh-m
+Urethra
+The urine voiding phase of 
+micturition. Parasympathetic 
+stimulation of muscarinic cholinergic receptors 
+(Ach-m) causes contraction of the detrusor 
+muscle. Parasympathetic inhibition of 
+sympathetic input to the IUS (X) and voluntary 
+inhibition of EUS contraction (X) cause passive 
+fl
+intravesicular pressure to exceed outlet 
+pressure, permitting urine voiding.
+3.4
+Urinary incontinence
+Continence requires that the ureters open solely into the 
+bladder, bladder capacity and compliance permit low 
+pressure filling, urethral closure pressure exceeds intra-
+vesical pressure, and bladder sensation be modulated 
+appropriately by higher CNS centres. Urinary incontinence 
+(hereafter simply incontinence) is defined as the involun-
+tary leakage of urine through the urethra. Thus, diagnosis 
+of this disorder first requires differentiation of unconscious 
+leakage from behaviourally inappropriate urination and 
+dysuria/pollakiuria (i.e. conscious inappropriate voiding). 
+Incontinence is most common in bitches, but is also clini-
+cally recognized in male dogs and cats. Incontinence is 
+usually due to failure of urine storage during filling and, in 
+some patients, particularly in animals with congenital dis-
+orders, multiple mechanisms may be contributory. Causes 
+of incontinence (Figures 3.5 and 3.6) are traditionally 
+described as neurogenic or non-neurogenic in nature.
+Neurogenic and functional
+• Urethral sphincter mechanism incompetence
+• Detrusor instability (overactive bladder)
+• Pelvic nerve or pelvic plexus trauma
+• Lumbosacral disease
+• Intervertebral disc disease
+• Lumbosacral stenosis
+• Neoplasia
+• Sacral malformation (Manx cats)
+• Feline leukaemia virus-associated
+• Generalized peripheral lower motor neuron disease
+• Dysautonomia
+Non-neurogenic
+• Urethral hypoplasia
+• fl
+• Bacterial cystitis
+• Sterile cystitis
+• Urolithiasis
+• Ectopic ureter
+• flȋflȌ
+• Uroliths
+• Neoplasia
+• Polyps
+• Patent urachus
+• Vestibulovaginal stenosis/septum causing urine pooling/spilling
+• fl
+Causes of urinary incontinence in dogs and cats.
+3.5
+Adult female dogs
+• Urethral sphincter mechanism incompetence
+• Detrusor instability (bladder storage dysfunction)
+• Vaginal pooling
+• Vulvar conformation or positioning abnormality
+• fl
+• Neurogenic disorders
+• flȋǤǤǡ 
+carcinoma)
+Adult male dogs
+• Prostatic disease
+• Urethral sphincter mechanism incompetence
+• Detrusor instability
+• Neurogenic disorders
+• flȋǤǤǡ
+carcinoma)
+Juvenile dogs
+• Ectopic ureter
+• Urethral or bladder hypoplasia
+• Congenital urethral sphincter mechanism incompetence
+• Vaginal or vulvar anomalies
+• Intersex disorder
+• Patent urachus
+Cats
+• Feline leukaemia virus-associated
+• Urethral sphincter mechanism incompetence
+• fl
+• Neurogenic disorders
+• Urethral anomalies
+Common causes of urinary incontinence by signalment.
+3.6
+Urine retention disorders can ultimately result in a para - 
+doxical incontinence, also termed overflow incontinence. 
+This occurs when bladder overdistension eventually 
+results in urine leakage. As the primary causative problem 
+is voiding failure, and storage failure is an end result of 
+that, paradoxical incontinence is most accurately classi-
+fied as a voiding disorder rather than a storage disorder 
+and must be approached and managed as such by deter-
+mining the underlying cause of urine retention (see below 
+and Chapters 9 and 30).
+Figure 3.7 provides a summary of characteristics and 
+useful diagnostics associated with common causes of 
+incontinence.
+
+PDF 38
+Chapter 3 · Urinary incontinence and urine retention
+29
+Disorder
+Characteristics
+Diagnostic tests
+Acquired urethral sphincter 
+mechanism incompetence 
+(reproductive hormone-
+responsive or ‘spay’ incontinence)
+Medium to large-breed adult dogs (usually female)
+Prior ovariohysterectomy
+Intermittent urine leakage
+Resting urinary incontinence
+Otherwise normal
+Response to treatment
+Ƥ
+Urinary bladder storage 
+dysfunction
+(detrusor instability, urge 
+incontinence, overactive bladder)
+Intermittent urinary incontinence
+Pollakiuria
+May appear behavioural or voluntary
+May be associated with excitement or activity
+Response to treatment
+Cystometrography
+Cystourethrography
+Ectopic ureter
+ơ
+Often continuous urine leakage
+Urethrocystoscopy
+Contrast radiography, computed tomography
+Vaginourethrography
+Surgical exploration
+Congenital urethral incompetence 
+or hypoplasia
+Severe or continuous urine leakage
+Juvenile animal
+Wide or short urethra in some cases
+Ectopic ureter not demonstrated
+Urethrocystoscopy 
+Cystourethrography
+Ƥ
+Vaginal abnormality or urine 
+pooling
+Urine leakage at rest or when rising
+Urine leakage following voiding
+Recurrent or persistent vaginitis
+Vestibulovaginal stenosis/septum on digital examination
+Assessment of vulvar conformation
+Digital vaginal examination and vaginoscopy
+Vaginourethrography
+Prostatic disease (male dogs)
+Intact or neutered
+Other signs of prostatic disease or concurrent dysuria
+ơǡ
+Abdominal radiography
+Ultrasonography
+Contrast urethrography
+Prostatic brushing, aspiration or biopsy
+Feline leukaemia virus (FeLV)-
+associated urinary incontinence 
+(cats)
+Intermittent urine leakage
+Anisocoria
+FeLV test
+Neurological examination
+Urodynamic assessment
+Characteristics of common disorders causing urinary incontinence.
+3.7
+Neurogenic incontinence
+Neurogenic incontinence usually refers to sacral spinal cord 
+level disorders (or less frequently involves spinal nerves bilat-
+erally). Clinical signs associated with sacral cord lesions are 
+characteristically lower motor neuron (LMN) in nature. With 
+these disorders, end organs have the potential to function 
+normally, but signal generation or transduction fails at some 
+point between the CNS and the bladder and/or urethra.
+Lesions of the sacral or sacrocaudal spinal cord inter-
+fere with normal function of the pudendal nerve, disrupting 
+the local reflex arc and causing loss of normal EUS function, 
+resulting in eventual involuntary leakage of urine when the 
+bladder becomes distended (LMN bladder). Usually these 
+animals also have loss of normal detrusor contractile func-
+tion and cannot voluntarily urinate. Any cause of increased 
+ab dominal pressure or intravesical pressure (e.g. coughing, 
+abdominal compression, manual bladder compression) may 
+cause urine expression. In these dogs, urinary incontinence 
+is rarely the sole overt neurological abnormality on physical 
+examination; decreased anal tone and perineal reflexes and/
+or deficits of motor function of the pelvic limbs are usually 
+also present. For these dogs, treatment of the incontinence 
+and prognosis for resolution or clinical control depend pri - 
+marily on diagnosis and management of the underlying cause.
+Non-neurogenic incontinence
+Non-neurogenic incontinence is associated with anatom-
+ical and functional disorders of the urinary tract. In these 
+disorders, generation and conduction of neural impulses 
+are intact throughout their course from the CNS to the end 
+organs, but the bladder and/or urethra have a decreased 
+ability to sense the input, respond to the input, or both.
+Urethral sphincter mechanism incompetence
+Urethral sphincter mechanism incompetence (USMI) is the 
+most common cause of incontinence in dogs. USMI is 
+most often an acquired disorder in medium to large-breed 
+neutered bitches, but has been occasionally reported in 
+cats and male dogs, and can be congenital. Animals with 
+USMI should have normal and complete bladder empty-
+ing, and measurement or approximation of post-voiding 
+residual urine volume is an important part of the initial 
+assessment to rule out disorders of retention and con-
+sequent overflow incontinence. USMI involves decreased 
+strength and responsiveness of the entire sphincter 
+mechanism (urethral musculature and vasculature, uro-
+thelium, fibro elastic supportive tissue). Many different fac-
+tors may affect the development and degree of USMI in a 
+given patient.
+Overactive bladder
+An overactive bladder (urge incontinence, detrusor hyper-
+reflexia, detrusor instability) is less common than USMI 
+and manifests as intermittent incontinence, often asso-
+ciated with activity or excitement (rather than with recum-
+bency, as is typical of USMI). It is sometimes difficult to 
+discriminate an overactive bladder from pollakiuria or 
+even inappropriate urination, since the sensation of det-
+rusor contraction will often trigger dogs to assume a uri-
+nation position. An overactive bladder is seen both as a 
+sole disorder and in conjunction with USMI in dogs. This 
+dis order is chiefly treated with antimuscarinic agents (e.g. 
+oxybutynin, dicyclomine, flavoxate) or tricyclic antide-
+pressants (e.g. imipramine), which increase bladder 
+capacity and decrease detrusor spasticity.
+
+PDF 39
+BSAVA Manual of Canine and Feline Nephrology and Urology
+30
+Ectopic ureter
+Ureteral ectopia results from dysembryogenesis of the 
+metanephric ducts. It is defined as ureteral termination 
+distal to the trigone, and other anatomical or functional 
+abnormalities (e.g. reduced bladder capacity, USMI, hypo-
+plastic urethra) often occur concurrently. Animals with 
+ectopic ureters usually have continuous urine leakage from 
+birth, but episodic leakage can be seen as well. Surgical or 
+cystoscopic-guided correction is required for clinical 
+improvement. Thorough preoperative evaluation of the uri-
+nary tract is recommended to determine the prognosis 
+with surgical correction and to predict the need for post-
+operative medical management. For further information on 
+the pathophysiology, diagnosis and management of ure-
+teral ectopia, the reader is referred to Chapter 30.
+Prostatic disease
+Incontinent males should be screened for prostatic disease, 
+particularly neoplasia and bacterial prostatitis (especially if 
+entire), via rectal palpation, urine/prostatic fluid analysis, 
+ultrasonography and (potentially) prostatic aspiration or 
+biopsy. An easily palpable prostate or prostatic marginal 
+irregularity found in a neutered dog (especially if the animal 
+was neutered before adulthood) should markedly raise 
+suspicion for prostatic neoplasia (see Chapter 25).
+Cats
+Urinary incontinence is rare in cats and may occur due to 
+con genital anatomical anomalies (ureteral ectopia, urethral 
+and/or vaginal hypoplasia, bladder hypoplasia), neuro logical 
+injury or malformation, viral disease (specifically feline 
+leukaemia), and congenital or acquired urethral incom-
+petence. Juvenile cats should be screened for ectopic 
+ureters and vaginourethral abnormalities; adults should be 
+tested for feline leukaemia virus. Alpha adre nergic ago-
+nists may improve non-neurogenic urethral incompetence 
+and a recent report  (Pisu and Veronesi, 2014) suggests 
+leuprolide or deslorelin could be effective. Medical and 
+surgical aspects of management specific to cats are found 
+in Chapter 30.
+Diagnostic approach
+The diagnostic approach to urinary incontinence is de-
+signed to:
+• 
+Verify the disorder is primarily of urine storage 
+• 
+Rule out infectious, polyuric, pollakiuric or behavioural 
+disorders 
+• 
+Identify a neurological or anatomical lesion if present. 
+A detailed diagnostic approach to incontinence is 
+presented in Chapter 9.
+Treatment
+Management options for patients with urinary incon-
+tinence are discussed in Chapter 30. Figure 3.8 sum-
+marizes the pharmacological agents that can be used in 
+the treatment of urinary incontinence. Suggestions for the 
+management of relapsing or refractory incontinence are 
+given in Figure 3.9.
+Formulary of agents useful in the management of urinary incontinence. (continues)
+3.8
+Drug class
+Dosage
+Mechanism of action
+Contraindications or comments
+Side effects
+Alpha-1 agonists
+Phenylpropanolamine
+1–2 mg/kg orally q8–24h 
+(12.5–7.5 mg total dose 
+per dog)
+Sympathomimetic; 
+causes noradrenaline 
+(norepinephrine) 
+release and alpha/beta 
+adrenergic stimulation
+Glaucoma; prostatic hypertrophy; 
+hyperthyroidism; hypertension; 
+diabetes mellitus
+Restlessness; irritability; 
+hypertension; anorexia; 
+tachycardia
+Oestrogen analogues
+Estriol
+2.0 mg/dog orally q24h 
+for 7–14 days, then 
+reduce daily dose by 0.5 
+mg/week to minimum 
+ơǡ
+q48h
+Increases sensitivity of 
+alpha-1 urethral 
+smooth muscle 
+receptors to 
+noradrenaline; other 
+mechanisms may play 
+a role
+Male dogs; cats; entire females; 
+pregnant/lactating females
+Use with caution in liver disease, with 
+glucocorticoids or with known 
+immune-mediated disease
+Gastrointestinal upset; 
+decreased appetite; swollen 
+vulva; vulvovaginitis; 
+mammary hyperplasia; 
+behavioural changes
+Diethylstilbestrol
+0.1–1.0 mg/dog orally 
+q24h for 5–7 days, then 
+weekly or prn
+As per estriol
+Blood dyscrasias (rare)
+Testosterone analogues
+Testosterone 
+cypionate
+2.2 mg/kg i.m. every 4 
+weeks
+Precise mechanism of 
+incontinence 
+management 
+unknown
+Hypersensitivity; renal, cardiac or 
+hepatic dysfunction
+Controlled Drug – Schedule 3
+Perianal adenomas; perineal 
+hernias; prostatic disorders; 
+behavioural changes
+Antimuscarinic agents
+Imipramine
+5–15 mg/dog (total dose) 
+orally q12h
+Tricyclic 
+antidepressant; 
+anxiolytic; alpha 
+antagonist; 
+antihistamine; 
+analgesic; 
+anticholinergic; mast 
+cell stabilizer
+Bladder atony; urine retention 
+Many drug interactions: concurrent 
+administration of selective serotonin 
+reuptake inhibitors, monoamine 
+oxidase inhibitors or tramadol may 
+cause serotonin syndrome
+May decrease seizure threshold
+Dry mouth; constipation; 
+tachycardia; 
+hyperexcitability; tremors; 
+myelosuppression
+
+PDF 40
+Chapter 3 · Urinary incontinence and urine retention
+31
+Cause or complicating factor
+Possible solution(s)
+Inadequate dosage or frequency of medication
+Increase dosage within recommended range
+Increase frequency of sympathomimetic (up to q8h) or oestrogen (up to q48h) as tolerated
+Inappropriate medication
+Consider change from oestrogen to sympathomimetic administration
+Consider addition of oestrogen to sympathomimetic administration
+Desensitization or intolerance
+Withdraw sympathomimetic treatment for 1–2 weeks and restart at a frequency of q24h
+Poor owner compliance
+Consider switch to long-acting sympathomimetic or to oestrogens to improve compliance
+Underlying urinary tract infection
+Monitor for infection and treat appropriately
+Underlying polyuria
+Evaluate for common, treatable polyuric disorders (e.g. hyperadrenocorticism, diabetes mellitus)
+Mixed disorder of micturition
+Consider addition of or trial treatment with anticholinergic agent
+Underlying anatomical abnormality
+Investigate anatomy with contrast radiography
+Consider surgical management of ectopic ureter, pelvic bladder or vaginal/vulvar abnormality
+Underlying neurological lesion
+Investigate for subtle lumbosacral disorder with neurological examination and imaging studies
+Behavioural component or senility
+Consider treatments for behavioural disorders or cognitive dysfunction
+Refractory urethral incompetence
+Consider combinations of medications or surgical treatment to enhance medical management
+Consider trial gonadotrophin-releasing hormone (GnRH) analogues or duloxetine
+Consider urethral bulking agents
+Potential causes and possible solutions for refractory or relapsing urinary incontinence.
+3.9
+Drug class
+Dosage
+Mechanism of action
+Contraindications or comments
+Side effects
+Antimuscarinic agents continued
+Oxybutynin
+0.2 mg/kg orally q8–12h 
+or 1.25–5 mg/dog orally 
+q8–12h
+Antimuscarinic with 
+some selectivity for 
+the urinary system and 
+antispasmodic
+Urine retention; ileus; glaucoma; 
+cardiac disease; hyperthyroidism
+Diarrhoea; constipation; 
+urinary retention; 
+hypersalivation; sedation
+Dicyclomine
+5–10 mg/dog (total dose) 
+orally q6–8h
+Urinary antimuscarinic
+Gonadotrophin-releasing hormone (GnRH) agents
+Leuprolide (depot)
+11.25 mg/dog s.c. every 3 
+months a
+Precise mechanism of 
+incontinence 
+management 
+unknown
+Pregnancy
+None documented
+Deslorelin (depot)
+5–10 mg/dog s.c. every 6 
+months a
+Buserelin (depot)
+6.3 mg/dog s.c. every 2 
+months a
+(continued) Formulary of agents useful in the management of urinary incontinence. a Extrapolated from human doses. 
+3.8
+Urine retention
+Urine retention occurs due to a failure of the urine voiding 
+phase of micturition (voiding dysfunction). For normal 
+and complete voiding to occur, intravesical pressure must 
+rise quickly and exceed outlet pressure until the bladder 
+is empty. Urine retention is caused by either failure of 
+detrusor contraction or by inappropriately high outlet 
+resistance during voiding (or both) (Figure 3.10). Failure 
+of detrusor contraction can be either neurogenic or non-
+neurogenic in origin, as can increased outlet resistance.
+In contrast with patients presented for incontinence, 
+the clinical signs associated with voiding disorders com-
+monly include stranguria and dysuria. The patient with 
+urinary retention may make frequent attempts to void, with 
+little or no success, or, particularly with animals who have 
+chronic retention, may make little or no voiding effort. 
+Determination of the aetiology of urine retention should 
+be aggressively pursued, since early identification and 
+correction of the underlying cause greatly improves the 
+prognosis for functional recovery. Management strategies 
+may include urinary catheterization to facilitate bladder 
+emptying or surgical procedures to correct or bypass the 
+obstruction. Pharmacological manipulation of outlet resis-
+tance and detrusor function (less commonly) is often used, 
+either in conjunction with other procedures or as a sole 
+therapy for certain disorders.
+Neurogenic urine retention
+In a similar fashion to incontinence, neurogenic retention 
+disorders usually involve a spinal cord lesion, but can also 
+occur secondary to bilateral nerve injury or generalized 
+ganglionic disruption. Most cases have evidence of other 
+neurological deficits on physical examination.
+Lower motor neuron disorders
+Disruption of sacral spinal cord segments S1–S3, or of the 
+pelvic nerves or pelvic plexuses, results in LMN signs of 
+decreased detrusor tone or complete atony and sphincter 
+hypo- or areflexia. Patients with LMN disorders usually 
+lack perineal reflexes and have distended bladders that are 
+easily expressed. Overflow incontinence is often seen 
+when the bladder is full, and in many of these patients 
+the urinary problem is initially misidentified as a primary 
+storage disorder rather than as a voiding disorder. LMN 
+
+PDF 41
+BSAVA Manual of Canine and Feline Nephrology and Urology
+32
+Disorder
+Characteristics
+Diagnostic tests
+Neurogenic causes
+Sacral spinal cord lesions (lower motor 
+neuron)
+ǡfl
+Bladder easily expressed
+fl
+Lumbosacral pain
+fl
+Neurological examination
+Myelography, epidurography, computed 
+tomography, magnetic resonance imaging
+Suprasacral spinal cord lesions (upper 
+motor neuron)
+ǡƤ
+Bladder not easily expressed
+Incomplete voiding possible
+
+Ƥ
+Neurological examination
+Myelography, epidurography, computed 
+tomography, magnetic resonance imaging
+Detrusor–urethral dyssynergia
+ǡƤ
+Bladder not easily expressed
+Incomplete voiding possible; stream may be initiated 
+but cannot be maintained
+Patient is otherwise normal
+Chronic management usually required
+Observation
+Measurement of residual urine volume
+Ƥά
+cystometrography
+Response to alpha antagonists
+Neurogenic detrusor atony
+Distended bladder
+Bladder easily expressed
+Weak or absent urine stream
+Caused by dysautonomia, damage to hypogastric nerve
+Observation
+Measurement of residual urine volume
+Response to treatment
+Cystometrography
+Non-neurogenic causes
+Mechanical urethral obstruction
+ƥ
+ά
+Caused by uroliths, neoplasia, blood clots, urethral 
+plugs (cats)
+Urethral catheterization
+Radiography, contrast cystourethrography
+Cystourethroscopy
+Ultrasonography
+Functional urinary obstruction
+ǡƥ
+Easy urethral catheterization
+Voiding may be initiated then interrupted
+Usually male dogs and cats
+Idiopathic or caused by urethral irritation or previous 
+obstruction
+Rarely and transiently occurs following abdominal, 
+pelvic or pelvic limb surgery
+Exclusion of mechanical or neurogenic causes
+Response to treatment with alpha 
+antagonists
+Resolution over time
+Ƥ
+Neurogenic detrusor atony
+Distended bladder
+Weak or absent urine stream
+Caused by acute or chronic overdistension from any 
+cause of obstruction, muscle weakness or drugs
+Observation
+Measurement of residual urine volume
+Response to treatment
+Cystometrography
+Medication (e.g. opioids, anticholinergics/
+antispasmodics, tricyclic antidepressants, 
+calcium channel blockers)
+Easy urethral catheterization
+Variable presentation otherwise
+Medication history
+Exclusion of mechanical or functional 
+obstruction
+Response to withdrawal of medication
+Characteristics of common disorders causing urine retention.
+3.10
+disorders that can cause urine retention include cauda 
+equina syndrome, sacral fracture, sacroiliac luxation, 
+intervertebral disc disease, sacrococcygeal separation or 
+fracture (‘tail-pull’ injury) and neoplasia.
+Treatment for complete neurogenic detrusor atony and 
+sphincter areflexia is generally unsuccessful, unless the 
+underlying cause can be corrected (e.g. intervertebral disc 
+disease or reparable fracture). Parasympathomimetic 
+agents such as bethanechol (a muscarinic receptor ago-
+nist) are thought by some to help increase the strength of 
+det rusor contraction if partial function is present, but clini-
+cal evidence of efficacy is not strong. Muscarinic receptor 
+agonists agents are ineffective if pelvic nerve input to the 
+detrusor is disrupted. Patients can be managed at home 
+with scrupulous bladder and nursing hygiene, including 
+manual bladder expression or, in male dogs, clean inter-
+mittent catheterization, ideally 3–4 times daily, and careful 
+cleaning to prevent urine scald. Urine cultures can be 
+monitored if clinically indicated because recurrent bacteri-
+uria is common in patients with urine retention. Treating 
+urinary tract infections (UTIs) may be appropriate initially; 
+however, if infection persists or recurs in spite of appro-
+priate therapy, then the decision whether or not to con-
+tinue treatment should be made on an individual patient 
+basis, taking into account factors such as bacterial char-
+acteristics (e.g. species, susceptibility, virulence), clinical 
+signs and comorbidities.
+Upper motor neuron disorders
+Upper motor neuron (UMN) signs result from suprasacral 
+injuries, meaning spinal cord damage between the sacral 
+cord segments and the forebrain, but usually referring to 
+lesions of the T3–L3 cord segments. Lesions occurring in 
+this region disrupt normal modulating inhibitory signals 
+to the hypogastric and pudendal nerves, causing reflex 
+detrusor contraction with concurrent uninhibited urethral 
+sphincter contraction. Patients with UMN disorders 
+usually have overt paresis or paralysis of the hindlimbs 
+with proprioceptive and nociceptive deficits, and cannot 
+void voluntarily. Intervertebral disc disease and spinal 
+trauma are the most common causes of UMN lesions in 
+companion animals.
+On examination, the bladder is large, turgid and chal-
+lenging or impossible to safely express early in the disease 
+course. Aggressive attempts at manual expression risk 
+bladder rupture and should be avoided initially. In male 
+dogs, regular, intermittent, aseptic urethral catheterization 
+
+PDF 42
+Chapter 3 · Urinary incontinence and urine retention
+33
+is preferred to expression in order to reduce the risk of 
+detrusor trauma and the reflux of urine into the upper tract, 
+and to ensure complete emptying. Unfortunately, this is 
+not usually an option for cats and female dogs, and in 
+these patients use of alpha-1 adrenergic antagonists (e.g. 
+prazosin, tamsulosin, terazosin, alfuzosin) to relax the IUS 
+and skeletal muscle relaxants (e.g. diazepam, dantrolene, 
+baclofen, methocarbamol, acepromazine) to decrease EUS 
+tone may be helpful. Some of the alpha-1 antagonists may 
+also effect a decrease in EUS tone by interfering with over-
+all central sympathetic output. Phenoxybenzamine, a non-
+selective alpha-1/alpha-2 antagonist, has historically been 
+used for IUS relaxation, but the advent of selective alpha-1 
+(prazosin) and even uroselective alpha-1 (tamsulosin) 
+agents permits greater clinical efficacy with decreased risk 
+of adverse effects. Unless the newer, more selective 
+agents are unavailable, there is no longer a strong clinical 
+rationale for the use of phenoxybenzamine as a urethral 
+relaxant. Most of the skeletal muscle relaxants available 
+also cause some degree of sedation.
+After days to weeks, recovery of local spinal reflexes 
+may allow for resumption of some voiding activity. At that 
+point, involuntary bladder emptying initiated when thresh-
+old capacity is reached, termed an automatic or reflex 
+bladder, frequently develops. When automatic bladder 
+activity occurs, safe manual expression is much easier, 
+since stimulation of detrusor contraction now should result 
+in sphincter relaxation and partial to complete automatic 
+emptying. Alpha adrenergic blockade is still usually helpful 
+in maximizing emptying in these patients. As with LMN 
+disorders, patients should be monitored routinely for bac-
+teriuria/clinical UTIs and treated when deemed clinically 
+appropriate. Verification of adequate emptying and main-
+tenance of good skin hygiene is critical for ongoing health, 
+particularly if the patient remains recumbent.
+Detrusor–urethral dyssynergia
+A dyssynergic state results when initiation of detrusor con-
+traction stimulates (or simply fails to inhibit) simultaneous 
+contraction of the urethral musculature (either the IUS or 
+the EUS), causing the bladder to contract against inappro-
+priately increased outlet resistance. Detrusor–urethral dys-
+synergia (DUD) is thought to result from a nervous system 
+defect (usually central), although in veterinary medicine the 
+exact lesion often is not or cannot be determined. DUD 
+can be caused by injury to the reticulospinal tract or 
+Onuf’s nucleus in the sacral cord, or by a lesion cranial to 
+the caudal mesenteric ganglion, or it can be considered 
+idiopathic. Regardless of specific lesion, the clinical signs 
+associated with DUD likely result from disruption of normal 
+inhibitory signalling to the hypogastric and pudendal 
+nerves. Animals with idiopathic DUD usually have a normal 
+neurological examination, in contrast with animals that 
+have UMN lesions, although patients with both types of 
+disease characteristically have large, firm bladders on 
+physical examination. The diagnosis and management of 
+DUD are discussed in detail in Chapter 30.
+Dysautonomia
+Dysautonomia is a rare generalized autonomic poly-
+neuropathy that results in degeneration and functional loss 
+of neuronal cell bodies of sympathetic and parasympa-
+thetic ganglia, intermediolateral spinal cord column and 
+parasympathetic brainstem nuclei. Overflow incontinence 
+due to bladder atony/distension and sphincter areflexia is 
+often the clinical sign that prompts evaluation, but other 
+signs of autonomic dysfunction (e.g. dilated, non-respon-
+sive pupils; relative bradycardia; xerostomia with dry/
+crusted nasal planum; nictitans prolapse; absent anal 
+sphincter tone with faecal incontinence; vomiting; kerato-
+conjunctivitis sicca; evidence of regurgitation and/or pneu-
+monia) are often identified by owner questioning or found 
+on examination. Any aged animal can be affected, 
+although the median age of onset in affected dogs has 
+been reported at 14 and 18 months, and clinical signs of 
+autonomic dysfunction develop relatively rapidly (within 2 
+days in cats and within 2 weeks in dogs). The disorder 
+appears strongly geographically clustered; most cases 
+have been reported in cats in Great Britain and dogs in 
+the Midwestern United States (particularly Missouri and 
+Kansas), but it is seen sporadically in dogs and cats world-
+wide. Identified risks include a rural environment, wildlife/
+carrion consumption, outdoor lifestyle and access to live-
+stock, their pastures and water sources. In dogs, most 
+cases are reported between February and April.
+Diagnosis is strongly suggested by physical exam in ation 
+and may be further supported by imaging findings, pupillary 
+response to dilute pilocarpine, lack of intra dermal histamine 
+response, improved urination after subcutaneous bethan-
+echol, unchanged heart rate after subcutaneous atropine, 
+documentation of orthostatic hypotension and other tests. 
+Definitive diagnosis relies on documentation of consistent 
+histopathological lesions in the autonomic nervous system. 
+Management is generally unrewarding if the gastrointestinal 
+tract is affected (e.g. ileus, megaoesophagus), but may be 
+possible with cholinergic agents and bladder expression or 
+catheterization if signs are largely confined to the urinary 
+tract. Prognosis is poor to grave, with a reported 70–90% 
+mortality rate. Unfortunately, the aetiology, and thus 
+methods for prevention, remains unknown, although geo-
+graphical distribution and case clustering suggest involve-
+ment of toxic (including Clostridium botulinum), infectious 
+and/or genetic factors.
+Non-neurogenic urine retention
+Non-neurogenic urine retention can occur secondary to 
+mechanical, anatomical or functional disorders.
+4LJOHUiJHlo\[Åo^oIs[Y\J[ioU
+Any intraluminal or extraluminal partial or complete 
+obstruction of the outflow tract can disrupt normal voiding. 
+The most common causes of mechanical obstruction 
+include: urolithiasis; trigonal, prostatic or urethral neo-
+plasia; severe proliferative urethritis or stricture; obstruc-
+tive blood clot; extramurally-compressive non-urological 
+neoplasia; and mucoid or crystalline urethral plugs (in 
+cats). Treatment and prognosis depend on the cause, 
+chronicity and potential for resolution of the underlying 
+problem. The more chronic the obstruction, the more likely 
+some degree of detrusor atony will result as well, and the 
+likelihood of resolution of that atony component declines 
+with increasing duration of obstruction.
+Urethral functional obstruction
+Functional urethral obstruction (increased outlet resistance 
+not due to mechanical obstruction or neurological lesion) 
+is thought to result from local irritation (e.g. urethral instru-
+mentation, urethral stones) and possibly also from 
+increased sympathetic stimulation of urethral musculature. 
+It is thought sometimes to have a neurogenic component 
+as well, but these hypotheses are all unproven. Increased 
+sympathetic input from any cause (stress of hospitalization 
+
+PDF 43
+BSAVA Manual of Canine and Feline Nephrology and Urology
+34
+or illness, physical or psychological excitation) may in-
+crease IUS pressure, as well as EUS pressure with involve-
+ment of the higher brain centres, and inappro priately raise 
+outlet resistance, restricting urine flow during voiding 
+attempts. Functional obstruction may be difficult to 
+distinguish definitively from DUD without actual uro-
+dynamic testing documenting high urethral pressure 
+concomitant with simultaneous or induced detrusor con-
+traction. The differentiation is usually clinical and based on 
+known presence of urethral inflammation or irritation, or 
+recent urethral obstruction or instrumentation, rather than 
+definitive urodynamic diagnostics.
+Obstruction due to urethral spasm seems to be a 
+common occurrence in cats following relief of mechanical 
+urethral obstruction. Management of urethral spasm 
+includes treatment or prevention of bladder atony from 
+overdistension, with indwelling catheterization if neces-
+sary, while decreasing IUS and/or EUS resistance. 
+Anxiolytic therapy can help decrease stress and thus 
+decrease sympathetic input to the lower urinary tract. 
+Prognosis is variable, but usually good in situations involv-
+ing acute urethral irritation (e.g. cats with urethral spasm 
+post-obstruction) with sufficient time and patience.
+Detrusor atony from overdistension
+Any cause of persistent outlet obstruction can lead to 
+bladder overdistension and consequent detrusor atony. 
+Excessive stretch separates the detrusor muscular junc-
+tions, resulting in weak, uncoordinated or absent contrac-
+tion. Animals with detrusor atony from overdistension may 
+show stranguria, anuria or overflow incontinence and 
+may have a large, full or flaccid bladder on physical 
+exam ination. The bladder remains distended after voiding 
+attempts, which are often partial or weak. Perineal 
+reflexes are intact unless an LMN lesion is present, but 
+the detrusor contraction is diminished or absent. For such 
+patients, maintenance of an indwelling catheter for 72 
+hours up to 14 days is recommended to help re-establish 
+tight junctions and permit return of detrusor function. If 
+sustained indwelling catheterization is not feasible, 
+frequent (3–4 times daily) intermittent aseptic catheteriza-
+tion is an acceptable alternative.
+Although parasympathomimetic agents (e.g. betha n-
+echol) may effectively help detrusor contraction (as pelvic 
+nerve signalling is intact), they should not be administered 
+without establishing a low resistance outflow conduit, 
+either via indwelling catheterization, removal of the 
+mechanical obstruction or pharmacological agents that 
+relax the urethral outlet (in cases of functional obstruction 
+or DUD). Urethral relaxants alone are usually not sufficient 
+to assure reliable outflow patency, particularly in the initial 
+stages of recovery from detrusor atony. Prognosis is 
+dependent on cause and reversibility of obstruction, but 
+is good for recovery of detrusor function in acute cases. 
+Chronic detrusor atony resulting from any cause carries 
+a guarded to poor prognosis for return to full function.
+Diagnostic approach
+The diagnostic approach to urine retention is designed to:
+• 
+Rule out neurogenically and mechanically obstructive 
+disorders
+• 
+Assess urinary bladder contractile capacity and 
+bladder outlet resistance
+• 
+Investigate possible underlying aetiologies for the 
+primary disorder.
+History and physical examination
+As for most micturition disorders, history and physical 
+examination provide the basis for localization of the prob-
+lem and determination of diagnosis. Problem-specific 
+historical questions related to urine retention are listed in 
+Figure 3.11 and a comprehensive approach is provided 
+in Chapter 9. Most animals with urine retention have a 
+distended bladder that is readily palpable, and some 
+patients have evidence of overflow incontinence. The 
+bladder distension may or may not be painful; animals 
+with chronic distension are often comfortable on pal-
+pation. Critical assessment of neurological status, par-
+ticularly of the pelvic limb reflexes and reflexes testing 
+the sacral arc (e.g. perineal, bulbospongiosus/vulvar), is 
+specifically indicated.
+Observation of voiding behaviour is an important part 
+of the initial evaluation, especially (and more often easily) 
+in male dogs, and begins with assessment of the patient’s 
+ability to initiate and maintain a strong urine stream. 
+Mechanically obstructed patients typically strain and pro-
+duce little to no urine. Functionally obstructed animals 
+may initiate a stream that is quickly attenuated; this 
+pattern may repeat several times in near-pulsatile fashion. 
+Animals with bladder atony may slowly initiate a weak 
+stream that often increases with manual abdominal com-
+pression. Some animals with chronic atony will not 
+attempt to void at all. The bladder, as assessed by pal-
+pation, ultrasonography or catheterization, should be 
+nearly empty following voiding, even in male dogs. If there 
+is palpable distension following voiding, manual expres-
+sion may be gently attempted. Inability to manually 
+express a distended bladder indicates likely mechanical, 
+neurogenic or functional outlet obstruction.
+• How old was the patient when the problem began?
+• Was it related to neutering surgery?
+• Have there been any previous medical problems?
+• What is the estimated daily water consumption?
+• Is there any history of prior urogenital disorders (e.g. urinary tract 
+infections, urolithiasis, urethral obstructions)?
+• Are there any systemic signs of illness, pain or weakness?
+• Has there been any previous back surgery or trauma?
+• Has there been any recent abdominal, pelvic or urogenital surgery 
+or trauma?
+• How frequent are voiding attempts?
+• Is any urine passed during voiding attempts?
+ǦƤ
+retention.
+3.11
+Catheterization
+Catheterization of the urethra following voluntary voiding 
+may allow assessment of outlet obstruction and permits 
+quantification of residual urine volume. In healthy animals, 
+resistance to the urethral catheter is normally encountered 
+at the urethral flexure in male cats and at the distal os 
+penis and pelvic brim/ischial arch in male dogs. Urethral 
+catheters may pass smoothly by small uroliths and 
+through or by some soft tissue lesions; thus, the ability to 
+catheterize the urethra does not fully rule out mechanical 
+obstruction. Use of the largest gauge soft catheter that 
+will comfortably pass through the urethra increases the 
+likelihood of detecting a small mechanical obstruction. 
+Normal residual urine volume in dogs ranges from approx-
+imately 0.1–3.4 ml/kg bodyweight, but is usually <0.5 ml/
+kg. Serial measurement of residual urine volume can also 
+be used to assess the response to therapy in animals 
+with retention disorders.
+
+PDF 44
+Chapter 3 · Urinary incontinence and urine retention
+35
+Diagnostic imaging
+Diagnostic imaging is usually required to positively iden-
+tify and characterize, or rule out, mechanical obstruction. 
+Plain radiography will demonstrate most mineralized 
+obstructions >2–3 mm and thoracic radiographs are 
+indicated if neoplasia is suspected or confirmed. 
+Ultrasonography is a sensitive tool for detection of 
+trigonal and proximal urethral lesions. Contrast urethro-
+cystography helps delineate the location and extent of 
+many obstructive lesions, as well as mineralized struc-
+tures too small to easily detect on plain radiography. 
+Urethrocystoscopy is often useful for visualization and/or 
+biopsy of obstructing structures. Utility of scoping 
+for biopsy may be limited in cats and small dogs. Ure-
+throscopy has proven valuable for the detection of 
+urethral lesions that are not readily visible on conven-
+tional imaging studies. Advanced imaging of the spinal 
+cord (e.g. myelography/epidurography, computed tomo-
+graphy, magnetic resonance imaging) may be necessary 
+to confirm and localize subtle neurological lesions. For 
+additional information on various imaging modalities 
+for the lower urinary tract, the reader is referred to 
+Chapters 7 and 8.
+Specialized urodynamic studies
+Urethral pressure profilometry records a tracing of pressure 
+measurements along the length of the outflow tract and ure-
+thra. In patients with urine retention, urethral pressure pro-
+filometry may help establish the presence and location of 
+high pressure zones in animals with dyssynergic urination, 
+functional urethral obstruction, stricture and other causes 
+of incomplete emptying. Cystometrography measures the 
+pressure within the bladder as it is filled with fluid or gas 
+and helps assess bladder capacity and compliance, as 
+well as detrusor overactivity or atony. On occasion, urethral 
+pressure profilometry and cystometrography are combined 
+with synchronized electromyographic recording of perineal 
+muscle contractions. In patients with urine retention, cysto-
+metrography may be helpful in determining whether ab - 
+normal detrusor function is a component of the disease pro-
+cess. Indications, utility and methodology of urodynamic 
+studies are discussed in greater detail in Chapter 9.
+Treatment
+A formulary of pharmacological agents commonly used 
+for the management of urine retention is provided in 
+Figure 3.12.
+Drug class
+Dosage
+Mechanism of action
+Contraindications or 
+comments
+Side effects
+Urethral relaxants
+Acepromazine
+Recommended starting dose: 
+0.02 mg/kg i.v. q12–24h, up to 
+1.1 mg/kg i.v. q12–24h (higher 
+doses not generally needed or 
+recommended)
+0.55–2.2 mg/kg orally q12–24h
+Neuroleptic skeletal 
+muscle relaxant via 
+postsynaptic dopamine 
+receptor blockade in the 
+central nervous system; 
+smooth muscle relaxation 
+via alpha antagonism; 
+antiemetic and 
+ơ
+Hypovolaemia; cardiac 
+disease; general debilitation; 
+sensitivity in giant breeds,  
+Greyhounds and Boxers
+Reduce dose by 25% for MDR1 
+heterozygotes and 30–50% 
+for MDR1 homozygotes
+Hypotension; sedation; 
+disinhibition of aggressive 
+behaviour; hypothermia; 
+possible interactions with 
+many other medications
+Baclofen
+Dogs: 1–2 mg/kg or 5–10 mg/
+kg orally q8h; start with lower 
+dose
+Cats: not recommended
+GABA-derived skeletal 
+muscle relaxant; decrease 
+ơ
+activity
+Seizure disorders
+Discontinue gradually; 
+hallucination and seizures 
+reported in humans when 
+stopped abruptly
+Narrow therapeutic index
+Sedation; weakness; 
+gastrointestinal upset; 
+pruritus
+Botulinum toxin type A as 
+urethral injection
+Dogs, cats: unknown 
+Humans: 50–100 IU injection 
+in saline every 1–6 months
+Inhibition of acetylcholine 
+release at neuromuscular 
+junction
+Hypersensitivity to toxin; 
+infection at injection site
+ơ
+(locally or systemically); 
+hypersensitivity reaction
+Dantrolene
+Dogs: 1–5 mg/kg orally q8–12h
+Cats: 0.5–2.0 mg/kg orally q12h
+1.0 mg/kg i.v.
+Skeletal muscle relaxation 
+ơ
+Cardiac disease; hepatic 
+dysfunction; pulmonary 
+disease
+Weakness; sedation; 
+gastrointestinal upset; 
+hepatotoxicity
+Diazepam
+Dogs: 2–10 mg/dog orally q8h
+Cats: 1–2.5 mg/cat orally q8h 
+or prn
+Skeletal muscle relaxation 
+ơ
+(benzodiazepine)
+Pregnancy; hepatic disease
+Sedation; paradoxical 
+excitement; idiopathic 
+hepatic necrosis (with oral 
+use in cats only)
+Phenoxybenzamine 
+(considered obsolete for 
+urinary indications if 
+selective alpha-1 
+antagonists are available)
+Dogs: 0.25 mg/kg orally 
+q8–12h or 2.5–20 mg/dog 
+orally q8–12h
+Cats: 1.25–7.5 mg/cat orally 
+q8–12h
+Urinary smooth muscle 
+ǦƤ
+alpha antagonism
+Cardiac disease; 
+hypovolaemia; glaucoma; 
+renal failure; diabetes mellitus 
+(type II)
+Hypotension; tachycardia; 
+gastrointestinal upset
+Prazosin
+Dogs: 1 mg/15 kg orally q8–12h
+Cats: 0.25–0.5 mg/cat orally 
+q12–24h
+Urinary smooth muscle 
+relaxation via selective 
+alpha-1 antagonism
+Cardiac disease; renal failure; 
+hypotension; hypovolaemia; 
+MDR1 mutation?
+Hypotension; mild 
+sedation; ptyalism
+Tamsulosin
+Dogs: 0.1–0.2 mg/10 kg orally 
+q12–24h
+Cats: not recommended
+Smooth muscle relaxation 
+via uroselective alpha-1 
+antagonism
+Hypersensitivity
+Do not crush or compound
+Hypotension (uncommon 
+unless overdosed)
+Formulary of agents useful in the management of urine retention. GABA = gamma-aminobutyric acid; MDR = multi-drug resistance. 
+(continues)
+3.12
+
+PDF 45
+BSAVA Manual of Canine and Feline Nephrology and Urology
+36
+(continued) Formulary of agents useful in the management of urine retention. GABA = gamma-aminobutyric acid; MDR = multi-drug 
+resistance. 
+3.12
+Drug class
+Dosage
+Mechanism of action
+Contraindications or 
+comments
+Side effects
+Detrusor stimulants
+Bethanechol
+Dogs: 5–15 mg/dog orally 
+q8–12h
+Cats: 1.25–7.5 mg/cat orally 
+q8–12h
+Stimulation of muscarinic 
+receptors
+Gastrointestinal or urinary 
+obstruction
+Ptyalism
+Vomiting
+Diarrhoea
+Possible abdominal pain
+Cisapride
+Dogs: 0.1–0.5 mg/dog orally 
+q8–12h
+Cats: 2.5–5 mg/cat orally 
+q8–12h
+Prokinetic activity via 
+acetylcholine release
+Gastrointestinal obstruction
+Reduce dosage with liver 
+disease
+Diarrhoea
+Possible abdominal pain
+Anxiolytic agents
+Alprazolam
+Cats: 0.125–0.25 mg/cat orally 
+q12h
+Centrally acting anxiolytic 
+benzodiazepine
+May be a good alternative to 
+diazepam if oral therapy is 
+needed
+Sedation; paradoxical 
+excitement
+Amitriptyline
+Cats: 1–2 mg/kg/day orally or 
+2.5–10 mg/cat/day orally
+Tricyclic antidepressant; 
+anxiolytic; alpha 
+antagonist; antihistamine; 
+analgesic; anticholinergic; 
+mast cell stabilizer
+Bladder atony; urine 
+retention
+Many drug interactions: 
+concurrent administration of 
+selective serotonin reuptake 
+inhibitors, monoamine 
+oxidase inhibitors or 
+tramadol may cause 
+serotonin syndrome
+Sedation; neutropenia; 
+thrombocytopenia; urine 
+retention; weight gain
+Acepromazine and diazepam are also anxiolytic agents; see above for information
+References and further reading
+Apodaca G (2004) The uroepithelium: not just a passive barrier. Traffic 5, 117–128
+Arnold S, Hubler M and Reichler I (2009) Urinary incontinence in spayed bitches: 
+new insights into the pathophysiology and options for medical treatment. 
+Reproduction in Domestic Animals 44(Suppl. 2), 190–192
+Avelino A, Cruz F, Panicker JN et al. (2016) Basic principles. In: Practical 
+Functional Urology̼, ed. 1 Heesakkers et al., pp. 1–10. Springer International 
+Publishing, Switzerland
+Birder L, deGroat W, Mills I et al. (2010) Neural control of the lower urinary 
+tract: peripheral and spinal mechanisms. Neurourology and Urodynamics 29(1), 
+128–139
+Byron JK (2015) Micturition disorders. Veterinary Clinics of North America: Small 
+Animal Practice 45, 769–782
+Clemens JQ (2010) Basic bladder neurophysiology. Urologic Clinics of North 
+America 37(4), 487–494
+-owler C1, Griɉths + and +eGroat >C 008 ;he neural control of micturition. 
+Nature Reviews Neuroscience 9(6), 453–466
+Hamaide A (2014) Medical management of urinary incontinence and retention 
+disorders. In: Current Veterinary Therapy XV, ed. JD Bonagura JD and DC 
+Twedt, pp. 915–919. Saunders, Philadelphia
+Hu HA, Granger N and 1effery N+ 01 Pathophysiology, clinical importance, 
+and management of neurogenic lower urinary tract dysfunction caused by 
+suprasacral spinal cord injury. Journal of Veterinary Internal Medicine 30, 
+1575–1588
+Labato MA and Acerno MJ (2010) Micturition disorders and urinary 
+incontinence. In: Textbook of Veterinary Internal Medicine, 7th edn, ed. SJ 
+Ettinger and E Feldman, pp. 160–164. Elsevier Saunders, St. Louis
+Lane IF and Fischer JR (2003) Symposium: A diagnostic approach to micturition 
+disorders; Treating urinary incontinence; and Medical treatment of voiding 
+dysfunction in dogs and cats. Veterinary Medicine 49–74
+Noël S, Claeys S and Hamaide A (2010) Acquired urinary incontinence in the 
+bitch: update and perspectives from human medicine. Part 1: The bladder 
+component, pathophysiology and medical treatment. Part 2: The urethral 
+component, pathophysiology and medical treatment. Part 3: The urethral 
+component and surgical treatment. The Veterinary Journal 186, 10–31
+Pisu MC and =eronesi MC 01 Effectiveness of deslorelin acetate 
+subcutaneolus implantation in a domestic queen with after spaying urinary 
+incontinence. Journal of Feline Medicine and Surgery 16(4), 366–368
+Reichler IM and Hubler M (2014) Urinary incontinence in the bitch: an update. 
+Reproduction in Domestic Animals 49(Suppl. 2), 75–80
+Stoffel 1; 01 +etrusor sphincter dyssynergia! a review of physiology, 
+diagnosis and treatment strategies. Translational Andrology and Urology 5(1), 
+127–135
+
+PDF 47
+BSAVA Manual of Canine and Feline Nephrology and Urology
+38
+AInormal findings on renal 
+palpation
+Increased size
+Renomegaly may be physiological or pathological. Uni-
+lateral nephrectomy, congenital unilateral renal agenesis 
+and other conditions that result in loss of function in one 
+kidney induce compensatory physiological hypertrophy of 
+the remaining kidney. Unilateral renomegaly is always a 
+pathological finding if the opposite kidney is present and 
+functional. Bilateral renomegaly usually implies renal 
+pathology, although compensatory renal hypertrophy can 
+be seen in animals with portovascular anomalies (PVA). 
+Technically, renomegaly secondary to acromegaly is a 
+physiological response to excess growth hormone and 
+insulin-like growth factor-1 (IGF-1) production.
+Several diseases that cause renomegaly occur more 
+frequently in cats than in dogs. These include renal 
+lymphoma, feline infectious peritonitis (FIP), idiopathic poly-
+cystic kidney disease (PCKD) and perinephric pseudocysts. 
+Renal lymphoma occurs occasionally in dogs, PCKD is 
+uncommon but is hereditary in certain breeds (West 
+Highland White Terriers, English Bull Terriers), whilst a 
+canine equivalent of FIP has not been reported. Other 
+causes of renomegaly, such as hydronephrosis, acute pye-
+lonephritis, some of the diseases leading to acute uraemia 
+(e.g. nephrotoxicosis, renal ischaemia, obstructive uro-
+pathy), PVA, renal neoplasia, subcapsular haematomas and 
+acromegaly, are less species-specific. In the dog, bilateral 
+renomegaly is often accompanied by acute rather than 
+chronic kidney disease, whereas in the cat, some of the 
+diseases causing bilateral renomegaly can lead to chronic 
+kidney disease.
+Reduced size
+Reduced renal size can occur in both dogs and cats, and 
+usually suggests a chronic rather than acute cause. In 
+contrast to renomegaly, small kidneys are usually abnor-
+mal whether unilateral or bilateral. Chronic kidney disease 
+(see Chapters 10 and 23) is the most common cause, but 
+other differential diagnoses are possible, including con-
+genital diseases (dysplasia, familial nephropathies) and 
+renal atrophy (e.g. as a long-term consequence of ure-
+teral obstruction). The latter are usually unilateral rather 
+than bilateral.
+Altered number
+Congenital diseases, although rare, are the most common 
+reason for alterations in kidney number (Figure 4.3). 
+Decreased number is seen with renal agenesis and fused 
+(horseshoe) kidneys; increased renal number can be seen 
+with renal duplication. Although many breeds can be 
+affected, agenesis and duplication have been reported as 
+familial diseases in Beagles and English Bull Terriers, 
+respectively. Unilateral agenesis is also associated with 
+Cavalier King Charles Spaniels, Dobermanns, Pekingese 
+and Shetland Sheepdogs. Agenesis can be unilateral or 
+bilateral, and is usually accompanied by ureteral aplasia. 
+Not surprisingly, bilateral agenesis is invariably fatal and is 
+a potential cause of fading puppy syndrome. The main 
+acquired cause of decreased kidney number is prior 
+nephrectomy. Renal duplication is the only, rare, abnormal-
+ity that causes an increased number of kidneys, and this 
+is usually an incidental finding.
+Altered shape
+Many of the diseases which alter the shape of the kidney 
+(Figure 4.4) also lead to changes in size. Examples include 
+renal dysplasia, congenital renal fusion (horseshoe 
+kidney), perinephric pseudocysts, renal neoplasia, sub-
+capsular haematomas and PCKD.
+• Congenital
+• Renal fusion – horseshoe kidney
+• Renal dysplasia
+• Perinephric pseudocysts
+• Neoplasia
+• Primary renal neoplasia
+• Renal lymphoma
+• Metastatic neoplasia
+• Polycystic kidney disease
+• Chronic kidney disease (small and deformed)
+• Hydronephrosis
+• Congenital
+• Acquired
+Ǥ
+4.4
+Disorder 
+Renal failure? Yes (Y) or no (N)
+Unilateral (U) or bilateral (B)
+Prognosis 
+Congenital 
+See Chapter 14
+U/B
+See Chapter 14
+Subcapsular haematoma
+N
+U
+Good
+Chronic kidney disease
+Y
+B
+Guarded
+Nephrolithiasis 
+N unless bilateral
+U/B
+Good unless bilateral
+
+N unless bilateral
+U>B
+Variable 
+Acute nephrosis
+Y/N
+B
+Guarded; can resolve with appropriate treatment
+ȋȌơǤȀ
+ȋȌǡǤ
+4.2
+Decreased number
+Congenital:
+• Renal agenesis
+• Fused (horseshoe) kidneys
+Acquired:
+• Nephrectomy
+Increased number
+Congenital:
+• Renal duplication
+Ǥ
+4.3
+Altered consistency
+Palpable changes in consistency include kidneys that have 
+a fluctuant feel, and those that are firmer than normal 
+(Figure 4.5). The former is most often noted with peri nephric 

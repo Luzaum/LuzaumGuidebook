@@ -57,7 +57,7 @@ export const dermatologiaConsensosSeed: ConsensusSeed[] = [
     practicalApplicationText:
       'Exclusões rigorosas → tricograma → prednisolona na crise → ciclosporina na manutenção → FeLV/FIV/Toxoplasma antes de imunossupressor crônico.',
     appNotesText:
-      'VIGENTE — referência principal para FASS no ConsultaVET.',
+      'VIGENTE — referência principal para FASS.',
     references: [
       {
         id: 'ref-icada-fass-2021',

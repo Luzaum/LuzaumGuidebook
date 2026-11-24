@@ -91,7 +91,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
       ],
     },
     plumbsContext:
-      'Plumb\'s 10ª ed., monografia Fenbendazole (pp. 505–508): 50 mg/kg VO q24h por 3 dias é o regime anti-helmíntico rotulado em cães; há esquemas específicos conforme parasito, inclusive Giardia. Doses felinas são extrabula.',
+      'Em cães, 50 mg/kg VO q24h por 3 dias é o regime anti-helmíntico rotulado; há esquemas específicos conforme parasito, inclusive Giardia. Doses felinas são extrabula.',
     clinicalUse:
       'Tratamento e controle de helmintos gastrintestinais em cães e tratamento de giardíase conforme a indicação da bula brasileira, sempre integrado ao diagnóstico coproparasitológico e ao controle ambiental.',
     reassessment:
@@ -101,7 +101,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     safetyAlert:
       'Pesar o paciente e calcular pela concentração de 100 mg/mL. Não confundir dose em mg com volume em mL. A página oficial orienta usar imediatamente todo o conteúdo após abrir o frasco.',
     price: priceRange(73.99, 119.99, 'Popular Pet R$ 86,90; Meu Pet Merece R$ 82,90; Agrotela R$ 96,99 — frasco 20 mL'),
-    evidenceLevel: 'Bula/página oficial brasileira da MSD + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula/página oficial brasileira da MSD e literatura veterinária.',
     imageUrl:
       'https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2020/07/panacur-e1594736460208.jpg?crop=1&h=379&w=300',
     productPageUrl: 'https://www.msd-saude-animal.com.br/produto/panacur-10/',
@@ -126,7 +126,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     labelCompositionSummary:
       'Pasta oral equina pronta para uso; ponazuril 150 mg/g (15% p/p). Produto aprovado nos EUA exclusivamente para equinos.',
     labelDirections:
-      'Bula equina: 15 mg/kg VO como dose de ataque apenas no dia 1; depois 5 mg/kg VO q24h nos dias 2–28 para mieloencefalite protozoária equina. Em cães e gatos (extrabula, pasta 150 mg/g): coccidiose 20 mg/kg VO q24h por 3 dias em cães (0,133 g/kg/dia) ou 20–50 mg/kg VO q24h por 1–3 dias em gatos.',
+      'Bula equina: 15 mg/kg VO como dose de ataque apenas no dia 1; depois 5 mg/kg VO q24h nos dias 2–28 para mieloencefalite protozoária equina (NÃO é a dose de cães e gatos). Em cães e gatos (extrabula, pasta 150 mg/g): coccidiose 20 mg/kg VO q24h por 3 dias em cães (0,133 g/kg/dia) ou 20–50 mg/kg VO q24h por 1–3 dias em gatos.',
     eligibility: {
       minAge: 'Cães e gatos (extrabula): empregado a partir de 2 a 3 semanas de vida em filhotes e ninhadas com isosporose/coccidiose sob cálculo exato por peso.',
       minWeight: 'Sem peso mínimo fixo; calcular rigorosamente por peso em balança (ex.: 20 mg/kg na pasta 150 mg/g = 0,133 g de pasta/kg = ~0,13 mL/kg).',
@@ -141,7 +141,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
           {
             title: 'Coccidiose — uso extrabula',
             dose: '20 mg/kg VO q24h por 3 dias.',
-            note: 'Plumb’s também descreve 50 mg/kg q24h por 3 dias, com possibilidade de repetir o curso, ou 30 mg/kg nos dias 0 e 7.',
+            note: 'Também se descreve 50 mg/kg q24h por 3 dias, com possibilidade de repetir o curso, ou 30 mg/kg nos dias 0 e 7.',
           },
           {
             title: 'Neosporose/toxoplasmose — uso extrabula',
@@ -156,7 +156,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
           {
             title: 'Coccidiose — uso extrabula',
             dose: '20 mg/kg VO q24h por 3 dias.',
-            note: 'Plumb’s também descreve 50 mg/kg q24h por 3 dias ou 30 mg/kg nos dias 0 e 7, conforme o contexto clínico.',
+            note: 'Também se descreve 50 mg/kg q24h por 3 dias ou 30 mg/kg nos dias 0 e 7, conforme o contexto clínico.',
           },
           {
             title: 'Toxoplasmose — uso extrabula',
@@ -166,12 +166,12 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
       },
       notes: [
         'Todos os esquemas de cães e gatos são extrabula; a pasta Marquis é rotulada apenas para equinos.',
-        'Plumb’s alerta que a pasta equina a 15% é concentrada demais para pequenos animais e deve ser diluída por profissional para permitir medição segura.',
+        'A pasta equina a 15% é concentrada demais para pequenos animais e deve ser diluída por profissional para permitir medição segura.',
         'Ponazuril é o metabólito sulfona do toltrazuril; não intercambiar os dois produtos nem copiar suas doses.',
       ],
     },
     plumbsContext:
-      'Plumb’s 10ª ed., monografia Ponazuril (pp. 1041–1043): lista esquemas extrabula para cães e gatos e alerta expressamente para a necessidade de diluir a pasta equina concentrada antes de medir doses de pequenos animais.',
+      'Apresenta esquemas extrabula para cães e gatos e exige diluição prévia da pasta equina concentrada antes da medição em pequenos animais.',
     clinicalUse:
       'Referência comercial de ponazuril para protocolos antiprotozoários extrabula em cães e gatos. A indicação, a dose e a formulação dispensada dependem do diagnóstico e da avaliação veterinária.',
     reassessment:
@@ -181,7 +181,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     safetyAlert:
       'Produto equino e muito concentrado. Não usar a regulagem da seringa equina para cães ou gatos, não copiar a dose equina e não confundir ponazuril com toltrazuril. Uso apenas sob prescrição veterinária.',
     price: { averageLabel: 'R$ 150,00 (fracionado)', rangeLabel: 'Manipulação fracionada: R$ 120,00 a R$ 180,00; seringa importada: ~R$ 1.500,00', sourceDate: '2026-09-06' },
-    evidenceLevel: 'Bula oficial FDA/DailyMed do Marquis + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula oficial FDA/DailyMed do Marquis e uso veterinário extrabula.',
     imageUrl:
       'https://horseowner.boehringer-ingelheim.com/us/sites/default/files/styles/scale_1080/public/2024-03/MARQUIS_4dose_pck_quarter%2Bsyringe_qtr_1080x720.jpg?itok=0e_SA6EH',
     productPageUrl: 'https://horseowner.boehringer-ingelheim.com/us/products/marquis',
@@ -215,7 +215,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
           {
             title: 'Coccidiose — uso extrabula',
             dose: '10–30 mg/kg VO q24h por 1–3 dias.',
-            note: 'Plumb\'s alerta: toltrazuril é composto-pai do ponazuril — não copiar doses entre eles.',
+            note: 'O toltrazuril é o composto-pai do ponazuril — não copiar doses entre eles.',
           },
         ],
         cat: [
@@ -236,7 +236,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
       ],
     },
     plumbsContext:
-      'Plumb’s 10ª ed., monografia Toltrazuril (pp. 1255–1257): descreve uso extrabula para coccidiose em cães e gatos e adverte que toltrazuril e ponazuril não devem ser tratados como o mesmo fármaco.',
+      'Descreve uso extrabula para coccidiose em cães e gatos; toltrazuril e ponazuril não devem ser tratados como o mesmo fármaco nem ter doses intercambiadas.',
     eligibility: {
       minAge: 'Bezerros (bula): a partir da 3ª semana de vida. Cães e gatos (extrabula): amplamente empregado em filhotes jovens a partir de 2 semanas de idade sob cálculo exato mg/kg.',
       minWeight: 'Dosar rigorosamente por peso em balança (10–30 mg/kg = 0,2 a 0,6 mL/kg na apresentação 50 mg/mL).',
@@ -256,7 +256,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
       rangeLabel: 'Shopping do Agro R$ 126,14; AB Araujo R$ 159,00 — frasco 100 mL',
       sourceDate: SOURCE_DATE,
     },
-    evidenceLevel: 'Página oficial brasileira da Elanco + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Página oficial brasileira da Elanco e literatura veterinária extrabula.',
     imageUrl:
       'https://assets.elanco.com/7eafa302-37b3-00f8-2e74-bb902d1a0ba2/b26e4a42-12f4-4d9a-a485-c3a0afa60461/Baycox.png?auto=format&q=75&w=1600',
     productPageUrl: 'https://agropecuaria.elanco.com/br/produtos/corte/baycox',
@@ -321,12 +321,12 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
         ],
       },
       notes: [
-        'As doses do Plumb’s são da soma dos dois princípios ativos.',
-        'Não converter automaticamente os esquemas q12h do Plumb’s para a bula do Sulfaprim, que orienta q24h; manter indicação e fonte visíveis.',
+        'As doses clínicas referem-se à soma dos dois princípios ativos (SMX + TMP).',
+        'Não converter automaticamente os esquemas q12h da literatura para a bula do Sulfaprim, que orienta q24h; manter indicação e critério clínico visíveis.',
       ],
     },
     plumbsContext:
-      'Plumb’s 10ª ed., monografia Sulfa-/Trimethoprim (pp. 1193–1197): há controvérsia sobre frequência; a referência lista 30 mg/kg q24h para infecções sensíveis e esquemas q12h específicos. Antimicrobiano deve ser escolhido por diagnóstico e susceptibilidade.',
+      'Há variação clínica sobre a frequência de administração: esquemas descrevem 30 mg/kg q24h para infecções sensíveis e regimes q12h para quadros específicos. O antimicrobiano deve ser escolhido por diagnóstico e susceptibilidade.',
     clinicalUse:
       'Antimicrobiano potencializado para infecções por bactérias sensíveis em cães e gatos. Não usar empiricamente quando cultura/antibiograma ou diretriz local indicarem alternativa mais apropriada.',
     reassessment:
@@ -334,13 +334,13 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
     prescriptionExample:
       'Sulfaprim Comprimidos (500 mg + 100 mg): administrar 1 comprimido para cada 20 kg (5–9 kg: 1/4 cp; 10–14 kg: 1/2 cp; 15–19 kg: 3/4 cp) por via oral a cada 24 horas, durante 5–7 dias.',
     safetyAlert:
-      'Bula: não administrar a cães ou gatos com menos de 15 meses, a fêmeas prenhes/lactantes ou a pacientes com hipersensibilidade a sulfas/trimetoprima. Plumb’s alerta para KCS, hipersensibilidade, hepatotoxicidade, citopenias e cristalúria; manter hidratação e cautela em doença renal/hepática.',
+      'Bula: não administrar a cães ou gatos com menos de 15 meses, a fêmeas prenhes/lactantes ou a pacientes com hipersensibilidade a sulfas/trimetoprima. Há risco de ceratoconjuntivite seca (KCS), hipersensibilidade, hepatotoxicidade, citopenias e cristalúria; manter hidratação e cautela em doença renal/hepática.',
     price: {
       averageLabel: 'R$ 32,98 – R$ 53,90 (preço médio R$ 43,44)',
       rangeLabel: 'Mednanet R$ 32,98; Caiu na Pet R$ 43,99; Pett Farma/Dog&Cat R$ 53,50 — 10 comprimidos',
       sourceDate: SOURCE_DATE,
     },
-    evidenceLevel: 'Bula oficial Bravet + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula oficial Bravet e literatura veterinária.',
     imageUrl: 'https://www.bravet.com.br/files/product/photo/30/SULFAPRIM_COMPRIMIDO_660_.png',
     productPageUrl: 'https://www.bravet.com.br/sulfaprim-comprimidos',
     labelUrl:
@@ -393,7 +393,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
         ],
       },
       plumbsContext:
-        'Plumb’s 10ª ed., monografia Afoxolaner (pp. 16–17): dose mínima de 2,5 mg/kg VO mensal. A monografia e a bula alertam para eventos neurológicos raros da classe das isoxazolinas.',
+        'Dose mínima de 2,5 mg/kg VO mensal; observar o alerta de bula sobre eventos neurológicos raros da classe das isoxazolinas.',
       clinicalUse:
         'Tratamento e prevenção de pulgas e tratamento/controle de carrapatos em cães, com repetição mensal e controle integrado dos animais contactantes e do ambiente.',
       reassessment:
@@ -402,7 +402,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
         'NexGard: administrar 1 tablete inteiro correspondente à faixa de peso (2–4 kg: 11,3 mg; 4,1–10 kg: 28,3 mg; 10,1–25 kg: 68 mg; 25,1–50 kg: 136 mg) por via oral a cada 30 dias, continuamente enquanto houver risco de exposição.',
       safetyAlert:
         'Não usar em gatos. Bula: cães a partir de 8 semanas e 2 kg. Usar com cautela em histórico de convulsões/doença neurológica; segurança não avaliada em reprodução, gestação ou lactação.',
-      evidenceLevel: 'Bula oficial brasileira do NexGard + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+      evidenceLevel: 'Bula oficial brasileira do NexGard e farmacologia veterinária.',
       price: {
         ...product.price,
         sourceDate: SOURCE_DATE,
@@ -423,7 +423,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
       labelCompositionSummary:
         'Cada comprimido contém febantel 150 mg + praziquantel 50 mg + pamoato de pirantel 144 mg. A dose de bula corresponde a 15 mg/kg + 5 mg/kg + 14,4 mg/kg, respectivamente.',
       labelDirections:
-        'Administrar 1 comprimido/10 kg VO. Verminoses intestinais: dose única. Giardíase: a mesma dose q24h por 3 dias consecutivos. Tabela da bula: 2–5 kg = 1/2 cp; 5,1–10 kg = 1 cp; 10,1–15 kg = 1,5 cp; 15,1–20 kg = 2 cp (acrescentar 1/2 cp a cada 5 kg).',
+        'Administrar 1 comprimido/10 kg VO. Verminoses intestinais: dose única. Giardíase: a mesma dose q24h por 3 dias consecutivos. Tabela por faixa de peso: 2–5 kg = 1/2 cp; 5,1–10 kg = 1 cp; 10,1–15 kg = 1,5 cp; 15,1–20 kg = 2 cp (acrescentar 1/2 cp a cada 5 kg).',
       eligibility: {
         minAge: 'A partir de 3 semanas de idade (bula brasileira Elanco).',
         minWeight: 'A partir de 2,0 kg de peso corporal.',
@@ -442,7 +442,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
             {
               title: 'Giardia spp.',
               dose: '1 comprimido para cada 10 kg VO q24h por 3 dias consecutivos.',
-              note: 'O Plumb’s reproduz este esquema para cães; associar banho no 3º dia, higiene ambiental e reavaliação.',
+              note: 'Esquema consolidado para giardíase canina; associar banho no 3º dia, higiene ambiental e reavaliação.',
             },
           ],
         },
@@ -452,7 +452,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
         ],
       },
       plumbsContext:
-        'Plumb’s 10ª ed., monografia Praziquantel/combinações (pp. 1053–1056): Drontal Plus combina praziquantel, febantel e pamoato de pirantel; para giardíase canina descreve a dose da tabela da apresentação q24h por 3 dias.',
+        'Drontal Plus combina praziquantel, febantel e pamoato de pirantel; para giardíase canina adota-se o esquema da tabela da apresentação q24h por 3 dias.',
       clinicalUse:
         'Verminoses intestinais por nematódeos/cestódeos e giardíase em cães conforme a bula brasileira. Controle de pulgas é necessário para reduzir reinfecção por Dipylidium caninum.',
       reassessment:
@@ -461,7 +461,7 @@ export function enrichRequestedAntiparasiticCommercialProduct(
         'Drontal Plus Mais Sabor 10 kg: administrar 1 comprimido para cada 10 kg por via oral. Para verminoses, dose única; para giardíase, repetir a cada 24 horas por 3 dias.',
       safetyAlert:
         'Não usar em gatos, cães com menos de 3 semanas ou peso inferior a 2 kg. A bula brasileira recomenda não usar nas primeiras 4 semanas de gestação e cautela em disfunção renal/hepática ou animais gravemente debilitados.',
-      evidenceLevel: 'Bula oficial brasileira Elanco (revisão 11/03/2025) + Plumb’s Veterinary Drug Handbook, 10ª ed.',
+      evidenceLevel: 'Bula oficial brasileira Elanco (revisão 11/03/2025) e literatura clínica.',
       labelUrl: DRONTAL_10_KG_LABEL,
       price: {
         ...product.price,

@@ -114,7 +114,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         frequency: 'uma vez ao dia',
         clinicalContext: 'faixa_publicada',
         evidenceLevel: '🟢 Dose clínica sustentada',
-        notes: 'Applied Veterinary Clinical Nutrition: 20 mg/kg 1–2 h antes da alimentação.',
+        notes: 'Administrar 20 mg/kg 1–2 h antes da alimentação.',
         referenceIds: ['ref-vin-same-liver'],
         calculatorEnabled: true,
         presentationId: 'pres-nutri-same',

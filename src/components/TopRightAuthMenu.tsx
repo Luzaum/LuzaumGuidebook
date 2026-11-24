@@ -114,7 +114,7 @@ export function TopRightAuthMenu() {
           Configurações
         </DropdownMenuItem>
 
-        <DropdownMenuItem onSelect={() => navigate('/conta/clínica')}>
+        <DropdownMenuItem onSelect={() => navigate('/conta/clinica')}>
           <Building2 className="mr-2 h-4 w-4" />
           Minha clínica
         </DropdownMenuItem>

@@ -28,7 +28,8 @@ test('os seis produtos solicitados aparecem uma única vez e têm links completo
     assert.ok(product.presentations.length > 0);
     assert.ok(product.activeComponents.length > 0);
     assert.ok(product.dosageGuidance?.labelDose);
-    assert.ok(product.evidenceLevel?.includes('Plumb’s'));
+    assert.ok(product.evidenceLevel && product.evidenceLevel.trim().length > 0);
+    assert.doesNotMatch(product.evidenceLevel || '', /Plumb|BSAVA/i);
   });
 });
 

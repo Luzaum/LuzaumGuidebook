@@ -39,7 +39,6 @@ export const dipironaMedicationRecord: MedicationRecord = {
     'Dor visceral',
     'Pós-operatório',
     'Novalgina',
-    'Plumbs 10ª ed.',
   ],
 
   plainLanguageSummary:
@@ -116,7 +115,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
         'Administrar a primeira dose IV no perioperatório e dar continuidade por via oral a cada 8h. Em cães com dor moderada a intensa, combinar com opioides (metadona/tramadol) dentro de protocolo multimodal.',
       monitoring: 'Eficácia analgésica por escala de dor (Glasgow), pressão arterial e apetite.',
       maximumDose: '50 mg/kg/dose (não recomendada rotineiramente; dose padrão de livro é 25 mg/kg).',
-      evidenceLevel: 'Consenso Plumb\'s 10ª ed., BSAVA 10ª ed. e ensaios clínicos (Teixeira et al., 2013).',
+      evidenceLevel: 'Consensos Analgésicos e Ensaios Clínicos (Teixeira et al., 2013).',
       referenceIds: ['ref-plumb-10', 'ref-bsava-10', 'ref-teixeira-2013'],
       calculatorEnabled: false,
     },
@@ -135,7 +134,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
       notes:
         'Reduz o ponto de regulação do centro térmico pré-óptico. Não usar em insolação térmica (onde a causa é física e não mediada por pirógenos). Hidratar antes da administração.',
       monitoring: 'Curva térmica retal a cada 2 a 4 horas; hidratar e avaliar perfusão periférica.',
-      evidenceLevel: 'Plumb\'s 10ª ed., Ettinger 9ª ed. 2024.',
+      evidenceLevel: 'Prática Clínica e Analgésica Veterinária Consolidada.',
       referenceIds: ['ref-plumb-10', 'ref-ettinger-2024'],
       calculatorEnabled: false,
     },
@@ -154,7 +153,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
       notes:
         'Combina analgesia central com ação antiespasmódica na musculatura lisa entérica sem paralisia de motilidade espontânea.',
       monitoring: 'Postura corporal de prece, palpação abdominal seriada, vômito e hidratação.',
-      evidenceLevel: 'Plumb\'s 10ª ed., BSAVA Formulary 10ª ed.',
+      evidenceLevel: 'Prática Analgésica e Antiespasmódica Veterinária Consolidada.',
       referenceIds: ['ref-plumb-10', 'ref-bsava-10'],
       calculatorEnabled: false,
     },
@@ -174,7 +173,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
         'A dosagem de 12,5 mg/kg q12h oferece melhor estabilidade de alívio que doses elevadas espaçadas. Evitar soluções orais puras na boca do gato devido a salivação profusa imediata decorrente do amargor extremo.',
       monitoring: 'Coloração de mucosas, apetite, temperatura, sialorreia e grau de sedação/conforto.',
       maximumDose: '25 mg/kg/dia total.',
-      evidenceLevel: 'Plumb\'s 10ª ed., Giorgi et al. (2018), Ferreira et al. (2019).',
+      evidenceLevel: 'Estudos Farmacocinéticos e Clínicos (Giorgi et al., 2018; Ferreira et al., 2019).',
       referenceIds: ['ref-plumb-10', 'ref-giorgi-2018', 'ref-ferreira-2019'],
       calculatorEnabled: false,
     },
@@ -193,7 +192,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
       notes:
         'Nunca associar a acepromazina pelo risco catastrófico de hipotermia felina. Garantir hidratação com fluidoterapia adequada.',
       monitoring: 'Temperatura corporal a cada 2 horas até estabilização em 38–39,2 °C.',
-      evidenceLevel: 'Plumb\'s 10ª ed., Ettinger 9ª ed. 2024.',
+      evidenceLevel: 'Prática Clínica e Antipirética Felina Consolidada.',
       referenceIds: ['ref-plumb-10', 'ref-ettinger-2024'],
       calculatorEnabled: false,
     },
@@ -417,7 +416,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
         'A dipirona atua como um potente poupador de opioides e de AINEs tradicionais no perioperatório imediato. Em cães, o ensaio de Teixeira et al. (2013) demonstrou que a associação de dipirona (25 mg/kg) com meloxicam garantiu excelente analgesia pós-OSH com escores de dor significativamente inferiores e menor necessidade de resgate analgésico.',
       monitoring: 'Avaliação seriada de escores de dor (Glasgow ou Colorado), pressão arterial sistêmica média e apetite.',
       referenceIds: ['ref-plumb-10', 'ref-bsava-10', 'ref-teixeira-2013', 'ref-ferreira-2019'],
-      evidenceLevel: 'Nível A (ensaios clínicos prospectivos randomizados e Plumb\'s 10ª ed.)',
+      evidenceLevel: 'Nível A (ensaios clínicos prospectivos randomizados e prática clínica consolidada)',
     },
     {
       id: 'det-dor-visceral',
@@ -434,7 +433,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
         'A dor visceral da pancreatite e de quadros espasmódicos tem componente neuroinflamatório e hipercinético da musculatura lisa. A dipirona alivia a cólica sem deprimir a motilidade propulsiva fisiológica nem causar a estase gástrica provocada pela morfina. Em associação com antieméticos (maropitant), forma um protocolo de conforto de primeira linha.',
       monitoring: 'Palpação da parede abdominal, presença de postura em prece, náusea e frequência de evacuação.',
       referenceIds: ['ref-plumb-10', 'ref-bsava-10', 'ref-nelson-couto-6'],
-      evidenceLevel: 'Consenso de emergência e terapia intensiva (Plumb\'s 10ª ed. e BSAVA 10ª ed.)',
+      evidenceLevel: 'Prática de emergência e terapia intensiva veterinária',
     },
     {
       id: 'det-hipertermia',
@@ -451,7 +450,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
         'A febre alta consome reservas metabólicas, acelera o catabolismo proteico e eleva a demanda miocárdica de oxigênio em pacientes graves. A dipirona é mais eficaz e rápida como antipirético do que AINEs convencionais como carprofeno ou meloxicam. ATENÇÃO: Contraindicada em intermação física (golpe de calor), onde a elevação térmica é puramente ambiental e a dipirona agrava a perfusão renal.',
       monitoring: 'Curva térmica retal horária nas primeiras 4 horas; hidratação e pressão arterial.',
       referenceIds: ['ref-plumb-10', 'ref-ettinger-2024', 'ref-nelson-couto-6'],
-      evidenceLevel: 'Tratados de Medicina Interna (Ettinger 9ª ed. 2024 e Plumb\'s 10ª ed.)',
+      evidenceLevel: 'Medicina interna veterinária e prática clínica consolidada',
     },
     {
       id: 'det-trauma-ddiv',

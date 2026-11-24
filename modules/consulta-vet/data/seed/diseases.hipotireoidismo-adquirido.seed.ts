@@ -34,22 +34,22 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
   ],
   plainLanguage: DISEASE_PLAIN_LANGUAGE['hipotireoidismo-adquirido-caes-gatos'],
   quickSummary:
-    'Hipotireoidismo adquirido é deficiência de hormônios tireoidianos com sinais compatíveis. Em cães, predomina destruição primária por tireoidite linfocítica ou atrofia idiopática. Em gatos, a maioria é iatrogênica após tratamento de hipertireoidismo (metimazol, I-131, tireoidectomia). T4 total baixo sozinho não diagnóstica: NTIS, fármacos e raça reduzem T4 em eutireoideos. Integrar clínica, TT4, fT4 por diálise (fT4ED) e cTSH; 20–40% dos hipotireóideos podem ter cTSH normal. TgAA marca tireoidite, não função. Cão: levotiroxina 0,02 mg/kg q12h, peso magro se obeso, T4 pós-pílula 4–6 h, reavaliação ~4 semanas. Gato: 0,05–0,10 mg/GATO q24h (não mg/kg); meta T4 ~1,0–2,5 µg/dL; vigiar rim pós-I-131 (Bugbee et al., 2023; Nelson & Couto, 6ª ed.; Rothrock, VIN 2025).',
+    'Hipotireoidismo adquirido é deficiência de hormônios tireoidianos com sinais compatíveis. Em cães, predomina destruição primária por tireoidite linfocítica ou atrofia idiopática. Em gatos, a maioria é iatrogênica após tratamento de hipertireoidismo (metimazol, I-131, tireoidectomia). T4 total baixo sozinho não diagnóstica: NTIS, fármacos e raça reduzem T4 em eutireoideos. Integrar clínica, TT4, fT4 por diálise (fT4ED) e cTSH; 20–40% dos hipotireóideos podem ter cTSH normal. TgAA marca tireoidite, não função. Cão: levotiroxina 0,02 mg/kg q12h, peso magro se obeso, T4 pós-pílula 4–6 h, reavaliação ~4 semanas. Gato: 0,05–0,10 mg/GATO q24h (não mg/kg); meta T4 ~1,0–2,5 µg/dL; vigiar rim pós-I-131 (Bugbee et al., 2023; Rothrock, VIN 2025).',
   quickDecisionStrip: [
-    'TT4 baixo ≠ diagnóstico de hipotireoidismo — NTIS e fármacos reduzem T4 em eutireoideos (Bugbee et al., 2023; Nelson & Couto, 6ª ed.).',
+    'TT4 baixo ≠ diagnóstico de hipotireoidismo — NTIS e fármacos reduzem T4 em eutireoideos (Bugbee et al., 2023).',
     'Paciente sistêmico doente: trate a causa da NTIS antes de rotular hipotireoidismo ou iniciar levotiroxina.',
     'fT4 por diálise (fT4ED) + cTSH elevado + clínica forte aumentam muito a probabilidade (Dixon & Mooney, 1999).',
     '20–40% dos cães hipotireóideos podem apresentar cTSH dentro do intervalo de referência (Bugbee et al., 2023).',
-    'TgAA positivo indica tireoidite autoimune — NÃO mede função; eutireoideo TgAA+ não recebe levotiroxina automaticamente (Nelson & Couto, 6ª ed.).',
-    'Cão: levotiroxina 0,02 mg/kg PO q12h; obeso — dose pelo peso magro ideal (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
-    'Monitorar cão ~4 semanas após início/ajuste; colher TT4 4–6 h após a dose (Plumb\'s, 10ª ed.).',
+    'TgAA positivo indica tireoidite autoimune — NÃO mede função; eutireoideo TgAA+ não recebe levotiroxina automaticamente.',
+    'Cão: levotiroxina 0,02 mg/kg PO q12h; obeso — dose pelo peso magro ideal (Bugbee et al., 2023).',
+    'Monitorar cão ~4 semanas após início/ajuste; colher TT4 4–6 h após a dose.',
     'Gato: 0,05–0,10 mg/GATO q24h — NÃO mg/kg; meta T4 ~1,0–2,5 µg/dL (Bugbee et al., 2023; Rothrock, VIN 2025).',
     'Hipotireoidismo felino espontâneo é raro — investigar iatrogenia pós-hipertireoidismo (metimazol, I-131, cirurgia).',
     'Pós-I-131: reavaliar função renal e T4 — hipotireoidismo pode unmask DRC (Cox et al., 2025; Geddes & Aguiar, 2022).',
     'Associação hipotireoidismo–CMD é controversa — Beier et al. (2015) não confirmaram causalidade direta.',
     'SDMA pode antecipar azotemia em hipotireoidismo canino — interpretar com creatinina (Di Paola et al., 2021).',
     'Sinais GI (vômito, diarreia) podem ser manifestação atípica — considerar painel tireoidiano (Gori et al., 2023).',
-    'Coma mixedematoso: emergência — aquecimento, ventilação, glicose, sódio; levotiroxina IV titulada (Drobatz & DiBartola, 2019; Plumb\'s, 10ª ed.).',
+    'Coma mixedematoso: emergência — aquecimento, ventilação, glicose, sódio; levotiroxina IV titulada.',
   ],
   quickSummaryRich: {
     lead:
@@ -59,13 +59,13 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
       {
         title: 'Deficiência hormonal primária',
         body:
-          'Tireoidite linfocítica e atrofia idiopática destroem folículos em cães; em gatos, destruição iatrogênica após antitireoidiano, I-131 ou cirurgia predomina (Nelson & Couto, 6ª ed.; Bugbee et al., 2023).',
+          'Tireoidite linfocítica e atrofia idiopática destroem folículos em cães; em gatos, destruição iatrogênica após antitireoidiano, I-131 ou cirurgia predomina (Bugbee et al., 2023).',
         highlights: ['tireoidite', 'iatrogênico'],
       },
       {
         title: 'NTIS não é hipotireoidismo',
         body:
-          'Doença sistêmica reduz T4/T3 como adaptação metabólica. Tratar a causa de base é prioritário; levotiroxina não é indicada automaticamente (Nelson & Couto, 6ª ed.; Lumb & Constable, 2023).',
+          'Doença sistêmica reduz T4/T3 como adaptação metabólica. Tratar a causa de base é prioritário; levotiroxina não é indicada automaticamente.',
         highlights: ['NTIS', 'causa de base'],
       },
       {
@@ -82,13 +82,13 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
           label: 'Confirmar síndrome compatível',
           timing: 'Primeira consulta',
           detail:
-            'Letargia, ganho de peso sem polifagia, intolerância ao frio, dermatopatia endócrina, bradicardia, hiperlipidemia; em gato, história de hipertireoidismo tratado (Bugbee et al., 2023; Nelson & Couto, 6ª ed.).',
+            'Letargia, ganho de peso sem polifagia, intolerância ao frio, dermatopatia endócrina, bradicardia, hiperlipidemia; em gato, história de hipertireoidismo tratado (Bugbee et al., 2023).',
         },
         {
           label: 'Excluir NTIS e interferentes',
           timing: 'Antes de confirmar',
           detail:
-            'Doença sistêmica, glicocorticoide, fenobarbital, sulfonamida, clomipramina, AINE, raça com T4 fisiologicamente baixo (Bugbee et al., 2023; Nelson & Couto, 6ª ed.).',
+            'Doença sistêmica, glicocorticoide, fenobarbital, sulfonamida, clomipramina, AINE, raça com T4 fisiologicamente baixo (Bugbee et al., 2023).',
           reassess: 'Adiar painel se possível em paciente gravemente doente; tratar NTIS primeiro.',
         },
         {
@@ -108,7 +108,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
           label: 'TgAA (selecionado)',
           timing: 'Etiologia imune',
           detail:
-            'Positivo apoia tireoidite linfocítica; não mede função atual nem indica tratamento isolado (Nelson & Couto, 6ª ed.).',
+            'Positivo apoia tireoidite linfocítica; não mede função atual nem indica tratamento isolado.',
         },
       ],
     },
@@ -118,7 +118,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           label: 'Levotiroxina — cão',
           detail:
-            '0,02 mg/kg PO q12h; obeso: dose pelo peso magro ideal; cardiopata: iniciar ~25% abaixo (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
+            '0,02 mg/kg PO q12h; obeso: dose pelo peso magro ideal; cardiopata: iniciar ~25% abaixo (Bugbee et al., 2023).',
           dose: '0,02 mg/kg q12h PO; máximo inicial frequente 0,8 mg/cão q12h.',
           duration: 'Vitalícia na maioria dos casos primários.',
           reassess: 'Administrar sempre da mesma forma em relação ao alimento.',
@@ -134,14 +134,14 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           label: 'Reavaliação ~4 semanas',
           detail:
-            'Clínica + TT4 4–6 h pós-dose; pele/pelagem levam 2–4 meses (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
+            'Clínica + TT4 4–6 h pós-dose; pele/pelagem levam 2–4 meses.',
           duration: '4 semanas após início ou ajuste.',
           reassess: 'Energia melhora em 1–2 semanas; não aumentar dose só para normalizar cTSH se clínica OK.',
         },
         {
           label: 'Coma mixedematoso',
           detail:
-            'Emergência: aquecimento passivo, ventilação, glicose, correção de sódio; levotiroxina IV 1–9 µg/kg q12h, mediana 5 µg/kg (Drobatz & DiBartola, 2019; Plumb\'s, 10ª ed.).',
+            'Emergência: aquecimento passivo, ventilação, glicose, correção de sódio; levotiroxina IV 1–9 µg/kg q12h, mediana 5 µg/kg.',
           duration: 'Internação intensiva; transição oral após estabilização.',
         },
       ],
@@ -149,13 +149,13 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
   },
   etiology: {
     primaria:
-      'Tireoidite linfocítica autoimune e atrofia tireoidiana idiopática respondem pela grande maioria dos casos adquiridos caninos. Na tireoidite, linfócitos destroem folículos; na atrofia, parênquima é substituído por tecido adiposo (Nelson & Couto, 6ª ed.).',
+      'Tireoidite linfocítica autoimune e atrofia tireoidiana idiopática respondem pela grande maioria dos casos adquiridos caninos. Na tireoidite, linfócitos destroem folículos; na atrofia, parênquima é substituído por tecido adiposo.',
     felinaIatrogenica:
       'Em gatos, hipotireoidismo espontâneo é raro. A maioria é iatrogênica após metimazol/carbimazol prolongado, I-131, tireoidectomia ou dieta y/d exclusiva (Bugbee et al., 2023; Cox et al., 2025).',
     secundaria:
-      'Hipotireoidismo secundário por deficiência de TSH é raro; cTSH pode não elevar-se. Sulfonamidas potencializadas inibem peroxidase tireoidiana reversivelmente (Feldman et al.; Nelson & Couto, 6ª ed.).',
+      'Hipotireoidismo secundário por deficiência de TSH é raro; cTSH pode não elevar-se. Sulfonamidas potencializadas inibem peroxidase tireoidiana reversivelmente.',
     tgAA:
-      'Anticorpo antitireoglobulina (TgAA) marca tireoidite autoimune em parte dos cães, mas pode ser positivo antes da perda funcional e negativo na doença terminal. Indica agressão imunológica, não capacidade de produzir hormônios (Nelson & Couto, 6ª ed.; Bugbee et al., 2023).',
+      'Anticorpo antitireoglobulina (TgAA) marca tireoidite autoimune em parte dos cães, mas pode ser positivo antes da perda funcional e negativo na doença terminal. Indica agressão imunológica, não capacidade de produzir hormônios (Bugbee et al., 2023).',
   },
   epidemiology: {
     caes:
@@ -173,12 +173,12 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
       'Glicosaminoglicanos acumulam na derme → mixedema.',
     ],
     ntis:
-      'Na síndrome da doença não tireoidiana (NTIS), tireoide estruturalmente funcional; citocinas e eixo hipotálamo–hipófise reduzem T4/T3 proporcionalmente à gravidade. Marcador de doença sistêmica, não indicação automática de reposição (Nelson & Couto, 6ª ed.; Lumb & Constable, 2023).',
+      'Na síndrome da doença não tireoidiana (NTIS), tireoide estruturalmente funcional; citocinas e eixo hipotálamo–hipófise reduzem T4/T3 proporcionalmente à gravidade. Marcador de doença sistêmica, não indicação automática de reposição.',
     transmissao: 'Não é contagioso. Formas autoimunes podem ter predisposição familiar.',
   },
   pathophysiology: {
     notaCaudaRato:
-      'Figura clínica “cauda de rato” (alopecia terminal preservada na ponta caudal): padrão clássico de dermatopatia hipotireoidiana canina. Imagem externa não incluída nesta ficha — descrição clínica suficiente para reconhecimento (Nelson & Couto, 6ª ed.; Rothrock, VIN 2025).',
+      'Figura clínica “cauda de rato” (alopecia terminal preservada na ponta caudal): padrão clássico de dermatopatia hipotireoidiana canina. Imagem externa não incluída nesta ficha — descrição clínica suficiente para reconhecimento (Rothrock, VIN 2025).',
     tabelaCombinacaoDiagnostica: {
       kind: 'clinicalTable' as const,
       title: 'Combinação TT4 / fT4ED / cTSH — interpretação prática',
@@ -214,7 +214,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           finding: 'Alopecia bilateral não pruriginosa, cauda de rato e falha de repilação',
           mechanism: 'Folículos em telógeno por redução do estímulo tireoidiano sobre queratinócitos.',
-          clinicalMeaning: 'Padrão simétrico sem prurido; piodermite secundária pode causar prurido (Nelson & Couto, 6ª ed.).',
+          clinicalMeaning: 'Padrão simétrico sem prurido; piodermite secundária pode causar prurido.',
           priority: 'common',
         },
         {
@@ -231,7 +231,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           finding: 'Fraqueza, ataxia, paresia facial/vestibular, polineuropatia',
           mechanism: 'Desmielinização ou alteração axonal periférica; miopatia hipotireoidiana.',
-          clinicalMeaning: 'Confirmar resposta à levotiroxina e excluir diferenciais neurológicos (Nelson & Couto, 6ª ed.).',
+          clinicalMeaning: 'Confirmar resposta à levotiroxina e excluir diferenciais neurológicos.',
           priority: 'uncommon',
         },
       ],
@@ -275,7 +275,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           finding: 'Infertilidade, anestro, libido reduzida, parto complicado',
           mechanism: 'Hormônios tireoidianos modulam eixo reprodutivo e ciclo estral.',
-          clinicalMeaning: 'Investigar em reprodutor com falha reprodutiva inexplicada (Nelson & Couto, 6ª ed.).',
+          clinicalMeaning: 'Investigar em reprodutor com falha reprodutiva inexplicada.',
           priority: 'uncommon',
         },
       ],
@@ -303,7 +303,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         {
           finding: 'Coma mixedematoso: hipotermia, bradicardia, hipoventilação, hiponatremia',
           mechanism: 'Depressão central do drive respiratório + metabolismo muito baixo + distúrbios eletrolíticos.',
-          clinicalMeaning: 'Emergência rara — estabilização intensiva antes de reposição hormonal plena (Drobatz & DiBartola, 2019).',
+          clinicalMeaning: 'Emergência rara — estabilização intensiva antes de reposição hormonal plena.',
           priority: 'emergency',
         },
       ],
@@ -311,7 +311,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
   ],
   diagnosis: {
     principio:
-      'Diagnóstico clínico-laboratorial integrado. TT4 baixo isolado não confirma. Histopatologia não é rotina (Bugbee et al., 2023; Nelson & Couto, 6ª ed.).',
+      'Diagnóstico clínico-laboratorial integrado. TT4 baixo isolado não confirma. Histopatologia não é rotina (Bugbee et al., 2023).',
     tabelaCombinacao: {
       kind: 'clinicalTable' as const,
       title: 'Painel TT4 / fT4ED / cTSH',
@@ -324,7 +324,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
       ],
     },
     ntis:
-      'NTIS: T4 baixo durante doença moderada/grave sem fenótipo clássico. Tratar doença de base e repetir painel após recuperação (Nelson & Couto, 6ª ed.).',
+      'NTIS: T4 baixo durante doença moderada/grave sem fenótipo clássico. Tratar doença de base e repetir painel após recuperação.',
     planoDiagnostico: [
       {
         stepNumber: 1,
@@ -355,7 +355,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
         stepNumber: 4,
         title: 'TgAA (selecionado)',
         purpose: 'Etiologia imune.',
-        description: 'Apoiar tireoidite linfocítica; não mede função (Nelson & Couto, 6ª ed.).',
+        description: 'Apoiar tireoidite linfocítica; não mede função.',
         interpretation: 'Positivo = agressão imune; negativo não exclui atrofia idiopática.',
         limitations: 'Não guia tratamento isolado.',
       },
@@ -363,7 +363,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
   },
   treatment: {
     levotiroxinaCao: [
-      '0,02 mg/kg PO q12h (Bugbee et al., 2023; Plumb\'s, 10ª ed.).',
+      '0,02 mg/kg PO q12h (Bugbee et al., 2023).',
       'Obeso: dose pelo peso magro ideal, não peso atual.',
       'Cardiopata/fragil: iniciar ~25% abaixo e titular.',
       'Administrar sempre da mesma forma em relação ao alimento.',
@@ -374,23 +374,23 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
       'Pós-I-131: monitorar T4 e função renal (Cox et al., 2025).',
     ],
     monitoramento: [
-      'Reavaliar ~4 semanas após início/ajuste; TT4 4–6 h pós-dose (Plumb\'s, 10ª ed.).',
+      'Reavaliar ~4 semanas após início/ajuste; TT4 4–6 h pós-dose.',
       'Energia 1–2 semanas; pele/pelagem 2–4 meses.',
       'Manutenção: clínica + TT4 a cada 6–12 meses.',
-      'Tireotoxicose iatrogênica: polifagia + perda peso, panting, taquicardia — reduzir dose.',
+      'Tireotoxicose iatrogênica: polifagia + perda peso, respiração ofegante, taquicardia — reduzir dose.',
     ],
     comaMixedematoso: {
       estabilizacao:
-        'Aquecimento passivo cuidadoso, ventilação, glicose IV, correção de hiponatremia, tratar gatilho (infecção, fármacos) (Drobatz & DiBartola, 2019).',
+        'Aquecimento passivo cuidadoso, ventilação, glicose IV, correção de hiponatremia, tratar gatilho (infecção, fármacos).',
       levotiroxinaIV:
-        'Levotiroxina IV 1–9 µg/kg q12h, mediana 5 µg/kg; cardiopata: dose menor (Plumb\'s, 10ª ed.).',
+        'Levotiroxina IV 1–9 µg/kg q12h, mediana 5 µg/kg; cardiopata: dose menor.',
       transicao: 'Transição para levotiroxina oral após estabilização clínica.',
     },
   },
   complications: {
     principais: [
       'Coma Mixedematoso (Emergência Endócrina Crítica): Descompensação metabólica extrema e com risco iminente de óbito, precipitada por infecções intercorrentes, trauma ou uso de sedativos em pacientes com hipotireoidismo grave não tratado. Caracteriza-se por hipotermia profunda refratária (< 35,5°C) que não responde ao aquecimento externo ativo, bradicardia extrema (< 40–50 bpm), edema cutâneo mucinoso facial intumescente ("fácies trágica" com pregueamento frontal excessivo), hipoventilação alveolar com acidose respiratória hipercapnica, hiponatremia dilucional severa, estupor e coma irreversível.',
-      'Neuropatias Periféricas e Síndromes de Pares Cranianos: A deposição contínua de glicosaminoglicanos (mucopolissacarídeos ácidos) nas bainhas neurais e a redução do transporte axonal provocam compressão e degeneração axonal distal. Manifesta-se classicamente com paralisia unilateral ou bilateral do nervo facial (lagoftalmia, ptose palpebral e lábio caído), síndrome vestibular periférica aguda com nistagmo e head tilt, disfunção laríngea (paralisia de laringe) e megaesôfago com alto risco de pneumonia por aspiração.',
+      'Neuropatias Periféricas e Síndromes de Pares Cranianos: A deposição contínua de glicosaminoglicanos (mucopolissacarídeos ácidos) nas bainhas neurais e a redução do transporte axonal provocam compressão e degeneração axonal distal. Manifesta-se classicamente com paralisia unilateral ou bilateral do nervo facial (lagoftalmia, ptose palpebral e lábio caído), síndrome vestibular periférica aguda com nistagmo e inclinação da cabeça, disfunção laríngea (paralisia de laringe) e megaesôfago com alto risco de pneumonia por aspiração.',
       'Aterosclerose Sistêmica e Dislipidemia Acentuada: A carência de T4 e T3 inibe a expressão de receptores hepáticos de LDL e suprime a atividade da lipase lipoproteica tecidual, gerando hipercolesterolemia grave (> 500 a 1.000 mg/dL) e hipertrigliceridemia com soro lactescente. A longo prazo, favorece a deposição endotelial de placas de ateroma lipídicas em artérias coronárias, mesentéricas e renais, predispondo a eventos tromboembólicos e infartos isquêmicos.',
       'Disfunção Renal Hemodinâmica e Desmascaramento de DRC (Eixo Renotireoidiano): A ausência dos efeitos inotrópicos e vasodilatadores intrarrenais dos hormônios tireoidianos reduz o fluxo sanguíneo renal cortical e diminui a taxa de filtração glomerular em 25% a 40%, elevando precocemente o SDMA sérico. Em gatos tratados com I-131 ou metimazol em doses excessivas, o hipotireoidismo iatrogênico deflagra azotemia renal aguda e desmascara doença renal crônica oculta, duplicando a taxa de mortalidade caso a reposição com levotiroxina não seja instituída.',
       'Piodermite Bacteriana Recorrente e Malasseziose Generalizada: A atrofia acinar das glândulas sebáceas e a depleção da imunidade celular cutânea reduzem os ácidos graxos antimicrobianos da epiderme, transformando a pele em meio hiperqueratótico suscetível a piodermites profundas recidivantes por Staphylococcus pseudintermedius e dermatite esfoliativa gordurosa por Malassezia pachydermatis.',
@@ -430,7 +430,7 @@ export const hipotireoidismoAdquiridoRecord: DiseaseRecord = {
     { id: 'ref-hypo-cunningham-2020', citationText: 'Klein BG. Cunningham\'s Textbook of Veterinary Physiology. 6th ed. Elsevier; 2020.', sourceType: 'Livro-texto de fisiologia', evidenceLevel: 'Base fisiológica' },
     { id: 'ref-hypo-plumb-2023', citationText: 'Budde JA, McCluskey DM. Plumb\'s Veterinary Drug Handbook. 10th ed. 2023. Levothyroxine.', sourceType: 'Formulário veterinário', evidenceLevel: 'Referência farmacológica' },
     { id: 'ref-hypo-lumb-2023', citationText: 'Lumb WV, Constable PD. Veterinary Medicine: A Textbook of the Diseases of Cattle, Horses, Sheep, Pigs and Goats. 2023.', sourceType: 'Livro-texto', evidenceLevel: 'Referência clínica' },
-    { id: 'ref-hypo-rothrock-vin-2025', citationText: 'Rothrock K. Hypothyroidism in dogs and cats — clinical review (VIN, 2025). Paráfrase editorial Vetius.', sourceType: 'Revisão clínica VIN', evidenceLevel: 'Consenso prático' },
+    { id: 'ref-hypo-rothrock-vin-2025', citationText: 'Rothrock K. Hypothyroidism in dogs and cats — clinical review (VIN, 2025).', sourceType: 'Revisão clínica VIN', evidenceLevel: 'Consenso prático' },
     { id: 'ref-hypo-panciera-1997', citationText: 'Panciera DL. Measurement of serum TT4, T3, fT4 and TSH for diagnosis of hypothyroidism in dogs. JAVMA. 1997.', sourceType: 'Estudo diagnóstico', url: 'https://pubmed.ncbi.nlm.nih.gov/9394888/', evidenceLevel: 'B' },
     { id: 'ref-hypo-dixon-1999', citationText: 'Dixon RM, Mooney CT. Evaluation of serum free thyroxine and thyrotropin concentrations in diagnosis of canine hypothyroidism. J Small Anim Pract. 1999.', sourceType: 'Estudo diagnóstico', url: 'https://pubmed.ncbi.nlm.nih.gov/10088086/', evidenceLevel: 'B' },
     { id: 'ref-hypo-oneill-2022', citationText: 'O\'Neill DG, et al. Hypothyroidism in dogs under primary veterinary care in the UK: prevalence and risk factors (VetCompass). Canine Med Genet. 2022.', sourceType: 'Estudo epidemiológico', evidenceLevel: 'B' },

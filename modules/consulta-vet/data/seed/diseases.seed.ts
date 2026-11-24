@@ -45,6 +45,7 @@ import { dtuifFelinaRecord } from './diseases.dtuif-felina.seed';
 import { diabetesMellitusCaninaRecord } from './diseases.diabetes-mellitus-canina.seed';
 import { diabetesMellitusFelinaRecord } from './diseases.diabetes-mellitus-felina.seed';
 import { babesioseCaesGatosRecord } from './diseases.babesiose-caes-gatos.seed';
+import { cinomoseCaninaRecord } from './diseases.cinomose-canina.seed';
 import { cardiomiopatiaHipertroficaRecord } from './diseases.cardiomiopatia-hipertrofica.seed';
 import { cardiomiopatiaDilatadaRecord } from './diseases.cardiomiopatia-dilatada.seed';
 import { arritmiasCardiacasCaesGatosRecord } from './diseases.arritmias-cardiacas-caes-gatos.seed';
@@ -78,6 +79,13 @@ import { coagulacaoIntravascularDisseminadaRecord } from './diseases.coagulacao-
 import { sindromeMielodisplasicaRecord } from './diseases.sindrome-mielodisplasica.seed';
 import { linfomaCutaneoRecord } from './diseases.linfoma-cutaneo.seed';
 import { megacolonRecord } from './diseases.megacolon.seed';
+import { prolapsoRetalCaesGatosRecord } from './diseases.prolapso-retal-caes-gatos.seed';
+import { colangiteParasitariaCaesGatosRecord } from './diseases.colangite-parasitaria.seed';
+import { pancreatiteCaesGatosRecord } from './diseases.pancreatite-caes-gatos.seed';
+import { leucemiasCaesGatosRecord } from './diseases.leucemias-caes-gatos.seed';
+import { leptospiroseCaesGatosRecord } from './diseases.leptospirose-caes-gatos.seed';
+import { sindromeChiariLikeCaesGatosRecord } from './diseases.sindrome-chiari-like-caes-gatos.seed';
+import { insuficienciaCardiacaCongestivaCaesGatosRecord } from './diseases.insuficiencia-cardiaca-congestiva-caes-gatos.seed';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
@@ -90,6 +98,7 @@ function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
 
 export const diseasesSeed: DiseaseRecord[] = [
   babesioseCaesGatosRecord,
+  cinomoseCaninaRecord,
   dtuifFelinaRecord,
   fistulaPerianalFurunculoseAnalRecord,
   sindromeCushingCaesRecord,
@@ -167,4 +176,11 @@ export const diseasesSeed: DiseaseRecord[] = [
   enteropatiaPerdedoraDeProteinasRecord,
   enteropatiaInflamatoriaCronicaCaninaRecord,
   neoplasiasIntracranianasCaesRecord,
+  prolapsoRetalCaesGatosRecord,
+  colangiteParasitariaCaesGatosRecord,
+  pancreatiteCaesGatosRecord,
+  leucemiasCaesGatosRecord,
+  leptospiroseCaesGatosRecord,
+  sindromeChiariLikeCaesGatosRecord,
+  insuficienciaCardiacaCongestivaCaesGatosRecord,
 ].map(withPlainLanguage);

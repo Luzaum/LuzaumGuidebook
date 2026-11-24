@@ -1,0 +1,64 @@
+- main [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - generic [ref=f1e5]:
+      - button "Visão Geral" [ref=f1e6] [cursor=pointer]
+      - button "Plano diagnóstico" [ref=f1e11] [cursor=pointer]
+      - button "Plano de tratamento" [ref=f1e15] [cursor=pointer]
+    - generic [ref=f1e20]:
+      - generic [ref=f1e21]:
+        - heading "O que é e visão inicial" [level=4] [ref=f1e22]
+        - paragraph [ref=f1e25]: O hipoadrenocorticismo (doença de Addison) ocorre quando as glândulas adrenais de cães ou gatos deixam de produzir quantidades suficientes de cortisol e, na maioria dos casos, aldosterona — hormônios essenciais para responder ao estresse, manter a pressão arterial e equilibrar sódio e potássio.
+        - paragraph [ref=f1e26]:
+          - text: Conhecido como "o grande imitador" da clínica médica, o hipoadrenocorticismo pode simular gastroenteropatias crônicas, enteropatia perdedora de proteínas, lesão renal aguda e sepse. O raciocínio moderno exige
+          - mark [ref=f1e27]: separar o diagnóstico hormonal do fenótipo eletrolítico (ALIVE 2025)
+          - text: ", coletar amostras antes de corticoides que interfiram no ensaio, evitar elevação rápida da natremia na emergência e individualizar doses de glicocorticoide e DOCP/fludrocortisona para alcançar sobrevida e qualidade de vida excelentes em cães e gatos."
+        - generic [ref=f1e28]:
+          - generic [ref=f1e29]:
+            - generic [ref=f1e30]: •
+            - generic [ref=f1e31]: Conhecido como “grande imitador” porque os sintomas vão e voltam e se confundem com gastroenterite ou doença renal.
+          - generic [ref=f1e32]:
+            - generic [ref=f1e33]: •
+            - generic [ref=f1e34]: A forma sem alteração de sódio e potássio (eunatrêmica/eucalêmica) também existe e pode atrasar o diagnóstico.
+          - generic [ref=f1e35]:
+            - generic [ref=f1e36]: •
+            - generic [ref=f1e37]: Crises agudas causam fraqueza extrema, tremores, bradicardia e choque, exigindo atendimento veterinário imediato.
+          - generic [ref=f1e38]:
+            - generic [ref=f1e39]: •
+            - generic [ref=f1e40]: Após estabilização, a maioria dos cães e gatos leva vida normal com reposição hormonal contínua e acompanhamento periódico.
+      - generic [ref=f1e41]:
+        - heading "Decisão rápida à beira do leito" [level=4] [ref=f1e42]
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]:
+            - generic [ref=f1e47]: "1"
+            - generic [ref=f1e48]: "Crise addisoniana (choque, bradicardia relativa, hipercalemia ou hipoglicemia) exige ressuscitação imediata: colete cortisol basal/pré-ACTH se não atrasar o atendimento e use dexametasona na emergência."
+          - generic [ref=f1e49]:
+            - generic [ref=f1e50]: "2"
+            - generic [ref=f1e51]:
+              - text: Em cães,
+              - mark [ref=f1e52]: cortisol basal > 2 µg/dL
+              - text: tem alto valor para exclusão (VPN ~99,8% em estudo de 2026), mas não é infalível; valores ≤ 2 µg/dL NÃO confirmam Addison e exigem
+              - mark [ref=f1e53]: teste de estimulação por ACTH
+              - text: .
+          - generic [ref=f1e54]:
+            - generic [ref=f1e55]: "3"
+            - generic [ref=f1e56]: Eletrólitos normais (Na e K dentro da referência) não excluem hipoadrenocorticismo nem provam secreção normal de aldosterona (consenso ALIVE 2025).
+          - generic [ref=f1e57]:
+            - generic [ref=f1e58]: "4"
+            - generic [ref=f1e59]:
+              - text: Na hipercalemia com alteração eletrocardiográfica (ondas P ausentes, BAV, QRS largo), proteja o miocárdio imediatamente com
+              - mark [ref=f1e60]: gluconato de cálcio 10% IV
+              - text: sob ECG contínuo antes de reduzir o potássio.
+          - generic [ref=f1e61]:
+            - generic [ref=f1e62]: "5"
+            - generic [ref=f1e63]:
+              - text: Na hiponatremia crônica ou de duração desconhecida, limite a elevação do sódio a
+              - mark [ref=f1e64]: ≤ 0,5 mmol/L/h
+              - text: (≤ 10–12 mmol/L em 24 h; ≤ 8–10 mmol/L/24 h em alto risco) para prevenir
+              - mark [ref=f1e65]: desmielinização osmótica
+              - text: .
+          - generic [ref=f1e66]:
+            - generic [ref=f1e67]: "6"
+            - generic [ref=f1e68]:
+              - text: Em gatos, embora raro, o estudo multicêntrico de 2025 (
+              - mark [ref=f1e69]: 41 casos
+              - text: ) confirmou existência do fenótipo eunatrêmico-eucalêmico, maior necessidade de manutenção de prednisolona e resposta clínica mais lenta à crise.

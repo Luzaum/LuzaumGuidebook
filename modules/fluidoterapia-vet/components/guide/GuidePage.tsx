@@ -193,7 +193,7 @@ export function GuidePage() {
               <Card key={species} className="overflow-hidden border-slate-200 dark:border-slate-800">
                 <CardHeader>
                   <CardTitle className="text-lg">{species === 'canine' ? 'Filhotes caninos' : 'Filhotes felinos'}</CardTitle>
-                  <CardDescription>Tabela etária pediátrica (Nelson & Couto).</CardDescription>
+                  <CardDescription>Tabela etária pediátrica de referência clínica.</CardDescription>
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="overflow-x-auto">

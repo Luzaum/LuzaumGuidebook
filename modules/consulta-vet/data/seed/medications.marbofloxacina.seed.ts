@@ -29,7 +29,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
       'Marbopet® Comprimidos Palatáveis 27,5 mg e 82,5 mg (Ceva Saúde Animal — MAPA nº 9.507)',
       'Marbocyl® P Comprimidos Palatáveis Sulcados 5 mg, 20 mg e 80 mg (Vetoquinol Brasil — MAPA SP 000376-0.000001)',
       'Marbox-Leish® Comprimidos Palatáveis 20 mg e 60 mg (Ceva Saúde Animal — MAPA MG 000022-0.000020)',
-      'Marbocyl® Solução Injetável 10% ou 2% (Uso Parenteral — Referência Internacional / BSAVA)',
+      'Marbocyl® Solução Injetável 10% ou 2% (Uso Parenteral — Referência Internacional)',
     ],
     officialSiteUrl: 'https://www.ceva.com.br/Produtos/Lista-de-Produtos/MARBOPET',
     leafletUrl: 'https://www.ceva.com.br/content/download/5480/file/Bula%20-%20MARBOPET.pdf',
@@ -116,14 +116,14 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 24 horas (q24h)',
         duration: '3 a 5 dias consecutivos',
         notes:
-          'DURAÇÃO CONTEMPORÂNEA: 3 a 5 dias conforme consenso ISCAID 2019 e Plumb 10ª ed. Bulas históricas recomendavam 10 a 30 dias, diretriz abandonada no stewardship moderno. Não utilizar de forma empírica em cistite simples.',
+          'DURAÇÃO CONTEMPORÂNEA: 3 a 5 dias conforme consenso ISCAID 2019. Bulas históricas recomendavam 10 a 30 dias, diretriz abandonada no stewardship moderno. Não utilizar de forma empírica em cistite simples.',
         clinicalContext:
           'Infecção bacteriana do trato urinário inferior esporádica com perfil microbiológico resistente comprovado em urocultura.',
         monitoring:
           'Resolução dos sinais de disúria, hematúria e polaciúria; urocultura de controle se houver persistência.',
         calculatorEnabled: true,
         referenceIds: ['iscaid-uti-guidelines-2019', 'plumb-marbofloxacin-10ed'],
-        evidenceLevel: 'Diretriz de Consenso Internacional ISCAID 2019 e Plumb 10ª ed.',
+        evidenceLevel: 'Diretriz de Consenso Internacional ISCAID 2019',
       },
       {
         id: 'dose-marbo-dog-cat-pielonefrite',
@@ -145,7 +145,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Ureia, creatinina, SDMA, urinálise seriada, urocultura confirmatória em 72h e nova cultura 1 a 2 semanas após o término da terapia.',
         calculatorEnabled: true,
         referenceIds: ['iscaid-uti-guidelines-2019', 'plumb-marbofloxacin-10ed'],
-        evidenceLevel: 'Consenso Internacional ISCAID 2019 e Plumb’s Veterinary Drug Handbook 10ª ed.',
+        evidenceLevel: 'Consenso Internacional ISCAID 2019',
       },
       {
         id: 'dose-marbo-dog-prostatite',
@@ -167,7 +167,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Ultrassonografia prostática periódica, exame retal digital e citologia/cultura de controle.',
         calculatorEnabled: true,
         referenceIds: ['iscaid-uti-guidelines-2019', 'bsava-marbofloxacin-10ed'],
-        evidenceLevel: 'Diretrizes ISCAID e BSAVA Small Animal Formulary 10ª ed.',
+        evidenceLevel: 'Diretrizes de Consenso ISCAID',
       },
       {
         id: 'dose-marbo-dog-respiratorio',
@@ -189,7 +189,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Frequência e padrão respiratório, oximetria de pulso, radiografia torácica seriada e hemograma.',
         calculatorEnabled: true,
         referenceIds: ['plumb-marbofloxacin-10ed', 'bsava-marbofloxacin-10ed'],
-        evidenceLevel: 'Compêndios Plumb 10ª ed. e BSAVA Formulary 10ª ed.',
+        evidenceLevel: 'Diretrizes ISCAID e Bula Veterinária',
       },
       {
         id: 'dose-marbo-dog-lvc-brasil',
@@ -226,14 +226,14 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 24 horas (q24h)',
         duration: '5 a 14 dias',
         notes:
-          'DIVERGÊNCIA INTERNACIONAL DE FONTES: O formulário britânico BSAVA e a bula brasileira Marbocyl P preconizam 2 mg/kg VO q24h; o compêndio Plumb e rotulagem norte-americana indicam 2,75 a 5,5 mg/kg q24h. Estudos PK/PD recentes (Papich et al., 2025/2026) demonstraram que a dose de 2 mg/kg pode ser limítrofe para cepas com MIC moderada, justificando doses mais elevadas guiadas por AST e fAUC/MIC > 72.',
+          'DIVERGÊNCIA INTERNACIONAL DE PROTOCOLOS: A rotulagem europeia/brasileira (Marbocyl P) preconiza 2 mg/kg VO q24h, enquanto a rotulagem norte-americana indica 2,75 a 5,5 mg/kg q24h. Estudos PK/PD recentes (Papich et al., 2025/2026) demonstraram que a dose de 2 mg/kg pode ser limítrofe para cepas com MIC moderada, justificando doses mais elevadas guiadas por AST e fAUC/MIC > 72.',
         clinicalContext:
           'Infecções de pele, feridas por mordedura ou ITU superior felina orientadas por cultura.',
         monitoring:
           'Avaliação clínica da ferida/foco, tolerância alimentar e monitoramento preventivo da acuidade visual.',
         calculatorEnabled: true,
         referenceIds: ['plumb-marbofloxacin-10ed', 'bsava-marbofloxacin-10ed', 'albarellos-2005-cat-pk'],
-        evidenceLevel: 'Bula Oficial MAPA / BSAVA 10ª ed. / Plumb 10ª ed.',
+        evidenceLevel: 'Bulas Oficiais (MAPA / FDA) e Estudos PK/PD',
       },
       {
         id: 'dose-marbo-cat-mycoplasma-haemofelis',
@@ -270,14 +270,14 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 24 horas (q24h)',
         duration: 'Fase inicial de internação até estabilização do paciente para via oral',
         notes:
-          'Referência BSAVA 10ª ed.: 2 mg/kg IV lenta ou SC q24h. Estudos hemodinâmicos caninos comprovaram estabilidade cardiovascular na dose de 2 mg/kg IV lenta. Diluir apenas em carreadores compatíveis autorizados pelo fabricante e infundir lentamente. Não misturar com outras drogas na seringa ou equipo.',
+          'Protocolo parenteral clássico: 2 mg/kg IV lenta ou SC q24h. Estudos hemodinâmicos caninos comprovaram estabilidade cardiovascular na dose de 2 mg/kg IV lenta. Diluir apenas em carreadores compatíveis autorizados pelo fabricante e infundir lentamente. Não misturar com outras drogas na seringa ou equipo.',
         clinicalContext:
           'Início rápido de terapia antimicrobiana em internação/emergência antes da migração para via oral.',
         monitoring:
           'Frequência cardíaca, pressão arterial sistêmica e inspeção do sítio de aplicação parenteral.',
         calculatorEnabled: true,
         referenceIds: ['bsava-marbofloxacin-10ed', 'plumb-marbofloxacin-10ed'],
-        evidenceLevel: 'Formulário BSAVA 10ª ed. e Estudos Farmacocinéticos Parenterais',
+        evidenceLevel: 'Estudos Farmacocinéticos Parenterais e Bula Internacional',
       },
     ],
 
@@ -467,7 +467,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Ureia, creatinina, SDMA, urinálise seriada e urocultura de controle em 72h e após 1-2 semanas do término.',
         referenceIds: ['iscaid-uti-guidelines-2019', 'plumb-marbofloxacin-10ed'],
-        evidenceLevel: 'Diretriz de Consenso Internacional ISCAID 2019 e Plumb 10ª ed.',
+        evidenceLevel: 'Diretriz de Consenso Internacional ISCAID 2019',
       },
       {
         id: 'ind-marbo-prostatite',
@@ -486,7 +486,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Ultrassonografia prostática periódica, urinálise e citologia/cultura do lavado ou fluido prostático.',
         referenceIds: ['iscaid-uti-guidelines-2019', 'bsava-marbofloxacin-10ed'],
-        evidenceLevel: 'Consenso Internacional ISCAID 2019 e BSAVA Formulary 10ª ed.',
+        evidenceLevel: 'Consenso Internacional ISCAID 2019',
       },
       {
         id: 'ind-marbo-piodermite',
@@ -550,7 +550,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
     // 4. Farmacocinética Comparativa
     pharmacokineticsData: {
       absorption:
-        'Excelente absorção entérica após administração oral tanto em cães (biodisponibilidade de ~94% a 100%) quanto em gatos (~99%). Em cães recebendo 2 mg/kg VO, o Cmax sérico atinge cerca de 1,4 mcg/mL com Tmax em torno de 1,5 a 2,5 horas; doses de 2,75 mg/kg e 5,5 mg/kg geram picos séricos médios de aproximadamente 2,0 mcg/mL e 4,2 mcg/mL, respectivamente. Em gatos recebendo 2 mg/kg VO repetidos, o Cmax em steady-state alcança cerca de 1,97 mcg/mL e doses de 5,5 mg/kg produzem Cmax de ~4,8 mcg/mL. A ingestão de alimentos comuns não reduz de modo clinicamente importante a extensão total da absorção (AUC inalterada). Contudo, a presença intraluminal de cátions bivalentes ou trivalentes (cálcio, magnésio, alumínio, ferro, zinco) provoca quelação química estequiométrica com perda drástica da absorção.',
+        'Excelente absorção entérica após administração oral tanto em cães (biodisponibilidade de ~94% a 100%) quanto em gatos (~99%). Em cães recebendo 2 mg/kg VO, o Cmax sérico atinge cerca de 1,4 mcg/mL com Tmax em torno de 1,5 a 2,5 horas; doses de 2,75 mg/kg e 5,5 mg/kg geram picos séricos médios de aproximadamente 2,0 mcg/mL e 4,2 mcg/mL, respectivamente. Em gatos recebendo 2 mg/kg VO repetidos, o Cmax em estado de equilíbrio alcança cerca de 1,97 mcg/mL e doses de 5,5 mg/kg produzem Cmax de ~4,8 mcg/mL. A ingestão de alimentos comuns não reduz de modo clinicamente importante a extensão total da absorção (AUC inalterada). Contudo, a presença intraluminal de cátions bivalentes ou trivalentes (cálcio, magnésio, alumínio, ferro, zinco) provoca quelação química estequiométrica com perda drástica da absorção.',
       distribution:
         'Volume de distribuição aparente elevado (Vd de 1,2 a 2,25 L/kg no cão, média de 1,9 L/kg; e Vss de aproximadamente 1,01 L/kg no gato), refletindo ampla dispersão tecidual e acúmulo intracelular. Baixa taxa de ligação a proteínas plasmáticas (cerca de 9% a 22% em cães e apenas 7% em gatos), resultando em grande fração livre biologicamente ativa disponível para penetração tecidual. Concentra-se extensamente na pele, tecido subcutâneo, pulmões, secreções respiratórias brônquicas, parênquima renal, próstata e fluido prostático, além de alcançar concentrações elevadas no interior de fagócitos (macrófagos e neutrófilos). Atravessa moderadamente a barreira hematoencefálica, sem valor percentual fixo de LCR padronizado.',
       metabolism:
@@ -840,7 +840,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Estudo farmacocinético felino controlado com 6 gatos recebendo 2 mg/kg IV em dose única e doses orais diárias repetidas por 10 dias consecutivos.',
         sampleSize: '6 gatos adultos hígidos',
         mainFindings:
-          'A biodisponibilidade oral em gatos foi de 99 ± 29%, com volume de distribuição de 1,01 ± 0,15 L/kg, clearance de 0,09 ± 0,02 L/kg/h e meia-vida de 7,98 ± 0,57 h. O Cmax em steady-state atingiu 1,97 ± 0,61 mcg/mL.',
+          'A biodisponibilidade oral em gatos foi de 99 ± 29%, com volume de distribuição de 1,01 ± 0,15 L/kg, clearance de 0,09 ± 0,02 L/kg/h e meia-vida de 7,98 ± 0,57 h. O Cmax em estado de equilíbrio atingiu 1,97 ± 0,61 mcg/mL.',
         clinicalTakeaway:
           'Comprovou excelente absorção e perfil farmacocinético linear em felinos sob regime q24h sem evidência de acúmulo tóxico ou alterações clínicas.',
         referenceId: 'albarellos-2005-cat-pk',
@@ -906,7 +906,7 @@ export const marbofloxacinaMedicationsSeed: MedicationRecord[] = [
     // 8. Tabela Prática de Peso e Conversão de Doses
     practicalWeightTable: {
       standardDoseText:
-        'Cães e Gatos: Doses usuais conforme diagnóstico — 2 mg/kg q24h (bula Marbocyl P, BSAVA e Leishmaniose Canina Marbox-Leish®) | 2,75 mg/kg q24h (bula Marbopet®) | 5,5 mg/kg q24h (ISCAID 2025 para Staphylococcus spp. e infecções profundas). Administrar a cada 24 horas por via oral.',
+        'Cães e Gatos: Doses usuais conforme diagnóstico — 2 mg/kg q24h (bula Marbocyl P e Leishmaniose Canina Marbox-Leish®) | 2,75 mg/kg q24h (bula Marbopet®) | 5,5 mg/kg q24h (ISCAID 2025 para Staphylococcus spp. e infecções profundas). Administrar a cada 24 horas por via oral.',
       headers: [
         'Peso do Paciente',
         'Dose 2 mg/kg (ex.: LVC / Marbocyl P)',

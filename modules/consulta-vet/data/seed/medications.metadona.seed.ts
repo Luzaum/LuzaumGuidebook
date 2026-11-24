@@ -29,8 +29,6 @@ export const metadonaMedicationsSeed: MedicationRecord[] = [
       'Notificação de Receita A VET',
       'Controle Especial Lista A1',
       'AAHA 2022',
-      'BSAVA 10ª ed.',
-      'Plumb 10ª ed.',
     ],
     tradeNames: [
       'Mytedom® 10 mg/mL Solução Injetável em Ampolas de 1 mL (Cristália — Linha Humana sob Notificação de Receita A VET / Uso Hospitalar)',
@@ -153,7 +151,7 @@ export const metadonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 4 a 6 horas',
         duration: '1 a 3 dias conforme evolução clínica',
         notes:
-          'A via OTM em gatos apresenta biodisponibilidade sistêmica de aproximadamente 44%, com pico plasmático em cerca de 2 horas e efeito antinociceptivo sustentado por 4 horas ou mais (Ferreira et al., 2011). Dose de referência: 0,6 mg/kg OTM (BSAVA e compêndios). Aplicar o pequeno volume diretamente no espaço gengivolabial ou bochecha do felino, evitando deglutição imediata. Usar seringas de precisão (1 mL). Pode ocorrer salivação por aversão ao sabor da solução injetável comercial.',
+          'A via OTM em gatos apresenta biodisponibilidade sistêmica de aproximadamente 44%, com pico plasmático em cerca de 2 horas e efeito antinociceptivo sustentado por 4 horas ou mais (Ferreira et al., 2011). Dose de referência: 0,6 mg/kg OTM. Aplicar o pequeno volume diretamente no espaço gengivolabial ou bochecha do felino, evitando deglutição imediata. Usar seringas de precisão (1 mL). Pode ocorrer salivação por aversão ao sabor da solução injetável comercial.',
         calculatorEnabled: true,
         evidenceLevel: 'Estudos Farmacocinéticos e Farmacodinâmicos Crossover (Nível 2a)',
         referenceIds: ['bsava-10ed', 'ferreira-2011-otm', 'plumbs-10ed'],
@@ -408,7 +406,7 @@ export const metadonaMedicationsSeed: MedicationRecord[] = [
           'Alopurinol injetável',
         ],
         infusionRateGuidance:
-          'Protocolo de diluição didática clássico do Plumb: adicionar 60 mg de metadona HCl (6 mL da apresentação 10 mg/mL) em 500 mL de solução fisiológica 0,9% ou Ringer com Lactato, resultando em uma concentração final de 0,12 mg/mL. Quando infundida na taxa padrão de 1 mL/kg/hora em bomba de infusão, essa solução entrega rigorosamente a taxa analgésica de 0,12 mg/kg/hora. Ajustes finos de taxa podem ser realizados entre 0,08 e 0,15 mg/kg/h conforme resposta álgica individual.',
+          'Protocolo de diluição padronizado: adicionar 60 mg de metadona HCl (6 mL da apresentação 10 mg/mL) em 500 mL de solução fisiológica 0,9% ou Ringer com Lactato, resultando em uma concentração final de 0,12 mg/mL. Quando infundida na taxa padrão de 1 mL/kg/hora em bomba de infusão, essa solução entrega rigorosamente a taxa analgésica de 0,12 mg/kg/hora. Ajustes finos de taxa podem ser realizados entre 0,08 e 0,15 mg/kg/h conforme resposta álgica individual.',
         preparationNotes:
           'A solução diluída para CRI mantém estabilidade físico-química por 24 horas em temperatura ambiente (20 a 25 °C) sob proteção da luz solar direta. Identificar o frasco de infusão com etiqueta vermelha destacando Medicamento Sujeito a Controle Especial - Metadona, data, hora, volume adicionado e identificação do paciente.',
       },
@@ -518,7 +516,7 @@ export const metadonaMedicationsSeed: MedicationRecord[] = [
           physiologicalExplanation:
             'A metadona inibe a recaptação de serotonina e noradrenalina. A associação com IMAOs impede a degradação dessas aminas, desencadeando acúmulo sináptico fulminante e síndrome serotoninérgica hiperpirética.',
           clinicalAction:
-            'Contraindicação estrita. Respeitar período de intervalo (washout) de pelo menos 14 dias após a descontinuação de selegilina ou exposição ao amitraz antes de administrar metadona.',
+            'Contraindicação estrita. Respeitar período de intervalo de pelo menos 14 dias após a descontinuação de selegilina ou exposição ao amitraz antes de administrar metadona.',
         },
         {
           condition: 'Uso Pré-Operatório em Cesarianas antes do Parto / Clampeamento',

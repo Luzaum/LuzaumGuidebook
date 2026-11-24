@@ -1,0 +1,66 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - button "Visão Geral" [ref=e6] [cursor=pointer]
+      - button "Plano diagnóstico" [ref=e11] [cursor=pointer]
+      - button "Plano de tratamento" [ref=e15] [cursor=pointer]
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "O que é isso em palavras simples?" [level=4] [ref=e22]
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Os pequenos canais de ar dos pulmões ficam inflamados e podem se fechar temporariamente, causando tosse e dificuldade para respirar.
+          - generic [ref=e28]:
+            - paragraph [ref=e29]:
+              - text: A asma felina é uma alergia das vias aéreas pequenas dos pulmões. O gato desenvolve inflamação, broncoconstrição e tosse ou
+              - mark [ref=e30]: crise respiratória
+              - text: com sibilos.
+            - generic [ref=e31]:
+              - generic [ref=e32]:
+                - generic [ref=e33]: •
+                - generic [ref=e34]: Comum em gatos jovens/adultos, especialmente Siamês e orientais.
+              - generic [ref=e35]:
+                - generic [ref=e36]: •
+                - generic [ref=e37]: Crise com dificuldade para respirar é emergência — minimizar estresse.
+              - generic [ref=e38]:
+                - generic [ref=e39]: •
+                - generic [ref=e40]:
+                  - mark [ref=e41]: Corticoide
+                  - text: (inalatório na manutenção) trata a inflamação; broncodilatador é resgate.
+      - generic [ref=e42]:
+        - generic [ref=e44]:
+          - heading "Visão clínica" [level=4] [ref=e45]
+          - generic [ref=e46]:
+            - paragraph [ref=e47]: Doença inflamatória das vias aéreas inferiores com broncoconstrição reversível.
+            - paragraph [ref=e49]:
+              - text: Asma felina é doença
+              - mark [ref=e50]: eosinofílica
+              - text: de via aérea pequena — o gato não "tem bronquite como cão", ele monta uma resposta alérgica clássica tipo I contra algo que respira todo dia. O ponto prático que mais evita erro é lembrar que broncodilatador alivia sintoma na hora, mas quem trata a doença é o anti-inflamatório; e que toda "asma" merece, ao menos uma vez, checagem de dirofilariose e parasito pulmonar antes de virar rótulo permanente.
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - paragraph [ref=e53]: Mecanismo
+            - generic [ref=e55]:
+              - paragraph [ref=e56]: Inflamação e estreitamento das vias aéreas explicam as crises.
+              - paragraph [ref=e58]:
+                - text: "Hipersensibilidade tipo I:"
+                - mark [ref=e59]: IgE
+                - text: sensibiliza mastócitos contra alérgeno inalado; degranulação libera histamina, leucotrienos e outros mediadores que broncoconstringem e recrutam
+                - mark [ref=e60]: eosinófilos
+                - text: — inflamação crônica remodela a parede das vias aéreas pequenas.
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: População
+            - generic [ref=e64]:
+              - paragraph [ref=e65]: Outras doenças também podem causar tosse e falta de ar.
+              - paragraph [ref=e67]:
+                - text: Gatos jovens a meia-idade;
+                - mark [ref=e68]: Siamês
+                - text: e raças orientais sobrerrepresentados na maioria das séries clínicas. Ambiente urbano fechado com irritantes inalados é fator agravante recorrente.
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: Conduta imediata
+            - generic [ref=e72]:
+              - paragraph [ref=e73]: Na crise, estabilizar a respiração vem antes da investigação completa.
+              - paragraph [ref=e75]:
+                - text: "Crise:"
+                - mark [ref=e76]: oxigênio
+                - text: ", mínimo estresse,"
+                - mark [ref=e77]: broncodilatador
+                - text: de resgate e corticoide injetável — investigação completa só depois de estabilizar.

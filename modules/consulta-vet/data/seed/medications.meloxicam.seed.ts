@@ -43,7 +43,6 @@ export const meloxicamMedicationRecord: MedicationRecord = {
     'ISFM/AAFP 2024',
     'KuKanich 2021',
     'DRC Felina',
-    'Lumb & Jones',
   ],
 
   mechanismOfAction:
@@ -90,7 +89,7 @@ export const meloxicamMedicationRecord: MedicationRecord = {
     },
     {
       label: 'Proibição Estrita de Associação com Corticoides ou Outros AINEs',
-      text: 'A administração simultânea ou sem intervalo adequado (washout de 3 a 7 dias) de meloxicam com dexametasona, prednisolona ou outros AINEs multiplica drasticamente o risco de erosão, ulceração e perfuração gástrica ou duodenal potencialmente fatal.',
+      text: 'A administração simultânea ou sem intervalo adequado (intervalo de suspensão de 3 a 7 dias) de meloxicam com dexametasona, prednisolona ou outros AINEs multiplica drasticamente o risco de erosão, ulceração e perfuração gástrica ou duodenal potencialmente fatal.',
     },
     {
       label: 'Manejo em Felinos e Doença Renal Crônica (DRC)',
@@ -190,7 +189,7 @@ export const meloxicamMedicationRecord: MedicationRecord = {
       clinicalRationale: 'Proporciona redução relevante no consumo intraoperatório e pós-operatório de opioides, promovendo recuperação anestésica mais suave e redução da hiperalgesia secundária ao redor da ferida.',
       monitoring: 'Pressão arterial intraoperatória mandatória (PAM acima de 65-70 mmHg); hidratação e débito urinário adequados; suspender ou postergar a aplicação para o pós-anestésico se ocorrer hipotensão prolongada.',
       referenceIds: ['ref-bsava-10', 'ref-lumb-jones-2024', 'ref-plumb-10'],
-      evidenceLevel: 'Nível 1a — Consensos de Anestesia e Analgesia Veterinária (AAHA / WSAVA / BSAVA)',
+      evidenceLevel: 'Nível 1a — Consensos de Anestesia e Analgesia Veterinária (AAHA / WSAVA)',
     },
     {
       id: 'ind-perioperatorio-felino',
@@ -268,7 +267,7 @@ export const meloxicamMedicationRecord: MedicationRecord = {
   contraindications: [
     'Pacientes desidratados, hipovolêmicos ou hipotensos (risco crítico e iminente de necrose tubular renal e lesão renal aguda).',
     'Doença ulcerativa ou erosiva gastrointestinal ativa, histórico recente de perfuração péptica, melena ou hematêmese.',
-    'Uso simultâneo ou recente (período de washout inferior a 3 a 7 dias) de qualquer outro anti-inflamatório não esteroidal (AINE).',
+    'Uso simultâneo ou recente (período de suspensão inferior a 3 a 7 dias) de qualquer outro anti-inflamatório não esteroidal (AINE).',
     'Uso simultâneo ou recente de corticosteroides sistêmicos (dexametasona, prednisolona, hidrocortisona, triancinolona).',
     'Doença renal crônica terminal não compensada (IRIS estágio 4 com oligúria/anúria ou uremia severa).',
     'Coagulopatias graves, trombocitopenia acentuada ativa ou diatese hemorrágica não controlada.',
@@ -326,7 +325,7 @@ export const meloxicamMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'A associação de dois AINEs ou de um AINE com glicocorticoide inibe simultaneamente a fosfolipase A2 e as enzimas COX-1/COX-2, eliminando totalmente as prostaglandinas protetoras da barreira mucosa gástrica (muco e bicarbonato) e reduzindo a renovação epitelial celular, deflagrando ulcerações pépticas profundas e perfuração gastrointestinal.',
         clinicalAction:
-          'Contraindicação formal absoluta. Respeitar um período de washout de 3 a 5 dias entre diferentes AINEs e de 5 a 7 dias após o término de corticosteroides antes de iniciar meloxicam.',
+          'Contraindicação formal absoluta. Respeitar um período de suspensão de 3 a 5 dias entre diferentes AINEs e de 5 a 7 dias após o término de corticosteroides antes de iniciar meloxicam.',
       },
       {
         condition: 'Doença Renal Crônica (DRC) Felina Descompensada ou Instável',
@@ -733,7 +732,7 @@ export const meloxicamMedicationRecord: MedicationRecord = {
       narrativeHighlights: [
         'Ensaio multicêntrico de 217 cães demonstrou melhora rápida de mobilidade e claudicação em 14 dias.',
         'Estudo comparativo de 90 dias em cães (Luna et al. 2007) atestou estabilidade renal e hepática em animais sadios.',
-        'Dose de ataque inicial de 0,2 mg/kg permite atingir o estado de equilíbrio (steady-state) analgésico no primeiro dia.',
+        'Dose de ataque inicial de 0,2 mg/kg permite atingir o estado de equilíbrio analgésico no primeiro dia.',
       ],
       studies: [
         {

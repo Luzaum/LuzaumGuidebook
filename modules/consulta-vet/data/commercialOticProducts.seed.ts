@@ -40,13 +40,14 @@ import { metimazolCommercialProductSeed } from './metimazolCommercialProduct.see
 import { dexametasonaCommercialProductSeed } from './dexametasonaCommercialProduct.seed';
 import { eltrombopagCommercialProductsSeed } from './eltrombopagCommercialProducts.seed';
 import { mycophenolateCommercialProductsSeed } from './mycophenolateCommercialProducts.seed';
+import { pilocarpinaCommercialProductsSeed } from './pilocarpinaCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
 const OMEGA_PRICE_SOURCE_DATE = '2026-05-16';
 
 const OMEGA3_PLUMBS_CONTEXT =
-  'Ômega 3 deve ser calculado pela soma EPA + DHA, não pelo peso total da cápsula ou do óleo. Plumb’s descreve uso como adjuvante em dermatopatias inflamatórias, DRC, osteoartrite, doença cardiovascular, hiperlipidemia e outras condições, com resposta em semanas a meses.';
+  'Ômega 3 deve ser calculado pela soma EPA + DHA, não pelo peso total da cápsula ou do óleo. Utiliza-se como adjuvante em dermatopatias inflamatórias, DRC, osteoartrite, doença cardiovascular e hiperlipidemia, com resposta clínica em semanas a meses.';
 
 const OMEGA3_SAFETY_ALERT =
   'Usar com cautela em pancreatite prévia, diarreia crônica, coagulopatias, trombocitopenia ou uso de AINEs, antiagregantes e anticoagulantes. Evitar óleo de fígado de bacalhau para dose terapêutica e não usar óleo de linhaça como substituto de EPA/DHA em gatos.';
@@ -105,6 +106,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...dexametasonaCommercialProductSeed,
   ...eltrombopagCommercialProductsSeed,
   ...mycophenolateCommercialProductsSeed,
+  ...pilocarpinaCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -491,7 +493,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Ibasa lista água purificada, polissorbato 80, cocoato de glicerila, cloreto de sódio, diazolidinil ureia, trietanolamina, fitoesfingosina e ácido cítrico. Vetsmart/varejos técnicos detalham por 100 mL: fitoesfingosina 15 mg, cocoato de glicerila 600 mg, polissorbato 3500 mg, trietanolamina 70 mg e excipientes q.s.p.',
     labelDirections:
-      'Aplicar 5 a 10 gotas no conduto e massagear cerca de 1 minuto. Para pavilhão, aplicar com algodão. Frequência a critério veterinário.',
+      'Aplicar 5 a 10 gotas no conduto e massagear cerca de 1 minuto; para pavilhão, aplicar com algodão. Higiene rotineira: 1 a 2 vezes por semana.',
     plumbsContext:
       'Ceruminolítico leve/limpeza suave.',
     clinicalUse:
@@ -499,7 +501,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se usado em protocolo de otite, acompanhar por citologia/otoscopia e não por aparência do cerúmen apenas.',
     prescriptionExample:
-      'Aplicar 5 a 10 gotas no conduto auditivo, massagear por cerca de 1 minuto e remover excesso. Frequência conforme orientação.',
+      'Ouvipet Dermocalmante: aplicar 5 a 10 gotas no conduto auditivo, massagear por cerca de 1 minuto e remover excesso, 1 a 2 vezes por semana.',
     safetyAlert:
       'Evidência de suporte comercial/caso deve ser classificada como baixa; não substituir avaliação clínica.',
     price: {
@@ -536,7 +538,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar rapidamente se houver dor importante, úlceração ou piora após aplicação.',
     prescriptionExample:
-      'Aplicar 5 a 10 gotas em cada ouvido, massagear a base, permitir que o paciente balance a cabeça e remover excesso. Usar conforme orientação.',
+      'Oto-Top Clean: aplicar 5 a 10 gotas em cada ouvido, massagear a base, permitir que o paciente balance a cabeça e remover excesso, 1 vez por semana e após banhos.',
     safetyAlert:
       'Contém ácido bórico e propilenoglicol; cautela em ouvido ulcerado, gatos sensíveis e tímpano não avaliado.',
     price: {
@@ -640,7 +642,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Labyes publica por 100 mL: DMSO 5,0 mL, ácido salicílico 2,0 g, ácido bórico 2,5 g, bórax 0,4 g e excipientes q.s.p. Alguns varejos brasileiros citam laurilsulfato de sódio 0,08 g; confirmar lote/bula nacional.',
     labelDirections:
-      'Aplicar 1 a 2 pulsações em cada ouvido conforme tamanho/profundidade do conduto, massagear a base. Para higiene habitual, usar 1 vez por semana; pode ser usado com maior frequência por critério profissional.',
+      'Aplicar 1 a 2 pulsações em cada ouvido conforme tamanho/profundidade do conduto, massagear a base e remover excesso. Higiene habitual: 1 vez por semana (ou a cada 2–3 dias como pré-tratamento ceruminolítico de curta duração).',
     plumbsContext:
       'Ceruminolítico/acidificante mais agressivo; deve ser tratado como pré-tratamento com critério.',
     clinicalUse:
@@ -648,7 +650,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar cedo em gato, dor intensa, úlceração ou qualquer sinal vestibular.',
     prescriptionExample:
-      'Aplicar 1 a 2 doses no conduto auditivo, massagear a base e remover excesso. Usar somente conforme orientação veterinária.',
+      'Otiflex L: aplicar 1 a 2 pulsações no conduto auditivo, massagear a base e remover excesso, 1 vez por semana (ou antes da limpeza em otite ceruminosa, com tímpano íntegro).',
     safetyAlert:
       'Cuidado máximo em gato, canal inflamado, dor intensa ou tímpano incerto. DMSO pode aumentar penetração de substâncias e irritação.',
     price: {
@@ -710,7 +712,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Por 100 g: gentamicina 300 mg, dipropionato de betametasona 122 mg, miconazol 1.000 mg e excipiente q.s.p. 100 g.',
     labelDirections:
-      'Cães até 15 kg: 4 gotas a cada 12 h. Cães com 15 kg ou mais: 8 gotas a cada 12 h. Tratar por 7 a 9 dias ou a critério veterinário.',
+      'Cães até 15 kg: 4 gotas a cada 12 h. Cães com 15 kg ou mais: 8 gotas a cada 12 h. Tratar por 7 a 9 dias consecutivos (manter por 48 h após resolução).',
     plumbsContext:
       'Combina azólico, aminoglicosídeo e corticoide; usar com diagnóstico de otite externa e avaliação timpânica.',
     clinicalUse:
@@ -823,7 +825,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se dor, secreção ou prurido persistirem após 7 dias.',
     prescriptionExample:
-      'Aplicar 4 gotas por orelha (<15 kg) ou 6 gotas (>15 kg), BID, por 7 dias, ou conforme orientação.',
+      'Otocalm: aplicar 4 gotas por orelha (<15 kg) ou 6 gotas (>15 kg), BID (q12h), por 7 dias consecutivos.',
     safetyAlert:
       'Contém gentamicina; usar somente com tímpano íntegro.',
     price: {
@@ -858,7 +860,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar em otites crônicas, bastonetes, falha de resposta ou necessidade de uso prolongado.',
     prescriptionExample:
-      'Aplicar borrifadas conforme peso a cada 12 horas até melhora, com acompanhamento veterinário.',
+      'Otodex: cães até 7 kg e gatos até 7 kg = 1 borrifada q12h; 7–14 kg = 2 borrifadas q12h; cães >14 kg = 3 borrifadas q12h, durante 7 a 14 dias.',
     safetyAlert:
       'Contém fluoroquinolona; não usar como primeira escolha empírica sem citologia em otites simples.',
     price: {
@@ -1131,7 +1133,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Anticorpo monoclonal caninizado anti-interleucina 31, em frascos de 1 mL por dose.',
     labelDirections:
-      'Dose mínima de 2 mg/kg SC. Repetir a cada 4 a 8 semanas conforme resposta individual. Combinar frascos conforme peso quando necessário.',
+      'Dose mínima de 2 mg/kg SC a cada 4 semanas (intervalo usual de 4 a 8 semanas se houver recidiva do prurido). Faixas por frasco de 1 mL: até 5 kg = 10 mg; 5,1–10 kg = 20 mg; 10,1–15 kg = 30 mg; 15,1–20 kg = 40 mg; 20,1–25 kg = 10 + 40 mg; 25,1–30 kg = 20 + 40 mg; 30,1–35 kg = 30 + 40 mg; 35,1–40 kg = 2 frascos de 40 mg.',
     plumbsContext:
       'Neutraliza IL-31, citocina importante na via da coceira. Pode ser útil quando se quer evitar comprimidos ou corticoide.',
     clinicalUse:
@@ -1139,7 +1141,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se não houver resposta, procurar infecção secundária, pulgas, Malassezia, otite, alergia alimentar e falha de controle ambiental antes de trocar droga.',
     prescriptionExample:
-      'Aplicar no mínimo 2 mg/kg por via SC e repetir a cada 4-8 semanas conforme necessidade clínica.',
+      'Cytopoint: aplicar no mínimo 2 mg/kg por via SC (ex.: 5,1–10 kg = 1 frasco 20 mg; 10,1–15 kg = 1 frasco 30 mg; 15,1–20 kg = 1 frasco 40 mg), repetindo a cada 4 a 8 semanas.',
     safetyAlert:
       'Somente cães. Não usar em gatos. Não trata piodermite, Malassezia, pulgas ou otite secundária.',
     price: {
@@ -1174,24 +1176,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'anemia hemolitica imunomediada',
       'dermatite atopica',
       'imunossupressor',
-      'plumbs',
+      'ciclosporina',
       'acvim',
     ],
     labelCompositionSummary:
       'Ciclosporina 100 mg/mL em solução oral para microemulsão (Virbac). Acompanha seringa dosadora graduada em peso corporal (kg).',
     labelDirections:
-      'Dermatite atópica canina (rótulo): 0,05 mL/kg VO a cada 24 horas (5 mg/kg VO SID), administrado 2 horas antes ou depois da refeição. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM / Plumb’s): quando indicado segundo imunossupressor em casos graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg por via oral a cada 12 horas (5 mg/kg VO BID / q12h; equivalente a 0,05 mL/kg q12h de Cyclavance), associado a glicocorticoides e sob estrito monitoramento hematológico.',
+      'Dermatite atópica canina (rótulo): 0,05 mL/kg VO a cada 24 horas (5 mg/kg VO SID), administrado 2 horas antes ou depois da refeição. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM): quando indicado segundo imunossupressor em casos graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg por via oral a cada 12 horas (5 mg/kg VO BID / q12h; equivalente a 0,05 mL/kg q12h de Cyclavance), associado a glicocorticoides e sob estrito monitoramento hematológico.',
     dosageGuidance: {
-      labelDose: 'Dermatite atópica: 5 mg/kg VO SID (0,05 mL/kg SID). AHIM (Consenso ACVIM/Plumb’s): pensar em 5 mg/kg VO BID (0,05 mL/kg a cada 12h) como 2º imunossupressor.',
+      labelDose: 'Dermatite atópica: 5 mg/kg VO SID (0,05 mL/kg SID). AHIM (Consenso ACVIM): pensar em 5 mg/kg VO BID (0,05 mL/kg a cada 12h) como 2º imunossupressor.',
       plumbs: {
         dog: [
           {
-            title: 'Dermatite Atópica Canina (Rótulo / Plumb’s)',
+            title: 'Dermatite Atópica Canina (Rótulo / Protocolo padrão)',
             dose: '5 mg/kg (0,05 mL/kg) VO a cada 24 horas (SID)',
             note: 'Administrar 2 horas antes ou após a alimentação. Após 4 a 6 semanas de controle, titular gradualmente para dias alternados ou 2x/semana.',
           },
           {
-            title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019 / Plumb’s)',
+            title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019)',
             dose: '5 mg/kg (0,05 mL/kg) VO a cada 12 horas (q12h / BID)',
             note: 'Opção de segundo agente imunossupressor recomendada pelo Consenso ACVIM em AHIM grave, queda acelerada de PCV, dependência transfusional ou necessidade de poupar esteroides. Pode-se pensar e prescrever 5 mg/kg BID. Monitorar resposta hematológica e concentrações em sangue total (TDM ponto C2).',
           },
@@ -1203,13 +1205,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         ],
       },
       notes: [
-        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM e a literatura de hematologia (Plumb’s) respaldam pensar e utilizar 5 mg/kg VO BID (a cada 12 horas) quando necessária terapia de segundo agente imunossupressor associada à corticoterapia.',
+        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM e a literatura de hematologia respaldam pensar e utilizar 5 mg/kg VO BID (a cada 12 horas) quando necessária terapia de segundo agente imunossupressor associada à corticoterapia.',
         'Administrar preferencialmente em jejum (2 horas antes ou após a alimentação) para absorção ideal, ou com pequena porção de comida se houver vômito.',
         'A associação com cetoconazol (2,5 a 5 mg/kg/dia) reduz a depuração de ciclosporina em 50% a 70%, permitindo economizar na dose prescrita sob monitoramento hepático.',
       ],
     },
     plumbsContext:
-      'A ciclosporina atua inibindo a calcineurina e a via de transcrição da IL-2 mediada por NFAT em linfócitos T. Para dermatite atópica, o protocolo preconiza 5 mg/kg VO SID com desmame subsequente. Para imunossupressão sistêmica em Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019 / Plumb’s), pode-se pensar e prescrever 5 mg/kg VO BID (a cada 12 horas) como segundo imunossupressor em pacientes graves, instáveis ou refratários.',
+      'A ciclosporina atua inibindo a calcineurina e a via de transcrição da IL-2 mediada por NFAT em linfócitos T. Para dermatite atópica, o protocolo preconiza 5 mg/kg VO SID com desmame subsequente. Para imunossupressão sistêmica em Anemia Hemolítica Imunomediada (AHIM / IMHA Canina — Consenso ACVIM 2019), pode-se pensar e prescrever 5 mg/kg VO BID (a cada 12 horas) como segundo imunossupressor em pacientes graves, instáveis ou refratários.',
     clinicalUse:
       'Dermatite atópica crônica canina; e terapia imunossupressora extra-bula de resgate / segundo agente em Anemia Hemolítica Imunomediada (AHIM / IMHA), fístula perianal e poliartrite imunomediada.',
     reassessment:
@@ -1243,7 +1245,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém aceponato de hidrocortisona 0,05842 g.',
     labelDirections:
-      'Aplicação tópica sobre área afetada, em geral 1 vez ao dia por 7 dias, conforme bula e avaliação veterinária. Evitar olhos, mucosas e uso prolongado em áreas extensas.',
+      'Aplicar 2 borrifadas para cada 100 cm² de área afetada (aproximadamente 10 × 10 cm, liberando 1,52 mcg/cm² de aceponato de hidrocortisona), 1 vez ao dia por 7 dias consecutivos. Evitar olhos, mucosas e uso contínuo em áreas extensas sem reavaliação.',
     plumbsContext:
       'Glicocorticoide tópico útil para lesões localizadas e estratégia poupadora de corticoide sistêmico.',
     clinicalUse:
@@ -1251,7 +1253,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar se houver infecção secundária, lesão extensa, recorrência rápida ou necessidade de cursos repetidos.',
     prescriptionExample:
-      'Aplicar uma vez ao dia sobre as áreas afetadas por até 7 dias, evitando olhos e mucosas.',
+      'Cortavance Spray: aplicar 2 borrifadas a cada 100 cm² de área afetada, 1 vez ao dia por 7 dias consecutivos, evitando olhos e mucosas.',
     safetyAlert:
       'Somente cães. Não usar cronicamente sem pausas. Pode causar atrofia cutânea se usado em excesso; não usar sozinho em infecção sem tratá-la.',
     price: {
@@ -1321,7 +1323,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Evitar transformar em solução crônica barata sem diagnóstico. Reavaliar doença de base e efeitos adversos.',
     prescriptionExample:
-      'Administrar prednisolona por curto período na dose anti-inflamatória apropriada à espécie; reduzir conforme resposta.',
+      'Prednisolona 3 mg/mL (ou comprimido): cães — administrar 0,5 a 1 mg/kg VO a cada 24 horas por 5 a 7 dias com redução gradual; gatos — 1 a 2 mg/kg VO a cada 24 horas por 5 a 7 dias com desmame progressivo.',
     safetyAlert:
       'Checar excipientes de soluções humanas, incluindo açúcar, aroma, álcool, conservantes ou xilitol. Em gato obeso, considerar peso magro.',
     price: {
@@ -1580,7 +1582,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém nitrato de miconazol 2,53 g, gluconato de clorexidina solução a 20% 10 mL, essência herbal 0,20 g e veículo q.s.p. 100 mL.',
     labelDirections:
-      'Banhar o corpo todo, massagear, deixar agir por 10 minutos antes do enxágue e repetir 1 a 2 vezes por semana, ou conforme critério veterinário.',
+      'Banhar o corpo todo, massagear até formar espuma, deixar agir por 10 minutos antes do enxágue e repetir 1 a 2 vezes por semana por 2 a 4 semanas (manutenção: 1 vez por semana ou a cada 15 dias).',
     plumbsContext:
       'Associação antisséptica e antifúngica compatível com o uso tópico de clorexidina em piodermite superficial e dermatite por Malassezia.',
     clinicalUse:
@@ -1614,7 +1616,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém clorexidina como gluconato 1,14 g, equivalente informado de 5,7% de gluconato de clorexidina, miconazol como nitrato 2 g e veículo q.s.p.',
     labelDirections:
-      'Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar. No início, usar 2 a 3 vezes por semana; depois 1 vez por semana, ou conforme critério veterinário.',
+      'Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar completamente. Na fase inicial, usar 2 a 3 vezes por semana por 2 a 4 semanas; na manutenção, reduzir para 1 vez por semana.',
     plumbsContext:
       'Combina clorexidina tópica com azólico, útil quando há componente bacteriano e leveduriforme na citologia.',
     clinicalUse:
@@ -1648,7 +1650,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Shampoo com gluconato de clorexidina 4%, conforme nome comercial e descrições de varejo. Veículo não detalhado nas fontes abertas consultadas.',
     labelDirections:
-      'Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar. Usar 2 a 3 vezes por semana até melhora e depois 1 vez por semana, conforme orientação.',
+      'Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar completamente. Usar 2 a 3 vezes por semana por 2 a 4 semanas até melhora clínica e depois 1 vez por semana na manutenção.',
     plumbsContext:
       'Clorexidina tópica em concentração alta para redução de carga bacteriana cutânea.',
     clinicalUse:
@@ -1750,7 +1752,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém clorexidina como gluconato 0,51 g e veículo q.s.p. 100 mL.',
     labelDirections:
-      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
+      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Usar 2 a 3 vezes por semana por 2 a 4 semanas; após melhora, reduzir para 1 vez por semana como manutenção.',
     plumbsContext:
       'Clorexidina em baixa concentração para banho antisséptico de manutenção/adjuvante; efeito depende de contato adequado e enxágue completo.',
     clinicalUse:
@@ -1784,7 +1786,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém digluconato de clorexidina 20% 20 g, equivalente a clorexidina 4%, e veículo q.s.p. 100 mL. A descrição comercial destaca D-pantenol.',
     labelDirections:
-      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Repetir se necessário. Inicialmente usar 2 a 3 vezes por semana; após melhora, reduzir para 1 vez por semana ou a critério do médico-veterinário.',
+      'Umedecer a pelagem com água morna. Aplicar quantidade suficiente para formar espuma abundante, friccionando todo o corpo (especialmente dobras e lesões). Deixar agir por 10 a 15 minutos e enxaguar bem. Usar 2 a 3 vezes por semana por 2 a 4 semanas; após melhora, reduzir para 1 vez por semana como manutenção.',
     plumbsContext:
       'Clorexidina 4% é concentração terapêutica para controle tópico de bactérias/leveduras em piodermites superficiais e dermatites com sobrecrescimento microbiano.',
     clinicalUse:
@@ -1825,7 +1827,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar citologia e lesões em 2 a 4 semanas, especialmente se prurido/odor persistirem.',
     prescriptionExample:
-      'Dar banho com Micodine, manter contato por 3 a 5 minutos ou conforme prescrição, enxaguar e repetir conforme necessidade clínica.',
+      'Dar banho com Micodine, massagear até formar espuma, manter contato por 3 a 5 minutos e enxaguar completamente. Realizar 2 a 3 banhos por semana por 2 a 4 semanas (manutenção 1 vez por semana).',
     safetyAlert:
       'A clorexidina é 0,5%; se a necessidade principal for piodermite bacteriana intensa, considerar clorexidina 2% a 4%.',
     price: {
@@ -1851,15 +1853,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Composição descrita: digluconato de clorexidina 3% e Ophytrium 0,5%, com fórmula de limpeza suave e fragrância hipoalergênica.',
     labelDirections:
-      'A linha recomenda shampoo como etapa de limpeza e associação com mousse para maior tempo de contato, conforme orientação veterinária.',
+      'Molhar a pelagem com água morna, aplicar o shampoo massageando até formar espuma, deixar agir por 5 a 10 minutos e enxaguar completamente. Frequência: 2 a 3 banhos por semana por 3 a 4 semanas, reduzindo para 1 vez por semana na manutenção (ou associar DOUXO S3 PYO Mousse leave-on: 1 pressão para cada 2 a 3 kg).',
     plumbsContext:
       'Clorexidina 3% com proposta de suporte de barreira cutânea; útil para desequilíbrio bacteriano/fúngico superficial.',
     clinicalUse:
       'Piodermite superficial, Malassezia e manutenção de barreira cutânea em pacientes com recidiva dermatológica.',
     reassessment:
-      'Reavaliar disponibilidade nacional e resposta clínica; associar mousse ou reduzir frequência conforme tolerância.',
+      'Reavaliar disponibilidade nacional e resposta clínica em 2 a 3 semanas; associar mousse ou reduzir frequência para manutenção semanal.',
     prescriptionExample:
-      'Dar banho com DOUXO S3 PYO conforme rótulo, enxaguar completamente e associar produtos leave-on da linha quando indicado.',
+      'Dar banho com DOUXO S3 PYO Shampoo, massagear na pelagem molhada, deixar agir por 5 a 10 minutos e enxaguar completamente, 2 a 3 vezes por semana por 3 semanas (manutenção semanal ou alternado com mousse leave-on 1 pressão/2–3 kg).',
     safetyAlert:
       'Disponibilidade brasileira variável; confirmar fornecedor antes de prescrever com marca específica.',
     price: {
@@ -1893,7 +1895,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar resposta e tolerância em 2 a 4 semanas; confirmar concentração dispensada no rótulo.',
     prescriptionExample:
-      'Manipular shampoo de clorexidina 2% ou 3%. Aplicar, manter contato por 10 a 15 minutos e enxaguar. Usar conforme prescrição.',
+      'Manipular shampoo de clorexidina 2% ou 3% (q.s.p. 250 mL). Aplicar sobre a pelagem molhada, massagear, manter contato por 10 a 15 minutos e enxaguar completamente, 2 a 3 vezes por semana por 3 a 4 semanas (manutenção 1 vez por semana).',
     safetyAlert:
       'Produto manipulado deve ser tratado como apresentação dependente de prescrição, concentração e farmácia específica.',
     price: {
@@ -1926,7 +1928,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Se usado para piodermite, reavaliar cedo e trocar por produto com concentração confirmada se resposta for insuficiente.',
     prescriptionExample:
-      'Usar conforme rótulo, mantendo contato por 5 minutos e enxaguando completamente.',
+      'Aplicar X-Dine Shampoo sobre a pelagem molhada, massagear até espumar, manter contato por 5 minutos e enxaguar completamente, 2 a 3 vezes por semana por 2 a 4 semanas (manutenção semanal).',
     safetyAlert:
       'Concentração de clorexidina não confirmada em fonte oficial aberta; evitar como equivalente terapêutico a Cloresten, Hexadene ou Clorexiderm.',
     price: {
@@ -3484,13 +3486,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: [
       'Até 2,5 kg: flaconete 0,3 mL',
       '2,6 a 7,5 kg: flaconete 0,9 mL',
-      'Acima de 7,5 kg: combinação de flaconetes conforme peso',
+      'Acima de 7,5 kg: combinação de flaconetes de 0,3 mL e 0,9 mL (0,12 mL/kg)',
     ],
     activeComponents: ['praziquantel 8,3%', 'moxidectina 0,83%', 'fipronil 12,5%'],
     labelCompositionSummary:
       'Cada 100 mL contém praziquantel 8,300 g, moxidectina 0,830 g, fipronil 12,500 g e veículo q.s.p. 100,000 mL.',
     labelDirections:
-      'Aplicar todo o conteúdo de 1 flaconete na pele seca da nuca (base do crânio) a cada 30 dias: ≤2,5 kg = 0,3 mL; 2,6–7,5 kg = 0,9 mL; >7,5 kg = combinar flaconetes.',
+      'Aplicar todo o conteúdo de 1 flaconete na pele seca da nuca (base do crânio) a cada 30 dias: ≤2,5 kg = 0,3 mL; 2,6–7,5 kg = 0,9 mL; >7,5 kg = combinar flaconetes na proporção de 0,12 mL/kg.',
     eligibility: {
       minAge: 'A partir de 30 dias (1 mês) de vida.',
       minWeight: 'Cobre filhotes e adultos a partir da faixa ≤2,5 kg (flaconete 0,3 mL) após 30 dias de vida.',
@@ -3770,7 +3772,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse: 'Suporte de desenvolvimento, crescimento, pele/pelagem e aporte de DHA em filhotes de cães e gatos.',
     reassessment: 'Ajustar pela evolução do peso do filhote; não é primeira escolha para metas terapêuticas altas em adultos.',
     prescriptionExample:
-      'Ograx Baby, administrar 0,1 mL para cada 0,5 kg, por via oral, a cada 24 horas, junto à alimentação, usando a seringa dosadora, conforme peso atual.',
+      'Ograx Baby, administrar 0,1 mL para cada 0,5 kg (0,2 mL/kg) por via oral, a cada 24 horas, junto à alimentação usando a seringa dosadora.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
     price: {
       averageLabel: 'R$ 110,00 a R$ 122,00',
@@ -3927,7 +3929,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse: 'Suporte geriátrico com DHA predominante, vitamina E e selênio.',
     reassessment: 'Reavaliar objetivo geriátrico, apetite e fezes em 8 a 12 semanas.',
     prescriptionExample:
-      'Ograx Senior 5, administrar 1 cápsula para cada 5 kg, por via oral, a cada 24 horas, junto à alimentação, conforme protocolo de suporte geriátrico.',
+      'Ograx Senior 5, administrar 1 cápsula para cada 5 kg de peso corporal por via oral, a cada 24 horas, junto à alimentação.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
     price: {
       averageLabel: 'R$ 88,00 a R$ 98,00',
@@ -4032,7 +4034,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse: 'Suplementação canina de EPA/DHA; 2 cápsulas/10 kg se aproximam de dose de manutenção de 30 mg/kg de EPA + DHA.',
     reassessment: 'Reavaliar em 8 a 12 semanas e calcular EPA/DHA para metas terapêuticas.',
     prescriptionExample:
-      'Omega 3 Dog 500 mg, administrar 1 a 2 cápsulas para cada 10 kg, por via oral, a cada 24 horas, junto à alimentação, conforme orientação veterinária.',
+      'Omega 3 Dog 500 mg, administrar 1 a 2 cápsulas para cada 10 kg por via oral, a cada 24 horas, junto à alimentação (2 cápsulas/10 kg equivale a cerca de 30 mg/kg de EPA + DHA).',
     safetyAlert: OMEGA3_SAFETY_ALERT,
     price: {
       averageLabel: 'R$ 190,00 a R$ 195,00 para 90 cápsulas',
@@ -4106,12 +4108,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['óleo de peixe ultrapuro', 'relação EPA:DHA 1,5:1', 'EPA/DHA por cápsula não confirmado em fonte aberta'],
     labelCompositionSummary:
       'Óleo de peixe ultrapuro com relação EPA:DHA 1,5:1. A página aberta não informou EPA e DHA exatos por cápsula.',
-    labelDirections: 'Dose técnica encontrada: animais até 10 kg podem receber 1 a 3 cápsulas ao dia, conforme orientação veterinária.',
+    labelDirections: 'Cães e gatos até 10 kg: 1 cápsula VO SID na manutenção (ou 2 a 3 cápsulas VO SID para suporte ampliado). Acima de 10 kg: calcular pela meta clínica (30–50 mg/kg/dia de EPA + DHA na manutenção; 100–300 mg/kg/dia anti-inflamatório/cardíaco) após conferir o teor por cápsula (500 mg ou 1000 mg).',
     plumbsContext: OMEGA3_PLUMBS_CONTEXT,
     clinicalUse: 'Suplementação de EPA/DHA em cães e gatos; confirmar teor por cápsula antes de cálculo terapêutico.',
     reassessment: 'Reavaliar em 8 a 12 semanas; preencher EPA/DHA do rótulo se for calcular dose alvo.',
     prescriptionExample:
-      'Omega 3 Vet [500 mg ou 1000 mg], administrar conforme peso e objetivo clínico, por via oral, a cada 24 horas, junto à alimentação. Dose usual de rótulo/técnica: 1 a 3 cápsulas ao dia para animais até 10 kg, ajustando conforme orientação veterinária.',
+      'Omega 3 Vet [500 mg ou 1000 mg]: para cães e gatos até 10 kg, administrar 1 a 3 cápsulas por via oral a cada 24 horas, junto à alimentação; acima de 10 kg, ajustar proporcionalmente ao peso após conferir o teor de EPA + DHA no frasco.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
     price: {
       averageLabel: 'R$ 69,00 a R$ 120,00',
@@ -4194,7 +4196,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Rotina pós-limpeza, higiene oral, controle de halitose leve e suporte antisséptico oral em cães e gatos.',
     reassessment: 'Reavaliar gengivite, halitose, cálculo e adesão à escovação. Se houver cálculo mineralizado, indicar profilaxia.',
-    prescriptionExample: 'Periovet Spray, aplicar diretamente sobre dentes e gengivas, de modo a atingir toda a superfície dentária e gengival, 1 a 2 vezes ao dia ou conforme orientação veterinária. Pode ser aplicado com auxílio de gaze, dedeira ou escova macia. Não é necessário enxaguar.',
+    prescriptionExample: 'Periovet Spray, borrifar 2 a 4 jatos diretamente sobre dentes e gengivas (ou aplicar com gaze, dedeira ou escova macia), 1 a 2 vezes ao dia por 7 a 14 dias. Não é necessário enxaguar.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 48,00 a R$ 55,00', rangeLabel: 'Spray 100 mL; Cobasi e varejos próximos de R$ 48-55', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4213,11 +4215,11 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Gel 25 g'],
     activeComponents: ['clorexidina'],
     labelCompositionSummary: 'Gel higienizador bucal veterinário à base de clorexidina.',
-    labelDirections: 'Aplicar quantidade suficiente diretamente em dentes e gengivas, com gaze, dedeira ou escova macia, conforme orientação veterinária.',
+    labelDirections: 'Aplicar fina camada ao longo da margem gengival e dentes com gaze, dedeira ou escova macia, 1 a 2 vezes ao dia; evitar alimento e água por 20 a 30 minutos após a aplicação.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Contato local mais prolongado em gengiva/dentes, especialmente pós-profilaxia ou quando o responsável consegue manipular a boca.',
     reassessment: 'Reavaliar resposta gengival, halitose e tolerância à aplicação. Se houver cálculo, dor ou sangramento, investigar doença periodontal.',
-    prescriptionExample: 'Periovet Gel, aplicar pequena quantidade diretamente sobre dentes e gengivas, com gaze, dedeira ou escova macia, 1 a 2 vezes ao dia ou conforme orientação veterinária. Não enxaguar. Evitar alimento e água por cerca de 20 a 30 minutos após aplicação quando possível.',
+    prescriptionExample: 'Periovet Gel, aplicar fina camada diretamente sobre dentes e gengivas, com gaze, dedeira ou escova macia, 1 a 2 vezes ao dia por 7 a 14 dias. Não enxaguar e evitar alimento/água por 20 a 30 minutos após aplicação.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 65,00 a R$ 75,00', rangeLabel: 'Gel 25 g; Cobasi/Mercado Livre em torno de R$ 68-70', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4238,7 +4240,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Higienizador oral com clorexidina para cães e gatos; concorrente direto do Periovet spray.',
     reassessment: 'Reavaliar halitose, gengivite e adesão à escovação; não tratar cálculo como apenas mau hálito.',
-    prescriptionExample: 'Oralclin Spray, borrifar diretamente sobre dentes e gengivas, quando necessário, preferencialmente após escovação ou manipulação oral. Não é necessário enxaguar. Usar conforme orientação veterinária.',
+    prescriptionExample: 'Oralclin Spray, borrifar 2 a 4 jatos diretamente sobre dentes e gengivas, 1 a 2 vezes ao dia (preferencialmente após escovação ou manipulação oral), por 7 a 14 dias. Não é necessário enxaguar.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 57,00 a R$ 68,00', rangeLabel: 'Spray 120 mL; Mercado Livre/Lupipet nessa faixa', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4260,7 +4262,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Gel bucal com clorexidina para aplicação direta em cães e gatos.',
     reassessment: 'Reavaliar gengiva, halitose e necessidade de profilaxia odontológica.',
-    prescriptionExample: 'Oralclin Gel, aplicar pequena quantidade diretamente sobre dentes e gengivas, quando necessário, com gaze, dedeira ou escova macia. Não enxaguar. Usar conforme orientação veterinária.',
+    prescriptionExample: 'Oralclin Gel, aplicar fina camada diretamente sobre dentes e gengivas com gaze, dedeira ou escova macia, 1 a 2 vezes ao dia por 7 a 14 dias. Não enxaguar e evitar alimento/água por 20 a 30 minutos.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 50,00 a R$ 65,00', rangeLabel: 'Disponibilidade variável por lançamento; Lupipet/DogCatCompany nessa faixa', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4299,11 +4301,11 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco 50 mL'],
     activeComponents: ['própolis', 'aroma de menta'],
     labelCompositionSummary: 'Produto higienizante bucal descrito com própolis e aroma de menta.',
-    labelDirections: 'Aplicar diretamente na cavidade oral sobre dentes e gengivas conforme rótulo/fabricante.',
+    labelDirections: 'Aplicar diretamente na cavidade oral sobre dentes e gengivas (1 a 2 borrifadas/jatos de cada lado), 1 a 3 vezes ao dia; evitar água e alimento por 30 minutos após o uso.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Controle de halitose e suporte de higiene quando o responsável tem dificuldade com gel/escova.',
     reassessment: 'Se halitose persistir, investigar periodontite, fratura, abscesso, estomatite ou doença sistêmica.',
-    prescriptionExample: 'Espuma Bucal Ibasa, aplicar diretamente na cavidade oral, sobre dentes e gengivas, conforme orientação do rótulo/fabricante, 1 vez ao dia ou conforme necessidade para controle de halitose. Não enxaguar.',
+    prescriptionExample: 'Espuma Bucal Ibasa, aplicar diretamente na cavidade oral, sobre dentes e gengivas (1 a 2 borrifadas de cada lado), 1 vez ao dia (manutenção) ou 2 a 3 vezes ao dia para controle de halitose, sem enxaguar e evitando água/alimento por 30 minutos.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 57,00 a R$ 77,00', rangeLabel: 'Cobasi e Mercado Livre/kits variáveis', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4342,11 +4344,11 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco 250 mL'],
     activeComponents: ['eritritol'],
     labelCompositionSummary: 'Solução para higiene oral diária; página Virbac informa eritritol por 100 mL e foco em combate ao mau hálito.',
-    labelDirections: 'Diluir na água de bebida conforme rótulo e trocar a solução a cada 24 horas.',
+    labelDirections: 'Diluir 5 mL de Aquadent FR3SH em 500 mL de água potável de bebida (proporção 1:100; ou 10 mL em 1 L) diariamente e trocar a solução a cada 24 horas.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Aditivo para água em tutores que não conseguem manipular a boca; depende da ingestão hídrica.',
     reassessment: 'Monitorar consumo de água; se o paciente reduzir ingestão, suspender ou trocar estratégia.',
-    prescriptionExample: 'Aquadent FR3SH, diluir na água de bebida conforme rótulo do fabricante e trocar a solução a cada 24 horas. Manter água fresca disponível e não usar como substituto da escovação dentária.',
+    prescriptionExample: 'Aquadent FR3SH, diluir 5 mL em 500 mL de água de bebida (10 mL em 1 L) diariamente e trocar a solução a cada 24 horas. Manter água fresca disponível e não usar como substituto da escovação dentária.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 145,00 a R$ 170,00', rangeLabel: 'Petlove, Cobasi e Agrosolo nessa faixa para 250 mL', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4384,11 +4386,11 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Spray 100 mL'],
     activeComponents: ['dióxido de cloro estabilizado'],
     labelCompositionSummary: 'Spray bucal com dióxido de cloro estabilizado, voltado a compostos sulfurados voláteis associados à halitose.',
-    labelDirections: 'Borrifar diretamente sobre dentes e gengivas conforme rótulo e necessidade.',
+    labelDirections: 'Borrifar 1 a 2 jatos de cada lado diretamente sobre dentes e gengivas, 1 a 4 vezes ao dia; não precisa enxaguar.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Mau hálito leve e higiene bucal; não tratar como removedor de tártaro.',
     reassessment: 'Se halitose persistir, fazer exame oral completo.',
-    prescriptionExample: 'Dental Splash Spray, borrifar diretamente sobre dentes e gengivas, 1 vez ao dia ou conforme necessidade para controle de halitose. Não enxaguar. Manter escovação regular.',
+    prescriptionExample: 'Dental Splash Spray, borrifar 1 a 2 jatos de cada lado diretamente sobre dentes e gengivas, 1 a 4 vezes ao dia (1x/dia para manutenção; até 3–4x/dia para halitose). Não enxaguar. Manter escovação regular.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 53,00 a R$ 60,00', rangeLabel: 'Amazon/Mercado Livre próximos dessa faixa', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4430,7 +4432,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Gengiva sensível, pós-profilaxia e suporte local; não é pasta dental convencional.',
     reassessment: 'Reavaliar inflamação gengival e dor; investigar doença periodontal se persistente.',
-    prescriptionExample: 'Dental Special Care, aplicar fina camada diretamente na gengiva, 3 a 5 vezes ao dia, massageando suavemente com dedo limpo, gaze ou escova de cerdas macias, conforme orientação veterinária.',
+    prescriptionExample: 'Dental Special Care, aplicar fina camada diretamente na gengiva, 3 a 5 vezes ao dia, massageando suavemente com dedo limpo, gaze ou escova de cerdas macias por 7 a 14 dias.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 45,00 a R$ 70,00', rangeLabel: 'Varia conforme loja', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4498,7 +4500,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Higiene oral/pre e pós-profilaxia, especialmente em cães/gatos difíceis ou quando escovação é inviável.',
     reassessment: 'Reavaliar aceitação e gengivite; manter acompanhamento odontológico.',
-    prescriptionExample: 'MAXI/GUARD Oral Cleansing Gel, preparar conforme rótulo misturando o frasco secundário ao frasco principal. Aplicar 1 vez ao dia nas gengivas dos molares superiores de cada lado. Até 10 kg, aplicar 1 gota em cada lado; acima de 10 kg, aplicar 1 a 2 gotas em cada lado.',
+    prescriptionExample: 'MAXI/GUARD Oral Cleansing Gel, preparar misturando o frasco secundário de vitamina C ao frasco principal. Aplicar 1 vez ao dia nas gengivas dos molares superiores de cada lado: até 10 kg = 1 gota em cada lado; acima de 10 kg = 1 a 2 gotas em cada lado.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 222,00 a R$ 296,00', rangeLabel: 'Cobasi listou R$ 296,50 e compra programada R$ 266,85; faixa varia por loja', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4584,11 +4586,14 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Pó 40 g'],
     activeComponents: ['alga marinha'],
     labelCompositionSummary: 'Suplemento/pó oral derivado de alga marinha para auxiliar placa, cálculo e halitose.',
-    labelDirections: 'Administrar misturado ao alimento 1 vez ao dia, conforme dose do medidor/rótulo para o peso.',
+    labelDirections: 'Administrar misturado ao alimento 1 vez ao dia usando a colher medidora (~0,25 g): cães e gatos até 10 kg = 1/2 a 1 colher (125–250 mg); cães de 10 a 25 kg = 1 a 2 colheres (250–500 mg); cães >25 kg = 2 a 3 colheres (500–750 mg).',
+    dosageGuidance: {
+      labelDose: '1 vez ao dia VO com alimento: até 10 kg = 1/2 a 1 colher dosadora (125–250 mg); 10 a 25 kg = 1 a 2 colheres (250–500 mg); >25 kg = 2 a 3 colheres (500–750 mg).',
+    },
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Auxiliar na redução de halitose, placa bacteriana e tártaro; uso diário.',
     reassessment: 'Reavaliar resultado em 4 a 8 semanas e manter escovação/profilaxia quando indicada.',
-    prescriptionExample: 'PlaqueOff Animal, administrar misturado ao alimento, 1 vez ao dia, conforme dose do medidor/rótulo para o peso do paciente. Não usar em pacientes com hipertireoidismo ou em tratamento para tireoide sem avaliação veterinária.',
+    prescriptionExample: 'PlaqueOff Animal, misturar ao alimento 1 vez ao dia: até 10 kg = 1/2 a 1 colher medidora (0,12–0,25 g); 10 a 25 kg = 1 a 2 colheres (0,25–0,5 g); >25 kg = 2 a 3 colheres (0,5–0,75 g). Contraindicado em pacientes com hipertireoidismo ou em tratamento para tireoide.',
     safetyAlert: 'Não usar em pacientes com hipertireoidismo ou em tratamento para tireoide sem avaliação veterinária. Produto não remove cálculo estabelecido como profilaxia.',
     price: { averageLabel: 'R$ 172,00 a R$ 213,00', rangeLabel: 'Mercado Livre/Petfarma nessa faixa', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4606,11 +4611,11 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução concentrada; rendimento anunciado até 25 L'],
     activeComponents: ['gluconato de clorexidina', 'eritritol', 'aloe vera', 'menta', 'EDTA dissódico'],
     labelCompositionSummary: 'Composição em varejo: água purificada, glicerina, sorbitol, eritritol, aloe vera, menta, gluconato de clorexidina, polissorbato 20, EDTA dissódico e conservantes.',
-    labelDirections: 'Diluir na água de bebida conforme rótulo do fabricante e trocar a solução a cada 24 horas.',
+    labelDirections: 'Diluir 10 mL de BocaHelp em 1 litro de água de bebida (ou 5 mL em 500 mL) diariamente e trocar a solução a cada 24 horas.',
     plumbsContext: DENTAL_HYGIENE_CONTEXT,
     clinicalUse: 'Aditivo/solução para halitose e suporte de higiene oral.',
     reassessment: 'Monitorar consumo hídrico e resposta; confirmar composição do lote.',
-    prescriptionExample: 'BocaHelp, diluir na água de bebida conforme rótulo do fabricante, oferecer diariamente e trocar a solução a cada 24 horas. Não usar como substituto da escovação e da avaliação odontológica.',
+    prescriptionExample: 'BocaHelp, diluir 10 mL em 1 litro de água potável de bebida (5 mL em 500 mL), oferecer diariamente e trocar a solução a cada 24 horas. Não usar como substituto da escovação e da avaliação odontológica.',
     safetyAlert: DENTAL_HYGIENE_ALERT,
     price: { averageLabel: 'R$ 79,90', rangeLabel: 'Amazon/Shopee listaram próximo de R$ 79,90', sourceDate: DENTAL_PRICE_SOURCE_DATE },
     evidenceLevel: 'Fonte oficial promocional; composição detalhada veio de varejo.',
@@ -4655,7 +4660,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Associação antibiótica para estomatites, gengivites, glossites, periodontites e piorreias. A bula recomenda associar remoção de tártaro e limpeza oral meticulosa.',
     clinicalUse: 'Antimicrobiano odontológico sistêmico quando há indicação clínica e necessidade de cobertura anaeróbia.',
     reassessment: 'Reavaliar em 5 a 10 dias; manter por 48 h após melhora conforme bula e tratar causa odontológica.',
-    prescriptionExample: 'Stomorgyl [2, 10 ou 20, conforme peso], administrar por via oral, a cada 24 horas, por 5 a 10 dias. Dose de referência: 1 drágea de Stomorgyl 2 para cada 2 kg, ou 1 drágea de Stomorgyl 10 para cada 10 kg, ou 1 drágea de Stomorgyl 20 para cada 20 kg. Manter por 48 horas após melhora dos sinais, conforme bula e reavaliação.',
+    prescriptionExample: 'Stomorgyl [2, 10 ou 20, conforme o peso], administrar por via oral, a cada 24 horas, por 5 a 10 dias (manter por 48 horas após melhora dos sinais clínicos). Equivalência: 1 drágea de Stomorgyl 2 para cada 2 kg; 1 drágea de Stomorgyl 10 para cada 10 kg; ou 1 drágea de Stomorgyl 20 para cada 20 kg.',
     safetyAlert: DENTAL_ANTIBIOTIC_ALERT,
     price: { averageLabel: 'R$ 118,00 a R$ 256,00', rangeLabel: 'Stomorgyl 2 R$ 118-132; Stomorgyl 10/20 R$ 230-256', sourceDate: DENTAL_PRICE_SOURCE_DATE },
   },
@@ -4695,12 +4700,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Vonau Vet solução oral 5 mg/mL (30 mL)'],
     activeComponents: ['cloridrato de ondansetrona di-hidratado'],
     labelCompositionSummary: 'Ondansetrona 5 mg/mL em solução oral veterinária.',
-    labelDirections: 'Cães: 0,5 a 1 mg/kg VO a cada 12 h, por até 5 dias, conforme bula/rótulo.',
-    dosageGuidance: { labelDose: 'Cães: 0,5 a 1 mg/kg VO q12h por até 5 dias.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q12h', note: 'BSAVA também cita 0,5 a 1 mg/kg VO q12-24h em cães e gatos.' }] } },
+    labelDirections: 'Cães: 0,5 a 1 mg/kg VO a cada 12 horas (equivalente a 0,1 a 0,2 mL/kg da solução 5 mg/mL), por até 5 dias.',
+    dosageGuidance: { labelDose: 'Cães: 0,5 a 1 mg/kg VO q12h por até 5 dias.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q12h', note: 'Também se descreve 0,5 a 1 mg/kg VO q12-24h em cães e gatos conforme resposta.' }] } },
     plumbsContext: 'Ondansetrona é antagonista 5-HT3 útil para náusea forte e vômito refratário; pode reduzir a efetividade do tramadol e exige cautela em hepatopatas e risco de QT.',
     clinicalUse: 'Náusea, vômito refratário ao maropitant, uremia, gastroenterite, quimioterapia e paciente nauseado sem vômito evidente.',
     reassessment: 'Monitorar constipação, salivação, apatia, piora do vômito, dor abdominal e hidratação.',
-    prescriptionExample: 'Vonau Vet 5 mg/mL, administrar por via oral na dose calculada, a cada 12 horas, por até 5 dias ou conforme prescrição.',
+    prescriptionExample: 'Vonau Vet 5 mg/mL, administrar 0,1 a 0,2 mL/kg (0,5 a 1 mg/kg) por via oral, a cada 12 horas, por até 5 dias.',
     safetyAlert: 'Contraindicar em obstrução intestinal suspeita. Cautela em hepatopatia, arritmias, prolongamento de QT, hipocalemia/hipomagnesemia e uso com fármacos serotonérgicos ou que prolongam QT.',
     price: { averageLabel: 'R$ 76 a R$ 102', rangeLabel: 'Vonau Vet 30 mL: Petlove R$ 101,90; recorrência/promocional R$ 76,43 no trecho capturado', sourceDate: '2026-06-07' },
     imageUrl: 'https://amepettatix.vtexassets.com/arquivos/ids/188344-800-450?v=638559755954400000&width=800&height=450&aspect=true'
@@ -4723,7 +4728,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'A bula humana não orienta dose veterinária. Ondansetrona pode ser útil quando náusea persiste apesar de controle do vômito.',
     clinicalUse: 'Alternativa oral humana quando ondansetrona veterinária não está disponível.',
     reassessment: 'Reavaliar se vômito persistente, constipação, apatia ou dor abdominal.',
-    prescriptionExample: 'Vonau Flash [4 mg ou 8 mg], administrar por via oral na dose calculada, a cada 8 a 12 horas, conforme prescrição.',
+    prescriptionExample: 'Vonau Flash [4 mg ou 8 mg], administrar 0,1 a 1 mg/kg (dose usual 0,5 mg/kg) por via oral, a cada 8 a 12 horas, por 3 a 5 dias.',
     safetyAlert: 'Conferir excipientes. Cautela em hepatopatia, arritmias e fármacos que prolongam QT.',
     price: { averageLabel: 'R$ 35 a R$ 47', rangeLabel: 'Vonau Flash 4 mg 10 comp. em varejo humano', sourceDate: '2026-05-28' },
     imageUrl: 'https://pfarma.com.br/images/noticias/vonau-flash-biolab-usp.jpg'
@@ -4741,12 +4746,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Nausetrat Oral solução 20 mL'],
     activeComponents: ['cloridrato de metoclopramida'],
     labelCompositionSummary: 'Metoclopramida oral para cães e gatos.',
-    labelDirections: 'Administrar por via oral. Referência de bula/página: 1 a 4 gotas/kg, equivalente a 0,1 a 0,4 mg/kg, podendo repetir conforme prescrição.',
+    labelDirections: 'Cães e gatos: administrar 1 a 4 gotas/kg VO a cada 8 horas (equivalente a 0,1 a 0,4 mg/kg VO q8h; literatura 0,1 a 0,5 mg/kg VO q6–8h).',
     dosageGuidance: { labelDose: 'Cães e gatos: 0,1 a 0,4 mg/kg VO, geralmente q8h.', plumbs: { dog: [{ title: 'Procinético/antiemético', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Usar quando houver componente de hipomotilidade.' }], cat: [{ title: 'Procinético/antiemético', dose: '0,1 a 0,5 mg/kg VO q6-8h', note: 'Eficácia antiemética felina pode ser limitada.' }] } },
     plumbsContext: 'Metoclopramida é mais útil em hipomotilidade, refluxo/regurgitação e retardo de esvaziamento gástrico.',
     clinicalUse: 'Náusea/vômito com suspeita de estase gástrica, refluxo e gastroparesia selecionada.',
     reassessment: 'Suspender e reavaliar se houver tremores, agitação, sonolência intensa, piora do vômito ou suspeita de obstrução.',
-    prescriptionExample: 'Nausetrat Oral, administrar por via oral na dose calculada, a cada 8 horas ou conforme prescrição.',
+    prescriptionExample: 'Nausetrat Oral, administrar 1 a 4 gotas/kg (0,1 a 0,4 mg/kg) por via oral, a cada 8 horas, por 3 a 5 dias.',
     safetyAlert: 'Contraindicado em obstrução/perfuração/hemorragia gastrointestinal e epilepsia.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado em grandes varejos', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
     imageUrl: 'https://ucbvet.com/wp-content/uploads/2025/10/nausetrat-or-20.png'
@@ -4787,7 +4792,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Gaviz V 5 mg', 'Gaviz V 10 mg', 'Gaviz V 20 mg'],
     activeComponents: ['omeprazol'],
     labelCompositionSummary: 'Omeprazol 5, 10 ou 20 mg por comprimido.',
-    labelDirections: 'Cães e gatos: aproximadamente 0,7 a 1 mg/kg VO a cada 24 h; 5 mg/5 kg, 10 mg/10 kg ou 20 mg/20 kg, por 10 a 14 dias ou conforme bula/prescrição.',
+    labelDirections: 'Cães e gatos: aproximadamente 0,7 a 1 mg/kg VO a cada 24 h (5 mg para 5 kg; 10 mg para 10 kg; 20 mg para 20 kg), por 10 a 14 dias.',
     dosageGuidance: { labelDose: 'Cães e gatos: ~1 mg/kg VO SID por bula.', plumbs: { dog: [{ title: 'Úlcera/esofagite', dose: '1 mg/kg VO SID; em casos graves pode ser BID', note: 'Não triturar pellets gastroresistentes quando aplicável.' }], cat: [{ title: 'Úlcera/esofagite', dose: '0,7 a 1 mg/kg VO SID', note: 'Usar dose de bula e reavaliar resposta.' }] } },
     plumbsContext: 'IBP mais potente que bloqueadores H2 para elevar pH gástrico; esofagite grave/úlcera ativa pode exigir BID e reavaliação.',
     clinicalUse: 'Esofagite, úlcera, gastrite erosiva, refluxo e lesão ácido-péptica.',
@@ -4881,10 +4886,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Adsorvente oral em sachê para diluição em água.',
     labelDirections: 'Diluir 1 sachê em 40 mL de água. Diarreia/gastroenterite até 20 kg: 40 mL q8-12h. Intoxicações até 20 kg: 80 mL q4-6h até melhora clínica.',
     dosageGuidance: { labelDose: 'Até 20 kg: 40 mL q8-12h para diarreia; 80 mL q4-6h em intoxicações.', plumbs: { dog: [{ title: 'Diarreia/gastroenterite', dose: '1 sachê em 40 mL; administrar 40 mL q8-12h', note: 'Dose de bula.' }], cat: [{ title: 'Diarreia/gastroenterite', dose: '1 sachê em 40 mL; administrar 40 mL q8-12h', note: 'Dose de bula para animais até 20 kg.' }] } },
-    plumbsContext: 'Produto sem monografia Plumb’s própria; seguir dose de bula como adsorvente intestinal.',
+    plumbsContext: 'Produto sem posologia veterinária padronizada única; seguir dose de bula como adsorvente intestinal.',
     clinicalUse: 'Diarreia aguda leve/moderada, toxinas entéricas, ingestão alimentar inadequada e suporte em intoxicação oral orientada.',
     reassessment: 'Reavaliar se vômito persistente, sangue, melena, febre, dor abdominal ou desidratação.',
-    prescriptionExample: 'Enterex sachê 8 g, diluir em 40 mL de água e administrar conforme prescrição, separando de outros medicamentos.',
+    prescriptionExample: 'Enterex sachê 8 g: diluir 1 sachê em 40 mL de água. Diarreia/gastroenterite (cães e gatos até 20 kg): administrar 40 mL (2 mL/kg) VO a cada 8 a 12 horas; intoxicações até 20 kg: 80 mL (4 mL/kg; 2 sachês em 80 mL) VO a cada 4 a 6 horas. Separar pelo menos 2 horas de outros medicamentos.',
     safetyAlert: 'Pode reduzir absorção de outros fármacos; separar por pelo menos 2 horas.',
     price: { averageLabel: 'R$ 17 a R$ 20', rangeLabel: 'Sachê 8 g', sourceDate: '2026-05-28' },
     imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/enterex-r-pet.webp'
@@ -4904,10 +4909,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Simbiótico com cepas probióticas, prebióticos FOS/MOS, vitaminas B e eletrólitos.',
     labelDirections: 'Comprimidos: 1 comprimido/10 kg/dia, dividido em 2 administrações, por pelo menos 10 dias.',
     dosageGuidance: { labelDose: 'Cães e gatos: 1 comp/10 kg/dia dividido BID por pelo menos 10 dias.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: '1 comp/10 kg/dia dividido BID', note: 'Dose de fabricante.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Dose proporcional por peso; dividir em 2 administrações', note: 'Usar como adjuvante.' }] } },
-    plumbsContext: 'Probióticos dependem de cepa, UFC e qualidade do produto; não há dose Plumb’s universal.',
+    plumbsContext: 'Probióticos dependem de cepa, UFC e qualidade do produto; não há dose universal única.',
     clinicalUse: 'Diarreia leve, disbiose, pós-antibiótico, troca alimentar e suporte em enteropatia crônica.',
     reassessment: 'Reavaliar fezes, apetite, hidratação e sinais sistêmicos.',
-    prescriptionExample: 'Florentero ACT, administrar por via oral conforme peso, dividindo a dose diária em duas administrações.',
+    prescriptionExample: 'Florentero ACT: comprimidos — administrar 1 comprimido para cada 10 kg por via oral ao dia, dividido em duas administrações (BID), por pelo menos 10 dias; pasta — administrar 1 mL para cada 3,5 kg/dia dividido BID.',
     safetyAlert: 'Adjuvante; cautela em imunossupressão intensa, sepse ou barreira intestinal gravemente comprometida.',
     price: { averageLabel: 'R$ 58 a R$ 65', rangeLabel: '10 comprimidos ou pasta 12 g', sourceDate: '2026-05-28' },
     imageUrl: 'https://acdn-us.mitiendanube.com/stores/006/374/568/products/1683827141132-2ne8fc33tj-c130f0a98a625825b417606716205317-1024-1024.webp'
@@ -4950,10 +4955,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento nutricional/prebiótico com vitaminas, aminoácidos, FOS, MOS e leveduras.',
     labelDirections: 'Cães: 2,5 g/10 kg SID misturado ao alimento. Gatos: 1 g SID.',
     dosageGuidance: { labelDose: 'Cães: 2,5 g/10 kg SID. Gatos: 1 g SID.', plumbs: { dog: [{ title: 'Suporte digestivo', dose: '2,5 g/10 kg VO SID', note: 'Misturar ao alimento.' }], cat: [{ title: 'Suporte digestivo', dose: '1 g/gato VO SID', note: 'Misturar ao alimento.' }] } },
-    plumbsContext: 'Suplemento adjuvante; não há dose Plumb’s universal para a marca.',
+    plumbsContext: 'Suplemento adjuvante; não há dose universal padronizada para a marca.',
     clinicalUse: 'Suporte de digestibilidade, microbiota, troca alimentar e convalescença.',
     reassessment: 'Reavaliar fezes e aceitação alimentar.',
-    prescriptionExample: 'Organew Pet, misturar ao alimento uma vez ao dia conforme peso/espécie.',
+    prescriptionExample: 'Organew Pet, misturar ao alimento 1 vez ao dia: cães — 2,5 g para cada 10 kg de peso; gatos — 1 g por animal.',
     safetyAlert: 'Suplemento, não tratamento único para diarreia grave ou doença sistêmica.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-05-28', notes: 'Dados incompletos' },
     imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/Organew_100g_site_V2.png'
@@ -5077,10 +5082,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento hepatoprotetor/metabólico com aminoácidos, colina, silimarina, vitaminas e minerais.',
     labelDirections: 'Comprimidos: cães 1 comp/10 kg/dia; gatos filhotes 1/4 comp/dia; gatos adultos 1/2 comp/dia. Suspensão: cães e gatos 0,2 mL/kg/dia.',
     dosageGuidance: { labelDose: 'Cães: 1 comp/10 kg SID ou 0,2 mL/kg SID. Gatos: 1/4 a 1/2 comp SID ou 0,2 mL/kg SID.', plumbs: { dog: [{ title: 'Suporte hepático', dose: '1 comp/10 kg SID ou 0,2 mL/kg SID', note: 'Dose de fabricante.' }], cat: [{ title: 'Suporte hepático', dose: 'Filhote 1/4 comp; adulto 1/2 comp SID; ou 0,2 mL/kg SID', note: 'Dose de fabricante.' }] } },
-    plumbsContext: 'Produto sem dose Plumb’s própria; antioxidantes/hepatoprotetores são adjuvantes e não substituem diagnóstico.',
+    plumbsContext: 'Produto sem posologia padronizada própria; antioxidantes/hepatoprotetores são adjuvantes e não substituem diagnóstico.',
     clinicalUse: 'Suporte em hepatopatias leves/moderadas, colestase em conjunto com tratamento principal e convalescença.',
     reassessment: 'Reavaliar enzimas, apetite, vômito, icterícia, dor abdominal e coagulopatia conforme caso.',
-    prescriptionExample: 'Hepvet [comprimido ou suspensão], administrar por via oral conforme peso e apresentação, uma vez ao dia.',
+    prescriptionExample: 'Hepvet: comprimidos — cães 1 comprimido/10 kg VO SID (máx. 4 cp/dia); gatos filhotes 1/4 cp VO SID e adultos 1/2 cp VO SID. Suspensão — cães e gatos 0,2 mL/kg VO SID.',
     safetyAlert: 'Não manejar icterícia, vômito persistente, dor abdominal ou suspeita de obstrução só com hepatoprotetor.',
     price: { averageLabel: 'R$ 104 a R$ 138', rangeLabel: 'Suspensão 60 mL; comprimidos cerca de R$ 127', sourceDate: '2026-05-28' },
     imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/hepvet-r_63e664a52d752.webp'
@@ -5121,12 +5126,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Mirtz 2 mg (12 comprimidos)'],
     activeComponents: ['mirtazapina'],
     labelCompositionSummary: 'Mirtazapina 2 mg por comprimido para gatos.',
-    labelDirections: 'Gatos: 1 comprimido VO a cada 48 horas, por até 3 semanas ou conforme critério veterinário.',
+    labelDirections: 'Gatos: 1 comprimido (2 mg) por gato VO a cada 48 horas, por até 3 semanas (em DRC ou hepatopatia, avaliar espaçamento para 48–72 horas se houver agitação/vocalização).',
     dosageGuidance: { labelDose: 'Gatos: 2 mg/gato VO q48h por até 3 semanas.', plumbs: { cat: [{ title: 'Hiporexia/anorexia', dose: '2 mg/gato VO q48h', note: 'Apresentação felina evita superdosagem de comprimidos humanos.' }] } },
     plumbsContext: 'Mirtazapina é orexígena e pode auxiliar náusea; gatos modernos usam doses menores/intervalos maiores que protocolos antigos, especialmente em DRC/hepatopatia.',
     clinicalUse: 'Gato hiporéxico/anoréxico após controlar náusea, dor, desidratação e causa primária.',
     reassessment: 'Monitorar vocalização, agitação, tremores, taquicardia, vômitos, salivação e comportamento.',
-    prescriptionExample: 'Mirtz 2 mg, administrar 1 comprimido por via oral a cada 48 horas, por até 3 semanas ou conforme prescrição.',
+    prescriptionExample: 'Mirtz 2 mg, administrar 1 comprimido por via oral a cada 48 horas, por até 3 semanas.',
     safetyAlert: 'Não usar como atalho em gato instável, desidratado, obstruído ou com dor/náusea sem controle. Cautela em hepatopatas, nefropatas e serotonérgicos.',
     price: { averageLabel: 'R$ 74 a R$ 120', rangeLabel: 'Mirtz 2 mg 12 comprimidos', sourceDate: '2026-05-28' },
     imageUrl: 'https://www.petlove.com.br/images/products/251641/product/Orex%C3%ADgeno_Mirtz_Mirtazapina_Agener_Uni%C3%A3o_para_Gatos_-_12_Comprimidos.jpg?1770885088'
@@ -5145,7 +5150,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['1,25 mg, 50 comprimidos mastigáveis', '5 mg, 50 comprimidos mastigáveis'],
     activeComponents: ['pimobendan 1,25 mg/comprimido', 'pimobendan 5 mg/comprimido'],
     labelCompositionSummary: 'Comprimidos mastigáveis sulcados para cães contendo pimobendan 1,25 mg ou 5 mg por comprimido.',
-    labelDirections: 'Plumb’s: cães com ICC por DCM/DMVM, 0,5 mg/kg/dia VO dividido em 2 administrações, arredondando para a apresentação mais próxima; em B2/DMVM, estudos usam 0,4 a 0,6 mg/kg/dia dividido a cada 12 h. Em gatos, uso extra-bula e seletivo, geralmente associado a furosemida e/ou IECA quando indicado.',
+    labelDirections: 'Cães com ICC por DCM/DMVM, 0,5 mg/kg/dia VO dividido em 2 administrações, arredondando para a apresentação mais próxima; em B2/DMVM, estudos usam 0,4 a 0,6 mg/kg/dia dividido a cada 12 h. Em gatos, uso extra-bula e seletivo, geralmente associado a furosemida e/ou IECA quando indicado.',
     dosageGuidance: {
       labelDose: 'Cães: 0,5 mg/kg/dia VO, dividido em 2 administrações, preferencialmente cerca de 1 hora antes do alimento.',
       plumbs: {
@@ -5205,7 +5210,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['2,5 mg/20 mg para 5 a 10 kg', '5 mg/40 mg para 10 a 20 kg', '10 mg/80 mg para 20 a 40 kg'],
     activeComponents: ['cloridrato de benazepril', 'espironolactona'],
     labelCompositionSummary: 'Associação fixa: benazepril 2,5/5/10 mg + espironolactona 20/40/80 mg por comprimido, conforme apresentação.',
-    labelDirections: 'Plumb’s: Cardalis em cães com ICC por AVVI/DMVM, espironolactona 2 mg/kg + benazepril 0,25 mg/kg VO a cada 24 h. Administrar com alimento e monitorar função renal, eletrólitos e pressão.',
+    labelDirections: 'Cardalis em cães com ICC por AVVI/DMVM, espironolactona 2 mg/kg + benazepril 0,25 mg/kg VO a cada 24 h. Administrar com alimento e monitorar função renal, eletrólitos e pressão.',
     dosageGuidance: {
       labelDose: 'Cães: espironolactona 2 mg/kg + benazepril 0,25 mg/kg VO a cada 24 h, junto ao alimento.',
       plumbs: {
@@ -5218,7 +5223,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: CARDIOLOGY_CONTEXT,
     clinicalUse: 'ICC por doença degenerativa crônica valvular em cães quando a associação IECA + espironolactona é desejada, com suporte diurético conforme necessário.',
     reassessment: 'Reavaliar ureia, creatinina, potássio, sódio, pressão arterial, apetite, vômitos, diarreia, letargia e frequência respiratória em repouso.',
-    prescriptionExample: 'Cardalis [apresentação conforme peso], administrar [1/2 ou 1 comprimido] por via oral a cada 24 horas, junto ao alimento, uso contínuo conforme acompanhamento cardiológico.',
+    prescriptionExample: 'Cardalis (espironolactona 2 mg/kg + benazepril 0,25 mg/kg VO SID — 1 cp de 2,5/20 mg para 5–10 kg; 5/40 mg para 10–20 kg; 10/80 mg para 20–40 kg), administrar 1 vez ao dia junto ao alimento, em uso contínuo.',
     safetyAlert: CARDIO_RENAL_MONITORING_ALERT,
     price: { averageLabel: 'R$ 175,00 a R$ 300,00', rangeLabel: '2,5/20 mg cerca de R$ 132,90-205,99; 5/40 mg cerca de R$ 284,69-316,32', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
@@ -5236,7 +5241,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['0,75 mg, 30 comprimidos', '3 mg, 30 comprimidos', '7,5 mg, 100 comprimidos', '18 mg, conforme RCM europeu'],
     activeComponents: ['torasemida 0,75 mg/comprimido', 'torasemida 3 mg/comprimido', 'torasemida 7,5 mg/comprimido', 'torasemida 18 mg/comprimido'],
     labelCompositionSummary: 'Diurético de alça oral à base de torasemida, comprimidos palatáveis divisíveis conforme apresentação.',
-    labelDirections: 'Plumb’s: cães/gatos, dose inicial 0,1 a 0,3 mg/kg VO a cada 24 h. Ao substituir furosemida, iniciar com cerca de 5% a 10% da dose diária total de furosemida, pois torasemida é aproximadamente 10 a 20 vezes mais potente.',
+    labelDirections: 'Cães e gatos: dose inicial 0,1 a 0,3 mg/kg VO a cada 24 h. Ao substituir furosemida, iniciar com cerca de 5% a 10% da dose diária total de furosemida, pois torasemida é aproximadamente 10 a 20 vezes mais potente.',
     dosageGuidance: {
       labelDose: 'Cães: 0,1 a 0,6 mg/kg VO SID; a maioria estabiliza com ≤ 0,3 mg/kg SID. Titular em incrementos de 0,1 mg/kg conforme congestão, função renal e eletrólitos.',
       plumbs: {
@@ -5249,7 +5254,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: CARDIOLOGY_CONTEXT,
     clinicalUse: 'Controle de sinais congestivos, edema e derrame relacionados à ICC em cães; útil em congestão refratária ou substituição planejada de furosemida.',
     reassessment: 'Reavaliar desde 24-48 h após início ou ajuste de dose quando possível: hidratação, pressão arterial, ureia, creatinina, eletrólitos, apetite, vômitos e diarreia.',
-    prescriptionExample: 'UpCard [0,75 mg, 3 mg ou 7,5 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, conforme prescrição. Usar a menor dose eficaz para manter conforto respiratório e controle de congestão.',
+    prescriptionExample: 'UpCard [0,75 mg, 3 mg ou 7,5 mg]: administrar 0,1 a 0,3 mg/kg (máx. 0,6 mg/kg/dia) por via oral a cada 24 horas (na troca da furosemida, iniciar com 5% a 10% da dose diária total de furosemida), mantendo a menor dose eficaz para conforto respiratório.',
     safetyAlert: 'Não associar automaticamente a outro diurético de alça. Evitar em insuficiência renal grave, anúria, desidratação grave, hipovolemia, hipotensão ou distúrbio eletrolítico não corrigido.',
     price: { averageLabel: 'R$ 100,00 a R$ 180,00', rangeLabel: 'Faixa inicial para 0,75 a 3 mg; preço brasileiro com confiança moderada/baixa', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
@@ -5267,7 +5272,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['10 mg/comprimido', '20 mg/comprimido', '40 mg/comprimido', '80 mg/comprimido'],
     activeComponents: ['furosemida'],
     labelCompositionSummary: 'A página oficial informa furosemida 10 g/100 g; apresentações equivalentes a 10, 20, 40 e 80 mg por comprimido conforme peso do comprimido.',
-    labelDirections: 'Plumb’s: cães, edema/ICC 2,2 a 5,5 mg/kg VO, IV ou IM 1 a 2 vezes ao dia, ajustando resposta; edema cardiogênico grave 1 a 3 mg/kg IV/IM/SC, repetir a cada 1 a 2 h até melhorar respiração e reduzir fortemente depois. Gatos em CHF oral variam muito: menor dose eficaz, de 1 mg/kg VO a cada 2 a 3 dias até 2 mg/kg VO a cada 8 a 12 h na maioria dos casos.',
+    labelDirections: 'Cães: edema/ICC 2,2 a 5,5 mg/kg VO, IV ou IM 1 a 2 vezes ao dia, ajustando resposta; edema cardiogênico grave 1 a 3 mg/kg IV/IM/SC, repetir a cada 1 a 2 h até melhorar respiração e reduzir fortemente depois. Gatos em CHF oral variam muito: menor dose eficaz, de 1 mg/kg VO a cada 2 a 3 dias até 2 mg/kg VO a cada 8 a 12 h na maioria dos casos.',
     dosageGuidance: {
       labelDose: 'Cães e gatos: 2 a 6 mg/kg VO. Cães: 2 a 3 vezes/dia por 7 dias (2 mg/kg pode ir até 15 dias). Gatos: 3 vezes/dia por 7 dias.',
       plumbs: {
@@ -5302,7 +5307,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oral 4 mg/mL, frasco 30 mL com seringa dosadora'],
     activeComponents: ['telmisartana 4 mg/mL'],
     labelCompositionSummary: 'Solução oral para gatos contendo telmisartana 4 mg/mL.',
-    labelDirections: 'Plumb’s: gatos hipertensos, 1,5 mg/kg VO a cada 12 h por 14 dias, depois 2 mg/kg VO a cada 24 h, reduzindo em incrementos de 0,5 mg/kg se houver hipotensão; proteinúria por DRC em gatos, 1 mg/kg VO a cada 24 h. Cães com proteinúria/hipertensão: 1 mg/kg VO a cada 24 h, podendo titular até 3 mg/kg SID em proteinúria persistente.',
+    labelDirections: 'Gatos hipertensos, 1,5 mg/kg VO a cada 12 h por 14 dias, depois 2 mg/kg VO a cada 24 h, reduzindo em incrementos de 0,5 mg/kg se houver hipotensão; proteinúria por DRC em gatos, 1 mg/kg VO a cada 24 h. Cães com proteinúria/hipertensão: 1 mg/kg VO a cada 24 h, podendo titular até 3 mg/kg SID em proteinúria persistente.',
     dosageGuidance: {
       labelDose: 'Gatos (DRC/proteinúria): 1 mg/kg VO SID (0,25 mL/kg da solução 4 mg/mL). Agitar antes do uso; medir com seringa dosadora.',
       plumbs: {
@@ -5315,7 +5320,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'ARB para redução de proteinúria associada à DRC em gatos e interface cardiorrenal. Não é cardiotônico; em hipertensão clinicamente relevante, amlodipina costuma ser primeira linha.',
     clinicalUse: 'Gatos com DRC/proteinúria e cenários cardiorrenais selecionados, com monitoramento de pressão e função renal.',
     reassessment: 'Monitorar pressão arterial, apetite, peso, hidratação, ureia, creatinina, potássio e relação proteína:creatinina urinária.',
-    prescriptionExample: 'Semintra 4 mg/mL, administrar por via oral na dose calculada pelo peso, a cada 24 horas, conforme prescrição. Agitar antes do uso e medir com seringa dosadora.',
+    prescriptionExample: 'Semintra 4 mg/mL: proteinúria por DRC em gatos — 1 mg/kg (0,25 mL/kg) VO a cada 24 horas; hipertensão felina — 1,5 mg/kg VO q12h por 14 dias seguido de 2 mg/kg VO q24h. Agitar antes do uso e medir com seringa dosadora.',
     safetyAlert: CARDIO_RENAL_MONITORING_ALERT,
     price: { averageLabel: 'R$ 260,00 a R$ 285,00', rangeLabel: 'Frasco 30 mL; Petlove/Cobasi em torno de R$ 242-302 conforme promoção', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
@@ -5333,7 +5338,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Cápsula/comprimido 5 mg', 'Cápsula/comprimido 10 mg', 'Suspensão manipulada com concentração variável'],
     activeComponents: ['cloridrato de benazepril'],
     labelCompositionSummary: 'IECA de uso humano ou manipulado veterinário; concentração varia conforme farmácia/prescrição.',
-    labelDirections: 'Plumb’s: cães, iniciar 0,25 a 0,5 mg/kg VO a cada 24 h; em ICC pode ser usado com furosemida, pimobendan e espironolactona, e alguns casos usam divisão a cada 12 h. Proteinúria em cães: 0,5 mg/kg VO SID, titulando conforme RPCU até cerca de 2 mg/kg/dia. Gatos hipertensos/proteinúricos: pode ser adjuvante, incluindo 0,5 mg/kg VO a cada 12 h quando amlodipina isolada não controla ou há proteinúria.',
+    labelDirections: 'Cães: iniciar 0,25 a 0,5 mg/kg VO a cada 24 h; em ICC pode ser usado com furosemida, pimobendan e espironolactona, e alguns casos usam divisão a cada 12 h. Proteinúria em cães: 0,5 mg/kg VO SID, titulando conforme RPCU até cerca de 2 mg/kg/dia. Gatos hipertensos/proteinúricos: pode ser adjuvante, incluindo 0,5 mg/kg VO a cada 12 h quando amlodipina isolada não controla ou há proteinúria.',
     dosageGuidance: {
       labelDose: 'Extra-bula — Cães: 0,25 a 0,5 mg/kg VO SID; proteinúria 0,5 mg/kg VO SID (titular até ~2 mg/kg/dia). Gatos: 0,5 mg/kg VO q12h quando indicado.',
       plumbs: {
@@ -5349,7 +5354,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: CARDIOLOGY_CONTEXT,
     clinicalUse: 'Adjuvante em ICC em cães, proteinúria/glomerulopatia, hipertensão sistêmica como terapia combinada e DRC/proteinúria em gatos selecionados.',
     reassessment: 'Checar pressão arterial, ureia, creatinina e potássio após início e ajustes, especialmente se houver diurético, espironolactona ou ARB.',
-    prescriptionExample: 'Benazepril [concentração], administrar por via oral na dose calculada pelo peso, a cada 24 horas ou conforme prescrição, com monitoramento de pressão arterial, ureia, creatinina e potássio.',
+    prescriptionExample: 'Benazepril [5 mg ou 10 mg]: cães — iniciar 0,25 a 0,5 mg/kg VO a cada 24 horas (em proteinúria, 0,5 mg/kg SID titulando até ~2 mg/kg/dia); gatos — 0,5 mg/kg VO q12h como adjuvante, com monitoramento de PA, ureia, creatinina e potássio.',
     safetyAlert: CARDIO_RENAL_MONITORING_ALERT,
     price: { averageLabel: 'R$ 58,00', rangeLabel: '30 cápsulas manipuladas 5 mg: R$ 45,00 a R$ 75,00', sourceDate: '2026-09-06' },
     evidenceLevel: 'Produto manipulado/uso humano; imagem ilustrativa CC0 de benazepril veterinário 5 mg, não de marca brasileira industrial.',
@@ -5368,7 +5373,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Genérico humano 5 mg', 'Pressat 2,5 mg', 'Manipulado veterinário com concentração variável'],
     activeComponents: ['besilato de anlodipino / amlodipina'],
     labelCompositionSummary: 'Bloqueador de canal de cálcio diidropiridínico; apresentações humanas comuns de 2,5 mg e 5 mg, além de manipulado para doses pequenas.',
-    labelDirections: 'Plumb’s: cães hipertensos, 0,1 a 0,25 mg/kg VO a cada 24 h, iniciando no limite baixo; emergência hipertensiva 0,2 a 0,4 mg/kg VO a cada 24 h, podendo chegar a 0,6 mg/kg com monitoramento. Gatos hipertensos: iniciar 0,625 mg/gato VO SID; usual 0,625 a 1,25 mg/gato SID, podendo aumentar até 2,5 mg/gato SID se PA seguir elevada.',
+    labelDirections: 'Cães hipertensos, 0,1 a 0,25 mg/kg VO a cada 24 h, iniciando no limite baixo; emergência hipertensiva 0,2 a 0,4 mg/kg VO a cada 24 h, podendo chegar a 0,6 mg/kg com monitoramento. Gatos hipertensos: iniciar 0,625 mg/gato VO SID; usual 0,625 a 1,25 mg/gato SID, podendo aumentar até 2,5 mg/gato SID se PA seguir elevada.',
     dosageGuidance: {
       labelDose: 'Extra-bula — Cães: 0,1 a 0,25 mg/kg VO SID (emergência até 0,4–0,6 mg/kg). Gatos: iniciar 0,625 mg/gato VO SID; usual 0,625 a 1,25 mg/gato SID; titular até 2,5 mg/gato SID.',
       plumbs: {
@@ -5403,7 +5408,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Genérico humano 75 mg/comprimido', 'Plavix 75 mg/comprimido', 'Manipulado veterinário com concentração variável'],
     activeComponents: ['bissulfato de clopidogrel 75 mg/comprimido'],
     labelCompositionSummary: 'Antiagregante plaquetário P2Y12, apresentação humana comum de 75 mg; em gatos geralmente exige fracionamento ou manipulação.',
-    labelDirections: 'Plumb’s: cães antiagregante, 1 a 4 mg/kg VO a cada 24 h; pode considerar dose de ataque de 4 a 10 mg/kg no primeiro dia. Gatos com ATE: ataque 37,5 a 75 mg/gato VO uma vez após diagnóstico; manutenção 18,75 mg/gato VO a cada 24 h. Sabor muito amargo, considerar cápsula gelatinosa.',
+    labelDirections: 'Cães (antiagregante):, 1 a 4 mg/kg VO a cada 24 h; pode considerar dose de ataque de 4 a 10 mg/kg no primeiro dia. Gatos com ATE: ataque 37,5 a 75 mg/gato VO uma vez após diagnóstico; manutenção 18,75 mg/gato VO a cada 24 h. Sabor muito amargo, considerar cápsula gelatinosa.',
     dosageGuidance: {
       labelDose: 'Extra-bula — Cães: 1 a 4 mg/kg VO SID. Gatos (ATE): ataque 37,5 a 75 mg/gato VO uma vez; manutenção 18,75 mg/gato VO SID (1/4 de comp. 75 mg).',
       plumbs: {
@@ -5437,7 +5442,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Genérico humano 25 mg', 'Genérico humano 50 mg', 'Genérico humano 100 mg', 'Manipulado com concentração variável'],
     activeComponents: ['citrato de sildenafila'],
     labelCompositionSummary: 'Inibidor de fosfodiesterase tipo 5, vasodilatador pulmonar; apresentações humanas comuns 25, 50 e 100 mg.',
-    labelDirections: 'Plumb’s: cães com hipertensão pulmonar, iniciar 0,5 a 1 mg/kg VO a cada 8 h e titular conforme sinais clínicos até 3 mg/kg VO a cada 8 h. Gatos: evidência limitada a casos selecionados, com relato de 0,25 a 1,6 mg/kg VO a cada 12 h para hipertensão pulmonar associada a síndrome de Eisenmenger.',
+    labelDirections: 'Cães com hipertensão pulmonar:, iniciar 0,5 a 1 mg/kg VO a cada 8 h e titular conforme sinais clínicos até 3 mg/kg VO a cada 8 h. Gatos: evidência limitada a casos selecionados, com relato de 0,25 a 1,6 mg/kg VO a cada 12 h para hipertensão pulmonar associada a síndrome de Eisenmenger.',
     dosageGuidance: {
       labelDose: 'Extra-bula — Cães (hipertensão pulmonar): 0,5 a 1 mg/kg VO q8h para iniciar; titular até 3 mg/kg VO q8h. Gatos: 0,25 a 1,6 mg/kg VO q12h em casos selecionados.',
       plumbs: {
@@ -5453,7 +5458,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Vasodilatador pulmonar para hipertensão pulmonar confirmada ou fortemente suspeita por ecocardiografia; não é medicação para sopro.',
     clinicalUse: 'Hipertensão pulmonar em cães, especialmente com síncope, intolerância ao exercício ou cor pulmonale, após investigação da causa.',
     reassessment: 'Monitorar pressão arterial, síncopes, tolerância ao exercício, frequência respiratória, vômitos, apatia e sinais de hipotensão.',
-    prescriptionExample: 'Sildenafila [concentração], administrar por via oral na dose calculada pelo peso, a cada 8 a 12 horas conforme prescrição, para manejo de hipertensão pulmonar.',
+    prescriptionExample: 'Sildenafila [25 mg, 50 mg ou manipulado]: cães — iniciar 0,5 a 1 mg/kg VO a cada 8 horas, podendo titular até 3 mg/kg VO q8h; gatos selecionados — 0,25 a 1,6 mg/kg VO a cada 12 horas.',
     safetyAlert: 'Bloquear associação com nitratos, como nitroglicerina ou isossorbida, por risco de hipotensão grave. Cuidado com alfa-bloqueadores, amlodipina, telmisartana, diuréticos, azóis, macrolídeos, cimetidina e fenobarbital.',
     price: { averageLabel: 'R$ 22,00 a R$ 70,00', rangeLabel: 'Genérico 25 mg com 4 comprimidos cerca de R$ 22-30; Viagra 25 mg pode ficar perto de R$ 70', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
@@ -5472,7 +5477,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Genérico humano 25 mg', 'Genérico humano 50 mg', 'Genérico humano 100 mg', 'Manipulado veterinário com concentração variável'],
     activeComponents: ['atenolol'],
     labelCompositionSummary: 'Beta-bloqueador beta-1 seletivo de uso humano/manipulado em cães e gatos conforme indicação cardiológica.',
-    labelDirections: 'Plumb’s: cães, beta-bloqueio para taquiarritmias/doença obstrutiva 0,25 a 1,5 mg/kg VO a cada 12 h, iniciando baixo e titulando. Boxer cardiomyopathy/ARVC: 0,3 a 0,6 mg/kg VO a cada 12 h associado a mexiletina. Gatos: iniciar 6,25 mg/gato VO a cada 12 h e titular; hipertireoidismo com taquicardia 1 a 2 mg/kg VO a cada 12 h. Ajustar em DRC felina conforme estágio IRIS.',
+    labelDirections: 'Cães: betabloqueio para taquiarritmias/doença obstrutiva 0,25 a 1,5 mg/kg VO a cada 12 h, iniciando baixo e titulando. Boxer cardiomyopathy/ARVC: 0,3 a 0,6 mg/kg VO a cada 12 h associado a mexiletina. Gatos: iniciar 6,25 mg/gato VO a cada 12 h e titular; hipertireoidismo com taquicardia 1 a 2 mg/kg VO a cada 12 h. Ajustar em DRC felina conforme estágio IRIS.',
     dosageGuidance: {
       labelDose: 'Extra-bula — Cães: 0,25 a 1,5 mg/kg VO q12h. Gatos: iniciar 6,25 mg/gato VO q12h; hipertireoidismo com taquicardia 1 a 2 mg/kg VO q12h.',
       plumbs: {
@@ -5489,7 +5494,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Beta-bloqueador para taquiarritmias supraventriculares, controle de frequência e obstrução dinâmica selecionada. Não iniciar em ICC descompensada ou baixo débito sem cardiologia.',
     clinicalUse: 'Arritmias, HCM obstrutiva felina selecionada, taquicardia/hipertensão em cenários específicos e sempre com monitoramento.',
     reassessment: 'Monitorar frequência cardíaca, pressão arterial, prostração, síncope, fraqueza, dispneia e piora de congestão.',
-    prescriptionExample: 'Atenolol [25 mg ou manipulado], administrar por via oral na dose prescrita, a cada 12 ou 24 horas conforme orientação cardiológica. Monitorar frequência cardíaca e pressão arterial.',
+    prescriptionExample: 'Atenolol [25 mg ou manipulado]: cães — iniciar 0,25 a 0,5 mg/kg VO a cada 12 horas e titular até 1,5 mg/kg q12h; gatos — iniciar 6,25 mg/gato VO a cada 12 horas (hipertireoidismo: 1 a 2 mg/kg q12h), monitorando FC e pressão arterial.',
     safetyAlert: 'Bloquear/alertar em ICC descompensada, bradicardia, hipotensão, bloqueio atrioventricular, baixo débito e paciente sem ECG/eco. Pode piorar congestão se iniciado no momento errado.',
     price: { averageLabel: 'R$ 3,00 a R$ 10,00', rangeLabel: 'Atenolol 25 mg com 30 comprimidos em varejo humano varia conforme laboratório e promoção', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
@@ -5521,7 +5526,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         ],
         cat: [
           { title: 'Dor/inflamação aguda', dose: '0,1 mg/kg VO SID por até 4 dias', note: 'Uso de curta duração conforme bula.' },
-          { title: 'Osteoartrite crônica (Plumb\'s)', dose: '0,05 mg/kg VO SID', note: 'Usar com cautela máxima e monitoramento renal.' }
+          { title: 'Osteoartrite crônica (uso cauteloso)', dose: '0,05 mg/kg VO SID', note: 'Usar com cautela máxima e monitoramento renal.' }
         ]
       }
     },
@@ -5602,7 +5607,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Meloxicam. anti-inflamatório musculoesquelético de inibição COX. Unificar com outros meloxicams na avaliação de interações.',
     clinicalUse: 'Tratamento e alívio da dor e inflamação em patologias agudas ou crônicas do sistema musculoesquelético de cães e gatos.',
     reassessment: 'Observar vômitos, diarreia, inapetência, fezes escurecidas e monitorar parâmetros renais em uso continuado.',
-    prescriptionExample: 'Meloxivet [1 mg, 2 mg ou 6 mg], administrar por via oral conforme peso, a cada 24 horas, pelo período prescrito, preferencialmente junto ou após alimento.',
+    prescriptionExample: 'Meloxivet [1 mg, 2 mg ou 6 mg]: cães — 0,2 mg/kg VO no 1º dia, seguido de 0,1 mg/kg VO a cada 24 horas por 3 a 5 dias (1 cp de 1 mg/10 kg manutenção); gatos — 0,05 a 0,1 mg/kg VO no 1º dia e 0,05 mg/kg/dia por curto prazo, junto ou após alimento.',
     safetyAlert: 'Mesmos alertas do meloxicam. Evitar uso prolongado em gatos sem plano formal de monitoramento renal e pressão.',
     price: { averageLabel: 'R$ 49,31 a R$ 90,90', rangeLabel: '1 mg 10 comp: R$ 49,31-74,90; 2 mg 10 comp: R$ 73,35-81,50; 6 mg 10 comp: R$ 81,81-90,90', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1008690/Meloxivet-1g.jpg?v=638398973097000000'
@@ -5657,7 +5662,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     ],
     activeComponents: ['firocoxib'],
     labelCompositionSummary: 'Firocoxib. Comprimidos mastigáveis e sulcados contendo 57 mg ou 227 mg de firocoxib.',
-    labelDirections: 'Cães: 5 mg/kg por via oral, a cada 24 horas. Administrar apenas a cães conforme peso clínico.',
+    labelDirections: 'Cães: 5 mg/kg VO a cada 24 horas (Previcox 57 mg = 1 cp para cada ~11 kg; 1/2 cp para ~5,5 kg; Previcox 227 mg = 1 cp para ~45 kg). Uso exclusivo em cães.',
     dosageGuidance: {
       labelDose: 'Cães: 5 mg/kg VO a cada 24 horas. Administrar de acordo com a faixa de peso indicada.',
       plumbs: {
@@ -5741,7 +5746,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Robenacoxib é inibidor seletivo de COX-2. Permanece por menor tempo na circulação sistêmica e mais tempo nos tecidos inflamados. Em gatos idosos ou com DRC, usar com cautela e monitoramento.',
     clinicalUse: 'Controle de dor e inflamação decorrentes de osteoartrites, cirurgias ortopédicas ou cirurgias de tecidos moles em cães e gatos.',
     reassessment: 'Em felinos sob terapia crônica, reavaliar rotineiramente creatinina, ureia, eletrólitos, peso e hidratação.',
-    prescriptionExample: 'Onsior [6, 10, 20 ou 40 mg], administrar por via oral conforme peso, a cada 24 horas, de preferência em jejum ou longe das refeições, pelo período prescrito.',
+    prescriptionExample: 'Onsior [6 mg para gatos; 10, 20 ou 40 mg para cães]: cães — 1 a 2 mg/kg VO a cada 24 horas; gatos (≥2,5 kg) — 1 comprimido de 6 mg (1 a 2,4 mg/kg) VO a cada 24 horas por 3 a 6 dias (ou uso crônico monitorado), em jejum ou longe das refeições.',
     safetyAlert: 'Respeitar peso mínimo (2,5 kg) e idade mínima de 3 meses (cães) e 4 meses (gatos). Cautela em doentes renais.',
     price: { averageLabel: 'R$ 75,15 a R$ 160,50', rangeLabel: 'Gatos 6 mg 6 comp: R$ 80,01-88,90; Cães 10 mg: R$ 75,15-83,50; Cães 20 mg: R$ 84,68-112,90; Cães 40 mg: R$ 120,38-160,50', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1004624/Novo-Projeto--10-.jpg?v=637955580183770000'
@@ -5777,7 +5782,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Cetoprofeno é um anti-inflamatório não seletivo (AINE clássico). Oferece boa analgesia aguda e antitérmica, mas tem risco gástrico e renal superior em uso crônico.',
     clinicalUse: 'Processos dolorosos e inflamatórios agudos, claudicação por traumas, entorses, luxações e controle de edema pós-operatório curto.',
     reassessment: 'Avaliar a ocorrência de sinais gástricos. Evitar prorrogar o tratamento além de 5 dias sem reavaliação.',
-    prescriptionExample: 'Ketojet [5 mg ou 20 mg], administrar por via oral conforme peso, a cada 24 horas, junto com alimento, por 3 a 5 dias.',
+    prescriptionExample: 'Ketojet [5 mg ou 20 mg]: cães e gatos — 1 mg/kg VO a cada 24 horas (Ketojet 5 mg = 1 cp/5 kg; Ketojet 20 mg = 1 cp/20 kg), junto ao alimento, por 3 a 5 dias.',
     safetyAlert: 'Evitar em renais, cardiopatas, desidratados, hipovolêmicos ou histórico de úlceras. Gatos exigem tempo restrito.',
     price: { averageLabel: 'R$ 54,89 a R$ 60,99', rangeLabel: 'Ketojet 20 mg 10 comp: R$ 54,89-60,99 (Petlove/varejo online)', sourceDate: '2026-05-25' },
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-ketojet-1.jpg'
@@ -5810,7 +5815,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Opioide de ação central. A eficiência analgésica isolada em cães com dor inflamatória é considerada limitada devido à rápida depuração. Atua melhor como adjuvante multimodal.',
     clinicalUse: 'Analgésico opioide para controle de dor aguda ou crônica musculoesquelética leve a moderada de forma multimodal.',
     reassessment: 'Monitorar sonolência, salivação (especialmente felinos), constipação, náusea ou inapetência.',
-    prescriptionExample: 'Nulli solução oral, administrar por via oral na dose calculada pelo peso, a cada 8 a 12 horas, conforme prescrição. Medicamento controlado.',
+    prescriptionExample: 'Nulli solução oral (40 mg/mL = 2 mg/gota em conta-gotas padrão): administrar 1 a 4 mg/kg VO a cada 8 a 12 horas (ex.: 1 a 2 gotas/kg = 2 a 4 mg/kg q8–12h) por 3 a 5 dias. Medicamento controlado.',
     safetyAlert: 'Medicamento controlado. Cautela na coadministração com serotonérgicos, trazodona, antidepressivos e sedativos.',
     price: { averageLabel: 'Variável', rangeLabel: 'Frasco 10 mL; preço público sujeito a variações regionais e de estoque; checar no carrinho', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
     imageUrl: 'https://images.tcdn.com.br/img/img_prod/953490/nulli_10ml_5281_1_fadf860680493dda2e6afd5e8ec21e36.jpg'
@@ -5838,7 +5843,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         dog: [
           { title: 'Sindolor 250/20 mg', dose: 'A cada 8 h: 2,5 kg = 1/4 comp | 5 kg = 1/2 comp | 10 kg = 1 comp | 20 kg = 2 comp', note: 'Dose de bula equivalente a 25 mg/kg de dipirona + 2 mg/kg de tramadol. Melhor para cães menores.' },
           { title: 'Sindolor 750/60 mg', dose: 'A cada 8 h: 7,5 kg = 1/4 comp | 15 kg = 1/2 comp | 30 kg = 1 comp | 60 kg = 2 comp', note: 'Dose de bula equivalente a 25 mg/kg de dipirona + 2 mg/kg de tramadol. Melhor para cães maiores.' },
-          { title: 'Leitura Plumb’s', dose: 'Tramadol em cães: 4 a 10 mg/kg VO q8h. Dipirona: referência parenteral de 25 mg/kg em analgesia perioperatória.', note: 'A dose de Sindolor é a dose de bula do produto; Plumb’s reforça que tramadol isolado em cães tem eficácia variável.' }
+          { title: 'Posologia clínica de referência', dose: 'Tramadol em cães: 4 a 10 mg/kg VO q8h. Dipirona: referência parenteral de 25 mg/kg em analgesia perioperatória.', note: 'A dose de Sindolor é a dose de bula do produto; o tramadol isolado em cães tem eficácia analgésica variável.' }
         ]
       },
       notes: [
@@ -5846,10 +5851,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         'Não associar com outros opioides, AINEs/corticoides ou serotonérgicos sem avaliação do risco.'
       ]
     },
-    plumbsContext: 'Plumb’s descreve tramadol como agonista opioide parcial com ação serotoninérgica/noradrenérgica; em cães, a evidência de analgesia isolada é conflitante. Dipirona é descrita como analgésico/antipirético com potencial utilidade em cães e gatos, mas com cautela hematológica, renal/hepática e de coagulação.',
+    plumbsContext: 'O tramadol é um agonista opioide parcial com ação serotoninérgica/noradrenérgica; em cães, a evidência de analgesia isolada é conflitante. Dipirona é descrita como analgésico/antipirético com potencial utilidade em cães e gatos, mas com cautela hematológica, renal/hepática e de coagulação.',
     clinicalUse: 'Analgésico multimodal oral para dor aguda pós-operatória em cães, especialmente quando se deseja associação dipirona + tramadol em dose padronizada por peso.',
     reassessment: 'Reavaliar dor, sedação, salivação, vômito, constipação, ataxia, agitação, tremores, apetite e sinais gastrointestinais durante o uso.',
-    prescriptionExample: 'Sindolor Cães [250/20 mg ou 750/60 mg], administrar por via oral conforme faixa de peso, a cada 8 horas, por até 7 dias ou conforme prescrição.',
+    prescriptionExample: 'Sindolor Cães (25 mg/kg dipirona + 2 mg/kg tramadol VO q8h por até 7 dias): apres. 250/20 mg = 1/4 cp (2,5 kg), 1/2 cp (5 kg), 1 cp (10 kg); apres. 750/60 mg = 1/2 cp (15 kg), 1 cp (30 kg), a cada 8 horas.',
     safetyAlert: 'Medicamento controlado com tramadol. Evitar como único analgésico em dor severa. Cautela em convulsões, obstrução gastrointestinal, hepatopatia, nefropatia, geriátricos e uso com trazodona, fluoxetina, clomipramina, selegilina, mirtazapina ou outros serotonérgicos.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Sindolor 250/20 mg apareceu em Cobasi, mas sem preço estável capturado', sourceDate: '2026-06-07', notes: 'Dados incompletos' },
     imageUrl: 'https://femalepet.vteximg.com.br/arquivos/ids/169583-412-412/sindolor-caes-250mg-10-comprimidos_0.png?v=638791299915730000'
@@ -5875,8 +5880,8 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       plumbs: {
         cat: [
           { title: 'Bula - 50/8 mg', dose: '1/4 comp/1 kg; 1/2 comp/2 kg; 3/4 comp/3 kg; 1 comp/4 kg; 1,5 comp/6 kg VO q12h', note: 'Comprimido bissulcado para ajuste por faixa de peso.' },
-          { title: 'Leitura Plumb’s', dose: 'Tramadol em gatos: geralmente 1 a 2 mg/kg VO q12h; alguns casos usam até 4 mg/kg', note: 'Plumb’s ressalta sabor desagradável e efeitos neurológicos/opioides, especialmente geriátricos acima de 2 mg/kg.' },
-          { title: 'Dipirona no Plumb’s', dose: 'Relatos de analgesia felina parenteral: 25 mg/kg IV q24h ou 12,5 mg/kg IV q12h', note: 'Sindolor Gatos usa dose oral de bula; monitorar salivação, vômito e tolerância.' }
+          { title: 'Posologia clínica de referência', dose: 'Tramadol em gatos: geralmente 1 a 2 mg/kg VO q12h; alguns casos usam até 4 mg/kg', note: 'Apresenta sabor desagradável e risco de efeitos neurológicos/opioides, especialmente em geriátricos acima de 2 mg/kg.' },
+          { title: 'Dipirona (referência clínica)', dose: 'Relatos de analgesia felina parenteral: 25 mg/kg IV q24h ou 12,5 mg/kg IV q12h', note: 'Sindolor Gatos usa dose oral de bula; monitorar salivação, vômito e tolerância.' }
         ]
       },
       notes: [
@@ -5884,10 +5889,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         'Não extrapolar apresentação canina para gatos.'
       ]
     },
-    plumbsContext: 'Plumb’s descreve tramadol como mais consistente em gatos do que em cães, mas com palatabilidade ruim e risco de efeitos neurológicos/opioides. Para dipirona, cita utilidade analgésica em gatos, com cautela por efeitos hematológicos, gastrointestinais e de coagulação.',
+    plumbsContext: 'O tramadol tende a ser mais consistente em gatos do que em cães, mas com palatabilidade ruim e risco de efeitos neurológicos/opioides. Para dipirona, cita utilidade analgésica em gatos, com cautela por efeitos hematológicos, gastrointestinais e de coagulação.',
     clinicalUse: 'Analgésico multimodal oral para dor aguda pós-operatória em gatos, usando apresentação felina específica para evitar erro de dose.',
     reassessment: 'Monitorar sedação, euforia/disforia, midríase, salivação, vômito, constipação, ataxia, apetite e controle real da dor.',
-    prescriptionExample: 'Sindolor Gatos 50/8 mg, administrar por via oral conforme faixa de peso, a cada 12 horas, por até 7 dias ou conforme prescrição.',
+    prescriptionExample: 'Sindolor Gatos 50/8 mg (12,5 mg/kg dipirona + 2 mg/kg tramadol VO q12h por até 7 dias): 1/4 cp (1 kg), 1/2 cp (2 kg), 3/4 cp (3 kg), 1 cp (4 kg), 1,5 cp (6 kg), a cada 12 horas.',
     safetyAlert: 'Medicamento controlado com tramadol. Não usar apresentação canina em gatos. Evitar em hipersensibilidade a opioides/dipirona, obstrução gastrointestinal, convulsões importantes, hepatopatia/nefropatia grave e uso com serotonérgicos sem avaliação.',
     price: { averageLabel: 'R$ 62,00', rangeLabel: 'Frasco 20 mL: R$ 52,00 a R$ 74,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://petcaesecia.fbitsstatic.net/img/p/analgesico-avert-sindolor-gatos-50-8-mg-85721/270637.jpg?w=1200&h=1200&v=202603120918&qs=ignore'
@@ -6034,7 +6039,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Bedinvetmab é um anticorpo monoclonal caninizado anti-NGF (Fator de Crescimento Nervoso). NGF está superregulado na osteoartrite e estimula a via de dor. Excelente opção para renais e cardiopatas.',
     clinicalUse: 'Alívio e controle da dor crônica associada à osteoartrite em cães de todas as idades (acima de 12 meses).',
     reassessment: 'Avaliar a resposta clínica em mobilidade, comportamento e dor após 1 a 2 aplicações consecutivas.',
-    prescriptionExample: 'Librela [apresentação conforme peso], aplicação subcutânea mensal de 1 frasco por via subcutânea executada por médico-veterinário.',
+    prescriptionExample: 'Librela (0,5 a 1 mg/kg SC a cada 30 dias — 5 mg: 5–10 kg; 10 mg: 10,1–20 kg; 15 mg: 20,1–30 kg; 20 mg: 30,1–40 kg; 30 mg: 40,1–60 kg): aplicar 1 frasco inteiro por via subcutânea 1 vez ao mês em clínica.',
     safetyAlert: 'Não usar em cães com menos de 12 meses de idade. Não indicado para gestantes, lactantes ou animais de reprodução. Risco de formação de anticorpos secundários.',
     price: { averageLabel: 'R$ 350,00', rangeLabel: 'Aplicação por frasco/sessão clínica: R$ 310,00 a R$ 420,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://www.veterinaria-atual.pt/wp-content/uploads/sites/4/2021/04/Librela-All-Sizes-Carton-Beauty-Shot-White-Background-UK-IE-LV-LT-ET-PNG-Image-Global-e1618506384851.jpg'
@@ -6133,7 +6138,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Glucosamina e condroitina são suplementos nutricionais. Atuam como blocos de construção para glicosaminoglicanos. Eficácia clínica individual é variável; resposta lenta (2 a 6 semanas).',
     clinicalUse: 'Suplemento alimentar com nutrientes articulares, indicado como adjuvante em osteoartrites, displasias coxofemorais, pós-operatórios ortopédicos e animais sob exercício intenso.',
     reassessment: 'Avaliar o conforto e a mobilidade do animal após o período inicial de 42 dias para decidir sobre a manutenção.',
-    prescriptionExample: 'CondroPlex 1000, administrar 1 cápsula por via oral a cada 24 horas, inicialmente por 42 dias consecutivos ou conforme prescrição.',
+    prescriptionExample: 'CondroPlex [500 = 1 cáps/5 kg; 1000 = 1 cáps/10 kg; LB = 1 cp/25 kg; Pasta gatos = 1 g/5 kg]: administrar por via oral a cada 24 horas por 42 dias consecutivos (após 42 dias, reduzir para metade da dose ou dias alternados).',
     safetyAlert: 'Suplemento. Usar com cautela em animais diabéticos ou com histórico de hipersensibilidade gastrointestinal aos componentes.',
     price: { averageLabel: 'R$ 59,90 a R$ 222,90', rangeLabel: '500 comp: R$ 59,90-74,90; 1000 comp: R$ 87,90-109,90; LB: R$ 160,50-200,90; Sticks: R$ 177,90-222,90; Pasta gatos: R$ 107,90-134,90', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1008541/condroplex-1000-60-comprimidos-caes-avert-Principal.jpg?v=638132740118630000'
@@ -6186,7 +6191,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Condroprotetor à base de sulfato de glicosamina + sulfato de condroitina, em comprimidos de 500 mg ou 1000 mg.',
     labelDirections: 'Uso oral em cães. Condroton 500 mg: até 5 kg, 1 comp SID na dose inicial e 1 comp em dias alternados na manutenção; 5 a 10 kg, 1 comp BID inicialmente e 1 comp SID na manutenção. Condroton 1000 mg: 10 a 15 kg, 1 comp BID inicialmente e 1 comp SID na manutenção; 15 a 25 kg, 1,5 comp BID inicialmente e 1 comp SID na manutenção; 25 a 50 kg, 2 comp BID inicialmente e 2 comp SID na manutenção; acima de 50 kg, 3 comp BID inicialmente e 2 comp SID na manutenção.',
     dosageGuidance: {
-      labelDose: 'Cães (Condroton 500 mg): até 5 kg 1 comp SID; 5–10 kg 1 comp BID. Condroton 1000 mg: 10–15 kg 1 comp BID; 15–25 kg 1,5 comp BID; 25–50 kg 2 comp BID; >50 kg 3 comp BID. Reduzir para manutenção conforme bula.',
+      labelDose: 'Cães (Condroton 500 mg): até 5 kg 1 comp SID; 5–10 kg 1 comp BID. Condroton 1000 mg: 10–15 kg 1 comp BID; 15–25 kg 1,5 comp BID; 25–50 kg 2 comp BID; >50 kg 3 comp BID (manutenção: 1–2 comp SID ou EOD).',
       plumbs: {
         dog: [
           { title: 'Até 10 kg - Condroton 500 mg', dose: 'Até 5 kg: 1 comp SID; 5 a 10 kg: 1 comp BID', note: 'Manutenção: até 5 kg em dias alternados; 5 a 10 kg, 1 comp SID.' },
@@ -6198,7 +6203,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Condroitina/glucosamina são suplementos/condroprotetores com evidência variável. Usar como adjuvante, não como substituto de analgesia, controle de peso e reabilitação.',
     clinicalUse: 'Suporte em osteoartrite, displasia, pós-operatório articular e animais com esforço físico, como parte de manejo multimodal.',
     reassessment: 'Reavaliar dor, claudicação e mobilidade após 4 a 8 semanas; ajustar o plano se não houver ganho funcional.',
-    prescriptionExample: 'Condroton [500 mg ou 1000 mg], administrar por via oral conforme faixa de peso e orientação do fabricante, pelo período prescrito.',
+    prescriptionExample: 'Condroton [500 mg ou 1000 mg]: fase inicial — até 5 kg = 1 cp 500 mg SID; 5–10 kg = 1 cp 500 mg BID; 10–15 kg = 1 cp 1000 mg BID; 15–25 kg = 1,5 cp 1000 mg BID; 25–50 kg = 2 cp 1000 mg BID; >50 kg = 3 cp 1000 mg BID (após 30–60 dias, reduzir para manutenção SID/EOD).',
     safetyAlert: 'Suplemento/condroprotetor. Não substitui AINE, anticorpo monoclonal, reabilitação ou cirurgia quando indicados.',
     price: { averageLabel: 'R$ 177,90 a R$ 304,90', rangeLabel: 'Condroton 500 mg 60 comp. cerca de R$ 177,90-204,90; 1000 mg 60 comp. cerca de R$ 267,90-304,90', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1056588/condroton-500mg-vetnil-60-comprimidos.jpg'
@@ -6218,7 +6223,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento articular com colágeno tipo II não desnaturado, ômega 3 e vitamina E.',
     labelDirections: 'Cães: oferecer 1 tablete por via oral, uma vez ao dia, independentemente do tamanho do cão. Uso inicial recomendado por 3 meses.',
     dosageGuidance: {
-      labelDose: 'Cães: 1 tablete VO SID, independentemente do peso, por período inicial de 3 meses ou conforme prescrição.',
+      labelDose: 'Cães: 1 tablete VO SID, independentemente do peso corporal, por período inicial de 3 meses.',
       plumbs: {
         dog: [
           { title: 'Suporte articular com UC-II', dose: '1 tablete VO SID conforme fabricante', note: 'Adjuvante para mobilidade; não é analgésico de resgate.' }
@@ -6228,7 +6233,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'UC-II e suplementos articulares são adjuvantes; benefício depende do produto e do paciente, com resposta lenta.',
     clinicalUse: 'Suporte de mobilidade e flexibilidade em cães com risco articular ou osteoartrite, junto a controle de peso e reabilitação.',
     reassessment: 'Reavaliar mobilidade e conforto após 4 a 8 semanas.',
-    prescriptionExample: 'Flexadin Advanced Cães, administrar 1 tablete por via oral, uma vez ao dia, diretamente na boca ou misturado ao alimento, pelo período prescrito.',
+    prescriptionExample: 'Flexadin Advanced Cães, administrar 1 tablete por via oral, uma vez ao dia (independentemente do peso), diretamente na boca ou misturado ao alimento, por período inicial de 3 meses.',
     safetyAlert: 'Suplemento. Cautela em alergia a frango/aves ou componentes da fórmula. Não prometer efeito imediato.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado nesta rodada', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/307150/FLEXADIN.jpg?v=638265190104100000'
@@ -6246,7 +6251,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Osteosyn 660 mg (60 comp.)', 'Osteosyn 2000 mg (60 comp.)'],
     activeComponents: ['sulfato de condroitina', 'glucosamina', 'aminoácidos', 'ômega 3', 'vitamina E', 'probióticos'],
     labelCompositionSummary: 'Suplemento articular com condroitina, glucosamina, aminoácidos, ômega 3, vitamina E e probióticos, conforme descrição comercial.',
-    labelDirections: 'Dose diária recomendada conforme peso: até 10 kg, 1 comprimido de 660 mg SID; 10,1 a 20 kg, 2 comprimidos de 660 mg SID; 20,1 a 30 kg, 1 comprimido de 2000 mg SID; acima de 30,1 kg, 2 comprimidos de 2000 mg SID. Pode fracionar no período de 24 horas conforme orientação veterinária.',
+    labelDirections: 'Dose diária recomendada: até 10 kg = 1 comprimido de 660 mg SID; 10,1 a 20 kg = 2 comprimidos de 660 mg SID; 20,1 a 30 kg = 1 comprimido de 2000 mg SID; >30,1 kg = 2 comprimidos de 2000 mg SID (a dose diária pode ser fracionada em 2 tomadas ao dia).',
     dosageGuidance: {
       labelDose: 'Cães e gatos: até 10 kg 1 comp 660 mg SID; 10,1–20 kg 2 comp 660 mg SID; 20,1–30 kg 1 comp 2000 mg SID; acima de 30,1 kg 2 comp 2000 mg SID.',
       plumbs: {
@@ -6262,7 +6267,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Suplemento articular. Condroitina/glucosamina são adjuvantes com benefício individual variável.',
     clinicalUse: 'Suporte articular em cães e gatos, como adjuvante em degeneração cartilaginosa/óssea e osteoartrite.',
     reassessment: 'Reavaliar em 4 a 8 semanas; não usar como substituto de analgesia em paciente doloroso.',
-    prescriptionExample: 'Osteosyn [660 mg ou 2000 mg], administrar por via oral conforme faixa de peso, a cada 24 horas, diretamente na boca ou misturado ao alimento, pelo período prescrito.',
+    prescriptionExample: 'Osteosyn [660 mg ou 2000 mg]: até 10 kg = 1 cp 660 mg/dia; 10,1–20 kg = 2 cp 660 mg/dia; 20,1–30 kg = 1 cp 2000 mg/dia; >30,1 kg = 2 cp 2000 mg/dia, VO a cada 24 horas (ou fracionado BID), por 4 a 8 semanas.',
     safetyAlert: 'Suplemento, não analgésico de resgate. Cautela em intolerância gastrointestinal ou alergia alimentar.',
     price: { averageLabel: 'R$ 148,95 a R$ 247,90', rangeLabel: 'Osteosyn 660 mg cerca de R$ 148,95-165,50; 2000 mg cerca de R$ 198,32-247,90', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/942433/suplemento-alimentar-osteosyn-60-comprimidos-660-mg.jpg?v=638157174133000000'
@@ -6295,7 +6300,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Produto adjuvante geriátrico. Para ômega 3 terapêutico, calcular EPA + DHA quando o rótulo estiver disponível.',
     clinicalUse: 'Suporte em pacientes idosos, artrose, doença degenerativa, nefropatas/cardiopatas crônicos e convalescentes, sem substituir tratamento específico.',
     reassessment: 'Reavaliar mobilidade, disposição, escore corporal, fezes e apetite após 4 a 8 semanas.',
-    prescriptionExample: 'Gerioox, administrar por via oral conforme faixa de peso, a cada 24 horas, como adjuvante no manejo geriátrico/articular.',
+    prescriptionExample: 'Gerioox: até 10 kg = 1/2 comprimido VO SID; 10 a 25 kg = 1 comprimido VO SID; acima de 25 kg = 2 comprimidos VO SID, por 30 a 60 dias ou uso contínuo.',
     safetyAlert: 'Adjuvante. Se houver dose relevante de ômega 3, cautela em pancreatite, coagulopatias e uso com anticoagulantes/antiagregantes.',
     price: { averageLabel: 'R$ 375,45 a R$ 441,50', rangeLabel: 'Gerioox 30 comprimidos em varejo online nessa faixa', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/224922/gerioox_x30_BRASIL_2019_-1-.jpg?v=638814678959230000'
@@ -6344,7 +6349,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Rimadyl 25 mg', 'Rimadyl 75 mg', 'Rimadyl 100 mg'],
     activeComponents: ['carprofeno'],
     labelCompositionSummary: 'Carprofeno em comprimidos mastigáveis de 25, 75 e 100 mg para cães.',
-    labelDirections: 'Cães: 4,4 mg/kg VO a cada 24 h ou 2,2 mg/kg VO a cada 12 h. Para dor cirúrgica, pode ser administrado cerca de 2 h antes do procedimento conforme bula.',
+    labelDirections: 'Cães: 4,4 mg/kg VO a cada 24 horas ou 2,2 mg/kg VO a cada 12 horas. Para dor cirúrgica, administrar cerca de 2 horas antes do procedimento.',
     dosageGuidance: {
       labelDose: 'Cães: 4,4 mg/kg VO SID ou 2,2 mg/kg VO BID.',
       plumbs: { dog: [{ title: 'Dor/inflamação ortopédica', dose: '4,4 mg/kg/dia VO, em SID ou dividido BID', note: 'Dose clássica de carprofeno em cães.' }] }
@@ -6352,7 +6357,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Carprofeno é AINE usado em cães para osteoartrite e dor pós-operatória. Não extrapolar para gatos como rotina domiciliar.',
     clinicalUse: 'Osteoartrite, dor e inflamação musculoesquelética e controle de dor associada a cirurgias ortopédicas/tecidos moles.',
     reassessment: 'Reavaliar dor, apetite, vômitos, diarreia, melena, função renal/hepática e necessidade de continuidade.',
-    prescriptionExample: 'Rimadyl [25, 75 ou 100 mg], administrar por via oral na dose calculada, a cada 12 ou 24 horas conforme prescrição.',
+    prescriptionExample: 'Rimadyl [25, 75 ou 100 mg]: cães — 4,4 mg/kg VO a cada 24 horas ou 2,2 mg/kg VO a cada 12 horas (ex.: 25 mg para ~5,5 kg SID ou ~11 kg BID; 75 mg para ~17 kg SID; 100 mg para ~22 kg SID).',
     safetyAlert: 'Não usar em gatos. Não associar com corticoide ou outro AINE. Cautela em DRC, hepatopatia, desidratação, hipovolemia e doença gastrointestinal.',
     price: { averageLabel: 'R$ 78 a R$ 144', rangeLabel: '25/75/100 mg conforme apresentação', sourceDate: '2026-06-07' }
   },
@@ -6370,7 +6375,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Rimadyl solução injetável 20 mL'],
     activeComponents: ['carprofeno'],
     labelCompositionSummary: 'Carprofeno em apresentação injetável para uso clínico em cães.',
-    labelDirections: 'Uso clínico/hospitalar. Aplicação por médico-veterinário conforme bula e protocolo perioperatório.',
+    labelDirections: 'Uso clínico/hospitalar em cães: 4,4 mg/kg SC ou IV em dose única perioperatória (0,088 mL/kg na concentração 50 mg/mL); se necessária analgesia adicional, seguir com formulação oral após 24 horas.',
     dosageGuidance: { labelDose: 'Cães: carprofeno injetável 4,4 mg/kg SC/IV dose única perioperatória; seguir com VO se indicado.', plumbs: { dog: [{ title: 'Perioperatório / hospitalar', dose: '4,4 mg/kg SC ou IV dose única', note: 'Não é medicação domiciliar; evitar com outro AINE/corticoide.' }] } },
     plumbsContext: 'Mesmos cuidados farmacológicos do carprofeno; risco renal, gastrointestinal e hepático aumenta em hipovolemia/hipotensão.',
     clinicalUse: 'Dor e inflamação associadas à osteoartrite, cirurgias ortopédicas e tecidos moles em cães, em ambiente clínico.',
@@ -6483,7 +6488,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Terapia alvo oncológica. Prescrição e monitoramento devem seguir protocolo oncológico.',
     clinicalUse: 'Mastocitomas cutâneos caninos recidivantes grau II ou III, com ou sem linfonodo regional.',
     reassessment: 'Monitorar hemograma, ALT/FA, creatinina, urinálise/proteinúria, pressão, sinais GI e resposta tumoral.',
-    prescriptionExample: 'Palladia [10, 15 ou 50 mg], administrar por via oral em dias alternados conforme protocolo oncológico.',
+    prescriptionExample: 'Palladia [10, 15 ou 50 mg]: cães — iniciar 3,25 mg/kg por via oral em dias alternados (EOD), ajustando entre 2,2 e 3,25 mg/kg EOD sob monitoramento oncológico.',
     safetyAlert: 'Manipular com luvas. Risco de vômitos, diarreia, neutropenia, hepatotoxicidade, proteinúria, hipertensão, tromboembolismo e perfuração GI.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Alto custo; geralmente sob encomenda', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6500,12 +6505,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Dexdomitor injetável'],
     activeComponents: ['dexmedetomidina'],
     labelCompositionSummary: 'Sedativo alfa-2 agonista injetável para cães e gatos.',
-    labelDirections: 'Uso hospitalar. Dose varia por espécie, via, objetivo de sedação/analgesia e protocolo anestésico.',
-    dosageGuidance: { labelDose: 'Cães: 125-375 µg/m² IV/IM conforme profundidade; gatos: 40 µg/kg IM para sedação/analgesia.', plumbs: { dog: [{ title: 'Sedação/analgesia', dose: '125-375 µg/m² IV ou IM', note: 'Dose por superfície corporal e combinação; reduzir em pacientes frágeis.' }], cat: [{ title: 'Sedação/analgesia', dose: '40 µg/kg IM', note: 'Uso clínico com monitoramento; reverter com atipamezol quando indicado.' }] } },
+    labelDirections: 'Uso hospitalar. Cães: 125 a 375 µg/m² IV ou IM (aproximadamente 5 a 20 µg/kg em protocolos combinados); gatos: 10 a 40 µg/kg IM para sedação/analgesia (bula: até 40 µg/kg IM). Reduzir dose em pacientes idosos/debilitados e reverter com atipamezol quando necessário.',
+    dosageGuidance: { labelDose: 'Cães: 125-375 µg/m² IV/IM (ou 5-20 µg/kg em associações); gatos: 10-40 µg/kg IM para sedação/analgesia.', plumbs: { dog: [{ title: 'Sedação/analgesia', dose: '125-375 µg/m² IV ou IM', note: 'Dose por superfície corporal e combinação; reduzir em pacientes frágeis.' }], cat: [{ title: 'Sedação/analgesia', dose: '40 µg/kg IM', note: 'Uso clínico com monitoramento; reverter com atipamezol quando indicado.' }] } },
     plumbsContext: 'Alfa-2 agonistas produzem sedação/analgesia, mas podem causar bradicardia, vasoconstrição e depressão cardiorrespiratória.',
     clinicalUse: 'Sedação, contenção química, analgesia e composição de protocolos anestésicos em ambiente clínico.',
     reassessment: 'Monitorar FC, ritmo, pressão, perfusão, temperatura, ventilação e profundidade anestésica.',
-    prescriptionExample: 'Dexdomitor: uso exclusivo hospitalar conforme protocolo anestésico do médico-veterinário.',
+    prescriptionExample: 'Dexdomitor (0,5 mg/mL): uso exclusivo hospitalar — cães 5 a 15 µg/kg IV/IM em neuroleptoanalgesia ou 125–375 µg/m² IV/IM; gatos 10 a 40 µg/kg IM com monitoração contínua.',
     safetyAlert: 'Cautela em cardiopatas, choque, hipovolemia, doença respiratória e pacientes debilitados.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Compra clínica/hospitalar', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6522,12 +6527,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Antisedan injetável'],
     activeComponents: ['atipamezol'],
     labelCompositionSummary: 'Antagonista alfa-2 para reversão de medetomidina/dexmedetomidina.',
-    labelDirections: 'Uso hospitalar. Dose e via dependem do alfa-2 usado, espécie e protocolo.',
+    labelDirections: 'Uso hospitalar. Cães e gatos: administrar por via IM volume igual ao volume de dexmedetomidina 0,5 mg/mL utilizado (ou 375 µg/m² IM; 10 vezes a dose em mg de dexmedetomidina).',
     dosageGuidance: { labelDose: 'Cães/gatos (IM): 375 µg/m² ou mesmo volume da dexmedetomidina 0,5 mg/mL administrada.', plumbs: { dog: [{ title: 'Reversão alfa-2', dose: '375 µg/m² IM ou volume equivalente à dexmedetomidina', note: 'Monitorar recidiva de sedação.' }], cat: [{ title: 'Reversão alfa-2', dose: '375 µg/m² IM ou volume equivalente à dexmedetomidina', note: 'Uso clínico com monitoramento.' }] } },
     plumbsContext: 'Reversor de alfa-2 agonistas; analgesia também é revertida, podendo haver retorno de dor.',
     clinicalUse: 'Reversão de sedação por dexmedetomidina/medetomidina em cães e gatos.',
     reassessment: 'Monitorar despertar, dor, FC, pressão e comportamento após reversão.',
-    prescriptionExample: 'Antisedan: uso exclusivo hospitalar conforme protocolo de reversão.',
+    prescriptionExample: 'Antisedan (5 mg/mL): uso exclusivo hospitalar — aplicar por via IM o mesmo volume utilizado de dexmedetomidina 0,5 mg/mL (ex.: 0,2 mL IM para cada 0,2 mL de dexmedetomidina aplicada).',
     safetyAlert: 'Não usar como rotina sem avaliar dor e estabilidade; pode haver excitação, taquicardia ou retorno de dor.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Compra clínica/hospitalar', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6544,12 +6549,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Telazol injetável'],
     activeComponents: ['tiletamina', 'zolazepam'],
     labelCompositionSummary: 'Anestésico dissociativo com benzodiazepínico para cães e gatos.',
-    labelDirections: 'Uso hospitalar. Dose depende de espécie, via, contenção/anestesia e associação com outros fármacos.',
-    dosageGuidance: { labelDose: 'Plumb\'s: cães 6,6-9,9 mg/kg IM contenção ou 2,2-4,4 mg/kg IV indução; gatos 9,7-11,9 mg/kg IM, com doses menores em muitos casos.', plumbs: { dog: [{ title: 'Contenção diagnóstica', dose: '6,6-9,9 mg/kg IM', note: 'Dose de bula é alta para muitos casos; considerar menor dose com anestesista.' }, { title: 'Indução anestésica', dose: '2,2-4,4 mg/kg IV lento', note: 'Não exceder 4,4 mg/kg IV total antes de manutenção inalatória.' }], cat: [{ title: 'Procedimentos/contensão', dose: '9,7-11,9 mg/kg IM', note: 'Plumb\'s observa que doses de bula podem ser maiores que o necessário.' }, { title: 'Dor leve extra-label', dose: '2-5 mg/kg IV ou 5-10 mg/kg IM', note: 'Ajustar ao procedimento e monitorar recuperação.' }] } },
+    labelDirections: 'Uso hospitalar. Cães: contenção diagnóstica 6,6 a 9,9 mg/kg IM ou indução anestésica 2,2 a 4,4 mg/kg IV lento. Gatos: procedimentos/contensão 9,7 a 11,9 mg/kg IM (ou 2 a 5 mg/kg IV / 5 a 10 mg/kg IM em associações balanceadas).',
+    dosageGuidance: { labelDose: 'Cães: 6,6-9,9 mg/kg IM contenção ou 2,2-4,4 mg/kg IV indução; gatos 9,7-11,9 mg/kg IM, com doses menores em muitos casos.', plumbs: { dog: [{ title: 'Contenção diagnóstica', dose: '6,6-9,9 mg/kg IM', note: 'Dose de bula é alta para muitos casos; considerar menor dose com anestesista.' }, { title: 'Indução anestésica', dose: '2,2-4,4 mg/kg IV lento', note: 'Não exceder 4,4 mg/kg IV total antes de manutenção inalatória.' }], cat: [{ title: 'Procedimentos/contensão', dose: '9,7-11,9 mg/kg IM', note: 'Doses de bula podem ser maiores que o necessário na rotina clínica.' }, { title: 'Dor leve extra-label', dose: '2-5 mg/kg IV ou 5-10 mg/kg IM', note: 'Ajustar ao procedimento e monitorar recuperação.' }] } },
     plumbsContext: 'Associação dissociativa/benzodiazepínica usada em contenção e anestesia; recuperação pode variar conforme espécie e dose.',
     clinicalUse: 'Contenção química e anestesia em procedimentos clínicos/cirúrgicos.',
     reassessment: 'Monitorar plano anestésico, temperatura, ventilação, analgesia e recuperação.',
-    prescriptionExample: 'Telazol: uso exclusivo hospitalar conforme protocolo anestésico.',
+    prescriptionExample: 'Telazol (100 mg/mL após reconstituição): uso exclusivo hospitalar — cães 2,2 a 4,4 mg/kg IV (indução) ou 6,6 a 9,9 mg/kg IM; gatos 5 a 11,9 mg/kg IM ou 2 a 5 mg/kg IV.',
     safetyAlert: 'Uso hospitalar. Cautela em cardiopatas, hepatopatas, nefropatas, debilitados e associação com depressores do SNC.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Compra clínica/hospitalar', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6566,12 +6571,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Zenrelia 4 apresentações com 30 comprimidos'],
     activeComponents: ['ilunocitinib'],
     labelCompositionSummary: 'Inibidor de JAK oral para cães com dermatite alérgica/atópica.',
-    labelDirections: 'Cães: 0,6 a 0,8 mg/kg VO a cada 24 h, conforme bula.',
+    labelDirections: 'Cães (≥12 meses e ≥3 kg): 0,6 a 0,8 mg/kg VO a cada 24 horas.',
     dosageGuidance: { labelDose: 'Cães: 0,6 a 0,8 mg/kg VO SID.', plumbs: { dog: [{ title: 'Prurido alérgico/atopia', dose: '0,6 a 0,8 mg/kg VO SID', note: 'Não copiar dose de Apoquel.' }] } },
     plumbsContext: 'Produto novo; usar bula. Mesma família lógica de imunomodulação JAK, mas com dose própria.',
     clinicalUse: 'Prurido associado à dermatite alérgica e atópica em cães.',
     reassessment: 'Reavaliar prurido, piodermite/Malassezia, demodicose, infecções e eventos adversos.',
-    prescriptionExample: 'Zenrelia, administrar por via oral na dose calculada, a cada 24 horas, conforme prescrição.',
+    prescriptionExample: 'Zenrelia: cães — administrar 0,6 a 0,8 mg/kg por via oral a cada 24 horas, com ou sem alimento.',
     safetyAlert: 'Somente cães. Avaliar infecções, demodicose, neoplasia, imunossupressão e vacinação. Não misturar dose com Apoquel.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Produto novo; preço não consolidado', sourceDate: '2026-06-07' }
   },
@@ -6672,24 +6677,24 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'dermatite atopica',
       'elanco',
       'novartis',
-      'plumbs',
+      'ciclosporina',
       'acvim',
     ],
     productPageUrl: 'https://my.elanco.com/us/atopica-dog',
     imageUrl: 'https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/20ecde4d-45f4-4421-ae7b-0252212cb737/AtopicaDogPackaging.png',
     labelCompositionSummary: 'Ciclosporina veterinária para microemulsão (cápsulas moles ou solução oral).',
-    labelDirections: 'Dermatite atópica canina: 5 mg/kg VO SID por 30 dias e depois reduzir para dias alternados/2x semana; gatos com dermatite alérgica 7 mg/kg VO SID. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM / Plumb’s): quando indicado segundo imunossupressor em cães graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg VO a cada 12 horas (5 mg/kg VO BID).',
+    labelDirections: 'Dermatite atópica canina: 5 mg/kg VO SID por 30 dias e depois reduzir para dias alternados/2x semana; gatos com dermatite alérgica 7 mg/kg VO SID. Em Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM): quando indicado segundo imunossupressor em cães graves ou dependentes de transfusão, pode-se pensar e prescrever 5 mg/kg VO a cada 12 horas (5 mg/kg VO BID).',
     dosageGuidance: {
-      labelDose: 'Dermatite atópica: cães 5 mg/kg VO SID; gatos 7 mg/kg VO SID. AHIM (Consenso ACVIM/Plumb’s): pensar em 5 mg/kg VO BID como 2º imunossupressor.',
+      labelDose: 'Dermatite atópica: cães 5 mg/kg VO SID; gatos 7 mg/kg VO SID. AHIM (Consenso ACVIM): pensar em 5 mg/kg VO BID como 2º imunossupressor.',
       plumbs: {
         dog: [
           { title: 'Dermatite atópica', dose: '5 mg/kg VO SID por 30 dias', note: 'Depois reduzir para dias alternados ou 2x/semana na menor frequência eficaz.' },
-          { title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM 2019 / Plumb’s)', dose: '5 mg/kg VO a cada 12 horas (BID / q12h)', note: 'Recomendação de 2º imunossupressor em cães graves ou dependentes de transfusão. Pode-se pensar e prescrever 5 mg/kg BID.' },
+          { title: 'Anemia Hemolítica Imunomediada (AHIM / IMHA — Consenso ACVIM 2019)', dose: '5 mg/kg VO a cada 12 horas (BID / q12h)', note: 'Recomendação de 2º imunossupressor em cães graves ou dependentes de transfusão. Pode-se pensar e prescrever 5 mg/kg BID.' },
         ],
         cat: [{ title: 'Dermatite alérgica felina', dose: '7 mg/kg VO SID', note: 'Após controle, tentar reduzir para dias alternados ou 2x/semana; testar FeLV/FIV e evitar carne crua/caça.' }],
       },
       notes: [
-        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM e o Plumb’s respaldam pensar e utilizar 5 mg/kg VO BID como segundo imunossupressor.',
+        'Em AHIM (Anemia Hemolítica Imunomediada), o Consenso ACVIM respalda pensar e utilizar 5 mg/kg VO BID como segundo imunossupressor.',
       ],
     },
     plumbsContext: 'Ciclosporina é inibidor de calcineurina imunomodulador/imunossupressor. Em AHIM canina, pode-se pensar em 5 mg/kg VO BID (Consenso ACVIM). Há interações relevantes com azóis e outros fármacos.',
@@ -6713,12 +6718,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Surosolve solução otológica'],
     activeComponents: ['limpador auricular'],
     labelCompositionSummary: 'Limpador auricular/ceruminolítico de suporte otológico; composição quantitativa pendente de bula completa.',
-    labelDirections: 'Aplicar no conduto auditivo conforme orientação do fabricante e necessidade clínica; não é dose mg/kg.',
-    dosageGuidance: { labelDose: 'Cães e gatos: aplicar quantidade suficiente no conduto auditivo, massagear a base da orelha e remover excesso.', plumbs: { dog: [{ title: 'Higiene auricular', dose: 'Aplicar quantidade suficiente, massagear e remover excesso', note: 'Não substitui tratamento de otite.' }], cat: [{ title: 'Higiene auricular', dose: 'Aplicar com cautela e conforto do paciente', note: 'Avaliar tímpano se houver otite/dor.' }] } },
+    labelDirections: 'Instilar 1 a 2 mL (volume suficiente para preencher o conduto auditivo externo sem transbordar em excesso) em cada orelha, massagear suavemente a base da orelha por 1 minuto e remover o excesso com gaze/algodão seco. Manutenção: 1 a 2 vezes por semana; pré-tratamento em otite: 1 vez ao dia antes da medicação otológica.',
+    dosageGuidance: { labelDose: 'Cães e gatos: instilar 1 a 2 mL em cada conduto auditivo, massagear a base da orelha por 1 minuto e remover o excesso (1–2x/sem na rotina ou SID antes de otológico).', plumbs: { dog: [{ title: 'Higiene auricular', dose: '1 a 2 mL por orelha, massagear 1 min e remover excesso', note: 'Não substitui tratamento específico de otite.' }], cat: [{ title: 'Higiene auricular', dose: '0,5 a 1 mL por orelha, massagear suavemente e remover excesso', note: 'Avaliar integridade timpânica antes do uso.' }] } },
     plumbsContext: 'Produto de suporte local; não é antibiótico, antifúngico ou antiparasitário.',
     clinicalUse: 'Higiene de conduto auditivo, remoção de cerúmen/oleosidade, redução de odor e suporte em rotina otológica.',
     reassessment: 'Reavaliar citologia, dor, odor, secreção e integridade timpânica em otites recorrentes.',
-    prescriptionExample: 'Surosolve, aplicar no conduto auditivo conforme orientação, massagear a base da orelha e remover excesso.',
+    prescriptionExample: 'Surosolve: instilar 1 a 2 mL em cada conduto auditivo (gatos: 0,5 a 1 mL), massagear a base da orelha por 1 minuto e remover o excesso com gaze seca, 1 a 2 vezes por semana (ou 1 vez ao dia antes da medicação tópica).',
     safetyAlert: 'Não usar se houver suspeita de ruptura timpânica sem avaliação. Não substitui otoscopia/citologia e tratamento específico.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6735,7 +6740,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Vetoryl 5 mg', 'Vetoryl 10 mg', 'Vetoryl 30 mg', 'Vetoryl 60 mg'],
     activeComponents: ['trilostano'],
     labelCompositionSummary: 'Trilostano em cápsulas para hiperadrenocorticismo canino.',
-    labelDirections: 'Plumb\'s: cães, iniciar baixo em 0,5-1 mg/kg VO q12h ou cerca de 2 mg/kg VO SID com alimento; ajustar por sinais clínicos e teste ACTH/cortisol.',
+    labelDirections: 'Cães: iniciar baixo em 0,5-1 mg/kg VO q12h ou cerca de 2 mg/kg VO SID com alimento; ajustar por sinais clínicos e teste ACTH/cortisol.',
     dosageGuidance: { labelDose: 'Cães: 0,5-1 mg/kg VO q12h ou ~2 mg/kg VO SID com alimento; ajustar por ACTH/cortisol e sinais.', plumbs: { dog: [{ title: 'Hiperadrenocorticismo', dose: '0,5-1 mg/kg VO q12h', note: 'Esquema BID de dose menor pode reduzir eventos adversos; monitoramento obrigatório.' }, { title: 'Alternativa SID', dose: '~2 mg/kg VO SID com alimento', note: 'Titular lentamente pela menor dose que controla sinais.' }] } },
     plumbsContext: 'Trilostano inibe síntese adrenal; risco de hipoadrenocorticismo iatrogênico se dose excessiva.',
     clinicalUse: 'Hiperadrenocorticismo hipófise-dependente ou adrenal-dependente em cães.',
@@ -6779,7 +6784,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Zycortal 25 mg/mL suspensão injetável'],
     activeComponents: ['pivalato de desoxicorticosterona', 'DOCP'],
     labelCompositionSummary: 'DOCP 25 mg/mL, mineralocorticoide de reposição injetável.',
-    labelDirections: 'Plumb\'s/Zycortal: cães, DOCP 2,2 mg/kg IM ou SC a cada 25 dias inicialmente; ajustar dose/intervalo por sódio, potássio, hidratação e resposta.',
+    labelDirections: 'Cães (Zycortal):, DOCP 2,2 mg/kg IM ou SC a cada 25 dias inicialmente; ajustar dose/intervalo por sódio, potássio, hidratação e resposta.',
     dosageGuidance: { labelDose: 'Cães: 2,2 mg/kg IM/SC a cada 25 dias inicialmente; ajustar por Na/K e resposta clínica.', plumbs: { dog: [{ title: 'Hipoadrenocorticismo primário', dose: '2,2 mg/kg IM ou SC a cada 25 dias', note: 'DOCP não tem ação glicocorticoide; associar prednisolona quando indicado e monitorar Na/K.' }] } },
     plumbsContext: 'DOCP repõe mineralocorticoide, mas não substitui glicocorticoide quando necessário.',
     clinicalUse: 'Hipoadrenocorticismo primário canino com deficiência mineralocorticoide.',
@@ -6823,12 +6828,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Doxiven 100 mg'],
     activeComponents: ['doxiciclina'],
     labelCompositionSummary: 'Doxiciclina 100 mg por comprimido para cães.',
-    labelDirections: 'Cães: 1 comprimido/20 kg, equivalente a 5 mg/kg VO a cada 12 h, por 7 dias ou a critério do médico-veterinário.',
+    labelDirections: 'Cães: 1 comprimido/20 kg (equivalente a 5 mg/kg) VO a cada 12 horas por 7 a 28 dias conforme indicação clínica.',
     dosageGuidance: { labelDose: 'Cães: 5 mg/kg VO q12h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 mg/kg VO q12h', note: 'Separar de cátions/sucralfato.' }] } },
     plumbsContext: 'Doxiciclina tem absorção reduzida por sucralfato, ferro, zinco, cálcio, magnésio e alumínio.',
     clinicalUse: 'Infecções bacterianas sensíveis em cães, conforme diagnóstico.',
     reassessment: 'Reavaliar resposta, cultura quando possível, vômitos, esofagite e adesão.',
-    prescriptionExample: 'Doxiven 100 mg, administrar por via oral conforme peso, a cada 12 horas, pelo período prescrito.',
+    prescriptionExample: 'Doxiven 100 mg: cães — administrar 5 mg/kg VO a cada 12 horas (1 cp/20 kg ou 1/2 cp/10 kg q12h), com água e alimento, por 7 a 21 dias.',
     safetyAlert: 'Antibiótico. Não usar sem diagnóstico. Dar com água/alimento; separar de sucralfato, ferro, cálcio, zinco e antiácidos.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço variou por varejo', sourceDate: '2026-06-07', notes: 'Sem imagem direta confiável encontrada.' }
   },
@@ -6845,7 +6850,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.dechra.com.br/medicamentos/31/enrofloxacina-50-mg',
     imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/enrofloxacina-50mg-1200x78127.jpg',
     labelCompositionSummary: 'Fluoroquinolona oral em comprimidos; apresentação/espécie deve ser confirmada pela bula específica.',
-    labelDirections: 'Plumb\'s: cães 5-20 mg/kg VO q24h para infecções sensíveis; gatos 5 mg/kg VO q24h ou dividido q12h, sem exceder 5 mg/kg/dia.',
+    labelDirections: 'Cães: 5-20 mg/kg VO q24h para infecções sensíveis; gatos 5 mg/kg VO q24h ou dividido q12h, sem exceder 5 mg/kg/dia.',
     dosageGuidance: { labelDose: 'Cães: 5-20 mg/kg VO q24h. Gatos: 5 mg/kg/dia VO (preferir q24h; máximo 5 mg/kg/dia).', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5-20 mg/kg VO q24h', note: 'Reservar para indicação/cultura; reavaliar se sem melhora em 5 dias.' }], cat: [{ title: 'Infecção sensível', dose: '5 mg/kg/dia VO', note: 'Não exceder 5 mg/kg/dia por risco de toxicidade retiniana.' }] } },
     plumbsContext: 'Fluoroquinolona crítica; usar cultura/antibiograma quando possível e evitar uso empírico indiscriminado.',
     clinicalUse: 'Infecções urinárias, dermatológicas, respiratórias, gastrointestinais e por bactérias sensíveis.',
@@ -6867,7 +6872,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.dechra.com.br/medicamentos/33/enrofloxacino-2-5-',
     imageUrl: 'https://www.dechra.com.br/common/uploads/produtos/enroflaxacino-25-1200x76315.jpg',
     labelCompositionSummary: 'Enrofloxacina 2,5% injetável para uso clínico.',
-    labelDirections: 'Plumb\'s: cães, solução injetável 2,27% 2,5 mg/kg IM uma vez, seguida de enrofloxacina oral; extra-label 10-20 mg/kg q24h IM/SC diluída ou IV lenta. Gatos: até 5 mg/kg/dia IM/IV.',
+    labelDirections: 'Cães: solução injetável 2,27% 2,5 mg/kg IM uma vez, seguida de enrofloxacina oral; extra-label 10-20 mg/kg q24h IM/SC diluída ou IV lenta. Gatos: até 5 mg/kg/dia IM/IV.',
     dosageGuidance: { labelDose: 'Cães: 2,5 mg/kg IM dose única e seguir VO; extra-label 10-20 mg/kg q24h. Gatos: até 5 mg/kg/dia IM/IV.', plumbs: { dog: [{ title: 'Injetável rotulado/ponte para VO', dose: '2,5 mg/kg IM dose única', note: 'Depois seguir com enrofloxacina oral; usar cultura quando possível.' }, { title: 'Uso hospitalar extra-label', dose: '10-20 mg/kg q24h IM/SC diluída ou IV lenta', note: 'Ajustar por sítio, gravidade e susceptibilidade.' }], cat: [{ title: 'Uso parenteral felino', dose: '5 mg/kg/dia ou menos IM/IV', note: 'Não exceder 5 mg/kg/dia; monitorar midríase/retina.' }] } },
     plumbsContext: 'Mesma lógica de fluoroquinolona; dose incorreta em gatos pode ser grave.',
     clinicalUse: 'Infecções bacterianas sensíveis em ambiente clínico/hospitalar.',
@@ -6917,12 +6922,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Cosacthen injetável'],
     activeComponents: ['tetracosactida', 'cosintropina'],
     labelCompositionSummary: 'ACTH sintético para teste de estimulação adrenal.',
-    labelDirections: 'Produto diagnóstico, não terapêutico domiciliar. Usar conforme protocolo de teste endócrino.',
-    dosageGuidance: { labelDose: 'Plumb\'s: teste ACTH em cães 5 µg/kg IV (máx. 250 µg) e cortisol 60 min; monitoramento de trilostano/mitotano 1 µg/kg IV.', plumbs: { dog: [{ title: 'Triagem hiperadrenocorticismo', dose: '5 µg/kg IV; máximo 250 µg/cão', note: 'Coletar cortisol basal e pós-ACTH em 60 min.' }, { title: 'Monitoramento trilostano/mitotano', dose: '1 µg/kg IV', note: 'Coletar cortisol basal e 60 min após.' }] } },
+    labelDirections: 'Uso clínico diagnóstico (teste de estimulação por ACTH em cães): triagem de hiperadrenocorticismo = 5 µg/kg IV (máx. 250 µg/cão) com coleta de cortisol T0 e T60 min; monitoramento de trilostano/mitotano = 1 µg/kg IV com coletas T0 e T60 min.',
+    dosageGuidance: { labelDose: 'Teste ACTH em cães: 5 µg/kg IV (máx. 250 µg) e cortisol 60 min; monitoramento de trilostano/mitotano 1 µg/kg IV.', plumbs: { dog: [{ title: 'Triagem hiperadrenocorticismo', dose: '5 µg/kg IV; máximo 250 µg/cão', note: 'Coletar cortisol basal e pós-ACTH em 60 min.' }, { title: 'Monitoramento trilostano/mitotano', dose: '1 µg/kg IV', note: 'Coletar cortisol basal e 60 min após.' }] } },
     plumbsContext: 'Cosintropina/tetracosactida é usada para avaliar função adrenocortical.',
     clinicalUse: 'Diagnóstico/monitoramento de insuficiência adrenocortical e avaliação adrenal conforme protocolo.',
     reassessment: 'Interpretar com cortisol basal/pós, sinais clínicos, eletrólitos e histórico de fármacos.',
-    prescriptionExample: 'Cosacthen: uso diagnóstico em clínica conforme protocolo de teste de estimulação por ACTH.',
+    prescriptionExample: 'Cosacthen (0,25 mg/mL): uso diagnóstico clínico — aplicar 5 µg/kg IV (0,02 mL/kg; máx. 250 µg = 1 mL) na triagem ou 1 µg/kg IV (0,004 mL/kg) no monitoramento de trilostano, com dosagem de cortisol basal e após 60 min.',
     safetyAlert: 'Não é medicação domiciliar. Resultado depende de dose, via, tempos de coleta e interpretação laboratorial.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Uso clínico/diagnóstico', sourceDate: '2026-06-07' }
   },
@@ -6939,12 +6944,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Mellis Vet 0,2 mg', 'Mellis Vet 0,5 mg', 'Mellis Vet 2 mg', 'Mellis Vet 3 mg', 'Mellis Vet 4 mg'],
     activeComponents: ['meloxicam'],
     labelCompositionSummary: 'Meloxicam em comprimidos veterinários; AINE preferencial COX-2.',
-    labelDirections: 'Cães: 0,2 mg/kg no primeiro dia, depois 0,1 mg/kg VO a cada 24 h. Gatos: usar apresentação felina e por tempo curto conforme bula/prescrição.',
-    dosageGuidance: { labelDose: 'Cães: 0,2 mg/kg D1, depois 0,1 mg/kg SID. Gatos: apresentação felina, tempo curto.', plumbs: { dog: [{ title: 'Dor/inflamação', dose: '0,2 mg/kg D1, depois 0,1 mg/kg VO SID', note: 'Dose clássica de meloxicam em cães.' }], cat: [{ title: 'Uso felino curto', dose: 'Dose de bula/apresentação felina, pelo menor tempo efetivo', note: 'Cautela renal máxima.' }] } },
+    labelDirections: 'Cães: 0,2 mg/kg VO no 1º dia, depois 0,1 mg/kg VO a cada 24 horas. Gatos: usar Mellis Vet 0,2 mg ou 0,5 mg na dose de 0,1 mg/kg VO no 1º dia e 0,05 mg/kg VO a cada 24 horas por 3 a 4 dias (não exceder 0,3 mg/gato).',
+    dosageGuidance: { labelDose: 'Cães: 0,2 mg/kg D1, depois 0,1 mg/kg SID. Gatos: 0,1 mg/kg D1 e 0,05 mg/kg SID por 3 a 4 dias.', plumbs: { dog: [{ title: 'Dor/inflamação', dose: '0,2 mg/kg D1, depois 0,1 mg/kg VO SID', note: 'Dose clássica de meloxicam em cães.' }], cat: [{ title: 'Uso felino curto', dose: '0,1 mg/kg D1 e 0,05 mg/kg VO SID por 3 a 4 dias', note: 'Cautela renal máxima.' }] } },
     plumbsContext: 'Meloxicam é AINE com maior risco em gatos idosos, desidratados ou nefropatas; monitorar como qualquer AINE.',
     clinicalUse: 'Dor e inflamação musculoesquelética, osteoartrite, inflamação aguda e dor pós-operatória leve a moderada.',
     reassessment: 'Reavaliar dor, hidratação, vômitos, diarreia, melena, apetite e função renal/hepática quando indicado.',
-    prescriptionExample: 'Mellis Vet [força], administrar por via oral conforme peso e espécie, a cada 24 horas, pelo período prescrito.',
+    prescriptionExample: 'Mellis Vet [0,2 mg, 0,5 mg, 2 mg, 3 mg ou 4 mg]: cães — 0,2 mg/kg VO no 1º dia e 0,1 mg/kg VO a cada 24 h por 3 a 7 dias; gatos — 0,1 mg/kg no 1º dia e 0,05 mg/kg VO a cada 24 h por 3 a 4 dias.',
     safetyAlert: 'Não associar com corticoide ou outro AINE. Evitar em DRC/IRA, desidratação, hipovolemia, hipotensão, vômitos/diarreia ativos, melena, úlcera GI, hepatopatia importante e gatos sem monitoramento.',
     price: { averageLabel: 'R$ 18 a R$ 45', rangeLabel: 'Estimativa por apresentação; Mellis Vet 0,5 mg citado perto de R$ 34,90', sourceDate: '2026-06-07' }
   },
@@ -6984,12 +6989,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Torzemin 2 mg', 'Torzemin 4 mg', 'Torzemin 8 mg'],
     activeComponents: ['torasemida'],
     labelCompositionSummary: 'Torasemida em comprimidos; diurético de alça para cães.',
-    labelDirections: 'Cães: 0,2 mg/kg VO a cada 12 h por 14 dias, conforme bula/rótulo citado.',
-    dosageGuidance: { labelDose: 'Cães: 0,2 mg/kg VO q12h por 14 dias.', plumbs: { dog: [{ title: 'Congestão/ICC', dose: 'Bula: 0,2 mg/kg VO q12h', note: 'Plumb’s sugere iniciar 0,1 a 0,3 mg/kg q24h em muitos cenários.' }, { title: 'Troca de furosemida', dose: 'Iniciar em torno de 5% a 10% da dose diária total de furosemida', note: 'Torasemida é cerca de 10 a 20 vezes mais potente.' }] } },
+    labelDirections: 'Cães: 0,2 mg/kg VO a cada 12 horas por 14 dias (alternativa clínica: iniciar 0,1 a 0,3 mg/kg VO a cada 24 horas, titulando até 0,6 mg/kg/dia).',
+    dosageGuidance: { labelDose: 'Cães: 0,2 mg/kg VO q12h por 14 dias.', plumbs: { dog: [{ title: 'Congestão/ICC', dose: 'Bula: 0,2 mg/kg VO q12h', note: 'Em muitos cenários clínicos, inicia-se com 0,1 a 0,3 mg/kg q24h.' }, { title: 'Troca de furosemida', dose: 'Iniciar em torno de 5% a 10% da dose diária total de furosemida', note: 'Torasemida é cerca de 10 a 20 vezes mais potente.' }] } },
     plumbsContext: 'Torasemida é diurético de alça mais potente que furosemida; excesso pode causar azotemia e distúrbios eletrolíticos.',
     clinicalUse: 'Congestão/edema cardiogênico, especialmente quando há necessidade de diurético mais potente ou refratariedade à furosemida.',
     reassessment: 'Monitorar ureia, creatinina, potássio, sódio, cloro, hidratação, pressão arterial, peso e frequência respiratória em repouso.',
-    prescriptionExample: 'Torzemin [2, 4 ou 8 mg], administrar por via oral na dose calculada, conforme protocolo cardiológico.',
+    prescriptionExample: 'Torzemin [2, 4 ou 8 mg]: cães — administrar 0,2 mg/kg por via oral a cada 12 horas por 14 dias (ou iniciar 0,1 a 0,3 mg/kg VO a cada 24 horas na manutenção, ajustando por função renal e congestão).',
     safetyAlert: 'Não usar em desidratação, anúria, hipovolemia, hipotensão, distúrbios eletrolíticos graves ou DRC/IRA instável. Monitorar glicemia em diabéticos.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Produto localizado sem preço estável', sourceDate: '2026-06-07' }
   },
@@ -7012,7 +7017,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Gabapentina em gatos é usada como ansiolítico situacional e adjuvante analgésico; ajustar/cautela em DRC.',
     clinicalUse: 'Contenção, transporte, manipulação, coleta de material e exames em gatos estressados.',
     reassessment: 'Monitorar sedação, ataxia, prostração, fraqueza e recuperação após o evento.',
-    prescriptionExample: 'Decrise [50, 100 ou 200 mg], administrar por via oral conforme prescrição, antes do evento estressor.',
+    prescriptionExample: 'Decrise [50, 100 ou 200 mg]: gatos — administrar 50 a 100 mg/gato (1 a 2 comp. de 50 mg) por via oral em dose única, cerca de 1 h 30 min antes do evento estressor.',
     safetyAlert: 'Cautela em DRC e associação com opioides, trazodona, benzodiazepínicos e outros depressores do SNC.',
     price: { averageLabel: 'R$ 89,00', rangeLabel: '50 mg 30 comp: R$ 72,00 a R$ 98,00; 100 mg 30 comp: R$ 110,00 a R$ 145,00', sourceDate: '2026-09-06' }
   },
@@ -7029,12 +7034,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Beneflora Vet seringa graduada 14 g'],
     activeComponents: ['probiótico', 'prebiótico', 'zinco', 'vitamina E'],
     labelCompositionSummary: 'Probiótico + prebiótico + zinco + vitamina E em pasta/seringa graduada.',
-    labelDirections: 'Bula/rótulo Avert: administrar por via oral usando a seringa graduada; cães e gatos recebem dose por graduação conforme peso e condição, seguindo o rótulo.',
-    dosageGuidance: { labelDose: 'Cães/gatos: administrar VO pela seringa graduada, na graduação correspondente ao peso no rótulo.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Não há dose Plumb’s universal para probiótico; seguir rótulo do produto.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Produto adjuvante; reavaliar diarreia persistente.' }] } },
-    plumbsContext: 'Probióticos dependem de cepa, UFC e fórmulação; seguir rótulo do produto.',
+    labelDirections: 'Administrar por via oral pela seringa graduada (14 g) na proporção de 1 g para cada 5 kg de peso corporal, 1 vez ao dia, por 3 a 7 dias consecutivos (ex.: 5 kg = 1 g; 10 kg = 2 g; 15 kg = 3 g; 20 kg = 4 g).',
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 g para cada 5 kg de peso corporal VO a cada 24 h pela seringa graduada.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: '1 g/5 kg VO SID pela seringa graduada por 3 a 7 dias', note: 'Reavaliar diarreia persistente ou com sangue.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: '1 g/5 kg VO SID (0,5 g para 2,5 kg) por 3 a 7 dias', note: 'Produto adjuvante; reavaliar diarreia persistente.' }] } },
+    plumbsContext: 'Probióticos dependem de cepa, UFC e fórmulação.',
     clinicalUse: 'Disbiose, diarreia leve, pós-antibiótico, transição alimentar e suporte de microbiota.',
     reassessment: 'Reavaliar se diarreia persiste, há sangue, vômitos, desidratação, febre ou apatia.',
-    prescriptionExample: 'Beneflora Vet, administrar por via oral conforme graduação da seringa e orientação veterinária.',
+    prescriptionExample: 'Beneflora Vet seringa 14 g: administrar 1 g para cada 5 kg de peso corporal (5 kg = 1 g; 10 kg = 2 g; 20 kg = 4 g) por via oral, 1 vez ao dia, por 5 dias.',
     safetyAlert: 'Adjuvante; não substitui investigação de parvovirose, AHDS, giardíase, parasitismo, obstrução, sepse ou desidratação. Cautela em imunossuprimidos graves.',
     price: { averageLabel: 'R$ 69,90', rangeLabel: 'Sachês / pasta oral: R$ 58,00 a R$ 84,00', sourceDate: '2026-09-06' }
   },
@@ -7051,12 +7056,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Kalium Vet 30 comprimidos bissulcados'],
     activeComponents: ['potássio'],
     labelCompositionSummary: 'Suplemento mineral repositor de potássio.',
-    labelDirections: 'Cães e gatos: 1 comprimido/10 kg VO a cada 12 h ou conforme orientação nutricional/veterinária.',
+    labelDirections: 'Cães e gatos: 1 comprimido para cada 10 kg VO a cada 12 horas (1/2 comprimido para 5 kg q12h), ajustando conforme potássio sérico.',
     dosageGuidance: { labelDose: 'Cães e gatos: 1 comp/10 kg VO q12h.', plumbs: { dog: [{ title: 'Hipocalemia', dose: '1 comp/10 kg VO q12h', note: 'Ajustar por potássio sérico.' }], cat: [{ title: 'Hipocalemia', dose: '1 comp/10 kg VO q12h', note: 'Útil especialmente em gatos renais hipocalêmicos, com monitoramento.' }] } },
     plumbsContext: 'Reposição de potássio deve ser guiada por potássio sérico, função renal, estado ácido-base e perdas.',
     clinicalUse: 'Hipocalemia leve a moderada em paciente estável, gatos renais, perdas gastrointestinais/urinárias ou uso de diurético.',
     reassessment: 'Monitorar potássio sérico, função renal, ECG quando necessário, hidratação e resposta clínica.',
-    prescriptionExample: 'Kalium Vet, administrar 1 comprimido para cada 10 kg por via oral, a cada 12 horas, ou conforme ajuste laboratorial.',
+    prescriptionExample: 'Kalium Vet: administrar 1 comprimido para cada 10 kg (1/2 comprimido para 5 kg) por via oral, a cada 12 horas, durante 14 a 30 dias com reavaliação de potássio sérico.',
     safetyAlert: 'Não usar em hipercalemia, obstrução urinária, anúria/oligúria grave, DRC descompensada sem controle ou uso de IECA/ARB/espironolactona sem monitoramento.',
     price: { averageLabel: 'R$ 98,00', rangeLabel: '30 cápsulas: R$ 85,00 a R$ 118,00', sourceDate: '2026-09-06' }
   },
@@ -7073,12 +7078,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Foli B solução oral'],
     activeComponents: ['tiamina', 'riboflavina', 'nicotinamida', 'ácido pantotênico', 'piridoxina', 'ácido fólico', 'cianocobalamina'],
     labelCompositionSummary: 'Suplemento de complexo B com sucralose, aroma de cacau e baunilha.',
-    labelDirections: 'Cães e gatos: 0,5 mL VO para cada 5 kg, uma vez ao dia, ou conforme orientação nutricional/veterinária.',
+    labelDirections: 'Cães e gatos: 0,5 mL para cada 5 kg de peso corporal (0,1 mL/kg) por via oral, 1 vez ao dia.',
     dosageGuidance: { labelDose: 'Cães e gatos: 0,5 mL/5 kg VO SID.', plumbs: { dog: [{ title: 'Suporte vitamínico', dose: '0,5 mL/5 kg VO SID', note: 'Dose de rótulo.' }], cat: [{ title: 'Suporte vitamínico', dose: '0,5 mL/5 kg VO SID', note: 'Dose de rótulo.' }] } },
-    plumbsContext: 'Não há dose Plumb’s para o produto; individualizar vitaminas do complexo B conforme doença e suporte nutricional.',
+    plumbsContext: 'Sem posologia veterinária única para o produto; individualizar vitaminas do complexo B conforme doença e suporte nutricional.',
     clinicalUse: 'Suporte em inapetência, enteropatias, hepatopatias, nefropatias, convalescença e risco de deficiência de vitaminas hidrossolúveis.',
     reassessment: 'Reavaliar apetite, peso, fezes, doença de base e necessidade de suporte continuado.',
-    prescriptionExample: 'Foli B, administrar 0,5 mL para cada 5 kg por via oral, uma vez ao dia, pelo período prescrito.',
+    prescriptionExample: 'Foli B solução oral: administrar 0,5 mL para cada 5 kg de peso (0,1 mL/kg) por via oral, 1 vez ao dia, por 15 a 30 dias.',
     safetyAlert: 'Suplemento; não substitui investigação da causa de anorexia, perda de peso ou diarreia. Atenção a aroma de cacau em pacientes sensíveis.',
     price: { averageLabel: 'R$ 75,00', rangeLabel: '30 comprimidos: R$ 65,00 a R$ 89,00', sourceDate: '2026-09-06' }
   },
@@ -7100,7 +7105,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Amoxicilina-clavulanato é usada para pele/tecidos moles, oral, urinária e respiratória conforme sensibilidade.',
     clinicalUse: 'Feridas, abscessos, mordeduras, infecção oral/periodontal, pele/tecidos moles, ITU sensível e algumas respiratórias.',
     reassessment: 'Reavaliar resposta, vômitos/diarreia e necessidade de cultura em recorrência, profundidade, falha ou infecção hospitalar.',
-    prescriptionExample: 'Agemoxi CL [50 ou 250 mg], administrar por via oral conforme peso, a cada 12 horas, pelo período prescrito.',
+    prescriptionExample: 'Agemoxi CL [50 mg ou 250 mg]: cães e gatos — 12,5 a 25 mg/kg por via oral, a cada 12 horas, por 7 a 14 dias (50 mg = 1 a 2 cp/4 kg q12h; 250 mg = 1 a 2 cp/20 kg q12h).',
     safetyAlert: 'Não usar em hipersensibilidade a penicilinas/cefalosporinas. Antibiótico não deve ser usado sem diagnóstico.',
     price: { averageLabel: 'R$ 58,00', rangeLabel: '250 mg 10 comp: R$ 58,00 a R$ 79,00; 50 mg 10 comp: R$ 38,00 a R$ 52,00', sourceDate: '2026-09-06' }
   },
@@ -7158,16 +7163,16 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/antimicrobianos/doxitrat/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/novo-doxi-1-3.jpg',
     species: ['dog', 'cat'],
-    presentations: ['Doxitrat conforme apresentação'],
+    presentations: ['Comprimidos palatáveis 80 mg, 100 mg e 200 mg (blísteres com 12 ou 24 comp.)'],
     activeComponents: ['doxiciclina'],
-    labelCompositionSummary: 'Doxiciclina veterinária; tetraciclina oral.',
-    labelDirections: 'Cães e gatos: 5 a 10 mg/kg VO q12-24h conforme indicação; separar de cátions e sucralfato.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 5 a 10 mg/kg VO q12-24h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Separar de sucralfato/cátions.' }], cat: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Dar água/alimento para reduzir lesão esofágica.' }] } },
+    labelCompositionSummary: 'Doxiciclina veterinária (80 mg, 100 mg ou 200 mg/comprimido); tetraciclina oral.',
+    labelDirections: 'Cães e gatos: 5 mg/kg VO q12h ou 10 mg/kg VO q24h (ex.: 1 comp. de 100 mg para 10–20 kg); administrar com alimento/água em gatos e separar de cátions/sucralfato por 2 horas.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 5 mg/kg VO q12h ou 10 mg/kg VO q24h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 mg/kg VO q12h ou 10 mg/kg VO q24h', note: 'Separar de sucralfato/cátions por 2 horas.' }], cat: [{ title: 'Infecção sensível', dose: '5 mg/kg VO q12h ou 10 mg/kg VO q24h', note: 'Dar água/alimento logo após para reduzir risco de estenose/lesão esofágica.' }] } },
     plumbsContext: 'Doxiciclina interage com sucralfato, ferro, zinco, cálcio, magnésio e alumínio.',
-    clinicalUse: 'Infecções sensíveis, hemoparasitoses/respiratórias e outras indicações conforme diagnóstico.',
-    reassessment: 'Reavaliar resposta, vômitos, esofagite, aderência e necessidade de cultura/testes.',
-    prescriptionExample: 'Doxitrat [apresentação], administrar por via oral na dose calculada, q12-24h conforme diagnóstico, separando de quelantes.',
-    safetyAlert: 'Antibiótico. Em gatos, administrar com água/alimento para reduzir risco de esofagite.',
+    clinicalUse: 'Infecções sensíveis, hemoparasitoses (erliquiose/anaplasmose/micoplasmose) e respiratórias.',
+    reassessment: 'Reavaliar resposta clínica/hematológica, vômitos, esofagite e aderência.',
+    prescriptionExample: 'Doxitrat 100 mg (ou 80/200 mg): administrar ___ comprimido VO (5 mg/kg q12h ou 10 mg/kg q24h) por 21 a 28 dias, oferecendo água/alimento após e separando de quelantes por 2 h.',
+    safetyAlert: 'Antibiótico. Em gatos, administrar sempre com água ou alimento pastoso para prevenir lesão esofágica.',
     price: { averageLabel: 'R$ 89,00', rangeLabel: '100 mg 24 comp: R$ 75,00 a R$ 105,00; 200 mg 24 comp: R$ 120,00 a R$ 160,00', sourceDate: '2026-09-06' }
   },
   {
@@ -7180,10 +7185,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/antimicrobianos/zelotril/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_antimicrobianos_zelotril.jpg',
     species: ['dog', 'cat'],
-    presentations: ['Zelotril conforme apresentação'],
+    presentations: ['Comprimidos palatáveis 50 mg e 150 mg (blísteres com 10 comprimidos)'],
     activeComponents: ['enrofloxacina'],
-    labelCompositionSummary: 'Fluoroquinolona veterinária; apresentação/dose deve ser conferida por bula direta.',
-    labelDirections: 'Referência Plumb\'s para enrofloxacina: cães 5-20 mg/kg VO q24h; gatos 5 mg/kg/dia VO, sem exceder 5 mg/kg/dia.',
+    labelCompositionSummary: 'Enrofloxacina veterinária (50 mg ou 150 mg/comprimido); fluoroquinolona oral.',
+    labelDirections: 'Cães: 5 mg/kg VO q24h na bula padrão (até 5–20 mg/kg VO q24h em protocolos específicos, ex.: 1 comp. de 50 mg para cada 10 kg). Gatos: 5 mg/kg VO q24h, nunca ultrapassando 5 mg/kg/dia.',
     dosageGuidance: { labelDose: 'Cães: 5-20 mg/kg VO q24h. Gatos: 5 mg/kg/dia VO (máximo 5 mg/kg/dia).', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5-20 mg/kg VO q24h', note: 'Usar com cultura/antibiograma quando possível.' }], cat: [{ title: 'Infecção sensível', dose: '5 mg/kg/dia VO', note: 'Evitar doses altas; risco de toxicidade retiniana.' }] } },
     plumbsContext: 'Enrofloxacina exige uso criterioso, idealmente com cultura, e cautela em gatos/doses altas.',
     clinicalUse: 'Infecções sensíveis urinárias, respiratórias, dermatológicas, gastrointestinais e sistêmicas conforme diagnóstico.',
@@ -7237,7 +7242,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Fluoroquinolona palatável para cães e gatos (marbofloxacina 5 mg, 20 mg e 80 mg); MAPA SP 000376-0.000001.',
     labelDirections: 'Bula Vetoquinol: dose de 2 mg/kg VO q24h. Gatos: 1 comp. de 5 mg para cada 2,5 kg. Cães: 1 comp. de 20 mg para cada 10 kg.',
     dosageGuidance: {
-      labelDose: 'Cães e gatos: 2 mg/kg VO q24h (bula brasileira e BSAVA) a 5,5 mg/kg VO q24h conforme indicação e MIC.',
+      labelDose: 'Cães e gatos: 2 mg/kg VO q24h (bula brasileira) a 5,5 mg/kg VO q24h conforme indicação e MIC.',
       plumbs: {
         dog: [{ title: 'Infecção sensível', dose: '2 a 5,5 mg/kg VO q24h', note: 'Bula Vetoquinol: 2 mg/kg q24h; ISCAID Staphylococcus: 5,5 mg/kg q24h.' }],
         cat: [{ title: 'Infecção sensível / M. haemofelis', dose: '2 mg/kg VO q24h', note: 'Excelente segurança retiniana; 14 dias para resgate de M. haemofelis pós-doxi.' }],
@@ -7402,12 +7407,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Cronidor 12 mg', 'Cronidor 40 mg', 'Cronidor 80 mg', 'Cronidor 2% injetável'],
     activeComponents: ['cloridrato de tramadol'],
     labelCompositionSummary: 'Tramadol oral/injetável veterinário para cães e gatos.',
-    labelDirections: 'Cães e gatos: 2 mg/kg VO a cada 8 h, por até 4 dias, conforme bula citada.',
+    labelDirections: 'Cães e gatos: 2 mg/kg VO a cada 8 horas, por até 4 dias (em dor aguda selecionada, pode chegar a 4 mg/kg VO q8h em gatos).',
     dosageGuidance: { labelDose: 'Cães e gatos: 2 mg/kg VO q8h por até 4 dias.', plumbs: { dog: [{ title: 'Dor leve/moderada', dose: '2 mg/kg VO q8h', note: 'Tramadol isolado em cães tem eficácia variável.' }], cat: [{ title: 'Dor leve/moderada', dose: '2 mg/kg VO q8h', note: 'Monitorar sedação/disforia.' }] } },
     plumbsContext: 'Tramadol é mais consistente como parte de analgesia multimodal; cautela com serotonérgicos e convulsões.',
     clinicalUse: 'Dor leve a moderada, pós-operatório curto e analgesia adicional quando AINE não pode ser usado.',
     reassessment: 'Reavaliar dor, sedação, constipação, vômitos, apetite e comportamento.',
-    prescriptionExample: 'Cronidor [12, 40 ou 80 mg], administrar por via oral na dose calculada, a cada 8 horas, por até 4 dias.',
+    prescriptionExample: 'Cronidor [12, 40 ou 80 mg]: cães e gatos — administrar 2 mg/kg por via oral, a cada 8 horas, por até 4 dias.',
     safetyAlert: 'Substância controlada. Evitar em obstrução GI, histórico convulsivo e uso com SSRIs, selegilina, trazodona, mirtazapina ou outros serotonérgicos.',
     price: { averageLabel: 'R$ 54,00', rangeLabel: '12 mg 10 comp: R$ 35,00 a R$ 48,00; 40 mg 10 comp: R$ 52,00 a R$ 70,00; 80 mg 10 comp: R$ 78,00 a R$ 105,00', sourceDate: '2026-09-06' }
   },
@@ -7424,12 +7429,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Emedron comprimidos', 'Emedron 1% injetável'],
     activeComponents: ['ondansetrona'],
     labelCompositionSummary: 'Ondansetrona veterinária oral/injetável.',
-    labelDirections: 'Cães e gatos: 0,5 a 1 mg/kg VO a cada 8 h por 5 dias ou conforme critério veterinário.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 0,5 a 1 mg/kg VO q8h por 5 dias.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q8h', note: 'Bula; BSAVA cita intervalos q12-24h em alguns contextos.' }], cat: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q8h', note: 'Cautela em hepatopatia/QT.' }] } },
+    labelDirections: 'Cães e gatos: 0,5 a 1 mg/kg VO a cada 8 horas por até 5 dias.',
+    dosageGuidance: { labelDose: 'Cães e gatos: 0,5 a 1 mg/kg VO q8h por 5 dias.', plumbs: { dog: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q8h', note: 'Bula; alguns protocolos utilizam intervalos q12-24h.' }], cat: [{ title: 'Náusea/vômito', dose: '0,5 a 1 mg/kg VO q8h', note: 'Cautela em hepatopatia/QT.' }] } },
     plumbsContext: 'Ondansetrona pode reduzir efetividade do tramadol e exige cautela em QT longo/alterações eletrolíticas.',
     clinicalUse: 'Náusea/vômito, quimioterapia, uremia, gastroenterite ou antiemético adicional.',
     reassessment: 'Reavaliar hidratação, dor abdominal, obstrução, constipação e persistência do vômito.',
-    prescriptionExample: 'Emedron [apresentação], administrar por via oral na dose calculada, a cada 8 horas, por até 5 dias.',
+    prescriptionExample: 'Emedron [comprimido ou solução]: cães e gatos — administrar 0,5 a 1 mg/kg por via oral, a cada 8 horas, por até 5 dias.',
     safetyAlert: 'Contraindicar em obstrução intestinal suspeita. Cautela em hepatopatia grave, arritmias, QT longo, hipocalemia/hipomagnesemia e fármacos que prolongam QT.',
     price: { averageLabel: 'R$ 45,00', rangeLabel: '5 mg 10 comp: R$ 38,00 a R$ 52,00; gotas 10 mL: R$ 45,00 a R$ 62,00', sourceDate: '2026-09-06' }
   },
@@ -7718,7 +7723,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Enalapril é IECA cardiovascular/vasodilatador; monitorar pressão, função renal e potássio.',
     clinicalUse: 'Insuficiência cardíaca, hipertensão e proteinúria/doença renal conforme diagnóstico.',
     reassessment: 'Monitorar PA, creatinina, ureia, potássio, hidratação, apetite e sinais de hipotensão.',
-    prescriptionExample: 'Petpril [5 ou 10 mg], administrar por via oral conforme peso, a cada 12 ou 24 horas, com monitoramento.',
+    prescriptionExample: 'Petpril [5 mg ou 10 mg]: cães — 0,5 mg/kg VO a cada 12 ou 24 horas (5 mg = 1 cp/10 kg; 10 mg = 1 cp/20 kg); gatos — 0,25 a 0,5 mg/kg VO a cada 12 ou 24 horas (Petpril 5 mg: 1/4 a 1/2 cp para 5 kg), com monitoramento renal e pressórico.',
     safetyAlert: 'Cautela em hipotensão, desidratação, hipercalemia, DRC/IRA instável e uso com AINEs, diuréticos, espironolactona, telmisartana ou outros vasodilatadores.',
     price: { averageLabel: 'R$ 55,00', rangeLabel: '5 mg 30 comp: R$ 45,00 a R$ 62,00; 10 mg 30 comp: R$ 68,00 a R$ 89,00', sourceDate: '2026-09-06' }
   },
@@ -7740,7 +7745,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Metergolina deve seguir dose de bula do produto comercial.',
     clinicalUse: 'Pseudociese e interrupção de lactação em cadelas e gatas quando clinicamente indicado.',
     reassessment: 'Excluir gestação real, mastite, piometra e neoplasia mamária; monitorar resposta e vômitos.',
-    prescriptionExample: 'Sec Lac [5 ou 20], administrar por via oral conforme espécie e peso, a cada 12 horas, por 4 a 8 dias.',
+    prescriptionExample: 'Sec Lac [5 ou 20]: cadelas — Sec Lac 5: 1 cp/5 kg VO q12h ou Sec Lac 20: 1 cp/20 kg VO q12h, por 4 a 8 dias; gatas — Sec Lac 5: 1 cp/4 kg VO q12h, por 4 a 8 dias.',
     safetyAlert: 'Não usar quando lactação deve ser mantida. Cautela em vômitos, alterações comportamentais e pacientes debilitadas.',
     price: { averageLabel: 'R$ 89,00', rangeLabel: '0,5 mg 16 comp: R$ 65,00 a R$ 88,00; 2 mg 16 comp: R$ 115,00 a R$ 155,00', sourceDate: '2026-09-06' }
   },
@@ -7757,12 +7762,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Prednon 4 mg/mL solução oral 30 mL'],
     activeComponents: ['prednisolona'],
     labelCompositionSummary: 'Prednisolona 4 mg/mL em solução oral para cães.',
-    labelDirections: 'Cães: 0,5 a 1 mg/kg VO a cada 24 h ou conforme critério médico-veterinário.',
+    labelDirections: 'Cães: 0,5 a 1 mg/kg VO a cada 24 horas na fase anti-inflamatória (0,125 a 0,25 mL/kg da solução 4 mg/mL), reduzindo gradualmente se o uso ultrapassar 5 a 7 dias.',
     dosageGuidance: { labelDose: 'Cães: 0,5 a 1 mg/kg VO SID.', plumbs: { dog: [{ title: 'Anti-inflamatório esteroidal', dose: '0,5 a 1 mg/kg VO SID', note: 'Dose depende do objetivo; desmamar quando indicado.' }] } },
     plumbsContext: 'Prednisolona tem dose dependente do objetivo anti-inflamatório, imunossupressor ou substitutivo.',
     clinicalUse: 'Inflamação/alergia, doença imune e protocolos específicos em cães conforme diagnóstico.',
     reassessment: 'Monitorar PU/PD, polifagia, vômitos/diarreia, infecção, glicemia e necessidade de desmame.',
-    prescriptionExample: 'Prednon 4 mg/mL, administrar por via oral na dose calculada, a cada 24 horas, conforme prescrição.',
+    prescriptionExample: 'Prednon 4 mg/mL: cães — administrar 0,5 a 1 mg/kg (0,125 a 0,25 mL/kg) por via oral, a cada 24 horas, por 5 a 7 dias com redução gradual se contínuo.',
     safetyAlert: 'Nunca associar com AINE. Cautela em diabetes, hiperadrenocorticismo, pancreatite, úlcera GI, infecção ativa, cardiopatia, DRC, hipertensão e uso prolongado.',
     price: { averageLabel: 'R$ 28,00', rangeLabel: '5 mg 10 comp: R$ 18,00 a R$ 26,00; 20 mg 10 comp: R$ 35,00 a R$ 48,00', sourceDate: '2026-09-06' }
   },
@@ -7784,7 +7789,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     plumbsContext: 'Glucosamina/condroitina são suplementos adjuvantes; qualidade e fórmulação variam entre produtos.',
     clinicalUse: 'Suporte articular em osteoartrite, displasia, geriatria e alta demanda articular.',
     reassessment: 'Reavaliar mobilidade, dor, peso e tolerância gastrointestinal em 4 a 8 semanas.',
-    prescriptionExample: 'Pro Cart, administrar por via oral conforme peso, a cada 24 horas, como suporte articular.',
+    prescriptionExample: 'Pro Cart: cães e gatos — 1 comprimido para cada 10 kg VO a cada 24 horas; Pro Cart 25 (cães): 1 comprimido para cada 25 kg VO a cada 24 horas, por 4 a 6 semanas.',
     safetyAlert: 'Suplemento; não substitui analgesia, controle de peso, fisioterapia ou tratamento da causa. Cautela em diabéticos e intolerância gastrointestinal.',
     price: { averageLabel: 'R$ 168,00', rangeLabel: 'Pro Cart 25 60 comp: R$ 145,00 a R$ 195,00', sourceDate: '2026-09-06' }
   },
@@ -7799,12 +7804,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco conta-gotas 10 mL'],
     activeComponents: ['hialuronato de sódio 0,2%', 'carboximetilcelulose 0,3%'],
     labelCompositionSummary: 'Hialuronato de sódio 200 mg/100 mL e carboximetilcelulose 300 mg/100 mL.',
-    labelDirections: '1 gota em cada olho, no mínimo 3 vezes ao dia, ou a critério do médico-veterinário.',
+    labelDirections: 'Cães e gatos: instilar 1 gota em cada olho, no mínimo 3 vezes ao dia (a cada 8 horas; podendo aumentar para cada 4–6 horas em ceratoconjuntivite seca intensa).',
     dosageGuidance: { labelDose: 'Cães e gatos: 1 gota em cada olho, no mínimo TID.' },
-    plumbsContext: 'Lubrificantes oculares não têm dose única universal no Plumb’s; frequência depende de produto, gravidade e resposta.',
+    plumbsContext: 'Lubrificantes oculares não têm dose única universal; frequência depende de produto, gravidade e resposta.',
     clinicalUse: 'Ressecamento leve, secreção ocular não infecciosa, suporte em ceratoconjuntivite seca, braquicefálicos e irritação ambiental.',
     reassessment: 'Reavaliar se houver blefaroespasmo, dor, opacidade corneana, secreção purulenta, olho azul ou suspeita de úlcera/glaucoma/uveíte.',
-    prescriptionExample: 'Optivet Tears, aplicar 1 gota em cada olho a cada 8 horas, por tempo conforme resposta clínica.',
+    prescriptionExample: 'Optivet Tears Pet: instilar 1 gota em cada olho a cada 6 a 8 horas (mínimo 3 vezes ao dia), em uso contínuo ou até reavaliação oftalmológica.',
     safetyAlert: 'Não substitui fluoresceína, Schirmer, tonometria ou investigação de úlcera/glaucoma/uveíte.',
     productPageUrl: 'https://vetnil.com.br/produto/optivetr-r-tears-pet/',
     imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/Optivet-R-Tears_603009170db3a.webp',
@@ -7823,7 +7828,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Colírio lubrificante ocular à base de carboximetilcelulose sódica.',
     labelDirections: '1 gota em cada olho afetado, 4 vezes ao dia, por 7 dias; pode prolongar até 31 dias conforme avaliação.',
     dosageGuidance: { labelDose: 'Cães: 1 gota no(s) olho(s) afetado(s) QID por 7 dias; até 31 dias se indicado.', notes: ['Gatos: uso sob orientação/extra-label até confirmar bula felina oficial.'] },
-    plumbsContext: 'Sem dose Plumb’s específica para a marca; lubrificantes são ajustados conforme necessidade clínica.',
+    plumbsContext: 'Sem posologia específica para a marca; lubrificantes são ajustados conforme necessidade clínica.',
     clinicalUse: 'Adjuvante em ceratoconjuntivite seca, irritação por ressecamento, exposição corneana e braquicefálicos.',
     reassessment: 'Reavaliar antes de prolongar e investigar causa quando houver dor, secreção, úlcera ou opacidade.',
     prescriptionExample: 'Lacri colírio, aplicar 1 gota no(s) olho(s) afetado(s) a cada 6 horas por 7 dias; reavaliar.',
@@ -7846,7 +7851,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Lágrima artificial humana com carmelose sódica, geralmente 5 mg/mL conforme apresentação.',
     labelDirections: 'Bula humana: 1 a 2 gotas no(s) olho(s) afetado(s), conforme necessidade.',
     dosageGuidance: { labelDose: 'Extra-label: 1 gota no(s) olho(s) afetado(s) q6-8h ou conforme necessidade.' },
-    plumbsContext: 'Sem dose Plumb’s específica por marca; lubrificantes são ajustados à superfície ocular e resposta.',
+    plumbsContext: 'Sem posologia específica por marca; lubrificantes são ajustados à superfície ocular e resposta.',
     clinicalUse: 'Lágrima artificial acessível para ressecamento leve, suporte em KCS, braquicefálicos e irritação ambiental.',
     reassessment: 'Reavaliar se precisar de uso muito frequente ou se houver dor, secreção, úlcera ou opacidade.',
     prescriptionExample: 'Lacrifilm colírio, aplicar 1 gota no(s) olho(s) afetado(s) a cada 6-8 horas.',
@@ -7868,7 +7873,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Lubrificante ocular humano sem conservantes com hialuronato de sódio 0,15%.',
     labelDirections: 'Bula/rótulo humano: 1 gota no olho conforme necessidade.',
     dosageGuidance: { labelDose: 'Extra-label: 1 gota no(s) olho(s) afetado(s) q6-8h ou conforme necessidade.' },
-    plumbsContext: 'Hialuronato lubrificante é usado conforme gravidade do olho seco e resposta; sem dose Plumb’s por marca.',
+    plumbsContext: 'Hialuronato lubrificante é usado conforme gravidade do olho seco e resposta, sem posologia única por marca.',
     clinicalUse: 'Opção sem conservantes para uso frequente, olho seco crônico, superfície ocular sensível e braquicefálicos.',
     reassessment: 'Reavaliar Schirmer/superfície ocular em uso crônico ou se houver desconforto persistente.',
     prescriptionExample: 'Hyabak 0,15%, aplicar 1 gota no(s) olho(s) afetado(s) a cada 6-8 horas ou conforme necessidade.',
@@ -7888,12 +7893,12 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Systane UL 10 mL', 'Systane UL 15 mL', 'Systane Ultra 10 mL'],
     activeComponents: ['lubrificantes variáveis conforme versão'],
     labelCompositionSummary: 'Composição varia por versão; cadastrar Systane UL, Ultra, Complete ou Hidratação separadamente quando necessário.',
-    labelDirections: 'Uso humano conforme necessidade; em veterinária usar conforme prescrição.',
-    dosageGuidance: { labelDose: 'Extra-label: 1 gota no(s) olho(s) afetado(s) q6-8h ou conforme necessidade.' },
-    plumbsContext: 'Sem dose Plumb’s específica por marca; lágrimas artificiais são prescritas conforme necessidade clínica.',
+    labelDirections: 'Cães e gatos (extra-label): instilar 1 gota no(s) olho(s) afetado(s) a cada 6 a 8 horas (3 a 4 vezes ao dia; podendo usar q4h em ressecamento ocular intenso).',
+    dosageGuidance: { labelDose: 'Extra-label (cães e gatos): 1 gota no(s) olho(s) afetado(s) q6-8h (3 a 4x/dia).' },
+    plumbsContext: 'Sem posologia específica por marca; lágrimas artificiais são prescritas de 3 a 6x/dia conforme gravidade do olho seco.',
     clinicalUse: 'Lubrificante para olho seco leve a moderado, irritação ambiental e suporte de superfície ocular.',
     reassessment: 'Reavaliar se houver dor, secreção purulenta, úlcera, uveíte ou glaucoma.',
-    prescriptionExample: 'Systane [versão], aplicar 1 gota no(s) olho(s) afetado(s) a cada 6-8 horas ou conforme orientação.',
+    prescriptionExample: 'Systane [UL ou Ultra]: instilar 1 gota no(s) olho(s) afetado(s) a cada 6 a 8 horas (3 a 4 vezes ao dia) por 14 a 30 dias.',
     safetyAlert: 'Produto humano extra-label. Não usar como único tratamento em dor ocular, úlcera, uveíte ou glaucoma.',
     productPageUrl: 'https://systane.myalcon.com/br/products/systane-ultra/',
     imageUrl: 'https://systane.myalcon.com/br/sites/g/files/rbvwei2856/files/2022-12/col-right%20%281%29.png',
@@ -7907,15 +7912,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     commercialClass: 'ophthalmologic',
     commercialSubclass: 'ophthalmic_lubricant',
     species: ['dog', 'cat'],
-    presentations: ['Optive 10 mL', 'Optive 15 mL', 'Optive Advance conforme apresentação'],
-    activeComponents: ['carmelose', 'glicerina', 'hialuronato conforme versão'],
-    labelCompositionSummary: 'Composição depende da versão; combina lubrificantes e osmoprotetores conforme apresentação.',
-    labelDirections: 'Bula/rótulo humano: aplicar conforme necessidade.',
-    dosageGuidance: { labelDose: 'Extra-label: 1 gota no(s) olho(s) afetado(s) q6-8h ou conforme necessidade.' },
-    plumbsContext: 'Sem dose Plumb’s específica por marca; usar como lubrificante adjuvante.',
+    presentations: ['Optive 10 mL', 'Optive 15 mL', 'Optive Advance 10 mL (ou 30 flaconetes UD 0,4 mL)'],
+    activeComponents: ['carmelose', 'glicerina', 'hialuronato (Optive Advance)'],
+    labelCompositionSummary: 'Optive clássico combina carmelose sódica + glicerina; Optive Advance associa hialuronato + lipídios/osmoprotetores.',
+    labelDirections: 'Cães e gatos (extra-label): instilar 1 gota no(s) olho(s) afetado(s) a cada 6 a 8 horas (3 a 4 vezes ao dia; até q4h em exposição corneana).',
+    dosageGuidance: { labelDose: 'Extra-label (cães e gatos): 1 gota no(s) olho(s) afetado(s) q6-8h (3 a 4x/dia).' },
+    plumbsContext: 'Sem posologia específica por marca; usar como lubrificante adjuvante.',
     clinicalUse: 'Lubrificante mais encorpado em alguns pacientes com olho seco e superfície ocular irritada.',
     reassessment: 'Reavaliar dor, secreção, opacidade, úlcera ou necessidade de imunomodulador.',
-    prescriptionExample: 'Optive [versão], aplicar 1 gota no(s) olho(s) afetado(s) a cada 6-8 horas ou conforme necessidade.',
+    prescriptionExample: 'Optive / Optive Advance: aplicar 1 gota no(s) olho(s) afetado(s) a cada 6-8 horas (até q4h se exposição corneana).',
     safetyAlert: 'Produto humano extra-label. Não substitui avaliação oftálmica em dor, secreção purulenta, úlcera ou opacidade corneana.',
     productPageUrl: 'https://www.abbvie.com.br/content/dam/abbvie-com2/br/documents/Optive-UD.pdf',
     imageUrl: 'https://precopopular.vtexassets.com/arquivos/ids/237323/751939-colirio-optive-advance-solucao-oftalmica-10ml-1.jpg?v=639004684376770000',
@@ -7954,15 +7959,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco conta-gotas 5 mL'],
     activeComponents: ['tobramicina 0,3%'],
     labelCompositionSummary: 'Colírio veterinário à base de sulfato de tobramicina 0,3% (3 mg/mL).',
-    labelDirections: 'Plumb\'s: infecções de superfície ocular sensíveis, 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir aplicação a cada 30-60 min sob monitoramento.',
+    labelDirections: 'Infecções de superfície ocular sensíveis: 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir aplicação a cada 30-60 min sob monitoramento.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
+      labelDose: '1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
       plumbs: {
         dog: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Em infecção importante pode exigir q30-60 min; reavaliar superfície ocular e cultura quando indicado.' }],
         cat: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Mesma leitura extra-label; acompanhar resposta e tolerância local.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve tobramicina oftálmica para infecções de superfície ocular por bactérias sensíveis; ajustar frequência por gravidade, citologia/cultura e presença de úlcera.',
+    plumbsContext: 'Tobramicina oftálmica indicada para infecções de superfície ocular por bactérias sensíveis; ajustar frequência por gravidade, citologia/cultura e presença de úlcera.',
     clinicalUse: 'Infecções oculares bacterianas e suporte em úlceras infectadas por microrganismos sensíveis.',
     reassessment: 'Reavaliar rapidamente se não houver melhora, se houver úlcera, dor ou secreção purulenta.',
     prescriptionExample: 'Tobrasyn colírio: instilar 1 gota no olho afetado 4-6 vezes ao dia; ajustar para casos graves apenas com monitoramento oftálmico.',
@@ -7982,15 +7987,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,3% 5 mL'],
     activeComponents: ['tobramicina 0,3%'],
     labelCompositionSummary: 'Colírio humano de tobramicina 3 mg/mL usado extra-label em veterinária.',
-    labelDirections: 'Plumb\'s: infecções de superfície ocular sensíveis, 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir q30-60 min sob monitoramento.',
+    labelDirections: 'Infecções de superfície ocular sensíveis: 1 gota no olho afetado 4-6x ao dia; infecções importantes podem exigir q30-60 min sob monitoramento.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
+      labelDose: '1 gota no olho afetado 4-6x/dia; casos importantes podem exigir q30-60 min sob monitoramento oftálmico.',
       plumbs: {
         dog: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Dose extra-label; ajustar por gravidade, cultura/citologia e evolução.' }],
         cat: [{ title: 'Infecção ocular sensível', dose: '1 gota no olho afetado 4-6x/dia', note: 'Dose extra-label; reavaliar se dor, secreção ou piora.' }]
       }
     },
-    plumbsContext: 'Aminoglicosídeo tópico citado no Plumb\'s para infecções oculares sensíveis; escolha e intervalo dependem da citologia, cultura, úlcera e resposta clínica.',
+    plumbsContext: 'Aminoglicosídeo tópico para infecções oculares sensíveis; escolha e intervalo dependem da citologia, cultura, úlcera e resposta clínica.',
     clinicalUse: 'Alternativa humana de tobramicina para infecção bacteriana ocular sensível.',
     reassessment: 'Reavaliar em 24-72 h ou antes se piora, dor ou úlcera.',
     prescriptionExample: 'Tobramicina/Tobrex 0,3%: instilar 1 gota no olho afetado 4-6 vezes ao dia, com reavaliação conforme gravidade.',
@@ -8011,15 +8016,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco 5 mL'],
     activeComponents: ['ciprofloxacino oftálmico','sulfato de condroitina a 20%'],
     labelCompositionSummary: 'Colírio veterinário com ciprofloxacina (antibiótico fluoroquinolona) e sulfato de condroitina a 20% (cicatrizante e hidratante corneano).',
-    labelDirections: 'Instilar 1 gota no olho afetado a cada 24 horas. Em casos graves de infecção ocular, iniciar com 1 gota a cada 12 horas e seguir com a frequência de 24 horas, ou conforme critério do médico-veterinário.',
+    labelDirections: 'Instilar 1 gota no olho afetado a cada 24 horas por 7 a 14 dias. Em casos graves de infecção ocular, iniciar com 1 gota a cada 12 horas nas primeiras 48 a 72 horas e manter em seguida 1 gota a cada 24 horas.',
     dosageGuidance: {
-      labelDose: 'Bula Ciprovet: 1 gota no olho afetado q24h; em casos graves, iniciar q12h e depois q24h conforme critério veterinário.',
+      labelDose: 'Ciprovet (bula veterinária): 1 gota no olho afetado q24h (casos graves: iniciar q12h por 48–72 h e reduzir para q24h).',
       plumbs: {
-        dog: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência Plumb\'s para conjuntivite/ceratite bacteriana sensível; o rótulo do Ciprovet traz esquema próprio q24h/q12h.' }],
-        cat: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência Plumb\'s extra-label; comparar com bula veterinária do produto e gravidade.' }]
+        dog: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência extra-label para conjuntivite/ceratite bacteriana sensível; o rótulo do Ciprovet traz esquema próprio q24h/q12h.' }],
+        cat: [{ title: 'Ciprofloxacino oftálmico', dose: '1 gota no olho afetado q2-8h', note: 'Referência extra-label; comparar com bula veterinária do produto e gravidade.' }]
       }
     },
-    plumbsContext: 'Fluoroquinolona tópica ocular; Plumb\'s lista ciprofloxacino q2-8h para conjuntivite/ceratite sensível, enquanto o rótulo veterinário do Ciprovet usa posologia própria.',
+    plumbsContext: 'Fluoroquinolona tópica ocular usada a cada 2-8 h para conjuntivite/ceratite sensível, enquanto o rótulo veterinário do Ciprovet adota posologia própria.',
     clinicalUse: 'Infecções oculares bacterianas sensíveis, conjuntivite bacteriana, ceratite seca contaminada, déficit de lágrimas e adjuvante em cicatrização de úlceras de córnea.',
     reassessment: 'Reavaliar resposta e superfície corneana; considerar cultura em casos graves/recorrentes.',
     prescriptionExample: 'Instilar 1 gota de Ciprovet no olho afetado a cada 24 horas.',
@@ -8039,15 +8044,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,3% 5 mL'],
     activeComponents: ['ciprofloxacino 0,3%'],
     labelCompositionSummary: 'Produto humano de ciprofloxacino oftálmico usado extra-label em cães e gatos.',
-    labelDirections: 'Plumb\'s: conjuntivite ou ceratite bacteriana sensível, 1 gota no olho afetado a cada 2-8 horas.',
+    labelDirections: 'Conjuntivite ou ceratite bacteriana sensível: 1 gota no olho afetado a cada 2-8 horas.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota no olho afetado q2-8h para conjuntivite/ceratite bacteriana sensível.',
+      labelDose: '1 gota no olho afetado q2-8h para conjuntivite/ceratite bacteriana sensível.',
       plumbs: {
         dog: [{ title: 'Conjuntivite/ceratite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Dose extra-label; considerar citologia/cultura e reavaliar resposta.' }],
         cat: [{ title: 'Conjuntivite/ceratite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Dose extra-label; acompanhar dor, secreção e superfície corneana.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve ciprofloxacino oftálmico para conjuntivite/ceratite por bactérias sensíveis; evitar uso sem diagnóstico e reavaliar se não houver resposta.',
+    plumbsContext: 'Ciprofloxacino oftálmico indicado para conjuntivite/ceratite por bactérias sensíveis; evitar uso sem diagnóstico e reavaliar se não houver resposta.',
     clinicalUse: 'Opção extra-label para infecção ocular bacteriana sensível.',
     reassessment: 'Reavaliar cedo em úlcera, dor ou ausência de resposta.',
     prescriptionExample: 'Ciloxan/ciprofloxacino 0,3%: instilar 1 gota no olho afetado a cada 2-8 horas conforme gravidade e reavaliação.',
@@ -8067,9 +8072,9 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 5 mL'],
     activeComponents: ['moxifloxacino oftálmico'],
     labelCompositionSummary: 'Fluoroquinolona oftálmica humana usada extra-label em veterinária.',
-    labelDirections: 'Plumb\'s: conjuntivite, 1 gota no olho afetado q2-8h; ceratite, 1 gota ou 0,1 mL via cateter SPL q2-8h.',
+    labelDirections: 'Conjuntivite: 1 gota no olho afetado q2-8h; ceratite: 1 gota ou 0,1 mL via cateter SPL q2-8h.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: conjuntivite 1 gota q2-8h; ceratite 1 gota ou 0,1 mL via SPL q2-8h.',
+      labelDose: 'Conjuntivite: 1 gota q2-8h; ceratite: 1 gota ou 0,1 mL via SPL q2-8h.',
       plumbs: {
         dog: [
           { title: 'Conjuntivite bacteriana sensível', dose: '1 gota no olho afetado q2-8h', note: 'Uso extra-label; idealmente guiado por citologia/cultura e resposta clínica.' },
@@ -8081,7 +8086,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         ]
       }
     },
-    plumbsContext: 'Plumb\'s descreve moxifloxacino oftálmico para conjuntivite/ceratite bacteriana confirmada ou sensível; evitar profilaxia e não misturar diretamente com outros colírios.',
+    plumbsContext: 'Moxifloxacino oftálmico indicado para conjuntivite/ceratite bacteriana confirmada ou sensível; evitar profilaxia e não misturar diretamente com outros colírios.',
     clinicalUse: 'Conjuntivite ou ceratite bacteriana por microrganismos sensíveis quando há indicação clínica para fluoroquinolona.',
     reassessment: 'Reavaliar citologia/cultura e resposta; se não houver melhora em até 7 dias ou houver piora/dor, rever diagnóstico e suscetibilidade.',
     prescriptionExample: 'Vigamox/moxifloxacino oftálmico: instilar 1 gota no olho afetado a cada 2-8 horas conforme indicação e gravidade.',
@@ -8129,15 +8134,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 1% 5 mL'],
     activeComponents: ['atropina 1%'],
     labelCompositionSummary: 'Antimuscarínico midriático/cicloplégico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Plumb\'s: midríase/cicloplegia, inicialmente 1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia; depois SID ou em dias alternados para manter efeito.',
+    labelDirections: 'Midríase/cicloplegia: inicialmente 1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia; depois SID ou em dias alternados para manter efeito.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4-1/2 pol 2-3x/dia inicialmente; depois SID ou em dias alternados para manter midríase.',
+      labelDose: '1 gota ou faixa de 1/4-1/2 pol 2-3x/dia inicialmente; depois SID ou em dias alternados para manter midríase.',
       plumbs: {
         dog: [{ title: 'Uveíte anterior / espasmo ciliar', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia inicialmente', note: 'Depois reduzir para SID ou dias alternados conforme midríase e conforto; evitar em glaucoma.' }],
         cat: [{ title: 'Uveíte anterior / espasmo ciliar', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 2-3x/dia inicialmente', note: 'Depois reduzir; salivação pode ocorrer pelo gosto amargo. Evitar em glaucoma.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve atropina oftálmica para reverter miose e tratar espasmo do corpo ciliar na uveíte anterior; não é tratamento para glaucoma e pode reduzir produção lacrimal.',
+    plumbsContext: 'Atropina oftálmica indicada para reverter miose e tratar espasmo do corpo ciliar na uveíte anterior; não é tratamento para glaucoma e pode reduzir produção lacrimal.',
     clinicalUse: 'Dor/cicloplegia em uveíte anterior e espasmo ciliar quando indicado após exame.',
     reassessment: 'Reavaliar PIO, dor e resposta; evitar se glaucoma/suspeita de glaucoma.',
     prescriptionExample: 'Atropina 1% oftálmica: instilar 1 gota no olho afetado 2-3 vezes ao dia inicialmente; reduzir para SID ou dias alternados após midríase adequada.',
@@ -8157,15 +8162,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 2%'],
     activeComponents: ['cloridrato de dorzolamida 2%'],
     labelCompositionSummary: 'Inibidor tópico da anidrase carbônica usado extra-label para reduzir produção de humor aquoso.',
-    labelDirections: 'Plumb\'s: glaucoma, 1 gota no olho afetado q8-12h; alternativa via cateter SPL 0,1 mL q8-12h.',
+    labelDirections: 'Glaucoma: 1 gota no olho afetado q8-12h; alternativa via cateter SPL 0,1 mL q8-12h.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota no olho afetado q8-12h para glaucoma; alternativa 0,1 mL via SPL q8-12h.',
+      labelDose: '1 gota no olho afetado q8-12h para glaucoma; alternativa 0,1 mL via SPL q8-12h.',
       plumbs: {
         dog: [{ title: 'Glaucoma/hipertensão ocular', dose: '1 gota no olho afetado q8-12h', note: 'Ajustar por tonometria, dor e resposta clínica.' }],
         cat: [{ title: 'Glaucoma/hipertensão ocular', dose: '1 gota no olho afetado q8-12h', note: 'Monitorar PIO, conforto ocular e doença primária.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve dorzolamida oftálmica como inibidor tópico da anidrase carbônica para glaucoma, com monitoramento de PIO, eficácia clínica e edema corneano.',
+    plumbsContext: 'Dorzolamida oftálmica é inibidor tópico da anidrase carbônica para glaucoma, com monitoramento de PIO, eficácia clínica e edema corneano.',
     clinicalUse: 'Glaucoma/hipertensão ocular quando se busca reduzir produção de humor aquoso.',
     reassessment: 'Reavaliar PIO, dor, visão e causa primária; glaucoma é urgência.',
     prescriptionExample: 'Dorzolamida 2%, aplicar 1 gota no olho afetado a cada 8-12 horas conforme PIO e reavaliação.',
@@ -8185,9 +8190,9 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 5 mL'],
     activeComponents: ['dorzolamida 2%', 'timolol 0,5%'],
     labelCompositionSummary: 'Associação humana de inibidor da anidrase carbônica + betabloqueador tópico.',
-    labelDirections: 'Base Plumb\'s dos componentes: dorzolamida 1 gota q8-12h e timolol 1 gota BID; na associação, ajustar por PIO e risco cardiorrespiratório.',
+    labelDirections: 'Posologia dos componentes: dorzolamida 1 gota q8-12h e timolol 1 gota BID; na associação, ajustar por PIO e risco cardiorrespiratório.',
     dosageGuidance: {
-      labelDose: 'Referência Plumb\'s dos componentes: dorzolamida 1 gota q8-12h; timolol 1 gota BID. Para Cosopt, ajustar por PIO e risco sistêmico.',
+      labelDose: 'Posologia dos componentes: dorzolamida 1 gota q8-12h; timolol 1 gota BID. Para Cosopt, ajustar por PIO e risco sistêmico.',
       plumbs: {
         dog: [
           { title: 'Dorzolamida componente', dose: '1 gota no olho afetado q8-12h', note: 'Monitorar PIO e conforto ocular.' },
@@ -8199,7 +8204,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
         ]
       }
     },
-    plumbsContext: 'Cosopt combina dorzolamida e timolol; Plumb\'s traz as doses dos componentes para glaucoma. Timolol tópico pode causar bradicardia, hipotensão e broncoespasmo.',
+    plumbsContext: 'Cosopt combina dorzolamida e timolol para manejo do glaucoma. Timolol tópico pode causar bradicardia, hipotensão e broncoespasmo.',
     clinicalUse: 'Glaucoma/hipertensão ocular quando combinação é indicada e segura para o paciente.',
     reassessment: 'Monitorar PIO, frequência cardíaca, pressão arterial, respiração e dor ocular.',
     prescriptionExample: 'Cosopt: usar a partir das doses dos componentes (dorzolamida q8-12h; timolol BID) e ajustar por PIO, frequência cardíaca e respiração.',
@@ -8219,14 +8224,14 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,005% 2,5 mL'],
     activeComponents: ['latanoprosta 0,005%'],
     labelCompositionSummary: 'Análogo de prostaglandina humano que aumenta drenagem uveoescleral; uso extra-label.',
-    labelDirections: 'Plumb\'s: cães com glaucoma primário/hipertensão ocular, 1 gota no olho afetado 1-2x ao dia.',
+    labelDirections: 'Cães com glaucoma primário/hipertensão ocular: 1 gota no olho afetado 1-2x ao dia.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: cães, 1 gota no olho afetado SID-BID para glaucoma primário/hipertensão ocular.',
+      labelDose: 'Cães: 1 gota no olho afetado SID-BID para glaucoma primário/hipertensão ocular.',
       plumbs: {
         dog: [{ title: 'Glaucoma primário/hipertensão ocular', dose: '1 gota no olho afetado SID-BID', note: 'Monitorar PIO rapidamente; evitar quando uveíte/inflamação ou bloqueio pupilar forem risco.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve latanoprosta principalmente para cães com glaucoma primário/hipertensão ocular; geralmente não é indicada para a maioria dos glaucomas felinos, que costumam ser secundários.',
+    plumbsContext: 'Latanoprosta indicada principalmente para cães com glaucoma primário/hipertensão ocular; geralmente não é indicada para a maioria dos glaucomas felinos, que costumam ser secundários.',
     clinicalUse: 'Glaucoma canino selecionado, especialmente quando se busca redução rápida de PIO por drenagem.',
     reassessment: 'Reavaliar PIO rapidamente e tratar como urgência quando há dor/visão ameaçada.',
     prescriptionExample: 'Latanoprosta/Xalatan: em cães, instilar 1 gota no olho afetado 1-2 vezes ao dia com controle de PIO.',
@@ -8246,15 +8251,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 1% 5 mL'],
     activeComponents: ['acetato de prednisolona 1%'],
     labelCompositionSummary: 'Corticosteroide oftálmico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Plumb\'s: conjuntivite/ceratite/uveíte anterior, 1 gota ou faixa de 1/4 pol no olho afetado q6h até melhora; depois reduzir gradualmente.',
+    labelDirections: 'Conjuntivite/ceratite/uveíte anterior: 1 gota ou faixa de 1/4 pol no olho afetado q6h até melhora; depois reduzir gradualmente.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4 pol q6h até melhora; reduzir gradualmente. Usar só com fluoresceína negativa.',
+      labelDose: '1 gota ou faixa de 1/4 pol q6h até melhora; reduzir gradualmente. Usar só com fluoresceína negativa.',
       plumbs: {
         dog: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado q6h', note: 'Após melhora, reduzir gradualmente; monitorar PIO e superfície ocular.' }],
         cat: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado q6h', note: 'Monitorar PIO, superfície ocular e risco infeccioso/herpesvírus.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve prednisolona oftálmica para conjuntivite, ceratite e uveíte anterior não ulcerativas; contraindicar se houver úlcera ou infecção ocular não controlada.',
+    plumbsContext: 'Prednisolona oftálmica indicada para conjuntivite, ceratite e uveíte anterior não ulcerativas; contraindicar se houver úlcera ou infecção ocular não controlada.',
     clinicalUse: 'Uveíte anterior e inflamação ocular não ulcerativa sob acompanhamento.',
     reassessment: 'Reavaliar fluoresceína, PIO e resposta inflamatória; monitorar risco infeccioso.',
     prescriptionExample: 'Pred Fort/prednisolona acetato 1%: instilar 1 gota no olho afetado q6h até melhora, depois reduzir, apenas com fluoresceína negativa.',
@@ -8275,15 +8280,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 5 mL'],
     activeComponents: ['tobramicina 0,3%', 'dexametasona 0,1%'],
     labelCompositionSummary: 'Associação humana de antibiótico aminoglicosídeo + corticosteroide usada extra-label.',
-    labelDirections: 'Plumb\'s: combinação tobramicina + glicocorticoide, 1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia; reduzir após controle.',
+    labelDirections: 'Combinação tobramicina + glicocorticoide: 1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia; reduzir após controle.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota ou faixa de 1/4-1/2 pol 3-4x/dia; reduzir após controle. Exige fluoresceína negativa.',
+      labelDose: '1 gota ou faixa de 1/4-1/2 pol 3-4x/dia; reduzir após controle. Exige fluoresceína negativa.',
       plumbs: {
         dog: [{ title: 'Combinação tobramicina + corticoide', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia', note: 'Reduzir após controle; usar somente sem úlcera corneana.' }],
         cat: [{ title: 'Combinação tobramicina + corticoide', dose: '1 gota ou faixa de 1/4-1/2 pol no olho afetado 3-4x/dia', note: 'Cautela com herpesvírus/infecção; exigir fluoresceína negativa.' }]
       }
     },
-    plumbsContext: 'Plumb\'s traz posologia para combinação tobramicina + glicocorticoide; o componente corticoide torna obrigatório descartar úlcera corneana.',
+    plumbsContext: 'Combinação tobramicina + glicocorticoide; o componente corticoide torna obrigatório descartar úlcera corneana antes do uso.',
     clinicalUse: 'Inflamação ocular não ulcerativa com necessidade de cobertura antibiótica tópica, quando indicado.',
     reassessment: 'Reavaliar em curto prazo; monitorar PIO e sinais de úlcera/infecção.',
     prescriptionExample: 'Tobradex: instilar 1 gota no olho afetado 3-4 vezes ao dia, reduzindo após controle, apenas com fluoresceína negativa.',
@@ -8304,15 +8309,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Suspensão oftálmica 5 mL'],
     activeComponents: ['dexametasona', 'neomicina', 'polimixina B'],
     labelCompositionSummary: 'Associação humana de corticosteroide + antibióticos usada extra-label em veterinária.',
-    labelDirections: 'Base Plumb\'s para dexametasona oftálmica: 1 gota ou faixa de 1/4 pol até q2h inicialmente em inflamação não ulcerativa; reduzir após melhora.',
+    labelDirections: 'Dexametasona oftálmica: 1 gota ou faixa de 1/4 pol até q2h inicialmente em inflamação não ulcerativa; reduzir após melhora.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s dexametasona: 1 gota ou faixa de 1/4 pol até q2h inicialmente; reduzir após melhora. Exige fluoresceína negativa.',
+      labelDose: 'Dexametasona: 1 gota ou faixa de 1/4 pol até q2h inicialmente; reduzir após melhora. Exige fluoresceína negativa.',
       plumbs: {
         dog: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado até q2h inicialmente', note: 'Reduzir gradualmente após melhora; não usar em úlcera ou infecção não controlada.' }],
         cat: [{ title: 'Inflamação ocular não ulcerativa', dose: '1 gota ou faixa de 1/4 pol no olho afetado até q2h inicialmente', note: 'Cautela com herpesvírus e monitorar PIO/superfície ocular.' }]
       }
     },
-    plumbsContext: 'Maxitrol combina antibióticos com dexametasona; Plumb\'s descreve a dose da dexametasona oftálmica e reforça contraindicação em úlcera ou infecção ocular não controlada.',
+    plumbsContext: 'Maxitrol combina antibióticos com dexametasona oftálmica; contraindicado em úlcera corneana ou infecção ocular não controlada.',
     clinicalUse: 'Inflamação ocular não ulcerativa com cobertura antibiótica selecionada.',
     reassessment: 'Reavaliar superfície ocular, PIO e resposta em curto prazo.',
     prescriptionExample: 'Maxitrol: instilar 1 gota no olho afetado conforme intensidade inflamatória, podendo iniciar até q2h e reduzir após melhora, apenas com fluoresceína negativa.',
@@ -8332,15 +8337,15 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Solução oftálmica 0,4% 5 mL'],
     activeComponents: ['cetorolaco trometamol 0,4%'],
     labelCompositionSummary: 'AINE oftálmico humano usado extra-label em cães e gatos.',
-    labelDirections: 'Plumb\'s: conjuntivite alérgica ou inflamação de segmento anterior, 1 gota no olho afetado 2-4x/dia; analgesia pós-operatória 1 gota 2-4x/dia.',
+    labelDirections: 'Conjuntivite alérgica ou inflamação de segmento anterior: 1 gota no olho afetado 2-4x/dia; analgesia pós-operatória: 1 gota 2-4x/dia.',
     dosageGuidance: {
-      labelDose: 'Plumb\'s: 1 gota no olho afetado 2-4x/dia para conjuntivite alérgica/inflamação anterior; pós-op 2-4x/dia.',
+      labelDose: '1 gota no olho afetado 2-4x/dia para conjuntivite alérgica/inflamação anterior; pós-op 2-4x/dia.',
       plumbs: {
         dog: [{ title: 'Inflamação/alergia ocular', dose: '1 gota no olho afetado 2-4x/dia', note: 'Monitorar dor, fluoresceína e cicatrização corneana.' }],
         cat: [{ title: 'Inflamação/alergia ocular', dose: '1 gota no olho afetado 2-4x/dia', note: 'Usar com avaliação de superfície ocular e reavaliação curta.' }]
       }
     },
-    plumbsContext: 'Plumb\'s descreve cetorolaco oftálmico para conjuntivite alérgica, inflamação de segmento anterior e analgesia pós-operatória; monitorar cicatrização e superfície ocular.',
+    plumbsContext: 'Cetorolaco oftálmico indicado para conjuntivite alérgica, inflamação de segmento anterior e analgesia pós-operatória; monitorar cicatrização e superfície ocular.',
     clinicalUse: 'Inflamação/dor ocular selecionada, especialmente quando corticoide tópico é contraindicado ou indesejado.',
     reassessment: 'Reavaliar dor, fluoresceína e resposta; suspender se houver piora corneana.',
     prescriptionExample: 'Acular LS/cetorolaco 0,4%: instilar 1 gota no olho afetado 2-4 vezes ao dia conforme indicação e reavaliação.',
@@ -8363,7 +8368,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Dermocosmético hidratante com componentes de suporte de barreira; composição resumida conforme pesquisa comercial.',
     labelDirections: 'Aplicar no banho, respeitar tempo de contato de 10 minutos e enxaguar. Frequência usual 1-2 vezes por semana.',
     dosageGuidance: { labelDose: 'Uso tópico: tempo de contato de 10 minutos; 1-2x/semana conforme caso.' },
-    plumbsContext: 'Sem dose Plumb’s. Xampus hidratantes são adjuvantes de barreira e não substituem diagnóstico dermatológico.',
+    plumbsContext: 'Sem posologia única padronizada. Xampus hidratantes são adjuvantes de barreira e não substituem diagnóstico dermatológico.',
     clinicalUse: 'Pele seca, dermatite atópica, descamação, manutenção de barreira cutânea e suporte em pacientes com banhos terapêuticos.',
     reassessment: 'Reavaliar se houver pústulas, crostas, alopecia progressiva, prurido intenso, mau cheiro, otite ou lesões úmidas.',
     prescriptionExample: 'Hydrapet Xampu, aplicar durante o banho, deixar agir por 10 minutos e enxaguar bem. Usar 1-2 vezes por semana.',
@@ -8387,7 +8392,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Creme hidratante pós-banho com óleo de macadâmia, ceramida e silicones conforme fontes comerciais.',
     labelDirections: 'Aplicar após o banho, espalhar na pele/pelagem e não enxaguar.',
     dosageGuidance: { labelDose: 'Uso tópico pós-banho, sem enxágue.' },
-    plumbsContext: 'Sem dose Plumb’s. Hidratantes tópicos são adjuvantes de barreira.',
+    plumbsContext: 'Sem posologia única padronizada. Hidratantes tópicos são adjuvantes de barreira.',
     clinicalUse: 'Hidratação pós-banho, pele/pelagem ressecadas, dermatite atópica e suporte de barreira.',
     reassessment: 'Reavaliar se ressecamento vier com infecção, prurido intenso, crostas, alopecia ou odor.',
     prescriptionExample: 'Hydrapet Creme, aplicar após o banho sobre pele e pelagem, massageando suavemente. Não enxaguar.',
@@ -8410,7 +8415,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Spray de barreira cutânea com ceramidas, fitoesfingosina, colesterol, ácidos graxos, macadâmia e aloe vera.',
     labelDirections: 'Borrifar 1 borrifada/kg nas áreas indicadas a cada 7 dias por no mínimo 4 semanas; massagear suavemente e não enxaguar.',
     dosageGuidance: { labelDose: 'Cães/gatos: 1 borrifada/kg tópica a cada 7 dias por no mínimo 4 semanas.' },
-    plumbsContext: 'Sem dose Plumb’s. Produto adjuvante de restauração de barreira cutânea.',
+    plumbsContext: 'Sem posologia única padronizada. Produto adjuvante de restauração de barreira cutânea.',
     clinicalUse: 'Uso entre banhos em pele seca, dermatite atópica, descamação e áreas localizadas de ressecamento.',
     reassessment: 'Reavaliar se houver lesões infectadas, prurido intenso, otite, mau cheiro ou piora das áreas.',
     prescriptionExample: 'Hydrapet Skin On, aplicar 1 borrifada/kg nas áreas ressecadas/sensíveis a cada 7 dias por no mínimo 4 semanas. Não enxaguar.',
@@ -8432,8 +8437,8 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Frasco com 60 cápsulas moles saborosas'],
     activeComponents: ['ômega 3 (EPA e DHA) e ômega 6 (ácido linoleico), biotina, zinco quelatado, vitaminas A e E'],
     labelCompositionSummary: 'Suplemento mineral vitamínico com ácidos graxos essenciais (Ômega 3 e 6), biotina, zinco quelatado e vitaminas A e E.',
-    labelDirections: 'Administrar 1 cápsula ao dia para cães e gatos de até 10 kg de peso. A cápsula pode ser administrada inteira ou o conteúdo oferecido misturado ao alimento. Acima de 10 kg, administrar a critério do médico-veterinário.',
-    dosageGuidance: {'labelDose':'1 cápsula ao dia para cães e gatos de até 10 kg de peso.'},
+    labelDirections: 'Administrar 1 cápsula ao dia para cães e gatos de até 10 kg de peso corporal; cães de 10,1 a 20 kg: 2 cápsulas ao dia; acima de 20 kg: 2 a 3 cápsulas ao dia (1 cápsula para cada 10 kg). A cápsula pode ser administrada inteira ou com o conteúdo misturado ao alimento.',
+    dosageGuidance: {'labelDose':'1 cápsula ao dia para cada 10 kg de peso corporal (até 10 kg = 1 cápsula/dia; 10,1–20 kg = 2 cápsulas/dia).'},
     plumbsContext: 'Suplemento dermatológico com ácidos graxos e micronutrientes; não equivale automaticamente a dose terapêutica calculada de EPA + DHA.',
     clinicalUse: 'Suporte de pele/pelagem/barreira cutânea como adjuvante em dermatite atópica, xerose e pelagem seca, após confirmar composição.',
     reassessment: 'Reavaliar tolerância gastrointestinal, dieta, triglicérides e resposta dermatológica em semanas.',
@@ -8473,7 +8478,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Cada 100 mL contém: acetato de hidrocortisona 1,0 g (1%), queratina hidrolisada 5,0 g, lipossomas 0,5 g (contendo 1% de vitamina A, 1% de vitamina E, 4% de vitamina C e 5% de ômegas 3 e 6 para liberação gradual na derme), essência 0,3 g e veículo q.s.p. 100,0 mL.',
     labelDirections:
-      'Uso tópico. Agitar antes de usar. Molhar a pelagem do animal com água morna e aplicar Cortishamp® em quantidade suficiente para formar espuma abundante, massageando bem por todo o corpo. Deixar o produto agir por 10 minutos antes de enxaguar completamente. Frequência: banhos diários ou em dias alternados nas crises agudas, reduzindo para 1 a 2 vezes por semana conforme melhora clínica e orientação do médico-veterinário.',
+      'Uso tópico. Agitar antes de usar. Molhar a pelagem do animal com água morna e aplicar Cortishamp® em quantidade suficiente para formar espuma abundante, massageando bem por todo o corpo. Deixar o produto agir por 10 minutos antes de enxaguar completamente. Frequência: banhos diários ou em dias alternados na 1ª semana (crises agudas), reduzindo para 1 a 2 vezes por semana na manutenção.',
     dosageGuidance: {
       labelDose:
         'Uso tópico no banho: aplicar sobre a pelagem molhada, massagear, deixar agir por 10 minutos e enxaguar bem. Iniciar em dias alternados (ou SID em crises intensas) e reduzir para 1 a 2 vezes por semana conforme controle do prurido.',
@@ -8506,7 +8511,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment:
       'Reavaliar em 7 a 14 dias. Caso surjam pústulas, colaretes epidérmicos, odor fétido, alopecia progressiva ou irritação local, realizar citologia cutânea para descartar infecção secundária bacteriana ou por Malassezia.',
     prescriptionExample:
-      'Cortishamp® Shampoo (125 mL): Dar banho molhando bem a pelagem, aplicar o produto massageando até formar espuma, deixar agir por 10 minutos e enxaguar abundantemente. Realizar banhos em dias alternados na primeira semana e, após, 1 a 2 vezes por semana conforme orientação veterinária (usar luvas durante a aplicação).',
+      'Cortishamp® Shampoo (125 mL): Dar banho molhando bem a pelagem, aplicar o produto massageando até formar espuma, deixar agir por 10 minutos e enxaguar abundantemente. Realizar banhos em dias alternados na 1ª semana e, após, 1 a 2 vezes por semana (usar luvas durante a aplicação).',
     safetyAlert:
       'Uso exclusivamente externo. Evitar contato com olhos, boca e mucosas (em caso de contato acidental, lavar com água abundante por 15 minutos). Não aplicar sobre feridas abertas extensas, úlceras cutâneas ou infecções bacterianas/fúngicas primárias sem cobertura específica. Usar luvas impermeáveis durante a aplicação.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/dermatologicos/cortishamp/',

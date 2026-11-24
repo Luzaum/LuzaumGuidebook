@@ -22,11 +22,11 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     ],
   },
   'sindrome-cushing-caes': {
-    lead: 'A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), menos frequentemente hipercortisolismo adrenal-dependente (ADH, ~15–20%) ou glicocorticoide exógeno. O diagnóstico exige primeiro reconhecer um fenótipo compatível e depois demonstrar disfunção do eixo HPA com testes apropriados; LDDST é o screening preferencial na maioria dos casos.',
+    lead: 'A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), menos frequentemente hipercortisolismo adrenal-dependente (ADH, ~15–20%) ou glicocorticoide exógeno. O diagnóstico exige primeiro reconhecer um fenótipo compatível e depois demonstrar disfunção do eixo HPA com testes apropriados; LDDST é o teste de triagem preferencial na maioria dos casos.',
     leadHighlights: ['atividade glicocorticoide excessiva', 'PDH', 'LDDST', 'trilostano'],
     pillars: [
-      { title: 'Fenótipo antes do laboratório', body: 'Poliúria, polidipsia, polifagia, panting, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não diagnóstica Cushing.', highlights: ['ALP isolada não diagnóstica'] },
-      { title: 'Triagem e diferenciação', body: 'LDDST (0,01 mg/kg dexametasona IV) confirma hipercortisolismo; eACTH + ultrassom adrenal diferenciam PDH de ADH. Ausência de supressão no LDDST não significa automaticamente ADH.', highlights: ['eACTH', 'ultrassom adrenal'] },
+      { title: 'Fenótipo antes do laboratório', body: 'Poliúria, polidipsia, polifagia, respiração ofegante, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não confirma Cushing.', highlights: ['ALP isolada não confirma'] },
+      { title: 'Triagem e diferenciação', body: 'O teste de supressão com baixa dose de dexametasona (LDDST; 0,01 mg/kg IV) auxilia o diagnóstico quando há sinais compatíveis. Estresse e doenças concomitantes podem causar falsos positivos. ACTH endógeno (eACTH) e ultrassonografia adrenal ajudam a diferenciar origem hipofisária (PDH) de adrenal (ADH); ausência de supressão isolada não define ADH. (AAHA, 2023)', highlights: ['falsos positivos', 'ACTH endógeno', 'ultrassonografia adrenal'] },
       { title: 'Tratamento guiado por clínica', body: 'Trilostano (1 mg/kg q12h ou 2 mg/kg q24h com alimento) é primeira linha médica. Ajuste pela clínica e Cushing Clinical Score ALIVE — não por cortisol isolado.', highlights: ['Cushing Clinical Score', 'não por cortisol isolado'] },
     ],
   },
@@ -35,8 +35,8 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     leadHighlights: ['diabetes mellitus', 'pele frágil', '0,1 mg/kg', 'rara'],
     pillars: [
       { title: 'Diferenças do cão', body: 'ALP frequentemente normal (sem isoenzima esteróide), USG pode permanecer >1,020 apesar de PU/PD, calcinosis cutis não é típica, e fragilidade cutânea extrema é achado marcante.', highlights: ['ALP normal', 'pele frágil'] },
-      { title: 'Diagnóstico', body: 'LDDST 0,1 mg/kg IV é screening preferencial; ACTHST tem sensibilidade baixa para triagem espontânea. Confirmar ensaio de eACTH validado para gato.', highlights: ['LDDST 0,1 mg/kg'] },
-      { title: 'Tratamento e diabetes', body: 'Trilostano extra-label (~1 mg/kg q12h) titulado individualmente. Ao controlar cortisol, a necessidade de insulina pode cair rapidamente — risco de hipoglicemia.', highlights: ['hipoglicemia', 'trilostano extra-label'] },
+      { title: 'Diagnóstico', body: 'LDDST 0,1 mg/kg IV é triagem preferencial; ACTHST tem sensibilidade baixa para triagem espontânea. Confirmar ensaio de eACTH validado para gato.', highlights: ['LDDST 0,1 mg/kg'] },
+      { title: 'Tratamento e diabetes', body: 'Trilostano fora das indicações de bula (~1 mg/kg q12h) titulado individualmente. Ao controlar cortisol, a necessidade de insulina pode cair rapidamente — risco de hipoglicemia.', highlights: ['hipoglicemia', 'trilostano fora das indicações de bula'] },
     ],
   },
   'leishmaniose-visceral-canina': {
@@ -103,7 +103,7 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     ],
   },
   'arritmias-cardiacas-caes-gatos': {
-    lead: 'Arritmias cardíacas são alterações na formação ou condução do impulso elétrico — de achados incidentais a emergências fatais. O ECG identifica o ritmo, mas não prova contração mecânica eficaz; integrar pulso, perfusão, ecocardiografia e Holter. Não existe estadiamento consensual de arritmia: o ConsultaVet usa estratificação de urgência clínica. FA canina: meta de Holter ≤125 bpm (ORCA). Bradiarritmias estruturais sintomáticas frequentemente necessitam marcapasso.',
+    lead: 'Arritmias cardíacas são alterações na formação ou condução do impulso elétrico — de achados incidentais a emergências fatais. O ECG identifica o ritmo, mas não prova contração mecânica eficaz; integrar pulso, perfusão, ecocardiografia e Holter. Não existe estadiamento consensual de arritmia: a priorização considera a urgência clínica. FA canina: meta de Holter ≤125 bpm (ORCA). Bradiarritmias estruturais sintomáticas frequentemente necessitam marcapasso.',
     leadHighlights: ['Holter', 'estratificação de urgência', '≤125 bpm', 'marcapasso'],
     pillars: [
       { title: 'Não trate só o ECG', body: 'Estabilidade hemodinâmica, substrato cardíaco e causas reversíveis (eletrólitos, hipóxia, dor) precedem antiarrítmico.', highlights: ['hemodinâmica', 'eletrólitos'] },

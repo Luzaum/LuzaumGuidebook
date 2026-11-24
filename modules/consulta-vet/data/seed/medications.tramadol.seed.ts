@@ -113,7 +113,7 @@ export const tramadolMedicationsSeed: MedicationRecord[] = [
         id: 'ind-tramadol-dog-periop',
         indication: 'Analgesia Perioperatória e Pós-Cirúrgica Aguda em Cães (Protocolo Multimodal Parenteral)',
         clinicalContext:
-          'No manejo da dor aguda cirúrgica (ovariohisterectomia, cirurgias ortopédicas e de tecidos moles), o tramadol administrado por via parenteral (IV lenta ou IM) atua reduzindo a sensibilização central e a necessidade de anestésicos inalatórios. Lumb & Jones (6ª ed., Cap. 23) e o BSAVA Small Animal Formulary (10ª ed., p. 411) relatam que 2 mg/kg de tramadol IV oferece analgesia comparável a doses baixas de morfina pós-OHE quando administrado preventivamente. Contudo, seu efeito mecânico antinociceptivo é fugaz quando usado isoladamente, exigindo sinergismo com dipirona ou AINE.',
+          'No manejo da dor aguda cirúrgica (ovariohisterectomia, cirurgias ortopédicas e de tecidos moles), o tramadol administrado por via parenteral (IV lenta ou IM) atua reduzindo a sensibilização central e a necessidade de anestésicos inalatórios. Protocolos anestesiológicos e estudos comparativos relatam que 2 mg/kg de tramadol IV oferece analgesia comparável a doses baixas de morfina pós-OHE quando administrado preventivamente. Contudo, seu efeito mecânico antinociceptivo é fugaz quando usado isoladamente, exigindo sinergismo com dipirona ou AINE.',
         species: 'dog',
         dose: '2,0 a 4,0 mg/kg (dose recomendada padrão de 2,0 mg/kg IV lenta ou IM)',
         route: 'Intravenosa lenta (IV administrado em 2 a 3 minutos) ou Intramuscular profunda (IM)',
@@ -374,7 +374,7 @@ export const tramadolMedicationsSeed: MedicationRecord[] = [
           alertLevel: 'contraindicated',
           condition: 'Uso Concomitante com IMAOs (Selegilina, Amitraz) ou ISRSs (Fluoxetina, Trazodona, Amitriptilina)',
           clinicalAction:
-            'Contraindicação absoluta. NUNCA associar o tramadol com inibidores da recaptação de serotonina, antidepressivos tricíclicos ou inibidores da monoaminoxidase. Respeitar janela de descontinuação (washout) de pelo menos 14 dias antes de introduzir o tramadol.',
+            'Contraindicação absoluta. NUNCA associar o tramadol com inibidores da recaptação de serotonina, antidepressivos tricíclicos ou inibidores da monoaminoxidase. Respeitar janela de descontinuação de pelo menos 14 dias antes de introduzir o tramadol.',
           physiologicalExplanation:
             'O bloqueio simultâneo da recaptação e do catabolismo da serotonina provoca acúmulo neurotóxico agudo de 5-HT nas sinapses encefálicas, desencadeando a Síndrome Serotoninérgica potencialmente letal.',
         },

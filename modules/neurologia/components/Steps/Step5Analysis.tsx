@@ -361,7 +361,7 @@ export function Step5Analysis() {
       await updateRunningState(
         40,
         'Cruzando matriz de neurolocalização',
-        'Avaliando NMS vs NMI, reações posturais e pares cranianos conforme de Lahunta & Dewey.',
+        'Avaliando NMS vs NMI, reações posturais e pares cranianos conforme topografia neurológica.',
         nextReport,
       )
 
@@ -495,8 +495,8 @@ export function Step5Analysis() {
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
             Consolide a identificação do paciente, queixa clínica e o exame neurológico sistemático.
-            O NeuroVet auxilia na <strong>neurolocalização anatômica (NMS vs NMI)</strong> segundo os tratados
-            de <em>de Lahunta</em> e <em>Dewey &amp; da Costa</em>, permitindo copiar o laudo formatado e exportar o PDF clínico.
+            O NeuroVet auxilia na <strong>neurolocalização anatômica (NMS vs NMI)</strong> a partir dos
+            achados semiológicos, permitindo copiar o laudo formatado e exportar o PDF clínico.
           </p>
         </motion.div>
 
@@ -665,7 +665,7 @@ export function Step5Analysis() {
                         {NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
                       </h3>
                       <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
-                        Classificação fundamentada nos tratados veterinários (<em>de Lahunta</em> e <em>Dewey &amp; da Costa</em>) a partir dos reflexos espinhais e respostas posturais.
+                        Classificação fundamentada nos reflexos espinhais, tônus muscular e respostas posturais.
                       </p>
                     </div>
                     <ConfidenceRing value={report.neuroLocalization.confidence} />
@@ -835,7 +835,7 @@ export function Step5Analysis() {
           <div className="space-y-6">
             <div className="rounded-2xl border border-border bg-muted/30 p-4">
               <p className="text-xs text-muted-foreground leading-relaxed">
-                💡 <strong>Opinião Conceitual Baseada em Literatura:</strong> As hipóteses abaixo são derivadas deterministicamente dos tratados de <em>de Lahunta (Veterinary Neuroanatomy and Clinical Neurology)</em> e <em>Dewey &amp; da Costa (Practical Guide to Canine and Feline Neurology)</em> cruzando espécie, faixa etária, curso temporal e topografia. <strong>Nenhuma Inteligência Artificial generativa é utilizada.</strong>
+                💡 <strong>Opinião Conceitual Baseada em Evidências:</strong> As hipóteses abaixo são derivadas deterministicamente cruzando espécie, faixa etária, curso temporal e topografia anatômica (estrutura DAMN-IT-V). Consulte a seção de Referências do laudo para a bibliografia de base. <strong>Nenhuma Inteligência Artificial generativa é utilizada.</strong>
               </p>
             </div>
 

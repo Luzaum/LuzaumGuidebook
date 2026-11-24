@@ -124,7 +124,7 @@ export const doencaPeriodontalCaesRecord: DiseaseRecord = {
     modeloDisbiose:
       'A visão histórica de "infecção bacteriana simples por patógeno único" foi substituída pelo modelo de disbiose ecológica: o acúmulo de placa e a estagnação do sulco gengival alteram o microambiente (menor pO₂, maior pH, consumo de glicose), selecionando bactérias anaeróbias proteolíticas em detrimento dos comensais aeróbios (Yang & Moon, 2026; Davis & Weese, 2022).',
     respostaHospedeiro:
-      'Bactérias do biofilme ativam receptores de reconhecimento de padrão (PRRs/TLRs) no epitélio gengival e neutrófilos, recrutando macrófagos e linfócitos T (Th1/Th17). A liberação de metaloproteinases de matriz (MMPs), espécies reativas de oxigênio (ROS), IL-1β, TNF-α e IL-17 leva à degradação do colágeno do ligamento periodontal. A elevação do mediador RANKL em relação à osteoprotegerina (OPG) estimula a maturação de osteoclastos e a reabsorção do osso alveolar (Tizard, 2020; Hendy et al., 2026).',
+      'Bactérias do biofilme ativam receptores de reconhecimento de padrão (PRRs/TLRs) no epitélio gengival e neutrófilos, recrutando macrófagos e linfócitos T (Th1/Th17). A liberação de metaloproteinases de matriz (MMPs), espécies reativas de oxigênio (ROS), IL-1β, TNF-α e IL-17 leva à degradação do colágeno do ligamento periodontal. A elevação do mediador RANKL em relação à osteoprotegerina (OPG) estimula a maturação de osteoclastos e a reabsorção do osso alveolar (Hendy et al., 2026).',
     catalaseDeficiency:
       'Acatalasemia canina (mutação no gene CAT c.979G>A): condição hereditária rara descrita em Beagles e outras raças húngaras/poodles, na qual a incapacidade de degradar o peróxido de hidrogênio (H₂O₂) gerado na boca resulta em úlceração gangrenosa grave, necrose óssea e perda dentária precoce desproporcional à quantidade de placa (Pavlovsky, 2023).',
   },
@@ -282,7 +282,7 @@ export const doencaPeriodontalCaesRecord: DiseaseRecord = {
     ],
     analgesiaEAnestesia: [
       'Procedimentos odontológicos e extrações são dolorosos. Utilizar analgesia multimodal.',
-      'Bloqueios anestésicos loco-regionais (bloqueio maxilar e bloqueio alveolar inferior/mandibular com bupivacaína ou lidocaína) reduzem o requerimento de anestésico inalatório e garantem conforto pós-operatório excelente (Lumb & Jones, 6ª ed.).',
+      'Bloqueios anestésicos loco-regionais (bloqueio maxilar e bloqueio alveolar inferior/mandibular com bupivacaína ou lidocaína) reduzem o requerimento de anestésico inalatório e garantem conforto pós-operatório excelente.',
     ],
      homeCare: [
       'Escovação dentária diária: técnica mecânica mais eficaz para remoção da placa bacteriana (Bellows et al., 2019; Niemiec et al., 2020).',

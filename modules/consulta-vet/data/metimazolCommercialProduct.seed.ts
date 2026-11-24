@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const METIMAZOL_PRICE_SOURCE_DATE = '2026-10-06';
 
 const METIMAZOL_PLUMBS_CONTEXT =
-  'Plumb’s Veterinary Drug Handbook 10ª ed., monografia “Methimazole” (pp. 849–851 / PDF pp. 876–878): tionamida antitireoidiana que inibe reversivelmente a tireoperoxidase (TPO), bloqueando a síntese de T4 e T3. Indicação padrão-ouro no hipertireoidismo felino (dose inicial de 2,5 mg/gato VO q12h; conservador: 1,25 mg q12h; transdérmico lipofílico: 2,5 a 5 mg q12h). Diretrizes AAHA 2023 e AAFP reforçam o alvo de TT4 na metade inferior do intervalo de referência (1,0 a 2,5 µg/dL). Destaca-se que o metimazol controla a produção hormonal mas não erradica o adenoma tireoidiano, o qual continua progredindo morfologicamente com os anos (Peterson et al. 2016). Cautela vital com o hipotireoidismo iatrogênico, o qual induz queda de TFG e azotemia em 57% dos gatos (Williams et al. 2010).';
+  'Tionamida antitireoidiana que inibe reversivelmente a tireoperoxidase (TPO), bloqueando a síntese de T4 e T3. Indicação de escolha no manejo clínico do hipertireoidismo felino (dose inicial de 2,5 mg/gato VO q12h; conservador: 1,25 mg q12h; transdérmico lipofílico: 2,5 a 5 mg q12h). Diretrizes AAHA 2023 e AAFP reforçam o alvo de TT4 na metade inferior do intervalo de referência (1,0 a 2,5 µg/dL). O metimazol controla a produção hormonal sem erradicar o adenoma tireoidiano, que continua progredindo morfologicamente com os anos (Peterson et al. 2016). Evitar hipotireoidismo iatrogênico, que reduz a TFG e precipita azotemia em 57% dos gatos (Williams et al. 2010).';
 
 const METIMAZOL_SAFETY_ALERT =
   'ALERTAS CRÍTICOS DE SEGURANÇA E ADMINISTRAÇÃO: 1) NÃO CURA A DOENÇA: o metimazol não destrói o adenoma tireoidiano nem impede o crescimento volumétrico do tecido nodular ao longo dos anos; o tratamento curativo definitivo é o Iodo Radioativo (¹³¹I); 2) NÃO SUBTRATAR HIPERTIREOIDISMO PARA PROTEGER CREATININA: a subida de creatinina pós-tratamento decorre da reversão da hiperfiltração e desmascaramento da DRC real; 3) EVITAR HIPOTIREOIDISMO IATROGÊNICO: superdosagem deprime o fluxo renal, precipita azotemia em 57% dos gatos e reduz a sobrevida mediana de 905 para 456 dias; 4) MONITORIZAÇÃO HEMATOLÓGICA PRECOCE: realizar hemograma nas primeiras semanas (suspender se agranulocitose, neutropenia profunda ou trombocitopenia); 5) SUSPENDER SE PRURIDO FACIAL OU HEPATOPATIA: prurido intenso com automutilação em face/pescoço ou icterícia/hepatotoxicidade exigem suspensão imediata e definitiva; 6) SEGURANÇA OCUPACIONAL: teratogênico (aplasia cutis e atresia de coanas); mulheres grávidas ou tentando engravidar não devem manipular comprimidos partidos nem o gel transdérmico sem luvas protetoras.';
@@ -46,7 +46,7 @@ export const metimazolCommercialProductSeed: CommercialMedicationProduct[] = [
       plumbs: {
         cat: [
           {
-            title: 'Hipertireoidismo Felino Inicial — Protocolo Padrão Ouro BID (Trepanier et al. 2003 / Plumb’s 10ª ed.)',
+            title: 'Hipertireoidismo Felino Inicial — Protocolo Padrão Ouro BID (Trepanier et al. 2003)',
             dose: '2,5 mg por gato VO a cada 12 horas (q12h)',
             note: 'Administração q12h produz eutireoidismo em 87% vs 54% com q24h. Reavaliar em 2 a 3 semanas.',
           },
@@ -84,7 +84,7 @@ export const metimazolCommercialProductSeed: CommercialMedicationProduct[] = [
       notes: 'Preço verificado no varejo veterinário oficial / Minha Dechra Brasil (outubro/2026).',
     },
     evidenceLevel:
-      'Nível 1a — Ensaio clínico randomizado (Trepanier 2003), Bula MAPA Felimazole®, Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      'Nível 1a — Ensaio clínico randomizado (Trepanier 2003) e Bula MAPA Felimazole®.',
     isControlled: false,
     catalogMedicationId: 'editorial:metimazol',
   },
@@ -148,7 +148,7 @@ export const metimazolCommercialProductSeed: CommercialMedicationProduct[] = [
       sourceDate: METIMAZOL_PRICE_SOURCE_DATE,
       notes: 'Preço médio de mercado verificado em distribuidores veterinários especializados (outubro/2026).',
     },
-    evidenceLevel: 'Nível 2 — Plumb’s 10ª ed., BSAVA 10ª ed. e Bula Felimazole® Dechra',
+    evidenceLevel: 'Nível 2 — Bula Felimazole® Dechra e estudos clínicos',
     isControlled: false,
     catalogMedicationId: 'editorial:metimazol',
   },
@@ -219,7 +219,7 @@ export const metimazolCommercialProductSeed: CommercialMedicationProduct[] = [
       sourceDate: METIMAZOL_PRICE_SOURCE_DATE,
       notes: 'Preço verificado em drogarias e farmácias comerciais humanas brasileiras (outubro/2026).',
     },
-    evidenceLevel: 'Nível 2 — Plumb’s 10ª ed. e BSAVA 10ª ed.',
+    evidenceLevel: 'Nível 2 — Literatura farmacológica veterinária e uso extrabula',
     isControlled: false,
     catalogMedicationId: 'editorial:metimazol',
   },
@@ -258,7 +258,7 @@ export const metimazolCommercialProductSeed: CommercialMedicationProduct[] = [
       plumbs: {
         cat: [
           {
-            title: 'Hipertireoidismo Felino com Intolerância Digestiva (Sartor et al. 2004 / Plumb’s 10ª ed.)',
+            title: 'Hipertireoidismo Felino com Intolerância Digestiva (Sartor et al. 2004)',
             dose: '2,5 a 5,0 mg por gato transdérmico na face interna da pina q12h',
             note: 'Reduz náusea e vômitos de 24% para apenas 4%. Eficácia em 4 semanas é equivalente à via oral.',
           },

@@ -12,11 +12,11 @@ const safety = 'Contraindicado em caso de hipersensibilidade à miltefosina, pre
 const handling = 'Usar luvas de PVC ou nitrila e óculos de proteção. Gestantes, pessoas tentando engravidar ou com suspeita de gravidez devem delegar a administração. Lavar as mãos após o uso e evitar que o cão lamba pessoas logo depois da dose.';
 const internationalEvidence = 'A WAVD (2025) inclui miltefosina com alopurinol entre os esquemas de primeira linha, com força de recomendação moderada. O CLWG (2026) classifica a mesma associação como segunda escolha em relação ao antimoniato de meglumina com alopurinol, diante do risco de recaída mais precoce e seleção de resistência. Esses esquemas internacionais devem ser interpretados à luz da regulação brasileira.';
 const mechanism =
-  'A miltefosina é uma alquilfosfocolina, molécula que se parece com componentes gordurosos das membranas celulares. No parasito, ela interfere no metabolismo de fosfolipídios e na função das mitocôndrias, estruturas responsáveis pela produção de energia. Estudos experimentais descrevem perda do potencial mitocondrial, queda de ATP e morte celular semelhante à apoptose. O Plumb também descreve hipóteses de interferência em sinais de membrana e em estruturas que ajudam o parasito a sobreviver dentro dos macrófagos. A contribuição de cada via no animal tratado ainda não está totalmente definida.';
+  'A miltefosina é uma alquilfosfocolina, molécula que se parece com componentes gordurosos das membranas celulares. No parasito, ela interfere no metabolismo de fosfolipídios e na função das mitocôndrias, estruturas responsáveis pela produção de energia. Estudos experimentais descrevem perda do potencial mitocondrial, queda de ATP e morte celular semelhante à apoptose. Também são descritas hipóteses de interferência em sinais de membrana e em estruturas que ajudam o parasito a sobreviver dentro dos macrófagos. A contribuição de cada via no animal tratado ainda não está totalmente definida.';
 const combinationDose =
   'Miltefosina 2 mg/kg a cada 24 horas por 28 dias. Nos consensos internacionais, a associação usa alopurinol 10 mg/kg a cada 12 horas por pelo menos 6–12 meses, conforme estágio, tolerância e diretriz. Cada medicamento tem sua própria duração.';
 const experimentalDose =
-  'Iarussi et al. estudaram 1,2 mg/kg a cada 24 horas nos dias 1–5 e 2,5 mg/kg a cada 24 horas nos dias 6–30, com alopurinol por seis meses. O Plumb também descreve um esquema histórico com 1,5 mg/kg nos primeiros cinco dias, seguido de 2,5 mg/kg por 25 dias. São descrições de regimes distintos, sem validação para substituir a posologia brasileira de bula.';
+  'Iarussi et al. estudaram 1,2 mg/kg a cada 24 horas nos dias 1–5 e 2,5 mg/kg a cada 24 horas nos dias 6–30, com alopurinol por seis meses. Há também menção histórica a um esquema escalonado com 1,5 mg/kg nos primeiros cinco dias, seguido de 2,5 mg/kg por 25 dias. São descrições de regimes distintos, sem validação para substituir a posologia brasileira de bula.';
 const leishVetDose =
   'A tabela de terapia do LeishVet cita 2–2,5 mg/kg VO a cada 24 h por 28 dias com alimento, em associação com alopurinol. O limite superior difere dos 2 mg/kg da bula brasileira e da dose recomendada pela WAVD. A faixa é referência de literatura internacional e fica fora da calculadora.';
 
@@ -141,7 +141,7 @@ export const miltefosinaMedicationRecord: MedicationRecord = {
   ],
   adverseEffects: ['Vômitos, diarreia, fezes amolecidas e redução do apetite. A bula descreve eventos digestivos geralmente transitórios, com início típico entre o quinto e o sétimo dia.'],
   interactions: [
-    'A bula brasileira e o Plumb não relatam interações medicamentosas estabelecidas para a miltefosina. O BSAVA aponta falta de informação. Isso indica que faltam dados para prever todos os pares de fármacos em cães, especialmente em polifarmácia.',
+    'Não há interações medicamentosas estabelecidas descritas na bula brasileira nem na literatura veterinária disponível. Isso indica que faltam dados para prever todos os pares de fármacos em cães, especialmente em polifarmácia.',
     'O alopurinol aparece como associação terapêutica estudada. Seu risco de cristais e cálculos de xantina vem do próprio alopurinol. Revise função renal, urinálise e o plano de monitoramento se a associação estiver indicada.',
     'A administração com alimento é parte do protocolo e ajuda na tolerância gastrointestinal. Registre medicamentos e suplementos em uso para interpretar vômitos, hiporexia e alterações renais ou hepáticas durante o ciclo.',
   ],
@@ -232,10 +232,10 @@ export const miltefosinaMedicationRecord: MedicationRecord = {
     calculatedMlPerKgFormula: '0,1 mL/kg a cada 24 horas',
   }],
   pharmacokineticsData: {
-    absorption: 'Cerca de 94% da dose oral chega à circulação em cães. O Plumb descreve pico em torno de 5 h, e o resumo francês descreve cerca de 6 h após a primeira dose de 2 mg/kg em cães alimentados. O momento e a concentração do pico variam com o protocolo. Administrar com alimento melhora a tolerância digestiva.',
-    distribution: 'Distribui-se para múltiplos órgãos. O Plumb descreve distribuição intravascular aproximadamente equilibrada entre plasma e eritrócitos.',
-    metabolism: 'O Plumb descreve clivagem hepática lenta por atividade semelhante à da fosfolipase D.',
-    elimination: 'Predominantemente fecal, com cerca de 10% da dose recuperada inalterada nas fezes segundo o Plumb. A eliminação renal de fármaco intacto é pequena.',
+    absorption: 'Cerca de 94% da dose oral chega à circulação em cães. Estudos apontam pico plasmático em torno de 5 a 6 h após a primeira dose de 2 mg/kg em cães alimentados. O momento e a concentração do pico variam com o protocolo. Administrar com alimento melhora a tolerância digestiva.',
+    distribution: 'Distribui-se para múltiplos órgãos. A distribuição intravascular é aproximadamente equilibrada entre plasma e eritrócitos.',
+    metabolism: 'Sofre clivagem hepática lenta por atividade semelhante à da fosfolipase D.',
+    elimination: 'Predominantemente fecal, com cerca de 10% da dose recuperada inalterada nas fezes. A eliminação renal de fármaco intacto é pequena.',
     halfLife: 'A Virbac informa 159 horas em cães (cerca de 6,6 dias). Meia-vida é o tempo aproximado para a concentração cair à metade na fase terminal. Como a próxima dose chega muito antes desse prazo, parte das doses anteriores ainda está presente e a concentração aumenta ao longo do ciclo.',
   },
 
@@ -268,14 +268,14 @@ export const miltefosinaMedicationRecord: MedicationRecord = {
       { condition: 'Exposição do aplicador', alertLevel: 'warning', physiologicalExplanation: 'A solução pode irritar olhos e pele e causar sensibilização.', clinicalAction: handling + ' Em caso de contato com olhos ou pele, lavar com água abundante e procurar atendimento levando a bula.' },
     ],
     adverseEffectsDetailed: [
-      { effect: 'Vômitos e diarreia', frequency: 'very_common', mechanism: 'O resumo regulatório francês classifica vômitos e diarreia como muito frequentes. Na bula brasileira, costumam começar entre os dias 5 e 7 e durar um a dois dias, podendo persistir por mais tempo. O Plumb também descreve hiporexia.', clinicalManagement: 'Oferecer com alimento e registrar início, número de episódios e relação com a dose. Se o cão segue alerta e mantém ingestão, orientar contato com a clínica e acompanhar. Vômitos repetidos, sangue, prostração ou incapacidade de reter água exigem reavaliação rápida. A bula admite antiemético conforme avaliação. Confira hidratação, eletrólitos, função renal e diagnósticos concorrentes antes de mudar a dose.' },
-      { effect: 'Vômitos intensos após superdose', frequency: 'overdose', mechanism: 'Exposição acima da dose recomendada, por erro de medição ou ingestão acidental.', clinicalManagement: 'Buscar atendimento prontamente e levar o frasco. Informar o peso, a concentração, o volume máximo possível, o horário e os sinais observados. O Plumb não descreve antídoto específico e cita possível toxicidade hepática, renal ou retiniana em superdoses grandes. A conduta é guiada pela exposição, pelos sinais e pelo acompanhamento clínico e laboratorial.' },
+      { effect: 'Vômitos e diarreia', frequency: 'very_common', mechanism: 'O resumo regulatório francês classifica vômitos e diarreia como muito frequentes. Na bula brasileira, costumam começar entre os dias 5 e 7 e durar um a dois dias, podendo persistir por mais tempo. Hiporexia transitória também é descrita.', clinicalManagement: 'Oferecer com alimento e registrar início, número de episódios e relação com a dose. Se o cão segue alerta e mantém ingestão, orientar contato com a clínica e acompanhar. Vômitos repetidos, sangue, prostração ou incapacidade de reter água exigem reavaliação rápida. A bula admite antiemético conforme avaliação. Confira hidratação, eletrólitos, função renal e diagnósticos concorrentes antes de mudar a dose.' },
+      { effect: 'Vômitos intensos após superdose', frequency: 'overdose', mechanism: 'Exposição acima da dose recomendada, por erro de medição ou ingestão acidental.', clinicalManagement: 'Buscar atendimento prontamente e levar o frasco. Informar o peso, a concentração, o volume máximo possível, o horário e os sinais observados. Não há antídoto específico descrito; superdoses grandes acarretam risco potencial de toxicidade hepática, renal ou retiniana. A conduta é guiada pela exposição, pelos sinais e pelo acompanhamento clínico e laboratorial.' },
     ],
     doseReductionGuidelines: [
       {
         clinicalCondition: 'Doença renal estável, proteinúria, azotemia ou lesão renal aguda',
         recommendedAdjustment: 'A bula não oferece ajuste em mg/kg ou por estágio IRIS. Se o paciente estiver estável e o benefício justificar o uso, individualize a decisão e o intervalo de reavaliação. Em desidratação, oligúria ou piora aguda de creatinina, investigue e estabilize antes de decidir continuar ou reiniciar.',
-        physiologicalRationale: 'A excreção renal da miltefosina é pequena segundo o Plumb, porém o cão pode ter lesão glomerular da própria LVC e agravar a azotemia com perdas digestivas. A baixa excreção renal não estabelece segurança na doença renal avançada.',
+        physiologicalRationale: 'A excreção renal da miltefosina intacta é pequena, porém o cão pode ter lesão glomerular da própria LVC e agravar a azotemia com perdas digestivas. A baixa excreção renal não estabelece segurança na doença renal avançada.',
       },
       {
         clinicalCondition: 'Insuficiência hepática ou cardíaca',
@@ -292,7 +292,7 @@ export const miltefosinaMedicationRecord: MedicationRecord = {
       {
         drugOrClass: 'O que se sabe sobre interações medicamentosas',
         severity: 'informational',
-        clinicalEffect: 'A bula brasileira e o Plumb não descrevem interações conhecidas. O BSAVA informa que não dispõe de dados. Liste medicamentos, suplementos e horários antes de iniciar e revise a lista se aparecer um evento adverso.',
+        clinicalEffect: 'A bula brasileira e a literatura veterinária disponível não descrevem interações conhecidas, em parte por escassez de estudos específicos. Liste medicamentos, suplementos e horários antes de iniciar e revise a lista se aparecer um evento adverso.',
         pharmacologicalMechanism: 'As fontes não estabelecem pares de fármacos com necessidade de separação de horários ou ajuste de dose da miltefosina. A orientação de dar com alimento tem objetivo de tolerância digestiva.',
       },
       {
@@ -431,7 +431,7 @@ export const miltefosinaMedicationRecord: MedicationRecord = {
       title: 'Leishmaniose clínica em furão doméstico',
       authorsYear: 'Giner et al. (2021)',
       journal: 'Veterinary and Animal Science',
-      studyDesign: 'Relato de caso extra-bula citado no Plumb',
+      studyDesign: 'Relato de caso clínico extra-bula',
       sampleSize: 'Um furão doméstico.',
       methodology: 'Existe algum relato que ajude a discutir uma opção de tratamento para um furão com leishmaniose? Um furão com dermatite facial piogranulomatosa, linfonodos aumentados e esplenomegalia recebeu miltefosina 2 mg/kg VO a cada 24 h por 28 dias associada a alopurinol 10 mg/kg VO a cada 12 h mantido após o ciclo. Os autores acompanharam manifestações clínicas e títulos sorológicos.',
       mainFindings: 'O artigo descreve resposta clínica durante o seguimento após a introdução da associação.',

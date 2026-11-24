@@ -69,7 +69,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
   ],
 
   attentionSubtitle:
-    'Tionamida antitireoidiana: inibidor reversível da tireoperoxidase (TPO); bloqueia oxidação do iodeto, organificação e acoplamento sem bloquear o transportador NIS nem hormônios já estocados. Alertas Vitais ConsultaVET: 1) CONTROLA A TIREOTOXICOSE MAS NÃO CURA A DOENÇA: o tecido adenomatoso persiste e progride estruturalmente ao longo dos anos (Peterson et al. 2016); ¹³¹I continua sendo o tratamento de escolha definitivo; 2) NÃO SUBTRATAR HIPERTIREOIDISMO PARA "PROTEGER" CREATININA: a elevação de creatinina pós-tratamento reflete em grande parte a correção da hiperfiltração glomerular patológica e desmascaramento da DRC real; manter eutireoidismo (alvo TT4 1,0–2,5 µg/dL); 3) RISCO DE HIPOTIREOIDISMO IATROGÊNICO: TT4 muito baixa combinada a TSH elevado agrava a hipoperfusão renal, dobra o risco de azotemia e reduz drasticamente a sobrevida média de 905 para 456 dias (Williams et al. 2010); 4) HEMOGRAMA COMPLETO OBRIGATÓRIO PRECOCE: suspender imediatamente e em caráter definitivo se agranulocitose, neutropenia grave, trombocitopenia, anemia hemolítica, hepatopatia ou prurido facial severo com escoriações cervicais. Risco teratogênico ocupacional: gestantes não devem manusear os comprimidos nem o gel transdérmico.',
+    'Tionamida antitireoidiana: inibidor reversível da tireoperoxidase (TPO); bloqueia oxidação do iodeto, organificação e acoplamento sem bloquear o transportador NIS nem hormônios já estocados. Alertas clínicos: 1) CONTROLA A TIREOTOXICOSE MAS NÃO CURA A DOENÇA: o tecido adenomatoso persiste e progride estruturalmente ao longo dos anos (Peterson et al. 2016); ¹³¹I continua sendo o tratamento de escolha definitivo; 2) NÃO SUBTRATAR HIPERTIREOIDISMO PARA "PROTEGER" CREATININA: a elevação de creatinina pós-tratamento reflete em grande parte a correção da hiperfiltração glomerular patológica e desmascaramento da DRC real; manter eutireoidismo (alvo TT4 1,0–2,5 µg/dL); 3) RISCO DE HIPOTIREOIDISMO IATROGÊNICO: TT4 muito baixa combinada a TSH elevado agrava a hipoperfusão renal, dobra o risco de azotemia e reduz drasticamente a sobrevida média de 905 para 456 dias (Williams et al. 2010); 4) HEMOGRAMA COMPLETO OBRIGATÓRIO PRECOCE: suspender imediatamente e em caráter definitivo se agranulocitose, neutropenia grave, trombocitopenia, anemia hemolítica, hepatopatia ou prurido facial severo com escoriações cervicais. Risco teratogênico ocupacional: gestantes não devem manusear os comprimidos nem o gel transdérmico.',
 
   plainLanguageSummary:
     'O metimazol (também conhecido internacionalmente como tiamazol e vendido para gatos pelo nome comercial Felimazole®) é o remédio mais prescrito no mundo para o tratamento do hipertireoidismo felino. A doença ocorre quando nódulos na tireoide começam a produzir hormônios tireoidianos (T4 e T3) em excesso descontrolado, acelerando o metabolismo do gato e causando perda de peso, apetite voraz, agitação, pressão alta e sobrecarga no coração.\n\nÉ essencial entender um ponto-chave: o metimazol NÃO cura a doença nem destrói o tumor na tireoide; ele funciona como um "freio de fábrica", bloqueando a enzima (tireoperoxidase) que monta os novos hormônios. O efeito não é imediato no primeiro dia porque a tireoide ainda tem um estoque de hormônios já prontos que continuam caindo no sangue por 1 a 3 semanas. Por isso, a reavaliação com exame de sangue (T4 total) é feita tipicamente entre 2 a 3 semanas após iniciar o remédio.\n\nDois grandes cuidados devem nortear o tratamento: Primeiro, o rim do gato! O hipertireoidismo funciona como uma "turbina" que força o rim a filtrar sangue muito rápido, mascarando uma doença renal oculta. Ao iniciar o metimazol e controlar o hipertireoidismo, a creatinina pode subir porque o rim volta ao fluxo normal — isso não é culpa do remédio, mas sim a revelação do rim real do paciente. O grande perigo é deixar a dose alta demais e jogar o gato no "hipotireoidismo", o que derruba a função renal e piora muito a sobrevida. Segundo, a segurança: se o gato começar a coçar violentamente a face e o pescoço até ferir, ou apresentar febre, fraqueza severa, amarelão (icterícia) ou manchas roxas na pele, o remédio deve ser suspenso imediatamente. Em gatas prenhas ou tutoras grávidas, o contato com o remédio é expressamente proibido devido ao risco de malformações congênitas.',
@@ -237,7 +237,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
     {
       id: 'dose-metimazol-fda-label',
       species: 'cat',
-      indication: 'Hipertireoidismo felino — protocolo oral inicial padrão ouro (bula Felimazole® / Plumb’s / BSAVA)',
+      indication: 'Hipertireoidismo felino — protocolo oral inicial padrão ouro (bula Felimazole® / AAHA)',
       doseMin: 2.5,
       doseMax: 2.5,
       doseUnit: 'mg',
@@ -249,7 +249,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
         'Protocolo de excelência terapêutica consolidado em ensaios clínicos (Trepanier et al. 2003: taxa de eutireoidismo de 87% com q12h vs 54% com q24h após 2 semanas). Administrar 1 comprimido de Felimazole® 2,5 mg a cada 12 horas. Administrar inteiro (nunca partir ou esmagar o comprimido revestido). Pode ser administrado com uma pequena quantidade de alimento para minimizar irritação gástrica. Reavaliar TT4, hemograma completo, perfil renal (ureia, creatinina, fósforo) e hepático (ALT, FA) às 2 a 3 semanas.',
       calculatorEnabled: false,
       presentationId: 'pres-felimazole-comp-2-5mg',
-      evidenceLevel: 'Nível 1a — Ensaio clínico randomizado (Trepanier 2003), Bula MAPA Felimazole®, Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Nível 1a — Ensaio clínico randomizado (Trepanier, 2003) e Bula MAPA Felimazole®',
     },
     {
       id: 'dose-metimazol-transdermal',
@@ -266,7 +266,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
         'Indicado de primeira escolha para felinos que desenvolvem vômitos, anorexia ou intolerância gástrica sob a via oral. Sartor et al. (2004) comprovaram que a taxa de eventos adversos digestivos despenca de 24% (oral) para apenas 4% (transdérmico). Dose inicial recomendada: 2,5 mg/gato q12h (utilizar formulações magistrais com veículo lipofílico validado na concentração de 25 mg/mL, correspondendo a 0,1 mL por aplicação). Instruções essenciais: o tutor deve usar luvas protetoras obrigatórias; alternar a orelha a cada aplicação; limpar resíduos antigos suavemente com gaze úmida antes da nova aplicação.',
       calculatorEnabled: false,
       presentationId: 'pres-metimazol-transdermico-gel',
-      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo cruzado (Sartor et al. 2004); Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo cruzado (Sartor et al., 2004)',
     },
     {
       id: 'dose-metimazol-cat-conservative-aaha',
@@ -300,7 +300,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
         'Reservado para gatos com concentrações maciças de T4 e tireotoxicose pronunciada (marcada por caquexia rápida, hipertensão grave e taquicardia descompensada). Administrar 5 mg/gato VO q12h (Felimazole® 5 mg comprimido). Limite posológico máximo de segurança de bula: 20 mg/gato/dia (nunca exceder 10 mg por tomada individual). Se o controle não for alcançado com doses progressivas, investigar tecido tireoidiano ectópico intratorácico ou carcinoma folicular e indicar ablação por Iodo Radioativo (¹³¹I).',
       calculatorEnabled: false,
       presentationId: 'pres-felimazole-comp-5mg',
-      evidenceLevel: 'Nível 2 — Plumb’s 10ª ed., BSAVA 10ª ed. e Bula Felimazole® Dechra',
+      evidenceLevel: 'Nível 2 — Bula Felimazole® (Dechra) e Diretriz AAHA',
     },
     {
       id: 'dose-metimazol-cat-pretireoidectomia',
@@ -334,7 +334,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
         'Protocolo estratégico para avaliar a reserva funcional renal: suspende temporariamente a hiperfiltração da tireotoxicose para identificar se o paciente desenvolverá DRC descompensada grave após a ablação definitiva. Se a creatinina permanecer estável (IRIS 1 ou 2 compensada), o paciente pode ser encaminhado com segurança para iodoterapia com ¹³¹I. Observar que serviços de medicina nuclear frequentemente preconizam a suspensão do metimazol de 5 a 7 dias antes da administração do radioiodo para permitir captação ótima do radiotraçador.',
       calculatorEnabled: false,
       presentationId: 'pres-felimazole-comp-2-5mg',
-      evidenceLevel: 'Nível 1a — Consenso AAFP e Diretrizes de Nefrologia BSAVA',
+      evidenceLevel: 'Nível 1a — Consenso AAFP e Diretrizes IRIS de Nefrologia',
     },
     {
       id: 'dose-metimazol-dog-carcinoma',
@@ -350,7 +350,7 @@ export const metimazolMedicationRecord: MedicationRecord = {
       notes:
         'O hipertireoidismo espontâneo canino é raro e decorre predominantemente de tumores tireoidianos volumosos e carcinomas funcionais hipersecretantes de T4. O metimazol não trata a neoplasia subjacente, funcionando exclusivamente como estabilizador hormonal pré-operatório. Monitorar hematócrito e plaquetas seriadamente.',
       calculatorEnabled: true,
-      evidenceLevel: 'Nível 2 — Plumb’s 10ª ed. (p. 849 / PDF p. 876) e BSAVA Small Animal Formulary 10ª ed.',
+      evidenceLevel: 'Nível 2 — Manejo Adjuvante Pré-Iodoterapia (AAFP)',
     },
   ],
 

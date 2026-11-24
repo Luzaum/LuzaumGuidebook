@@ -1,6 +1,41 @@
 /** Prévias editoriais; os textos originais permanecem integralmente disponíveis. */
 export interface ProgressiveSummaryPreview { simple: string; clinical?: string; attention?: string; indications?: string; pillars: Record<string, string>; }
 export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPreview> = {
+  "leucemias-caes-gatos": {
+    "simple": "Neoplasias hematopoéticas clonais originadas geralmente na medula óssea (formas agudas blásticas de evolução rápida e formas crônicas maduras frequentemente indolentes). Em gatos, leucemia neoplásica não é sinônimo de infecção pelo FeLV.",
+    "clinical": "Leucocitose não é obrigatória (formas aleucêmicas). Diagnóstico exige integração de esfregaço, citometria de fluxo (CD34, CD80, linhagem), citoquímica e medula óssea (aspirado + biópsia); não definir linhagem só por morfologia, PARR (>60% das LMA caninas têm rearranjo clonal) ou ALP.",
+    "attention": "Evitar prednisolona antes da citometria/medula em pacientes estáveis. Separar MDS (<20% blastos; mediana 384 d em cães) de LMA (≥20% blastos; mediana 6–19 d) e não tratar LLC assintomática automaticamente. Neutropenia febril é emergência (AAHA 2026).",
+    "pillars": {
+      "Três Eixos de Classificação": "Definir linhagem (linfoide, mieloide, mista ou rara), maturação (blastos ≥20% vs. maduras) e comportamento biológico (agudo vs. crônico).",
+      "Leucemia ≠ FeLV": "Classificar status retroviral (AAFP 2020) separadamente do diagnóstico hematopatológico; FeLV positivo não confirma neoplasia nem indica eutanásia.",
+      "Diagnóstico Integrado": "Citometria de fluxo (incluindo CD80 auxiliar) + citoquímica (MPO, CAE, ANBE) + aspirado e biópsia medular; PARR e ALP não separam LMA de LLA.",
+      "Terapia e Suporte por Subtipo": "Vigilância ativa ou clorambucila na LLC; hidroxiureia na LMC; quimioterapia ou paliação nas agudas, com transfusão e manejo de neutropenia febril."
+    }
+  },
+  "alopurinol": {
+    "simple": "Inibidor da xantina oxidoredutase (metabólito ativo oxipurinol) e análogo de purina usado em cães para controlar a multiplicação de Leishmania infantum e dissolver/prevenir cálculos de urato, exigindo dieta pobre em purinas.",
+    "clinical": "LVC: 10 mg/kg VO q12h sempre associado a leishmanicida (WAVD 2025/CLWG 2026; checar Portaria MS/MAPA nº 1.426/2008 no Brasil). Urato canino (ACVIM): 15 mg/kg VO q12h até 4 sem (dissolução) e 5–7 mg/kg q12–24h (prevenção). PK felina desconhecida.",
+    "attention": "Causa xantinúria e cálculos radiolucentes insolúveis em qualquer pH (13,1% a ~50%; mediana 150 dias). Interação medular letal com azatioprina. Evitar em shunt não tratado e para urato felino.",
+    "indications": "Leishmaniose canina (protocolo combinado), dissolução/prevenção de urato canino (SLC2A9) e uso empírico vigiado na leishmaniose felina.",
+    "pillars": {
+      "Inibição da XO & Oxipurinol Ativo": "Bloqueia hipoxantina → xantina → ácido úrico; excreção renal predominante e cinética não linear > 30 mg/kg/dia.",
+      "Falso Substrato na Leishmania": "Incorpora-se ao RNA de amastigotas bloqueando síntese proteica; efeito leishmaniostático não esterilizante e risco de resistência em monoterapia.",
+      "Paradoxo & Insolubilidade da Xantina": "Sem dieta pobre em purinas (~35–50 g/Mcal), xantina reveste cálculos ou gera litíase refratária detectável apenas por US/sedimento.",
+      "Teto Não Linear & Interação Fatal": "Nunca associar a azatioprina sem corte drástico; para cães < 5 kg e gatos preferir suspensão manipulada 20 mg/mL."
+    }
+  },
+  "pilocarpina": {
+    "simple": "A pilocarpina estimula diretamente receptores muscarínicos M3/M2, restaurando a secreção lacrimal e nasal na ceratoconjuntivite seca neurogênica canina e servindo como teste diagnóstico de desnervação pupilar (0,05%–0,1%) na disautonomia.",
+    "clinical": "Titular devagar por via oral no alimento úmido até melhora do STT-I ou sinais colinérgicos leves (SLUDDE). Evitar na uveíte anterior, luxação do cristalino e asma felina; atenção à calibração de gotas entre Pilocan® 2% (27 gotas/mL) e Pilocarpina® Allergan (25 gotas/mL).",
+    "attention": "Nunca pingar solução a 2% pura direto na boca sem alimento. Gatos apresentam elevada sensibilidade ocular e risco de absorção sistêmica mesmo por via oftálmica.",
+    "indications": "CCS neurogênica e xeromicteria em cães; teste pupilar diluído na disautonomia; papel antiglaucomatoso histórico secundário.",
+    "pillars": {
+      "Estímulo M3 na CCS Neurogênica": "Ativa diretamente ácinos lacrimais desnervados quando há perda da via parassimpática facial/petroso maior.",
+      "Titulação em Gotas e Janela Terapêutica": "A dose eficaz aproxima-se do limiar gastrointestinal — recuar 1 gota caso surjam ptialismo, vômito ou fezes pastosas.",
+      "Fidelidade de Calibração do Colírio": "Pilocan® 2% libera ≈ 0,74 mg/gota (27 gotas/mL) e Allergan 2% libera ≈ 0,80 mg/gota (25 gotas/mL).",
+      "Uso Restrito em Glaucoma e Gatos": "Contraindicada em uveíte e luxação de lente; uso felino limitado a concentrações diluídas ou suporte rigorosamente vigiado."
+    }
+  },
   "butorfanol": {
     "simple": "Opioide misto (agonista κ e antagonista/agonista parcial funcional µ) muito útil para sedação, contenção amigável e controle da tosse em cães, porém com analgesia leve e curta (45–120 min).",
     "clinical": "A ativação dos receptores κ gera sedação rápida e antitussígeno central, enquanto o efeito teto analgésico e a alta afinidade pelo receptor µ limitam seu uso em dor moderada a intensa e podem antagonizar agonistas µ plenos.",
@@ -91,11 +126,11 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
     }
   },
   "asma-felina": {
-    "simple": "Os pequenos canais de ar dos pulmões ficam inflamados e podem se fechar temporariamente, causando tosse e dificuldade para respirar.",
+    "simple": "Inflamação crônica e alérgica dos brônquios felinos que estreita a passagem de ar (principalmente na expiração), causando tosse crônica e crises de falta de ar.",
     "pillars": {
-      "Mecanismo": "Inflamação e estreitamento das vias aéreas explicam as crises.",
-      "População": "Outras doenças também podem causar tosse e falta de ar.",
-      "Conduta imediata": "Na crise, estabilizar a respiração vem antes da investigação completa."
+      "Mecanismo": "Hipersensibilidade tipo I e resposta Th2 promovem broncoconstrição, edema, muco espesso e remodelamento brônquico com aprisionamento aéreo.",
+      "População": "Gatos jovens a idosos podem desenvolver a doença; verminoses pulmonares, dirofilariose e bronquite crônica devem ser descartadas.",
+      "Conduta imediata": "Crise exige oxigênio com estresse mínimo e broncodilatação; manutenção baseia-se em corticoide (preferencialmente inalatório) e controle ambiental."
     }
   },
   "bronquite-cronica-caes-gatos": {
@@ -802,12 +837,15 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
     }
   },
   "fenobarbital": {
-    "simple": "É usado para prevenir convulsões. O tratamento precisa de horários regulares, exames e ajustes acompanhados.",
+    "simple": "Anticonvulsivante barbitúrico de primeira linha para controle crônico da epilepsia em cães e gatos e segunda linha hospitalar no status epilepticus; exige horários fixos a cada 12 horas, exames séricos (TDM) e retirada sempre gradual.",
+    "clinical": "Cães: 2,5–3 mg/kg VO q12h (TDM 15–35 µg/mL aos 14d, 6 sem e q6m). Gatos: 1,5–3 mg/kg VO q12h (alvo conservador 23–30 µg/mL; sem indução hepática típica). Status epilepticus (ACVIM 2024): IV lenta ≤ 1–2 mg/kg/min aguardando 20 min entre incrementos; Fenocris® 100 mg/mL sal = 91,35 mg/mL base (Carbital® 200 mg/mL). Receita de Controle Especial em 2 vias (Lista B1 com adendo — RDC 1.023/2026).",
+    "attention": "Nunca suspender abruptamente (risco de status epilepticus fatal). Proibida via SC. Evitar tubo com gel separador no TDM e vigiar lipemia (7% falha). Não suspender em cão apenas por FA isolada sem avaliar ácidos biliares/albumina; em gatos, investigar qualquer ALT/FA elevada.",
+    "indications": "Epilepsia idiopática/estrutural em cães e gatos, status epilepticus/clusters (2ª linha ACVIM 2024) e sialadenose canina selecionada.",
     "pillars": {
-      "Padrão Ouro Internacional na Epilepsia": "É uma opção consolidada para controle da epilepsia.",
-      "Monitoramento Sérico Obrigatório (TDM)": "A concentração sanguínea ajuda a orientar o tratamento.",
-      "Autoindução Enzimática em Cães": "O metabolismo pode mudar durante o uso em cães.",
-      "Risco de Abstinência & Desmame Lento": "A retirada deve ser planejada, nunca abrupta."
+      "Inibição GABA-A Sustentada & 2ª Linha no Status": "Prolonga a abertura do canal de Cl⁻ em sítio distinto dos benzodiazepínicos, mantendo eficácia na 2ª linha do status epilepticus (não é analgésico).",
+      "Meia-Vida Longa (~2 Dias) & Steady State": "Sustenta regimes q12h, mas leva ~10–14 dias (cães) ou ~9–15 dias (gatos) para estabilizar sem carga inicial (e 15–20 min no SNC após IV).",
+      "Autoindução Canina & TDM Sem Armadilhas": "Cães sofrem autoindução microssomal em semanas (recoleta em 6 semanas em tubo sem gel de silicone; reduz t½ do levetiracetam em 35–50%).",
+      "Indução vs. Hepatotoxicidade (Cão ≠ Gato) & Desmame": "FA alta isolada em cães costuma ser indução benigna (gatos não induzem enzimas); desmame sempre lento."
     }
   },
   "pradofloxacina": {
@@ -909,12 +947,12 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
     }
   },
   "maropitant": {
-    "simple": "É um antiemético de amplo espectro que bloqueia a via final comum do reflexo do vômito (receptores NK1) no cérebro e trato digestivo. Controla o vômito em cães e gatos, mas não elimina a náusea nem estimula o apetite. A injeção subcutânea deve ser refrigerada para diminuir a dor.",
+    "simple": "É um antiemético de amplo espectro que bloqueia a substância P nos receptores NK₁, interrompendo a integração de múltiplos estímulos eméticos a cada 24 horas. Controlar o vômito não significa eliminar a náusea, corrigir a doença de base ou estimular o apetite; a aplicação subcutânea pode causar dor (menor com produto refrigerado).",
     "pillars": {
-      "Bloqueio da Via Final Comum da Êmese (NK₁ Central e Periférico)": "Antagoniza receptores NK1 e impede que a substância P ative centros eméticos centrais e fibras vagais periféricas.",
-      "Diferenciação Crítica: Antiêmese Não Significa Antináusea": "Bloqueia eficazmente o reflexo motor do vômito, mas não extingue necessariamente a sensação neurovegetativa de náusea.",
-      "Modulação Antinociceptiva Visceral e Poupança de Anestésico (MAC)": "A modulação de substância P reduz nocicepção visceral e proporciona redução demonstrada de 15% a 24% na CAM anestésica.",
-      "Farmacocinética Não Linear Canina e Eliminação Não Renal (<1%)": "Metabolismo saturável de primeira passagem hepática por CYP2D15; excreção renal ínfima dispensa corte de dose na DRC."
+      "Bloqueio de uma Via Emética Final Comum": "Antagoniza receptores NK₁ no complexo vagal dorsal e vias aferentes, bloqueando estímulos periféricos e centrais.",
+      "Proteção Clínica Prolongada (q24h)": "A ocupação funcional do receptor permite posologia a cada 24 horas mesmo quando a meia-vida plasmática é menor que 24 h.",
+      "Facilitação do Tratamento de Suporte": "Favorece hidratação e nutrição enteral, mas não é procinético, não é orexígeno e não exclui abdome cirúrgico.",
+      "Modulação Experimental de Circuitos Neurogênicos": "Estudos investigam poupança de anestésico, tosse e prurido, sem comprovação para substituir terapias padrão."
     }
   },
   "ondansetrona": {
@@ -942,6 +980,24 @@ export const PROGRESSIVE_SUMMARY_PREVIEWS: Record<string, ProgressiveSummaryPrev
       "Dissociação Farmacocinética/Farmacodinâmica (Longa Duração)": "Meia-vida plasmática curta (2–5 horas no cão), mas reprogramação transcricional e efeito biológico sustentado por 24 a 48 horas.",
       "Superioridade Diagnóstica no Eixo HPA (Não Interfere no Cortisol)": "Fármaco de escolha na suspeita de Addison em crise por não reagir com ensaios de cortisol, e padrão nos testes de supressão.",
       "Quebra de Paradigmas Clínicos (Consensos RECOVER & ACVIM 2026)": "Contraindicada no trauma de crânio e coluna; na anafilaxia grave, adrenalina é o pilar imediato enquanto corticoides têm papel tardio."
+    }
+  },
+  "manitol": {
+    "simple": "É um agente hiperosmolar intravenoso (diurético osmótico) que puxa água dos tecidos para o sangue. É padrão de emergência para reduzir pressão intracraniana no edema cerebral e pressão intraocular no glaucoma agudo, mas exige paciente hidratado, filtro de 5 µm e nunca deve ser repetido em anúria (Consenso IRIS 2024).",
+    "pillars": {
+      "Ação Bifásica na Pressão Intracraniana (Reológica + Osmótica)": "Reduz a PIC em minutos diminuindo a viscosidade sanguínea e gerando vasoconstrição reflexa, seguida pelo gradiente osmótico em 15–30 min.",
+      "Escolha Estratégica no Glaucoma com Edema Corneano": "Drena fluido do vítreo rapidamente e, ao contrário do latanoprost, é seguro quando não se pode descartar luxação anterior do cristalino.",
+      "Risco Fatal na Anúria e Hipovolemia (IRIS 2024)": "Não recupera a filtração glomerular; se não excretado pelos rins, retém-se nos vasos causando edema pulmonar agudo, hiponatremia translocacional e nefrose osmótica.",
+      "Cuidado Físico à Beira do Leito (Cristais + Filtro de 5 µm)": "Solução a 20% (~1.098 mOsm/L) cristaliza abaixo de 20 °C e causa necrose se extravasar; dissolver cristais por aquecimento controlado, resfriar e usar filtro de 5 µm."
+    }
+  },
+  "nitroprussiato-de-sodio": {
+    "simple": "É um vasodilatador intravenoso de ação imediata (1–2 min) usado exclusivamente em bomba de infusão contínua na UTI para emergências hipertensivas graves, edema pulmonar refratário ou picos de feocromocitoma. Exige diluição em SG 5%, fotoproteção, acesso sem flush e vigilância contínua contra hipotensão severa e intoxicação por cianeto e tiocianato.",
+    "pillars": {
+      "Vasodilatação Balanceada em 1–2 Minutos": "Libera óxido nítrico (NO → GMPc) reduzindo simultaneamente pós-carga arterial e pré-carga venosa, com reversão em 1–10 min ao desligar a bomba.",
+      "Erro Fatal 250× e Proibição de Flush": "Ampola tem 25.000 µg/mL vs bolsa diluída de 100 µg/mL; jamais fazer bolus ou flush na linha venosa nem associar a sildenafil/tadalafil.",
+      "Toxicidade Cumulativa (Cianeto e Tiocianato)": "Gera CN⁻ (bloqueia Complexo IV gerando acidose láctica; não manter 10 µg/kg/min >10 min) e SCN⁻ de eliminação renal lenta; gatos têm risco oxidativo maior.",
+      "Fotoproteção em SG 5%": "A luz converte Fe³⁺ em Fe²⁺ degradando o fármaco; usar em SG 5%, proteger conforme bula e descartar se ficar azul, verde ou vermelho-escuro."
     }
   }
 };

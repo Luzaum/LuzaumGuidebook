@@ -76,7 +76,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
     },
     {
       label: 'Risco Crítico de Síndrome Serotoninérgica com Outros Psicotrópicos',
-      text: 'A associação de amitriptilina com inibidores da monoamina oxidase / IMAO (como a selegilina) é estritamente contraindicada e potencialmente letal, exigindo um período de intervalo prévio (washout) de pelo menos 14 dias entre as terapias. A coadministração com inibidores seletivos da recaptação de serotonina (fluoxetina, sertralina, paroxetina), outros antidepressivos tricíclicos (clomipramina) ou opioides serotoninérgicos como o tramadol eleva drasticamente o risco de Síndrome Serotoninérgica grave (hipertermia maligna, tremores, rigidez muscular, taquicardia, mioclonia e convulsões). Adicionalmente, tanto a amitriptilina quanto o tramadol diminuem o limiar convulsivo.',
+      text: 'A associação de amitriptilina com inibidores da monoamina oxidase / IMAO (como a selegilina) é estritamente contraindicada e potencialmente letal, exigindo um período de intervalo prévio de pelo menos 14 dias entre as terapias. A coadministração com inibidores seletivos da recaptação de serotonina (fluoxetina, sertralina, paroxetina), outros antidepressivos tricíclicos (clomipramina) ou opioides serotoninérgicos como o tramadol eleva drasticamente o risco de Síndrome Serotoninérgica grave (hipertermia maligna, tremores, rigidez muscular, taquicardia, mioclonia e convulsões). Adicionalmente, tanto a amitriptilina quanto o tramadol diminuem o limiar convulsivo.',
     },
     {
       label: 'Não Utilizar como Medicamento PRN (Uso Sob Demanda) em Ansiedade',
@@ -84,7 +84,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
     },
     {
       label: 'Via Transdérmica Ineficaz e Não Confiável em Felinos',
-      text: 'Estudos farmacocinéticos rigorosos cruzados em gatos (Mealey et al. 2004) comprovaram que a aplicação transdérmica de amitriptilina em gel de lecitina de organogel plurônico (PLO) no pavilhão auricular resulta em absorção sistêmica mínima, errática e clinicamente desprezível em relação à via oral. A suposta resposta observada historicamente na rotina clínica derivava quase que exclusivamente da ingestão oral acidental durante o hábito de lambedura (grooming). A via transdérmica NÃO é recomendada para uso no ConsultaVET.',
+      text: 'Estudos farmacocinéticos rigorosos cruzados em gatos (Mealey et al. 2004) comprovaram que a aplicação transdérmica de amitriptilina em gel de lecitina de organogel plurônico (PLO) no pavilhão auricular resulta em absorção sistêmica mínima, errática e clinicamente desprezível em relação à via oral. A suposta resposta observada historicamente na rotina clínica derivava quase que exclusivamente da ingestão oral acidental durante o hábito de lambedura (grooming). A via transdérmica NÃO é recomendada para uso.',
     },
     {
       label: 'Cardiotoxicidade em Superdose: Alargamento do QRS e Reversão com Bicarbonato de Sódio',
@@ -148,7 +148,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
     'Glaucoma de ângulo fechado pré-existente (a midríase anticolinérgica obstrui o escoamento trabecular do humor aquoso).',
     'Epilepsia idiopática ativa, histórico de crises convulsivas ou doença intracraniana estrutural (a amitriptilina reduz o limiar convulsivo).',
     'Insuficiência cardíaca congestiva, arritmias ventriculares ativas, bloqueios atrioventriculares de condução ou cardiopatias estruturais avançadas.',
-    'Uso simultâneo ou recente de Inibidores da Monoamina Oxidase / IMAO (como selegilina); washout obrigatório de no mínimo 14 dias.',
+    'Uso simultâneo ou recente de Inibidores da Monoamina Oxidase / IMAO (como selegilina); intervalo de suspensão obrigatório de no mínimo 14 dias.',
     'Hepatopatia severa descompensada ou insuficiência hepática aguda (metabolismo predominantemente hepático dependente do CYP450).',
     'Tratamento isolado e de curto prazo da crise aguda de Cistite Idiopática Felina (ineficaz e associado a piora da recorrência segundo RCTs de Kruger et al. e Kraijer et al.).',
   ],
@@ -158,7 +158,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
     'Sedação inicial pronunciada e tolerância: alertar o tutor de que a letargia das primeiras semanas decorre de ação anti-histamínica e não reflete cura ansiolítica.',
     'Diminuição da secreção lacrimal: cautela extrema em animais com ceratoconjuntivite seca (KCS); monitorar teste lacrimal de Schirmer (STT).',
     'Retardo da motilidade gastrointestinal e obstipação: monitorar frequência e consistência fecal, especialmente em gatos e cães geriátricos predispostos a megacólon.',
-    'Interferência no perfil tireoidiano: a amitriptilina reduz as concentrações séricas basais de tT3, tT4 e fT4 em cães e gatos sem causar hipotireoidismo clínico primário; coletar perfil tireoidiano antes de iniciar a terapia (Plumb 10ª ed.).',
+    'Interferência no perfil tireoidiano: a amitriptilina reduz as concentrações séricas basais de tT3, tT4 e fT4 em cães e gatos sem causar hipotireoidismo clínico primário; coletar perfil tireoidiano antes de iniciar a terapia.',
     'Hipertireoidismo felino: cautela acentuada pelo risco de potencialização adrenérgica, taquiarritmias e instabilidade cardiovascular.',
     'Desmame gradual obrigatório: tratamentos superiores a 30 dias devem ser retirados gradativamente ao longo de 2 a 3 semanas para evitar síndrome de descontinuação.',
     'Palatabilidade amarga extrema em gatos: nunca esmagar ou abrir comprimidos/cápsulas na boca do animal; o sabor provoca ptialismo e sialorreia profusa de repulsa gustativa.',
@@ -176,7 +176,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
   ],
 
   interactions: [
-    'Inibidores da Monoamina Oxidase / IMAO (Selegilina): Contraindicação absoluta. Risco de Síndrome Serotoninérgica fatal, colapso autonômico e hipertermia maligna. Respeitar washout de pelo menos 14 dias.',
+    'Inibidores da Monoamina Oxidase / IMAO (Selegilina): Contraindicação absoluta. Risco de Síndrome Serotoninérgica fatal, colapso autonômico e hipertermia maligna. Respeitar intervalo de suspensão de pelo menos 14 dias.',
     'Inibidores Seletivos da Recaptação de Serotonina (Fluoxetina, Sertralina, Paroxetina): Somação de efeito serotoninérgico e inibição competitiva do metabolismo pelo CYP450, elevando o risco de toxicidade e Síndrome Serotoninérgica.',
     'Tramadol: Associação de alto risco farmacológico. Ocorre somação da recaptação de serotonina/noradrenalina associada à diminuição cumulativa do limiar convulsivo. Evitar associação rotineira ou monitorar rigorosamente.',
     'Amantadina: Potencialização de efeitos anticolinérgicos centrais e periféricos (retenção urinária grave, íleo paralítico, boca seca e hipertermia) além de risco de prolongamento do intervalo QT.',
@@ -227,7 +227,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
       frequency: 'q12–24h',
       duration: 'Uso crônico multimodal sob reavaliação periódica',
       notes:
-        'Diretrizes da WSAVA e Plumb 10ª ed.: iniciar conservadoramente com 1 mg/kg VO q24h à noite (ou q12h) e titular gradualmente até 3 a 4 mg/kg q12h em casos neuropáticos severos conforme tolerabilidade. Evitar associação rotineira com tramadol pelo risco de Síndrome Serotoninérgica e redução do limiar convulsivo.',
+        'Diretrizes da WSAVA: iniciar conservadoramente com 1 mg/kg VO q24h à noite (ou q12h) e titular gradualmente até 3 a 4 mg/kg q12h em casos neuropáticos severos conforme tolerabilidade. Evitar associação rotineira com tramadol pelo risco de Síndrome Serotoninérgica e redução do limiar convulsivo.',
       calculatorEnabled: true,
       referenceIds: ['ref-wsava-pain-2022', 'ref-plumb-10', 'ref-bsava-10'],
     },
@@ -259,7 +259,7 @@ export const amitriptilinaMedicationRecord: MedicationRecord = {
       frequency: 'q24h',
       duration: 'Uso prolongado por pelo menos 4 a 8 semanas sob monitoramento de peso e pelagem',
       notes:
-        'Dose felina padronizada BSAVA (10ª ed., p. 23): 0,5 a 1 mg/kg VO a cada 24 horas à noite. Prescrever cápsulas manipuladas veterinárias de 2,5 mg ou 5 mg para permitir fracionamento seguro. Nunca abrir ou esmagar a cápsula (sabor intensamente amargo que induz sialorreia profusa).',
+        'Dose felina padronizada: 0,5 a 1 mg/kg VO a cada 24 horas à noite. Prescrever cápsulas manipuladas veterinárias de 2,5 mg ou 5 mg para permitir fracionamento seguro. Nunca abrir ou esmagar a cápsula (sabor intensamente amargo que induz sialorreia profusa).',
       calculatorEnabled: true,
       referenceIds: ['ref-bsava-10', 'ref-plumb-10'],
     },

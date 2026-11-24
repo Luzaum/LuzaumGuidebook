@@ -71,7 +71,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
   ],
 
   attentionSubtitle:
-    'Glicocorticoide fluorinado de alta potência (~7–7,5× mais potente que a prednisolona; ~30× hidrocortisona) e longa duração biológica (24–48+ horas). Alertas Críticos ConsultaVET: 1) DISSOCIAÇÃO MEIA-VIDA vs EFEITO: a meia-vida plasmática canina é de apenas 2–5 h, mas a reprogramação gênica persiste por 24 a 48+ h; evitar repetições frequentes desnecessárias (risco severo de atrofia adrenal e toxicidade sistêmica); 2) ASSOCIAÇÃO COM AINEs FORMALMENTE PROIBIDA: potencializa dramaticamente o risco de erosão, hemorragia e perfuração gastrointestinal fatal (especialmente perfuração colônica no cão); 3) MUDANÇAS DE PARADIGMA RECOVER 2026 & ACVIM: contraindicado o uso empírico rotineiro na anafilaxia (a prioridade absoluta que salva vidas é ADRENALINA; corticoide é lento e atua por síntese proteica), contraindicado no traumatismo cranioencefálico (TCE) e contraindicado na fase aguda da extrusão de disco intervertebral (IVDD); 4) CRISE ADDISONIANA: fármaco de escolha pré-teste porque NÃO cruza no ensaio imunoenzimático de cortisol sérico; 5) GATOS E DIABETES: gatos têm alta suscetibilidade à hiperglicemia e resistência insulínica; monitorar glicemia de perto; 6) NUNCA administrar ésteres insolúveis de acetato por via intravenosa (usar exclusivamente fosfato dissódico hidrossolúvel).',
+    'Glicocorticoide fluorinado de alta potência (~7–7,5× mais potente que a prednisolona; ~30× hidrocortisona) e longa duração biológica (24–48+ horas). Alertas clínicos: 1) DISSOCIAÇÃO MEIA-VIDA vs EFEITO: a meia-vida plasmática canina é de apenas 2–5 h, mas a reprogramação gênica persiste por 24 a 48+ h; evitar repetições frequentes desnecessárias (risco severo de atrofia adrenal e toxicidade sistêmica); 2) ASSOCIAÇÃO COM AINEs FORMALMENTE PROIBIDA: potencializa dramaticamente o risco de erosão, hemorragia e perfuração gastrointestinal fatal (especialmente perfuração colônica no cão); 3) MUDANÇAS DE PARADIGMA RECOVER 2026 & ACVIM: contraindicado o uso empírico rotineiro na anafilaxia (a prioridade absoluta que salva vidas é ADRENALINA; corticoide é lento e atua por síntese proteica), contraindicado no traumatismo cranioencefálico (TCE) e contraindicado na fase aguda da extrusão de disco intervertebral (IVDD); 4) CRISE ADDISONIANA: fármaco de escolha pré-teste porque NÃO cruza no ensaio imunoenzimático de cortisol sérico; 5) GATOS E DIABETES: gatos têm alta suscetibilidade à hiperglicemia e resistência insulínica; monitorar glicemia de perto; 6) NUNCA administrar ésteres insolúveis de acetato por via intravenosa (usar exclusivamente fosfato dissódico hidrossolúvel).',
 
   plainLanguageSummary:
     'A dexametasona (famosa por marcas veterinárias como Azium® e Dexagard®, e humana como Decadron®) é um dos anti-inflamatórios esteroidais (corticoides) mais potentes da medicina. Ela é cerca de 7 vezes mais forte que a prednisolona e 30 vezes mais forte que o cortisol natural. Além de muito potente, a dexametasona tem uma característica que exige muito respeito: mesmo sumindo do sangue em poucas horas, ela altera o funcionamento das células por 24 a 48 horas inteiras (efeito biológico prolongado).\n\nJustamente por sua enorme potência e duração, os consensos veterinários modernos (2024–2026) alertam para mudanças fundamentais no seu uso: Primeiro, ela NUNCA deve ser misturada com anti-inflamatórios não esteroidais (AINEs como meloxicam, carprofeno ou dipirona em doses inflamatórias), pois essa combinação destrói a proteção do estômago e intestino, podendo causar úlceras perfuradas e hemorragias fatais em cães. Segundo, na anafilaxia (choque alérgico grave), a nova diretriz internacional de emergência (RECOVER 2026) orienta NÃO usar corticoide como salvador imediato: o remédio que salva a vida do animal em minutos é a Adrenalina! O corticoide é lento porque depende de fabricar novas proteínas nas células e não resolve o colapso respiratório ou circulatório agudo.\n\nPor outro lado, a dexametasona brilha em situações especiais: quando um cão chega em crise de falta de cortisol (crise Addisoniana) e precisa de socorro imediato, a dexametasona pode ser injetada na veia sem atrapalhar o exame de sangue confirmatório (teste de ACTH), pois ela não se confunde quimicamente com o cortisol no laboratório. Nos gatos, o uso deve ser muito cauteloso porque eles desenvolvem resistência à insulina e diabetes com muita facilidade sob corticoides potentes.',
@@ -104,7 +104,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       id: 'found-dex-farmacologia-potencia',
       title: 'Farmacodinâmica Molecular, Equivalência de Potência e Dissociação PK/PD',
       narrative:
-        'A dexametasona (9α-flúor-16α-metilprednisolona) é um glicocorticoide sintético de longa ação biológica pertencente à família dos esteroides pregnanos fluorados. A adição de um átomo de flúor na posição C9 e de um grupamento metila na posição C16 confere duas propriedades estruturais cruciais: potencializa dramaticamente a afinidade pelo receptor intracelular de glicocorticoide (GR / NR3C1) e elimina quase que integralmente qualquer afinidade mineralocorticoide pelo receptor de aldosterona (MR). De acordo com os tratados clássicos de farmacologia (Plumb’s 10ª ed., pp. 361–366; BSAVA 10ª ed., pp. 114–115), a dexametasona é cerca de 30 vezes mais potente que a hidrocortisona e aproximadamente 7 a 7,5 vezes mais potente que a prednisolona. Na prática clínica veterinária, adota-se a regra de conversão de dividir a dose requerida de prednisolona por 7 (ex.: 1 mg/kg de prednisolona equivale a ~0,14 mg/kg de dexametasona). Molecularmente, o complexo ativado DEX-GR exerce dois mecanismos fundamentais: (1) Transativação Gênica: ligação a elementos de resposta a glicocorticoides (GREs) no DNA, estimulando a síntese de proteínas reguladoras como a Anexina A1 (lipocortina-1), que inibe a fosfolipase A2 (PLA2), impedindo a liberação de ácido araquidônico dos fosfolipídios de membrana e bloqueando conjuntamente as vias da ciclooxigenase (COX) e lipoxigenase (LOX); (2) Transrepressão Gênica: interação direta com os fatores de transcrição pró-inflamatórios nucleares NF-κB (fator nuclear kappa B) e AP-1 (proteína ativadora 1), silenciando a expressão de citocinas inflamatórias sistêmicas (TNF-α, IL-1β, IL-6), quimiocinas, óxido nítrico sintase induzível (iNOS) e moléculas de adesão leucocitária (ICAM-1). Essa cascata genômica explica o fenômeno fundamental da dissociação farmacocinética/farmacodinâmica: a depuração plasmática do fármaco ocorre rapidamente (meia-vida sérica de 2 a 5 horas no cão), porém as proteínas sintetizadas e reprimidas mantêm o silenciamento celular por 24 a 48 horas ou mais. Desta forma, a meia-vida sérica nunca deve orientar o intervalo de administração, sob pena de gerar acúmulo biológico, atrofia profunda do córtex adrenal e catabolismo destrutivo.',
+        'A dexametasona (9α-flúor-16α-metilprednisolona) é um glicocorticoide sintético de longa ação biológica pertencente à família dos esteroides pregnanos fluorados. A adição de um átomo de flúor na posição C9 e de um grupamento metila na posição C16 confere duas propriedades estruturais cruciais: potencializa dramaticamente a afinidade pelo receptor intracelular de glicocorticoide (GR / NR3C1) e elimina quase que integralmente qualquer afinidade mineralocorticoide pelo receptor de aldosterona (MR). Na farmacologia comparada de corticosteroides, a dexametasona é cerca de 30 vezes mais potente que a hidrocortisona e aproximadamente 7 a 7,5 vezes mais potente que a prednisolona. Na prática clínica veterinária, adota-se a regra de conversão de dividir a dose requerida de prednisolona por 7 (ex.: 1 mg/kg de prednisolona equivale a ~0,14 mg/kg de dexametasona). Molecularmente, o complexo ativado DEX-GR exerce dois mecanismos fundamentais: (1) Transativação Gênica: ligação a elementos de resposta a glicocorticoides (GREs) no DNA, estimulando a síntese de proteínas reguladoras como a Anexina A1 (lipocortina-1), que inibe a fosfolipase A2 (PLA2), impedindo a liberação de ácido araquidônico dos fosfolipídios de membrana e bloqueando conjuntamente as vias da ciclooxigenase (COX) e lipoxigenase (LOX); (2) Transrepressão Gênica: interação direta com os fatores de transcrição pró-inflamatórios nucleares NF-κB (fator nuclear kappa B) e AP-1 (proteína ativadora 1), silenciando a expressão de citocinas inflamatórias sistêmicas (TNF-α, IL-1β, IL-6), quimiocinas, óxido nítrico sintase induzível (iNOS) e moléculas de adesão leucocitária (ICAM-1). Essa cascata genômica explica o fenômeno fundamental da dissociação farmacocinética/farmacodinâmica: a depuração plasmática do fármaco ocorre rapidamente (meia-vida sérica de 2 a 5 horas no cão), porém as proteínas sintetizadas e reprimidas mantêm o silenciamento celular por 24 a 48 horas ou mais. Desta forma, a meia-vida sérica nunca deve orientar o intervalo de administração, sob pena de gerar acúmulo biológico, atrofia profunda do córtex adrenal e catabolismo destrutivo.',
       narrativeHighlights: [
         'Potência glicocorticoide ~7–7,5× superior à prednisolona; atividade mineralocorticoide praticamente nula.',
         'Inibe a cascata inflamatória a montante (PLA2 via Anexina-1) e transreprime NF-κB e AP-1.',
@@ -127,7 +127,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       id: 'found-dex-consensos-imha-addison',
       title: 'Aplicações Específicas Baseadas em Consensos: Resgate na IMHA e Diagnóstico na Crise Addisoniana',
       narrative:
-        'A prescrição de dexametasona na medicina interna deve ser estritamente indicação-específica, superando tabelas empíricas arcaicas. No Consenso ACVIM para o Tratamento da Anemia Hemolítica Imunomediada (IMHA) Canina (Swann et al. 2019), a droga de primeira escolha para indução imunossupressora é a prednisolona oral na dose de 2 a 3 mg/kg/dia (ou 50–60 mg/m²/dia em cães >25 kg). Entretanto, em pacientes criticamente doentes que se apresentam com vômitos profusos, regurgitação, náusea intensa ou intolerância absoluta à via enteral, o consenso recomenda formalmente o uso temporário de fosfato dissódico de dexametasona na dose de 0,2 a 0,4 mg/kg/dia IV. O consenso enfatiza que a via intravenosa com dexametasona não confere superioridade clínica sobre a prednisolona oral e deve ser convertida para a via oral assim que o trato digestivo estiver permeável. No que tange à Crise Addisoniana aguda (hipoadrenocorticismo primário), a dexametasona desempenha um papel singular de extrema relevância clínica: ao contrário da hidrocortisona e da prednisolona — que exibem alta reatividade cruzada nos imunoensaios de cortisol e falseiam os resultados —, a dexametasona não é detectada como cortisol sérico nos testes laboratoriais de rotina. Conforme consolidado nas Diretrizes AAHA de Endocrinopatias (2023) e por Nelson & Couto (6ª ed.), em cães em colapso circulatório com suspeita de crise addisoniana em que a estabilização glicocorticoide não pode aguardar o término do protocolo diagnóstico, administra-se fosfato dissódico de dexametasona na dose de 0,1 a 0,2 mg/kg IV lenta, procedendo-se à coleta basal e à estimulação com ACTH sintético nas horas subsequentes sem contaminação do resultado laboratorial.',
+        'A prescrição de dexametasona na medicina interna deve ser estritamente indicação-específica, superando tabelas empíricas arcaicas. No Consenso ACVIM para o Tratamento da Anemia Hemolítica Imunomediada (IMHA) Canina (Swann et al. 2019), a droga de primeira escolha para indução imunossupressora é a prednisolona oral na dose de 2 a 3 mg/kg/dia (ou 50–60 mg/m²/dia em cães >25 kg). Entretanto, em pacientes criticamente doentes que se apresentam com vômitos profusos, regurgitação, náusea intensa ou intolerância absoluta à via enteral, o consenso recomenda formalmente o uso temporário de fosfato dissódico de dexametasona na dose de 0,2 a 0,4 mg/kg/dia IV. O consenso enfatiza que a via intravenosa com dexametasona não confere superioridade clínica sobre a prednisolona oral e deve ser convertida para a via oral assim que o trato digestivo estiver permeável. No que tange à Crise Addisoniana aguda (hipoadrenocorticismo primário), a dexametasona desempenha um papel singular de extrema relevância clínica: ao contrário da hidrocortisona e da prednisolona — que exibem alta reatividade cruzada nos imunoensaios de cortisol e falseiam os resultados —, a dexametasona não é detectada como cortisol sérico nos testes laboratoriais de rotina. Conforme consolidado nas Diretrizes AAHA de Endocrinopatias (2023), em cães em colapso circulatório com suspeita de crise addisoniana em que a estabilização glicocorticoide não pode aguardar o término do protocolo diagnóstico, administra-se fosfato dissódico de dexametasona na dose de 0,1 a 0,2 mg/kg IV lenta, procedendo-se à coleta basal e à estimulação com ACTH sintético nas horas subsequentes sem contaminação do resultado laboratorial.',
       narrativeHighlights: [
         'Na IMHA canina grave com intolerância oral, o Consenso ACVIM recomenda 0,2 a 0,4 mg/kg/dia IV temporariamente.',
         'Na suspeita de crise addisoniana aguda, a dose de 0,1 a 0,2 mg/kg IV (AAHA 2023) fornece glicocorticoide vital sem cruzar no ensaio de cortisol sérico.',
@@ -209,7 +209,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
     },
     {
       label: 'ASSOCIAÇÃO FORMALMENTE PROIBIDA COM AINEs (PERFURAÇÃO GI FATAL)',
-      text: 'A administração concomitante de dexametasona com anti-inflamatórios não esteroidais (meloxicam, carprofeno, firocoxib, robenacoxib, cetoprofeno, aspirina etc.) multiplica exponencialmente a toxicidade gastrointestinal por suprimir conjuntamente a síntese de prostaglandinas protetoras e o reparo da mucosa. Em cães, essa associação está classicamente ligada a úlceras gástricas perfuradas e perfuração colônica aguda letal. Respeitar período de washout adequado.',
+      text: 'A administração concomitante de dexametasona com anti-inflamatórios não esteroidais (meloxicam, carprofeno, firocoxib, robenacoxib, cetoprofeno, aspirina etc.) multiplica exponencialmente a toxicidade gastrointestinal por suprimir conjuntamente a síntese de prostaglandinas protetoras e o reparo da mucosa. Em cães, essa associação está classicamente ligada a úlceras gástricas perfuradas e perfuração colônica aguda letal. Respeitar período de suspensão adequado.',
     },
     {
       label: 'CONTRAINDICADO EM TRAUMATISMO CRANIOENCEFÁLICO (TCE) E NA IVDE AGUDA',
@@ -249,10 +249,10 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 24 a 48 horas (q24–48h)',
       duration: '3 a 5 dias; reavaliar antes de prolongar',
       notes:
-        'Dose de referência dos formulários internacionais (Plumb’s 10ª ed., p. 364; BSAVA 10ª ed., p. 114). Regra prática: dose de prednisolona dividida por 7. Devido à duração biológica estendida (24 a 48+ horas), priorizar intervalos a cada 48 horas quando o curso for estendido além de 3 dias. Empregar estritamente a menor dose efetiva pelo menor tempo possível. Se necessário tratamento crônico, transicionar para prednisolona. NUNCA associar com AINEs.',
+        'Regra prática posológica: dose equivalente à de prednisolona dividida por 7. Devido à duração biológica estendida (24 a 48+ horas), priorizar intervalos a cada 48 horas quando o curso for estendido além de 3 dias. Empregar estritamente a menor dose efetiva pelo menor tempo possível. Se necessário tratamento crônico, transicionar para prednisolona. NUNCA associar com AINEs.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1b — Plumb’s Veterinary Drug Handbook 10ª ed. e BSAVA Small Animal Formulary 10ª ed.',
+      evidenceLevel: 'Nível 1b — Posologia Anti-Inflamatória Veterinária Consolidada',
     },
     {
       id: 'dose-dex-cat-antiinflamatorio-curto',
@@ -266,10 +266,10 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 24 a 48 horas (q24–48h)',
       duration: '3 a 5 dias',
       notes:
-        'Gatos apresentam menor afinidade e densidade de receptores de glicocorticoides em relação aos cães, necessitando frequentemente do dobro da dose anti-inflamatória (Plumb’s 10ª ed.: 0,14 a 0,28 mg/kg; faixa conservadora descrita em outras fontes: 0,07 a 0,2 mg/kg). Cuidado redobrado com o perfil metabólico: felinos têm extrema suscetibilidade à hiperglicemia e resistência insulínica, com risco de precipitar diabetes mellitus.',
+        'Gatos apresentam menor afinidade e densidade de receptores de glicocorticoides em relação aos cães, necessitando frequentemente do dobro da dose anti-inflamatória (tipicamente 0,14 a 0,28 mg/kg; faixas mais conservadoras vão de 0,07 a 0,2 mg/kg). Cuidado redobrado com o perfil metabólico: felinos têm extrema suscetibilidade à hiperglicemia e resistência insulínica, com risco de precipitar diabetes mellitus.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1b — Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Nível 1b — Posologia Anti-Inflamatória Felina Consolidada',
     },
     {
       id: 'dose-dex-dog-acvim-imha',
@@ -283,7 +283,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 24 horas (q24h)',
       duration: 'Apenas até o paciente tolerar medicação enteral (máximo de 2 a 4 dias consecutivos)',
       notes:
-        'Protocolo validado na Declaração de Consenso do ACVIM (Swann et al. 2019) exclusivamente para cães com IMHA ou trombocitopenia imunomediada com vômitos profusos, regurgitação ou impossibilidade de receber prednisolona oral. Usar exclusivamente fosfato dissódico de dexametasona IV. Assim que a via oral estiver viável, converter imediatamente para prednisona/prednisolona oral (2–3 mg/kg/dia). Alerta VIN 2026: pela longa duração celular, muitos consultores sugerem espaçar para q48h se a terapia parenteral durar mais de 48h.',
+        'Protocolo validado na Declaração de Consenso do ACVIM (Swann et al. 2019) exclusivamente para cães com IMHA ou trombocitopenia imunomediada com vômitos profusos, regurgitação ou impossibilidade de receber prednisolona oral. Usar exclusivamente fosfato dissódico de dexametasona IV. Assim que a via oral estiver viável, converter imediatamente para prednisona/prednisolona oral (2–3 mg/kg/dia). Observação farmacodinâmica: pela longa duração celular, muitos especialistas sugerem espaçar para q48h caso a terapia parenteral ultrapasse 48 horas.',
       calculatorEnabled: true,
       presentationId: 'pres-decadron-inj-2mg-1ml',
       evidenceLevel: 'Nível 1a — Consenso Internacional ACVIM sobre Tratamento da IMHA (Swann et al. 2019)',
@@ -300,10 +300,10 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
       frequency: 'dose única inicial emergencial; se necessário, seguir com 0,05 a 0,1 mg/kg IV q12h até tolerar VO',
       duration: 'Fase aguda hospitalar até a conclusão do teste confirmatório',
       notes:
-        'Recomendação oficial da Diretriz AAHA 2023 de Endocrinopatias e Plumb’s 10ª ed. Grande vantagem farmacológica: a dexametasona NÃO é quantificada como cortisol na imensa maioria dos ensaios de imunoensaio de cortisol sérico, permitindo instituir suporte glicocorticoide emergencial vital e colher o teste de estimulação com ACTH nas horas subsequentes sem contaminação analítica. Associar fluidoterapia volêmica agressiva para reposição eletrolítica.',
+        'Recomendação oficial da Diretriz AAHA 2023 de Endocrinopatias. Grande vantagem farmacológica: a dexametasona NÃO é quantificada como cortisol na imensa maioria dos ensaios de imunoensaio de cortisol sérico, permitindo instituir suporte glicocorticoide emergencial vital e colher o teste de estimulação com ACTH nas horas subsequentes sem contaminação analítica. Associar fluidoterapia volêmica agressiva para reposição eletrolítica.',
       calculatorEnabled: true,
       presentationId: 'pres-decadron-inj-2mg-1ml',
-      evidenceLevel: 'Nível 1a — Diretrizes de Endocrinopatias da AAHA (2023) e Plumb’s 10ª ed.',
+      evidenceLevel: 'Nível 1a — Diretrizes de Endocrinopatias da AAHA (2023)',
     },
     {
       id: 'dose-dex-cat-addison-emergencia',
@@ -320,7 +320,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'Afecção rara em felinos (~40 casos documentados na literatura; Glebocka & Boag 2024). Doses de 0,1 a 0,2 mg/kg IV (podendo atingir 0,2 a 0,4 mg/kg em choque refratário) conferem suporte glicocorticoide essencial enquanto se corrige a desidratação e a hipercalemia por fluidoterapia.',
       calculatorEnabled: true,
       presentationId: 'pres-decadron-inj-2mg-1ml',
-      evidenceLevel: 'Nível 2 — Plumb’s 10ª ed. e Revisão de Coorte Glebocka & Boag (2024)',
+      evidenceLevel: 'Nível 2 — Revisão de Coorte (Glebocka & Boag, 2024) e Protocolos de Anafilaxia',
     },
     {
       id: 'dose-dex-dog-edema-peritumoral-cerebral',
@@ -337,7 +337,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'Demonstrado recentemente por Poirier et al. (2025) com redução do volume mediano de edema peritumoral de 0,83 para 0,40 cm³ (p = 0,048) em cães com tumores extra-axiais. Reduz a permeabilidade da barreira hematoencefálica mediada por VEGF tumoral. ATENÇÃO: NÃO EXTRAPOLAR PARA TRAUMA CRANIOENCEFÁLICO (TCE), no qual corticoides são contraindicados.',
       calculatorEnabled: true,
       presentationId: 'pres-decadron-inj-2mg-1ml',
-      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo (Poirier et al. 2025) e BSAVA 10ª ed.',
+      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo (Poirier et al., 2025)',
     },
     {
       id: 'dose-dex-dog-lddst',
@@ -354,7 +354,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'Protocolo padrão-ouro para triagem de Síndrome de Cushing canina: colher amostra de sangue basal para cortisol sérico; injetar exatamente 0,01 a 0,015 mg/kg de fosfato dissódico de dexametasona IV; colher amostras de cortisol exatamente às 4 horas e às 8 horas pós-injeção. Utilizar seringa de insulina (100 UI) para garantir precisão absoluta na microdose (0,05 mL de solução 2 mg/mL para um cão de 10 kg = 0,01 mg/kg). Cães saudáveis suprimem o cortisol sérico para <1,0–1,4 µg/dL às 8 horas. Não realizar em pacientes com doença não adrenal crítica ativa.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1a — Plumb’s 10ª ed., Consenso ACVIM de Hiperadrenocorticismo e Diretrizes AAHA',
+      evidenceLevel: 'Nível 1a — Consenso ACVIM de Hiperadrenocorticismo e Diretrizes AAHA',
     },
     {
       id: 'dose-dex-dog-hddst',
@@ -371,7 +371,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'Teste de diferenciação exclusivo para cães com diagnóstico já confirmado de Hiperadrenocorticismo (não serve para rastreio primário): colher cortisol basal; aplicar 0,1 mg/kg de fosfato de dexametasona IV; colher às 4h e 8h pós-injeção. Supressão às 4h ou 8h sugere doença hipófise-dependente (PDH); ausência de supressão pode indicar tumor adrenal funcional ou macroadenoma hipofisário.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1a — Plumb’s 10ª ed. e Tratados de Endocrinologia',
+      evidenceLevel: 'Nível 1a — Protocolos Diagnósticos de Endocrinologia Veterinária',
     },
     {
       id: 'dose-dex-cat-lddst',
@@ -388,7 +388,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'PARTICULARIDADE FELINA CRÍTICA: gatos necessitam de DEZ VEZES a dose canina para triagem diagnóstica (0,1 mg/kg IV vs 0,01 mg/kg no cão), devido à menor sensibilidade e rápida depuração do eixo HPA felino. Amostras colhidas no tempo basal, 4 horas e 8 horas pós-injeção. Cortisol sérico às 8h <1,0 µg/dL descarta HAC.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1a — Plumb’s 10ª ed. e Tratados de Endocrinologia Felina',
+      evidenceLevel: 'Nível 1a — Protocolos Diagnósticos de Endocrinologia Felina',
     },
     {
       id: 'dose-dex-cat-hddst',
@@ -405,7 +405,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         'Teste de diferenciação felino: 1,0 mg/kg IV (10× a dose do HDDST canino). Coletas no tempo 0, 4h e 8h.',
       calculatorEnabled: true,
       presentationId: 'pres-azium-solucao-inj-2mg',
-      evidenceLevel: 'Nível 1b — Plumb’s 10ª ed.',
+      evidenceLevel: 'Nível 1b — Protocolo Respiratório de Urgência Consolidado',
     },
     {
       id: 'dose-dex-dog-cat-recover-alergia',
@@ -582,7 +582,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'A inibição sinérgica das prostaglandinas protetoras gástricas e a supressão do reparo celular transmural deflagram lesões ulcerativas graves e perfuração intestinal aguda fatal (especialmente colônica em cães).',
         clinicalAction:
-          'Proibição absoluta de uso simultâneo com AINEs (meloxicam, carprofeno, firocoxib, robenacoxib etc.). Exigir intervalo de washout.',
+          'Proibição absoluta de uso simultâneo com AINEs (meloxicam, carprofeno, firocoxib, robenacoxib etc.). Exigir intervalo de suspensão.',
       },
       {
         condition: 'Anafilaxia aguda e choque distributivo (RECOVER 2026)',
@@ -598,7 +598,7 @@ export const dexametasonaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'No TCE e na IVDE aguda, altas doses de corticoides agravam a hiperglicemia tecidual, aumentam o estresse oxidativo, duplicam morbidades digestivas e elevam a mortalidade sem conferir neuroproteção comprovada.',
         clinicalAction:
-          'Contraindicado o uso rotineiro em TCE (VIN 2026) e na fase aguda da IVDE (Consenso ACVIM 2022).',
+          'Contraindicado o uso rotineiro em TCE e na fase aguda da IVDE (Consenso ACVIM 2022).',
       },
       {
         condition: 'Diabetes Mellitus e obesidade em gatos',

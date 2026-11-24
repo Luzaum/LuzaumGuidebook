@@ -38,7 +38,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelDirections:
       'Molhar a pele, aplicar quantidade suficiente para produzir espuma, massagear suavemente, remover sujidades e enxaguar completamente. Secar sem fricção excessiva.',
     plumbsContext:
-      'Não há monografia específica de sabonete PHMB no Plumb\'s consultado. Usar modo de aplicação do fabricante e protocolo de feridas.',
+      'Sem posologia veterinária padronizada única para sabonete PHMB; seguir instruções do fabricante e o protocolo de feridas.',
     clinicalUse:
       'Limpeza da pele ao redor de feridas, higienização de pacientes com incontinência, limpeza perineal, banho localizado de áreas contaminadas e higiene de pele íntegra ou superficialmente irritada.',
     reassessment:
@@ -75,7 +75,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelDirections:
       'Irrigar a ferida diretamente ou umedecer gaze estéril, mantendo contato com a superfície por até aproximadamente 15 minutos conforme necessidade clínica. Pode ser utilizada em cada troca de curativo. Frasco aberto: até 8 semanas conforme fabricante.',
     plumbsContext:
-      'Não há monografia específica para esta marca no Plumb\'s consultado. Usar conforme instruções do fabricante e protocolo de troca do curativo.',
+      'Sem posologia veterinária padronizada para esta marca; seguir instruções do fabricante e o protocolo de troca do curativo.',
     clinicalUse:
       'Feridas traumáticas contaminadas, deiscência, feridas crônicas, úlceras de pressão, queimaduras, fístulas, feridas com suspeita de biofilme e limpeza antes da aplicação de gel ou cobertura.',
     reassessment:
@@ -107,7 +107,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['polihexanida 0,1%', 'undecilenamidopropil betaína 0,1%'],
     labelCompositionSummary: 'Polihexanida 0,1%, undecilenamidopropil betaína 0,1% e água purificada.',
     labelDirections:
-      'Irrigar e limpar o leito da ferida conforme protocolo de curativos. Mesma lógica clínica do Curatec Solução: irrigação, redução de biofilme e preparo do leito.',
+      'Irrigar abundantemente o leito da ferida a cada troca de curativo (manter gaze umedecida com Prontosan por 10 a 15 minutos sobre crostas/biofilme antes de remover e aplicar gel ou cobertura).',
     dosageGuidance: {
       labelDose: 'Irrigar o leito da ferida a cada troca de curativo; manter contato suficiente para limpeza antes de gel ou cobertura.',
     },
@@ -221,12 +221,12 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
         ],
       },
       notes: [
-        'BSAVA: película fina 2x/dia após limpeza; absorção pode atingir ~10% em áreas extensas.',
+        'Aplicar película fina 2x/dia após limpeza; a absorção pode atingir ~10% em áreas extensas.',
         'Reavaliar quando carga microbiana estiver controlada; pode prejudicar granulação se mantida indefinidamente.',
       ],
     },
     plumbsContext:
-      'Plumb\'s: queimaduras e infecção bacteriana localizada — 1–2x/dia, camada de 1–2 mm. Impedir lambedura por 20–30 minutos.',
+      'Queimaduras e infecção bacteriana localizada: 1–2x/dia em camada de 1–2 mm, impedindo lambedura por 20–30 minutos.',
     clinicalUse:
       'Queimaduras, feridas contaminadas, infecção superficial localizada, lesões com bacilos Gram-negativos (destaque Pseudomonas) e dermatites úmidas infectadas selecionadas.',
     reassessment:
@@ -264,7 +264,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
         cat: [{ title: 'Infecção localizada / queimaduras', dose: '1–2x/dia, camada de 1–2 mm' }],
       },
     },
-    plumbsContext: 'Mesma orientação de sulfadiazina de prata tópica no Plumb\'s e BSAVA.',
+    plumbsContext: 'Mesma orientação clínica da sulfadiazina de prata tópica.',
     clinicalUse: 'Mesmas indicações de sulfadiazina de prata 1% como antimicrobiano tópico.',
     reassessment: 'Reavaliar necessidade de continuidade quando infecção estiver controlada.',
     prescriptionExample:
@@ -359,7 +359,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
       labelDose: 'Camada fina 3–4x/dia com massagem suave sobre pele íntegra (hematoma/edema fechado). Não usar em ferida aberta.',
     },
     plumbsContext:
-      'Não há monografia veterinária específica no Plumb\'s ou BSAVA consultados. Uso extra-label; frequência baseada na bula humana.',
+      'Sem posologia veterinária específica padronizada; uso extra-label com frequência baseada na bula humana.',
     clinicalUse:
       'Hematoma fechado, equimose, edema traumático localizado, flebite superficial e edema subcutâneo selecionado após excluir sangramento ativo.',
     reassessment: 'Suspender se hematoma expandir, houver dor intensa ou irritação local.',
@@ -558,7 +558,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
       'Por 100 mL: tartarato de ketanserina 0,345 g e asiaticosídeo 0,200 g. Bula veterinária para cães e gatos.',
     labelDirections:
       'Aplicar quantidade suficiente para cobrir toda a superfície e bordas da ferida: diariamente, até 3x/dia, ou a cada higienização/troca de curativo, até cicatrização completa.',
-    plumbsContext: 'Não há monografia específica desta associação no Plumb\'s consultado.',
+    plumbsContext: 'Sem posologia veterinária padronizada específica para esta associação.',
     clinicalUse:
       'Adjuvante da cicatrização em ferida limpa e controlada; estimula microcirculação e granulação.',
     reassessment: 'Reavaliar se ferida não evoluir; não substitui desbridamento, drenagem ou controle de infecção.',
@@ -735,10 +735,10 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
           { title: 'Acne de queixo / piodermite focal', dose: '1–2x/dia; contato mínimo 10 min' },
         ],
       },
-      notes: ['BSAVA: camada fina a cada 8 h, preferencialmente até 7 dias, reservando para infecções resistentes.'],
+      notes: ['Aplicar camada fina a cada 8 h, preferencialmente até 7 dias, reservando para infecções resistentes.'],
     },
     plumbsContext:
-      'Plumb\'s: baixa absorção sistêmica; boa penetração em piodermites localizadas e MRSP selecionado.',
+      'Baixa absorção sistêmica; boa penetração em piodermites localizadas e MRSP selecionado.',
     clinicalUse:
       'Piodermite localizada, intertrigo, acne canina/felina, piodermite de calo, furunculose focal e infecção por Staphylococcus pseudintermedius resistente.',
     reassessment: 'Reservar para infecção documentada; reavaliar em 7–14 dias.',
@@ -766,7 +766,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary: 'Ácido fusídico 20 mg/g — 2%. Verutex puro, sem corticoide (não confundir com Verutex B).',
     labelDirections: 'Aplicar na pele a cada 12 horas por aproximadamente 5 dias; reavaliar resposta.',
     dosageGuidance: {
-      notes: ['BSAVA: aplicar a cada 12 h por ~5 dias; reavaliar resposta.'],
+      notes: ['Aplicar a cada 12 h por ~5 dias; reavaliar resposta.'],
     },
     plumbsContext: 'Boa atividade contra Gram-positivos, especialmente Staphylococcus pseudintermedius.',
     clinicalUse: 'Intertrigo, piodermite focal, acne e lesões superficiais estafilocócicas.',
@@ -794,8 +794,8 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['colagenase 1,2 U/g'],
     labelCompositionSummary: 'Colagenase 1,2 U/g — desbridamento enzimático seletivo de tecido desvitalizado.',
     labelDirections:
-      'Aplicar camada fina, normalmente 1x/dia, após umedecer/limpar o tecido conforme protocolo. Reaplicar a cada troca se cobertura saturar.',
-    plumbsContext: 'Não há monografia veterinária específica no Plumb\'s consultado.',
+      'Após limpar/umedecer o leito da ferida com solução estéril compatível (sem sabões ou sais de prata), aplicar camada de ~2 mm (fina e uniforme) sobre o tecido necrótico/desvitalizado 1 vez ao dia e cobrir com gaze umedecida em NaCl 0,9%; reaplicar a cada troca diária ou se a cobertura saturar.',
+    plumbsContext: 'Sem posologia veterinária padronizada específica para esta apresentação.',
     clinicalUse: 'Escara, necrose aderida, tecido desvitalizado e feridas em que desbridamento cirúrgico não possa ser completo.',
     reassessment: 'Suspender quando leito estiver limpo e com granulação saudável; não manter durante epitelização.',
     prescriptionExample:
@@ -969,7 +969,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
       'Piodermite superficial/profunda, foliculite, furunculose, demodicose, comedões, acne canina e seborréia oleosa.',
     reassessment: 'Reduzir frequência se ressecamento ou eritema; suspender se irritação importante.',
     prescriptionExample:
-      'Dar banho com Peroxydex, manter contato por 10 minutos e enxaguar. Repetir conforme protocolo dermatológico.',
+      'Dar banho com Peroxydex Spherulites, massagear sobre a pelagem molhada, manter contato por 10 minutos e enxaguar completamente. Repetir 2 vezes por semana nas 2–3 semanas iniciais (reduzir para 1 vez por semana ou a cada 14 dias na manutenção).',
     safetyAlert:
       'Pode causar ressecamento, eritema, dor, clareamento de pelos e fotossensibilidade. Evitar contato com olhos.',
     price: {

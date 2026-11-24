@@ -49,26 +49,26 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
           label: 'Definir se há emergência',
           timing: 'Primeira avaliação',
           detail:
-            'Dispneia, edema, choque, síncope ou taquiarritmia sustentada: oxigênio, ECG, ultrassom à beira do leito e estabilização antes do estadiamento completo (Cunningham & Pierce, 2019; Nelson & Couto, 6ª ed.).',
+            'Dispneia, edema, choque, síncope ou taquiarritmia sustentada: oxigênio, ECG, ultrassom à beira do leito e estabilização antes do estadiamento completo (Cunningham & Pierce, 2019).',
         },
         {
           label: 'Confirmar disfunção sistólica',
           timing: 'Após estabilização',
           detail:
-            'Ecocardiografia com medidas normalizadas, volumes e função sistólica; avaliar regurgitação funcional, átrios e pressão pulmonar — padrão ouro (Nelson & Couto, 6ª ed.).',
+            'Ecocardiografia com medidas normalizadas, volumes e função sistólica; avaliar regurgitação funcional, átrios e pressão pulmonar — padrão ouro.',
         },
         {
           label: 'Quantificar arritmia',
           timing: 'Na investigação inicial ou rastreio',
           detail:
-            'ECG identifica ritmo atual; Holter de 24 h é mais sensível para ectopia intermitente e rastreio de Dobermann (Nelson & Couto, 6ª ed.; Summerfield et al., 2012).',
+            'ECG identifica ritmo atual; Holter de 24 h é mais sensível para ectopia intermitente e rastreio de Dobermann (Summerfield et al., 2012).',
           reassess: 'ECG curto normal não exclui ectopia intermitente — considerar Holter em raças de risco.',
         },
         {
           label: 'Procurar causa modificável',
           timing: 'Antes de rotular idiopática',
           detail:
-            'História dietética detalhada, taurina plasmática quando pertinente, carnitina em raças selecionadas, T4, troponina e investigação de toxinas/miocardite (Freeman et al., 2020; Nelson & Couto, 6ª ed.).',
+            'História dietética detalhada, taurina plasmática quando pertinente, carnitina em raças selecionadas, T4, troponina e investigação de toxinas/miocardite (Freeman et al., 2020).',
         },
       ],
     },
@@ -86,7 +86,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
         {
           label: 'Insuficiência cardíaca aguda',
           detail:
-            'Oxigênio, furosemida IV titulada, pimobendan quando via oral segura; dobutamina se choque por baixo débito (Cunningham & Pierce, 2019; Plumb\'s, 10ª ed.).',
+            'Oxigênio, furosemida IV titulada, pimobendan quando via oral segura; dobutamina se choque por baixo débito (Cunningham & Pierce, 2019).',
           dose: 'Furosemida 1–4 mg/kg IV titulada (2 mg/kg IV/IM repetível horária no edema grave). Pimobendan assim que VO seguro.',
           duration: 'Até estabilização congestiva; transição para protocolo crônico.',
           reassess: 'Monitorar perfusão, FR e função renal durante diurese agressiva.',
@@ -94,7 +94,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
         {
           label: 'Insuficiência cardíaca crônica',
           detail:
-            'Pimobendan + furosemida; IECA se perfusão e rim permitirem; considerar espironolactona e controle de frequência/ritmo (Luis Fuentes et al., 2002; Plumb\'s, 10ª ed.).',
+            'Pimobendan + furosemida; IECA se perfusão e rim permitirem; considerar espironolactona e controle de frequência/ritmo (Luis Fuentes et al., 2002).',
           dose: 'Pimobendan 0,5 mg/kg/dia PO dividido q12h. Furosemida 2 mg/kg PO q12h (cães) ou 1–2 mg/kg q8–12h (gatos), ajustar à congestão. Benazepril conforme perfusão renal.',
           duration: 'Contínuo; ajustar diurético à menor dose que mantém conforto.',
           reassess: 'Ureia, creatinina e eletrólitos 3–7 dias após intensificar diurético/SRAA.',
@@ -102,7 +102,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
         {
           label: 'Causa reversível',
           detail:
-            'Corrigir dieta e suplementar taurina/carnitina quando indicado; controlar taquiarritmia e retirar toxina; reavaliar remodelamento (Freeman et al., 2020; Nelson & Couto, 6ª ed.).',
+            'Corrigir dieta e suplementar taurina/carnitina quando indicado; controlar taquiarritmia e retirar toxina; reavaliar remodelamento (Freeman et al., 2020).',
           duration: 'Suplementação mínima 2–3 meses antes de concluir irreversibilidade.',
           reassess: 'Eco a cada 3–6 meses; repetir taurina se dieta corrigida.',
         },
@@ -124,9 +124,9 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
   },
   epidemiology: {
     caes:
-      'Predomina em cães adultos de porte grande ou gigante. Dobermanns frequentemente desenvolvem doença na meia-idade; machos tendem a descompensar mais cedo em algumas coortes. Cocker Spaniels podem apresentar associação com deficiência de taurina (Nelson & Couto, 6ª ed.).',
+      'Predomina em cães adultos de porte grande ou gigante. Dobermanns frequentemente desenvolvem doença na meia-idade; machos tendem a descompensar mais cedo em algumas coortes. Cocker Spaniels podem apresentar associação com deficiência de taurina.',
     gatos:
-      'A CMD felina primária é hoje rara com dietas completas contendo taurina. Quando ocorrer, revise dieta caseira, alimentação formulada para outra espécie, má absorção, fórmulação inadequada, miocardite e taquicardia (Nelson & Couto, 6ª ed.).',
+      'A CMD felina primária é hoje rara com dietas completas contendo taurina. Quando ocorrer, revise dieta caseira, alimentação formulada para outra espécie, má absorção, fórmulação inadequada, miocardite e taquicardia.',
     prognostico:
       'O prognóstico piora com insuficiência cardíaca congestiva, síncope, taquiarritmia ventricular, fibrilação atrial, dilatação intensa e disfunção renal. Morte súbita pode ser o primeiro desfecho em Dobermann (Summerfield et al., PROTECT Study, 2012).',
   },
@@ -333,7 +333,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
       'Morte Súbita Cardíaca (MSC) por Arritmias Ventriculares Malignas: A complicação mais letal e imprevisível da CMD, especialmente em Dobermann Pinschers, Boxers e cães gigantes. Cerca de 30% a 50% dos animais afetados morrem subitamente durante a fase pré-clínica/oculta sem jamais apresentarem tosse ou edema pulmonar. Decorre de complexos ventriculares prematuros (CVPs) frequentes, taquicardia ventricular monomórfica ou polimórfica que degenera em fibrilação ventricular ou assistolia sob estímulo adrenérgico, gerada por áreas de fibrose intersticial miocárdica e infiltração fibro-gordurosa.',
       'Insuficiência Cardíaca Congestiva Biventricular e Choque Cardiogênico: A perda irreversível da contratilidade dos cardiomiócitos (fração de encurtamento < 15–20% e dilatação volumétrica cavitária) gera incapacidade do ventrículo esquerdo de ejetar o débito cardíaco sistêmico (baixo débito anterógrado) associada à elevação crítica das pressões venocapilares pulmonares e pressões atriais direitas. Manifesta-se com edema pulmonar grave, ascite exuberante, efusão pleural e colapso circulatório distributivo-cardiogênico com hipotensão arterial severa e extremidades frias.',
       'Fibrilação Atrial (FA) com Resposta Ventricular Descontrolada: A dilatação extrema das câmaras atriais estira os miócitos atriais e cria heterogeneidade eletrofisiológica com múltiplos circuitos de microrreentrada. A perda do enchimento ventricular ativo ("atrial kick", crucial em ventrículos hipocontráteis) associada a frequências ventriculares superiores a 220–260 bpm precipita descompensação hemodinâmica fulminante em poucas horas.',
-      'Tromboembolismo Arterial Sistêmico (Trombo em Sela / FATE): Ocorre com frequência em gatos acometidos por CMD (frequentemente secundária à deficiência de taurina no passado ou idiopática atual) decorrente da hipocinesia atrial esquerda severa com estase sanguínea e formação de "smoke" (ecocontraste espontâneo) ou trombos murais cavitários, embolizando para a trifurcação aórtica.',
+      'Tromboembolismo Arterial Sistêmico (Trombo em Sela / FATE): Ocorre com frequência em gatos acometidos por CMD (frequentemente secundária à deficiência de taurina no passado ou idiopática atual) decorrente da hipocinesia atrial esquerda severa com estase sanguínea e formação de contraste ecocardiográfico espontâneo ou trombos murais cavitários, embolizando para a trifurcação aórtica.',
       'Síndrome Cardiorrenal Tipo 2 (Nefropatia Congestiva): A combinação de hipoperfusão renal anterógrada sustentada (redução do débito sistêmico) com elevação da pressão venosa renal retrógrada (congestão venosa central) e superativação do SRAA resulta em azotemia cardiorrenal progressiva, limitando severamente a margem de segurança para o escalonamento de diuréticos de alça e inibidores da ECA.',
       'Caquexia Cardíaca Grave: Síndrome consumptiva hipermetabólica acelerada mediada pela liberação maciça de citocinas inflamatórias circulantes (TNF-alfa, IL-1beta e IL-6) e baixo débito esplâncnico crônico com má absorção intestinal, provocando perda profunda de massa magra muscular esquelética e anorexia.',
     ],

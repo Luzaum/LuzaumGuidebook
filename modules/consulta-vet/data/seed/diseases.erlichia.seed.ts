@@ -100,7 +100,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: 'Base — doxiciclina',
           detail:
-            'Antibiótico de primeira linha para E. canis; tratar coinfecções se documentadas (Neer et al., ACVIM 2002; Plumb\'s, 10ª ed.).',
+            'Antibiótico de primeira linha para E. canis; tratar coinfecções se documentadas (Neer et al., ACVIM 2002).',
           dose: 'Doxiciclina 10 mg/kg VO q24h × 28 dias ou 5 mg/kg VO q12h × 28 dias.',
           duration: '28 dias completos.',
           reassess: 'Plaquetas costumam subir em 24–48 h e normalizar em até 14 dias.',
@@ -148,7 +148,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       alt: 'Ciclo de vida do carrapato Rhipicephalus sanguineus em cães',
       display: 'wide',
       caption:
-        'Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos (indoor) e externos (outdoor) e a transmissao do patogeno aos cães.',
+        'Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos e externos e a transmissao do patogeno aos cães.',
     },
     figuraCarrapato: {
       kind: 'clinicalFigure',

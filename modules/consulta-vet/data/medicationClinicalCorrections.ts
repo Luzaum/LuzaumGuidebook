@@ -13,12 +13,6 @@ export const MEDICATION_MONITORING_PARAMETERS: Record<string, string[]> = {
     'Na nebulização brônquica, interromper imediatamente a inalação e reavaliar diante de tosse intensa, sibilos, broncoconstrição reflexa ou qualquer aumento do esforço respiratório (formalmente contraindicada em asma felina).',
     'Em melting corneano estromal, acompanhar a profundidade da úlcera por biomicroscopia ou lâmpada de fenda a cada 12 a 24 horas até parada da liquefação.',
   ],
-  alopurinol: [
-    'Durante terapia prolongada, realizar urinálise seriada a cada 1 a 3 meses: avaliar pH urinário, sedimento e vigilância rigorosa para cristalúria de xantina ou precipitação de urólitos radiotransparentes.',
-    'Realizar ultrassonografia e/ou radiografia do trato urinário periodicamente para rastreio precoce de urolitíase iatrogênica por xantina.',
-    'Monitorar função renal (ureia, creatinina, SDMA e densidade urinária), especialmente em cães com leishmaniose visceral e glomerulopatia secundária.',
-    'Em leishmaniose canina, acompanhar resposta clínica, hemograma, proteinúria (UPC) e atividade/carga parasitária conforme protocolo LeishVet. O fármaco é leishmaniostático e não induz eliminação esterilizante do parasito.',
-  ],
   amantadina: [
     'Avaliar escores clínicos de dor, conforto, capacidade de locomoção e melhora funcional da mobilidade em dor crônica/osteoartrite.',
     'Monitorar efeitos sobre o sistema nervoso central: sedação, hiperexcitabilidade paradoxal, agitação motora, tremores e ataxia.',
@@ -168,12 +162,6 @@ export const MEDICATION_MONITORING_PARAMETERS: Record<string, string[]> = {
     'Acompanhar pressão arterial sistêmica (risco de hipertensão arterial induzida por estímulo eritropoético).',
     'Avaliar status de ferro sérico (ferritina e saturação de transferrina) para garantir substrato para a eritropoese.',
   ],
-  fenobarbital: [
-    'Manter diário de crises convulsivas (frequência, tipo, severidade e duração de episódios).',
-    'Realizar dosagem da concentração sérica de fenobarbital (TDM) após 2 a 3 semanas do início do tratamento ou de cada ajuste posológico (faixa terapêutica alvo recomendada: 15 a 45 µg/mL; em cães usualmente 15 a 35 µg/mL).',
-    'Avaliar ALT, fosfatase alcalina, albumina sérica, ácidos biliares e hemograma a cada 6 meses (ou antes se houver perda de controle de crises ou suspeita de hepatotoxicidade).',
-    'Monitorar sinais de sedação, ataxia, polifagia, poliúria/polidipsia e ganho de peso.',
-  ],
   pradofloxacina: [
     'Monitorar regressão clínica do quadro infeccioso (piodermite, feridas, infecções do trato respiratório superior).',
     'Em gatos com hemoplasmose (ABCD 2026), acompanhar hemograma completo e PCR seriada.',
@@ -219,11 +207,6 @@ export const MEDICATION_CLIENT_INFORMATION: Record<string, string[]> = {
     'A solução tem odor e sabor sulfurados característicos (semelhante a enxofre) e pode provocar náusea ou vômito se administrada por via oral.',
     'Em casos de intoxicação acidental (como ingestão de paracetamol), o tratamento exige internação imediata e acompanhamento estrito em ambiente hospitalar.',
     'Se prescrita para nebulização ou inalação, suspenda o uso e procure atendimento veterinário urgente caso o animal apresente tosse forte, chiado no peito ou dificuldade para respirar.',
-  ],
-  alopurinol: [
-    'Estimular ingestão hídrica abundante durante todo o tratamento com fontes de água fresca e alimentos úmidos para reduzir o risco de formação de pedras na urina.',
-    'Adesão rigorosa à dieta prescrita com restrição de purinas é mandatória; o descumprimento dietético pode provocar cálculos urinários de difícil dissolução.',
-    'Contatar imediatamente o médico-veterinário caso observe esforço para urinar, urina com sangue, gotejamento ou ausência de micção.',
   ],
   amantadina: [
     'Medicamento de controle especial com retenção de receita (Lista C1). Manter em local seguro.',
@@ -353,11 +336,6 @@ export const MEDICATION_CLIENT_INFORMATION: Record<string, string[]> = {
     'Administrar uma vez ao dia com ou sem alimento; não interromper sem reavaliação hematológica periódica.',
     'Acompanhar a pressão arterial do felino conforme solicitado pelo médico-veterinário.',
   ],
-  fenobarbital: [
-    'ALERTA DE SEGURANÇA VITAL: NUNCA interrompa ou suspenda o fornecimento deste medicamento por conta própria. A interrupção súbita pode desencadear crises convulsivas violentas, ininterruptas e fatais (status epilepticus).',
-    'Sonolência, aumento da fome e da sede e um andar cambaleante são muito frequentes nas primeiras 2 a 3 semanas e tendem a diminuir conforme o organismo se adapta.',
-    'Administre com rigor absoluto nos mesmos horários a cada 12 horas.',
-  ],
   pradofloxacina: [
     'Agite muito bem a suspensão oral antes de cada aplicação.',
     'Administre uma vez ao dia no mesmo horário, diretamente na boca do paciente utilizando a seringa dosadora.',
@@ -407,10 +385,6 @@ export const MEDICATION_CONTROL_NOTICES: Record<string, { isControlled: boolean;
   diazepam: {
     isControlled: true,
     controlNotice: 'Sujeito a Notificação de Receita B (Lista B1 — Portaria SVS/MS nº 344/1998 / RDC Anvisa nº 1.036/2026).',
-  },
-  fenobarbital: {
-    isControlled: true,
-    controlNotice: 'Medicamento da Lista B1 (Portaria SVS/MS nº 344/1998); medicamentos contendo fenobarbital estão sujeitos a Receita de Controle Especial em 2 vias com retenção conforme adendo vigente (RDC Anvisa nº 1.036/2026).',
   },
   amantadina: {
     isControlled: true,
@@ -512,16 +486,6 @@ export const MEDICATION_CONFIRMED_REFERENCES: Record<string, EditorialReference[
       sourceType: 'Estudo farmacocinético comparativo',
       url: 'https://doi.org/10.1111/jvp.13506',
       doi: '10.1111/jvp.13506',
-    },
-  ],
-  alopurinol: [
-    {
-      id: 'ref-oliveira-allopurinol-xanthinuria-2025',
-      citationText: 'Oliveira SC et al. Xanthine urolithiasis and crystal formation in dogs treated with allopurinol for leishmaniosis. Parasites & Vectors. 2025;18:98.',
-      sourceType: 'Estudo clínico observacional',
-      url: 'https://doi.org/10.1186/s13071-025-06731-0',
-      doi: '10.1186/s13071-025-06731-0',
-      pmid: '40065388',
     },
   ],
   amantadina: [
@@ -751,8 +715,8 @@ export function applyMedicationClinicalCorrections(medication: MedicationRecord)
   // 6. Refinamentos específicos por medicamento
   let attentionData = medication.attentionData ?? {
     precautions: [
-      ...medication.contraindications.map((text) => ({ condition: text, alertLevel: 'contraindicated' as const, physiologicalExplanation: text, clinicalAction: '' })),
-      ...medication.cautions.map((text) => ({ condition: text, alertLevel: 'caution' as const, physiologicalExplanation: text, clinicalAction: '' })),
+      ...medication.contraindications.map((text) => ({ condition: text, alertLevel: 'contraindicated' as const, physiologicalExplanation: '', clinicalAction: '' })),
+      ...medication.cautions.map((text) => ({ condition: text, alertLevel: 'caution' as const, physiologicalExplanation: '', clinicalAction: '' })),
     ],
   };
   let generalInfoData = medication.generalInfoData;
@@ -765,27 +729,6 @@ export function applyMedicationClinicalCorrections(medication: MedicationRecord)
         nursingCare: clientInformation?.join('\n\n') || '',
       })),
     };
-  }
-
-  if (slug === 'fenobarbital') {
-    attentionData = attentionData ? {
-      ...attentionData,
-      drugInteractionsDetailed: attentionData.drugInteractionsDetailed?.map((interaction) =>
-        interaction.drugOrClass.includes('Benzodiazepínicos') ? {
-          ...interaction,
-          pharmacologicalMechanism: 'Somação de depressão central. Benzodiazepínicos e barbitúricos modulam GABA-A em sítios alostéricos distintos; a combinação pode deprimir ventilação e sensorium.',
-        } : interaction),
-    } : undefined;
-
-    generalInfoData = generalInfoData ? {
-      ...generalInfoData,
-      speciesPeculiarities: generalInfoData.speciesPeculiarities?.map((item) => item.species === 'cat' ? {
-        ...item,
-        title: 'Felinos: monitorar tolerância neurológica, cutânea e hematológica',
-        description: 'O fenobarbital é uma opção de primeira linha consagrada para controle de crises em gatos. Podem ocorrer letargia transitória, ataxia, polifagia, prurido facial e, raramente, citopenias idiossincráticas reversíveis.',
-        clinicalImplications: 'Ajustar pelo controle de crises, tolerância e concentração sérica (alvo 15–45 µg/mL). Prurido intenso, febre ou citopenias exigem avaliação rápida e planejamento de substituição; nunca realizar retirada abrupta domiciliar sem cobertura anticonvulsivante alternativa.',
-      } : item),
-    } : undefined;
   }
 
   if (slug === 'tramadol') {

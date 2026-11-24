@@ -139,7 +139,7 @@ export const ciclosporinaMedicationRecord: MedicationRecord = {
       clinicalContext: 'Especialmente em Pastores Alemães; avaliar associação com cetoconazol para viabilidade econômica.',
     },
     {
-      condition: 'Anemia Hemolítica Imunomediada (AHIM / IMHA) Canina (ACVIM 2019 / Plumb’s)',
+      condition: 'Anemia Hemolítica Imunomediada (AHIM / IMHA) Canina (Consenso ACVIM 2019)',
       species: 'dog',
       doseSummary: '5,0 mg/kg VO a cada 12 horas (q12h / BID) como segundo imunossupressor (0,05 mL/kg q12h de Cyclavance)',
       route: 'Oral (VO)',

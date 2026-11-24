@@ -125,6 +125,12 @@ function mergeMedicationSeedWithRemote(
       return { ...local, id: remote.id, isPublished: remote.isPublished };
     }
 
+    // A monografia reconstruída de fenobarbital (nov/2026) substitui eventual linha legada no banco.
+    if (!includeDrafts && remote.slug === 'fenobarbital' &&
+        !remote.doses.some((dose) => dose.id === 'dose-feno-dog-epilepsy-maint')) {
+      return { ...local, id: remote.id, isPublished: remote.isPublished };
+    }
+
     return {
       ...local,
       ...remote,

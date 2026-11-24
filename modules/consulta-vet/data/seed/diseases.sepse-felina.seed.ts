@@ -235,7 +235,7 @@ export const sepseFelinaRecord: DiseaseRecord = {
         },
         {
           col1: 'Valor Prognóstico do Lactato',
-          col2: 'Excelente preditor de gravidade e mortalidade; falha de clearance do lactato prediz óbito',
+          col2: 'Excelente preditor de gravidade e mortalidade; falha de depuração do lactato prediz óbito',
           col3: 'Identifica hipoperfusão, mas lactato inicial isolado NÃO se correlaciona com sobrevida no Consenso 2026',
           col4: 'Utilizar lactato para guiar a restauração tecidual dinâmica, mas não para prognósticos definitivos',
         },
@@ -566,7 +566,7 @@ export const sepseFelinaRecord: DiseaseRecord = {
 
   prevention: {
     pilaresDePrevencaoEControleDomiciliar:
-      'A prevenção da sepse em felinos fundamenta-se no manejo profilático rigoroso de suas causas primárias: 1. Prevenção de brigas e feridas por mordeduras: a manutenção de felinos exclusivamente em ambiente estritamente domiciliado (indoor) elimina o contato agonístico territorial com outros animais errantes, prevenindo mais de 80% dos casos de piotórax e abscessos subcutâneos profundos; 2. Enriquecimento ambiental e manejo de corpos estranhos: evitar brinquedos com linhas, fios de costura, agulhas ou fitas que propiciem obstrução e perfuração gastrointestinal linear; 3. Vacinação essencial completa: imunização profilática rigorosa contra o vírus da panleucopenia felina (FPV), prevenindo a enterite necrosante fulminante e a translocação bacteriana maciça; 4. Diagnóstico e tratamento precoce de doenças de base: rastreio seriado de infecções retrovirais (FeLV e FIV), acompanhamento de urolitíases obstrutivas e intervenção imediata diante de sinais de anorexia ou febre; 5. Conscientização e educação dos tutores: instruir tutores de que o gato enfermo com comportamento deprimido, retraimento, corpo frio ao toque ou respiração acelerada encontra-se em emergência crítica e necessita de avaliação hospitalar imediata.',
+      'A prevenção da sepse em felinos fundamenta-se no manejo profilático rigoroso de suas causas primárias: 1. Prevenção de brigas e feridas por mordeduras: a manutenção de felinos exclusivamente em ambiente estritamente domiciliado elimina o contato agonístico territorial com outros animais errantes, prevenindo mais de 80% dos casos de piotórax e abscessos subcutâneos profundos; 2. Enriquecimento ambiental e manejo de corpos estranhos: evitar brinquedos com linhas, fios de costura, agulhas ou fitas que propiciem obstrução e perfuração gastrointestinal linear; 3. Vacinação essencial completa: imunização profilática rigorosa contra o vírus da panleucopenia felina (FPV), prevenindo a enterite necrosante fulminante e a translocação bacteriana maciça; 4. Diagnóstico e tratamento precoce de doenças de base: rastreio seriado de infecções retrovirais (FeLV e FIV), acompanhamento de urolitíases obstrutivas e intervenção imediata diante de sinais de anorexia ou febre; 5. Conscientização e educação dos tutores: instruir tutores de que o gato enfermo com comportamento deprimido, retraimento, corpo frio ao toque ou respiração acelerada encontra-se em emergência crítica e necessita de avaliação hospitalar imediata.',
   },
 
   relatedConsensusSlugs: [

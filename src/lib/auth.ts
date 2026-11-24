@@ -67,10 +67,13 @@ export async function signIn(identifier: string, password: string) {
 }
 
 export async function signInWithGoogle(nextPath = '/consulta-vet') {
+  const callbackUrl = new URL('/auth/callback', window.location.origin)
+  callbackUrl.searchParams.set('next', normalizeInternalRedirect(nextPath))
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: resolveAuthCallbackUrl(nextPath),
+      redirectTo: callbackUrl.toString(),
     },
   })
 

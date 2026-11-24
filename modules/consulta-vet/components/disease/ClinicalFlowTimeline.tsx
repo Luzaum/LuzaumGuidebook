@@ -7,7 +7,7 @@ import { EditorialRichText } from '../shared/EditorialRichText';
 
 type ClinicalFlowTimelineProps = {
   flow: DiseaseQuickSummaryFlow;
-  /** Resumo rápido usa fundo escuro; seção clínica usa tema claro. */
+  /** Light follows the application theme; dark supports legacy dark surfaces. */
   variant?: 'dark' | 'light';
 };
 
@@ -112,7 +112,7 @@ function FlowStepCard({
             'rounded-xl border p-4 md:p-4',
             variant === 'dark'
               ? 'border-white/10 bg-white/[0.06] backdrop-blur-[1px]'
-              : 'border-border/55 bg-card/60 shadow-sm'
+              : 'border-border bg-transparent'
           )}
         >
           <div className="flex flex-wrap items-start gap-x-3 gap-y-1">
@@ -152,7 +152,7 @@ function FlowStepCard({
   );
 }
 
-export function ClinicalFlowTimeline({ flow, variant = 'dark' }: ClinicalFlowTimelineProps) {
+export function ClinicalFlowTimeline({ flow, variant = 'light' }: ClinicalFlowTimelineProps) {
   return (
     <div className="space-y-4">
       <p

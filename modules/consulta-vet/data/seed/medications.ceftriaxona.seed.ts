@@ -84,7 +84,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         id: 'dose-ceftriaxona-dog-pk',
         species: 'dog',
         indication:
-          'Infecção bacteriana grave por patógeno suscetível em cães (regime padrão Plumb’s / Rebuelto 2002)',
+          'Infecção bacteriana grave por patógeno suscetível em cães (Rebuelto et al., 2002)',
         doseMin: 50,
         doseMax: 50,
         doseUnit: 'mg',
@@ -93,7 +93,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 12 a 24 horas (q12h em sepse/grave; q24h em MIC baixa)',
         duration: 'Conforme foco infeccioso, resposta clínica e estabilização para terapia oral',
         notes:
-          'Plumb 10ª ed., p. 231 e estudo farmacocinético de Rebuelto et al. (2002). O intervalo de 12 horas (q12h) é farmacodinamicamente muito superior e recomendado em sepse, infecção profunda ou MIC indeterminada devido à meia-vida de 1,17 h (IM) e 1,73 h (SC). O regime de q24h deve ser restrito a patógenos com MIC extremamente baixa. Não administrar com soluções contendo cálcio.',
+          'Baseado no estudo farmacocinético de Rebuelto et al. (2002): o intervalo de 12 horas (q12h) é farmacodinamicamente muito superior e recomendado em sepse, infecção profunda ou MIC indeterminada devido à meia-vida de 1,17 h (IM) e 1,73 h (SC). O regime de q24h deve ser restrito a patógenos com MIC extremamente baixa. Não administrar com soluções contendo cálcio.',
         clinicalContext:
           'Terapia parenteral hospitalar em cães com infecções bacterianas graves documentadas por cultura.',
         monitoring:
@@ -106,7 +106,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         id: 'dose-ceftriaxona-cat-pk',
         species: 'cat',
         indication:
-          'Infecção bacteriana por patógeno sensível em felinos (regime Plumb’s / Albarellos 2007)',
+          'Infecção bacteriana por patógeno sensível em felinos (Albarellos et al., 2007)',
         doseMin: 25,
         doseMax: 25,
         doseUnit: 'mg',
@@ -115,7 +115,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 12 horas (q12h)',
         duration: 'Conforme evolução clínica e desescalonamento microbiológico',
         notes:
-          'Plumb 10ª ed., p. 231 e estudo farmacocinético direto de Albarellos et al. (2007). Em gatos, 25 mg/kg produz meia-vida de 1,73 h e mantém concentrações plasmáticas livres acima da MIC90 de E. coli (0,2 mcg/mL) por 10 a 12 horas (83–92% do intervalo de 12h), respaldando farmacodinamicamente a administração q12h. O VIN descreve adicionalmente 25 a 50 mg/kg IM/IV q12h para infecções sistêmicas.',
+          'Baseado no estudo farmacocinético direto de Albarellos et al. (2007): em gatos, 25 mg/kg produz meia-vida de 1,73 h e mantém concentrações plasmáticas livres acima da MIC90 de E. coli (0,2 mcg/mL) por 10 a 12 horas (83–92% do intervalo de 12h), respaldando farmacodinamicamente a administração q12h. Regimes de 25 a 50 mg/kg IM/IV q12h também são descritos para infecções sistêmicas.',
         clinicalContext:
           'Infecções sistêmicas e de tecidos moles complicadas em gatos internados por patógenos suscetíveis.',
         monitoring:
@@ -128,7 +128,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         id: 'dose-ceftriaxona-dog-meningite',
         species: 'dog',
         indication:
-          'Meningite e meningoencefalite bacteriana canina por patógeno suscetível (VIN / Hertzsch 2022)',
+          'Meningite e meningoencefalite bacteriana canina por patógeno suscetível (Hertzsch & Richter, 2022)',
         doseMin: 15,
         doseMax: 50,
         doseUnit: 'mg',
@@ -137,7 +137,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 12 horas (q12h)',
         duration: 'Individualizada; reavaliar conforme quadro neurológico e cultura do LCR',
         notes:
-          'VIN e revisão sistemática de Hertzsch & Richter (2022). A via intravenosa (IV lenta em 30 min) é mandatória para garantir pico e difusão liquórica confiável no SNC sob inflamação meníngea. A duração deve ser guiada pela resposta neurológica, hemograma e exames de neuroimagem/líquor, não se fixando rigidamente em 4–14 dias.',
+          'Revisão sistemática de Hertzsch & Richter (2022): a via intravenosa (IV lenta em 30 min) é mandatória para garantir pico e difusão liquórica confiável no SNC sob inflamação meníngea. A duração deve ser guiada pela resposta neurológica, hemograma e exames de neuroimagem/líquor, não se fixando rigidamente em 4–14 dias.',
         clinicalContext:
           'Infecções do sistema nervoso central com pleocitose neutrofílica e suspeita bacteriana com barreira hematoencefálica inflamada.',
         monitoring:
@@ -159,14 +159,14 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 12 horas (q12h)',
         duration: '14 dias consecutivos por via parenteral, seguido de terapia oral prolongada',
         notes:
-          'Plumb 10ª ed., p. 231 e VIN. Protocolo específico direcionado a isolados de Streptococcus canis com identificação microbiológica e perfil de sensibilidade. Endocardite exige bactericidas com alta exposição tecidual constante na vegetação valvar. Transicionar para antibacteriano oral guiado por antibiograma após o ciclo parenteral inicial.',
+          'Protocolo específico direcionado a isolados de Streptococcus canis com identificação microbiológica e perfil de sensibilidade. Endocardite exige bactericidas com alta exposição tecidual constante na vegetação valvar. Transicionar para antibacteriano oral guiado por antibiograma após o ciclo parenteral inicial.',
         clinicalContext:
           'Cães com vegetação valvar ecocardiográfica confirmada e hemocultura positiva para Streptococcus canis.',
         monitoring:
           'Ecocardiograma de controle, hemoculturas seriadas, ausculta de sopros cardíacos e creatinina sérica.',
         calculatorEnabled: true,
         referenceIds: ['ref-plumbs-ceftriaxone-10ed'],
-        evidenceLevel: 'Diretriz Terapêutica Especializada do Plumb’s 10ª ed.',
+        evidenceLevel: 'Protocolo Antimicrobiano Especializado para Endocardite',
       },
       {
         id: 'dose-ceftriaxona-lyme',
@@ -181,7 +181,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 24 horas (q24h)',
         duration: '14 a 30 dias consecutivos',
         notes:
-          'Consenso ACVIM Borreliose de Lyme (Littman et al., 2018), Plumb 10ª ed. e VIN. A ceftriaxona é considerada protocolo alternativo parenteral de resgate para cães refratários ou que não toleram tetraciclinas orais (doxiciclina ou minociclina são os fármacos de primeira escolha preconizados pelo consenso).',
+          'Consenso ACVIM Borreliose de Lyme (Littman et al., 2018): a ceftriaxona é considerada protocolo alternativo parenteral de resgate para cães refratários ou que não toleram tetraciclinas orais (doxiciclina ou minociclina são os fármacos de primeira escolha preconizados pelo consenso).',
         clinicalContext:
           'Poliartrite ou síndrome clínica de borreliose em cães soropositivos e sintomáticos intolerantes à doxiciclina.',
         monitoring:
@@ -210,7 +210,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
           'Pressão arterial média, lactato sérico, débito urinário, hemograma e culturas de controle.',
         calculatorEnabled: true,
         referenceIds: ['ref-plumbs-ceftriaxone-10ed', 'albarellos-2007-cat-pk', 'rebuelto-2002-dog-pk'],
-        evidenceLevel: 'Consensos de Terapia Intensiva e Compêndio Plumb’s 10ª ed.',
+        evidenceLevel: 'Consenso Clínico de Terapia Intensiva e Infectologia',
       },
     ],
 
@@ -298,7 +298,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
           'Tratamento parenteral em cães e gatos em terapia intensiva com bacteremia documentada por Enterobacterales suscetíveis.',
       },
       {
-        condition: 'Infecção Bacteriana Suscetível em Cães (Plumb’s / Rebuelto 2002)',
+        condition: 'Infecção Bacteriana Suscetível em Cães (Rebuelto et al., 2002)',
         species: 'dog',
         doseSummary: '50 mg/kg IM ou SC a cada 12 a 24 horas (q12h preferível em infecções graves)',
         route: 'IM ou SC',
@@ -307,7 +307,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
           'Terapia parenteral baseada em dados farmacocinéticos; o regime q12h é prioritário para assegurar fT>MIC adequado.',
       },
       {
-        condition: 'Infecção Bacteriana Suscetível em Gatos (Plumb’s / Albarellos 2007)',
+        condition: 'Infecção Bacteriana Suscetível em Gatos (Albarellos et al., 2007)',
         species: 'cat',
         doseSummary: '25 mg/kg IM ou SC a cada 12 horas (q12h)',
         route: 'IM ou SC',
@@ -353,7 +353,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Pressão arterial média, lactato, débito urinário, hemograma e culturas de controle.',
         referenceIds: ['ref-plumbs-ceftriaxone-10ed', 'rebuelto-2002-dog-pk', 'albarellos-2007-cat-pk'],
-        evidenceLevel: 'Compêndio Plumb 10ª ed. e Farmacocinética Veterinária Primária',
+        evidenceLevel: 'Farmacocinética Veterinária Primária',
       },
       {
         id: 'ind-ceftriaxona-meningite',
@@ -387,11 +387,11 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         mechanismOfAction:
           'Ligação de alta afinidade às transpeptidases de estreptococos com bactericidia tempo-dependente prolongada.',
         clinicalRationale:
-          'Regime específico citado pelo Plumb 10ª ed. e literatura especializada em cardiologia infecciosa canina para consolidar a esterilização da vegetação antes da migração para via oral.',
+          'Regime descrito na literatura especializada em cardiologia infecciosa canina para consolidar a esterilização da vegetação antes da migração para via oral.',
         monitoring:
           'Ecocardiograma bidimensional com Doppler, hemoculturas seriadas e vigilância de insuficiência cardíaca congestiva.',
         referenceIds: ['ref-plumbs-ceftriaxone-10ed'],
-        evidenceLevel: 'Diretriz Terapêutica Especializada do Plumb’s 10ª ed.',
+        evidenceLevel: 'Protocolo Antimicrobiano Especializado para Endocardite',
       },
       {
         id: 'ind-ceftriaxona-lyme-borreliose',
@@ -429,7 +429,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Ureia, creatinina, SDMA, urinálise seriada, urocultura confirmatória e ultrassonografia do trato urinário.',
         referenceIds: ['ref-plumbs-ceftriaxone-10ed', 'iscaid-uti-guidelines-2019'],
-        evidenceLevel: 'Diretrizes ISCAID 2019 e Compêndio Plumb’s 10ª ed.',
+        evidenceLevel: 'Diretrizes ISCAID 2019 e Consenso de Antibioticoterapia',
       },
     ],
 
@@ -437,7 +437,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
       absorption:
         'Não possui formulação oral clinicamente útil, pois a absorção entérica é desprezível devido à sua alta polaridade molecular e ionização em pH gastrintestinal. Por via intravenosa (IV), a biodisponibilidade sistêmica é de 100% por definição, alcançando picos imediatos. Por via intramuscular (IM), a absorção em cães é completa e rápida, com biodisponibilidade aparente de 102 ± 27%, Cmax de aproximadamente 115,1 ± 17,0 mcg/mL e Tmax célere de 0,54 ± 0,24 h (Rebuelto et al., 2002); em gatos recebendo 25 mg/kg IM, a biodisponibilidade é de 85,7 ± 14,7%, Cmax de 54,4 ± 12,9 mcg/mL e Tmax de 0,33 ± 0,07 h (Albarellos et al., 2007). Por via subcutânea (SC), a absorção é mais lenta e prolongada, exibindo em cães Cmax de 69,3 ± 14,5 mcg/mL e Tmax de 1,29 ± 0,64 h (biodisponibilidade de 106 ± 14%); e em felinos Cmax de 42,4 ± 17,6 mcg/mL e Tmax de 1,27 ± 0,95 h.',
       distribution:
-        'Molécula altamente hidrofílica que se distribui primariamente pelo espaço extracelular e líquidos corporais intersticiais. Apresenta volume de distribuição aparente em steady-state (Vdss) moderado, da ordem de 0,22 a 0,28 L/kg em cães e aproximadamente 0,57 ± 0,22 L/kg em felinos. A penetração intracelular em macrófagos e células teciduais é discreta. Concentra-se eficientemente no fluido sinovial, cavidade peritoneal, líquido pleural, parênquima renal e secreções brônquicas. A transposição para a glândula prostática íntegra é limitada pela hidrossolubilidade da molécula. No sistema nervoso central, atravessa precariamente a barreira hematoencefálica íntegra, porém na vigência de meningite inflamatória aguda a permeabilidade capilar endotelial aumenta expressivamente, permitindo que concentrações terapêuticas clinicamente úteis alcancem o líquido cefalorraquidiano.',
+        'Molécula altamente hidrofílica que se distribui primariamente pelo espaço extracelular e líquidos corporais intersticiais. Apresenta volume de distribuição aparente em estado de equilíbrio (Vdss) moderado, da ordem de 0,22 a 0,28 L/kg em cães e aproximadamente 0,57 ± 0,22 L/kg em felinos. A penetração intracelular em macrófagos e células teciduais é discreta. Concentra-se eficientemente no fluido sinovial, cavidade peritoneal, líquido pleural, parênquima renal e secreções brônquicas. A transposição para a glândula prostática íntegra é limitada pela hidrossolubilidade da molécula. No sistema nervoso central, atravessa precariamente a barreira hematoencefálica íntegra, porém na vigência de meningite inflamatória aguda a permeabilidade capilar endotelial aumenta expressivamente, permitindo que concentrações terapêuticas clinicamente úteis alcancem o líquido cefalorraquidiano.',
       metabolism:
         'A metabolização hepática da ceftriaxona é mínima em pequenos animais. A maior parte do fármaco circula e é eliminada na forma química original inalterada e biologicamente ativa. Não depende significativamente da via de glicuronidação hepática, tornando sua utilização metabolicamente segura na espécie felina sob a ótica de depuração enzimática.',
       elimination:
@@ -698,7 +698,7 @@ export const ceftriaxonaMedicationsSeed: MedicationRecord[] = [
         mainFindings:
           'Demonstrou biodisponibilidade de 102 ± 27% (IM) e 106 ± 14% (SC), com picos séricos máximos (Cmax) de 115,1 ± 17,0 mcg/mL (IM) e 69,3 ± 14,5 mcg/mL (SC). As meias-vidas de eliminação terminal foram de 0,88 h (IV), 1,17 h (IM) e 1,73 h (SC). Concluiu que a administração IM ou SC a cada 12 a 24 horas pode ser útil para patógenos com MICs baixas.',
         clinicalTakeaway:
-          'Constitui a base farmacocinética experimental primária para os regimes posológicos caninos adotados no Plumb’s e VIN, comprovando que meias-vidas curtas no cão exigem intervalos posológicos de 12 horas em infecções graves para manter fT>MIC.',
+          'Constitui a base farmacocinética experimental primária para os regimes posológicos caninos contemporâneos, comprovando que meias-vidas curtas no cão exigem intervalos posológicos de 12 horas em infecções graves para manter fT>MIC.',
         referenceId: 'rebuelto-2002-dog-pk',
       },
       {

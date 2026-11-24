@@ -33,16 +33,16 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
   ],
   plainLanguage: DISEASE_PLAIN_LANGUAGE['prostatite-caes-gatos'],
   quickSummary:
-    'A prostatite canina é predominantemente infecção bacteriana da próstata em cães machos inteiros, fortemente relacionada à hiperplasia prostática benigna (BPH) e à ascensão de uropatógenos pela uretra. A forma aguda pode causar febre, dor intensa, sepse e abscesso; a crônica pode ser silenciosa e manifestar-se apenas como infecção urinária (ITU) recorrente, hemospermia ou infertilidade. O diagnóstico combina toque retal, urinálise, urocultura por cistocentese, ultrassonografia e — nos casos crônicos ou refratários — citologia e cultura prostática. Urocultura negativa não exclui prostatite: culturas urinária e prostática concordaram em apenas 50% na série de Lea et al. (2022). O tratamento exige antimicrobiano com penetração prostática adequada e controle da BPH (castração ou finasterida). O consenso ISCAID recomenda ~4 semanas na aguda e 4–6 semanas na crônica; Kutzler (Merck 2025) e outras referências descrevem ≥6 até 8–12 semanas em casos selecionados (Weese et al., 2019; Lea et al., 2022). Em gatos, a prostatite é extremamente rara — prostatomegalia felina exige investigação agressiva de neoplasia (Palmieri et al., 2022; Bloomfield et al., 2026).',
+    'A prostatite canina é predominantemente infecção bacteriana da próstata em cães machos inteiros, fortemente relacionada à hiperplasia prostática benigna (BPH) e à ascensão de uropatógenos pela uretra. A forma aguda pode causar febre, dor intensa, sepse e abscesso; a crônica pode ser silenciosa e manifestar-se apenas como infecção urinária (ITU) recorrente, hemospermia ou infertilidade. O diagnóstico combina toque retal, urinálise, urocultura por cistocentese, ultrassonografia e — nos casos crônicos ou refratários — citologia e cultura prostática. Urocultura negativa não exclui prostatite: culturas urinária e prostática concordaram em apenas 50% na série de Lea et al. (2022). O tratamento exige antimicrobiano com penetração prostática adequada e controle da BPH (castração ou finasterida). O consenso ISCAID recomenda ~4 semanas na aguda e 4–6 semanas na crônica, podendo estender-se para ≥6 até 8–12 semanas em casos selecionados (Weese et al., 2019; Lea et al., 2022). Em gatos, a prostatite é extremamente rara — prostatomegalia felina exige investigação agressiva de neoplasia (Palmieri et al., 2022; Bloomfield et al., 2026).',
   quickDecisionStrip: [
     'Todo cão macho inteiro com bacteriúria ou cistite bacteriana merece avaliação prostática — especialmente se a ITU recorre (Weese et al., 2019).',
-    'Prostatite aguda: NÃO massagear a próstata — risco de bacteremia e sepse (Kutzler, Merck 2025).',
+    'Prostatite aguda: NÃO massagear a próstata — risco de bacteremia e sepse.',
     'Urocultura negativa NÃO exclui prostatite — concordância urina × próstata foi de apenas 50% (Lea et al., 2022).',
-    'Escolher antimicrobiano pelo antibiograma urinário sem considerar penetração prostática favorece recidiva na forma crônica (Weese et al., 2019; Nelson & Couto, 2020).',
-    'Prostatite crônica + hiperplasia prostática benigna (BPH): tratar infecção E BPH — castração é fundamental no cão sem interesse reprodutivo (Weese et al., 2019; Kutzler, Merck 2025).',
-    'Enrofloxacina 10 mg/kg VO q24h é dose prática principal; Merck 2025 descreve 5 mg/kg q12h (mesma dose diária total) (Nelson & Couto, 2020; Allerton, BSAVA Formulary 2020).',
+    'Escolher antimicrobiano pelo antibiograma urinário sem considerar penetração prostática favorece recidiva na forma crônica (Weese et al., 2019).',
+    'Prostatite crônica + hiperplasia prostática benigna (BPH): tratar infecção E BPH — castração é fundamental no cão sem interesse reprodutivo (Weese et al., 2019).',
+    'Enrofloxacina 10 mg/kg VO q24h (ou 5 mg/kg VO q12h, mesma dose diária total) é opção empírica de alta penetração prostática.',
     'NÃO usar ciprofloxacina como substituto da enrofloxacina no cão — biodisponibilidade imprevisível e penetração prostática inferior (Weese et al., 2019).',
-    'Duração: ≥4 semanas na aguda (ISCAID); 4–6 semanas na crônica (ISCAID), podendo chegar a 8–12 semanas se persistência ou abscesso (Kutzler, Merck 2025).',
+    'Duração: ≥4 semanas na aguda (ISCAID); 4–6 semanas na crônica (ISCAID), podendo chegar a 8–12 semanas se persistência ou abscesso.',
     'Abscesso prostático: avaliar drenagem percutânea ou cirúrgica + controle de foco — antimicrobiano isolado pode falhar (Weese et al., 2019; Lea et al., 2022).',
     'Esterase prostática específica canina (CPSE) elevada indica doença prostática, não confirma prostatite nem distingue BPH de neoplasia (Melandri & Alonge, 2021).',
     'Gato com próstata aumentada: prostatite é rara — priorizar neoplasia e abscesso no diferencial (Palmieri et al., 2022; Bloomfield et al., 2026).',
@@ -56,7 +56,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
       {
         title: 'Aguda × crônica',
         body:
-          'Aguda: febre, dor prostática, sepse possível, barreira sangue–próstata parcialmente alterada — NÃO massagear. Crônica: pode ser assintomática; ITU recorrente é pista clássica; barreira íntegra exige antimicrobiano com excelente penetração (Weese et al., 2019; Kutzler, Merck 2025).',
+          'Aguda: febre, dor prostática, sepse possível, barreira sangue–próstata parcialmente alterada — NÃO massagear. Crônica: pode ser assintomática; ITU recorrente é pista clássica; barreira íntegra exige antimicrobiano com excelente penetração (Weese et al., 2019).',
         highlights: ['febre', 'ITU recorrente', 'barreira'],
       },
       {
@@ -79,7 +79,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
           label: 'Suspeita clínica',
           timing: 'Primeira consulta',
           detail:
-            'Cão macho inteiro + febre/dor prostática/LUTS/ITU recorrente/infertilidade — construir probabilidade pré-teste (Weese et al., 2019; Kutzler, Merck 2025).',
+            'Cão macho inteiro + febre/dor prostática/LUTS/ITU recorrente/infertilidade — construir probabilidade pré-teste (Weese et al., 2019).',
         },
         {
           label: 'Laboratório + imagem',
@@ -91,7 +91,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
           label: 'Aguda febril',
           timing: 'Emergência',
           detail:
-            'NÃO massagear próstata; estabilizar sepse; colher culturas antes do antimicrobiano se não atrasar terapia; avaliar abscesso (Kutzler, Merck 2025).',
+            'NÃO massagear próstata; estabilizar sepse; colher culturas antes do antimicrobiano se não atrasar terapia; avaliar abscesso.',
         },
         {
           label: 'Crônica/refratária',
@@ -133,7 +133,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'Prostatite é inflamação do parênquima prostático. Em cães, a forma clinicamente relevante é predominantemente infecciosa e bacteriana, frequentemente supurativa. Prostatite asséptica verdadeira é extremamente rara (Kutzler, Merck 2025; Palmieri et al., 2022).',
+      'Prostatite é inflamação do parênquima prostático. Em cães, a forma clinicamente relevante é predominantemente infecciosa e bacteriana, frequentemente supurativa. Prostatite asséptica verdadeira é extremamente rara (Palmieri et al., 2022).',
     formasClinicas: [
       'Prostatite bacteriana aguda — febre, dor, possível sepse e abscesso.',
       'Prostatite bacteriana crônica — ITU recorrente, infertilidade, hemospermia/piospermia.',
@@ -142,18 +142,18 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
       'Raramente prostatite linfoplasmocítica não infecciosa (diagnóstico histológico) (Palmieri et al., 2022).',
     ],
     viaAscendente:
-      'Via mais importante: flora urogenital ou infecção urinária inferior → uretra → ductos prostáticos → ácinos → inflamação neutrofílica (Weese et al., 2019; Greene, 2012).',
+      'Via mais importante: flora urogenital ou infecção urinária inferior → uretra → ductos prostáticos → ácinos → inflamação neutrofílica (Weese et al., 2019).',
     viaHematogena:
-      'Bacteremia → vasculatura prostática → inoculação hematógena — descrita especialmente em formas agudas (Kutzler, Merck 2025).',
+      'Bacteremia → vasculatura prostática → inoculação hematógena — descrita especialmente em formas agudas.',
     microbiologia:
-      '*Escherichia coli* é agente clássico e um dos mais importantes, mas *Staphylococcus* spp. e diversos uropatógenos Gram-negativos e Gram-positivos são frequentes — cultura define o agente no indivíduo (Weese et al., 2019; Phongphaew et al., 2021; Lea et al., 2022). Anaeróbios são incomuns salvo abscesso/necrose (Kutzler, Merck 2025).',
+      '*Escherichia coli* é agente clássico e um dos mais importantes, mas *Staphylococcus* spp. e diversos uropatógenos Gram-negativos e Gram-positivos são frequentes — cultura define o agente no indivíduo (Weese et al., 2019; Phongphaew et al., 2021; Lea et al., 2022). Anaeróbios são incomuns salvo abscesso/necrose.',
     brucella:
       '*Brucella canis*: red flag em reprodutor, canil, infertilidade, prostatite crônica — zoonose; investigação específica quando risco epidemiológico (Weese et al., 2019).',
   },
   epidemiology: {
     caes: [
-      'Segunda doença prostática mais comum em cães machos inteiros, após hiperplasia prostática benigna (BPH) (Kutzler, Merck 2025; Weese et al., 2019).',
-      'Muito mais frequente em inteiros; incomum após castração — castrado não exclui, mas neoplasia ganha peso se próstata anormal (Kutzler, Merck 2025).',
+      'Segunda doença prostática mais comum em cães machos inteiros, após hiperplasia prostática benigna (BPH) (Weese et al., 2019).',
+      'Muito mais frequente em inteiros; incomum após castração — castrado não exclui, mas neoplasia ganha peso se próstata anormal.',
       'Lea et al. (2022), 82 cães: idade mediana 9 anos; 63% aguda, 37% crônica, 40% abscesso — distribuição depende da população estudada.',
       'Possível maior ocorrência em Pastor Alemão e Doberman (literatura clínica); efeito da raça é menor que idade, BPH e ITU predisponente.',
     ],
@@ -165,20 +165,20 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
   },
   pathogenesisTransmission: {
     cascata: [
-      'Hiperplasia prostática benigna (BPH) → aumento de volume, cistos, estase de secreção → ambiente favorável à colonização (Kutzler, Merck 2025).',
-      'Ascensão bacteriana pela uretra → ductos prostáticos → ácinos → quimiotaxia neutrofílica, edema, exsudato purulento (Greene, 2012).',
-      'Inflamação severa → microabscessos → abscesso; próstata vascularizada → bacteremia, sepse, choque (Kutzler, Merck 2025).',
-      'Forma crônica: inflamação persistente → fibrose → drenagem deficiente → reservatório bacteriano → ITU recorrente (Nelson & Couto, 2020).',
+      'Hiperplasia prostática benigna (BPH) → aumento de volume, cistos, estase de secreção → ambiente favorável à colonização.',
+      'Ascensão bacteriana pela uretra → ductos prostáticos → ácinos → quimiotaxia neutrofílica, edema, exsudato purulento.',
+      'Inflamação severa → microabscessos → abscesso; próstata vascularizada → bacteremia, sepse, choque.',
+      'Forma crônica: inflamação persistente → fibrose → drenagem deficiente → reservatório bacteriano → ITU recorrente.',
       'Antimicrobiano sem penetração prostática ou duração curta → aparente melhora urinária → foco prostático persistente → recidiva (Weese et al., 2019).',
     ],
     relacaoBph:
-      'BPH não é sinônimo de prostatite, mas favorece fortemente persistência e recidiva — tratar apenas infecção sem controlar BPH aumenta probabilidade de falha (Weese et al., 2019; Kutzler, Merck 2025).',
+      'BPH não é sinônimo de prostatite, mas favorece fortemente persistência e recidiva — tratar apenas infecção sem controlar BPH aumenta probabilidade de falha (Weese et al., 2019).',
   },
   pathophysiology: {
     anatomiaCanina:
-      'A próstata canina circunda a uretra prostática, caudal ao colo vesical, com dois lobos — explica LUTS, tenesmo, constipação e dor lombossacra por compressão uretral/retal (Davidson, BSAVA Nephrology 2017; Nelson & Couto, 2020).',
+      'A próstata canina circunda a uretra prostática, caudal ao colo vesical, com dois lobos — explica LUTS, tenesmo, constipação e dor lombossacra por compressão uretral/retal.',
     barreiraSangueProstata:
-      'Na crônica, a barreira sangue–próstata limita antimicrobianos hidrofílicos — favorece lipossolúveis com alta fração não ionizada (fluoroquinolonas, trimetoprim, clindamicina*). *Quando cultura justificar. Sensível no antibiograma ≠ concentração terapêutica garantida na próstata (Weese et al., 2019; Nelson & Couto, 2020).',
+      'Na crônica, a barreira sangue–próstata limita antimicrobianos hidrofílicos — favorece lipossolúveis com alta fração não ionizada (fluoroquinolonas, trimetoprim, clindamicina*). *Quando cultura justificar. Sensível no antibiograma ≠ concentração terapêutica garantida na próstata (Weese et al., 2019).',
     figuraHistopatologia: {
       kind: 'clinicalFigure' as const,
       src: '/assets/consulta-vet/diseases/prostatite-caes-gatos/prostatite-espectro-histopatologia-palmieri-2022.webp',
@@ -228,7 +228,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Febre e letargia',
           mechanism: 'Resposta inflamatória sistêmica à infecção prostática aguda — citocinas e possível bacteremia.',
-          clinicalMeaning: 'Internar se instável; NÃO massagear próstata; colher culturas e iniciar antimicrobiano com penetração prostática (Kutzler, Merck 2025).',
+          clinicalMeaning: 'Internar se instável; NÃO massagear próstata; colher culturas e iniciar antimicrobiano com penetração prostática.',
           priority: 'emergency',
         },
         {
@@ -240,7 +240,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Infertilidade, hemospermia ou piospermia',
           mechanism: 'Inflamação ductal e destruição acinar alteram qualidade seminal.',
-          clinicalMeaning: 'Avaliar terceira fração do ejaculado + ultrassom em reprodutor (Davidson, BSAVA Nephrology 2017).',
+          clinicalMeaning: 'Avaliar terceira fração do ejaculado + ultrassom em reprodutor.',
           priority: 'common',
         },
       ],
@@ -268,7 +268,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Tenesmo, disquezia, constipação',
           mechanism: 'Prostatomegalia comprime reto ventralmente.',
-          clinicalMeaning: 'Diferenciar de obstrução colônica pura — toque retal + imagem pélvica (Nelson & Couto, 2020).',
+          clinicalMeaning: 'Diferenciar de obstrução colônica pura — toque retal + imagem pélvica.',
           priority: 'common',
         },
       ],
@@ -279,7 +279,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Marcha rígida, dor lombossacra, relutância locomotor',
           mechanism: 'Dor pélvica profunda e inflamação periprostática.',
-          clinicalMeaning: 'Não confundir com doença discal isolada — examinar próstata em cão inteiro (Kutzler, Merck 2025).',
+          clinicalMeaning: 'Não confundir com doença discal isolada — examinar próstata em cão inteiro.',
           priority: 'common',
         },
       ],
@@ -290,7 +290,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Sepse, choque, peritonite séptica',
           mechanism: 'Bacteremia por próstata altamente vascularizada; ruptura de abscesso intraperitoneal.',
-          clinicalMeaning: 'Emergência — fluidoterapia, antimicrobiano IV, controle cirúrgico do foco infeccioso (Kutzler, Merck 2025).',
+          clinicalMeaning: 'Emergência — fluidoterapia, antimicrobiano IV, controle cirúrgico do foco infeccioso.',
           priority: 'emergency',
         },
       ],
@@ -328,7 +328,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         title: 'Exame físico e toque retal',
         purpose: 'Detectar prostatomegalia, dor, assimetria.',
         description:
-          'Próstata dolorosa e irregular sugere aguda; próstata normal NÃO exclui crônica. Evitar manipulação vigorosa se febre/sepse (Kutzler, Merck 2025).',
+          'Próstata dolorosa e irregular sugere aguda; próstata normal NÃO exclui crônica. Evitar manipulação vigorosa se febre/sepse.',
         interpretation: 'Achado prostático anormal em cão inteiro com LUTS aumenta probabilidade de doença prostática.',
         limitations: 'Toque normal não exclui prostatite crônica.',
       },
@@ -337,7 +337,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         title: 'Hemograma e bioquímica',
         purpose: 'Avaliar resposta inflamatória sistêmica e gravidade.',
         description:
-          'Aguda: leucocitose, neutrofilia, desvio à esquerda possíveis. Crônica: frequentemente normal (Nelson & Couto, 2020).',
+          'Aguda: leucocitose, neutrofilia, desvio à esquerda possíveis. Crônica: frequentemente normal.',
         interpretation: 'Hemograma normal não exclui prostatite crônica.',
         limitations: 'Achados inespecíficos.',
       },
@@ -356,7 +356,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         title: 'Ultrassonografia prostática',
         purpose: 'Caracterizar tamanho, ecotextura, cistos, abscessos.',
         description:
-          'Prostatomegalia, heterogeneidade, cavidades — achados não específicos (Lea et al., 2022; Kutzler, Merck 2025).',
+          'Prostatomegalia, heterogeneidade, cavidades — achados não específicos (Lea et al., 2022).',
         interpretation: 'Abscesso = cavidade intraprostática; mineralização presente em 20% dos casos de prostatite na série de Lea et al. (2022).',
         limitations: 'Não distingue sozinha BPH, prostatite e neoplasia.',
       },
@@ -365,7 +365,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         title: 'Citologia e cultura prostática',
         purpose: 'Confirmar infecção e guiar terapia em crônicos/refratários.',
         description:
-          'Crônica: terceira fração do ejaculado preferível quando disponível; alternativas: lavado prostático, aspirado ultrassom-guidado (Weese et al., 2019; Kutzler, Merck 2025).',
+          'Crônica: terceira fração do ejaculado preferível quando disponível; alternativas: lavado prostático, aspirado ultrassom-guidado (Weese et al., 2019).',
         interpretation: 'Neutrófilos degenerados + bactérias intracelulares sustentam prostatite bacteriana aguda.',
         limitations: 'Massagem contraindicada na aguda febril; contaminação uretral possível.',
         isGoldStandard: true,
@@ -392,31 +392,31 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
       title: 'Antimicrobianos — doses práticas (cão)',
       headers: ['Fármaco', 'Dose', 'Observações'],
       rows: [
-        ['Enrofloxacina', '10 mg/kg VO q24h', 'Dose prática principal; Merck 2025: 5 mg/kg q12h = mesma dose diária (Nelson & Couto, 2020)'],
-        ['Marbofloxacina', '2 mg/kg VO q24h', 'Dose usual BSAVA; ajustar conforme CIM e produto (Allerton, BSAVA Formulary 2020)'],
+        ['Enrofloxacina', '10 mg/kg VO q24h', 'Dose prática principal; esquema fracionado equivalente: 5 mg/kg q12h = mesma dose diária'],
+        ['Marbofloxacina', '2 mg/kg VO q24h', 'Dose usual; ajustar conforme CIM e apresentação comercial'],
         ['Trimetoprim–sulfonamida', '15–30 mg/kg VO q12h (soma TMP+ sulfa)', 'Monitorar efeitos adversos em tratamentos prolongados; cautela em Dobermann'],
         ['Finasterida (BPH)', '0,1–0,5 mg/kg VO q24h', 'Não é antimicrobiano — reprodutor; ou 5 mg/cão q24h em 10–50 kg (Sirinarumitr et al., 2001)'],
       ],
     },
     duracao: [
-      'Aguda: ≥4 semanas (Weese et al., 2019; Kutzler, Merck 2025).',
-      'Crônica: 4–6 semanas (ISCAID/Weese et al., 2019); frequentemente ≥6 semanas, podendo chegar a 8–12 semanas se persistência, abscesso ou BPH não controlada (Kutzler, Merck 2025; Davidson, BSAVA Nephrology 2017).',
+      'Aguda: ≥4 semanas (Weese et al., 2019).',
+      'Crônica: 4–6 semanas (ISCAID/Weese et al., 2019); frequentemente ≥6 semanas, podendo chegar a 8–12 semanas se persistência, abscesso ou BPH não controlada.',
       'Individualizar por resposta clínica, ultrassom e controle do foco — não encurtar como cistite simples.',
     ],
     castracao:
-      'Recomendada em cães sem interesse reprodutivo — reduz estímulo androgênico, trata BPH, diminui recidiva (Weese et al., 2019). Estabilizar sepse antes; castrar o mais precocemente possível quando risco anestésico aceitável (Weese et al., 2019; Davidson, BSAVA Nephrology 2017).',
+      'Recomendada em cães sem interesse reprodutivo — reduz estímulo androgênico, trata BPH, diminui recidiva (Weese et al., 2019). Estabilizar sepse antes; castrar o mais precocemente possível quando risco anestésico aceitável (Weese et al., 2019).',
     abscesso: [
       'ISCAID recomenda drenar abscessos — baixa probabilidade de cura só com antimicrobiano (Weese et al., 2019).',
-      'Opções: drenagem percutânea ultrassom-guidada, cirúrgica + omentalização intracapsular em grandes abscessos (Kutzler, Merck 2025).',
+      'Opções: drenagem percutânea ultrassom-guidada, cirúrgica + omentalização intracapsular em grandes abscessos.',
       'Lea et al. (2022): antimicrobiano isolado, drenagem por agulha ou cirúrgica foram opções na população retrospectiva — individualizar.',
       'Ruptura com peritonite séptica = cirurgia de emergência.',
     ],
     suporteAguda: [
-      'Internação se sistêmico: fluidoterapia, analgesia multimodal, correção eletrolítica, monitorização de perfusão/lactato, antieméticos, drenagem e controle do foco de abscesso (Kutzler, Merck 2025).',
-      'Anti-inflamatório não esteroidal (AINE) somente após estabilização hidroeletrolítica — evitar em choque/desidratação (Davidson, BSAVA Nephrology 2017).',
+      'Internação se sistêmico: fluidoterapia, analgesia multimodal, correção eletrolítica, monitorização de perfusão/lactato, antieméticos, drenagem e controle do foco de abscesso.',
+      'Anti-inflamatório não esteroidal (AINE) somente após estabilização hidroeletrolítica — evitar em choque/desidratação.',
     ],
     gatos:
-      'Não extrapolar dose/duração canina — enrofloxacina máxima ~5 mg/kg/dia em gatos (Allerton, BSAVA Formulary 2020). Prostatite felina: cultura + antibiograma + penetração tecidual individualizados; neoplasia sempre no diferencial (Bloomfield et al., 2026).',
+      'Não extrapolar dose/duração canina — enrofloxacina máxima ~5 mg/kg/dia em gatos. Prostatite felina: cultura + antibiograma + penetração tecidual individualizados; neoplasia sempre no diferencial (Bloomfield et al., 2026).',
   },  complications: {
     principais: [
       "Abscesso Prostático Volumoso e Risco de Ruptura com Peritonite Séptica Fulminante: Na prostatite bacteriana aguda grave, a proliferação destrutiva bacteriana e a confluência de microabscessos necróticos intraparenquimatosos coalescem formando coleções purulentas cavitárias gigantescas encapsuladas (abscesso prostático). A parede dessas cápsulas teciduais é friável e propensa à ruptura espontânea ou iatrogênica (por palpação transretal vigorosa ou tentativa inadvertida de punção cistocêntica). A ruptura extravasa pus repleto de coliformes, estafilococos ou anaeróbios para o retroperitônio e cavidade peritoneal livre, deflagrando peritonite séptica hiperaguda, choque distributivo séptico e mortalidade cirúrgica superior a 40% a 50%.",
@@ -433,13 +433,13 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
 
   prevention: {
     manejoReprodutor: [
-      'Castração de cães pet reduz drasticamente risco de doença prostática (Kutzler, Merck 2025).',
+      'Castração de cães pet reduz drasticamente risco de doença prostática.',
       'Em reprodutores: monitorar qualidade seminal, investigar prostatite ante infertilidade; considerar finasterida para BPH concomitante (Sirinarumitr et al., 2001).',
       'Testar Brucella canis em canis/reprodutores com risco — zoonose (Weese et al., 2019).',
     ],
     ituRecorrente: [
       'Em cão inteiro com ITU recorrente: ultrassom prostático + considerar cultura prostática antes de ciclos repetidos de antibiótico curto (Weese et al., 2019).',
-      'Tratar BPH concomitante — antimicrobiano isolado na crônica associada à BPH tem baixo rendimento (Kutzler, Merck 2025).',
+      'Tratar BPH concomitante — antimicrobiano isolado na crônica associada à BPH tem baixo rendimento.',
     ],
     errosComuns: [
       'Tratar toda infecção urinária (ITU) de cão macho inteiro sem examinar próstata.',

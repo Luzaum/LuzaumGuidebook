@@ -128,7 +128,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
     },
     {
       label: 'Antagonismo parcial de agonistas µ plenos:',
-      text: 'Administrar butorfanol após morfina, metadona, hidromorfona ou fentanil pode reduzir ou encurtar substancialmente a analgesia prévia. Por outro lado, se o animal recebeu butorfanol inicialmente e necessitar resgate analgésico potente, a BSAVA esclarece que não é necessário aguardar 4 horas: titular um agonista µ pleno ao efeito sob monitorização.',
+      text: 'Administrar butorfanol após morfina, metadona, hidromorfona ou fentanil pode reduzir ou encurtar substancialmente a analgesia prévia. Por outro lado, se o animal recebeu butorfanol inicialmente e necessitar resgate analgésico potente, não é necessário aguardar 4 horas para resgate: pode-se titular um agonista µ pleno ao efeito sob monitorização.',
     },
     {
       label: 'Via Transmucosa Oral (OTM) felina e via oral NÃO substituem vias parenterais na analgesia:',
@@ -143,7 +143,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
   mechanismOfAction:
     'A farmacodinâmica do butorfanol resulta de sua ação mista sobre subtipos de receptores opioides acoplados à proteína G inibitória (Gi/o) no sistema nervoso central e periférico:\n\n' +
     '1. Ativação do receptor κ-opioide (KOR): Ao ligar-se aos receptores κ no corno dorsal da medula espinhal e em circuitos supraespinhais, ativa a proteína Gi/o, inibindo a adenilato ciclase (↓ AMPc/PKA), reduzindo a abertura de canais de cálcio pré-sinápticos (menor liberação de glutamato e substância P) e abrindo canais de potássio GIRK pós-sinápticos (hiperpolarização neuronal). Isso modula a transmissão nociceptiva, porém com menor magnitude e duração em comparação aos agonistas µ plenos.\n\n' +
-    '2. Alta afinidade e baixa eficácia intrínseca no receptor µ-opioide (MOR): Como demonstrado na farmacologia de receptores (Lumb & Jones, 6ª ed.), o butorfanol liga-se fortemente ao receptor µ sem ativá-lo plenamente, comportando-se como antagonista competitivo funcional ou agonista parcial muito fraco (~1/40 da potência antagonista da naloxona). Isso cria um teto analgésico relativo e pode deslocar ou atenuar o efeito de morfina, metadona, hidromorfona e fentanil.\n\n' +
+    '2. Alta afinidade e baixa eficácia intrínseca no receptor µ-opioide (MOR): Na farmacologia de receptores opioides, o butorfanol liga-se fortemente ao receptor µ sem ativá-lo plenamente, comportando-se como antagonista competitivo funcional ou agonista parcial muito fraco (~1/40 da potência antagonista da naloxona). Isso cria um teto analgésico relativo e pode deslocar ou atenuar o efeito de morfina, metadona, hidromorfona e fentanil.\n\n' +
     '3. Supressão central da tosse e vias descendentes: Deprime os neurônios do centro bulbar da tosse via modulação µ/κ (efeito reversível por naloxona, diferentemente do dextrometorfano), elevando o limiar reflexo de tosse sem exercer ação broncodilatadora ou mucolítica.\n\n' +
     '4. Receptores sigma (σ) e delta (δ): Textos clássicos mencionam interação com sítios sigma para explicar disforia ocasional, mas receptores sigma não integram mais a família clássica dos receptores opioides e não sustentam uso analgésico independente.',
 
@@ -151,24 +151,24 @@ export const butorfanolMedicationRecord: MedicationRecord = {
     halfLife:
       'Cães: ~1,5 a 2,6 horas | Gatos: ~2,9 horas (IV sob isoflurano) a 5,2–6,3 horas (IM/OTM conscientes) — ATENÇÃO: meia-vida plasmática é maior que a duração clínica analgésica (45–120 min)',
     plasmaBinding:
-      'Não estabelecida quantitativamente com precisão clínica em cães e gatos (em humanos reporta-se ~80% segundo Plumb’s)',
+      'Não estabelecida quantitativamente com precisão clínica em cães e gatos (em humanos reporta-se ~80%)',
     cnsPenetration:
       'Rápida travessia da barreira hematoencefálica por lipossolubilidade moderada-alta (esqueleto morfinânico, XLogP da base ≈ 3,8 e pKa ≈ 8,6). Embora em pH fisiológico de 7,4 cerca de 5,9% da molécula permaneça na forma não ionizada (equação de Henderson-Hasselbalch), a fração livre lipofílica difunde-se rapidamente para o SNC e atinge pico central em poucos minutos após injeção intravenosa. Concentração liquórica direta não está padronizada em cães e gatos.',
     absorption:
       'A via escolhida define velocidade de início, biodisponibilidade e aplicabilidade clínica entre cães e gatos:\n' +
       '• **Via Intravenosa (IV)**: Biodisponibilidade de **100%**. Início de ação rápido em **1 a 3 minutos**, permitindo titulação fina em sedação ou reversão parcial.\n' +
       '• **Via Intramuscular (IM)**: Biodisponibilidade de **~93% a 100%**, com absorção rápida e praticamente completa. Em cães (0,25 mg/kg), Tmax médio de ~40 min (Cmax 29 ng/mL); em gatos (0,4 mg/kg), Tmax de ~21 min (0,35 h) com Cmax de 132 ng/mL.\n' +
-      '• **Via Subcutânea (SC)**: Biodisponibilidade sistêmica de **~80% a 90%** em cães (Tmax ~28 min e Cmax 29 ng/mL com 0,25 mg/kg), porém com resposta analgésica e termorregulatória mais errática que IV/IM (Springfield et al., 2022; Lumb & Jones).\n' +
+      '• **Via Subcutânea (SC)**: Biodisponibilidade sistêmica de **~80% a 90%** em cães (Tmax ~28 min e Cmax 29 ng/mL com 0,25 mg/kg), porém com resposta analgésica e termorregulatória mais errática que IV/IM (Springfield et al., 2022).\n' +
       '• **Via Transmucosa Oral (OTM)**: Biodisponibilidade relativa de apenas **37,2%** (± 15%) em gatos, com Tmax tardio (~1,1 h) e Cmax quase 4 vezes menor que a via IM (34,4 vs. 132 ng/mL). Não reproduz a previsibilidade da buprenorfina.\n' +
       '• **Via Oral (VO)**: Biodisponibilidade sistêmica de apenas **~16%** (~1/6 da dose) em cães devido ao intenso metabolismo hepático de primeira passagem após absorção intestinal — útil somente como antitussígeno canino, nunca para analgesia.',
     distribution:
-      '• **Amplo volume de distribuição**: Em gatos anestesiados com isoflurano (modelo de três compartimentos, Pypendop & Shilo-Benjamini, 2021), o volume em estado estacionário é de **3,92 L/kg** (compartimento central de 0,231 L/kg); em gatos conscientes IM/OTM estima-se Vdss aparente de 7,6 L/kg (Lumb & Jones).\n' +
+      '• **Amplo volume de distribuição**: Em gatos anestesiados com isoflurano (modelo de três compartimentos, Pypendop & Shilo-Benjamini, 2021), o volume em estado estacionário é de **3,92 L/kg** (compartimento central de 0,231 L/kg); em gatos conscientes IM/OTM estima-se Vdss aparente de 7,6 L/kg.\n' +
       '• **Afinidade tecidual visceral e central**: Maiores concentrações do fármaco e metabólitos ocorrem no fígado, rins e intestino, além de pulmões, baço, coração e tecido nervoso central.\n' +
-      '• **Barreira placentária e leite**: Atravessa prontamente a placenta em cadelas e gatas, atingindo concentrações neonatais semelhantes às maternas (BSAVA/Plumb’s).',
+      '• **Barreira placentária e leite**: Atravessa prontamente a placenta em cadelas e gatas, atingindo concentrações neonatais semelhantes às maternas.',
     metabolism:
       '• **Biotransformação hepática predominante**: Metabolizado extensamente no fígado por **hidroxilação, N-desalquilação e conjugação**, originando metabólitos sem atividade analgésica clinicamente relevante.\n' +
       '• **Participação das enzimas CYP3A/hepáticas**: Embora existam interações teóricas com inibidores enzimáticos (cimetidina, eritromicina, itraconazol), estudo experimental em cães com coquetel inibidor de CYP demonstrou apenas impacto discreto na farmacocinética canina (Springfield et al., 2022).\n' +
-      '• **Lumb & Jones — Meia-vida plasmática versus duração clínica**: A queda da concentração no sítio efetor cerebral abaixo do limiar nociceptivo ocorre antes da depuração plasmática total, explicando analgesia curta (45–120 min) mesmo quando a meia-vida terminal felina chega a 5–6 h.',
+      '• **Meia-vida plasmática versus duração clínica**: A queda da concentração no sítio efetor cerebral abaixo do limiar nociceptivo ocorre antes da depuração plasmática total, explicando analgesia curta (45–120 min) mesmo quando a meia-vida terminal felina chega a 5–6 h.',
     elimination:
       '• **Excreção principalmente urinária de metabólitos**: Mais de 80% a 95% é eliminado na urina sob forma de metabólitos inativos, com apenas **~5% do composto original inalterado** na urina e **11% a 14% por via biliar/fecal**.\n' +
       '• **Clearance plasmático**: Em cães IV reportou-se 2.790 mL/kg/h (~46,5 mL/kg/min, Springfield 2022); em gatos sob isoflurano IV, 1.104 mL/kg/h (18,4 mL/kg/min, Pypendop 2021) e em gatos conscientes IM, 12,9 mL/kg/min.\n' +
@@ -196,7 +196,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       condition: 'Supressão de Tosse Não Produtiva Seca (Cães)',
       species: 'dog',
       clinicalContext: 'Colapso traqueal, traqueobronquite infecciosa sem secreção purulenta e laringite irritativa',
-      doseSummary: '0,55 a 1,1 mg/kg VO q6–12h (BSAVA: 0,5–1 mg/kg VO) | Parenteral: 0,055 a 0,11 mg/kg SC q6–12h (BSAVA: 0,05–0,1 mg/kg)',
+      doseSummary: '0,5 a 1,1 mg/kg VO q6–12h (faixa usual 0,5–1 mg/kg) | Parenteral: 0,05 a 0,11 mg/kg SC q6–12h',
       route: 'Via Oral (VO) ou Subcutânea (SC)',
       duration: 'Tratamento de curta duração (usualmente não ultrapassar 7 dias consecutivos)',
     },
@@ -212,7 +212,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       condition: 'Reversão Parcial de Depressão por Agonistas µ Plenos',
       species: 'both',
       clinicalContext: 'Atenuar bradicardia, sedação excessiva ou hipoventilação de morfina, hidromorfona ou metadona sem perda abrupta total de conforto',
-      doseSummary: 'Cães: 0,05 a 0,1 mg/kg IV (titular ao efeito) | Gatos (ISFM): 0,02 a 0,05 mg/kg IV (Plumb’s: 0,05–0,1 mg/kg IV)',
+      doseSummary: 'Cães: 0,05 a 0,1 mg/kg IV (titular ao efeito) | Gatos (ISFM): 0,02 a 0,05 mg/kg IV (ou até 0,05–0,1 mg/kg IV sob monitorização)',
       route: 'Via Intravenosa lenta titulada em alíquotas',
       duration: 'Efeito em minutos; em depressão respiratória grave preferir naloxona e ventilação',
     },
@@ -240,7 +240,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       mechanismOfAction:
         'Agonismo em receptores κ-opioides límbicos e subcorticais associado à atenuação de catecolaminas de estresse, gerando sedação suave isolada que potencializa marcadamente agonistas α2-adrenérgicos, fenotiazínicos e neuroesteroides sem liberar histamina.',
       clinicalRationale:
-        'Embora o butorfanol isolado produza apenas sedação discreta em cães alerta, combinações neuroleptoanalgésicas garantem excelente cooperação. Segundo Lumb & Jones (6ª ed.), butorfanol 0,4 mg/kg IV facilita a passagem endoscópica piloro-duodenal mais rapidamente que metadona, e 0,2 mg/kg IV + dexmedetomidina 2 µg/kg IV induz sedação rápida para posicionamento radiográfico. Na ecocardiografia (butorfanol + dexmedetomidina), considerar que a bradicardia e a redução do débito cardíaco podem alterar velocidades Doppler e o grau aparente de regurgitação valvar. No ensaio canino de 2026 (Hoon et al.), alfaxalona 4% (3 mg/kg IM) + butorfanol (0,4 mg/kg IM) permitiu cateterização em ~89 min de sedação, mas provocou redução de frequência cardíaca e hipoxemia leve (SpO2 90–94%), exigindo oxigenoterapia.',
+        'Embora o butorfanol isolado produza apenas sedação discreta em cães alerta, combinações neuroleptoanalgésicas garantem excelente cooperação. Clinicamente, butorfanol 0,4 mg/kg IV facilita a passagem endoscópica piloro-duodenal mais rapidamente que metadona, e 0,2 mg/kg IV + dexmedetomidina 2 µg/kg IV induz sedação rápida para posicionamento radiográfico. Na ecocardiografia (butorfanol + dexmedetomidina), considerar que a bradicardia e a redução do débito cardíaco podem alterar velocidades Doppler e o grau aparente de regurgitação valvar. No ensaio canino de 2026 (Hoon et al.), alfaxalona 4% (3 mg/kg IM) + butorfanol (0,4 mg/kg IM) permitiu cateterização em ~89 min de sedação, mas provocou redução de frequência cardíaca e hipoxemia leve (SpO2 90–94%), exigindo oxigenoterapia.',
       monitoring:
         'Frequência cardíaca, pressão arterial, ausculta cardíaca, frequência respiratória e oximetria de pulso (SpO2); disponibilizar suplementação de O2 ao associar alfaxalona ou agonistas α2.',
       referenceIds: [
@@ -248,7 +248,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         'ref-lumb-jones-6-butorfanol',
         'ref-hoon-2026-alfaxalona-butorfanol',
       ],
-      evidenceLevel: 'Ensaios Clínicos Veterinários e Plumb’s / Lumb & Jones',
+      evidenceLevel: 'Ensaios Clínicos Veterinários e Prática Anestesiológica',
     },
     {
       id: 'det-ind-butorfanol-sedacao-gatos',
@@ -261,9 +261,9 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       frequency: 'Dose única pré-procedimento (reduzir em 25–50% se o gato recebeu gabapentina ou trazodona pré-consulta)',
       duration: 'Início em 10–15 min (IM); recumbência por 45 a 90 minutos',
       mechanismOfAction:
-        'Ativação κ central combinada à modulação sedativa sinérgica com agonistas α2, antagonismo parcial no centro do vômito (reduzindo náusea/êmese da dexmedetomidina conforme Lumb & Jones) e menor impacto hemodinâmico isolado.',
+        'Ativação κ central combinada à modulação sedativa sinérgica com agonistas α2, antagonismo parcial no centro do vômito (reduzindo náusea/êmese da dexmedetomidina) e menor impacto hemodinâmico isolado.',
       clinicalRationale:
-        'As diretrizes AAFP/ISFM 2022 listam o butorfanol como pilar para redução de estresse na contenção felina. Quando o gato já recebeu gabapentina ou trazodona em casa, reduzir doses dos sedativos injetáveis em 25–50%. Na prevenção de vômitos por dexmedetomidina, ensaio experimental em 14 gatos e uso clínico (Plumb’s 10ª ed.) apoiam 0,1–0,2 mg/kg IM; contudo, estudo recente em 20 gatas submetidas à OVH (Okur et al., 2025) demonstrou frequência semelhante de vômitos entre butorfanol e maropitant, com melhor conforto pós-operatório tardio no grupo maropitant (quando associado a analgesia apropriada). Lembrar sempre de que o relaxamento obtido não fornece analgesia para cirurgias invasivas.',
+        'As diretrizes AAFP/ISFM 2022 listam o butorfanol como pilar para redução de estresse na contenção felina. Quando o gato já recebeu gabapentina ou trazodona em casa, reduzir doses dos sedativos injetáveis em 25–50%. Na prevenção de vômitos por dexmedetomidina, ensaio experimental em 14 gatos e prática clínica apoiam 0,1–0,2 mg/kg IM; contudo, estudo recente em 20 gatas submetidas à OVH (Okur et al., 2025) demonstrou frequência semelhante de vômitos entre butorfanol e maropitant, com melhor conforto pós-operatório tardio no grupo maropitant (quando associado a analgesia apropriada). Lembrar sempre de que o relaxamento obtido não fornece analgesia para cirurgias invasivas.',
       monitoring:
         'Oximetria de pulso, padrão ventilatório, temperatura retal (vigiar tanto hipotermia durante sedação quanto hipertermia pós-opioide transitória > 39,4 °C) e lubrificação corneana quando associado à dexmedetomidina.',
       referenceIds: [
@@ -286,7 +286,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       mechanismOfAction:
         'Antinocicepção mediada pela ativação de receptores κ pré e pós-sinápticos medulares e límbicos, alcançando platô farmacodinâmico precoce (efeito teto) em razão da ausência de agonismo µ pleno.',
       clinicalRationale:
-        'Consensos ISFM 2022, AAHA 2022 e os tratados Plumb’s e Lumb & Jones convergem: embora historicamente apontado como agente para dor visceral em equinos, em cães e gatos o butorfanol oferece analgesia leve, variável e curta. No estudo randomizado de Warne et al. (2014) em gatas submetidas à ovariohisterectomia, 100% das pacientes tratadas com butorfanol (0,4 mg/kg IM) na fase principal exigiram resgate analgésico já na primeira avaliação pós-cirúrgica, contra 0% no grupo buprenorfina. No ensaio multicêntrico em 153 gatos (Taylor et al., 2010), a buprenorfina também produziu menores escores de dor aos 120 min e 24 h. Portanto, em cirurgias dolorosas, o butorfanol isolado é inadequado e deve ser substituído por metadona, morfina, fentanil ou buprenorfina em plano multimodal.',
+        'Consensos ISFM 2022, AAHA 2022 e estudos comparativos convergem: embora historicamente apontado como agente para dor visceral em equinos, em cães e gatos o butorfanol oferece analgesia leve, variável e curta. No estudo randomizado de Warne et al. (2014) em gatas submetidas à ovariohisterectomia, 100% das pacientes tratadas com butorfanol (0,4 mg/kg IM) na fase principal exigiram resgate analgésico já na primeira avaliação pós-cirúrgica, contra 0% no grupo buprenorfina. No ensaio multicêntrico em 153 gatos (Taylor et al., 2010), a buprenorfina também produziu menores escores de dor aos 120 min e 24 h. Portanto, em cirurgias dolorosas, o butorfanol isolado é inadequado e deve ser substituído por metadona, morfina, fentanil ou buprenorfina em plano multimodal.',
       monitoring:
         'Avaliação seriada obrigatória com escalas validadas (Glasgow Composite Measure Pain Scale Short Form em cães; Feline Grimace Scale ou UNESP-Botucatu em gatos). Não confundir quietude com ausência de dor.',
       referenceIds: [
@@ -303,12 +303,12 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       clinicalContext:
         'Alívio da tosse seca crônica ou paroxística irritativa sem produção mucopurulenta — como colapso de traqueia, compressão brônquica extrínseca, traqueíte e traqueobronquite após investigação diagnóstica.',
       species: 'dog',
-      dose: 'Via Oral: 0,55 mg/kg (até 1,1 mg/kg se necessário) VO q6–12h (BSAVA: 0,5–1 mg/kg VO q6–12h) | Via Parenteral: 0,055–0,11 mg/kg SC q6–12h (BSAVA: 0,05–0,1 mg/kg IV/IM/SC)',
+      dose: 'Via Oral: 0,5 a 1,1 mg/kg VO q6–12h | Via Parenteral: 0,05 a 0,11 mg/kg IV, IM ou SC q6–12h',
       route: 'Oral (VO) para tratamento ambulatorial ou Subcutânea (SC) hospitalar',
       frequency: 'A cada 6 a 12 horas conforme controle clínico da tosse',
-      duration: 'Cursos curtos (Plumb’s recomenda habitualmente não ultrapassar 7 dias sem reavaliação)',
+      duration: 'Cursos curtos (habitualmente não ultrapassar 7 dias sem reavaliação)',
       mechanismOfAction:
-        'Depressão seletiva do centro integrador da tosse no tronco encefálico mediada por receptores κ e modulação µ (bloqueável por naloxona, conforme Lumb & Jones), com potência experimental antitussígena oral 15–20× superior à codeína ou dextrometorfano em cães.',
+        'Depressão seletiva do centro integrador da tosse no tronco encefálico mediada por receptores κ e modulação µ (bloqueável por naloxona), com potência experimental antitussígena oral 15–20× superior à codeína ou dextrometorfano em cães.',
       clinicalRationale:
         'Em virtude do intenso metabolismo hepático de primeira passagem (~1/6 de biodisponibilidade sistêmica oral), a dose antitussígena por via oral (0,5–1,1 mg/kg) é cerca de 10 vezes maior que a dose antitussígena parenteral (0,055–0,11 mg/kg SC). No Brasil, pela ausência de comprimidos veterinários comerciais registrados especificamente nessa dose e pelo controle rigoroso na Lista A1 (Portaria MAPA 837/2025 / SVS 344/98), a prescrição oral manipulada deve observar estritamente o receituário controlado correto e reserva-se a casos refratários sem acúmulo de secreções. É contraindicado em pneumonias bacterianas produtivas ou bronquiectasias secretoras onde a tosse é mecanismo essencial de depuração.',
       monitoring:
@@ -331,9 +331,9 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       frequency: 'CRI contínua durante procedimento/período curto; reversão µ em microalíquotas IV até reversão dos sinais adversos',
       duration: 'CRI por período hospitalar monitorado; epidural gera efeito supraespinhal de 2 a 4 horas',
       mechanismOfAction:
-        'A CRI evita picos e vales rápidos de depuração plasmática; em felinos sob isoflurano, reduz a CAM em ~15% a 19% em bolos clínicos (e até 23–68% em taxas experimentais crescentes conforme Lumb & Jones), enquanto em cães reduz a CAM em ~8–15%. Na reversão µ, desloca competitivamente agonistas plenos dos receptores µ respiratórios e sedativos preservando parcela da antinocicepção via κ.',
+        'A CRI evita picos e vales rápidos de depuração plasmática; em felinos sob isoflurano, reduz a CAM em ~15% a 19% em bolos clínicos (e até 23–68% em taxas experimentais crescentes), enquanto em cães reduz a CAM em ~8–15%. Na reversão µ, desloca competitivamente agonistas plenos dos receptores µ respiratórios e sedativos preservando parcela da antinocicepção via κ.',
       clinicalRationale:
-        'Em cães saudáveis, Springfield et al. (2022) demonstraram que o ataque de 0,2 mg/kg IV + CRI de 0,2 mg/kg/h estabilizou a exposição plasmática em ~43,1 ng/mL por 8 h e prolongou a redução de temperatura retal (marcador farmacodinâmico indireto), mas sem validar a CRI como analgesia suficiente em dor cirúrgica intensa. Em gatos anestesiados sob isoflurano, Pypendop & Shilo-Benjamini (2021) caracterizaram clearance de 18,4 mL/kg/min e Vdss de 3,92 L/kg. Na reversão parcial de hidromorfona ou morfina, Lumb & Jones recomenda titular lentamente o butorfanol IV ao efeito; em depressão respiratória grave com risco de morte, entretanto, a prioridade imediata é oxigênio/ventilação mecânica e naloxona titulada.',
+        'Em cães saudáveis, Springfield et al. (2022) demonstraram que o ataque de 0,2 mg/kg IV + CRI de 0,2 mg/kg/h estabilizou a exposição plasmática em ~43,1 ng/mL por 8 h e prolongou a redução de temperatura retal (marcador farmacodinâmico indireto), mas sem validar a CRI como analgesia suficiente em dor cirúrgica intensa. Em gatos anestesiados sob isoflurano, Pypendop & Shilo-Benjamini (2021) caracterizaram clearance de 18,4 mL/kg/min e Vdss de 3,92 L/kg. Na reversão parcial de hidromorfona ou morfina, recomenda-se titular lentamente o butorfanol IV ao efeito; em depressão respiratória grave com risco de morte, entretanto, a prioridade imediata é oxigênio/ventilação mecânica e naloxona titulada.',
       monitoring:
         'Capnografia (EtCO2), SpO2, pressão arterial, ECG contínuo, retorno da frequência ventilatória após reversão e reavaliação contínua de dor pós-reversão.',
       referenceIds: [
@@ -367,7 +367,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         'ref-book-foundations-bsava-butorfanol',
         'ref-lumb-jones-6-butorfanol',
       ],
-      evidenceLevel: 'Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Bula Regulatória e Posologia Veterinária Consolidada',
       calculatorEnabled: true,
       presentationId: 'pres-butorfanol-inj-10',
     },
@@ -404,14 +404,14 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       doseUnit: 'mg',
       perWeightUnit: 'kg',
       route: 'VO (Via Oral)',
-      frequency: 'q6–12h (BSAVA cita faixa prática de 0,5–1,0 mg/kg VO q6–12h)',
+      frequency: 'q6–12h (faixa prática usual de 0,5–1,0 mg/kg VO q6–12h)',
       duration: 'Geralmente não exceder 7 dias consecutivos',
       clinicalContext: 'Colapso traqueal e traqueobronquite seca após excluir infecção produtiva / pneumonia',
       monitoring: 'Frequência da tosse, padrão respiratório, sedação leve e ausência de acúmulo secretivo',
       notes:
         'Apenas para supressão de tosse (NUNCA eficaz como analgésico oral em cães pela primeira passagem hepática de ~5/6). Prescrição controlada obrigatória Lista A1.',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol', 'ref-book-foundations-bsava-butorfanol'],
-      evidenceLevel: 'Bula FDA / Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Bula FDA / Prática Clínica Veterinária Consolidada',
       calculatorEnabled: false,
       presentationId: 'pres-butorfanol-comp-5',
     },
@@ -423,7 +423,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       doseMax: 0.11,
       doseUnit: 'mg',
       perWeightUnit: 'kg',
-      route: 'SC (ou IV/IM conforme BSAVA 0,05–0,1 mg/kg)',
+      route: 'SC (ou IV/IM na faixa de 0,05–0,1 mg/kg)',
       frequency: 'q6–12h',
       duration: 'Curta duração (≤ 7 dias)',
       clinicalContext: 'Crise aguda de tosse seca traqueobrônquica em cães internados sem secreção abundante',
@@ -431,7 +431,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       notes:
         'Volume extremamente pequeno na apresentação de 10 mg/mL (ex.: 0,055 mg/kg = 0,0055 mL/kg); exige diluição padronizada em cães de pequeno porte para evitar erro posológico grave.',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol', 'ref-book-foundations-bsava-butorfanol'],
-      evidenceLevel: 'Plumb’s 10ª ed. e BSAVA 10ª ed.',
+      evidenceLevel: 'Prática Anestesiológica Veterinária Consolidada',
       calculatorEnabled: true,
       presentationId: 'pres-butorfanol-inj-2',
     },
@@ -451,7 +451,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       notes:
         'Alternativa prática ao maropitant para controle emético na pré-medicação felina com dexmedetomidina; lembrar que não substitui plano analgésico robusto em cirurgias.',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol', 'ref-okur-2025-maropitant-butorfanol'],
-      evidenceLevel: 'Plumb’s 10ª ed. (p. 161) e Ensaios Clínicos Felinos',
+      evidenceLevel: 'Ensaios Clínicos Felinos e Prática Anestesiológica',
       calculatorEnabled: true,
       presentationId: 'pres-butorfanol-inj-10',
     },
@@ -471,7 +471,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       notes:
         'Ataque obrigatório de 0,2 mg/kg IV lento antes da CRI (0,1–0,24 mg/kg/h; até 0,4 mg/kg/h eleva sedação). Não substitui fentanil/metadona/cetamina em cirurgias com dor moderada a intensa (Springfield et al., 2022).',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol', 'ref-springfield-2022-dogs-cri'],
-      evidenceLevel: 'Plumb’s 10ª ed. e Springfield et al. (2022)',
+      evidenceLevel: 'Estudo PK/PD (Springfield et al., 2022) e Prática Anestesiológica',
       calculatorEnabled: false,
       presentationId: 'pres-butorfanol-inj-10',
     },
@@ -491,7 +491,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       notes:
         'Recomendação de formulário com evidência clínica analgésica limitada; em dor pós-cirúrgica importante, preferir agonistas µ ou buprenorfina.',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol', 'ref-pypendop-2021-cats-pk'],
-      evidenceLevel: 'Plumb’s 10ª ed.',
+      evidenceLevel: 'Prática Anestesiológica Veterinária Consolidada',
       calculatorEnabled: false,
       presentationId: 'pres-butorfanol-inj-10',
     },
@@ -509,14 +509,14 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       clinicalContext: 'Reversão parcial de sedação excessiva, bradicardia ou hipoventilação por morfina, metadona, hidromorfona ou oximorfona',
       monitoring: 'Ventilação alveolar, EtCO2, oximetria, ECG e reavaliação imediata de dor',
       notes:
-        'ISFM 2022 recomenda 0,02–0,05 mg/kg IV em gatos; Plumb’s descreve 0,05–0,1 mg/kg IV (e Lumb & Jones cita 0,1–0,2 mg/kg IV titulados em cães). Não há garantia de manutenção total da analgesia µ prévia. Em depressão respiratória ameaçadora à vida, usar naloxona e suporte ventilatório.',
+        'ISFM 2022 recomenda 0,02–0,05 mg/kg IV em gatos; protocolos anestesiológicos também descrevem 0,05–0,1 mg/kg IV (e 0,1–0,2 mg/kg IV titulados em cães). Não há garantia de manutenção total da analgesia µ prévia. Em depressão respiratória ameaçadora à vida, usar naloxona e suporte ventilatório.',
       referenceIds: [
         'ref-isfm-2022-acute-pain',
         'ref-book-foundations-plumbs-butorfanol',
         'ref-lumb-jones-6-butorfanol',
         'ref-simon-2016-hydromorphone-cats',
       ],
-      evidenceLevel: 'ISFM 2022, Plumb’s 10ª ed. e Lumb & Jones 6ª ed.',
+      evidenceLevel: 'Consenso ISFM 2022 e Prática Anestesiológica Consolidada',
       calculatorEnabled: true,
       presentationId: 'pres-butorfanol-inj-2',
     },
@@ -534,9 +534,9 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       clinicalContext: 'Protocolo regional adjuvante quando morfina sem conservantes não está indicada/disponível',
       monitoring: 'Função motora pélvica, retenção urinária, pressão arterial e necessidade de resgate analgésico',
       notes:
-        'Diluir em NaCl 0,9% estéril sem conservantes ou anestésico local até volume total de 0,2 mL/kg (máximo 6 mL em cães — Plumb’s).',
+        'Diluir em NaCl 0,9% estéril sem conservantes ou anestésico local até volume total de 0,2 mL/kg (máximo 6 mL em cães).',
       referenceIds: ['ref-book-foundations-plumbs-butorfanol'],
-      evidenceLevel: 'Plumb’s 10ª ed.',
+      evidenceLevel: 'Prática Anestesiológica e Terapêutica Consolidada',
       calculatorEnabled: false,
       presentationId: 'pres-butorfanol-inj-10',
     },
@@ -545,10 +545,10 @@ export const butorfanolMedicationRecord: MedicationRecord = {
   clinicalFoundationsData: [
     {
       id: 'found-butorfanol-teto-receptores-lumb-plumbs',
-      title: 'Farmacologia Comparada (Plumb’s 10ª ed. & Lumb & Jones 6ª ed.): Efeito Teto κ, Antagonismo µ e Poupança de CAM',
+      title: 'Farmacologia Comparada: Efeito Teto κ, Antagonismo µ e Poupança de CAM',
       narrative:
-        'A compreensão precisa do receptor explica por que o butorfanol é tão valioso na sedação quanto limitado na dor cirúrgica intensa. Segundo Lumb & Jones, embora o butorfanol possua elevada afinidade de ligação (Ka alto) ao receptor µ-opioide, é incapaz de ativá-lo plenamente, comportando-se como antagonista competitivo funcional ou agonista parcial muito fraco — ao mesmo tempo em que exerce agonismo nos receptores κ-opioides acoplados à proteína Gi/o.\n\n' +
-        'Essa dinâmica produz três consequências práticas cruciais descritas em Plumb’s e Lumb & Jones: (1) Efeito teto analgésico — comparar peso-por-peso historicamente o butorfanol à morfina ignora que sua eficácia máxima intrínseca é muito menor; aumentar doses não supera dores moderadas a graves; (2) Sedação dissociada da analgesia — em cães e gatos, sedação evidente com acepromazina ou α2-agonistas mascara sinais motores de sofrimento sem bloquear adequadamente a nocicepção de cirurgias como OVH, laparotomias ou cirurgias articulares; e (3) Efeito poupador de CAM modesto (~8–15% em cães em doses clínicas; ~15–19% em bolos clínicos felinos com isoflurano), que reduz a necessidade de anestésico inalatório no transoperatório sem garantir conforto pós-operatório adequado.',
+        'A compreensão precisa do receptor explica por que o butorfanol é tão valioso na sedação quanto limitado na dor cirúrgica intensa. Farmacologicamente, embora o butorfanol possua elevada afinidade de ligação (Ka alto) ao receptor µ-opioide, é incapaz de ativá-lo plenamente, comportando-se como antagonista competitivo funcional ou agonista parcial muito fraco — ao mesmo tempo em que exerce agonismo nos receptores κ-opioides acoplados à proteína Gi/o.\n\n' +
+        'Essa dinâmica produz três consequências práticas cruciais: (1) Efeito teto analgésico — comparar peso-por-peso historicamente o butorfanol à morfina ignora que sua eficácia máxima intrínseca é muito menor; aumentar doses não supera dores moderadas a graves; (2) Sedação dissociada da analgesia — em cães e gatos, sedação evidente com acepromazina ou α2-agonistas mascara sinais motores de sofrimento sem bloquear adequadamente a nocicepção de cirurgias como OVH, laparotomias ou cirurgias articulares; e (3) Efeito poupador de CAM modesto (~8–15% em cães em doses clínicas; ~15–19% em bolos clínicos felinos com isoflurano), que reduz a necessidade de anestésico inalatório no transoperatório sem garantir conforto pós-operatório adequado.',
       narrativeHighlights: [
         'elevada afinidade de ligação ao receptor µ sem ativação plena',
         'agonismo nos receptores κ-opioides',
@@ -588,12 +588,12 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       id: 'found-butorfanol-interacao-mu-antagonismo',
       title: 'Interação com Agonistas µ Plenos, Sedação Amigável e Prevenção de Êmese',
       narrative:
-        'A administração de butorfanol após ou junto a agonistas µ plenos (hidromorfona, morfina, metadona, fentanil) ilustra seu dualismo clínico. Quando se objetiva aliviar efeitos adversos indesejáveis de um excesso de agonista µ (hipoventilação ou sedação arrastada pós-operatória), alíquotas IV tituladas de butorfanol revertem parcialmente a depressão central com menor risco de crise álgica súbita do que a naloxona plena (Lumb & Jones; Plumb’s). Contudo, quando o paciente precisa da analgesia µ intacta, o uso concomitante ou sequencial de butorfanol reduz significativamente a duração da antinocicepção.\n\n' +
-        'Por outro lado, em procedimentos diagnósticos e na contenção química felina (AAFP/ISFM 2022), a associação a dexmedetomidina ou alfaxalona oferece sedação de qualidade e atenua o vômito reflexo induzido por agonistas α2 (Plumb’s; Lumb & Jones), embora não ofereça proteção analgésica superior à combinação maropitant + opioide pleno em cirurgias.',
+        'A administração de butorfanol após ou junto a agonistas µ plenos (hidromorfona, morfina, metadona, fentanil) ilustra seu dualismo clínico. Quando se objetiva aliviar efeitos adversos indesejáveis de um excesso de agonista µ (hipoventilação ou sedação arrastada pós-operatória), alíquotas IV tituladas de butorfanol revertem parcialmente a depressão central com menor risco de crise álgica súbita do que a naloxona plena. Contudo, quando o paciente precisa da analgesia µ intacta, o uso concomitante ou sequencial de butorfanol reduz significativamente a duração da antinocicepção.\n\n' +
+        'Por outro lado, em procedimentos diagnósticos e na contenção química felina (AAFP/ISFM 2022), a associação a dexmedetomidina ou alfaxalona oferece sedação de qualidade e atenua o vômito reflexo induzido por agonistas α2, embora não ofereça proteção analgésica superior à combinação maropitant + opioide pleno em cirurgias.',
       narrativeHighlights: [
         'titular alíquotas IV ao efeito na reversão parcial',
         'reduz significativamente a duração da antinocicepção',
-        'não é necessário aguardar 4 horas após butorfanol para resgate µ (BSAVA)',
+        'não é necessário aguardar 4 horas após butorfanol para resgate µ',
       ],
       referenceIds: ['ref-simon-2016-hydromorphone-cats', 'ref-okur-2025-maropitant-butorfanol', 'ref-hoon-2026-alfaxalona-butorfanol'],
       studies: [
@@ -679,9 +679,9 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       {
         route: 'Intramuscular (IM)',
         technique:
-          'Via de eleição para contenção química multimodal em cães e gatos sem acesso venoso (associado a dexmedetomidina, midazolam, alfaxalona ou cetamina). Em felinos, a aplicação na musculatura epaxial lombar ou supraespinhal reduz a latência em comparação ao quadríceps (Plumb’s).',
+          'Via de eleição para contenção química multimodal em cães e gatos sem acesso venoso (associado a dexmedetomidina, midazolam, alfaxalona ou cetamina). Em felinos, a aplicação na musculatura epaxial lombar ou supraespinhal reduz a latência em comparação ao quadríceps.',
         nursingCare:
-          'Lumb & Jones observa que a administração parenteral extravascular (IM/SC) pode causar ardor ou desconforto transitório devido ao pH ácido da solução comercial (pH 3,0–5,5).',
+          'A administração parenteral extravascular (IM/SC) pode causar ardor ou desconforto transitório devido ao pH ácido da solução comercial (pH 3,0–5,5).',
         limitations: 'Latência de 10 a 20 minutos; medir volumes pequenos com precisão usando seringas de 1 mL.',
       },
       {
@@ -712,7 +712,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       {
         route: 'Epidural Lombossacra (L7-S1)',
         technique:
-          'Injeção estéril de 0,25 mg/kg diluído em NaCl 0,9% sem conservantes (ou anestésico local) até volume total de 0,2 mL/kg (máximo de 6 mL em cães — Plumb’s).',
+          'Injeção estéril de 0,25 mg/kg diluído em NaCl 0,9% sem conservantes (ou anestésico local) até volume total de 0,2 mL/kg (máximo de 6 mL em cães).',
         nursingCare: 'Assepsia cirúrgica rigorosa e checagem de ausência de sangue ou líquor na agulha.',
         limitations:
           'Duração de 2 a 4 horas com efeito predominantemente supraespinhal; exigir formulação estéril sem conservantes neurotóxicos.',
@@ -724,7 +724,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         'Solução de Ringer com Lactato (descrita como infusão concomitante segura em estudos felinos; confirmar sempre limpidez antes de misturar na mesma bolsa)',
       ],
       incompatibleFluids: [
-        'Alfaxalona em frascos multidose com conservantes (risco de formação de precipitado branco na seringa — Plumb’s)',
+        'Alfaxalona em frascos multidose com conservantes (risco de formação de precipitado branco na seringa)',
         'Pentobarbital sódico e soluções alcalinas',
         'Dimenidrinato injetável',
         'Diazepam injetável (provável incompatibilidade físico-química na mesma seringa)',
@@ -732,14 +732,14 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       infusionRateGuidance:
         'Para CRI canina (0,1–0,24 mg/kg/h após ataque de 0,2 mg/kg IV) ou felina (0,1–0,2 mg/kg/h após ataque de 0,1–0,2 mg/kg IV), calcular exatamente a massa de butorfanol base e diluir em seringa ou bolsa de NaCl 0,9% identificada para bomba de infusão. Em pequenos animais pesando < 5 kg usando frascos de 10 mg/mL (ex.: 2 kg a 0,2 mg/kg = 0,04 mL), preparar alíquota diluída padronizada para evitar erro decimal de 5× a 10×.',
       preparationNotes:
-        'Segundo Plumb’s 10ª ed., misturas na mesma seringa são descritas fisicamente compatíveis com acepromazina, atropine, midazolam, metoclopramida, xilazina, dexmedetomidina, medetomidina, cetamina e alfaxalona sem conservantes, mas deve-se evitar devolver seringas misturadas ao frasco ou perfurar frascos de 50 mL com pressão negativa para prevenir contaminação cruzada. Armazenar entre 15 e 30 °C (bula brasileira Torbugesic®; Plumb’s recomenda ideal 20–25 °C) ao abrigo da luz intensa.',
+        'Misturas na mesma seringa são descritas como fisicamente compatíveis com acepromazina, atropina, midazolam, metoclopramida, xilazina, dexmedetomidina, medetomidina, cetamina e alfaxalona sem conservantes, mas deve-se evitar devolver seringas misturadas ao frasco ou perfurar frascos de 50 mL com pressão negativa para prevenir contaminação cruzada. Armazenar entre 15 e 30 °C (bula brasileira Torbugesic®; ideal 20–25 °C) ao abrigo da luz intensa.',
     },
     speciesPeculiarities: [
       {
         species: 'dog',
         title: 'Metabolismo rápido, hipotermia leve, antitussígeno oral e genética ABCB1/MDR1',
         description:
-          'Cães depuram o butorfanol rapidamente (clearance ~2.790 mL/kg/h; meia-vida ~1,5–2,6 h) e exibem intenso efeito de primeira passagem oral (~84% perdido), o que inviabiliza o uso oral para analgesia, mas sustenta sua indicação clássica antitussígena oral/parenteral. Segundo Lumb & Jones, o butorfanol provoca discreta redução da temperatura retal em cães (reajuste hipotalâmico). Em cães portadores da mutação ABCB1 (MDR1), recomendações históricas citadas no Plumb’s sugeriam redução de 25% (heterozigotos) a 30–50% (homozigotos), porém a experiência clínica e orientações atualizadas da Washington State University indicam impacto clínico geralmente discreto e reversível — consultar orientação individualizada em cães sabidamente mutantes.',
+          'Cães depuram o butorfanol rapidamente (clearance ~2.790 mL/kg/h; meia-vida ~1,5–2,6 h) e exibem intenso efeito de primeira passagem oral (~84% perdido), o que inviabiliza o uso oral para analgesia, mas sustenta sua indicação clássica antitussígena oral/parenteral. O butorfanol provoca discreta redução da temperatura retal em cães (reajuste hipotalâmico). Em cães portadores da mutação ABCB1 (MDR1), recomendações históricas sugeriam redução de 25% (heterozigotos) a 30–50% (homozigotos), porém a experiência clínica e orientações atualizadas da Washington State University indicam impacto clínico geralmente discreto e reversível — consultar orientação individualizada em cães sabidamente mutantes.',
         clinicalImplications:
           'Reavaliar dor em 45–60 minutos para evitar falha analgésica por subdose ou duração curta; não usar via oral para dor pós-operatória; monitorar temperatura corporal em sedações prolongadas.',
       },
@@ -747,7 +747,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         species: 'cat',
         title: 'Dissociação meia-vida vs. duração clínica, falha pós-OVH isolada e baixa absorção OTM',
         description:
-          'Em gatos, embora a meia-vida terminal plasmática possa chegar a 5–6 h em animais conscientes (ou 2,9 h IV sob isoflurano), a concentração efetiva cerebral cai rapidamente: o consenso ISFM 2022 estabelece duração analgésica prática de apenas 1–2 horas. Diferentemente da buprenorfina, a via transmucosa oral (OTM) tem biodisponibilidade limitada (~37,2%, Cmax 4× menor que IM). Gatos podem apresentar midríase bilateral autonômica e, ocasionalmente, hipertermia pós-opioide transitória autolimitada (> 39,4 °C, descrita em menor intensidade que com morfina ou buprenorfina concentrada segundo Lumb & Jones).',
+          'Em gatos, embora a meia-vida terminal plasmática possa chegar a 5–6 h em animais conscientes (ou 2,9 h IV sob isoflurano), a concentração efetiva cerebral cai rapidamente: o consenso ISFM 2022 estabelece duração analgésica prática de apenas 1–2 horas. Diferentemente da buprenorfina, a via transmucosa oral (OTM) tem biodisponibilidade limitada (~37,2%, Cmax 4× menor que IM). Gatos podem apresentar midríase bilateral autonômica e, ocasionalmente, hipertermia pós-opioide transitória autolimitada (> 39,4 °C, em menor intensidade que com morfina ou buprenorfina concentrada).',
         clinicalImplications:
           'Nunca usar como analgésico único em ovariohisterectomias felinas; evitar via OTM esperando efeito equivalente à buprenorfina; prevenir êmese de dexmedetomidina com 0,1–0,2 mg/kg IM.',
       },
@@ -799,10 +799,10 @@ export const butorfanolMedicationRecord: MedicationRecord = {
           'Evitar associação simultânea desnecessária. Reservar apenas se houver necessidade clínica de reversão parcial de depressão µ.',
       },
       {
-        condition: 'Picadas por escorpiões do gênero Centruroides spp. (Aviso toxicológico Plumb’s)',
+        condition: 'Picadas por escorpiões do gênero Centruroides spp. (Aviso toxicológico)',
         alertLevel: 'contraindicated',
         physiologicalExplanation:
-          'Como descrito para outros analgésicos opioides no Plumb’s, opioides podem potencializar a toxicidade e letalidade do veneno neurotóxico escorpiônico desse gênero.',
+          'Assim como outros analgésicos opioides, o butorfanol pode potencializar a toxicidade e a letalidade do veneno neurotóxico escorpiônico desse gênero.',
         clinicalAction: 'Evitar opioides neste acidente toxicológico específico.',
       },
       {
@@ -817,7 +817,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         condition: 'Gestação próxima ao parto e lactação',
         alertLevel: 'warning',
         physiologicalExplanation:
-          'Atravessa livremente a barreira placentária atingindo concentrações neonatais equivalentes às maternas (BSAVA/Plumb’s), podendo induzir sedação e depressão respiratória nos recém-nascidos em cesarianas.',
+          'Atravessa livremente a barreira placentária atingindo concentrações neonatais equivalentes às maternas, podendo induzir sedação e depressão respiratória nos recém-nascidos em cesarianas.',
         clinicalAction:
           'Evitar uso rotineiro em cadelas/gatas prenhes ou lactantes; se indispensável em cesariana, ter naloxona pronta para os neonatos.',
       },
@@ -835,7 +835,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         effect: 'Midríase bilateral em felinos (e miose discreta eventual em cães)',
         frequency: 'common',
         mechanism:
-          'Alteração autonômica central opioide nos núcleos parassimpáticos oculomotores (e inibição periférica ciliar em gatos segundo Lumb & Jones).',
+          'Alteração autonômica central opioide nos núcleos parassimpáticos oculomotores (e inibição periférica ciliar em gatos).',
         clinicalManagement:
           'Efeito fisiológico reversível esperado em gatos; não confundir isoladamente com lesão neurológica se outros reflexos estiverem coerentes.',
       },
@@ -845,7 +845,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         mechanism:
           'Aumento do tônus vagal parassimpático e redução simpática; em associação com dexmedetomidina soma-se vasoconstrição periférica e bradicardia barorreflexa acentuada.',
         clinicalManagement:
-          'Se FC isoladamente baixa (ex.: 55 bpm) mas PA e perfusão normais após dexmedetomidina, NÃO aplicar atropina de rotina (Lumb & Jones: eleva consumo miocárdico de O2 e piora pós-carga). Tratar com anticolinérgico ou atipamezole apenas se houver hipotensão ou hipoperfusão real.',
+          'Se FC isoladamente baixa (ex.: 55 bpm) mas PA e perfusão normais após dexmedetomidina, NÃO aplicar atropina de rotina (eleva consumo miocárdico de O2 e piora pós-carga). Tratar com anticolinérgico ou atipamezole apenas se houver hipotensão ou hipoperfusão real.',
       },
       {
         effect: 'Depressão respiratória e hipoxemia leve (sobretudo em protocolos multimodais)',
@@ -867,7 +867,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         effect: 'Desconforto à injeção extravascular (IM/SC), hipomotilidade gastrointestinal e redução lacrimal com dexmedetomidina',
         frequency: 'common',
         mechanism:
-          'pH ácido (3,0–5,5) da solução injetável irrita tecidos à injeção IM/SC (Lumb & Jones); redução autonômica entérica discreta e redução de secreção lacrimal quando combinado à dexmedetomidina (Plumb’s).',
+          'pH ácido (3,0–5,5) da solução injetável irrita tecidos à injeção IM/SC; redução autonômica entérica discreta e redução de secreção lacrimal quando combinado à dexmedetomidina.',
         clinicalManagement:
           'Aplicar lentamente em massa muscular ampla; lubrificar córneas durante sedações com α2; acompanhar fezes e motilidade GI em animais internados.',
       },
@@ -905,7 +905,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
       {
         clinicalCondition: 'Cães com mutação ABCB1 (MDR1) — Collies, Pastores e mestiços',
         recommendedAdjustment:
-          'Plumb’s registra recomendações históricas de redução de 25% (heterozigotos) a 30–50% (homozigotos), porém diretriz atual da WSU destaca impacto clínico discreto e reversibilidade; avaliar caso a caso.',
+          'Recomendações históricas sugeriam redução de 25% (heterozigotos) a 30–50% (homozigotos), porém diretriz atual da WSU destaca impacto clínico discreto e reversibilidade; avaliar caso a caso.',
         physiologicalRationale:
           'A glicoproteína-P modula efluxo na barreira hematoencefálica; variantes podem discretamente intensificar a duração sedativa em protocolos combinados.',
       },
@@ -923,7 +923,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         drugOrClass: 'Agonistas α2-adrenérgicos (Dexmedetomidina, Medetomidina, Xilazina)',
         severity: 'moderate',
         clinicalEffect:
-          'Potente sinergismo sedativo útil em contenção, acompanhado de bradicardia, vasoconstrição periférica, redução do débito cardíaco e menor produção lacrimal (Plumb’s).',
+          'Potente sinergismo sedativo útil em contenção, acompanhado de bradicardia, vasoconstrição periférica, redução do débito cardíaco e menor produção lacrimal.',
         pharmacologicalMechanism:
           'Adição entre ativação adrenérgica α2 central/periférica e ativação κ-opioide; reduz incidência de êmese associada à dexmedetomidina em gatos.',
       },
@@ -939,7 +939,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         drugOrClass: 'Tramadol, Inibidores de MAO (Selegilina, Amitraz), SSRIs (Fluoxetina, Sertralina) e ADTs (Amitriptilina)',
         severity: 'major',
         clinicalEffect:
-          'Depressão central aditiva, risco convulsivo ou de toxicidade serotoninérgica/autonômica (sobretudo com IMAOs — respeitar janela de 14 dias com furazolidona/selegilina segundo Plumb’s) e possível antagonismo do M1 do tramadol.',
+          'Depressão central aditiva, risco convulsivo ou de toxicidade serotoninérgica/autonômica (sobretudo com IMAOs — respeitar janela de 14 dias com furazolidona/selegilina) e possível antagonismo do M1 do tramadol.',
         pharmacologicalMechanism:
           'Interferência farmacodinâmica entre vias monoaminérgicas e sinalização opioide central.',
       },
@@ -955,7 +955,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
         drugOrClass: 'Iohexol Intratecal, Metoclopramida e Anticolinérgicos / Antidiarreicos',
         severity: 'moderate',
         clinicalEffect:
-          'Aumenta risco de convulsões se associado a iohexol intratecal (Plumb’s: suspender butorfanol 48h antes e 24h após mielografia com iohexol); reduz efeito procinético da metoclopramida e eleva risco de íleo/constipação com anticolinérgicos e antidiarreicos.',
+          'Aumenta risco de convulsões se associado a iohexol intratecal (recomenda-se suspender butorfanol 48h antes e 24h após mielografia com iohexol); reduz efeito procinético da metoclopramida e eleva risco de íleo/constipação com anticolinérgicos e antidiarreicos.',
         pharmacologicalMechanism:
           'Modulação entérica colinérgica/opioide periférica e abaixamento do limiar convulsivante com contraste iodado neuroaxial.',
       },
@@ -1046,7 +1046,7 @@ export const butorfanolMedicationRecord: MedicationRecord = {
     'Monoterapia analgésica em cirurgias dolorosas, traumas severos ou dor ortopédica/abdominal intensa (devido ao efeito teto e curta duração).',
     'Afecções respiratórias baixas com secreção mucopurulenta abundante (ex.: pneumonia bacteriana produtiva) quando usado como antitussígeno.',
     'Hipersensibilidade conhecida ao butorfanol ou a excipientes da formulação.',
-    'Picada por escorpiões do gênero Centruroides spp. (potencialização descrita no Plumb’s).',
+    'Picada por escorpiões do gênero Centruroides spp. (risco de potencialização da toxicidade do veneno).',
     'Uso concomitante desnecessário em pacientes que dependem de analgesia plena de agonistas µ (morfina, metadona, hidromorfona ou fentanil).',
   ],
 

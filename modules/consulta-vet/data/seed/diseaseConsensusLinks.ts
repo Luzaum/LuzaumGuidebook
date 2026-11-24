@@ -17,7 +17,7 @@ export const DISEASE_CONSENSUS_LINKS: Record<string, string[]> = {
   'arritmias-cardiacas-caes-gatos': ['acvim-cardiomiopatias-felinas-2020'],
   'sindrome-cushing-caes': ['acvim-hipercortisolismo-canino-2012', 'alive-adrenais-cycle-2-2025'],
   'sindrome-cushing-gatos': ['alive-adrenais-cycle-2-2025', 'aaha-endocrinopatias-caes-gatos-2023'],
-  'hipoadrenocorticismo-addison': ['alive-adrenais-cycle-2-2025', 'aaha-endocrinopatias-caes-gatos-2023'],
+  'hipoadrenocorticismo-addison': ['alive-adrenais-cycle-2-2025', 'aaha-endocrinopatias-caes-gatos-2023', 'aaha-fluidoterapia-caes-gatos-2024'],
   'diabetes-mellitus-canina': ['aaha-diabetes-caes-gatos-2018-2022', 'alive-diabetes-cycle-1-2022'],
   'diabetes-mellitus-felina': [
     'aaha-diabetes-felino-2026',
@@ -114,6 +114,28 @@ export const DISEASE_CONSENSUS_LINKS: Record<string, string[]> = {
   ],
   'paralisia-laringea-caes-gatos': [
     'recover-primeiros-socorros-2026',
+  ],
+  'cinomose-canina': [
+    'recover-primeiros-socorros-2026',
+    'aaha-fluidoterapia-caes-gatos-2024',
+  ],
+  'pancreatite-caes-gatos': [
+    'acvim-cie-caes-2026',
+    'iris-lra-2026',
+    'veccs-sepse-definicao-caes-gatos-2026',
+    'veccs-choque-septico-prognostico-2026',
+    'curative-risco-trombotico-2022',
+    'aaha-diabetes-caes-gatos-2018-2022',
+    'icatcare-diabetes-felino-2025',
+  ],
+  'insuficiencia-cardiaca-congestiva-caes-gatos': [
+    'acvim-mmvd-canina-2019',
+    'acvim-cardiomiopatias-felinas-2020',
+    'acvim-hipertensao-pulmonar-canina-2020',
+    'consenso-cardiorrenal-2015',
+    'curative-risco-trombotico-2022',
+    'curative-antitromboticos-2019',
+    'esvc-dcm-canina-2003',
   ],
 };
 

@@ -11,13 +11,13 @@ const bsava = 'ref-book-foundations-bsava-acido-tranexamico';
 const regimens = [
   {
     id: 'txa-dog-iv-bsava', species: 'dog', indication: 'Sangramento canino com suspeita fundamentada de hiperfibrinólise',
-    doseMin: 10, route: 'IV', frequency: 'A cada 8 h no BSAVA, por infusão lenta', duration: 'Reavaliar antes de cada dose',
-    notes: 'Referência do BSAVA para uso adjuvante. Decida conforme a evolução do sangramento e, quando possível, a atividade fibrinolítica. A repetição depende da perfusão, função renal e risco trombótico.',
+    doseMin: 10, route: 'IV', frequency: 'A cada 8 h, por infusão lenta', duration: 'Reavaliar antes de cada dose',
+    notes: 'Regime padronizado para uso adjuvante. Decida conforme a evolução do sangramento e, quando possível, a atividade fibrinolítica. A repetição depende da perfusão, função renal e risco trombótico.',
     referenceIds: [bsava], evidenceLevel: 'Formulário veterinário. Uso extra-bula.',
   },
   {
     id: 'txa-dog-oral-bsava', species: 'dog', indication: 'Via oral em cão estável, quando houver indicação de manter antifibrinólise',
-    doseMin: 15, doseMax: 20, route: 'VO', frequency: 'A cada 8 h no BSAVA', duration: 'Individualizar conforme causa e resposta',
+    doseMin: 15, doseMax: 20, route: 'VO', frequency: 'A cada 8 h', duration: 'Individualizar conforme causa e resposta',
     notes: 'A absorção oral retarda o pico do efeito em comparação com a via IV. Antes da transição, confirme que o paciente está estável, tolera via oral e ainda tem indicação de tratamento. A apresentação de 250 mg pode inviabilizar uma fração precisa em cães pequenos.',
     referenceIds: [bsava, 'ref-txa-osekavage'], evidenceLevel: 'Formulário e farmacocinética canina. Uso extra-bula.',
   },
@@ -34,7 +34,7 @@ const regimens = [
     referenceIds: [plumb, 'ref-txa-angiostrongylus'], evidenceLevel: 'Série clínica e formulário. Uso extra-bula.',
   },
   {
-    id: 'txa-dog-cri-plumb', species: 'dog', indication: 'Infusão contínua canina descrita no Plumb',
+    id: 'txa-dog-cri-plumb', species: 'dog', indication: 'Infusão contínua canina em protocolo experimental de referência',
     doseMin: 10, route: 'IV', frequency: 'Ataque de 10 mg/kg, seguido de 10 mg/kg/h', duration: 'Três horas de manutenção na referência',
     notes: 'A referência de origem avaliou cães saudáveis. A taxa de manutenção é quatro vezes a taxa do ensaio de Mays. Compare a população, a dose total e a duração antes de interpretar os protocolos. Referência para discussão hospitalar.',
     referenceIds: [plumb, 'ref-txa-kelmer'], evidenceLevel: 'Formulário apoiado por estudo em cães saudáveis.',
@@ -147,12 +147,12 @@ const cautions = [
 const adverseEffects = [
   'Náusea, hipersalivação, vômito e diarreia. Em cães, vômito é mais provável com dose alta ou administração IV rápida.',
   'Hipotensão com administração IV rápida, descrita na documentação humana. Monitore pressão e perfusão no paciente veterinário, em especial se já estiver em choque.',
-  'Convulsão, alteração visual e trombose merecem atenção. A frequência em cães e gatos permanece incerta. O Plumb descreve toxicidade retiniana experimental com exposição alta e prolongada.',
+  'Convulsão, alteração visual e trombose merecem atenção. A frequência em cães e gatos permanece incerta; estudos experimentais com exposição alta e prolongada descrevem toxicidade retiniana.',
 ];
 const interactions = [
   'Alteplase e outros trombolíticos têm objetivo farmacológico oposto ao TXA. Discuta qualquer associação em protocolo especializado.',
   'Estrogênios e terapias pró-coagulantes exigem avaliação do risco trombótico. A evidência de interação clínica vem sobretudo de humanos. Reposição de hemocomponentes indicada pelo quadro tem avaliação própria.',
-  'O Plumb descreve possível aumento de risco de sangramento com clorpromazina. É um sinal de interação potencial, sem efeito quantitativo estabelecido em pequenos animais.',
+  'Há registro de possível aumento do risco de sangramento com clorpromazina. Trata-se de interação potencial, sem efeito quantitativo estabelecido em pequenos animais.',
   'Compatibilidade é uma questão de preparo. Evite misturar com sangue ou soluções com penicilina. Use acesso separado ou siga o protocolo institucional para compartilhamento de linha.',
 ];
 
@@ -188,7 +188,7 @@ export const acidoTranexamicoMedicationRecord: MedicationRecord = {
     { label: 'Choque hemorrágico', text: 'Organize controle da fonte e ressuscitação enquanto avalia se há um alvo para o antifibrinolítico.' },
   ],
   quickIndications: [
-    { condition: regimens[0].indication, species: 'dog', doseSummary: '10 mg/kg a cada 8 h como referência do BSAVA', route: 'IV lenta', duration: 'Conforme reavaliação hospitalar' },
+    { condition: regimens[0].indication, species: 'dog', doseSummary: '10 mg/kg a cada 8 h', route: 'IV lenta', duration: 'Conforme reavaliação hospitalar' },
     { condition: regimens[3].indication, species: 'dog', doseSummary: '10–20 mg/kg em 15–20 min na série clínica', route: 'IV lenta', duration: 'Repetição guiada pelo traçado e pela clínica' },
     { condition: regimens[5].indication, species: 'cat', doseSummary: '10 mg/kg foi a mediana observada em prontuários', route: 'IV', duration: 'Sem regime validado' },
   ],
@@ -200,7 +200,7 @@ export const acidoTranexamicoMedicationRecord: MedicationRecord = {
     route: regimen.route,
     frequency: regimen.frequency,
     duration: regimen.duration,
-    mechanismOfAction: regimen.id === 'txa-dog-emesis' ? 'A exposição IV elevada pode desencadear o reflexo do vômito. O Plumb descreve participação provável de vias da neurocinina.' : mechanism,
+    mechanismOfAction: regimen.id === 'txa-dog-emesis' ? 'A exposição IV elevada pode desencadear o reflexo do vômito, com provável participação de vias da neurocinina.' : mechanism,
     clinicalRationale: regimen.notes,
     monitoring: regimen.id === 'txa-dog-emesis' ? 'Proteja as vias aéreas e acompanhe vômito, estado neurológico e sinais de aspiração.' : monitoring,
     referenceIds: [...regimen.referenceIds],
@@ -230,7 +230,7 @@ export const acidoTranexamicoMedicationRecord: MedicationRecord = {
   ],
   genericBrandsNote: 'As duas apresentações são humanas e têm o mesmo princípio ativo. A ampola expressa concentração em mg/mL e o comprimido expressa quantidade por unidade. Se consultar uma referência com ampola de 100 mg/mL, recalcule a partir do rótulo disponível. Para 100 mg, são 2 mL com 50 mg/mL ou 1 mL com 100 mg/mL. Transportar o volume de uma apresentação para a outra pode dobrar a dose.',
   practicalWeightTable: {
-    standardDoseText: 'Tabela de conversão para o esquema canino de referência do BSAVA, de 10 mg/kg IV, usando a ampola de 50 mg/mL. Multiplique o peso por 10 para obter os miligramas e divida por 50 para obter o volume a aspirar. Para 10 kg, a conta dá 100 mg e 2 mL. O volume final, a velocidade e a repetição dependem do preparo e da avaliação clínica.',
+    standardDoseText: 'Tabela de conversão para o esquema canino padrão de 10 mg/kg IV, usando a ampola de 50 mg/mL. Multiplique o peso por 10 para obter os miligramas e divida por 50 para obter o volume a aspirar. Para 10 kg, a conta dá 100 mg e 2 mL. O volume final, a velocidade e a repetição dependem do preparo e da avaliação clínica.',
     headers: ['Peso', 'Dose de referência', 'Volume a aspirar', 'Concentração da ampola'],
     rows: [5, 10, 15, 20, 30, 40].map((weight) => ({
       weight: weight + ' kg', totalDose: (10 * weight) + ' mg', col1: (weight / 5).toLocaleString('pt-BR') + ' mL', col2: '50 mg/mL',
@@ -253,7 +253,7 @@ export const acidoTranexamicoMedicationRecord: MedicationRecord = {
   ],
   pharmacokineticsData: {
     absorption: 'Em cães saudáveis, o estudo cruzado de Osekavage observou efeito antifibrinolítico mais tardio por via oral. A via IV dispensa absorção. Em choque, a resposta pela via oral pode ser menos previsível.',
-    distribution: 'O Plumb descreve distribuição em líquidos corporais e baixa ligação proteica com base sobretudo em dados humanos. Cães e gatos em choque podem apresentar distribuição diferente da observada em animais saudáveis.',
+    distribution: 'Distribui-se pelos líquidos corporais com baixa ligação proteica com base sobretudo em dados humanos. Cães e gatos em choque podem apresentar distribuição diferente da observada em animais saudáveis.',
     metabolism: 'A documentação humana descreve pouco metabolismo. A maior parte do fármaco é eliminada inalterada na urina.',
     elimination: 'A depuração renal é clinicamente relevante em exposições repetidas. A função renal e o quadro do paciente orientam a reavaliação. Não há tabela de ajuste validada por estágio IRIS para os esquemas desta ficha.',
     cnsPenetration: 'A exposição do sistema nervoso é especialmente perigosa em erro neuraxial. O antagonismo de receptores inibitórios de glicina e GABA é um mecanismo proposto para convulsões.',
@@ -283,7 +283,7 @@ export const acidoTranexamicoMedicationRecord: MedicationRecord = {
     drugInteractionsDetailed: [
       { drugOrClass: 'Trombolíticos, como alteplase', severity: 'major', clinicalEffect: interactions[0], pharmacologicalMechanism: 'O trombolítico favorece a formação de plasmina. O antifibrinolítico dificulta sua atuação sobre a fibrina.' },
       { drugOrClass: 'Estrogênios e agentes pró-coagulantes', severity: 'informational', clinicalEffect: interactions[1], pharmacologicalMechanism: 'O risco pode aumentar pela combinação de formação de trombo com menor capacidade de dissolvê-lo.' },
-      { drugOrClass: 'Clorpromazina', severity: 'informational', clinicalEffect: interactions[2], pharmacologicalMechanism: 'Interação potencial listada no Plumb, com relevância veterinária incerta.' },
+      { drugOrClass: 'Clorpromazina', severity: 'informational', clinicalEffect: interactions[2], pharmacologicalMechanism: 'Interação potencial descrita na farmacologia comparada, com relevância veterinária incerta.' },
       { drugOrClass: 'Sangue e soluções com penicilina', severity: 'informational', clinicalEffect: interactions[3], pharmacologicalMechanism: 'Questão de compatibilidade da mistura. O TXA pode integrar o mesmo atendimento que a transfusão, com preparo e administração separados.' },
       { drugOrClass: 'Ácido aminocaproico e outros antifibrinolíticos', severity: 'informational', clinicalEffect: 'Se o paciente já recebeu outro antifibrinolítico, confira dose, hora e motivo antes de acrescentar TXA. A associação não tem benefício estabelecido nos protocolos veterinários citados.', pharmacologicalMechanism: 'Ambos dificultam a degradação da fibrina. Combinar exposições sem um objetivo claro dificulta avaliar a resposta e a tolerância.' },
     ],

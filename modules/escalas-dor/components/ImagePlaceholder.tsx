@@ -100,12 +100,12 @@ const ScaleImage: React.FC<ScaleImageProps> = ({
                 aria-modal="true"
                 aria-label={`Visualização ampliada: ${alt}`}
               >
-                <div className="flex min-h-16 items-center justify-between gap-3 border-b border-white/10 px-3 py-2 text-white sm:px-5">
+                <div className="flex shrink-0 flex-col items-stretch justify-between gap-2 border-b border-white/10 px-3 py-2 text-white sm:min-h-16 sm:flex-row sm:items-center sm:gap-3 sm:px-5">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-bold">{alt}</p>
-                    <p className="text-[11px] text-slate-400">Use os controles, a roda do mouse ou dê dois cliques</p>
+                    <p className="text-[11px] text-slate-400">Use os controles ou toque duas vezes na imagem</p>
                   </div>
-                  <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-white/5 p-1">
+                  <div className="flex shrink-0 items-center justify-between gap-1 rounded-xl border border-white/10 bg-white/5 p-1">
                     <button type="button" onClick={() => setZoom((current) => clampZoom(current - ZOOM_STEP))} disabled={zoom <= MIN_ZOOM} className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-200 hover:bg-white/10 disabled:opacity-35" aria-label="Diminuir zoom">
                       <Minus className="h-5 w-5" />
                     </button>
@@ -113,7 +113,7 @@ const ScaleImage: React.FC<ScaleImageProps> = ({
                     <button type="button" onClick={() => setZoom((current) => clampZoom(current + ZOOM_STEP))} disabled={zoom >= MAX_ZOOM} className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-200 hover:bg-white/10 disabled:opacity-35" aria-label="Aumentar zoom">
                       <Plus className="h-5 w-5" />
                     </button>
-                    <button type="button" onClick={resetView} className="hidden h-11 w-11 items-center justify-center rounded-lg text-slate-200 hover:bg-white/10 sm:inline-flex" aria-label="Redefinir zoom">
+                    <button type="button" onClick={resetView} className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-200 hover:bg-white/10" aria-label="Redefinir zoom">
                       <RotateCcw className="h-4 w-4" />
                     </button>
                     <button ref={closeButtonRef} type="button" onClick={closeViewer} className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-white/10 text-white hover:bg-white/20" aria-label="Fechar imagem ampliada">

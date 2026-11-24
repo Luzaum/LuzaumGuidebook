@@ -158,7 +158,7 @@ Distribuição anatômica do gás (scoping review de Weese & Weese 2026 em 109 a
 
 Conceito contemporâneo:
 - O diagnóstico define-se pela presença de gás patológico associado a processo infeccioso ativo in situ.
-- Não se restringe apenas a lesões parietais, englobando também acometimento puramente luminal após exclusão de causas iatrogênicas (Nelson & Couto, 6a ed., Cap. 42, pp. 704-711; BSAVA Manual of Canine and Feline Nephrology and Urology, 3a ed., Cap. 29, pp. 336-337).`,
+- Não se restringe apenas a lesões parietais, englobando também acometimento puramente luminal após exclusão de causas iatrogênicas.`,
 
     diferenciacaoConceitualPneumaturiaVsCistiteEnfisematosa: `Diferenciação conceitual essencial: Cistite Enfisematosa vs. Pneumatúria Isolada:
 - Pneumatúria isolada: Passagem de ar ou gás pela uretra durante a micção. Ocorre frequentemente após cateterismo prévio, cistocentese, cistoscopia, intervenções cirúrgicas, lavagens vesicais ou fístulas enterovesicais, colovesicais e retovesicais.
@@ -167,8 +167,8 @@ Conceito contemporâneo:
 
 REGRA DE OURO: Em pacientes hemodinamicamente estáveis sob suspeita de CE, realizar radiografia e ultrassonografia abdominal antes de qualquer instrumentação uretral para não criar fator de confusão diagnóstico iatrogênico irreversível (Fumeo et al., 2019; Lippi et al., 2019).`,
 
-    fisiologiaDefesasVesicaisNormais: `A bexiga urinária hígida não funciona como mero reservatório inerte, dispondo de cinco linhas biológicas ativas de defesa contra colonização bacteriana ascendente (Nelson & Couto, 6a ed., Cap. 42):
-- Fluxo urinário unidirecional e esvaziamento mecânico completo: A micção periódica promove o washout contínuo de bactérias antes de adesão firme.
+    fisiologiaDefesasVesicaisNormais: `A bexiga urinária hígida não funciona como mero reservatório inerte, dispondo de cinco linhas biológicas ativas de defesa contra colonização bacteriana ascendente:
+- Fluxo urinário unidirecional e esvaziamento mecânico completo: A micção periódica promove o intervalo de suspensão contínuo de bactérias antes de adesão firme.
 - Barreira urotelial e camada superficial de glicosaminoglicanos (GAGs): Proteoglicanos sulfatados e a proteína de Tamm-Horsfall impedem a fixação de fímbrias bacterianas às células em guarda-chuva.
 - Fatores humorais e imunoglobulinas da mucosa: Secreção local ativa de IgA secretora e peptídeos antimicrobianos uroteliais.
 - Propriedades físico-químicas desfavoráveis da urina: Alta osmolaridade, elevadas concentrações de ureia e ácidos orgânicos criam ambiente bacteriostático adverso.
@@ -183,7 +183,7 @@ Papel do Diabetes Mellitus:
 - O estado hiperglicêmico crônico compromete concomitantemente a quimiotaxia, diapedese e fagocitose neutrofílica, atenuando a imunidade inata local.
 
 Fermentação em Pacientes Não Diabéticos:
-- A glicosúria não é requisito obrigatório: Nelson & Couto (6a ed.) e Weese & Weese (2026) ressaltam que na ausência total de glicose, bactérias como Escherichia coli e Clostridium spp. possuem maquinaria enzimática para metabolizar proteínas teciduais, mucinas e albumina da parede vesical inflamada.
+- A glicosúria não é requisito obrigatório: conforme evidenciado também por Weese & Weese (2026), mesmo na ausência total de glicose, bactérias como Escherichia coli e Clostridium spp. possuem maquinaria enzimática para metabolizar proteínas teciduais, mucinas e albumina da parede vesical inflamada.
 - A fermentação proteica bacteriana libera dióxido de carbono e gás hidrogênio por vias anaeróbias ácidas mistas.
 
 MITO: Presumir que cistite enfisematosa é exclusiva de pacientes diabéticos: Animais normoglicêmicos com estase, bexiga neurogênica ou infecção crônica apresentam exatamente a mesma cascata fisiopatológica.`,
@@ -214,7 +214,7 @@ MITO: Presumir que cistite enfisematosa é exclusiva de pacientes diabéticos: A
     },
 
     fatoresPredisponentesMetabolicosEEstruturais: `A instalação da cistite enfisematosa exige a quebra simultânea de uma ou mais barreiras naturais de defesa vesical:
-- Estase urinária e bexiga neurogênica: Discopatias intervertebrais, cauda equina, neuropatia diabética ou disautonomia eliminam o washout mecânico, permitindo que coliformes atinjam altas concentrações.
+- Estase urinária e bexiga neurogênica: Discopatias intervertebrais, cauda equina, neuropatia diabética ou disautonomia eliminam o intervalo de suspensão mecânico, permitindo que coliformes atinjam altas concentrações.
 - Lesão mecânica e perda de GAGs: Cistólitos, divertículos ou cistite polipoide lesam a camada urotelial protetora, expondo a lâmina própria à penetração microbiana.
 - Imunossupressão sistêmica: Hiperadrenocorticismo espontâneo, corticoterapia crônica, quimioterapia ou neoplasias atenuam o influxo neutrofílico e a opsonização imune, favorecendo a invasão transmural profunda e a disseminação de microrganismos produtores de gás.`
   },
@@ -291,7 +291,7 @@ REGRA DE OURO: O diabetes é um facilitador metabólico relevante, mas estase ur
           mechanism: 'Inflamação transmural intensa estimulando mecanorreceptores de estiramento e fibras nociceptivas tipo C da parede vesical, deflagrando o reflexo miccional com volumes urinários mínimos.',
           clinicalMeaning: 'Sintomas clássicos de irritação do trato urinário inferior; podem ser atenuados ou ausentes em pacientes com bexiga neurogênica e atonia vesical primária.',
           priority: 'common',
-          context: ['Nelson & Couto 6a ed.']
+          context: ['Sinais do trato urinário inferior']
         },
         {
           finding: 'Pneumatúria (saída de bolhas de gás durante a micção)',
@@ -317,14 +317,14 @@ REGRA DE OURO: O diabetes é um facilitador metabólico relevante, mas estase ur
           mechanism: 'Distensão da bexiga inflamada, peritonite focal perivesical por disseminação de mediadores inflamatórios ou gás retroperitoneal/perivesical.',
           clinicalMeaning: 'Alerta para envolvimento transmural profundo e requer palpação extremamente suave para evitar ruptura iatrogênica de parede desvitalizada.',
           priority: 'emergency',
-          context: ['BSAVA Nephrology 3a ed.']
+          context: ['Risco de peritonite']
         },
         {
           finding: 'Febre ou hipotermia sistêmica',
           mechanism: 'Liberação maciça de interleucina-1, TNF-alfa e endotoxinas lipopolissacarídicas (LPS) de E. coli na circulação geral, disparando resposta inflamatória sistêmica.',
           clinicalMeaning: 'Indica infecção complicada com risco iminente de sepse, urossepticemia ou pielonefrite enfisematosa associada.',
           priority: 'emergency',
-          context: ['Feline ECC 2a ed.']
+          context: ['Sepse urinária']
         },
         {
           finding: 'Poliúria e polidipsia (PU/PD)',
@@ -350,7 +350,7 @@ REGRA DE OURO: O diabetes é um facilitador metabólico relevante, mas estase ur
           mechanism: 'Colapso hemodinâmico secundário à liberação intravascular maciça de endotoxinas Gram-negativas (LPS) induzindo vasodilatação patológica e aumento da permeabilidade capilar.',
           clinicalMeaning: 'Sinal iminente de choque séptico urológico; demanda ressuscitação volêmica agressiva, coleta de hemocultura e antibioticoterapia intravenosa imediata.',
           priority: 'emergency',
-          context: ['Feline ECC 2a ed.']
+          context: ['Choque séptico']
         },
         {
           finding: 'Dor lombar intensa e nefromegalia dolorosa à palpação',
@@ -425,7 +425,7 @@ REGRA DE OURO: O diabetes é um facilitador metabólico relevante, mas estase ur
 
     principioInvasaoTecidualEBreakpoints: `Princípio de invasão tecidual vs. breakpoints urinários convencionais:
 - Invasão transmural profunda: A cistite enfisematosa não deve ser manejada como bacteriúria simples ou cistite superficial, mas como infecção transmural grave com invasão profunda da parede, microtrombose vascular e isquemia tecidual.
-- Falácia dos breakpoints urinários: Conforme alerta enfático da ISCAID (2019) e Plumb's (10a ed.), a amoxicilina com clavulanato possui breakpoints urinários laboratoriais permissivos baseados exclusivamente na sua enorme concentração intraluminal na urina.
+- Falácia dos breakpoints urinários: Conforme alerta enfático da ISCAID (2019), a amoxicilina com clavulanato possui breakpoints urinários laboratoriais permissivos baseados exclusivamente na sua enorme concentração intraluminal na urina.
 - Concentração tecidual vs. intraluminal: Esses breakpoints urinários não se aplicam a infecções invasivas da parede vesical, nas quais concentrações teciduais e séricas são os verdadeiros determinantes de eficácia.
 
 REGRA DE OURO: Não presumir eficácia clínica de amoxicilina/clavulanato contra cepas de E. coli em CE apenas porque o laudo laboratorial reportou sensibilidade usando critérios de cistite esporádica simples.`,
@@ -440,7 +440,7 @@ REGRA DE OURO: Não presumir eficácia clínica de amoxicilina/clavulanato contr
         ['Enrofloxacina', 'Cão', '5 a 20 mg/kg q24h', 'Oral / SC / IV', 'Excelente penetração tecidual vesical e renal; reservar para infecção invasiva profunda, pielonefrite ou resistência comprovada.'],
         ['Enrofloxacina', 'Gato', 'Até 5 mg/kg q24h (máximo estrito)', 'Oral / SC / IV', 'Evitar se houver alternativa segura; dose >5 mg/kg/dia acarreta degeneração retiniana irreversível e cegueira aguda em gatos.'],
         ['Nitrofurantoína', 'Cão e Gato', '4,4 a 5 mg/kg q8h', 'Oral', 'Eficaz exclusivamente para lúmen vesical inferior; NÃO usar se houver invasão tecidual profunda da parede ou suspeita de pielonefrite.'],
-        ['Meropenem', 'Cão: 8,5 mg/kg q8h IV ou q12h SC; Gato: 10 mg/kg q12h IV/SC', 'Cão e Gato', 'IV / SC / IM', 'Carbapenêmico restrito estritamente a enterobactérias multirresistentes (MDR) documentadas em TSA (Plumb\'s 10a ed.; Lee et al. 2023).']
+        ['Meropenem', 'Cão: 8,5 mg/kg q8h IV ou q12h SC; Gato: 10 mg/kg q12h IV/SC', 'Cão e Gato', 'IV / SC / IM', 'Carbapenêmico restrito estritamente a enterobactérias multirresistentes (MDR) documentadas em TSA (Lee et al. 2023).']
       ]
     },
 
@@ -453,7 +453,7 @@ CONTRAINDICAÇÃO FORMAL: Em felinos, a enrofloxacina em doses superiores a 5 mg
     meropenemApenasMDR: `Critérios estritos para o uso de Meropenem:
 - Antimicrobiano de reserva crítica: O relato de Lee et al. (2023) documentou o uso bem-sucedido de meropenem em um cão com CE e pielonefrite enfisematosa por E. coli multirresistente (resistente a ampicilina, cefalosporinas, fluoroquinolonas e aminoglicosídeos).
 - Indicação exclusiva: Esse relato ilustra tratamento de resgate para patógeno MDR documentado, não justificando qualquer utilização empírica de carbapenêmicos.
-- Recomendações de referência: Plumb's (10a ed.) preconiza que o meropenem seja restrito a infecções comprovadamente resistentes a todas as opções convencionais, com descalonamento imediato caso um fármaco de menor espectro se mostre viável.`,
+- Recomendações de referência: o meropenem deve ser restrito a infecções comprovadamente resistentes a todas as opções convencionais, com descalonamento imediato caso um fármaco de menor espectro se mostre viável.`,
 
     duracaoTratamentoELacunaEvidencia: `Duração da antibioticoterapia e raciocínio clínico escalonado:
 - Evidência contemporânea: Não existem ensaios clínicos controlados avaliando a duração ideal do tratamento antimicrobiano na cistite enfisematosa. A scoping review de Weese & Weese (2026) identificou que nos 18 casos com duração informada, o tempo variou de 18 a 35 dias (mediana de 30 dias), reflexo descritivo de condutas empíricas históricas e não recomendação formal.

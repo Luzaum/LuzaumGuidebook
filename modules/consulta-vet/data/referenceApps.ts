@@ -17,12 +17,16 @@ const moduleThumbnails: Record<string, string> = {
 export const REFERENCE_APPS: ReferenceApp[] = [
   ...modules.map((module) => {
     const thumbnail = moduleThumbnails[module.id];
+    const extraKeywords =
+      module.id === 'neonatus'
+        ? ['neonatologia', 'apgar', 'filhotes', 'recém-nascido', 'dentição', 'recover 2025']
+        : [];
     return {
       id: module.id,
       name: module.title,
       to: module.route,
       description: module.description,
-      keywords: [module.id],
+      keywords: [module.id, ...extraKeywords],
       iconSrc: thumbnail ? `${THUMBNAIL_ROOT}/${thumbnail}.webp` : module.iconImage,
     };
   }),

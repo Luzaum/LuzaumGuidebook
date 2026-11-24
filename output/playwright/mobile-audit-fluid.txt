@@ -1,0 +1,5 @@
+
+> Vetius@0.0.0 validate:fluidoterapia-vet
+> tsx scripts/validate-fluidoterapia-vet.ts
+
+validate:fluidoterapia-vet OK

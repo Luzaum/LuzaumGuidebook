@@ -231,7 +231,7 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       '  - Redução da massa eritrocitária corporal total abaixo dos limites homeostáticos basais para a espécie, idade e raça do paciente.\n' +
       '- Métodos indiretos e grandezas de concentração:\n' +
       '  - Na rotina, a massa total não é aferida por diluição isotópica; avalia-se o hematócrito automatizado (HCT), o volume globular por microcentrifugação (PCV/VG), a hemoglobina sérica (Hb) e a contagem total de eritrócitos (RBC).\n' +
-      '- Interferência da volemia plasmática (Nelson & Couto, 6ª ed.; Ettinger, 9ª ed.):\n' +
+      '- Interferência da volemia plasmática:\n' +
       '  - Esses marcadores refletem grandezas de concentração e sofrem interferência direta do volume hídrico intravascular circulante.',
 
     anemiaAbsolutaVsAnemiaDilucional:
@@ -278,7 +278,7 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       '  - 2. Síntese eritrocitária de 2,3-difosfoglicerato (2,3-DPG), desviando a curva de dissociação da hemoglobina para a direita e facilitando a entrega tecidual de O2.\n' +
       '  - 3. Vasodilatação microvascular periférica e redistribuição de fluxo para SNC e miocárdio.\n' +
       '- Plasticidade clínica surpreendente:\n' +
-      '  - Cães e gatos compensados mantêm locomoção e alerta estáveis com hematócritos extremos de 8% a 12% (Nelson & Couto; Feline ECC).',
+      '  - Cães e gatos compensados mantêm locomoção e alerta estáveis com hematócritos extremos de 8% a 12%.',
 
     tabelaComparativaTresMecanismosFisiopatologicos: {
       kind: 'clinicalTable',
@@ -357,7 +357,7 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       '  - Bloqueio da absorção entérica de ferro e retenção do ferro reciclado no interior dos macrófagos.\n' +
       '- Deficiência funcional de ferro versus carência absoluta:\n' +
       '  - Os estoques corporais totais de ferro são normais ou abundantes, porém biologicamente inacessíveis aos precursores eritroides medulares.\n' +
-      '- Supressão eritroide direta (Nelson & Couto; Feline ECC):\n' +
+      '- Supressão eritroide direta:\n' +
       '  - Citocinas inflamatórias inibem a divisão dos eritroblastos e atenuam a resposta medular à EPO, produzindo o padrão clássico normocítico normocrômico não regenerativo.'
   },
 
@@ -1044,7 +1044,7 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       '- 3. Anemia Ferropriva Absoluta por sangramento crônico:\n' +
       '  - Resolução primária do foco hemorrágico.\n' +
       '  - Sulfato ferroso oral: cães 100 a 600 mg do sal total VO q24h fracionado com alimento (325 mg do sal correspondem a ~65 mg de ferro elementar).\n' +
-      '  - Ferro dextrano injetável: 10 a 20 mg/kg IM dose única em cães; 50 mg totais IM a cada 3 a 4 semanas em gatos (Plumb 10ª ed.; BSAVA Formulary).',
+      '  - Ferro dextrano injetável: 10 a 20 mg/kg IM dose única em cães; 50 mg totais IM a cada 3 a 4 semanas em gatos.',
 
     reacoesTransfusionaisEManejoDeEmergencia:
       'Protocolo de intervenção em reações transfusionais agudas (TRACS 2021):\n' +

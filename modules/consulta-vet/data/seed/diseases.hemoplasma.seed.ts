@@ -243,7 +243,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
           'Ensaio molecular de alta especificidade e sensibilidade que amplifica sequências conservadas do gene do RNA ribossômico 16S de hemoplasmas.',
         purpose: 'Confirmação inequívoca da infecção, diferenciação de espécies e mensuração da carga bacteriana.',
         interpretation:
-          'Padrão-ouro (*isGoldStandard: true*). Detecta até 1 cópia de DNA bacteriano por reação. Diferencia inequivocamente Mycoplasma haemofelis de Candidatus M. haemominutum e Candidatus M. turicensis em gatos, e M. haemocanis de Candidatus M. haematoparvum em cães. Fundamental para definir prognóstico e monitorar a resposta ao tratamento.',
+          'Padrão-ouro. Detecta até 1 cópia de DNA bacteriano por reação. Diferencia inequivocamente Mycoplasma haemofelis de Candidatus M. haemominutum e Candidatus M. turicensis em gatos, e M. haemocanis de Candidatus M. haematoparvum em cães. Fundamental para definir prognóstico e monitorar a resposta ao tratamento.',
         limitations: 'Pode demorar alguns dias para envio laboratorial; o tratamento empírico deve ser iniciado imediatamente se a suspeita clínica for alta em paciente instável.',
         isGoldStandard: true
       },
@@ -333,7 +333,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     controleDeEctoparasitas:
       'Instituir controle permanente, metódico e contínuo de pulgas (*Ctenocephalides felis*) e carrapatos em todos os animais contactantes do domicílio com o uso mensal de isoxazolinas ou ectoparasiticidas tópicos/orais modernos, minimizando a transmissão vetorial.',
     prevencaoDeBrigasEConfinamento:
-      'Manter os felinos em regime estritamente domiciliado (indoor) com telas em janelas e promover a castração precoce para erradicar brigas territoriais e cópula, bloqueando a inoculação direta de sangue contaminado por mordeduras.',
+      'Manter os felinos em regime estritamente domiciliado com telas em janelas e promover a castração precoce para erradicar brigas territoriais e cópula, bloqueando a inoculação direta de sangue contaminado por mordeduras.',
     biossegurancaTransfusional:
       'Exigir teste obrigatório de qPCR em sangue total para Mycoplasma haemofelis, M. haemominutum, M. turicensis e M. haemocanis em todos os cães e gatos candidatos a doadores de sangue. Animais positivos na qPCR devem ser excluídos de forma permanente dos programas de doação hemoterápica.',
     cuidadosNaAdministracaoDeDoxiciclina:

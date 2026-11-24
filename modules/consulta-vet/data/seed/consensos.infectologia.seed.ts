@@ -22,7 +22,7 @@ export const infectologiaConsensosSeed: ConsensusSeed[] = [
     practicalApplicationText:
       'Testar na admissão → confirmar discordâncias → estadiar com hemograma, bioquímica, urinálise → vacinar FeLV se indicado → plano de seguimento semestral/anual conforme status.',
     appNotesText:
-      'VIGENTE — referência principal para FeLV/FIV no ConsultaVET. PDF via DOI (acesso aberto J Feline Med Surg).',
+      'VIGENTE — referência principal para FeLV/FIV. PDF via DOI (acesso aberto J Feline Med Surg).',
     references: [
       {
         id: 'ref-aafp-retrovirus-2020',

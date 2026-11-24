@@ -64,7 +64,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       {
         title: 'Conduta imediata',
         body:
-          'Estabilizar vias aéreas e aspiração; radiografia torácica; coletar AChR-Ab; iniciar piridostigmina titulada; não imunossuprimir automaticamente (Platt & Garosi, 2012; Khorzad et al., 2011).',
+          'Estabilizar vias aéreas e aspiração; radiografia torácica; coletar AChR-Ab; iniciar piridostigmina titulada; não imunossuprimir automaticamente (Khorzad et al., 2011).',
         highlights: ['piridostigmina', 'aspiração'],
       },
     ],
@@ -81,7 +81,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
           label: 'Banco mínimo + CK',
           timing: 'Laboratório inicial',
           detail:
-            'Hemograma, bioquímica, eletrólitos, CK, urinálise — excluir complicações e mimetizadores. CK acentuada sugere miopatia primária, não MG isolada (Hall et al., BSAVA Gastroenterology, 3ª ed.).',
+            'Hemograma, bioquímica, eletrólitos, CK, urinálise — excluir complicações e mimetizadores. CK acentuada sugere miopatia primária, não MG isolada.',
         },
         {
           label: 'Radiografias torácicas',
@@ -100,7 +100,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
           label: 'Se negativo e suspeita alta',
           timing: 'Investigação ampliada',
           detail:
-            'Repetir sorologia; edrofônio 0,1–0,2 mg/kg IV com atropina 0,02 mg/kg IV prévia (King & Boag, BSAVA ECC, 3ª ed.); estimulação repetitiva (decremento ≥10%); considerar CMS se filhote com AChR-Ab negativo (Mignan et al., 2020).',
+            'Repetir sorologia; edrofônio 0,1–0,2 mg/kg IV com atropina 0,02 mg/kg IV prévia; estimulação repetitiva (decremento ≥10%); considerar CMS se filhote com AChR-Ab negativo (Mignan et al., 2020).',
         },
       ],
     },
@@ -111,26 +111,26 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
           label: 'Estabilizar ABC',
           timing: 'Emergência',
           detail:
-            'Dispneia, hipoxemia, hipercapnia, disfagia grave ou forma fulminante → internação, oxigênio, considerar ventilação mecânica (King & Vite, 1998; Bailey, 2012).',
+            'Dispneia, hipoxemia, hipercapnia, disfagia grave ou forma fulminante → internação, oxigênio, considerar ventilação mecânica (King & Vite, 1998).',
         },
         {
           label: 'Piridostigmina VO',
           timing: 'Primeira linha sintomática',
           detail:
-            'Inibe acetilcolinesterase e prolonga ACh na fenda sináptica; não remove autoanticorpos (Plumb\'s, 10ª ed.).',
+            'Inibe acetilcolinesterase e prolonga ACh na fenda sináptica; não remove autoanticorpos.',
           dose: 'Cães: 0,2–2 mg/kg q8–12h. Gatos: 0,25 mg/kg q8–12h. Iniciar baixo e titular.',
         },
         {
           label: 'Sem deglutição segura',
           timing: 'Hospitalar',
           detail:
-            'Piridostigmina CRI 0,01–0,03 mg/kg/h IV ou neostigmina 0,04 mg/kg IM q6–8h (Bailey, 2012; Plumb\'s, 10ª ed.).',
+            'Piridostigmina CRI 0,01–0,03 mg/kg/h IV ou neostigmina 0,04 mg/kg IM q6–8h.',
         },
         {
           label: 'Megaesôfago e aspiração',
           timing: 'Suporte obrigatório',
           detail:
-            'Refeições pequenas, verticalização pós-alimentar, consistência individual; tratar pneumonia ativamente (Hall et al., BSAVA Gastroenterology, 3ª ed.).',
+            'Refeições pequenas, verticalização pós-alimentar, consistência individual; tratar pneumonia ativamente.',
         },
         {
           label: 'Imunossupressão',
@@ -146,13 +146,13 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
     definicao:
       'A miastenia gravis adquirida é doença imunomediada na qual IgG contra receptores nicotínicos de acetilcolina reduz a transmissão na placa motora. Mignan et al. (2020), em revisão de classificação publicada no Journal of Veterinary Internal Medicine, separam formalmente esta entidade das síndromes miastênicas congênitas — grupo genético heterogêneo sem autoimunidade primária. Conclusão prática: sorologia, imunossupressão, prognóstico e aconselhamento reprodutivo não são intercambiáveis entre MG adquirida e CMS.',
     mecanismoAutoimune:
-      'Tizard (Veterinary Immunology, 11ª ed.) descreve três vias convergentes: bloqueio funcional do receptor, cross-linking com internalização acelerada e lesão pós-sináptica mediada por complemento. O resultado comum é queda do potencial de placa terminal e perda da margem de segurança — o músculo ainda contrai nos primeiros estímulos, mas falha quando o esforço se repete.',
+      'A fisiopatologia imunológica envolve três vias convergentes: bloqueio funcional do receptor, cross-linking com internalização acelerada e lesão pós-sináptica mediada por complemento. O resultado comum é queda do potencial de placa terminal e perda da margem de segurança — o músculo ainda contrai nos primeiros estímulos, mas falha quando o esforço se repete.',
     timo:
       'Alterações tímicas e timoma associam-se à MG. Hague et al. (2015), em coorte retrospectiva de 235 gatos com MG adquirida, documentaram massa mediastinal cranial em aproximadamente metade dos casos, frequentemente timoma. Conclusão: todo gato com MG merece investigação cuidadosa do mediastino cranial antes de fechar prognóstico.',
     associacoes: [
-      'Na maioria dos cães a doença é idiopática imunomediada, mas devem ser pesquisadas neoplasias, hipotireoidismo, miosite imunomediada e disautonomia (Nelson & Couto, 6ª ed.).',
-      'Em gatos, metimazol e carbimazol foram associados a MG imunomediada; a remissão pode ocorrer meses após suspensão do antitireoidiano quando a relação temporal for compatível (Nelson & Couto, 6ª ed.; Shelton, 2010).',
-      'Timoma, cistos tímicos e outras neoplasias aparecem em séries clínicas; nem toda associação implica causalidade direta (Penderis & Martin-Vaquero, 2016).',
+      'Na maioria dos cães a doença é idiopática imunomediada, mas devem ser pesquisadas neoplasias, hipotireoidismo, miosite imunomediada e disautonomia.',
+      'Em gatos, metimazol e carbimazol foram associados a MG imunomediada; a remissão pode ocorrer meses após suspensão do antitireoidiano quando a relação temporal for compatível (Shelton, 2010).',
+      'Timoma, cistos tímicos e outras neoplasias aparecem em séries clínicas; nem toda associação implica causalidade direta.',
     ],
     cmsRelacionada:
       'Síndromes miastênicas congênitas decorrem de mutações em genes da transmissão neuromuscular (CHAT, COLQ, CHRNE, entre outros) e manifestam-se tipicamente em filhotes com AChR-Ab negativo. Mignan et al. (2020) enfatizam que anticolinesterásico pode ajudar alguns subtipos pós-sinápticos, mas imunossupressão não trata a causa genética.',
@@ -189,11 +189,11 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       display: 'wide',
     },
     margemDeSeguranca:
-      'A junção neuromuscular depende de liberação de acetilcolina (ACh), ligação aos receptores nicotínicos e degradação rápida pela acetilcolinesterase. Em condições normais existe margem de segurança: há mais transmissão do que o mínimo necessário para gerar potencial de ação muscular (Klein, Cunningham\'s Physiology, 6ª ed.). Na ilustração acima, autoanticorpos (Y) bloqueiam receptores pós-sinápticos — reduzindo a área funcional de ligação da ACh.',
+      'A junção neuromuscular depende de liberação de acetilcolina (ACh), ligação aos receptores nicotínicos e degradação rápida pela acetilcolinesterase. Em condições normais existe margem de segurança: há mais transmissão do que o mínimo necessário para gerar potencial de ação muscular. Na ilustração acima, autoanticorpos (Y) bloqueiam receptores pós-sinápticos — reduzindo a área funcional de ligação da ACh.',
     fatigabilidade:
       'Na MG adquirida, menos receptores funcionais reduzem o potencial de placa. Nos primeiros estímulos a transmissão ainda pode ser suficiente; com estímulos repetidos a liberação fisiológica de ACh diminui discretamente — no paciente miastênico, junções deixam de atingir o limiar → quanto mais o músculo trabalha, mais fibras falham temporariamente.',
     piridostigmina:
-      'Piridostigmina inibe acetilcolinesterase, prolonga ACh na fenda sináptica e aumenta a chance de ativar receptores restantes — tratamento sintomático, não imunológico (Plumb\'s, 10ª ed.).',
+      'Piridostigmina inibe acetilcolinesterase, prolonga ACh na fenda sináptica e aumenta a chance de ativar receptores restantes — tratamento sintomático, não imunológico.',
     megaesofago:
       'No cão, o esôfago possui musculatura estriada em praticamente toda a extensão; falha de transmissão gera peristalse ineficaz, dilatação, regurgitação e risco de aspiração — complicação que mais determina mortalidade (Khorzad et al., 2011). Nos gatos, a musculatura esofágica distal tem maior componente liso; megaesôfago associado à MG tende a ser menos frequente (Hague et al., 2015).',
   },
@@ -338,7 +338,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       title: 'Teste com edrofônio',
       purpose: 'Suporte diagnóstico rápido quando AChR-Ab está pendente ou negativo.',
       description:
-        'Edrofônio 0,1–0,2 mg/kg IV após atropina 0,02 mg/kg IV; monitorização cardíaca e suporte respiratório disponíveis (King & Boag, BSAVA ECC, 3ª ed.).',
+        'Edrofônio 0,1–0,2 mg/kg IV após atropina 0,02 mg/kg IV; monitorização cardíaca e suporte respiratório disponíveis.',
       interpretation:
         'Melhora dramática de força por 1–2 minutos sustenta falha de transmissão neuromuscular.',
       limitations:
@@ -349,7 +349,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       title: 'Estimulação nervosa repetitiva',
       purpose: 'Documentar falha fisiológica da JNM quando sorologia é negativa.',
       description:
-        'Sucessivos estímulos podem reduzir amplitude do potencial de ação muscular composto; decremento ≥10% é sugestivo (King & Boag, BSAVA ECC, 3ª ed.).',
+        'Sucessivos estímulos podem reduzir amplitude do potencial de ação muscular composto; decremento ≥10% é sugestivo.',
       interpretation: 'Resposta decremental apoia junctionopatia; não define sozinha etiologia autoimune.',
       limitations: 'Exige equipamento, sedação/anestesia e protocolo padronizado; sensibilidade varia.',
     },
@@ -367,22 +367,22 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       title: 'Diferenciais obrigatórios',
       purpose: 'Evitar diagnóstico prematuro de MG.',
       description:
-        'Botulismo, paralisia por carrapato, organofosforados, polirradiculoneurite, polimiosite, hipocalemia, hipoadrenocorticismo. MG versus polirradiculoneurite: fatigabilidade marcante e megaesôfago favorecem MG; arreflexia ascendente e LCR com dissociação albuminocitológica favorecem polirradiculoneurite (Drobatz et al., 2019).',
+        'Botulismo, paralisia por carrapato, organofosforados, polirradiculoneurite, polimiosite, hipocalemia, hipoadrenocorticismo. MG versus polirradiculoneurite: fatigabilidade marcante e megaesôfago favorecem MG; arreflexia ascendente e LCR com dissociação albuminocitológica favorecem polirradiculoneurite.',
       interpretation: 'Recuperação rápida com repouso favorece junctionopatia, mas não é patognomônica.',
       limitations: 'Doenças podem coexistir ou mimetizar parcialmente.',
     },
   ],
   treatment: {
     sintomatico: [
-      'Piridostigmina é o anticolinesterásico de manutenção mais utilizado. Budde & McCluskey (2023), no Plumb\'s Veterinary Drug Handbook (10ª ed.), descrevem para cães 0,2–2 mg/kg por via oral a cada 8–12 horas, iniciando na extremidade inferior e titulando por resposta clínica e efeitos colinérgicos. Allerton (2020), no BSAVA Formulary, cita faixa até 5 mg/kg em cães — essa faixa maior não deve ser alvo automático; reavaliar clinicamente antes de escalar.',
-      'Em gatos, a dose de referência recorrente é 0,25 mg/kg por via oral a cada 8–12 horas (Allerton, BSAVA Formulary, 2020; Bailey, 2012). Gatos podem ser particularmente sensíveis a efeitos muscarínicos — monitorar hipersalivação, vômito, diarreia e bradicardia.',
-      'Paciente incapaz de deglutir: piridostigmina em infusão contínua 0,01–0,03 mg/kg/h IV ou neostigmina 0,04 mg/kg IM a cada 6–8 horas (Bailey, 2012; Plumb\'s, 10ª ed.).',
+      'Piridostigmina é o anticolinesterásico de manutenção mais utilizado. Para cães, utiliza-se habitualmente 0,2–2 mg/kg por via oral a cada 8–12 horas, iniciando na extremidade inferior e titulando por resposta clínica e efeitos colinérgicos. Embora doses até 5 mg/kg sejam descritas em cães, essa faixa maior não deve ser alvo automático — reavaliar clinicamente antes de escalar.',
+      'Em gatos, a dose de referência recorrente é 0,25 mg/kg por via oral a cada 8–12 horas. Gatos podem ser particularmente sensíveis a efeitos muscarínicos — monitorar hipersalivação, vômito, diarreia e bradicardia.',
+      'Paciente incapaz de deglutir: piridostigmina em infusão contínua 0,01–0,03 mg/kg/h IV ou neostigmina 0,04 mg/kg IM a cada 6–8 horas.',
     ],
     criseColinergica: [
-      'Dose excessiva de anticolinesterásico também produz fraqueza, com hipersalivação, lacrimejamento, vômitos, diarreia, miose, bradicardia, broncoconstrição e fasciculações (Bailey, 2012; Plumb\'s, 10ª ed.). Conclusão clínica: piora de fraqueza em paciente em piridostigmina exige diferenciar progressão da MG, pneumonia/hipoxemia, distúrbio metabólico, dose insuficiente e excesso colinérgico — aumentar dose automaticamente pode agravar o quadro.',
+      'Dose excessiva de anticolinesterásico também produz fraqueza, com hipersalivação, lacrimejamento, vômitos, diarreia, miose, bradicardia, broncoconstrição e fasciculações. Conclusão clínica: piora de fraqueza em paciente em piridostigmina exige diferenciar progressão da MG, pneumonia/hipoxemia, distúrbio metabólico, dose insuficiente e excesso colinérgico — aumentar dose automaticamente pode agravar o quadro.',
     ],
     suporteEsofagico: [
-      'Hall et al. (BSAVA Manual of Canine and Feline Gastroenterology, 3ª ed.) enfatizam investigação de megaesôfago adquirido com AChR-Ab e manejo individualizado de consistência alimentar. Refeições pequenas e frequentes, verticalização pós-alimentar (manter cabeça e tórax elevados por pelo menos ~10 minutos) e teste de consistência (pastoso, bolotas, líquido) reduzem regurgitação. Gastrostomia bypassa ingestão oral, mas não elimina risco aspirativo de saliva e refluxo.',
+      'O manejo nutricional enfatiza investigação de megaesôfago adquirido com AChR-Ab e ajuste individualizado de consistência alimentar. Refeições pequenas e frequentes, verticalização pós-alimentar (manter cabeça e tórax elevados por pelo menos ~10 minutos) e teste de consistência (pastoso, bolotas, líquido) reduzem regurgitação. Gastrostomia bypassa ingestão oral, mas não elimina risco aspirativo de saliva e refluxo.',
     ],
     pneumoniaAspirativa: [
       'Khorzad et al. (2011), revisando tratamento e cuidados críticos da MG canina, destacam pneumonia aspirativa como complicação central de mortalidade. Conclusão: tratar oxigenoterapia, hidratação, antimicrobiano quando indicado e monitorar FR, SpO₂ e gasometria em pacientes graves antes de considerar imunossupressão.',
@@ -393,14 +393,14 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       'Dewey et al. (2010), em série de 27 cães com micofenolato mofetil, não demonstraram vantagem clara de rotina sobre piridostigmina isolada em remissão e sobrevivência. Azatioprina: evidência limitada em cães; evitar em gatos pelo risco de mielotoxicidade.',
     ],
     timoma: [
-      'Quando massa mediastinal compatível com timoma é identificada, estabilizar MG e pneumonia antes de estadiar e discutir ressecção e/ou radioterapia (Hague et al., 2015; Nelson & Couto, 6ª ed.). Timectomia não garante remissão imediata; anticorpos podem diminuir semanas a meses depois. Timectomia rotineira sem massa tímica identificável não tem evidência de benefício (Penderis & Martin-Vaquero, 2016).',
+      'Quando massa mediastinal compatível com timoma é identificada, estabilizar MG e pneumonia antes de estadiar e discutir ressecção e/ou radioterapia (Hague et al., 2015). Timectomia não garante remissão imediata; anticorpos podem diminuir semanas a meses depois. Timectomia rotineira sem massa tímica identificável não tem evidência de benefício.',
     ],
     drogasCautela: [
-      'Aminoglicosídeos, algumas lincosamidas, macrolídeos, fluoroquinolonas, polimixinas, magnésio parenteral e bloqueadores neuromusculares podem agravar bloqueio neuromuscular (Penderis & Martin-Vaquero, 2016; Plumb\'s, 10ª ed.). Evitar quando houver alternativa clinicamente adequada; avaliar risco/benefício individual — não transformar relatos em proibição absoluta.',
-      'Anestesia exige planejamento específico: risco de aspiração, resposta imprevisível a relaxantes e recuperação prolongada (Lamont et al., Veterinary Anesthesia, 6ª ed.).',
+      'Aminoglicosídeos, algumas lincosamidas, macrolídeos, fluoroquinolonas, polimixinas, magnésio parenteral e bloqueadores neuromusculares podem agravar bloqueio neuromuscular. Evitar quando houver alternativa clinicamente adequada; avaliar risco/benefício individual — não transformar relatos em proibição absoluta.',
+      'Anestesia exige planejamento específico: risco de aspiração, resposta imprevisível a relaxantes e recuperação prolongada.',
     ],
     redFlagsInternacao: [
-      'Dispneia, hipoxemia, hipercapnia, progressão rápida da paresia, tetraplegia, incapacidade de proteger vias aéreas, regurgitação frequente, pneumonia aspirativa, fraqueza laríngea ou forma fulminante — internar ou manejo intensivo (Bailey, 2012; King & Vite, 1998).',
+      'Dispneia, hipoxemia, hipercapnia, progressão rápida da paresia, tetraplegia, incapacidade de proteger vias aéreas, regurgitação frequente, pneumonia aspirativa, fraqueza laríngea ou forma fulminante — internar ou manejo intensivo (King & Vite, 1998).',
     ],
     monitoramento: [
       'Força, fatigabilidade, deglutição, regurgitação, FR, peso e sinais colinérgicos.',
@@ -430,7 +430,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
     cms:
       'Para síndromes miastênicas congênitas: aconselhamento genético, não reproduzir afetados, testes genéticos quando disponíveis (Mignan et al., 2020).',
     metimazol:
-      'Em gatos hipertireoidianos com MG temporalmente relacionada a metimazol/carbimazol, suspender o fármaco quando possível e acompanhar remissão clínica e sorológica (Nelson & Couto, 6ª ed.).',
+      'Em gatos hipertireoidianos com MG temporalmente relacionada a metimazol/carbimazol, suspender o fármaco quando possível e acompanhar remissão clínica e sorológica.',
   },
   relatedConsensusSlugs: [],
   relatedDiseaseSlugs: ['sindromes-miastenicas-congenitas-caes-gatos'],

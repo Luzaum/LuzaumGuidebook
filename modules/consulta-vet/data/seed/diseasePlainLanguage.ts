@@ -13,7 +13,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       '- Microtrombose invisível e isquemia de órgãos:\n' +
       '  - Em vez de formar coágulos apenas em lesões, o organismo cria milhares de microtrombos dentro dos vasos, entupindo a circulação de rins, pulmões e fígado.\n' +
       '- Consumo descontrolado e sangramento paradoxal:\n' +
-      '  - Todos os fatores e plaquetas são exauridos rapidamente, retirando a capacidade de conter sangramentos e gerando manchas roxas (petéquias) e hemorragias graves.',
+      '  - O consumo de plaquetas e fatores da coagulação pode superar a reposição pelo organismo e favorecer sangramentos. Nem todo animal sangra: a doença também pode se manifestar principalmente por pequenos coágulos e lesão de órgãos.',
     keyPoints: [
       'A CID nunca surge sozinha: ela é sempre consequência de uma condição muito grave, como infecções generalizadas (sepse), tumores avançados, inflamação severa no pâncreas ou traumas graves.',
       'O animal pode estar sofrendo danos graves em órgãos internos mesmo sem sangrar por fora — a falta de sangramento visível não significa que ele esteja fora de perigo.',
@@ -44,7 +44,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
     keyPoints: [
       'Um teste rápido positivo sozinho não confirma infecção grave — é preciso confirmar e repetir o exame.',
       'Gatos positivos podem viver bem por anos com acompanhamento; eutanásia só pelo teste não é indicada.',
-      'Prevenção: testar, vacinar gatos em risco, evitar contato com gatos infectantes e manter indoor.',
+      'Prevenção: testar, vacinar gatos em risco, evitar contato com gatos infectantes e manter em ambiente domiciliar.',
     ],
   },
   'erliquiose-monocitica-canina': {
@@ -307,12 +307,29 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'hipoadrenocorticismo-addison': {
     whatIsIt:
-      'A doença de Addison é a falta de produção de cortisol e aldosterona pelas adrenais. Sem esses hormônios, o corpo não tolera estresse e perde o controle de hidratação e eletrólitos.',
+      'O hipoadrenocorticismo (doença de Addison) ocorre quando as glândulas adrenais de cães ou gatos deixam de produzir quantidades suficientes de cortisol e, na maioria dos casos, aldosterona — hormônios essenciais para responder ao estresse, manter a pressão arterial e equilibrar sódio e potássio.',
     keyPoints: [
-      'Conhecida como “grande imitadora” — sintomas vagos confundem com gastroenterite.',
-      'Pode causar colapso súbito, vômitos, fraqueza e tremores.',
-      'Reposição hormonal diária e monitoramento de sódio/potássio controlam a doença.',
+      'Conhecido como “grande imitador” porque os sintomas vão e voltam e se confundem com gastroenterite ou doença renal.',
+      'A forma sem alteração de sódio e potássio (eunatrêmica/eucalêmica) também existe e pode atrasar o diagnóstico.',
+      'Crises agudas causam fraqueza extrema, tremores, bradicardia e choque, exigindo atendimento veterinário imediato.',
+      'Após estabilização, a maioria dos cães e gatos leva vida normal com reposição hormonal contínua e acompanhamento periódico.',
     ],
+    whatIs:
+      'As glândulas adrenais produzem cortisol (que ajuda o organismo a lidar com estresse, inflamação e manter a glicose no sangue) e aldosterona (que controla a água corporal, o sódio e a eliminação de potássio pelos rins). Quando o córtex adrenal sofre lesão — mais comumente autoimune em cães, ou por processo inflamatório/infiltrativo como linfoma ou trauma em gatos — esses hormônios ficam deficientes. Em casos mais raros, a falha está na hipófise ou na suspensão abrupta de corticoides usados por tempo prolongado.',
+    warningSigns:
+      'Procure atendimento veterinário imediato se notar:\n\n' +
+      '- Prostração acentuada, fraqueza muscular, tremores ou incapacidade de permanecer em pé.\n' +
+      '- Vômitos, diarreia (às vezes com sangue escuro), perda de apetite e emagrecimento progressivo.\n' +
+      '- Desidratação, gengivas pálidas ou frias e frequência cardíaca lenta apesar da fraqueza (alerta máximo de potássio alto).\n' +
+      '- Sede e volume de urina aumentados em alguns pacientes, seguidos de colapso repentino após estresse (banho, viagem, cirurgia).',
+    diagnosis:
+      'Exames de sangue rotineiros frequentemente mostram sódio baixo, potássio elevado, aumento de ureia/creatinina, ausência de resposta de estresse nos glóbulos brancos ou glicose baixa, mas também podem vir normais nas formas sem alteração eletrolítica. A confirmação definitiva é feita com o teste de estimulação com ACTH (medindo o cortisol antes e após a aplicação do hormônio estimulante), associado à ultrassonografia das adrenais quando necessário.',
+    homeCare:
+      'Cuidados e prevenção de crises em casa:\n\n' +
+      '- Nunca interromper ou reduzir por conta própria a prednisona/prednisolona ou a fludrocortisona prescritas.\n' +
+      '- Cumprir rigorosamente os retornos para dosagem de eletrólitos e ajuste do intervalo das aplicações de DOCP.\n' +
+      '- Avisar sempre o médico-veterinário antes de cirurgias, internações, viagens ou eventos muito estressantes, pois pode ser necessário aumentar temporariamente o corticoide.\n' +
+      '- Procurar pronto atendimento imediato se o animal apresentar vômitos persistentes, recusa alimentar total ou prostração intensa.',
   },
   'hipertireoidismo-felino': {
     whatIsIt:
@@ -354,11 +371,14 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'asma-felina': {
     whatIsIt:
-      'A asma felina é uma alergia das vias aéreas pequenas dos pulmões. O gato desenvolve inflamação, broncoconstrição e tosse ou crise respiratória com sibilos.',
+      'A asma felina é uma inflamação crônica e alérgica das vias aéreas menores dos pulmões dos gatos:\n\n' +
+      '- O que acontece nos pulmões: quando o gato respira poeira, fumaça, pólen ou outros estímulos, as paredes dos brônquios inflamam, produzem excesso de muco e a musculatura se contrai, dificultando principalmente a saída do ar (expiração).\n' +
+      '- Por que exige cuidado contínuo: mesmo quando o gato para de tossir, a inflamação pode permanecer ativa; o controle combina anti-inflamatório adequado e melhora do ambiente.',
     keyPoints: [
-      'Comum em gatos jovens/adultos, especialmente Siamês e orientais.',
-      'Crise com dificuldade para respirar é emergência — minimizar estresse.',
-      'Corticoide (inalatório na manutenção) trata a inflamação; broncodilatador é resgate.',
+      'A tosse do gato costuma ser confundida com tentativa de vomitar bola de pelo (ele se agacha, estica o pescoço e tosse sem expelir nada).',
+      'Respiração de boca aberta, língua arroxeada ou cansaço intenso são sinais de emergência veterinária — evite conter o gato à força.',
+      'O tratamento principal controla a inflamação (corticoides, preferencialmente por via inalatória com espaçador); a bombinha broncodilatadora de resgate alivia crises, mas não trata a doença sozinha.',
+      'Antes de fechar o diagnóstico, o veterinário precisa descartar vermes pulmonares, dirofilariose e problemas cardíacos.',
     ],
   },
   'bronquite-cronica-caes-gatos': {
@@ -743,7 +763,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Olhos, pele e gengivas amarelas (icterícia): o acúmulo de bile nos tecidos é o sinal clínico mais característico da doença, frequentemente acompanhado de vômitos, perda de peso, prostração e dor na barriga.',
       'A dose comum de vermífugo de rotina não cura a doença: a dose habitual de praziquantel usada para outros vermes (5 mg/kg) é insuficiente para eliminar o Platynosomum nos ductos biliares. O veterinário precisará prescrever doses muito mais altas e por vários dias seguidos conforme compêndios especializados.',
       'Mesmo após a morte dos vermes, o fígado pode demorar para sarar: as cicatrizes e o inchaço nos canais biliares podem persistir por semanas ou meses após o tratamento, exigindo remédios protetores hepáticos, dieta especial e ultrassons de controle periódico.',
-      'Prevenção número um: manter o gato exclusivamente dentro de casa (indoor), bloqueando o acesso a quintais e janelas onde haja lagartixas e tatuzinhos-de-jardim.'
+      'Prevenção número um: manter o gato exclusivamente dentro de casa, bloqueando o acesso a quintais e janelas onde haja lagartixas e tatuzinhos-de-jardim.'
     ],
     whatIs:
       'A platinosomose felina é uma infecção dos canais biliares e da vesícula do gato provocada por um verme microscópico transmitido pela caça de tatuzinhos-de-jardim e lagartixas, causando inflamação da vesícula, icterícia e danos hepáticos.',
@@ -926,7 +946,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'intermacao-caes-gatos': {
     whatIsIt:
-      'A intermação (também conhecida como golpe de calor ou heatstroke) é uma emergência médica gravíssima em que o corpo do cão ou gato aquece a temperaturas extremas e perde a capacidade de se resfriar. Ao contrário dos humanos, que transpiram pela pele inteira, os animais só conseguem perder calor ofegando pela boca (panting). Quando a temperatura do ambiente sobe muito, quando o ar está muito úmido, ou quando o animal se exercita em dias quentes, o calor acumula-se rapidamente e começa a cozinhar as células por dentro, causando destruição de tecidos, inflamação em todo o organismo e falência de órgãos vitais como rins, fígado, cérebro e intestino. Trata-se de uma emergência de risco iminente de morte que exige primeiros socorros imediatos pelo tutor e atendimento veterinário de urgência em UTI.',
+      'A intermação (também conhecida como golpe de calor ou heatstroke) é uma emergência médica gravíssima em que o corpo do cão ou gato aquece a temperaturas extremas e perde a capacidade de se resfriar. Ao contrário dos humanos, que transpiram pela pele inteira, os animais só conseguem perder calor ofegando pela boca (respiração ofegante). Quando a temperatura do ambiente sobe muito, quando o ar está muito úmido, ou quando o animal se exercita em dias quentes, o calor acumula-se rapidamente e começa a cozinhar as células por dentro, causando destruição de tecidos, inflamação em todo o organismo e falência de órgãos vitais como rins, fígado, cérebro e intestino. Trata-se de uma emergência de risco iminente de morte que exige primeiros socorros imediatos pelo tutor e atendimento veterinário de urgência em UTI.',
     keyPoints: [
       'Intermação NÃO é febre: nunca dê dipirona, paracetamol ou anti-inflamatórios. Na febre, o cérebro manda o corpo esquentar para combater infecções. Na intermação, o corpo esquentou porque não conseguiu eliminar o calor externo. Remédios de febre não funcionam e podem destruir os rins e o estômago do animal; paracetamol é fatal para gatos!',
       'Resfriamento imediato salva vidas (RECOVER 2026): se você suspeitar de intermação, não espere chegar ao veterinário para começar a resfriar. Molhe o corpo do animal com água fresca da torneira (especialmente barriga e virilhas) e use um ventilador ou o ar-condicionado do carro durante o transporte.',
@@ -989,47 +1009,36 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'brucelose-caes-gatos': {
     whatIsIt:
-      'A brucelose canina é uma doença infecciosa crônica, silenciosa e transmissível para os seres humanos (zoonose), causada pela bactéria Brucella canis. Essa bactéria tem a capacidade especial de invadir e se esconder dentro das células de defesa do próprio cão (macrófagos), permanecendo no organismo por anos sem ser destruída. Embora seja muito famosa por causar abortos no final da gestação em cadelas e inflamação com dor nos testículos dos machos, a brucelose não atinge apenas cães de criação: ela também infecta cães castrados, cães que nunca cruzaram e filhotes, sendo uma causa muito comum de dor crônica na coluna (discospondilite) em cães jovens. Além disso, a bactéria de Brucella canis possui uma cobertura externa diferente (chamada de rugosa ou rough) que engana a maioria dos testes de laboratório comuns de humanos e bovinos, exigindo exames veterinários especializados. O ponto mais importante que todo tutor precisa compreender é que a brucelose é considerada uma infecção sem cura definitiva garantida: os antibióticos e a castração aliviam os sintomas e a dor, mas a bactéria continua abrigada em órgãos internos como a próstata e o baço, exigindo cuidados contínuos para evitar a contaminação de outros animais e da família.',
+      'A brucelose é uma infecção bacteriana crônica e zoonótica (transmissível aos seres humanos), causada principalmente pela *Brucella canis* nos cães:\n\n' +
+      '- Por que é persistente: a bactéria entra pelas mucosas e consegue sobreviver escondida dentro das células de defesa, permanecendo por longos períodos sem causar febre ou alterações no hemograma.\n' +
+      '- Quem pode adoecer: além de abortos e dor testicular em animais reprodutores, a brucelose também afeta cães castrados (causando dor crônica na coluna ou inflamação ocular). Em gatos, relatos de infecção são excepcionais.',
     keyPoints: [
-      'A doença não é exclusiva de canis nem de animais que cruzam: cães castrados e animais que nunca tiveram contato reprodutivo podem pegar a bactéria pelo contato com urina contaminada, lambedura, farejamento ou pela mãe no nascimento.',
-      'Causa frequente de dor na coluna em cães jovens: a bactéria atinge a circulação e se aloja nos discos e ossos da coluna (discospondilite), provocando dor intensa para andar e levantar, muitas vezes sem causar febre nem alterações no exame de sangue comum.',
-      'Perigo máximo nos abortos: os restos de placenta e os fetos abortados contêm bilhões de bactérias vivas. Nunca manipule fetos ou secreções de parto sem luvas e máscara, pois esse é o momento de maior risco de infecção para os tutores.',
-      'Exames normais de humanos ou de gado não funcionam: testes laboratoriais comuns para brucelose bovina dão resultado falso negativo em cães. O veterinário precisa pedir sorologia específica para Brucella canis.',
-      'Melhorar com o remédio não significa que a bactéria sumiu: o cão pode parar de sentir dor e os exames podem melhorar, mas a bactéria continua escondida dentro das células. O tratamento controla a doença, mas não garante eliminação total.',
-      'Castrar ajuda muito, mas não cura sozinho: a cirurgia de castração é fundamental para cessar o ciclo reprodutivo e diminuir as secreções, mas a próstata do macho continua infectada e ele pode continuar eliminando bactérias na urina.',
-      'Afastamento permanente da procriação: qualquer cão diagnosticado com brucelose deve ser definitivamente retirado da reprodução para sempre, mesmo que pareça saudável e forte.',
-      'Atenção especial com pessoas vulneráveis: gestantes, crianças pequenas, idosos ou pessoas com imunidade baixa correm maior risco de adoecer se conviverem com cães infectados, necessitando de acompanhamento médico.',
+      'Cães castrados e animais sem histórico reprodutivo também podem ter brucelose (especialmente em casos de dor vertebral crônica).',
+      'Testes usados em bovinos não detectam Brucella canis — é obrigatório solicitar sorologia específica para a espécie canina.',
+      'Nenhum exame negativo isolado (sorologia, PCR ou cultura) garante que a bactéria não esteja presente.',
+      'Não há garantia de cura bacteriológica completa com antibióticos: o tratamento e a castração diminuem o risco de eliminação e melhoram sinais, mas o cão deve ser afastado definitivamente da reprodução.',
+      'Secreções genitais, sêmen e material de abortamento têm alta carga bacteriana e exigem luvas e cuidados de higiene para proteger tutores e equipe veterinária.',
     ],
-    whatIs:
-      'A brucelose canina é uma infecção crônica e zoonótica causada por Brucella canis que se esconde dentro das células de defesa, provocando abortos, infertilidade, dor na coluna e infecção persistente sem garantia de cura completa.',
-    warningSigns:
-      'Aborto de filhotes no final da gestação (após 45 dias) com secreção vaginal escura e prolongada, inchaço doloroso ou encolhimento duro dos testículos no macho, lambedura excessiva do saco escrotal, dor persistente nas costas ou no pescoço ao se levantar, relutância em pular ou subir escadas, claudicação e olhos vermelhos ou esbranquiçados por uveíte.',
-    diagnosis:
-      'O diagnóstico é desafiador e exige exames de sangue especializados para Brucella canis (como 2ME-RSAT, CBM e imunodifusão AGID II), além de radiografia da coluna e exames diretos de PCR e cultura de sangue, sêmen ou secreções sob estrito aviso de risco biológico ao laboratório.',
-    homeCare:
-      'Administrar os antibióticos combinados exatamente no horário e por todo o período prescrito (de 1 a 3 meses), realizar a castração cirúrgica recomendada, manter o cão separado de outros animais da casa, usar luvas ao limpar a urina com água sanitária (hipoclorito), proibir cruzas e realizar exames de retorno semestrais por toda a vida.',
   },
   'megaesofago-caes-gatos': {
     whatIsIt:
-      'O megaesôfago é uma condição na qual o esôfago — o tubo muscular que transporta a comida e a água da boca até o estômago — perde sua capacidade de contração (fica "flácido" ou "paralisado") e se dilata como uma bexiga frouxa. Com isso, os alimentos, líquidos e até a própria saliva que o animal engole não conseguem descer naturalmente e ficam parados acumulados dentro do esôfago. Pouco tempo depois de comer ou beber (ou mesmo horas depois), esse material retorna de forma passiva pela boca, sem esforço na barriga nem enjoo — um fenômeno chamado de regurgitação. O perigo mais grave dessa condição é que pedaços de comida, água ou saliva acumulados podem escapar para a traqueia e descer até os pulmões, provocando uma infecção grave e potencialmente fatal conhecida como pneumonia aspirativa. O megaesôfago não é uma doença única, mas sim um sinal de que algo interrompeu o funcionamento dos nervos ou músculos do esôfago. Embora existam filhotes que nascem com essa alteração (forma congênita, comum em Pastores Alemães), em cães adultos ela quase sempre tem uma causa por trás, como a Miastenia Gravis (uma doença autoimune tratável), inflamações intensas, intoxicações ou alterações hormonais. Com paciência, cadeira especial de alimentação (Cadeira de Bailey), consistência correta do alimento e vigilância contra pneumonias, muitos cães e gatos conseguem viver com excelente qualidade de vida e carinho por muitos anos.',
+      'O megaesôfago é uma síndrome em que o esôfago (o tubo muscular que leva comida, água e saliva da boca até o estômago) perde a força ou a coordenação dos movimentos e fica dilatado. Com isso, alimentos, água e saliva ficam parados no esôfago em vez de descerem normalmente e acabam retornando pela boca (regurgitação) ou escapando para os pulmões (pneumonia aspirativa).',
     keyPoints: [
-      'Regurgitação não é vômito: no vômito o animal faz força com a barriga, tem náusea, saliva e passa mal antes; na regurgitação o alimento ou a água saem da boca de repente, de forma passiva, sem que o animal faça esforço abdominal.',
-      'A pneumonia por aspiração é o maior perigo: quando o esôfago fica cheio de comida parada, o líquido pode escorrer para os pulmões. Tosse seca, respiração ofegante, cansaço fácil e febre são sinais de emergência que exigem atendimento veterinário imediato.',
-      'Alimentação obrigatoriamente na vertical (Cadeira de Bailey): não adianta apenas colocar o pote no chão em cima de uma caixa ou tijolo. O peito e a coluna do animal precisam ficar em pé (a 90 graus do chão) como se ele estivesse sentado em uma cadeira humana, para que a gravidade empurre o alimento direto ao estômago.',
-      'Permanecer em pé após a refeição: após terminar de comer, o paciente deve ficar na posição vertical por pelo menos 10 a 20 minutos para dar tempo de todo o conteúdo esvaziar para o estômago antes de ele voltar a deitar.',
-      'Não existe uma textura de comida que sirva para todos: alguns animais engolem melhor almôndegas de ração úmida que escorregam inteiras, outros precisam de papinha líquida (slurry) e outros preferem ração pastosa. O veterinário ajuda a testar qual textura funciona melhor para o seu animal.',
-      'Cuidado redobrado com a água: a água pura e líquida é frequentemente o elemento mais perigoso para engasgos. Pode ser necessário oferecer água gelificada, caldos espessados ou permitir que ele beba apenas dentro da cadeira vertical.',
-      'Investigar sempre a causa no animal adulto: o megaesôfago pode ser o primeiro sinal de Miastenia Gravis ou doenças hormonais que possuem tratamento com remédios específicos capazes de devolver a força ao esôfago.',
-      'Sonda no estômago ajuda na nutrição, mas não impede tudo: uma sonda de gastrostomia permite alimentar animais muito debilitados, mas a saliva acumulada no esôfago ainda pode causar aspiração se os cuidados posturais forem esquecidos.',
+      'Regurgitação não é vômito: no vômito o animal faz força na barriga, tem náusea e pode eliminar bile; na regurgitação o alimento inteiro ou água sai de repente, de forma passiva, sem esforço abdominal.',
+      'Investigar a causa sempre que surgir em adulto: o megaesôfago frequentemente é sinal de outra doença tratável, como miastenia gravis (mesmo sem fraqueza nas pernas) ou alterações hormonais (hipoadrenocorticismo).',
+      'A pneumonia aspirativa é a complicação mais grave: tosse úmida, respiração rápida, secreção nasal ou febre exigem avaliação veterinária imediata.',
+      'Alimentação na posição vertical (cadeira de Bailey em cães ou apoio elevado em gatos): o tronco precisa ficar em pé durante a refeição e por 15 a 30 minutos após comer e beber para a gravidade levar o alimento ao estômago.',
+      'Consistência sob medida: cada animal responde melhor a uma textura (almôndegas macias ou comida pastosa); água pura costuma regurgitar mais fácil e pode precisar de adaptação.',
+      'Sonda de gastrostomia nutre, mas não resolve a saliva: mesmo com sonda no estômago, o animal continua produzindo saliva que pode ser aspirada se os cuidados de boca e postura forem negligenciados.',
     ],
     whatIs:
-      'O megaesôfago é uma dilatação flácida do esôfago provocada pela perda das contrações que empurram o alimento, gerando regurgitação passiva, risco de desnutrição e perigo de pneumonia aspirativa nos pulmões.',
+      'O megaesôfago é a dilatação e perda de movimento do esôfago, causando regurgitação passiva, risco de desnutrição e perigo de pneumonia aspirativa.',
     warningSigns:
-      'Regurgitação frequente de comida ou água não digerida logo após comer ou ao abaixar a cabeça, tosse constante, cansaço desproporcional ao passear, respiração acelerada ou com barulho de catarro no peito, perda de peso rápida, baba espessa acumulada na boca e febre.',
+      'Regurgitação passiva de alimento inteiro ou água após comer, tosse úmida, secreção nasal, respiração acelerada ou ofegante em repouso, febre, saliva em excesso, abaulamento no pescoço e perda de peso apesar de apetite normal.',
     diagnosis:
-      'O diagnóstico inicial é feito com radiografias do tórax e do pescoço, mostrando o esôfago largo e cheio de ar ou alimento. A causa deve ser investigada com exame de sangue para Miastenia Gravis (teste de anticorpos AChR-Ab), eletrólitos, função hormonal e, quando disponível, videofluoroscopia (um raio-x em vídeo da deglutição).',
+      'Começa diferenciando regurgitação de vômito e fazendo radiografias do pescoço e tórax. Depois o veterinário investiga causas tratáveis com exames de sangue (anticorpos para miastenia gravis, cortisol/ACTH) e, quando indicado, videofluoroscopia (um raio-x em movimento da deglutição).',
     homeCare:
-      'Alimentar o pet rigorosamente em pé na Cadeira de Bailey ou no colo em posição ereta, mantendo-o nessa postura por 15 a 20 minutos após a última mordida. Fracionar a alimentação em 3 a 5 pequenas porções ao dia. Nunca deixar potes de água livres no chão se o animal costuma engasgar; hidratar somente na posição vertical. Manter vigilância diária na respiração e temperatura, e nunca deitar o animal logo após comer ou tomar remédios.',
+      'Alimentar o animal rigorosamente na vertical (cadeira de Bailey em cães ou apoio vertical em gatos) mantendo a postura por 15 a 30 minutos após comer e beber, dividir em 3 a 6 pequenas refeições por dia na textura orientada pelo veterinário, vigiar a respiração em repouso e nunca forçar comprimidos ou líquidos com o pet deitado.',
   },
   'paralisia-laringea-caes-gatos': {
     whatIsIt:
@@ -1142,7 +1151,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
     warningSigns:
       'Sinais clínicos de alerta que exigem atendimento veterinário urgente:\n\n' +
       '- Crises convulsivas repentinas (tremores generalizados, perda de consciência, salivação e pedalagem com as patas).\n' +
-      '- Andar em círculos contínuos para o mesmo lado, tropeçar em paredes ou apoiar a cabeça imóvel contra a parede (head pressing).\n' +
+      '- Andar em círculos contínuos para o mesmo lado, tropeçar em paredes ou apoiar a cabeça imóvel contra a parede.\n' +
       '- Sonolência excessiva, dificuldade para levantar, fraqueza em um dos lados do corpo ou perda súbita da visão.',
     diagnosis:
       'Como o médico-veterinário investiga e confirma o tumor:\n\n' +
@@ -1154,6 +1163,188 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       '- Segurança física contra quedas: bloquear o acesso a escadas, sacadas e piscinas para prevenir acidentes durante uma crise.\n' +
       '- Pontualidade rígida com os remédios: administrar o anticonvulsivante (como levetiracetam) nos horários exatos sem atrasos nem esquecimentos.\n' +
       '- Proteção durante as convulsões: nunca colocar a mão dentro da boca do cão e afastar móveis próximos para evitar batidas na cabeça.',
+  },
+  'prolapso-retal-caes-gatos': {
+    whatIsIt:
+      'O prolapso retal acontece quando parte da camada interna ou toda a parede do reto escorrega para fora pelo ânus, formando um cilindro avermelhado e úmido:\n\n' +
+      '- É um sinal de alerta, não uma doença isolada: quase sempre aparece porque o cão ou gato está fazendo força repetida para evacuar ou urinar (tenesmo), ou porque os músculos que sustentam a região enfraqueceram.\n' +
+      '- Tempo exposto faz diferença: quanto mais horas o tecido fica do lado de fora, mais inchado, ressecado e escuro ele pode ficar — aumentando o risco de feridas e necrose.',
+    keyPoints: [
+      'Nunca tente empurrar o tecido de volta em casa: uma alça do intestino pode ter invaginado (intussuscepção) e simular prolapso.',
+      'Mantenha o local úmido com soro fisiológico limpo e impeça o pet de lamber até chegar ao atendimento.',
+      'Tecido roxo-escuro, enegrecido ou com cheiro forte não pode ser apenas empurrado de volta e costuma exigir cirurgia.',
+      'Em filhotes, vermes e infecções intestinais são causas muito comuns; em gatos machos, é indispensável checar se a bexiga não está trancada.',
+      'Quando o veterinário dá pontos temporários ao redor do ânus, o pet ainda precisa conseguir fazer cocô pastoso normalmente.',
+    ],
+    whatIs:
+      'Por que o reto sai pelo ânus em cães e gatos:\n\n' +
+      '- Força repetida (ciclo do tenesmo): diarreia intensa, parasitas intestinais, fezes muito duras, próstata aumentada ou dor para urinar aumentam a pressão na barriga e empurram o reto para fora.\n' +
+      '- Irritação que alimenta mais força: depois que sai, a mucosa resseca e inflama, dando ao pet a sensação contínua de precisar fazer mais força.',
+    warningSigns:
+      'Procure atendimento veterinário imediato se notar:\n\n' +
+      '- Massa avermelhada, arroxeada ou escura saindo pelo ânus.\n' +
+      '- Vômitos, barriga dolorida ou prostração intensa.\n' +
+      '- Gato indo muitas vezes à caixa de areia sem conseguir fazer xixi (bexiga dura e cheia).\n' +
+      '- Novo episódio logo após retirar os pontos ou dificuldade para evacuar com a sutura no lugar.',
+    diagnosis:
+      'Como o médico-veterinário avalia e diferencia o problema:\n\n' +
+      '- Avaliação anatômica e ultrassom: confirmar se é prolapso retal verdadeiro ou intussuscepção (quando o intestino entra dentro dele mesmo) antes de reduzir.\n' +
+      '- Busca da causa da força: exames de fezes seriados em filhotes, palpação e exame de urina/bexiga em gatos, além de toque retal e imagem pélvica em cães adultos ou idosos.',
+    homeCare:
+      'Cuidados em casa durante a recuperação:\n\n' +
+      '- Use o colar elisabetano sem interrupção enquanto houver pontos ou sensibilidade anal.\n' +
+      '- Observe todos os dias se o cão ou gato está evacuando fezes macias sem esforço excessivo e urinando em volume normal.\n' +
+      '- Nunca use supositórios ou lavagens intestinais humanas (como enemas de fosfato de sódio), pois podem ser fatais principalmente em gatos.\n' +
+      '- Retorne imediatamente se o tecido reaparecer, houver febre, vômitos ou ausência de fezes e urina.',
+  },
+  'cinomose-canina': {
+    whatIsIt:
+      'A cinomose canina é uma infecção viral grave e altamente contagiosa causada pelo vírus da cinomose canina (CDV):\n\n' +
+      '- Como o vírus age: ele entra sobretudo pelas vias respiratórias, enfraquece as células de defesa e depois pode atingir pulmões, intestino, olhos, pele (almofadinhas das patas) e o sistema nervoso central.\n' +
+      '- Por que exige atenção prolongada: mesmo após melhora da tosse, secreção e diarreia, alguns cães desenvolvem sinais neurológicos semanas depois.',
+    keyPoints: [
+      'A vacinação completa na fase de filhote (seguida dos reforços recomendados pelo médico-veterinário) é a forma mais eficaz de prevenção.',
+      'Cães com suspeita precisam ficar isolados de outros cães imediatamente para evitar contágio pelo ar e por secreções.',
+      'Não existe um remédio que elimine diretamente o vírus; o tratamento de suporte intenso (hidratação venosa, oxigênio, alimentação adequada, controle de infecções bacterianas e de convulsões) é o que permite a recuperação.',
+      'Tremores musculares rítmicos (mioclonias) nem sempre são convulsões e podem permanecer como sequela mesmo após o cão ficar estável.',
+      'Gatos domésticos não têm cinomose canina (doenças felinas graves como a panleucopenia têm outra causa viral).',
+    ],
+    whatIs:
+      'Como a cinomose afeta o organismo do cão:\n\n' +
+      '- Enfraquecimento da imunidade: o vírus reduz a defesa natural do corpo, abrindo caminho para infecções bacterianas secundárias, especialmente pneumonia.\n' +
+      '- Comprometimento multissistêmico: pode provocar febre, secreção ocular e nasal, tosse, falta de ar, vômitos, diarreia, endurecimento e fissuras nas almofadinhas das patas e inflamação cerebral com convulsões ou dificuldade para andar.',
+    warningSigns:
+      'Procure atendimento veterinário imediato se notar:\n\n' +
+      '- Respiração rápida, ofegante ou com esforço, língua arroxeada ou tosse persistente.\n' +
+      '- Convulsões, desorientação, andar cambaleante, cegueira súbita ou contrações musculares rítmicas.\n' +
+      '- Filhote muito prostrado, recusando alimento ou com vômitos e diarreia frequentes (risco rápido de desidratação e queda de glicose).',
+    diagnosis:
+      'Como o médico-veterinário investiga a cinomose:\n\n' +
+      '- Histórico e exame físico completo: análise do cartão vacinal, contato com outros cães e busca de alterações oculares, respiratórias, cutâneas e neurológicas.\n' +
+      '- Exames laboratoriais e PCR: hemograma, bioquímica, radiografia do tórax e pesquisa do vírus por RT-PCR em amostras de olho, nariz, sangue ou urina — sabendo que um teste negativo nem sempre descarta a doença na fase neurológica.',
+    homeCare:
+      'Cuidados e prevenção em casa:\n\n' +
+      '- Mantenha o cão doente rigorosamente separado de outros cães, especialmente filhotes e animais sem vacina em dia, higienizando o ambiente com detergente seguido de desinfetante adequado.\n' +
+      '- Nunca force comida ou água pela boca se o cão estiver engasgando ou muito sonolento, pelo risco de aspiração para os pulmões.\n' +
+      '- Siga fielmente os horários das medicações prescritas e retorne imediatamente se surgirem convulsões, dificuldade para respirar ou piora da prostração.',
+  },
+  'colangite-parasitaria-caes-gatos': {
+    whatIsIt:
+      'A colangite parasitária acontece quando pequenos parasitos (trematódeos biliares, como o Platynosomum) se instalam nos ductos biliares e na vesícula de gatos — e mais raramente em cães — causando inflamação crônica e dificultando a passagem da bile.',
+    keyPoints: [
+      'No Brasil, gatos se infectam principalmente ao caçar lagartixas, sapos ou tatuzinhos-de-jardim (não passa diretamente de um gato para outro na caixa de areia).',
+      'Um exame de fezes negativo não descarta o problema: os ovos são eliminados de forma irregular ou deixam de sair se houver obstrução biliar.',
+      'Vermífugos comuns em dose única não eliminam esse parasito — é necessário protocolo específico prescrito pelo médico-veterinário.',
+      'Manter gatos sem apetite sem suporte nutricional rápido pode provocar acúmulo grave de gordura no fígado (lipidose hepática).',
+      'Impedir a caça de lagartixas e não oferecer peixes de água doce crus previne novas infecções após o tratamento.',
+    ],
+    whatIs:
+      'Como o parasito afeta o fígado e a vesícula:\n\n' +
+      '- Irritação e bloqueio da bile: os trematódeos vivem dentro dos canais biliares e geram espessamento, cicatrizes e dificuldade para a bile chegar ao intestino.\n' +
+      '- Formas diferentes entre espécies: em gatos brasileiros o principal agente é Platynosomum spp. (associado a caça de lagartixas); em cães e gatos de outras regiões ou dietas específicas, outros parasitos podem vir pela ingestão de peixes de água doce crus.',
+    warningSigns:
+      'Procure atendimento veterinário imediato se notar:\n\n' +
+      '- Pele, parte branca dos olhos ou gengivas amarelada (icterícia) e urina bem alaranjada ou escura.\n' +
+      '- Perda de apetite por mais de 24 horas (urgente em gatos), vômitos repetidos, dor abdominal ou apatia intensa.\n' +
+      '- Fezes muito claras/esbranquiçadas, barriga inchada ou sangramentos incomuns.',
+    diagnosis:
+      'Como o médico-veterinário investiga a doença:\n\n' +
+      '- Exames de sangue e ultrassom: avaliam enzimas do fígado, bilirrubina, coagulação e dilatação dos canais biliares e vesícula.\n' +
+      '- Pesquisa do parasito: exame de fezes por métodos específicos (sedimentação ou centrifugação especial), muitas vezes em amostras repetidas, além da coleta de bile guiada por ultrassom, biópsia ou teste molecular (PCR) quando necessário.',
+    homeCare:
+      'Cuidados em casa e prevenção de retorno:\n\n' +
+      '- Cumpra exatamente todos os dias e doses do antiparasitário e das medicações de apoio prescritas, sem interromper por conta própria.\n' +
+      '- Telas em janelas e ambiente interno enriquecido reduzem drasticamente o contato do gato com lagartixas e insetos/crustáceos de jardim.\n' +
+      '- Nunca ofereça peixe de água doce cru e retorne nos exames de controle mesmo que o animal pareça bem, pois pode haver inflamação residual.',
+  },
+  'pancreatite-caes-gatos': {
+    whatIsIt:
+      'A pancreatite é uma inflamação do pâncreas, órgão responsável por produzir enzimas da digestão e insulina. Quando essas enzimas são ativadas cedo demais dentro do próprio pâncreas, causam dor, inflamação local e, nos casos mais graves, afetam outros órgãos.',
+    keyPoints: [
+      'Cães e gatos mostram a doença de formas bem diferentes: cães costumam vomitar e sentir dor abdominal, enquanto gatos frequentemente ficam apenas quietos e sem comer.',
+      'Um único exame alterado ou ultrassom inicial normal não confirma nem descarta sozinho a pancreatite — o veterinário junta sintomas, exame de lipase pancreática e imagem.',
+      'Ficar muitos dias em jejum não ajuda a recuperar o pâncreas e pode agravar o quadro, principalmente em gatos (risco de gordura no fígado).',
+      'Controle da dor, controle de náuseas/vômitos, soro na medida certa e volta precoce à alimentação (pela boca ou por sonda) são a base da recuperação.',
+      'Após a alta, cães com crises repetidas ou gordura alta no sangue geralmente precisam de ração com pouca gordura e zero restos de comida ou petiscos gordurosos.',
+    ],
+    whatIs:
+      'Como a doença se manifesta e por que exige atenção rápida:\n\n' +
+      '- Forma aguda ou crônica: pode surgir de repente com grande mal-estar ou evoluir em episódios repetidos mais discretos que, ao longo do tempo, reduzem a função digestiva e hormonal do pâncreas.\n' +
+      '- Riscos associados: desidratação, queda importante de eletrólitos e cálcio, amarelão (icterícia) quando comprime o canal da bile e, nos gatos, associação frequente com inflamação no fígado e intestino.',
+    warningSigns:
+      'Procure atendimento veterinário imediato se notar:\n\n' +
+      '- Gato sem comer há mais de 24 horas ou muito prostrado/escondido (mesmo sem vomitar).\n' +
+      '- Cão com vômitos repetidos, barriga rígida ou dor (posição de prece, com patas da frente esticadas no chão e traseira erguida).\n' +
+      '- Gengivas amareladas ou muito pálidas, febre, fraqueza extrema ou respiração ofegante.',
+    diagnosis:
+      'Como o médico-veterinário investiga a pancreatite:\n\n' +
+      '- Exames de sangue e urina: avaliam hidratação, eletrólitos (potássio e cálcio), fígado, rins, triglicerídeos e dosam a lipase específica do pâncreas (cPLI em cães ou fPLI em gatos).\n' +
+      '- Ultrassonografia e radiografia: ajudam a visualizar inflamação ao redor do pâncreas e do canal biliar e a descartar outras emergências abdominais, como corpos estranhos.',
+    homeCare:
+      'Cuidados e prevenção após o atendimento:\n\n' +
+      '- Siga exatamente a dieta prescrita: em cães sensíveis ou com gordura alta no sangue, proíba restos de mesa, queijos, carnes e petiscos gordurosos.\n' +
+      '- Nunca dê anti-inflamatórios humanos ou veterinários sem prescrição — eles podem causar úlceras graves e lesão renal durante uma crise.\n' +
+      '- Observe apetite, hidratação e retorno de vômitos ou apatia nos dias seguintes; se o animal voltar a recusar alimento, retorne prontamente.',
+  },
+  'leptospirose-caes-gatos': {
+    whatIsIt:
+      'A leptospirose é uma infecção bacteriana grave e zoonótica (pode ser transmitida aos seres humanos) causada por bactérias em formato de espiral do gênero Leptospira. A contaminação acontece principalmente quando a boca, os olhos, o nariz ou feridinhas na pele entram em contato com urina de animais infectados (sobretudo roedores), água parada, lama ou solo úmido contaminados. Nos cães, a doença pode atacar rapidamente os rins, o fígado, os pulmões e a coagulação do sangue; nos gatos, a infecção existe e pode haver eliminação pela urina, mas a doença clínica é muito menos comum.',
+    keyPoints: [
+      'Cães urbanos e de pequeno porte também pegam leptospirose: não é preciso ter contato com enchentes, rios ou áreas rurais para se contaminar.',
+      'Nem todo cão fica amarelo (icterícia) ou com febre: muitos chegam apenas apáticos, vomitando, bebendo muita água ou parando de urinar por lesão renal aguda.',
+      'O tratamento com antibiótico e suporte hospitalar precisa começar imediatamente diante da suspeita, sem esperar os resultados finais dos exames.',
+      'Mesmo nos casos graves com necessidade de hemodiálise, muitos cães conseguem recuperar a função renal quando atendidos e encaminhados cedo.',
+      'Use luvas para limpar a urina do pet suspeito ou em tratamento, lave bem as mãos e evite contato de gestantes e pessoas imunossuprimidas com secreções.',
+      'A vacinação anual contra leptospirose é recomendada para todos os cães e, somada ao controle de roedores, é a melhor forma de prevenir quadros graves.',
+    ],
+    whatIs:
+      'Infecção bacteriana transmitida por urina, água ou solo contaminados que pode causar lesão renal aguda, icterícia, sangramentos e hemorragia pulmonar em cães, com risco de transmissão para pessoas.',
+    warningSigns:
+      'Apatia súbita, recusa alimentar, vômitos repetidos, dor muscular ou dificuldade para andar, aumento súbito ou parada da produção de urina, mucosas ou olhos amarelados (icterícia), manchas roxas/sangramentos e respiração acelerada ou cansada.',
+    diagnosis:
+      'Combina exames de sangue, urina, radiografia do tórax e ultrassom abdominal para avaliar rins, fígado e pulmões, junto a testes específicos (PCR no sangue e na urina e sorologia MAT repetida após 7 a 14 dias).',
+    homeCare:
+      'Cumprir todos os dias do antibiótico prescrito (em gatos, oferecer alimento ou água logo após a doxiciclina para proteger o esôfago), usar luvas e desinfetante ao limpar urina, evitar passeios em áreas com poças ou roedores, retornar na reavaliação pós-alta e manter a vacinação anual dos cães em dia.',
+  },
+  'sindrome-chiari-like-caes-gatos': {
+    whatIsIt:
+      'A síndrome de Chiari-like é uma alteração no formato da parte de trás do crânio, que fica pequena demais para acomodar confortavelmente o cerebelo e a transição com a medula do pescoço. Esse aperto perturba o movimento natural do líquido que protege o cérebro e a medula (líquor), podendo causar dor crônica no pescoço e, em parte dos animais, formar bolsas de líquido dentro da medula chamadas siringes (siringomielia). É muito estudada em raças pequenas, principalmente o Cavalier King Charles Spaniel, e ocorre raramente em gatos.',
+    keyPoints: [
+      'Malformação tipo Chiari e siringomielia não são a mesma coisa: o pet pode ter apenas o aperto craniano com dor (sem bolsa na medula) ou ter alteração na ressonância sem sentir nenhum sintoma.',
+      'Coceira fantasma é um sinal clássico: o cão faz o movimento repetido de coçar o pescoço ou ombro no ar, sem encostar a pata na pele, muitas vezes durante o passeio com coleira ou agitação.',
+      'O cão pode sentir dor forte mesmo andando normalmente: gritos repentinos ao pular, ao ser pego no colo ou ao tocar de leve na cabeça e pescoço podem ser dor neuropática.',
+      'A ressonância magnética é o exame principal, mas precisa ser avaliada junto com exame de pele, orelhas e coluna — pois o mesmo cão pode ter otite média ou hérnia de disco.',
+      'O tratamento clínico usa medicamentos específicos para dor de origem nervosa (como gabapentina ou pregabalina) e mudanças no dia a dia; a cirurgia fica reservada a casos graves ou que não melhoram.',
+      'Trocar a coleira de pescoço por peitoral macio e elevar potes de comida e água ajuda a reduzir crises de desconforto.',
+    ],
+    whatIs:
+      'Alteração estrutural da parte posterior do crânio que aperta o cerebelo e altera o fluxo do líquor, podendo causar dor neuropática no pescoço, coceira no ar (fantasma) e bolsas de líquido na medula (siringomielia).',
+    warningSigns:
+      'Gritos súbitos de dor sem trauma aparente, incômodo ao tocar suavemente o pescoço ou a cabeça, movimentos repetidos de coçar o ar perto do pescoço ou ombro, dificuldade para dormir por desconforto, pescoço torto, fraqueza ou desequilíbrio ao andar.',
+    diagnosis:
+      'Começa pelo exame neurológico completo e exclusão de alergias de pele, otites e doenças de disco cervical. A confirmação da malformação e da siringomielia exige ressonância magnética sob anestesia.',
+    homeCare:
+      'Substituir definitivamente coleiras de pescoço por peitoral ergonômico, elevar os potes de ração e água, controlar o peso, registrar vídeos curtos das crises de coceira ou dor para mostrar ao veterinário e nunca interromper ou alterar doses de gabapentina, pregabalina ou amitriptilina sem orientação.',
+  },
+  'insuficiencia-cardiaca-congestiva-caes-gatos': {
+    whatIsIt:
+      'A insuficiência cardíaca congestiva (ICC) não é uma doença isolada, mas o momento em que um problema prévio do coração faz a pressão dentro dos vasos subir demais e empurrar líquido para fora da circulação. Quando o lado esquerdo do coração falha, esse líquido se acumula nos pulmões (edema pulmonar) ou, muito frequentemente em gatos, ao redor dos pulmões (efusão pleural). Quando o lado direito falha, o líquido se acumula na barriga (ascite) e no fígado. O objetivo do tratamento é tirar o excesso de líquido com segurança, ajudar o coração a trabalhar melhor e dar boa qualidade de vida ao pet.',
+    keyPoints: [
+      'Coração grande ou sopro não significam automaticamente ICC: muitos cães e gatos têm doença cardíaca por anos antes de acumular líquido.',
+      'Tosse em cão com sopro nem sempre é água no pulmão: pode ser irritação ou compressão dos brônquios — por isso o veterinário precisa confirmar se há congestão antes de aumentar diuréticos.',
+      'Gatos em ICC raramente tossem e muitas vezes não têm sopro audível: respirar com a boca aberta, deitar com o pescoço esticado ou ficar ofegante em repouso são emergências imediatas.',
+      'Quando há grande volume de líquido ao redor dos pulmões (efusão pleural), drenar o tórax com delicadeza traz alívio muito mais rápido do que esperar apenas o diurético agir.',
+      'A melhor ferramenta em casa é contar a respiração enquanto o pet dorme profundamente: no controle adequado, costuma ficar abaixo de 30 respirações por minuto.',
+      'Nunca suspenda os remédios quando o pet melhorar: a melhora significa que o tratamento está controlando o acúmulo de líquido, não que o coração foi curado.',
+    ],
+    whatIs:
+      'Acúmulo anormal de líquido nos pulmões, ao redor dos pulmões ou no abdômen provocado por elevação das pressões dentro de um coração doente.',
+    warningSigns:
+      'Respiração acelerada durante o sono (acima de 30 a 35 respirações por minuto de forma persistente), esforço para puxar o ar, recusa em deitar de lado, respiração com a boca aberta em gatos, língua ou gengivas arroxeadas, desmaios, fraqueza súbita, barriga inchada ou paralisia repentina das patas traseiras em gatos.',
+    diagnosis:
+      'Na emergência, o veterinário estabiliza primeiro com oxigênio e ultrassom rápido à beira do leito antes de exames estressantes. Depois, radiografia torácica, ecocardiograma completo, eletrocardiograma, aferição de pressão arterial e exames de sangue (rins e eletrólitos) definem a causa exata e o melhor protocolo.',
+    homeCare:
+      'Contar e anotar a frequência respiratória com o pet dormindo profundamente, administrar todas as medicações exatamente nos horários prescritos, evitar petiscos salgados e exercícios intensos, manter água fresca sempre disponível, monitorar apetite e peso e cumprir os retornos para checar rins, pressão e eletrólitos.',
   },
 };
 

@@ -52,7 +52,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
   quickSummary:
     'O linfoma cutâneo compreende um grupo heterogêneo de neoplasias linfoides malignas com acometimento primário da pele, anexos, subcutâneo e junções mucocutâneas:\n\n' +
     '- Classificação biológica primordial: divisão em linfoma epiteliotrópico (ECL/eCTCL, primariamente linfócitos T CD3+ e CD8+ citotóxicos, incluindo micose fungoide, reticulose pagetoide e síndrome de Sézary) e não epiteliotrópico (NECL, linhagem T ou B, restrito à derme profunda e hipoderme).\n' +
-    '- Evolução clínica e mimetismos: no cão, o eCTCL progride de descamação, alopecia e prurido para placas eritematosas, despigmentação mucocutânea e massas ulceradas (Withrow & MacEwen, 6ª ed.); a variante de Smith et al. (2026) cursa com intensa dermatite citotóxica de interface e apoptose de queratinócitos, mimetizando eritema multiforme e lúpus.\n' +
+    '- Evolução clínica e mimetismos: no cão, o eCTCL progride de descamação, alopecia e prurido para placas eritematosas, despigmentação mucocutânea e massas ulceradas; a variante de Smith et al. (2026) cursa com intensa dermatite citotóxica de interface e apoptose de queratinócitos, mimetizando eritema multiforme e lúpus.\n' +
     '- Diagnóstico padrão ouro: biópsia cutânea múltipla representativa (punch 6 a 8 mm de pelo menos 3 lesões ativas) com histopatologia, imuno-histoquímica (CD3, CD20/CD79a) e PARR criterioso.\n' +
     '- Distribuição anatômica e prognóstico: em cães, doença solitária admite controle cirúrgico ou radioterápico prolongado; doença difusa cutânea confere sobrevida mediana de 130 dias versus 491 dias na forma restrita mucocutânea (Chan et al., 2018).\n' +
     '- Terapêutica sistêmica e particularidades: lomustina (CCNU 60 mg/m2 a cada 3 semanas) oferece resposta objetiva de 83% com duração mediana de 94 dias (Risbon et al., 2006); em felinos, destacam-se apresentações como linfoma tarsal, lesões em sítio de injeção e distinção de linfocitose cutânea indolente (mediana de 1080 dias).',
@@ -163,7 +163,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
   },
   etiology: {
     definicaoEClassificacao:
-      'O linfoma cutâneo consiste em proliferação clonal maligna de linfócitos na pele, anexos e junções mucocutâneas, categorizado em dois eixos biológicos (Withrow & MacEwen, 6ª ed.; Nelson & Couto, 6ª ed.):\n\n' +
+      'O linfoma cutâneo consiste em proliferação clonal maligna de linfócitos na pele, anexos e junções mucocutâneas, categorizado em dois eixos biológicos:\n\n' +
       '- Linfoma Cutâneo Epiteliotrópico (ECL ou eCTCL): tropismo preferencial pelo epitélio epidérmico e anexos foliculares/glandulares, derivando quase exclusivamente de linfócitos T (CD3+) em cães.\n' +
       '- Subtipos clássicos de eCTCL: compreende Micose Fungoide (progressão crônica de máculas a placas e nódulos ulcerados), Reticulose Pagetoide (infiltração intraepidérmica estrita) e Síndrome de Sézary (variante leucêmica com eritrodermia generalizada e linfócitos cerebriformes circulantes).\n' +
       '- Linfoma Cutâneo Não Epiteliotrópico (NECL): proliferação infiltrativa concentrada na derme média, derme profunda e subcutâneo com epiderme poupada, de linhagem T ou B (células ricas em imunoblastos ou centroblastos).',
@@ -232,14 +232,14 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
   epidemiology: {
     distribuicaoCanina:
       'Aspectos epidemiológicos e demográficos do linfoma cutâneo na espécie canina:\n\n' +
-      '- Prevalência: representa < 1% dos tumores cutâneos e entre 3% e 8% de todos os linfomas em cães (Withrow & MacEwen, 6ª ed.).\n' +
+      '- Prevalência: representa < 1% dos tumores cutâneos e entre 3% e 8% de todos os linfomas em cães.\n' +
       '- Faixa etária e sexo: acomete animais idosos (idade mediana de 9 a 11 anos), sem predisposição sexual comprovada.\n' +
       '- Raças predispostas: Scottish Terrier, Boxer, Golden Retriever, Bulldog Inglês, Cocker Spaniel e Bichon Frisé; em jovens, afastar sempre linfocitose cutânea.',
     distribuicaoFelina:
       'Características epidemiológicas da apresentação cutânea em gatos:\n\n' +
       '- Prevalência: neoplasia rara, representando 0,2% a 3% dos linfomas felinos.\n' +
       '- Dados demográficos (Siewert et al., 2022): idade mediana de 12,3 anos em coorte multicêntrica (41 gatos), com maior frequência em gatos domésticos de pelo curto (DSH).\n' +
-      '- Ausência de vínculo retroviral: diferentemente das formas mediastinal e multicêntrica, o linfoma cutâneo felino não exibe associação consistente com infecção por FeLV ou FIV (Withrow & MacEwen, 6ª ed.).',
+      '- Ausência de vínculo retroviral: diferentemente das formas mediastinal e multicêntrica, o linfoma cutâneo felino não exibe associação consistente com infecção por FeLV ou FIV.',
     fenotiposPeculiaresGato:
       'Padrões clínico-patológicos específicos da espécie felina documentados em consensos:\n\n' +
       '- Linfoma cutâneo clássico: eCTCL ou NECL (células T), com a peculiaridade de o eCTCL felino frequentemente poupar os anexos foliculares.\n' +
@@ -288,7 +288,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
   },
   clinicalSignsPathophysiology: {
     formaInicialEProgressao:
-      'A evolução cronológica do eCTCL canino é notória por sua apresentação trifásica (Withrow & MacEwen, 6ª ed.):\n\n' +
+      'A evolução cronológica do eCTCL canino é notória por sua apresentação trifásica:\n\n' +
       '- Estágio 1 (esfoliativo/eritematoso): eritema difuso, descamação lamelar, alopecia e prurido variável, mimetizando dermatite atópica ou farmacodermia.\n' +
       '- Estágio 2 (placas e erosões): espessamento cutâneo palpável, placas infiltradas coalescentes, erosões exsudativas e despigmentação mucocutânea progressiva.\n' +
       '- Estágio 3 (proliferativo tumoral avançado): múltiplos nódulos e massas avermelhadas/violáceas que ulceram precocemente, com secreção purulenta e necrose tecidual.',
@@ -341,7 +341,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
       description:
         'Triagem clínica rigorosa em animais idosos com dermatopatias refratárias:\n\n' +
         '- Sinais de alerta: dermatite esfoliativa, despigmentação mucocutânea e placas proliferativas resistentes a tratamentos convencionais.\n' +
-        '- Janela de depuração de esteroides: suspender glicocorticoides tópicos e sistêmicos por 2 a 3 semanas antes da biópsia (Withrow & MacEwen, 6ª ed.).\n' +
+        '- Janela de depuração de esteroides: suspender glicocorticoides tópicos e sistêmicos por 2 a 3 semanas antes da biópsia.\n' +
         '- Racional farmacológico: os esteroides deflagram apoptose de linfócitos neoplásicos, esvaziando o infiltrado e gerando laudos falsamente negativos.',
       purpose: 'Garantir que a celularidade tumoral esteja preservada e evitar falsos-negativos diagnósticos.',
       interpretation: 'Se o paciente estiver em uso de corticoide recente e a biópsia for inespecífica, repetir a coleta após a janela de depuração medicamentosa.',
@@ -364,7 +364,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
       title: 'Biópsia cutânea múltipla de espessura total (Padrão Ouro)',
       description:
         'Método padrão ouro para obtenção de amostras histológicas representativas:\n\n' +
-        '- Múltiplos sítios de coleta: obter de 3 a 5 fragmentos de lesões ativas (placas infiltradas, máculas e áreas de transição) com punch de 6 a 8 mm (ou 4 mm em coxins/nariz) ou cunha incisional (BSAVA Guide to Procedures, 3ª ed., 2024).\n' +
+        '- Múltiplos sítios de coleta: obter de 3 a 5 fragmentos de lesões ativas (placas infiltradas, máculas e áreas de transição) com punch de 6 a 8 mm (ou 4 mm em coxins/nariz) ou cunha incisional.\n' +
         '- Seleção de área: evitar estritamente o centro necrótico ulcerado e crostas superficiais isoladas.\n' +
         '- Técnica atraumática: apreender a peça unicamente pela gordura subcutânea ou suspender com agulha delicada, prevenindo esmagamento celular.',
       isGoldStandard: true,
@@ -435,7 +435,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
       title: 'Avaliação da medula óssea (Aspirado e Core Biopsy)',
       description:
         'Avaliação medular por citologia aspirativa e core biopsy guiada:\n\n' +
-        '- Critérios de indicação: citopenias periféricas inexplicadas, blastemia circulante, suspeita de Sézary ou estadiamento de estágio V (BSAVA Oncology, 3ª ed.).\n' +
+        '- Critérios de indicação: citopenias periféricas inexplicadas, blastemia circulante, suspeita de Sézary ou estadiamento de estágio V.\n' +
         '- Interpretação: mielograma quantitativo confirma infiltração neoplásica quando linfócitos atípicos ultrapassam 5% da celularidade total nucleada.',
       purpose: 'Confirmar ou afastar infiltração medular terminal (estágio V da classificação da OMS).',
       interpretation: 'Infiltração de medula óssea superior a 5% por linfócitos atípicos comprova doença sistêmica generalizada.',
@@ -444,18 +444,18 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
   ],
   treatment: {
     estratificacaoTerapeutica:
-      'A decisão terapêutica inicial diante do linfoma cutâneo jamais deve ser empírica (Withrow & MacEwen, 6ª ed.):\n\n' +
+      'A decisão terapêutica inicial diante do linfoma cutâneo jamais deve ser empírica:\n\n' +
       '- Cenário 1 (Doença solitária localizada): passível de controle local duradouro com excisão cirúrgica ou radioterapia focal.\n' +
       '- Cenário 2 (Doença multifocal difusa primária da pele): demanda quimioterapia sistêmica com tropismo cutâneo ou radioterapia de pele total.\n' +
       '- Cenário 3 (Doença com comprometimento extracutâneo): infiltração visceral ou nodal avançada que exige protocolos sistêmicos intensivos de resgate para linfoma multicêntrico.',
     doencaSolitariaLocalizada:
-      'Intervenções locais agressivas de primeira escolha para placa ou nódulo solitário sem invasão sistêmica (Withrow & MacEwen, 6ª ed.; Chan et al., 2018):\n\n' +
+      'Intervenções locais agressivas de primeira escolha para placa ou nódulo solitário sem invasão sistêmica (Chan et al., 2018):\n\n' +
       '- Ressecção cirúrgica ampla: margens laterais estritas de 2 a 3 cm e um plano fascial profundo não violado, proporcionando longos períodos livres de doença e potencial curativo local.\n' +
       '- Radioterapia de megavoltagem fracionada: modalidade preferencial para sítios de reconstrução complexa (plano nasal, lábios, pálpebras ou extremidades distais), garantindo erradicação tumoral com preservação funcional.',
     lomustinaCCNU:
-      'Quimioterápico de primeira linha na doença cutânea multifocal e disseminada no cão (Risbon et al., 2006; Nelson & Couto, 6ª ed.):\n\n' +
+      'Quimioterápico de primeira linha na doença cutânea multifocal e disseminada no cão (Risbon et al., 2006):\n\n' +
       '- Mecanismo e dados seminais: nitrosureia lipofílica que atinge altas concentrações dérmicas por alquilação do DNA tumoral; no estudo clássico de Risbon et al. (2006) com 46 cães com eCTCL, a dose mediana inicial de 60 mg/m2 VO q3sem (intervalo de 30 a 95 mg/m2) alcançou taxa de resposta objetiva global de 83% (15 CR e 23 PR), com duração mediana de resposta de 94 dias.\n' +
-      '- Ajuste contemporâneo de dosagem: enquanto o BSAVA Oncology cita 70 mg/m2 VO q3sem, a conduta clínica moderna individualiza a dose entre 50 e 60 mg/m2 VO para minimizar toxicidades graves.\n' +
+      '- Ajuste contemporâneo de dosagem: embora alguns protocolos de referência descrevam 70 mg/m2 VO q3sem, a conduta clínica moderna individualiza a dose entre 50 e 60 mg/m2 VO para minimizar toxicidades graves.\n' +
       '- Mielossupressão aguda dose-limitante: nadir de neutrófilos entre 7 e 10 dias (podendo atingir 14 dias); exige hemograma prévio obrigatório por ciclo (neutrófilos > 2.500/uL e plaquetas > 100.000/uL estritamente necessários para liberação).\n' +
       '- Hepatotoxicidade cumulativa crônica: risco de insuficiência hepática irreversível; requer dosagem sérica de ALT, ALP e bilirrubinas pré-ciclo e coprescrição rotineira de hepatoprotetores (SAMe e silibina).\n' +
       '- Cinética de falha: a refratariedade e progressão tumoral por resistência celular adquirida ocorrem tipicamente em 3 a 4 meses.',
@@ -479,7 +479,7 @@ export const linfomaCutaneoRecord: DiseaseRecord = {
       '- ALERTA FARMACOLÓGICO: a corticoterapia isolada não constitui remissão duradoura e deflagra refratariedade clonal precoce em poucas semanas se utilizada sem protocolo quimioterápico concomitante.\n' +
       '- Suporte higiênico e analgésico: banhos medicinais semanais com clorexidina a 2-3%, loções hidratantes hipoalergênicas e analgesia multimodal escalonada.',
     peculiaridadesGatos:
-      'Particularidades terapêuticas e riscos espécie-específicos em felinos (Withrow & MacEwen, 6ª ed.; Siewert et al., 2022):\n\n' +
+      'Particularidades terapêuticas e riscos espécie-específicos em felinos (Siewert et al., 2022):\n\n' +
       '- Abordagem local: ressecção cirúrgica ampla ou radioterapia fracionada constituem a conduta de escolha para nódulos isolados (incluindo o linfoma tarsal).\n' +
       '- Lomustina (CCNU) e toxicidade pulmonar: empregada na dose empírica de 40 a 50 mg/m2 VO a cada 3 a 4 semanas (ou 8 a 10 mg/gato VO); demanda monitoramento respiratório contínuo pelo risco clássico de fibrose pulmonar idiopática fatal na espécie felina.\n' +
       '- Linfomas de baixo grau: regimes orais com clorambucila associada à prednisolona exibem excelente índice de tolerância.\n' +

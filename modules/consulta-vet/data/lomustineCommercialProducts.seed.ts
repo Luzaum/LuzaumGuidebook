@@ -96,7 +96,7 @@ export const lomustineCommercialProductsSeed: CommercialMedicationProduct[] = [
       sourceDate: '2026-09-13',
     },
     evidenceLevel:
-      'Registro Anvisa 1.0180.0097. Consensos ACVIM de Oncologia e Hepatite (2019), Withrow & MacEwen 6ª ed., Skorupski et al. JVIM 2011.',
+      'Registro Anvisa 1.0180.0097. Consensos ACVIM de Oncologia e Hepatite (2019) e estudo clínico de Skorupski et al. (JVIM, 2011).',
     productPageUrl: 'https://consultaremedios.com.br/citostal/p',
     labelUrl: 'https://consultaremedios.com.br/citostal/bula',
     imageUrl:
@@ -251,7 +251,7 @@ export const lomustineCommercialProductsSeed: CommercialMedicationProduct[] = [
       sourceDate: '2026-09-13',
     },
     evidenceLevel:
-      'Aprovado pelo FDA. Diretrizes ACVIM de Oncologia e Withrow & MacEwen 6ª ed.',
+      'Aprovado pelo FDA. Diretrizes ACVIM de Oncologia.',
     productPageUrl:
       'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2a7a40b3-d533-4f04-89d5-83e87d4468f7',
     labelUrl:

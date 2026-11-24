@@ -288,7 +288,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
         'Soluções contendo gluconato de cálcio, metaraminol, metotrexato ou prometazina',
       ],
       infusionRateGuidance:
-        'Administrar IV lentamente conforme a bula específica do fabricante e o protocolo hospitalar institucional. Não existe velocidade de infusão máxima universal validada para parametrização matemática fixa no aplicativo.',
+        'Administrar IV lentamente conforme a bula específica do fabricante e o protocolo hospitalar institucional. Não existe velocidade de infusão máxima universal validada.',
       preparationNotes:
         'Após reconstituição do succinato liofilizado, a solução deve ser mantida ao abrigo da luz e aplicada imediatamente. Soluções turvas, com precipitados visíveis ou descoloridas devem ser descartadas sumariamente. Não misturar na mesma seringa ou bureta com outros medicamentos injetáveis.',
       storageRequirements:
@@ -434,7 +434,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'A inibição simultânea da ciclo-oxigenase gástrica pelos AINEs somada à supressão da fosfolipase A2 e redução do turnover epitelial pela prednisolona potencializa sinergicamente o risco de perfuração péptica e peritonite séptica letal.',
         clinicalAction:
-          'Contraindicação formal estrita. Respeitar período de intervalo de eliminação (washout) de 5 a 7 dias entre a suspensão de um AINE e o início da corticoterapia, salvo em emergências toxicológicas ou anafiláticas sob estrita proteção gástrica.',
+          'Contraindicação formal estrita. Respeitar período de intervalo de eliminação de 5 a 7 dias entre a suspensão de um AINE e o início da corticoterapia, salvo em emergências toxicológicas ou anafiláticas sob estrita proteção gástrica.',
       },
       {
         condition: 'Úlcera Corneana Ativa (Via Tópica Oftálmica)',

@@ -43,7 +43,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
     'Procure causa reversível (K⁺, Mg²⁺, Ca²⁺, hipóxia, anemia, dor, drogas, doença sistêmica) antes de escalar antiarrítmico. (4)(9)',
     'VPC isolado em paciente assintomático com função preservada frequentemente não precisa de supressão farmacológica — tratar substrato e repercussão, não só o traçado. (1)',
     'FA canina: meta preferencial de frequência cardíaca média de Holter ≤125 bpm quando tolerado — ECG de consultório não substitui monitorização de 24 h. (10)',
-    'Adenosina não deve aparecer como primeira escolha padrão para SVT canina com base em extrapolação da medicina humana — Nelson & Couto relata ineficácia em cães. (1)',
+    'Adenosina não deve aparecer como primeira escolha padrão para SVT canina com base em extrapolação da medicina humana, dada a ineficácia descrita em cães. (1)',
     'Bradiarritmia sintomática estrutural (SSS, BAV avançado): atropina pode servir de teste/ponte, mas marcapasso permanente é tratamento definitivo na maioria dos casos. (1)(4)(5)',
     'ECG de poucos minutos não exclui arritmia intermitente — Holter ou monitor de eventos em síncope, colapso ou suspeita alta com ECG normal. (5)(14)',
     'VF e VT sem pulso são ritmos de parada — seguir RECOVER 2024, não o algoritmo ambulatorial de VT com pulso. (25)',
@@ -486,7 +486,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
     holterIndicacoes:
       'Holter especialmente indicado em: síncope ou colapso episódico; ECG curto normal com alta suspeita; Dobermann/Boxer conforme protocolo de cardiomiopatia; quantificar carga ventricular; SSS e pausas; resposta a sotalol/mexiletina; controle de FC na fibrilação atrial (meta ORCA ≤125 bpm); correlacionar evento clínico e ritmo. Holter não é só “contador de VPC” — avaliar FC média/mín/máx, complexidade, pausas e arritmias supraventriculares. (1)(5)(10)',
     ecgQualidade:
-      'Padronizar ECG conforme BSAVA Guide to Procedures: paciente calmo, ambiente silencioso, minimizar contenção, posição lateral direita quando tolerada, eletrodos corretos, documentar velocidade (25 mm/s; 50 mm/s para medidas finas) e ganho (10 mm/mV). Registrar espécie, peso, data, medicamentos, posição, velocidade e ganho. (3)',
+      'Padronizar ECG: paciente calmo, ambiente silencioso, minimizar contenção, posição lateral direita quando tolerada, eletrodos corretos, documentar velocidade (25 mm/s; 50 mm/s para medidas finas) e ganho (10 mm/mV). Registrar espécie, peso, data, medicamentos, posição, velocidade e ganho. (3)',
     figuraHolterGatosSaudaveis: {
       kind: 'clinicalFigure' as const,
       src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudaveis-cofaru-2026.png',
@@ -505,15 +505,15 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/estratificacao-urgencia-arritmias.svg',
       alt: 'Estratificação clínica de urgência das arritmias, do acompanhamento ambulatorial à ressuscitação cardiopulmonar.',
       caption:
-        'Organização clínica do ConsultaVET para priorização de atendimento. Não corresponde a um sistema universal de estadiamento.',
+        'Organização por urgência clínica para priorização de atendimento. Não corresponde a um sistema universal de estadiamento.',
       display: 'wide',
     },
     arrNotaEstratificacao:
-      'Não existe sistema universal validado de “estágios de arritmia” comparável ao ACVIM da doença valvar. A estratificação de urgência abaixo é organização clínica do ConsultaVET — verde: monitorar/investigar (VPC/APC isolado assintomático, AIVR estável); amarelo: avaliação prioritária (ectopia frequente, nova arritmia em cardiopata, síncope leve); laranja: urgente (VT com pulso, SVT muito rápida com baixo débito, FA descompensada, BAV avançado sintomático); vermelho: emergência RECOVER (VF, VT sem pulso, PEA, assistolia). (4)(25)',
+      'Não existe sistema universal validado de “estágios de arritmia” comparável ao ACVIM da doença valvar. A estratificação de urgência abaixo é organização por urgência clínica — verde: monitorar/investigar (VPC/APC isolado assintomático, AIVR estável); amarelo: avaliação prioritária (ectopia frequente, nova arritmia em cardiopata, síncope leve); laranja: urgente (VT com pulso, SVT muito rápida com baixo débito, FA descompensada, BAV avançado sintomático); vermelho: emergência RECOVER (VF, VT sem pulso, PEA, assistolia). (4)(25)',
     arrFaCaninaOrca:
       'Pedro et al. (ORCA, 2023) demonstraram associação forte entre frequência cardíaca média de Holter e prognóstico em cães com FA secundária: FC média 24 h ≤125 bpm associou-se a mediana de sobrevida ~608 dias versus ~33 dias acima desse alvo no estudo — risco de morte substancialmente menor no grupo controlado. Trata-se de associação observacional, não prova causal universal. Meta prática preferencial: FC média de Holter ≤125 bpm quando clinicamente tolerado. ECG hospitalar >150 bpm → alta suspeita de controle inadequado; ECG <150 bpm → realizar Holter; Holter >125 bpm → intensificar terapia; Holter ≤125 bpm → controle adequado pelo critério do estudo. (10)(11)',
     arrAdenosinaAlerta:
-      'Adenosina não deve aparecer como primeira escolha padrão para SVT canina com base em extrapolação da medicina humana. Nelson & Couto relata que adenosina foi ineficaz para terminar SVTs em cães e não a coloca como tratamento-padrão da SVT canina. (1)',
+      'Adenosina não deve aparecer como primeira escolha padrão para SVT canina com base em extrapolação da medicina humana, pois mostrou-se ineficaz para terminar SVTs em cães e não integra o tratamento-padrão dessa arritmia na espécie. (1)',
     arrVtAgudaCao:
       'VT sustentada com pulso em cão: estabilizar O₂/perfusão, corrigir K⁺/Mg²⁺/causa precipitante. Lidocaína 2 mg/kg IV lentamente; repetir incrementos de ~2 mg/kg até dose cumulativa ~8 mg/kg em ≥10 min. Se resposta: CRI 25–80 µg/kg/min. Monitorar ECG contínuo, PA, ataxia, convulsões. Refratária: procainamida 2–4 mg/kg IV (cumulativo até ~20 mg/kg) → CRI 20–50 µg/kg/min; amiodarona, sotalol ou cardioversão sincronizada conforme substrato. (1)(4)(7)',
     arrVtAgudaGato:
@@ -684,7 +684,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       ],
     },
     arrInteracoesAltoRisco:
-      'Antes de combinar antiarrítmicos: diltiazem/verapamil + β-bloqueador → bradicardia, BAV, hipotensão, depressão inotrópica (usar só com justificativa e monitorização). Digoxina + hipocalemia → toxicidade digitálica. Digoxina + DRC → concentração elevada. Sotalol + hipocalemia/QT longo → torsades. Múltiplas drogas que prolongam QT → somação pró-arrítmica. Lidocaína em hepatopatia/baixo débito → clearance reduzido. (6)(7)',
+      'Antes de combinar antiarrítmicos: diltiazem/verapamil + β-bloqueador → bradicardia, BAV, hipotensão, depressão inotrópica (usar só com justificativa e monitorização). Digoxina + hipocalemia → toxicidade digitálica. Digoxina + DRC → concentração elevada. Sotalol + hipocalemia/QT longo → torsades. Múltiplas drogas que prolongam QT → somação pró-arrítmica. Lidocaína em hepatopatia/baixo débito → depuração reduzido. (6)(7)',
     alertasSeguranca: [
       '⚠️ Lidocaína em gatos: doses muito menores que em cães — neuro e cardiotoxicidade. (1)(7)',
       '⚠️ β-bloqueador + diltiazem/verapamil: depressão cardíaca, hipotensão e BAV grave. (6)(7)',
@@ -701,7 +701,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       '“Adenosina é primeira escolha porque funciona em humanos” — não sustentado como padrão em cães. (1)',
       '“Digoxina é segura em paciente com via acessória” — pode ser perigosa. (1)(16)',
       '“BAV completo vai melhorar porque demos atropina” — doença estrutural avançada geralmente necessita pacing. (4)(5)',
-      '“Reduzir VPC no Holter prova menor risco de morte súbita” — endpoint substituto, não necessariamente sobrevida. (1)(18)',
+      '“Reduzir VPC no Holter prova menor risco de morte súbita” — desfecho substituto, não necessariamente sobrevida. (1)(18)',
       'Tratar taquicardia sinusal com antiarrítmico em vez de corrigir dor, febre, anemia ou hipovolemia. (1)',
       'Equivaler dose canina de lidocaína em gatos — erro potencialmente fatal. (1)(7)',
     ],
@@ -734,7 +734,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
     ],
     cronica: [
       'FA canina: diltiazem + digoxina frequentemente primeira linha crônica; titular com Holter (meta ≤125 bpm). Romito 2025: combinação superior a monoterapias em estudo clínico. (10)(12)',
-      'Arritmias ventriculares crônicas: sotalol, mexiletina ± atenolol conforme substrato (Boxer/ARVC, Pastor Alemão); confirmar eficácia por Holter — redução ≥80–85% de VPC é endpoint de estudo, não prova de sobrevida. (18)(19)(24)',
+      'Arritmias ventriculares crônicas: sotalol, mexiletina ± atenolol conforme substrato (Boxer/ARVC, Pastor Alemão); confirmar eficácia por Holter — redução ≥80–85% de VPC é desfecho de estudo, não prova de sobrevida. (18)(19)(24)',
       'SSS/BAV avançado sintomático: marcapasso permanente — farmacoterapia como ponte. (4)(5)(20)',
       'AVRT recorrente: considerar ablação por radiofrequência — potencialmente curativa. (16)',
     ],

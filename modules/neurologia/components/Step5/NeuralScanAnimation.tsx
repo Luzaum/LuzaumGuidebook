@@ -34,7 +34,7 @@ const NEURO_SCAN_STEPS = [
     id: 'damnitv',
     label: 'Hierarquização DAMN-IT-V',
     icon: Stethoscope,
-    desc: 'Etiologias mais prováveis segundo Dewey & de Lahunta',
+    desc: 'Etiologias mais prováveis segundo critérios neuroanatômicos clássicos',
     threshold: 82,
   },
   {

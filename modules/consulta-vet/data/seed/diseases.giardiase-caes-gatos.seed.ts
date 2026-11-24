@@ -408,7 +408,7 @@ export const giardiaseCaesGatosRecord: DiseaseRecord = {
         purpose: 'Confirmar resolução clínica e parasitológica quando indicado.',
         description:
           'Nova amostragem ≥7–14 dias após fim do esquema se diarreia persiste ou contexto de surto. (3)(4)(11)',
-        interpretation: 'Melhora clínica é endpoint primário; negativação laboratorial pode ser tardia.',
+        interpretation: 'Melhora clínica é desfecho primário; negativação laboratorial pode ser tardia.',
         limitations: 'PCR/ELISA positivos residuais não exigem retratamento automático se assintomático.',
       },
     ],
@@ -543,7 +543,7 @@ export const giardiaseCaesGatosRecord: DiseaseRecord = {
 
   treatment: {
     fenbendazolCaesGatos:
-      'Fenbendazol 50 mg/kg VO q24h por 5 dias consecutivos — primeira linha em cães e gatos (ESCCAP GL6; CAPC 2025). Administrar com alimento se intolerância gástrica. Esquema respaldado por estudos clínicos (Ciuca et al., 2021) e formulários veterinários (BSAVA Formulary; Plumb\'s). Repetir ciclo apenas com confirmação de persistência clínica/laboratorial — não “vermífugo de rotina” trimestral sem indicação. (3)(4)(8)(11)',
+      'Fenbendazol 50 mg/kg VO q24h por 5 dias consecutivos — primeira linha em cães e gatos (ESCCAP GL6; CAPC 2025). Administrar com alimento se intolerância gástrica. Esquema respaldado por estudos clínicos (Ciuca et al., 2021). Repetir ciclo apenas com confirmação de persistência clínica/laboratorial — não “vermífugo de rotina” trimestral sem indicação. (3)(4)(8)(11)',
     metronidazolAlerta:
       '⚠️ Metronidazol 25 mg/kg q12h VO por 5–7 dias: alternativa quando fenbendazol indisponível/contraindicado — NÃO primeira linha. Eficácia variável; resistência descrita; neurotoxicidade em doses altas ou prolongadas (ataxia, nistagmo). Evitar rotina em gestantes (1º trimestre) e filhotes muito jovens sem justificativa. Não associar empiricamente a fenbendazol como “protocolo duplo” universal — evidência limitada para benefício incremental. (3)(7)(11)',
     naoRecomendar: [
@@ -566,7 +566,7 @@ export const giardiaseCaesGatosRecord: DiseaseRecord = {
       ],
     },
     monitoramentoPosTratamento: [
-      'Reavaliação clínica em 7–14 dias — endpoint primário: fezes formadas, peso estável, apetite normal.',
+      'Reavaliação clínica em 7–14 dias — desfecho primário: fezes formadas, peso estável, apetite normal.',
       'Repetir coproscopia/ELISA apenas se diarreia persiste ou contexto de surto/controle de abrigo.',
       'Orientar tutor sobre sinais de recidiva (diarreia aquosa, flatulência) e manutenção de higiene ≥1 semana pós-fármaco.',
       'Documentar adesão e dose — subdosagem por apresentação comercial incorreta é causa frequente de “falha”. (3)(11)',
@@ -712,7 +712,7 @@ export const giardiaseCaesGatosRecord: DiseaseRecord = {
     zoonoseCard:
       'Zoonose: assemblages A e B infectam humanos — transmissão cão/gato → pessoa documentada, porém risco doméstico é baixo com higiene adequada (lavar mãos após manipular fezes, desparasitar conforme indicação, evitar contato crianças/imunossuprimidos com fezes frescas). Não alarmar tutores desnecessariamente; orientar medidas práticas. Referência ilustrativa CDC: https://www.cdc.gov/parasites/giardia/prevention-control-prevention.html (14)',
     vacinaNota:
-      'Vacinas comerciais anti-Giardia existem em mercados selecionados — estimulam resposta imune mas não substituem controle ambiental nem são consenso de rotina universal (ESCCAP/CAPC). Evidência de benefício populacional limitada vs manejo higiênico + fenbendazol em surtos. Contexto imunológico: Tizard — resposta IgA mucosa relevante; vacinação não elimina necessidade de diagnóstico coproparasitológico. (17)(3)',
+      'Vacinas comerciais anti-Giardia existem em mercados selecionados — estimulam resposta imune mas não substituem controle ambiental nem são consenso de rotina universal (ESCCAP/CAPC). Evidência de benefício populacional limitada vs manejo higiênico + fenbendazol em surtos. A resposta imune envolve secreção de IgA mucosa relevante, porém a vacinação não elimina a necessidade de diagnóstico coproparasitológico. (17)(3)',
     preclinica: [
       'Filhotes de abrigo/criatório: coproparasitológico seriado na intake; higiene preemptiva do ambiente. (3)(4)(15)',
       'Assintomático positivo em triagem de baixo risco: higiene + observação; tratar se desenvolver sinais ou risco epidemiológico. (3)(4)',

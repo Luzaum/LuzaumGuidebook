@@ -18,7 +18,7 @@ function priceRange(min: number, max: number, sourceNote: string): CommercialMed
 }
 
 const PZQ_PLUMBS_CONTEXT =
-  'Plumb\'s 10ª ed., monografia Praziquantel (pp. 1053–1056): monodroga 5–10 mg/kg VO dose única para cestódeos; combinações Drontal/Duprantel entregam praziquantel + pirantel ± febantel conforme tabela de peso.';
+  'Como monodroga, utiliza-se 5–10 mg/kg VO em dose única para cestódeos; combinações comerciais como Drontal e Duprantel associam praziquantel + pirantel ± febantel conforme tabela de peso.';
 
 const PZQ_MONODROGA_DOG_CAT: CommercialMedicationDosageGuidance = {
   plumbs: {
@@ -61,9 +61,9 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary:
       'Cada comprimido: praziquantel 20 mg + pamoato de pirantel 230 mg. Equivalente de dose a Drontal Gatos (~5 mg/kg PZQ por 4 kg/cp).',
     labelDirections:
-      'Administrar VO em dose única conforme peso: até 1 kg = 1/4 cp; 1–2 kg = 1/2 cp; 2–3 kg = 3/4 cp; 3–4 kg = 1 cp.',
+      'Administrar VO em dose única na proporção de 1 comprimido para cada 4 kg: até 1 kg = 1/4 cp; 1,1–2 kg = 1/2 cp; 2,1–3 kg = 3/4 cp; 3,1–4 kg = 1 cp.',
     dosageGuidance: {
-      labelDose: '1 comprimido trata até 4 kg (tabela por peso na bula).',
+      labelDose: '1 comprimido trata até 4 kg (até 1 kg = 1/4 cp; 1,1–2 kg = 1/2 cp; 2,1–3 kg = 3/4 cp; 3,1–4 kg = 1 cp).',
       plumbs: {
         cat: [
           {
@@ -76,12 +76,12 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
       notes: PZQ_MONODROGA_DOG_CAT.notes,
     },
     plumbsContext: PZQ_PLUMBS_CONTEXT,
-    clinicalUse: 'Vermifugação felina econômica para nematódeos e cestódeos conforme bula Duprat.',
+    clinicalUse: 'Vermifugação felina para nematódeos e cestódeos (5 mg/kg praziquantel + 20 mg/kg pirantel em 1 cp/4 kg).',
     reassessment: 'Reavaliar reinfecção, pulgas (Dipylidium) e contactantes.',
     prescriptionExample:
-      'Duprantel Gatos: administrar em dose única por via oral conforme faixa de peso — até 1 kg: 1/4 cp; 1,1 a 2 kg: 1/2 cp; 2,1 a 3 kg: 3/4 cp; 3,1 a 4 kg: 1 cp.',
+      'Duprantel Gatos: administrar em dose única por via oral (1 cp/4 kg) — até 1 kg: 1/4 cp; 1,1 a 2 kg: 1/2 cp; 2,1 a 3 kg: 3/4 cp; 3,1 a 4 kg: 1 cp.',
     eligibility: {
-      minAge: 'A partir de 4 semanas de idade (ou conforme peso mínimo calculado a partir de 0,5 kg para fracionamento seguro).',
+      minAge: 'A partir de 4 semanas de idade (com peso mínimo a partir de 0,5 kg para fracionamento seguro).',
       minWeight: 'Dose fracionável até 1 kg (1/4 cp); 1 comprimido trata até 4 kg.',
       pregnancyLactation: 'Pode ser utilizado em fêmeas gestantes e lactantes na rotina de vermifugação felina.',
       restrictions: 'Uso exclusivo para gatos. Repetir dose após 15 dias se indicado pelo ciclo parasitário.',
@@ -89,7 +89,7 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     safetyAlert:
       'Contraindicado em hipersensibilidade. Cautela em animais debilitados. Não confundir com apresentação canina.',
     price: priceRange(13.92, 24.69, 'Agropetweb R$ 14,90; Estância Pet R$ 14,13; Terra Zoo R$ 24,69 — caixa 4 cp'),
-    evidenceLevel: 'Bula Duprat/Consulta Remédios + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula Duprat/Consulta Remédios e posologia veterinária extra-bula para monodroga.',
     productPageUrl: 'https://consultaremedios.com.br/duprantel/p',
     labelUrl: 'https://consultaremedios.com.br/duprantel/p',
     imageUrl:
@@ -139,7 +139,7 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     safetyAlert:
       'Não usar em gatos. Contraindicado em hipersensibilidade; cautela em debilitados.',
     price: priceRange(15, 35, 'Varejo veterinário variável — blister 2 cp; confirmar apresentação'),
-    evidenceLevel: 'Bula Duprat/Consulta Remédios + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula Duprat/Consulta Remédios e posologia veterinária extra-bula para monodroga.',
     productPageUrl: 'https://consultaremedios.com.br/duprantel/p',
     labelUrl: 'https://consultaremedios.com.br/duprantel/p',
     imageUrl:
@@ -202,7 +202,7 @@ export const praziquantelCommercialProductsSeed: CommercialMedicationProduct[] =
     safetyAlert:
       'Não usar em gatos. Filhotes <3 semanas ou <2 kg contraindicados. Cautela em gestação (primeiras 4 semanas), renal/hepática ou debilitados.',
     price: priceRange(101.71, 139.9, 'Caiuna Pet R$ 101,71; Cobasi R$ 116,55; Dog&Cat R$ 123,90 — 2 cp 35 kg'),
-    evidenceLevel: 'Bula Elanco + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula Elanco e posologia veterinária extra-bula para monodroga.',
     productPageUrl: 'https://www.cobasi.com.br/drontal-plus-mais-sabor-caes-35kg-31170236/p',
     labelUrl: 'https://vet.elanco.com/br/produtos/drontal',
     imageUrl:
@@ -247,7 +247,7 @@ export function enrichPraziquantelCommercialProduct(
       },
       plumbsContext: PZQ_PLUMBS_CONTEXT,
       price: priceRange(53.99, 73.17, 'Curral Vet R$ 53,99; Cobasi R$ 55,50; Estância Pet R$ 73,17 — 4 cp'),
-      evidenceLevel: 'Bula Elanco/Consulta Remédios + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+      evidenceLevel: 'Bula Elanco/Consulta Remédios e posologia veterinária extra-bula para monodroga.',
       labelUrl: 'https://consultaremedios.com.br/drontal-gatos/bula',
     };
   }
@@ -262,7 +262,7 @@ export function enrichPraziquantelCommercialProduct(
           dog: [
             ...(product.dosageGuidance?.plumbs?.dog || []),
             {
-              title: 'Praziquantel monodroga (referência Plumb\'s)',
+              title: 'Praziquantel monodroga (referência extra-bula)',
               dose: '5 mg/kg VO dose única para cestódeos isolados.',
             },
             {

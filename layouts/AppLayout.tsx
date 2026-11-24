@@ -135,8 +135,10 @@ export function AppLayout() {
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
   const isFullBleedRoute =
+    decodedPathname.startsWith('/conversor-corticoide') ||
     isActive('/') ||
     isActive('/consulta-vet/referencias-rapidas') ||
+    decodedPathname.startsWith('/neonatus') ||
     isImmersiveModuleRoute ||
     isInternalScrollShellRoute
   const usesOwnMobileBottomNav =
@@ -451,10 +453,10 @@ export function AppLayout() {
       >
         {/* Header */}
           <header className={`app-main-header sticky top-0 z-40 shrink-0 border-b border-border bg-background/95 backdrop-blur-sm ${hideGlobalHeaderOnMobile ? 'hidden md:block' : ''}`}>
-          <div className="flex items-center justify-between px-4 py-2 h-14">
+          <div className="flex h-14 items-center justify-between gap-1 px-2 py-2 sm:px-4">
             
             {/* Left Side: Toggle and Branding */}
-            <div className="flex items-center gap-3">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-3">
               <button
                 onClick={() => setSidebarOpen(true)}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-900/10 hover:text-slate-900 dark:text-slate-350 dark:hover:bg-slate-900/50 dark:hover:text-white"
@@ -478,12 +480,12 @@ export function AppLayout() {
             </div>
             
             {!decodedPathname.startsWith('/consulta-vet') && (
-              <Link to="/consulta-vet/referencias-rapidas" className="ml-3 inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-semibold text-primary hover:bg-muted">
+              <Link to="/consulta-vet/referencias-rapidas" className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-semibold text-primary hover:bg-muted sm:ml-3 sm:px-3">
                 Mini-apps
               </Link>
             )}
             {/* Right Side: Theme and User Menu */}
-            <div className="flex items-center gap-3 ml-auto">
+            <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-3">
               <ThemeToggle />
               <TopRightAuthMenu />
             </div>

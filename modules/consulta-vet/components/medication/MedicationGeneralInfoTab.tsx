@@ -186,9 +186,17 @@ export function MedicationGeneralInfoTab({
                 <Warehouse className="h-4 w-4" />
                 Armazenamento, Inspeção & Estabilidade
               </span>
-              <p className="text-xs sm:text-sm leading-relaxed text-foreground/90">
-                {dilutionGuide.preparationNotes || dilutionGuide.storageRequirements}
-              </p>
+              {dilutionGuide.preparationNotes && (
+                <p className="text-xs sm:text-sm leading-relaxed text-foreground/90">
+                  {dilutionGuide.preparationNotes}
+                </p>
+              )}
+              {dilutionGuide.storageRequirements && dilutionGuide.storageRequirements !== dilutionGuide.preparationNotes && (
+                <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground pt-1 border-t border-border/50">
+                  <strong className="text-foreground">Conservação: </strong>
+                  {dilutionGuide.storageRequirements}
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -335,7 +343,9 @@ export function MedicationGeneralInfoTab({
                   </p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     {pType?.retentionRequired
-                      ? 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1) com retenção obrigatória da 1ª via pelo estabelecimento dispensador e validade de 30 dias.'
+                      ? pType?.ordinanceOrLaw
+                        ? `Sujeito a controle especial conforme ${pType.ordinanceOrLaw}, com retenção obrigatória na dispensação e validade usual de 30 dias.`
+                        : 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998) com retenção obrigatória da 1ª via pelo estabelecimento dispensador e validade de 30 dias.'
                       : 'Sem controle especial sob Portaria SVS/MS nº 344/1998; dispensa notificação ou talonário de controle.'}
                   </p>
                 </div>

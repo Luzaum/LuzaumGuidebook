@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const SOURCE_DATE = '2026-09-01';
 
 const DIPYRONE_PLUMBS_CONTEXT =
-  'Plumb’s 10ª ed., monografia Dipyrone / Metamizole (p. 413): descreve dipirona como analgésico, antipirético e antiespasmódico. A monografia do ConsultaVet mantém as doses veterinárias separadas da bula humana do produto comercial.';
+  'A dipirona atua como analgésico, antipirético e antiespasmódico. As doses veterinárias devem ser diferenciadas das doses da bula humana do produto comercial.';
 
 const DIPYRONE_SAFETY_ALERT =
   'Produto humano, sem dose veterinária em bula. Usar somente sob prescrição veterinária. Dipirona deve integrar analgesia multimodal e não substitui opioide, bloqueio regional ou outro protocolo adequado em dor moderada/intensa. Cautela em hipersensibilidade a pirazolonas, doença renal/hepática, alterações hematológicas, desidratação e associação com outros anti-inflamatórios.';
@@ -39,7 +39,7 @@ export const dipyroneCommercialProductsSeed: CommercialMedicationProduct[] = [
             note: 'Na solução 500 mg/mL, corresponde matematicamente a 0,05 mL/kg ou 1 gota/kg. Confirmar indicação e protocolo multimodal.',
           },
           {
-            title: 'Analgesia perioperatória — Plumb’s / literatura',
+            title: 'Analgesia perioperatória — literatura veterinária',
             dose: '25 mg/kg IV; estudos caninos descrevem 25–35 mg/kg IV',
             note: 'Não usar a solução oral por via injetável.',
           },
@@ -51,7 +51,7 @@ export const dipyroneCommercialProductsSeed: CommercialMedicationProduct[] = [
             note: 'A concentração de 25 mg/gota torna doses pequenas difíceis de medir; preferir volume mensurável e cálculo individual.',
           },
           {
-            title: 'Analgesia adjuvante — Plumb’s',
+            title: 'Analgesia adjuvante parenteral',
             dose: '25 mg/kg IV q24h ou 12,5 mg/kg IV q12h',
             note: 'Não usar a solução oral por via injetável.',
           },

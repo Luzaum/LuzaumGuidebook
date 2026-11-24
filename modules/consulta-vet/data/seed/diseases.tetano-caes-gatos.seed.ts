@@ -46,7 +46,6 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
     'Dussaux 2024',
     'Zitzl 2022',
     'Guedra 2021',
-    'Nelson & Couto',
   ],
   isPublished: true,
 
@@ -125,7 +124,7 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Passo 1: Reconhecimento do Fenótipo Espástico e Nível de Consciência',
           detail:
-            'Identificar rigidez extensora persistente em membros, trismo (lockjaw), enrugamento frontal com comissuras labiais retraídas (risus sardonicus), orelhas eretas e protrusão de terceira pálpebra. Confirmar que a consciência cortical está intacta e alerta (Nelson & Couto).',
+            'Identificar rigidez extensora persistente em membros, trismo (lockjaw), enrugamento frontal com comissuras labiais retraídas (risus sardonicus), orelhas eretas e protrusão de terceira pálpebra. Confirmar que a consciência cortical está intacta e alerta.',
           timing: 'Minuto 0',
           limitations: 'Em gatos, os sinais são predominantemente focais/multifocais em um único membro sem fácies tetânica.',
         },
@@ -187,7 +186,7 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Passo 4: Neutralização de Toxina Livre Circulante com Antitoxina Equina',
           detail:
-            'Administração de Antitoxina Tetânica Equina (ATS) 100–1.000 UI/kg IV lento ou SC em dose única precoce. Realizar teste de sensibilidade intradérmica prévio (0,1–0,2 mL de diluição 1:10 SC/ID) com vigilância de anafilaxia. Em gatos, verificar ausência de conservantes fenólicos (BSAVA).',
+            'Administração de Antitoxina Tetânica Equina (ATS) 100–1.000 UI/kg IV lento ou SC em dose única precoce. Realizar teste de sensibilidade intradérmica prévio (0,1–0,2 mL de diluição 1:10 SC/ID) com vigilância de anafilaxia. Em gatos, verificar ausência de conservantes fenólicos.',
           dose: 'ATS 100–500 UI/kg IV lento diluída em salina em 30–60 min (ou SC)',
           timing: 'Primeiras 12 a 24 horas',
           limitations: 'A antitoxina não neutraliza toxina já internalizada nos axônios ou ligada no SNC; não reverte sinais imediatos.',
@@ -195,7 +194,7 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
         {
           label: 'Passo 5: Controle Farmacológico Escalonado de Espasmos e Suporte de UTI',
           detail:
-            'Associação de relaxante muscular central e benzodiazepínicos: Methocarbamol (22–44 mg/kg IV/VO q8h; crises graves 55–110 mg/kg IV lento, Plumb 10e) + Midazolam (0,1–0,4 mg/kg IV/IM q2–4h ou CRI 0,1–0,5 mg/kg/h). Casos graves e disautonomia: Sulfato de Magnésio (MgSO4 bolo 70 mg/kg em 30 min + CRI 10–30 mg/kg/h) ou Dexmedetomidina.',
+            'Associação de relaxante muscular central e benzodiazepínicos: Methocarbamol (22–44 mg/kg IV/VO q8h; crises graves 55–110 mg/kg IV lento) + Midazolam (0,1–0,4 mg/kg IV/IM q2–4h ou CRI 0,1–0,5 mg/kg/h). Casos graves e disautonomia: Sulfato de Magnésio (MgSO4 bolo 70 mg/kg em 30 min + CRI 10–30 mg/kg/h) ou Dexmedetomidina.',
           dose: 'Methocarbamol 22–44 mg/kg IV/VO q8h + Midazolam 0,1–0,4 mg/kg IV q2–4h; MgSO4 CRI se refratário',
           timing: 'Contínuo por 2 a 4 semanas',
           reassess: 'Monitorar PaCO2: se depressão respiratória ou laringoespasmo, proceder à intubação orotraqueal e ventilação mecânica.',
@@ -761,7 +760,7 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
     antimicrobianosMetronidazolVsPenicilinaG:
       'Estratégia antimicrobiana bactericida para Clostridium tetani:\n' +
       '- Primeira escolha consensual: Metronidazol\n' +
-      '  - Posologia: 10 a 15 mg/kg por via oral ou intravenosa lenta (diluída) a cada 8 a 12 horas durante 10 a 14 dias em cães e gatos (Nelson & Couto; BSAVA Formulary 10e; Dussaux et al., 2024).\n' +
+      '  - Posologia: 10 a 15 mg/kg por via oral ou intravenosa lenta (diluída) a cada 8 a 12 horas durante 10 a 14 dias em cães e gatos (Dussaux et al., 2024).\n' +
       '  - Mecanismo e vantagens: penetra com excelência no tecido necrótico e anaeróbio, exercendo rápida ação bactericida sem exercer efeito antagônico sobre neurotransmissores inibitórios centrais.\n' +
       '  - Alerta de segurança: o uso prolongado de metronidazol em doses elevadas pode desencadear neurotoxicidade vestibular (nistagmo, ataxia vestibular e espasmos mioclônicos); monitorar rigorosamente e suspender se surgirem sinais vestibulares.\n' +
       '- Alternativa clássica: Penicilina G\n' +
@@ -781,7 +780,7 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
       '- Teste de sensibilidade intradérmica obrigatório:\n' +
       '  - Devido ao risco de anafilaxia contra proteínas equinas, realizar teste prévio (0,1 a 0,2 mL de diluição 1:10 em salina estéril SC ou ID, observando o sítio por 15 a 30 minutos em busca de eritema ou pápula).\n\n' +
       'ALERTA FARMACOLÓGICO EM FELINOS:\n' +
-      '- O BSAVA Small Animal Formulary 10e alerta especificamente para checar o rótulo e evitar formulações de antitoxina contendo fenol como conservante pelo risco de toxicidade felina grave.\n' +
+      '- Conferir sempre o rótulo e evitar formulações de antitoxina contendo fenol como conservante pelo risco de toxicidade felina grave.\n' +
       '- Dados de Zitzl et al. (2022): estudos retrospectivos não demonstraram aumento estatisticamente significante na sobrevida de cães tratados com antitoxina vs controles, mas seu uso é biologicamente recomendado precocemente em casos em rápida progressão.',
 
     controleDeEspasmosAmbienteEscuroEMethocarbamol:
@@ -790,10 +789,10 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
       '  - Instalação imediata em quarto escuro silencioso com portas de isolamento acústico vedadas contra ruídos externos e luz solar.\n' +
       '  - Manipulação agrupada estrita (agrupar exames, medicações e curativos no mesmo momento para diminuir estímulos táteis).\n' +
       '  - Redução máxima de alarmes sonoros na UTI e colocação delicada de algodão nos canais auditivos do paciente.\n' +
-      '- Methocarbamol (Relaxante muscular de ação central de primeira linha, Plumb 10e, BSAVA 10e):\n' +
+      '- Methocarbamol (Relaxante muscular de ação central de primeira linha):\n' +
       '  - Mecanismo: reduz a transmissão reflexa polissináptica medular sem produzir bloqueio neuromuscular periférico direto.\n' +
       '  - Dose de manutenção: 22 a 44 mg/kg por via oral ou intravenosa lenta a cada 8 horas (limite máximo acumulado de 330 mg/kg/dia).\n' +
-      '  - Manejo de crises agudas: em episódios de espasmos paroxísticos graves agudos com risco de asfixia, o Plumb’s Veterinary Drug Handbook prescreve doses de resgate de 55 a 110 mg/kg (podendo chegar a 220 mg/kg) IV administradas lentamente até relaxamento motor satisfatório.',
+      '  - Manejo de crises agudas: em episódios de espasmos paroxísticos graves agudos com risco de asfixia, empregam-se doses de resgate de 55 a 110 mg/kg (podendo chegar a 220 mg/kg) IV administradas lentamente até relaxamento motor satisfatório.',
 
     benzodiazepinicosAcepromazinaEMagnesio:
       'Sedação sinérgica, modulação autonômica e terapia de resgate:\n' +
@@ -847,14 +846,14 @@ export const tetanoCaesGatosRecord: DiseaseRecord = {
           'Imunoglobulinas heterólogas que neutralizam tetanospasmina livre circulante',
           '100 a 500 UI/kg IV lento (diluída) ou SC dose única precoce',
           '100 a 500 UI/kg IV lento ou SC dose única precoce',
-          'Não neutraliza toxina já internalizada no SNC; realizar teste ID; evitar fenol em gatos (BSAVA)',
+          'Não neutraliza toxina já internalizada no SNC; realizar teste ID; evitar fenol em gatos',
         ],
         [
           'Methocarbamol',
           'Relaxante muscular esquelético de ação central (inibição polissináptica)',
           '22 a 44 mg/kg IV/VO q8h; crises agudas 55 a 110 mg/kg IV lento (máx 330 mg/kg/dia)',
           '22 a 44 mg/kg IV lento ou VO q8h titular ao efeito de relaxamento',
-          'Plumb 10e; monitorar sedação e depressão respiratória se associado a opioides',
+          'Monitorar sedação e depressão respiratória se associado a opioides',
         ],
         [
           'Midazolam',

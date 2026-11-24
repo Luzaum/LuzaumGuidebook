@@ -10,7 +10,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
   id: 'disease-cardiomiopatia-restritiva',
   slug: 'cardiomiopatia-restritiva-felina',
   title: 'Cardiomiopatia restritiva felina (CMR / RCM)',
-  subtitle: 'Fenótipo miocárdico de rigidez ventricular e fibrose endomiocárdica: disfunção diastólica restritiva, dilatação biatrial maciça, insuficiência cardíaca congestiva e profilaxia antitrombótica agressiva',
+  subtitle: 'Fenótipo miocárdico de rigidez ventricular e fibrose endomiocárdica: disfunção diastólica restritiva, dilatação biatrial maciça, insuficiência cardíaca congestiva e prevenção de tromboembolismo conforme o risco',
   synonyms: [
     'CMR felina',
     'RCM',
@@ -38,19 +38,19 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
   source: 'seed',
 
   quickSummary:
-    'A cardiomiopatia restritiva felina (CMR / RCM) é um fenótipo miocárdico grave caracterizado por acentuada rigidez e perda de complacência ventricular secundárias a fibrose intersticial miocárdica difusa (forma miocárdica) ou fibrose/cicatrização exuberante do endocárdio com formação de pontes e obliteração apical (forma endomiocárdica). Embora as dimensões da cavidade e a espessura parietal do ventrículo esquerdo (VE) permaneçam tipicamente normais ou discretamente alteradas, e a fração de encurtamento sistólica possa parecer falsamente preservada, o enchimento diastólico sofre colapso precoce com aumento dramático das pressões intracavitárias. Esse aumento retrógrado de pressão transmite-se aos átrios, provocando dilatação biatrial desproporcional e maciça (frequentemente com razão AE/Ao > 2,0), estase sanguínea intracardíaca, congestão venosa pulmonar e sistêmica (efusão pleural prevalecendo sobre edema pulmonar) e altíssimo risco de tromboembolismo arterial aórtico (FATE / saddle thrombus). A ecocardiografia com Doppler tecidual e espectral é o padrão-ouro confirmatório. Não há terapia antifibrótica reversiva; o manejo apoia-se no alívio da congestão (toracocentese e furosemida/torsemida), tromboprofilaxia dupla imediata (clopidogrel + rivaroxabana) e suporte inotrópico com pimobendan.',
+    'A cardiomiopatia restritiva felina (CMR / RCM) é um fenótipo miocárdico grave caracterizado por acentuada rigidez e perda de complacência ventricular secundárias a fibrose intersticial miocárdica difusa (forma miocárdica) ou fibrose/cicatrização exuberante do endocárdio com formação de pontes e obliteração apical (forma endomiocárdica). Embora as dimensões da cavidade e a espessura parietal do ventrículo esquerdo (VE) permaneçam tipicamente normais ou discretamente alteradas, e a fração de encurtamento sistólica possa parecer falsamente preservada, o enchimento diastólico sofre colapso precoce com aumento dramático das pressões intracavitárias. Esse aumento retrógrado de pressão transmite-se aos átrios, provocando dilatação biatrial desproporcional e maciça (frequentemente com razão AE/Ao > 2,0), estase sanguínea intracardíaca, congestão venosa pulmonar e sistêmica (efusão pleural prevalecendo sobre edema pulmonar) e altíssimo risco de tromboembolismo arterial aórtico (FATE / trombo em sela). A ecocardiografia com Doppler tecidual e espectral é o padrão-ouro confirmatório. Não há terapia antifibrótica reversiva; o manejo apoia-se no alívio da congestão (toracocentese e furosemida/torsemida), tromboprofilaxia conforme o risco e avaliação individual da indicação de pimobendan.',
 
   quickDecisionStrip: [
     'Átrio esquerdo maciçamente dilatado (AE/Ao > 1,8 a 2,2) com espessura parietal do VE normal (<5,5 a 6,0 mm) = forte presunção de Cardiomiopatia Restritiva (ACVIM 2020).',
     'Fração de encurtamento normal NÃO significa coração normal: a fração de ejeção afere geometria e diâmetro, mas o ventrículo rígido acomoda volume diastólico mínimo, operando sob altíssima pressão.',
     'Gato em estresse respiratório agudo com abafamento de bulhas cardíacas ventrais: realizar TFAST à beira do leito e toracocentese aliviadora bilateral IMEDIATA antes de qualquer radiografia forçada.',
     'Na espécie felina, a efusão pleural cardiogênica é tão ou mais prevalente que o edema pulmonar na ICC decorrente de CMR, pela drenagem linfática e venosa pleural compartilhada.',
-    'Tromboprofilaxia mandatória em todo felino com aumento atrial moderado a grave: Clopidogrel (18,75 mg/gato VO q24h) é significativamente superior à aspirina (ensaio FAT CAT); associar Rivaroxabana (0,5 a 1,0 mg/kg VO q24h) em casos de contraste espontâneo ("fumaça") ou trombo visível.',
-    'Pimobendan (0,625 a 1,25 mg/gato VO q12h) é seguro e benéfico na CMR descompensada: ao contrário da CMH, a CMR raramente desenvolve obstrução dinâmica da via de saída do VE (SAM), beneficiando-se do inotropismo e da vasodilatação.',
+    'Avaliar tromboprofilaxia em felinos com aumento atrial moderado a grave: Clopidogrel (18,75 mg/gato VO q24h) é significativamente superior à aspirina (ensaio FAT CAT); considerar associar Rivaroxabana (0,5 a 1,0 mg/kg VO q24h) em casos de contraste espontâneo ("fumaça") ou trombo visível.',
+    'Pimobendan (0,625 a 1,25 mg/gato VO q12h) pode ser considerado na insuficiência cardíaca, sobretudo com disfunção sistólica ou baixo débito. Avaliar previamente obstrução da via de saída ventricular, pressão arterial e perfusão; o fenótipo restritivo não garante segurança em todos os pacientes.',
     'Fluidoterapia intravenosa convencional é POTENCIALMENTE FATAL em gatos com CMR: volumes discretos de cristaloides podem precipitar edema pulmonar agudo e efusão pleural fulminante em minutos.',
     'Paraparesia aguda rígida, frialdade de membros pélvicos, ausência de pulso femoral e dor excruciante = Tromboembolismo Arterial Felino (FATE) por desprendimento de trombo atrial; analgesia imediata com opioides puros (metadona ou fentanil) é imperativa.',
     'Monitoramento domiciliar da Frequência Respiratória em Sono profundo (FRR < 30 mpm) é a ferramenta de maior sensibilidade para prevenir descompensações congestivas graves.',
-    'Diferenciar CMR de pericardite constritiva e de CMH em estágio terminal "burned-out" através do Doppler transmitral e tecidual seriado.'
+    'Diferenciar CMR de pericardite constritiva e de CMH em fase terminal com remodelamento através do Doppler transmitral e tecidual seriado.'
   ],
 
   quickSummaryRich: {
@@ -59,10 +59,10 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
     leadHighlights: [
       'Fibrose endomiocárdica (pontes cicatriciais) e miocárdica difusa',
       'Disfunção diastólica restritiva grave com fração sistólica normal',
-      'Dilatação biatrial maciça e estase ("smoke")',
+      'Dilatação biatrial maciça e estase ("contraste ecocardiográfico espontâneo")',
       'Efusão pleural cardiogênica frequente',
       'Padrão-ouro ecocardiográfico (Doppler E/A e E/E\')',
-      'Tromboprofilaxia agressiva com clopidogrel e rivaroxabana'
+      'Tromboprofilaxia orientada pelo risco individual'
     ],
     pillars: [
       {
@@ -77,8 +77,8 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
       },
       {
         title: 'Pilar 3: Manejo Emergencial da Congestão e Trombose',
-        body: 'A abordagem da crise respiratória prioriza a toracocentese imediata e furosemida parenteral com estresse mínimo absoluto (sedação com butorfanol). Na alta, a tromboprofilaxia dupla com clopidogrel e rivaroxabana previne a complicação mais temida da doença: o tromboembolismo arterial aórtico (FATE).',
-        highlights: ['Toracocentese como prioridade', 'Furosemida na menor dose eficaz', 'Dupla inibição plaquetária e de fator Xa']
+        body: 'A abordagem da crise respiratória prioriza a toracocentese imediata e furosemida parenteral com estresse mínimo absoluto (sedação com butorfanol). Na alta, a estratégia antitrombótica depende do tamanho e da função atrial, de trombos e de eventos prévios. Associar um anticoagulante ao clopidogrel pode ser considerado em risco elevado, ponderando sangramento e a limitação da evidência.',
+        highlights: ['Toracocentese como prioridade', 'Furosemida na menor dose eficaz', 'Avaliação individual do risco trombótico e hemorrágico']
       }
     ],
     diagnosticFlow: {
@@ -94,7 +94,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
         },
         {
           label: 'Passo 3: Ecocardiografia Transtorácica 2D e Modo M',
-          detail: 'Padrão-ouro confirmatório (*isGoldStandard: true*). Avaliar diâmetro e razão do átrio esquerdo/aorta (AE/Ao tipicamente > 1,8 a 2,5 no corte transversal basal). Confirmar que a espessura da parede livre do VE e do septo interventricular na diástole é normal (<5,5 mm). Pesquisar placas hiperecogênicas endocárdicas, bandas ou pontes fibróticas cruzando a cavidade e obliteração apical na forma endomiocárdica.'
+          detail: 'Padrão-ouro confirmatório. Avaliar diâmetro e razão do átrio esquerdo/aorta (AE/Ao tipicamente > 1,8 a 2,5 no corte transversal basal). Confirmar que a espessura da parede livre do VE e do septo interventricular na diástole é normal (<5,5 mm). Pesquisar placas hiperecogênicas endocárdicas, bandas ou pontes fibróticas cruzando a cavidade e obliteração apical na forma endomiocárdica.'
         },
         {
           label: 'Passo 4: Doppler Espectral Transmitral e Doppler Tecidual (TDI)',
@@ -114,11 +114,11 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
           detail: 'Toracocentese terapêutica evacuadora de líquido pleural. Furosemida 1 a 2 mg/kg IV ou IM a cada 2 a 4 horas até redução da frequência respiratória para <40 mpm; se refratário, instituir infusão contínua (CRI) de furosemida a 0,2 a 0,6 mg/kg/h. Sedação leve com Butorfanol (0,1 a 0,2 mg/kg IM) para reduzir a ansiedade simpática.'
         },
         {
-          label: 'Fase 2: Suporte Inotrópico e Lusitrópico com Pimobendan',
-          detail: 'Pimobendan na dose de 0,625 a 1,25 mg/gato VO a cada 12 horas. Como a CMR não apresenta obstrução da via de saída do VE, o pimobendan atua promovendo sensibilização de cálcio, facilitando o relaxamento diastólico e reduzindo a pós-carga por vasodilatação periférica.'
+          label: 'Fase 2: Avaliar Indicação de Pimobendan',
+          detail: 'Pimobendan na dose de 0,625 a 1,25 mg/gato VO a cada 12 horas. Considerar na insuficiência cardíaca com disfunção sistólica ou baixo débito, após avaliar obstrução da via de saída do VE e pressão arterial. Não presumir ausência de obstrução apenas pelo diagnóstico de CMR.'
         },
         {
-          label: 'Fase 3: Tromboprofilaxia Agressiva (Prevenção Primária e Secundária)',
+          label: 'Fase 3: Tromboprofilaxia Conforme o Risco',
           detail: 'Instituir Clopidogrel 18,75 mg/gato VO a cada 24 horas como terapia antiplaquetária padrão. Em pacientes com dilatação atrial extrema (AE/Ao > 2,0), fumaça ecocardiográfica ou histórico prévio de FATE: associar Rivaroxabana (0,5 a 1,0 mg/kg VO q24h) ou Enoxaparina (1 mg/kg SC q8-12h na fase aguda).'
         },
         {
@@ -171,7 +171,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
     dilatacaoBiatrialEEstase:
       'A sobrecarga pressórica crônica sobre os átrios esquerdo e direito provoca estiramento extremo das fibras atriais, apoptose e dilatação atrial compensatória desmedida. A dilatação crônica do átrio esquerdo reduz a velocidade do fluxo na aurícula esquerda para valores críticos (<0,2 m/s), deflagrando estase sanguínea visível ao ultrassom como fumaça ecocardiográfica (spontaneous echocardiographic contrast - SEC), agregação eritrocitária e ativação da cascata de coagulação, formando trombos murais ou pedunculados na aurícula esquerda.',
     tromboembolismoArterialAortico:
-      'Fragmentos desses trombos atriais desprendem-se espontaneamente e são ejetados pelo ventrículo esquerdo na circulação arterial sistêmica. Pela geometria anatômica, a imensa maioria dos êmbolos impacta na bifurcação terminal da aorta abdominal nos vasos ilíacos internos e externos (trombo em sela / saddle thrombus), ocluindo subitamente o fluxo arterial para ambos os membros pélvicos.',
+      'Fragmentos desses trombos atriais desprendem-se espontaneamente e são ejetados pelo ventrículo esquerdo na circulação arterial sistêmica. Pela geometria anatômica, a imensa maioria dos êmbolos impacta na bifurcação terminal da aorta abdominal nos vasos ilíacos internos e externos (trombo em sela), ocluindo subitamente o fluxo arterial para ambos os membros pélvicos.',
     naoTransmissivel:
       'A doença não possui caráter contagioso ou infeccioso transmissível.'
   },
@@ -225,8 +225,8 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
         description:
           'Exame completo após estabilização respiratória. Avaliação da razão átrio esquerdo/aorta (AE/Ao), espessura diastólica do septo interventricular e parede livre do VE (IVSd e LVPWd), pesquisa de traves ou bandas hiperecogênicas no VE, Doppler transmitral e Doppler tecidual (TDI) do anel mitral.',
         interpretation:
-          'Padrão-ouro (*isGoldStandard: true*). Caracteriza-se por: 1) Dilatação biatrial marcada (AE/Ao > 1,8); 2) Espessura do VE normal (<5,5 mm); 3) Influxo transmitral com padrão restritivo: onda E alta (>1,2 m/s), onda A baixa (razão E/A > 2,0) e tempo de desaceleração da onda E muito curto (<55 ms); 4) Doppler tecidual com onda E\' < 4,0 cm/s e razão E/E\' > 15; 5) Presença de contraste espontâneo ("smoke") ou trombos na aurícula esquerda.',
-        limitations: 'CMH em fase final dilatada ("burned-out") pode mimetizar a CMR; ecocardiogramas prévios auxiliam na diferenciação histórica.',
+          'Padrão-ouro. Caracteriza-se por: 1) Dilatação biatrial marcada (AE/Ao > 1,8); 2) Espessura do VE normal (<5,5 mm); 3) Influxo transmitral com padrão restritivo: onda E alta (>1,2 m/s), onda A baixa (razão E/A > 2,0) e tempo de desaceleração da onda E muito curto (<55 ms); 4) Doppler tecidual com onda E\' < 4,0 cm/s e razão E/E\' > 15; 5) Presença de contraste espontâneo ("contraste ecocardiográfico espontâneo") ou trombos na aurícula esquerda.',
+        limitations: 'CMH em fase terminal com remodelamento e dilatação pode mimetizar a CMR; ecocardiogramas prévios auxiliam na diferenciação histórica.',
         isGoldStandard: true
       },
       {
@@ -250,7 +250,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
       {
         stepNumber: 5,
         title: 'Dosagem de Biomarcadores Cardíacos e Painel Renal Basal',
-        purpose: 'Documentar estiramento miocárdico e estabelecer baseline renal antes de diuréticos.',
+        purpose: 'Documentar estiramento miocárdico e estabelecer os valores renais basais antes de diuréticos.',
         interpretation: 'NT-proBNP quantitativo sérico expressivamente elevado (>500-1500 pmol/L) reforça disfunção cardíaca hemodinâmica grave. Creatinina e ureia basais são cruciais para estadiar síndrome cardiorrenal durante a diurese.',
         limitations: 'NT-proBNP não substitui o ecocardiograma na distinção de fenótipos.'
       }
@@ -281,24 +281,24 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
     ],
     farmacoterapiaCronicaDeManutencao: [
       {
-        drug: 'Clopidogrel (Tromboprofilaxia Obrigatória de Primeira Linha)',
-        indication: 'Mandatório em todo gato com dilatação atrial esquerda moderada a grave ou pós-FATE.',
+        drug: 'Clopidogrel (Prevenção de Tromboembolismo)',
+        indication: 'Recomendado em pacientes com fatores de risco tromboembólico, especialmente aumento atrial importante, insuficiência cardíaca prévia ou episódio de tromboembolismo. Avaliar sangramento ativo e contraindicações individuais.',
         dose: '18,75 mg por gato (um quarto de comprimido de 75 mg) por via oral a cada 24 horas continuamente.',
         mechanism: 'Antagonista irreversível dos receptores plaquetários de ADP (P2Y12), inibindo a ativação e agregação de plaquetas.',
         notes: 'O ensaio clínico randomizado FAT CAT (Hogan et al. 2015) comprovou tempo de sobrevida significativamente superior e menor taxa de recorrência trombótica com clopidogrel em comparação com a aspirina.'
       },
       {
         drug: 'Rivaroxabana (Anticoagulação com Inibidor de Fator Xa)',
-        indication: 'Recomendada em associação ao clopidogrel (tromboprofilaxia dupla) em gatos com altíssimo risco trombótico (presença de "fumaça" ecocardiográfica, trombo intracardíaco ou pós-FATE).',
+        indication: 'Pode ser considerada em associação ao clopidogrel em gatos com risco trombótico elevado (presença de "fumaça" ecocardiográfica, trombo intracardíaco ou pós-FATE).',
         dose: '0,5 a 1,0 mg/kg VO a cada 24 horas.',
         mechanism: 'Inibição seletiva e direta do fator de coagulação Xa ativado, impedindo a geração de trombina.'
       },
       {
         drug: 'Pimobendan (Vetmedin)',
-        indication: 'Insuficiência cardíaca congestiva decorrente de CMR.',
+        indication: 'Insuficiência cardíaca decorrente de CMR, sobretudo com disfunção sistólica ou baixo débito, após avaliação ecocardiográfica e hemodinâmica.',
         dose: '0,625 a 1,25 mg por gato (aproximadamente 0,25 mg/kg) VO a cada 12 horas.',
-        mechanism: 'Sensibilizador de cálcio e inibidor da fosfodiesterase III (inodilatador). Melhora a complacência ventricular e o relaxamento diastólico, aumentando a contratilidade atrial e ventricular sem elevar o consumo de oxigênio.',
-        notes: 'Como a CMR não cursa com estenose ou obstrução dinâmica da via de saída do VE (SAM), o pimobendan é seguro e promove melhora hemodinâmica consistente.'
+        mechanism: 'Sensibilizador de cálcio e inibidor da fosfodiesterase III (inodilatador). Aumenta a contratilidade e promove vasodilatação. Não reverte a fibrose e não deve ser apresentado como tratamento comprovado para restaurar a complacência ventricular.',
+        notes: 'A obstrução dinâmica é menos típica na CMR, mas precisa ser avaliada. Monitorar pressão arterial, perfusão e resposta clínica; a evidência específica para esse fenótipo é limitada.'
       },
       {
         drug: 'Furosemida Oral (Manutenção Domiciliar)',
@@ -313,7 +313,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
       {
         drug: 'Espironolactona',
         dose: '1,0 a 2,0 mg/kg VO a cada 12 a 24 horas em associação à furosemida.',
-        indication: 'Antagonista de aldosterona para proteção nefroprotetora e redução da fibrose miocárdica.'
+        indication: 'Antagonista da aldosterona que pode ser considerado como adjuvante na insuficiência cardíaca. Não há demonstração de reversão da fibrose na CMR; monitorar potássio e função renal.'
       }
     ],
     manejoDaFibrilacaoAtrial:
@@ -322,7 +322,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
 
   complications: {
     sequelasClinicasECardiovasculares: [
-      'Tromboembolismo Arterial Aórtico Felino (FATE / Saddle Thrombus): oclusão isquêmica súbita da trifurcação aórtica terminal por trombo atrial embolizado. Causa necrose muscular isquêmica de membros pélvicos, dor neuropática agonizante, acidose metabólica lática e risco iminente de hipercalemia fatal de reperfusão durante a recanalização vascular.',
+      'Tromboembolismo Arterial Aórtico Felino (FATE / trombo em sela): oclusão isquêmica súbita da trifurcação aórtica terminal por trombo atrial embolizado. Causa necrose muscular isquêmica de membros pélvicos, dor neuropática agonizante, acidose metabólica lática e risco iminente de hipercalemia fatal de reperfusão durante a recanalização vascular.',
       'Insuficiência Cardíaca Congestiva Refratária e Efusão Pleural Recorrente: progressão da fibrose parietal ventricular tornando o VE praticamente inextensível, exigindo toracocenteses evacuadoras repetidas a cada poucas semanas.',
       'Síndrome Cardiorrenal e Azotemia Pré-Renal Grave: desidratação tubular provocada por altas doses de diuréticos de alça associada ao baixo débito miocárdico basal, resultando em elevações críticas de creatinina, ureia e hipocalemia.',
       'Morte Súbita Cardíaca: óbito repentino em minutos resultante de arritmias ventriculares fatais (fibrilação ventricular), parada sinoatrial ou tromboembolismo coronariano/cerebral maciço.',
@@ -422,7 +422,7 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
     {
       id: 'ref-nelson-couto-rcm',
       title: 'Small Animal Internal Medicine: Restrictive Cardiomyopathy in Cats',
-      citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. St. Louis: Elsevier; 2020:198-201.',
+      citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. St. Louis: Elsevier; 2020:168-169.',
       authors: 'Nelson RW, Couto CG.',
       year: 2020,
       journal: 'Small Animal Internal Medicine (6th ed)',

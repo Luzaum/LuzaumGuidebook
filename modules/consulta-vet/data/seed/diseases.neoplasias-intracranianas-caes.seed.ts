@@ -51,7 +51,6 @@ export const neoplasiasIntracranianasCaesRecord: DiseaseRecord = {
     'Radioterapia Estereotáxica (SRT)',
     'Ressecção Total (GTR)',
     'Levetiracetam',
-    'Withrow & MacEwen',
   ],
   isPublished: true,
   source: 'seed',
@@ -368,7 +367,7 @@ export const neoplasiasIntracranianasCaesRecord: DiseaseRecord = {
     sinaisProsencefalicosECrisesEpilepticas:
       'Quadro clínico característico de lesões do telencéfalo e diencéfalo:\n\n' +
       '- Crises epilépticas focais ou generalizadas: sinal inicial mais frequente de tumores cerebrais no cão, presente em mais de 50% dos pacientes com envolvimento cortical frontal, temporal ou parietal.\n' +
-      '- Alterações comportamentais e cognitivas: perda de condicionamento sanitário domiciliar, apatia, demência, agressividade repentina, andar compulsivo sem rumo (pacing) e apoio de cabeça contra superfícies rígidas (head pressing).\n' +
+      '- Alterações comportamentais e cognitivas: perda de condicionamento sanitário domiciliar, apatia, demência, agressividade repentina, andar compulsivo sem rumo (pacing) e apoio de cabeça contra superfícies rígidas.\n' +
       '- Déficits contralaterais ao tumor: diminuição de reações posturais (propriocepção consciente diminuída nos membros contralaterais) e ausência de resposta de ameaça com reflexo pupilar à luz (PLR) normal no olho contralateral.\n' +
       '- Pleurotótono e marcha em círculos: cão tende a caminhar compulsivamente em círculos amplos direcionados para o mesmo lado da lesão encefálica (círculos ipsilaterais).',
     sinaisDeTroncoEncefalicoENervosCranianos:
@@ -379,18 +378,18 @@ export const neoplasiasIntracranianasCaesRecord: DiseaseRecord = {
     disfuncoesCerebelaresEVestibularesCentrais:
       'Disfunções de equilíbrio, coordenação motora e reflexos vestibulares:\n\n' +
       '- Síndrome cerebelar clássica: ataxia hipermetrizada com passada em passos de ganso (dismetria), tremores de intenção acentuados na aproximação da cabeça ao prato de alimento, aumento da base de sustentação sem paresia associada e reflexo de ameaça ausente com visão preservada ipsilateralmente.\n' +
-      '- Síndrome vestibular central: nistagmo espontâneo ou posicional que pode ser vertical, horizontal ou rotatório (frequentemente mudando de direção com a posição da cabeça), inclinação da cabeça (head tilt), rolamentos corporais e presença mandatória de déficits de reações posturais ipsilaterais (diferencial chave do vestibular periférico).',
+      '- Síndrome vestibular central: nistagmo espontâneo ou posicional que pode ser vertical, horizontal ou rotatório (frequentemente mudando de direção com a posição da cabeça), inclinação da cabeça, rolamentos corporais e presença mandatória de déficits de reações posturais ipsilaterais (diferencial chave do vestibular periférico).',
     tabelaNeurolocalizacaoClinica: {
       kind: 'clinicalTable',
       caption: 'Tabela 2 — Neurolocalização Clínica dos Tumores Encefálicos em Cães',
       headers: ['Região Neuroanatômica', 'Principais Sinais Clínicos', 'Exame Neurológico Típico', 'Reflexos e Reações Posturais'],
       rows: [
-        ['Prosencéfalo (Telencéfalo)', 'Crises epilépticas focais ou generalizadas; head pressing; andar compulsivo; demência', 'Nível de consciência normal a obtuso; marcha em círculos amplos ipsilaterais à lesão', 'Reações posturais diminuídas nos membros contralaterais; ameaça ausente contralateral com PLR normal'],
+        ['Prosencéfalo (Telencéfalo)', 'Crises epilépticas focais ou generalizadas; pressão da cabeça contra superfícies; andar compulsivo; demência', 'Nível de consciência normal a obtuso; marcha em círculos amplos ipsilaterais à lesão', 'Reações posturais diminuídas nos membros contralaterais; ameaça ausente contralateral com PLR normal'],
         ['Prosencéfalo (Diencéfalo / Hipotálamo)', 'Desregulação de temperatura e apetite; adipsia ou polidipsia; distúrbios de sono; endocrinopatias', 'Estupor leve; cegueira central; sinais de disfunção hipofisária (Cushing)', 'Déficits posturais contralaterais; respostas visuais bilaterais alteradas em macroadenomas'],
         ['Mesencéfalo (Tronco Anterior)', 'Estupor a coma; postura de descerebração (extensão rígida dos 4 membros com opistótono)', 'Midríase fixa ou anisocoria; ausência de PLR direto ipsilateral; estrabismo ventrolateral', 'Tetraparesia UMN severa; hiper-reflexia patelar e extensora cruzada nos quatro membros'],
         ['Ponte e Bulbo (Tronco Posterior)', 'Depressão profunda do sensório; respiração atáxica ou de Cheyne-Stokes; risco de parada respiratória', 'Déficits múltiplos de pares cranianos V, VII, VIII, IX, X e XII; ptose labial; disfagia; paralisia de língua', 'Tetraparesia UMN; propriocepção ausente nos 4 membros; reflexos espinhais normais ou hiperativos'],
         ['Cerebelo', 'Ataxia cerebelar sem perda de força (sem paresia); tremores de intenção cefálicos; tônus extensor aumentado', 'Hipermetria com passos de ganso; cabeça oscilante; nistagmo posicional bilateral', 'Propriocepção presente ou dismétrica; reflexo de ameaça ausente ipsilateral com PLR normal'],
-        ['Sistema Vestibular Central', 'Inclinação de cabeça (head tilt); ataxia vestibular com quedas; nistagmo vertical ou que muda de direção', 'Queda ou rolamento para o lado da lesão; perda de equilíbrio vestibular com náusea e vômito', 'Déficits posturais ipsilaterais à lesão (diferencial obrigatório do vestibular periférico)'],
+        ['Sistema Vestibular Central', 'Inclinação da cabeça; ataxia vestibular com quedas; nistagmo vertical ou que muda de direção', 'Queda ou rolamento para o lado da lesão; perda de equilíbrio vestibular com náusea e vômito', 'Déficits posturais ipsilaterais à lesão (diferencial obrigatório do vestibular periférico)'],
       ],
     },
   },

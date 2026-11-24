@@ -61,7 +61,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
     ],
 
     cautions: [
-      'Desencorajamento formal da via subcutânea (SC) convencional: em cães e gatos hospitalizados, a solução convencional injetável de 0,3 mg/mL administrada por via subcutânea apresenta absorção errática, início imprevisível e alta taxa de necessidade de resgate analgésico precoce; o consenso internacional ISFM 2022 e o BSAVA recomendam utilizar preferencialmente as vias IV, IM ou OTM.',
+      'Desencorajamento formal da via subcutânea (SC) convencional: em cães e gatos hospitalizados, a solução convencional injetável de 0,3 mg/mL administrada por via subcutânea apresenta absorção errática, início imprevisível e alta taxa de necessidade de resgate analgésico precoce; o consenso internacional ISFM 2022 recomenda utilizar preferencialmente as vias IV, IM ou OTM.',
       'Vigilância de hipertermia pós-operatória felina: os opioides podem causar desregulação transitória do centro termorregulador hipotalâmico em gatos, resultando em hipertermia pós-cirúrgica em até 28% dos felinos; monitorar a temperatura retal periodicamente e remover fontes ativas de calor se ultrapassar 39,5 °C.',
       'Resistência à reversão por naloxona: em virtude da dissociação extremamente lenta e da altíssima afinidade pelo receptor mu, doses usuais de naloxona (0,02 a 0,04 mg/kg) podem não reverter completamente a depressão da buprenorfina, necessitando de doses repetidas ou infusão contínua aliadas a ventilação mecânica assistida com oxigênio.',
       'Ineficiência da via oral transmucosa (OTM) em cães: a mucosa oral canina absorve a buprenorfina com eficiência muito inferior e mais errática que a dos felinos (biodisponibilidade bucal de cerca de 35% a 50%, comparada a 5% se engolida), exigindo doses significativamente maiores para resposta clínica satisfatória; não extrapolar a conduta OTM felina diretamente para a espécie canina.',
@@ -126,7 +126,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
           'Escala de dor composta de Glasgow modificada para cães (CMPS-SF), frequência cardíaca, frequência respiratória e temperatura corporal (vigilância de hipotermia).',
         calculatorEnabled: true,
         referenceIds: ['plumb-buprenorphine-10ed', 'bsava-buprenorphine-10ed', 'lumb-jones-anesthesia-6ed'],
-        evidenceLevel: 'Compêndios Padrão-Ouro Farmacológico Plumb 10ª ed., BSAVA 10ª ed. e Lumb & Jones 6ª ed.',
+        evidenceLevel: 'Prática Anestesiológica e Analgésica Consolidada',
       },
       {
         id: 'dose-buprenorfina-mpa-cao-gato',
@@ -148,7 +148,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
           'Frequência respiratória, SpO2, pressão arterial invasiva ou oscilométrica e profundidade do plano anestésico.',
         calculatorEnabled: true,
         referenceIds: ['bsava-buprenorphine-10ed', 'lumb-jones-anesthesia-6ed'],
-        evidenceLevel: 'Compêndios Internacionais de Anestesia Veterinária BSAVA e Lumb & Jones',
+        evidenceLevel: 'Prática Anestesiológica Veterinária Consolidada',
       },
       {
         id: 'dose-buprenorfina-cri-cao',
@@ -163,14 +163,14 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'Infusão contínua horária (mg/kg/h)',
         duration: '6 a 12 horas pós-operatórias',
         notes:
-          'Protocolo baseado em estudos prospectivos (Lumb & Jones 6ª ed.): administrar bólus de ataque de 0,015 mg/kg IV lento, seguido imediatamente de taxa de infusão contínua de 0,0025 mg/kg/h IV (equivalente a 2,5 mcg/kg/h ou 0,0417 mcg/kg/min). Diluir em solução fisiológica 0,9% com bomba de infusão volumétrica de seringa.',
+          'Protocolo baseado em estudos prospectivos de farmacocinética: administrar bólus de ataque de 0,015 mg/kg IV lento, seguido imediatamente de taxa de infusão contínua de 0,0025 mg/kg/h IV (equivalente a 2,5 mcg/kg/h ou 0,0417 mcg/kg/min). Diluir em solução fisiológica 0,9% com bomba de infusão volumétrica de seringa.',
         clinicalContext:
           'Alternativa quando agonistas plenos como fentanil não estão disponíveis para CRI hospitalar em procedimentos de dor intermediária.',
         monitoring:
           'Parâmetros ventilatórios (FR, capnografia ETCO2), frequência cardíaca e pressão arterial média contínua.',
         calculatorEnabled: false,
         referenceIds: ['lumb-jones-anesthesia-6ed', 'plumb-buprenorphine-10ed'],
-        evidenceLevel: 'Estudos Clínicos de Farmacocinética e Lumb & Jones 6ª ed.',
+        evidenceLevel: 'Estudos Clínicos de Farmacocinética',
       },
       {
         id: 'dose-buprenorfina-simbadol-gatos',
@@ -370,7 +370,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Escala de dor composta de Glasgow modificada para cães (CMPS-SF), frequência respiratória, frequência cardíaca e pressão arterial média. Monitorar temperatura corporal para prevenir hipotermia.',
         referenceIds: ['plumb-buprenorphine-10ed', 'bsava-buprenorphine-10ed', 'lumb-jones-anesthesia-6ed'],
-        evidenceLevel: 'Compêndio Farmacológico Padrão-Ouro Plumb 10ª ed. e Consenso BSAVA',
+        evidenceLevel: 'Prática Farmacológica e Analgésica Consolidada',
       },
       {
         id: 'ind-buprenorfina-bloqueios-adjuvante',
@@ -389,7 +389,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Função motora dos membros pélvicos (se epidural), retenção urinária (esvaziamento vesical), escore de dor pós-operatório e reflexo palpebral/sensibilidade regional.',
         referenceIds: ['plumb-buprenorphine-10ed', 'lumb-jones-anesthesia-6ed'],
-        evidenceLevel: 'Ensaios Clínicos Controlados em Pequenos Animais e Lumb & Jones 6ª ed.',
+        evidenceLevel: 'Ensaios Clínicos Controlados em Pequenos Animais',
       },
     ],
 
@@ -444,7 +444,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         {
           route: 'Subcutânea Convencional (SC 0,3 mg/mL) - DESENCORAJADA',
           technique:
-            'ALERTA FORMAL DO ISFM 2022 E BSAVA: A via subcutânea utilizando a solução convencional de buprenorfina 0,3 mg/mL NÃO é recomendada em gatos ou cães hospitalizados. Estudos clínicos randomizados (Giordano et al., 2010) comprovaram que a absorção subcutânea é extremamente errática, apresentando altas taxas de falha terapêutica precoce e necessidade maciça de resgate analgésico.',
+            'ALERTA FORMAL DO CONSENSO ISFM 2022: A via subcutânea utilizando a solução convencional de buprenorfina 0,3 mg/mL NÃO é recomendada em gatos ou cães hospitalizados. Estudos clínicos randomizados (Giordano et al., 2010) comprovaram que a absorção subcutânea é extremamente errática, apresentando altas taxas de falha terapêutica precoce e necessidade maciça de resgate analgésico.',
           nursingCare:
             'Se a via IV ou IM for inviável em felinos, utilizar a via OTM em vez de SC. Reservar a via subcutânea apenas quando houver disponibilidade de formulações específicas de depósito de alta concentração licenciadas para uso SC (como Simbadol 1,8 mg/mL).',
           limitations:
@@ -458,7 +458,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
           'Solução de Ringer com Lactato (compatível para infusão sob preparo asséptico imediato)',
         ],
         incompatibilities: [
-          'O compêndio europeu (SPC) e o compêndio BSAVA alertam que, na ausência de estudos de compatibilidade específicos, a buprenorfina injetável comercial não deve ser misturada fisicamente na mesma seringa com outros medicamentos veterinários.',
+          'As informações oficiais do medicamento (SPC europeu) alertam que, na ausência de estudos de compatibilidade específicos, a buprenorfina injetável comercial não deve ser misturada fisicamente na mesma seringa com outros medicamentos veterinários.',
           'Incompatível fisicamente com bicarbonato de sódio e soluções de pH alcalino (risco de precipitação da base livre insolúvel).',
         ],
         infusionRate:
@@ -543,7 +543,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
           physiologicalExplanation:
             'A absorção tecidual subcutânea da formulação padrão 0,3 mg/mL é lenta e altamente errática em pequenos animais, resultando em concentrações plasmáticas subterapêuticas e falha analgésica precoce.',
           clinicalAction:
-            'Desencorajada formalmente pelo consenso ISFM 2022 e BSAVA. Utilizar estritamente as vias intravenosa (IV), intramuscular (IM) ou oral transmucosa (OTM em gatos).',
+            'Desencorajada formalmente pelo consenso ISFM 2022. Utilizar estritamente as vias intravenosa (IV), intramuscular (IM) ou oral transmucosa (OTM em gatos).',
         },
         {
           condition: 'Traumatismo cranioencefálico, suspeita de hipertensão intracraniana ou coma',

@@ -260,7 +260,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       '  - Superação do conceito reducionista de doença vesical isolada; a bexiga atua como o órgão efetor somático de uma síndrome dolorosa e neuroendócrina sistêmica deflagrada pela percepção de ameaça ambiental.\n' +
       '- Limitação da denominação histológica clássica:\n' +
       '  - O termo cistite é imperfeito, pois parcela significativa dos felinos acometidos não exibe infiltrado neutrofílico clássico.\n' +
-      '  - As alterações predominantes compreendem quebra da barreira de permeabilidade urotelial, hipervascularização submucosa e sensibilização periférica de fibras nociceptivas (Nelson & Couto, 6a ed., Cap. 44, pp. 724-729; BSAVA Nephrology and Urology, 3a ed., Cap. 28, pp. 317-327).',
+      '  - As alterações predominantes compreendem quebra da barreira de permeabilidade urotelial, hipervascularização submucosa e sensibilização periférica de fibras nociceptivas.',
 
     distincaoConceitualLUTSvFLUTDvsCIFvsPandora:
       'Uniformização terminológica na urologia e medicina felina:\n' +
@@ -317,7 +317,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     },
 
     neurofisiologiaDaMiccaoEFibrasC:
-      'Circuitos neurais da micção e sensibilização das fibras C (Nelson & Couto, 6a ed., Cap. 45; BSAVA Nephrology, 3a ed., Cap. 3):\n' +
+      'Circuitos neurais da micção e sensibilização das fibras C:\n' +
       '- Inervação simpática (nervos hipogástricos, L1-L4):\n' +
       '  - Liberação de norepinefrina; estimula receptores beta-adrenérgicos no corpo vesical (relaxamento do detrusor para armazenamento) e receptores alfa-1 no colo vesical/uretra proximal (contração esfincteriana lisa).\n' +
       '- Inervação parassimpática (nervos pélvicos, S1-S3):\n' +
@@ -355,7 +355,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     prevalenciaEmGatosComLUTS:
       'Dados de prevalência em apresentações urológicas felinas:\n' +
       '- Causa líder de LUTS na espécie felina:\n' +
-      '  - Responde por 55% a 65% de todas as apresentações de LUTS em gatos jovens a meia-idade em âmbitos clínico e emergencial (Taylor et al., 2025; Nelson & Couto, 6a ed., Cap. 44).\n' +
+      '  - Responde por 55% a 65% de todas as apresentações de LUTS em gatos jovens a meia-idade em âmbitos clínico e emergencial (Taylor et al., 2025).\n' +
       '- Faixa etária de maior vulnerabilidade:\n' +
       '  - Concentra-se primariamente entre 1 e 7 anos de idade, tornando-se proporcionalmente menos frequente como causa primária em animais geriátricos.',
 
@@ -371,8 +371,8 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
     fatoresDeRiscoEAssociacoesEpidemiologicas:
       'Fatores de risco identificados no consenso iCatCare 2025:\n' +
       '- Confinamento e sedentarismo:\n' +
-      '  - Estilo de vida estritamente indoor com privação de estímulos exploratórios, ausência de brincadeiras predatórias simuladas e obesidade ou sobrepeso corporal.\n' +
-      '- Conflito social velado em casas multicat:\n' +
+      '  - Estilo de vida estritamente em ambiente domiciliar com privação de estímulos exploratórios, ausência de brincadeiras predatórias simuladas e obesidade ou sobrepeso corporal.\n' +
+      '- Conflito social velado em lares com vários gatos:\n' +
       '  - Coabitação de múltiplos gatos com densidade populacional excessiva, competição invisível por recursos e bloqueios territoriais de acesso.\n' +
       '- Manejo inadequado das caixas sanitárias:\n' +
       '  - Quantidade insuficiente de bandejas, locais ruidosos ou sem rota de fuga, substratos com fragrâncias artificiais e higienização irregular.\n' +
@@ -612,7 +612,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
         '- Rastreio de eventos provocadores e estressores:\n' +
         '  - Histórico de reformas, visitantes, novos animais na vizinhança ou mudanças climáticas bruscas.\n' +
         '- Dinâmica multicat e comorbidades sistêmicas:\n' +
-        '  - Rastrear a existência de bloqueios silenciosos de recursos vitais entre animais em casas multicat e pesquisar sinais extra-urinários de Síndrome de Pandora.',
+        '  - Rastrear a existência de bloqueios silenciosos de recursos vitais entre animais em lares com vários gatos e pesquisar sinais extra-urinários de Síndrome de Pandora.',
       isGoldStandard: false
     },
     {
@@ -684,7 +684,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       '  - Remoção de excretas duas vezes ao dia e higienização integral a cada 1 a 2 semanas com sabão neutro inodoro.\n' +
       '- Separação espacial de recursos vitais:\n' +
       '  - Comedouros, bebedouros, caixas sanitárias e áreas de repouso jamais devem ficar alinhados lado a lado.\n' +
-      '  - Em casas multicat, devem ser distribuídos em locais afastados para eliminar pontos de bloqueio visual velado por gatos dominantes.\n' +
+      '  - Em lares com vários gatos, devem ser distribuídos em locais afastados para eliminar pontos de bloqueio visual velado por gatos dominantes.\n' +
       '- Enriquecimento tridimensional e sensorial:\n' +
       '  - Prateleiras verticais, arranhadores, áreas elevadas de vigília, tocas de refúgio seguras e brinquedos que simulem caça e forrageamento (puzzle feeders).\n' +
       '- Previsibilidade de rotina:\n' +
@@ -724,7 +724,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       '  - Ensaios clínicos duplo-cegos randomizados (Gunn-Moore & Shenoy, 2004) demonstraram que a suplementação de glicosaminoglicano (GAG, glucosamina e pentosan polissulfato) não superou o placebo na redução de recorrências.\n' +
       '- Amitriptilina no episódio agudo:\n' +
       '  - Ensaio randomizado clássico de Kruger et al. (2003) e estudos de Kraijer et al. (2003) comprovaram que amitriptilina aguda (5 mg/gato/dia por 7 dias) não reduziu hematúria/polaquiúria e dobrou a taxa de recorrência precoce nos primeiros meses, sendo contraindicada para crises agudas.\n' +
-      '  - Seu papel restringe-se como droga de terceira linha na CIF crônica refratária ao MEMO (Plumb\'s 10a ed.: 2,5 a 12,5 mg/gato VO q24h à noite, sob desmame lento e monitoramento de retenção urinária anticolinérgica).\n' +
+      '  - Seu papel restringe-se como droga de terceira linha na CIF crônica refratária ao MEMO (2,5 a 12,5 mg/gato VO q24h à noite, sob desmame lento e monitoramento de retenção urinária anticolinérgica).\n' +
       '- Prazosina e bloqueadores alfa-1:\n' +
       '  - Ensaio clínico prospectivo duplo-cego randomizado de Reineke et al. (2017) comprovou que prazosina (0,25 mg/gato q12h) não reduziu taxas de reobstrução uretral hospitalar em 1 ou 6 meses; o consenso iCatCare 2025 não mais recomenda seu uso rotineiro profilático pós-desobstrução.',
 
@@ -737,7 +737,7 @@ export const cistiteIdiopaticaFelinaSeed: DiseaseRecord = {
       '  - Estudo de Chen & Huang (Scientific Reports, publicado em 14 de setembro de 2026) demonstrou em ensaio prospectivo randomizado duplo-cego (n=30 machos com CIF sob MEMO) que a suplementação multinutriente antioxidante e moduladora reduziu a taxa de recorrência em 6 meses (13,3% vs 40%, P=0,05) e prolongou o intervalo livre de sinais clínicos, apontando potencial adjuvante sob validação.',
 
     protocoloDeDesobstrucaoECateterizacaoUretral:
-      'Manejo emergencial do paciente macho com CIF obstrutiva (Feline Emergency and Critical Care, 2a ed., Cap. 22; BSAVA Procedures, 3a ed., pp. 292-294):\n' +
+      'Manejo emergencial do paciente macho com CIF obstrutiva:\n' +
       '- Estabilização metabólica primária:\n' +
       '  - Gluconato de cálcio a 10% IV (0,5 a 1,5 mL/kg lentamente sob monitorização de ECG) se houver arritmias ou hipercalemia (K+ > 7,0 mEq/L) e fluidoterapia balanceada de reposição.\n' +
       '- Cistocentese descompressiva aliviadora prévia:\n' +

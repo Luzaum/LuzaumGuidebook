@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const DONAREN_PRICE_SOURCE_DATE = '2026-09-30';
 
 const DONAREN_PLUMBS_CONTEXT =
-  'Plumb’s 10ª ed., monografia Trazodone Hydrochloride (pp. 1266–1269): classifica a trazodona como modulador serotoninérgico da classe SARI (Serotonin Antagonist and Reuptake Inhibitor) e antagonista alfa-1 adrenérgico. Destaca o uso no manejo Fear Free de ansiedade situacional pré-visita, transporte felino, estresse hospitalar e adjuvante comportamental. Enfatiza que sedação não equivale a ansiólise completa, alerta para a grande variabilidade individual de resposta cinotécnica e adverte contra o uso de formulações humanas de liberação modificada no lugar de comprimidos de liberação imediata.';
+  'A trazodona é um modulador serotoninérgico da classe SARI (Serotonin Antagonist and Reuptake Inhibitor) e antagonista alfa-1 adrenérgico, amplamente utilizada no manejo Fear Free de ansiedade situacional pré-visita, transporte felino, estresse hospitalar e como adjuvante comportamental. Sedação não equivale a ansiólise completa, há grande variabilidade individual de resposta clínica e não se devem substituir comprimidos de liberação imediata por formulações humanas de liberação modificada.';
 
 const DONAREN_SAFETY_ALERT =
   'PRODUTO HUMANO — USO VETERINÁRIO EXTRABULA SOB PRESCRIÇÃO EM RECEITA DE CONTROLE ESPECIAL EM 2 VIAS (LISTA C1 DA PORTARIA SVS/MS Nº 344/1998). ALERTAS CRÍTICOS: 1) SÍNDROME SEROTONINÉRGICA: contraindicada associação com IMAOs (selegilina, amitraz) — exigir washout ≥ 14 dias; risco elevado na combinação com tramadol, SSRIs (fluoxetina) e TCAs (clomipramina). 2) INIBIÇÃO DA AGREGAÇÃO PLAQUETÁRIA: inibição de SERT reduz conteúdo serotoninérgico plaquetário e deprime a agregação plaquetária in vitro (estudo Benjamin 2023: 95% → 62%); cautela em trombocitopênicos, coagulopatas e cirurgias de risco. 3) INTERFERÊNCIA NO EXAME NEUROLÓGICO: deprime temporariamente reações posturais e propriocepção em animais sadios. 4) SUPRESSÃO NO TESTE DE ESTIMULAÇÃO COM ACTH: estudo Brown 2024 demonstrou atenuação no cortisol pós-ACTH e delta cortisol; suspender antes de dosagens adrenais. 5) HIPOTENSÃO ARTERIAL: antagonismo alfa-1 provoca vasodilatação e queda de pressão sistólica (demonstrada em felinos); cautela em cardiopatas e hipovolêmicos. 6) NÃO INTERCAMBIALIDADE: Donaren Retard e Donaren LP não devem ser usados em substituição aos comprimidos imediatos e nunca devem ser triturados.';
@@ -118,7 +118,7 @@ export const donarenCommercialProductSeed: CommercialMedicationProduct[] = [
         'Medicamento humano de venda sob controle especial da Lista C1 da Portaria 344/98. Preço médio praticado em farmácias comerciais brasileiras para a caixa com 60 comprimidos de 50 mg.',
     },
     evidenceLevel:
-      'Plumb’s 10ª ed.; Ensaios clínicos randomizados duplo-cegos (Stevens et al. 2016; Kim et al. 2022); Diretrizes Fear Free 2024.',
+      'Ensaios clínicos randomizados duplo-cegos (Stevens et al. 2016; Kim et al. 2022); Diretrizes Fear Free 2024.',
     isControlled: true,
     catalogMedicationId: 'editorial:trazodona',
   },

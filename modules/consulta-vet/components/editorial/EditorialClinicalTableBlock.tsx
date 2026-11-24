@@ -1,4 +1,5 @@
 import { ReadableTable } from '../shared/ReadableTable';
+import { EditorialRichText } from '../shared/EditorialRichText';
 import React from 'react';
 import { cn } from '../../../../lib/utils';
 import type { EditorialClinicalTable } from '../../types/common';
@@ -11,36 +12,9 @@ interface EditorialClinicalTableBlockProps {
   hideCaption?: boolean;
 }
 
-function renderTableMarks(text: string) {
-  if (!text.includes('==')) return text;
-  return text.split(/(==[^=\n]+==)/g).map((part, idx) => {
-    if (part.startsWith('==') && part.endsWith('==') && part.length >= 5) {
-      return (
-        <mark
-          key={idx}
-          className="consulta-vet-readable-highlight inline rounded bg-amber-200/75 px-1 py-px font-semibold text-amber-950 [box-decoration-break:clone] dark:bg-amber-400/25 dark:text-amber-100"
-        >
-          {part.slice(2, -2)}
-        </mark>
-      );
-    }
-    return part.replace(/==/g, '');
-  });
-}
-
 function renderTableText(text: string) {
-  if (!text || (!text.includes('**') && !text.includes('*') && !text.includes('=='))) return text;
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((part, idx) => {
-    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
-      return (
-        <strong key={idx} className="font-semibold text-foreground">
-          {renderTableMarks(part.slice(2, -2))}
-        </strong>
-      );
-    }
-    return <React.Fragment key={idx}>{renderTableMarks(part.replace(/\*\*/g, ''))}</React.Fragment>;
-  });
+  if (!text) return text;
+  return <EditorialRichText value={text} />;
 }
 
 /**

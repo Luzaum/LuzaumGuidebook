@@ -436,7 +436,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     requiredStage: true,
     energy: {
       policy: 'no_direct_change',
-      recommendationPtBr: 'Manter energia; aumentar turnover hídrico com alimentos ≥70% umidade quando possível (AVCN cap. 15).',
+      recommendationPtBr: 'Manter energia; aumentar turnover hídrico com alimentos ≥70% umidade quando possível.',
       evidenceIds: ['applied-clinical-nutrition', 'iris-ckd-2023'],
     },
     nutrientTargets: [
@@ -466,7 +466,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     requiredStage: true,
     energy: {
       policy: 'no_direct_change',
-      recommendationPtBr: 'Densidade energética elevada; evitar desnutrição em uremia (AVCN cap. 15).',
+      recommendationPtBr: 'Densidade energética elevada; evitar desnutrição em uremia.',
       evidenceIds: ['applied-clinical-nutrition', 'iris-ckd-2023'],
     },
     nutrientTargets: [
@@ -508,7 +508,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Obesidade felina',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Perda gradual; preservar massa magra; alto risco de diabetes se obeso (AVCN cap. 9).',
+      recommendationPtBr: 'Perda gradual; preservar massa magra; alto risco de diabetes se obeso.',
       evidenceIds: ['applied-clinical-nutrition', 'aaha-2021-nutrition'],
     },
     nutrientTargets: [
@@ -536,7 +536,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['cat'],
     diagnosisCode: 'lower_urinary_tract_disease',
     displayNamePtBr: 'Cistite idiopática felina',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Aumentar ingestão hídrica; dieta úmida preferencial (AVCN cap. 16).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Aumentar ingestão hídrica; dieta úmida preferencial.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [
       {
         nutrientKey: 'moisturePct',
@@ -577,7 +577,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Hipertireoidismo felino',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Suporte calórico-proteico; monitorar perda de peso e comorbidades renais (AVCN cap. 17).',
+      recommendationPtBr: 'Suporte calórico-proteico; monitorar perda de peso e comorbidades renais.',
       evidenceIds: ['applied-clinical-nutrition'],
     },
     nutrientTargets: [],
@@ -593,7 +593,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'hyperlipidemia',
     displayNamePtBr: 'Hiperlipidemia',
-    energy: { policy: 'select_target', recommendationPtBr: 'Controle de gordura dietética e peso corporal (AVCN cap. 17).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'select_target', recommendationPtBr: 'Controle de gordura dietética e peso corporal.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [
       {
         nutrientKey: 'etherExtractPct',
@@ -621,7 +621,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Gastroenterite aguda',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Nutrição luminal precoce quando tolerada; evitar jejum prolongado (AVCN cap. 11).',
+      recommendationPtBr: 'Nutrição luminal precoce quando tolerada; evitar jejum prolongado.',
       evidenceIds: ['applied-clinical-nutrition', 'hospital-nutrition-small-animals'],
     },
     nutrientTargets: [],
@@ -637,7 +637,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'chronic_enteropathy',
     displayNamePtBr: 'Enteropatia crônica',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Proteína digestível; ajuste de gordura e prebióticos (AVCN cap. 11).', evidenceIds: ['applied-clinical-nutrition', 'microbiome-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Proteína digestível; ajuste de gordura e prebióticos.', evidenceIds: ['applied-clinical-nutrition', 'microbiome-nutrition'] },
     nutrientTargets: [
       {
         nutrientKey: 'crudeProteinPct',
@@ -662,7 +662,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'adverse_food_reaction',
     displayNamePtBr: 'Reação adversa a alimento',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Dieta de eliminação 8–12 semanas; sem petiscos paralelos (AVCN cap. 11 e 14).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Dieta de eliminação 8–12 semanas; sem petiscos paralelos.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [],
     contraindications: ['Petiscos fora da dieta de eliminação'],
     monitoring: ['Prurido', 'Fezes', 'Reintrodução alimentar'],
@@ -676,7 +676,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'colitis',
     displayNamePtBr: 'Colite',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Fibras fermentáveis/moderadamente solúveis (AVCN cap. 11).', evidenceIds: ['applied-clinical-nutrition', 'microbiome-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Fibras fermentáveis/moderadamente solúveis.', evidenceIds: ['applied-clinical-nutrition', 'microbiome-nutrition'] },
     nutrientTargets: [
       {
         nutrientKey: 'crudeFiberPct',
@@ -701,7 +701,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['cat'],
     diagnosisCode: 'constipation',
     displayNamePtBr: 'Constipação / megacólon felino',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Fibras insolúveis e hidratação (AVCN cap. 11).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Fibras insolúveis e hidratação.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [],
     contraindications: [],
     monitoring: ['Frequência defecatória', 'Dor', 'Hidratação'],
@@ -715,7 +715,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'exocrine_pancreatic_insufficiency',
     displayNamePtBr: 'Insuficiência pancreática exócrina',
-    energy: { policy: 'select_target', recommendationPtBr: 'Dieta digestível; enzimas e cobalamina (AVCN cap. 12).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'select_target', recommendationPtBr: 'Dieta digestível; enzimas e cobalamina.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [],
     contraindications: ['Suspender suplementação enzimática'],
     monitoring: ['Peso', 'Fezes', 'Cobalamina'],
@@ -731,7 +731,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Lipidose hepática felina',
     energy: {
       policy: 'clinician_required',
-      recommendationPtBr: 'Suporte calórico-proteico agressivo; arginina e cobalamina (AVCN cap. 13).',
+      recommendationPtBr: 'Suporte calórico-proteico agressivo; arginina e cobalamina.',
       evidenceIds: ['applied-clinical-nutrition', 'hospital-nutrition-small-animals'],
     },
     nutrientTargets: [
@@ -759,7 +759,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog', 'cat'],
     diagnosisCode: 'hepatic_encephalopathy',
     displayNamePtBr: 'Encefalopatia hepática',
-    energy: { policy: 'select_target', recommendationPtBr: 'Proteína modificada/vegetal; fibras e lactulose conforme caso (AVCN cap. 13).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'select_target', recommendationPtBr: 'Proteína modificada/vegetal; fibras e lactulose conforme caso.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [],
     contraindications: ['Proteína excessiva sem controle'],
     monitoring: ['Ammonia', 'Neurologia', 'Peso'],
@@ -773,7 +773,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog'],
     diagnosisCode: 'copper_associated_hepatopathy',
     displayNamePtBr: 'Hepatopatia associada ao cobre',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Restrição de cobre dietético; antioxidantes (AVCN cap. 13).', evidenceIds: ['applied-clinical-nutrition'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Restrição de cobre dietético; antioxidantes.', evidenceIds: ['applied-clinical-nutrition'] },
     nutrientTargets: [
       {
         nutrientKey: 'copperPct',
@@ -813,7 +813,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['dog'],
     diagnosisCode: 'cardiovascular_disease',
     displayNamePtBr: 'Cardiopatia canina — estágio B',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Manutenção de peso e escore muscular; moderação de sódio (Ettinger cap. 11; AVCN cap. 18).', evidenceIds: ['applied-clinical-nutrition', 'ettinger-internal-medicine-2024'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Manutenção de peso e escore muscular; moderação de sódio.', evidenceIds: ['applied-clinical-nutrition', 'ettinger-internal-medicine-2024'] },
     nutrientTargets: [
       {
         nutrientKey: 'sodiumPct',
@@ -841,7 +841,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Insuficiência cardíaca congestiva (cão)',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Densidade energética elevada contra caquexia cardíaca; n-3 EPA/DHA; controle rigoroso de sódio (Nelson & Couto cap. 5; Ettinger cap. 11; AVCN cap. 18).',
+      recommendationPtBr: 'Densidade energética elevada contra caquexia cardíaca; n-3 EPA/DHA; controle rigoroso de sódio.',
       evidenceIds: ['applied-clinical-nutrition', 'nelson-couto-internal-medicine-2020', 'ettinger-internal-medicine-2024'],
     },
     nutrientTargets: [
@@ -863,7 +863,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
         type: 'minimum',
         minimum: 0.1,
         unit: '% MS',
-        descriptionPtBr: 'Garantir aporte de taurina e avaliar L-carnitina para função miocárdica (Nelson & Couto cap. 5).',
+        descriptionPtBr: 'Garantir aporte de taurina e avaliar L-carnitina para função miocárdica.',
         evidenceIds: ['nelson-couto-internal-medicine-2020'],
         confidence: 'moderate',
       },
@@ -880,7 +880,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     species: ['cat'],
     diagnosisCode: 'cardiomyopathy',
     displayNamePtBr: 'Cardiopatia felina / HCM',
-    energy: { policy: 'no_direct_change', recommendationPtBr: 'Manter peso e massa magra; taurina obrigatória e palatabilidade (Nelson & Couto cap. 5; AVCN cap. 18).', evidenceIds: ['applied-clinical-nutrition', 'nelson-couto-internal-medicine-2020'] },
+    energy: { policy: 'no_direct_change', recommendationPtBr: 'Manter peso e massa magra; taurina obrigatória e palatabilidade.', evidenceIds: ['applied-clinical-nutrition', 'nelson-couto-internal-medicine-2020'] },
     nutrientTargets: [
       {
         nutrientKey: 'taurinePct',
@@ -919,7 +919,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Neoplasia — suporte nutricional',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Priorizar ingestão; densidade energética e proteína; n-3 quando tolerado (AVCN cap. 19).',
+      recommendationPtBr: 'Priorizar ingestão; densidade energética e proteína; n-3 quando tolerado.',
       evidenceIds: ['applied-clinical-nutrition'],
     },
     nutrientTargets: [],
@@ -937,7 +937,7 @@ export const THERAPEUTIC_NUTRITION_PROFILES_V3: TherapeuticNutritionProfileV3[] 
     displayNamePtBr: 'Osteoartrite',
     energy: {
       policy: 'select_target',
-      recommendationPtBr: 'Controle de peso; ácidos graxos n-3 (AVCN cap. 10).',
+      recommendationPtBr: 'Controle de peso; ácidos graxos n-3.',
       evidenceIds: ['applied-clinical-nutrition'],
     },
     nutrientTargets: [],

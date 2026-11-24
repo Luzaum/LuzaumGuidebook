@@ -36,13 +36,13 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
   ],
   plainLanguage: DISEASE_PLAIN_LANGUAGE['insuficiencia-pancreatica-exocrina-caes-gatos'],
   quickSummary:
-    'A insuficiência pancreática exócrina (IPE/EPI) é síndrome de maldigestão/malabsorção por perda de massa acinar funcional — sinais clássicos incluem perda de peso e diarreia volumosa; cães frequentemente apresentam polifagia, enquanto gatos podem manter apetite normal (Xenoulis et al., 2016). O diagnóstico padrão-ouro é TLI sérico específico por espécie: cTLI ≤5,5 µg/L (Texas A&M GI Lab, março 2024; cutoff ≤2,5 µg/L está desatualizado) e fTLI ≤8 µg/L (Steiner, Merck 2025). Tratamento vitalício: terapia de reposição enzimática pancreática (PERT) em toda refeição + cobalamina (suplementar sempre que baixa ou empiricamente) + dieta individualizada — dieta universalmente hipolipídica não é necessária (Cridge et al., 2024). Prognóstico geralmente bom com adesão terapêutica (Cridge et al., 2024; Steiner, Merck 2025).',
+    'A insuficiência pancreática exócrina (IPE/EPI) é síndrome de maldigestão/malabsorção por perda de massa acinar funcional — sinais clássicos incluem perda de peso e diarreia volumosa; cães frequentemente apresentam polifagia, enquanto gatos podem manter apetite normal (Xenoulis et al., 2016). O diagnóstico padrão-ouro é TLI sérico específico por espécie: cTLI ≤5,5 µg/L (Texas A&M GI Lab, março 2024; cutoff ≤2,5 µg/L está desatualizado) e fTLI ≤8 µg/L. Tratamento vitalício: terapia de reposição enzimática pancreática (PERT) em toda refeição + cobalamina (suplementar sempre que baixa ou empiricamente) + dieta individualizada — dieta universalmente hipolipídica não é necessária (Cridge et al., 2024). Prognóstico geralmente bom com adesão terapêutica (Cridge et al., 2024).',
   quickDecisionStrip: [
     'Suspeitar insuficiência pancreática exócrina (IPE) em cão com perda de peso + polifagia + fezes volumosas/malformadas — triagem inicial com hemograma, bioquímica e imunorreatividade tipo tripsina (TLI).',
     'Gatos podem não ter polifagia: perda de peso + diarreia/anorexia/lethargia bastam para incluir IPE no diferencial (Xenoulis et al., 2016).',
-    'Imunorreatividade tipo tripsina canina (cTLI) ≤5,5 µg/L ou imunorreatividade tipo tripsina felina (fTLI) ≤8 µg/L confirma IPE — usar laboratório com imunoensaio validado por espécie (Texas A&M GI Lab, 2024; Steiner, Merck 2025).',
+    'Imunorreatividade tipo tripsina canina (cTLI) ≤5,5 µg/L ou imunorreatividade tipo tripsina felina (fTLI) ≤8 µg/L confirma IPE — usar laboratório com imunoensaio validado por espécie (Texas A&M GI Lab, 2024).',
     'Cutoff de cTLI ≤2,5 µg/L está desatualizado após shift de ensaio Siemens — não usar referência antiga (Texas A&M GI Lab, março 2024).',
-    'Terapia de reposição enzimática pancreática (PERT) em TODA refeição — misturar enzima à comida; pré-incubação não é necessária (Steiner, Merck 2025). Dose inicial: ~1 colher de chá/10 kg (cães) ou ~1 colher de chá/gato.',
+    'Terapia de reposição enzimática pancreática (PERT) em TODA refeição — misturar enzima à comida; pré-incubação não é necessária. Dose inicial: ~1 colher de chá/10 kg (cães) ou ~1 colher de chá/gato.',
     'Medir cobalamina no diagnóstico; suplementar cobalamina (B12) sempre que baixa — hipocobalaminemia piora prognóstico e resposta (Soetart et al., 2019; Xenoulis et al., 2016).',
     'Cobalamina (B12) oral é eficaz — não restringir a via parenteral (Chang et al., 2022 em cães; Chang et al., 2024 em gatos).',
     'Dieta hipolipídica universal NÃO é obrigatória — preferir dieta de baixo resíduo com teor moderado de gordura conforme tolerância (Cridge et al., 2024).',
@@ -112,7 +112,7 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
           dose: '~1 colher de chá/10 kg (cães) ou ~1 colher de chá/gato por refeição',
           duration: 'Vitalício — toda refeição',
           detail:
-            'Misturar enzimas à comida e oferecer — pré-incubação não é necessária; titular dose pela resposta clínica e aparência das fezes (Cridge et al., 2024; Steiner, Merck 2025).',
+            'Misturar enzimas à comida e oferecer — pré-incubação não é necessária; titular dose pela resposta clínica e aparência das fezes (Cridge et al., 2024).',
         },
         {
           label: 'Suplementar cobalamina',
@@ -137,7 +137,7 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'IPE/EPI é síndrome de maldigestão e malabsorção causada por secreção insuficiente de enzimas digestivas (lipase, tripsina, quimotripsina, amilase) pelos ácinos pancreáticos — clinicamente manifesta-se quando >85–90% da massa acinar funcional está perdida (Cridge et al., 2024; Steiner, Merck 2025).',
+      'IPE/EPI é síndrome de maldigestão e malabsorção causada por secreção insuficiente de enzimas digestivas (lipase, tripsina, quimotripsina, amilase) pelos ácinos pancreáticos — clinicamente manifesta-se quando >85–90% da massa acinar funcional está perdida (Cridge et al., 2024).',
     reservaFuncional:
       'O pâncreas exócrino possui ampla reserva funcional (~90%): sinais clínicos só aparecem após destruição maciça do parênquima acinar — por isso TLI baixo reflete perda avançada, não disfunção leve (Cridge et al., 2024).',
     paa: [
@@ -234,7 +234,7 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
     disbiose:
       'Disbiose do microbiota entérico (EMD) persiste em subset de pacientes apesar de PERT — contribui para diarreia refratária, flatulência e perda de peso residual (Cridge et al., 2024). Manejo inclui otimização de PERT/B12, dieta, e em casos selecionados tilosina ou investigação de enteropatia concomitante.',
     fatorIntrinseco:
-      'Fator intrínseco é produzido parcialmente por ácinos pancreáticos — sua deficiência na IPE compromete absorção ileal de cobalamina independentemente de dieta. Por isso B12 deve ser medida e suplementada rotineiramente (Cridge et al., 2024; Steiner, Merck 2025).',
+      'Fator intrínseco é produzido parcialmente por ácinos pancreáticos — sua deficiência na IPE compromete absorção ileal de cobalamina independentemente de dieta. Por isso B12 deve ser medida e suplementada rotineiramente (Cridge et al., 2024).',
   },
   clinicalSignsPathophysiology: [
     {
@@ -408,7 +408,7 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
         title: 'TLI sérico — padrão-ouro',
         purpose: 'Confirmar perda de massa acinar funcional.',
         description:
-          'Jejum 12–18 h; cTLI ≤5,5 µg/L (cão) ou fTLI ≤8 µg/L (gato). Laboratório Texas A&M GI Lab ou equivalente validado (Texas A&M GI Lab, 2024; Steiner, Merck 2025).',
+          'Jejum 12–18 h; cTLI ≤5,5 µg/L (cão) ou fTLI ≤8 µg/L (gato). Laboratório Texas A&M GI Lab ou equivalente validado (Texas A&M GI Lab, 2024).',
         interpretation: 'Abaixo do cutoff = IPE confirmada. Subnormal: trial PERT + repetir em 1–2 meses.',
         limitations: 'Cutoff antigo ≤2,5 µg/L obsoleto; ensaios não validados por espécie inválidos.',
         isGoldStandard: true,
@@ -511,9 +511,9 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
     antibioticoRefratario:
       'Tilosina 25 mg/kg q24h VO por 2–4 semanas após falha de PERT otimizada + B12 + dieta — evidência para disbiose associada (Cridge et al., 2024). Esquemas históricos q12h por 6–8 semanas (literatura mais antiga) não são primeira linha atual. Antibióticos de amplo espectro de rotina NÃO são indicados.',
     omeprazolRefratario:
-      'Omeprazol 0,7–1,0 mg/kg VO q12h pode ser tentado em subset refratário após PERT + B12 + dieta otimizados — evidência limitada; não é componente obrigatório do protocolo inicial (Steiner, Merck 2025; Cridge et al., 2024).',
+      'Omeprazol 0,7–1,0 mg/kg VO q12h pode ser tentado em subset refratário após PERT + B12 + dieta otimizados — evidência limitada; não é componente obrigatório do protocolo inicial (Cridge et al., 2024).',
     ipeDiabetes:
-      'Gatos com IPE podem desenvolver diabetes por destruição isletas — monitorar glicemia ao iniciar PERT. Cães diabéticos com IPE: ajustar insulina quando digestão/absorção melhora com PERT — risco de hipoglicemia se dose insulinica não for reavaliada (Cridge et al., 2024; Steiner, Merck 2025).',
+      'Gatos com IPE podem desenvolver diabetes por destruição isletas — monitorar glicemia ao iniciar PERT. Cães diabéticos com IPE: ajustar insulina quando digestão/absorção melhora com PERT — risco de hipoglicemia se dose insulinica não for reavaliada (Cridge et al., 2024).',
     monitoramento: [
       'Peso e condição corporal q2–4 semanas até estabilização; depois q3–6 meses.',
       'Aparência e consistência fecal — objetivo: fezes formadas, não gordurosas.',

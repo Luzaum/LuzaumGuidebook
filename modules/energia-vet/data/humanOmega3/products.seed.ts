@@ -597,7 +597,7 @@ export const humanOmega3ProductsSeed: HumanOmega3Product[] = [
     veterinarySuitability: 'blocked',
     clinicalCalculationEnabled: false,
     blockReason: 'vitamin_a_d_overdose_risk',
-    notes: "Plumb's não recomenda óleo de fígado de bacalhau como fonte de ômega-3 veterinário.",
+    notes: 'Óleo de fígado de bacalhau não é recomendado como fonte de ômega-3 veterinário.',
   }),
   p({
     id: 'ho3-flax-oil-generic',

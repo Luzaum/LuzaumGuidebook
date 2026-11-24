@@ -1,0 +1,2733 @@
+{
+  "scope": "Catálogo local efetivo: seeds + overrides. Não inclui registros exclusivos do Supabase.",
+  "criteria": "Triagem para revisão/recadastro: menos de 1800 palavras nas seções clínicas; diagnóstico <100; tratamento <150; quatro seções em texto legado; ou seção central ausente. Não é certificação clínica nem prova de versão antiga.",
+  "count": 84,
+  "candidates": 8,
+  "rows": [
+    {
+      "title": "Doença do Disco Intervertebral — Gatos",
+      "slug": "doenca-do-disco-intervertebral-gatos",
+      "totalWords": 1111,
+      "depth": {
+        "etiology": 148,
+        "epidemiology": 45,
+        "pathogenesisTransmission": 70,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 133,
+        "diagnosis": 94,
+        "treatment": 311,
+        "complications": 38,
+        "prevention": 198
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Síndrome Cutânea Atópica Felina",
+      "slug": "sindrome-cutanea-atopica-felina",
+      "totalWords": 1225,
+      "depth": {
+        "etiology": 98,
+        "epidemiology": 33,
+        "pathogenesisTransmission": 100,
+        "pathophysiology": 101,
+        "clinicalSignsPathophysiology": 129,
+        "diagnosis": 137,
+        "treatment": 350,
+        "complications": 54,
+        "prevention": 223
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 20,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Dermatite Atópica Canina",
+      "slug": "dermatite-atopica-canina",
+      "totalWords": 1378,
+      "depth": {
+        "etiology": 158,
+        "epidemiology": 45,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 104,
+        "clinicalSignsPathophysiology": 132,
+        "diagnosis": 192,
+        "treatment": 346,
+        "complications": 50,
+        "prevention": 240
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 16,
+      "recadastro": true,
+      "issues": [
+        {
+          "path": "quickDecisionStrip.4",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Critérios de Favrot: Início <3 anos, cão indoor, prurido responsivo a esteroides, lesão inicial ausente, patas anteriores e orelhas afetadas (1,4)."
+        }
+      ]
+    },
+    {
+      "title": "Doença do Disco Intervertebral — Cães",
+      "slug": "doenca-do-disco-intervertebral-caes",
+      "totalWords": 1507,
+      "depth": {
+        "etiology": 183,
+        "epidemiology": 60,
+        "pathogenesisTransmission": 93,
+        "pathophysiology": 109,
+        "clinicalSignsPathophysiology": 272,
+        "diagnosis": 201,
+        "treatment": 334,
+        "complications": 48,
+        "prevention": 207
+      },
+      "missing": [],
+      "brief": [
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Hipotireoidismo adquirido (cão e gato)",
+      "slug": "hipotireoidismo-adquirido-caes-gatos",
+      "totalWords": 1676,
+      "depth": {
+        "etiology": 108,
+        "epidemiology": 134,
+        "pathogenesisTransmission": 83,
+        "pathophysiology": 248,
+        "clinicalSignsPathophysiology": 231,
+        "diagnosis": 192,
+        "treatment": 128,
+        "complications": 449,
+        "prevention": 103
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 22,
+      "recadastro": true,
+      "issues": [
+        {
+          "path": "treatment.monitoramento.3",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Tireotoxicose iatrogênica: polifagia + perda peso, panting, taquicardia — reduzir dose."
+        },
+        {
+          "path": "complications.principais.1",
+          "terms": [
+            "head tilt"
+          ],
+          "technical": false,
+          "excerpt": "Neuropatias Periféricas e Síndromes de Pares Cranianos: A deposição contínua de glicosaminoglicanos (mucopolissacarídeos ácidos) nas bainhas neurais e a redução do transporte axonal provocam compressão e degeneração axon"
+        }
+      ]
+    },
+    {
+      "title": "Complexo do granuloma eosinofílico felino",
+      "slug": "granuloma-eosinofilico-felino",
+      "totalWords": 1705,
+      "depth": {
+        "etiology": 130,
+        "epidemiology": 63,
+        "pathogenesisTransmission": 81,
+        "pathophysiology": 99,
+        "clinicalSignsPathophysiology": 181,
+        "diagnosis": 311,
+        "treatment": 433,
+        "complications": 362,
+        "prevention": 45
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 5,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Síndrome de Cushing — Cão",
+      "slug": "sindrome-cushing-caes",
+      "totalWords": 1758,
+      "depth": {
+        "etiology": 194,
+        "epidemiology": 62,
+        "pathogenesisTransmission": 59,
+        "pathophysiology": 275,
+        "clinicalSignsPathophysiology": 148,
+        "diagnosis": 237,
+        "treatment": 232,
+        "complications": 414,
+        "prevention": 137
+      },
+      "missing": [],
+      "brief": [
+        "pathogenesisTransmission"
+      ],
+      "legacy": [],
+      "references": 15,
+      "recadastro": true,
+      "issues": [
+        {
+          "path": "quickSummary",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), "
+        },
+        {
+          "path": "quickSummaryRich.lead",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), "
+        },
+        {
+          "path": "quickSummaryRich.pillars.0.body",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Poliúria, polidipsia, polifagia, panting, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não diagnóstica Cushing."
+        },
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.0.detail",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "≥2 sinais AAHA: PU/PD, polifagia, abdômen pendular, alopecia simétrica, panting, fraqueza, pele fina, calcinose (8–15%) (Bugbee et al., 2023; Behrend, VIN 2022). ALP ≠ triagem isolada."
+        },
+        {
+          "path": "quickSummaryRich.treatmentFlow.steps.1.reassess",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "PU/PD, apetite, panting, pele, infecções — Cushing Clinical Score ALIVE (0–15)"
+        },
+        {
+          "path": "pathophysiology.tabelaCushingClinicalScore.rows.3.0",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Apetite/panting"
+        },
+        {
+          "path": "pathophysiology.tabelaCushingClinicalScore.rows.3.2",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Polifagia ou panting ocasional"
+        },
+        {
+          "path": "pathophysiology.tabelaCushingClinicalScore.rows.3.3",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Polifagia + panting frequente"
+        },
+        {
+          "path": "pathophysiology.tabelaCushingClinicalScore.rows.3.4",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Polifagia extrema + panting constante"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.3.findings.0.finding",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Abdômen pendular, fraqueza, panting"
+        },
+        {
+          "path": "prevention.deteccaoPrecoce",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Não banalizar PU/PD, panting crônico e alopecia simétrica em cãos de meia-idade. Forma espontânea não tem profilaxia; iatrogênia: menor dose eficaz e menor tempo de glicocorticoide (Bugbee et al., 2023)."
+        }
+      ]
+    },
+    {
+      "title": "Doença Periodontal Felina",
+      "slug": "doenca-periodontal-gatos",
+      "totalWords": 1764,
+      "depth": {
+        "etiology": 152,
+        "epidemiology": 133,
+        "pathogenesisTransmission": 142,
+        "pathophysiology": 91,
+        "clinicalSignsPathophysiology": 166,
+        "diagnosis": 170,
+        "treatment": 270,
+        "complications": 611,
+        "prevention": 29
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": true,
+      "issues": [
+        {
+          "path": "clinicalSignsPathophysiology.1.findings.0.finding",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Mudanças discretas de comportamento (grooming reduzido, isolamento, chattering)"
+        }
+      ]
+    },
+    {
+      "title": "Tumores mamários em cães e gatos",
+      "slug": "tumores-mamarios-caes-gatos",
+      "totalWords": 2017,
+      "depth": {
+        "etiology": 122,
+        "epidemiology": 97,
+        "pathogenesisTransmission": 82,
+        "pathophysiology": 76,
+        "clinicalSignsPathophysiology": 92,
+        "diagnosis": 502,
+        "treatment": 372,
+        "complications": 569,
+        "prevention": 105
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Diabetes Mellitus Felino",
+      "slug": "diabetes-mellitus-felina",
+      "totalWords": 2028,
+      "depth": {
+        "etiology": 124,
+        "epidemiology": 19,
+        "pathogenesisTransmission": 103,
+        "pathophysiology": 118,
+        "clinicalSignsPathophysiology": 137,
+        "diagnosis": 136,
+        "treatment": 842,
+        "complications": 425,
+        "prevention": 124
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cardiomiopatia dilatada (CMD)",
+      "slug": "cardiomiopatia-dilatada-caes-gatos",
+      "totalWords": 2132,
+      "depth": {
+        "etiology": 168,
+        "epidemiology": 94,
+        "pathogenesisTransmission": 81,
+        "pathophysiology": 82,
+        "clinicalSignsPathophysiology": 394,
+        "diagnosis": 441,
+        "treatment": 346,
+        "complications": 446,
+        "prevention": 80
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 8,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "complications.principais.3",
+          "terms": [
+            "smoke"
+          ],
+          "technical": false,
+          "excerpt": "Tromboembolismo Arterial Sistêmico (Trombo em Sela / FATE): Ocorre com frequência em gatos acometidos por CMD (frequentemente secundária à deficiência de taurina no passado ou idiopática atual) decorrente da hipocinesia "
+        }
+      ]
+    },
+    {
+      "title": "Erliquiose monocítica canina (Ehrlichia canis)",
+      "slug": "erliquiose-monocitica-canina",
+      "totalWords": 2139,
+      "depth": {
+        "etiology": 80,
+        "epidemiology": 111,
+        "pathogenesisTransmission": 189,
+        "pathophysiology": 236,
+        "clinicalSignsPathophysiology": 190,
+        "diagnosis": 504,
+        "treatment": 237,
+        "complications": 485,
+        "prevention": 107
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "pathogenesisTransmission.figuraCicloCarrapato.caption",
+          "terms": [
+            "indoor",
+            "outdoor"
+          ],
+          "technical": false,
+          "excerpt": "Diagrama do ciclo biologico de tres hospedeiros do carrapato-marrom (Rhipicephalus sanguineus), detalhando as fases de ovo, larva, ninfa e adulto, destacando a infestacao em ambientes internos (indoor) e externos (outdoo"
+        }
+      ]
+    },
+    {
+      "title": "Leucemia viral felina (FeLV)",
+      "slug": "leucemia-viral-felina",
+      "totalWords": 2146,
+      "depth": {
+        "etiology": 118,
+        "epidemiology": 82,
+        "pathogenesisTransmission": 110,
+        "pathophysiology": 170,
+        "clinicalSignsPathophysiology": 144,
+        "diagnosis": 366,
+        "treatment": 419,
+        "complications": 571,
+        "prevention": 166
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 8,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "tags.7",
+          "terms": [
+            "Indoor"
+          ],
+          "technical": false,
+          "excerpt": "Indoor"
+        },
+        {
+          "path": "plainLanguage.keyPoints.2",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Prevenção: testar, vacinar gatos em risco, evitar contato com gatos infectantes e manter indoor."
+        },
+        {
+          "path": "quickDecisionStrip.4",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Separar gato progressivo de suscetíveis; indoor, castração e vacinação baseada em risco nos demais."
+        },
+        {
+          "path": "quickSummaryRich.treatmentFlow.steps.0.detail",
+          "terms": [
+            "Indoor"
+          ],
+          "technical": false,
+          "excerpt": "Indoor, dieta completa (evitar cru), controle parasitário, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro (ABCD 2025; Westman et al., 2024)."
+        },
+        {
+          "path": "pathogenesisTransmission.cascata.0",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Exposição oronasal — principal via saliva em contato social prolongado (grooming, potes compartilhados, mordidas)."
+        },
+        {
+          "path": "treatment.estadiamentoERotinaWestman.2",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "2. Medidas Preventivas e de Bem-Estar: Manutenção estritamente indoor, isolamento de gatos suscetíveis (p27-), vacinação de contactantes, castração de rotina, dieta cozida/balanceada (evitar carnes cruas) e controle ecto"
+        },
+        {
+          "path": "treatment.assintomatico.0",
+          "terms": [
+            "Indoor"
+          ],
+          "technical": false,
+          "excerpt": "Indoor; evitar contato com suscetíveis; castração; dieta completa balanceada; evitar alimentos crus; controle ectop/endoparasitário; consulta e hemograma ≥6/6 meses; bioquímica e urinálise ≥anual (Westman et al., 2019; L"
+        }
+      ]
+    },
+    {
+      "title": "Cardiomiopatia hipertrófica (CMH)",
+      "slug": "cardiomiopatia-hipertrofica-caes-gatos",
+      "totalWords": 2147,
+      "depth": {
+        "etiology": 92,
+        "epidemiology": 109,
+        "pathogenesisTransmission": 140,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 328,
+        "diagnosis": 420,
+        "treatment": 480,
+        "complications": 420,
+        "prevention": 84
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Diabetes Mellitus Canino",
+      "slug": "diabetes-mellitus-canina",
+      "totalWords": 2151,
+      "depth": {
+        "etiology": 151,
+        "epidemiology": 29,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 165,
+        "clinicalSignsPathophysiology": 131,
+        "diagnosis": 143,
+        "treatment": 933,
+        "complications": 350,
+        "prevention": 138
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Fístula perianal / furunculose anal",
+      "slug": "fistula-perianal-furunculose-anal",
+      "totalWords": 2166,
+      "depth": {
+        "etiology": 253,
+        "epidemiology": 113,
+        "pathogenesisTransmission": 156,
+        "pathophysiology": 157,
+        "clinicalSignsPathophysiology": 170,
+        "diagnosis": 285,
+        "treatment": 525,
+        "complications": 266,
+        "prevention": 241
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença Periodontal Canina",
+      "slug": "doenca-periodontal-caes",
+      "totalWords": 2199,
+      "depth": {
+        "etiology": 197,
+        "epidemiology": 181,
+        "pathogenesisTransmission": 133,
+        "pathophysiology": 164,
+        "clinicalSignsPathophysiology": 284,
+        "diagnosis": 194,
+        "treatment": 324,
+        "complications": 665,
+        "prevention": 57
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndrome de Cushing — Gato",
+      "slug": "sindrome-cushing-gatos",
+      "totalWords": 2217,
+      "depth": {
+        "etiology": 141,
+        "epidemiology": 151,
+        "pathogenesisTransmission": 287,
+        "pathophysiology": 264,
+        "clinicalSignsPathophysiology": 167,
+        "diagnosis": 400,
+        "treatment": 318,
+        "complications": 250,
+        "prevention": 239
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 9,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.pillars.1.body",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "LDDST 0,1 mg/kg IV é screening preferencial; ACTHST tem sensibilidade baixa para triagem espontânea. Confirmar ensaio de eACTH validado para gato."
+        },
+        {
+          "path": "clinicalSignsPathophysiology.sinaisClassicos.3",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Síndrome da Fragilidade Cutânea (Feline Cutaneous Asthenia): pele excessivamente fina, translúcida, sem elasticidade, que se rasga espontaneamente com movimentos bruscos, grooming ou contenção delicada, criando grandes f"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.sinaisNeurologicosEComplicados.0",
+          "terms": [
+            "head pressing"
+          ],
+          "technical": false,
+          "excerpt": "Sinais neurológicos centrais por expansão de macroadenoma hipofisário: depressão sensorial, letargia profunda, cegueira central, desorientação, marcha compulsiva e pressão da cabeça contra a parede (head pressing)."
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.1.interpretation",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro funcional (*isGoldStandard: true*). Gatos saudáveis suprimem o cortisol sérico às 8 horas para concentrações <1,0 a 1,4 mcg/dL (<30 nmol/L). No hiperadrenocorticismo felino, há ausência de supressão no ponto "
+        },
+        {
+          "path": "prevention.redFlags.2",
+          "terms": [
+            "head pressing"
+          ],
+          "technical": false,
+          "excerpt": "Pressão da cabeça contra a parede (head pressing), marcha compulsiva em círculos ou cegueira súbita (compressão neurológica por macroadenoma)."
+        }
+      ]
+    },
+    {
+      "title": "Hipertensão arterial sistêmica (HAS)",
+      "slug": "hipertensao-arterial-sistemica-caes-gatos",
+      "totalWords": 2221,
+      "depth": {
+        "etiology": 675,
+        "epidemiology": 83,
+        "pathogenesisTransmission": 101,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 211,
+        "diagnosis": 531,
+        "treatment": 163,
+        "complications": 343,
+        "prevention": 40
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology",
+        "prevention"
+      ],
+      "references": 5,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndromes miastênicas congênitas (cão e gato)",
+      "slug": "sindromes-miastenicas-congenitas-caes-gatos",
+      "totalWords": 2226,
+      "depth": {
+        "etiology": 212,
+        "epidemiology": 115,
+        "pathogenesisTransmission": 218,
+        "pathophysiology": 176,
+        "clinicalSignsPathophysiology": 205,
+        "diagnosis": 364,
+        "treatment": 456,
+        "complications": 274,
+        "prevention": 206
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.4.detail",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro confirmatório (*isGoldStandard: true*). Painéis moleculares comerciais para mutações em CHRNE (Jack Russell Terrier, Smooth Fox Terrier, Parson Russell), COLQ (Labrador Retriever, Sphynx, Devon Rex) e CHAT. C"
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.3.interpretation",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro confirmatório (*isGoldStandard: true*). Positivo para mutação homozigota sela o diagnóstico etiológico exato e orienta a escolha ou contraindicação de piridostigmina."
+        }
+      ]
+    },
+    {
+      "title": "Gengivoestomatite crônica felina (GECF)",
+      "slug": "gengivoestomatite-cronica-felina",
+      "totalWords": 2262,
+      "depth": {
+        "etiology": 176,
+        "epidemiology": 52,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 334,
+        "clinicalSignsPathophysiology": 163,
+        "diagnosis": 340,
+        "treatment": 391,
+        "complications": 563,
+        "prevention": 132
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.treatmentFlow.steps.1.reassess",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Peso, grooming, ingestão, fotos seriadas"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.1.findings.0.finding",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Hiporexia, perda de peso, grooming reduzido"
+        },
+        {
+          "path": "treatment.monitoramento.0",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "SDAI seriado + fotografias + peso + avaliação do tutor (apetite, grooming, dor)."
+        }
+      ]
+    },
+    {
+      "title": "Cardiomiopatia restritiva felina (CMR / RCM)",
+      "slug": "cardiomiopatia-restritiva-felina",
+      "totalWords": 2371,
+      "depth": {
+        "etiology": 213,
+        "epidemiology": 116,
+        "pathogenesisTransmission": 206,
+        "pathophysiology": 186,
+        "clinicalSignsPathophysiology": 216,
+        "diagnosis": 405,
+        "treatment": 523,
+        "complications": 244,
+        "prevention": 262
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickDecisionStrip.9",
+          "terms": [
+            "burned-out"
+          ],
+          "technical": false,
+          "excerpt": "Diferenciar CMR de pericardite constritiva e de CMH em estágio terminal \"burned-out\" através do Doppler transmitral e tecidual seriado."
+        },
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.2.detail",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro confirmatório (*isGoldStandard: true*). Avaliar diâmetro e razão do átrio esquerdo/aorta (AE/Ao tipicamente > 1,8 a 2,5 no corte transversal basal). Confirmar que a espessura da parede livre do VE e do septo "
+        },
+        {
+          "path": "pathogenesisTransmission.tromboembolismoArterialAortico",
+          "terms": [
+            "saddle thrombus"
+          ],
+          "technical": false,
+          "excerpt": "Fragmentos desses trombos atriais desprendem-se espontaneamente e são ejetados pelo ventrículo esquerdo na circulação arterial sistêmica. Pela geometria anatômica, a imensa maioria dos êmbolos impacta na bifurcação termi"
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.1.interpretation",
+          "terms": [
+            "smoke"
+          ],
+          "technical": true,
+          "excerpt": "Padrão-ouro (*isGoldStandard: true*). Caracteriza-se por: 1) Dilatação biatrial marcada (AE/Ao > 1,8); 2) Espessura do VE normal (<5,5 mm); 3) Influxo transmitral com padrão restritivo: onda E alta (>1,2 m/s), onda A bai"
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.1.limitations",
+          "terms": [
+            "burned-out"
+          ],
+          "technical": false,
+          "excerpt": "CMH em fase final dilatada (\"burned-out\") pode mimetizar a CMR; ecocardiogramas prévios auxiliam na diferenciação histórica."
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.4.purpose",
+          "terms": [
+            "baseline"
+          ],
+          "technical": false,
+          "excerpt": "Documentar estiramento miocárdico e estabelecer baseline renal antes de diuréticos."
+        },
+        {
+          "path": "complications.sequelasClinicasECardiovasculares.0",
+          "terms": [
+            "Saddle Thrombus"
+          ],
+          "technical": false,
+          "excerpt": "Tromboembolismo Arterial Aórtico Felino (FATE / Saddle Thrombus): oclusão isquêmica súbita da trifurcação aórtica terminal por trombo atrial embolizado. Causa necrose muscular isquêmica de membros pélvicos, dor neuropáti"
+        }
+      ]
+    },
+    {
+      "title": "Prostatite em cães e gatos",
+      "slug": "prostatite-caes-gatos",
+      "totalWords": 2387,
+      "depth": {
+        "etiology": 174,
+        "epidemiology": 143,
+        "pathogenesisTransmission": 107,
+        "pathophysiology": 291,
+        "clinicalSignsPathophysiology": 231,
+        "diagnosis": 362,
+        "treatment": 338,
+        "complications": 572,
+        "prevention": 169
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 13,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doenças do trato urinário inferior felino (DTUIF)",
+      "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+      "totalWords": 2399,
+      "depth": {
+        "etiology": 183,
+        "epidemiology": 141,
+        "pathogenesisTransmission": 96,
+        "pathophysiology": 82,
+        "clinicalSignsPathophysiology": 229,
+        "diagnosis": 333,
+        "treatment": 468,
+        "complications": 547,
+        "prevention": 320
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "epidemiology.fic",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "FIC tende a afetar gatos suscetíveis em ambientes provocativos: vida indoor, obesidade, sedentarismo, casas multicat, mudanças frequentes, ausência de pontos elevados, recursos mal distribuídos e experiências adversas pr"
+        }
+      ]
+    },
+    {
+      "title": "Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais",
+      "slug": "micoplasmoses-hemotropicas",
+      "totalWords": 2474,
+      "depth": {
+        "etiology": 256,
+        "epidemiology": 144,
+        "pathogenesisTransmission": 242,
+        "pathophysiology": 154,
+        "clinicalSignsPathophysiology": 151,
+        "diagnosis": 455,
+        "treatment": 559,
+        "complications": 260,
+        "prevention": 253
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "diagnosis.passosDiagnosticos.2.interpretation",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro (*isGoldStandard: true*). Detecta até 1 cópia de DNA bacteriano por reação. Diferencia inequivocamente Mycoplasma haemofelis de Candidatus M. haemominutum e Candidatus M. turicensis em gatos, e M. haemocanis "
+        },
+        {
+          "path": "prevention.prevencaoDeBrigasEConfinamento",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Manter os felinos em regime estritamente domiciliado (indoor) com telas em janelas e promover a castração precoce para erradicar brigas territoriais e cópula, bloqueando a inoculação direta de sangue contaminado por mord"
+        }
+      ]
+    },
+    {
+      "title": "Hipotireoidismo congênito (cão e gato)",
+      "slug": "hipotireoidismo-congenito-caes-gatos",
+      "totalWords": 2535,
+      "depth": {
+        "etiology": 463,
+        "epidemiology": 114,
+        "pathogenesisTransmission": 227,
+        "pathophysiology": 445,
+        "clinicalSignsPathophysiology": 224,
+        "diagnosis": 333,
+        "treatment": 262,
+        "complications": 228,
+        "prevention": 239
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 8,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.2.detail",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro confirmatório (*isGoldStandard: true*). TT4 e fT4 por diálise encontram-se em concentrações extremamente baixas ou indetectáveis (<0,5 mcg/dL). No hipotireoidismo congênito primário (99% dos casos), o cTSH sé"
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.1.interpretation",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Padrão-ouro confirmatório (*isGoldStandard: true*). TT4 e fT4 por diálise encontram-se indetectáveis ou marcadamente abaixo dos valores pediátricos normais (<0,5 mcg/dL). O TSH sérico canino/felino encontra-se expressiva"
+        }
+      ]
+    },
+    {
+      "title": "Miastenia gravis adquirida (cão e gato)",
+      "slug": "miastenia-gravis-caes-gatos",
+      "totalWords": 2569,
+      "depth": {
+        "etiology": 270,
+        "epidemiology": 157,
+        "pathogenesisTransmission": 106,
+        "pathophysiology": 214,
+        "clinicalSignsPathophysiology": 385,
+        "diagnosis": 372,
+        "treatment": 548,
+        "complications": 424,
+        "prevention": 93
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leishmaniose visceral canina (leishmaniose canina por L. infantum)",
+      "slug": "leishmaniose-visceral-canina",
+      "totalWords": 2915,
+      "depth": {
+        "etiology": 311,
+        "epidemiology": 229,
+        "pathogenesisTransmission": 99,
+        "pathophysiology": 89,
+        "clinicalSignsPathophysiology": 58,
+        "diagnosis": 419,
+        "treatment": 683,
+        "complications": 487,
+        "prevention": 540
+      },
+      "missing": [],
+      "brief": [
+        "clinicalSignsPathophysiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 4,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Insulinoma em cães e gatos",
+      "slug": "insulinoma-caes-gatos",
+      "totalWords": 3137,
+      "depth": {
+        "etiology": 192,
+        "epidemiology": 250,
+        "pathogenesisTransmission": 82,
+        "pathophysiology": 259,
+        "clinicalSignsPathophysiology": 240,
+        "diagnosis": 587,
+        "treatment": 1041,
+        "complications": 421,
+        "prevention": 65
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 25,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Vírus da imunodeficiência felina (FIV)",
+      "slug": "imunodeficiencia-felina-fiv",
+      "totalWords": 3361,
+      "depth": {
+        "etiology": 223,
+        "epidemiology": 183,
+        "pathogenesisTransmission": 194,
+        "pathophysiology": 366,
+        "clinicalSignsPathophysiology": 330,
+        "diagnosis": 430,
+        "treatment": 754,
+        "complications": 542,
+        "prevention": 339
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.pillars.2.body",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Assintomático: indoor, controle de brigas, dieta completa, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro. Sintomático: tratar infecções, gengivoestomatite (extração dentária extensa), neoplasias. AZT 5–10 mg/"
+        },
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.2.detail",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Em população indoor de baixo risco, positivo isolado → repetir em laboratório diferente ou Western blot/PCR proviral para confirmar (Westman et al., 2022)."
+        },
+        {
+          "path": "quickSummaryRich.treatmentFlow.steps.0.detail",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Alojamento indoor ou recinto seguro; castração; dieta de alta digestibilidade (evitar crus); controle parasitário; vacinas inativadas; consulta + hemograma ≥6/6 meses — sem antiviral rotineiro (Little et al., 2020; Westm"
+        },
+        {
+          "path": "pathogenesisTransmission.transmissaoConvivencia",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Convivência social estável sem agressão: risco de transmissão muito baixo — estudo prospectivo em domicílio multicat não documentou transmissão entre gatos conviventes pacíficos (Litster, 2014). Compartilhar pote de comi"
+        },
+        {
+          "path": "diagnosis.2.purpose",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Reduzir falso-positivo em gato indoor sem risco."
+        },
+        {
+          "path": "treatment.tratamentoSuporte.0",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Alojamento estritamente indoor ou recinto seguro: previne estresse de território, brigas com outros gatos, reinfecções e transmissão a felinos suscetíveis (Little et al., 2020)."
+        },
+        {
+          "path": "prevention.controleBrigas.1",
+          "terms": [
+            "Indoor"
+          ],
+          "technical": false,
+          "excerpt": "Indoor ou acesso controlado; enriquecimento ambiental para reduzir conflitos em multicat."
+        }
+      ]
+    },
+    {
+      "title": "Insuficiência pancreática exócrina (IPE/EPI)",
+      "slug": "insuficiencia-pancreatica-exocrina-caes-gatos",
+      "totalWords": 3472,
+      "depth": {
+        "etiology": 218,
+        "epidemiology": 145,
+        "pathogenesisTransmission": 109,
+        "pathophysiology": 443,
+        "clinicalSignsPathophysiology": 359,
+        "diagnosis": 872,
+        "treatment": 519,
+        "complications": 571,
+        "prevention": 236
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença valvar mitral degenerativa (DMVD / endocardiose)",
+      "slug": "doenca-valvar-mitral-degenerativa-caes",
+      "totalWords": 3616,
+      "depth": {
+        "etiology": 227,
+        "epidemiology": 161,
+        "pathogenesisTransmission": 183,
+        "pathophysiology": 127,
+        "clinicalSignsPathophysiology": 313,
+        "diagnosis": 897,
+        "treatment": 1161,
+        "complications": 450,
+        "prevention": 97
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 5,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "treatment.monitoramento.3",
+          "terms": [
+            "baseline"
+          ],
+          "technical": false,
+          "excerpt": "Radiografia quando a dispneia recorre, comparando com o baseline."
+        }
+      ]
+    },
+    {
+      "title": "Peritonite infecciosa felina (PIF/FIP)",
+      "slug": "peritonite-infecciosa-felina",
+      "totalWords": 3702,
+      "depth": {
+        "etiology": 185,
+        "epidemiology": 96,
+        "pathogenesisTransmission": 161,
+        "pathophysiology": 516,
+        "clinicalSignsPathophysiology": 265,
+        "diagnosis": 1388,
+        "treatment": 380,
+        "complications": 550,
+        "prevention": 161
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 11,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "pathogenesisTransmission.transmissaoFCoV",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Via fecal-oral: ambiente compartilhado, caixas de areia, grooming, mãe-filhote. FCoV resiste dias a semanas no ambiente úmido — higiene e redução de densidade são pilares de controle (Addie et al., 2009; Tasker et al., A"
+        },
+        {
+          "path": "prevention.vacina.1",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Não indicada em gatos já FCoV positivos ou em gatos isolados indoor sem exposição — eficácia e necessidade variam regionalmente."
+        }
+      ]
+    },
+    {
+      "title": "Cistoisosporose em cães e gatos",
+      "slug": "coccidiose-caes-gatos",
+      "totalWords": 3726,
+      "depth": {
+        "etiology": 471,
+        "epidemiology": 162,
+        "pathogenesisTransmission": 120,
+        "pathophysiology": 102,
+        "clinicalSignsPathophysiology": 245,
+        "diagnosis": 954,
+        "treatment": 1057,
+        "complications": 472,
+        "prevention": 143
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.6.detail",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Nova flutuação fecal se diarreia persiste ou contexto de surto/abrigo. Melhora clínica é endpoint primário; oocistos residuais podem persistir brevemente. (3)(9)(14)"
+        },
+        {
+          "path": "diagnosis.diagnosticPlanStepByStep.7.interpretation",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Melhora clínica é endpoint primário; oocistos residuais breves não exigem retratamento automático."
+        }
+      ]
+    },
+    {
+      "title": "Linfoma cutâneo",
+      "slug": "linfoma-cutaneo-caes-gatos",
+      "totalWords": 3828,
+      "depth": {
+        "etiology": 461,
+        "epidemiology": 349,
+        "pathogenesisTransmission": 178,
+        "pathophysiology": 226,
+        "clinicalSignsPathophysiology": 352,
+        "diagnosis": 984,
+        "treatment": 843,
+        "complications": 335,
+        "prevention": 100
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Giardíase em cães e gatos",
+      "slug": "giardiase-caes-gatos",
+      "totalWords": 3839,
+      "depth": {
+        "etiology": 478,
+        "epidemiology": 217,
+        "pathogenesisTransmission": 123,
+        "pathophysiology": 151,
+        "clinicalSignsPathophysiology": 224,
+        "diagnosis": 854,
+        "treatment": 1152,
+        "complications": 534,
+        "prevention": 106
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "diagnosis.diagnosticPlanStepByStep.7.interpretation",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Melhora clínica é endpoint primário; negativação laboratorial pode ser tardia."
+        },
+        {
+          "path": "treatment.monitoramentoPosTratamento.0",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Reavaliação clínica em 7–14 dias — endpoint primário: fezes formadas, peso estável, apetite normal."
+        }
+      ]
+    },
+    {
+      "title": "Leishmaniose em Cães e Gatos",
+      "slug": "leishmaniose-caes-gatos",
+      "totalWords": 4005,
+      "depth": {
+        "etiology": 879,
+        "epidemiology": 325,
+        "pathogenesisTransmission": 269,
+        "pathophysiology": 284,
+        "clinicalSignsPathophysiology": 741,
+        "diagnosis": 465,
+        "treatment": 657,
+        "complications": 132,
+        "prevention": 253
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.alertaToxicologicoCriticoPermetrinaEmFelinos",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "ALERTA FARMACOLÓGICO CRÍTICO: Permetrina e piretroides caninos são formalmente contraindicados e FATAIS para felinos:\n\n- Mecanismo da toxicidade letal: os gatos apresentam deficiência constitucional de glicuroniltransfer"
+        }
+      ]
+    },
+    {
+      "title": "Hipertireoidismo felino",
+      "slug": "hipertireoidismo-felino",
+      "totalWords": 4196,
+      "depth": {
+        "etiology": 284,
+        "epidemiology": 158,
+        "pathogenesisTransmission": 172,
+        "pathophysiology": 571,
+        "clinicalSignsPathophysiology": 238,
+        "diagnosis": 829,
+        "treatment": 1154,
+        "complications": 380,
+        "prevention": 410
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 10,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "etiology.fatoresDeRisco",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Fatores ambientais, nutricionais e disruptores endócrinos associados:\n\n- Fatores dietéticos e embalagens: consumo prolongado de rações úmidas enlatadas (revestimentos com bisfenol A e resinas epóxi) e presença de fitoest"
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.4.purpose",
+          "terms": [
+            "baseline"
+          ],
+          "technical": false,
+          "excerpt": "Identificação de lesão renal preexistente e estabelecimento do baseline antes da intervenção."
+        }
+      ]
+    },
+    {
+      "title": "Lesão Renal Aguda em Cães (LRA / IRA / AKI)",
+      "slug": "lesao-renal-aguda-canina",
+      "totalWords": 4246,
+      "depth": {
+        "etiology": 774,
+        "epidemiology": 456,
+        "pathogenesisTransmission": 233,
+        "pathophysiology": 317,
+        "clinicalSignsPathophysiology": 159,
+        "diagnosis": 513,
+        "treatment": 1301,
+        "complications": 328,
+        "prevention": 165
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Platinosomose Felina",
+      "slug": "platinosomose-felina",
+      "totalWords": 4458,
+      "depth": {
+        "etiology": 637,
+        "epidemiology": 236,
+        "pathogenesisTransmission": 313,
+        "pathophysiology": 314,
+        "clinicalSignsPathophysiology": 576,
+        "diagnosis": 765,
+        "treatment": 1163,
+        "complications": 240,
+        "prevention": 214
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "plainLanguage.keyPoints.5",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Prevenção número um: manter o gato exclusivamente dentro de casa (indoor), bloqueando o acesso a quintais e janelas onde haja lagartixas e tatuzinhos-de-jardim."
+        },
+        {
+          "path": "etiology.epidemiologiaGlobalEPrevalenciaBrasil",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Distribuição geográfica e cenário epidemiológico nacional:\n- Endemicidade tropical e global: prevalência agrupada mundial estimada em 17,8% (Silva, Feitosa e Vilela, 2023), concentrada na América Central, Caribe, América"
+        },
+        {
+          "path": "prevention.confinamentoIndoorEBloqueioDePredacao",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Manejo estritamente indoor e enriquecimento ambiental:\n- Bloqueio do acesso externo: confinamento estrito do felino com telas de proteção em janelas e varandas para eliminar a caça predatória.\n- Interrupção do ciclo: pre"
+        }
+      ]
+    },
+    {
+      "title": "Cistite Idiopática Felina (CIF / FIC)",
+      "slug": "cistite-idiopatica-felina",
+      "totalWords": 4575,
+      "depth": {
+        "etiology": 880,
+        "epidemiology": 369,
+        "pathogenesisTransmission": 214,
+        "pathophysiology": 445,
+        "clinicalSignsPathophysiology": 562,
+        "diagnosis": 554,
+        "treatment": 1137,
+        "complications": 188,
+        "prevention": 226
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "epidemiology.fatoresDeRiscoEAssociacoesEpidemiologicas",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Fatores de risco identificados no consenso iCatCare 2025:\n- Confinamento e sedentarismo:\n  - Estilo de vida estritamente indoor com privação de estímulos exploratórios, ausência de brincadeiras predatórias simuladas e ob"
+        }
+      ]
+    },
+    {
+      "title": "Colapso Traqueal em Cães e Gatos",
+      "slug": "colapso-traqueal-canino",
+      "totalWords": 4597,
+      "depth": {
+        "etiology": 606,
+        "epidemiology": 267,
+        "pathogenesisTransmission": 212,
+        "pathophysiology": 229,
+        "clinicalSignsPathophysiology": 384,
+        "diagnosis": 520,
+        "treatment": 2130,
+        "complications": 157,
+        "prevention": 92
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "etiology.fatoresAgravantes.1",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Estresse térmico, calor e ambientes abafados: o mecanismo de termorregulação por taquipneia (panting) acelera a velocidade do ar e aprofunda as pressões negativas transmurais."
+        }
+      ]
+    },
+    {
+      "title": "Arritmias cardíacas em cães e gatos",
+      "slug": "arritmias-cardiacas-caes-gatos",
+      "totalWords": 4621,
+      "depth": {
+        "etiology": 296,
+        "epidemiology": 192,
+        "pathogenesisTransmission": 96,
+        "pathophysiology": 270,
+        "clinicalSignsPathophysiology": 319,
+        "diagnosis": 1040,
+        "treatment": 1849,
+        "complications": 429,
+        "prevention": 130
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "treatment.errosComuns.7",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "“Reduzir VPC no Holter prova menor risco de morte súbita” — endpoint substituto, não necessariamente sobrevida. (1)(18)"
+        },
+        {
+          "path": "treatment.cronica.1",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Arritmias ventriculares crônicas: sotalol, mexiletina ± atenolol conforme substrato (Boxer/ARVC, Pastor Alemão); confirmar eficácia por Holter — redução ≥80–85% de VPC é endpoint de estudo, não prova de sobrevida. (18)(1"
+        }
+      ]
+    },
+    {
+      "title": "Obstrução Funcional do Fluxo Urinário em Cães (FOO)",
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "totalWords": 4741,
+      "depth": {
+        "etiology": 1124,
+        "epidemiology": 239,
+        "pathogenesisTransmission": 109,
+        "pathophysiology": 110,
+        "clinicalSignsPathophysiology": 396,
+        "diagnosis": 789,
+        "treatment": 1232,
+        "complications": 346,
+        "prevention": 396
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 9,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Colangite Parasitária",
+      "slug": "colangite-parasitaria-caes-gatos",
+      "totalWords": 4782,
+      "depth": {
+        "etiology": 486,
+        "epidemiology": 270,
+        "pathogenesisTransmission": 398,
+        "pathophysiology": 287,
+        "clinicalSignsPathophysiology": 493,
+        "diagnosis": 1234,
+        "treatment": 1041,
+        "complications": 441,
+        "prevention": 132
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hipoadrenocorticismo (Doença de Addison)",
+      "slug": "hipoadrenocorticismo-addison",
+      "totalWords": 5045,
+      "depth": {
+        "etiology": 445,
+        "epidemiology": 179,
+        "pathogenesisTransmission": 101,
+        "pathophysiology": 586,
+        "clinicalSignsPathophysiology": 428,
+        "diagnosis": 1233,
+        "treatment": 1411,
+        "complications": 489,
+        "prevention": 173
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cistite Enfisematosa em Cães e Gatos",
+      "slug": "cistite-enfisematosa-caes-gatos",
+      "totalWords": 5173,
+      "depth": {
+        "etiology": 999,
+        "epidemiology": 382,
+        "pathogenesisTransmission": 199,
+        "pathophysiology": 272,
+        "clinicalSignsPathophysiology": 466,
+        "diagnosis": 712,
+        "treatment": 1731,
+        "complications": 212,
+        "prevention": 200
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hiperparatireoidismo em cães e gatos",
+      "slug": "hiperparatireoidismo-caes-gatos",
+      "totalWords": 5246,
+      "depth": {
+        "etiology": 714,
+        "epidemiology": 386,
+        "pathogenesisTransmission": 210,
+        "pathophysiology": 622,
+        "clinicalSignsPathophysiology": 353,
+        "diagnosis": 835,
+        "treatment": 1189,
+        "complications": 678,
+        "prevention": 259
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 23,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Trombocitopenia em Cães e Gatos",
+      "slug": "trombocitopenia-caes-gatos",
+      "totalWords": 5253,
+      "depth": {
+        "etiology": 1062,
+        "epidemiology": 434,
+        "pathogenesisTransmission": 229,
+        "pathophysiology": 243,
+        "clinicalSignsPathophysiology": 444,
+        "diagnosis": 1110,
+        "treatment": 1403,
+        "complications": 217,
+        "prevention": 111
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.1",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Testagem sorológica e virológica periódica de felinos para FeLV e FIV, mantendo gatos soronegativos estritamente domiciliados em ambiente indoor."
+        }
+      ]
+    },
+    {
+      "title": "Discinesia Paroxística em Cães e Gatos",
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "totalWords": 5400,
+      "depth": {
+        "etiology": 1351,
+        "epidemiology": 212,
+        "pathogenesisTransmission": 260,
+        "pathophysiology": 191,
+        "clinicalSignsPathophysiology": 628,
+        "diagnosis": 920,
+        "treatment": 1548,
+        "complications": 141,
+        "prevention": 149
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença renal crônica em cães (DRC canina)",
+      "slug": "doenca-renal-cronica-canina",
+      "totalWords": 5464,
+      "depth": {
+        "etiology": 915,
+        "epidemiology": 232,
+        "pathogenesisTransmission": 527,
+        "pathophysiology": 351,
+        "clinicalSignsPathophysiology": 426,
+        "diagnosis": 900,
+        "treatment": 1655,
+        "complications": 266,
+        "prevention": 192
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Brucelose em cães e gatos",
+      "slug": "brucelose-caes-gatos",
+      "totalWords": 5614,
+      "depth": {
+        "etiology": 323,
+        "epidemiology": 336,
+        "pathogenesisTransmission": 91,
+        "pathophysiology": 470,
+        "clinicalSignsPathophysiology": 681,
+        "diagnosis": 1845,
+        "treatment": 1079,
+        "complications": 610,
+        "prevention": 179
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Enteropatias inflamatórias crônicas em cães (CIE / antiga IBD)",
+      "slug": "enteropatia-inflamatoria-cronica-canina",
+      "totalWords": 5716,
+      "depth": {
+        "etiology": 587,
+        "epidemiology": 298,
+        "pathogenesisTransmission": 334,
+        "pathophysiology": 536,
+        "clinicalSignsPathophysiology": 348,
+        "diagnosis": 1270,
+        "treatment": 1557,
+        "complications": 323,
+        "prevention": 463
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "complications.efeitosAdversosIatrogenicosDeCorticoides",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Morbilidades desencadeadas pela corticoterapia prolongada ou em altas doses:\n\n- Efeitos metabólicos e comportamentais: poliúria, polidipsia intensa, polifagia voraz, respiração ofegante (panting) e susceptibilidade a inf"
+        }
+      ]
+    },
+    {
+      "title": "Mastite em cadelas e gatas",
+      "slug": "mastite-caes-gatos",
+      "totalWords": 5756,
+      "depth": {
+        "etiology": 564,
+        "epidemiology": 241,
+        "pathogenesisTransmission": 430,
+        "pathophysiology": 440,
+        "clinicalSignsPathophysiology": 746,
+        "diagnosis": 935,
+        "treatment": 1670,
+        "complications": 360,
+        "prevention": 370
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Anemia Hemolítica Imunomediada em Cães (AHIM / IMHA)",
+      "slug": "anemia-hemolitica-imunomediada-canina",
+      "totalWords": 5857,
+      "depth": {
+        "etiology": 423,
+        "epidemiology": 289,
+        "pathogenesisTransmission": 515,
+        "pathophysiology": 589,
+        "clinicalSignsPathophysiology": 420,
+        "diagnosis": 986,
+        "treatment": 2191,
+        "complications": 253,
+        "prevention": 191
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 11,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Enteropatia perdedora de proteínas em cães e gatos (PLE)",
+      "slug": "enteropatia-perdedora-de-proteinas-caes-gatos",
+      "totalWords": 5885,
+      "depth": {
+        "etiology": 661,
+        "epidemiology": 214,
+        "pathogenesisTransmission": 262,
+        "pathophysiology": 661,
+        "clinicalSignsPathophysiology": 343,
+        "diagnosis": 1182,
+        "treatment": 1725,
+        "complications": 360,
+        "prevention": 477
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cinomose canina",
+      "slug": "cinomose-canina",
+      "totalWords": 5935,
+      "depth": {
+        "etiology": 333,
+        "epidemiology": 241,
+        "pathogenesisTransmission": 123,
+        "pathophysiology": 1018,
+        "clinicalSignsPathophysiology": 1321,
+        "diagnosis": 1443,
+        "treatment": 922,
+        "complications": 296,
+        "prevention": 238
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 35,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Megacólon",
+      "slug": "megacolon-caes-gatos",
+      "totalWords": 5956,
+      "depth": {
+        "etiology": 1062,
+        "epidemiology": 662,
+        "pathogenesisTransmission": 204,
+        "pathophysiology": 555,
+        "clinicalSignsPathophysiology": 505,
+        "diagnosis": 1005,
+        "treatment": 1477,
+        "complications": 198,
+        "prevention": 288
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndrome mielodisplásica (MDS)",
+      "slug": "sindrome-mielodisplasica-caes-gatos",
+      "totalWords": 6099,
+      "depth": {
+        "etiology": 789,
+        "epidemiology": 240,
+        "pathogenesisTransmission": 250,
+        "pathophysiology": 962,
+        "clinicalSignsPathophysiology": 600,
+        "diagnosis": 1136,
+        "treatment": 1323,
+        "complications": 548,
+        "prevention": 251
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 13,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.controleFeLVEProfilaxia",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Prevenção da dismielopoiese retroviral em felinos:\n- Rastreio sorológico na rotina clínica:\n  - Testagem sorológica para antígeno p27 do FeLV de todos os gatos no acolhimento, adoção ou antes de introdução em grupos de c"
+        }
+      ]
+    },
+    {
+      "title": "Cetoacidose diabética em cães e gatos",
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "totalWords": 6132,
+      "depth": {
+        "etiology": 221,
+        "epidemiology": 348,
+        "pathogenesisTransmission": 205,
+        "pathophysiology": 1466,
+        "clinicalSignsPathophysiology": 250,
+        "diagnosis": 1099,
+        "treatment": 2008,
+        "complications": 409,
+        "prevention": 126
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Sepse e Choque Séptico em Felinos",
+      "slug": "sepse-felina",
+      "totalWords": 6143,
+      "depth": {
+        "etiology": 928,
+        "epidemiology": 489,
+        "pathogenesisTransmission": 105,
+        "pathophysiology": 564,
+        "clinicalSignsPathophysiology": 603,
+        "diagnosis": 843,
+        "treatment": 1764,
+        "complications": 679,
+        "prevention": 168
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.pilaresDePrevencaoEControleDomiciliar",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "A prevenção da sepse em felinos fundamenta-se no manejo profilático rigoroso de suas causas primárias: 1. Prevenção de brigas e feridas por mordeduras: a manutenção de felinos exclusivamente em ambiente estritamente domi"
+        }
+      ]
+    },
+    {
+      "title": "Doença renal crônica em felinos (DRC felina)",
+      "slug": "doenca-renal-cronica-felina",
+      "totalWords": 6221,
+      "depth": {
+        "etiology": 660,
+        "epidemiology": 276,
+        "pathogenesisTransmission": 378,
+        "pathophysiology": 677,
+        "clinicalSignsPathophysiology": 565,
+        "diagnosis": 1010,
+        "treatment": 2106,
+        "complications": 319,
+        "prevention": 230
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "quickSummary",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "A doença renal crônica em gatos é uma síndrome irreversível e progressiva caracterizada por perda estrutural e funcional de néfrons com duração superior a três meses, cuja abordagem foi substancialmente redefinida pelo c"
+        },
+        {
+          "path": "quickSummaryRich.diagnosticFlow.steps.0.detail",
+          "terms": [
+            "Screening"
+          ],
+          "technical": false,
+          "excerpt": "Screening anual (7–10 anos) ou semestral (>10 anos) avaliando peso, escore de condição corporal (BCS) e muscular (MCS). Investigar histórico de PU/PD sutil e apetite."
+        },
+        {
+          "path": "etiology.continuumAKIDRCEInjuriasAdquiridas",
+          "terms": [
+            "endpoint"
+          ],
+          "technical": false,
+          "excerpt": "Etiologias adquiridas e o continuum entre lesão aguda e progressão crônica:\n\n- Nefrite Túbulo-Intersticial Crônica Idiopática: o achado histopatológico terminal mais prevalente em felinos idosos; representa um endpoint i"
+        },
+        {
+          "path": "pathophysiology.tabelaMetabolismoMineralEHipercalcemia.rows.5.3",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "Não recomendado como teste de screening precoce isolado para DRC"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.sinaisIniciaisPerdaMuscularEEsquecimento",
+          "terms": [
+            "grooming"
+          ],
+          "technical": false,
+          "excerpt": "Sinais clínicos precoces e alterações sutis da composição corporal:\n\n- Emagrecimento insidioso e sarcopenia: perda progressiva de peso corpóreo e massa muscular nos membros pélvicos e musculatura epaxial, frequentemente "
+        },
+        {
+          "path": "diagnosis.passosDiagnosticos.5.description",
+          "terms": [
+            "screening"
+          ],
+          "technical": false,
+          "excerpt": "Medição padronizada por Doppler vascular em ambiente silencioso, com manguito de 30% a 40% da circunferência do membro. Realizar exame de fundo de olho para screening de TOD."
+        },
+        {
+          "path": "complications.descompensacaoAgudaACKDNoPlantao",
+          "terms": [
+            "baseline"
+          ],
+          "technical": false,
+          "excerpt": "Descompensação aguda sobreposta a DRC (Acute-on-Chronic Kidney Disease - ACKD):\n\n- Apresentação de emergência: gato com DRC basal que sofre desidratação aguda, evento anoréxico, infecção bacteriana ascendente ou obstruçã"
+        }
+      ]
+    },
+    {
+      "title": "Polirradiculoneurite Aguda em Cães e Gatos (ACP / AIP)",
+      "slug": "polirradiculoneurite-caes-gatos",
+      "totalWords": 6236,
+      "depth": {
+        "etiology": 980,
+        "epidemiology": 428,
+        "pathogenesisTransmission": 474,
+        "pathophysiology": 752,
+        "clinicalSignsPathophysiology": 405,
+        "diagnosis": 1006,
+        "treatment": 1176,
+        "complications": 745,
+        "prevention": 270
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Asma felina",
+      "slug": "asma-felina",
+      "totalWords": 6339,
+      "depth": {
+        "etiology": 466,
+        "epidemiology": 233,
+        "pathogenesisTransmission": 122,
+        "pathophysiology": 710,
+        "clinicalSignsPathophysiology": 565,
+        "diagnosis": 1882,
+        "treatment": 1889,
+        "complications": 301,
+        "prevention": 171
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 27,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Intermação em Cães e Gatos",
+      "slug": "intermacao-caes-gatos",
+      "totalWords": 6342,
+      "depth": {
+        "etiology": 708,
+        "epidemiology": 541,
+        "pathogenesisTransmission": 647,
+        "pathophysiology": 375,
+        "clinicalSignsPathophysiology": 706,
+        "diagnosis": 713,
+        "treatment": 1551,
+        "complications": 833,
+        "prevention": 268
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "etiology.mecanismosBiofisicosPerdaCalorica",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Balanço biofísico da termorregulação (Calor Produzido + Absorvido = Armazenado + Eliminado):\n- Quatro vias de transferência física de calor:\n  - Radiação: emissão eletromagnética de calor para superfícies distantes mais "
+        },
+        {
+          "path": "epidemiology.tabelaComparativaEpidemiologiaCaesVsGatos.rows.4.1",
+          "terms": [
+            "Panting"
+          ],
+          "technical": false,
+          "excerpt": "Panting taquipneico ruidoso com língua projetada e hipersalivação espessa"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.2.findings.0.sign",
+          "terms": [
+            "Panting"
+          ],
+          "technical": false,
+          "excerpt": "Panting Extremo e Respiração de Boca Aberta em Gatos"
+        },
+        {
+          "path": "prevention.orientacaoTutoresEPrimeirosSocorros",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Educação preventiva para tutores e primeiros socorros:\n- Risco crítico de confinamento veicular: jamais deixar animais em veículos fechados, mesmo na sombra ou por poucos minutos; a temperatura interna sobe de 25°C para "
+        },
+        {
+          "path": "plainLanguage.whatIsIt",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "A intermação (também conhecida como golpe de calor ou heatstroke) é uma emergência médica gravíssima em que o corpo do cão ou gato aquece a temperaturas extremas e perde a capacidade de se resfriar. Ao contrário dos huma"
+        }
+      ]
+    },
+    {
+      "title": "Lesão Renal Aguda em Felinos (LRA / AKI)",
+      "slug": "lesao-renal-aguda-felina",
+      "totalWords": 6376,
+      "depth": {
+        "etiology": 1025,
+        "epidemiology": 976,
+        "pathogenesisTransmission": 136,
+        "pathophysiology": 583,
+        "clinicalSignsPathophysiology": 110,
+        "diagnosis": 614,
+        "treatment": 1730,
+        "complications": 1013,
+        "prevention": 189
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Tríade Felina",
+      "slug": "triade-felina",
+      "totalWords": 6430,
+      "depth": {
+        "etiology": 618,
+        "epidemiology": 266,
+        "pathogenesisTransmission": 260,
+        "pathophysiology": 1102,
+        "clinicalSignsPathophysiology": 562,
+        "diagnosis": 973,
+        "treatment": 1952,
+        "complications": 395,
+        "prevention": 302
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Neoplasias intracranianas em cães (tumores encefálicos)",
+      "slug": "neoplasias-intracranianas-caes",
+      "totalWords": 6447,
+      "depth": {
+        "etiology": 1009,
+        "epidemiology": 377,
+        "pathogenesisTransmission": 570,
+        "pathophysiology": 406,
+        "clinicalSignsPathophysiology": 631,
+        "diagnosis": 1184,
+        "treatment": 1765,
+        "complications": 270,
+        "prevention": 235
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "plainLanguage.warningSigns",
+          "terms": [
+            "head pressing"
+          ],
+          "technical": false,
+          "excerpt": "Sinais clínicos de alerta que exigem atendimento veterinário urgente:\n\n- Crises convulsivas repentinas (tremores generalizados, perda de consciência, salivação e pedalagem com as patas).\n- Andar em círculos contínuos par"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.sinaisProsencefalicosECrisesEpilepticas",
+          "terms": [
+            "head pressing"
+          ],
+          "technical": false,
+          "excerpt": "Quadro clínico característico de lesões do telencéfalo e diencéfalo:\n\n- Crises epilépticas focais ou generalizadas: sinal inicial mais frequente de tumores cerebrais no cão, presente em mais de 50% dos pacientes com envo"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.disfuncoesCerebelaresEVestibularesCentrais",
+          "terms": [
+            "head tilt"
+          ],
+          "technical": false,
+          "excerpt": "Disfunções de equilíbrio, coordenação motora e reflexos vestibulares:\n\n- Síndrome cerebelar clássica: ataxia hipermetrizada com passada em passos de ganso (dismetria), tremores de intenção acentuados na aproximação da ca"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.tabelaNeurolocalizacaoClinica.rows.0.1",
+          "terms": [
+            "head pressing"
+          ],
+          "technical": false,
+          "excerpt": "Crises epilépticas focais ou generalizadas; head pressing; andar compulsivo; demência"
+        },
+        {
+          "path": "clinicalSignsPathophysiology.tabelaNeurolocalizacaoClinica.rows.5.1",
+          "terms": [
+            "head tilt"
+          ],
+          "technical": false,
+          "excerpt": "Inclinação de cabeça (head tilt); ataxia vestibular com quedas; nistagmo vertical ou que muda de direção"
+        }
+      ]
+    },
+    {
+      "title": "Paralisia Laríngea em Cães e Gatos (GOLPP / LPPN)",
+      "slug": "paralisia-laringea-caes-gatos",
+      "totalWords": 6493,
+      "depth": {
+        "etiology": 853,
+        "epidemiology": 445,
+        "pathogenesisTransmission": 166,
+        "pathophysiology": 669,
+        "clinicalSignsPathophysiology": 453,
+        "diagnosis": 915,
+        "treatment": 1279,
+        "complications": 1020,
+        "prevention": 693
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 19,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "epidemiology.fatoresDesencadeantesClimaticos",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Tríade de gatilhos para descompensação asfíxica aguda:\nA descompensação clínica súbita em um paciente crônico e compensado é invariavelmente desencadeada por três fatores precipitantes:\n- 1. Hipertermia ambiental e umida"
+        },
+        {
+          "path": "pathophysiology.cicloViciosoAsfixicoEHipertermia",
+          "terms": [
+            "panting"
+          ],
+          "technical": false,
+          "excerpt": "Cascata do ciclo vicioso asfíxico e hipertermia de estresse:\n- 1. Esforço inspiratório aumentado gera atrito mecânico e cisalhamento sobre a mucosa aritenoidea.\n- 2. Instala-se edema inflamatório local, congestão microva"
+        }
+      ]
+    },
+    {
+      "title": "Sepse e Choque Séptico em Cães",
+      "slug": "sepse-canina",
+      "totalWords": 6534,
+      "depth": {
+        "etiology": 1219,
+        "epidemiology": 196,
+        "pathogenesisTransmission": 685,
+        "pathophysiology": 636,
+        "clinicalSignsPathophysiology": 748,
+        "diagnosis": 766,
+        "treatment": 1693,
+        "complications": 322,
+        "prevention": 269
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Anemia em Cães e Gatos",
+      "slug": "anemia-caes-gatos",
+      "totalWords": 6592,
+      "depth": {
+        "etiology": 1222,
+        "epidemiology": 388,
+        "pathogenesisTransmission": 289,
+        "pathophysiology": 224,
+        "clinicalSignsPathophysiology": 1077,
+        "diagnosis": 1657,
+        "treatment": 1093,
+        "complications": 285,
+        "prevention": 357
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Megaesôfago em Cães e Gatos",
+      "slug": "megaesofago-caes-gatos",
+      "totalWords": 6752,
+      "depth": {
+        "etiology": 824,
+        "epidemiology": 233,
+        "pathogenesisTransmission": 157,
+        "pathophysiology": 533,
+        "clinicalSignsPathophysiology": 435,
+        "diagnosis": 1305,
+        "treatment": 3041,
+        "complications": 0,
+        "prevention": 224
+      },
+      "missing": [
+        "complications"
+      ],
+      "brief": [],
+      "legacy": [],
+      "references": 29,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Linfoma Mediastinal em Cães e Gatos",
+      "slug": "linfoma-mediastinal-caes-gatos",
+      "totalWords": 6857,
+      "depth": {
+        "etiology": 1032,
+        "epidemiology": 363,
+        "pathogenesisTransmission": 271,
+        "pathophysiology": 488,
+        "clinicalSignsPathophysiology": 804,
+        "diagnosis": 1156,
+        "treatment": 2545,
+        "complications": 99,
+        "prevention": 99
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.prevencaoFelineRetrovirus",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "A profilaxia primária do linfoma mediastinal em gatos apoia-se no controle da transmissão do vírus da leucemia felina (FeLV): vacinação sistemática na fase de filhote com reforço no primeiro ano de vida, manutenção de fe"
+        }
+      ]
+    },
+    {
+      "title": "Bronquite crônica em cães e gatos",
+      "slug": "bronquite-cronica-caes-gatos",
+      "totalWords": 7081,
+      "depth": {
+        "etiology": 720,
+        "epidemiology": 299,
+        "pathogenesisTransmission": 584,
+        "pathophysiology": 503,
+        "clinicalSignsPathophysiology": 524,
+        "diagnosis": 1518,
+        "treatment": 2266,
+        "complications": 438,
+        "prevention": 229
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Pancreatite em cães e gatos",
+      "slug": "pancreatite-caes-gatos",
+      "totalWords": 7130,
+      "depth": {
+        "etiology": 553,
+        "epidemiology": 143,
+        "pathogenesisTransmission": 517,
+        "pathophysiology": 334,
+        "clinicalSignsPathophysiology": 506,
+        "diagnosis": 2241,
+        "treatment": 2331,
+        "complications": 365,
+        "prevention": 140
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Quilotórax em Gatos e Cães",
+      "slug": "quilotorax-caes-gatos",
+      "totalWords": 7198,
+      "depth": {
+        "etiology": 1411,
+        "epidemiology": 493,
+        "pathogenesisTransmission": 304,
+        "pathophysiology": 583,
+        "clinicalSignsPathophysiology": 726,
+        "diagnosis": 1060,
+        "treatment": 2395,
+        "complications": 113,
+        "prevention": 113
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "etiology.revolucaoEtiologicaFelinaSeverac2026",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Durante anos, livros-texto tradicionais afirmaram que a maioria absoluta dos casos de quilotórax em felinos era idiopática. O estudo multicêntrico seminal de Severac, Juette & Conversy (2026, JAVMA), que investigou 35 ga"
+        }
+      ]
+    },
+    {
+      "title": "Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica)",
+      "slug": "pielonefrite-caes-gatos",
+      "totalWords": 7198,
+      "depth": {
+        "etiology": 1152,
+        "epidemiology": 859,
+        "pathogenesisTransmission": 508,
+        "pathophysiology": 680,
+        "clinicalSignsPathophysiology": 266,
+        "diagnosis": 1240,
+        "treatment": 1438,
+        "complications": 849,
+        "prevention": 206
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leucemias em cães e gatos",
+      "slug": "leucemias-caes-gatos",
+      "totalWords": 7478,
+      "depth": {
+        "etiology": 1833,
+        "epidemiology": 322,
+        "pathogenesisTransmission": 310,
+        "pathophysiology": 395,
+        "clinicalSignsPathophysiology": 559,
+        "diagnosis": 1786,
+        "treatment": 1307,
+        "complications": 766,
+        "prevention": 200
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 25,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "prevention.leucPrevencaoFeLVePlanoDomiciliar",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "Prevenção possível, acompanhamento longitudinal e plano domiciliar:\n- Prevenção real em felinos: não há prevenção específica para leucemias espontâneas em cães nem para formas FeLV-negativas em gatos, porém a prevenção d"
+        }
+      ]
+    },
+    {
+      "title": "Tétano em Cães e Gatos (Clostridium tetani)",
+      "slug": "tetano-caes-gatos",
+      "totalWords": 8090,
+      "depth": {
+        "etiology": 1018,
+        "epidemiology": 670,
+        "pathogenesisTransmission": 735,
+        "pathophysiology": 908,
+        "clinicalSignsPathophysiology": 561,
+        "diagnosis": 1162,
+        "treatment": 1717,
+        "complications": 961,
+        "prevention": 358
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Piotórax em Cães e Gatos",
+      "slug": "piotorax-caes-gatos",
+      "totalWords": 8220,
+      "depth": {
+        "etiology": 1303,
+        "epidemiology": 440,
+        "pathogenesisTransmission": 344,
+        "pathophysiology": 650,
+        "clinicalSignsPathophysiology": 894,
+        "diagnosis": 1094,
+        "treatment": 2996,
+        "complications": 222,
+        "prevention": 277
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "pathogenesisTransmission.transmissao",
+          "terms": [
+            "indoor"
+          ],
+          "technical": false,
+          "excerpt": "O piotórax não é uma enfermidade contagiosa por contato casual ou transmissão ambiental indireta entre animais saudáveis. A propagação ocorre estritamente por inoculação direta de agentes bacterianos na cavidade pleural "
+        },
+        {
+          "path": "prevention.pilaresDePrevencaoEControleDomiciliar",
+          "terms": [
+            "Indoor"
+          ],
+          "technical": false,
+          "excerpt": "A prevenção do piotórax baseia-se no controle estrito dos fatores de risco ambientais e comportamentais de cada espécie:\n1. Espécie Felina:\n- Manejo Indoor Exclusivo: Manter gatos em ambiente doméstico estrito telado e e"
+        }
+      ]
+    },
+    {
+      "title": "Babesiose em cães e gatos",
+      "slug": "babesiose-caes-gatos",
+      "totalWords": 8565,
+      "depth": {
+        "etiology": 938,
+        "epidemiology": 751,
+        "pathogenesisTransmission": 358,
+        "pathophysiology": 684,
+        "clinicalSignsPathophysiology": 803,
+        "diagnosis": 2115,
+        "treatment": 2258,
+        "complications": 363,
+        "prevention": 295
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 24,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Coagulação intravascular disseminada (CID/DIC)",
+      "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+      "totalWords": 8653,
+      "depth": {
+        "etiology": 1083,
+        "epidemiology": 402,
+        "pathogenesisTransmission": 349,
+        "pathophysiology": 708,
+        "clinicalSignsPathophysiology": 972,
+        "diagnosis": 2159,
+        "treatment": 2435,
+        "complications": 273,
+        "prevention": 272
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 30,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Prolapso retal em cães e gatos",
+      "slug": "prolapso-retal-caes-gatos",
+      "totalWords": 10686,
+      "depth": {
+        "etiology": 1381,
+        "epidemiology": 493,
+        "pathogenesisTransmission": 395,
+        "pathophysiology": 777,
+        "clinicalSignsPathophysiology": 684,
+        "diagnosis": 2122,
+        "treatment": 3549,
+        "complications": 976,
+        "prevention": 309
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": [
+        {
+          "path": "diagnosis.tabelaDiagnosticosDiferenciais.rows.6.4",
+          "terms": [],
+          "technical": true,
+          "excerpt": "Palpação vesical obrigatória em TODO gato com tenesmo + POCUS e avaliação eletrolítica"
+        }
+      ]
+    },
+    {
+      "title": "Leptospirose em cães e gatos",
+      "slug": "leptospirose-caes-gatos",
+      "totalWords": 11144,
+      "depth": {
+        "etiology": 754,
+        "epidemiology": 856,
+        "pathogenesisTransmission": 315,
+        "pathophysiology": 871,
+        "clinicalSignsPathophysiology": 846,
+        "diagnosis": 3047,
+        "treatment": 2580,
+        "complications": 1416,
+        "prevention": 459
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    }
+  ]
+}

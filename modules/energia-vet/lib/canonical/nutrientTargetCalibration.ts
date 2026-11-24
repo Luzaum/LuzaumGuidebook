@@ -210,7 +210,7 @@ function baselineTargetsForProfile(profileId: string, ctx: NutrientCalibrationCo
       basis: 'dry_matter_pct',
       maximum: profileId.includes('stage_c') ? 0.08 : 0.15,
       unit: '% MS',
-      rationale: 'Moderação de sódio conforme estágio cardíaco (AVCN cap. 18).',
+      rationale: 'Moderação de sódio conforme estágio cardíaco.',
     })
   }
 
@@ -223,7 +223,7 @@ function baselineTargetsForProfile(profileId: string, ctx: NutrientCalibrationCo
       basis: 'per_1000_kcal',
       minimum: gPer1000,
       unit: 'g/1000 kcal',
-      rationale: 'Suporte proteico em neoplasia / caquexia (AVCN cap. 19).',
+      rationale: 'Suporte proteico em neoplasia / caquexia.',
     })
   }
 
@@ -235,7 +235,7 @@ function baselineTargetsForProfile(profileId: string, ctx: NutrientCalibrationCo
       basis: 'per_1000_kcal',
       minimum: 45,
       unit: 'g/1000 kcal',
-      rationale: 'Hipertireoidismo: evitar perda de massa magra (AVCN cap. 17).',
+      rationale: 'Hipertireoidismo: evitar perda de massa magra.',
     })
   }
 
@@ -248,7 +248,7 @@ function baselineTargetsForProfile(profileId: string, ctx: NutrientCalibrationCo
       minimum: ctx.species === 'cat' ? 30 : 18,
       maximum: ctx.species === 'cat' ? 45 : 25,
       unit: '% MS',
-      rationale: 'Enteropatia crônica: proteína altamente digestível (AVCN cap. 11).',
+      rationale: 'Enteropatia crônica: proteína altamente digestível.',
     })
   }
 
@@ -260,7 +260,7 @@ function baselineTargetsForProfile(profileId: string, ctx: NutrientCalibrationCo
       basis: 'dry_matter_pct',
       minimum: ctx.species === 'cat' ? 30 : 18,
       unit: '% MS',
-      rationale: 'IPE: dieta digestível com proteína adequada (AVCN cap. 12).',
+      rationale: 'IPE: dieta digestível com proteína adequada.',
     })
     extras.push({
       ...base,

@@ -5,6 +5,7 @@
   Brain,
   LucideIcon,
   Activity,
+  Baby,
 } from 'lucide-react'
 
 export type ModuleStatus = 'internal' | 'iframe' | 'planned'
@@ -24,6 +25,15 @@ export interface Module {
 }
 
 export const modules: Module[] = [
+  {
+    id: 'conversor-corticoide',
+    title: 'Conversor de corticóide',
+    description: 'Compare doses de corticosteroides, confira equivalências e calcule o volume da apresentação de destino.',
+    route: '/conversor-corticoide',
+    status: 'internal',
+    icon: Pill,
+    iconImage: '/apps/conversor-corticoide-navy.png',
+  },
   {
     id: 'energia-vet',
     title: 'NutriçãoVET',
@@ -78,7 +88,15 @@ export const modules: Module[] = [
     icon: Brain,
     iconImage: '/apps/NEURO.png',
   },
-
+  {
+    id: 'neonatus',
+    title: 'Neonatus',
+    description: 'Escala de Apgar canina e felina, reflexos neonatais, reanimação, cuidados iniciais e dentição de filhotes.',
+    route: '/neonatus',
+    status: 'internal',
+    icon: Baby,
+    iconImage: '/apps/neonatus.png',
+  },
 ]
 
 export function getModuleById(id: string): Module | undefined {

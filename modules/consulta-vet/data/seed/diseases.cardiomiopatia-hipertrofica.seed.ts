@@ -53,7 +53,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
           label: 'Estabilizar se houver dispneia',
           timing: 'Primeira avaliação',
           detail:
-            'Pouco manuseio, oxigênio e ultrassom focado; toracocentese se efusão pleural comprometer ventilação; radiografia somente quando tolerado (Luis Fuentes et al., ACVIM 2020; Nelson & Couto, 6ª ed.).',
+            'Pouco manuseio, oxigênio e ultrassom focado; toracocentese se efusão pleural comprometer ventilação; radiografia somente quando tolerado (Luis Fuentes et al., ACVIM 2020).',
         },
         {
           label: 'Confirmar o fenótipo',
@@ -65,7 +65,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
           label: 'Excluir causas secundárias',
           timing: 'Antes de rotular primária',
           detail:
-            'Pressão arterial, T4 total e contexto clínico; IGF-1 se hipersomatotropismo; reavaliar após hidratação se pseudohipertrofia plausível (Nelson & Couto, 6ª ed.; Luis Fuentes et al., ACVIM 2020).',
+            'Pressão arterial, T4 total e contexto clínico; IGF-1 se hipersomatotropismo; reavaliar após hidratação se pseudohipertrofia plausível (Luis Fuentes et al., ACVIM 2020).',
         },
         {
           label: 'Estimar risco',
@@ -96,7 +96,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
         {
           label: 'C — insuficiência cardíaca ou tromboembolismo',
           detail:
-            'Furosemida e suporte para congestão; toracocentese quando indicada; analgesia opioide e antitrombóticos no TEA (Hogan et al., FAT CAT 2015; Plumb\'s, 10ª ed.).',
+            'Furosemida e suporte para congestão; toracocentese quando indicada; analgesia opioide e antitrombóticos no TEA (Hogan et al., FAT CAT 2015).',
           dose: 'Furosemida titulada à resposta. Clopidogrel 18,75 mg/gato q24h na prevenção secundária de TEA.',
           duration: 'Diurético na menor dose eficaz; antitrombótico conforme risco.',
           reassess: 'FR dormindo >30–35/min ou ganho de peso = reavaliar congestão.',
@@ -104,7 +104,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
         {
           label: 'D — refratária',
           detail:
-            'Ajustar diurético, considerar torsemida e combinações especializadas; revisar perfusão renal e qualidade de vida (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+            'Ajustar diurético, considerar torsemida e combinações especializadas; revisar perfusão renal e qualidade de vida.',
           reassess: 'Creatinina e eletrólitos após intensificar diurético.',
         },
       ],
@@ -224,7 +224,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
       title: 'Triagem clínica e estabilidade',
       purpose: 'Distinguir congestão, tromboembolismo e baixo débito antes de exames demorados.',
       description:
-        'Avalie padrão respiratório, temperatura, perfusão, pulso e ritmo. Em dispneia felina: mínimo manuseio, oxigênio e ultrassom focal à beira do leito; adie radiografia completa se o posicionamento aumentar estresse (Luis Fuentes et al., ACVIM 2020; Nelson & Couto, 6ª ed.).',
+        'Avalie padrão respiratório, temperatura, perfusão, pulso e ritmo. Em dispneia felina: mínimo manuseio, oxigênio e ultrassom focal à beira do leito; adie radiografia completa se o posicionamento aumentar estresse (Luis Fuentes et al., ACVIM 2020).',
       interpretation:
         'Taquipneia com edema ou efusão aponta para insuficiência cardíaca; membros pélvicos frios e dolorosos sugerem tromboembolismo arterial.',
       limitations: 'Exame físico normal não exclui CMH subclínica ou obstrução dinâmica intermitente.',
@@ -292,15 +292,15 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
       'Em estágio B2 com risco trombótico elevado (átrio esquerdo grande, contraste espontâneo ou trombo), considerar clopidogrel 18,75 mg/gato por via oral a cada 24 horas conforme estratificação individual (Luis Fuentes et al., ACVIM 2020).',
     ],
     aguda: [
-      'Insuficiência cardíaca congestiva aguda: ambiente calmo, oxigênio, furosemida parenteral titulada à resposta e toracocentese se efusão pleural comprometer ventilação. Evite fluidoterapia empírica antes de avaliar congestão (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+      'Insuficiência cardíaca congestiva aguda: ambiente calmo, oxigênio, furosemida parenteral titulada à resposta e toracocentese se efusão pleural comprometer ventilação. Evite fluidoterapia empírica antes de avaliar congestão.',
       'Tromboembolismo arterial agudo: analgesia opioide imediata, suporte térmico prudente, avaliação de potássio e lesão de reperfusão, clopidogrel e anticoagulação individualizada. Trombolítico não é rotina por risco de reperfusão e benefício incerto (Hogan et al., FAT CAT, 2015).',
     ],
     cronica: [
       'Schober et al. (2021), em ensaio com gatos com CMH e insuficiência cardíaca recente, compararam pimobendan e placebo por 180 dias e não encontraram benefício no desfecho primário. Conclusão: uso individualizado apenas para disfunção sistólica ou baixo débito, especialmente sem obstrução dinâmica importante.',
       'Hogan et al. (2015), no ensaio FAT CAT com 75 gatos sobreviventes de tromboembolismo, compararam clopidogrel 18,75 mg/gato ao dia com ácido acetilsalicílico. A mediana até recorrência foi 443 dias com clopidogrel e 192 dias com ácido acetilsalicílico. Conclusão: clopidogrel é base da prevenção secundária.',
-      'Obstrução dinâmica ou taquiarritmia selecionada: atenolol 6,25 mg/gato por via oral a cada 12 horas, titulado por frequência, pressão e ecocardiograma. Evitar em insuficiência cardíaca descompensada, choque ou bradicardia (Plumb\'s, 10ª ed.).',
-      'Diltiazem para taquiarritmia supraventricular em casos selecionados; Budde e McCluskey (2023) descrevem 7,5–15 mg/gato VO duas a três vezes ao dia (imediato) ou 30–45 mg/gato VO q24h (prolongado). Evidência de modificação estrutural da CMH é fraca.',
-      'Rivaroxabana 0,5–1 mg/kg VO q12–24 h ou 2,5 mg/gato ao dia em associação com clopidogrel: uso extra-bula com evidência limitada; monitorar função renal, hepática e sangramento (Plumb\'s, 10ª ed.; Jaturanratsamee et al., 2024).',
+      'Obstrução dinâmica ou taquiarritmia selecionada: atenolol 6,25 mg/gato por via oral a cada 12 horas, titulado por frequência, pressão e ecocardiograma. Evitar em insuficiência cardíaca descompensada, choque ou bradicardia.',
+      'Diltiazem para taquiarritmia supraventricular em casos selecionados: 7,5–15 mg/gato VO duas a três vezes ao dia (liberação imediata) ou 30–45 mg/gato VO q24h (liberação prolongada). Evidência de modificação estrutural da CMH é fraca.',
+      'Rivaroxabana 0,5–1 mg/kg VO q12–24 h ou 2,5 mg/gato ao dia em associação com clopidogrel: uso extra-bula com evidência limitada; monitorar função renal, hepática e sangramento (Jaturanratsamee et al., 2024).',
     ],
     monitoramento: [
       'Frequência respiratória dormindo: tendência sustentada acima do basal ou >30–35/min merece contato e reavaliação.',

@@ -236,7 +236,7 @@ REGRA DE OURO: O escore DOGiBAT padronizado permite estratificar o risco de mort
           mechanism: 'Extravasamento de eritrócitos através de microbrechas endoteliais de capilares cutâneos e mucosos não seladas por tampões hemostáticos plaquetários ausentes.',
           clinicalMeaning: 'Achado clássico de carência plaquetária grave (quase invariavelmente associado a contagens <20.000 a 30.000/uL); investigar ITP primária imediatamente.',
           priority: 'emergency',
-          context: ['Nelson & Couto 6a ed.', 'Garden et al. 2019']
+          context: ['Garden et al. 2019']
         },
         {
           finding: 'Equimoses e sufusões coalescentes em abdome e virilhas',
@@ -250,14 +250,14 @@ REGRA DE OURO: O escore DOGiBAT padronizado permite estratificar o risco de mort
           mechanism: 'Lesão contínua da microvasculatura mucosa oral durante mastigação ou deglutição sem capacidade de hemostasia primária reparadora.',
           clinicalMeaning: 'Alerta crítico de risco hemorrágico sistêmico iminente; proibir dietas sólidas ou ossos duros.',
           priority: 'emergency',
-          context: ['Plumb\'s 10a ed.']
+          context: ['Hemostasia primária']
         },
         {
           finding: 'Epistaxe unilateral ou bilateral espontânea',
           mechanism: 'Ruptura de capilares da mucosa dos cornetos nasais sob turbilhonamento de ar e pressão respiratória em animal trombocitopênico.',
           clinicalMeaning: 'Manifestação grave com risco de aspiração brônquica de sangue e pneumonia aspirativa associada.',
           priority: 'emergency',
-          context: ['BSAVA Emergency 3a ed.']
+          context: ['Emergência hemorrágica']
         }
       ]
     },
@@ -283,7 +283,7 @@ REGRA DE OURO: O escore DOGiBAT padronizado permite estratificar o risco de mort
           mechanism: 'Extravasamento dos vasos uveais e coriorretinianos sob pressão intraocular fisiológica.',
           clinicalMeaning: 'Risco iminente de cegueira definitiva e forte preditor de micro-hemorragias simultâneas no sistema nervoso central.',
           priority: 'emergency',
-          context: ['Ettinger 9a ed. 2024']
+          context: ['Emergência ocular']
         },
         {
           finding: 'Déficits neurológicos súbitos, ataxia vestibular ou convulsões',
@@ -302,21 +302,21 @@ REGRA DE OURO: O escore DOGiBAT padronizado permite estratificar o risco de mort
           mechanism: 'Anemia aguda decorrente de perda volêmica hemorrágica contínua ou hemólise extravascular concomitante (síndrome de Evans).',
           clinicalMeaning: 'Indica choque hipovolêmico ou hipóxia tecidual iminente; avaliar necessidade imediata de concentrado de hemácias.',
           priority: 'emergency',
-          context: ['Feline ECC 2a ed.']
+          context: ['Emergência clínica']
         },
         {
           finding: 'Febre ou hipotermia sistêmica',
           mechanism: 'Sepse grave de foco bacteriano com CID de consumo, ou liberação maciça de pirogênios endógenos em hemoparasitoses ativas.',
           clinicalMeaning: 'Afasta ITP primária isolada simples e exige triagem prioritária de patógenos vetoriais ou foco infeccioso oculto.',
           priority: 'emergency',
-          context: ['Greene\'s Infectious Diseases 5a ed.']
+          context: ['Doenças infecciosas']
         },
         {
           finding: 'Esplenomegalia ou linfadenomegalia generalizada palpável',
           mechanism: 'Hiperplasia reativa do sistema mononuclear fagocitário, infiltração neoplásica (linfoma, leucemia) ou infecção granulomatosa (Leishmania).',
           clinicalMeaning: 'Guia direcionamento imediato para imagem abdominal e biópsia/citologia de órgãos linfoides.',
           priority: 'common',
-          context: ['Nelson & Couto 6a ed.']
+          context: ['Investigação sistêmica']
         }
       ]
     }
@@ -522,7 +522,7 @@ ALERTA FARMACOLÓGICO: Em felinos, a ingestão de comprimidos de doxiciclina sem
 
   prevention: [
     'Controle antiparasitário contínuo e rigoroso contra carrapatos durante todo o ano com isoxazolinas ou coleiras repelentes para prevenir hemoparasitoses deflagradoras de trombocitopenia.',
-    'Testagem sorológica e virológica periódica de felinos para FeLV e FIV, mantendo gatos soronegativos estritamente domiciliados em ambiente indoor.',
+    'Testagem sorológica e virológica periódica de felinos para FeLV e FIV, mantendo gatos soronegativos estritamente domiciliados em ambiente domiciliar.',
     'Evitar o uso de medicamentos com potencial mielotóxico ou deflagrador de discrasias imunes (sulfas, fenobarbital, metimazol) em animais com histórico prévio de citopenias.',
     'Desmame extremamente cauteloso e lento de protocolos imunossupressores na ITP, respeitando reduções máximas de 25% a cada 2 a 4 semanas com contagens comprovadamente estáveis.',
     'Monitoramento hematológico preventivo em cães com macroplaquetopenia congênita (Cavalier King Charles) para estabelecer sua contagem basal individual e evitar tratamentos iatrogênicos incorretos.'

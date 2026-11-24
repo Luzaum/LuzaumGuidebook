@@ -5,7 +5,7 @@ import { Calculator, ChevronLeft, ChevronRight, Table2 } from 'lucide-react';
 import { ConsultaVetPageHero } from '../../components/layout/ConsultaVetPageHero';
 import { OncologyBsaCalculator } from '../../components/quickReferences/OncologyBsaCalculator';
 import { OncologyBsaTable } from '../../components/quickReferences/OncologyBsaTable';
-import { Species } from '../../data/quickReferencesData';
+import { BSAVA_BIBLIOGRAPHIC_SOURCES, Species } from '../../data/quickReferencesData';
 import { cn } from '../../../../lib/utils';
 
 type OncologySubView = 'calculator' | 'table';
@@ -110,6 +110,19 @@ export function OncologyReferencePage() {
           )}
         </motion.div>
       </AnimatePresence>
+
+      <footer className="rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-5">
+        <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">
+          Referências bibliográficas
+        </p>
+        <ul className="mt-2 space-y-1 text-xs leading-relaxed text-muted-foreground">
+          {BSAVA_BIBLIOGRAPHIC_SOURCES.map((ref) => (
+            <li key={ref.title}>
+              <strong className="text-foreground">{ref.title}</strong> ({ref.edition}) — {ref.authors}
+            </li>
+          ))}
+        </ul>
+      </footer>
     </div>
   );
 }

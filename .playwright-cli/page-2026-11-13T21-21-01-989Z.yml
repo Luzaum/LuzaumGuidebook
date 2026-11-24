@@ -1,0 +1,163 @@
+- main [ref=f1e3]:
+  - generic [ref=f1e5]:
+    - heading "Resumo Clínico Executivo" [level=2] [ref=f1e7]
+    - generic [ref=f1e8]:
+      - paragraph [ref=f1e9]: Em palavras simples
+      - generic [ref=f1e12]:
+        - paragraph [ref=f1e13]:
+          - text: A cetamina é um
+          - mark [ref=f1e14]: anestésico dissociativo
+          - text: "e antagonista não competitivo dos receptores glutamatérgicos NMDA (N-metil-D-aspartato). Seu efeito varia profundamente de acordo com a dose e a via de administração:"
+        - paragraph [ref=f1e15]: Em doses anestésicas (IV ou IM), promove dissociação talamocortical com analgesia somática intensa e catalepsia, mantendo parte dos reflexos de proteção de tronco encefálico. Em cães e gatos, deve ser sempre associada a sedativos ou relaxantes musculares (agonistas alfa-2, benzodiazepínicos ou propofol) para evitar rigidez muscular, tremores e despertar com disforia.
+        - paragraph [ref=f1e16]:
+          - text: Em doses subanestésicas (infusão contínua de 0,12 a 0,6 mg/kg/h), bloqueia a
+          - mark [ref=f1e17]: somação temporal medular
+          - text: (wind-up) e a sensibilização central, funcionando como potente analgésico preventivo que poupa opioides e reduz o consumo de anestésicos inalatórios. No
+          - mark [ref=f1e18]: estado de mal epiléptico refratário
+          - text: ", bloqueia os receptores NMDA externalizados na membrana sináptica após a perda de efeito dos benzodiazepínicos, interrompendo a excitotoxicidade celular."
+    - generic [ref=f1e19]:
+      - heading "Indicações de Uso" [level=3] [ref=f1e20]
+      - generic [ref=f1e22]:
+        - generic [ref=f1e23] [cursor=pointer]: "Peso do paciente:"
+        - generic [ref=f1e29]:
+          - spinbutton "Peso do paciente em kg" [ref=f1e30]
+          - generic [ref=f1e31]: kg
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]:
+          - generic [ref=f1e34]:
+            - generic [ref=f1e35]:
+              - heading "Co-indução Anestésica Intravenosa (com Propofol, Alfaxalona ou Benzodiazepínico)" [level=4] [ref=f1e36]
+              - generic [ref=f1e37]:
+                - generic [ref=f1e38]: Cães
+                - generic [ref=f1e39]: Gatos
+            - paragraph [ref=f1e40]: Indução balanceada poupadora de hipnótico e estabilizadora hemodinâmica
+          - generic [ref=f1e42]:
+            - generic [ref=f1e51]:
+              - generic [ref=f1e52]: Dose de Ataque / Manutenção
+              - text: 1 a 2 mg/kg IV (co-indução) ou 2 a 5 mg/kg IV (associada a midazolam ou diazepam 0,2–0,3 mg/kg IV)
+            - generic [ref=f1e53]:
+              - generic [ref=f1e54]:
+                - generic [ref=f1e55]: Via
+                - text: Via Intravenosa (lenta ao longo de 60 segundos)
+              - generic [ref=f1e56]:
+                - generic [ref=f1e57]: Duração
+                - text: Bolus único de indução (permite intubação endotraqueal em 60 a 90 segundos)
+        - generic [ref=f1e58]:
+          - generic [ref=f1e59]:
+            - generic [ref=f1e60]:
+              - heading "Contenção Química Intramuscular e Anestesia Dissociativa Multimodal" [level=4] [ref=f1e61]
+              - generic [ref=f1e62]:
+                - generic [ref=f1e63]: Cães
+                - generic [ref=f1e64]: Gatos
+            - paragraph [ref=f1e65]: Pacientes de difícil manipulação ou procedimentos curtos (associada a agonista alfa-2 e opioide)
+          - generic [ref=f1e67]:
+            - generic [ref=f1e76]:
+              - generic [ref=f1e77]: Dose de Ataque / Manutenção
+              - text: "Gatos: 2 a 5 mg/kg IM (exames) ou 5 a 10 mg/kg IM (cirúrgico) | Cães: 2 a 5 mg/kg IM em associação"
+            - generic [ref=f1e78]:
+              - generic [ref=f1e79]:
+                - generic [ref=f1e80]: Via
+                - text: Via Intramuscular profunda (musculatura epaxial ou quadríceps)
+              - generic [ref=f1e81]:
+                - generic [ref=f1e82]: Duração
+                - text: Início em 3 a 5 minutos; efeito cirúrgico de 20 a 40 minutos
+        - generic [ref=f1e83]:
+          - generic [ref=f1e84]:
+            - generic [ref=f1e85]:
+              - heading "Infusão Contínua Subanestésica Perioperatória (ICR Analgésica)" [level=4] [ref=f1e86]
+              - generic [ref=f1e87]:
+                - generic [ref=f1e88]: Cães
+                - generic [ref=f1e89]: Gatos
+            - paragraph [ref=f1e90]: Bloqueio NMDA contra somação temporal medular, sensibilização central e dor aguda
+          - generic [ref=f1e92]:
+            - generic [ref=f1e101]:
+              - generic [ref=f1e102]: Dose de Ataque / Manutenção
+              - text: "Ataque: 0,25 a 0,5 mg/kg IV lenta → Transoperatório: 0,12 a 0,6 mg/kg/h (2–10 µg/kg/min) → Pós-op: 0,12 a 0,3 mg/kg/h"
+            - generic [ref=f1e103]:
+              - generic [ref=f1e104]:
+                - generic [ref=f1e105]: Via
+                - text: Via Intravenosa em bomba de infusão contínua
+              - generic [ref=f1e106]:
+                - generic [ref=f1e107]: Duração
+                - text: Durante o transoperatório e por 12 a 48 horas no pós-operatório
+        - generic [ref=f1e108]:
+          - generic [ref=f1e109]:
+            - generic [ref=f1e110]:
+              - heading "Estado de Mal Epiléptico Refratário e Crises em Salva" [level=4] [ref=f1e111]
+              - generic [ref=f1e112]:
+                - generic [ref=f1e113]: Cães
+                - generic [ref=f1e114]: Gatos
+            - paragraph [ref=f1e115]: Crises refratárias a benzodiazepínicos e anticonvulsivantes de segunda linha
+          - generic [ref=f1e117]:
+            - generic [ref=f1e126]:
+              - generic [ref=f1e127]: Dose de Ataque / Manutenção
+              - text: "Bolus de ataque: 0,5 a 2 mg/kg IV lenta (até 5 mg/kg em casos extremos) → Infusão contínua: 0,5 a 2 mg/kg/h IV"
+            - generic [ref=f1e128]:
+              - generic [ref=f1e129]:
+                - generic [ref=f1e130]: Via
+                - text: Via Intravenosa (lenta seguida de infusão contínua)
+              - generic [ref=f1e131]:
+                - generic [ref=f1e132]: Duração
+                - text: Manter por 12 a 24 horas após cessação das crises, com desmame gradual
+        - generic [ref=f1e133]:
+          - generic [ref=f1e134]:
+            - generic [ref=f1e135]:
+              - heading "Analgesia Subanestésica Adjuvante na Dor Crônica e Neuropática" [level=4] [ref=f1e136]
+              - generic [ref=f1e137]:
+                - generic [ref=f1e138]: Cães
+                - generic [ref=f1e139]: Gatos
+            - paragraph [ref=f1e140]: Adjuvante para controle da sensibilização central em osteoartrite severa e dor neuropática
+          - generic [ref=f1e142]:
+            - generic [ref=f1e151]:
+              - generic [ref=f1e152]: Dose de Ataque / Manutenção
+              - text: 0,5 a 1 mg/kg SC (intermitente a cada 7 a 30 dias) ou infusão hospitalar de 0,1 a 0,3 mg/kg/h IV
+            - generic [ref=f1e153]:
+              - generic [ref=f1e154]:
+                - generic [ref=f1e155]: Via
+                - text: Via Subcutânea (SC) ou Intravenosa (IV)
+              - generic [ref=f1e156]:
+                - generic [ref=f1e157]: Duração
+                - text: Aplicações periódicas com monitoramento clínico e renal
+    - generic [ref=f1e158]:
+      - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f1e159]
+      - generic [ref=f1e160]:
+        - generic [ref=f1e161]:
+          - generic [ref=f1e162]: Bloqueio do Canal NMDA e Dissociação Talamocortical
+          - paragraph [ref=f1e169]: Bloqueia o poro aberto do canal NMDA, desconectando as vias talamocorticais do sistema límbico com potente analgesia somática e amnésia.
+        - generic [ref=f1e170]:
+          - generic [ref=f1e171]: Modulação Anti-Hiperalgésica e Bloqueio de Wind-Up
+          - paragraph [ref=f1e177]: Em infusão contínua subanestésica, extingue a somação temporal no corno dorsal medular, prevenindo a sensibilização central e reduzindo o consumo de opioides.
+        - generic [ref=f1e178]:
+          - generic [ref=f1e179]: Resgate no Estado de Mal Epiléptico Refratário
+          - paragraph [ref=f1e189]: Bloqueia os receptores NMDA suprarregulados após a perda de eficácia dos benzodiazepínicos, contendo a excitotoxicidade cálcio-dependente.
+        - generic [ref=f1e190]:
+          - generic [ref=f1e191]: Perfil Hemodinâmico e Cuidados de Via Aérea
+          - paragraph [ref=f1e197]: Mantém pressão e débito por estímulo simpático indireto em animais estáveis, mas pode descompensar o choque terminal. Exige atenção à laringe em felinos.
+    - generic [ref=f1e198]:
+      - generic [ref=f1e199]: Aviso Clínico Importante
+      - generic [ref=f1e203]:
+        - generic [ref=f1e204]:
+          - generic [ref=f1e205]: "1"
+          - paragraph [ref=f1e206]:
+            - strong [ref=f1e207]: "Paradoxo cardiovascular (estímulo simpático versus choque descompensado):"
+            - text: "Em pacientes com reservas adrenérgicas preservadas, a cetamina inibe a recaptação de catecolaminas, mantendo ou elevando moderadamente a pressão arterial e a frequência cardíaca. Contudo, possui efeito inotrópico negativo direto: em pacientes críticos em choque grave ou séptico com depleção simpática, pode precipitar colapso hemodinâmico imediato."
+        - generic [ref=f1e208]:
+          - generic [ref=f1e209]: "2"
+          - paragraph [ref=f1e210]:
+            - strong [ref=f1e211]: "Proibição de monoterapia anestésica em cães:"
+            - text: A cetamina nunca deve ser administrada isoladamente como anestésico em cães. Provoca hipertonia muscular severa, rigidez extensora, mioclonias, convulsões e despertar com intensa disforia. É obrigatória a associação com benzodiazepínicos, agonistas alfa-2 ou propofol.
+        - generic [ref=f1e212]:
+          - generic [ref=f1e213]: "3"
+          - paragraph [ref=f1e214]:
+            - strong [ref=f1e215]: "Reflexos de via aérea, apneia e laringoespasmo em gatos:"
+            - text: Embora mantenha a ventilação espontânea, a administração intravenosa rápida em bolus induz apneia temporária ou respiração apnêustica. A preservação de reflexos laríngeos não garante proteção de via aérea e pode deflagrar laringoespasmo em gatos — é indispensável instilar lidocaína tópica (0,1 mL a 2%) nas aritenoides antes da intubação.
+        - generic [ref=f1e216]:
+          - generic [ref=f1e217]: "4"
+          - paragraph [ref=f1e218]:
+            - strong [ref=f1e219]: "Diferença de potência entre Cetamina Racêmica e Escetamina S(+):"
+            - text: A escetamina (enantiômero dextrógiro puro S+) possui afinidade 3 a 4 vezes maior pelo receptor NMDA e cerca do dobro da potência analgésica e anestésica da mistura racêmica. Ao utilizar apresentações de escetamina injetável, reduza a dose calculada em 30% a 50%.
+        - generic [ref=f1e220]:
+          - generic [ref=f1e221]: "5"
+          - paragraph [ref=f1e222]:
+            - strong [ref=f1e223]: "Vigilância hepática e urológica em infusões prolongadas:"
+            - text: Infusões contínuas por períodos muito longos (>24 a 48 horas) podem elevar transaminases e fosfatase alcalina por estresse hepatocelular. O uso crônico repetido associa-se a cistite química e uropatia ulcerativa pela ação citotóxica direta de metabólitos no urotélio.

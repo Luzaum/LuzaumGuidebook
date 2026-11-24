@@ -314,7 +314,7 @@ export const doencaDoDiscoIntervertebralCaesRecord: DiseaseRecord = {
       src: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/intervertebral-disc-herniation-types-diagram-science-photo-library.jpg',
       alt: 'Diagrama comparativo entre Extrusão Hansen I e Protrusão Hansen II',
       caption:
-        'Esquema comparativo entre Extrusão Hansen I (ruptura anular com extravasamento do núcleo) e Protrusão Hansen II (abaulamento anular crônico). Fonte: Dewey & da Costa 2016 / Coates 2012.',
+        'Esquema comparativo entre Extrusão Hansen I (ruptura anular com extravasamento do núcleo) e Protrusão Hansen II (abaulamento anular crônico).',
       display: 'inline',
     },
   ],

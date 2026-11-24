@@ -88,13 +88,17 @@ test('CID/DIC detalha os 9 passos diagnósticos e estudos seminais', () => {
   assert.ok(serializedDiag.includes('Estrin'), 'deve citar Estrin et al. 2006');
 });
 
-test('CID/DIC aborda posologias do Plumb, LMWH/UFH, FFP, e evidência Granger 2024', () => {
+test('CID/DIC aborda posologias anticoagulantes, LMWH/UFH, FFP, evidência Granger 2024 e cita Plumb apenas nas referências finais', () => {
   const disease = diseasesSeed.find((item) => item.slug === SLUG)!;
   const treat = disease.treatment as Record<string, string>;
   assert.ok(treat);
 
   const serializedTreat = JSON.stringify(treat);
-  assert.ok(serializedTreat.includes('Plumb'), 'deve referenciar Plumb');
+  assert.ok(!/Plumb/i.test(serializedTreat), 'tratamento não deve citar Plumb diretamente no corpo do texto');
+  assert.ok(
+    disease.references.some((ref) => /Plumb/i.test(ref.citationText || ref.title || '')),
+    'Plumb deve constar na lista final de referências'
+  );
   assert.ok(serializedTreat.includes('Enoxaparina') || serializedTreat.includes('enoxaparina'), 'deve conter enoxaparina');
   assert.ok(serializedTreat.includes('Dalteparina') || serializedTreat.includes('dalteparina'), 'deve conter dalteparina');
   assert.ok(serializedTreat.includes('Granger'), 'deve citar relato e racional de Granger et al. 2024');

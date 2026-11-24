@@ -72,12 +72,12 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
           label: 'Confirmação parasitológica direta',
           timing: 'Antes de rotular infecção ativa',
           detail:
-            'Citologia ou histopatologia com amastigotas em linfonodo, medula óssea ou pele lesada — prova de infecção ativa quando morfologia típica (Brasileish 2025; Nelson & Couto, 6ª ed.).',
+            'Citologia ou histopatologia com amastigotas em linfonodo, medula óssea ou pele lesada — prova de infecção ativa quando morfologia típica (Brasileish 2025).',
         },
         {
           label: 'PCR e quantificação',
           detail:
-            'Sangue, tecido ou fluidos conforme protocolo; útil para seguimento e quantificação de carga parasitária; interpretar carga junto à clínica, não isoladamente (Brasileish 2025; Nelson & Couto, 6ª ed.).',
+            'Sangue, tecido ou fluidos conforme protocolo; útil para seguimento e quantificação de carga parasitária; interpretar carga junto à clínica, não isoladamente (Brasileish 2025).',
         },
         {
           label: 'Sorologia (IFAT, ELISA, testes rápidos)',

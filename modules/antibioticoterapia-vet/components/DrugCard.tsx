@@ -374,7 +374,7 @@ const DrugCard: React.FC<DrugCardProps> = ({
         </div>
       </div>
       <div className="mt-auto pt-2 text-[11px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        Fontes base: Plumb&apos;s, BSAVA, Nelson &amp; Couto.
+        Consulte a aba de Referências para a bibliografia completa.
       </div>
       <Modal open={!!modalInfo} title={modalInfo?.title || 'Informação'} onClose={() => setModalInfo(null)}>
         {modalInfo?.content}

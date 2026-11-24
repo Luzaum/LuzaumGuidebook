@@ -136,7 +136,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         route: 'Oral (VO com alíquota de água) ou IV lenta',
         duration: 'Mínimo de 4 semanas ininterruptas (risco de recidiva se suspenso precocemente)',
         clinicalContext:
-          'Bloqueia o apicoplasto com melhora clínica em 48 a 72h. Nelson & Couto alerta que cursos inferiores a 28 dias favorecem recidivas. Casos com uveíte requerem corticoide local.',
+          'Bloqueia o apicoplasto com melhora clínica em 48 a 72h. Cursos inferiores a 28 dias favorecem recidivas clínicas. Casos com uveíte requerem corticoide local.',
       },
       {
         condition: 'Neosporose Canina Clínica (Miosite e Radiculoneurite Ascendente)',
@@ -194,7 +194,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           'Apresentação de penetração óssea consagrada pelo FDA e pela literatura mundial para o tratamento de osteomielite canina por patógenos suscetíveis.',
         monitoring: 'Radiografias ortopédicas seriadas a cada 3 a 4 semanas, dosagem de Proteína C Reativa (PCR) como marcador inflamatório e perfil hepatorrenal a cada 30 dias.',
         referenceIds: ['ref-braden-1988-osteomyelitis', 'ref-plumbs-10th-clinda', 'ref-bsava-10th-clinda'],
-        evidenceLevel: 'Ensaio Controlado Padrão Ouro Braden 1988 / Monografia FDA Plumb (Nível 1b)',
+        evidenceLevel: 'Ensaio Controlado (Braden et al., 1988) / Bula FDA (Nível 1b)',
       },
       {
         id: 'ind-clinda-dental-wounds',
@@ -212,13 +212,13 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           'Penetração tecidual e óssea mandibular excelente, sendo o antimicrobiano de eleição odontológica veterinária.',
         monitoring: 'Inspeção da cicatrização de alvéolos e mucosa oral; em gatos, atentar para disfagia ou regurgitação precoces.',
         referenceIds: ['ref-clinbacter-bula', 'ref-bsava-10th-clinda', 'ref-plumbs-10th-clinda'],
-        evidenceLevel: 'Bula Oficial MAPA / Compêndio BSAVA / Prática Clínica Especializada',
+        evidenceLevel: 'Bula Oficial MAPA / Prática Clínica Especializada',
       },
       {
         id: 'ind-clinda-feline-toxoplasmosis',
         indication: 'Toxoplasmose Clínica Felina Sistêmica, Oftálmica e de SNC',
         clinicalContext:
-          'Toxoplasma gondii é um protozoário coccídio intracelular cujo felino é o hospedeiro definitivo. A manifestação clínica em gatos manifesta-se por febre, letargia, perda de peso, pneumonia intersticial, hepatite necrosante, pancreatite, uveíte anterior, retinocoroidite e meningoencefalomielite. A clindamicina é o fármaco de primeira linha consagrado para o tratamento da toxoplasmose ativa. O protozoário possui um apicoplasto cuja síntese proteica é bloqueada pela clindamicina, impedindo a invasão celular nas gerações filhas (morte retardada). Lappin et al. (1989) relataram resolução completa de sinais não oculares e de retinocoroidite em gatos tratados. O compêndio Nelson & Couto destaca que cursos inferiores a 4 semanas estão fortemente associados a recidivas clínicas. A melhora dos sinais sistêmicos ocorre habitualmente entre 48 e 72 horas. Em envolvimento neurológico central, doses aumentadas (30 a 50 mg/kg/dia divididos) são recomendadas devido à limitação da barreira hematoencefálica.',
+          'Toxoplasma gondii é um protozoário coccídio intracelular cujo felino é o hospedeiro definitivo. A manifestação clínica em gatos manifesta-se por febre, letargia, perda de peso, pneumonia intersticial, hepatite necrosante, pancreatite, uveíte anterior, retinocoroidite e meningoencefalomielite. A clindamicina é o fármaco de primeira linha consagrado para o tratamento da toxoplasmose ativa. O protozoário possui um apicoplasto cuja síntese proteica é bloqueada pela clindamicina, impedindo a invasão celular nas gerações filhas (morte retardada). Lappin et al. (1989) relataram resolução completa de sinais não oculares e de retinocoroidite em gatos tratados. Cursos inferiores a 4 semanas estão fortemente associados a recidivas clínicas. A melhora dos sinais sistêmicos ocorre habitualmente entre 48 e 72 horas. Em envolvimento neurológico central, doses aumentadas (30 a 50 mg/kg/dia divididos) são recomendadas devido à limitação da barreira hematoencefálica.',
         species: 'cat',
         dose: '12,5 mg/kg VO q12h (25 mg/kg/dia); em SNC: 15 a 25 mg/kg VO q12h (30 a 50 mg/kg/dia divididos)',
         route: 'Oral (VO com água/alimento úmido) ou IV intermitente lenta se em jejum',
@@ -230,13 +230,13 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           'Padrão ouro internacional em medicina felina para contenção da replicação ativa de taquizoítos teciduais.',
         monitoring: 'Avaliação oftalmológica (lâmpada de fenda / oftalmoscopia direta), resposta motora e tolerância digestiva.',
         referenceIds: ['ref-lappin-1989-toxoplasmosis', 'ref-nelson-couto-6th', 'ref-bsava-10th-clinda'],
-        evidenceLevel: 'Série Clínica Padrão Ouro Lappin 1989 / Nelson & Couto / BSAVA',
+        evidenceLevel: 'Série Clínica (Lappin et al., 1989) e Prática Infectológica Consolidada',
       },
       {
         id: 'ind-clinda-canine-neosporosis',
         indication: 'Neosporose Clínica Canina (Miosite e Radiculoneurite Ascendente)',
         clinicalContext:
-          'Neospora caninum acomete cães de todas as idades, com curso devastador em filhotes e cães com menos de 6 meses por transmissão congênita vertical. O quadro clássico compreende paresia e paralisia rígida progressiva de membros pélvicos decorrente de miosite necrótica, radiculoneurite lombo-sacra e atrofia muscular por desnervação. Nelson & Couto enfatiza que o tratamento com clindamicina deve ser instituído imediatamente diante da suspeita clínica, antes mesmo do resultado de sorologias ou PCR, pois uma vez instalada a fibrose muscular com hiperextensão rígida e contratura miofascial, o dano anatômico torna-se clinicamente irreversível. Os protocolos posológicos preconizam 10 mg/kg a cada 8 horas ou 15 mg/kg a cada 12 horas mantidos por 4 a 8 semanas consecutivas, podendo ser associados a sulfas potencializadas em casos refratários.',
+          'Neospora caninum acomete cães de todas as idades, com curso devastador em filhotes e cães com menos de 6 meses por transmissão congênita vertical. O quadro clássico compreende paresia e paralisia rígida progressiva de membros pélvicos decorrente de miosite necrótica, radiculoneurite lombo-sacra e atrofia muscular por desnervação. O tratamento com clindamicina deve ser instituído imediatamente diante da suspeita clínica, antes mesmo do resultado de sorologias ou PCR, pois uma vez instalada a fibrose muscular com hiperextensão rígida e contratura miofascial, o dano anatômico torna-se clinicamente irreversível. Os protocolos posológicos preconizam 10 mg/kg a cada 8 horas ou 15 mg/kg a cada 12 horas mantidos por 4 a 8 semanas consecutivas, podendo ser associados a sulfas potencializadas em casos refratários.',
         species: 'dog',
         dose: '10 mg/kg VO a cada 8 horas (q8h) ou 15 mg/kg VO a cada 12 horas (q12h)',
         route: 'Oral (VO)',
@@ -248,13 +248,13 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           'Única intervenção farmacológica capaz de salvar a locomoção de filhotes caninos quando administrada precocemente.',
         monitoring: 'Exame neurológico motor seriado (amplitude reflexa e tônus muscular), CK sérica e fisioterapia motora precoce.',
         referenceIds: ['ref-nelson-couto-6th', 'ref-bsava-10th-clinda', 'ref-plumbs-10th-clinda'],
-        evidenceLevel: 'Nelson & Couto Medicina Interna / Formulário BSAVA / Literatura Neurológica',
+        evidenceLevel: 'Prática Clínica Neurológica e Infectológica Consolidada',
       },
       {
         id: 'ind-clinda-pyothorax-sepsis',
         indication: 'Piotórax e Sepse Abdominal / Respiratória (Braço Anaeróbio e Gram-Positivo)',
         clinicalContext:
-          'Em piotórax felino e canino, as infecções são predominantemente polimicrobianas e ricas em bactérias anaeróbias estritas (Peptostreptococcus, Prevotella, Fusobacterium, Clostridium) derivadas de feridas penetrantes ou inalação de corpos estranhos. A clindamicina penetra extraordinariamente bem no líquido e tecido pleural, atingindo concentrações bactericidas mesmo em exsudatos purulentos e ambiente ácido. No Plumb e Nelson & Couto, a dose hospitalar preconizada é de 10 mg/kg IV lenta a cada 12 horas. Contudo, como a clindamicina não possui cobertura contra enterobactérias ou Pseudomonas aeruginosa, é MANDATÓRIO associar um antimicrobiano com cobertura para Gram-negativos (como enrofloxacina até 5 mg/kg/dia em gatos ou amicacina). O suporte mecânico por toracocentese, dreno torácico fechado e lavagem pleural salina é inegociável.',
+          'Em piotórax felino e canino, as infecções são predominantemente polimicrobianas e ricas em bactérias anaeróbias estritas (Peptostreptococcus, Prevotella, Fusobacterium, Clostridium) derivadas de feridas penetrantes ou inalação de corpos estranhos. A clindamicina penetra extraordinariamente bem no líquido e tecido pleural, atingindo concentrações bactericidas mesmo em exsudatos purulentos e ambiente ácido. A dose hospitalar parenteral preconizada é de 10 mg/kg IV lenta a cada 12 horas. Contudo, como a clindamicina não possui cobertura contra enterobactérias ou Pseudomonas aeruginosa, é MANDATÓRIO associar um antimicrobiano com cobertura para Gram-negativos (como enrofloxacina até 5 mg/kg/dia em gatos ou amicacina). O suporte mecânico por toracocentese, dreno torácico fechado e lavagem pleural salina é inegociável.',
         species: 'both',
         dose: '10 mg/kg IV em infusão intermitente lenta a cada 12 horas (diluída em SF 0,9% ao longo de 20 a 30 min)',
         route: 'Intravenosa (IV intermitente lenta, estritamente diluída; NUNCA bólus)',
@@ -266,16 +266,16 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           'Fornece o braço anaeróbio padrão ouro hospitalar em associação à antibioticoterapia de quatro quadrantes.',
         monitoring: 'Pressão arterial durante infusão, ausculta pulmonar, débito do dreno torácico e citopatologia da efusão.',
         referenceIds: ['ref-plumbs-10th-clinda', 'ref-nelson-couto-6th', 'ref-bsava-10th-clinda'],
-        evidenceLevel: 'Consensos Internacionais de Terapia Intensiva / Plumb / Nelson & Couto',
+        evidenceLevel: 'Consensos Internacionais de Terapia Intensiva e Infectologia',
       },
     ],
 
     // 4. Farmacocinética Clínica Comparada
     pharmacokineticsData: {
       absorption:
-        'A clindamicina é rapidamente e extensamente absorvida pelo trato gastrointestinal após administração oral em cães e gatos. O estudo farmacocinético cruzado padrão de Batzias et al. (2005) em cães Beagles demonstrou biodisponibilidade oral (F) de 72,55 ± 9,86% após a dose de 11 mg/kg de cloridrato de clindamicina em cápsulas, com tempo médio de absorção rápido de 0,87 ± 0,40 horas e Tmax sérico entre 45 e 60 minutos. A presença de alimento retarda levemente a taxa de absorção gástrica, mas não reduz a biodisponibilidade sistêmica total, sendo vantajoso administrar a medicação junto a alimentos para minimizar desconforto em animais suscetíveis a náuseas. Em gatos, a absorção é igualmente efetiva, com comportamento cinético dependente da formulação: o Plumb relata meia-vida oral de aproximadamente 8 horas para soluções líquidas e de até 16 horas para cápsulas sólidas.',
+        'A clindamicina é rapidamente e extensamente absorvida pelo trato gastrointestinal após administração oral em cães e gatos. O estudo farmacocinético cruzado padrão de Batzias et al. (2005) em cães Beagles demonstrou biodisponibilidade oral (F) de 72,55 ± 9,86% após a dose de 11 mg/kg de cloridrato de clindamicina em cápsulas, com tempo médio de absorção rápido de 0,87 ± 0,40 horas e Tmax sérico entre 45 e 60 minutos. A presença de alimento retarda levemente a taxa de absorção gástrica, mas não reduz a biodisponibilidade sistêmica total, sendo vantajoso administrar a medicação junto a alimentos para minimizar desconforto em animais suscetíveis a náuseas. Em gatos, a absorção é igualmente efetiva, com comportamento cinético dependente da formulação: observa-se meia-vida oral de aproximadamente 8 horas para soluções líquidas e de até 16 horas para cápsulas sólidas.',
       distribution:
-        'Apresenta lipofilicidade substancialmente superior à das aminopenicilinas, o que resulta em ampla distribuição tecidual e penetração intracelular. O volume de distribuição em estado de equilíbrio (Vdss) no cão situa-se em 2,48 ± 0,48 L/kg (Batzias et al., 2005; valor histórico de 0,9 L/kg compilado no Plumb), e no gato varia entre 1,6 e 3,0 L/kg. A taxa de ligação a proteínas plasmáticas é elevada (~93%), mas não impede a difusão para pele, tecido subcutâneo, ossos trabeculares e corticais, líquido sinovial, peritônio, pleura, miocárdio e bile. Um dos grandes diferenciais é o acúmulo intracelular em neutrófilos e macrófagos, transportando ativamente o fármaco para focos de supuração e abscessos. Em gatos, a relação de concentração tecido pulmonar:soro é superior a 3:1. A penetração pela barreira hematoencefálica com meninges íntegras é baixa, atingindo até 40% das concentrações séricas durante inflamação meníngea ativa; o LCR apresenta níveis modestos, justificando doses elevadas em toxoplasmose de SNC.',
+        'Apresenta lipofilicidade substancialmente superior à das aminopenicilinas, o que resulta em ampla distribuição tecidual e penetração intracelular. O volume de distribuição em estado de equilíbrio (Vdss) no cão situa-se em 2,48 ± 0,48 L/kg (Batzias et al., 2005; valor histórico mais conservador descrito em 0,9 L/kg), e no gato varia entre 1,6 e 3,0 L/kg. A taxa de ligação a proteínas plasmáticas é elevada (~93%), mas não impede a difusão para pele, tecido subcutâneo, ossos trabeculares e corticais, líquido sinovial, peritônio, pleura, miocárdio e bile. Um dos grandes diferenciais é o acúmulo intracelular em neutrófilos e macrófagos, transportando ativamente o fármaco para focos de supuração e abscessos. Em gatos, a relação de concentração tecido pulmonar:soro é superior a 3:1. A penetração pela barreira hematoencefálica com meninges íntegras é baixa, atingindo até 40% das concentrações séricas durante inflamação meníngea ativa; o LCR apresenta níveis modestos, justificando doses elevadas em toxoplasmose de SNC.',
       metabolism:
         'As formas éster pró-farmacológicas (fosfato de clindamicina parenteral e palmitato de clindamicina oral) são biologicamente inativas e sofrem rápida hidrólise in vivo pelas fosfatases e esterases teciduais, liberando clindamicina livre circulante. A droga sofre biotransformação hepática parcial via oxidação mediada por isoenzimas do citocromo P450 (complexo CYP3A em humanos), originando metabólitos bioativos como a clindamicina-sulfóxido e a N-desmetilclindamicina, além de derivados inativos. Gatos não apresentam deficiência metabólica específica para a clindamicina (não há dependência crítica da via de glucuronidação). Em pacientes com insuficiência hepática severa descompensada, a depuração metabólica pode estar diminuída.',
       elimination:
@@ -372,7 +372,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
           species: 'dog',
           title: 'Caninos: Padrão Ouro em Osteomielite, Piodermite e Neosporose',
           description:
-            'Cães toleram muito bem a clindamicina por via oral e intravenosa, apresentando meia-vida média de 4 a 5 horas e biodisponibilidade de aproximadamente 73%. O fármaco possui extraordinária validação em osteomielites por S. aureus (Braden et al., 1988), nas infecções periodontais com penetração mandibular e na neosporose clínica em filhotes (Nelson & Couto). Para piodermite sistêmica canina, o consenso ISCAID 2025 recomenda 11 mg/kg q12h para garantir resposta uniforme.',
+            'Cães toleram muito bem a clindamicina por via oral e intravenosa, apresentando meia-vida média de 4 a 5 horas e biodisponibilidade de aproximadamente 73%. O fármaco possui extraordinária validação em osteomielites por S. aureus (Braden et al., 1988), nas infecções periodontais com penetração mandibular e na neosporose clínica em filhotes. Para piodermite sistêmica canina, o consenso ISCAID 2025 recomenda 11 mg/kg q12h para garantir resposta uniforme.',
           clinicalImplications:
             'Em terapias prolongadas superiores a 30 dias (como em osteomielite e neosporose), realizar controle periódico de ALT, AST e creatinina séricas.',
         },
@@ -695,7 +695,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-clinbacter-75mg',
         presentationConcentrationId: 'conc-clinbacter-75mg',
-        evidenceLevel: 'Bula Oficial MAPA / Compêndio BSAVA',
+        evidenceLevel: 'Bula Oficial MAPA e Consenso Clínico',
       },
       {
         id: 'dose-clinda-pyoderma-iscaid',
@@ -733,7 +733,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-clinbacter-150mg',
         presentationConcentrationId: 'conc-clinbacter-150mg',
-        evidenceLevel: 'Ensaio Controlado Braden 1988 / Monografia FDA Plumb',
+        evidenceLevel: 'Ensaio Controlado (Braden et al., 1988) / Bula FDA',
       },
       {
         id: 'dose-clinda-feline-toxoplasmosis',
@@ -747,12 +747,12 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 12 horas (q12h)',
         duration: 'Mínimo de 4 semanas ininterruptas (28 dias)',
         clinicalContext:
-          'Dose de 25 mg/kg/dia dividida em duas tomadas (12,5 mg/kg q12h). Início de melhora clínica em 48 a 72h. Nelson & Couto enfatiza curso mínimo de 4 semanas para evitar recidivas.',
+          'Dose de 25 mg/kg/dia dividida em duas tomadas (12,5 mg/kg q12h). Início de melhora clínica em 48 a 72h. Recomenda-se curso mínimo de 4 semanas para evitar recidivas.',
         monitoring: 'Oftalmoscopia seriada, resolução de febre e miosite. Atenção inegociável à prevenção de estenose esofágica.',
         calculatorEnabled: true,
         presentationId: 'pres-clinbacter-75mg',
         presentationConcentrationId: 'conc-clinbacter-75mg',
-        evidenceLevel: 'Série Lappin 1989 / Nelson & Couto / Formulário BSAVA',
+        evidenceLevel: 'Série Clínica (Lappin et al., 1989) e Prática Infectológica',
       },
       {
         id: 'dose-clinda-feline-toxo-cns',
@@ -771,7 +771,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-clinbacter-75mg',
         presentationConcentrationId: 'conc-clinbacter-75mg',
-        evidenceLevel: 'Formulário BSAVA 10ª ed. / Nelson & Couto',
+        evidenceLevel: 'Prática Clínica Infectológica Consolidada',
       },
       {
         id: 'dose-clinda-canine-neosporosis',
@@ -790,7 +790,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-clinbacter-75mg',
         presentationConcentrationId: 'conc-clinbacter-75mg',
-        evidenceLevel: 'Nelson & Couto Medicina Interna / BSAVA 10ª ed.',
+        evidenceLevel: 'Prática Clínica Neurológica e Infectológica Consolidada',
       },
       {
         id: 'dose-clinda-pyothorax-iv',
@@ -809,7 +809,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-clindamicina-fosfato-inj-150mg-ml',
         presentationConcentrationId: 'conc-clinda-inj-150mg-ml',
-        evidenceLevel: 'Monografia Plumb 10ª ed. / Nelson & Couto',
+        evidenceLevel: 'Prática Clínica de Terapia Intensiva Consolidada',
       },
     ],
 
@@ -892,7 +892,7 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
             sourceType: 'Ensaio Farmacocinético Cruzado em Cães Beagles',
             summaryText:
               'Avaliação farmacocinética comparativa em 6 Beagles. O regime de 11 mg/kg q24h produziu Cmax e AUC superiores ao de 5,5 mg/kg q12h, demonstrando que doses diárias concentradas atingem excelente exposição para patógenos de baixa MIC.',
-            summaryHighlights: ['Cmax e AUC superiores no SID', '6 Beagles saudáveis', 'washout de 1 semana'],
+            summaryHighlights: ['Cmax e AUC superiores no SID', '6 Beagles saudáveis', 'intervalo de suspensão de 1 semana'],
             metrics: ['n = 6 cães', 'Doses: 5,5 mg/kg BID vs 11 mg/kg SID', 'AUC0-24 superior no grupo SID'],
             clinicalConclusion:
               'Explica por que doses de 11 mg/kg SID são eficazes em patógenos altamente suscetíveis, enquanto infecções severas e MICs maiores exigem 11 mg/kg q12h.',

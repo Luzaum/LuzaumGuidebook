@@ -208,9 +208,9 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
 
   etiology: {
     conceitoBaseETaxonomia:
-      'A babesiose é uma hemoparasitose causada por protozoários intraeritrocitários do gênero Babesia (filo Apicomplexa, ordem Piroplasmida). Na prática clínica, o primeiro passo é separar três conceitos distintos: ==infecção== (presença do parasito ou de seu DNA), ==babesiose clínica== (síndrome patológica atribuível após excluir coinfecções) e ==portador subclínico== (animal sem sinais ativos, porém epidemiologicamente relevante como doador de sangue ou sob risco de recrudescência pós-esplenectomia) {{ref:ref-greene-5ed-cap97}}.\n\n' +
-      'Historicamente, os piroplasmas foram divididos pelo tamanho intraeritrocitário no esfregaço sanguíneo em ==grandes Babesia (> 2,5 µm)== — formas piriformes frequentemente pareadas como B. vogeli, B. canis e B. rossi — e ==pequenas Babesia (~1–2,5 µm)== — formas anelares ou arredondadas como B. gibsoni, B. conradae, B. vulpes, B. felis e B. galileei. Embora essa separação ajude na triagem inicial (grandes respondem em geral ao imidocarb; pequenas costumam falhar ao imidocarb), existe sobreposição morfológica durante a replicação intracelular {{ref:ref-greene-5ed-cap97}} {{ref:ref-esccap-gl5-2024}}.\n\n' +
-      'A taxonomia molecular moderna corrige um equívoco comum na literatura antiga: ==B. vogeli, B. canis sensu stricto e B. rossi são espécies independentes==, e não subespécies intercambiáveis. De modo semelhante, ==Theileria, Cytauxzoon e Rangelia vitalii pertencem a grupos distintos== e não devem ser tratados com os mesmos protocolos empíricos de Babesia. Hoje, a confirmação definitiva exige marcadores moleculares como ==18S rRNA, citocromo b (cytb), cox1/cox3 e região espaçadora interna (ITS)== {{ref:ref-greene-5ed-cap97}} {{ref:ref-duarte-2026}}.',
+      'A babesiose é uma hemoparasitose causada por protozoários intraeritrocitários do gênero Babesia (filo Apicomplexa, ordem Piroplasmida). Na prática clínica, o primeiro passo é separar três conceitos distintos: ==infecção== (presença do parasito ou de seu DNA), ==babesiose clínica== (síndrome patológica atribuível após excluir coinfecções) e ==portador subclínico== (animal sem sinais ativos, porém epidemiologicamente relevante como doador de sangue ou sob risco de recrudescência pós-esplenectomia).\n\n' +
+      'Historicamente, os piroplasmas foram divididos pelo tamanho intraeritrocitário no esfregaço sanguíneo em ==grandes Babesia (> 2,5 µm)== — formas piriformes frequentemente pareadas como B. vogeli, B. canis e B. rossi — e ==pequenas Babesia (~1–2,5 µm)== — formas anelares ou arredondadas como B. gibsoni, B. conradae, B. vulpes, B. felis e B. galileei. Embora essa separação ajude na triagem inicial (grandes respondem em geral ao imidocarb; pequenas costumam falhar ao imidocarb), existe sobreposição morfológica durante a replicação intracelular {{ref:ref-esccap-gl5-2024}}.\n\n' +
+      'A taxonomia molecular moderna corrige um equívoco comum da literatura antiga: ==B. vogeli, B. canis sensu stricto e B. rossi são espécies independentes==, e não subespécies intercambiáveis. De modo semelhante, ==Theileria, Cytauxzoon e Rangelia vitalii pertencem a grupos distintos== e não devem ser tratados com os mesmos protocolos empíricos de Babesia. Hoje, a confirmação definitiva exige marcadores moleculares como ==18S rRNA, citocromo b (cytb), cox1/cox3 e região espaçadora interna (ITS)== {{ref:ref-duarte-2026}}.',
     tabelaEspeciesClinicasImportancia: {
       kind: 'clinicalTable',
       caption: 'Tabela 1 — Principais espécies de Babesia de importância clínica em cães e gatos',
@@ -310,7 +310,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
 
   epidemiology: {
     vetoresDistribuicaoEEvidencias:
-      'A epidemiologia da babesiose é moldada pela distribuição do carrapato vetor competente e pelas vias não vetoriais (transfusão e mordeduras). Na América do Sul, o complexo ==Rhipicephalus sanguineus sensu lato== (carrapato-marrom-do-cão), altamente adaptado a frestas domiciliares e canis, sustenta o ciclo endêmico de ==Babesia vogeli== durante todo o ano. Na Europa, ==Dermacentor reticulatus== transmite B. canis sensu stricto em padrões sazonais, enquanto na África do Sul ==Haemaphysalis elliptica== transmite a virulenta B. rossi e espécies asiáticas de Haemaphysalis transmitem B. gibsoni {{ref:ref-esccap-gl5-2024}} {{ref:ref-greene-5ed-cap97}}.\n\n' +
+      'A epidemiologia da babesiose é moldada pela distribuição do carrapato vetor competente e pelas vias não vetoriais (transfusão e mordeduras). Na América do Sul, o complexo ==Rhipicephalus sanguineus sensu lato== (carrapato-marrom-do-cão), altamente adaptado a frestas domiciliares e canis, sustenta o ciclo endêmico de ==Babesia vogeli== durante todo o ano. Na Europa, ==Dermacentor reticulatus== transmite B. canis sensu stricto em padrões sazonais, enquanto na África do Sul ==Haemaphysalis elliptica== transmite a virulenta B. rossi e espécies asiáticas de Haemaphysalis transmitem B. gibsoni {{ref:ref-esccap-gl5-2024}}.\n\n' +
       'Os estudos moleculares e meta-analíticos que fundamentam a epidemiologia contemporânea esclarecem armadilhas diagnósticas críticas:\n\n' +
       '- ==Revisão sistemática e meta-análise global (Abdoli et al., 2024)==: rastrearam 23.864 publicações e sintetizaram 229 estudos elegíveis em cães no mundo todo. Encontraram ==prevalência combinada de 12,0% (IC 95%: 9,7%–14,6%)==, com heterogeneidade extrema ligada ao método diagnóstico e região. ==Impacto==: demonstra que valores médios globais não substituem a vigilância molecular regional para orientar a suspeita inicial {{ref:ref-abdoli-2024}}.\n' +
       '- ==Correção histórica brasileira (Passos et al., 2005; Dantas-Torres, 2008)==: sequenciamento molecular de cães naturalmente infectados de Belo Horizonte, Lavras, Uberlândia (MG), São Paulo e Rio de Janeiro (onde 33/407 cães positivos foram confirmados como B. vogeli) comprovou que ==a espécie predominante de grande porte no Brasil é B. vogeli==, corrigindo décadas de nomenclatura imprecisa como "B. canis" {{ref:ref-passos-2005}} {{ref:ref-dantas-torres-2008}}.\n' +
@@ -318,8 +318,8 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
       '- ==Caracterização brasileira recente de B. gibsoni (Duarte et al., 2026)==: caracterizou por múltiplos marcadores genéticos (18S rRNA, cytb, cox3 e hsp70) a infecção natural por B. gibsoni em um Dachshund com febre e anemia persistente no Distrito Federal. ==Impacto==: comprova circulação autóctone no Brasil Central e obriga o clínico a suspeitar de B. gibsoni diante de falha ao imidocarb {{ref:ref-duarte-2026}}.',
     fatoresRiscoHospedeiroEPapelFelino:
       'A manifestação clínica varia amplamente conforme idade, reserva esplênica, coinfecções e espécie hospedeira:\n\n' +
-      '- ==Filhotes e coinfecções caninas==: embora B. vogeli frequentemente gere infecções brandas ou subclínicas em adultos saudáveis, ==filhotes, cães imunossuprimidos e coinfectados== (Ehrlichia canis, Anaplasma platys ou helmintoses espoliativas) evoluem com hemólise aguda severa e risco de óbito {{ref:ref-greene-5ed-cap97}}.\n' +
-      '- ==Risco dramático da esplenectomia==: o baço remove seletivamente eritrócitos parasitados e pouco deformáveis (culling e pitting). Cães e gatos ==esplenectomizados ou com asplenia funcional== correm alto risco de hiperparasitemia fulminante e recrudescência de infecções latentes; quando uma esplenectomia eletiva for inevitável em paciente previamente positivo, recomenda-se adiar idealmente ==≥ 60 dias após tratamento eficaz== {{ref:ref-nelson-couto-6ed}} {{ref:ref-greene-5ed-cap97}}.\n' +
+      '- ==Filhotes e coinfecções caninas==: embora B. vogeli frequentemente gere infecções brandas ou subclínicas em adultos saudáveis, ==filhotes, cães imunossuprimidos e coinfectados== (Ehrlichia canis, Anaplasma platys ou helmintoses espoliativas) evoluem com hemólise aguda severa e risco de óbito.\n' +
+      '- ==Risco dramático da esplenectomia==: o baço remove seletivamente eritrócitos parasitados e pouco deformáveis (culling e pitting). Cães e gatos ==esplenectomizados ou com asplenia funcional== correm alto risco de hiperparasitemia fulminante e recrudescência de infecções latentes; quando uma esplenectomia eletiva for inevitável em paciente previamente positivo, recomenda-se adiar idealmente ==≥ 60 dias após tratamento eficaz==.\n' +
       '- ==O paradoxo da babesiose felina brasileira (Oliveira et al., 2022)==: estudo transversal em 166 gatos amostrados em Brasília (DF) investigou piroplasmas por PCR associada a hemograma e bioquímica completa. Encontrou ==21,7% (36/166) de gatos PCR-positivos== (19 B. vogeli e 12 Cytauxzoon felis), porém ==sem nenhuma diferença estatística hematológica ou bioquímica== frente aos animais negativos. ==Impacto==: alerta o clínico brasileiro contra iniciar fármacos tóxicos (como primaquina ou imidocarb) diante de PCR positiva isolada em gato saudável, mantendo abertas três perguntas de pesquisa: quais cepas causam doença clínica primária no Brasil, quais cofatores (FIV/FeLV, hemoplasmas, corticoides) disparam descompensação e qual regime felino é seguro {{ref:ref-oliveira-2022}} {{ref:ref-abcd-feline-babesiosis-2020}}.',
     figurasVetoresECiclo: [
       {
@@ -328,7 +328,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         alt: 'Vista dorsal comparativa de fêmea e macho adultos de Rhipicephalus sanguineus sensu lato',
         shortCaption: 'Fig. 5 — Rhipicephalus sanguineus s.l.: principal vetor de B. vogeli no Brasil.',
         caption:
-          'Figura 5 — Fêmea e macho adultos de Rhipicephalus sanguineus sensu lato (carrapato-marrom-do-cão), vetor principal de Babesia vogeli no Brasil e altamente adaptado a frestas intradomiciliares e canis. Acervo educativo VETIUS.',
+          'Figura 5 — Fêmea e macho adultos de Rhipicephalus sanguineus sensu lato (carrapato-marrom-do-cão), vetor principal de Babesia vogeli no Brasil e altamente adaptado a frestas intradomiciliares e canis.',
         display: 'default',
       },
       {
@@ -346,7 +346,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         alt: 'Diagrama ilustrativo do ciclo biológico de três hospedeiros de Rhipicephalus sanguineus entre cão e ambiente domiciliar',
         shortCaption: 'Fig. 7 — Ciclo de três hospedeiros de R. sanguineus no domicílio.',
         caption:
-          'Figura 7 — Ciclo evolutivo de três hospedeiros de Rhipicephalus sanguineus sensu lato entre o animal e abrigos domésticos, explicando por que o controle exige acaricidas contínuos o ano inteiro e manejo ambiental. Acervo educativo VETIUS.',
+          'Figura 7 — Ciclo evolutivo de três hospedeiros de Rhipicephalus sanguineus sensu lato entre o animal e abrigos domésticos, explicando por que o controle exige acaricidas contínuos o ano inteiro e manejo ambiental.',
         display: 'default',
       },
     ],
@@ -386,25 +386,25 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
       ],
     },
     cicloBiologicoNoHospedeiroENoVetor:
-      'Compreender a biologia de transmissão orienta decisões de prevenção e evita diagnósticos apressados {{ref:ref-esccap-gl5-2024}} {{ref:ref-greene-5ed-cap97}}:\n\n' +
+      'Compreender a biologia de transmissão orienta decisões de prevenção e evita diagnósticos apressados {{ref:ref-esccap-gl5-2024}}:\n\n' +
       '- ==No cão e no gato (sem fase hepática)==: ao contrário da malária ou de Cytauxzoon felis (que possuem esquizogonia tecidual antes de invadir hemácias), os esporozoítos de Babesia inoculados pelo carrapato penetram ==diretamente os eritrócitos== por endocitose mediada por receptores. No interior da hemácia, diferenciam-se em trofozoítos e dividem-se assexuadamente por merogonia (fissão binária), originando merozoítos que rompem ou deixam a célula para infectar novas hemácias, enquanto parte forma gametócitos.\n' +
       '- ==No carrapato ixodídeo==: ao ingerir sangue infectado, os gametócitos fundem-se no intestino médio em um oocineto móvel que invade tecidos internos e alcança as glândulas salivares (mantido entre estágios via transmissão ==transestadial== e, em certas espécies/carrapatos, para a progênie via ==transovariana==).\n' +
-      '- ==Janela de tempo até inoculação==: os esporozoítos exigem maturação nas glândulas salivares após o início da alimentação do vetor, demorando classicamente ==24 a 72 horas== para transmissão efetiva; contudo, ensaios experimentais com Dermacentor reticulatus demonstraram inoculação de B. canis em apenas ==~8 horas de fixação== — razão pela qual produtos que matam lentamente não garantem proteção absoluta sem ação repelente ou morte ultrarrápida {{ref:ref-greene-5ed-cap97}}.',
+      '- ==Janela de tempo até inoculação==: os esporozoítos exigem maturação nas glândulas salivares após o início da alimentação do vetor, demorando classicamente ==24 a 72 horas== para transmissão efetiva; contudo, ensaios experimentais com Dermacentor reticulatus demonstraram inoculação de B. canis em apenas ==~8 horas de fixação== — razão pela qual produtos que matam lentamente não garantem proteção absoluta sem ação repelente ou morte ultrarrápida.',
   },
 
   pathophysiology: {
     fisiologiaEritrocitariaEHipoxia:
-      'Para interpretar a descompensação clínica, é essencial recordar que o eritrócito maduro carece de núcleo e mitocôndrias, dependendo integralmente da glicólise anaeróbia (ATP) e de sistemas antioxidantes (glutationa/NADPH) para manter sua flexibilidade através dos sinusoides esplênicos e conservar o ferro heme no estado ferroso funcional (Fe²⁺) {{ref:ref-nelson-couto-6ed}} {{ref:ref-ettinger-9ed}}.\n\n' +
+      'Para interpretar a descompensação clínica, é essencial recordar que o eritrócito maduro carece de núcleo e mitocôndrias, dependendo integralmente da glicólise anaeróbia (ATP) e de sistemas antioxidantes (glutationa/NADPH) para manter sua flexibilidade através dos sinusoides esplênicos e conservar o ferro heme no estado ferroso funcional (Fe²⁺).\n\n' +
       'A oxigenação tecidual obedece à relação:\n' +
       '- ==CaO₂ ≈ (1,34 × Hb × SaO₂) + (0,003 × PaO₂)== e ==DO₂ = Débito Cardíaco × CaO₂==.\n\n' +
-      'Como o oxigênio dissolvido no plasma (0,003 × PaO₂) representa parcela mínima frente ao oxigênio ligado à hemoglobina, ==um paciente severamente anêmico pode apresentar SpO₂ de 98% no oxímetro e PaO₂ arterial normal na gasometria enquanto sofre hipóxia tecidual crítica e acidose láctica==. A taquicardia compensatória esgota rapidamente sua reserva; por isso, ==oxigenoterapia isolada nunca substitui reposição de massa eritrocitária por concentrado de hemácias== {{ref:ref-dibartola-4ed}} {{ref:ref-nelson-couto-6ed}}.',
+      'Como o oxigênio dissolvido no plasma (0,003 × PaO₂) representa parcela mínima frente ao oxigênio ligado à hemoglobina, ==um paciente severamente anêmico pode apresentar SpO₂ de 98% no oxímetro e PaO₂ arterial normal na gasometria enquanto sofre hipóxia tecidual crítica e acidose láctica==. A taquicardia compensatória esgota rapidamente sua reserva; por isso, ==oxigenoterapia isolada nunca substitui reposição de massa eritrocitária por concentrado de hemácias==.',
     mecanismosHemoliseETromboinflamacao:
       'A destruição sanguínea e a falência multiorgânica frequentemente superam a parasitemia visível no esfregaço porque cinco mecanismos atuam em paralelo:\n\n' +
       '- ==1. Lise direta==: multiplicação intraeritrocitária altera proteínas de membrana e citoesqueleto, rompendo hemácias e liberando hemoglobina livre no plasma (hemoglobinemia e hemoglobinúria).\n' +
-      '- ==2. Hemólise imunomediada secundária (Zygner et al., 2023)==: revisão fisiopatológica detalhada da literatura canina e comparada demonstrou que ==anticorpos anti-eritrocitários (IgG/IgM) e fração C3 do complemento opsonizam tanto hemácias parasitadas quanto hemácias não infectadas==, promovendo fagocitose esplênica, esferocitose marcante (sobretudo em B. gibsoni), autoaglutinação e teste de Coombs positivo. ==Impacto==: explica por que babesiose simula perfeitamente AHMI primária e alerta contra imunossupressão precoce antes de descartar infecção {{ref:ref-zygner-2023}} {{ref:ref-nelson-couto-6ed}}.\n' +
-      '- ==3. Estresse oxidativo e fragilidade da hemoglobina felina==: espécies reativas de oxigênio oxidam lipídios e hemoglobina. A hemoglobina dos gatos possui ==8 a 10 grupos sulfidrila reativos== (contra apenas 2 a 4 em cães) e sistemas de glutationa mais lábeis, tornando felinos altamente vulneráveis a corpúsculos de Heinz e metemoglobinemia oxidativa (tanto pela infecção quanto por fármacos como primaquina) {{ref:ref-ettinger-9ed}}.\n' +
+      '- ==2. Hemólise imunomediada secundária (Zygner et al., 2023)==: revisão fisiopatológica detalhada da literatura canina e comparada demonstrou que ==anticorpos anti-eritrocitários (IgG/IgM) e fração C3 do complemento opsonizam tanto hemácias parasitadas quanto hemácias não infectadas==, promovendo fagocitose esplênica, esferocitose marcante (sobretudo em B. gibsoni), autoaglutinação e teste de Coombs positivo. ==Impacto==: explica por que babesiose simula perfeitamente AHMI primária e alerta contra imunossupressão precoce antes de descartar infecção {{ref:ref-zygner-2023}}.\n' +
+      '- ==3. Estresse oxidativo e fragilidade da hemoglobina felina==: espécies reativas de oxigênio oxidam lipídios e hemoglobina. A hemoglobina dos gatos possui ==8 a 10 grupos sulfidrila reativos== (contra apenas 2 a 4 em cães) e sistemas de glutationa mais lábeis, tornando felinos altamente vulneráveis a corpúsculos de Heinz e metemoglobinemia oxidativa (tanto pela infecção quanto por fármacos como primaquina).\n' +
       '- ==4. Tempestade de citocinas==: TNF-α, IL-6, IL-8/CXCL8 e IFN-γ amplificam febre, vasodilatação distributiva, resposta hepática de fase aguda e recrutamento neutrofílico endotelial {{ref:ref-zygner-2023}}.\n' +
-      '- ==5. Tromboinflamação e sludging microvascular (Goddard et al., 2026)==: além de proteases parasitárias que ativam calicreína e geram estase capilar ("hemácias pegajosas") {{ref:ref-greene-5ed-cap97}}, estudo clínico observacional prospectivo em ==97 cães naturalmente infectados por B. rossi versus 15 controles saudáveis== utilizou tromboelastografia (TEG), marcadores inflamatórios e exame post-mortem (12 óbitos = 12,4%). Os autores comprovaram ==microtrombos orgânicos disseminados, consumo de fatores e dissociação hemostática na TEG== (atraso no início da coagulação coexistindo com firmeza preservada do coágulo). ==Impacto==: prova que testes plasmáticos convencionais (TP/TTPa) subestimam o estado tromboinflamatório e fundamenta o conceito moderno de lesão orgânica microvascular {{ref:ref-goddard-2026}}.',
+      '- ==5. Tromboinflamação e sludging microvascular (Goddard et al., 2026)==: além de proteases parasitárias que ativam calicreína e geram estase capilar ("hemácias pegajosas"), estudo clínico observacional prospectivo em ==97 cães naturalmente infectados por B. rossi versus 15 controles saudáveis== utilizou tromboelastografia (TEG), marcadores inflamatórios e exame post-mortem (12 óbitos = 12,4%). Os autores comprovaram ==microtrombos orgânicos disseminados, consumo de fatores e dissociação hemostática na TEG== (atraso no início da coagulação coexistindo com firmeza preservada do coágulo). ==Impacto==: prova que testes plasmáticos convencionais (TP/TTPa) subestimam o estado tromboinflamatório e fundamenta o conceito moderno de lesão orgânica microvascular {{ref:ref-goddard-2026}}.',
     tabelaCitocinasEMediadores: {
       kind: 'clinicalTable',
       caption: 'Tabela 3 — Principais mediadores inflamatórios e microvasculares na babesiose',
@@ -418,10 +418,10 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
       ],
     },
     disfuncaoOrganicaEPremunicao:
-      '- ==Trombocitopenia multifatorial==: resulta de consumo microtrombótico, destruição imunomediada, sequestro esplênico e possíveis coinfecções (Ehrlichia/Anaplasma) — explicando quedas acentuadas (< 30.000/µL) mesmo antes de anemia grave {{ref:ref-nelson-couto-6ed}} {{ref:ref-goddard-2026}}.\n' +
-      '- ==Lesão renal aguda (LRA) e "síndrome biliar vermelha"==: sinergia de hipoperfusão, lesão oxidativa tubular por hemoglobina livre filtrada, microtrombos glomerulares e desidratação. Em apresentações graves, observa-se a paradoxal ==síndrome biliar vermelha==: hemólise intravascular maciça associada a extravasamento capilar que eleva falsamente o hematócrito, fortemente ligada a necrose tubular aguda, SARA e CID {{ref:ref-greene-5ed-cap97}}.\n' +
+      '- ==Trombocitopenia multifatorial==: resulta de consumo microtrombótico, destruição imunomediada, sequestro esplênico e possíveis coinfecções (Ehrlichia/Anaplasma) — explicando quedas acentuadas (< 30.000/µL) mesmo antes de anemia grave {{ref:ref-goddard-2026}}.\n' +
+      '- ==Lesão renal aguda (LRA) e "síndrome biliar vermelha"==: sinergia de hipoperfusão, lesão oxidativa tubular por hemoglobina livre filtrada, microtrombos glomerulares e desidratação. Em apresentações graves, observa-se a paradoxal ==síndrome biliar vermelha==: hemólise intravascular maciça associada a extravasamento capilar que eleva falsamente o hematócrito, fortemente ligada a necrose tubular aguda, SARA e CID.\n' +
       '- ==Encefalopatia versus "babesiose cerebral"==: estupor, ataxia e convulsões decorrem frequentemente de ==hipoglicemia severa, hipóxia anêmica e acidose láctica== antes de sludging vascular cerebral; causas metabólicas reversíveis devem ser corrigidas primeiro.\n' +
-      '- ==Premunição crônica e biomarcadores==: após a fase aguda, hospedeiro e protozoário atingem equilíbrio imunológico dinâmico (==premunicão==) com baixa parasitemia residual — portanto ==melhora clínica não equivale à eliminação do parasito== {{ref:ref-greene-5ed-cap97}}. Proteínas de fase aguda (CRP/SAA) e marcadores de degradação do glicocálix endotelial refletem inflamação, mas ainda carecem de pontos de corte universais para orientar transfusão.',
+      '- ==Premunição crônica e biomarcadores==: após a fase aguda, hospedeiro e protozoário atingem equilíbrio imunológico dinâmico (==premunição==) com baixa parasitemia residual — portanto ==melhora clínica não equivale à eliminação do parasito==. Proteínas de fase aguda (CRP/SAA) e marcadores de degradação do glicocálix endotelial refletem inflamação, mas ainda carecem de pontos de corte universais para orientar transfusão.',
   },
 
   clinicalSignsPathophysiology: {
@@ -432,13 +432,13 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
           {
             finding: 'Febre',
             mechanism: 'Ação hipotalâmica de citocinas pirogênicas (==TNF-α e IL-6==) liberadas durante lise eritrocitária e resposta imune {{ref:ref-zygner-2023}}.',
-            clinicalMeaning: 'Frequente na fase aguda canina, porém ==frequentemente ausente em gatos com B. felis== (apirexia jamais exclui babesiose) {{ref:ref-abcd-feline-babesiosis-2020}} {{ref:ref-feline-ecc-2ed}}.',
+            clinicalMeaning: 'Frequente na fase aguda canina, porém ==frequentemente ausente em gatos com B. felis== (apirexia jamais exclui babesiose) {{ref:ref-abcd-feline-babesiosis-2020}}.',
             priority: 'common',
           },
           {
             finding: 'Prostração, anorexia e intolerância ao exercício',
-            mechanism: 'Queda crítica da oferta de oxigênio (==DO₂==), acidose metabólica precoce e resposta inflamatória sistêmica {{ref:ref-dibartola-4ed}}.',
-            clinicalMeaning: 'Em gatos com B. felis, pode ser a única pista até hematócrito crítico (< 14%) por adaptação comportamental progressiva {{ref:ref-feline-ecc-2ed}}.',
+            mechanism: 'Queda crítica da oferta de oxigênio (==DO₂==), acidose metabólica precoce e resposta inflamatória sistêmica.',
+            clinicalMeaning: 'Em gatos com B. felis, pode ser a única pista até hematócrito crítico (< 14%) por adaptação comportamental progressiva.',
             priority: 'common',
           },
         ],
@@ -448,19 +448,19 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Mucosas hipocoradas a porcelânicas',
-            mechanism: 'Redução abrupta da concentração de hemoglobina somada à vasoconstrição periférica compensatória {{ref:ref-nelson-couto-6ed}}.',
+            mechanism: 'Redução abrupta da concentração de hemoglobina somada à vasoconstrição periférica compensatória.',
             clinicalMeaning: 'Pode parecer atenuada pela desidratação inicial e acentuar-se rapidamente logo após reposição volêmica.',
             priority: 'common',
           },
           {
             finding: 'Icterícia (mucosas, esclera e pele)',
-            mechanism: 'Sobrecarga hepática de bilirrubina pela degradação maciça do heme somada à ==colestase inflamatória e hipóxia centrolobular== {{ref:ref-nelson-couto-6ed}}.',
+            mechanism: 'Sobrecarga hepática de bilirrubina pela degradação maciça do heme somada à ==colestase inflamatória e hipóxia centrolobular==.',
             clinicalMeaning: 'Comum em apresentações moderadas a graves em cães; incomum em gatos não complicados por B. felis {{ref:ref-abcd-feline-babesiosis-2020}}.',
             priority: 'common',
           },
           {
             finding: 'Esplenomegalia e hepatomegalia',
-            mechanism: 'Hiperplasia fagocítica e linfoide reativa com congestão por retenção de hemácias parasitadas ou opsonizadas {{ref:ref-greene-5ed-cap97}}.',
+            mechanism: 'Hiperplasia fagocítica e linfoide reativa com congestão por retenção de hemácias parasitadas ou opsonizadas.',
             clinicalMeaning: 'Achado clássico no exame físico e ultrassonográfico, porém inespecífico frente a erliquiose, hemoplasmose e neoplasias.',
             priority: 'common',
           },
@@ -477,7 +477,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Taquicardia compensatória e sopro sistólico anêmico',
-            mechanism: 'Elevação reflexa do débito cardíaco e redução da viscosidade sanguínea para sustentar ==DO₂== {{ref:ref-nelson-couto-6ed}}.',
+            mechanism: 'Elevação reflexa do débito cardíaco e redução da viscosidade sanguínea para sustentar ==DO₂==.',
             clinicalMeaning: 'Taquicardia mantida em repouso após correção volêmica aponta necessidade de transfusão de hemácias.',
             priority: 'low-output',
           },
@@ -494,7 +494,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Taquipneia e dispneia',
-            mechanism: 'Compensação de acidose láctica, hipóxia anêmica severa, dor, febre ou ==edema pulmonar não cardiogênico / SARA== {{ref:ref-greene-5ed-cap97}}.',
+            mechanism: 'Compensação de acidose láctica, hipóxia anêmica severa, dor, febre ou ==edema pulmonar não cardiogênico / SARA==.',
             clinicalMeaning: 'Risco extremo de confundir dispneia anêmica com hipovolemia e agravar congestão com excesso de fluidos.',
             priority: 'emergency',
           },
@@ -505,7 +505,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Vômito, diarreia e pica (ocasional em gatos)',
-            mechanism: 'Hipoperfusão esplâncnica, inflamação sistêmica e ==pancreatite aguda secundária==; pica associada à anemia crônica felina {{ref:ref-feline-ecc-2ed}}.',
+            mechanism: 'Hipoperfusão esplâncnica, inflamação sistêmica e ==pancreatite aguda secundária==; pica associada à anemia crônica felina.',
             clinicalMeaning: 'Vômitos inviabilizam retenção oral de atovaquona e podem sinalizar pancreatite (alta letalidade em séries de B. canis).',
             priority: 'systemic',
           },
@@ -516,7 +516,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Urina avermelhada ou castanho-escura (pigmentúria)',
-            mechanism: 'Saturação da haptoglobina por ==hemoglobina livre plasmática== na hemólise intravascular com filtração glomerular {{ref:ref-nelson-couto-6ed}}.',
+            mechanism: 'Saturação da haptoglobina por ==hemoglobina livre plasmática== na hemólise intravascular com filtração glomerular.',
             clinicalMeaning: 'Exige centrifugação para separar hemoglobinúria de hematúria e correlação com CK para excluir mioglobinúria.',
             priority: 'systemic',
           },
@@ -538,7 +538,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Estupor, ataxia e convulsões',
-            mechanism: '==Hipoglicemia severa==, hipóxia anêmica, acidose metabólica ou estase/microtrombos na microcirculação encefálica {{ref:ref-greene-5ed-cap97}}.',
+            mechanism: '==Hipoglicemia severa==, hipóxia anêmica, acidose metabólica ou estase/microtrombos na microcirculação encefálica.',
             clinicalMeaning: 'Checar glicemia, PA e lactato antes de rotular o quadro como babesiose cerebral.',
             priority: 'emergency',
           },
@@ -549,7 +549,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
         findings: [
           {
             finding: 'Hemorragias retinianas ou déficit visual agudo',
-            mechanism: 'Trombocitopenia severa somada à anemia profunda e lesão vascular endotelial {{ref:ref-nelson-couto-6ed}}.',
+            mechanism: 'Trombocitopenia severa somada à anemia profunda e lesão vascular endotelial.',
             clinicalMeaning: 'Achado menos comum, porém relevante no exame fundoscópico de pacientes críticos.',
             priority: 'uncommon',
           },
@@ -557,8 +557,8 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
       },
     ],
     particularidadesCaninasEFelinas:
-      '- Cães: B. vogeli varia de portador assintomático a crise hemolítica grave em filhotes; ==B. gibsoni gera anemia crônica ou refratária ao imidocarb== com forte componente imunomediado (esferocitose); B. rossi exemplifica falência inflamatória e tromboinflamação desproporcional ao grau de anemia {{ref:ref-greene-5ed-cap97}} {{ref:ref-goddard-2026}}.\n' +
-      '- Gatos: em B. felis, a anemia instala-se lentamente até descompensar bruscamente após estresse ou contenção, sendo ==febre e icterícia raras na forma não complicada== (quando há febre intensa, pesquisar coinfecções); além disso, cerca de ==30% dos gatos críticos== albergam outro agente eritrocitário ou retrovírus (Mycoplasma haemofelis, FIV/FeLV) {{ref:ref-abcd-feline-babesiosis-2020}} {{ref:ref-feline-ecc-2ed}}.',
+      '- Cães: B. vogeli varia de portador assintomático a crise hemolítica grave em filhotes; ==B. gibsoni gera anemia crônica ou refratária ao imidocarb== com forte componente imunomediado (esferocitose); B. rossi exemplifica falência inflamatória e tromboinflamação desproporcional ao grau de anemia {{ref:ref-goddard-2026}}.\n' +
+      '- Gatos: em B. felis, a anemia instala-se lentamente até descompensar bruscamente após estresse ou contenção, sendo ==febre e icterícia raras na forma não complicada== (quando há febre intensa, pesquisar coinfecções); além disso, cerca de ==30% dos gatos críticos== albergam outro agente eritrocitário ou retrovírus (Mycoplasma haemofelis, FIV/FeLV) {{ref:ref-abcd-feline-babesiosis-2020}}.',
     tabelaFasesEvolutivas: {
       kind: 'clinicalTable',
       caption: 'Tabela 4 — Espectro evolutivo temporal da babesiose (sem cronologia fixa universal)',
@@ -610,16 +610,16 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Por que esta etapa é obrigatória antes de tratar',
               tone: 'default',
               content:
-                'Todo raciocínio clínico precisa responder separadamente às ==3 perguntas obrigatórias==: (1) Há síndrome hemolítica/inflamatória? (2) Há comprovação de Babesia? (3) Essa infecção explica todo o quadro ou há coinfecções/diferenciais? {{ref:ref-greene-5ed-cap97}} Além disso, coletar sangue EDTA antes da primeira dose impede que o fármaco reduza a parasitemia e gere falso-negativo nos exames seguintes.',
+                'Todo raciocínio clínico precisa responder separadamente às ==3 perguntas obrigatórias==: (1) Há síndrome hemolítica/inflamatória? (2) Há comprovação de Babesia? (3) Essa infecção explica todo o quadro ou há coinfecções/diferenciais? Além disso, coletar sangue EDTA antes da primeira dose impede que o fármaco reduza a parasitemia e gere falso-negativo nos exames seguintes.',
             },
             {
               label: 'Confiabilidade e armadilhas fisiológicas do hemograma',
               tone: 'warning',
               content:
                 '- ==Desidratação e hemodiluição==: paciente desidratado tem hemoconcentração transitória que mascara o hematócrito real até a reidratação; excesso de fluidos derruba falsamente o PCV.\n' +
-                '- ==Janela pré-regenerativa (48–96 h)==: nos primeiros 2 a 4 dias de hemólise hiperaguda, a medula ainda não lançou reticulócitos no sangue periférico — portanto ==anemia normocítica normocrômica arregenerativa inicial NÃO exclui babesiose==. Em gatos, contar apenas ==reticulócitos agregados== (pontilhados permanecem semanas) {{ref:ref-nelson-couto-6ed}}.\n' +
+                '- ==Janela pré-regenerativa (48–96 h)==: nos primeiros 2 a 4 dias de hemólise hiperaguda, a medula ainda não lançou reticulócitos no sangue periférico — portanto ==anemia normocítica normocrômica arregenerativa inicial NÃO exclui babesiose==. Em gatos, contar apenas ==reticulócitos agregados== (pontilhados permanecem semanas).\n' +
                 '- ==Proteínas plasmáticas totais==: hemólise mantém proteínas normais ou aumentadas, enquanto hemorragia aguda reduz proteínas totais.\n' +
-                '- ==CHCM e plaquetas==: autoaglutinação ou hemólise elevam falsamente a CHCM; ==agregados plaquetários felinos derrubam falsamente a contagem eletrônica==, exigindo conferência em lâmina {{ref:ref-nelson-couto-6ed}}.',
+                '- ==CHCM e plaquetas==: autoaglutinação ou hemólise elevam falsamente a CHCM; ==agregados plaquetários felinos derrubam falsamente a contagem eletrônica==, exigindo conferência em lâmina.',
             },
           ],
         },
@@ -640,7 +640,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Por que fazer imediatamente e preferir ponta de orelha',
               tone: 'tip',
               content:
-                'Confecionar a lâmina na hora evita artefatos por exposição prolongada ao EDTA. Coletar gota capilar na ==borda da orelha ou leito ungueal== e examinar a ==borda emplumada e a monocamada== eleva a chance de visualizar grandes Babesia (frequentemente sequestradas em capilares periféricos), além de detectar ==esferócitos== (hemólise imune secundária) e agentes coinfectantes como mórulas de Ehrlichia e hemoplasmas {{ref:ref-greene-5ed-cap97}} {{ref:ref-feline-ecc-2ed}}.',
+                'Confecionar a lâmina na hora evita artefatos por exposição prolongada ao EDTA. Coletar gota capilar na ==borda da orelha ou leito ungueal== e examinar a ==borda emplumada e a monocamada== eleva a chance de visualizar grandes Babesia (frequentemente sequestradas em capilares periféricos), além de detectar ==esferócitos== (hemólise imune secundária) e agentes coinfectantes como mórulas de Ehrlichia e hemoplasmas.',
             },
             {
               label: 'Confiabilidade e evidência científica (Punia et al., 2026)',
@@ -669,9 +669,9 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Como interpretar pigmentúria, bilirrubina, glicose e CK',
               tone: 'default',
               content:
-                '- ==Urinálise com centrifugação==: fita reagente positiva para "sangue" não distingue hemácias de pigmentos livres. Ao centrifugar, se o ==sobrenadante clareia== há hematúria; se permanece ==vermelho/castanho sem hemácias no sedimento== trata-se de ==hemoglobinúria== (com plasma hemolisado) ou ==mioglobinúria== (plasma límpido e CK extremamente alta) {{ref:ref-nelson-couto-6ed}}.\n' +
-                '- ==Glicose e lactato==: hipoglicemia e lactato > 40 mg/dL definem fenótipo grave de emergência neurológica/perfusional {{ref:ref-greene-5ed-cap97}}. Lembrar sempre da armadilha de ==SpO₂/PaO₂ normais coexistindo com déficit grave de CaO₂/DO₂== na anemia profunda {{ref:ref-dibartola-4ed}}.\n' +
-                '- ==CK pós-imidocarb==: injeções IM de dipropionato de imidocarb elevam intensamente a creatina quinase muscular, não devendo ser confundidas com rabdomiólise sistêmica primária {{ref:ref-plumbs-10ed}}.',
+                '- ==Urinálise com centrifugação==: fita reagente positiva para "sangue" não distingue hemácias de pigmentos livres. Ao centrifugar, se o ==sobrenadante clareia== há hematúria; se permanece ==vermelho/castanho sem hemácias no sedimento== trata-se de ==hemoglobinúria== (com plasma hemolisado) ou ==mioglobinúria== (plasma límpido e CK extremamente alta).\n' +
+                '- ==Glicose e lactato==: hipoglicemia e lactato > 40 mg/dL definem fenótipo grave de emergência neurológica/perfusional. Lembrar sempre da armadilha de ==SpO₂/PaO₂ normais coexistindo com déficit grave de CaO₂/DO₂== na anemia profunda.\n' +
+                '- ==CK pós-imidocarb==: injeções IM de dipropionato de imidocarb elevam intensamente a creatina quinase muscular, não devendo ser confundidas com rabdomiólise sistêmica primária.',
             },
           ],
         },
@@ -717,7 +717,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               content:
                 '- ==Sorologia (IFA IgG) NÃO confirma doença aguda==: em áreas hiperendêmicas brasileiras (PE e MG), ==82,4% (519/630)== dos cães tinham IgG positiva, mas apenas ==5,4% a 14,0%== eram positivos na PCR {{ref:ref-dantas-torres-2021}}. Além disso, animais hiperagudos podem ser soronegativos antes da soroconversão.\n' +
                 '- ==Armadilha de VPP/VPN em gatos sadios (Oliveira et al., 2022)==: em Brasília, ==21,7% (36/166)== dos gatos sem sinais apresentaram DNA de piroplasmas sem alteração laboratorial {{ref:ref-oliveira-2022}}. A mesma PCR positiva tem altíssimo valor preditivo positivo em cão anêmico febril, mas ==significado causal frágil em gato saudável de check-up==.\n' +
-                '- ==Quando testar após o tratamento==: não repetir PCR nos primeiros dias esperando cura (DNA residual pode positivar ou supressão temporária causar falso negativo). Para B. gibsoni, realizar ==duas PCRs seriadas aos 60 e 90 dias== (ou 30 e 60 dias) pós-término {{ref:ref-greene-5ed-cap97}} {{ref:ref-kirk-2017}}.',
+                '- ==Quando testar após o tratamento==: não repetir PCR nos primeiros dias esperando cura (DNA residual pode positivar ou supressão temporária causar falso negativo). Para B. gibsoni, realizar ==duas PCRs seriadas aos 60 e 90 dias== (ou 30 e 60 dias) pós-término {{ref:ref-kirk-2017}}.',
             },
           ],
         },
@@ -738,8 +738,8 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Por que nenhum achado ecográfico fecha o diagnóstico — mas muda a conduta',
               tone: 'tip',
               content:
-                'Esplenomegalia e hepatomegalia ecográficas são esperadas na hemólise, porém inespecíficas. A grande contribuição imediata da ultrassonografia / POCUS é ==excluir hemorragia cavitária oculta (ex.: ruptura de hemangiossarcoma esplênico)== antes de rotular anemia aguda como hemolítica e orientar fluidoterapia sem edema pulmonar {{ref:ref-nelson-couto-6ed}} {{ref:ref-dibartola-4ed}}.\n\n' +
-                'No Brasil, é obrigatório incluir ==Rangelia vitalii== no painel molecular de cães com anemia hemolítica, icterícia e sangramentos (inclusive pelas margens auriculares), assim como ==Mycoplasma haemofelis, FIV e FeLV== em todo gato anêmico antes de fechar o diagnóstico etiológico definitivo {{ref:ref-feline-ecc-2ed}}.',
+                'Esplenomegalia e hepatomegalia ecográficas são esperadas na hemólise, porém inespecíficas. A grande contribuição imediata da ultrassonografia / POCUS é ==excluir hemorragia cavitária oculta (ex.: ruptura de hemangiossarcoma esplênico)== antes de rotular anemia aguda como hemolítica e orientar fluidoterapia sem edema pulmonar.\n\n' +
+                'No Brasil, é obrigatório incluir ==Rangelia vitalii== no painel molecular de cães com anemia hemolítica, icterícia e sangramentos (inclusive pelas margens auriculares), assim como ==Mycoplasma haemofelis, FIV e FeLV== em todo gato anêmico antes de fechar o diagnóstico etiológico definitivo.',
             },
           ],
         },
@@ -814,7 +814,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
     },
     imagemEAnatomopatologia:
       'Métodos de imagem complementam o estadiamento, embora não substituam confirmação etiológica:\n\n' +
-      '- ==Ultrassonografia abdominal e POCUS==: úteis para afastar hemoabdome, hemangiossarcoma esplênico e efusões cavitárias na anemia aguda, bem como monitorar congestão volêmica à beira do leito {{ref:ref-nelson-couto-6ed}} {{ref:ref-dibartola-4ed}}.\n' +
+      '- ==Ultrassonografia abdominal e POCUS==: úteis para afastar hemoabdome, hemangiossarcoma esplênico e efusões cavitárias na anemia aguda, bem como monitorar congestão volêmica à beira do leito.\n' +
       '- ==Radiografia torácica e TC/RM==: radiografia identifica edema pulmonar não cardiogênico/SARA em dispneicos; TC/RM encefálicas restringem-se a sinais neurológicos refratários após correção de glicemia, perfusão e oxigenação.\n' +
       '- ==Necropsia e histopatologia==: revelam congestão esplênica, necrose tubular pigmentar, necrose hepática centrolobular e microtrombos de fibrina multiorgânicos, exigindo confirmação por PCR tecidual {{ref:ref-goddard-2026}}.',
     tabelaDiagnosticosDiferenciaisCaes: {
@@ -832,7 +832,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
       ],
     },
     diferenciaisFelinosERangeliose:
-      '- ==Diferenciais prioritários em gatos anêmicos==: micoplasmoses hemotrópicas (Mycoplasma haemofelis e correlatos — principal diferencial infeccioso no Brasil), retroviroses ==FeLV e FIV== (testar sempre), cytauxzoonose (==Cytauxzoon felis== é outro piroplasma muito mais letal e não deve ser confundido com Babesia nos protocolos de tratamento), AHIM felina, hemólise oxidativa e doenças mieloproliferativas {{ref:ref-nelson-couto-6ed}} {{ref:ref-abcd-feline-babesiosis-2020}} {{ref:ref-feline-ecc-2ed}}.\n' +
+      '- ==Diferenciais prioritários em gatos anêmicos==: micoplasmoses hemotrópicas (Mycoplasma haemofelis e correlatos — principal diferencial infeccioso no Brasil), retroviroses ==FeLV e FIV== (testar sempre), cytauxzoonose (==Cytauxzoon felis== é outro piroplasma muito mais letal e não deve ser confundido com Babesia nos protocolos de tratamento), AHIM felina, hemólise oxidativa e doenças mieloproliferativas {{ref:ref-abcd-feline-babesiosis-2020}}.\n' +
       '- ==Importância estratégica de Rangelia vitalii no Brasil==: muitos casos rotulados empiricamente apenas pelo esfregaço como "babesiose canina hemorrágica" são na realidade rangeliose (ou coinfecção). Por apresentar sangramentos mucocutâneos marcantes somados à hemólise, painéis moleculares caninos brasileiros devem contemplar B. vogeli, B. gibsoni e R. vitalii em paralelo.',
   },
 
@@ -860,15 +860,15 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Por que evitar excesso de cristaloides e quando transfundir',
               tone: 'default',
               content:
-                '- ==Anemia não é hipovolemia==: pacientes normovolêmicos com anemia grave pioram abruptamente se receberem fluidoterapia de ressuscitação agressiva (queda adicional de hemoglobina por hemodiluição e risco de edema pulmonar) {{ref:ref-dibartola-4ed}}.\n' +
-                '- ==Indicação de pRBC==: taquicardia/taquipneia em repouso refratárias, fraqueza extrema, hiperlactatemia persistente ou queda aguda rápida do hematócrito. Calcular volume estimado por ==V = Vs × (Ht_alvo − Ht_atual) / Ht_produto== {{ref:ref-dibartola-4ed}}.\n' +
-                '- ==Regras imuno-hematológicas obrigatórias==: usar ==exclusivamente NaCl 0,9%== para diluição (jamais Ringer com lactato por coagulação cálcica do citrato nem glicose 5% por lise osmótica), ==filtro de 170–260 µm== e concluir em até 4 horas. Em cães, tipar DEA 1.1 e fazer prova cruzada se transfusão prévia > 4 dias; ==em gatos, tipagem A/B/Mik + prova cruzada (crossmatch) são OBRIGATÓRIAS mesmo na 1ª transfusão== pelo risco fatal de aloanticorpos naturais anti-A {{ref:ref-dibartola-4ed}} {{ref:ref-feline-ecc-2ed}}.',
+                '- ==Anemia não é hipovolemia==: pacientes normovolêmicos com anemia grave pioram abruptamente se receberem fluidoterapia de ressuscitação agressiva (queda adicional de hemoglobina por hemodiluição e risco de edema pulmonar).\n' +
+                '- ==Indicação de pRBC==: taquicardia/taquipneia em repouso refratárias, fraqueza extrema, hiperlactatemia persistente ou queda aguda rápida do hematócrito. Calcular volume estimado por ==V = Vs × (Ht_alvo − Ht_atual) / Ht_produto==.\n' +
+                '- ==Regras imuno-hematológicas obrigatórias==: usar ==exclusivamente NaCl 0,9%== para diluição (jamais Ringer com lactato por coagulação cálcica do citrato nem glicose 5% por lise osmótica), ==filtro de 170–260 µm== e concluir em até 4 horas. Em cães, tipar DEA 1.1 e fazer prova cruzada se transfusão prévia > 4 dias; ==em gatos, tipagem A/B/Mik + prova cruzada (crossmatch) são OBRIGATÓRIAS mesmo na 1ª transfusão== pelo risco fatal de aloanticorpos naturais anti-A.',
             },
             {
               label: 'Como avaliar melhora clínica imediata',
               tone: 'tip',
               content:
-                'Redução da frequência cardíaca e respiratória de repouso, normalização do lactato (< 2,5 mmol/L ou < 22 mg/dL), estabilização da glicemia e ganho efetivo de hematócrito após 1–4 horas do término da transfusão, sem febre nem hemoglobinúria pós-transfusional {{ref:ref-dibartola-4ed}}.',
+                'Redução da frequência cardíaca e respiratória de repouso, normalização do lactato (< 2,5 mmol/L ou < 22 mg/dL), estabilização da glicemia e ganho efetivo de hematócrito após 1–4 horas do término da transfusão, sem febre nem hemoglobinúria pós-transfusional.',
             },
           ],
         },
@@ -889,17 +889,17 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Mecanismo, indicação, dose exata e duração',
               tone: 'default',
               content:
-                '- ==Mecanismo de ação==: derivado diamidínico/carbanilida que interfere no metabolismo de poliaminas e reparo de ácidos nucleicos do piroplasma, reduzindo drasticamente a parasitemia para depuração esplênica {{ref:ref-plumbs-10ed}}.\n' +
-                '- ==Posologia==: ==5–6 mg/kg== {{ref:ref-esccap-gl5-2024}} a ==6,6 mg/kg== {{ref:ref-plumbs-10ed}} {{ref:ref-bsava-10ed}} via ==IM profunda ou SC== em 2 aplicações com intervalo de ==14 dias==. Não adotar "subdose de 2 mg/kg para premunição", prática contraindicada pelo risco de falha clínica e seleção de resistência {{ref:ref-greene-5ed-cap97}}.\n' +
-                '- ==Avaliação de resposta==: defervescência e recuperação energética costumam ocorrer em 24–72 horas, acompanhadas de estabilização/aumento do hematócrito e plaquetas em 48–96 h (a elevação isolada de CK sérica é esperada pela dor/irritação muscular local pós-IM) {{ref:ref-plumbs-10ed}}.',
+                '- ==Mecanismo de ação==: derivado diamidínico/carbanilida que interfere no metabolismo de poliaminas e reparo de ácidos nucleicos do piroplasma, reduzindo drasticamente a parasitemia para depuração esplênica.\n' +
+                '- ==Posologia==: ==5–6 mg/kg== {{ref:ref-esccap-gl5-2024}} a ==6,6 mg/kg== via ==IM profunda ou SC== em 2 aplicações com intervalo de ==14 dias==. Não adotar "subdose de 2 mg/kg para premunição", prática contraindicada pelo risco de falha clínica e seleção de resistência.\n' +
+                '- ==Avaliação de resposta==: defervescência e recuperação energética costumam ocorrer em 24–72 horas, acompanhadas de estabilização/aumento do hematócrito e plaquetas em 48–96 h (a elevação isolada de CK sérica é esperada pela dor/irritação muscular local pós-IM).',
             },
             {
               label: 'ALERTAS LETAIS: base versus sal, via IV proibida e erro decimal da atropina',
               tone: 'danger',
               content:
-                '- ==Concentração comercial==: certos produtos rotulam ==85 mg/mL de imidocarb-base==, que equivalem a ==121,15 mg/mL de dipropionato de imidocarb== (120 mg/mL em outras bulas) {{ref:ref-bsava-10ed}}. Nunca calcular volume automaticamente sem checar em qual forma química o rótulo está expresso!\n' +
+                '- ==Concentração comercial==: certos produtos rotulam ==85 mg/mL de imidocarb-base==, que equivalem a ==121,15 mg/mL de dipropionato de imidocarb== (120 mg/mL em outras bulas). Nunca calcular volume automaticamente sem checar em qual forma química o rótulo está expresso!\n' +
                 '- ==VIA IV PROIBIDA==: administração intravenosa provoca toxicidade colinérgica e morte aguda.\n' +
-                '- ==Erro decimal clássico da atropina==: quando necessária pré-medicação anticolinérgica para controlar hipersalivação, vômitos, diarreia ou bradicardia muscarínica, a dose correta é ==0,02–0,05 mg/kg SC== — ==JAMAIS 0,5 mg/kg== (superdosagem de 10x que gera toxicidade anticolinérgica severa) {{ref:ref-plumbs-10ed}}.\n' +
+                '- ==Erro decimal clássico da atropina==: quando necessária pré-medicação anticolinérgica para controlar hipersalivação, vômitos, diarreia ou bradicardia muscarínica, a dose correta é ==0,02–0,05 mg/kg SC== — ==JAMAIS 0,5 mg/kg== (superdosagem de 10x que gera toxicidade anticolinérgica severa).\n' +
                 '- ==Contraindicações/Interações==: associação com organofosforados, carbamatos ou inibidores de colinesterase; usar com extrema cautela em insuficiência renal, hepática ou pulmonar grave.',
             },
           ],
@@ -921,11 +921,11 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'Mecanismo, posologia, farmacocinética lipídica e interações',
               tone: 'default',
               content:
-                '- ==Mecanismos complementares==: atovaquona inibe o complexo citocromo bc₁ mitocondrial (bloqueando síntese de pirimidinas), enquanto a azitromicina bloqueia a tradução proteica no apicoplasto do protozoário {{ref:ref-plumbs-10ed}} {{ref:ref-greene-5ed-cap97}}.\n' +
+                '- ==Mecanismos complementares==: atovaquona inibe o complexo citocromo bc₁ mitocondrial (bloqueando síntese de pirimidinas), enquanto a azitromicina bloqueia a tradução proteica no apicoplasto do protozoário.\n' +
                 '- ==Dose, via e duração==: ==Atovaquona 13,3 mg/kg (13,3–13,4 mg/kg) VO q8h== + ==Azitromicina 10 mg/kg VO q24h== por ==10 dias==.\n' +
-                '- ==Alimento gorduroso é obrigatório==: a biodisponibilidade oral basal da atovaquona é baixa (23–47%), mas ==dobra ou triplica quando administrada com refeição rica em gordura== {{ref:ref-plumbs-10ed}}.\n' +
-                '- ==Por que NÃO usar Malarone (atovaquona/proguanil)==: o proguanil causa vômitos intensos em cães e expulsa o fármaco antes da absorção {{ref:ref-greene-5ed-cap97}}.\n' +
-                '- ==Interações medicamentosas críticas==: ==metoclopramida, tetraciclinas (inclusive doxiciclina!) e rifampicina reduzem os níveis plasmáticos da atovaquona==; além disso, a azitromicina inibe glicoproteína-P e pode ==prolongar intervalo QT== quando associada a ondansetrona, cisaprida, azólicos ou fluoroquinolonas {{ref:ref-plumbs-10ed}}.',
+                '- ==Alimento gorduroso é obrigatório==: a biodisponibilidade oral basal da atovaquona é baixa (23–47%), mas ==dobra ou triplica quando administrada com refeição rica em gordura==.\n' +
+                '- ==Por que NÃO usar Malarone (atovaquona/proguanil)==: o proguanil causa vômitos intensos em cães e expulsa o fármaco antes da absorção.\n' +
+                '- ==Interações medicamentosas críticas==: ==metoclopramida, tetraciclinas (inclusive doxiciclina!) e rifampicina reduzem os níveis plasmáticos da atovaquona==; além disso, a azitromicina inibe glicoproteína-P e pode ==prolongar intervalo QT== quando associada a ondansetrona, cisaprida, azólicos ou fluoroquinolonas.',
             },
             {
               label: 'Estudos de eficácia (Kirk et al., 2017) e avaliação de cura',
@@ -933,7 +933,7 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               content:
                 '- ==O que estudou Kirk, Levy & Crawford (2017)==: coorte clínica prospectiva em ==42 cães Pit Bull resgatados naturalmente infectados por B. gibsoni== tratados com suspensão manipulada de atovaquona (13,4 mg/kg VO q8h com alimento gorduroso) + azitromicina (10 mg/kg VO q24h) por 10 dias {{ref:ref-kirk-2017}}.\n' +
                 '- ==Principais achados e impacto==: ==93% (39/42) alcançaram duas PCRs negativas seriadas separadas por 30 dias== após o término (embora sem grupo controle paralelo). Demonstra na prática que a manipulação de qualidade associada à gordura garante altíssima taxa de depuração molecular {{ref:ref-kirk-2017}}.\n' +
-                '- ==Como avaliar cura==: acompanhar hematócrito em 7–14 dias e confirmar ==duas PCRs negativas tardias aos 60 e 90 dias== pós-terapia (evitando falso-negativo precoce e pesquisando mutação ==cytb M121I== se recidivar) {{ref:ref-greene-5ed-cap97}} {{ref:ref-lin-2012}}.',
+                '- ==Como avaliar cura==: acompanhar hematócrito em 7–14 dias e confirmar ==duas PCRs negativas tardias aos 60 e 90 dias== pós-terapia (evitando falso-negativo precoce e pesquisando mutação ==cytb M121I== se recidivar) {{ref:ref-lin-2012}}.',
             },
           ],
         },
@@ -955,8 +955,8 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               tone: 'warning',
               content:
                 '- ==O que estudou Lin et al. (2012)==: ensaio clínico prospectivo não mascarado comparando ==30 cães naturalmente infectados por B. gibsoni== alocados entre atovaquona + azitromicina (AA, n = 17) versus esquema tríplice ==CDI (n = 13)==: clindamicina 30 mg/kg VO q12h + aceturato de diminazeno 3,5 mg/kg IM no dia 1 + dipropionato de imidocarb 6 mg/kg SC no dia 2 {{ref:ref-lin-2012}}.\n' +
-                '- ==Achados e impacto==: no grupo AA houve 9/17 recuperações e 7/17 recidivas associadas a ==mutações pontuais M121I no gene mitocondrial cytb== (tempo médio 23,3 dias), enquanto no grupo CDI 11/13 recuperaram com apenas 2/13 recidivas (média 41,7 dias). ==Impacto clínico==: explica o mecanismo molecular de resistência à atovaquona e posiciona o CDI como ==terapia de resgate especializado==, jamais como primeira escolha rotineira devido ao risco de neurotoxicidade do diminazeno {{ref:ref-lin-2012}} {{ref:ref-plumbs-10ed}}.\n' +
-                '- ==Erro prévio fatal para o tratamento==: ==NUNCA usar clindamicina em monoterapia antes da atovaquona + azitromicina==, pois induz resistência cruzada aos macrolídeos e inutiliza a azitromicina depois {{ref:ref-greene-5ed-cap97}}.',
+                '- ==Achados e impacto==: no grupo AA houve 9/17 recuperações e 7/17 recidivas associadas a ==mutações pontuais M121I no gene mitocondrial cytb== (tempo médio 23,3 dias), enquanto no grupo CDI 11/13 recuperaram com apenas 2/13 recidivas (média 41,7 dias). ==Impacto clínico==: explica o mecanismo molecular de resistência à atovaquona e posiciona o CDI como ==terapia de resgate especializado==, jamais como primeira escolha rotineira devido ao risco de neurotoxicidade do diminazeno {{ref:ref-lin-2012}}.\n' +
+                '- ==Erro prévio fatal para o tratamento==: ==NUNCA usar clindamicina em monoterapia antes da atovaquona + azitromicina==, pois induz resistência cruzada aos macrolídeos e inutiliza a azitromicina depois.',
             },
           ],
         },
@@ -977,15 +977,15 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               label: 'ALERTA DE SEGURANÇA MÁXIMA: Primaquina para B. felis (base vs fosfato vs mg/gato)',
               tone: 'danger',
               content:
-                '- ==Mecanismo e indicação==: 8-aminoquinolina com ação oxidativa intraeritrocitária contra ==Babesia felis sensu stricto== (espécie resistente ao imidocarb). NUNCA extrapolar para B. felis o esquema de Cytauxzoon felis {{ref:ref-nelson-couto-6ed}} {{ref:ref-abcd-feline-babesiosis-2020}}.\n' +
-                '- ==Armadilha mortal de conversão química==: ==1 mg de fosfato de primaquina = 0,57 mg de primaquina-base== (comprimido de 26,3 mg de fosfato = 15 mg de base). Fontes distintas expressam o regime de formas diferentes e ==JAMAIS podem ser somadas==: (a) ==0,5 mg/kg de fosfato VO/IM== (1–3 doses q72h + semanais) {{ref:ref-abcd-feline-babesiosis-2020}}; (b) ==0,5–1 mg/kg de base VO== (dose única ou por 3 dias) {{ref:ref-plumbs-10ed}}; ou (c) ==1 mg/GATO de fosfato== (q36h x 4 doses + semanal x 4) {{ref:ref-plumbs-10ed}}.\n' +
-                '- ==Por que doses > 1 mg/kg matam gatos==: devido aos 8–10 grupos sulfidrila reativos da hemoglobina felina, o excesso desencadeia ==metemoglobinemia severa, corpúsculos de Heinz, hemólise oxidativa paradoxal, vômitos incoercíveis e óbito== {{ref:ref-plumbs-10ed}} {{ref:ref-feline-ecc-2ed}} {{ref:ref-ettinger-9ed}}. Taxa descrita de recidiva de B. felis é de 20–80%, exigindo hematócrito semanal e vigilância de cianose.',
+                '- ==Mecanismo e indicação==: 8-aminoquinolina com ação oxidativa intraeritrocitária contra ==Babesia felis sensu stricto== (espécie resistente ao imidocarb). NUNCA extrapolar para B. felis o esquema de Cytauxzoon felis {{ref:ref-abcd-feline-babesiosis-2020}}.\n' +
+                '- ==Armadilha mortal de conversão química==: ==1 mg de fosfato de primaquina = 0,57 mg de primaquina-base== (comprimido de 26,3 mg de fosfato = 15 mg de base). Os regimes descritos variam conforme a forma química (sal ou base) e ==JAMAIS podem ser somados==: (a) ==0,5 mg/kg de fosfato VO/IM== (1–3 doses q72h + semanais) {{ref:ref-abcd-feline-babesiosis-2020}}; (b) ==0,5–1 mg/kg de base VO== (dose única ou por 3 dias); ou (c) ==1 mg/GATO de fosfato== (q36h x 4 doses + semanal x 4).\n' +
+                '- ==Por que doses > 1 mg/kg matam gatos==: devido aos 8–10 grupos sulfidrila reativos da hemoglobina felina, o excesso desencadeia ==metemoglobinemia severa, corpúsculos de Heinz, hemólise oxidativa paradoxal, vômitos incoercíveis e óbito==. Taxa descrita de recidiva de B. felis é de 20–80%, exigindo hematócrito semanal e vigilância de cianose.',
             },
             {
               label: 'Imidocarb em grandes Babesia felinas e B. galileei',
               tone: 'evidence',
               content:
-                '- Em grandes Babesia felinas suscetíveis, cita-se ==dipropionato de imidocarb 2,5 mg/kg IM dose única== {{ref:ref-bsava-10ed}}; na série de ==Baneth et al. (2024)== para B. galileei (n = 3), utilizou-se ==3,5 mg/kg SC== com recuperação clínica (porém 1/3 permaneceu PCR+ no D9) {{ref:ref-baneth-2024}}.\n' +
+                '- Em grandes Babesia felinas suscetíveis, cita-se ==dipropionato de imidocarb 2,5 mg/kg IM dose única==; na série de ==Baneth et al. (2024)== para B. galileei (n = 3), utilizou-se ==3,5 mg/kg SC== com recuperação clínica (porém 1/3 permaneceu PCR+ no D9) {{ref:ref-baneth-2024}}.\n' +
                 '- Em gatos assintomáticos do Brasil com DNA de B. vogeli (==21,7% em Oliveira et al., 2022==), não há indicação rotineira de expor o felino à toxicidade medicamentosa sem evidência clínica {{ref:ref-oliveira-2022}}.',
             },
           ],
@@ -1008,15 +1008,15 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
               tone: 'warning',
               content:
                 '- ==Corticosteroides rotineiros==: diretrizes internacionais vetam corticoterapia empírica na babesiose porque imunossupressão compromete o controle da parasitemia {{ref:ref-troccap-babesia}}. Reservar apenas para hemólise imunomediada secundária refratária ameaçadora à vida ==já sob antiprotozoário específico==.\n' +
-                '- ==Doxiciclina isolada==: trata Ehrlichia, Anaplasma e hemoplasmas coinfectantes, porém ==não elimina Babesia== e ainda pode reduzir níveis plasmáticos da atovaquona se administrada concomitantemente {{ref:ref-plumbs-10ed}}.\n' +
-                '- ==Suplementação empírica de ferro==: na hemólise há reciclagem e sobrecarga esplênica de ferro; administrar ferro parenteral/oral sem ferroprivia real promove toxicidade oxidativa {{ref:ref-nelson-couto-6ed}}.',
+                '- ==Doxiciclina isolada==: trata Ehrlichia, Anaplasma e hemoplasmas coinfectantes, porém ==não elimina Babesia== e ainda pode reduzir níveis plasmáticos da atovaquona se administrada concomitantemente.\n' +
+                '- ==Suplementação empírica de ferro==: na hemólise há reciclagem e sobrecarga esplênica de ferro; administrar ferro parenteral/oral sem ferroprivia real promove toxicidade oxidativa.',
             },
             {
               label: 'Critérios objetivos de cura clínica versus cura molecular',
               tone: 'tip',
               content:
                 '- ==48–72 horas e 7–14 dias==: avaliar elevação progressiva de reticulócitos, subida do hematócrito, normalização de plaquetas e queda da bilirrubina (realizando a 2ª dose de imidocarb no D14 quando aplicável).\n' +
-                '- ==60 e 90 dias pós-tratamento (especialmente B. gibsoni)==: solicitar ==duas PCRs seriadas== nesse intervalo tardio para diferenciar remissão clínica temporária de depuração molecular real, lembrando que mesmo após 2 PCRs negativas o animal deve permanecer excluído de doação de sangue {{ref:ref-greene-5ed-cap97}} {{ref:ref-esccap-gl5-2024}}.',
+                '- ==60 e 90 dias pós-tratamento (especialmente B. gibsoni)==: solicitar ==duas PCRs seriadas== nesse intervalo tardio para diferenciar remissão clínica temporária de depuração molecular real, lembrando que mesmo após 2 PCRs negativas o animal deve permanecer excluído de doação de sangue {{ref:ref-esccap-gl5-2024}}.',
             },
           ],
         },
@@ -1085,9 +1085,9 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
     terapiasControversasOuContraindicadas:
       'Condutas que aumentam morbidade ou comprometem o controle parasitário:\n\n' +
       '- ==Corticosteroides de rotina==: ausência de benefício e piora do controle parasitário; restringir apenas à AHIM secundária refratária grave já sob terapia antiprotozoária eficaz {{ref:ref-troccap-babesia}}.\n' +
-      '- ==Doxiciclina isolada==: não trata Babesia e ainda reduz níveis plasmáticos da atovaquona se coadministrada nos 10 dias {{ref:ref-plumbs-10ed}}.\n' +
-      '- ==Clindamicina prévia em monoterapia para B. gibsoni==: seleciona resistência cruzada a macrolídeos e compromete o esquema atovaquona + azitromicina {{ref:ref-greene-5ed-cap97}}.\n' +
-      '- ==Anticoagulação profilática universal sem critério ou suplementação rotineira de ferro==: sem respaldo clínico na literatura veterinária atual {{ref:ref-goddard-2026}} {{ref:ref-nelson-couto-6ed}}.',
+      '- ==Doxiciclina isolada==: não trata Babesia e ainda reduz níveis plasmáticos da atovaquona se coadministrada nos 10 dias.\n' +
+      '- ==Clindamicina prévia em monoterapia para B. gibsoni==: seleciona resistência cruzada a macrolídeos e compromete o esquema atovaquona + azitromicina.\n' +
+      '- ==Anticoagulação profilática universal sem critério ou suplementação rotineira de ferro==: sem respaldo clínico na literatura veterinária atual {{ref:ref-goddard-2026}}.',
     tabelaMonitoramentoEFalhaTerapeutica: {
       kind: 'clinicalTable',
       caption: 'Tabela 14 — Cronograma de monitorização clínica, hematológica e molecular',
@@ -1105,14 +1105,14 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
   complications: {
     complicacoesOrganicasESinaisDeAlerta:
       '- ==Hipóxia anêmica e choque distributivo==: queda abrupta de DO₂ com hiperlactatemia (> 40 mg/dL), colapso vascular e disfunção miocárdica inflamatória.\n' +
-      '- ==Lesão renal aguda (LRA) e síndrome biliar vermelha==: necrose tubular aguda oxidativa e isquêmica combinada à hemoconcentração paradoxal por extravasamento capilar, elevando risco de SARA e CID {{ref:ref-greene-5ed-cap97}}.\n' +
+      '- ==Lesão renal aguda (LRA) e síndrome biliar vermelha==: necrose tubular aguda oxidativa e isquêmica combinada à hemoconcentração paradoxal por extravasamento capilar, elevando risco de SARA e CID.\n' +
       '- ==Tromboinflamação e microtrombose multiorgânica==: formação disseminada de microtrombos de fibrina e consumo plaquetário documentados em formas virulentas {{ref:ref-goddard-2026}}.\n' +
       '- ==Pancreatite aguda secundária e hipoglicemia grave==: toxicidade endotelial por hemoglobina livre sobre pâncreas e consumo metabólico intenso.\n' +
-      '- ==Toxicidades medicamentosas evitáveis==: crise colinérgica ou erro decimal de atropina (0,5 mg/kg) no imidocarb; metemoglobinemia/hemólise fatal por primaquina (> 1 mg/kg); neurotoxicidade por diminazeno; e intoxicação neurológica letal em gatos por permetrina {{ref:ref-plumbs-10ed}}.',
+      '- ==Toxicidades medicamentosas evitáveis==: crise colinérgica ou erro decimal de atropina (0,5 mg/kg) no imidocarb; metemoglobinemia/hemólise fatal por primaquina (> 1 mg/kg); neurotoxicidade por diminazeno; e intoxicação neurológica letal em gatos por permetrina.',
     fatoresPrognosticosEMortalidade:
-      '- ==Indicadores quantitativos de alto risco==: ==lactato plasmático > 40 mg/dL, creatinina sérica > 5 mg/dL e albumina < 2,2 g/dL== associam-se fortemente à mortalidade {{ref:ref-greene-5ed-cap97}}.\n' +
-      '- ==Mortalidade por disfunção orgânica==: em série clínica europeia com ==240 cães infectados por B. canis==, lesão renal aguda elevou a mortalidade para ==34%== e pancreatite aguda concomitante atingiu ==40%== {{ref:ref-greene-5ed-cap97}}; já em coorte de ==97 cães com B. rossi==, registraram-se ==12 óbitos (12,4%)== correlacionados à falência orgânica e microtrombose {{ref:ref-goddard-2026}}.\n' +
-      '- ==Prognóstico por espécie e resposta terapêutica==: B. vogeli não complicada tem bom prognóstico com estabilização e imidocarb precoces; B. gibsoni e B. felis apresentam maior risco de recidiva ou persistência molecular exigindo acompanhamento hematológico e PCR tardia {{ref:ref-kirk-2017}} {{ref:ref-feline-ecc-2ed}}.',
+      '- ==Indicadores quantitativos de alto risco==: ==lactato plasmático > 40 mg/dL, creatinina sérica > 5 mg/dL e albumina < 2,2 g/dL== associam-se fortemente à mortalidade.\n' +
+      '- ==Mortalidade por disfunção orgânica==: em série clínica europeia com ==240 cães infectados por B. canis==, lesão renal aguda elevou a mortalidade para ==34%== e pancreatite aguda concomitante atingiu ==40%==; já em coorte de ==97 cães com B. rossi==, registraram-se ==12 óbitos (12,4%)== correlacionados à falência orgânica e microtrombose {{ref:ref-goddard-2026}}.\n' +
+      '- ==Prognóstico por espécie e resposta terapêutica==: B. vogeli não complicada tem bom prognóstico com estabilização e imidocarb precoces; B. gibsoni e B. felis apresentam maior risco de recidiva ou persistência molecular exigindo acompanhamento hematológico e PCR tardia {{ref:ref-kirk-2017}}.',
     tabelaComplicacoesECondutaUti: {
       kind: 'clinicalTable',
       caption: 'Tabela 15 — Complicações graves, sinais de alarme e conduta prioritária de UTI',
@@ -1130,10 +1130,10 @@ export const babesioseCaesGatosRecord: DiseaseRecord = {
   prevention: {
     controleVetorialEVelocidadeDeTransmissao:
       'No Brasil, o ciclo domiciliar contínuo de ==Rhipicephalus sanguineus sensu lato== exige prevenção ectoparasitária ininterrupta durante todos os meses do ano, associada ao manejo ambiental de frestas, canis e abrigos {{ref:ref-esccap-gl5-2024}}.\n\n' +
-      'Embora a maturação salivar dos esporozoítos demore classicamente 48–72 horas após a fixação do carrapato, estudos experimentais com Dermacentor reticulatus comprovaram transmissão de B. canis em apenas ==~8 horas de alimentação== {{ref:ref-greene-5ed-cap97}}. Por isso, deve-se priorizar acaricidas de ação rápida (como isoxazolinas sistêmicas e/ou coleiras e formulações repelentes) orientando o tutor de que carrapaticidas reduzem drasticamente, mas não bloqueiam 100% das picadas se houver alta carga ambiental.',
+      'Embora a maturação salivar dos esporozoítos demore classicamente 48–72 horas após a fixação do carrapato, estudos experimentais com Dermacentor reticulatus comprovaram transmissão de B. canis em apenas ==~8 horas de alimentação==. Por isso, deve-se priorizar acaricidas de ação rápida (como isoxazolinas sistêmicas e/ou coleiras e formulações repelentes) orientando o tutor de que carrapaticidas reduzem drasticamente, mas não bloqueiam 100% das picadas se houver alta carga ambiental.',
     alertaPermetrinaEPrevencaoNaoVetorial:
       '- ==PROIBIÇÃO ABSOLUTA DE PERMETRINA EM GATOS==: produtos spot-on, sprays ou coleiras com permetrina formulados para cães causam ==neurotoxicidade felina grave e frequentemente fatal== (tremores, convulsões e hipertermia), inclusive por contato íntimo com cães recém-tratados na mesma casa. Utilizar apenas ectoparasiticidas aprovados especificamente para felinos {{ref:ref-esccap-gl5-2024}} {{ref:ref-abcd-feline-babesiosis-2020}}.\n' +
-      '- ==Bloqueio transfusional e de mordeduras==: todo cão ou gato doador de sangue precisa de ==triagem negativa por PCR== para Babesia spp. e demais hemoparasitas; cães com histórico de B. gibsoni devem ser excluídos de doação, reprodução e manejo com risco de brigas {{ref:ref-dibartola-4ed}} {{ref:ref-capc-babesia}}.',
+      '- ==Bloqueio transfusional e de mordeduras==: todo cão ou gato doador de sangue precisa de ==triagem negativa por PCR== para Babesia spp. e demais hemoparasitas; cães com histórico de B. gibsoni devem ser excluídos de doação, reprodução e manejo com risco de brigas {{ref:ref-capc-babesia}}.',
     vacinacaoQuimioprofilaxiaEZoonose:
       '- ==Vacinação e quimioprofilaxia==: vacinas disponíveis em mercados externos reduzem apenas gravidade clínica de cepas europeias (B. canis), não geram imunidade esterilizante e não protegem contra B. gibsoni, B. vogeli nem espécies felinas. Quimioprofilaxia fica restrita a situações excepcionais (como cães esplenectomizados inevitavelmente expostos), nunca em substituição a carrapaticidas {{ref:ref-esccap-gl5-2024}}.\n' +
       '- ==Orientação zoonótica ao tutor==: espécies distintas como B. microti e B. divergens causam babesiose humana, mas ==os agentes caninos e felinos (B. vogeli, B. gibsoni, B. felis) NÃO são transmitidos diretamente do cão ou gato para as pessoas da casa== — devendo-se apenas manter combate ao carrapato ambiental pelo risco de outras zoonoses vetoriais {{ref:ref-esccap-gl5-2024}} {{ref:ref-capc-babesia}}.',

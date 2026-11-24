@@ -176,7 +176,7 @@ export function OncologyBsaTable({
 
       <div className="flex flex-col gap-1 text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>
-          Fonte: BSAVA Manual of Canine and Feline Oncology (3ª Edição, Fig. 7.3 e 7.4) e BSAVA Formulary (10ª Edição).
+          Conversão de superfície corporal por faixa de peso para cães e gatos (fontes na seção de Referências ao final da página).
         </p>
         <p>Exibindo {filteredData.length} faixas de peso.</p>
       </div>

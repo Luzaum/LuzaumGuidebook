@@ -184,7 +184,7 @@ export function NeuroLocalizationMatrixCard({
             GUIA DE APOIO À NEUROLOCALIZAÇÃO CLÍNICA
           </div>
           <h3 className="mt-2 text-lg sm:text-xl font-bold text-foreground">
-            Matriz Anatômica NMS vs NMI (de Lahunta & Dewey)
+            Matriz Anatômica NMS vs NMI
           </h3>
           <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl">
             Este módulo não substitui o raciocínio soberano do médico-veterinário: organiza e compara
@@ -293,10 +293,6 @@ export function NeuroLocalizationMatrixCard({
                 <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed pt-1">
                   <strong className="text-muted-foreground">Estado Mental:</strong> {currentGuide.mentalStatus}
                 </p>
-              </div>
-
-              <div className="rounded-xl border border-gold/20 bg-gold/5 p-3 flex items-center justify-between text-xs text-muted-foreground">
-                <span>📚 <strong>Referência:</strong> {currentGuide.referenceBook}</span>
               </div>
             </div>
           </div>

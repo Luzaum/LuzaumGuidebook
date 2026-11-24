@@ -2,6 +2,7 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Activity,
   Brain,
+  Eye,
   Flame,
   Gauge,
   HeartPulse,
@@ -155,8 +156,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'cardiologia',
     selectedClassName: 'border-rose-500 bg-rose-500/[0.07] text-rose-700 dark:text-rose-300',
     iconClassName: 'text-rose-600 dark:text-rose-400',
-    medicationSlugs: ['benazepril', 'pimobendan'],
-    keywords: ['inodilatador', 'ieca', 'cardiovascular', 'insuficiência cardíaca'],
+    medicationSlugs: ['benazepril', 'pimobendan', 'nitroprussiato-de-sodio'],
+    keywords: ['inodilatador', 'ieca', 'cardiovascular', 'insuficiência cardíaca', 'nitroprussiato', 'nitroprusseto', 'nitrop', 'nitroprus', 'vasodilatador', 'óxido nítrico', 'emergência hipertensiva'],
   },
   {
     slug: 'antiarritmicos',
@@ -241,6 +242,29 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     iconClassName: 'text-teal-600 dark:text-teal-400',
     medicationSlugs: ['hidroxido-de-aluminio', 'pronefra'],
     keywords: ['quelante', 'ligante intestinal', 'fósforo', 'fosfato', 'antiácido', 'hidróxido de alumínio', 'carbonato de cálcio', 'sevelamer', 'pronefra', 'quitosana'],
+  },
+  {
+    slug: 'oftalmologicos-autonomicos',
+    label: 'Oftalmológicos e colinérgicos parassimpaticomiméticos',
+    shortLabel: 'Oftalmológicos',
+    description:
+      'Agentes autonômicos e mióticos/secretagogos empregados em ceratoconjuntivite seca neurogênica, testes de desnervação pupilar e manejo ocular especializado.',
+    icon: Eye,
+    theme: 'oftalmologia',
+    selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-200',
+    iconClassName: 'text-cyan-600 dark:text-cyan-400',
+    medicationSlugs: ['pilocarpina'],
+    keywords: [
+      'pilocarpina',
+      'ccs neurogênica',
+      'ceratoconjuntivite seca',
+      'xeromicteria',
+      'miótico',
+      'parassimpaticomimético',
+      'muscarínico',
+      'disautonomia',
+      'glaucoma',
+    ],
   },
 ] as const;
 

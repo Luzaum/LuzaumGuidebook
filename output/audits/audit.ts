@@ -1,0 +1,11 @@
+import {clinicalMedicationsSeed} from '../../modules/consulta-vet/data/seed/clinicalMedications.seed';
+import {medicationsSeed} from '../../modules/consulta-vet/data/seed/medications.seed';
+import {diseasesSeed} from '../../modules/consulta-vet/data/seed/diseases.seed';
+import {writeFileSync} from 'node:fs';
+const text=(v:any):string=>typeof v==='string'?v:Array.isArray(v)?v.map(text).join(' '):v&&typeof v==='object'?Object.values(v).map(text).join(' '):'';
+const words=(v:any)=>text(v).replace(/<\/?[a-zA-Z][^>]*>/g,' ').split(/\s+/).filter(Boolean).length;
+const rows=(items:any[],kind:string)=>items.map(r=>{const fields=kind==='Doença'?['etiology','epidemiology','pathogenesisTransmission','pathophysiology','clinicalSignsPathophysiology','diagnosis','treatment']:['mechanismOfAction','indications','contraindications','cautions','adverseEffects','drugInteractionsDetailed','doses'];return {kind,title:r.title,slug:r.slug,words:words(Object.fromEntries(Object.entries(r).filter(([k])=>!['references','editorialReferences','figures','imageUrl'].includes(k)))),gaps:fields.filter(f=>words(f==='drugInteractionsDetailed'?[r.interactions,r.drugInteractionsDetailed]:r[f])<25),references:(r.references??r.editorialReferences??[]).length};}).sort((a,b)=>a.words-b.words);
+const internal=rows(clinicalMedicationsSeed.filter(r=>!medicationsSeed.some(m=>m.slug===r.slug)),'Medicamento interno');
+const meds=rows(medicationsSeed,'Medicamento'),diseases=rows(diseasesSeed,'Doença');
+writeFileSync('output/audits/content-audit.json',JSON.stringify({medications:meds,diseases,internal},null,2));
+console.log(JSON.stringify({totals:[meds.length,diseases.length],internal:internal.slice(0,15)},null,2));

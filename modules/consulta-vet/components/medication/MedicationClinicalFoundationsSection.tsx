@@ -132,14 +132,14 @@ function EvidenceFindingBlock({
         <NarrativeHighlightedText text={summaryText} highlights={summaryHighlights} />
       </div>
 
-      <div className="mt-3 rounded-xl bg-background/80 p-3 border border-cyan-600/20">
+      {clinicalConclusion.trim() && clinicalConclusion.replace(/\s+/g, ' ').trim() !== summaryText.replace(/\s+/g, ' ').trim() && <div className="mt-3 rounded-xl bg-background/80 p-3 border border-cyan-600/20">
         <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-800 dark:text-cyan-300 block mb-0.5">
           O que este estudo ajuda a decidir
         </span>
         <p className="text-xs leading-relaxed text-foreground">
           {clinicalConclusion}
         </p>
-      </div>
+      </div>}
 
       {metrics.length > 0 && (
         <div className="mt-3 flex flex-wrap gap-1.5" aria-label="Métricas principais do estudo">

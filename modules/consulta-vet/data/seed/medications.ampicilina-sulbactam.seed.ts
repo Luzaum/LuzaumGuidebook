@@ -48,7 +48,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
     ],
 
     cautions: [
-      'As doses expressas no formulário internacional Plumb consideram a soma dos dois componentes (ampicilina + sulbactam). Sempre especificar na prescrição se a dose prescrita é da associação total ou do componente ampicilina para evitar subdosagem ou superdosagem de 50%.',
+      'As doses posológicas padronizadas consideram a soma dos dois componentes (ampicilina + sulbactam). Sempre especificar na prescrição se a dose prescrita é da associação total ou do componente ampicilina para evitar subdosagem ou superdosagem de 50%.',
       'Usar com cautela em pacientes com hipersensibilidade documentada a outros beta-lactâmicos, como cefalosporinas, cefamicinas e carbapenêmicos, devido à possibilidade de reação cruzada. A contraindicação absoluta se aplica ao histórico de hipersensibilidade grave ou anafilaxia a penicilinas.',
       'Em pacientes com azotemia e doença renal crônica (DRC), a depuração renal da ampicilina sofre redução acentuada e a meia-vida se estende de 1,5 h para aproximadamente 4 h; considerar espaçamento de intervalo para q12h em infecções por patógenos com MIC baixa.',
       'Incompatibilidade físico-química direta in vitro com aminoglicosídeos (amicacina, gentamicina): nunca misturar na mesma seringa ou frasco de infusão. Administrar em acessos venosos separados ou lavar a via abundantemente antes e depois.',
@@ -82,7 +82,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
     ],
     routes: ['Intravenosa', 'Intramuscular', 'Subcutânea'],
     adminNotesText:
-      'Medicamento predominantemente hospitalar devido ao intervalo de 6 a 8 horas. As doses do Plumb são expressas pela soma de ampicilina e sulbactam. Armazenar o pó a até 30 °C. Após reconstituição, respeitar rigorosamente concentração, diluente, temperatura e prazo de uso; soluções a 30 mg/mL em água para injeção ou SF 0,9% permanecem estáveis por até 8 horas em temperatura ambiente ou 72 horas sob refrigeração a 4 °C. Não usar alteração de cor, precipitação ou turbidez como único critério de estabilidade.',
+      'Medicamento predominantemente hospitalar devido ao intervalo de 6 a 8 horas. As doses padronizadas são expressas pela soma de ampicilina e sulbactam. Armazenar o pó a até 30 °C. Após reconstituição, respeitar rigorosamente concentração, diluente, temperatura e prazo de uso; soluções a 30 mg/mL em água para injeção ou SF 0,9% permanecem estáveis por até 8 horas em temperatura ambiente ou 72 horas sob refrigeração a 4 °C. Não usar alteração de cor, precipitação ou turbidez como único critério de estabilidade.',
 
     // 1. Quatro Pilares Terapêuticos
     pillars: [
@@ -283,7 +283,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         {
           route: 'Intramuscular Profunda (IM)',
           technique:
-            'Aplicar em grandes massas musculares (massa epaxial lombar ou quadríceps femoral). Para mitigar a dor local marcante decorrente do pH alcalino da solução, o Plumb admite a reconstituição do pó liofilizado com lidocaína estéril 0,5% a 2% sem vasoconstritor em vez de água estéril.',
+            'Aplicar em grandes massas musculares (massa epaxial lombar ou quadríceps femoral). Para mitigar a dor local marcante decorrente do pH alcalino da solução, admite-se a reconstituição do pó liofilizado com lidocaína estéril 0,5% a 2% sem vasoconstritor em vez de água estéril.',
           nursingCare:
             'Alternar rigorosamente os sítios de aplicação intramuscular a cada tomada. Observar sinais de hematoma ou dor acentuada.',
           limitations: 'Dolorosa; não indicada em pacientes sépticos, desidratados ou com hipoperfusão periférica e trombocitopenia.',
@@ -372,7 +372,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
           condition: 'Diferenciação de Convenção de Dose (Associação Total vs. Ampicilina Pura)',
           alertLevel: 'warning',
           physiologicalExplanation:
-            'O produto comercial é formulado na proporção 2:1. O formulário internacional Plumb expressa suas recomendações na soma dos dois princípios ativos (mg/kg total). Se o profissional prescrever 20 mg/kg pensando ser a dose total, estará aplicando apenas 13,3 mg de ampicilina e 6,7 mg de sulbactam.',
+            'O produto comercial é formulado na proporção 2:1 e as recomendações posológicas usuais expressam a soma dos dois princípios ativos (mg/kg total). Se o profissional prescrever 20 mg/kg pensando ser a dose total, estará aplicando apenas 13,3 mg de ampicilina e 6,7 mg de sulbactam.',
           clinicalAction:
             'Registrar sempre na prescrição hospitalar a frase explicativa: Associação total de ampicilina + sulbactam (proporção 2:1), onde 30 mg/kg total = 20 mg/kg ampicilina + 10 mg/kg sulbactam.',
         },
@@ -905,7 +905,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
     clinicalWarningItems: [
       {
         label: 'Proporção 2:1 e Convenção de Dose:',
-        text: 'As ampolas comerciais combinam 2 partes de ampicilina com 1 parte de sulbactam. A dose padrão internacional (Plumb) expressa a soma total (22 a 30 mg/kg total). Logo, 30 mg/kg da associação = 20 mg/kg de ampicilina + 10 mg/kg de sulbactam. Sempre explicitar na prescrição para prevenir subdosagem ou superdosagem.',
+        text: 'As ampolas comerciais combinam 2 partes de ampicilina com 1 parte de sulbactam. A dose padrão internacional expressa a soma total (22 a 30 mg/kg total). Logo, 30 mg/kg da associação = 20 mg/kg de ampicilina + 10 mg/kg de sulbactam. Sempre explicitar na prescrição para prevenir subdosagem ou superdosagem.',
       },
       {
         label: 'Alerta em Sepse e Enterobacterales:',

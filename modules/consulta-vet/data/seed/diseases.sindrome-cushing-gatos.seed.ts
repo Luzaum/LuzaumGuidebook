@@ -214,13 +214,13 @@ export const sindromeCushingGatosRecord: DiseaseRecord = {
       'Poliúria, polidipsia (PU/PD) e polifagia voraz secundárias à diurese osmótica induzida pela glicosúria do diabetes associado e ação antidiurética do cortisol.',
       'Perda de peso progressiva e caquexia com perda de massa muscular esquelética apesar de apetite voraz.',
       'Abdômen distendido e pendular (pendulous belly) por hipotonia dos músculos retos e oblíquos abdominais e hepatomegalia.',
-      'Síndrome da Fragilidade Cutânea (Feline Cutaneous Asthenia): pele excessivamente fina, translúcida, sem elasticidade, que se rasga espontaneamente com movimentos bruscos, grooming ou contenção delicada, criando grandes feridas cutâneas limpas sem sangramento abundante.',
+      'Síndrome da Fragilidade Cutânea (Feline Cutaneous Asthenia): pele excessivamente fina, translúcida, sem elasticidade, que se rasga espontaneamente com movimentos bruscos, autolimpeza ou contenção delicada, criando grandes feridas cutâneas limpas sem sangramento abundante.',
       'Alopecia bilateral simétrica não pruriginosa ou pelagem opaca, desidratada e falhada que não regenera após tosa higiênica.',
       'Encurvamento característico das pontas das orelhas (curled ear tips) decorrente de condromalácia induzida pelo catabolismo esteróide.',
       'Hematomas e sufusões cutâneas espontâneas por fragilidade capilar dermoepidérmica.'
     ],
     sinaisNeurologicosEComplicados: [
-      'Sinais neurológicos centrais por expansão de macroadenoma hipofisário: depressão sensorial, letargia profunda, cegueira central, desorientação, marcha compulsiva e pressão da cabeça contra a parede (head pressing).',
+      'Sinais neurológicos centrais por expansão de macroadenoma hipofisário: depressão sensorial, letargia profunda, cegueira central, desorientação, marcha compulsiva e pressão da cabeça contra a parede.',
       'Neuropatia diabética concomitante: postura plantígrada dos membros pélvicos decorrente da hiperglicemia axonal crônica descompensada.'
     ]
   },
@@ -244,7 +244,7 @@ export const sindromeCushingGatosRecord: DiseaseRecord = {
           'Teste funcional de triagem de escolha. Colheita de cortisol sérico basal (T0); injeção intravenosa estrita de Dexametasona solúvel aquosa na dose de 0,1 mg/kg; colheita de amostras de cortisol sérico 4 e 8 horas pós-injeção.',
         purpose: 'Confirmação inequívoca de secreção autônoma de cortisol.',
         interpretation:
-          'Padrão-ouro funcional (*isGoldStandard: true*). Gatos saudáveis suprimem o cortisol sérico às 8 horas para concentrações <1,0 a 1,4 mcg/dL (<30 nmol/L). No hiperadrenocorticismo felino, há ausência de supressão no ponto de 8 horas. Se o cortisol às 4 horas suprimir (<1,4 mcg/dL) e escapar às 8 horas, fecha-se o diagnóstico de PDH.',
+          'Padrão-ouro funcional. Gatos saudáveis suprimem o cortisol sérico às 8 horas para concentrações <1,0 a 1,4 mcg/dL (<30 nmol/L). No hiperadrenocorticismo felino, há ausência de supressão no ponto de 8 horas. Se o cortisol às 4 horas suprimir (<1,4 mcg/dL) e escapar às 8 horas, fecha-se o diagnóstico de PDH.',
         limitations: 'O uso da dose canina (0,01 mg/kg) gera supressão inadequada mesmo em gatos normais e NUNCA deve ser utilizada.',
         isGoldStandard: true
       },
@@ -339,7 +339,7 @@ export const sindromeCushingGatosRecord: DiseaseRecord = {
     redFlags: [
       'Laceração cutânea espontânea de espessura total com exposição da gordura subcutânea (fragilidade cutânea crítica).',
       'Ataxia, letargia profunda, mioclonias ou convulsões em paciente diabético iniciando trilostano (alerta de hipoglicemia aguda).',
-      'Pressão da cabeça contra a parede (head pressing), marcha compulsiva em círculos ou cegueira súbita (compressão neurológica por macroadenoma).'
+      'Pressão da cabeça contra a parede, marcha compulsiva em círculos ou cegueira súbita (compressão neurológica por macroadenoma).'
     ]
   },
 

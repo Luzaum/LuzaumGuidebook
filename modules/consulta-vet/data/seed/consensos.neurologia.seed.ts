@@ -24,7 +24,7 @@ export const neurologiaConsensosSeed: ConsensusSeed[] = [
     practicalApplicationText:
       '1) Exame neurológico seriado e neurolocalização. 2) RM/TC antes de cirurgia eletiva/urgente. 3) Grau 1: repouso + analgesia. 4) Graus 2–3: conservador ou cirurgia conforme evolução. 5) Graus 4–5 compressivos: descompressão urgente se indicada na imagem. 6) Monitorar mielomalácia (reflexo cutâneo do tronco ascendente). 7) Fisioterapia e controle de peso pós-alta.',
     appNotesText:
-      'VIGENTE — referência principal para DDIV canina toracolombar aguda no ConsultaVET.\n\nNão extrapolar automaticamente para gatos ou DDIV cervical isolada. ANNPE/HNPE exigem interpretação de imagem específica.',
+      'VIGENTE — referência principal para DDIV canina toracolombar aguda.\n\nNão extrapolar automaticamente para gatos ou DDIV cervical isolada. ANNPE/HNPE exigem interpretação de imagem específica.',
     references: [
       {
         id: 'ref-acvim-ivdd-2022',

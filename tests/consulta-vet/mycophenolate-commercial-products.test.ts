@@ -69,10 +69,10 @@ test('Produtos de micofenolato possuem posologia prática validada na auditoria 
   assert.equal(myforticAudit.finalStatus, 'ok', 'Myfortic deve ser aprovado na auditoria');
 });
 
-test('Micofenolato incorpora referências explícitas e posologias do Plumb’s e BSAVA', () => {
+test('Micofenolato incorpora posologias consagradas sem citações diretas a livros-texto em labelDirections', () => {
   const cellcept = commercialOticProductsSeed.find((item) => item.id === 'cellcept-micofenolato-mofetila-roche')!;
-  assert.match(cellcept.labelDirections, /Plumb/i);
-  assert.match(cellcept.labelDirections, /BSAVA/i);
+  assert.doesNotMatch(cellcept.labelDirections, /Plumb|BSAVA/i);
+  assert.match(cellcept.labelDirections, /Consensos IRIS e ACVIM/i);
   assert.match(cellcept.labelDirections, /8 a 12 mg\/kg/i);
   assert.match(cellcept.labelDirections, /10 mg\/kg/i);
   assert.match(cellcept.labelDirections, /MUE/i);

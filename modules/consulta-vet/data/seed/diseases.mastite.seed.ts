@@ -84,37 +84,37 @@ export const mastiteRecord: DiseaseRecord = {
           label: '1. Triagem Hemodinâmica e Sistêmica',
           timing: 'Imediato (Minuto 0 a 15)',
           detail:
-            'Aferição de temperatura retal materna, tempo de preenchimento capilar (TPC), coloração de mucosas, frequência cardíaca e pressão arterial sistólica por Doppler. Sinais de alarme para sepse (SIRS): temperatura > 39,7°C ou < 37,5°C, taquicardia (> 160 bpm em cães grandes, > 180 em pequenos, > 220 em gatas), pulso filiforme e lactato sérico > 2,5 mmol/L (Ettinger, 9ª ed. 2024; Nelson & Couto, 6ª ed.).',
+            'Aferição de temperatura retal materna, tempo de preenchimento capilar (TPC), coloração de mucosas, frequência cardíaca e pressão arterial sistólica por Doppler. Sinais de alarme para sepse (SIRS): temperatura > 39,7°C ou < 37,5°C, taquicardia (> 160 bpm em cães grandes, > 180 em pequenos, > 220 em gatas), pulso filiforme e lactato sérico > 2,5 mmol/L.',
         },
         {
           label: '2. Inspeção e Palpação de Todos os Pares Mamários',
           timing: 'Exame físico inicial',
           detail:
-            'Examinar individualmente cada mama cranial torácica até as caudais inguinais. Avaliar consistência (edemaciada, indurada, lenhosa ou flutuante), temperatura cutânea local, eritema, presença de petéquias, fissuras mamilares e áreas violáceas ou enegrecidas frias sugestivas de isquemia/gangrena. Palpar útero e inspecionar corrimento vulvar para pesquisar metrite associada (BSAVA Reproduction, 2ª ed.).',
+            'Examinar individualmente cada mama cranial torácica até as caudais inguinais. Avaliar consistência (edemaciada, indurada, lenhosa ou flutuante), temperatura cutânea local, eritema, presença de petéquias, fissuras mamilares e áreas violáceas ou enegrecidas frias sugestivas de isquemia/gangrena. Palpar útero e inspecionar corrimento vulvar para pesquisar metrite associada.',
         },
         {
           label: '3. Coleta Asséptica e Análise do Leite',
           timing: 'Antes de qualquer antimicrobiano',
           detail:
-            'Assepsia rigorosa do teto com clorexidina alcoólica a 0,5% ou álcool 70%; descartar os dois primeiros jatos para expelir bactérias comensais do óstio do teto. Ordenhar o leite diretamente em frasco estéril para microbiologia e em lâmina de vidro limpa para esfregaço citológico e teste de pH em fita colorimétrica. Leite normal apresenta pH 6,2–6,5; na mastite, a perda da barreira hematomamária eleva o pH para 7,0–7,8 (Svensson et al., 2023; Nelson & Couto, 6ª ed.).',
+            'Assepsia rigorosa do teto com clorexidina alcoólica a 0,5% ou álcool 70%; descartar os dois primeiros jatos para expelir bactérias comensais do óstio do teto. Ordenhar o leite diretamente em frasco estéril para microbiologia e em lâmina de vidro limpa para esfregaço citológico e teste de pH em fita colorimétrica. Leite normal apresenta pH 6,2–6,5; na mastite, a perda da barreira hematomamária eleva o pH para 7,0–7,8 (Svensson et al., 2023).',
         },
         {
           label: '4. Citologia Láctea Imediata (Diff-Quik ou Gram)',
           timing: 'Na própria clínica (15–30 minutos)',
           detail:
-            'Coloração rápida panóptica: citologia normal exibe macrófagos espumosos (colostrofores), células epiteliais ductais descamadas e raros neutrófilos não degenerados (< 5 por campo de imersão). A mastite séptica caracteriza-se por infiltrado neutrofílico maciço com alterações degenerativas cariolíticas e cariorrexíticas, além de bactérias (cocos em cadeias/cachos ou bacilos Gram-negativos) fagocitadas no interior dos fagócitos (Nelson & Couto, 6ª ed.).',
+            'Coloração rápida panóptica: citologia normal exibe macrófagos espumosos (colostrofores), células epiteliais ductais descamadas e raros neutrófilos não degenerados (< 5 por campo de imersão). A mastite séptica caracteriza-se por infiltrado neutrofílico maciço com alterações degenerativas cariolíticas e cariorrexíticas, além de bactérias (cocos em cadeias/cachos ou bacilos Gram-negativos) fagocitadas no interior dos fagócitos.',
         },
         {
           label: '5. Ultrassonografia das Glândulas Afetadas',
           timing: 'Quando houver induração difusa, suspeita de abscesso ou necrose',
           detail:
-            'Transdutor linear de alta frequência (10–18 MHz). Diferencia edema intersticial difuso (espessamento tecidual homogêneo e anecoico septal) de abscesso mamário verdadeiro (coleção anecoica a heterogênea bem circunscrita com reforço acústico posterior e debris celulares internos) e identifica áreas avasculares ao Doppler colorido indicativas de trombose e gangrena (Ettinger, 9ª ed. 2024).',
+            'Transdutor linear de alta frequência (10–18 MHz). Diferencia edema intersticial difuso (espessamento tecidual homogêneo e anecoico septal) de abscesso mamário verdadeiro (coleção anecoica a heterogênea bem circunscrita com reforço acústico posterior e debris celulares internos) e identifica áreas avasculares ao Doppler colorido indicativas de trombose e gangrena.',
         },
         {
           label: '6. Avaliação Clínica e Ponderal da Ninhada',
           timing: 'Simultaneamente ao atendimento materno',
           detail:
-            'Inspecionar todos os filhotes: vigor de sucção ao reflexo palatino, hidratação cutânea, repleção abdominal, motilidade e temperatura retal. Pesar em balança digital com precisão de gramas e registrar em curva de ganho diário. Investigar sinais de enterite, eritema perineal e cólica por ingestão de leite ácido ou endotóxico (BSAVA Reproduction, 2ª ed.).',
+            'Inspecionar todos os filhotes: vigor de sucção ao reflexo palatino, hidratação cutânea, repleção abdominal, motilidade e temperatura retal. Pesar em balança digital com precisão de gramas e registrar em curva de ganho diário. Investigar sinais de enterite, eritema perineal e cólica por ingestão de leite ácido ou endotóxico.',
         },
       ],
     },
@@ -125,7 +125,7 @@ export const mastiteRecord: DiseaseRecord = {
           label: '1. Antibioticoterapia Sistêmica Empírica Imediata',
           timing: 'Imediatamente após a coleta do leite',
           detail:
-            'Iniciar antimicrobiano bactericida de amplo espectro com excelente penetração no tecido mamário e baixa toxicidade para filhotes em amamentação. Amoxicilina com clavulanato de potássio ou cefalexina cobrem Staphylococcus pseudintermedius, Streptococcus spp. e a maioria das cepas de Escherichia coli suscetíveis. Em cadelas e gatas sépticas ou em choque, transitar imediatamente para a via parenteral com ampicilina sódica + sulbactam ou cefazolina IV, combinada a enrofloxacino apenas se houver desmame completo obrigatório (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
+            'Iniciar antimicrobiano bactericida de amplo espectro com excelente penetração no tecido mamário e baixa toxicidade para filhotes em amamentação. Amoxicilina com clavulanato de potássio ou cefalexina cobrem Staphylococcus pseudintermedius, Streptococcus spp. e a maioria das cepas de Escherichia coli suscetíveis. Em cadelas e gatas sépticas ou em choque, transitar imediatamente para a via parenteral com ampicilina sódica + sulbactam ou cefazolina IV, combinada a enrofloxacino apenas se houver desmame completo obrigatório.',
           dose:
             'Cefalexina: 20–30 mg/kg PO q8–12h. Amoxicilina + Clavulanato: 13,75–20 mg/kg PO q12h. Ampicilina-Sulbactam (sepse IV): 22–30 mg/kg IV q8h.',
           duration: '10 a 14 dias; reavaliar em 48 horas e ajustar conforme resultado do antibiograma.',
@@ -135,32 +135,32 @@ export const mastiteRecord: DiseaseRecord = {
           label: '2. Analgesia Multimodal Rigorosa',
           timing: 'Fase aguda',
           detail:
-            'A distensão alveolar e a inflamação purulenta causam dor extrema (Score 3–4 na Escala de Glasgow), suprimindo o apetite materno e levando ao abandono dos filhotes. Utilizar opioides agonistas parciais ou plenos na fase aguda: buprenorfina (0,01–0,02 mg/kg SC/IM/SL q8h em gatas e cães) ou tramadol/metadona. Anti-inflamatórios não esteroidais (meloxicam 0,1 mg/kg no D1, depois 0,05 mg/kg q24h PO) somente podem ser usados se a mãe estiver hemodinamicamente estável, normotensa, bem hidratada e sem azotemia (Ettinger, 9ª ed. 2024).',
+            'A distensão alveolar e a inflamação purulenta causam dor extrema (Score 3–4 na Escala de Glasgow), suprimindo o apetite materno e levando ao abandono dos filhotes. Utilizar opioides agonistas parciais ou plenos na fase aguda: buprenorfina (0,01–0,02 mg/kg SC/IM/SL q8h em gatas e cães) ou tramadol/metadona. Anti-inflamatórios não esteroidais (meloxicam 0,1 mg/kg no D1, depois 0,05 mg/kg q24h PO) somente podem ser usados se a mãe estiver hemodinamicamente estável, normotensa, bem hidratada e sem azotemia.',
           dose: 'Buprenorfina 0,01–0,02 mg/kg SC/IM/SL q8–12h; Meloxicam 0,05 mg/kg PO q24h (somente após estabilidade volemica).',
         },
         {
           label: '3. Fisioterapia Local e Ordenha Terapêutica',
           timing: 'A cada 4 a 6 horas',
           detail:
-            'Aplicar compressas mornas e úmidas na glândula afetada por 10–15 minutos para provocar vasodilatação periférica e relaxamento esfincteriano do ducto papilar, seguidas de massagem e ordenha manual delicada em direção ao teto para eliminar o leite retido e o exsudato estagnado. Nunca ordenhar com força excessiva para não romper canalículos. Contraindicado em casos de abscesso com risco de fístula interna e em mastite gangrenosa (Nelson & Couto, 6ª ed.).',
+            'Aplicar compressas mornas e úmidas na glândula afetada por 10–15 minutos para provocar vasodilatação periférica e relaxamento esfincteriano do ducto papilar, seguidas de massagem e ordenha manual delicada em direção ao teto para eliminar o leite retido e o exsudato estagnado. Nunca ordenhar com força excessiva para não romper canalículos. Contraindicado em casos de abscesso com risco de fístula interna e em mastite gangrenosa.',
         },
         {
           label: '4. Intervenção Cirúrgica (Abscesso ou Mastite Gangrenosa)',
           timing: 'Se flutuação evidente, fístula cutânea ou necrose tecidual',
           detail:
-            'Abscessos maduros e flutuantes requerem punção diagnóstica, incisão ampla com drenagem cirúrgica, curetagem de restos necróticos e lavagem copiosa com solução fisiológica morna. Pode-se inserir dreno de Penrose com fixação estéril. Áreas de necrose gangrenosa impõem debridamento cirúrgico de urgência ou mastectomia parcial/total da cadeia mamária afetada para remover a fonte de endotoxinas e bacteremia (BSAVA Reproduction, 2ª ed.; Ettinger, 9ª ed. 2024).',
+            'Abscessos maduros e flutuantes requerem punção diagnóstica, incisão ampla com drenagem cirúrgica, curetagem de restos necróticos e lavagem copiosa com solução fisiológica morna. Pode-se inserir dreno de Penrose com fixação estéril. Áreas de necrose gangrenosa impõem debridamento cirúrgico de urgência ou mastectomia parcial/total da cadeia mamária afetada para remover a fonte de endotoxinas e bacteremia.',
         },
         {
           label: '5. Condução da Lactação e Manejo da Ninhada',
           timing: 'Decisão nas primeiras 12 horas',
           detail:
-            'Se a mastite for leve e localizada, a fêmea estiver estável e o antibiótico for seguro, os filhotes podem continuar mamando nas glândulas sadias. Proteger o teto da glândula afetada com curativo ou fita suave para evitar sucção neonatal. Se houver mastite grave, purulenta maciça, gangrenosa ou a mãe estiver séptica, realizar desmame abrupto completo de todos os filhotes, fornecendo substituto lácteo específico via mamadeira ou sonda orogástrica (BSAVA Reproduction, 2ª ed.).',
+            'Se a mastite for leve e localizada, a fêmea estiver estável e o antibiótico for seguro, os filhotes podem continuar mamando nas glândulas sadias. Proteger o teto da glândula afetada com curativo ou fita suave para evitar sucção neonatal. Se houver mastite grave, purulenta maciça, gangrenosa ou a mãe estiver séptica, realizar desmame abrupto completo de todos os filhotes, fornecendo substituto lácteo específico via mamadeira ou sonda orogástrica.',
         },
         {
           label: '6. Supressão Farmacológica da Lactação (Cabergolina)',
           timing: 'Se desmame total indicado ou perda da ninhada',
           detail:
-            'A cabergolina é um potente agonista dos receptores dopaminérgicos D2 hipofisários que inibe a liberação de prolactina, cessando rapidamente a produção de leite e reduzindo o ingurgitamento mamário. Muito superior à bromocriptina devido à longa duração de ação e menor incidência de náuseas/êmese (Plumb\'s, 10ª ed.; BSAVA Formulary, 10ª ed.).',
+            'A cabergolina é um potente agonista dos receptores dopaminérgicos D2 hipofisários que inibe a liberação de prolactina, cessando rapidamente a produção de leite e reduzindo o ingurgitamento mamário. Muito superior à bromocriptina devido à longa duração de ação e menor incidência de náuseas/êmese.',
           dose: 'Cabergolina: 5 mcg/kg (0,005 mg/kg) PO uma vez ao dia (q24h), administrada com alimento por 5 a 7 dias.',
           duration: '5 a 7 dias contínuos.',
           reassess: 'Regressão completa da secreção de leite e atenuação do edema mamário.',
@@ -217,7 +217,7 @@ export const mastiteRecord: DiseaseRecord = {
     '1. Dinâmica da Barreira Hematomamária e Alterações Físico-Químicas do Leite: No parênquima mamário normal em lactação, junções oclusivas estreitas (tight junctions) entre as células epiteliais alveolares impedem a passagem livre de eletrólitos e proteínas do sangue para o leite. O leite de cadelas e gatas sadias possui pH ácido a neutro (6,2 a 6,5) e concentrações relativamente baixas de sódio e cloro, compensadas por altas concentrações de lactose e potássio. Sob agressão inflamatória bacteriana e liberação de TNF-alfa, IL-1beta e histamina, as junções oclusivas desestabilizam-se e se abrem. Ocorre extravasamento maciço de líquido plasmático rico em sódio, bicarbonato e albumina para o lume alveolar, provocando uma elevação abrupta do pH lácteo para 7,2–7,8. A perda de integridade acinar converte o leite em secreção serossanguinolenta ou purulenta com precipitação de fibrina em grumos obstrutivos.\n\n' +
     '2. Fisiopatologia da Isquemia e Gangrena Mamária: Determinados isolados de Staphylococcus produzem toxina alfa que deflagra vasoespasmo arteriolar severo, enquanto E. coli ativa a cascata de coagulação intravascular através da expressão do fator tecidual em células endoteliais expostas ao LPS. Essa combinação gera trombose microvascular disseminada nos plexos capilares mamários. O parênquima mamário, aprisionado sob a fáscia e a pele inelástica distendida pelo edema inflamatório tenso, sofre síndrome compartimental local, levando à anóxia tecidual e necrose coagulativa gangrenosa. A pele sobrejacente perde a temperatura (torna-se fria ao toque), adquire tonalidade cianótica/violácea e evolui para flictenas, ulceração e esfacelo necrótico total com exposição de gordura e fáscia muscular.\n\n' +
     '3. Fisiopatologia da Sepse Puerperal Materna: Quando a barreira local sucumbe, o LPS de E. coli atinge a veia epigástrica superficial caudal e ganha a veia cava caudal. No endotélio vascular pulmonar e renal, o LPS ativa a enzima óxido nítrico sintase induzível (iNOS), produzindo vasodilatação arterial sistêmica refratária com choque distributivo (hipotensão), hipoperfusão tecidual e elevação acentuada de lactato sérico. Paralelamente, o consumo de plaquetas e fatores de coagulação culmina em trombocitopenia de consumo e CIVD.\n\n' +
-    '4. Eixo Neuroendócrino e Supressão da Produção de Leite: A dor extrema da mastite gera estimulação simpática aguda com liberação maciça de catecolaminas (adrenalina e noradrenalina), as quais induzem vasoconstrição dos leitos vasculares mamários e antagonizam os efeitos da ocitocina no músculo mioepitelial alveolar, impedindo a ejeção do leite ("milk let-down"). Simultaneamente, a estase prolongada acumula o peptídeo FIL (Feedback Inhibitor of Lactation) na luz alveolar, o qual sinaliza aos colonócitos mamários para cessarem a síntese de caseína e lactose, resultando em hipogalactia ou agalactia materna permanente se a lesão for destrutiva.',
+    '4. Eixo Neuroendócrino e Supressão da Produção de Leite: A dor extrema da mastite gera estimulação simpática aguda com liberação maciça de catecolaminas (adrenalina e noradrenalina), as quais induzem vasoconstrição dos leitos vasculares mamários e antagonizam os efeitos da ocitocina no músculo mioepitelial alveolar, impedindo a ejeção do leite ("milk let-down"). Simultaneamente, a estase prolongada acumula o peptídeo FIL (retroalimentação Inhibitor of Lactation) na luz alveolar, o qual sinaliza aos colonócitos mamários para cessarem a síntese de caseína e lactose, resultando em hipogalactia ou agalactia materna permanente se a lesão for destrutiva.',
   clinicalSignsPathophysiology: [
     {
       system: 'mammary',
@@ -358,7 +358,7 @@ export const mastiteRecord: DiseaseRecord = {
       title: 'Exame Físico e Triagem Clínica Materna e Neonatal',
       purpose: 'Identificar a gravidade inflamatória local, detectar sinais de sepse materna e rastrear toxicidade na ninhada.',
       description:
-        'Avaliação sistemática de todos os pares mamários, desde o primeiro par torácico até o quinto par inguinal (em cadelas) e quatro pares em gatas. Registrar consistência, temperatura local, hiperestesia e coloração cutânea. Examinar cuidadosamente a vulva e lóquios pós-parto para detectar metrite. Em paralelo, inspecionar a ninhada avaliando atividade motora, preenchimento abdominal, hidratação e peso corporal com balança eletrônica de precisão (Nelson & Couto, 6ª ed.; BSAVA Reproduction, 2ª ed.).',
+        'Avaliação sistemática de todos os pares mamários, desde o primeiro par torácico até o quinto par inguinal (em cadelas) e quatro pares em gatas. Registrar consistência, temperatura local, hiperestesia e coloração cutânea. Examinar cuidadosamente a vulva e lóquios pós-parto para detectar metrite. Em paralelo, inspecionar a ninhada avaliando atividade motora, preenchimento abdominal, hidratação e peso corporal com balança eletrônica de precisão.',
       interpretation:
         'Glândula dolorosa, quente e endurecida com leite descolorido confirma mastite. Hipotermia materna, petéquias ou pele mamária violácea fria indicam mastite gangrenosa e sepse puerperal. Filhotes em choro contínuo com perda ponderal confirmam agalactia ou síndrome do leite tóxico.',
       limitations:
@@ -370,7 +370,7 @@ export const mastiteRecord: DiseaseRecord = {
       title: 'Citologia do Leite Mamário e Mensuração de pH',
       purpose: 'Diferenciar mastite séptica de galactostase não infecciosa em minutos e comprovar infecção bacteriana ativa.',
       description:
-        'Higienizar a extremidade do teto com clorexidina a 0,5%, descartar as primeiras duas gotas e ordenhar diretamente uma gota em lâmina microscópica e uma gota sobre fita indicadora de pH. Corar a lâmina seca com Diff-Quik (Panótico rápido) ou Gram. O leite normal possui pH 6,2 a 6,5 e exibe raros neutrófilos, células epiteliais e colostrofores espumosos. A mastite apresenta pH alcalino (> 7,0 a 7,8) e exsudato neutrofílico maciço (> 20 neutrófilos por campo de imersão de 1000x), com neutrófilos exibindo alterações tóxicas/degenerativas (cariólise) e bactérias (cocos ou bacilos) fagocitadas intracelularmente (Nelson & Couto, 6ª ed.; Svensson et al., 2023).',
+        'Higienizar a extremidade do teto com clorexidina a 0,5%, descartar as primeiras duas gotas e ordenhar diretamente uma gota em lâmina microscópica e uma gota sobre fita indicadora de pH. Corar a lâmina seca com Diff-Quik (Panótico rápido) ou Gram. O leite normal possui pH 6,2 a 6,5 e exibe raros neutrófilos, células epiteliais e colostrofores espumosos. A mastite apresenta pH alcalino (> 7,0 a 7,8) e exsudato neutrofílico maciço (> 20 neutrófilos por campo de imersão de 1000x), com neutrófilos exibindo alterações tóxicas/degenerativas (cariólise) e bactérias (cocos ou bacilos) fagocitadas intracelularmente (Svensson et al., 2023).',
       interpretation:
         'A demonstração de neutrófilos degenerados com bactérias intracelulares confirma mastite bacteriana séptica de forma definitiva e imediata, justificando início imediato de antimicrobianos. A presença de leite com pH normal e macrófagos sem bactérias indica galactostase estéril.',
       limitations:
@@ -382,7 +382,7 @@ export const mastiteRecord: DiseaseRecord = {
       title: 'Cultura Microbiológica e Antibiograma do Leite',
       purpose: 'Identificar a espécie bacteriana causadora e determinar o perfil de sensibilidade e resistência antimicrobiana.',
       description:
-        'Coleta rigorosamente estéril do leite mamário antes da administração da primeira dose de antimicrobiano. Limpeza antisséptica cirúrgica do teto com álcool 70% e clorexidina. O leite é ordenhado para tubo estéril e encaminhado sob refrigeração para cultivo quantitativo em ágar sangue e ágar MacConkey, seguido de teste de sensibilidade aos antimicrobianos (antibiograma por disco-difusão ou microdiluição em caldo) (Svensson et al., 2023; Greene\'s, 5ª ed. 2023).',
+        'Coleta rigorosamente estéril do leite mamário antes da administração da primeira dose de antimicrobiano. Limpeza antisséptica cirúrgica do teto com álcool 70% e clorexidina. O leite é ordenhado para tubo estéril e encaminhado sob refrigeração para cultivo quantitativo em ágar sangue e ágar MacConkey, seguido de teste de sensibilidade aos antimicrobianos (antibiograma por disco-difusão ou microdiluição em caldo) (Svensson et al., 2023).',
       interpretation:
         'Crescimento bacteriano significativo (> 10^4 UFC/mL) de patógenos puros (E. coli, S. pseudintermedius, Streptococcus spp.) correlacionado à citologia inflamatória orienta o descalonamento ou ajuste da antibioticoterapia empírica inicial.',
       limitations:
@@ -394,7 +394,7 @@ export const mastiteRecord: DiseaseRecord = {
       title: 'Ultrassonografia Mamária de Alta Frequência',
       purpose: 'Avaliar arquitetura tecidual, identificar abscessos encapsulados, quantificar estase ductal e mapear necrose gangrenosa.',
       description:
-        'Exame com transdutor linear superficial de alta resolução (10 a 18 MHz) aplicado sobre a pele da glândula mamária previamente umedecida com álcool ou gel acústico. Avalia-se o parênquima mamário em planos longitudinais e transversais, comparando glândulas sadias e afetadas. Utilização de Doppler colorido para avaliar o fluxo vascular nos vasos mamários (Ettinger, 9ª ed. 2024).',
+        'Exame com transdutor linear superficial de alta resolução (10 a 18 MHz) aplicado sobre a pele da glândula mamária previamente umedecida com álcool ou gel acústico. Avalia-se o parênquima mamário em planos longitudinais e transversais, comparando glândulas sadias e afetadas. Utilização de Doppler colorido para avaliar o fluxo vascular nos vasos mamários.',
       interpretation:
         'A mastite catarral/aguda exibe espessamento tecidual heterogêneo difuso com ectasia de ductos lactíferos repletos de ecos internos fluidos. O abscesso mamário caracteriza-se por cavidade focal bem delineada com conteúdo anecoico a hipoecoico espesso, debris móveis e reforço acústico posterior, orientando punção ou drenagem cirúrgica. A ausência de fluxo ao Doppler colorido associada à perda da estratificação tecidual indica infarto isquêmico e gangrena.',
       limitations:
@@ -406,7 +406,7 @@ export const mastiteRecord: DiseaseRecord = {
       title: 'Hemograma Completo, Bioquímica Sérica e Lactato',
       purpose: 'Detectar sepse, resposta inflamatória sistêmica (SIRS), disfunção renal/hepática e alterações metabólicas na mãe.',
       description:
-        'Colheita de sangue venoso para avaliação hematológica automatizada com contagem diferencial de leucócitos, creatinina, ureia, ALT, fosfatase alcalina, albumina, glicemia, eletrólitos (sódio, potássio, cálcio iônico) e lactato sérico (Ettinger, 9ª ed. 2024; Nelson & Couto, 6ª ed.).',
+        'Colheita de sangue venoso para avaliação hematológica automatizada com contagem diferencial de leucócitos, creatinina, ureia, ALT, fosfatase alcalina, albumina, glicemia, eletrólitos (sódio, potássio, cálcio iônico) e lactato sérico.',
       interpretation:
         'Leucocitose acentuada por neutrofilia com desvio à esquerda regenerativo ou neutropenia com desvio degenerativo severo e toxicidade neutrofílica (vacuolização, corpúsculos de Döhle) confirmam sepse bacteriana grave. Trombocitopenia sugere consumo plaquetário e risco de CIVD. Hipoalbuminemia ocorre por extravasamento tecidual. Lactato sérico > 2,5 mmol/L indica hipoperfusão sistêmica e choque.',
       limitations:
@@ -432,7 +432,7 @@ export const mastiteRecord: DiseaseRecord = {
   ],
   treatment: {
     antimicrobianos: [
-      'Princípios de Seleção Farmacológica na Lactação: O antimicrobiano de escolha deve apresentar propriedades físico-químicas que favoreçam sua concentração no parênquima mamário (lipofilicidade moderada a alta e fraca ligação proteica), atividade bactericida contra Gram-positivos e Gram-negativos e segurança estrita para os filhotes neonatos que absorverão frações do fármaco através do leite (Plumb\'s, 10ª ed.; BSAVA Formulary, 10ª ed.).',
+      'Princípios de Seleção Farmacológica na Lactação: O antimicrobiano de escolha deve apresentar propriedades físico-químicas que favoreçam sua concentração no parênquima mamário (lipofilicidade moderada a alta e fraca ligação proteica), atividade bactericida contra Gram-positivos e Gram-negativos e segurança estrita para os filhotes neonatos que absorverão frações do fármaco através do leite.',
       'Antimicrobianos de Primeira Escolha (Casos Leves a Moderados sem Sepse):\n' +
       '- Amoxicilina com Clavulanato de Potássio: 13,75 a 20 mg/kg por via oral a cada 12 horas (PO q12h). Excelente cobertura contra Staphylococcus pseudintermedius produtor de betalactamase, Streptococcus spp. e cepas suscetíveis de E. coli. Baixíssima toxicidade neonatal (apenas risco esporádico de diarreia benigna transitória na ninhada).\n' +
       '- Cefalexina: 20 a 30 mg/kg por via oral a cada 8 a 12 horas (PO q8–12h). Cefalosporina de primeira geração com excelente tropismo tecidual cutâneo e mamário e potente ação contra cocos Gram-positivos.',
@@ -467,7 +467,7 @@ export const mastiteRecord: DiseaseRecord = {
       '3. Fístulas Mamárias Crônicas com Drenagem Purulenta Persistente.',
       'Procedimentos Cirúrgicos Recomendados:\n' +
       '- Drenagem e Debridamento de Abscesso: Incisão na porção mais dependente da coleção purulenta sob anestesia geral e bloqueio local. Aspiração do pus, desbridamento suave de septos fibrosos internos, lavagem profusa com solução fisiológica morna associada a clorexidina degermante diluída a 0,05%. Inserção de dreno passivo de Penrose fenestrado fixado com pontos simples de náilon, mantido por 48 a 72 horas até que a drenagem cesse significativamente.\n' +
-      '- Desbridamento Amplo e Mastectomia Parcial ou Total: Na mastite gangrenosa, realiza-se excisão cirúrgica com margem de segurança de todo o parênquima mamário necrosado e pele isquêmica associada. Se houver envolvimento de múltiplos pares na mesma cadeia, a mastectomia regional ou total da cadeia mamária unilateral é o procedimento salvador de vida, seguido de síntese reconstrutiva com retalhos cutâneos de avanço (BSAVA Reproduction, 2ª ed.; Ettinger, 9ª ed. 2024).',
+      '- Desbridamento Amplo e Mastectomia Parcial ou Total: Na mastite gangrenosa, realiza-se excisão cirúrgica com margem de segurança de todo o parênquima mamário necrosado e pele isquêmica associada. Se houver envolvimento de múltiplos pares na mesma cadeia, a mastectomia regional ou total da cadeia mamária unilateral é o procedimento salvador de vida, seguido de síntese reconstrutiva com retalhos cutâneos de avanço.',
     ],
     lactacao: [
       'Manejo da Amamentação e Decisão de Desmame:\n' +
@@ -476,7 +476,7 @@ export const mastiteRecord: DiseaseRecord = {
       'Supressão Farmacológica da Lactação (Ablactação Médica com Cabergolina):\n' +
       'Quando o desmame total é imposto, deve-se inibir a lactação farmacologicamente para interromper o estímulo inflamatório e o acúmulo de secreção:\n' +
       '- Cabergolina: Agonista sintético potente e de ação prolongada dos receptores de dopamina D2 que inibe a secreção de prolactina pela adeno-hipófise. Promove rápida cessação da lactogênese em 48 a 72 horas sem provocar os efeitos colaterais de êmese intensa frequentes com a bromocriptina antiga.\n' +
-      'Dose em cães e gatos: 5 mcg/kg (0,005 mg/kg) por via oral, administrada uma vez ao dia (PO q24h) com alimento por 5 a 7 dias consecutivos (Plumb\'s, 10ª ed.; BSAVA Formulary, 10ª ed.).',
+      'Dose em cães e gatos: 5 mcg/kg (0,005 mg/kg) por via oral, administrada uma vez ao dia (PO q24h) com alimento por 5 a 7 dias consecutivos.',
     ],
     suporteNeonatal: [
       'Protocolo de Cuidados Neonatais Intensivos (Filhotes Órfãos ou Afastados):\n' +

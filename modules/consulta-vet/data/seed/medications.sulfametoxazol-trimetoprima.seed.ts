@@ -265,7 +265,7 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
       absorption:
         'Após administração oral em cães em jejum ou alimentados, a absorção gastrointestinal da associação trimetoprima-sulfonamida é rápida e quase completa. O estudo farmacocinético cruzado padrão ouro conduzido por Ekstrand et al. (2026, BMC Veterinary Research) em cães Beagles comparando administrações intravenosa e oral de TMP-SDZ e TMP-SMX revelou biodisponibilidade oral impressionante de 93% a 97% para ambos os componentes ativos, com picos plasmáticos (Tmax) alcançados entre 1 e 4 horas. A alimentação não interfere de forma clinicamente relevante na exposição sistêmica total da sulfonamida, embora possa retardar levemente a taxa de absorção da trimetoprima. Em felinos, estudos clássicos de Craig e White (1976) demonstraram absorção entérica efetiva; contudo, não existem dados quantitativos modernos de biodisponibilidade felina equivalentes aos caninos, sendo formalmente contraindicado extrapolar os parâmetros cinéticos do cão para o gato.',
       distribution:
-        'A trimetoprima e as sulfonamidas apresentam volumes de distribuição bastante divergentes devido às suas características físico-químicas. A trimetoprima é uma base fraca lipofílica (pKa de 7,1) com volume de distribuição amplo de aproximadamente 2,67 L/kg no cão (Ekstrand et al., 2026; dados históricos de Plumb: 1,49 L/kg), penetrando avidamente nos tecidos parenquimatosos, pulmões, secreções brônquicas, pele e no fluido prostático por aprisionamento iônico. A sulfadiazina e o sulfametoxazol são ácidos fracos (pKa de 6,3 e 5,7) mais restritos ao espaço extracelular, com volume de distribuição de cerca de 0,5 L/kg no cão (Plumb: 1,02 L/kg). Na presença de inflamação meníngea ativa, ambos os fármacos ultrapassam a barreira hematoencefálica, atingindo concentrações no líquor (LCR) de aproximadamente 50% dos níveis plasmáticos. A taxa de ligação proteica plasmática no cão situa-se em torno de 57% para a trimetoprima (fração livre média de 43%), 50% para a sulfadiazina (fração livre de 50%) e 67% para o sulfametoxazol (fração livre de 33%).',
+        'A trimetoprima e as sulfonamidas apresentam volumes de distribuição bastante divergentes devido às suas características físico-químicas. A trimetoprima é uma base fraca lipofílica (pKa de 7,1) com volume de distribuição amplo de aproximadamente 2,67 L/kg no cão (Ekstrand et al., 2026; valores históricos descritos em torno de 1,49 L/kg), penetrando avidamente nos tecidos parenquimatosos, pulmões, secreções brônquicas, pele e no fluido prostático por aprisionamento iônico. A sulfadiazina e o sulfametoxazol são ácidos fracos (pKa de 6,3 e 5,7) mais restritos ao espaço extracelular, com volume de distribuição de cerca de 0,5 a 1,02 L/kg no cão. Na presença de inflamação meníngea ativa, ambos os fármacos ultrapassam a barreira hematoencefálica, atingindo concentrações no líquor (LCR) de aproximadamente 50% dos níveis plasmáticos. A taxa de ligação proteica plasmática no cão situa-se em torno de 57% para a trimetoprima (fração livre média de 43%), 50% para a sulfadiazina (fração livre de 50%) e 67% para o sulfametoxazol (fração livre de 33%).',
       metabolism:
         'Existe uma peculiaridade metabólica fundamental da espécie canina: os cães são geneticamente desprovidos da enzima N-acetiltransferase funcional e não realizam a clássica N-acetilação de sulfonamidas observada em seres humanos e outras espécies. A biotransformação canina ocorre predominantemente por oxidação microssomal via citocromo P450, gerando metabólitos hidroxilaminas reativos que formam nitrosobifenilas e intermediários eletrofílicos que se ligam covalentemente a proteínas teciduais, atuando como haptenos e desencadeando a síndrome de hipersensibilidade imunomediada tardia. A conjugação com ácido glucurônico e sulfato também ocorre. A trimetoprima sofre hidroxilação hepática moderada e oxidação formando metabólitos N-óxidos e alfa-hidroxilados sem atividade antibacteriana substancial.',
       elimination:
@@ -275,7 +275,7 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
       plasmaBinding:
         'Moderada a baixa no cão: fração livre média de aproximadamente 43% para trimetoprima, 50% para sulfadiazina e 33% para sulfametoxazol.',
       halfLife:
-        'No cão (Ekstrand et al., 2026): meia-vida de eliminação plasmática de 4,2 horas para a trimetoprima, 7,6 horas para a sulfadiazina e 12,6 horas para o sulfametoxazol. No Plumb (dados históricos): t1/2 de 2,5 h para trimetoprima e 9,8 h para sulfadiazina.',
+        'No cão (Ekstrand et al., 2026): meia-vida de eliminação plasmática de 4,2 horas para a trimetoprima, 7,6 horas para a sulfadiazina e 12,6 horas para o sulfametoxazol. Dados históricos descreviam t1/2 de 2,5 h para trimetoprima e 9,8 h para sulfadiazina.',
     },
 
     // 5. Informações Gerais e Práticas (Info Tab)
@@ -293,7 +293,7 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
         {
           route: 'Subcutânea (SC - Apresentações Veterinárias Específicas)',
           technique:
-            'Aplicável exclusivamente quando for utilizada formulação veterinária injetável expressamente registrada para a via subcutânea (como apresentações internacionais de TMP-SDZ a 24% ou 48%). A dose descrita no BSAVA é de 30 mg/kg total a cada 24 horas. Injetar no tecido subcutâneo da região interescapular ou flanco.',
+            'Aplicável exclusivamente quando for utilizada formulação veterinária injetável expressamente registrada para a via subcutânea (como apresentações internacionais de TMP-SDZ a 24% ou 48%). A dose descrita nessa apresentação é de 30 mg/kg total a cada 24 horas. Injetar no tecido subcutâneo da região interescapular ou flanco.',
           nursingCare:
             'Realizar massagem suave e avaliar o local da aplicação; formulações injetáveis podem causar dor transitória, edema e fibrose subcutânea local.',
           limitations:
@@ -778,7 +778,7 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
         calculatorEnabled: true,
         presentationId: 'pres-ibatrim-240mg-ml',
         presentationConcentrationId: 'conc-ibatrim-240mg',
-        evidenceLevel: 'Compêndios Veterinários Padrão Ouro (Plumb e BSAVA)',
+        evidenceLevel: 'Consenso Clínico de Infectologia Veterinária',
       },
     ],
 
@@ -1094,7 +1094,7 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
     clinicalWarningItems: [
       {
         label: 'Dose da Associação Total (1:5):',
-        text: 'A dose prescrita em compêndios (Plumb, BSAVA, ISCAID) refere-se SEMPRE ao total da associação na proporção 1:5. A dose padrão de 15 mg/kg total = 2,5 mg/kg de TMP + 12,5 mg/kg de sulfonamida (0,0625 mL/kg de Ibatrim Oral q12h). Nunca calcular 15 mg/kg para cada princípio ativo separadamente.',
+        text: 'A dose preconizada (incluindo diretrizes ISCAID) refere-se SEMPRE ao total da associação na proporção 1:5. A dose padrão de 15 mg/kg total = 2,5 mg/kg de TMP + 12,5 mg/kg de sulfonamida (0,0625 mL/kg de Ibatrim Oral q12h). Nunca calcular 15 mg/kg para cada princípio ativo separadamente.',
       },
       {
         label: 'Ceratoconjuntivite Seca (KCS) & Teste de Schirmer:',

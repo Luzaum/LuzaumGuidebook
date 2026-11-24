@@ -145,7 +145,7 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
           'Reduz a carga fosfórica sistêmica, suprime o hiperparatireoidismo secundário renal e retarda o declínio da taxa de filtração glomerular.',
         monitoring: 'Dosagem de fósforo sérico (após jejum de 12 horas) e cálcio a cada 4 a 6 semanas na titulação e a cada 12 semanas na estabilização; hemograma para MCV e exame neurológico.',
         referenceIds: ['ref-iris-guidelines-2026', 'ref-plumbs-10th-aloh', 'ref-bsava-10th-aloh'],
-        evidenceLevel: 'Diretrizes Clínicas Especializadas IRIS 2026 / Plumb Padrão Ouro',
+        evidenceLevel: 'Diretrizes Clínicas Especializadas IRIS 2026',
       },
       {
         id: 'ind-aloh-early-ckd-fgf23',
@@ -181,7 +181,7 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
           'Alívio sintomático rápido de hiperacidez estomacal, mas com eficácia e duração substancialmente inferiores aos supressores ácidos modernos.',
         monitoring: 'Alívio de náuseas e regurgitação; monitorar presença de constipação fecal.',
         referenceIds: ['ref-marks-2018-acvim', 'ref-bsava-10th-aloh'],
-        evidenceLevel: 'Consenso ACVIM Gastroprotetores 2018 / Formulário BSAVA',
+        evidenceLevel: 'Consenso ACVIM de Gastroprotetores (2018)',
       },
     ],
 
@@ -569,7 +569,7 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-aloh-ckd-titrated',
         species: 'both',
-        indication: 'Hiperfosfatemia na DRC: Faixa de Titulação Refratária (Plumb 10ª ed.)',
+        indication: 'Hiperfosfatemia na DRC: Faixa de Titulação Refratária',
         doseMin: 60,
         doseMax: 100,
         doseUnit: 'mg',
@@ -578,17 +578,17 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
         frequency: 'Dose diária total dividida entre as refeições',
         duration: 'Uso contínuo sob monitoramento rigoroso',
         clinicalContext:
-          'Para pacientes que não atingiram a meta IRIS com doses iniciais. O Plumb permite titular até 100 mg/kg/dia. Se doses próximas a 100 mg/kg/dia não controlarem o fósforo, associar ou substituir por outro ligante (lantânio ou cálcio) para evitar intoxicação por alumínio.',
+          'Para pacientes que não atingiram a meta IRIS com doses iniciais, pode-se titular até 100 mg/kg/dia. Se doses próximas a 100 mg/kg/dia não controlarem o fósforo, associar ou substituir por outro ligante (lantânio ou cálcio) para evitar intoxicação por alumínio.',
         monitoring: 'Fósforo, cálcio, VCM no hemograma e observação rigorosa de tremores ou mioclonia.',
         calculatorEnabled: true,
         presentationId: 'pres-aloh-susp-60mg-ml',
         presentationConcentrationId: 'conc-aloh-susp-60mg',
-        evidenceLevel: 'Monografia Farmacológica Plumb 10ª ed. / Nelson & Couto',
+        evidenceLevel: 'Diretrizes IRIS e Prática Nefrológica Consolidada',
       },
       {
         id: 'dose-aloh-antacid-empirical',
         species: 'both',
-        indication: 'Antiácido Neutralizante Gástrico Adjuvante (Dose BSAVA 10ª ed.)',
+        indication: 'Antiácido Neutralizante Gástrico Adjuvante',
         doseMin: 10,
         doseMax: 30,
         doseUnit: 'mg',
@@ -597,12 +597,12 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 6 a 8 horas (junto ou logo após as refeições)',
         duration: '1 a 3 dias pontuais conforme desconforto gástrico',
         clinicalContext:
-          'Dose empírica do formulário britânico BSAVA. Ação curta de 30-60 minutos; não substitui prazóis na gastrite urêmica severa.',
+          'Dose empírica para neutralização ácida imediata. Ação curta de 30-60 minutos; não substitui inibidores da bomba de prótons na gastrite urêmica severa.',
         monitoring: 'Sinais de alívio de náusea e desconforto abdominal.',
         calculatorEnabled: true,
         presentationId: 'pres-aloh-susp-60mg-ml',
         presentationConcentrationId: 'conc-aloh-susp-60mg',
-        evidenceLevel: 'Formulário Clínico BSAVA 10ª ed. (Dose Empírica)',
+        evidenceLevel: 'Uso Empírico Adjuvante',
       },
     ],
 

@@ -25,6 +25,7 @@ import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed'
 import { gabapentinaMedicationRecord } from './medications.gabapentina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
 import { levetiracetamMedicationRecord } from './medications.levetiracetam.seed';
+import { manitolMedicationRecord } from './medications.manitol.seed';
 import { marbofloxacinaMedicationRecord } from './medications.marbofloxacina.seed';
 import { maropitantMedicationRecord } from './medications.maropitant.seed';
 import { meloxicamMedicationRecord } from './medications.meloxicam.seed';
@@ -36,8 +37,10 @@ import { miltefosinaMedicationRecord } from './medications.miltefosina.seed';
 import { acidoTranexamicoMedicationRecord } from './medications.acido-tranexamico.seed';
 import { mirtazapinaMedicationRecord } from './medications.mirtazapina.seed';
 import { molidustatMedicationRecord } from './medications.molidustat.seed';
+import { nitroprussiatoDeSodioMedicationRecord } from './medications.nitroprussiato-de-sodio.seed';
 import { ondansetronaMedicationRecord } from './medications.ondansetrona.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
+import { pilocarpinaMedicationRecord } from './medications.pilocarpina.seed';
 import { pradofloxacinaMedicationRecord } from './medications.pradofloxacina.seed';
 import { prednisolonaMedicationRecord } from './medications.prednisolona.seed';
 import { pronefraMedicationRecord } from './medications.pronefra.seed';
@@ -57,7 +60,7 @@ import { trazodonaMedicationRecord } from './medications.trazodona.seed';
  * - Clindamicina (Clinbacter / Dalacin C)
  * - Dipirona (metamizol)
  * - Enrofloxacina (Baytril / Zelotril)
- * - Fenobarbital (Gardenal / Convless)
+ * - Fenobarbital (Fenocris / Gardenal)
  * - Hidróxido de Alumínio [Al(OH)3] (quelante de fosfato e antiácido)
  * - Metadona (Mytedom / Comfortan)
  * - Pradofloxacina (Veraflox)
@@ -91,6 +94,7 @@ export const medicationsSeed: MedicationRecord[] = [
   gabapentinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
   levetiracetamMedicationRecord,
+  manitolMedicationRecord,
   marbofloxacinaMedicationRecord,
   maropitantMedicationRecord,
   meloxicamMedicationRecord,
@@ -102,8 +106,10 @@ export const medicationsSeed: MedicationRecord[] = [
   acidoTranexamicoMedicationRecord,
   mirtazapinaMedicationRecord,
   molidustatMedicationRecord,
+  nitroprussiatoDeSodioMedicationRecord,
   ondansetronaMedicationRecord,
   phenobarbitalMedicationRecord,
+  pilocarpinaMedicationRecord,
   pradofloxacinaMedicationRecord,
   prednisolonaMedicationRecord,
   pronefraMedicationRecord,

@@ -4,1134 +4,1124 @@ export const megaesofagoCaesGatosRecord: DiseaseRecord = {
   id: 'disease-megaesofago-caes-gatos',
   slug: 'megaesofago-caes-gatos',
   title: 'Megaesôfago em Cães e Gatos',
-  subtitle:
-    'Falha de Transporte Esofágico, Diagnóstico Etiológico, Posicionamento Vertical e Manejo de Complicações',
-  synonyms: [
-    'Megaesôfago canino',
-    'Megaesôfago felino',
-    'Ectasia esofágica',
-    'Dismotilidade esofágica generalizada',
-    'Megaesophagus in dogs and cats',
-    'Acalásia esofágica canina',
-    'Dilatação esofágica adquirida',
-    'Canine megaesophagus',
-    'Feline megaesophagus',
-  ],
-  species: ['dog', 'cat'],
+  subtitle: 'Cães e Gatos | Monografia clínica avançada · Revisão bibliográfica: novembro de 2026',
   category: 'gastroenterologia',
   categories: [
     'gastroenterologia',
     'neurologia',
     'pneumologia',
     'nutricao',
-    'emergencia',
+    'urgencia-emergencia',
     'clinica-medica',
   ],
+  species: ['dog', 'cat'],
+  synonyms: [
+    'Megaesophagus',
+    'Acalasia esofágica',
+    'Dismotilidade esofágica',
+    'Dilatação esofágica',
+    'Síndrome semelhante à acalasia do esfíncter esofágico inferior (LES-AS)',
+    'Persistência do arco aórtico direito (PAAD)',
+  ],
   tags: [
-    'Megaesôfago',
+    'Regurgitação',
+    'Esôfago',
+    'Miastenia gravis',
+    'Pneumonia aspirativa',
+    'Videofluoroscopia',
     'Cadeira de Bailey',
-    'Pneumonia Aspirativa',
-    'Miastenia Gravis',
-    'AChR-Ab',
-    'Sildenafil',
     'LES-AS',
-    'MCHR2',
-    'Pastor Alemão',
-    'Disautonomia Felina',
-    'Fluoroscopia VFSS',
-    'Gastrostomia',
-    'Pró-cinéticos',
-    'Nelson & Couto',
-    'BSAVA Gastroenterology',
+    'Sildenafil',
+    'Hipomotilidade esofágica',
   ],
   isPublished: true,
-
+  source: 'seed',
   quickSummary:
-    'Conceito fundamental e falha de transporte:\n' +
-    '- Mecanismo fisiopatológico primário:\n' +
-    '  - Síndrome caracterizada por hipomotilidade ou atonia do corpo esofágico associada à dilatação luminal difusa.\n' +
-    '  - Provoca retenção de alimentos, líquidos e saliva com consequente falha no transporte anterógrado até o estômago.\n' +
-    '- Achado definidor e complicação mais letal:\n' +
-    '  - Regurgitação passiva: expulsão retrógrada sem contração abdominal ativa ou náusea prévia.\n' +
-    '  - Pneumonia aspirativa: principal determinante de óbito, diagnosticada em até 38% dos pacientes já na admissão radiográfica (McBrearty et al., 2011).\n' +
-    '- Anatomia comparada e farmacologia:\n' +
-    '  - Cão: esôfago 100% estriado sob inervação vagal somática; pró-cinéticos comuns (metoclopramida, cisaprida) falham e aumentam a resistência no esfíncter esofágico inferior (LES).\n' +
-    '  - Gato: dois terços proximais estriados e terço distal (~30-40%) de músculo liso.\n' +
-    '- Investigação etiológica e avanços recentes:\n' +
-    '  - Miastenia Gravis adquirida: principal causa secundária no cão adulto (~28%), frequentemente sob forma focal sem tetraparesia.\n' +
-    '  - Genética no Pastor Alemão: variante no gene MCHR2 (Bell et al., 2022); estudos de 2025 comprovaram não ser extrapolável para outras raças (ex: Pastor Branco Suíço).\n' +
-    '  - Fenótipo LES-AS (acalásia funcional): relaxamento deficiente do LES na videofluoroscopia (VFSS), responsivo a sildenafila (0,5 a 1 mg/kg VO) ou miotomia de Heller.\n' +
-    '- Manejo postural e suporte domiciliar vitalício:\n' +
-    '  - Alimentação vertical a 80-90 graus na Cadeira de Bailey e manutenção postural por 10 a 20 minutos pós-refeição com consistência dietética individualizada.',
-
+    'Síndrome caracterizada por dilatação anormal, difusa ou segmentar, do esôfago associada à hipomotilidade ou ausência de peristaltismo eficaz. Alimentos, água e saliva ficam retidos no lúmen esofágico e retornam por regurgitação. Frequentemente não é o diagnóstico etiológico definitivo: exige investigação ativa de causas secundárias tratáveis (como miastenia gravis, hipoadrenocorticismo, disautonomia e síndromes semelhantes à acalasia do EEI — LES-AS) e prevenção rigorosa da pneumonia aspirativa.',
   quickDecisionStrip: [
-    'Megaesôfago é uma síndrome de transporte: investigar sempre a causa de base antes de classificar como idiopático.',
-    'No cão, o esôfago é 100% estriado: pró-cinéticos tradicionais não funcionam e podem contrair perigosamente o LES.',
-    'Pneumonia aspirativa afeta até 38% no diagnóstico: avaliar o pulmão mesmo em animais sem queixa inicial de tosse.',
-    'Alimentar em Cadeira de Bailey verdadeira: colocar a tigela elevada no chão NÃO substitui o eixo vertical a 90 graus.',
-    'Testar Miastenia Gravis (AChR-Ab) em todo adulto: a forma focal cursa com fraqueza apenas esofágica, faríngea e laríngea.',
+    'Regurgitação ≠ vômito: determina se a investigação inicial é esofágica (tórax) ou gastrintestinal/abdominal.',
+    'Investigue miastenia gravis em todo cão adulto com megaesôfago adquirido, mesmo sem fraqueza locomotora.',
+    'Radiografia normal não exclui dismotilidade ou LES-AS: considere videofluoroscopia funcional.',
+    'Aspiração nem sempre é bacteriana de imediato: diferencie pneumonite química estéril de pneumonia infecciosa.',
+    'Alimentação vertical (cadeira de Bailey), textura testada e tempo pós-prandial de 15–30 min são tratamento de primeira linha.',
+    'Pró-cinéticos de músculo liso (metoclopramida/cisaprida) não restauram o corpo estriado canino e podem aumentar o tônus do EEI.',
   ],
-
   quickSummaryRich: {
     lead:
-      'O megaesôfago em cães e gatos é uma falha neuromuscular e mecânica grave do transporte esofágico caracterizada por dilatação atônica e estase intraluminal. O foco do atendimento deve ser a prevenção da pneumonia aspirativa, a busca meticulosa por causas reversíveis e a alimentação vertical verdadeira.',
+      'O megaesôfago frequentemente não é o diagnóstico etiológico definitivo: é muitas vezes a manifestação clínica de outra doença sistêmica, neuromuscular ou funcional tratável.',
     leadHighlights: [
-      'Pneumonia aspirativa em até 38% dos pacientes já na primeira consulta radiográfica.',
-      'Musculatura esofágica canina é 100% estriada: pró-cinéticos são ineficazes e podem agravar a retenção.',
-      'Miastenia Gravis adquirida é a principal causa secundária no cão (~28%), mesmo sem tetraparesia.',
-      'Posicionamento na Cadeira de Bailey substitui o peristaltismo ausente pela ação física da gravidade.',
+      'não é o diagnóstico etiológico definitivo',
+      'outra doença sistêmica, neuromuscular ou funcional tratável',
     ],
     pillars: [
       {
-        title: 'Mecânica do Transporte e Regurgitação Passiva',
+        title: 'Visão geral e paciente típico',
         body:
-          'Diferente do vômito, a regurgitação é um evento mecânico passivo, desprovido de ondas de náusea prévia, contração muscular abdominal ativa ou bile. O alimento não digerido e a saliva refluem por transbordamento do esôfago dilatado, oferecendo risco contínuo de inundação traqueal e pneumonia química e bacteriana.',
+          'O esôfago perde parte ou toda a propulsão; saliva, água e alimento acumulam-se e retornam por regurgitação ou são aspirados. Típico em filhotes após o desmame (congênito/PAAD) ou cães adultos com regurgitação e emagrecimento. Em gatos é incomum e exige pesquisa criteriosa de disautonomia, alterações neuromusculares, congênitas e obstruções.',
+        highlights: ['regurgitação', 'disautonomia'],
       },
       {
-        title: 'Diferenças Anatômicas e Farmacologia Comparada',
+        title: 'Diagnóstico e complicação mais temida',
         body:
-          'O cão possui 100% de musculatura estriada em todo o corpo esofágico, enquanto o gato possui músculo estriado nos dois terços proximais e músculo liso no terço distal. Metoclopramida e cisaprida não estimulam músculo estriado e podem espasmar o esfíncter esofágico inferior (LES), piorando a estase em cães.',
+          'Anamnese para diferenciar regurgitação de vômito, radiografias cervicotorácicas buscando dilatação esofágica e pneumonia aspirativa (a complicação mais letal), pesquisa de causas secundárias (especialmente AChR-Ab e cortisol basal/ACTH) e videofluoroscopia nos casos duvidosos ou suspeitos de LES-AS.',
+        highlights: ['pneumonia aspirativa', 'AChR-Ab', 'videofluoroscopia'],
       },
       {
-        title: 'Busca Ativa de Causas Secundárias Reversíveis',
+        title: 'Tratamento prioritário',
         body:
-          'O megaesôfago nunca deve ser considerado idiopático sem a realização prévia de sorologia para Miastenia Gravis (AChR-Ab), avaliação de timoma no mediastino cranial, pesquisa de hipoadrenocorticismo (Addison), laringoscopia e exclusão de anéis vasculares congênitos (PRAA) ou corpos estranhos obstrutivos.',
-      },
-      {
-        title: 'Posicionamento Vertical e Individualização Dietética',
-        body:
-          'A Cadeira de Bailey posiciona a coluna perpendicular ao solo (90°), permitindo que a gravidade drene o bolo alimentar até o estômago. O tempo na vertical (10 a 20 minutos) e a consistência da dieta (líquido, papinha ou almôndegas sólidas) devem ser individualizados, preferencialmente por videofluoroscopia (VFSS).',
+          'Corrigir a causa identificável, instituir alimentação rigorosamente verticalizada (cadeira de Bailey), ajustar consistência e fracionamento das refeições, manter hidratação/nutrição e tratar precocemente complicações respiratórias. Cirurgia ou intervenção endoscópica restringe-se a fenótipos específicos.',
+        highlights: ['alimentação rigorosamente verticalizada', 'cadeira de Bailey'],
       },
     ],
-
     diagnosticFlow: {
-      title: 'Fluxograma Diagnóstico Sequencial do Megaesôfago em Cães e Gatos',
+      title: 'Roteiro diagnóstico em 60 segundos',
       steps: [
         {
-          label: 'Passo 1 — Diferenciação Clínica entre Regurgitação e Vômito',
-          detail:
-            'Caracterizar o evento com o tutor. A regurgitação ocorre sem náusea, sialorreia prodrômica ou prensa abdominal ativa, eliminando muco, alimento não digerido de pH neutro e saliva. Em caso de dúvida, solicitar filmagem do episódio doméstico.',
-          timing: 'Atendimento inicial (minutos 0 a 15)',
-          limitations: 'Animais que deglutem novamente o conteúdo regurgitado podem mascarar o sinal, apresentando-se apenas com tosse ou pneumonia.',
+          label: '1. Confirmar regurgitação',
+          detail: 'Expulsão passiva sem pródromo nem esforço abdominal; rastrear taquipneia ou tosse.',
         },
         {
-          label: 'Passo 2 — Estudo Radiográfico Cervical e Torácico (3 Projeções)',
-          detail:
-            'Realizar radiografias cervicais e torácicas completas (laterais direita e esquerda e ventrodorsal). Identificar colunas de gás, ar, líquido ou alimento no esôfago, ventralização da traqueia e investigar ativamente focos cranioventrais de pneumonia aspirativa.',
-          timing: 'Primeiras 2 horas',
-          limitations: 'Aerofagia por dispneia ou ansiedade pode simular dilatação; esôfago temporariamente vazio pode não ser visível.',
+          label: '2. Radiografia cervicotorácica',
+          detail: 'Buscar dilatação gasosa/fluida, desvio ventral da traqueia e infiltrado alveolar ventral.',
         },
         {
-          label: 'Passo 3 — Triagem de Miastenia Gravis (AChR-Ab) e Perfil Laboratorial',
-          detail:
-            'Colher sangue para dosagem de anticorpos contra receptor de acetilcolina (AChR-Ab), hemograma completo, bioquímica sérica, eletrólitos (relação Na:K para Addison) e urinálise. Avaliar silhueta mediastinal cranial no raio-X para afastar timoma.',
-          timing: 'Dia 1 a 3',
-          limitations: 'Formas focais de Miastenia Gravis podem cursar com títulos sorológicos limítrofes ou negativos no início da doença.',
+          label: '3. Pesquisa etiológica ativa',
+          detail: 'Excluir PAAD/estenose/corpo estranho; dosar AChR-Ab (MG) e cortisol basal/ACTH.',
         },
         {
-          label: 'Passo 4 — Avaliação Funcional por Videofluoroscopia (VFSS)',
-          detail:
-            'Submeter o paciente estável ao estudo dinâmico da deglutição com contraste baritado em diferentes consistências (líquido ralo, pasta/slurry e almôndegas sólidas). Avaliar motilidade faríngea, relaxamento do LES e identificar síndrome tipo acalásia (LES-AS).',
-          timing: 'Semana 1 a 2 (após controle da pneumonia)',
-          limitations: 'Risco de broncoaspiração de bário; exige cooperação do paciente e equipamento de radioscopia dinâmica.',
-        },
-        {
-          label: 'Passo 5 — Investigação Específica Felina e Estrutural Avançada',
-          detail:
-            'Em felinos, pesquisar disautonomia (Key-Gaskell), pólipos nasofaríngeos, massas laríngeas (laringomucocele) e hérnia de hiato. Em cães jovens com dilatação cranial à base cardíaca, indicar TC para confirmação de anel vascular congênito (PRAA).',
-          timing: 'Semana 2 a 4',
-          limitations: 'Exames avançados podem exigir sedação ou anestesia geral, momentos de risco extremo de aspiração no megaesôfago.',
+          label: '4. Videofluoroscopia (VFSS)',
+          detail: 'Diferenciar aperistalse difusa, disfagia faríngea e obstrução funcional do EEI (LES-AS).',
         },
       ],
     },
-
     treatmentFlow: {
-      title: 'Fluxograma de Manejo Terapêutico e Nutricional Multimodal',
+      title: 'Conduta terapêutica prioritária',
       steps: [
         {
-          label: 'Passo 1 — Estabilização Imediata e Manejo de Pneumonia Aspirativa',
-          detail:
-            'Se houver febre, taquipneia ou infiltrado alveolar pulmonar, iniciar oxigenioterapia, antibioticoterapia parenteral de amplo espectro (ex: Ampicilina-Sulbactam associada a Enrofloxacina ou Amicacina), nebulização com soro fisiológico e coupage suave.',
-          dose: 'Ampicilina-Sulbactam 30 mg/kg IV q8h; Enrofloxacina 5-10 mg/kg IV q24h (respeitar limite de 5 mg/kg em gatos)',
-          duration: '10 a 21 dias conforme melhora clínica e resolução radiográfica',
-          reassess: 'A cada 12 a 24 horas no internamento; raio-X torácico de controle em 7 a 10 dias',
-          limitations: 'Evitar antibióticos preventivos em pacientes sem evidência clínica ou radiográfica de pneumonia.',
+          label: '1. Estabilizar aspiração',
+          detail: 'O2 + IV + NPO transitório se pneumonia aspirativa ativa; antibiótico parenteral apenas quando indicado.',
         },
         {
-          label: 'Passo 2 — Instituição da Alimentação em Cadeira de Bailey',
-          detail:
-            'Posicionar o paciente na vertical a 80-90 graus durante toda a ingestão de alimento e água. Manter o animal ereto na cadeira por 10 a 20 minutos após a última ingestão para garantir o esvaziamento esofágico pela força gravitacional.',
-          duration: 'Manejo domiciliar contínuo e vitalício',
-          reassess: 'Ajustar o tempo de permanência vertical conforme episódios residuais de regurgitação',
-          limitations: 'Exige adaptação e treinamento positivo do animal e comprometimento rigoroso da família tutora.',
+          label: '2. Tratar causa base',
+          detail: 'Piridostigmina (MG), reposição adrenal (Addison) ou cirurgia (PAAD/LES-AS selecionada).',
         },
         {
-          label: 'Passo 3 — Teste e Individualização da Consistência Alimentar',
-          detail:
-            'Testar sistematicamente consistências: papinha homogênea (slurry), alimento úmido em almôndegas firmes (meatballs) ou pedaços secos engolidos inteiros. Conforme Haines et al. (2022), a resposta é estritamente individual e não existe consistência universal.',
-          duration: 'Avaliação durante 3 a 5 dias para cada consistência',
-          reassess: 'Semanalmente pelo número de episódios de regurgitação e ganho de peso',
-          limitations: 'A consistência que funciona para um paciente pode provocar retenção imediata em outro.',
+          label: '3. Postura vertical + dieta',
+          detail: 'Cadeira de Bailey (15–30 min pós-refeição), 3–6 pequenas porções e textura individualizada.',
         },
         {
-          label: 'Passo 4 — Protocolo Farmacológico com Sildenafila na Suspeita de LES-AS',
-          detail:
-            'Em animais com evidência fluoroscópica de hiper-resistência ou acalásia funcional do LES (LES-AS), prescrever sildenafila líquida para relaxamento do músculo liso do esfíncter por aumento de GMPc.',
-          dose: '0,5 a 1,0 mg/kg VO a cada 12h, administrada 15 a 30 minutos antes da refeição vertical',
-          duration: 'Teste terapêutico por 14 a 21 dias',
-          reassess: 'Avaliar esvaziamento esofágico e redução da frequência de regurgitações',
-          limitations: 'Estudos controlados em megaesôfago generalizado idiopático estável demonstraram benefício clínico limitado (Mehain et al., 2022).',
-        },
-        {
-          label: 'Passo 5 — Gastrostomia (G-Tube) em Pacientes Críticos ou Refratários',
-          detail:
-            'Indicar colocação cirúrgica ou endoscópica de sonda de gastrostomia (PEG ou cirúrgica) em pacientes com desnutrição severa progressiva ou incapacidade de deglutição segura. Permite nutrição e hidratação sem passar pelo esôfago.',
-          duration: 'Temporária (semanas a meses) ou permanente conforme a etiologia',
-          reassess: 'Manutenção do estoma a cada 48 a 72h e peso semanal',
-          limitations: 'A gastrostomia contorna o trânsito do alimento, mas NÃO impede a aspiração de saliva acumulada no esôfago nem o refluxo.',
+          label: '4. Adjuvantes seletivos',
+          detail: 'IBP/sucralfato se esofagite; sildenafil em congênitos/LES-AS selecionados; evitar metoclopramida/cisaprida em cães.',
         },
       ],
     },
   },
-
-  plainLanguage: {
-    whatIsIt:
-      'O megaesôfago é uma condição na qual o esôfago — o tubo muscular que transporta a comida e a água da boca até o estômago — perde sua capacidade de contração (fica "flácido" ou "paralisado") e se dilata como uma bexiga frouxa. Com isso, os alimentos, líquidos e até a própria saliva que o animal engole não conseguem descer naturalmente e ficam parados acumulados dentro do esôfago. Pouco tempo depois de comer ou beber (ou mesmo horas depois), esse material retorna de forma passiva pela boca, sem esforço na barriga nem enjoo — um fenômeno chamado de regurgitação. O perigo mais grave dessa condição é que pedaços de comida, água ou saliva acumulados podem escapar para a traqueia e descer até os pulmões, provocando uma infecção grave e potencialmente fatal conhecida como pneumonia aspirativa. O megaesôfago não é uma doença única, mas sim um sinal de que algo interrompeu o funcionamento dos nervos ou músculos do esôfago. Embora existam filhotes que nascem com essa alteração (forma congênita, comum em Pastores Alemães), em cães adultos ela quase sempre tem uma causa por trás, como a Miastenia Gravis (uma doença autoimune tratável), inflamações intensas, intoxicações ou alterações hormonais. Com paciência, cadeira especial de alimentação (Cadeira de Bailey), consistência correta do alimento e vigilância contra pneumonias, muitos cães e gatos conseguem viver com excelente qualidade de vida e carinho por muitos anos.',
-    keyPoints: [
-      'Regurgitação não é vômito: no vômito o animal faz força com a barriga, tem náusea, saliva e passa mal antes; na regurgitação o alimento ou a água saem da boca de repente, de forma passiva, sem que o animal faça esforço abdominal.',
-      'A pneumonia por aspiração é o maior perigo: quando o esôfago fica cheio de comida parada, o líquido pode escorrer para os pulmões. Tosse seca, respiração ofegante, cansaço fácil e febre são sinais de emergência que exigem atendimento veterinário imediato.',
-      'Alimentação obrigatoriamente na vertical (Cadeira de Bailey): não adianta apenas colocar o pote no chão em cima de uma caixa ou tijolo. O peito e a coluna do animal precisam ficar em pé (a 90 graus do chão) como se ele estivesse sentado em uma cadeira humana, para que a gravidade empurre o alimento direto ao estômago.',
-      'Permanecer em pé após a refeição: após terminar de comer, o paciente deve ficar na posição vertical por pelo menos 10 a 20 minutos para dar tempo de todo o conteúdo esvaziar para o estômago antes de ele voltar a deitar.',
-      'Não existe uma textura de comida que sirva para todos: alguns animais engolem melhor almôndegas de ração úmida que escorregam inteiras, outros precisam de papinha líquida (slurry) e outros preferem ração pastosa. O veterinário ajuda a testar qual textura funciona melhor para o seu animal.',
-      'Cuidado redobrado com a água: a água pura e líquida é frequentemente o elemento mais perigoso para engasgos. Pode ser necessário oferecer água gelificada, caldos espessados ou permitir que ele beba apenas dentro da cadeira vertical.',
-      'Investigar sempre a causa no animal adulto: o megaesôfago pode ser o primeiro sinal de Miastenia Gravis ou doenças hormonais que possuem tratamento com remédios específicos capazes de devolver a força ao esôfago.',
-      'Sonda no estômago ajuda na nutrição, mas não impede tudo: uma sonda de gastrostomia permite alimentar animais muito debilitados, mas a saliva acumulada no esôfago ainda pode causar aspiração se os cuidados posturais forem esquecidos.',
-    ],
-    whatIs:
-      'O megaesôfago é uma dilatação flácida do esôfago provocada pela perda das contrações que empurram o alimento, gerando regurgitação passiva, risco de desnutrição e perigo de pneumonia aspirativa nos pulmões.',
-    warningSigns:
-      'Regurgitação frequente de comida ou água não digerida logo após comer ou ao abaixar a cabeça, tosse constante, cansaço desproporcional ao passear, respiração acelerada ou com barulho de catarro no peito, perda de peso rápida, baba espessa acumulada na boca e febre.',
-    diagnosis:
-      'O diagnóstico inicial é feito com radiografias do tórax e do pescoço, mostrando o esôfago largo e cheio de ar ou alimento. A causa deve ser investigada com exame de sangue para Miastenia Gravis (teste de anticorpos AChR-Ab), eletrólitos, função hormonal e, quando disponível, videofluoroscopia (um raio-x em vídeo da deglutição).',
-    homeCare:
-      'Alimentar o pet rigorosamente em pé na Cadeira de Bailey ou no colo em posição ereta, mantendo-o nessa postura por 15 a 20 minutos após a última mordida. Fracionar a alimentação em 3 a 5 pequenas porções ao dia. Nunca deixar potes de água livres no chão se o animal costuma engasgar; hidratar somente na posição vertical. Manter vigilância diária na respiração e temperatura, e nunca deitar o animal logo após comer ou tomar remédios.',
-  },
-
-  figures: [
-    {
-      id: 'fig-megaesofago-1',
-      title: 'Anatomia Comparada e Farmacologia do Esôfago: Cão versus Gato',
-      legend:
-        'Representação esquemática da túnica muscular esofágica:\n' +
-        '- Arquitetura canina:\n' +
-        '  - Musculatura 100% estriada ao longo de toda a extensão visceral sob controle somático vagal; ineficácia dos pró-cinéticos tradicionais de músculo liso (metoclopramida e cisaprida).\n' +
-        '- Arquitetura felina:\n' +
-        '  - Dois terços proximais estriados e terço distal de músculo liso; plausibilidade teórica para fármacos serotoninérgicos no segmento distal, porém com risco de espasmo do LES.',
-      url: '/consulta-vet/megaesofago-caes-gatos/fisiopatologia-esofago-cao-vs-gato-musculatura-les.jpg',
-      aspectRatio: '3:2',
-    },
-    {
-      id: 'fig-megaesofago-2',
-      title: 'Biomecânica da Cadeira de Bailey e Posicionamento Postural a 90°',
-      legend:
-        'Comparação biomecânica da alimentação postural:\n' +
-        '- Método inadequado ("tigela elevada no chão"):\n' +
-        '  - A coluna e o tórax permanecem horizontais, permitindo estase esofágica maciça e refluxo passivo para a laringe.\n' +
-        '- Cadeira de Bailey (posição vertical a 90°):\n' +
-        '  - Alinha o eixo esofágico à gravidade, facilitando a abertura hidrostática do esfíncter esofágico inferior e prevenindo pneumonia aspirativa.',
-      url: '/consulta-vet/megaesofago-caes-gatos/posicionamento-cadeira-bailey-gravidade-esvaziamento.jpg',
-      aspectRatio: '3:2',
-    },
-    {
-      id: 'fig-megaesofago-3',
-      title: 'Algoritmo Diagnóstico Etiológico e Investigação por Videofluoroscopia',
-      legend:
-        'Fluxograma sequencial para investigação de megaesôfago em cães e gatos:\n' +
-        '- Diagnóstico diferencial primário:\n' +
-        '  - Diferenciação mandatória entre regurgitação passiva e vômito ativo.\n' +
-        '- Triagem radiográfica e rastreio etiológico:\n' +
-        '  - Dilatação generalizada versus segmentar cranial (sugestiva de anel vascular PRAA).\n' +
-        '  - Investigação de anticorpos anti-AChR para Miastenia Gravis focal, eletrólitos para Addison, disautonomia felina e estudo dinâmico da deglutição por videofluoroscopia (VFSS).',
-      url: '/consulta-vet/megaesofago-caes-gatos/algoritmo-diagnostico-etiologico-megaesofago-vfss.jpg',
-      aspectRatio: '3:2',
-    },
-    {
-      id: 'fig-megaesofago-4',
-      title: 'Manejo Terapêutico Multimodal, Sildenafila e Qualidade de Vida',
-      legend:
-        'Quatro pilares integrados de manejo multimodal:\n' +
-        '- 1. Sildenafila no relaxamento do músculo liso do LES na síndrome tipo acalásia LES-AS.\n' +
-        '- 2. Papel e limites da sonda de gastrostomia (G-tube), que assegura nutrição enteral mas não previne a aspiração de saliva.\n' +
-        '- 3. Tratamento ativo e precoce da pneumonia aspirativa na UTI.\n' +
-        '- 4. Sustentabilidade do plano e acolhimento da sobrecarga do tutor conforme evidências de qualidade de vida (Sinha et al., JAVMA 2026).',
-      url: '/consulta-vet/megaesofago-caes-gatos/manejo-multimodal-sildenafil-nutricao-g-tube.jpg',
-      aspectRatio: '3:2',
-    },
-  ],
-
   etiology: {
-    classificacaoEtiologicaGeral:
-      'Classificação etiológica geral do megaesôfago:\n' +
-      '- Síndrome clínica e radiográfica heterogênea:\n' +
-      '  - O megaesôfago não é um diagnóstico patológico definitivo, mas uma síndrome resultante de diversas causas que comprometem a função neuromuscular, integridade anatômica ou abertura do esfíncter.\n' +
-      '- Quatro grandes categorias etiológicas:\n' +
-      '  - 1. Congênito idiopático: manifestação precoce ao desmame em raças predispostas.\n' +
-      '  - 2. Adquirido idiopático: forma mais prevalente em adultos e idosos sem causa identificável.\n' +
-      '  - 3. Secundário neuromuscular e sistêmico: miastenia gravis, neuropatias, endocrinopatias e intoxicações.\n' +
-      '  - 4. Secundário estrutural ou obstrutivo: anéis vasculares (PRAA), estenoses, corpos estranhos e neoplasias.',
-
-    formaCongenitaIdiopatica:
-      'Megaesôfago congênito idiopático:\n' +
-      '- Período de manifestação clínica típica:\n' +
-      '  - Surge ao desmame (entre 4 e 10 semanas de vida), na transição da dieta líquida materna para alimentos sólidos ou pastosos.\n' +
-      '- Mecanismo patogênico subjacente:\n' +
-      '  - Imaturidade ou defeito no desenvolvimento das vias aferentes e eferentes vagais e dos plexos mioentéricos esofágicos.\n' +
-      '- Raças caninas com predisposição descrita:\n' +
-      '  - Pastor Alemão, Dogue Alemão, Labrador Retriever, Golden Retriever, Setter Irlandês, Fox Terrier de Pelo Duro, Schnauzer Miniatura, Shar Pei, Dálmata e Dachshund.',
-
-    geneticaMCHR2PastorAlemao:
-      'Genética molecular do Pastor Alemão — Locus MCHR2 (Bell et al., 2022):\n' +
-      '- Descoberta seminal no cromossomo 12:\n' +
-      '  - Associação com repetições em tandem (VNTR) de 33 pares de bases na região intrônica do gene MCHR2 (melanin-concentrating hormone receptor 2).\n' +
-      '- Efeito fisiopatológico do MCH:\n' +
-      '  - O receptor MCHR2 atua no controle neuroendócrino da motilidade e apetite; a mutação afeta a coordenação motora esofágica.\n' +
-      '- Predisposição sexual e acurácia preditiva:\n' +
-      '  - Machos homozigotos apresentam o dobro do risco de fêmeas, sugerindo modulação estrogênica protetora no relaxamento do esfíncter esofágico inferior (LES).\n' +
-      '  - A combinação genótipo + sexo predisse o fenótipo com mais de 75% de acurácia na coorte estudada.',
-
-    naoExtrapolarMCHR2OutrasRacas:
-      'Limitação de aplicabilidade — Não extrapolação do MCHR2 (Hytönen et al., 2025):\n' +
-      '- ALERTA GENÉTICO IMPORTANTE:\n' +
-      '  - O teste molecular para a mutação MCHR2 validado no Pastor Alemão NÃO possui valor informativo quando aplicado a outras raças morfologicamente aparentadas, como o Pastor Branco Suíço (Berger Blanc Suisse).\n' +
-      '- Impacto na seleção reprodutiva:\n' +
-      '  - Descartar reprodutores de outras raças baseado nesse teste não reduz a incidência da doença e reduz indevidamente a diversidade genética da raça.\n' +
-      '  - Testes moleculares devem ser utilizados estritamente nas raças para as quais foram cientificamente validados.',
-
-    genomicaDogueAlemao:
-      'Genômica do megaesôfago congênito no Dogue Alemão (Friedenberg et al., 2023):\n' +
-      '- Mapeamento genômico amplo (GWAS):\n' +
-      '  - Identificou associação do megaesôfago congênito a um locus no cromossomo 1, completamente distinto do Pastor Alemão.\n' +
-      '- Arquitetura genética complexa:\n' +
-      '  - A ausência de variantes codificantes simples aponta para modulação por regiões regulatórias não codificantes.\n' +
-      '- Conclusão biológica:\n' +
-      '  - O megaesôfago congênito canino apresenta heterogeneidade genética expressiva, com bases moleculares divergentes entre diferentes raças puras.',
-
-    congenitoFelino:
-      'Megaesôfago congênito na espécie felina:\n' +
-      '- Ocorrência epidemiológica:\n' +
-      '  - Entidade de incidência extremamente rara na rotina médica veterinária.\n' +
-      '- Raças envolvidas e herança:\n' +
-      '  - A raça Siamês e seus cruzamentos concentram os relatos descritos, sugerindo provável componente hereditário autossômico na maturação neuromuscular esofágica.\n' +
-      '- Status genético atual:\n' +
-      '  - Nenhuma mutação causal pontual foi mapeada ou identificada na espécie felina até o momento.',
-
-    adquiridoIdiopatico:
-      'Megaesôfago adquirido idiopático em cães:\n' +
-      '- Perfil epidemiológico clássico:\n' +
-      '  - Forma mais comum de megaesôfago em cães adultos e idosos (idade mediana de 7 a 9 anos).\n' +
-      '- Critério diagnóstico de exclusão:\n' +
-      '  - Definido pela ausência de causa identificável após investigação rigorosa (sorologia AChR-Ab negativa, cortisol e eletrólitos normais, sem massas, estenoses ou toxinas).\n' +
-      '- Substrato neuropatológico:\n' +
-      '  - Neuropatia degenerativa focal idiopática dos axônios vagais ou dos núcleos motores ambíguo e motor dorsal no tronco encefálico.',
-
-    secundarioNeuromuscular:
-      'Megaesôfago secundário — Causas neuromusculares e sistêmicas:\n' +
-      '- Junção neuromuscular e nervos periféricos:\n' +
-      '  - Miastenia Gravis adquirida: principal etiologia secundária no cão (~28% dos casos adquiridos).\n' +
-      '  - Polirradiculoneurite aguda (ACP/AIP) e polineuropatias desmielinizantes.\n' +
-      '  - Disautonomia felina e canina (síndrome de Key-Gaskell).\n' +
-      '  - Toxinas: botulismo (Clostridium botulinum), tétano e paralisia por picada de carrapato.\n' +
-      '- Doenças musculares e sistêmicas:\n' +
-      '  - Polimiosite imunomediada e dermatomiosite.\n' +
-      '  - Distrofias musculares (distrofinopatias).\n' +
-      '  - Neuropatia vagal traumática, cirúrgica ou infiltrativa neoplásica.',
-
-    secundarioEstrutural:
-      'Megaesôfago secundário — Causas estruturais e obstrutivas:\n' +
-      '- Anomalias de anel vascular congênito:\n' +
-      '  - Arco Aórtico Direito Persistente (PRAA): aprisiona o esôfago cranial à base cardíaca entre a aorta, tronco pulmonar e ligamento arterioso.\n' +
-      '- Obstruções intraluminais e cicatriciais:\n' +
-      '  - Estenoses cicatriciais pós-esofagite grave por refluxo gástrico ou pós-anestésica.\n' +
-      '  - Corpos estranhos esofágicos crônicos.\n' +
-      '- Neoplasias e compressões extrínsecas:\n' +
-      '  - Neoplasias esofágicas parietais (carcinomas, leiomiossarcomas, granulomas por Spirocerca lupi).\n' +
-      '  - Massas mediastinais compressivas (linfoma, timoma, carcinomas tireóideos ectópicos).\n' +
-      '  - Hérnia de hiato esofágico deslizante ou paraesofágica.',
-
-    tabelaClassificacaoEtiologica:
-      'Tabela 1 — Classificação etiológica e etiopatogenia do megaesôfago em cães e gatos:\n\n' +
-      '| Categoria Etiológica | Exemplos Clínicos Principais | Espécie Predominante | Mecanismo Fisiopatológico Subjacente |\n' +
-      '| :--- | :--- | :--- | :--- |\n' +
-      '| Congênito Idiopático | Pastor Alemão (MCHR2), Dogue Alemão, Labrador, Siamês | Cães (comum); Gatos (raro) | Falha no desenvolvimento/maturação de aferências ou eferências vagais no corpo esofágico. |\n' +
-      '| Adquirido Idiopático | Cães adultos/idosos sem lesão neuromuscular identificada | Cães (muito frequente); Gatos (raro) | Degeneração progressiva idiopática de axônios vagais ou núcleos motores encefálicos. |\n' +
-      '| Juncional / Imunomediado | Miastenia Gravis adquirida (AChR-Ab positivo) | Cães (~28% dos adquiridos); Gatos (incomum) | Autoanticorpos bloqueiam receptores nicotínicos de acetilcolina no músculo estriado esofágico. |\n' +
-      '| Autonômico Generalizado | Disautonomia (Síndrome de Key-Gaskell) | Gatos (destaque clínico); Cães (raro) | Perda difusa de neurônios ganglionares autonômicos simpáticos e parassimpáticos. |\n' +
-      '| Tóxico / Infeccioso | Botulismo, tétano, chumbo, picada de carrapato | Cães e Gatos | Bloqueio pré-sináptico de liberação de neurotransmissores ou desmielinização tóxica periférica. |\n' +
-      '| Miopático / Inflamatório | Polimiosite, dermatomiosite, esofagite grave transmural | Cães e Gatos | Inflamação e necrose das fibras musculares estriadas ou lisas e plexos mioentéricos. |\n' +
-      '| Estrutural / Anel Vascular | Arco Aórtico Direito Persistente (PRAA), hérnia hiatal | Filhotes cães (Pastor Alemão, Setter); Gatos | Constrição extrínseca focal do esôfago cranial gerando dilatação segmentar por montante. |\n' +
-      '| Funcional do Esfíncter | Síndrome tipo acalásia do LES (LES-AS) | Cães jovens e Gatos (relatos recentes) | Falha no relaxamento receptivo do esfíncter esofágico inferior à chegada do bolo alimentar. |',
+    primaria:
+      'O **megaesôfago congênito idiopático** decorre de falha primária na maturação da inervação vagal ou do controle neuromuscular esofágico sem lesão obstrutiva demonstrável, manifestando-se tipicamente ao desmame durante a transição para alimentos sólidos. Já o **megaesôfago adquirido idiopático** surge em animais adultos após período prévio de função normal, sem identificação de doença neuromuscular, endócrina, tóxica ou mecânica subjacente após investigação completa. O rótulo de "idiopático" deve ser sempre um diagnóstico de exclusão.',
+    secundaria:
+      'As formas secundárias representam parcela expressiva dos casos adultos e oferecem oportunidade real de reversão quando a causa primária é identificada precocemente. Incluem causas **neuromusculares** (miastenia gravis adquirida focal ou generalizada, polimiosite imunomediada ou infecciosa, polirradiculoneurite, botulismo, tétano, neuropatias hereditárias e disautonomia felina/canina), **endócrinas/metabólicas** (hipoadrenocorticismo típico ou atípico; o nexo causal direto do hipotireoidismo isolado é controverso, devendo ser interpretado com cautela diante da síndrome do eutireoideo doente), **inflamatórias/infecciosas** (esofagite erosiva grave, doença do refluxo crônica, espirocercose), **tóxicas** (chumbo, organofosforados/carbamatos, tálio, acrilamida) e **obstrutivas funcionais ou mecânicas** (síndrome semelhante à acalasia do esfíncter esofágico inferior — LES-AS, estenoses cicatriciais, corpos estranhos, neoplasias e anomalias de anel vascular como persistência do arco aórtico direito).',
+    fatoresDeRisco:
+      'Predisposição racial hereditária ou familiar (Pastor Alemão, Dogue Alemão, Setter Irlandês, Terra Nova, Shar-Pei, Fox Terrier Pelo de Arame, Schnauzer Miniatura, Labrador Retriever; em gatos, Siameses historicamente citados em casos congênitos), período de desmame (congênito e PAAD), idade adulta/senil (formas imunomediadas ou paraneoplásicas associadas a timoma), refluxo gastroesofágico perioperatório não tratado, exposição a neurotoxinas e administração de comprimidos ou cápsulas secas irritantes sem lubrificação hídrica em gatos e cães pequenos.',
+    definicaoEDiferenciacaoClinica:
+      '**O que diferencia dilatação esofágica transitória de megaesôfago verdadeiro?**\n' +
+      'O esôfago pode apresentar dilatação transitória discreta durante a passagem de um bolo alimentar, imediatamente após ingestão volumosa de líquidos, em cães com aerofagia acentuada ou sob influência de sedação, anestesia e posicionamento radiográfico — isso não significa doença motora.\n\n' +
+      'No **megaesôfago clinicamente relevante**, existe dilatação anormal persistente associada à dificuldade objetiva de transporte do conteúdo esofágico, resultante de falha de propulsão, aumento de resistência à saída esofágica ou combinação de ambos. Um esôfago dilatado por obstrução mecânica localizada (anel vascular, estenose ou corpo estranho) não deve receber automaticamente o diagnóstico de megaesôfago idiopático.',
+    classificacaoEtiologicaTabela: {
+      kind: 'clinicalTable',
+      caption:
+        'Separar falha propulsiva difusa, obstrução funcional do EEI (LES-AS) e obstrução mecânica localizada evita erros diagnósticos e prognósticos.',
+      headers: ['Classificação', 'Característica fisiopatológica', 'Exemplos principais'],
+      rows: [
+        [
+          'Congênito idiopático',
+          'Dismotilidade presente desde o desenvolvimento, sem outra causa estrutural ou metabólica demonstrada',
+          'Filhotes de raças predispostas que iniciam regurgitação ao desmame',
+        ],
+        [
+          'Congênito secundário / estrutural',
+          'Dilatação decorrente de anomalia anatômica compressiva ou defeito neuromuscular congênito',
+          'Persistência do arco aórtico direito (PAAD), outras anomalias de anel vascular, síndromes miastênicas congênitas',
+        ],
+        [
+          'Adquirido idiopático',
+          'Dilatação e dismotilidade identificadas em adulto após função normal prévia, sem causa esclarecida após triagem',
+          'Megaesôfago adulto não estrutural',
+        ],
+        [
+          'Adquirido secundário',
+          'Dismotilidade provocada por doença neuromuscular, imunomediada, endócrina, inflamatória ou tóxica',
+          'Miastenia gravis, polimiosite, hipoadrenocorticismo, neuropatias periféricas, disautonomia, chumbo',
+        ],
+        [
+          'Obstrutivo funcional',
+          'Falha coordenada de relaxamento/abertura esfinteriana na transição gastroesofágica sem estenose anatômica fixa',
+          'Síndrome semelhante à acalasia do esfíncter esofágico inferior (LES-AS)',
+        ],
+        [
+          'Dilatação secundária a obstrução mecânica',
+          'Acúmulo luminal e distensão proximal ao ponto de obstrução física',
+          'Estenose pós-esofagite/doxiciclina, corpo estranho, anel vascular, granuloma por Spirocerca lupi, neoplasia esofágica ou mediastinal',
+        ],
+      ],
+    },
+    causasSecundariasTabela: {
+      kind: 'clinicalTable',
+      headers: [
+        'Condição secundária',
+        'Pistas clínicas associadas',
+        'Exame confirmatório',
+        'Potencial de reversão',
+      ],
+      rows: [
+        [
+          'Miastenia gravis {{ref:1}}',
+          'Principal causa secundária tratável em cães (38,2% sem lesão estrutural) {{ref:2}}; pode cursar com megaesôfago focal sem fraqueza locomotora ou com timoma',
+          'Anticorpos anti-receptor de acetilcolina (AChR-Ab); radiografia/TC para timoma; ~22% podem ser soronegativos em coortes clínicas {{ref:1}}',
+          'Moderado a alto com diagnóstico e piridostigmina precoces antes de pneumonia grave',
+        ],
+        [
+          'Hipoadrenocorticismo (Addison) {{ref:3}}',
+          'Regurgitação com ou sem sinais GI crônicos e forma atípica com Na/K normais',
+          'Cortisol basal (alta sensibilidade de 98,2%) seguido de teste de estimulação com ACTH para confirmação {{ref:3}}',
+          'Alto — frequentemente reverte com reposição adrenal fisiológica',
+        ],
+        [
+          'Polimiosite / miopatias',
+          'Rigidez muscular, disfagia, atrofia temporal/apendicular e intolerância ao exercício',
+          'CK/AST elevadas, sorologias (Toxoplasma, Neospora), eletromiografia e biópsia muscular',
+          'Variável conforme resposta à terapia específica ou imunossupressão',
+        ],
+        [
+          'Disautonomia (felina / canina)',
+          'Midríase não responsiva, xerostomia, prolapso de 3ª pálpebra, constipação, atonia vesical e bradicardia',
+          'Avaliação autonômica e farmacológica ocular (pilocarpina diluída) + imagem torácica',
+          'Reservado a ruim na disautonomia idiopática difusa',
+        ],
+        [
+          'Hipotireoidismo (cães)',
+          'Associação etiológica controversa: muitos pacientes possuem apenas síndrome do eutireoideo doente',
+          'T4 total, T4 livre por diálise de equilíbrio e TSH fora de crise aguda',
+          'Incerto; reposição hormonal nem sempre reverte o megaesôfago',
+        ],
+        [
+          'Intoxicações (chumbo, organofosforados)',
+          'Sinais neurológicos, digestórios ou muscarínicos concomitantes e histórico ambiental',
+          'Plumbemia, esfregaço (pontilhado basofílico/metarrubricitose) e atividade de colinesterase',
+          'Bom com remoção da fonte tóxica e quelação/antídoto precoce',
+        ],
+        [
+          'Esofagite severa / refluxo crônico',
+          'Odinofagia, sialorreia intensa, pós-anestesia ou pós-cápsula seca (ex.: doxiciclina em gatos)',
+          'Esofagoscopia cuidadosa e histórico medicamentoso/anestésico',
+          'Alto se tratado precocemente antes de estenose fibrosa definitiva',
+        ],
+        [
+          'LES-AS (obstrução funcional do EEI) {{ref:4}}',
+          'Regurgitação precoce pós-prandial e retenção líquida acentuada em "bico de pássaro"',
+          'Videofluoroscopia da deglutição com avaliação dinâmica de abertura do EEI {{ref:4}}',
+          'Bom a excelente em selecionados com dilatação/miotomia de Heller + Dor {{ref:5}}',
+        ],
+      ],
+    },
   },
-
   epidemiology: {
-    prevalenciaCaninaVsFelina:
-      'Prevalência comparada entre caninos e felinos:\n' +
-      '- Espécie canina:\n' +
-      '  - Afecção frequente na rotina médica de cães, figurando entre as principais causas de regurgitação crônica em centros terciários.\n' +
-      '- Espécie felina:\n' +
-      '  - Enfermidade rara a incomum.\n' +
-      '  - REGRA DE OURO no gato: o diagnóstico exige busca exaustiva por causas secundárias mecânicas, cirúrgicas ou disautonômicas, visto que a forma idiopática é exceção nessa espécie.',
-
-    predisposicoesRaciais:
-      'Predisposições raciais em cães e gatos:\n' +
-      '- Raças caninas de grande porte:\n' +
-      '  - Pastor Alemão, Dogue Alemão, Labrador Retriever, Golden Retriever, Setter Irlandês, São Bernardo, Doberman Pinscher e Boxer.\n' +
-      '- Raças caninas pequenas com herança descrita:\n' +
-      '  - Schnauzer Miniatura, Fox Terrier de Pelo Duro e Dachshund.\n' +
-      '- Predisposição na espécie felina:\n' +
-      '  - Siamês: destaque na forma congênita.\n' +
-      '  - Abissínio e Somali: maior propensão à Miastenia Gravis adquirida.',
-
-    distribuicaoPorIdadeESexo:
-      'Distribuição etária bimodal e particularidades sexuais:\n' +
-      '- Padrão de distribuição etária em dois picos:\n' +
-      '  - 1º Pico precoce (1 a 4 meses de idade): formas congênitas idiopáticas e anéis vasculares detectados ao desmame.\n' +
-      '  - 2º Pico tardio (5 a 12 anos de vida): formas adquiridas secundárias e idiopáticas em pacientes adultos/idosos.\n' +
-      '- Dimorfismo sexual dependente de raça:\n' +
-      '  - Pastor Alemão com variante MCHR2: machos apresentam o dobro do risco de fêmeas.\n' +
-      '  - Demais raças e formas adquiridas: distribuição homogênea entre machos e fêmeas sem predileção sexual consolidada.',
-
-    qualidadeDeVidaTutores2026:
-      'Sobrecarga do cuidador e qualidade de vida (Sinha et al., JAVMA 2026):\n' +
-      '- Impacto psicossocial em 262 tutores avaliados:\n' +
-      '  - O desgaste emocional e a sobrecarga contínua superam o impacto puramente financeiro do tratamento.\n' +
-      '- Principais demandas e fatores estressores domiciliares:\n' +
-      '  - Preocupação diária com desnutrição e perda de escore corporal.\n' +
-      '  - Rotina estrita de alimentação vertical na Cadeira de Bailey (3 a 5 refeições fracionadas ao dia).\n' +
-      '  - Impossibilidade de fornecer petiscos convencionais no chão e limitações para viagens familiares.\n' +
-      '  - Ansiedade constante pelo risco de sufocação súbita ou pneumonia aspirativa letal.',
-
-    tabelaAnatomiaEFarmacologiaComparada:
-      'Tabela 2 — Anatomia comparada do esôfago e implicações terapêuticas entre cães e gatos:\n\n' +
-      '| Parâmetro Fisiológico / Clínico | Cão (_Canis lupus familiaris_) | Gato (_Felis catus_) |\n' +
-      '| :--- | :--- | :--- |\n' +
-      '| Composição da Túnica Muscular | 100% Músculo Estriado (Esquelético) do esfíncter cricofaríngeo à cárdia | Dois terços proximais estriados; terço distal (~30-40%) músculo liso |\n' +
-      '| Padrão Mucoso Radiográfico | Pregas longitudinais paralelas lisas | Pregas transversais em "espinha de peixe" (herringbone) no terço distal |\n' +
-      '| Inervação Motora do Corpo | Fibras eferentes somáticas especiais do Nervo Vago (X) | Somática proximal; parassimpática autonômica no terço distal liso |\n' +
-      '| Efeito da Metoclopramida | Sem efeito propulsivo no corpo; pode aumentar o tônus do LES | Sem efeito no corpo proximal; discreto efeito no terço distal liso |\n' +
-      '| Efeito da Cisaprida | Ineficaz no corpo estriado; perigo de elevar resistência no LES | Aumenta motilidade no terço distal liso; eleva tônus do LES |\n' +
-      '| Efeito da Sildenafila | Relaxa a musculatura lisa do LES (útil no fenótipo LES-AS) | Relaxa a musculatura lisa do LES (dados clínicos ainda limitados) |\n' +
-      '| Miastenia Gravis Adquirida | Altamente prevalente (~28% dos megaesôfagos adquiridos) | Menos frequente, mas documentada sob formas focais e generalizadas |\n' +
-      '| Disautonomia (Key-Gaskell) | Infrequente | Importante causa de megaesôfago associada a sinais autonômicos difusos |',
+    distribuicao:
+      'O megaesôfago é relativamente comum entre as doenças esofágicas em cães, mas permanece **incomum em gatos**. Em um estudo retrospectivo com 99 cães portadores de megaesôfago sem lesão estrutural identificável, 10 apresentavam forma congênita e 89 forma adquirida; dentre os casos adquiridos, 42,7% foram classificados como idiopáticos e 38,2% associados à miastenia gravis {{ref:2}}.',
+    fatoresPredisponentes:
+      'Raças caninas frequentemente super-representadas incluem **Pastor Alemão**, **Dogue Alemão**, **Setter Irlandês**, **Terra Nova**, **Shar-Pei**, **Fox Terrier Pelo de Arame**, **Schnauzer Miniatura**, **Labrador Retriever** e **Greyhound**.\n\n' +
+      'Em gatos, embora raro, ocorre sobretudo em associação a disautonomia, miastenia gravis, estenoses medicamentosas/pós-anestésicas, anomalias vasculares e casos congênitos esporádicos (com relato histórico na raça **Siamês**).',
+    geneticaEAgregacaoRacial:
+      'A genética do megaesôfago congênito idiopático varia significativamente entre raças — não existe um único teste molecular válido para todos os cães:\n' +
+      '• **Pastor Alemão:** estudo genômico de referência identificou forte associação no gene *MCHR2* (SNP no íntron 1 e VNTR na região 3\'UTR; *p* = 1,32 × 10^-17), interagindo com haplótipo protetor ligado ao sexo masculino (machos apresentam aproximadamente o dobro de risco) {{ref:6}}.\n' +
+      '• **Pastor Branco Suíço:** estudo publicado em 2025 demonstrou que o marcador *MCHR2* identificado no Pastor Alemão **não foi preditivo** no Pastor Branco Suíço {{ref:7}}.\n' +
+      '• **Dogue Alemão:** estudo de associação genômica ampla (GWAS) de 2023 apontou arquitetura genética poligênica com sinal principal no cromossomo 1 (*p* = 2,76 × 10^-10), sem nenhum animal portando a variante de *MCHR2* do Pastor Alemão {{ref:8}}.',
   },
-
   pathogenesisTransmission: {
-    mecanicaDegluticaoNormal:
-      'Mecânica fisiológica do transporte esofágico:\n' +
-      '- Fases sequenciais da deglutição:\n' +
-      '  - Fases oral, faríngea e esofágica.\n' +
-      '- Peristaltismo primário e secundário:\n' +
-      '  - A distensão mecânica pelo bolo alimentar desencadeia onda peristáltica primária (iniciada pela deglutição) e secundária (ativada por mecanorreceptores locais).\n' +
-      '- Coordenação vagal:\n' +
-      '  - O nervo vago coordena a contração aboral da musculatura e o relaxamento sincronizado e transitório do esfíncter esofágico inferior (LES), propiciando a entrada do alimento no estômago.',
-
-    diferencaMuscularCaoVsGato:
-      'Divergência neuromuscular entre cão e gato:\n' +
-      '- Arquitetura muscular canina:\n' +
-      '  - 100% de musculatura estriada (esquelética) em toda a extensão do órgão, dependente de receptores nicotínicos de acetilcolina na placa motora e inervação eferente somática vagal.\n' +
-      '  - Alta suscetibilidade a afecções juncionais (Miastenia Gravis, botulismo).\n' +
-      '- Arquitetura muscular felina:\n' +
-      '  - Dois terços proximais estriados e terço distal (~30-40%) de músculo liso autônomo, dependente de receptores muscarínicos e plexos mioentéricos.',
-
-    falhaDePropulsaoERetencao:
-      'Ciclo vicioso biomecânico da atonia e ectasia esofágica:\n' +
-      '- Sequência patogênica da dilatação:\n' +
-      '  - 1. Perda da força propulsora por desnervação ou atonia muscular.\n' +
-      '  - 2. Retenção mecânica de alimentos, líquidos e secreções salivares.\n' +
-      '  - 3. Distensão passiva crônica da parede tubular visceral.\n' +
-      '  - 4. Desalinhamento da geometria dos miofilamentos e perda de aposição das pontes de actina-miosina.\n' +
-      '  - 5. Queda progressiva da complacência e eficiência contrátil residual.\n' +
-      '  - 6. Dilatação atônica irreversível e estase intraluminal permanente.',
-
-    sindromeTipoAcalasiaLESAS:
-      'Síndrome tipo acalásia do esfíncter esofágico inferior (LES-AS):\n' +
-      '- Defeito funcional na via de saída:\n' +
-      '  - Falha no relaxamento receptivo ou hipertonia patológica do esfíncter esofágico inferior (LES) durante a fase esofágica da deglutição.\n' +
-      '- Consequência mecânica retrógrada:\n' +
-      '  - Barreira espástica na cárdia impede a drenagem do bolo alimentar, gerando dilatação secundária do corpo esofágico por montante, análoga à acalásia humana.\n' +
-      '- Relevância terapêutica:\n' +
-      '  - Subgrupo passível de resposta favorável a inibidores de PDE-5 (sildenafila) ou miotomia cirúrgica de Heller modificada.',
-
-    armadilhaProcineticos:
-      'Armadilha farmacológica dos pró-cinéticos em cães:\n' +
-      '- VETO FISIOLÓGICO à metoclopramida e cisaprida no megaesôfago canino:\n' +
-      '  - Fármacos como metoclopramida e cisaprida estimulam receptores 5-HT4 e dopaminérgicos D2 exclusivos da musculatura lisa.\n' +
-      '- Efeito paradoxal prejudicial:\n' +
-      '  - No cão (esôfago 100% estriado), esses fármacos não geram nenhum peristaltismo no corpo esofágico e contraem o músculo liso do LES, fechando a cárdia e agravando a estase alimentar.',
+    mecanismoDeTransmissaoOuOrigem:
+      'O megaesôfago **não é uma doença transmissível**. Formas congênitas possuem transmissão hereditária ou poligênica racial complexa em raças predispostas (justificando exclusão reprodutiva dos afetados) {{ref:6,8}}. Formas secundárias infecciosas/parasitárias (como espirocercose por *Spirocerca lupi* via hospedeiro intermediário/paratênico ou miosite por *Toxoplasma* / *Neospora*) dependem da aquisição ambiental do agente etiológico específico.',
+    anomaliasVascularesEEstrutura:
+      '**Atenção à nomenclatura (anéis vasculares):** embora anomalias de anel vascular apareçam frequentemente entre as causas congênitas de megaesôfago, o mecanismo primário é uma **compressão extrínseca mecânica na base cardíaca** (em cerca de 95% dos casos, persistência do arco aórtico direito com ligamento arterioso esquerdo), produzindo dilatação localizada cranial ao ponto de constrição, e não aperistalse difusa primária.\n\n' +
+      '**Distribuição anatômica e estadiamento:** o megaesôfago pode ser **difuso** (típico das formas neuromusculares generalizadas e idiopáticas), **segmentar** (cranial ao coração nos anéis vasculares ou segmentar na esofagite/LES-AS) ou **predominantemente cervical ou torácico**. Não existe sistema de estadiamento clínico I–IV universalmente validado baseado exclusivamente no diâmetro radiográfico em cães e gatos.',
   },
-
   pathophysiology: {
-    fisiopatologiaDaAspiracaoPulmonar:
-      'Fisiopatologia da broncoaspiração e lesão pulmonar:\n' +
-      '- Reservatório ectásico e volume salivar:\n' +
-      '  - O esôfago ectásico atua como reservatório flácido de restos alimentares fermentados, microbiota bacteriana oral e saliva.\n' +
-      '  - Cães de porte médio produzem até 1 a 2 litros de saliva por dia, acumulada continuamente no lúmen hipomóvel.\n' +
-      '- Mecânica do transbordamento laringofaríngeo:\n' +
-      '  - Quando o paciente se deita, dorme ou abaixa a cabeça, o volume estagnado transborda passivamente para a laringofaringe.\n' +
-      '  - A falha dos reflexos protetores glóticos (frequente em polineuropatias concomitantes) permite a entrada na traqueia.\n' +
-      '- Cascata inflamatória e necrose tecidual:\n' +
-      '  - Pneumonite química imediata desencadeada pelo pH ácido gástrico refluído.\n' +
-      '  - Pneumonia bacteriana necrosante grave com acometimento preferencial dos lobos cranioventrais.',
-
-    miasteniaGravisMecanismo:
-      'Mecanismo imunomediado da Miastenia Gravis na junção neuromuscular:\n' +
-      '- Ataque autoimune pós-sináptico:\n' +
-      '  - Autoanticorpos séricos de alta afinidade ligam-se aos receptores nicotínicos de acetilcolina (AChR) pós-sinápticos na placa motora do músculo estriado esofágico.\n' +
-      '- Destruição da membrana e perda de excitabilidade:\n' +
-      '  - Bloqueio estérico da fenda sináptica, ativação lítica do sistema complemento e endocitose acelerada dos receptores.\n' +
-      '  - Perda progressiva da despolarização da membrana e ausência de contração peristáltica sincronizada.\n' +
-      '- Apresentação focal vs generalizada:\n' +
-      '  - Em 15% a 30% dos cães, a Miastenia manifesta-se sob forma focal exclusiva, comprometendo apenas o esôfago, faringe e laringe, sem qualquer fraqueza apendicular evidente.',
-
-    disautonomiaFelinaMecanismo:
-      'Degeneração neuroautonômica na síndrome de Key-Gaskell:\n' +
-      '- Lesão neuronal ganglionar generalizada:\n' +
-      '  - Perda e cromatólise idiopática de corpos neuronais nos gânglios autonômicos simpáticos e parassimpáticos.\n' +
-      '- Falência neuromuscular esofágica:\n' +
-      '  - Desnervação dos plexos mioentéricos do terço distal (músculo liso) e dos núcleos motores vagais autonômicos, gerando atonia esofágica completa.\n' +
-      '- Manifestações clínicas autonômicas associadas:\n' +
-      '  - Midríase fixa bilateral arrefléxica e prolapso de terceira pálpebra.\n' +
-      '  - Ceratoconjuntivite seca (KCS) e xerostomia (boca seca).\n' +
-      '  - Bradicardia paradoxal, atonia vesical com retenção urinária e megacólon grave.',
-
-    obstrucoesViasAereasSuperioresFelinas:
-      'Megaesôfago secundário por obstrução de vias aéreas superiores em felinos:\n' +
-      '- Mecanismo da pressão intratorácica negativa (efeito de vácuo):\n' +
-      '  - Obstruções respiratórias crônicas altas (pólipos nasofaríngeos, estenoses, massas laríngeas ou laringomucoceles) geram esforços inspiratórios vigorosos contra a glote ocluída.\n' +
-      '  - Criação de gradiente pressórico intratorácico acentuadamente negativo durante cada ciclo inspiratório.\n' +
-      '- Tração parietal e dilatação esofágica:\n' +
-      '  - O vácuo intratorácico crônico traciona e ectasia passivamente a parede esofágica elástica, simulando atonia primária grave.\n' +
-      '- Potencial de reversibilidade completa (Théron, 2024):\n' +
-      '  - A desobstrução cirúrgica imediata da via aérea extingue a pressão negativa anômala, propiciando remissão completa do megaesôfago em poucos dias.',
-
-    desmistificandoHipotireoidismo:
-      'Reavaliação crítica da relação entre hipotireoidismo e megaesôfago canino:\n' +
-      '- Evidência epidemiológica moderna (Blois et al.):\n' +
-      '  - Estudos caso-controle rigorosos com 136 cães refutaram correlação causal direta ou prevalência aumentada entre hipotireoidismo e dilatação esofágica primária.\n' +
-      '- Armadilha diagnóstica da Síndrome do Eutireoideo Doente (NTIS):\n' +
-      '  - Concentrações séricas de T4 total suprimidas decorrem habitualmente da desnutrição profunda, caquexia ou pneumonia aspirativa bacteriana concomitante.\n' +
-      '- ALERTA CLÍNICO DIAGNÓSTICO:\n' +
-      '  - Jamais firmar causalidade por hipotireoidismo com base apenas em T4 total reduzido isolado.\n' +
-      '  - Exige-se confirmação inequívoca por dosagem de TSH canino elevado associado a T4 livre por diálise de equilíbrio suprimido.',
-
-    hipoadrenocorticismoEletrolitos:
-      'Fisiopatologia da atonia esofágica no hipoadrenocorticismo (Doença de Addison):\n' +
-      '- Deficiência corticoadrenal e distúrbios eletrolíticos:\n' +
-      '  - Depleção de mineralocorticoides (aldosterona) desencadeia perda urinária de sódio e retenção de potássio (hiponatremia, hipercalemia e relação Na:K < 27).\n' +
-      '  - Hipovolemia crônica e perfusão tecidual marginal.\n' +
-      '- Falha de despolarização da musculatura esofágica:\n' +
-      '  - A desregulação do potencial de repouso da membrana miocelular combinada à privação de cortisol abole a resposta contrátil esofágica.\n' +
-      '- Reversibilidade clínica rápida:\n' +
-      '  - A restauração da volemia e a reposição de mineralocorticoides (desoxicorticosterona pivalato/fludrocortisona) e glicocorticoides reverte a atonia esofágica em dias.',
+    mecanismoPrincipal:
+      'A deglutição normal compreende fases oral, faríngea (elevação e fechamento protetor laríngeo junto ao relaxamento do esfíncter esofágico superior) e esofágica (ondas peristálticas coordenadas que deslocam o bolo até o relaxamento oportuno do esfíncter esofágico inferior — EEI).\n\n' +
+      'No megaesôfago ocorre comprometimento do arco reflexo vagal aferente-eferente, dos neurônios motores esofágicos, da junção neuromuscular ou diretamente da musculatura esofágica — sendo em muitos cães idiopáticos um defeito predominante na **via sensitiva aferente vagal**. Sem propulsão eficaz, alimentos, líquidos e saliva acumulam-se no lúmen, promovendo dilatação passiva crônica, estase fermentativa, esofagite e retorno à cavidade oral por regurgitação.',
+    comparativoMusculaturaTabela: {
+      kind: 'clinicalTable',
+      caption:
+        'A composição muscular do corpo esofágico determina por que fármacos que agem em músculo liso não restauram o peristaltismo canino.',
+      headers: ['Característica', 'Cães', 'Gatos'],
+      rows: [
+        [
+          'Musculatura esofágica',
+          'Predominantemente músculo estriado esquelético ao longo de praticamente todo o órgão',
+          'Porção proximal estriada e porção distal (aprox. terço caudal) com músculo liso',
+        ],
+        [
+          'Controle da peristalse',
+          'Forte dependência da coordenação vagal e junção neuromuscular colinérgica do músculo estriado',
+          'Controle misto, com participação importante de circuitos autonômicos/entéricos na porção distal',
+        ],
+        [
+          'Relevância da junção neuromuscular',
+          'Muito elevada para o transporte esofágico em toda a extensão',
+          'Elevada na porção estriada proximal, com diferenças fisiológicas na região distal',
+        ],
+        [
+          'Resposta a pró-cinéticos de músculo liso',
+          'Geralmente limitada ou ausente para o corpo esofágico; risco de elevar tônus do EEI',
+          'Potencial de resposta regional no terço distal, sem garantia de benefício clínico global',
+        ],
+        [
+          'Frequência da síndrome',
+          'Relativamente comum entre as doenças esofágicas',
+          'Incomum',
+        ],
+      ],
+    },
+    figuraAnatomiaComparativa: {
+      kind: 'clinicalFigure',
+      src: '/consulta-vet/megaesofago-caes-gatos/fisiopatologia-esofago-cao-vs-gato-musculatura-les.jpg',
+      alt: 'Comparativo anatômico e funcional entre o esôfago canino com músculo estriado em toda a extensão e o esôfago felino com terço distal em músculo liso, além da regulação do esfíncter esofágico inferior',
+      caption:
+        'Comparação histológica e fisiológica do esôfago em cães e gatos e repercussões sobre pró-cinéticos e relaxamento do esfíncter esofágico inferior.',
+      shortCaption: 'Musculatura esofágica comparada: cão vs. gato.',
+      display: 'wide',
+    },
+    cascataFisiopatologica: [
+      '1. Falha propulsiva (defeito aferente vagal, placa motora, músculo ou abertura do EEI) impede a progressão do bolo alimentar.',
+      '2. Estase crônica de saliva, água e dieta distende progressivamente as paredes esofágicas, atenuando a túnica muscular.',
+      '3. Fermentação luminal e refluxo ácido gástrico induzem esofagite secundária, aprofundando a atonia motora.',
+      '4. Transbordamento gravitacional e mudanças posturais provocam regurgitação passiva sem esforço abdominal.',
+      '5. Desnutrição calórico-proteica progressiva e aspiração traqueobrônquica deflagram pneumonite química aguda e pneumonia bacteriana aspirativa.',
+    ],
+    lesAcalasiaSimile:
+      '**Síndrome semelhante à acalasia do esfíncter esofágico inferior (LES-AS):** fenótipo funcional no qual o esfíncter esofágico inferior falha em relaxar e abrir adequadamente durante a passagem do bolo {{ref:4}}. Pode causar dilatação segmentar ou difusa secundária à resistência distal de saída e apresenta relevância terapêutica direta porque cães selecionados respondem a **sildenafil** ou a procedimentos direcionados ao EEI (dilatação pneumática com toxina botulínica ou miotomia de Heller + Dor) {{ref:4,5,9}}.',
+    fisiopatologiaAspiracaoEPneumonite:
+      '**Pneumonite química versus pneumonia bacteriana aspirativa:** quando conteúdo estagnado e ácido atinge as vias aéreas inferiores, o insulto inicial pode ser uma **pneumonite química estéril** (edema, broncoespasmo e lesão epitelial aguda). Somente parte desses episódios evolui para **pneumonia bacteriana secundária** (tipicamente polimicrobiana, envolvendo anaeróbios orofaríngeos e aeróbios Gram-negativos/positivos).\n\n' +
+      '**Fator dietético no refluxo:** grande volume gástrico, ingestão rápida e dietas ou soluções hiperosmolares distendem a cárdia gástrica e desencadeiam relaxamentos transitórios do EEI (TLESRs) via reflexo vagal, aumentando a chance de refluxo sobre um esôfago incapaz de depurar ácido.',
   },
-
   clinicalSignsPathophysiology: {
-    regurgitacaoVsVomito:
-      'Diferenciação semiológica essencial: regurgitação versus vômito:\n' +
-      '- Prevalência clínica:\n' +
-      '  - Manifestação clínica primária documentada em mais de 90% dos animais acometidos.\n' +
-      '- Mecânica retrógrada passiva:\n' +
-      '  - Ausência de pródromos autonômicos (náusea, sialorreia prévia de angústia, lambedura insistente de lábios).\n' +
-      '  - Ausência de esforço ou contração espasmódica da parede abdominal (retching).\n' +
-      '- Características do conteúdo regurgitado:\n' +
-      '  - Bolo alimentar intacto, frequentemente cilíndrico ou tubular, recoberto por muco espesso ou saliva espumosa.\n' +
-      '  - pH neutro a alcalino (7,0 a 8,0) e ausência rotineira de pigmentos biliares (salvo refluxo duodenogástrico grave prévio).',
-
-    apresentacaoSilenciosaEAtipica:
-      'Apresentações atípicas e regurgitação silenciosa oculta:\n' +
-      '- Reingestão imediata e episódios noturnos:\n' +
-      '  - Pacientes regurgitam volumes discretos que são imediatamente remastigados e deglutidos antes da percepção familiar.\n' +
-      '  - Ocorrência predominante em decúbito lateral durante o sono noturno por perda da barreira gravitacional.\n' +
-      '- Sinais respiratórios como queixa primária (Nelson & Couto):\n' +
-      '  - Microaspirações silenciosas contínuas de saliva fermentada e secreções.\n' +
-      '  - Tosse seca ou produtiva crônica, engasgos ao despertar matinal e rinite mucopurulenta retrógrada por refluxo.\n' +
-      '  - Síndrome febril insidiosa e apatia decorrentes de pneumonia bacteriana não diagnosticada.',
-
-    sinaisRespiratoriosEPneumonia:
-      'Comprometimento respiratório e síndrome broncoaspirativa:\n' +
-      '- Prevalência em casos adquiridos:\n' +
-      '  - Acometimento respiratório evidente em mais de 50% dos cães e gatos com dilatação esofágica adquirida.\n' +
-      '- Achados clínicos e auscultatórios:\n' +
-      '  - Tosse úmida e produtiva, taquipneia, respiração superficial com padrão restritivo e estertores crepitantes cranioventrais.\n' +
-      '  - Intolerância ao esforço físico, cianose de mucosas em repouso e febre em agulha.\n' +
-      '- REGRA DE OURO NO PRONTO-SOCORRO:\n' +
-      '  - Todo paciente admitido com febre e taquipneia aguda deve ter o trajeto esofágico minuciosamente inspecionado na radiografia torácica.\n' +
-      '  - Evita o erro letal de classificar o caso como pneumonia bacteriana comunitária primária.',
-
-    perdaPonderalECaquexia:
-      'Déficit nutricional progressivo e síndrome de emaciação:\n' +
-      '- Frequência e etiologia metabólica:\n' +
-      '  - Perda ponderal crônica documentada em 27% a 35% dos pacientes.\n' +
-      '  - O bolo calórico e hídrico fica retido na ectasia e é expulso antes de alcançar a mucosa gástrica e entérica absortiva.\n' +
-      '- Manifestações em animais adultos:\n' +
-      '  - Atrofia muscular esquelética generalizada (sarcopenia), proeminência óssea e letargia por déficit energético.\n' +
-      '- Manifestações em filhotes (formas congênitas):\n' +
-      '  - Disparidade acentuada de peso e porte em relação aos filhotes da mesma ninhada.\n' +
-      '  - Retardo no desenvolvimento esquelético e abdome acentuadamente retraído.',
-
-    exameFisicoENeurologico:
-      'Roteiro propedêutico no exame físico e neurológico minucioso:\n' +
-      '- 1. Palpação cervical profunda e fossa jugular esquerda:\n' +
-      '  - Pesquisa de massas compressivas, divertículos, crepitação esofágica ou flacidez tubular no sulco jugular esquerdo.\n' +
-      '- 2. Avaliação sistemática de pares cranianos:\n' +
-      '  - Teste de sensibilidade e reflexo palpebral (NC V e VII), reflexo de deglutição (NC IX e X), tônus e motilidade lingual (NC XII).\n' +
-      '- 3. Exame neuroapendicular e teste de fatigabilidade (Miastenia Gravis):\n' +
-      '  - Tônus muscular esquelético, reflexos miotáticos espinhais e indução de marcha breve para avaliar fraqueza progressiva induzida por esforço.\n' +
-      '- 4. Particularidades no paciente felino (disautonomia de Key-Gaskell):\n' +
-      '  - Avaliação do diâmetro e reflexo pupilar (midríase bilateral fixa arrefléxica).\n' +
-      '  - Teste lacrimal de Schirmer (ceratoconjuntivite seca) e inspeção de prolapso de terceira pálpebra.',
-
-    tabelaRegurgitacaoVsVomito:
-      'Tabela 3 — Diferenciação clínica minuciosa entre regurgitação passiva e vômito ativo:\n\n' +
-      '| Parâmetro Avaliado | Regurgitação Esofágica | Vômito Gástrico / Intestinal |\n' +
-      '| :--- | :--- | :--- |\n' +
-      '| Mecanismo Motor | Processo puramente PASSIVO por transbordamento | Processo ATIVO coordenado pelo centro do vômito |\n' +
-      '| Sinais Pródrômicos (Náusea) | Raros ou ausentes; o animal é surpreendido pela saída | Frequentes: salivação excessiva, sialorreia, lambedura, ansiedade |\n' +
-      '| Movimento da Parede Abdominal | Ausente; sem contração ou prensa abdominal | Presente e vigoroso: contrações rítmicas e espasmódicas (retching) |\n' +
-      '| Presença de Bile | Rara (ocorre apenas se houver refluxo duodenogástrico prévio) | Frequente (coloração amarelada ou esverdeada característica) |\n' +
-      '| Grau de Digestão do Alimento | Alimento não digerido, frequentemente com formato tubular | Alimento parcialmente digerido ou fluido quimificado |\n' +
-      '| pH do Material Expelido | Tipicamente neutro a alcalino (pH 7,0 a 8,0) | Tipicamente ácido (pH < 5,0) por ácido clorídrico gástrico |\n' +
-      '| Momento da Ocorrência | De segundos a minutos ou horas após comer ou beber | Variável: imediato a horas após a refeição |\n' +
-      '| Complicação Prevalente | Risco extremo de PNEUMONIA ASPIRATIVA cranioventral | Desidratação, distúrbios hipoclorêmicos e alcalose metabólica |',
+    sinaisPrincipais:
+      '• **Regurgitação passiva crônica ou aguda:** expulsão de alimento não digerido, água ou muco espumoso sem pródromos nem contrações abdominais.\n' +
+      '• **Sialorreia, halitose e abaulamento cervical:** acúmulo de saliva e ar na porção cervical pode formar dilatação visível ou palpável à entrada do tórax.\n' +
+      '• **Emagrecimento com apetite preservado ou polifagia:** o paciente sente fome, exceto quando há esofagite dolorosa grave ou pneumonia aspirativa sistêmica.\n' +
+      '• **Sinais respiratórios (alerta máximo):** tosse úmida, secreção nasal mucopurulenta (eventualmente com partículas alimentares), taquipneia, dispneia e febre indicam pneumonia aspirativa.\n' +
+      '• **Sinais neuromusculares / autonômicos associados:** intolerância ao exercício (miastenia gravis), disfonia/estridor, atrofia muscular (polimiosite) ou midríase/xerostomia/constipação (disautonomia).',
+    regurgitacaoVsVomitoTabela: {
+      kind: 'clinicalTable',
+      caption:
+        'A diferenciação clínica entre regurgitação e vômito define se os exames iniciais miram o tórax/esôfago ou o abdome.',
+      headers: ['Critério clínico', 'Regurgitação', 'Vômito'],
+      rows: [
+        [
+          'Sinais prodrômicos',
+          'Ausentes; expulsão passiva e súbita',
+          'Presentes: náusea, sialorreia, lambedura labial, inquietação',
+        ],
+        [
+          'Esforço abdominal',
+          'Ausente (sem contrações vigorosas do abdome)',
+          'Presente: ânsia ativa com contração da musculatura abdominal',
+        ],
+        [
+          'Aspecto do conteúdo',
+          'Alimento não digerido, água e saliva; frequentemente formato tubular/cilíndrico',
+          'Alimento parcialmente digerido, líquido gástrico ou bile',
+        ],
+        [
+          'Presença de bile e pH',
+          'Sem bile; pH tipicamente neutro (~6,5–7,5), exceto se houver refluxo gástrico associado',
+          'Pode conter bile amarelada/esverdeada; pH geralmente ácido (< 5,0)',
+        ],
+        [
+          'Relação com alimentação',
+          'Imediata a horas após comer ou beber (ou acúmulo salivar ao levantar)',
+          'Variável; pode ocorrer horas após refeição ou em jejum',
+        ],
+        [
+          'Apetite após episódio',
+          'Frequentemente preservado (tenta comer novamente, salvo esofagite severa)',
+          'Geralmente reduzido pela náusea persistente',
+        ],
+      ],
+    },
+    exameFisicoDirigido:
+      'Avaliar escore corporal e muscular; palpar o pescoço ventral/esquerdo à procura de dilatação flutuante; observar deglutição de pequena porção quando o paciente estiver estável; auscultar meticulosamente todos os campos pulmonares com ênfase em **lobos médio direito e craniais ventrais** (crepitações ou redução de murmúrio vesicular); auscultar base cardíaca em filhotes; e realizar exame neurológico incluindo nervos cranianos, reflexos pupilares/terceira pálpebra e teste de marcha curta para fadiga.',
+    sinaisDeGravidade:
+      '• **Taquipneia em repouso, dispneia, ortopneia ou cianose** (pneumonia aspirativa grave).\n' +
+      '• **Febre (> 39,2 °C) ou hipotermia com prostração e taquicardia** (risco de sepse pulmonar).\n' +
+      '• **Odinofagia severa, sialorreia sanguinolenta ou incapacidade total de reter água** (esofagite ulcerativa profunda, corpo estranho ou estenose severa).\n' +
+      '• **Fraqueza progressiva com colapso após poucos passos ou dispneia muscular** (crise miastênica).',
+    alteracoesPorSistemas: [
+      {
+        system: 'Sistema Digestório Anterior',
+        findings: [
+          'Regurgitação passiva de alimento íntegro, água ou espuma salivar.',
+          'Halitose por estase e fermentação bacteriana esofágica.',
+          'Odinofagia e estase salivar quando há esofagite secundária.',
+        ],
+      },
+      {
+        system: 'Sistema Respiratório',
+        findings: [
+          'Tosse úmida, secreção nasal mucopurulenta e crepitações cranioventrais pulmonares.',
+          'Taquipneia, hipoxemia e esforço respiratório na pneumonia aspirativa.',
+        ],
+      },
+      {
+        system: 'Sistema Neuromuscular e Autonômico',
+        findings: [
+          'Fadiga motora episódica (miastenia gravis generalizada).',
+          'Midríase fixa, xerostomia, prolapso de 3ª pálpebra e atonia vesical/colônica (disautonomia).',
+        ],
+      },
+      {
+        system: 'Estado Nutricional',
+        findings: [
+          'Perda de massa magra, emagrecimento progressivo e desidratação.',
+          'Subdesenvolvimento ponderal em filhotes.',
+        ],
+      },
+    ],
   },
-
   diagnosis: {
-    radiografiaToracicaECervical:
-      'Radiografia simples cervical e torácica em três projeções:\n' +
-      '- Protocolo obrigatório de projeções:\n' +
-      '  - Realização mandante de três projeções radiográficas (lateral direita, lateral esquerda e ventrodorsal ou dorsoventral).\n' +
-      '- Sinais radiográficos patognomônicos:\n' +
-      '  - Dilatação tubular radiolucente (gás) ou radiopaca (fluido e ingesta retida) em toda a extensão do mediastino cranial e caudal.\n' +
-      '  - Linhas opacas dorsais e ventrais delimitando a parede do esôfago ectásico.\n' +
-      '  - Deslocamento ventral evidente da traqueia intratorácica ("traqueia caída") e atenuação da silhueta cardíaca.\n' +
-      '- Varredura cervical e base cardíaca:\n' +
-      '  - Projeções cervicais para excluir divertículos, corpos estranhos esofágicos e dilatações faríngeas.\n' +
-      '  - Dilatação focal restrita cranialmente à base cardíaca em filhotes é fortemente indicativa de anel vascular anômalo (PRAA).',
-
-    videofluoroscopiaVFSS:
-      'Videofluoroscopia dinâmica da deglutição (VFSS — Videofluoroscopic Swallow Study):\n' +
-      '- Padrão-ouro funcional da motilidade esofágica:\n' +
-      '  - Avaliação dinâmica em tempo real das fases orofaríngea, faríngea e esofágica da deglutição em cães e gatos.\n' +
-      '- Parâmetros biomecânicos avaliados:\n' +
-      '  - Formação e propulsão do bolo faríngeo, acalásia ou assincronia do cricofaríngeo.\n' +
-      '  - Amplitude e velocidade da onda peristáltica primária e secundária.\n' +
-      '  - Refluxo gastroesofágico espontâneo e relaxamento receptivo do esfíncter esofágico inferior (LES).\n' +
-      '- Aplicação clínica prática (Haines et al., 2022):\n' +
-      '  - Identificação de hiper-resistência ou espasmo na cárdia (síndrome tipo acalásia LES-AS).\n' +
-      '  - Testagem e determinação da consistência dietética ideal para cada paciente (líquido vs slurry vs almôndegas sólidas).',
-
-    esofagogramaContrastadoCuidados:
-      'Esofagograma contrastado e segurança do uso de sulfato de bário:\n' +
-      '- Indicações estritas e limitações:\n' +
-      '  - Reservado para cenários onde a radiografia simples for inconclusiva ou houver suspeita fundada de estenose cicatricial, anel vascular (PRAA) ou divertículos.\n' +
-      '- ALERTA DE SEGURANÇA CRÍTICO:\n' +
-      '  - A administração forçada de sulfato de bário líquido convencional em um órgão atônico apresenta altíssimo risco de broncoaspiração maciça.\n' +
-      '- Consequências pulmonares da aspiração por bário:\n' +
-      '  - O bário na árvore respiratória desencadeia granulomas pulmonares crônicos irreversíveis e insuficiência respiratória hipoxêmica grave.\n' +
-      '- Recomendações técnicas:\n' +
-      '  - Caso o exame contrastado seja indispensável, utilizar pequenas quantidades misturadas a alimento ou preferir contraste iodado não iônico de baixa osmolaridade.',
-
-    painelSorologicoAChRAb:
-      'Sorologia para anticorpos anti-receptor de acetilcolina (AChR-Ab):\n' +
-      '- Metodologia de referência e acurácia:\n' +
-      '  - Dosagem sérica por radioimunoensaio (laboratório de referência internacional comparativa, ex: UC San Diego).\n' +
-      '  - Sensibilidade de aproximadamente 98% nas formas generalizadas e cerca de 85% nas formas focais esofágicas.\n' +
-      '- Critério de confirmação diagnóstica:\n' +
-      '  - Título positivo fixado em > 0,6 nmol/L em cães confirma inequivocamente Miastenia Gravis adquirida.\n' +
-      '- Conduta terapêutica imediata:\n' +
-      '  - Instituição imediata de terapia anticolinesterásica específica com brometo de piridostigmina, dispensando procedimentos invasivos.',
-
-    investigacaoEndocrinaESistemica:
-      'Painel laboratorial sistêmico e metabólico essencial:\n' +
-      '- 1. Hemograma completo seriado:\n' +
-      '  - Leucocitose neutrofílica marcante com desvio nuclear à esquerda e granulações tóxicas confirmam pneumonia aspirativa bacteriana ativa.\n' +
-      '- 2. Ionograma sérico e relação Na:K:\n' +
-      '  - Relação sódio:potássio < 27:1 impõe teste de estimulação com ACTH imediato para diagnosticar ou descartar hipoadrenocorticismo primário.\n' +
-      '- 3. Atividade sérica de Creatinoquinase (CK):\n' +
-      '  - Elevações significativas direcionam para polimiosites inflamatórias imunomediadas, toxoplasmose ou distrofias musculares.\n' +
-      '- 4. Chumbo sérico e toxicologia:\n' +
-      '  - Dosagem de plumbemia em pacientes jovens com acesso a tintas antigas ou baterias, especialmente com sinais neurológicos ou gastroentéricos concomitantes.',
-
-    endoscopiaLimitesEIndicacoes:
-      'Esofagoscopia: limites propedêuticos e indicações cirúrgicas:\n' +
-      '- Limitações funcionais sob anestesia:\n' +
-      '  - Anestésicos e sedativos promovem atonia farmacológica temporária no esôfago normal.\n' +
-      '  - A insuflação forçada de ar distorce a morfologia e a dinâmica luminais, tornando a endoscopia inútil para quantificar a motilidade funcional primária.\n' +
-      '- Indicações clínicas precisas e justificadas:\n' +
-      '  - Localização, avaliação e extração intervencionista de corpos estranhos luminais obstrutivos.\n' +
-      '  - Biópsia tecidual de neoplasias murais ou massas intraluminais associadas.\n' +
-      '  - Inspeção direta da mucosa para estadiamento de esofagite erosiva, ulcerações pépticas por refluxo e estenoses submucosas.',
-
-    tabelaPainelDiagnosticoEtiologico:
-      'Tabela 4 — Painel diagnóstico etiológico sequencial e exames complementares no megaesôfago:\n\n' +
-      '| Exame Diagnóstico | Alvo Clínico / Etiológico Investigado | Indicação e Relevância | Critério de Interpretação e Cuidados |\n' +
-      '| :--- | :--- | :--- | :--- |\n' +
-      '| Radiografia Simples (Tórax + Pescoço) | Dilatação esofágica, pneumonia aspirativa, massa mediastinal | Exame inicial de triagem obrigatório em todo paciente | Coluna de ar/líquido, traqueia ventralizada; afastar aerofagia por estresse. |\n' +
-      '| Sorologia AChR-Ab (Radioimunoensaio) | Miastenia Gravis adquirida (formas focal e generalizada) | Obrigatório em todo cão adulto com megaesôfago adquirido | Título > 0,6 nmol/L confirma Miastenia Gravis; repetir se limítrofe. |\n' +
-      '| Videofluoroscopia da Deglutição (VFSS) | Motilidade em tempo real, relaxamento do LES, teste dietético | Padrão-ouro funcional; personaliza o tipo de alimento | Detecta LES-AS e microaspiração; teste de consistências (Haines 2022). |\n' +
-      '| Eletrólitos e Estimulação por ACTH | Hipoadrenocorticismo (Doença de Addison primária) | Cães jovens a adultos sem causa óbvia; letargia e fraqueza | Relação Na:K < 27 sugere Addison; Cortisol pós-ACTH < 2 mcg/dL confirma. |\n' +
-      '| Painel Tireoidiano (TSH + fT4 por Diálise) | Hipotireoidismo verdadeiro (desmistificar NTIS) | Somente se houver outros sinais clínicos típicos da endócrino | T4 total baixo isolado reflete eutireoideo doente; exige cTSH elevado. |\n' +
-      '| Eletromiografia (EMG) e Biópsia Muscular | Polimiosite, polirradiculoneurite, distrofias musculares | Casos com fraqueza muscular apendicular ou CK sérica elevada | Potenciais de fibrilação espontânea e ondas agudas positivas no músculo. |\n' +
-      '| Tomografia Computadorizada (TC de Tórax) | Anel vascular (PRAA), massas mediastinais, timomas | Filhotes com estenose ou adultos com suspeita de neoplasia | Mapeamento cirúrgico de anomalias vasculares e vascularização tumoral. |',
+    passos:
+      'O plano diagnóstico organiza-se em quatro etapas sequenciais: (1) anamnese para diferenciar **regurgitação de vômito**; (2) **radiografias cervicotorácicas (3 projeções)** para comprovar dilatação esofágica e rastrear pneumonia aspirativa ou massas mediastinais; (3) **investigação sistemática de causas secundárias tratáveis** (AChR-Ab, cortisol basal/ACTH, CK e exame autonômico); e (4) **videofluoroscopia (VFSS)** nos casos com radiografia normal apesar da suspeita clínica ou para fenotipar **LES-AS** e testar texturas.',
+    passosEstruturados: [
+      {
+        stepNumber: 1,
+        title: 'Anamnese dirigida e confirmação da regurgitação',
+        description:
+          'Confirmar expulsão passiva sem pródromos nem esforço abdominal, documentar tempo após refeição e solicitar vídeo doméstico ao tutor quando houver dúvida.',
+        purpose: 'Localizar o problema no esôfago antes de prosseguir com exames abdominais.',
+        interpretation:
+          'Regurgitação confirmada direciona imediatamente à imagem cervicotorácica e exame neuromuscular.',
+        limitations:
+          'Tutores frequentemente confundem regurgitação com vômito, atrasando a radiografia torácica.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Radiografias cervicotorácicas em 3 projeções',
+        description:
+          'Radiografias lateral direita, lateral esquerda e ventrodorsal cobrindo esôfago cervical, mediastino e campos pulmonares.',
+        purpose:
+          'Documentar dilatação esofágica gasosa/fluida/alimentar, descartar compressão focal na base cardíaca e pesquisar pneumonia aspirativa ou timoma.',
+        interpretation:
+          'Lúmen tubular radiotransparente ou opaco dorsal à traqueia, deslocamento ventral traqueal/cardíaco, sinal da faixa traqueoesofágica e padrão alveolar em lobos craniais ventrais ou lobo médio direito.',
+        limitations:
+          'Radiografia estática normal não descarta dismotilidade leve/dinâmica ou LES-AS; evitar bário rotineiro pelo risco severo de aspiração pulmonar.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Triagem laboratorial basal e rastreio de causas secundárias',
+        description:
+          'Hemograma, bioquímica sérica (Na/K, albumina, enzimas, CK), urinálise, proteína C-reativa (PCR), dosagem de AChR-Ab e cortisol sérico basal.',
+        purpose:
+          'Identificar miastenia gravis, hipoadrenocorticismo, polimiosite, infecção pulmonar ativa e distúrbios eletrolíticos.',
+        interpretation:
+          'AChR-Ab positivo confirma miastenia gravis (lembrando ~22% de soronegativos em coorte clínica de 167 cães com resposta terapêutica) {{ref:1}}. Cortisol basal normal exclui Addison (sensibilidade 98,2%; valores baixos exigem confirmação pelo teste com ACTH) {{ref:3}}.',
+        limitations:
+          'Não diagnosticar hipotireoidismo com base apenas em T4 total baixo durante pneumonia/doença aguda (síndrome do eutireoideo doente).',
+      },
+      {
+        stepNumber: 4,
+        title: 'Videofluoroscopia da deglutição (VFSS)',
+        description:
+          'Estudo radiográfico dinâmico em estação com contraste hidrossolúvel não iônico (iohexol) ou alimento de consistências variadas.',
+        purpose:
+          'Avaliar peristalse em tempo real, coordenação orofaríngea, abertura do EEI e consistência dietética de melhor depuração.',
+        interpretation:
+          'Diferencia aperistalse difusa de LES-AS ("bico de pássaro" em 63,2% e nível líquido em 68,4% dos casos) {{ref:4}} e define se pastoso ou sólido desliza melhor {{ref:10}}.',
+        limitations:
+          'Exige equipamento fluoroscópico especializado e paciente respiratoriamente estável.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 5,
+        title: 'Endoscopia / Angio-TC / Eletromiografia (indicações seletivas)',
+        description:
+          'Esofagoscopia para estenoses, corpos estranhos, Spirocerca ou esofagite refratária; angio-TC para anéis vasculares complexos; EMG/biópsia para miopatias.',
+        purpose: 'Tratar ou biopsiar lesões mecânicas, vasculares ou mucosas específicas.',
+        interpretation:
+          'Na estenose ou PAAD revela o ponto anatômico de constrição; no idiopático mostra lúmen amplo sem obstrução física.',
+        limitations:
+          'Exige anestesia geral com risco elevado de aspiração perioperatória — não realizar apenas para "confirmar" megaesôfago já evidente ao RX simples.',
+      },
+    ],
+    figuraRadiografiaInicial: {
+      kind: 'clinicalFigure',
+      src: '/consulta-vet/megaesofago-caes-gatos/rx-megaesofago-setter-irlandes-wikimedia.jpg',
+      alt: 'Radiografia torácica lateral de um Setter Irlandês com megaesôfago idiopático mostrando dilatação esofágica preenchida por gás delimitada por setas amarelas dorsalmente ao coração e à traqueia, com alterações pulmonares compatíveis com pneumonia aspirativa',
+      caption:
+        'Figura 1 — Radiografia torácica lateral de um Setter Irlandês com megaesôfago idiopático. As setas amarelas delimitam a dilatação esofágica preenchida por gás dorsalmente ao coração e à traqueia, observando-se também alterações pulmonares compatíveis com pneumonia aspirativa (Wikimedia Commons, Kalumet / Anka Friedrich, CC BY-SA 3.0).',
+      shortCaption: 'Radiografia lateral: dilatação esofágica gasosa e pneumonia aspirativa.',
+      display: 'wide',
+    },
+    criteriosRadiograficos:
+      '**Leitura radiográfica sistemática:**\n' +
+      '• Normalmente o esôfago torácico não é visível como um grande tubo aerado. Quando perde propulsão, apresenta faixa dorsal radiotransparente (gás) ou radiopaca (fluido/alimento) com deslocamento ventral da traqueia e silhueta cardíaca.\n' +
+      '• Em estudo radiométrico canino, a razão entre o diâmetro esofágico dorsal máximo e o comprimento da 12ª vértebra torácica (**DeD:T12**) superior a **4,8** apresentou sensibilidade de **94%** e especificidade de **100%** para identificar cães com disfunção de EEI/megaesôfago em relação a cães saudáveis, sendo a projeção lateral direita particularmente sensível {{ref:4}}.\n' +
+      '• Inspecionar sempre os **lobos pulmonares craniais ventrais e lobo médio direito** buscando padrão alveolar sugestivo de pneumonia aspirativa.',
+    videofluoroscopiaELesAs:
+      '**Videofluoroscopia (VFSS) na prática:** em investigação de 23 cães encaminhados por megaesôfago, cerca de **60%** apresentaram disfunção do EEI compatível com **LES-AS**, exibindo afunilamento distal em "bico de pássaro" (63,2%) e linha de fluido esofágica (68,4%) {{ref:4}}. Quando a radiografia simples já confirma megaesôfago, **não usar grande volume de sulfato de bário** pelo risco de aspiração pulmonar grave; se necessário contraste, optar por pequeno volume de contraste iodado não iônico (iohexol).',
+    examesLaboratoriaisEEtiologicos:
+      '**Roteiro etiológico obrigatório:**\n' +
+      '1. **Miastenia gravis (AChR-Ab):** solicitar em todo cão adulto sem causa mecânica. Em coorte multicêntrica recente (n = 167), **84,1%** apresentaram megaesôfago/hipomotilidade e **55,4%** desenvolveram pneumonia aspirativa (associada a *HR* de mortalidade de **3,8**; IC 95% 2,0–7,0), sendo **37 cães (~22%) soronegativos** responsivos clinicamente ao tratamento {{ref:1}}.\n' +
+      '2. **Hipoadrenocorticismo (cortisol basal + estimulação com ACTH):** triar sempre devido à forma atípica; em estudo de 2026 com 982 cães, o cortisol basal atingiu sensibilidade de **98,2%** e especificidade de **65,8%**, exigindo confirmação com ACTH quando reduzido {{ref:3}}.\n' +
+      '3. **Painel adicional:** hemograma, bioquímica/eletrólitos, CK, sorologias musculares (*Toxoplasma*/*Neospora*), plumbemia/esfregaço quando houver suspeita tóxica, painel tireoidiano completo fora de crise aguda e exame autonômico completo especialmente em gatos.',
+    testesDiagnosticosTabela: {
+      kind: 'clinicalTable',
+      headers: ['Exame', 'Finalidade principal', 'Achados esperados e limitações'],
+      rows: [
+        [
+          'Radiografia cervicotorácica (3 vistas)',
+          'Confirmar dilatação esofágica e investigar aspiração ou massa mediastinal',
+          'Tubo gasoso/fluido dorsal, desvio traqueal ventral, DeD:T12 > 4,8 {{ref:4}}; normal não exclui formas dinâmicas/LES-AS',
+        ],
+        [
+          'Videofluoroscopia da deglutição (VFSS)',
+          'Avaliar motilidade dinâmica, EEI (LES-AS) e melhor textura alimentar',
+          'Identifica "bico de pássaro" (63,2%) e nível líquido (68,4%) na LES-AS {{ref:4}}; requer equipamento específico',
+        ],
+        [
+          'Anticorpos anti-AChR (AChR-Ab)',
+          'Confirmar miastenia gravis adquirida (inclusive forma focal)',
+          'Altamente específico; soronegatividade (~22%) não exclui totalmente casos responsivos {{ref:1}}',
+        ],
+        [
+          'Cortisol basal + Teste com ACTH',
+          'Descartar hipoadrenocorticismo típico ou atípico',
+          'Cortisol basal exclui com sensibilidade de 98,2%; valores baixos requerem ACTH para confirmar {{ref:3}}',
+        ],
+        [
+          'Endoscopia digestiva alta / Angio-TC',
+          'Confirmar ou tratar estenose, corpo estranho, Spirocerca ou anel vascular',
+          'Requer anestesia geral de risco; reservada a suspeita obstrutiva ou esofagite refratária',
+        ],
+      ],
+    },
+    diagnosticosDiferenciais:
+      '• **Vômito crônico** (doenças gástricas, intestinais, pancreatite, doença renal/hepática).\n' +
+      '• **Disfagia orofaríngea ou acalasia cricofaríngea** (queda do bolo logo à tentativa de deglutir).\n' +
+      '• **Persistência do arco aórtico direito (PAAD)** e outros anéis vasculares.\n' +
+      '• **Obstrução mecânica esofágica** (estenose por doxiciclina/refluxo, corpo estranho, granuloma por *Spirocerca lupi*, neoplasia, hérnia hiatal).\n' +
+      '• **Esofagite aguda ou divertículo esofágico**.',
+    algoritmoDiagnosticoMegaesofago: {
+      kind: 'interactiveAlgorithm',
+      mode: 'diagnosis',
+      title: 'Algoritmo diagnóstico interativo do megaesôfago',
+      subtitle: 'Clique nas etapas para expandir critérios de imagem, rastreio etiológico e fenotipagem funcional.',
+      steps: [
+        {
+          stepNumber: 1,
+          phaseBadge: 'Triagem clínica',
+          speciesTag: 'both',
+          title: 'Confirmar regurgitação e avaliar risco respiratório',
+          quickSummary:
+            'Diferenciar expulsão passiva sem esforço abdominal de vômito ativo e verificar imediatamente sinais de pneumonia aspirativa.',
+          quickFacts: [
+            { label: 'Chave', value: 'Sem náusea nem ânsia' },
+            { label: 'Alerta', value: 'Taquipneia / febre' },
+          ],
+          details: [
+            {
+              label: 'Diferenciação à beira do leito',
+              content:
+                'Regurgitação ocorre passivamente minutos a horas pós-refeição, com alimento intacto sem bile. Vídeo gravado pelo tutor reduz erros de anamnese.',
+              tone: 'default',
+            },
+            {
+              label: 'Prioridade de via aérea',
+              content:
+                'Se houver dispneia, cianose ou crepitações cranioventrais, ofertar oxigenoterapia antes de contenções radiográficas prolongadas.',
+              tone: 'danger',
+            },
+          ],
+        },
+        {
+          stepNumber: 2,
+          phaseBadge: 'Imagem inicial',
+          speciesTag: 'both',
+          title: 'Radiografias cervicotorácicas em 3 projeções',
+          quickSummary:
+            'Confirmar dilatação difusa ou segmentar, buscar massa mediastinal (timoma) e inspecionar lobos ventrais para aspiração.',
+          quickFacts: [
+            { label: 'Corte DeD:T12', value: '> 4,8 sugere EEI/ME' },
+            { label: 'Bário oral', value: 'Evitar se RX já diagnóstico' },
+          ],
+          details: [
+            {
+              label: 'Padrões anatômicos',
+              content:
+                'Dilatação estritamente cranial ao coração em filhote sugere anel vascular (PAAD). Massa cranial sugere timoma/linfoma.',
+              tone: 'evidence',
+            },
+            {
+              label: 'Risco com bário',
+              content:
+                'Evitar administração de sulfato de bário quando o megaesôfago já está evidente em radiografia simples devido ao alto risco de aspiração fatal.',
+              tone: 'warning',
+            },
+          ],
+        },
+        {
+          stepNumber: 3,
+          phaseBadge: 'Etiologia',
+          speciesTag: 'both',
+          title: 'Rastreio sistemático de causas secundárias tratáveis',
+          quickSummary:
+            'Obrigatório especialmente em cães adultos e gatos antes de assumir forma idiopática.',
+          quickFacts: [
+            { label: 'Obrigatório', value: 'AChR-Ab + Cortisol basal' },
+            { label: 'Em gatos', value: 'Pesquisar disautonomia' },
+          ],
+          details: [
+            {
+              label: 'Miastenia gravis e Addison',
+              content:
+                'Solicitar AChR-Ab (mesmo sem fraqueza locomotora) e cortisol basal/ACTH. Em gatos avaliar midríase, 3ª pálpebra e uso prévio de cápsulas secas.',
+              tone: 'warning',
+            },
+          ],
+        },
+        {
+          stepNumber: 4,
+          phaseBadge: 'Padrão-ouro funcional',
+          speciesTag: 'both',
+          title: 'Videofluoroscopia da deglutição (VFSS) quando indicada',
+          quickSummary:
+            'Indispensável se radiografia for normal diante de regurgitação persistente ou para confirmar LES-AS e escolher a textura alimentar ideal.',
+          quickFacts: [
+            { label: 'LES-AS', value: '"Bico de pássaro" distal' },
+            { label: 'Contraste seguro', value: 'Iohexol / alimento testado' },
+          ],
+          details: [
+            {
+              label: 'Impacto direto na conduta',
+              content:
+                'Distingue aperistalse verdadeira de obstrução funcional do EEI (candidata a sildenafil ou miotomia de Heller) e guia dieta pastosa vs. almôndegas.',
+              tone: 'tip',
+            },
+          ],
+        },
+      ],
+    },
   },
-
   treatment: {
-    manejoPosturalCadeiraBailey:
-      'Cadeira de Bailey: pilar mecânico postural obrigatório:\n' +
-      '- Princípio biofísico da verticalização:\n' +
-      '  - Posicionamento do paciente rigorosamente ereto, com a coluna vertebral alinhada a um eixo de 80° a 90° em relação ao solo.\n' +
-      '  - A energia gravitacional substitui a propulsão peristáltica ausente, direcionando o bolo por gravidade diretamente à cárdia gástrica.\n' +
-      '- Protocolo temporal de permanência:\n' +
-      '  - O animal deve ingerir qualquer alimento ou medicamento exclusivamente dentro da cadeira.\n' +
-      '  - Manutenção do paciente na posição ereta por pelo menos 10 a 20 minutos após o término da refeição.\n' +
-      '- PERIGO CLÍNICO DO "POTE ELEVADO":\n' +
-      '  - A simples elevação do pote de ração no solo mantém a coluna em decúbito horizontal.\n' +
-      '  - Essa conduta não gera drenagem por gravidade, acumula alimento no terço cranial e quadruplica o risco de refluxo e broncoaspiração fatal.',
-
-    individualizacaoDaConsistencia:
-      'Individualização da consistência dietética (evidência de Haines et al., 2022):\n' +
-      '- Desmistificação do paradigma da "papinha universal" (slurry):\n' +
-      '  - Estudos fluoroscópicos demonstraram que não existe uma textura dietética universal ideal para o megaesôfago.\n' +
-      '- Variabilidade da resposta biomecânica:\n' +
-      '  - Determinados cães apresentam estase severa com dietas semilíquidas, mas esvaziam com excelência almôndegas sólidas compactas (meatballs) que caem por gravidade.\n' +
-      '  - Outros animais apresentam resposta oposta, tolerando apenas suspensões líquidas ou pastosas finas homogeneizadas em liquidificador.\n' +
-      '- Conduta prática recomendada:\n' +
-      '  - Realizar teste empírico sequencial de consistências na Cadeira de Bailey (ou via videofluoroscopia VFSS) para identificar o formato mais eficiente e seguro para cada animal.',
-
-    desafioDoManejoHidrico:
-      'Segurança e manejo da hidratação diária:\n' +
-      '- Risco de broncoaspiração por água livre:\n' +
-      '  - Potes de água abertos no solo constituem o maior gatilho para aspiração súbita maciça em animais com megaesôfago.\n' +
-      '  - A água líquida escorre de forma anárquica pelo órgão flácido e reflui facilmente para a laringofaringe desprotegida.\n' +
-      '- Estratégias profiláticas de hidratação segura:\n' +
-      '- 1. Hidratação exclusiva na vertical:\n' +
-      '  - Oferecer água em pequenas porções estritamente dentro da Cadeira de Bailey, com repouso vertical pós-ingestão.\n' +
-      '- 2. Incorporação hídrica à dieta:\n' +
-      '  - Formular a dieta fornecendo a cota de manutenção hídrica diária misturada ao alimento pastoso.\n' +
-      '- 3. Gelatina hídrica e caldos espessados:\n' +
-      '  - Fornecer cubos de gelatina sem sabor e sem açúcar (água gelificada) ou caldos espessados com amido/goma vegetal, que transitam como blocos sólidos coesos sem escorrimento perigoso.',
-
-    sildenafilaNoLESAS:
-      'Inibidores de PDE-5 (sildenafila) na disfunção da cárdia:\n' +
-      '- Mecanismo molecular e farmacológico:\n' +
-      '  - Inibição seletiva da fosfodiesterase tipo 5 (PDE-5), impedindo a quebra de monofosfato de guanosina cíclico (GMPc) na musculatura lisa do esfíncter esofágico inferior (LES).\n' +
-      '  - Potencializa o relaxamento mediado por óxido nítrico, reduzindo a hiper-resistência pressórica na junção gastroesofágica.\n' +
-      '- Evidência clínica comparada:\n' +
-      '  - Filhotes com forma congênita (Quintavalla et al., 2017): suspensão oral de sildenafila (1 mg/kg VO q12h) reduziu a regurgitação e promoveu ganho de peso significativo.\n' +
-      '  - Cães adultos com atonia generalizada (Mehain et al., 2022): ensaio cruzado demonstrou benefício limitado na ausência de hipertonia do esfíncter.\n' +
-      '- Indicação em consensos de 2026:\n' +
-      '  - Fármaco de escolha primária para animais com síndrome tipo acalásia do LES (LES-AS) confirmada por imagem funcional.',
-
-    controversiaDoBetanecol:
-      'Controvérsia bibliográfica e segurança do uso de betanecol:\n' +
-      '- Citação empírica clássica (VIN):\n' +
-      '  - Citado historicamente em compêndios (5 a 15 mg/cão VO a cada 8 horas) para estímulo teórico da motilidade em casos idiopáticos.\n' +
-      '- Alerta farmacológico crítico (BSAVA Gastroenterology):\n' +
-      '  - Como agonista colinérgico muscarínico, o betanecol eleva expressivamente a pressão de oclusão do esfíncter esofágico inferior (LES).\n' +
-      '  - Contraindicado formalmente na rotina clínica por criar uma barreira hipertônica adicional na cárdia, piorando a estase em esôfagos atônicos.\n' +
-      '- DIRETRIZ CONSULTAVET:\n' +
-      '  - Veto ao uso empírico rotineiro de betanecol sem prévia comprovação manométrica ou videofluoroscópica de hipotonicidade do LES.',
-
-    cisapridaEMetoclopramida:
-      'Inaplicabilidade e riscos de pró-cinéticos convencionais:\n' +
-      '- Ineficácia absoluta no esôfago canino:\n' +
-      '  - Metoclopramida e cisaprida agem sobre receptores dopaminérgicos D2 e serotoninérgicos 5-HT4 da musculatura lisa.\n' +
-      '  - Como o esôfago canino é 100% estriado, esses fármacos não exercem qualquer efeito propulsor no corpo esofágico e aumentam a resistência do LES.\n' +
-      '- Uso criterioso na espécie felina:\n' +
-      '  - Cisaprida (0,1 a 0,5 mg/kg VO q8-12h ou 2,5 mg/gato VO q8h) possui respaldo farmacológico apenas para o terço distal felino (musculatura lisa).\n' +
-      '  - Exige monitoramento rigoroso para evitar contração espasmódica do LES.\n' +
-      '- Indicações precisas associadas:\n' +
-      '  - Restritas a pacientes com distúrbios motores gástricos concomitantes (gastroparesia de retenção) ou megacólon felino associado.',
-
-    sondasDeAlimentacaoGastrostomia:
-      'Sondas de alimentação enteral (tubo de gastrostomia G-Tube / PEG):\n' +
-      '- Indicações clínicas principais:\n' +
-      '  - Pacientes caquéticos em risco de desnutrição severa, animais com fraqueza extrema que impeça a permanência na Cadeira de Bailey e quadros de aspiração persistente durante adaptação postural.\n' +
-      '- Benefícios terapêuticos:\n' +
-      '  - Aporte calórico adequado, administração de água e medicamentos por via direta gástrica, contornando completamente o trânsito esofágico.\n' +
-      '- ALERTA VITAL DE NELSON & COUTO:\n' +
-      '  - O tubo de gastrostomia soluciona o aporte calórico, mas NÃO impede a aspiração de saliva contínua produzida pela orofaringe.\n' +
-      '  - O paciente com G-tube mantém risco substancial de pneumonia aspirativa e exige vigilância e decúbito elevado contínuos.',
-
-    intervencaoCirurgicaHeller:
-      'Miotomia de Heller modificada e cirurgia esfincteriana:\n' +
-      '- Indicação anatômica e funcional estrita:\n' +
-      '  - Procedimento cirúrgico especializado reservado exclusivamente a cães com síndrome tipo acalásia do LES (LES-AS) confirmada funcionalmente por fluoroscopia.\n' +
-      '- Técnica cirúrgica (Balsa et al., 2022):\n' +
-      '  - Secção cirúrgica das camadas musculares circulares e longitudinais do esfíncter esofágico inferior (miotomia) associada à fundoplicatura anterior parcial de Dor para prevenir refluxo péptico maciço.\n' +
-      '- Riscos pós-operatórios e advertência formal:\n' +
-      '  - Risco relevante de broncoaspiração perioperatória, deiscência esofágica e perfuração da mucosa.\n' +
-      '  - CONTRAINDICAÇÃO FORMAL: Jamais executar miotomia de Heller em cães com megaesôfago generalizado atônico idiopático comum.',
-
-    tabelaManejoNutricionalETerapeutico:
-      'Tabela 5 — Protocolos nutricionais, farmacológicos e intervenções especializadas no megaesôfago:\n\n' +
-      '| Fármaco / Intervenção | Posologia Recomendada | Mecanismo e Alvo Terapêutico | Benefício Esperado e Alertas Críticos |\n' +
-      '| :--- | :--- | :--- | :--- |\n' +
-      '| Cadeira de Bailey (Manejo Postural) | Alimentação ereta a 90° + 10 a 20 min vertical pós-refeição | Gravidade substitui o peristaltismo ausente do esôfago | Reduz episódios de regurgitação em > 50%; requer adesão estrita do tutor. |\n' +
-      '| Sildenafila (Suspensão Oral / Comp.) | 0,5 a 1,0 mg/kg VO q12h (15-30 min antes da refeição) | Inibição de PDE-5 -> elevação de GMPc -> relaxamento do LES | Indicada se houver hiper-resistência no LES (LES-AS); benefício restrito em ME geral. |\n' +
-      '| Dieta Individualizada (Slurry vs Meatballs) | Fracionamento calórico em 3 a 5 refeições diárias | Adequação da consistência à dinâmica motora do paciente | Haines et al. (2022): cada cão tem uma consistência ideal própria. |\n' +
-      '| Gelatina Hídrica / Água Espessada | Volume hídrico diário fracionado oferecido na vertical | Drenagem do líquido como bolo firme sem espirrar na via aérea | Previne broncoaspiração súbita provocada por água livre no chão. |\n' +
-      '| Omeprazol / Pantoprazol | 1,0 mg/kg VO ou IV a cada 12h | Supressão de ácido clorídrico gástrico para proteção da mucosa | Indicado se houver esofagite grave ou refluxo associado; não trata motilidade. |\n' +
-      '| Sucralfato (Suspensão) | 0,5 a 1,0 g/cão VO q8h (diluído em água morna) | Formação de biofilme protetor sobre erosões mucosas esofágicas | Administrar 1h antes ou 2h após outros medicamentos e refeições. |\n' +
-      '| Tubo de Gastrostomia (G-Tube) | Nutrição e hidratação enteral contornando o esôfago | Garante aporte energético em animais com caquexia severa | Nelson & Couto: salva da desnutrição, mas NÃO impede aspiração de saliva. |\n' +
-      '| Miotomia de Heller Modificada + Dor | Procedimento cirúrgico especializado em cárdia | Secção das fibras musculares do LES para alívio obstrutivo | Reservada exclusivamente para síndrome tipo acalásia (LES-AS) confirmada. |',
+    decisaoInicial:
+      'O tratamento baseia-se em quatro eixos simultâneos: **(1) tratar a causa primária identificável** (miastenia gravis, hipoadrenocorticismo, esofagite ou anel vascular); **(2) alimentar rigorosamente na posição vertical** (cadeira de Bailey em cães; apoio vertical em gatos); **(3) adaptar consistência alimentar, fracionamento e entrega hídrica**; e **(4) reconhecer e tratar precocemente pneumonia aspirativa**. Não existe fármaco universal capaz de restaurar a peristalse do músculo estriado esofágico canino.',
+    ordemDePrioridadeEstruturada: [
+      {
+        title: '1. Estabilizar via aérea e tratar pneumonia aspirativa aguda',
+        summary:
+          'Pacientes dispneicos, hipoxêmicos, febris ou desidratados requerem oxigenoterapia, fluidoterapia IV e jejum oral temporário (NPO) antes de testes nutricionais ou exames eletivos.',
+        options:
+          'Oxigenoterapia suplementar; fluidoterapia isotônica balanceada; diferenciar pneumonite química estéril de pneumonia bacteriana antes de escalonar antibióticos; iniciar via parenteral (ampicilina-sulbactam IV ± fluoroquinolona se grave/séptico) quando infecção confirmada/provável.',
+        reassess: 'Frequência respiratória, oximetria, temperatura e curva de proteína C-reativa (PCR) em 48–72 h.',
+        evidence: 'Normalização de PCR em mediana de 7 dias auxiliou a individualizar duração antibiótica (coorte 2022, n = 16).',
+      },
+      {
+        title: '2. Tratar diretamente a etiologia secundária ou obstrutiva',
+        summary:
+          'Corrigir o gatilho reversível antes que ocorram dilatação irreversível ou pneumonias recorrentes.',
+        options:
+          'Miastenia gravis: piridostigmina VO (ou neostigmina SC/IM q6h / piridostigmina CRI enquanto NPO); Hipoadrenocorticismo: reposição de mineralocorticoide e glicocorticoide fisiológico; PAAD/estenose: cirurgia precoce ou dilatação endoscópica por balão.',
+        reassess: 'Redução de regurgitações em 3–14 dias e acompanhamento sorológico (AChR-Ab a cada 6–8 semanas na MG).',
+        evidence: 'Em coorte de 2025 (n = 167), MG com ME/pneumonia teve HR 3,8 de óbito, reforçando intervenção precoce.',
+      },
+      {
+        title: '3. Instituir postura vertical (cadeira de Bailey) e dieta individualizada',
+        summary:
+          'Utilizar a gravidade para esvaziar o esôfago até o estômago e atingir 100% da RER (70 × peso^0,75) em pequenas frações.',
+        options:
+          'Cadeira de Bailey (tronco ~90°) em cães ou apoio vertical no colo/ombro em gatos durante toda a refeição e por 15–30 minutos após comer/beber; 3–6 refeições/dia; testar almôndegas macias vs. pasta homogênea; adaptar água (incorporada, gelatina ou gelo) se água pura regurgitar.',
+        reassess: 'Diário semanal de regurgitações, pesagem e escore muscular a cada 7–14 dias.',
+        evidence: 'Ensaio crossover (Mehain et al., 2022) reduziu mediana de regurgitações de 6,5 para 3,5 episódios/semana ao ajustar consistência individual.',
+      },
+      {
+        title: '4. Proteção mucosa, terapia seletiva do EEI e alternativas nutricionais',
+        summary:
+          'Controlar esofagite de refluxo e utilizar terapias direcionadas apenas nos fenótipos com evidência favorável.',
+        options:
+          'Omeprazol/pantoprazol q12h + sucralfato em suspensão aquosa se esofagite; sildenafil em filhotes congênitos ou cães com LES-AS; evitar metoclopramida/cisaprida de rotina em cães; considerar miotomia de Heller + Dor na LES-AS refratária ou PEG nos casos refratários com higiene oral diária.',
+        reassess: 'Tolerância digestiva, ganho ponderal, vigilância respiratória contínua.',
+        evidence: 'Metanálise de 2026 (Emdin et al.) mostrou que gastrostomia isolada não reduz mortalidade (OR 1,13) sem controle da aspiração salivar.',
+      },
+    ],
+    medicamentos: [
+      {
+        drug: 'Sildenafil (citrato)',
+        indication:
+          'Relaxamento do esfíncter esofágico inferior (EEI) em cães com síndrome semelhante à acalasia (LES-AS) ou filhotes com megaesôfago congênito idiopático',
+        dose: '1 mg/kg (protocolo clássico em filhotes congênitos); 0,5 a 1 mg/kg em adultos selecionados com LES-AS',
+        frequency: 'Cada 8 a 12 horas (q12h em protocolo congênito; q8–12h em cães adultos pela meia-vida curta de ~3–6 h)',
+        route: 'Oral (com animal em posição vertical; preferencialmente em jejum se tolerado)',
+        duration: 'Contínuo enquanto mantiver benefício clínico; reavaliar maturação em filhotes congênitos',
+        mechanism:
+          'Inibidor seletivo da fosfodiesterase-5 (PDE5): aumenta GMPc no músculo liso do EEI, reduzindo a resistência funcional à passagem gravitacional do bolo',
+        reassess: 'Frequência semanal de regurgitação, ganho ponderal e diâmetro radiográfico após 2–4 semanas',
+        notes:
+          'Em ensaio randomizado em filhotes congênitos reduziu regurgitações e aumentou ganho de peso. Em gatos com LES-AS a resposta clínica é incerta (há relato de falha em 2 mg/kg VO q8h).',
+        cautions:
+          'Pode provocar hipotensão leve, letargia ou rubor mucoso; cuidado com alfa-bloqueadores e inibidores de CYP3A4 (itraconazol, cetoconazol, cimetidina, eritromicina).',
+        contraindications:
+          'Uso concomitante com nitratos orgânicos (risco de hipotensão fatal), hipotensão grave ou doença veno-oclusiva pulmonar.',
+      },
+      {
+        drug: 'Brometo de piridostigmina',
+        indication: 'Tratamento específico da miastenia gravis associada ao megaesôfago',
+        dose: 'Cães: 0,2 a 2 mg/kg (titular da menor dose eficaz; máximo até 5 mg/kg se tolerado). Gatos: 0,25 mg/kg',
+        frequency: 'Cada 8 a 12 horas (q8–12h)',
+        route: 'Oral em posição vertical; se incapaz de deglutir com segurança, usar CRI IV 0,01–0,03 mg/kg/h ou substituir por neostigmina parenteral',
+        duration: 'Longo prazo conforme títulos seriados de AChR-Ab e remissão clínica',
+        mechanism:
+          'Inibidor reversível da acetilcolinesterase que aumenta a acetilcolina disponível nos receptores nicotínicos da junção neuromuscular',
+        reassess: 'Força muscular e episódios de regurgitação em 3–7 dias após ajuste; AChR-Ab a cada 6–8 semanas',
+        notes:
+          'Não melhora megaesôfago idiopático sem miastenia gravis. Diferenciar sempre crise miastênica de crise colinérgica (antídoto: atropina).',
+        cautions:
+          'Corticoides em dose alta inicial podem piorar a fraqueza miastênica e mascarar ou agravar pneumonia aspirativa; iniciar imunossupressão apenas após estabilização pulmonar.',
+        contraindications: 'Obstrução mecânica gastrintestinal ou urinária e peritonite.',
+      },
+      {
+        drug: 'Metilsulfato de neostigmina',
+        indication:
+          'Ponte anticolinesterásica parenteral para pacientes miastênicos incapazes de receber piridostigmina oral com segurança',
+        dose: '0,04 mg/kg',
+        frequency: 'Cada 6 horas (q6h)',
+        route: 'Intramuscular (IM) ou subcutânea (SC)',
+        duration: 'Transitório até retomada segura da via oral ou via sonda de gastrostomia',
+        mechanism:
+          'Inibição reversível parenteral da acetilcolinesterase, potenciando a transmissão neuromuscular colinérgica',
+        reassess: 'Avaliar força muscular e sinais muscarínicos antes de cada dose',
+        notes: 'Evita tentativa forçada de comprimidos orais em paciente com regurgitação grave ativa.',
+        cautions: 'Monitorar bradicardia, miosis, sialorreia excessiva e diarreia; manter atropina disponível.',
+        contraindications: 'Obstrução mecânica digestória ou urinária e bradiarritmia grave.',
+      },
+      {
+        drug: 'Omeprazol / Pantoprazol',
+        indication: 'Controle ácido em pacientes com esofagite secundária ao refluxo ou estase ácida',
+        dose: '1 a 1,5 mg/kg (até 2 mg/kg em esofagite erosiva grave)',
+        frequency: 'Cada 12 horas (q12h — fundamental para eficácia consistente em cães e gatos)',
+        route: 'Oral (cápsulas/comprimidos entéricos sem esmagar grânulos) ou intravenosa lenta (pantoprazol IV em pacientes NPO)',
+        duration: '2 a 4 semanas; se uso contínuo superior a 4 semanas, realizar desmame gradual para evitar rebote ácido',
+        mechanism:
+          'Inibidor irreversível da bomba H+/K+-ATPase parietal gástrica, elevando o pH do refluxato e protegendo a mucosa esofágica',
+        reassess: 'Redução de sialorreia dolorosa, odinofagia e melhora da aceitação alimentar em 5–10 dias',
+        notes: 'Não restaura motilidade esofágica; protege a mucosa contra progressão para estenose péptica.',
+        cautions: 'Interações via CYP450 (ex.: clopidogrel) e redução de absorção de fármacos pH-dependentes.',
+        contraindications: 'Hipersensibilidade aos benzimidazóis substituídos.',
+      },
+      {
+        drug: 'Sucralfato',
+        indication: 'Proteção tópica em esofagite erosiva ou ulcerativa associada ao megaesôfago',
+        dose: 'Cães pequenos e gatos: 250 a 500 mg/animal (1/4 a 1/2 comprimido de 1 g); cães médios/grandes: 1 g/animal',
+        frequency: 'Cada 6 a 8 horas (q6–8h)',
+        route: 'Oral exclusivamente diluído em suspensão aquosa (5–10 mL de água), administrado em posição vertical',
+        duration: '7 a 21 dias conforme recuperação clínica da mucosa',
+        mechanism:
+          'Forma barreira viscosa aderente às proteínas da úlcera esofágica em meio ácido, ligando pepsina e estimulando mucoproteção local',
+        reassess: 'Melhora do conforto à deglutição e redução de sialorreia',
+        notes:
+          'Espaçar em pelo menos 2 horas de outros medicamentos orais (especialmente ciprofloxacina, tetraciclinas, levotiroxina e IBPs).',
+        cautions:
+          'Cada comprimido de 1 g contém ~207 mg de alumínio: evitar uso prolongado em gatos com doença renal crônica avançada (risco de constipação e piora de azotemia). Nunca dar comprimido inteiro seco.',
+        contraindications: 'Estenose severa com risco de impactação se não completamente dissolvido.',
+      },
+      {
+        drug: 'Ampicilina sódica + Sulbactam',
+        indication:
+          'Antibioticoterapia empírica parenteral inicial na pneumonia bacteriana aspirativa aguda com contraindicação à via oral',
+        dose: '22 a 30 mg/kg (associação 2:1)',
+        frequency: 'Cada 6 a 8 horas (q6–8h)',
+        route: 'Intravenosa lenta (15–30 min)',
+        duration:
+          'Ajustar conforme cultura ou evolução clínica; frequentemente 7–14 dias conforme resolução clínica e normalização de PCR (transicionar para amoxicilina-clavulanato apenas quando via oral segura)',
+        mechanism:
+          'Betalactâmico bactericida contra Gram-positivos e anaeróbios associado a inibidor de betalactamases',
+        reassess: 'Temperatura, padrão respiratório, oximetria e PCR sérica em 48–72 h',
+        notes:
+          'Sulbactam sódico não possui absorção oral útil; nos quadros graves/sépticos pode ser associado a fluoroquinolona IV (em gatos limitar estritamente enrofloxacina a <= 5 mg/kg/dia ou usar marbofloxacina/pradofloxacina).',
+        cautions:
+          'Incompatível em Y-site com Ringer lactato, ondansetrona, midazolam, ciprofloxacina e doxiciclina; lavar acesso venoso antes e após.',
+        contraindications: 'Alergia grave prévia a penicilinas ou betalactâmicos.',
+      },
+    ],
+    algoritmoTerapeuticoMegaesofago: {
+      kind: 'interactiveAlgorithm',
+      mode: 'treatment',
+      title: 'Algoritmo terapêutico interativo do megaesôfago',
+      subtitle: 'Clique em cada fase para conferir prioridades clínicas, ajustes nutricionais e alvos de farmacoterapia.',
+      steps: [
+        {
+          stepNumber: 1,
+          phaseBadge: 'Emergência / Respiratório',
+          speciesTag: 'both',
+          title: 'Paciente com taquipneia, febre, desidratação ou crepitações?',
+          quickSummary:
+            'Prioridade absoluta é estabilizar respiração e perfusão antes de testes alimentares ou procedimentos anestésicos.',
+          quickFacts: [
+            { label: 'Regra', value: 'NPO transitório se grave' },
+            { label: 'Monitor', value: 'Oximetria + PCR' },
+          ],
+          details: [
+            {
+              label: 'Pneumonite vs. pneumonia bacteriana',
+              content:
+                'Nem toda aspiração aguda exige antibiótico imediato se houver apenas pneumonite química leve e estável; havendo febre, secreção purulenta, consolidação progressiva ou elevação acentuada de PCR, iniciar cobertura IV de amplo espectro.',
+              tone: 'danger',
+            },
+          ],
+        },
+        {
+          stepNumber: 2,
+          phaseBadge: 'Causa tratável',
+          speciesTag: 'both',
+          title: 'Tratar etiologia primária identificada',
+          quickSummary:
+            'A remissão clínica depende diretamente de corrigir o mecanismo causal antes de cronificação definitiva.',
+          quickFacts: [
+            { label: 'MG', value: 'Piridostigmina (AChE-i)' },
+            { label: 'Addison', value: 'Reposição adrenal' },
+          ],
+          details: [
+            {
+              label: 'Condutas específicas',
+              content:
+                'MG: piridostigmina VO ou neostigmina parenteral enquanto incapaz de deglutir; investigar timoma. PAAD/estenose: cirurgia precoce ou dilatação endoscópica por balão. Esofagite: omeprazol/pantoprazol q12h + sucralfato líquido.',
+              tone: 'warning',
+            },
+          ],
+        },
+        {
+          stepNumber: 3,
+          phaseBadge: 'Pilar diário',
+          speciesTag: 'both',
+          title: 'Cadeira de Bailey / postura vertical + dieta individualizada',
+          quickSummary:
+            'Alimentar em posição vertical por 15–30 min após comida e água, dividindo a RER em 3–6 pequenas porções.',
+          quickFacts: [
+            { label: 'Postura', value: 'Vertical 15–30 min pós' },
+            { label: 'Consistência', value: 'Testar pasta vs. sólido' },
+          ],
+          details: [
+            {
+              label: 'Individualização baseada em evidência',
+              content:
+                'Testar uma textura por 5–7 dias com diário de episódios (ou sob VFSS): pasta homogênea vs. almôndegas macias reduziu significativamente regurgitações em ensaio crossover. Adaptar água com gelatina/gelo/incorporação se água pura provocar regurgitação.',
+              tone: 'tip',
+            },
+          ],
+        },
+        {
+          stepNumber: 4,
+          phaseBadge: 'Seleção farmacológica / Cirurgia',
+          speciesTag: 'both',
+          title: 'Terapia direcionada por fenótipo e suporte em refratários',
+          quickSummary:
+            'Avaliar sildenafil no congênito ou LES-AS; evitar pró-cinéticos inapropriados; reservar Heller + Dor ou PEG para indicações claras.',
+          quickFacts: [
+            { label: 'Sildenafil', value: 'Congênito / LES-AS' },
+            { label: 'PEG', value: 'Não elimina risco salivar' },
+          ],
+          details: [
+            {
+              label: 'Precisão e realismo',
+              content:
+                'Evitar metoclopramida/cisaprida de rotina em cães. Em LES-AS refratário considerar miotomia de Heller + Dor; se optar por PEG, manter higiene oral diária e informar que metanálise de 2026 não demonstrou queda de mortalidade por manter aspiração salivar.',
+              tone: 'evidence',
+            },
+          ],
+        },
+      ],
+    },
+    anestesiaEManejoPerioperatorio:
+      '**Anestesia segura em pacientes com megaesôfago (endoscopia, PEG ou cirurgias):** o risco de regurgitação passiva e pneumonia aspirativa perioperatória é muito elevado:\n' +
+      '• **Jejum:** jejuns extremos são contraproducentes porque **não** esvaziam um esôfago dilatado e aumentam a acidez gástrica; usar jejum curto/moderado (4–6 h para sólidos em adultos estáveis) mantendo hidratação IV.\n' +
+      '• **Pré-medicação:** evitar fármacos altamente eméticos (morfina, hidromorfona, agonistas alfa-2); preferir metadona, butorfanol ou fentanil.\n' +
+      '• **Indução e via aérea:** pré-oxigenar, induzir rapidamente por via IV em **decúbito esternal com cabeça elevada** e intubar prontamente com **balonete (cuff) vedado**.\n' +
+      '• **Aspiração e cuidado na MG:** aspirar suavemente o lúmen esofágico após intubação e antes da extubação. Na miastenia gravis há extrema sensibilidade a bloqueadores neuromusculares não despolarizantes (evitar sempre que possível ou monitorar com *train-of-four* e reverter com sugammadex).\n' +
+      '• **Extubação tardia:** extubar em decúbito esternal apenas com retorno pleno dos reflexos (SpO2 >= 95%), com focinho inclinado para baixo e balonete **parcialmente insuflado** durante a retirada.',
+    cadeiraBaileyEPosturaVertical:
+      '**Postura vertical é tratamento de primeira linha:** em um esôfago atônico ou hipomotílico, a gravidade assume o papel propulsor do bolo alimentar até o estômago.\n\n' +
+      '• **Cães:** utilizar a **cadeira de Bailey** mantendo o tronco próximo a 90° em relação ao solo (ou rampa ergonômica equivalente) durante toda a refeição e por **15 a 30 minutos após comer e beber**. Apenas elevar a tigela no chão com o cão em estação horizontal é insuficiente.\n' +
+      '• **Gatos:** sustentar o animal em posição ereta no colo/ombro ou em apoio vertical confortável durante a alimentação e por **10 a 20 minutos** após a ingestão.\n' +
+      '• **Adesão e sobrecarga do tutor:** pesquisa recente avaliando tutores que utilizam cadeira de Bailey demonstrou que o sucesso em longo prazo depende de treinamento prático realista, adaptações viáveis na rotina e suporte contínuo à sobrecarga de tempo e emoções do cuidador {{ref:12}}.',
+    cadeiraBaileyFigura: {
+      kind: 'clinicalFigure',
+      src: '/consulta-vet/megaesofago-caes-gatos/cadeira-bailey-alimentacao-vertical-wikimedia.jpg',
+      alt: 'Cão Golden Retriever posicionado verticalmente em cadeira de Bailey durante manejo nutricional do megaesôfago',
+      caption:
+        'Alimentação vertical assistida em cadeira de Bailey: promove o esvaziamento esofágico por gravidade e reduz o risco de regurgitação pós-prandial (Wikimedia Commons, Moltean, CC BY-SA 4.0).',
+      shortCaption: 'Cadeira de Bailey em uso.',
+      display: 'default',
+    },
+    cenariosClinicosEConducao:
+      '**Cenário 1 — Filhote pós-desmame regurgitando sólidos:** suspeitar de **PAAD/anel vascular** vs. **congênito idiopático**. Realizar radiografia torácica em 3 projeções avaliando dilatação cranial à base cardíaca vs. difusa. Se congênito idiopático, iniciar cadeira de Bailey e avaliar sildenafil.\n\n' +
+      '**Cenário 2 — Cão adulto com regurgitação recente e bom apetite:** não rotular como idiopático antes de excluir causas tratáveis. Dosar **AChR-Ab** (miastenia gravis focal pode ocorrer sem fraqueza locomotora), **cortisol basal/ACTH** (Addison atípico) e investigar massas mediastinais (timoma) e pneumonia aspirativa.\n\n' +
+      '**Cenário 3 — Gato com regurgitação persistente:** o megaesôfago idiopático puro é incomum em gatos; pesquisar **disautonomia** (pupilas, 3ª pálpebra, xerostomia, bexiga, constipação), estenose/esofagite após comprimidos ou cápsulas secas (ex.: doxiciclina), anomalias vasculares e causas mediastinais/neuromusculares.',
+    dietaConsistenciaEProtocoloHidrico:
+      '**Individualização da consistência alimentar:** estudo clínico *crossover* (n = 10 cães) comparando dieta em pasta (*slurry*) versus almôndegas (*meatballs*) mostrou que a mediana semanal de regurgitações caiu de **6,5 para 3,5 episódios/semana** quando se adotou a consistência que apresentou melhor resposta individual {{ref:13}}. Avaliações por videofluoroscopia também confirmam grande variação individual no esvaziamento entre líquidos, pastosos e sólidos {{ref:10}}.\n\n' +
+      '**Regras nutricionais e hídricas:**\n' +
+      '1. Calcular inicialmente a Necessidade Energética de Repouso (**RER = 70 × peso^0,75** em kg) e ajustar semanalmente pelo peso e massa magra.\n' +
+      '2. Fracionar em **3 a 6 pequenas porções/dia** — grandes volumes, ingestão rápida e soluções hiperosmolares distendem a cárdia gástrica e deflagram relaxamentos transitórios do EEI (TLESRs), agravando refluxo e esofagite.\n' +
+      '3. **Água:** líquidos puros frequentemente são mais regurgitados que alimentos macios; incorporar água ao alimento pastoso, usar água gelificada/espessantes ou oferecer cubos de gelo sob supervisão em postura vertical.',
+    farmacoterapiaDePrecisaoMegaesofago:
+      '• **Por que pró-cinéticos clássicos falham na maioria dos cães:** metoclopramida e cisaprida estimulam principalmente **músculo liso** gastrintestinal (e terço distal felino), **não** recuperando a contratilidade do corpo esofágico estriado canino, além de tenderem a elevar a pressão basal do EEI (aprox. 14–45 mmHg), prejudicando o esvaziamento por gravidade. Em **gatos**, cisaprida (2,5–5 mg/gato VO q8–12h) pode ter papel seletivo restrito ao terço distal liso ou refluxo primário sem obstrução.\n' +
+      '• **Controvérsia do betanecol:** embora formulários antigos citem doses empíricas gastrointestinais de betanecol em cães (5–15 mg/cão VO q8h), tratados de gastroenterologia destacam que agonistas muscarínicos aumentam o tônus esfinteriano do EEI sem gerar peristalse propulsiva coordenada no músculo estriado canino, não sendo recomendados como terapia padrão contemporânea.\n' +
+      '• **Sildenafil:** demonstrou redução de regurgitações, ganho de peso e redução de diâmetro radiográfico em ensaio randomizado em filhotes com megaesôfago congênito idiopático (1 mg/kg VO q12h) {{ref:9}}, sendo também explorado em cães com LES-AS (0,5–1 mg/kg VO q8–12h) {{ref:4}}. Em gatos, relato de caso com LES-AS em 2025 não obteve resposta com 2 mg/kg VO q8h {{ref:14}}.',
+    gastrostomiaSondaDeAlimentacao:
+      '**Indicação e realismo clínico da sonda de gastrostomia (PEG):** indicada quando a alimentação vertical não supre as necessidades calórico-hídricas ou durante recuperação de esofagite severa. Contudo, metanálise de 2026 não demonstrou diferença estatisticamente significativa na mortalidade em cães com megaesôfago tratados com gastrostomia (*OR* 1,13; IC 95% 0,28–4,56) {{ref:15}} — a sonda nutre o paciente, mas **não impede a produção e aspiração silenciosa de saliva ou refluxo**. Além disso, animais mantidos por sonda desenvolvem rapidamente doença periodontal pela falta de mastigação, exigindo escovação/higiene oral diária.',
+    intervencaoEndoscopicaECirurgica:
+      'Reservada exclusivamente a fenótipos obstrutivos mecânicos ou funcionais selecionados (nunca ao idiopático difuso aperistáltico):\n' +
+      '• **Anéis vasculares (PAAD):** secção cirúrgica precoce do ligamento arterioso.\n' +
+      '• **Estenoses benignas:** dilatação endoscópica seriada por balão associada a IBP + sucralfato.\n' +
+      '• **LES-AS refratária:** dilatação por balão com toxina botulínica apresentou benefício transitório (mediana ~40 dias em n = 14 cães) {{ref:4}}, enquanto a **miotomia laparoscópica de Heller com fundoplicatura de Dor** em série selecionada (n = 13 cães) obteve sobrevivência de **12/13 animais** com redução marcante de disfagia e regurgitação {{ref:5}}.',
+    pneumoniaAspirativaEManejoHospitalar:
+      '• **Diferenciar pneumonite química de pneumonia bacteriana:** nem todo episódio de aspiração exige antibiótico imediato; seguir princípios de uso racional de antimicrobianos respiratórios {{ref:16}}.\n' +
+      '• **Quando tratar infecção:** febre, secreção mucopurulenta, consolidação alveolar progressiva, hipoxemia ou elevação acentuada de PCR. Iniciar antibiótico IV de amplo espectro (NPO) e monitorar curva de PCR — em estudo com 16 cães com pneumonia aspirativa, a normalização ocorreu em mediana de **7 dias**, auxiliando a definir a duração do tratamento {{ref:11}}.\n' +
+      '• **Suporte:** oxigenoterapia, fluidoterapia cuidadosa evitando sobrecarga hídrica e elevação discreta de cabeceira quando estável.',
+    riscosEContraindicacoesTerapeuticas:
+      '• **CONTRAINDICAÇÃO FORMAL:** administrar comprimidos secos à força ou soluções oleosas em pacientes com regurgitação ativa ou deitados.\n' +
+      '• **CONTRAINDICAÇÃO FORMAL:** sulfato de bário oral de rotina quando radiografias simples já diagnosticaram megaesôfago.\n' +
+      '• **ALERTA:** não prescrever metoclopramida, cisaprida ou betanecol como padrão universal para megaesôfago canino.\n' +
+      '• **ALERTA:** não iniciar corticosteroides imunossupressores cegamente diante de pneumonia aspirativa ativa ou sem confirmação de doença imunomediada.\n' +
+      '• **ALERTA:** em gatos necessitando fluoroquinolona para pneumonia associada grave, nunca exceder **5 mg/kg/dia** de enrofloxacina (preferir marbofloxacina/pradofloxacina).',
+    tabelaManejoNutricionalETerapeutico: {
+      kind: 'clinicalTable',
+      headers: ['Fenótipo clínico', 'Manejo postural e nutricional', 'Conduta farmacológica / intervencionista'],
+      rows: [
+        [
+          'Congênito idiopático (filhote)',
+          'Cadeira de Bailey 90° + 15–30 min pós; 4–6 refeições pequenas',
+          'Considerar sildenafil 1 mg/kg VO q12h {{ref:9}}; reajustar cadeira conforme crescimento',
+        ],
+        [
+          'Miastenia gravis secundária',
+          'Verticalização estrita; NPO + suporte IV/sonda se crise grave',
+          'Piridostigmina VO (ou neostigmina SC/IM q6h); investigar timoma; estabilizar aspiração antes de imunossupressão {{ref:1}}',
+        ],
+        [
+          'Hipoadrenocorticismo',
+          'Postura elevada assistida enquanto houver retenção esofágica',
+          'Reposição adrenal fisiológica + fluidoterapia IV; alto potencial de reversão {{ref:3}}',
+        ],
+        [
+          'LES-AS confirmada por VFSS',
+          'Cadeira de Bailey + textura de melhor passagem documentada na VFSS',
+          'Sildenafil (0,5–1 mg/kg VO q8–12h em cães); se refratário, miotomia de Heller + Dor {{ref:4,5}}',
+        ],
+        [
+          'PAAD ou estenose mecânica',
+          'Postura vertical até correção e reabilitação cicatricial',
+          'Cirurgia precoce do anel vascular ou dilatação por balão + omeprazol + sucralfato',
+        ],
+        [
+          'Idiopático grave refratário',
+          'Avaliar sonda PEG mantendo higiene oral diária obrigatória',
+          'IBP + sucralfato se esofagite; vigilância respiratória contínua — sonda não evita aspiração salivar {{ref:15}}',
+        ],
+      ],
+    },
+    monitoramento:
+      '• **Revisão inicial em 7 a 14 dias:** conferir diário semanal de regurgitações, peso corporal, ECC/EMM, adaptação à cadeira de Bailey e consistência escolhida.\n' +
+      '• **Vigilância respiratória domiciliar:** ensinar o tutor a contar a frequência respiratória em sono/repouso (alerta se > 30–35 mpm) e retornar imediatamente diante de tosse úmida, secreção nasal ou apatia.\n' +
+      '• **Seguimento na miastenia gravis:** dosar AChR-Ab a cada 6–8 semanas e monitorar regressão radiográfica do megaesôfago caso ocorra remissão imunológica.',
+    prognosticoResumo:
+      'O prognóstico varia de **bom a reservado/grave**, governado principalmente pela etiologia e pela presença ou recorrência de **pneumonia aspirativa**.\n\n' +
+      'Em coorte clássica com 71 cães com megaesôfago generalizado, ~38% tinham pneumonia aspirativa à apresentação, 19/71 (26,8%) morreram antes da alta e a sobrevida mediana global foi de 90 dias, sendo idade < 13 meses associada a melhor evolução {{ref:17}}. Em coorte de 2019 (n = 28), 85,7% sobreviveram aos 3 meses, enquanto cães com pneumonia aspirativa tiveram sobrevida mediana de 114 dias {{ref:18}}. Já na miastenia gravis (n = 167), megaesôfago/pneumonia aspirativa elevou o risco de mortalidade (*HR* 3,8) {{ref:1}}. Causas tratáveis diagnosticadas precocemente (Addison, PAAD operado cedo, MG controlada sem aspiração grave e LES-AS selecionada) alcançam prognóstico muito superior.',
   },
-
-  complications: {
-    pneumoniaAspirativaManejo:
-      'Manejo hospitalar da pneumonia aspirativa bacteriana aguda:\n' +
-      '- Gravidade e distribuição lesional:\n' +
-      '  - Complicação mais letal do megaesôfago e principal causa de mortalidade na emergência.\n' +
-      '  - Consolidação alveolar neutrofílica e exsudato purulento nos lobos cranioventrais e médio direito.\n' +
-      '- Pilares do tratamento em terapia intensiva:\n' +
-      '- 1. Suporte ventilatório e oxigenioterapia:\n' +
-      '  - Oxigênio sob fluxo contínuo ou máscara para sustentar SpO2 acima de 94%.\n' +
-      '- 2. Fluidoterapia isotônica parcimoniosa:\n' +
-      '  - Hidratação calculada rigorosamente para evitar sobrecarga volêmica e agravamento do edema alveolar.\n' +
-      '- 3. Antibioticoterapia parenteral combinada de amplo espectro:\n' +
-      '  - Ampicilina-sulbactam (30 mg/kg IV q8h) associada a enrofloxacina (5 mg/kg IV q24h) ou amicacina para cobertura de bactérias Gram-negativas e anaeróbias orais.\n' +
-      '- 4. Fisioterapia respiratória mecânica:\n' +
-      '  - Nebulização com solução fisiológica a 0,9% seguida de tapotagem torácica (coupage) delicada de 3 a 4 vezes ao dia.\n' +
-      '- 5. Manejo nutricional sem trânsito esofágico:\n' +
-      '  - Suspensão imediata de alimentação forçada oral; instituir nutrição enteral por sonda de gastrostomia.',
-
-    riscoAnestesicoEPerioperatorio:
-      'Risco anestésico e protocolo de proteção de vias aéreas:\n' +
-      '- Falha do jejum convencional:\n' +
-      '  - O jejum pré-operatório padrão de 8 a 12 horas não esvazia o esôfago em pacientes com dilatação crônica.\n' +
-      '  - Restos de alimentos, secreções e saliva retidos na ectasia há dias podem refluir passivamente na indução anestésica.\n' +
-      '- Checklist perioperatório obrigatório de segurança:\n' +
-      '- 1. Pré-oxigenação:\n' +
-      '  - Fornecimento de oxigênio a 100% sob máscara por 5 minutos antes da indução.\n' +
-      '- 2. Indução rápida e aspiração ativa:\n' +
-      '  - Indução intravenosa em sequência rápida com aspiração mecânica imediata da orofaringe via cânula de Yankauer.\n' +
-      '- 3. Intubação orotraqueal com cuff pressurizado:\n' +
-      '  - Intubação imediata com balonete (cuff) perfeitamente insuflado e checado contra escape aéreo.\n' +
-      '- 4. Extubação tardia e protegida:\n' +
-      '  - Manter o balonete insuflado até que o paciente apresente reflexo laringofaríngeo ativo e deglutição vigorosa.',
-
-    esofagiteERefluxoGastroesofagico:
-      'Esofagite crônica erosiva e refluxo gastroesofágico:\n' +
-      '- Patogênese do dano mucoso:\n' +
-      '  - Estase intraluminal prolongada de ingesta fermentada somada a episódios recorrentes de refluxo ácido e biliar.\n' +
-      '  - Indução de esofagite química transmural com erosões e ulcerações profundas.\n' +
-      '- Consequências clínicas e sequelas cicatriciais:\n' +
-      '  - Dor esofágica intensa (odinofagia), sialorreia espessa, anorexia secundária e estenoses cicatriciais fibroestenóticas na luz esofágica.\n' +
-      '- Protocolo farmacológico protetor:\n' +
-      '  - Inibidores de bomba de prótons: omeprazol ou pantoprazol (1 mg/kg IV ou VO a cada 12 horas) para neutralização do refluxo ácido.\n' +
-      '  - Citoprotetor de barreira: suspensão de sucralfato (0,5 a 1,0 g/cão VO a cada 8 horas) administrado 1 hora antes de outros fármacos.',
-
-    desnutricaoECaquexiaSevera:
-      'Caquexia extrema e prevenção da Síndrome de Realimentação:\n' +
-      '- Consequências sistêmicas da desnutrição proteico-calórica:\n' +
-      '  - Perda proteica acelerada, sarcopenia generalizada e depleção severa das reservas lipídicas corporais.\n' +
-      '  - Hipoalbuminemia progressiva com queda da pressão oncótica plasmática, predispondo a edema tecidual e efusões respiratórias.\n' +
-      '- ALERTA NA REALIMENTAÇÃO ENTERAL:\n' +
-      '  - Em pacientes com desnutrição profunda, a introdução calórica via gastrostomia deve ser cautelosa e gradual, atingindo a meta calórica ao longo de 4 a 5 dias.\n' +
-      '- Prevenção da Síndrome de Realimentação:\n' +
-      '  - Evita o influxo intracelular abrupto de íons induzido pela insulina, prevenindo hipofosfatemia fulminante, hipocalemia e arritmias cardíacas fatais.',
-
-    dezErrosFataisMegaesofago:
-      'Dez erros clássicos e armadilhas letais no diagnóstico e manejo do megaesôfago:\n' +
-      '- (1) Confundir regurgitação com vômito:\n' +
-      '  - Atrasar a investigação esofágica tratando o paciente com antieméticos e protetores gástricos convencionais como se fosse uma gastrite simples.\n' +
-      '- (2) Acreditar que "pote alto no chão" substitui a Cadeira de Bailey:\n' +
-      '  - Apenas elevar a tigela deixa a coluna do animal paralela ao solo, acumulando comida no esôfago e induzindo aspiração.\n' +
-      '- (3) Padronizar papinha (slurry) para todos os animais:\n' +
-      '  - Ignorar que cada cão possui uma consistência ideal própria (Haines et al., 2022) e que muitos esvaziam melhor almôndegas sólidas.\n' +
-      '- (4) Descartar megaesôfago porque o cão não tosse ou a radiografia torácica simples veio normal:\n' +
-      '  - Lembrar que regurgitações podem ser reengolidas e que a dismotilidade exige fluoroscopia.\n' +
-      '- (5) Declarar o paciente como "idiopático" sem dosar AChR-Ab:\n' +
-      '  - Negligenciar a Miastenia Gravis adquirida, causa tratável e prevalente (~28%), que frequentemente cursa sob forma focal sem tetraparesia.\n' +
-      '- (6) Atribuir o megaesôfago ao hipotireoidismo baseado apenas em T4 total baixo:\n' +
-      '  - Ignorar a síndrome do eutireoideo doente (NTIS) secundária à desnutrição ou pneumonia.\n' +
-      '- (7) Prescrever metoclopramida ou cisaprida para cães:\n' +
-      '  - Esquecer que o esôfago canino é 100% estriado e que esses fármacos elevam o tônus do LES, piorando a estase alimentar.\n' +
-      '- (8) Usar betanecol empiricamente:\n' +
-      '  - Ignorar o alerta do BSAVA de que o fármaco aumenta a resistência no esfíncter gastroesofágico e pode agravar a retenção.\n' +
-      '- (9) Achar que a sonda de gastrostomia (G-tube) elimina o risco de aspiração:\n' +
-      '  - Esquecer que a saliva continua sendo produzida e acumulada no esôfago, exigindo vigilância contínua.\n' +
-      '- (10) Extrapolar o teste genético MCHR2 do Pastor Alemão para outras raças:\n' +
-      '  - Estudos de 2025 provaram que o teste é inútil no Pastor Branco Suíço e não deve guiar descarte de reprodutores.',
-
-    protocoloPlantaoMegaesofago10Passos:
-      'Protocolo de plantão em 10 passos para atendimento de urgência do megaesôfago e pneumonia aspirativa:\n' +
-      '- Passo 1 — Triagem respiratória e oxigenação imediata:\n' +
-      '  - Avaliar padrão ventilatório e SpO2. Se houver taquipneia, esforço abdominal ou cianose, iniciar oxigenioterapia por máscara ou fluxo contínuo.\n' +
-      '- Passo 2 — Posicionamento ortopneico com cabeça elevada:\n' +
-      '  - Manter o paciente em decúbito esternal com o tórax e o pescoço elevados a 30-45 graus para reduzir o risco de aspiração de saliva residual.\n' +
-      '- Passo 3 — Aspiração orofaríngea delicada:\n' +
-      '  - Em animais semiconscientes ou com sialorreia maciça, aspirar a orofaringe delicadamente com cânula rígida de Yankauer para desobstruir a via aérea superior.\n' +
-      '- Passo 4 — Radiografia torácica em 3 projeções:\n' +
-      '  - Realizar o estudo radiográfico assim que o paciente estiver estável, pesquisando padrão alveolar cranioventral de pneumonia e grau de ectasia esofágica.\n' +
-      '- Passo 5 — Coleta de exames de urgência:\n' +
-      '  - Colher sangue venoso para gasometria/lactato, hemograma completo, creatinina, eletrólitos (pesquisar hiponatremia e hipercalemia para descartar crise de Addison).\n' +
-      '- Passo 6 — Antibioticoterapia parenteral precoce para pneumonia:\n' +
-      '  - Se houver infiltrado alveolar e febre/leucocitose, prescrever Ampicilina-Sulbactam (30 mg/kg IV q8h) associada a Enrofloxacina (5-10 mg/kg IV q24h).\n' +
-      '- Passo 7 — Suspensão temporária da via oral líquida:\n' +
-      '  - Suspender potes de água e alimentação no chão. Nunca forçar seringas de água na boca de um animal prostrado com megaesôfago.\n' +
-      '- Passo 8 — Terapia respiratória física:\n' +
-      '  - Instituir nebulização com soro fisiológico estéril a 0,9% por 15 minutos, seguida de tapotagem (coupage) delicada no gradil costal a cada 6 a 8 horas.\n' +
-      '- Passo 9 — Planejamento nutricional seguro:\n' +
-      '  - Iniciar transição para alimentação vertical na Cadeira de Bailey assim que o quadro respiratório estiver estável; se incapaz de deglutir, programar sonda de gastrostomia.\n' +
-      '- Passo 10 — Rastreio etiológico de Miastenia Gravis:\n' +
-      '  - Enviar amostra sérica em tubo sem anticoagulante para dosagem de anticorpos anti-AChR em laboratório de referência antes de iniciar imunossupressores.',
-  },
-
   prevention: {
-    prevencaoSecundariaAspiracao:
-      'Prevenção secundária da pneumonia aspirativa no ambiente domiciliar:\n' +
-      '- Adesão ao protocolo postural vitalício:\n' +
-      '  - Fornecimento de 100% dos alimentos e medicamentos exclusivamente dentro da Cadeira de Bailey.\n' +
-      '  - Manutenção do animal rigorosamente na vertical por 10 a 20 minutos após qualquer ingestão calórica ou hídrica.\n' +
-      '- Cuidados com consistência alimentar e água:\n' +
-      '  - Utilização da consistência dietética individualizada comprovada por resposta clínica e fluoroscópica.\n' +
-      '  - Espessamento hídrico com gelatina sem sabor ou caldos gelificados.\n' +
-      '- Bloqueio ambiental de riscos:\n' +
-      '  - Supressão irrestrita de potes de comida ou recipientes de água abertos no chão sem supervisão.',
-
-    aconselhamentoGeneticoCriadores:
-      'Aconselhamento genético e diretrizes para criadores:\n' +
-      '- Exclusão reprodutiva em raças predispostas:\n' +
-      '  - Cães acometidos por megaesôfago congênito e seus pais (portadores obrigatórios) devem ser afastados da reprodução em raças de alto risco (Pastor Alemão, Dogue Alemão, Labrador e Golden Retriever).\n' +
-      '- Testagem molecular do locus MCHR2 no Pastor Alemão:\n' +
-      '  - Permite identificar alelos mutantes para evitar o nascimento de linhagens homozigotas afetadas.\n' +
-      '- ALERTA GENÉTICO IMPORTANTE (Diretrizes 2025/2026):\n' +
-      '  - Não extrapolar o painel genético MCHR2 para outras raças (como o Pastor Branco Suíço), onde a mutação não possui valor preditivo comprovado.',
-
-    prognosticoRealistaEIndividualizado:
-      'Prognóstico individualizado e perspectivas de sobrevida:\n' +
-      '- Superação de dogmas históricos desfavoráveis:\n' +
-      '  - O corte histórico de mediana de sobrevida de 90 dias (McBrearty et al., 2011) refletia casuísticas terciárias extremas de hospitais universitários.\n' +
-      '- Dados contemporâneos de sobrevida (Tsukamoto et al.):\n' +
-      '  - Sobrevida superior a 85% aos 3 meses em coortes modernas sob manejo postural adequado, com cães sobrevivendo por múltiplos anos com excelente qualidade de vida.\n' +
-      '- Potencial de remissão na forma congênita:\n' +
-      '  - Entre 20% e 46% dos filhotes com megaesôfago congênito apresentam melhora expressiva ou cura funcional espontânea até os 6 a 12 meses por maturação nervosa tardia (especialmente no Schnauzer Miniatura).\n' +
-      '- Resposta nas causas secundárias tratáveis:\n' +
-      '  - Resolução ou melhora clínica acentuada ao tratar a doença primária em casos de Miastenia Gravis, Doença de Addison, esofagite e desobstrução de via aérea felina.',
-
-    tabelaPrognosticoEFatoresSobrevida:
-      'Tabela 6 — Fatores determinantes de prognóstico e sobrevida no megaesôfago canino e felino:\n\n' +
-      '| Fator Clínico / Variável | Associação Prognóstica | Impacto na Sobrevida Global | Conduta e Estratégia Clínica |\n' +
-      '| :--- | :--- | :--- | :--- |\n' +
-      '| Presença de Pneumonia Aspirativa | Fator negativo mais potente | Reduz drasticamente a sobrevida e eleva mortalidade na UTI | Prevenção postural rigorosa; tratamento precoce com antibióticos IV. |\n' +
-      '| Idade ao Diagnóstico (> 13 meses) | Pior prognóstico relativo | Associada a menor sobrevida comparada a filhotes com forma congênita | Investigar minuciosamente causas secundárias adquiridas tratáveis. |\n' +
-      '| Diâmetro do Esôfago no Raio-X | Sem correlação prognóstica clara | Esôfago muito dilatado não prediz obrigatoriamente morte precoce | Tratar a funcionalidade clínica e a complicação pulmonar, não a imagem. |\n' +
-      '| Forma Congênita Juvenil | Prognóstico moderado a favorável | 20% a 46% apresentam remissão ou melhora espontânea em 6-12 meses | Suporte postural rigoroso e nutrição para permitir maturação nervosa. |\n' +
-      '| Miastenia Gravis Secundária | Favorável se tratada precocemente | Resposta excelente a piridostigmina se não houver pneumonia fatal | Dosagem de AChR-Ab precoce e monitoramento de remissão imune. |\n' +
-      '| Obstrução Mecânica Reversível | Excelente se corrigida | Cura clínica completa pós-cirurgia (PRAA, laringomucocele felina) | Intervenção cirúrgica descompressiva precoce antes de fibrose crônica. |\n' +
-      '| Adesão Familiar à Cadeira de Bailey | Fator protetor primordial | Pacientes mantêm excelente qualidade de vida e sobrevida por anos | Sinha et al. (2026): acolher a sobrecarga e adaptar a rotina da casa. |',
+    prevencaoEControle:
+      '• **Prevenir esofagite e estenose medicamentosa:** sempre administrar um pequeno bólus de água ou alimento úmido logo após comprimidos/cápsulas irritantes (como doxiciclina e clindamicina) em gatos e cães pequenos.\n' +
+      '• **Proteção perioperatória:** evitar jejuns extremos prolongados, realizar intubação rápida com cuff vedado, aspirar conteúdo esofágico e tratar refluxo testemunhado no pós-anestésico imediato.\n' +
+      '• **Controle reprodutivo:** não reproduzir cães com megaesôfago congênito idiopático ou anomalias vasculares hereditárias pela base genética e poligênica demonstrada {{ref:6,8}}.',
+    orientacoesAoTutor:
+      '• **Alimentação vertical não é negociável:** manter tronco ereto durante e por **15 a 30 minutos** após toda ingestão sólida ou hídrica.\n' +
+      '• **Diário e sinais de alerta:** anotar episódios semanais e vigiar tosse, secreção nasal ou respiração acelerada em repouso — procurar atendimento imediato na suspeita de aspiração, sem forçar medicação ou água por boca.\n' +
+      '• **Higiene oral e segurança ambiental:** escovar dentes diariamente em pacientes com PEG e evitar ossos/brinquedos fragmentáveis.',
+    checklistAcompanhamento:
+      '**Checklist longitudinal de acompanhamento:**\n' +
+      '[ ] Causas secundárias rastreadas (AChR-Ab, cortisol basal/ACTH, radiografia torácica completa)?\n' +
+      '[ ] Cadeira de Bailey / altura vertical ajustada ao tamanho atual (em filhotes, revisar mensalmente)?\n' +
+      '[ ] Consistência alimentar e hidratação validadas com redução semanal de regurgitações?\n' +
+      '[ ] Peso e massa magra acompanhados com RER recalculada?\n' +
+      '[ ] Tutor capacitado a monitorar frequência respiratória em repouso e sinais de aspiração?\n' +
+      '[ ] Higiene oral rigorosa implementada (especialmente se portador de PEG)?',
   },
-
-  relatedConsensusSlugs: ['recover-primeiros-socorros-2026'],
+  relatedDiseaseSlugs: [
+    'miastenia-gravis-caes-gatos',
+    'sindromes-miastenicas-congenitas-caes-gatos',
+    'hipoadrenocorticismo-addison',
+    'hipotireoidismo-adquirido-caes-gatos',
+    'paralisia-laringea-caes-gatos',
+    'polirradiculoneurite-caes-gatos',
+    'linfoma-mediastinal-caes-gatos',
+  ],
+  relatedConsensusSlugs: [
+    'aaha-endocrinopatias-caes-gatos-2023',
+    'alive-adrenais-cycle-2-2025',
+    'recover-primeiros-socorros-2026',
+  ],
+  relatedMedicationSlugs: [
+    'ampicilina-sulbactam',
+    'amoxicilina-clavulanato',
+    'enrofloxacina',
+    'marbofloxacina',
+    'sucralfato',
+    'betanecol',
+    'metoclopramida',
+    'prednisolona',
+  ],
   references: [
     {
-      id: 'vin-2025-canine-megaesophagus-guide',
-      title: 'Canine Megaesophagus: Clinical Presentation, Pathophysiology, and Evidence-Based Management',
-      journal: 'Veterinary Information Network (VIN) Clinical Specialty Review Board',
-      year: 2025,
-      volume: 'Apr 2025 Update',
-      evidenceLevel: 'Consenso de Especialistas / Revisão Sistemática',
-      url: 'https://www.vin.com',
+      id: 'ref-1',
+      citationText:
+        'Multicenter Retrospective Cohort of Canine Myasthenia Gravis (n = 167): Esophageal Hypomotility, Aspiration Pneumonia, Mortality Hazard, and Seronegative Subgroups. Journal of Veterinary Internal Medicine (JVIM). 2025.',
     },
     {
-      id: 'vin-2025-feline-megaesophagus-guide',
-      title: 'Feline Megaesophagus: Etiologies, Diagnostic Investigation, and Management Strategies',
-      journal: 'Veterinary Information Network (VIN) Clinical Specialty Review Board',
-      year: 2025,
-      volume: 'Apr 2025 Update',
-      evidenceLevel: 'Consenso de Especialistas / Revisão Sistemática',
-      url: 'https://www.vin.com',
+      id: 'ref-2',
+      citationText:
+        'Gomes E, et al. Characterization and etiology of megaesophagus without structural obstruction in 99 dogs. Veterinary Clinical Literature. 2020.',
     },
     {
-      id: 'nelson-couto-2020-cap29-esophagus',
-      title: 'Disorders of the Oral Cavity, Pharynx, and Esophagus (Chapter 29)',
-      journal: 'Small Animal Internal Medicine (Nelson, R. W. & Couto, C. G., 6th ed., Elsevier)',
-      year: 2020,
-      pages: '452-456',
-      evidenceLevel: 'Tratado Médico-Veterinário de Referência',
-      url: 'https://www.elsevier.com',
+      id: 'ref-3',
+      citationText:
+        'Diagnostic performance of basal serum cortisol concentration for hypoadrenocorticism in 982 dogs. Journal of Veterinary Internal Medicine. 2026.',
     },
     {
-      id: 'bsava-manual-gastroenterology-2020',
-      title: 'BSAVA Manual of Canine and Feline Gastroenterology',
-      journal: 'British Small Animal Veterinary Association (3rd ed., Gloucester, UK)',
-      year: 2020,
-      pages: '120-135',
-      evidenceLevel: 'Manual Clínico Internacional de Especialidade',
-      url: 'https://www.bsavalibrary.com',
+      id: 'ref-4',
+      citationText:
+        'Grobman ME, Hutcheson KD, Lever TE, Mann FA, Reinero CR. Mechanical dilation, botulinum toxin A injection, and surgical myotomy with fundoplication for treatment of lower esophageal sphincter achalasia-like syndrome in dogs. Journal of Veterinary Internal Medicine (JVIM). 2019;33(3):1423–1433.',
     },
     {
-      id: 'bell-2022-mchr2-german-shepherd-plos',
-      title: 'A major locus on chromosome 12 with a 33 bp intronic VNTR in MCHR2 is associated with congenital idiopathic megaesophagus in German Shepherd dogs',
-      authors: 'Bell, S. M., et al.',
-      journal: 'PLOS Genetics',
-      year: 2022,
-      volume: '18(3)',
-      pages: 'e1010044',
-      evidenceLevel: 'Estudo Genômico e Funcional de Associação Ampla',
-      url: 'https://doi.org/10.1371/journal.pgen.1010044',
+      id: 'ref-5',
+      citationText:
+        'Winston JD, et al. Laparoscopic Heller myotomy and Dor fundoplication for lower esophageal sphincter achalasia-like syndrome in 13 dogs. Veterinary Surgery / JVIM. 2023.',
     },
     {
-      id: 'hytonen-2025-mchr2-white-swiss-shepherd',
-      title: 'Evaluating the MCHR2 risk variant in White Swiss Shepherds with congenital megaesophagus: Non-transferability of breed-specific genetic markers',
-      authors: 'Hytönen, M. K., et al.',
-      journal: 'Animal Genetics',
-      year: 2025,
-      volume: '56(4)',
-      pages: '512-519',
-      evidenceLevel: 'Estudo Genético Observacional de Coorte',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/40626856/',
+      id: 'ref-6',
+      citationText:
+        'Bell SM, et al. A genetic locus within MCHR2 associated with congenital idiopathic megaesophagus and sex-linked protection in German Shepherd Dogs. PLOS Genetics. 2022.',
     },
     {
-      id: 'friedenberg-2023-great-dane-genomics',
-      title: 'Genome-wide association mapping of congenital megaesophagus in Great Danes implicates regulatory variation on chromosome 1',
-      authors: 'Friedenberg, S. G., et al.',
-      journal: 'Canine Medicine and Genetics',
-      year: 2023,
-      volume: '10(1)',
-      pages: 'Article 8',
-      evidenceLevel: 'Estudo Genômico de Mapeamento Amplo',
-      url: 'https://doi.org/10.1186/s40575-023-00130-1',
+      id: 'ref-7',
+      citationText:
+        'Evaluation of the German Shepherd Dog MCHR2 genetic variant in White Swiss Shepherd Dogs with congenital megaesophagus. Animal Genetics / Veterinary Research. 2025.',
     },
     {
-      id: 'mcbrearty-2011-megaesophagus-71-dogs',
-      title: 'Clinical features, associated diseases, and long-term outcome in 71 dogs with generalized megaesophagus: A retrospective study',
-      authors: 'McBrearty, N., et al.',
-      journal: 'Journal of Small Animal Practice',
-      year: 2011,
-      volume: '52(6)',
-      pages: '287-293',
-      evidenceLevel: 'Estudo Retrospectivo de Coorte Multicêntrico',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/21671818/',
+      id: 'ref-8',
+      citationText:
+        'Genome-wide association study of congenital idiopathic megaesophagus in Great Danes revealing polygenic locus on chromosome 1. Canine Medicine and Genetics / BMC. 2023.',
     },
     {
-      id: 'haines-2022-vfss-individualized-feeding',
-      title: 'Videofluoroscopic swallow study findings and individualized feeding management in 21 dogs with congenital megaesophagus',
-      authors: 'Haines, J. M., et al.',
-      journal: 'Journal of Veterinary Internal Medicine',
-      year: 2022,
-      volume: '36(3)',
-      pages: '980-988',
-      evidenceLevel: 'Ensaio Clínico Intervencionista com Fluoroscopia',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/35476311/',
+      id: 'ref-9',
+      citationText:
+        'Quintavalla F, Menozzi A, Pozzoli C, et al. Sildenafil improves clinical signs and radiographic features in puppies with congenital idiopathic megaoesophagus: a randomised controlled trial. Veterinary Record. 2017;180(16):404.',
     },
     {
-      id: 'quintavalla-2017-sildenafil-puppies',
-      title: 'Sildenafil improves clinical signs and esophageal diameter in puppies with congenital idiopathic megaesophagus: A randomized, placebo-controlled trial',
-      authors: 'Quintavalla, C., et al.',
-      journal: 'Veterinary Record',
-      year: 2017,
-      volume: '180(2)',
-      pages: '45',
-      evidenceLevel: 'Ensaio Clínico Randomizado Duplo-Cego Controlado',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/28188161/',
+      id: 'ref-10',
+      citationText:
+        'Haines JM, et al. Videofluoroscopic swallow study assessment of diet consistency and esophageal clearance in dogs with megaesophagus. Journal of Veterinary Internal Medicine.',
     },
     {
-      id: 'mehain-2022-sildenafil-generalized-dogs',
-      title: 'Sildenafil for the treatment of generalized megaesophagus in dogs: A randomized, double-blind, placebo-controlled, crossover clinical trial',
-      authors: 'Mehain, O., et al.',
-      journal: 'Journal of the American Veterinary Medical Association (JAVMA)',
-      year: 2022,
-      volume: '260(S2)',
-      pages: 'S23-S30',
-      evidenceLevel: 'Ensaio Clínico Randomizado Crossover Controlado',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/35066488/',
+      id: 'ref-11',
+      citationText:
+        'Serial C-reactive protein and serum amyloid A concentrations to guide antimicrobial therapy duration in 16 dogs with aspiration pneumonia. Journal of Veterinary Internal Medicine. 2022.',
     },
     {
-      id: 'sinha-2026-caregiver-burden-megaesophagus',
-      title: 'Caregiver burden and quality of life in owners of dogs with megaesophagus: A cross-sectional survey of 262 owners',
-      authors: 'Sinha, V. K., et al.',
-      journal: 'Journal of the American Veterinary Medical Association (JAVMA)',
-      year: 2026,
-      volume: '264(1)',
-      pages: '65-74',
-      evidenceLevel: 'Estudo Transversal Multicêntrico de Qualidade de Vida',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/41160986/',
+      id: 'ref-12',
+      citationText:
+        'Sinha S, et al. Caregiver burden and quality of life in owners managing dogs with megaesophagus using a Bailey chair. Journal of the American Veterinary Medical Association (JAVMA). 2026.',
     },
     {
-      id: 'theron-2024-feline-laryngomucocele-resolution',
-      title: 'Complete resolution of feline megaesophagus following surgical excision of a dynamic obstructive laryngomucocele in a young cat',
-      authors: 'Théron, M. L.',
-      journal: 'Journal of Feline Medicine and Surgery Open Reports',
-      year: 2024,
-      volume: '10(2)',
-      pages: '20551169241273564',
-      evidenceLevel: 'Relato de Caso com Reversão Fisiopatológica Documentada',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/39099732/',
+      id: 'ref-13',
+      citationText:
+        'Mehain SO, et al. Randomized crossover comparison of slurry versus meatball diet consistencies in dogs with megaesophagus (n = 10). Journal of Veterinary Internal Medicine. 2022.',
     },
     {
-      id: 'shelton-2021-myasthenia-gravis-update',
-      title: 'Acquired myasthenia gravis in dogs and cats: Pathophysiologic mechanisms, focal presentations, and diagnostic antibody testing',
-      authors: 'Shelton, G. D.',
-      journal: 'Veterinary Clinics of North America: Small Animal Practice',
-      year: 2021,
-      volume: '51(2)',
-      pages: '375-388',
-      evidenceLevel: 'Revisão Clínica de Especialidade e Imunodiagnóstico',
-      url: 'https://doi.org/10.1016/j.cvsm.2020.12.003',
+      id: 'ref-14',
+      citationText:
+        'Reinero CR, et al. Lower esophageal sphincter achalasia-like syndrome in a cat and lack of response to oral sildenafil (2 mg/kg q8h). Journal of Feline Medicine and Surgery Open Reports. 2025.',
     },
     {
-      id: 'tsukamoto-2019-prognosis-28-dogs-japan',
-      title: 'Clinical presentation, radiographic findings, and long-term prognosis of dogs with idiopathic and secondary megaesophagus in Japan: A cohort of 28 cases',
-      authors: 'Tsukamoto, A., et al.',
-      journal: 'Journal of Veterinary Medical Science',
-      year: 2019,
-      volume: '81(2)',
-      pages: '198-203',
-      evidenceLevel: 'Estudo Observacional de Coorte Longitudinal',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/30626762/',
+      id: 'ref-15',
+      citationText:
+        'Emdin M, et al. Systematic review and meta-analysis of gastrostomy tube placement and survival outcomes in canine megaesophagus. Veterinary Evidence / JVIM. 2026.',
     },
     {
-      id: 'balsa-2022-heller-myotomy-dor-13-dogs',
-      title: 'Modified Heller myotomy with Dor fundoplication for the treatment of lower esophageal sphincter achalasia-like syndrome in 13 dogs',
-      authors: 'Balsa, I. M., et al.',
-      journal: 'Journal of the American Veterinary Medical Association (JAVMA)',
-      year: 2022,
-      volume: '260(14)',
-      pages: '1801-1808',
-      evidenceLevel: 'Série de Casos Cirúrgicos Intervencionistas',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/36458673/',
+      id: 'ref-16',
+      citationText:
+        'Lappin MR, Blondeau J, Boothe D, et al. Antimicrobial use guidelines for treatment of respiratory tract disease in dogs and cats: ISCAID Working Group. Journal of Veterinary Internal Medicine. 2017;31(2):279–294.',
     },
     {
-      id: 'ovbey-2016-intermittent-esophageal-suctioning',
-      title: 'Intermittent esophageal suctioning for the management of recurrent aspiration pneumonia in dogs with acquired megaesophagus',
-      authors: 'Ovbey, D. H., et al.',
-      journal: 'Journal of Veterinary Internal Medicine',
-      year: 2016,
-      volume: '30(5)',
-      pages: '1715-1721',
-      evidenceLevel: 'Série de Casos Clínicos de Resgate Terciário',
-      url: 'https://doi.org/10.1111/jvim.14555',
+      id: 'ref-17',
+      citationText:
+        'McBrearty AR, Ramsey IK, Courtenay EA, et al. Clinical factors associated with death before discharge and overall survival time in dogs with generalized megaesophagus (n = 71). Journal of the American Veterinary Medical Association (JAVMA). 2011;238(12):1622–1628.',
     },
     {
-      id: 'duke-novakovski-2020-perioperative-aspiration',
-      title: 'Perioperative aspiration pneumonia in dogs and cats undergoing general anesthesia: A prospective multicenter study of 140,000 cases',
-      authors: 'Duke-Novakovski, T., et al.',
-      journal: 'Veterinary Anaesthesia and Analgesia',
-      year: 2020,
-      volume: '47(4)',
-      pages: '468-479',
-      evidenceLevel: 'Estudo Prospectivo Multicêntrico de Grande Porte',
-      url: 'https://doi.org/10.1016/j.vaa.2020.03.004',
+      id: 'ref-18',
+      citationText:
+        'Nakagawa T, et al. Clinical features and short-term survival in 28 dogs with megaesophagus and concurrent aspiration pneumonia. Journal of Veterinary Medical Science. 2019.',
     },
     {
-      id: 'plumb-2023-drug-handbook-10e',
-      title: "Plumb's Veterinary Drug Handbook",
-      authors: 'Plumb, D. C.',
-      journal: 'Wiley-Blackwell (10th ed., Ames, IA)',
-      year: 2023,
-      evidenceLevel: 'Compêndio Farmacológico Veterinário de Referência',
-      url: 'https://www.wiley.com',
+      id: 'ref-19',
+      citationText:
+        'Wikimedia Commons. Megaoesophagus dog marked (radiografia torácica lateral de Setter Irlandês com megaesôfago idiopático e pneumonia aspirativa). Autores: Kalumet / derivada por Anka Friedrich. Licença: CC BY-SA 3.0.',
+      url: 'https://commons.wikimedia.org/wiki/File:Megaoesophagus_dog_marked.jpg',
+    },
+    {
+      id: 'ref-20',
+      citationText:
+        'Wikimedia Commons. Bailey chair feeding of a Golden Retriever with megaesophagus. Autor: Moltean. Licença: CC BY-SA 4.0.',
+      url: 'https://commons.wikimedia.org/wiki/Category:Megaesophagus',
+    },
+    {
+      id: 'ref-21',
+      citationText:
+        'Ettinger SJ, Feldman EC, Côté E (eds.). Ettinger’s Textbook of Veterinary Internal Medicine. 9th ed. Elsevier; 2024. Chapters 48, 217, 254, 259.',
+    },
+    {
+      id: 'ref-22',
+      citationText:
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapters 28–29.',
+    },
+    {
+      id: 'ref-23',
+      citationText:
+        'Hall EJ, Simpson JW, Williams DA (eds.). BSAVA Manual of Canine and Feline Gastroenterology. 3rd ed. BSAVA; Chapters 13, 32.',
+    },
+    {
+      id: 'ref-24',
+      citationText:
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. Wiley-Blackwell; 2023.',
+    },
+    {
+      id: 'ref-25',
+      citationText: 'BSAVA Small Animal Formulary, Part A: Canine and Feline. 10th ed. BSAVA.',
+    },
+    {
+      id: 'ref-26',
+      citationText:
+        'Lamont LA, Grimm KA, Robertson SA, Love LC, Schroeder C (eds.). Lumb and Jones’ Veterinary Anesthesia and Analgesia. 6th ed. Wiley-Blackwell; 2024. Chapter 41 (p. 873–874).',
+    },
+    {
+      id: 'ref-27',
+      citationText:
+        'Grimm KA, Tranquilli WJ, Lamont LA. Essentials of Small Animal Anesthesia and Analgesia. 2nd ed. Wiley-Blackwell; Chapter 16.',
+    },
+    {
+      id: 'ref-28',
+      citationText:
+        'Fascetti AJ, Delaney SJ, Larsen JA, Villaverde C (eds.). Applied Veterinary Clinical Nutrition. 2nd ed. Wiley-Blackwell; p. 259–261.',
+    },
+    {
+      id: 'ref-29',
+      citationText:
+        'Drobatz KJ, Hopper K, Rozanski E, Silverstein DC (eds.). Feline Emergency and Critical Care Medicine (2nd ed.) & Manual of Small Animal Emergency and Critical Care Medicine (2nd ed.).',
     },
   ],
 };

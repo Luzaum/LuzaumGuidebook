@@ -167,7 +167,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'A biofísica do estreitamento traqueal é classicamente explicada de forma didática pela Lei de Poiseuille, segundo a qual a resistência (R) ao fluxo laminar em um conduto cilíndrico rígido é inversamente proporcional à quarta potência do raio (R ~ 1/r^4). Como consequência, uma redução de apenas 50% no raio da via aérea acarreta uma elevação teórica de até 16 vezes na resistência ao fluxo aéreo, exigindo do paciente um esforço respiratório colossal para manter o volume corrente. Contudo, deve-se ressaltar a limitação biológica desse modelo: a traqueia viva é um tubo flexível dinâmico submetido a pressões transmurais alternadas e fluxo turbulentoso durante a expiração e a tosse paroxística, onde a perda de carga relaciona-se mais intensamente à velocidade e à densidade do gás do que ao regime puramente laminar.',
     fatoresAgravantes: [
       'Obesidade e sobrepeso: o acúmulo de gordura cervical e torácica reduz a complacência da parede torácica, comprime a via aérea superior e amplifica o gradiente transmural.',
-      'Estresse térmico, calor e ambientes abafados: o mecanismo de termorregulação por taquipneia (panting) acelera a velocidade do ar e aprofunda as pressões negativas transmurais.',
+      'Estresse térmico, calor e ambientes abafados: o mecanismo de termorregulação por taquipneia (respiração ofegante) acelera a velocidade do ar e aprofunda as pressões negativas transmurais.',
       'Excitação e estresse emocional: hiperativação adrenérgica com aumento da frequência e profundidade ventilatória.',
       'Irritantes aéreos: fumaça de cigarro, queima de incensos, aerossóis domésticos, poeira de reformas e perfumes intensos deflagram crises de tosse paroxística.',
       'Uso de coleira cervical convencional: a tração externa exerce pressão direta sobre os anéis condromalácicos, provocando colapso mecânico imediato.',
@@ -202,7 +202,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
   },
   pathophysiology: {
     mecanicaRespiratoria:
-      'O comportamento biomecânico do colapso é regido pela diferença entre a pressão intraluminal traqueal e a pressão externa peritraqueal (gradiente transmural), conforme detalhado no Nelson & Couto 6ª ed. No segmento cervical (extratorácico), a pressão externa é a pressão atmosférica. Durante a fase inspiratória, a descida do diafragma gera pressão subatmosférica (negativa) dentro da traqueia; quando os anéis são fracos, a pressão atmosférica circundante colapsa a parede cervical para dentro. No segmento intratorácico e nos brônquios, a pressão peritraqueal é a pressão pleural; durante a expiração e especialmente na tosse, a pressão pleural torna-se fortemente positiva em relação ao lúmen da via aérea, forçando o prolapso da membrana dorsal e o fechamento do segmento torácico.',
+      'O comportamento biomecânico do colapso é regido pela diferença entre a pressão intraluminal traqueal e a pressão externa peritraqueal (gradiente transmural). No segmento cervical (extratorácico), a pressão externa é a pressão atmosférica. Durante a fase inspiratória, a descida do diafragma gera pressão subatmosférica (negativa) dentro da traqueia; quando os anéis são fracos, a pressão atmosférica circundante colapsa a parede cervical para dentro. No segmento intratorácico e nos brônquios, a pressão peritraqueal é a pressão pleural; durante a expiração e especialmente na tosse, a pressão pleural torna-se fortemente positiva em relação ao lúmen da via aérea, forçando o prolapso da membrana dorsal e o fechamento do segmento torácico.',
     consequencias: [
       'Aumento crítico da resistência ao fluxo e sobrecarga extenuante da musculatura respiratória diafragmática e intercostal.',
       'Fluxo aéreo acelerado e turbulento com desidratação e estresse de cisalhamento do muco protetor.',
@@ -366,7 +366,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
           'Substituir coleira por peitoral, instituir perda de peso se necessário e reduzir calor, fumaça, aerossóis e excitação. Corrigir doenças de via aérea superior e tratar comorbidades demonstradas.',
         duration: 'Permanente.',
         reassess: 'Revisão em 2–4 semanas; depois a cada 3–6 meses quando estável. Registrar peso, escore corporal, paroxismos e tolerância ao exercício.',
-        evidence: 'Ettinger 9ª ed.; Nelson & Couto 6ª ed.; ACVS.',
+        evidence: 'ACVS.',
       },
       {
         title: '2. Controlar tosse seca e inflamação quando presentes',
@@ -378,7 +378,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
           '• Antitussígeno: teste curto e menor frequência eficaz\n• Corticosteroide sistêmico: curso limitado com desmame\n• Fluticasona: avaliar resposta em 2–4 semanas',
         reassess:
           '• Contato em 48–72h para tosse intensa\n• Consulta em até 7–14 dias: avaliar paroxismos, sono, exercício, sedação, constipação, polifagia e PU/PD',
-        evidence: 'Ettinger 9ª ed.; Nelson & Couto 6ª ed.; Talavera-López et al. (2023).',
+        evidence: 'Talavera-López et al. (2023).',
       },
       {
         title: '3. Tratar apenas o componente comprovado',
@@ -389,7 +389,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         duration: 'Teste terapêutico de 1–2 semanas; manter somente se houver melhora objetiva.',
         reassess:
           'Em 7–14 dias: frequência cardíaca e ritmo, tremores/agitação, sinais gastrointestinais, esforço respiratório e diário de tosse.',
-        evidence: 'Nelson & Couto 6ª ed.; Ettinger 9ª ed.',
+        evidence: 'Indicação clínica selecionada conforme doença de pequenas vias aéreas confirmada.',
       },
       {
         title: '4. Encaminhar obstrução grave refratária',
@@ -400,7 +400,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       },
     ],
     terapiaFarmacologica:
-      'Escolher o fármaco rigorosamente pelo componente dominante do paciente (Nelson & Couto 6ª ed., Plumb’s 10ª ed., BSAVA 10ª ed.): antitussígeno opioide para tosse seca e improdutiva crônica; corticosteroide curto para edema agudo de mucosa; broncodilatador exclusivamente se houver broncoespasmo ou doença de pequenas vias aéreas documentada. Regra de ouro da segurança farmacológica: não associar empiricamente butorfanol, hidrocodona e codeína: selecionar um opioide, titular pela menor dose eficaz e reavaliar. Em felinos, é proibido o uso de qualquer xarope contendo paracetamol devido ao risco de meta-hemoglobinemia letal.',
+      'Escolher o fármaco rigorosamente pelo componente dominante do paciente: antitussígeno opioide para tosse seca e improdutiva crônica; corticosteroide curto para edema agudo de mucosa; broncodilatador exclusivamente se houver broncoespasmo ou doença de pequenas vias aéreas documentada. Regra de ouro da segurança farmacológica: não associar empiricamente butorfanol, hidrocodona e codeína: selecionar um opioide, titular pela menor dose eficaz e reavaliar. Em felinos, é proibido o uso de qualquer xarope contendo paracetamol devido ao risco de meta-hemoglobinemia letal.',
     protocolosCriseObstrutiva: [
       {
         drug: 'Butorfanol — crise obstrutiva',
@@ -416,7 +416,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         cautions:
           'Pode causar sedação, ataxia, bradicardia e depressão respiratória. Reduzir dose com outros depressores do SNC e em cães MDR1; evitar supressão da tosse quando há secreção abundante.',
         contraindications: 'Hipersensibilidade; extrema cautela em disfunção hepática/renal grave e doença respiratória secretória.',
-        notes: 'Ettinger 9ª ed. descreve esta faixa para estabilização aguda. Naloxona pode reverter efeitos opioides clinicamente importantes.',
+        notes: 'Faixa empregada para estabilização aguda. Naloxona pode reverter efeitos opioides clinicamente importantes.',
       },
       {
         drug: 'Acepromazina — adjuvante para agitação',
@@ -441,7 +441,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         dose: '0,55 mg/kg; se necessário, até 1,1 mg/kg',
         frequency: 'q6–12h',
         route: 'VO',
-        duration: 'Curso curto; o Plumb’s orienta que normalmente não ultrapasse 7 dias.',
+        duration: 'Curso curto, evitando normalmente ultrapassar 7 dias.',
         mechanism:
           'Modulação opioide central do reflexo da tosse; a baixa biodisponibilidade oral ainda permite efeito antitussígeno.',
         reassess: 'Contato em 48–72h e consulta em até 7 dias; reduzir dose ou intervalo assim que o ciclo da tosse estiver controlado.',
@@ -451,8 +451,8 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       {
         drug: 'Hidrocodona — antitussígeno oral',
         indication: 'Alternativa para tosse seca e improdutiva intensa ou refratária; não é escolha para tosse produtiva.',
-        dose: '0,2–0,5 mg/kg (Ettinger: 0,22 mg/kg)',
-        frequency: 'q6–12h (Ettinger: q12h)',
+        dose: '0,2–0,5 mg/kg (protocolo alternativo: 0,22 mg/kg)',
+        frequency: 'q6–12h (ou q12h em dose inicial baixa)',
         route: 'VO',
         duration: 'Até controlar a exacerbação; reavaliar antes de prolongar.',
         mechanism: 'Agonista μ-opioide que suprime diretamente o centro medular da tosse e reduz excitabilidade neuronal.',
@@ -479,7 +479,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         contraindications:
           'Não usar em depressão respiratória importante, obstrução GI suspeita ou tosse produtiva que exige depuração de secreções. Contraindicada com inibidor da monoaminoxidase durante o uso e por 14 dias após sua suspensão.',
         notes:
-          'Uso extrabula. O Plumb’s não identifica estudos que comprovem definitivamente eficácia antitussígena oral em pacientes veterinários e considera a hidrocodona mais potente. Preferir codeína isolada; em produtos de associação, calcular e avaliar separadamente a segurança de cada princípio ativo. Medicamento sujeito a controle especial conforme a legislação vigente.',
+          'Uso extrabula; faltam estudos que comprovem definitivamente eficácia antitussígena oral em pacientes veterinários e a hidrocodona tende a ser mais potente. Preferir codeína isolada; em produtos de associação, calcular e avaliar separadamente a segurança de cada princípio ativo. Medicamento sujeito a controle especial conforme a legislação vigente.',
       },
       {
         drug: 'Prednisona ou prednisolona — curso anti-inflamatório',
@@ -495,12 +495,12 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
           'Usar a menor exposição eficaz. Diabetes, cardiopatia avançada, doença renal, infecção e obesidade aumentam o risco; evitar associação com AINE.',
         contraindications: 'Infecção fúngica sistêmica; cautela forte em diabetes descompensado, úlcera GI e infecção não controlada.',
         notes:
-          'Regime testado em apenas 30 cães. Ettinger também descreve 0,2 mg/kg q24h por 1–2 semanas como opção de baixa dose; Nelson & Couto admite 0,5–1 mg/kg q12h na exacerbação, com desmame em 3–4 semanas.',
+          'Regime testado em apenas 30 cães. Também se descrevem 0,2 mg/kg q24h por 1–2 semanas como opção de baixa dose ou 0,5–1 mg/kg q12h na exacerbação aguda com desmame em 3–4 semanas.',
       },
       {
         drug: 'Fluticasona — corticosteroide inalatório',
         indication: 'Inflamação traqueobrônquica quando se deseja reduzir efeitos sistêmicos ou há resposta prévia a glicocorticoide.',
-        dose: 'Plumb’s: 110–220 µg/puff, 1 puff por dose',
+        dose: '110–220 µg/puff, 1 puff por dose',
         frequency: 'q6–12h, ajustando à resposta',
         route: 'Inalatória por MDI + espaçador e máscara',
         duration: 'Reavaliar em 2 e 4 semanas; manutenção depende do fenótipo e da resposta.',

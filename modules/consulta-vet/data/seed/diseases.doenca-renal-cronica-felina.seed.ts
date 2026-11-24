@@ -58,7 +58,6 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
     'Molidustat',
     'Darbepoetina',
     'Bacteriúria Subclínica',
-    'Nelson & Couto',
   ],
   isPublished: true,
   source: 'seed',
@@ -67,7 +66,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
 
   quickSummary:
     'A doença renal crônica em gatos é uma síndrome irreversível e progressiva caracterizada por perda estrutural e funcional de néfrons com duração superior a três meses, cuja abordagem foi substancialmente redefinida pelo consenso iCatCare 2026 e IRIS 2026:\n\n' +
-    '- Mudança de paradigma no rastreamento: recomendação de screening renal anual a partir de 7 anos e semestral acima de 10 anos, monitorando curva de peso e massa muscular anos antes da azotemia.\n' +
+    '- Mudança de paradigma no rastreamento: recomendação de triagem renal anual a partir de 7 anos e semestral acima de 10 anos, monitorando curva de peso e massa muscular anos antes da azotemia.\n' +
     '- Foco no fósforo e cálcio ionizado (iCa): a restrição de fósforo dietético é a intervenção disease-modifying mais sólida, acompanhada de vigilância estrita de hipercalcemia iatrogênica pós-dieta renal.\n' +
     '- Telmisartana como padrão antiproteinúrico e anti-hipertensivo: bloqueador AT1 com superioridade na comodidade e excelente controle de proteinúria (UPC >0,4).\n' +
     '- Novas fronteiras na anemia e desmistificação de rotinas: incorporação de molidustat (HIF-PHI) ao IRIS 2026 (gatilho HCT <25%), abandono de antibióticos para bacteriúria subclínica e veto ao uso rotineiro de omeprazol e fluidoterapia SC indiscriminada.',
@@ -134,7 +133,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
         {
           label: 'Passo 1: Triagem Geriátrica e Avaliação de Composição Corporal',
           detail:
-            'Screening anual (7–10 anos) ou semestral (>10 anos) avaliando peso, escore de condição corporal (BCS) e muscular (MCS). Investigar histórico de PU/PD sutil e apetite.',
+            'Triagem anual (7–10 anos) ou semestral (>10 anos) avaliando peso, escore de condição corporal (BCS) e muscular (MCS). Investigar histórico de PU/PD sutil e apetite.',
           timing: 'Triagem geriátrica de rotina ou queixa de emagrecimento',
           limitations: 'A perda ponderal precede a azotemia em até 3 anos; creatinina pode permanecer no intervalo de referência se houver perda muscular severa.',
         },
@@ -244,7 +243,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
       '- Displasia Renal e Hipoplasia Congênita: falha do desenvolvimento embrionário do metanefro, manifestando-se com azotemia precoce e rins diminutos em gatos jovens.',
     continuumAKIDRCEInjuriasAdquiridas:
       'Etiologias adquiridas e o continuum entre lesão aguda e progressão crônica:\n\n' +
-      '- Nefrite Túbulo-Intersticial Crônica Idiopática: o achado histopatológico terminal mais prevalente em felinos idosos; representa um endpoint inespecífico de agressões inflamatórias, isquêmicas e imunomediadas prévias não identificadas.\n' +
+      '- Nefrite Túbulo-Intersticial Crônica Idiopática: o achado histopatológico terminal mais prevalente em felinos idosos; representa um desfecho inespecífico de agressões inflamatórias, isquêmicas e imunomediadas prévias não identificadas.\n' +
       '- Continuum LRA-DRC (Acute-on-Chronic Kidney Disease - ACKD): episódios de injúria renal aguda (LRA isquêmica, pielonefrite subclínica, nefrotoxinas como lírios ou AINEs) que evoluem com reparo incompleto deixam fibrose residual que culmina em DRC. Inversamente, gatos com DRC estável apresentam fragilidade nefronal extrema, descompensando com insultos menores.\n' +
       '- Ureterolitíase Obstrutiva e Nefrolitíase: cálculos de oxalato de cálcio geram obstruções intraluminais transitórias ou completas, provocando atrofia por hidronefrose e perda silenciosa de néfrons.\n' +
       '- Neoplasias e Infiltrados: linfoma renal bilateral e peritonite infecciosa felina (PIF com lesão piogranulomatosa renal) representam causas infiltrativas graves.',
@@ -330,7 +329,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
         ['Fósforo Sérico (IRIS 4)', 'Retenção grave; produto Ca x P elevado induz precipitação mineral generalizada', 'Alvo: 2,5 a 6,0 mg/dL', 'Adicionar quelantes entéricos potentes (hidróxido de alumínio ou sevelamer)'],
         ['Cálcio Ionizado (iCa)', 'Fração ativa livre; hipercalcemia causa vasoconstrição renal e nefrocalcinose', 'Alvo: 1,15 a 1,40 mmol/L (evitar hipercalcemia >1,45 mmol/L)', 'Cálcio total é discordante; dosar obrigatoriamente cálcio ionizado'],
         ['Hipercalcemia pós-dieta', 'Dieta hipofosfatada aumenta absorção intestinal passiva de cálcio livre', 'Prevenir nefrocalcinose e urolitíase por oxalato de cálcio', 'Se iCa subir: selecionar dieta com Ca <=200 mg/100 kcal e Ca:P <1,4:1'],
-        ['FGF23', 'Hormônio osteocítico fosfatúrico; sobe antes do PTH e do fósforo sérico', 'Marcador prognóstico e de sobrecarga mineral', 'Não recomendado como teste de screening precoce isolado para DRC'],
+        ['FGF23', 'Hormônio osteocítico fosfatúrico; sobe antes do PTH e do fósforo sérico', 'Marcador prognóstico e de sobrecarga mineral', 'Não recomendado como teste de triagem precoce isolado para DRC'],
       ],
     },
   },
@@ -340,7 +339,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
       'Sinais clínicos precoces e alterações sutis da composição corporal:\n\n' +
       '- Emagrecimento insidioso e sarcopenia: perda progressiva de peso corpóreo e massa muscular nos membros pélvicos e musculatura epaxial, frequentemente negligenciada pelos tutores como "envelhecimento normal".\n' +
       '- Poliúria e polidipsia sutis: aumento na frequência de idas à caixa de areia, formação de torrões maiores de urina e preferência por beber água corrente de torneiras.\n' +
-      '- Pelo opaco e desidratação subclínica: redução do brilho da pelagem devido à perda do comportamento de higiene ("grooming") e perda de elasticidade cutânea decorrente de balanço hídrico negativo crônico.',
+      '- Pelo opaco e desidratação subclínica: redução do brilho da pelagem devido à perda do comportamento de higiene ("autolimpeza") e perda de elasticidade cutânea decorrente de balanço hídrico negativo crônico.',
     sindromeUremicaNauseaEHiporexia:
       'Apresentação clínica da síndrome urêmica e sinais sutis de náusea:\n\n' +
       '- Náusea felina sem vômito aberto: a uremia gera manifestações comportamentais peculiares: o gato aproxima-se com fome da tigela de comida, cheira o alimento, lambe os lábios repetidamente, saliba e recua sem ingerir nada (aversão alimentar urêmica).\n' +
@@ -459,7 +458,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
         stepNumber: 6,
         title: 'Aferição Hemodinâmica Seriada da Pressão Arterial Sistólica (PAS)',
         description:
-          'Medição padronizada por Doppler vascular em ambiente silencioso, com manguito de 30% a 40% da circunferência do membro. Realizar exame de fundo de olho para screening de TOD.',
+          'Medição padronizada por Doppler vascular em ambiente silencioso, com manguito de 30% a 40% da circunferência do membro. Realizar exame de fundo de olho para triagem de TOD.',
         isGoldStandard: true,
       },
       {
@@ -644,7 +643,7 @@ export const doencaRenalCronicaFelinaRecord: DiseaseRecord = {
       'Descompensação aguda sobreposta a DRC (Acute-on-Chronic Kidney Disease - ACKD):\n\n' +
       '- Apresentação de emergência: gato com DRC basal que sofre desidratação aguda, evento anoréxico, infecção bacteriana ascendente ou obstrução ureteral, apresentando-se com letargia súbita, creatinina disparada e hipotermia.\n' +
       '- Risco de conduta fatal: rotular precocemente o paciente como portador de DRC Estágio 4 terminal e sugerir eutanásia sem avaliar a reversibilidade do componente agudo.\n' +
-      '- Protocolo de plantão: ressuscitação volêmica cuidadosa com cristaloides balanceados, USG urgente para afastar litíase ureteral e monitoramento contínuo de débito urinário até definição do novo baseline.',
+      '- Protocolo de plantão: ressuscitação volêmica cuidadosa com cristaloides balanceados, USG urgente para afastar litíase ureteral e monitoramento contínuo de débito urinário até definição do novo valor basal.',
     criseHipertensivaELesaoOcularTOD:
       'Emergência hipertensiva e cegueira aguda por lesão de órgão-alvo (TOD):\n\n' +
       '- Síndrome ocular hipertensiva: a PAS elevada (>160–180 mmHg) lesa os capilares corioretinianos, causando transudação de fluido sub-retiniano, hemorragias em chama de vela e descolamento seroso de retina bilateral com cegueira súbita irreversível se não tratada em poucas horas.\n' +

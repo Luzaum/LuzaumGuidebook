@@ -567,7 +567,7 @@ function DosageGuidance({ product }: { product: CommercialMedicationProduct }) {
                   </span>
                   <div>
                     <p className="text-sm font-extrabold text-foreground">{label}</p>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Plumb&apos;s / leitura clínica</p>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Posologia / leitura clínica</p>
                   </div>
                 </div>
                 {entries.length ? (

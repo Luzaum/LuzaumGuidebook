@@ -87,6 +87,8 @@ export interface EditorialClinicalTable {
 export interface EditorialClinicalFigure {
   kind: 'clinicalFigure';
   src: string;
+  /** URL pública de contingência caso o arquivo local não esteja disponível em cache/deploy. */
+  fallbackSrc?: string;
   alt: string;
   caption?: string;
   /** Legenda resumida opcional para miniatura em grade; o zoom exibe sempre `caption` completo. */

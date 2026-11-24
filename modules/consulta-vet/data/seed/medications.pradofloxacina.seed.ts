@@ -90,14 +90,14 @@ export const pradofloxacinaMedicationsSeed: MedicationRecord[] = [
         frequency: 'A cada 24 horas (q24h)',
         duration: 'Piodermite: 14 a 21 dias (ou até 7 a 14 dias após resolução clínica completa) | Feridas: 7 dias',
         notes:
-          'Bula brasileira histórica indicava 3 mg/kg q24h. O compêndio BSAVA preconiza 3 a 5 mg/kg q24h; o Plumb indica 3 a 4,5 mg/kg q24h. A extremidade superior (4,5 a 5 mg/kg) é preferível em infecções profundas com MIC bacteriana mais elevada.',
+          'A bula brasileira histórica indicava 3 mg/kg q24h, enquanto diretrizes clínicas contemporâneas trabalham com a faixa de 3 a 5 mg/kg q24h (3 a 4,5 mg/kg em regimes norte-americanos). A extremidade superior (4,5 a 5 mg/kg) é preferível em infecções profundas com MIC bacteriana mais elevada.',
         clinicalContext:
           'Reservado para piodermites com falha comprovada de primeira linha (cefalexina, amoxicilina-clavulanato) ou laudo de cultura com perfil de suscetibilidade que justifique o uso.',
         monitoring:
           'Avaliação clínica dermatológica e citológica seriada a cada 7 a 14 dias. Em tratamentos superiores a 14 dias, realizar hemograma completo para vigilância de linhagem branca e plaquetas.',
         calculatorEnabled: true,
         referenceIds: ['plumb-pradofloxacin-10ed', 'bsava-pradofloxacin-10ed', 'mueller-2007-pyoderma'],
-        evidenceLevel: 'Ensaio Clínico Randomizado Cego Multicêntrico Nível 1b / Plumb 10ª ed.',
+        evidenceLevel: 'Ensaio Clínico Randomizado Cego Multicêntrico (Nível 1b)',
       },
       {
         id: 'dose-prado-cao-gato-itu',
@@ -207,7 +207,7 @@ export const pradofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Hemograma periódico quinzenal para vigilância de toxicidade medular em tratamentos além de 14 dias; sorologia e PCR sanguíneo serado.',
         calculatorEnabled: true,
         referenceIds: ['plumb-pradofloxacin-10ed'],
-        evidenceLevel: 'Diretriz de Consenso Farmacológico Plumb 10ª ed.',
+        evidenceLevel: 'Protocolo Antimicrobiano Felino Consolidado',
       },
     ],
 
@@ -668,7 +668,7 @@ export const pradofloxacinaMedicationsSeed: MedicationRecord[] = [
           clinicalEffect:
             'Possível elevação dos níveis séricos de ciclosporina e agravamento potencial de toxicidade renal.',
           pharmacologicalMechanism:
-            'Interferência no metabolismo hepático microssomal e transporte de membrana tubular renal. O compêndio BSAVA recomenda evitar o uso concomitante até que mais dados veterinários estejam disponíveis.',
+            'Interferência no metabolismo hepático microssomal e transporte de membrana tubular renal. Recomenda-se evitar o uso concomitante até que mais dados veterinários estejam disponíveis.',
         },
         {
           drugOrClass: 'Digoxina',

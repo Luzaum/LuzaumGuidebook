@@ -27,7 +27,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     'Linfoma',
     'Anemia',
     'Vacina FeLV',
-    'Indoor',
+    'em ambiente domiciliar',
     'ABCD',
     'AAFP',
   ],
@@ -39,7 +39,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     'PCR proviral positivo + p27 negativo = infecção regressiva provável — não tratar como contagioso habitual.',
     'Não indicar eutanásia só pelo resultado positivo; não iniciar antiviral de rotina em assintomático.',
     'Hemograma, esfregaço, bioquímica e urinálise na investigação inicial — tratar a doença, não o teste.',
-    'Separar gato progressivo de suscetíveis; indoor, castração e vacinação baseada em risco nos demais.',
+    'Separar gato progressivo de suscetíveis; manutenção em ambiente domiciliar, castração e vacinação baseada em risco nos demais.',
     'Filhotes e gatos jovens são mais susceptíveis à infecção progressiva — testar antes de vacinar.',
     'Anemia: sempre classificar regenerativa versus não regenerativa antes de atribuir ao FeLV.',
     'Antivirais (AZT, raltegravir, RetroMAD1): evidência insuficiente para uso rotineiro (Westman et al., 2024).',
@@ -95,7 +95,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
           label: 'Investigar doença associada',
           timing: 'Sempre que sintomático',
           detail:
-            'Hemograma, reticulócitos, esfregaço, bioquímica, urinálise; aspirado medular se anemia não regenerativa ou pancitopenia (Nelson & Couto, 6ª ed.).',
+            'Hemograma, reticulócitos, esfregaço, bioquímica, urinálise; aspirado medular se anemia não regenerativa ou pancitopenia.',
         },
       ],
     },
@@ -105,7 +105,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
         {
           label: 'Assintomático progressivo',
           detail:
-            'Indoor, dieta completa (evitar cru), controle parasitário, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro (ABCD 2025; Westman et al., 2024).',
+            'Manter em ambiente domiciliar, oferecer dieta completa (evitar cru), controle parasitário, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro (ABCD 2025; Westman et al., 2024).',
         },
         {
           label: 'Doença associada',
@@ -122,7 +122,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'FeLV é retrovírus envelopado de RNA da família Retroviridae, gênero Gammaretrovirus. Após entrada celular, a transcriptase reversa converte RNA viral em DNA que integra-se ao genoma como provírus — base da persistência, reativação e oncogênese (Tizard, Veterinary Immunology, 11ª ed.; Nelson & Couto, 6ª ed.).',
+      'FeLV é retrovírus envelopado de RNA da família Retroviridae, gênero Gammaretrovirus. Após entrada celular, a transcriptase reversa converte RNA viral em DNA que integra-se ao genoma como provírus — base da persistência, reativação e oncogênese.',
     felvExogenoEndogeno: [
       'FeLV exógeno: vírus infeccioso adquirido horizontal ou verticalmente — causa clínica relevante.',
       'FeLV endógeno (enFeLV): sequências ancestrais no genoma felino; pode recombinar com FeLV-A gerando subtipo B; PCR deve discriminar FeLV exógeno (ABCD 2025).',
@@ -134,7 +134,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       'FeLV-T: tropismo por linfócitos T; imunodeficiência intensa (FeLV-FAIDS).',
     ],
     zoonose:
-      'FeLV não é zoonose reconhecida; não infecta cães como doença natural (Nelson & Couto, 6ª ed.).',
+      'FeLV não é zoonose reconhecida; não infecta cães como doença natural.',
   },
   epidemiology: {
     distribuicao:
@@ -146,14 +146,14 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
   },
   pathogenesisTransmission: {
     cascata: [
-      'Exposição oronasal — principal via saliva em contato social prolongado (grooming, potes compartilhados, mordidas).',
+      'Exposição oronasal — principal via saliva em contato social prolongado (lambedura mútua, potes compartilhados, mordidas).',
       'Replicação em tecidos linfoides orofaríngeos e linfonodos regionais.',
       'Viremia primária e resposta imune — “decisão biológica”: abortiva, regressiva ou progressiva.',
       'Infecção de medula óssea em progressivos → citopenias, neoplasia, viremia secundária.',
       'Eliminação viral por glândulas salivares e epitélios — gato progressivo torna-se reservatório.',
     ],
     transmissaoVertical:
-      'Transplacentária, parto, leite e lambedura materna — aborto, natimorto ou filhote infectado (England & von Heimendahl, BSAVA Reproduction, 2ª ed.).',
+      'Transplacentária, parto, leite e lambedura materna — aborto, natimorto ou filhote infectado.',
     transmissaoIatrogenica:
       'Transfusão, agulhas reutilizadas — triagem de doadores exige PCR proviral além de p27 (ABCD 2025).',
     sobrevivenciaAmbiente:
@@ -188,9 +188,9 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       ],
     },
     imunopatogenese:
-      'FeLV depleta linfócitos T CD4+, altera relação CD4/CD8, atrofia tímica e função neutrofílica — imunossupressão + citopenias + oncogênese + infecções secundárias (Tizard, 11ª ed.; ABCD 2025).',
+      'FeLV depleta linfócitos T CD4+, altera relação CD4/CD8, atrofia tímica e função neutrofílica — imunossupressão + citopenias + oncogênese + infecções secundárias (ABCD 2025).',
     oncogenese:
-      'Integração proviral próxima a proto-oncogenes favorece linfoma e leucemias — linfoma mediastinal T em gatos jovens tem associação histórica forte com FeLV (Nelson & Couto, 6ª ed.).',
+      'Integração proviral próxima a proto-oncogenes favorece linfoma e leucemias — linfoma mediastinal T em gatos jovens tem associação histórica forte com FeLV.',
   },
   clinicalSignsPathophysiology: [
     {
@@ -328,11 +328,11 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     estadiamentoERotinaWestman: [
       'Fluxograma de rotina e estadiamento do gato FeLV+ (Westman et al., 2019 adaptado):',
       '1. Estadiamento Inicial Obrigatório: Hemograma completo com contagem de reticulócitos e esfregaço sanguíneo; perfil bioquímico (função renal, hepática, relação Albumina:Globulina); urinálise completa; triagem de coinfecções (FIV, Mycoplasma hemofelis); exames de imagem (ultrassonografia abdominal e radiografia torácica para rastreamento de linfoma mediastinal/abdominal ou linfoadenopatia).',
-      '2. Medidas Preventivas e de Bem-Estar: Manutenção estritamente indoor, isolamento de gatos suscetíveis (p27-), vacinação de contactantes, castração de rotina, dieta cozida/balanceada (evitar carnes cruas) e controle ecto/endoparasitário rigoroso.',
+      '2. Medidas Preventivas e de Bem-Estar: Manutenção estritamente em ambiente domiciliar, isolamento de gatos suscetíveis (p27-), vacinação de contactantes, castração de rotina, dieta cozida/balanceada (evitar carnes cruas) e controle ecto/endoparasitário rigoroso.',
       '3. Protocolo de Monitoramento Periódico: Consulta clínica + hemograma completo a cada 6 meses. Perfil bioquímico, urinálise e ultrassonografia de rastreio anualmente (ou imediatamente se houver febre, prostração, linfoadenopatia, citopenia ou perda de peso).',
     ],
     assintomatico: [
-      'Indoor; evitar contato com suscetíveis; castração; dieta completa balanceada; evitar alimentos crus; controle ectop/endoparasitário; consulta e hemograma ≥6/6 meses; bioquímica e urinálise ≥anual (Westman et al., 2019; Little et al., 2020).',
+      'Manter em ambiente domiciliar; evitar contato com suscetíveis; castração; dieta completa balanceada; evitar alimentos crus; controle ectop/endoparasitário; consulta e hemograma ≥6/6 meses; bioquímica e urinálise ≥anual (Westman et al., 2019; Little et al., 2020).',
     ],
     infeccoesSecundarias: [
       'Investigar etiologia; cultura e antibiograma quando aplicável; não usar antibiótico profilático crônico só por FeLV+ (ABCD 2025).',
@@ -348,8 +348,8 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     ],
     antiviraisEvidencia: [
       'Westman et al. (2024), em 18 gatos progressivamente infectados, não encontraram benefício convincente de AZT, raltegravir ou RetroMAD1 na carga viral ou sobrevida — não recomendar como terapia padrão.',
-      'Zidovudina (AZT) 5 mg/kg VO q12h: evidência baixa; mielossupressão — apenas casos neurológicos selecionados após excluir outras causas (Plumb\'s, 10ª ed.; ABCD 2025).',
-      'Interferon-ω felino 1 MU/kg SC q24h ×5 dias nos dias 0, 14 e 60: adjuvante em casos selecionados — evidência limitada, não cura (Plumb\'s, 10ª ed.).',
+      'Zidovudina (AZT) 5 mg/kg VO q12h: evidência baixa; mielossupressão — apenas casos neurológicos selecionados após excluir outras causas (ABCD 2025).',
+      'Interferon-ω felino 1 MU/kg SC q24h ×5 dias nos dias 0, 14 e 60: adjuvante em casos selecionados — evidência limitada, não cura.',
       'Raltegravir, RetroMAD1, ribavirina (contraindicada em gatos), imunoestimulantes inespecíficos: não rotina.',
     ],
     glicocorticoides: [
@@ -383,7 +383,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       'Progressivo + suscetível: separação física é opção mais segura. Se convivência: testar todos, vacinar suscetíveis, monitorar — vacina não elimina risco (ABCD 2025).',
     ],
     criadores: [
-      'Testar antes de introdução; não reproduzir infectados; testar matrizes — FeLV causa aborto e filhotes debilitados (England & von Heimendahl, BSAVA Reproduction, 2ª ed.).',
+      'Testar antes de introdução; não reproduzir infectados; testar matrizes — FeLV causa aborto e filhotes debilitados.',
     ],
     hospital: [
       'Não exige ala de isolamento tipo panleucopenia — separar de outros gatos, higiene de gaiola, evitar colocar junto a pacientes altamente contagiosos porque o FeLV+ pode ser imunocomprometido (ABCD 2025).',

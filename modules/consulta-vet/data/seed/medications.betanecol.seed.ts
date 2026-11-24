@@ -105,7 +105,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       clinicalContext: 'Gatos pós-desobstrução com uretra comprovadamente pérvia e bexiga previamente sobredistendida.',
     },
     {
-      condition: 'Atonia / Hipocontratilidade Detrusora em Cães (Regime Padrão BSAVA 10ª ed.)',
+      condition: 'Atonia / Hipocontratilidade Detrusora em Cães (Regime Padrão)',
       species: 'dog',
       doseSummary: '2,5 a 15 mg/cão VO a cada 8 horas (q8h); titular progressivamente pela resposta clínica',
       route: 'Oral (VO)',
@@ -113,7 +113,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       clinicalContext: 'Cães com bexiga grande, flácida e facilmente expressável, sem obstrução de saída.',
     },
     {
-      condition: 'Atonia Detrusora Canina Ampla e Titulação Refratária (Plumb 10ª ed.)',
+      condition: 'Atonia Detrusora Canina Ampla e Titulação Refratária',
       species: 'dog',
       doseSummary: '2,5 a 25 mg/cão VO a cada 8 horas (TID; alguns respondem a cada 12h)',
       route: 'Oral (VO)',
@@ -123,13 +123,13 @@ export const betanecolMedicationRecord: MedicationRecord = {
     {
       condition: 'Megaesôfago Idiopático Canino Adjuvante (Evidência Clínica Limitada)',
       species: 'dog',
-      doseSummary: '5 a 15 mg/cão VO a cada 8 horas (q8h; até 25 mg/cão no Plumb), 30 min antes da refeição',
+      doseSummary: '5 a 15 mg/cão VO a cada 8 horas (q8h; podendo atingir até 25 mg/cão), 30 min antes da refeição',
       route: 'Oral (VO)',
       duration: 'Período de teste clínico de 7 a 14 dias',
       clinicalContext: 'Administrado em jejum pré-alimentação em posição ortostática bipedal (cadeira de Bailey).',
     },
     {
-      condition: 'Disautonomia Sintomática Felina (Merck Veterinary Manual)',
+      condition: 'Disautonomia Sintomática Felina',
       species: 'cat',
       doseSummary: '1,0 a 2,5 mg/gato VO a cada 8 a 12 horas (q8-12h)',
       route: 'Oral (VO)',
@@ -164,7 +164,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       clinicalContext:
         'Cães apresentando bexiga grande, flácida, atônica e de fácil expressão manual, decorrente de sobredistensão vesical prévia ou lesão neurológica incompleta de arco reflexo sacral (lesão parcial de cauda equina, hérnia discal lumbossacral L7-S1 ou neuropatia periférica do nervo pélvico).',
       species: 'dog',
-      dose: '2,5 a 15 mg por cão por via oral a cada 8 horas (BSAVA 10ª ed.), podendo atingir até 25 mg por cão a cada 8 horas em cães de grande porte refratários (Plumb 10ª ed.).',
+      dose: '2,5 a 15 mg por cão por via oral a cada 8 horas, podendo atingir até 25 mg por cão a cada 8 horas em cães de grande porte refratários.',
       route: 'Oral (VO com estômago vazio)',
       frequency: 'A cada 8 horas (q8h; alguns cães respondem a q12h)',
       duration: 'Conforme a evolução neurológica e a recuperação da capacidade de esvaziamento completo.',
@@ -175,7 +175,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       monitoring:
         'Volume residual pós-miccional (alvo < 2 a 4 mL/kg), facilidade de expressão manual, jato urinário, ausência de incontinência por transbordamento e ausência de efeitos adversos gastrointestinais.',
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-galluzzi-2025', 'ref-buranakarl-2001'],
-      evidenceLevel: 'Nível 2a — Compêndios Padrão-Ouro (Plumb e BSAVA) e Revisão Sistemática Galluzzi et al. 2025',
+      evidenceLevel: 'Nível 2a — Revisão Sistemática (Galluzzi et al., 2025) e Posologia Consagrada',
     },
     {
       id: 'ind-beth-dysautonomia-support',
@@ -536,7 +536,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
         species: 'dog',
         title: 'Posologia Fixa por Porte, Sinergia com Alfa-1 Bloqueadores e Aplicação em Megaesôfago',
         description:
-          'No cão, a posologia do betanecol baseia-se em miligramas por animal (2,5 a 15 mg/cão no BSAVA e até 25 mg/cão no Plumb) e não em mg/kg linear. O principal desafio clínico é a resistência de saída na uretra proximal: para que a contração do detrusor resulte em micção eficaz, a associação com o alfa-1 bloqueador prazosina é frequentemente mandatória em bexigas de neurônio motor inferior. Em megaesôfago idiopático, embora estudos antigos demonstrem aumento na contratilidade esofágica, a evidência clínica moderna de redução da pneumonia aspirativa é limitada.',
+          'No cão, a posologia do betanecol baseia-se em miligramas por animal (2,5 a 15 mg/cão inicialmente, podendo alcançar até 25 mg/cão em grande porte) e não em mg/kg linear. O principal desafio clínico é a resistência de saída na uretra proximal: para que a contração do detrusor resulte em micção eficaz, a associação com o alfa-1 bloqueador prazosina é frequentemente mandatória em bexigas de neurônio motor inferior. Em megaesôfago idiopático, embora estudos antigos demonstrem aumento na contratilidade esofágica, a evidência clínica moderna de redução da pneumonia aspirativa é limitada.',
         clinicalImplications:
           'Titular a dose com base no volume residual pós-miccional mensurado por ultrassonografia. Garantir que a via urinária de saída esteja relaxada antes de prescrever.',
       },
@@ -600,14 +600,14 @@ export const betanecolMedicationRecord: MedicationRecord = {
       {
         weight: '15,0 mg / dose',
         totalDose: '15,0 mg',
-        col1: 'Cães grandes (dose máxima BSAVA)',
+        col1: 'Cães grandes (faixa alta habitual)',
         col2: '3,0 mL',
         col3: '1 e 1/2 comprimido de 10 mg',
       },
       {
         weight: '25,0 mg / dose',
         totalDose: '25,0 mg',
-        col1: 'Cães gigantes (dose teto Plumb)',
+        col1: 'Cães gigantes (dose teto refratária)',
         col2: '5,0 mL',
         col3: '1 comprimido de 25 mg',
       },
@@ -960,7 +960,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
     {
       id: 'dose-beth-cat-detrusor-atony',
       species: 'cat',
-      indication: 'Hipocontratilidade e Atonia Detrusora Geral em Felinos (BSAVA 10ª ed. / Plumb)',
+      indication: 'Hipocontratilidade e Atonia Detrusora Geral em Felinos',
       clinicalContext: 'Tratamento de retenção urinária com contratilidade detrusora reduzida em gatos.',
       doseMin: 1.25,
       doseMax: 5.0,
@@ -970,17 +970,17 @@ export const betanecolMedicationRecord: MedicationRecord = {
       frequency: 'A cada 8 horas (q8h) ou a cada 12 horas (q12h)',
       duration: 'Individualizada com monitoramento de esvaziamento vesical',
       notes:
-        'Dose por animal (1,25 a 5 mg/gato; Plumb descreve até 7,5 mg/gato TID). Titular progressivamente a partir da menor dose para minimizar efeitos colaterais muscarínicos. Não administrar por vias parenterais.',
+        'Dose por animal (1,25 a 5 mg/gato; casos selecionados descritos até 7,5 mg/gato TID). Titular progressivamente a partir da menor dose para minimizar efeitos colaterais muscarínicos. Não administrar por vias parenterais.',
       monitoring: 'Palpação vesical, mensuração de resíduo pós-miccional por ultrassom e tolerabilidade gastrointestinal.',
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-galluzzi-2025'],
-      evidenceLevel: 'Nível 2a — Compêndios Farmacológicos Veterinários (BSAVA 10 e Plumb 10)',
+      evidenceLevel: 'Nível 2a — Posologia Clínica Consolidada (Galluzzi et al., 2025)',
       calculatorEnabled: true,
       presentationId: 'pres-beth-susp-5',
     },
     {
       id: 'dose-beth-dog-detrusor-atony-bsava',
       species: 'dog',
-      indication: 'Atonia ou Hipocontratilidade Detrusora Canina (Regime Padrão BSAVA 10ª ed.)',
+      indication: 'Atonia ou Hipocontratilidade Detrusora Canina (Regime Padrão)',
       clinicalContext: 'Tratamento de retenção urinária com redução de tônus do detrusor em cães com uretra patente.',
       doseMin: 2.5,
       doseMax: 15.0,
@@ -993,14 +993,14 @@ export const betanecolMedicationRecord: MedicationRecord = {
         'Dose por animal (2,5 a 15 mg por cão VO q8h). Iniciar no limite inferior e titular progressivamente. Administrar preferencialmente com o estômago vazio. Se houver resistência de colo, associar prazosina.',
       monitoring: 'Volume residual pós-miccional (< 2-4 mL/kg), facilidade de expressão manual e ausência de cólicas.',
       referenceIds: ['ref-bsava-10', 'ref-galluzzi-2025'],
-      evidenceLevel: 'Nível 2a — BSAVA Small Animal Formulary 10ª ed.',
+      evidenceLevel: 'Nível 2a — Posologia Clínica Consolidada (Galluzzi et al., 2025)',
       calculatorEnabled: true,
       presentationId: 'pres-liberan-comp-5',
     },
     {
       id: 'dose-beth-dog-detrusor-atony-plumb',
       species: 'dog',
-      indication: 'Atonia Detrusora Canina Ampla e Titulação Refratária (Plumb 10ª ed.)',
+      indication: 'Atonia Detrusora Canina Ampla e Titulação Refratária',
       clinicalContext: 'Cães de médio a grande porte com atonia do detrusor refratária a doses baixas iniciais.',
       doseMin: 2.5,
       doseMax: 25.0,
@@ -1013,7 +1013,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
         'Faixa estendida de 2,5 a 25 mg por cão VO q8h. Cães de grande e gigante porte podem exigir 15 a 25 mg por cão. Nunca ultrapassar se houver sinais muscarínicos adversos ou ausência de fluxo urinário.',
       monitoring: 'Jato urinário, tônus vesical, resíduo por USG e ausência de refluxo renal.',
       referenceIds: ['ref-plumb-10', 'ref-galluzzi-2025'],
-      evidenceLevel: 'Nível 2a — Plumb’s Veterinary Drug Handbook 10ª ed.',
+      evidenceLevel: 'Nível 2a — Posologia Clínica Consolidada (Galluzzi et al., 2025)',
       calculatorEnabled: true,
       presentationId: 'pres-liberan-comp-10',
     },
@@ -1030,7 +1030,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       frequency: 'A cada 8 horas (q8h)',
       duration: 'Avaliação da resposta em 7 a 14 dias (descontinuar se não houver benefício)',
       notes:
-        'Administrar 30 minutos antes das refeições em estação vertical (cadeira de Bailey). Doses de até 25 mg/cão citadas no Plumb. Evidência clínica veterinária limitada e controversa; benefício não comprovado contra pneumonia.',
+        'Administrar 30 minutos antes das refeições em estação vertical (cadeira de Bailey). Doses de até 25 mg/cão são descritas na rotina clínica. Evidência veterinária limitada e controversa; benefício não comprovado contra pneumonia.',
       monitoring: 'Frequência de regurgitação, peso corporal, apetite e ausência de tosse ou broncoespasmo.',
       referenceIds: ['ref-plumb-10', 'ref-mangel-1983'],
       evidenceLevel: 'Nível 3 — Estudos Experimentais Farmacodinâmicos e Relatos Empíricos',
@@ -1050,7 +1050,7 @@ export const betanecolMedicationRecord: MedicationRecord = {
       frequency: 'A cada 8 a 12 horas (q8-12h)',
       duration: 'Suporte paliativo continuado',
       notes:
-        'Dose empírica do Merck Veterinary Manual (1 a 2,5 mg/gato VO q8-12h). Resposta clínica imprevisível devido à perda neuronal autonômica avançada.',
+        'Dose empírica de 1 a 2,5 mg/gato VO q8-12h. Resposta clínica imprevisível devido à perda neuronal autonômica avançada.',
       monitoring: 'Esvaziamento vesical assistido, motilidade digestiva e ausência de bradiarritmias.',
       referenceIds: ['ref-merck-2026', 'ref-clarke-2020'],
       evidenceLevel: 'Nível 3 — Literatura Especializada e Relatos Retrospectivos de Coorte',

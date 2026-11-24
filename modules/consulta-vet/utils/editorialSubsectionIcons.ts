@@ -114,6 +114,31 @@ const TOPIC_ICONS: Record<string, LucideIcon> = {
   morulaDetalhada: Microscope,
   antimicrobianos: Pill,
   mielossupressao: Droplets,
+
+  // Megaesôfago
+  definicaoEDiferenciacaoClinica: Stethoscope,
+  anomaliasVascularesEEstrutura: GitCompare,
+  geneticaEAgregacaoRacial: Activity,
+  figuraAnatomiaComparativa: LayoutGrid,
+  lesAcalasiaSimile: Target,
+  fisiopatologiaAspiracaoEPneumonite: AlertTriangle,
+  figuraRadiografiaInicial: LayoutGrid,
+  criteriosRadiograficos: Scale,
+  videofluoroscopiaELesAs: Eye,
+  examesLaboratoriaisEEtiologicos: TestTube2,
+  algoritmoDiagnosticoMegaesofago: ListOrdered,
+  algoritmoTerapeuticoMegaesofago: ListOrdered,
+  anestesiaEManejoPerioperatorio: Syringe,
+  cadeiraBaileyEPosturaVertical: BriefcaseMedical,
+  cadeiraBaileyFigura: LayoutGrid,
+  cenariosClinicosEConducao: Stethoscope,
+  dietaConsistenciaEProtocoloHidrico: Soup,
+  farmacoterapiaDePrecisaoMegaesofago: Pill,
+  gastrostomiaSondaDeAlimentacao: Package,
+  intervencaoEndoscopicaECirurgica: Cross,
+  pneumoniaAspirativaEManejoHospitalar: AlertTriangle,
+  riscosEContraindicacoesTerapeuticas: Ban,
+  checklistAcompanhamento: ClipboardCheck,
 };
 
 function heuristicIcon(key: string): LucideIcon | undefined {

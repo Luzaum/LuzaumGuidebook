@@ -199,7 +199,7 @@ export const levetiracetamMedicationRecord: MedicationRecord = {
       mechanismOfAction:
         'Eleva agudamente a saturação dos sítios de ligação da SV2A no sistema nervoso central, impedindo o fenômeno de facilitação pós-tetânica e o recrutamento de novos circuitos reverberantes excitatórios.',
       clinicalRationale:
-        'Protocolo de resgate oral amplamente validado em diretrizes internacionais (Plumb e BSAVA) e recomendado por neurologistas veterinários para reduzir significativamente a necessidade de hospitalizações de urgência.',
+        'Protocolo de resgate oral amplamente validado e recomendado por neurologistas veterinários (consenso ACVIM/IVETF) para reduzir significativamente a necessidade de hospitalizações de urgência.',
       monitoring:
         'Observar nível de consciência, grau de sedação, ataxia transitória e orientar o tutor a nunca forçar a medicação líquida pela boca se o animal estiver em período pós-ictal com torpor ou sem reflexo de deglutição.',
       referenceIds: ['ref-plumb-10', 'ref-bsava-10', 'ref-ivetf-2015'],
@@ -253,7 +253,7 @@ export const levetiracetamMedicationRecord: MedicationRecord = {
     metabolism:
       'Ao contrário dos anticonvulsivantes tradicionais (como fenobarbital), o levetiracetam não depende do sistema microssomal hepático do citocromo P450 (CYP450) para sua depuração e não sofre glucuronidação relevante. Cerca de 70 a 90% da dose administrada não sofre metabolização prévia. A fração restante sofre hidrólise enzimática não microssomal do grupo acetamida nos eritrócitos e tecidos sistêmicos por esterases plasmáticas solúveis, gerando o ácido carboxílico inativo (metabólito ucb L057), sem atividade anticonvulsivante intrínseca.',
     elimination:
-      'A excreção é predominantemente renal (cerca de 85 a 90% da dose eliminada inalterada na urina através de filtração glomerular). A meia-vida de eliminação plasmática terminal (t1/2) é marcadamente curta em ambas as espécies: cerca de 2,2 a 4,4 horas em cães saudáveis (média de ~3,5 h) e aproximadamente 3,0 horas em gatos domésticos. O clearance corporal total em cães é de aproximadamente 90 a 125 mL/kg/h. O estado de equilíbrio (steady-state) é alcançado com rapidez em aproximadamente 24 a 48 horas. A meia-vida curta da formulação de liberação imediata justifica plenamente a necessidade estrita de administração a cada 8 horas (q8h / TID).',
+      'A excreção é predominantemente renal (cerca de 85 a 90% da dose eliminada inalterada na urina através de filtração glomerular). A meia-vida de eliminação plasmática terminal (t1/2) é marcadamente curta em ambas as espécies: cerca de 2,2 a 4,4 horas em cães saudáveis (média de ~3,5 h) e aproximadamente 3,0 horas em gatos domésticos. O clearance corporal total em cães é de aproximadamente 90 a 125 mL/kg/h. O estado de equilíbrio é alcançado com rapidez em aproximadamente 24 a 48 horas. A meia-vida curta da formulação de liberação imediata justifica plenamente a necessidade estrita de administração a cada 8 horas (q8h / TID).',
     cnsPenetration:
       'Excelente distribuição e rápida penetração no sistema nervoso central através de difusão transcapilar facilitada pela ausência de ligação proteica plasmática significativa, atingindo equilíbrio dinâmico entre o compartimento sérico e o líquor em poucos minutos.',
     plasmaBinding:

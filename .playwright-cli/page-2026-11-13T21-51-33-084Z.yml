@@ -1,0 +1,139 @@
+- main [ref=f2e3]:
+  - generic [ref=f2e5]:
+    - heading "Resumo Clínico Executivo" [level=2] [ref=f2e7]
+    - generic [ref=f2e8]:
+      - paragraph [ref=f2e9]: Em palavras simples
+      - paragraph [ref=f2e13]: A amantadina é um fármaco singular na medicina de pequenos animais, originalmente concebido como agente antiviral e antiparkinsoniano na medicina humana, que foi reposicionado com grande relevância na rotina veterinária moderna como um adjuvante coanalgésico para o manejo multimodal da dor crônica refratária e de estados dolorosos com sensibilização central em cães e gatos. Seu mecanismo de ação principal baseia-se no antagonismo e modulação de baixa afinidade dos receptores NMDA no corno dorsal da medula espinhal, atuando como um gating antagonist que acelera o fechamento do canal iônico ativado pelo glutamato sem causar o bloqueio dissociativo profundo característico da cetamina, reduzindo assim o influxo patológico de cálcio e diminuindo o ganho ou volume do amplificador central que mantém a dor amplificada na forma de hiperalgesia e alodinia. Na prática clínica, a amantadina não funciona como um analgésico convencional de alívio rápido para dores agudas ou fraturas, demandando um período de latência de 7 a 21 dias de terapia contínua para remodelar a excitabilidade neuronal e demonstrar benefício funcional mensurável, sendo indicada primariamente em cães com osteoartrite não controlada adequadamente apenas com anti-inflamatórios não esteroidais, em afecções com componente neuropático como a estenose lombossacral degenerativa e em felinos com doença articular crônica selecionados. Sua depuração depende quase que exclusivamente da excreção renal do fármaco inalterado por filtração glomerular e secreção tubular ativa, sem depender expressivamente do metabolismo hepático ou da glicuronidação felina, o que exige cautela primordial e ajuste posológico cuidadoso em pacientes nefropatas para evitar o acúmulo e manifestações de neurotoxicidade como agitação, tremores e mioclonias, exigindo no território brasileiro prescrição privativa sob Receita de Controle Especial em duas vias em razão do seu enquadramento na Lista C1 da Portaria 344/98.
+    - generic [ref=f2e14]:
+      - heading "Indicações de Uso" [level=3] [ref=f2e15]
+      - generic [ref=f2e17]:
+        - generic [ref=f2e18] [cursor=pointer]: "Peso do paciente:"
+        - generic [ref=f2e24]:
+          - spinbutton "Peso do paciente em kg" [ref=f2e25]
+          - generic [ref=f2e26]: kg
+      - generic [ref=f2e27]:
+        - generic [ref=f2e28]:
+          - generic [ref=f2e29]:
+            - generic [ref=f2e30]:
+              - heading "Osteoartrite Canina Crônica Refratária a AINEs (Regime Clássico Lascelles 2008)" [level=4] [ref=f2e31]
+              - generic [ref=f2e32]: Cães
+            - paragraph [ref=f2e34]: Cães com claudicação e dor articular crônica que não atingem alívio suficiente com AINE isolado.
+          - generic [ref=f2e36]:
+            - generic [ref=f2e45]:
+              - generic [ref=f2e46]: Dose de Ataque / Manutenção
+              - text: "3,0 a 5,0 mg/kg VO a cada 24 horas (q24h), associada obrigatoriamente a um AINE (ex: meloxicam)"
+            - generic [ref=f2e47]:
+              - generic [ref=f2e48]:
+                - generic [ref=f2e49]: Via
+                - text: Oral (VO)
+              - generic [ref=f2e50]:
+                - generic [ref=f2e51]: Duração
+                - text: Mínimo de 21 a 42 dias contínuos para avaliação de resposta clínica funcional
+        - generic [ref=f2e52]:
+          - generic [ref=f2e53]:
+            - generic [ref=f2e54]:
+              - heading "Dor Crônica e Sensibilização Central em Cães (Diretrizes WSAVA / AAHA)" [level=4] [ref=f2e55]
+              - generic [ref=f2e56]: Cães
+            - paragraph [ref=f2e58]: Manejo adjuvante multimodal em síndromes dolorosas complexas com alodinia e hiperalgesia.
+          - generic [ref=f2e60]:
+            - generic [ref=f2e69]:
+              - generic [ref=f2e70]: Dose de Ataque / Manutenção
+              - text: 2,0 a 5,0 mg/kg VO a cada 12 a 24 horas (q12h ou q24h)
+            - generic [ref=f2e71]:
+              - generic [ref=f2e72]:
+                - generic [ref=f2e73]: Via
+                - text: Oral (VO)
+              - generic [ref=f2e74]:
+                - generic [ref=f2e75]: Duração
+                - text: Conforme evolução clínica e monitoramento de escores validados de dor (CBPI, LOAD)
+        - generic [ref=f2e76]:
+          - generic [ref=f2e77]:
+            - generic [ref=f2e78]:
+              - heading "Dor Neuropática Canina / Estenose Lombossacral Degenerativa (Caterino et al. 2025)" [level=4] [ref=f2e79]
+              - generic [ref=f2e80]: Cães
+            - paragraph [ref=f2e82]: Cães de médio e grande porte com síndrome da cauda equina e compressão lombossacral.
+          - generic [ref=f2e84]:
+            - generic [ref=f2e93]:
+              - generic [ref=f2e94]: Dose de Ataque / Manutenção
+              - text: 3,0 mg/kg VO a cada 12 horas (q12h) em monoterapia OU 3,0 mg/kg VO q24h associada a meloxicam
+            - generic [ref=f2e95]:
+              - generic [ref=f2e96]:
+                - generic [ref=f2e97]: Via
+                - text: Oral (VO)
+              - generic [ref=f2e98]:
+                - generic [ref=f2e99]: Duração
+                - text: 21 dias consecutivos avaliados por análise objetiva em plataforma de força
+        - generic [ref=f2e100]:
+          - generic [ref=f2e101]:
+            - generic [ref=f2e102]:
+              - heading "Osteoartrite e Dor Articular Crônica Felina (Shipley et al. 2021 / WSAVA 2022)" [level=4] [ref=f2e103]
+              - generic [ref=f2e104]: Gatos
+            - paragraph [ref=f2e106]: Gatos com dificuldade de saltar e rigidez motora; monitorar função renal prévia.
+          - generic [ref=f2e108]:
+            - generic [ref=f2e117]:
+              - generic [ref=f2e118]: Dose de Ataque / Manutenção
+              - text: 2,0 a 5,0 mg/kg VO a cada 24 horas (q24h); iniciar preferencialmente com 2 mg/kg e titular
+            - generic [ref=f2e119]:
+              - generic [ref=f2e120]:
+                - generic [ref=f2e121]: Via
+                - text: Oral (VO em cápsula manipulada palatável)
+              - generic [ref=f2e122]:
+                - generic [ref=f2e123]: Duração
+                - text: Pelo menos 21 dias (3 semanas) acompanhados por escore CSOM e avaliação do tutor
+        - generic [ref=f2e124]:
+          - generic [ref=f2e125]:
+            - generic [ref=f2e126]:
+              - heading "Prevenção e Tratamento do Fenômeno de Wind-Up / Dor Oncológica Óssea" [level=4] [ref=f2e127]
+              - generic [ref=f2e128]:
+                - generic [ref=f2e129]: Cães
+                - generic [ref=f2e130]: Gatos
+            - paragraph [ref=f2e131]: Pacientes com osteossarcoma, tumores invasivos ou dor neuropática pós-traumática.
+          - generic [ref=f2e133]:
+            - generic [ref=f2e142]:
+              - generic [ref=f2e143]: Dose de Ataque / Manutenção
+              - text: 3,0 a 5,0 mg/kg VO a cada 12 a 24 horas (q12-24h) integrado a protocolo analgésico maior
+            - generic [ref=f2e144]:
+              - generic [ref=f2e145]:
+                - generic [ref=f2e146]: Via
+                - text: Oral (VO)
+              - generic [ref=f2e147]:
+                - generic [ref=f2e148]: Duração
+                - text: Uso continuado enquanto persistir o estímulo nociceptivo primário
+    - generic [ref=f2e149]:
+      - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f2e150]
+      - generic [ref=f2e151]:
+        - generic [ref=f2e152]:
+          - generic [ref=f2e153]: Redução do Ganho Central & Modulação NMDA
+          - paragraph [ref=f2e160]: Atua como gating antagonist de baixa afinidade no receptor NMDA, acelerando o fechamento do canal de cálcio e reduzindo o ganho do amplificador central na medula sem produzir anestesia dissociativa.
+        - generic [ref=f2e161]:
+          - generic [ref=f2e162]: Terapia Multimodal & Sinergismo Analgésico
+          - paragraph [ref=f2e168]: Combinação racional com AINEs periféricos (COX) e gabapentinoides pré-sinápticos (alfa-2-delta), atacando simultaneamente a geração, a liberação e a amplificação pós-sináptica da via dolorosa.
+        - generic [ref=f2e169]:
+          - generic [ref=f2e170]: Janela de Latência Clínica & Remodelação (7 a 21 dias)
+          - paragraph [ref=f2e176]: Não oferece analgesia imediata para dor aguda; o benefício clínico depende da reversão gradual da neuroplasticidade patológica, exigindo reavaliação entre 2 e 3 semanas de uso contínuo.
+        - generic [ref=f2e177]:
+          - generic [ref=f2e178]: Depuração Renal Predominante & Cautela na DRC
+          - paragraph [ref=f2e184]: Quase não sofre biotransformação hepática e independe de glicuronidação felina; a eliminação renal inalterada torna o rim o determinante crítico de acúmulo e neurotoxicidade.
+    - generic [ref=f2e185]:
+      - generic [ref=f2e186]: Aviso Clínico Importante
+      - generic [ref=f2e190]:
+        - generic [ref=f2e191]:
+          - generic [ref=f2e192]: "1"
+          - paragraph [ref=f2e193]:
+            - strong [ref=f2e194]: "Alerta Posológico: A Dose de 14 mg/kg VO q24h é Relato de Caso Isolado e NÃO Recomendação Rotineira"
+            - text: A literatura veterinária e compêndios como o VIN registram a dose de 14 mg/kg VO q24h com base estrita em um único relato de caso de dor neuropática canina pós-trauma pélvico. Essa dosagem extrema não possui perfil de segurança estabelecido em estudos populacionais e pode precipitar manifestações graves de neurotoxicidade como agitação psicomotora, ataxia, tremores generalizados e convulsões. O ConsultaVET contraindica o emprego empírico de 14 mg/kg, recomendando manter a faixa terapêutica consolidada de 3 a 5 mg/kg q24h ou 3 mg/kg q12h.
+        - generic [ref=f2e195]:
+          - generic [ref=f2e196]: "2"
+          - paragraph [ref=f2e197]:
+            - strong [ref=f2e198]: Doença Renal Crônica (DRC) e Risco Grave de Neurotoxicidade por Acúmulo
+            - text: A amantadina sofre metabolismo hepático desprezível (<10%) e é excretada majoritariamente inalterada por filtração glomerular e secreção tubular ativa. Em pacientes com redução da taxa de filtração glomerular (DRC Estágios IRIS 2 a 4 ou LRA), a depuração plasmática cai expressivamente e a meia-vida se prolonga, gerando acúmulo sistêmico e no SNC. Nesses pacientes, deve-se utilizar a extremidade inferior da dose, monitorar estritamente sinais de hiperexcitabilidade central e avaliar creatinina e SDMA antes e durante a terapia.
+        - generic [ref=f2e199]:
+          - generic [ref=f2e200]: "3"
+          - paragraph [ref=f2e201]:
+            - strong [ref=f2e202]: Inadequação Absoluta como Analgésico Isolado em Dor Aguda Intensa ou Trauma
+            - text: A amantadina não possui potência analgésica direta comparável a opioides ou AINEs para bloquear nocicepção inflamatória aguda ou trauma tecidual recente (fraturas agudas, pós-operatório ortopédico imediato ou pancreatite). Seu papel exclusivo é modular a sensibilização central e o fenômeno de wind-up em protocolos multimodais. Suspender a terapia analgésica de base para prescrever amantadina isolada em dor aguda constitui erro técnico grave.
+        - generic [ref=f2e203]:
+          - generic [ref=f2e204]: "4"
+          - paragraph [ref=f2e205]:
+            - strong [ref=f2e206]: Uso Antiviral Histórico em Influenza e Risco de Resistência Farmacológica
+            - text: Embora originalmente licenciada como inibidor do canal M2 da Influenza A, a amantadina apresenta resistência genética superior a 99% entre cepas virais de Influenza A humana e influenza canina H3N2 circulantes (documentada em estudos até 2026). O emprego empírico de amantadina como antiviral veterinário é clinicamente ineficaz, desaconselhado pelas autoridades de Saúde Única (CDC/OMS) e fomenta pressão seletiva sobre variantes virais.

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import {
@@ -7,6 +7,7 @@ import {
   FileText,
   Home,
   Info,
+  Menu,
   Stethoscope,
   Users,
   Utensils,
@@ -26,6 +27,7 @@ const Hospitalized = lazy(() => import('./pages/Hospitalized'));
 const HumanOmega3Page = lazy(() => import('./pages/HumanOmega3Page'));
 const SupplementCatalogPage = lazy(() => import('./pages/SupplementCatalogPage'));
 import { cn } from './lib/utils';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from './components/ui/dialog';
 import './index.css';
 
 const BASE_ROUTE = '/calculadora-energetica';
@@ -124,11 +126,12 @@ function MobileHeader() {
 
 function MobileNav() {
   const location = useLocation();
-  const mobileItems = navigation;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mobileItems = navigation.slice(0, 4);
 
   return (
     <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
-      <div className="mx-auto flex max-w-3xl items-center justify-between gap-0.5 overflow-x-auto no-scrollbar">
+      <div className="mx-auto grid max-w-3xl grid-cols-5 gap-0.5">
         {mobileItems.map((item) => {
           const Icon = item.icon;
           const href = modulePath(item.path);
@@ -140,16 +143,32 @@ function MobileNav() {
               to={href}
               aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'flex min-h-12 min-w-[56px] flex-1 flex-col items-center justify-center gap-1 rounded-lg px-1 py-1 text-[9px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring sm:text-[10px]',
+                'flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-0.5 py-1 text-[10px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring',
                 isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground',
               )}
             >
               <Icon className="h-[18px] w-[18px]" strokeWidth={isActive ? 2.2 : 1.8} />
-              <span className="w-full truncate text-center">{item.shortName}</span>
+              <span className="w-full break-words text-center">{item.shortName}</span>
             </Link>
           );
         })}
+        <button type="button" onClick={() => setMenuOpen(true)} aria-label="Todas as seções do NutriçãoVET" aria-expanded={menuOpen} className="flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-lg text-[10px] font-medium text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring">
+          <Menu className="h-[18px] w-[18px]" />
+          <span>Mais</span>
+        </button>
       </div>
+      <Dialog open={menuOpen} onOpenChange={setMenuOpen}>
+        <DialogContent className="max-h-[85dvh] overflow-y-auto">
+          <DialogHeader><DialogTitle>Seções do NutriçãoVET</DialogTitle></DialogHeader>
+          <div className="grid gap-1">
+            {navigation.map(({ name, path, icon: Icon }) => (
+              <Link key={path} to={modulePath(path)} onClick={() => setMenuOpen(false)} aria-current={isCurrentPath(location.pathname, path) ? 'page' : undefined} className="flex min-h-11 items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium hover:bg-muted aria-[current=page]:bg-primary/10 aria-[current=page]:text-primary">
+                <Icon className="h-5 w-5 shrink-0" />{name}
+              </Link>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </nav>
   );
 }

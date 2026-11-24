@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const ONDANSETRONA_PRICE_SOURCE_DATE = '2026-10-04';
 
 const ONDANSETRONA_PLUMBS_CONTEXT =
-  'Plumb’s Veterinary Drug Handbook 10ª ed., monografia “Ondansetron” (pp. 956–957 / PDF pp. 983–984): antagonista altamente seletivo dos receptores 5-HT₃ que bloqueia a neurotransmissão sensorial emética e nauseogênica tanto em aferentes vagais do trato gastrointestinal quanto no tronco encefálico (área postrema e núcleo do trato solitário). BSAVA Small Animal Formulary 10ª ed. (p. 293), Consenso ISFM 2022 e Consenso iCatCare 2026 destacam sua indicação para náusea moderada a grave, êmese por quimioterapia citotóxica (cisplatina), parvovirose e doença renal crônica felina. Estudos de 2026 comprovaram biodisponibilidade oral canina muito baixa (~5,2%), enquanto a via subcutânea atinge 84,6% no cão, tornando-se a via de escolha na ausência de acesso venoso.';
+  'Antagonista altamente seletivo dos receptores 5-HT₃ que bloqueia a neurotransmissão sensorial emética e nauseogênica tanto em aferentes vagais do trato gastrointestinal quanto no tronco encefálico (área postrema e núcleo do trato solitário). Os consensos ISFM 2022 e iCatCare 2026 destacam sua indicação para náusea moderada a grave, êmese por quimioterapia citotóxica (cisplatina), parvovirose e doença renal crônica felina. Estudos de 2026 comprovaram biodisponibilidade oral canina muito baixa (~5,2%), enquanto a via subcutânea atinge 84,6% no cão, tornando-se a via de escolha na ausência de acesso venoso.';
 
 const ONDANSETRONA_SAFETY_ALERT =
   'ALERTAS CRÍTICOS DE SEGURANÇA E ADMINISTRAÇÃO: 1) INFUSÃO INTRAVENOSA SEMPRE LENTA: administrar ao longo de 2 a 5 minutos ininterruptos (~0,1 a 0,25 mg/kg/min). NUNCA administrar em bolus rápido pelo risco de vasodilatação aguda, hipotensão e prolongamento dose-dependente do intervalo QTc. 2) RISCO DE PROLONGAMENTO DO QTc: cautela redobrada em pacientes com hipocalemia, hipomagnesemia, cardiopatias ou sob uso de outros fármacos arritmogênicos (sotalol, amiodarona, metadona, cisaprida, azólicos). 3) IMPREVISIBILIDADE DA VIA ORAL EM CÃES: biodisponibilidade de apenas ~5,2% (Garrick et al. 2026) e níveis indetectáveis em 25% dos cães doentes; priorizar estritamente as vias SC ou IV. 4) NÃO REDUZIR DOSE EM DRC FELINA POR IRIS: depuração é hepática (<5% renal inalterada); o Consenso iCatCare 2026 mantém 0,1 a 1 mg/kg q6–12h sem corte por estágio IRIS. Cautela em hepatopatias severas (clearance reduzido e AUC duplicada). 5) CONTRAINDICAÇÃO COM APOMORFINA: não administrar antes da indução de êmese em intoxicações (anula a apomorfina e há risco de colapso hemodinâmico). 6) INTERAÇÃO COM TRAMADOL: pode reduzir a eficácia analgésica do tramadol por antagonismo de receptores 5-HT3 espinhais.';
@@ -46,7 +46,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Náusea e Vômito em Cães Hospitalizados (Sotelo et al. 2022 / Plumb’s 10ª ed.)',
+            title: 'Náusea e Vômito em Cães Hospitalizados (Sotelo et al. 2022)',
             dose: '0,5 mg/kg IV lenta (2 a 5 minutos) ou SC a cada 8 horas (0,25 mL/kg q8h)',
             note: 'Em cães, a via SC atinge 84,6% de biodisponibilidade (Landau et al. 2026), sendo muito superior à via oral (F ~5%). Administrar IV sempre lentamente.',
           },
@@ -91,7 +91,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
       notes: 'Medicamento registrado na ANVISA para uso humano. Prescrição veterinária simples.',
     },
     evidenceLevel:
-      'Nível 1a — Consensos Internacionais ISFM (2022) e iCatCare (2026); Ensaios clínicos controlados duplo-cegos (Henze 2022, Kenward 2017, Sotelo 2022, Landau 2026); Plumb’s 10ª ed.',
+      'Nível 1a — Consensos Internacionais ISFM (2022) e iCatCare (2026); Ensaios clínicos controlados duplo-cegos (Henze 2022, Kenward 2017, Sotelo 2022, Landau 2026).',
     isControlled: false,
     catalogMedicationId: 'editorial:ondansetrona',
   },
@@ -128,7 +128,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Náusea e Vômito em Cães Médios e Grandes (Plumb’s 10ª ed.)',
+            title: 'Náusea e Vômito em Cães Médios e Grandes',
             dose: '0,5 mg/kg IV lenta ou SC a cada 8 horas (0,25 mL/kg q8h)',
             note: 'Em cão de 16 kg: exatamente 4,0 mL (1 ampola de 4 mL). Administrar IV lenta em 3 minutos.',
           },
@@ -271,7 +271,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Dose Oral Ambulatorial Canina (Plumb’s 10ª ed.)',
+            title: 'Dose Oral Ambulatorial Canina',
             dose: '0,5 a 1 mg/kg VO a cada 8 a 12 horas',
             note: 'Para cão de 16 kg: 1 comprimido de 8 mg (0,5 mg/kg) VO q8–12h.',
           },
@@ -302,7 +302,7 @@ export const ondansetronaCommercialProductSeed: CommercialMedicationProduct[] = 
       sourceDate: ONDANSETRONA_PRICE_SOURCE_DATE,
       notes: 'Prescrição simples. Registro ANVISA.',
     },
-    evidenceLevel: 'Nível 1b — Literatura farmacológica veterinária e Plumb’s 10ª ed.',
+    evidenceLevel: 'Nível 1b — Literatura farmacológica veterinária.',
     isControlled: false,
     catalogMedicationId: 'editorial:ondansetrona',
   },

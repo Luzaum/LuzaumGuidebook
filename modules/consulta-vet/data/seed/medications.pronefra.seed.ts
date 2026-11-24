@@ -268,7 +268,7 @@ export const pronefraMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Evolução da ureia sérica, escore de apetite, consistência das fezes e ausência de vômitos ou perda de peso progressiva.',
         referenceIds: ['wagner-2004-chitosan', 'bsava-formulary-chitosan-10ed', 'virbac-pronefra-br'],
-        evidenceLevel: 'Estudos Experimentais em Pequenos Animais e Consenso BSAVA',
+        evidenceLevel: 'Estudos Experimentais e Prática Clínica em Pequenos Animais',
       },
     ],
 

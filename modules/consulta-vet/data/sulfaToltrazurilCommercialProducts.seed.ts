@@ -18,7 +18,7 @@ function priceRange(min: number, max: number, sourceNote: string): CommercialMed
 }
 
 const TOLTRAZURIL_PLUMBS_CONTEXT =
-  'Plumb\'s 10ª ed., monografia Toltrazuril (pp. 1255–1257): toltrazuril é o composto-pai do ponazuril; não intercambiar doses. Descreve uso extrabula para coccidiose em cães e gatos.';
+  'Toltrazuril é o composto-pai do ponazuril e não deve ter doses intercambiadas. Utilizado de forma extrabula para coccidiose em cães e gatos.';
 
 const TOLTRAZURIL_DOG_CAT_DOSAGE: CommercialMedicationDosageGuidance = {
   plumbs: {
@@ -46,7 +46,7 @@ const TOLTRAZURIL_DOG_CAT_DOSAGE: CommercialMedicationDosageGuidance = {
 };
 
 const SMX_TMP_PLUMBS_CONTEXT =
-  'Plumb\'s 10ª ed., monografia Sulfa-/Trimethoprim (pp. 1193–1197): doses da soma sulfametoxazol + trimetoprima; escolher esquema conforme indicação, gravidade e susceptibilidade.';
+  'As doses referem-se à soma sulfametoxazol + trimetoprima; escolher esquema conforme indicação, gravidade e susceptibilidade.';
 
 const SMX_TMP_DOG_CAT_DOSAGE: CommercialMedicationDosageGuidance = {
   plumbs: {
@@ -97,7 +97,7 @@ const SMX_TMP_DOG_CAT_DOSAGE: CommercialMedicationDosageGuidance = {
     ],
   },
   notes: [
-    'Todas as doses Plumb\'s referem-se à soma SMX + TMP.',
+    'Todas as doses referem-se à soma SMX + TMP.',
     'Monitorar Schirmer em cães em uso prolongado (risco de KCS). Manter hidratação.',
   ],
 };
@@ -143,7 +143,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     safetyAlert:
       'Não confundir com ponazuril. Não usar dose de leitão em cães/gatos sem cálculo mg/kg. Agitar antes de usar; frasco aberto válido por até 180 dias (bula).',
     price: { averageLabel: 'R$ 185,00', rangeLabel: 'Frasco 250 mL suspensão 5%: R$ 160,00 a R$ 220,00', sourceDate: '2026-09-06' },
-    evidenceLevel: 'Página oficial MSD Saúde Animal + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Página oficial MSD Saúde Animal e uso veterinário extrabula.',
     productPageUrl: 'https://www.msd-saude-animal.com.br/produto/powerzuril/',
     labelUrl: 'https://www.msd-saude-animal.com.br/produto/powerzuril/',
   },
@@ -186,7 +186,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     safetyAlert:
       'Apresentação suína. Não confundir dose fixa por leitão com mg/kg em cães/gatos. Carência suína abate: 77 dias.',
     price: priceRange(52.72, 55.49, 'AgroMercadoVet — frasco 100 mL (31/08/2026)'),
-    evidenceLevel: 'Página oficial Farmabase + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Página oficial Farmabase e uso veterinário extrabula.',
     productPageUrl: 'https://farmabase.com/produtos/farmacox/',
     labelUrl: 'https://farmabase.com/produtos/farmacox/',
   },
@@ -229,7 +229,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     safetyAlert:
       'Carência suína abate: 65 dias. Uso em cães/gatos é extrabula; confirmar concentração 50 mg/mL.',
     price: priceRange(67.88, 88.9, 'Avipec R$ 88,90; Isophos ~R$ 67,88 — frasco 100 mL'),
-    evidenceLevel: 'Página oficial Agener + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Página oficial Agener e uso veterinário extrabula.',
     productPageUrl: 'https://agener.com.br/produtos/grandes-animais/especialidades/agecox-neo/',
     labelUrl: 'https://agener.com.br/produtos/grandes-animais/especialidades/agecox-neo/',
   },
@@ -260,7 +260,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
       ...SMX_TMP_DOG_CAT_DOSAGE,
       notes: [
         ...(SMX_TMP_DOG_CAT_DOSAGE.notes || []),
-        'Bula veterinária orienta q24h ou q12h; Plumb\'s pode indicar esquemas distintos — manter fonte visível.',
+        'Bula veterinária orienta q24h ou q12h; esquemas clínicos podem variar conforme indicação — confirmar protocolo.',
       ],
     },
     plumbsContext: SMX_TMP_PLUMBS_CONTEXT,
@@ -273,7 +273,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     safetyAlert:
       'Contraindicado em gestantes/recém-nascidos, lesão hepática/renal e hipersensibilidade a sulfas. Não associar com cálcio, antiácidos ou anticoagulantes.',
     price: priceRange(56.9, 56.9, 'Cobasi — frasco 100 mL (fonte única consultada)'),
-    evidenceLevel: 'Bula Duprat/Bulário Veterinário + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula Duprat/Bulário Veterinário e literatura veterinária.',
     productPageUrl: 'https://www.cobasi.com.br/afectrim-solucao-oral-100-ml-duprat-3940500/p',
     labelUrl: 'https://www.bulario.vet.br/2016/06/bula-afectrim-laboratorios-duprat-ltda.html',
     catalogMedicationId: 'editorial:sulfametoxazol-trimetoprima',
@@ -293,7 +293,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary:
       'Cada 100 mL: sulfametoxazol 4,0 g + trimetoprima 0,8 g. Antibacteriano e antiprotozoário de amplo espectro.',
     labelDirections:
-      'Cães e gatos: 1 mL/kg VO q12h por 4–5 dias (= 48 mg/kg/dia da associação SMX+TMP, dividida q12h). Cães >20 kg: 30 mL VO q12h (= 1.440 mg SMX+TMP/dose) por 4–5 dias, ajustando se cálculo exato Plumb\'s (15–30 mg/kg VO q12h) indicar volume menor.',
+      'Cães e gatos: 1 mL/kg VO q12h por 4–5 dias (= 48 mg/kg/dia da associação SMX+TMP, dividida q12h). Cães >20 kg: 30 mL VO q12h (= 1.440 mg SMX+TMP/dose) por 4–5 dias, ajustando se cálculo clínico (15–30 mg/kg VO q12h) indicar volume menor.',
     eligibility: {
       minAge: 'Evitar em recém-nascidos e filhotes <4–6 semanas de idade.',
       minWeight: 'Sem peso mínimo fixo após 4–6 semanas (medir 0,31–1 mL/kg em seringa graduada; teto bula de 30 mL/dose q12h).',
@@ -310,11 +310,11 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     reassessment:
       'Reavaliar resposta clínica; monitorar hidratação, função renal e sinais de hipersensibilidade.',
     prescriptionExample:
-      'Sultrim 100 mL (48 mg/mL SMX+TMP): administrar 1 mL/kg (ou 0,31–0,63 mL/kg pelo cálculo Plumb\'s de 15–30 mg/kg) VO a cada 12 horas por 4–5 dias (máximo bula de 30 mL q12h em cães >20 kg).',
+      'Sultrim 100 mL (48 mg/mL SMX+TMP): administrar 1 mL/kg (ou 0,31–0,63 mL/kg para 15–30 mg/kg) VO a cada 12 horas por 4–5 dias (máximo bula de 30 mL q12h em cães >20 kg).',
     safetyAlert:
-      'Manter água disponível. Cautela em doença renal/hepática. Risco de KCS em cães em uso prolongado (Plumb\'s).',
+      'Manter água disponível. Cautela em doença renal/hepática. Risco de KCS em cães em uso prolongado.',
     price: priceRange(13.7, 36.5, 'Pet Online BH R$ 13,70; Casa do Compadre R$ 36,50 — frasco 100 mL'),
-    evidenceLevel: 'Bula Jofadel/Vetsmart + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula Jofadel/Vetsmart e literatura veterinária.',
     productPageUrl: 'https://vetsmart.com.br/cg/produto/459/sultrim-suspensao-oral',
     labelUrl: 'https://vetsmart.com.br/cg/produto/459/sultrim-suspensao-oral',
     catalogMedicationId: 'editorial:sulfametoxazol-trimetoprima',
@@ -358,7 +358,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
     safetyAlert:
       'Medicamento humano extrabula. Risco de KCS, discrasias, hepatotoxicidade e hipersensibilidade. Contraindicado se alergia a sulfas. Manter hidratação.',
     price: priceRange(18.9, 42.5, 'Consulta Remédios / drogarias — caixa 10–20 comprimidos 400+80 mg (varia por genérico)'),
-    evidenceLevel: 'Bula humana Roche/Anvisa + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
+    evidenceLevel: 'Bula humana Roche/Anvisa e uso veterinário extrabula.',
     productPageUrl: 'https://consultaremedios.com.br/bactrim-f/p',
     labelUrl: 'https://consultaremedios.com.br/bactrim-f/bula',
     catalogMedicationId: 'editorial:sulfametoxazol-trimetoprima',

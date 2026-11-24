@@ -138,7 +138,7 @@ export const coccidioseCaesGatosRecord: DiseaseRecord = {
           label: 'Reavaliação pós-tratamento',
           timing: '7–14 dias após fim do esquema',
           detail:
-            'Nova flutuação fecal se diarreia persiste ou contexto de surto/abrigo. Melhora clínica é endpoint primário; oocistos residuais podem persistir brevemente. (3)(9)(14)',
+            'Nova flutuação fecal se diarreia persiste ou contexto de surto/abrigo. Melhora clínica é desfecho primário; oocistos residuais podem persistir brevemente. (3)(9)(14)',
         },
       ],
     },
@@ -164,7 +164,7 @@ export const coccidioseCaesGatosRecord: DiseaseRecord = {
           label: 'Diclazuril — cautela com divergência de dose',
           detail:
             'Monografias veterinárias citam 2,5–5 mg/kg; extrapolações de 25 mg/kg aparecem em literatura heterogênea — risco de sub/sobredose se não confirmar fonte. Preferir ponazuril ou toltrazuril quando possível. (8)(3)',
-          dose: 'Diclazuril 2,5–5 mg/kg VO (Plumb\'s; confirmar) — NÃO assumir 25 mg/kg sem fonte verificada.',
+          dose: 'Diclazuril 2,5–5 mg/kg VO (confirmar apresentação) — NÃO assumir 25 mg/kg sem fonte verificada.',
         },
         {
           label: 'Sulfadimetoxina — alternativa clássica',
@@ -424,7 +424,7 @@ export const coccidioseCaesGatosRecord: DiseaseRecord = {
         purpose: 'Confirmar resolução quando indicado.',
         description:
           'Nova flutuação 7–14 dias após fim do esquema se diarreia persiste ou controle de surto. (3)(9)(14)',
-        interpretation: 'Melhora clínica é endpoint primário; oocistos residuais breves não exigem retratamento automático.',
+        interpretation: 'Melhora clínica é desfecho primário; oocistos residuais breves não exigem retratamento automático.',
         limitations: 'Negativação laboratorial pode ser tardia vs resolução clínica.',
       },
     ],
@@ -572,9 +572,9 @@ export const coccidioseCaesGatosRecord: DiseaseRecord = {
     toltrazurilPorFonte:
       'Toltrazuril 10–20 mg/kg VO conforme monografia e apresentação (Daugschies 2000; ESCCAP GL6). Produtos combinados (ex.: emodepsida + toltrazuril) exigem extrair mg/kg de toltrazuril isolado — Procox® e similares têm doses de combo distintas. Eficácia documentada em filhotes naturalmente infectados. (11)(3)(8)',
     diclazurilDivergenciaAlerta:
-      '⚠️ ALERTA DE DOSE — Diclazuril: Plumb\'s e monografias veterinárias citam **2,5–5 mg/kg** VO; literatura heterogênea menciona **25 mg/kg** (possível erro de ordem de magnitude ou extrapolação de outras espécies). Confirmar apresentação comercial e fonte antes de prescrever — risco de toxicidade ou falha terapêutica. Preferir ponazuril ou toltrazuril quando disponíveis. (8)(3)',
+      '⚠️ ALERTA DE DOSE — Diclazuril: monografias farmacológicas veterinárias citam **2,5–5 mg/kg** VO; literatura heterogênea menciona **25 mg/kg** (possível erro de ordem de magnitude ou extrapolação de outras espécies). Confirmar apresentação comercial e fonte antes de prescrever — risco de toxicidade ou falha terapêutica. Preferir ponazuril ou toltrazuril quando disponíveis. (8)(3)',
     sulfadimetoxina:
-      'Sulfadimetoxina 50 mg/kg q24h VO por 5–10 dias — alternativa clássica quando triazinas indisponíveis (Mitchell 2007; Nelson & Couto). Monitorar apetite, vômito e hidratação. Associações com ormetoprim seguem monografias comerciais. (10)(5)(8)',
+      'Sulfadimetoxina 50 mg/kg q24h VO por 5–10 dias — alternativa clássica quando triazinas indisponíveis (Mitchell 2007). Monitorar apetite, vômito e hidratação. Associações com ormetoprim seguem monografias comerciais. (10)(5)(8)',
     terapiaSuporte: [
       'Fluidoterapia SC/IV conforme grau de desidratação — prioridade em filhotes. (5)(6)',
       'Dieta altamente digestível, fracionada, durante e após anticoccidiano. (3)(6)',

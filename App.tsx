@@ -15,6 +15,8 @@ const AntibioticoterapiaVetPage = lazy(miniAppLoaders['/antibioticoterapia'])
 const TransfusaoSanguineaPage = lazy(miniAppLoaders['/transfusao-sanguinea'])
 const NeurologiaPage = lazy(miniAppLoaders['/neurologia'])
 const EscalasDorPage = lazy(miniAppLoaders['/dor'])
+const NeonatusPage = lazy(miniAppLoaders['/neonatus'])
+const CorticoidConverterPage = lazy(miniAppLoaders['/conversor-corticoide'])
 
 const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
 const ConsultaVetHomePage = lazy(() => import('./modules/consulta-vet/pages/HomePage').then((m) => ({ default: m.HomePage })))
@@ -145,6 +147,9 @@ const appRoutes = (
     <Route path="/neuro-mobile/*" element={<LegacyNeuroMobileRedirect />} />
     <Route path="/antibioticoterapia" element={<ProtectedRoute><AntibioticoterapiaVetPage /></ProtectedRoute>} />
     <Route path="/neurologia/*" element={<ProtectedRoute><NeurologiaPage /></ProtectedRoute>} />
+    <Route path="/neonatus/*" element={<ProtectedRoute><NeonatusPage /></ProtectedRoute>} />
+    <Route path="/conversor-corticoide" element={<ProtectedRoute><CorticoidConverterPage /></ProtectedRoute>} />
+    <Route path="/neonatologia/*" element={<Navigate to="/neonatus" replace />} />
     <Route path="/consulta-vet" element={<ProtectedRoute><ConsultaVetShell /></ProtectedRoute>}>
       <Route index element={<ConsultaVetHomePage />} />
       <Route path="doencas" element={<ConsultaVetDiseasesPage />} />

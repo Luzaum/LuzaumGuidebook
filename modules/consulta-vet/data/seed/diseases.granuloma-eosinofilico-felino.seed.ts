@@ -71,26 +71,26 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
           label: 'Citologia da lesão',
           timing: 'Na primeira avaliação',
           detail:
-            'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos — sustenta o padrão de reação sem definir a causa (Taglinger et al., 2007; BSAVA Manual of Dermatology, 4ª ed.).',
+            'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos — sustenta o padrão de reação sem definir a causa (Taglinger et al., 2007).',
         },
         {
           label: 'Investigação da causa de base',
           timing: 'Antes de rotular idiopático',
           detail:
-            'Controle terapêutico de pulgas por 6–8 semanas em todos os animais do domicílio; se não resolver, dieta de eliminação estrita por 8 semanas com proteína nova/hidrolisada; considerar atopia se ambas forem negativas (Buckley & Nuttall, 2012; Nelson & Couto, 6ª ed.).',
+            'Controle terapêutico de pulgas por 6–8 semanas em todos os animais do domicílio; se não resolver, dieta de eliminação estrita por 8 semanas com proteína nova/hidrolisada; considerar atopia se ambas forem negativas (Buckley & Nuttall, 2012).',
           reassess: 'Não concluir componente alimentar antes de completar 8 semanas de dieta estrita.',
         },
         {
           label: 'Biópsia (casos atípicos)',
           timing: 'Lesão refratária ou atípica',
           detail:
-            'Reservada a lesões que não respondem ao tratamento esperado, apresentação atípica, idade incomum ou suspeita neoplásica (carcinoma espinocelular em úlceras labiais crônicas) (Power & Ihrke, 1995; BSAVA Manual of Dermatology, 4ª ed.).',
+            'Reservada a lesões que não respondem ao tratamento esperado, apresentação atípica, idade incomum ou suspeita neoplásica (carcinoma espinocelular em úlceras labiais crônicas) (Power & Ihrke, 1995).',
         },
         {
           label: 'Diferenciais obrigatórios',
           timing: 'Antes de fechar diagnóstico',
           detail:
-            'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo, outras dermatites eosinofílicas (Nelson & Couto, 6ª ed.).',
+            'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo, outras dermatites eosinofílicas.',
         },
       ],
     },
@@ -107,7 +107,7 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
         {
           label: 'Controle agudo da lesão',
           detail:
-            'Glicocorticoide sistêmico (prednisolona) em dose anti-inflamatória a imunossupressora conforme extensão e gravidade, enquanto investiga causa de base (BSAVA Manual of Dermatology, 4ª ed.; Nelson & Couto, 6ª ed.).',
+            'Glicocorticoide sistêmico (prednisolona) em dose anti-inflamatória a imunossupressora conforme extensão e gravidade, enquanto investiga causa de base.',
           dose: 'Prednisolona VO — preferir sobre prednisona em gatos; dose anti-inflamatória a imunossupressora conforme gravidade, com desmame gradual.',
           duration: 'Semanas até controle clínico; desmame gradual após resposta.',
           reassess: 'Extensão, aspecto e prurido a cada revisão; fotos seriadas quando possível.',
@@ -122,14 +122,14 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
         {
           label: 'Manutenção crônica ou refratariedade',
           detail:
-            'Ciclosporina como alternativa eficaz para casos recorrentes, crônicos ou intolerantes a corticoide prolongado; resposta pode levar semanas (BSAVA Manual of Dermatology, 4ª ed.).',
+            'Ciclosporina como alternativa eficaz para casos recorrentes, crônicos ou intolerantes a corticoide prolongado; resposta pode levar semanas.',
           duration: 'Manutenção conforme resposta; monitorar função renal e hemograma.',
           reassess: 'Hemograma e função renal periódicos sob ciclosporina.',
         },
         {
           label: 'Casos refratários graves',
           detail:
-            'Clorambucila ou outros imunomoduladores em casos selecionados após falha das medidas anteriores; atenção especial a granuloma oral/faríngeo com estridor ou disfagia (BSAVA Manual of Dermatology, 4ª ed.).',
+            'Clorambucila ou outros imunomoduladores em casos selecionados após falha das medidas anteriores; atenção especial a granuloma oral/faríngeo com estridor ou disfagia.',
           reassess: 'Monitorização hematológica próxima — risco de mielossupressão.',
         },
       ],
@@ -231,7 +231,7 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
         title: 'Citologia da lesão',
         purpose: 'Confirmar infiltrado eosinofílico.',
         description:
-          'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos (Taglinger et al., 2007; BSAVA Manual of Dermatology, 4ª ed.).',
+          'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos (Taglinger et al., 2007).',
         interpretation: 'Eosinofilia sustenta padrão de reação sem definir causa subjacente.',
         limitations: 'Citologia normal não exclui EGC em lesão superficialmente cicatrizada.',
       },
@@ -258,7 +258,7 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
         title: 'Diferenciais obrigatórios',
         purpose: 'Excluir condições que mimetizam EGC.',
         description:
-          'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo (Nelson & Couto, 6ª ed.).',
+          'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo.',
         interpretation: 'Lesão labial crônica refratária exige citologia/biópsia para excluir carcinoma.',
         limitations: 'Aparência clássica reduz necessidade de biópsia, mas não elimina diferenciais neoplásicos.',
       },
@@ -278,12 +278,12 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
   treatment: {
     cronica: [
       'Buckley & Nuttall (2012), em revisão sobre complexo do granuloma eosinofílico felino, concluem que controle rigoroso de pulgas em todos os animais do domicílio é obrigatório em todo caso, mesmo sem prova direta de pulicose — falha aqui é causa comum de recidiva aparente.',
-      'BSAVA Manual of Dermatology (4ª ed., 2021) descreve prednisolona oral em dose anti-inflamatória a imunossupressora conforme extensão da lesão, com desmame gradual — preferir prednisolona sobre prednisona em gatos.',
+      'Prednisolona oral em dose anti-inflamatória a imunossupressora conforme extensão da lesão, com desmame gradual — preferir prednisolona sobre prednisona em gatos.',
       'Buckley & Nuttall (2012) recomendam dieta de eliminação estrita por mínimo 8 semanas com proteína nova ou hidrolisada quando pulgas controladas não resolvem — evitar contaminação cruzada que invalida o teste.',
-      'BSAVA Manual of Dermatology (4ª ed., 2021) cita ciclosporina como alternativa eficaz para manutenção crônica, casos recorrentes ou intolerância a corticoide prolongado; resposta pode levar semanas — monitorar função renal e hemograma.',
+      'Ciclosporina é alternativa eficaz para manutenção crônica, casos recorrentes ou intolerância a corticoide prolongado; a resposta pode levar semanas — monitorar função renal e hemograma.',
     ],
     aguda: [
-      'Granuloma oral/faríngeo extenso com estridor ou disfagia: iniciar glicocorticoide sistêmico sem retardar enquanto investiga causa de base; considerar encaminhamento especializado para suporte de via aérea (BSAVA Manual of Dermatology, 4ª ed.).',
+      'Granuloma oral/faríngeo extenso com estridor ou disfagia: iniciar glicocorticoide sistêmico sem retardar enquanto investiga causa de base; considerar encaminhamento especializado para suporte de via aérea.',
     ],
     monitoramento: [
       'Extensão, aspecto e sinais de prurido/dor da lesão a cada revisão, com fotos seriadas quando possível.',

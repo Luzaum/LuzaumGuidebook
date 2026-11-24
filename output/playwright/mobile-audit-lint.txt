@@ -1,0 +1,30 @@
+
+> Vetius@0.0.0 lint
+> npm run check:conflicts && npm run lint:sql-comments && npm run validate:dbpayloads && npm run typecheck
+
+
+> Vetius@0.0.0 check:conflicts
+> node scripts/check-merge-conflicts.mjs
+
+[check:conflicts] OK - nenhum marcador de conflito encontrado.
+
+> Vetius@0.0.0 lint:sql-comments
+> node scripts/check-sql-comments.mjs
+
+OK: nenhuma migration SQL contem "#".
+
+> Vetius@0.0.0 validate:dbpayloads
+> tsx scripts/validate-supabase-payloads.ts
+
+🔍 Validating Supabase payloads...
+
+📊 Validation Results:
+   Files scanned: 920
+   Files skipped: 0
+   Errors found: 0
+
+✅ All Supabase payloads are valid!
+
+> Vetius@0.0.0 typecheck
+> tsc -p tsconfig.app.json --pretty false
+

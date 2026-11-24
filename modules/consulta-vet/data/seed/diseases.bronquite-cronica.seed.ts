@@ -2,8 +2,6 @@ import type { DiseaseRecord } from '../../types/disease';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 const ASSET_BASE = '/assets/consulta-vet/diseases/bronquite-cronica';
-const BRUYETTE_SOURCE =
-  'Fonte: Bruyette D. Clinical Small Animal Internal Medicine. Wiley Blackwell.';
 
 /*
  * Bronquite Crônica em Cães e Gatos — Monografia Clínica Padrão Ouro.
@@ -61,7 +59,6 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
     'Fluticasona',
     'ISCAID 2026',
     'Algoritmo ECVIM 2025',
-    'Nelson & Couto',
   ],
   isPublished: true,
   source: 'seed',
@@ -94,7 +91,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
     lead:
       'A abordagem moderna da bronquite crônica em cães e gatos superou o antigo empirismo de prescrever antibióticos e antitussígenos para qualquer tosse persistente:\n\n' +
       '- Compreensão da falha funcional da esteira mucociliar: a agressão mecânica e inflamatória crônica destrói os cílios, hipertrofia as glândulas mucosas e gera um ciclo vicioso de hipersecreção, tosse traumática e remodelamento irreversível (bronquiectasia e broncomalácia).\n' +
-      '- Fenotipagem citológica e direcionamento de precisão: uso do lavado broncoalveolar (BAL) para diferenciar processos neutrofílicos de eosinofílicos, associado ao controle ambiental, corticoterapia inalatória com espaçador facial e preservação estrita do clearance de secreções.',
+      '- Fenotipagem citológica e direcionamento de precisão: uso do lavado broncoalveolar (BAL) para diferenciar processos neutrofílicos de eosinofílicos, associado ao controle ambiental, corticoterapia inalatória com espaçador facial e preservação estrita da depuração de secreções.',
     leadHighlights: [
       'Falha crônica da esteira mucociliar e ciclo vicioso inflamatório',
       'Diferenciação fenotípica no BAL (neutrófilos na bronquite vs eosinófilos na asma)',
@@ -118,7 +115,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
           '- Quebra da esteira mucociliar: lesão epitelial ciliar combinada à hipertrofia de glândulas submucosas gera hipersecreção de muco espesso com capacidade reduzida de depuração.\n' +
           '- Impacto da Lei de Poiseuille (1/r^4): pequenas reduções do raio interno pela inflamação e tampões de muco multiplicam exponencialmente a resistência aérea.\n' +
           '- Padrão expiratório obstrutivo: a pressão intratorácica positiva na expiração colapsa precocemente brônquios estreitados, gerando esforço expiratório abdominal ("expiratory push") e aprisionamento gasoso.',
-        highlights: ['Lei de Poiseuille (1/r^4)', 'Falha do clearance mucociliar', 'Padrão expiratório com prensa abdominal'],
+        highlights: ['Lei de Poiseuille (1/r^4)', 'Falha da depuração mucociliar', 'Padrão expiratório com prensa abdominal'],
       },
       {
         title: 'Pilar 3: Diagnóstico Fenotípico e Padrão-Ouro (BAL e Imagem)',
@@ -214,7 +211,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
             'Indicação seletiva para hiper-reatividade ou componente broncomalácico:\n\n' +
             '- Broncodilatador de resgate: albuterol (salbutamol) 90 mcg inalatório (1 a 2 puffs q15-30min em crises) para relaxamento rápido da musculatura lisa em broncoespasmo evidente.\n' +
             '- Veto ao albuterol diário contínuo: o racemato de albuterol contém S-albuterol, que persiste por dias nas vias aéreas e induz efeito pró-inflamatório com piora da neutrofilia e eosinofilia.\n' +
-            '- Teofilina de liberação prolongada em cães: indicada quando há broncomalácia ou estase de muco (5 a 10 mg/kg VO q12h) para melhora da contratilidade diafragmática e do clearance mucociliar, com monitoramento de arritmias e toxicidade.',
+            '- Teofilina de liberação prolongada em cães: indicada quando há broncomalácia ou estase de muco (5 a 10 mg/kg VO q12h) para melhora da contratilidade diafragmática e da depuração mucociliar, com monitoramento de arritmias e toxicidade.',
         },
         {
           label: 'Fase 4: Hidratação de Vias Aéreas e Antimicrobianos Dirigidos',
@@ -408,8 +405,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       alt: 'Radiografia torácica demonstrando padrão brônquico com donuts e tram lines',
       display: 'wide',
       caption:
-        'Radiografia torácica lateral demonstrando padrão bronquial difuso com imagens em anel ("donuts") e linhas paralelas radiopacas ("tram lines"). ' +
-        BRUYETTE_SOURCE,
+        'Radiografia torácica lateral demonstrando padrão bronquial difuso com imagens em anel ("donuts") e linhas paralelas radiopacas ("tram lines").',
     },
     tomografiaComputadorizadaEBroncoscopia:
       'Métodos avançados de imagem e avaliação dinâmica das vias condutoras:\n\n' +
@@ -422,8 +418,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       alt: 'Tomografia computadorizada torácica evidenciando espessamento brônquico e ectasia',
       display: 'wide',
       caption:
-        'Tomografia computadorizada do tórax em corte transversal evidenciando espessamento concêntrico difuso de paredes brônquicas e áreas de aprisionamento gasoso. ' +
-        BRUYETTE_SOURCE,
+        'Tomografia computadorizada do tórax em corte transversal evidenciando espessamento concêntrico difuso de paredes brônquicas e áreas de aprisionamento gasoso.',
     },
     lavadoBroncoalveolarPadraoOuroCitologico:
       'Caracterização fenotípica por BAL como padrão de referência diagnóstico:\n\n' +
@@ -584,7 +579,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       '- Albuterol / Salbutamol (90 mcg) como droga estritamente de resgate: indicado para alívio imediato em crises agudas de broncoespasmo (1 a 2 puffs a cada 15 a 30 minutos em emergência);\n' +
       '- ALERTA CONTRA ALBUTEROL RACÊMICO FREQUENTE: o produto racêmico contém os enantiômeros R-albuterol (broncodilatador) e S-albuterol; o S-albuterol é metabolizado lentamente, acumula-se no pulmão e exerce propriedades pró-inflamatórias, agravando a neutrofilia e a eosinofilia; uso frequente diário indica mau controle inflamatório de base e exige ajuste do corticoide.\n' +
       '- Terbutalina parenteral no plantão: 0,01 mg/kg SC, IM ou IV em gatos em crise grave com resposta broncodilatadora rápida em 15 a 30 minutos.\n' +
-      '- Teofilina de liberação prolongada em cães: indicada quando há broncomalácia concomitante (5 a 10 mg/kg VO q12h); além de leve broncodilatação, melhora o clearance mucociliar e a força contrátil diafragmática; atentar para índice terapêutico estreito e interação com fluoroquinolonas (que inibem sua depuração).',
+      '- Teofilina de liberação prolongada em cães: indicada quando há broncomalácia concomitante (5 a 10 mg/kg VO q12h); além de leve broncodilatação, melhora a depuração mucociliar e a força contrátil diafragmática; atentar para índice terapêutico estreito e interação com fluoroquinolonas (que inibem sua depuração).',
     stewardshipAntimicrobianoISCAID:
       'Uso racional de antimicrobianos segundo diretrizes ISCAID 2017/2026:\n\n' +
       '- Veto à antibioticoterapia empírica rotineira: a maioria absoluta dos casos de bronquite crônica em cães e gatos é de natureza estéril ou comensal; prescrever antibióticos diante de qualquer tosse brônquica promove disbiose e resistência bacteriana sem benefício clínico.\n' +
@@ -630,7 +625,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
         ['Prednisolona Oral (Indução)', 'Cães: 0,5–1,0 mg/kg VO q12h por 5–7d; Gatos: 1–2 mg/kg/dia VO', 'Inibição de NF-kB e citocinas; supressão rápida da inflamação', 'Desmame gradual obrigatório; vigiar ganho de peso e imunossupressão'],
         ['Albuterol (Salbutamol Inalatório)', '1 a 2 puffs de 90 mcg inalatórios com espaçador em crises', 'Beta-2 agonista de curta ação; alívio imediato do broncoespasmo', 'Estritamente resgate; uso diário crônico agrava inflamação pulmonar'],
         ['Terbutalina Parenteral', '0,01 mg/kg SC, IM ou IV lento (gatos e cães em crise)', 'Beta-2 agonista sistêmico rápido; broncodilatação na emergência', 'Monitorar taquicardia e arritmias; precaução em cardiopatas'],
-        ['Teofilina Liberação Prolongada', '5 a 10 mg/kg VO a cada 12 horas (espécie canina)', 'Inibição de PDE; melhora clearance mucociliar e diafragma', 'Índice terapêutico estreito; reduzir dose se usar fluoroquinolonas'],
+        ['Teofilina Liberação Prolongada', '5 a 10 mg/kg VO a cada 12 horas (espécie canina)', 'Inibição de PDE; melhora depuração mucociliar e diafragma', 'Índice terapêutico estreito; reduzir dose se usar fluoroquinolonas'],
         ['Doxiciclina Oral (ISCAID)', '5 mg/kg VO q12h ou 10 mg/kg VO q24h por 7 a 10 dias', 'Antimicrobiano de eleição se houver infecção bacteriana no BAL', 'Nunca prescrever de rotina sem evidência de infecção citológica'],
         ['Gentamicina 5% Nebulizada', '3 a 5 mL nebulizados a cada 12 horas por 3 a 4 semanas', 'Eliminação tópica de Bordetella bronchiseptica persistente', 'Reservado a infecções refratárias comprovadas em cultura/BAL'],
         ['Hidrocodona Oral (Antitussígeno)', '0,22 a 0,5 mg/kg VO a cada 6 a 12 horas (espécie canina)', 'Opioide de ação central; quebra ciclo de tosse seca e síncope', 'PROIBIDO se houver tosse produtiva, bronquiectasia ou pneumonia'],
@@ -922,6 +917,14 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       year: 2023,
       pages: 'Various',
       url: 'https://www.plumbs.com',
+    },
+    {
+      id: 'ref-bruyette-2020-small-animal-internal-medicine',
+      authors: 'Bruyette DS',
+      title: 'Clinical Small Animal Internal Medicine',
+      journal: 'Wiley-Blackwell',
+      year: 2020,
+      pages: 'Diagnostic Imaging — Airway Patterns',
     },
   ],
 };

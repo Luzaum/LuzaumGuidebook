@@ -41,7 +41,7 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
     'Alertas de Exacerbação: Piora súbita exige citologia cutânea/auricular e pente de pulga; infecções secundárias por Staph e Malassezia são os maiores vilões (1,3,6,7).',
     'Antipruriginoso Não Trata Infecção: Controlar IL-31/JAK alivia o prurido, mas a piodermite ou malasseziose exige tratamento específico em paralelo (1,3,6,7).',
     'Ciclosporina e ASIT Não São Resgate: A ciclosporina exige 4 a 6 semanas e a ASIT de 6 a 12 meses para demonstrar eficácia máxima (1,3,14,15).',
-    'Critérios de Favrot: Início <3 anos, cão indoor, prurido responsivo a esteroides, lesão inicial ausente, patas anteriores e orelhas afetadas (1,4).',
+    'Critérios de Favrot: Início <3 anos, cão em ambiente domiciliar, prurido responsivo a esteroides, lesão inicial ausente, patas anteriores e orelhas afetadas (1,4).',
     'Oclacitinib (Apoquel®): 0,4–0,6 mg/kg PO q12h por até 14 dias → q24h em cães ≥12 meses. Início de ação em poucas horas (8,9).',
     'Ilunocitinib (Zenrelia®): 0,6–0,8 mg/kg PO q24h (≥12m). Alerta vacinal FDA: suspender 28d a 3 meses antes da vacinação e não vacinar durante o uso (11,12).',
     'Atinvicitinib (Numelvi®): 0,8–1,2 mg/kg PO q24h COM ALIMENTO em cães ≥6 meses (aprovação FDA 2026) (13).',
@@ -106,7 +106,7 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
         {
           label: '1. Crise aguda',
           detail:
-            'Identificar e tratar gatilho (infecção, pulga). Prurido focal: glucocorticoide tópico. Generalizado: oclacitinib 0,4–0,6 mg/kg q12h até 14 dias → q24h; lokivetmab ≥2 mg/kg SC q4–8 sem; ou glucocorticoide oral curto (Plumb\'s 10ª ed.).',
+            'Identificar e tratar gatilho (infecção, pulga). Prurido focal: glucocorticoide tópico. Generalizado: oclacitinib 0,4–0,6 mg/kg q12h até 14 dias → q24h; lokivetmab ≥2 mg/kg SC q4–8 sem; ou glucocorticoide oral curto.',
           reassess: 'Reavaliar em 2–4 semanas; citologia se piora.',
         },
         {
@@ -137,7 +137,7 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
     definicao:
       'A CAD é uma doença inflamatória e pruriginosa crônica da pele com predisposição genética, associada a alterações da barreira epidérmica, disbiose cutânea e resposta imunológica anormal a alérgenos ambientais (1,2,5).',
     disfunçãoBarreira:
-      'O estrato córneo atópico apresenta falha nos lipídios intercelulares (cerâmicas, ácidos graxos) e corneócitos, levando a aumento da perda transepidérmica de água (TEWL), ressecamento e aumento da permeabilidade a alérgenos ambientais e microrganismos (1,5).',
+      'O estrato córneo atópico apresenta falha nos lipídios intercelulares (ceramidas, ácidos graxos) e corneócitos, levando a aumento da perda transepidérmica de água (TEWL), ressecamento e aumento da permeabilidade a alérgenos ambientais e microrganismos (1,5).',
     imunopatogeneseIL31:
       'A exposição transcutânea a alérgenos ativa queratinócitos e células apresentadoras de antígenos, induzindo resposta imune de perfil Th2 inicial com liberação de IL-4, IL-5, IL-13 e IL-31. A IL-31 liga-se a receptores em neurônios sensoriais periféricos ativando a via JAK/STAT, que transmite o sinal de PRURIDO diretamente ao SNC (1,5,8,10). Em fases crônicas, o perfil inflamatório expande-se para respostas Th1, Th17 e Th22 (1).',
     microbiomaEDisbiose:
@@ -169,7 +169,7 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
       system: 'dermatologico',
       findings: [
         {
-          finding: 'Prurido e Eritema em Face, Pátas, Axilas, Virilhas e Orelhas',
+          finding: 'Prurido e Eritema em Face, Patas, Axilas, Virilhas e Orelhas',
           mechanism:
             'Distribuição anatômica clássica de sensibilização percutânea e densidade de receptores neuronais de IL-31 (1,2,5).',
           clinicalMeaning: 'Padrão característico atópico canino (Critérios de Favrot) (1,4).',
@@ -269,7 +269,7 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
       'Controle Rigoroso e Contínuo de Ectoparasitas: Manutenção ininterrupta de ectoparasiticidas de longa ação (isoxazolinas mensais ou trimestrais) durante todo o ano, prevenindo a hipersensibilidade à picada de pulga (DAPP), que atua como gatilho somatório ultrapassando o limiar de prurido do paciente atópico.',
       'Limpeza Mecânica Pós-Passeio: Higienização de patas, abdômen ventral e face com toalhas umedecidas ou enxágue com água morna após passeios em gramados ou áreas externas para remoção física de pólens e alérgenos vegetais antes que ocorra absorção percutânea.',
       'Manejo Ambiental dos Ácaros da Poeira: Redução de alérgenos domiciliares (Dermatophagoides farinae e D. pteronyssinus) mediante aspiração frequente com filtro HEPA, lavagem semanal das caminhas e cobertores em água quente (> 60°C) e desumidificação do ambiente interno (< 50% de umidade).',
-      'Terapia Proativa Intermitente ("Flare-up Prophylaxis"): Aplicação de corticoide tópico de baixo impacto sistêmico (hidrocortisona aceponato spray) duas vezes por semana em regiões anatômicas com histórico de recidiva frequente (patas, virilhas), prevenindo a reativação de crises inflamatórias agudas.',
+      'Terapia Proativa Intermitente para Prevenção de Crises: Aplicação de corticoide tópico de baixo impacto sistêmico (hidrocortisona aceponato spray) duas vezes por semana em regiões anatômicas com histórico de recidiva frequente (patas, virilhas), prevenindo a reativação de crises inflamatórias agudas.',
       'Imunoterapia Alérgeno-Específica (ITA) Precoce: Instituição precoce da imunoterapia como única modalidade terapêutica capaz de modular a resposta imunológica (aumento de linfócitos T reguladores FoxP3+ e IL-10), prevenindo a progressão cronificada da marcha atópica e a dependência de imunossupressores sistêmicos.',
     ],
   },

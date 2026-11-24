@@ -10,13 +10,24 @@ export type SimplifiedMedicationDefinition = {
 const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
   alopurinol: {
     whatItDoes:
-      'O alopurinol atua como uma chave que desliga a enzima xantina-oxidase, impedindo que o organismo transforme purinas em ácido úrico. Essa redução é utilizada para dissolver e prevenir cálculos urinários de urato em cães geneticamente predispostos, além de enganar o parasito da leishmaniose, que incorpora o remédio em seu material genético como se fosse uma purina verdadeira e para de se multiplicar.',
+      'O alopurinol bloqueia a enzima xantina oxidoredutase, reduzindo a formação de ácido úrico na urina em cães predispostos a cálculos de urato, e atua como falso tijolo de purina em Leishmania para frear a multiplicação do parasito (efeito leishmaniostático, sem eliminar totalmente a infecção).',
     keyPoints: [
-      'O paradoxo da xantina: ao fechar a torneira do ácido úrico, o alopurinol acumula xantina, que é ainda menos solúvel e pode formar cálculos urinários se o animal não estiver em dieta com pouca purina e urina bem diluída.',
-      'Combinação fatal com azatioprina: o alopurinol impede a inativação da azatioprina e da 6-mercaptopurina, disparando toxicidade medular gravíssima e aplasia de medula óssea se a dose não for reduzida em 66% a 75%.',
-      'Ineficaz em shunts portossistêmicos não tratados: cálculos de urato decorrentes de desvios vasculares hepáticos exigem cirurgia ou correção hepática; o alopurinol isolado não trata a causa vascular nem a hiperamonemia.',
-      'Ajuste obrigatório na doença renal: o fármaco e seu metabólito ativo oxipurinol dependem da filtração renal para eliminação; em animais com disfunção renal, reduzir a dose inicial pela metade para evitar acúmulo tóxico.',
-      'Leishmaniose visceral canina: medicamento leishmaniostático prolongado (6 a 12 meses) que controla a carga parasitária mas não gera cura esterilizante; exige ultrassom e urinálise periódicos para monitorar xantinúria.',
+      'Paradoxo da xantina: sem dieta pobre em purinas, o bloqueio enzimático acumula xantina pouco solúvel em qualquer pH, formando cristais e pedras radiotransparentes que podem surgir já após 31 dias (mediana 150 dias).',
+      'Interação grave com azatioprina: impede sua degradação e pode causar aplasia medular fatal; evitar a combinação ou reduzir drasticamente a azatioprina sob hemograma semanal.',
+      'Na LVC, consensos mundiais usam 10 mg/kg VO q12h apenas em combinação com leishmanicidas (não em monoterapia); no Brasil, atentar à Portaria MS/MAPA nº 1.426/2008.',
+      'Em shunts portossistêmicos não reparados e gatos com cálculos de urato, a eficácia não é comprovada — priorizar investigação hepática e remoção física/cirúrgica.',
+      'Para cães < 5 kg e gatos, preferir suspensão manipulada 20 mg/mL (estabilidade físico-química 60 dias protegida da luz) em vez de quebrar comprimidos de 100 mg em frações mínimas.',
+    ],
+  },
+  fenobarbital: {
+    whatItDoes:
+      'O fenobarbital acalma a atividade elétrica exagerada do cérebro ao prolongar o efeito do GABA, o principal freio natural dos neurônios, ajudando a prevenir convulsões crônicas em cães e gatos e a controlar crises graves em ambiente hospitalar.',
+    keyPoints: [
+      'Nunca interromper de repente: a parada súbita pode desencadear convulsões contínuas muito graves (status epilepticus); qualquer redução exige desmame lento acompanhado.',
+      'Exames de sangue periódicos (TDM aos 14 dias, 6 semanas e a cada 6 meses) em tubo sem gel: em cães, o fígado aprende a eliminar o remédio mais rápido nas primeiras semanas (autoindução).',
+      'Fosfatase alcalina alta em cães nem sempre significa doença grave do fígado (costuma ser adaptação enzimática); já em gatos, qualquer elevação de enzimas hepáticas precisa ser investigada.',
+      'Na emergência intravenosa, exige aplicação lenta com intervalo de 20 minutos entre doses e conferência do frasco (Fenocris® 100 mg/mL de sal equivale a 91,35 mg/mL de fenobarbital base); nunca aplicar por via subcutânea.',
+      'Medicamento da Lista B1 com adendo específico da ANVISA (RDC nº 1.023/2026): prescrito em Receita de Controle Especial em 2 vias com retenção.',
     ],
   },
   amantadina: {
@@ -94,8 +105,8 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
     keyPoints: ['Sedação e falta de coordenação podem ocorrer.', 'Ajustes podem ser necessários em doença renal.', 'A indicação determina frequência e duração.'],
   },
   maropitant: {
-    whatItDoes: 'O maropitant bloqueia o receptor NK1, usado pela substância P no centro do vômito. Assim, interrompe uma das principais vias finais que desencadeiam náusea e vômito por diferentes causas.',
-    keyPoints: ['Controlar o vômito não elimina sua causa.', 'A via e a duração dependem do quadro clínico.', 'Dor à aplicação pode ocorrer com a formulação injetável.'],
+    whatItDoes: 'O maropitant bloqueia os receptores NK1, impedindo que a substância P ative os circuitos centrais e periféricos que desencadeiam o vômito. Controla a êmese por 24 horas na maioria dos protocolos, mas não elimina automaticamente a náusea, não estimula o apetite e não trata a causa de base.',
+    keyPoints: ['Controlar o vômito não exclui obstrução intestinal nem resolve a doença primária.', 'No cão, 1 mg/kg SC/IV não equivale a 2 mg/kg VO; cinetose exige 8 mg/kg VO.', 'A injeção SC pode causar dor (menor com produto refrigerado quando previsto em bula) e precipita com pantoprazol IV.'],
   },
   ondansetron: {
     whatItDoes: 'A ondansetrona bloqueia receptores 5-HT₃ envolvidos na náusea e no vômito por vias vagais e centrais. É complementar ao maropitant — não substitui a mesma via.',
@@ -123,7 +134,7 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
   },
   budesonida: {
     whatItDoes: 'A budesonida é um corticosteroide potente que age principalmente no local onde é aplicado — intestino ou vias aéreas — porque boa parte do medicamento é metabolizada antes de atingir a circulação. Isso reduz, mas não elimina, os efeitos sistêmicos.',
-    keyPoints: ['Não é corticosteroide “sem efeitos sistêmicos”.', 'Doses variam muito conforme fonte — BSAVA, estudos e mg/m² não são intercambiáveis.', 'Formulação entérica não deve ser triturada sem orientação farmacotécnica.'],
+    keyPoints: ['Não é corticosteroide “sem efeitos sistêmicos”.', 'Doses variam muito conforme o protocolo clínico — esquemas baseados em mg/kg e mg/m² não são intercambiáveis.', 'Formulação entérica não deve ser triturada sem orientação farmacotécnica.'],
   },
   clorambucil: {
     whatItDoes: 'O clorambucil é uma quimioterapia citotóxica oral da classe das mostardas nitrogenadas que grampeia e danifica o DNA das células em multiplicação, impedindo sua divisão e disparando sua morte. É utilizado principalmente em neoplasias linfóides indolentes (como o linfoma intestinal felino de pequenas células), em enteropatias com perda proteica graves em cães e em protocolos metronômicos contínuos.',
@@ -388,6 +399,38 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
       'Atenção à bula comercial: as apresentações veterinárias brasileiras a 10 mg/mL (Torbugesic®, Butorfin®) possuem bula registrada para equinos e são empregadas extrabula em cães e gatos em miligramas de butorfanol base.',
       'Vigilância térmica e neurológica: pode causar hipotermia leve em cães e hipertermia branda autolimitada em gatos; mutação ABCB1 (MDR1) requer cautela e monitoramento de sedação mais intensa.',
       'Controle especial Lista A1: segue a Portaria MAPA nº 837/2025 para produtos veterinários (Notificação de Receita Veterinária branca em 2 vias) e Portaria SVS/MS nº 344/1998 quando utilizado produto humano extrabula.',
+    ],
+  },
+  pilocarpina: {
+    whatItDoes:
+      'A pilocarpina é um agonista muscarínico direto (parassimpaticomimético) que imita a acetilcolina diretamente nos receptores M3 das glândulas lacrimais, salivares e nasais, além de contrair o músculo esfíncter da íris e o músculo ciliar. Na rotina veterinária, é o fármaco de escolha para recuperar a lágrima na ceratoconjuntivite seca (CCS) neurogênica canina e também auxilia na investigação de desnervação pupilar e disautonomia.',
+    keyPoints: [
+      'Indicação principal: CCS neurogênica em cães (frequentemente com ressecamento nasal/xeromicteria do mesmo lado), usando o colírio comercial diluído ou por via oral misturado em alimento úmido com aumento lento de gotas.',
+      'Titulação até o limiar individual: a resposta lacrimal pode levar de 1 a 4 semanas; se aparecerem sinais colinérgicos leves (salivação intensa, vômito, fezes amolecidas), pausar brevemente se necessário e manter a última dose bem tolerada.',
+      'Atenção rigorosa às marcas e gotas: Pilocan® 2% entrega 27 gotas/mL (≈ 0,74 mg/gota), enquanto Pilocarpina® 2% Allergan entrega 25 gotas/mL (≈ 0,80 mg/gota); em cães menores que 5 kg prefira a versão a 1% ou manipulada.',
+      'Nunca aplicar colírio puro a 2% direto na língua ou em olhos com uveíte anterior ou luxação do cristalino (risco de dor intensa, inflamação uveal e bloqueio pupilar agudo).',
+      'Cuidado redobrado em gatos e asmáticos: o estímulo colinérgico pode precipitar broncoespasmo, bradicardia e efeitos sistêmicos mesmo após instilação ocular; na suspeita de disautonomia, usar apenas diluições baixas (0,05%–0,1%).',
+    ],
+  },
+  manitol: {
+    whatItDoes:
+      'O manitol (D-manitol) é um diurético osmótico e agente hiperosmolar intravenoso que não atua em receptores, mas aumenta rapidamente a osmolaridade do sangue para puxar água acumulada nos tecidos de volta para a circulação. Na emergência veterinária, serve principalmente para reduzir a pressão intracraniana no edema cerebral agudo e baixar rapidamente a pressão intraocular no glaucoma agudo refratário.',
+    keyPoints: [
+      'Ação dupla no cérebro: reduz a pressão intracraniana em minutos ao diminuir a viscosidade sanguínea (efeito reológico) e consolida a retirada osmótica de água do encéfalo e do líquor entre 15 e 30 minutos.',
+      'Dose padrão de emergência: 0,5 a 1 g/kg por via intravenosa lenta ao longo de 15 a 20 minutos (o que equivale a 2,5 a 5 mL/kg da solução a 20% = 200 mg/mL), sempre em acesso venoso seguro.',
+      'Solução a 20% cristaliza no frio: se houver cristais visíveis, aquecer até dissolução completa, resfriar à temperatura corporal antes de infundir e usar filtro de linha de 5 µm; nunca administrar com sangue no mesmo equipo.',
+      'Contraindicação vital (Consenso IRIS 2024): não administrar em animais desidratados/hipovolêmicos antes de restaurar perfusão e não repetir em pacientes anúricos — diurese osmótica não recupera a função renal e pode causar edema pulmonar grave.',
+      'Armadilha laboratorial: a retenção do soluto reduz o sódio sérico por desvio osmótico de água (hiponatremia translocacional hiperosmolar), aumenta o gap osmolar e interfere em densidade urinária, fósforo sérico e teste de etilenoglicol.',
+    ],
+  },
+  'nitroprussiato-de-sodio': {
+    whatItDoes:
+      'O nitroprussiato de sódio é um vasodilatador arterial e venoso direto de ação imediata que libera óxido nítrico (NO) nos vasos sanguíneos, relaxando rapidamente artérias e veias em poucos minutos. Na UTI veterinária, é usado exclusivamente por infusão contínua em bomba (CRI) para crises hipertensivas graves com risco de lesão em órgãos-alvo, edema pulmonar cardiogênico refratário e picos hipertensivos cirúrgicos (como no feocromocitoma).',
+    keyPoints: [
+      'Ação minuto a minuto em UTI: começa a agir em 1–2 minutos e cessa em 1–10 minutos após desligar a bomba, exigindo aferição contínua da pressão arterial.',
+      'Diluição obrigatória em SG 5% e fotoproteção: nunca infundir a ampola concentrada (25 mg/mL = 25.000 µg/mL) pura; preparar em 50–200 µg/mL, proteger da luz e descartar se ficar azul, verde ou vermelho-escuro.',
+      'Proibido bolus e flush: jamais lavar o acesso venoso conectado ao fármaco e nunca associar com sildenafil ou tadalafil pelo risco de colapso circulatório fatal.',
+      'Risco metabólico cumulativo: a biotransformação libera cianeto (CN⁻) e tiocianato (SCN⁻); infusões acima de 2 µg/kg/min ou prolongadas (>48–72 h), sobretudo em nefropatas/hepatopatas ou gatos, aumentam risco de acidose láctica e metemoglobinemia.',
     ],
   },
 };

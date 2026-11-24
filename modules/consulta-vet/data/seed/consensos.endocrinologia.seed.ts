@@ -259,7 +259,7 @@ export const endocrinologiaConsensosSeed: EndocrinologyConsensusSeed[] = [
     keyPointsText:
       'DEFINIÇÕES PADRONIZADAS\n- Diabetes mellitus, diabetes clínico e apresentações sem sinais clássicos.\n- Critérios diagnósticos específicos para cães e gatos.\n- Deficiência de insulina, resistência insulínica e classificação etiológica.\n- Controle glicêmico, remissão, recaída e fatores que alteram resposta.\n\nCARACTERIZAÇÃO\n- Recomenda checklists no diagnóstico para registrar sinais, hiperglicemia, glicosúria, cetose, tratamento, comorbidades e fatores diabetogênicos.\n- Distingue presença da doença, manifestação clínica e estado terapêutico.',
     practicalApplicationText:
-      'No ConsultaVet, evitar um único campo “diabetes: sim/não”. Registrar espécie, sinais, persistência da hiperglicemia, glicosúria, cetose, tratamento, necessidade insulínica, suspeita de resistência, remissão, recaída e doença causadora/agravante. Usar as definições como vocabulário de dados; a conduta deve vir dos guidelines terapêuticos atuais.',
+      'Evitar um único campo “diabetes: sim/não”. Registrar espécie, sinais, persistência da hiperglicemia, glicosúria, cetose, tratamento, necessidade insulínica, suspeita de resistência, remissão, recaída e doença causadora/agravante. Usar as definições como vocabulário de dados; a conduta deve vir dos guidelines terapêuticos atuais.',
     appNotesText:
       `STATUS: TERMINOLOGIA — não prescreve medicamento nem substitui guideline terapêutico.\n\nQuando houver conflito de definição sobre cetose, CAD, CAD euglicêmica ou remissão, consultar também as atualizações do ALIVE Cycle 3.\n\n${CONSENSUS_DISCLAIMER}`,
     references: [

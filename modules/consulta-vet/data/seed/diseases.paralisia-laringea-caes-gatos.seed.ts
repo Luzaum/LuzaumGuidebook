@@ -43,7 +43,6 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
     'Natsume 2025',
     'Forni 2026',
     'AAHA Senior Care 2023',
-    'Nelson & Couto',
   ],
   isPublished: true,
 
@@ -367,7 +366,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
       '- 2. Excitação emocional intensa: visitas, chegada de tutores ou estresse em consultório aumentam a frequência ventilatória.\n' +
       '- 3. Exercício físico ou passeios vigorosos: elevam imediatamente a demanda metabólica por oxigênio.\n\n' +
       'REGRA FISIOPATOLÓGICA:\n' +
-      '- Cães com obstrução da via aérea superior são incapazes de realizar troca térmica evaporativa eficaz por polipneia (panting), deflagrando rápida intermação secundária com colapso respiratório.',
+      '- Cães com obstrução da via aérea superior são incapazes de realizar troca térmica evaporativa eficaz por polipneia (respiração ofegante), deflagrando rápida intermação secundária com colapso respiratório.',
 
     sobrecargaDoTutorECuidadoGeriátrico:
       'Impacto na família tutora e diretrizes geriátricas (AAHA 2023):\n' +
@@ -434,7 +433,7 @@ export const paralisiaLaringeaCaesGatosRecord: DiseaseRecord = {
       '- 2. Instala-se edema inflamatório local, congestão microvascular e espessamento mucoso intraluminal.\n' +
       '- 3. A rima glottidis estreita-se ainda mais, elevando a resistência ao fluxo aéreo.\n' +
       '- 4. O paciente entra em pânico e ansiedade intensa, deflagrando taquipneia reflexa que aumenta a demanda ventilatória minuto.\n' +
-      '- 5. Incapacidade de realizar perda de calor evaporativo via respiração bucal (panting ineficaz).\n' +
+      '- 5. Incapacidade de realizar perda de calor evaporativo via respiração bucal (respiração ofegante ineficaz).\n' +
       '- 6. A temperatura corporal sobe descontroladamente, ultrapassando 40,5 a 41,5°C.\n' +
       '- 7. A hipertermia sistêmica induz lesão endotelial térmica, acidose lática severa e colapso circulatório.',
 

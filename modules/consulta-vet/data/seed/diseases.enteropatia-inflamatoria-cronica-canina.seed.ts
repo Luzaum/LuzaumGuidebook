@@ -48,7 +48,6 @@ export const enteropatiaInflamatoriaCronicaCaninaRecord: DiseaseRecord = {
     'Budesonida',
     'Ciclosporina',
     'Clorambucil',
-    'Nelson & Couto',
   ],
   isPublished: true,
   source: 'seed',
@@ -533,7 +532,7 @@ export const enteropatiaInflamatoriaCronicaCaninaRecord: DiseaseRecord = {
     farmacologiaDaBudesonidaESupressaoHPA:
       'Análise crítica do corticoide de ação tópica entérica:\n\n' +
       '- Posologia recomendada: 3 mg/m² VO q24h (ou 0,5 a 1 mg SID em 3-7 kg; 1 a 2 mg em 7-15 kg; 2 a 3 mg em 15-30 kg; 3 a 5 mg em >30 kg) por 3 a 4 semanas, seguida de redução gradual.\n' +
-      '- Alerta farmacológico máximo (Plumb 10ª ed.): a budesonida sofre intenso metabolismo hepático de primeira passagem, mas NÃO É ISENTA de efeitos sistêmicos; estudos comprovam supressão real do eixo hipotálamo-hipófise-adrenal (HPA).\n' +
+      '- Alerta farmacológico máximo: a budesonida sofre intenso metabolismo hepático de primeira passagem, mas NÃO É ISENTA de efeitos sistêmicos; estudos comprovam supressão real do eixo hipotálamo-hipófise-adrenal (HPA).\n' +
       '- Ausência de superioridade em efeitos adversos: ensaios randomizados comparando budesonida com prednisona não demonstraram redução significativa na incidência de efeitos colaterais clínicos.',
     imunossupressoresDeSegundaLinhaCiclosporinaClorambucil:
       'Manejo de resgate perante falha esteroidal, córtico-dependência ou PLE associada:\n\n' +
@@ -636,7 +635,7 @@ export const enteropatiaInflamatoriaCronicaCaninaRecord: DiseaseRecord = {
       '- Doença linfática não controlada: linfangiectasia primária grave que foi tratada com imunossupressores sem a devida restrição ultrabaixa de gordura na dieta.',
     efeitosAdversosIatrogenicosDeCorticoides:
       'Morbilidades desencadeadas pela corticoterapia prolongada ou em altas doses:\n\n' +
-      '- Efeitos metabólicos e comportamentais: poliúria, polidipsia intensa, polifagia voraz, respiração ofegante (panting) e susceptibilidade a infecções bacterianas urinárias.\n' +
+      '- Efeitos metabólicos e comportamentais: poliúria, polidipsia intensa, polifagia voraz, respiração ofegante e susceptibilidade a infecções bacterianas urinárias.\n' +
       '- Hepatopatia por esteroides e atrofia cutânea: lipidose hepatocelular induzida por glicocorticoide com elevação marcante de fosfatase alcalina (ALP) e fragilidade vascular dérmica.',
     prognosticoEEstratificacaoPorFenotipo:
       'Heterogeneidade de desfechos conforme o fenótipo de resposta clínica:\n\n' +

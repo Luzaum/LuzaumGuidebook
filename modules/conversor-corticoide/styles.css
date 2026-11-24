@@ -1,0 +1,120 @@
+/* The app is a flex child of AppLayout: explicit width prevents intrinsic shrinking. */
+.corticoid-app {
+  --cc-bg: #f6f8fb;
+  --cc-panel: #fff;
+  --cc-text: #17313f;
+  --cc-muted: #596e7a;
+  --cc-border: #dce4eb;
+  width: 100%; min-width: 0; flex: 1 0 0%; min-height: 100%;
+  background: var(--cc-bg); color: var(--cc-text); font-family: inherit;
+  container-type: inline-size;
+}
+.dark .corticoid-app { --cc-bg: #080f20; --cc-panel: #101c30; --cc-text: #e1edf6; --cc-muted: #a6b8c9; --cc-border: #293c52; }
+.corticoid-app *, .corticoid-app *::before, .corticoid-app *::after { box-sizing: border-box; }
+.cc-wrap { width: 100%; max-width: 1440px; min-width: 0; margin-inline: auto; padding: clamp(16px, 3vw, 40px); padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+.cc-back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 13px; color: var(--cc-muted); }
+.cc-hero { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0 28px; }
+.cc-eyebrow { font-size: 10px; font-weight: 750; letter-spacing: .15em; }
+.cc-hero h1 { font-size: clamp(27px, 3.2vw, 42px); font-weight: 650; letter-spacing: -.04em; line-height: 1.15; margin: 2px 0 5px; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.cc-hero p { font-size: 17px; margin: 8px 0; }
+.cc-hero .cc-muted { font-size: 14px; max-width: 550px; color: var(--cc-muted); line-height: 1.6; }
+.cc-layout { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.cc-layout > *, .cc-row > * { min-width: 0; }
+.cc-card { background: var(--cc-panel); border: 1px solid var(--cc-border); border-radius: 22px; }
+.cc-form { padding: clamp(18px, 2.2vw, 28px); }
+.cc-section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.cc-section-head h2 { font-size: 17px; font-weight: 650; }
+.cc-text-button { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--cc-muted); min-height: 44px; padding: 8px; flex-shrink: 0; }
+.cc-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.corticoid-app label { display: flex; flex-direction: column; gap: 8px; font-size: 12px; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.corticoid-app select, .corticoid-app input { width: 100%; max-width: 100%; min-width: 0; min-height: 48px; padding: 11px 12px; background: var(--cc-bg); border: 1px solid var(--cc-border); border-radius: 10px; color: var(--cc-text); font-size: 16px; font-weight: 450; text-overflow: ellipsis; }
+.corticoid-app input::placeholder { color: var(--cc-muted); font-size: 12px; }
+.corticoid-app :focus-visible { outline: 3px solid #39adcc; outline-offset: 3px; }
+.corticoid-app button { cursor: pointer; touch-action: manipulation; }
+.corticoid-app button:disabled { opacity: .45; cursor: not-allowed; }
+.corticoid-app input:disabled { opacity: .45; }
+.cc-drugs { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); gap: 10px; align-items: end; margin: 24px 0; }
+.cc-swap { width: 44px; height: 48px; display: grid; place-items: center; border: 1px solid var(--cc-border); border-radius: 12px; color: var(--cc-text); }
+.cc-hint { font-size: 12px !important; font-weight: 400; line-height: 1.65; color: var(--cc-muted); margin: 10px 0 16px; }
+.cc-optional { border-top: 1px solid var(--cc-border); margin-top: 22px; padding-top: 20px; }
+.cc-optional label { margin-top: 14px; }
+.cc-error { color: #be4839; font-size: 12px; line-height: 1.5; margin: 6px 0; }
+.dark .cc-error { color: #ffb5a9; }
+.cc-result { background: #123c43; color: #f2faf5; border-radius: 22px; padding: clamp(20px, 2.4vw, 30px); box-shadow: 0 16px 40px #173b3210; scroll-margin-block: 20px; }
+.cc-result .cc-eyebrow { color: #b6d9dc; }
+.cc-result h2 { font-size: 22px; font-weight: 650; margin-bottom: 18px; overflow-wrap: anywhere; }
+.cc-number { font-size: clamp(33px, 4.4vw, 58px); font-weight: 500; letter-spacing: -.04em; margin: 12px 0; overflow-wrap: anywhere; }
+.cc-number span { font-size: 22px; font-weight: 400; letter-spacing: 0; color: #b6d9dc; white-space: nowrap; }
+.cc-equation { color: #c9dce3; font-size: 14px; line-height: 1.8; overflow-wrap: anywhere; }
+.cc-volume { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #41616c; margin-top: 18px; padding-top: 18px; }
+.cc-volume strong { font-size: 28px; overflow-wrap: anywhere; }
+.cc-volume span, .cc-volume small { font-size: 12px; color: #c9dce3; line-height: 1.6; }
+.cc-copy { display: flex; align-items: center; justify-content: center; gap: 8px; background: #e1eff0; color: #153b43; border-radius: 10px; width: 100%; min-height: 48px; padding: 13px; margin-top: 24px; font-size: 13px; font-weight: 600; }
+.cc-result .cc-hint { color: #c9dce3; }
+.cc-facts { display: flex; align-items: center; gap: 16px; padding: 22px 4px 0; justify-content: space-between; }
+.cc-facts div { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 0; }
+.cc-facts span { font-size: 11px; color: var(--cc-muted); }
+.cc-facts strong { font-size: 13px; font-weight: 600; overflow-wrap: anywhere; }
+.cc-no-result { padding: 28px 0; }
+.cc-no-result h3 { font-size: 20px; margin: 16px 0; }
+.cc-no-result p { font-size: 14px; line-height: 1.7; color: #c9dce3; }
+.cc-details { min-width: 0; padding: 20px 24px; margin: 14px 0; }
+.cc-details summary { cursor: pointer; font-size: 14px; font-weight: 600; min-height: 28px; }
+.cc-details[open] summary { margin-bottom: 18px; }
+.cc-details ol { padding-left: 20px; list-style: decimal; }
+.cc-details a { text-decoration: underline; text-underline-offset: 3px; }
+.cc-details a svg { display: inline; }
+.cc-table-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.cc-details table { border-collapse: collapse; width: 100%; font-size: 12px; text-align: left; min-width: 570px; }
+.cc-details th, .cc-details td { padding: 12px 10px; border-bottom: 1px solid var(--cc-border); }
+.cc-details th { font-weight: 600; }
+.cc-details caption { text-align: left; font-size: 11px; color: var(--cc-muted); padding: 12px 0; }
+.cc-result-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(68px, 24%, 130px);
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.cc-result-drug { color: #c9dce3; font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+.cc-result-value { animation: cc-reveal-result 180ms ease-out both; }
+.cc-simulation-scene { display: block; width: 100%; height: auto; pointer-events: none; }
+.cc-copy { transition: background-color 150ms ease; }
+.cc-copy:hover { background-color: #fff; }
+.cc-copy-status { font-size: 12px; color: #c9dce3; margin-top: 8px; }
+.cc-copy-status:empty { display: none; }
+@keyframes cc-reveal-result {
+  from { opacity: .72; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Use the actual available width, including an open sidebar or split-screen. */
+@container (max-width: 1050px) {
+  .cc-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@container (max-width: 680px) {
+  .cc-wrap { padding: 14px 16px calc(90px + env(safe-area-inset-bottom, 0px)); }
+  .cc-hero { gap: 16px; padding: 16px 0 22px; }
+  .cc-hero h1 { font-size: 28px; }
+  .cc-hero p { font-size: 15px; }
+  .cc-hero .cc-muted { font-size: 12px; }
+  .cc-form, .cc-details { padding: 20px; }
+  .cc-drugs { grid-template-columns: minmax(0, 1fr) 44px; margin: 18px 0; }
+  .cc-drugs label:last-child { grid-column: 1/-1; }
+  .cc-patient-row { grid-template-columns: minmax(0, 1fr); }
+
+}
+@container (max-width: 420px) {
+  .cc-hero { align-items: flex-start; }
+  .cc-hero h1 { font-size: 25px; }
+  .cc-eyebrow { font-size: 9px; }
+  .cc-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .cc-form, .cc-details { padding: 16px; }
+  .cc-number { font-size: 33px; }
+}
+/* Fallback for older embedded browsers without container queries. */
+@supports not (container-type: inline-size) {
+  @media(max-width: 1050px) { .cc-layout { grid-template-columns: minmax(0, 1fr); } }
+  @media(max-width: 680px) { .cc-row { grid-template-columns: minmax(0, 1fr); } .cc-drugs { grid-template-columns: minmax(0, 1fr); } }
+}
+@media(prefers-reduced-motion: reduce) { .corticoid-app *, .corticoid-app *::before, .corticoid-app *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+

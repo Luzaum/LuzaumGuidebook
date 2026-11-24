@@ -50,7 +50,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
   ],
 
   attentionSubtitle:
-    'SARI: antagonista 5-HT2A e inibidor da recaptação de serotonina com bloqueio alfa-1 adrenérgico (risco de vasodilatação e hipotensão). Alertas críticos para síndrome serotoninérgica em polifarmácia, contraindicação com IMAOs (washout ≥14 dias), inibição da agregação plaquetária in vitro, depressão temporária de respostas no exame neurológico e atenuação diagnóstica de cortisol no teste de estimulação com ACTH.',
+    'SARI: antagonista 5-HT2A e inibidor da recaptação de serotonina com bloqueio alfa-1 adrenérgico (risco de vasodilatação e hipotensão). Alertas críticos para síndrome serotoninérgica em polifarmácia, contraindicação com IMAOs (intervalo de suspensão ≥14 dias), inibição da agregação plaquetária in vitro, depressão temporária de respostas no exame neurológico e atenuação diagnóstica de cortisol no teste de estimulação com ACTH.',
 
   plainLanguageSummary:
     'A trazodona é um dos medicamentos mais modernos e utilizados na medicina comportamental e nos protocolos "Fear Free" (atendimento livre de medo e estresse) para cães e gatos. Ao contrário de calmantes e sedativos clássicos mais antigos que muitas vezes apenas paralisam ou dopam o corpo do animal mantendo o pavor psicológico intacto ("efeito estátua"), a trazodona pertence à classe dos SARIs: ela modula a serotonina cerebral, reduzindo de forma real a sensação de medo, hipervigilância e pânico em situações pontuais como idas ao veterinário, exames, viagens na caixa de transporte, tempestades, fogos de artifício e repouso forçado após cirurgias ortopédicas. O efeito costuma ter início entre 45 minutos e 2 horas após a tomada oral e dura de 6 a 12 horas. No entanto, sedação não é o mesmo que ausência de medo, e a absorção e resposta ao medicamento são extremamente variáveis entre cães e gatos: enquanto alguns pacientes ficam suavemente calmos e outros sonolentos com andar cambaleante (ataxia), uma minoria pode apresentar desinibição ou agitação paradoxal decorrente do metabólito mCPP. Por essa razão, é altamente recomendável realizar uma "dose-teste" prévia em casa num dia calmo antes do evento importante e bloquear o acesso a escadas e sofás para prevenir quedas. Por ser um fármaco sob controle especial federal (Lista C1), exige Receita de Controle Especial em 2 vias e nunca deve ser associado por conta própria a outros medicamentos serotoninérgicos (como tramadol, fluoxetina ou mirtazapina) sob risco de intoxicação grave conhecida como Síndrome Serotoninérgica.',
@@ -85,7 +85,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
     'Dose felina pré-visita consolidada por ensaio clínico duplo-cego: 50 mg/gato VO em dose única administrada 60 a 120 minutos antes do transporte; gatos pequenos (<2,5 kg) podem receber 25 mg (meio comprimido de Donaren 50 mg); doses de 100 mg causam sedação intensa e queda transitória na pressão arterial sistólica (~22 mmHg).',
     'Confinamento pós-operatório ortopédico: embora consagrada clinicamente após estudos abertos em cães, ensaios clínicos duplo-cegos placebo-controlados subsequentes evidenciaram resposta variável sem superioridade inequívoca ao placebo.',
     'Via intravenosa (IV) estritamente contraindicada na rotina: estudo farmacocinético canino (Jay 2013) demonstrou taquicardia imediata em 100% dos animais e desinibição agressiva paradoxal em 50%.',
-    'Quatro alertas de segurança mandatórios: 1) Síndrome Serotoninérgica com IMAOs (washout ≥14 dias) e tramadol; 2) Redução da agregação plaquetária in vitro (estudo Benjamin 2023: 95% → 62%); 3) Depressão de propriocepção e reações posturais no exame neurológico; 4) Atenuação diagnóstica de cortisol no teste de estimulação com ACTH (Brown 2024).',
+    'Quatro alertas de segurança mandatórios: 1) Síndrome Serotoninérgica com IMAOs (intervalo de suspensão ≥14 dias) e tramadol; 2) Redução da agregação plaquetária in vitro (estudo Benjamin 2023: 95% → 62%); 3) Depressão de propriocepção e reações posturais no exame neurológico; 4) Atenuação diagnóstica de cortisol no teste de estimulação com ACTH (Brown 2024).',
     'Medicamento sob controle especial no Brasil: Lista C1 da Portaria SVS/MS nº 344/1998, exigindo Receita de Controle Especial em 2 vias branca (validade de 30 dias em território nacional; Versão 2 física obrigatória desde 18/05/2026).',
   ],
 
@@ -197,8 +197,8 @@ export const trazodonaMedicationRecord: MedicationRecord = {
 
   clinicalWarningItems: [
     {
-      label: 'Síndrome Serotoninérgica Potencialmente Fatal e Interações Críticas de Washout',
-      text: 'A coadministração de trazodona com inibidores da monoamina oxidase (IMAOs, como selegilina e amitraz) é estritamente contraindicada e exige intervalo prévio de washout de pelo menos 14 dias (duas semanas). A combinação com tramadol, antidepressivos tricíclicos (amitriptilina, clomipramina), inibidores seletivos da recaptação (fluoxetina) ou mirtazapina eleva substancialmente o risco de Síndrome Serotoninérgica, caracterizada pela tríade clínica de hiperexcitabilidade neuromuscular (tremores, mioclonias, rigidez extensora), instabilidade autonômica (hipertermia >39,5°C, taquicardia, taquipneia) e alteração do estado mental (agitação intensa, vocalização, delírio).',
+      label: 'Síndrome Serotoninérgica Potencialmente Fatal e Interações Críticas de intervalo de suspensão',
+      text: 'A coadministração de trazodona com inibidores da monoamina oxidase (IMAOs, como selegilina e amitraz) é estritamente contraindicada e exige intervalo prévio de intervalo de suspensão de pelo menos 14 dias (duas semanas). A combinação com tramadol, antidepressivos tricíclicos (amitriptilina, clomipramina), inibidores seletivos da recaptação (fluoxetina) ou mirtazapina eleva substancialmente o risco de Síndrome Serotoninérgica, caracterizada pela tríade clínica de hiperexcitabilidade neuromuscular (tremores, mioclonias, rigidez extensora), instabilidade autonômica (hipertermia >39,5°C, taquicardia, taquipneia) e alteração do estado mental (agitação intensa, vocalização, delírio).',
     },
     {
       label: 'Inibição da Agregação Plaquetária In Vitro e Risco Hemorrágico Oculto',
@@ -236,7 +236,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
 
   contraindications: [
     'Hipersensibilidade conhecida ou confirmada ao cloridrato de trazodona ou a qualquer componente do excipiente.',
-    'Uso concomitante com inibidores da monoamina oxidase (IMAOs, como selegilina e amitraz) ou dentro de um intervalo mínimo de 14 dias (duas semanas de período de washout) após a interrupção de um IMAO, devido ao risco iminente de crise serotoninérgica fatal e instabilidade autonômica.',
+    'Uso concomitante com inibidores da monoamina oxidase (IMAOs, como selegilina e amitraz) ou dentro de um intervalo mínimo de 14 dias (duas semanas de período de suspensão) após a interrupção de um IMAO, devido ao risco iminente de crise serotoninérgica fatal e instabilidade autonômica.',
     'Glaucoma de ângulo fechado pré-existente ou predisposição anatômica a fechamento angular, em razão do potencial de midríase induzida precipitar hipertensão ocular aguda.',
     'Insuficiência hepática severa descompensada com encefalopatia hepática em curso, visto que a depuração da droga depende primariamente da biotransformação microssomal.',
     'Estados de choque cardiogênico, hipovolêmico ou séptico descompensado, hipotensão arterial grave não corrigida e trauma cranioencefálico com instabilidade hemodinâmica, devido ao risco de colapso circulatório por bloqueio alfa-1.',
@@ -306,7 +306,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-trazo-dog-hospitalization',
       species: 'dog',
-      indication: 'Ansiedade e estresse agudo durante a hospitalização canina — protocolo Gilbert-Gregory / Plumb',
+      indication: 'Ansiedade e estresse agudo durante a hospitalização canina — protocolo Gilbert-Gregory',
       doseMin: 2,
       doseMax: 4,
       doseUnit: 'mg',
@@ -336,7 +336,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-trazo-dog-postop-confinement',
       species: 'dog',
-      indication: 'Facilitação de confinamento pós-operatório ortopédico canino — protocolo Gruen / Plumb',
+      indication: 'Facilitação de confinamento pós-operatório ortopédico canino — protocolo Gruen',
       doseMin: 3.5,
       doseMax: 7,
       doseUnit: 'mg',
@@ -359,7 +359,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
       route: 'VO',
       frequency: 'dose única 90 a 120 minutos antes da indução anestésica',
       notes:
-        'Promove tranquilização pré-hospitalar Fear Free, diminui os requerimentos de propofol na indução e reduz em cerca de 17% a Concentração Alveolar Mínima (CAM) do isoflurano (estudos de Jay 2013 e Plumb 10ª ed.). Monitorar atentamente a pressão arterial durante a indução devido à somação de vasodilatação por bloqueio alfa-1.',
+        'Promove tranquilização pré-hospitalar Fear Free, diminui os requerimentos de propofol na indução e reduz em cerca de 17% a Concentração Alveolar Mínima (CAM) do isoflurano (Jay et al., 2013). Monitorar atentamente a pressão arterial durante a indução devido à somação de vasodilatação por bloqueio alfa-1.',
       calculatorEnabled: true,
       presentationId: 'pres-trazo-donaren-50',
     },
@@ -381,7 +381,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-trazo-cat-oral-sedation',
       species: 'cat',
-      indication: 'Sedação oral para procedimentos clínicos e ecocardiograma felino — faixa Plumb / estudos 2025',
+      indication: 'Sedação oral para procedimentos clínicos e ecocardiograma felino (estudos clínicos 2025)',
       doseMin: 50,
       doseMax: 100,
       doseUnit: 'mg',
@@ -532,7 +532,7 @@ export const trazodonaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'A inibição da MAO combinada à inibição da recaptação pelo SERT e modulação serotoninérgica provoca acúmulo descontrolado de serotonina nos receptores centrais e periféricos.',
         clinicalAction:
-          'Contraindicação absoluta. Respeitar washout estrito de no mínimo 14 dias entre a suspensão de selegilina/amitraz e o início da trazodona. Se houver hipertermia, tremores e rigidez, suspender imediatamente e instituir suporte hospitalar e ciproeptadina.',
+          'Contraindicação absoluta. Respeitar intervalo de suspensão estrito de no mínimo 14 dias entre a suspensão de selegilina/amitraz e o início da trazodona. Se houver hipertermia, tremores e rigidez, suspender imediatamente e instituir suporte hospitalar e ciproeptadina.',
       },
       {
         condition: 'Coagulopatias, Trombocitopenias e Cirurgias de Risco',

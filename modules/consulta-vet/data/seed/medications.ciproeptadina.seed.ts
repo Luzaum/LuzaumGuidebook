@@ -135,7 +135,7 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
       frequency: 'q12h',
       duration: 'Uso temporário por 3 a 5 dias até recuperação do consumo voluntário.',
       notes:
-        'Dose de partida recomendada pela literatura contemporânea e pelo VIN; gatos que respondem ao fármaco frequentemente apresentam bom estímulo com 1 mg q12h, minimizando a sedação inicial. Administrar cápsula manipulada de 1 mg ou 1,25 mL de Apevitin BC (0,8 mg/mL).',
+        'Dose de partida recomendada pela literatura clínica contemporânea; gatos que respondem ao fármaco frequentemente apresentam bom estímulo com 1 mg q12h, minimizando a sedação inicial. Administrar cápsula manipulada de 1 mg ou 1,25 mL de Apevitin BC (0,8 mg/mL).',
       calculatorEnabled: false,
       presentationId: 'pres-cipro-caps-magistral',
       referenceIds: ['ref-plumbs-10-cyproheptadine', 'ref-isfm-inappetent-2022'],
@@ -152,7 +152,7 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
       frequency: 'q12–24h',
       duration: 'Curso curto adjuvante sob monitoramento clínico contínuo.',
       notes:
-        'Faixa clássica publicada em compêndios (Plumb 10ª ed., BSAVA 10ª ed.). Titular se a dose de 1 mg for bem tolerada mas com resposta insuficiente. Doses superiores a 2 mg aumentam a incidência de sonolência e risco de excitação paradoxal.',
+        'Faixa posológica clássica para titulação quando a dose de 1 mg for bem tolerada, porém com resposta insuficiente. Doses superiores a 2 mg aumentam a incidência de sonolência e risco de excitação paradoxal.',
       calculatorEnabled: false,
       presentationId: 'pres-cipro-caps-magistral',
       referenceIds: ['ref-plumbs-10-cyproheptadine', 'ref-bsava-10-cyproheptadine'],
@@ -186,7 +186,7 @@ export const ciproeptadinaMedicationRecord: MedicationRecord = {
       frequency: 'q4–6h PRN conforme persistência ou recidiva dos sinais',
       duration: 'Repetir apenas enquanto houver sinais de toxidrome; suspender após estabilização.',
       notes:
-        'Dose toxicológica de referência (Manual Merck / Plumb 10ª ed.). Se houver vômito, alteração de consciência ou risco de aspiração, triturar o comprimido, ressuspender em 5 a 10 mL de solução salina e administrar por via retal (PR). Não substitui suporte intensivo com fluidoterapia, controle de convulsões e resfriamento ativo.',
+        'Dose toxicológica de referência para reversão serotoninérgica. Se houver vômito, alteração de consciência ou risco de aspiração, triturar o comprimido, ressuspender em 5 a 10 mL de solução salina e administrar por via retal (PR). Não substitui suporte intensivo com fluidoterapia, controle de convulsões e resfriamento ativo.',
       calculatorEnabled: true,
       presentationId: 'pres-cipro-cobavital-comp',
       referenceIds: ['ref-hopkins-2017-serotonin', 'ref-plumbs-10-cyproheptadine'],

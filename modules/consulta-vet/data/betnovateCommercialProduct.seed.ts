@@ -27,7 +27,7 @@ export const betnovateCommercialProductSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Valerato de betametasona 0,1%. Creme/pomada: 1,22 mg/g de valerato (equivalente a 1,00 mg/g de betametasona). Loção: 1,207 mg/mL. Solução capilar: 1,137 mg/mL. Excipientes variam por forma farmacêutica (creme: clorocresol, cetomacrogol, parafina, vaselina, água; pomada: parafina líquida e vaselina sólida).',
     labelDirections:
-      'Uso tópico humano. Aplicar camada fina sobre a área afetada 1–2 vezes ao dia por até 4 semanas; reduzir frequência ou trocar por preparação menos potente conforme resposta. Creme: preferir lesões úmidas. Pomada: lesões secas, escamosas ou liquenificadas. Loção/capilar: áreas pilosas ou extensas. Em crianças (bula humana): limitar a 5 dias e evitar oclusão. Descontinuar gradualmente após controle.',
+      'Uso tópico humano (extra-label). Aplicar camada fina apenas sobre a lesão focal 1 a 2 vezes ao dia por 7 a 14 dias (em gatos, 1x/dia pelo menor tempo possível; teto bula humana 4 semanas), reduzindo para dias alternados na retirada. Creme: lesões úmidas. Pomada: lesões secas/liquenificadas. Loção/capilar: áreas pilosas.',
     dosageGuidance: {
       labelDose:
         'Bula humana: camada fina 1–2x/dia por até 4 semanas; manutenção/intermitente pode ser 1x/dia 2x/semana após controle. Uso veterinário extra-label: reservar para lesões inflamatórias/pruriginosas localizadas, geralmente curso curto (7–14 dias) com quantidade mínima.',

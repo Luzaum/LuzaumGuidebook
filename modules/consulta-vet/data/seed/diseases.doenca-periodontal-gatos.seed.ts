@@ -68,7 +68,7 @@ export const doencaPeriodontalGatosRecord: DiseaseRecord = {
         {
           label: '1. Triagem consciente e sinais sutis',
           detail:
-            'Investigar halitose, salivação, preferência por patê, mastigação unilateral, movimentos involuntários de mandíbula (chattering) e agressividade ao toque facial.',
+            'Investigar halitose, salivação, preferência por patê, mastigação unilateral, movimentos involuntários de mandíbula (movimentos repetitivos da mandíbula) e agressividade ao toque facial.',
         },
         {
           label: '2. Anestesia geral com tubo endotraqueal apropriado',
@@ -198,7 +198,7 @@ export const doencaPeriodontalGatosRecord: DiseaseRecord = {
       system: 'behavioral',
       findings: [
         {
-          finding: 'Mudanças discretas de comportamento (grooming reduzido, isolamento, chattering)',
+          finding: 'Mudanças discretas de comportamento (autolimpeza reduzida, isolamento, movimentos repetitivos da mandíbula)',
           mechanism:
             'Manifestação comportamental silenciosa de dor nociceptiva crônica na cavidade oral (Palmeira et al., 2022).',
           clinicalMeaning: 'Gatos não recusam comida facilmente; dor manifesta-se em escores sutis.',
@@ -266,7 +266,7 @@ export const doencaPeriodontalGatosRecord: DiseaseRecord = {
       '1-TDC (topical oral 1-tetradecanol complex): descrito no VIN (2023) como terapia adjuvante emergente que demonstrou redução na profundidade de bolsa e inflamação gengival em ensaios felinos curtos de 6 semanas; não substitui o debridamento nem as extrações cirúrgicas.',
     ],
     analgesiaEAnestesia: [
-      'Bloqueios regionais maxilares e infraorbitários / alveolares inferiores com bupivacaína garantem analgesia trans e pós-operatória de excelência (Lumb & Jones, 6ª ed.).',
+      'Bloqueios regionais maxilares e infraorbitários / alveolares inferiores com bupivacaína garantem analgesia trans e pós-operatória de excelência.',
     ],
     homeCareFelino: [
       'Escovação diária quando o temperamento do gato permitir e a boca estiver completamente sem dor.',
@@ -275,7 +275,7 @@ export const doencaPeriodontalGatosRecord: DiseaseRecord = {
     ],
   },  complications: {
     principais: [
-      "Lesões de Reabsorção Dentária Felina (FORL / TR) Secundárias e Concomitantes: A inflamação crônica do sulco gengival e do ligamento periodontal deflagra o recrutamento e a ativação desregulada de odontoclastos a partir das células progenitoras periodontais. Os odontoclastos degradam progressivamente o cemento radicular e a dentina ao nível da junção cemento-esmalte (colo do dente) e das raízes, penetrando na câmara pulpar. A exposição da polpa e dos túbulos dentinários expostos ao meio bucal deflagra dor odontogênica excruciante (\"chattering\" ou tremor espasmódico mandibular à palpação ou mastigação), fratura espontânea da coroa dentária com retenção de raízes necróticas subgengivais e necessidade imperiosa de extração dentária completa ou amputação coronária (em casos de anquilose e substituição óssea do Tipo 2 confirmados por radiografia intraoral).",
+      "Lesões de Reabsorção Dentária Felina (FORL / TR) Secundárias e Concomitantes: A inflamação crônica do sulco gengival e do ligamento periodontal deflagra o recrutamento e a ativação desregulada de odontoclastos a partir das células progenitoras periodontais. Os odontoclastos degradam progressivamente o cemento radicular e a dentina ao nível da junção cemento-esmalte (colo do dente) e das raízes, penetrando na câmara pulpar. A exposição da polpa e dos túbulos dentinários expostos ao meio bucal deflagra dor odontogênica excruciante (\"movimentos repetitivos da mandíbula\" ou tremor espasmódico mandibular à palpação ou mastigação), fratura espontânea da coroa dentária com retenção de raízes necróticas subgengivais e necessidade imperiosa de extração dentária completa ou amputação coronária (em casos de anquilose e substituição óssea do Tipo 2 confirmados por radiografia intraoral).",
       "Fístula Oronasal e Fraturas Mandibulares e Maxilares Felinas: Pela delicadeza e espessura milimétrica do esqueleto crânio-facial dos gatos, a reabsorção osteoclástica periapical induzida pela infecção do canino superior ou do primeiro molar inferior (M1) perfura com rapidez a fina lâmina palatina, estabelecendo fístula oronasal crônica com espirros e rinite unilateral purulenta. Na mandíbula, a destruição óssea periapical em torno da raiz volumosa de M1 pode reduzir a cortical mandibular a uma casca óssea extremamente delgada, deflagrando fratura patológica espontânea da mandíbula durante mastigação comum de ração seca.",
       "Abscesso Retrobulbar Felino e Celulite Orbitária: A proximidade espacial extrema entre os ápices dos pré-molares superiores e do primeiro molar superior felino com a cavidade orbitária permite a migração direta de infecções periapicais para o tecido retrobulbar. O felino apresenta protrusão unilateral aguda do globo ocular (exoftalmia), protusão da terceira pálpebra, dor intensa que impede a abertura da boca, anorexia hiperaguda e risco iminente de neurite óptica isquêmica compressiva com amaurose unilateral irreversível.",
       "Anorexia Induzida por Dor Oral com Risco Iminente de Lipidose Hepática Felina: A dor aguda excruciante provocada pelo contato de partículas alimentares com o tecido gengival ulcerado e as superfícies dentinárias expostas leva o felino a interromper completamente a ingestão alimentar. O estresse de jejum sustentado (> 48 a 72 horas) em gatos, em particular aqueles sobrepesados ou obesos, deflagra rápida lipólise periférica descontrolada com mobilização massiva de ácidos graxos para o fígado, culminando em lipidose hepática fulminante com icterícia, colestase intra-hepática e alta mortalidade sem intervenção precoce.",

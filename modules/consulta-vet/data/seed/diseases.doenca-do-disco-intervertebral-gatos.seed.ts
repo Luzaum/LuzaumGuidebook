@@ -39,7 +39,7 @@ export const doencaDoDiscoIntervertebralGatosRecord: DiseaseRecord = {
   quickDecisionStrip: [
     '⚠️ NÃO EXTRAPOLAR O CONSENSO CANINO ACVIM 2022: O consenso foi formulado especificamente para cães com TL-IVDE. A literatura felina baseia-se em estudos retrospectivos com populações reduzidas (1F,2,9,10).',
     'EVIDÊNCIA FELINA LIMITADA: A DDIV em gatos é menos frequente (0,02% a 0,12%). A presença de protrusão em imagem de gato idoso é frequentemente achado incidental (1F,4,10).',
-    'DESPERTA RESPEITO DE NEUROLOCALIZAÇÃO: Gatos mascaram dor e déficits leves. Relutância em saltar, cauda baixa e constipação costumam sinalizar doença lombossacra (4,10).',
+    'ATENÇÃO À NEUROLOCALIZAÇÃO: Gatos mascaram dor e déficits leves. Relutância em saltar, cauda baixa e constipação costumam sinalizar doença lombossacra (4,10).',
     'MIMETIZADORES FELINOS PRIORITÁRIOS: Antes de indicar cirurgia discal, excluir Linfoma Espinhal, Peritonite Infecciosa Felina (PIF), Meningomielite bacteriana/protozoária e Embolia Fibrocartilaginosa (FCE) por RM (1F,4).',
     'FAIXA ETÁRIA TÍPICA: Hansen I afeta gatos de meia-idade (média 9 anos; variação 1,5–17 anos); lesões lombossacras afetam felinos ainda mais idosos (~12 anos) (4,10).',
     'ANNPE FELINA: Extrusão hiperaguda não compressiva durante salto/exercício. Pouca dor pós-inicial, déficit assimétrico e sem compressão residual na RM. Tratar com suporte e fisioterapia (11).',
@@ -60,7 +60,7 @@ export const doencaDoDiscoIntervertebralGatosRecord: DiseaseRecord = {
       },
       {
         title: 'Diagnósticos Diferenciais Críticos',
-        body: 'RM é indispensável para diferenciar a DDIV de Linfoma Espinhal, PIF neurológica, Embolia Fibrocartilaginosa (FCE) e ANNPE. Protrusões não devem ser operadas sem confirmação de causabilidade.',
+        body: 'RM é indispensável para diferenciar a DDIV de Linfoma Espinhal, PIF neurológica, Embolia Fibrocartilaginosa (FCE) e ANNPE. Protrusões não devem ser operadas sem confirmação de relação causal.',
         highlights: ['Linfoma Espinhal', 'PIF neurológica', 'FCE', 'ANNPE'],
       },
       {

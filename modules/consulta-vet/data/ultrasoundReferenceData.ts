@@ -259,14 +259,14 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
         species: 'cat',
         lifeStage: 'adult',
         measurement: 'Espessura esplênica — regra prática POCUS',
-        population: 'Avaliação focal; método próprio do livro POCUS',
+        population: 'Avaliação focal (critério rápido de triagem)',
         weightBand: 'Sem estratificação de peso',
         value: '< 10',
         unit: 'mm',
         technique: 'Medir a espessura no plano transversal; interpretar junto à forma e ao parênquima.',
         sourceId: 'pocus-2e',
         sourcePage: 'Cap. 9, pp. 175 e 177 (PDF pp. 198 e 200)',
-        caution: 'Regra prática do exame focal; não fundir com os dois intervalos de altura do Thrall.',
+        caution: 'Regra prática do exame focal; não fundir com os dois intervalos anatômicos de altura.',
       },
     ],
     qualitativeFindings: [
@@ -1012,7 +1012,6 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     },
     cautions: [
       'Um pequeno bolo de urina pode aparecer durante a peristalse; correlacione qualquer dilatação com pelve renal e bexiga.',
-      'Fonte descritiva: Thrall, 8ª ed., Cap. 41, p. 839 (PDF p. 1047); BSAVA, Cap. 10, p. 114 (PDF p. 126).',
     ],
   },
   {
@@ -1033,7 +1032,6 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     },
     cautions: [
       'Compare os dois testículos, a ecotextura, o mediastino ecogênico central e o fluxo ao Doppler.',
-      'Fonte descritiva: BSAVA Ultrasonography, Cap. 17, p. 179 (PDF p. 191).',
     ],
   },
   {

@@ -330,11 +330,13 @@ export function OncologyBsaCalculator({
                             </ul>
                           </div>
                         )}
-                        <p className="text-xs">
-                          {drug.sourceUrl ? (
-                            <a href={drug.sourceUrl} target="_blank" rel="noreferrer" className="underline">{drug.source}</a>
-                          ) : drug.source}
-                        </p>
+                        {drug.source ? (
+                          <p className="text-xs">
+                            {drug.sourceUrl ? (
+                              <a href={drug.sourceUrl} target="_blank" rel="noreferrer" className="underline">{drug.source}</a>
+                            ) : drug.source}
+                          </p>
+                        ) : null}
                       </>
                     )}
                   </div>

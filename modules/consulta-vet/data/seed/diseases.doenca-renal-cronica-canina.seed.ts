@@ -59,7 +59,6 @@ export const doencaRenalCronicaCaninaRecord: DiseaseRecord = {
     'HIF-PH Inhibitors',
     'Acidose Metabólica',
     'Beraprost',
-    'Nelson & Couto',
   ],
   isPublished: true,
   source: 'seed',
@@ -239,7 +238,7 @@ export const doencaRenalCronicaCaninaRecord: DiseaseRecord = {
     estadiamentoAtualizadoIRIS2026:
       'Reformulação estrutural do estadiamento canino pela International Renal Interest Society (IRIS 2026):\n\n' +
       '- Expansão do estágio 2 canino: as novas diretrizes IRIS 2026 ampliaram oficialmente o intervalo do estágio 2 no cão para valores de creatinina entre 1,4 e 2,8 mg/dL (SDMA de 18 a 35 mcg/dL), unificando pacientes com azotemia leve.\n' +
-      '- Correção do paradigma histórico dos livros-texto: no modelo antigo reproduzido em edições anteriores de livros-texto (como Nelson & Couto 6ª ed.), o estágio 2 encerrava em 2,0 mg/dL e o estágio 3 iniciava em 2,1 mg/dL; no estadiamento atualizado IRIS 2026, um cão com creatinina de 2,5 mg/dL é formalmente classificado como estágio 2 e não estágio 3.\n' +
+      '- Correção do paradigma diagnóstico anterior: no modelo antigo amplamente adotado antes da atualização, o estágio 2 encerrava em 2,0 mg/dL e o estágio 3 iniciava em 2,1 mg/dL; no estadiamento atualizado IRIS 2026, um cão com creatinina de 2,5 mg/dL é formalmente classificado como estágio 2 e não estágio 3.\n' +
       '- Justificativa biológica da mudança: a IRIS esclarece que o antigo estágio 3 agrupava pacientes heterogêneos demais quanto a risco urêmico e necessidade terapêutica, justificando a redefinição do estágio 3 canino para a faixa de creatinina de 2,9 a 5,0 mg/dL (SDMA de 36 a 54 mcg/dL) e estágio 4 para creatinina >5,0 mg/dL (SDMA >54 mcg/dL).',
     discordanciaCreatininaESDMA:
       'Integração clínica e resolução de discordâncias entre creatinina sérica e SDMA:\n\n' +

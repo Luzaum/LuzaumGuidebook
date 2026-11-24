@@ -47,19 +47,19 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       'ahim',
       'imha',
       'miastenia gravis',
-      'plumbs',
-      'bsava',
+      'imunossupressor',
+      'imunomodulador',
     ],
     labelCompositionSummary:
       'Cada comprimido revestido contém 500 mg de micofenolato de mofetila (MMF), pró-fármaco éster 2-morfolinoetílico do ácido micofenólico (MPA). Registro Anvisa MS nº 1.0100.0543 (Produtos Roche Químicos e Farmacêuticos S.A.). Medicamento de referência humana imunossupressor antiproliferativo seletivo via inibição potente e reversível da IMPDH tipo II.',
     labelDirections:
-      'Bula humana Anvisa: 1.000 a 1.500 mg duas vezes ao dia (a cada 12 horas). Posologia veterinária extra-bula consagrada (Plumb’s Veterinary Drug Handbook 10ª ed., BSAVA Small Animal Formulary 10ª ed., Consensos IRIS e ACVIM): Cães: 8 a 12 mg/kg (frequentemente 10 mg/kg) por via oral a cada 12 horas (q12h / BID) como imunossupressor geral ou poupador de corticoides. Indicações específicas em cães: 1) Meningoencefalomielite de etiologia desconhecida (MUE / MUO): 10 a 20 mg/kg VO q12h (iniciar preferencialmente com 10 a 15 mg/kg q12h para minimizar toxicidade entérica); 2) Glomerulopatias imunomediadas (Consenso IRIS): 10 mg/kg VO q12h; 3) Trombocitopenia imunomediada (ITP / PTI refratária): 7 a 10 mg/kg VO q12h; 4) Dermatopatias autoimunes e pênfigo foliáceo: 10 a 15 mg/kg VO q12h (ou 7 a 13 mg/kg VO a cada 8 horas segundo protocolo BSAVA, ciente de que regimes q8h elevam o risco de diarreia); 5) Anemia hemolítica imunomediada (IMHA): 8 a 12 mg/kg VO q12h sob rigoroso monitoramento (ensaio de Agnoli 2024 registrou maior cautela e preferência por ciclosporina). Gatos: 10 mg/kg VO a cada 12 horas (q12h) administrado rigorosamente com alimentos (dados clínicos limitados; monitorar êmese e hiporexia). BIOSSEGURANÇA: NUNCA partir, quebrar ou triturar comprimidos (fármaco perigoso NIOSH teratogênico). Manipular sempre com luvas.',
+      'Bula humana Anvisa: 1.000 a 1.500 mg duas vezes ao dia (a cada 12 horas). Posologia veterinária extra-bula consagrada (Consensos IRIS e ACVIM): Cães: 8 a 12 mg/kg (frequentemente 10 mg/kg) por via oral a cada 12 horas (q12h / BID) como imunossupressor geral ou poupador de corticoides. Indicações específicas em cães: 1) Meningoencefalomielite de etiologia desconhecida (MUE / MUO): 10 a 20 mg/kg VO q12h (iniciar preferencialmente com 10 a 15 mg/kg q12h para minimizar toxicidade entérica); 2) Glomerulopatias imunomediadas (Consenso IRIS): 10 mg/kg VO q12h; 3) Trombocitopenia imunomediada (ITP / PTI refratária): 7 a 10 mg/kg VO q12h; 4) Dermatopatias autoimunes e pênfigo foliáceo: 10 a 15 mg/kg VO q12h (regimes de 7 a 13 mg/kg VO q8h elevam o risco de diarreia); 5) Anemia hemolítica imunomediada (IMHA): 8 a 12 mg/kg VO q12h sob rigoroso monitoramento (ensaio de Agnoli 2024 registrou maior cautela e preferência por ciclosporina). Gatos: 10 mg/kg VO a cada 12 horas (q12h) administrado rigorosamente com alimentos (dados clínicos limitados; monitorar êmese e hiporexia). BIOSSEGURANÇA: NUNCA partir, quebrar ou triturar comprimidos (fármaco perigoso NIOSH teratogênico). Manipular sempre com luvas.',
     dosageGuidance: {
-      labelDose: 'Cães: 8 a 12 mg/kg (comum 10 mg/kg) VO a cada 12h. Gatos: 10 mg/kg VO a cada 12h com alimento (Plumb’s e BSAVA).',
+      labelDose: 'Cães: 8 a 12 mg/kg (comum 10 mg/kg) VO a cada 12h. Gatos: 10 mg/kg VO a cada 12h com alimento.',
       plumbs: {
         dog: [
           {
-            title: 'Imunossupressão Geral & Poupador de Corticoides (Plumb’s 10ª ed. / BSAVA 10ª ed.)',
+            title: 'Imunossupressão Geral & Poupador de Corticoides',
             dose: '8 a 12 mg/kg VO a cada 12 horas (q12h / BID); dose padrão de 10 mg/kg q12h',
             note: 'Dose inicial de escolha para minimizar a taxa de enterite e diarreia dose-dependente. Administrar com ou sem alimento; se houver vômito, fornecer pequena porção de comida.',
           },
@@ -69,7 +69,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
             note: 'Associar a prednisona/prednisolona em dose imunossupressora. Resposta clínica global expressiva (>85%) descrita na literatura neurológica (Song et al.).',
           },
           {
-            title: 'Glomerulopatias Imunomediadas e Síndrome Nefrótica (Consenso IRIS / Plumb’s)',
+            title: 'Glomerulopatias Imunomediadas e Síndrome Nefrótica (Consenso IRIS)',
             dose: '10 mg/kg VO a cada 12 horas (q12h)',
             note: 'Imunossupressor de primeira linha não esteroidal recomendado pelo IRIS para reduzir deposição de imunocomplexos sem agravar proteinúria por efeito esteroidal.',
           },
@@ -79,9 +79,9 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
             note: 'Opção de segundo agente imunossupressor quando há resposta incompleta a corticosteroides ou efeitos colaterais esteroidais intoleráveis.',
           },
           {
-            title: 'Dermatopatias Autoimunes e Pênfigo Foliáceo (Ackermann / BSAVA 10ª ed.)',
-            dose: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h segundo BSAVA)',
-            note: 'Dose média eficaz de 14,7 mg/kg q12h descrita por Ackermann (2017). Protocolos q8h do BSAVA aumentam a incidência de diarreia profusa; iniciar preferencialmente com 10 mg/kg q12h.',
+            title: 'Dermatopatias Autoimunes e Pênfigo Foliáceo (Ackermann 2017)',
+            dose: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h em protocolos alternativos)',
+            note: 'Dose média eficaz de 14,7 mg/kg q12h descrita por Ackermann (2017). Regimes q8h aumentam a incidência de diarreia profusa; iniciar preferencialmente com 10 mg/kg q12h.',
           },
           {
             title: 'Anemia Hemolítica Imunomediada (IMHA Canina — ACVIM 2019 / Agnoli 2024)',
@@ -91,7 +91,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
         ],
         cat: [
           {
-            title: 'Doenças Imunomediadas Felinas Selecionadas (Plumb’s 10ª ed. / Slovak et al.)',
+            title: 'Doenças Imunomediadas Felinas Selecionadas (Slovak et al.)',
             dose: '10 mg/kg VO a cada 12 horas (q12h) obrigatoriamente junto à alimentação',
             note: 'Felinos ativam o MMF em MPA por glicosidação, mas a farmacocinética é individualmente variável e a tolerabilidade digestiva exige vigilância clínica rigorosa.',
           },
@@ -122,7 +122,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       sourceDate: '10/2026',
       notes: 'Medicamento humano de referência sob prescrição médica (tarja vermelha / receita simples).',
     },
-    evidenceLevel: 'Consensos IRIS Glomerulopatias / ACVIM ITP 2024 / Plumb’s 10ª ed. / BSAVA 10ª ed.',
+    evidenceLevel: 'Consensos IRIS Glomerulopatias e ACVIM ITP 2024.',
     imageUrl: 'https://product-data.raiadrogasil.io/images/15317780.webp',
     productPageUrl: 'https://www.roche.com.br/',
     catalogMedicationId: 'med-micofenolato-mofetila',
@@ -161,19 +161,19 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       'mfoetila generico',
       'morfetila generico',
       'imunossupressor generico',
-      'plumbs',
-      'bsava',
+      'imunossupressor',
+      'imunomodulador',
     ],
     labelCompositionSummary:
       'Comprimidos revestidos de 500 mg de micofenolato de mofetila genérico intercambiável. Registros Anvisa oficiais: MS 1.0235.0927 (EMS S/A), MS 1.0043.1066 (Eurofarma Laboratórios S.A.), MS 1.0298.0372 (Cristália Produtos Químicos Farmacêuticos Ltda.), MS 1.5537.0016 (Accord Farmacêutica). Bioequivalente comprovado ao medicamento de referência CellCept®.',
     labelDirections:
-      'Posologia extra-bula veterinária padronizada (Plumb’s Veterinary Drug Handbook 10ª ed., BSAVA Small Animal Formulary 10ª ed.): Cães: 8 a 12 mg/kg VO a cada 12 horas (q12h / BID), dose usual de 10 mg/kg q12h. MUE canina: 10 a 20 mg/kg VO q12h; Glomerulopatias (IRIS): 10 mg/kg VO q12h; ITP (ACVIM 2024): 7 a 10 mg/kg VO q12h; Pênfigo foliáceo: 10 a 15 mg/kg VO q12h (ou 7 a 13 mg/kg VO q8h pelo BSAVA). Gatos: 10 mg/kg VO q12h junto com alimento. ADVERTÊNCIA DE BIOSSEGURANÇA: Não partir nem macerar comprimidos revestidos. Manusear com luvas.',
+      'Posologia extra-bula veterinária padronizada: Cães: 8 a 12 mg/kg VO a cada 12 horas (q12h / BID), dose usual de 10 mg/kg q12h. MUE canina: 10 a 20 mg/kg VO q12h; Glomerulopatias (IRIS): 10 mg/kg VO q12h; ITP (ACVIM 2024): 7 a 10 mg/kg VO q12h; Pênfigo foliáceo: 10 a 15 mg/kg VO q12h (regimes de 7 a 13 mg/kg VO q8h elevam risco de diarreia). Gatos: 10 mg/kg VO q12h junto com alimento. ADVERTÊNCIA DE BIOSSEGURANÇA: Não partir nem macerar comprimidos revestidos. Manusear com luvas.',
     dosageGuidance: {
-      labelDose: 'Cães: 8 a 12 mg/kg (padrão 10 mg/kg) VO q12h. Gatos: 10 mg/kg VO q12h com alimento (Plumb’s e BSAVA).',
+      labelDose: 'Cães: 8 a 12 mg/kg (padrão 10 mg/kg) VO q12h. Gatos: 10 mg/kg VO q12h com alimento.',
       plumbs: {
         dog: [
           {
-            title: 'Imunossupressão Sistêmica & Poupador de Corticoides (Plumb’s 10ª ed. / BSAVA)',
+            title: 'Imunossupressão Sistêmica & Poupador de Corticoides',
             dose: '8 a 12 mg/kg VO a cada 12 horas (q12h / BID)',
             note: 'Dose rotineira de 10 mg/kg q12h. Administrar com ou sem alimento; reduzir dose em 25-50% se surgir diarreia.',
           },
@@ -224,7 +224,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       sourceDate: '10/2026',
       notes: 'Medicamento genérico humano sob prescrição médica (receita branca comum).',
     },
-    evidenceLevel: 'Bioequivalência Anvisa / Consensos IRIS / ACVIM ITP 2024 / Plumb’s 10ª ed.',
+    evidenceLevel: 'Bioequivalência Anvisa / Consensos IRIS e ACVIM ITP 2024.',
     imageUrl: 'https://product-data.raiadrogasil.io/images/16723049.webp',
     productPageUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
     catalogMedicationId: 'med-micofenolato-mofetila',
@@ -263,36 +263,36 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       'morfetila manipulado',
       'drogavet micofenolato',
       'formula animal micofenolato',
-      'plumbs manipulado',
-      'bsava manipulado',
+      'imunossupressor manipulado',
+      'formulacao magistral',
     ],
     labelCompositionSummary:
-      'Micofenolato de mofetila matéria-prima de grau farmacêutico fracionada em dosagens miligramadas sob medida em cápsulas gelatinosas ou suspensão líquida em veículos palatáveis isentos de cátions polivalentes por farmácias magistrais veterinárias especializadas (DrogaVET, Fórmula Animal, PetFarma). Permite atender com exatidão a faixa de 8 a 12 mg/kg recomendada por Plumb’s e BSAVA para cães de pequeno porte e gatos sem cortar comprimidos humanos perigosos.',
+      'Micofenolato de mofetila matéria-prima de grau farmacêutico fracionada em dosagens miligramadas sob medida em cápsulas gelatinosas ou suspensão líquida em veículos palatáveis isentos de cátions polivalentes por farmácias magistrais veterinárias especializadas (DrogaVET, Fórmula Animal, PetFarma). Permite atender com exatidão a faixa de 8 a 12 mg/kg recomendada para cães de pequeno porte e gatos sem cortar comprimidos humanos perigosos.',
     labelDirections:
       'Administrar por via oral a dose exata prescrita (8 a 12 mg/kg, comumente 10 mg/kg em cães; 10 mg/kg com alimento em gatos) a cada 12 horas (q12h / BID). Agitar vigorosamente a suspensão oral antes do uso. Administrar cápsulas intactas sem abrir. Seguir monitoramento clínico estrito.',
     dosageGuidance: {
-      labelDose: 'Cães: 8 a 12 mg/kg (dose alvo 10 mg/kg) VO q12h. Gatos: 10 mg/kg VO q12h com alimento (Plumb’s e BSAVA).',
+      labelDose: 'Cães: 8 a 12 mg/kg (dose alvo 10 mg/kg) VO q12h. Gatos: 10 mg/kg VO q12h com alimento.',
       plumbs: {
         dog: [
           {
-            title: 'Dose Individualizada de Imunossupressão (Plumb’s 10ª ed. / BSAVA)',
+            title: 'Dose Individualizada de Imunossupressão',
             dose: '8 a 12 mg/kg VO a cada 12 horas (dose padrão 10 mg/kg q12h)',
             note: 'Formulação sob medida permite evitar subdosagem ou sobredosagem tóxica em cães < 20 kg que não toleram os comprimidos fixos de 500 mg.',
           },
           {
-            title: 'MUE Canina em Cães Pequenos / Toy (Plumb’s)',
+            title: 'MUE Canina em Cães Pequenos / Toy',
             dose: '10 a 15 mg/kg VO a cada 12 horas em cápsulas sob medida',
             note: 'Essencial para raças miniaturas (Pug, Maltês, Yorkshire, Spitz) com neuroinflamação encefálica.',
           },
           {
-            title: 'Dermatopatias Autoimunes e Pênfigo (BSAVA 10ª ed.)',
+            title: 'Dermatopatias Autoimunes e Pênfigo',
             dose: '10 a 15 mg/kg VO q12h (ou 7 a 13 mg/kg VO q8h)',
             note: 'Possibilita fracionamento preciso para controle de crostas e lesões pustulosas.',
           },
         ],
         cat: [
           {
-            title: 'Doenças Imunomediadas Felinas em Suspensão ou Minilodis (Plumb’s / Slovak)',
+            title: 'Doenças Imunomediadas Felinas em Suspensão ou Minilodis (Slovak et al.)',
             dose: '10 mg/kg VO a cada 12 horas junto à ração',
             note: 'Apresentação em suspensão ou cápsula mini viabiliza administração em gatos sem estresse e sem partições grosseiras.',
           },
@@ -320,7 +320,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       sourceDate: '10/2026',
       notes: 'Formulação magistral veterinária personalizada sob prescrição do médico-veterinário.',
     },
-    evidenceLevel: 'Diretrizes Farmacêuticas Magistrais / Consensos ACVIM / Plumb’s 10ª ed. / BSAVA',
+    evidenceLevel: 'Diretrizes Farmacêuticas Magistrais e Consensos ACVIM.',
     imageUrl: '/assets/consulta-vet/commercial-products/micofenolato-mofetila-manipulado-veterinario.svg',
     productPageUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
     catalogMedicationId: 'med-micofenolato-mofetila',
@@ -356,7 +356,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       'novartis',
       'imunossupressor sodio',
       'mfoetila',
-      'plumbs',
+      'imunossupressor',
     ],
     labelCompositionSummary:
       'Cada comprimido gastrorresistente contém 192,4 mg de micofenolato de sódio (equivalente a 180 mg de ácido micofenólico livre) ou 384,8 mg de micofenolato de sódio (equivalente a 360 mg de MPA). Registro Anvisa MS nº 1.0068.0898 (Novartis Biociências S.A.). Comprimidos com revestimento entérico formulados para liberação colônica em humanos.',
@@ -367,7 +367,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       plumbs: {
         dog: [
           {
-            title: 'Alerta de Não-Intercambialidade (Plumb’s 10ª ed.)',
+            title: 'Alerta de Não-Intercambialidade',
             dose: 'Não intercambiável mg por mg com MMF; uso restrito e desaconselhado',
             note: 'A formulação gastrorresistente humana provoca absorção errática e lesão da mucosa entérica exacerbada em caninos comparada ao éster mofetila.',
           },
@@ -394,7 +394,7 @@ export const mycophenolateCommercialProductsSeed: CommercialMedicationProduct[] 
       sourceDate: '10/2026',
       notes: 'Medicamento biológico humano sob prescrição médica (tarja vermelha).',
     },
-    evidenceLevel: 'Estudos Farmacocinéticos Comparativos em Cães / Monografia Plumb’s 10ª ed.',
+    evidenceLevel: 'Estudos Farmacocinéticos Comparativos em Cães.',
     imageUrl: 'https://product-data.raiadrogasil.io/images/14981926.webp',
     productPageUrl: 'https://www.novartis.com.br/',
     catalogMedicationId: 'med-micofenolato-mofetila',

@@ -1,0 +1,1964 @@
+{
+  "scope": "Catálogo local efetivo: seeds + overrides. Não inclui registros exclusivos do Supabase.",
+  "criteria": "Triagem para revisão/recadastro: menos de 1800 palavras nas seções clínicas; diagnóstico <100; tratamento <150; quatro seções em texto legado; ou seção central ausente. Não é certificação clínica nem prova de versão antiga.",
+  "count": 86,
+  "candidates": 8,
+  "rows": [
+    {
+      "title": "Doença do Disco Intervertebral — Gatos",
+      "slug": "doenca-do-disco-intervertebral-gatos",
+      "totalWords": 1111,
+      "depth": {
+        "etiology": 148,
+        "epidemiology": 45,
+        "pathogenesisTransmission": 70,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 133,
+        "diagnosis": 94,
+        "treatment": 311,
+        "complications": 38,
+        "prevention": 198
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Síndrome Cutânea Atópica Felina",
+      "slug": "sindrome-cutanea-atopica-felina",
+      "totalWords": 1225,
+      "depth": {
+        "etiology": 98,
+        "epidemiology": 33,
+        "pathogenesisTransmission": 100,
+        "pathophysiology": 101,
+        "clinicalSignsPathophysiology": 129,
+        "diagnosis": 137,
+        "treatment": 350,
+        "complications": 54,
+        "prevention": 223
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 20,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Dermatite Atópica Canina",
+      "slug": "dermatite-atopica-canina",
+      "totalWords": 1380,
+      "depth": {
+        "etiology": 158,
+        "epidemiology": 45,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 104,
+        "clinicalSignsPathophysiology": 132,
+        "diagnosis": 192,
+        "treatment": 346,
+        "complications": 50,
+        "prevention": 242
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology",
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 16,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Doença do Disco Intervertebral — Cães",
+      "slug": "doenca-do-disco-intervertebral-caes",
+      "totalWords": 1507,
+      "depth": {
+        "etiology": 183,
+        "epidemiology": 60,
+        "pathogenesisTransmission": 93,
+        "pathophysiology": 109,
+        "clinicalSignsPathophysiology": 272,
+        "diagnosis": 201,
+        "treatment": 334,
+        "complications": 48,
+        "prevention": 207
+      },
+      "missing": [],
+      "brief": [
+        "complications"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Hipotireoidismo adquirido (cão e gato)",
+      "slug": "hipotireoidismo-adquirido-caes-gatos",
+      "totalWords": 1678,
+      "depth": {
+        "etiology": 108,
+        "epidemiology": 134,
+        "pathogenesisTransmission": 83,
+        "pathophysiology": 248,
+        "clinicalSignsPathophysiology": 231,
+        "diagnosis": 192,
+        "treatment": 129,
+        "complications": 450,
+        "prevention": 103
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 22,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Complexo do granuloma eosinofílico felino",
+      "slug": "granuloma-eosinofilico-felino",
+      "totalWords": 1705,
+      "depth": {
+        "etiology": 130,
+        "epidemiology": 63,
+        "pathogenesisTransmission": 81,
+        "pathophysiology": 99,
+        "clinicalSignsPathophysiology": 181,
+        "diagnosis": 311,
+        "treatment": 433,
+        "complications": 362,
+        "prevention": 45
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 5,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Síndrome de Cushing — Cão",
+      "slug": "sindrome-cushing-caes",
+      "totalWords": 1764,
+      "depth": {
+        "etiology": 194,
+        "epidemiology": 62,
+        "pathogenesisTransmission": 59,
+        "pathophysiology": 279,
+        "clinicalSignsPathophysiology": 149,
+        "diagnosis": 237,
+        "treatment": 232,
+        "complications": 414,
+        "prevention": 138
+      },
+      "missing": [],
+      "brief": [
+        "pathogenesisTransmission"
+      ],
+      "legacy": [],
+      "references": 15,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Doença Periodontal Felina",
+      "slug": "doenca-periodontal-gatos",
+      "totalWords": 1770,
+      "depth": {
+        "etiology": 152,
+        "epidemiology": 133,
+        "pathogenesisTransmission": 142,
+        "pathophysiology": 91,
+        "clinicalSignsPathophysiology": 169,
+        "diagnosis": 170,
+        "treatment": 270,
+        "complications": 614,
+        "prevention": 29
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": true,
+      "issues": []
+    },
+    {
+      "title": "Tumores mamários em cães e gatos",
+      "slug": "tumores-mamarios-caes-gatos",
+      "totalWords": 2017,
+      "depth": {
+        "etiology": 122,
+        "epidemiology": 97,
+        "pathogenesisTransmission": 82,
+        "pathophysiology": 76,
+        "clinicalSignsPathophysiology": 92,
+        "diagnosis": 502,
+        "treatment": 372,
+        "complications": 569,
+        "prevention": 105
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Diabetes Mellitus Felino",
+      "slug": "diabetes-mellitus-felina",
+      "totalWords": 2028,
+      "depth": {
+        "etiology": 124,
+        "epidemiology": 19,
+        "pathogenesisTransmission": 103,
+        "pathophysiology": 118,
+        "clinicalSignsPathophysiology": 137,
+        "diagnosis": 136,
+        "treatment": 842,
+        "complications": 425,
+        "prevention": 124
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cardiomiopatia dilatada (CMD)",
+      "slug": "cardiomiopatia-dilatada-caes-gatos",
+      "totalWords": 2132,
+      "depth": {
+        "etiology": 168,
+        "epidemiology": 94,
+        "pathogenesisTransmission": 81,
+        "pathophysiology": 82,
+        "clinicalSignsPathophysiology": 394,
+        "diagnosis": 441,
+        "treatment": 346,
+        "complications": 446,
+        "prevention": 80
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 8,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Erliquiose monocítica canina (Ehrlichia canis)",
+      "slug": "erliquiose-monocitica-canina",
+      "totalWords": 2137,
+      "depth": {
+        "etiology": 80,
+        "epidemiology": 111,
+        "pathogenesisTransmission": 187,
+        "pathophysiology": 236,
+        "clinicalSignsPathophysiology": 190,
+        "diagnosis": 504,
+        "treatment": 237,
+        "complications": 485,
+        "prevention": 107
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cardiomiopatia hipertrófica (CMH)",
+      "slug": "cardiomiopatia-hipertrofica-caes-gatos",
+      "totalWords": 2147,
+      "depth": {
+        "etiology": 92,
+        "epidemiology": 109,
+        "pathogenesisTransmission": 140,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 328,
+        "diagnosis": 420,
+        "treatment": 480,
+        "complications": 420,
+        "prevention": 84
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Diabetes Mellitus Canino",
+      "slug": "diabetes-mellitus-canina",
+      "totalWords": 2151,
+      "depth": {
+        "etiology": 151,
+        "epidemiology": 29,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 165,
+        "clinicalSignsPathophysiology": 131,
+        "diagnosis": 143,
+        "treatment": 933,
+        "complications": 350,
+        "prevention": 138
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leucemia viral felina (FeLV)",
+      "slug": "leucemia-viral-felina",
+      "totalWords": 2152,
+      "depth": {
+        "etiology": 118,
+        "epidemiology": 82,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 170,
+        "clinicalSignsPathophysiology": 144,
+        "diagnosis": 366,
+        "treatment": 424,
+        "complications": 571,
+        "prevention": 166
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 8,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Fístula perianal / furunculose anal",
+      "slug": "fistula-perianal-furunculose-anal",
+      "totalWords": 2166,
+      "depth": {
+        "etiology": 253,
+        "epidemiology": 113,
+        "pathogenesisTransmission": 156,
+        "pathophysiology": 157,
+        "clinicalSignsPathophysiology": 170,
+        "diagnosis": 285,
+        "treatment": 525,
+        "complications": 266,
+        "prevention": 241
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença Periodontal Canina",
+      "slug": "doenca-periodontal-caes",
+      "totalWords": 2199,
+      "depth": {
+        "etiology": 197,
+        "epidemiology": 181,
+        "pathogenesisTransmission": 133,
+        "pathophysiology": 164,
+        "clinicalSignsPathophysiology": 284,
+        "diagnosis": 194,
+        "treatment": 324,
+        "complications": 665,
+        "prevention": 57
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndrome de Cushing — Gato",
+      "slug": "sindrome-cushing-gatos",
+      "totalWords": 2211,
+      "depth": {
+        "etiology": 141,
+        "epidemiology": 151,
+        "pathogenesisTransmission": 287,
+        "pathophysiology": 264,
+        "clinicalSignsPathophysiology": 165,
+        "diagnosis": 398,
+        "treatment": 318,
+        "complications": 250,
+        "prevention": 237
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 9,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hipertensão arterial sistêmica (HAS)",
+      "slug": "hipertensao-arterial-sistemica-caes-gatos",
+      "totalWords": 2221,
+      "depth": {
+        "etiology": 675,
+        "epidemiology": 83,
+        "pathogenesisTransmission": 101,
+        "pathophysiology": 74,
+        "clinicalSignsPathophysiology": 211,
+        "diagnosis": 531,
+        "treatment": 163,
+        "complications": 343,
+        "prevention": 40
+      },
+      "missing": [],
+      "brief": [
+        "prevention"
+      ],
+      "legacy": [
+        "pathophysiology",
+        "prevention"
+      ],
+      "references": 5,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndromes miastênicas congênitas (cão e gato)",
+      "slug": "sindromes-miastenicas-congenitas-caes-gatos",
+      "totalWords": 2224,
+      "depth": {
+        "etiology": 212,
+        "epidemiology": 115,
+        "pathogenesisTransmission": 218,
+        "pathophysiology": 176,
+        "clinicalSignsPathophysiology": 205,
+        "diagnosis": 362,
+        "treatment": 456,
+        "complications": 274,
+        "prevention": 206
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Gengivoestomatite crônica felina (GECF)",
+      "slug": "gengivoestomatite-cronica-felina",
+      "totalWords": 2262,
+      "depth": {
+        "etiology": 176,
+        "epidemiology": 52,
+        "pathogenesisTransmission": 111,
+        "pathophysiology": 334,
+        "clinicalSignsPathophysiology": 163,
+        "diagnosis": 340,
+        "treatment": 391,
+        "complications": 563,
+        "prevention": 132
+      },
+      "missing": [],
+      "brief": [
+        "epidemiology"
+      ],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Prostatite em cães e gatos",
+      "slug": "prostatite-caes-gatos",
+      "totalWords": 2387,
+      "depth": {
+        "etiology": 174,
+        "epidemiology": 143,
+        "pathogenesisTransmission": 107,
+        "pathophysiology": 291,
+        "clinicalSignsPathophysiology": 231,
+        "diagnosis": 362,
+        "treatment": 338,
+        "complications": 572,
+        "prevention": 169
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 13,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doenças do trato urinário inferior felino (DTUIF)",
+      "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+      "totalWords": 2403,
+      "depth": {
+        "etiology": 183,
+        "epidemiology": 145,
+        "pathogenesisTransmission": 96,
+        "pathophysiology": 82,
+        "clinicalSignsPathophysiology": 229,
+        "diagnosis": 333,
+        "treatment": 468,
+        "complications": 547,
+        "prevention": 320
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cardiomiopatia restritiva felina (CMR / RCM)",
+      "slug": "cardiomiopatia-restritiva-felina",
+      "totalWords": 2413,
+      "depth": {
+        "etiology": 213,
+        "epidemiology": 116,
+        "pathogenesisTransmission": 203,
+        "pathophysiology": 186,
+        "clinicalSignsPathophysiology": 216,
+        "diagnosis": 409,
+        "treatment": 563,
+        "complications": 245,
+        "prevention": 262
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais",
+      "slug": "micoplasmoses-hemotropicas",
+      "totalWords": 2471,
+      "depth": {
+        "etiology": 256,
+        "epidemiology": 144,
+        "pathogenesisTransmission": 242,
+        "pathophysiology": 154,
+        "clinicalSignsPathophysiology": 151,
+        "diagnosis": 453,
+        "treatment": 559,
+        "complications": 260,
+        "prevention": 252
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 6,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hipotireoidismo congênito (cão e gato)",
+      "slug": "hipotireoidismo-congenito-caes-gatos",
+      "totalWords": 2533,
+      "depth": {
+        "etiology": 463,
+        "epidemiology": 114,
+        "pathogenesisTransmission": 227,
+        "pathophysiology": 445,
+        "clinicalSignsPathophysiology": 224,
+        "diagnosis": 331,
+        "treatment": 262,
+        "complications": 228,
+        "prevention": 239
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 8,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Miastenia gravis adquirida (cão e gato)",
+      "slug": "miastenia-gravis-caes-gatos",
+      "totalWords": 2569,
+      "depth": {
+        "etiology": 270,
+        "epidemiology": 157,
+        "pathogenesisTransmission": 106,
+        "pathophysiology": 214,
+        "clinicalSignsPathophysiology": 385,
+        "diagnosis": 372,
+        "treatment": 548,
+        "complications": 424,
+        "prevention": 93
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leishmaniose visceral canina (leishmaniose canina por L. infantum)",
+      "slug": "leishmaniose-visceral-canina",
+      "totalWords": 2915,
+      "depth": {
+        "etiology": 311,
+        "epidemiology": 229,
+        "pathogenesisTransmission": 99,
+        "pathophysiology": 89,
+        "clinicalSignsPathophysiology": 58,
+        "diagnosis": 419,
+        "treatment": 683,
+        "complications": 487,
+        "prevention": 540
+      },
+      "missing": [],
+      "brief": [
+        "clinicalSignsPathophysiology"
+      ],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 4,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Insulinoma em cães e gatos",
+      "slug": "insulinoma-caes-gatos",
+      "totalWords": 3137,
+      "depth": {
+        "etiology": 192,
+        "epidemiology": 250,
+        "pathogenesisTransmission": 82,
+        "pathophysiology": 259,
+        "clinicalSignsPathophysiology": 240,
+        "diagnosis": 587,
+        "treatment": 1041,
+        "complications": 421,
+        "prevention": 65
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 25,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Vírus da imunodeficiência felina (FIV)",
+      "slug": "imunodeficiencia-felina-fiv",
+      "totalWords": 3374,
+      "depth": {
+        "etiology": 223,
+        "epidemiology": 183,
+        "pathogenesisTransmission": 196,
+        "pathophysiology": 366,
+        "clinicalSignsPathophysiology": 330,
+        "diagnosis": 432,
+        "treatment": 756,
+        "complications": 542,
+        "prevention": 346
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Insuficiência pancreática exócrina (IPE/EPI)",
+      "slug": "insuficiencia-pancreatica-exocrina-caes-gatos",
+      "totalWords": 3472,
+      "depth": {
+        "etiology": 218,
+        "epidemiology": 145,
+        "pathogenesisTransmission": 109,
+        "pathophysiology": 443,
+        "clinicalSignsPathophysiology": 359,
+        "diagnosis": 872,
+        "treatment": 519,
+        "complications": 571,
+        "prevention": 236
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença valvar mitral degenerativa (DMVD / endocardiose)",
+      "slug": "doenca-valvar-mitral-degenerativa-caes",
+      "totalWords": 3617,
+      "depth": {
+        "etiology": 227,
+        "epidemiology": 161,
+        "pathogenesisTransmission": 183,
+        "pathophysiology": 127,
+        "clinicalSignsPathophysiology": 313,
+        "diagnosis": 897,
+        "treatment": 1162,
+        "complications": 450,
+        "prevention": 97
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 5,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Peritonite infecciosa felina (PIF/FIP)",
+      "slug": "peritonite-infecciosa-felina",
+      "totalWords": 3707,
+      "depth": {
+        "etiology": 185,
+        "epidemiology": 96,
+        "pathogenesisTransmission": 161,
+        "pathophysiology": 519,
+        "clinicalSignsPathophysiology": 265,
+        "diagnosis": 1388,
+        "treatment": 380,
+        "complications": 550,
+        "prevention": 163
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 11,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cistoisosporose em cães e gatos",
+      "slug": "coccidiose-caes-gatos",
+      "totalWords": 3726,
+      "depth": {
+        "etiology": 471,
+        "epidemiology": 162,
+        "pathogenesisTransmission": 120,
+        "pathophysiology": 102,
+        "clinicalSignsPathophysiology": 245,
+        "diagnosis": 954,
+        "treatment": 1057,
+        "complications": 472,
+        "prevention": 143
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Linfoma cutâneo",
+      "slug": "linfoma-cutaneo-caes-gatos",
+      "totalWords": 3828,
+      "depth": {
+        "etiology": 461,
+        "epidemiology": 349,
+        "pathogenesisTransmission": 178,
+        "pathophysiology": 226,
+        "clinicalSignsPathophysiology": 352,
+        "diagnosis": 984,
+        "treatment": 843,
+        "complications": 335,
+        "prevention": 100
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Giardíase em cães e gatos",
+      "slug": "giardiase-caes-gatos",
+      "totalWords": 3839,
+      "depth": {
+        "etiology": 478,
+        "epidemiology": 217,
+        "pathogenesisTransmission": 123,
+        "pathophysiology": 151,
+        "clinicalSignsPathophysiology": 224,
+        "diagnosis": 854,
+        "treatment": 1152,
+        "complications": 534,
+        "prevention": 106
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leishmaniose em Cães e Gatos",
+      "slug": "leishmaniose-caes-gatos",
+      "totalWords": 4005,
+      "depth": {
+        "etiology": 879,
+        "epidemiology": 325,
+        "pathogenesisTransmission": 269,
+        "pathophysiology": 284,
+        "clinicalSignsPathophysiology": 741,
+        "diagnosis": 465,
+        "treatment": 657,
+        "complications": 132,
+        "prevention": 253
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hipertireoidismo felino",
+      "slug": "hipertireoidismo-felino",
+      "totalWords": 4199,
+      "depth": {
+        "etiology": 286,
+        "epidemiology": 158,
+        "pathogenesisTransmission": 172,
+        "pathophysiology": 571,
+        "clinicalSignsPathophysiology": 238,
+        "diagnosis": 830,
+        "treatment": 1154,
+        "complications": 380,
+        "prevention": 410
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Lesão Renal Aguda em Cães (LRA / IRA / AKI)",
+      "slug": "lesao-renal-aguda-canina",
+      "totalWords": 4246,
+      "depth": {
+        "etiology": 774,
+        "epidemiology": 456,
+        "pathogenesisTransmission": 233,
+        "pathophysiology": 317,
+        "clinicalSignsPathophysiology": 159,
+        "diagnosis": 513,
+        "treatment": 1301,
+        "complications": 328,
+        "prevention": 165
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Platinosomose Felina",
+      "slug": "platinosomose-felina",
+      "totalWords": 4462,
+      "depth": {
+        "etiology": 639,
+        "epidemiology": 236,
+        "pathogenesisTransmission": 313,
+        "pathophysiology": 314,
+        "clinicalSignsPathophysiology": 576,
+        "diagnosis": 765,
+        "treatment": 1163,
+        "complications": 240,
+        "prevention": 216
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cistite Idiopática Felina (CIF / FIC)",
+      "slug": "cistite-idiopatica-felina",
+      "totalWords": 4583,
+      "depth": {
+        "etiology": 880,
+        "epidemiology": 373,
+        "pathogenesisTransmission": 214,
+        "pathophysiology": 445,
+        "clinicalSignsPathophysiology": 562,
+        "diagnosis": 556,
+        "treatment": 1139,
+        "complications": 188,
+        "prevention": 226
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Colapso Traqueal em Cães e Gatos",
+      "slug": "colapso-traqueal-canino",
+      "totalWords": 4598,
+      "depth": {
+        "etiology": 607,
+        "epidemiology": 267,
+        "pathogenesisTransmission": 212,
+        "pathophysiology": 229,
+        "clinicalSignsPathophysiology": 384,
+        "diagnosis": 520,
+        "treatment": 2130,
+        "complications": 157,
+        "prevention": 92
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Arritmias cardíacas em cães e gatos",
+      "slug": "arritmias-cardiacas-caes-gatos",
+      "totalWords": 4621,
+      "depth": {
+        "etiology": 296,
+        "epidemiology": 192,
+        "pathogenesisTransmission": 96,
+        "pathophysiology": 270,
+        "clinicalSignsPathophysiology": 319,
+        "diagnosis": 1040,
+        "treatment": 1849,
+        "complications": 429,
+        "prevention": 130
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Obstrução Funcional do Fluxo Urinário em Cães (FOO)",
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "totalWords": 4741,
+      "depth": {
+        "etiology": 1124,
+        "epidemiology": 239,
+        "pathogenesisTransmission": 109,
+        "pathophysiology": 110,
+        "clinicalSignsPathophysiology": 396,
+        "diagnosis": 789,
+        "treatment": 1232,
+        "complications": 346,
+        "prevention": 396
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 9,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Colangite Parasitária",
+      "slug": "colangite-parasitaria-caes-gatos",
+      "totalWords": 4782,
+      "depth": {
+        "etiology": 486,
+        "epidemiology": 270,
+        "pathogenesisTransmission": 398,
+        "pathophysiology": 287,
+        "clinicalSignsPathophysiology": 493,
+        "diagnosis": 1234,
+        "treatment": 1041,
+        "complications": 441,
+        "prevention": 132
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hipoadrenocorticismo (Doença de Addison)",
+      "slug": "hipoadrenocorticismo-addison",
+      "totalWords": 5045,
+      "depth": {
+        "etiology": 445,
+        "epidemiology": 179,
+        "pathogenesisTransmission": 101,
+        "pathophysiology": 586,
+        "clinicalSignsPathophysiology": 428,
+        "diagnosis": 1233,
+        "treatment": 1411,
+        "complications": 489,
+        "prevention": 173
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cistite Enfisematosa em Cães e Gatos",
+      "slug": "cistite-enfisematosa-caes-gatos",
+      "totalWords": 5173,
+      "depth": {
+        "etiology": 999,
+        "epidemiology": 382,
+        "pathogenesisTransmission": 199,
+        "pathophysiology": 272,
+        "clinicalSignsPathophysiology": 466,
+        "diagnosis": 712,
+        "treatment": 1731,
+        "complications": 212,
+        "prevention": 200
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Hiperparatireoidismo em cães e gatos",
+      "slug": "hiperparatireoidismo-caes-gatos",
+      "totalWords": 5246,
+      "depth": {
+        "etiology": 714,
+        "epidemiology": 386,
+        "pathogenesisTransmission": 210,
+        "pathophysiology": 622,
+        "clinicalSignsPathophysiology": 353,
+        "diagnosis": 835,
+        "treatment": 1189,
+        "complications": 678,
+        "prevention": 259
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 23,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Trombocitopenia em Cães e Gatos",
+      "slug": "trombocitopenia-caes-gatos",
+      "totalWords": 5253,
+      "depth": {
+        "etiology": 1062,
+        "epidemiology": 434,
+        "pathogenesisTransmission": 229,
+        "pathophysiology": 243,
+        "clinicalSignsPathophysiology": 444,
+        "diagnosis": 1110,
+        "treatment": 1403,
+        "complications": 217,
+        "prevention": 111
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Discinesia Paroxística em Cães e Gatos",
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "totalWords": 5400,
+      "depth": {
+        "etiology": 1351,
+        "epidemiology": 212,
+        "pathogenesisTransmission": 260,
+        "pathophysiology": 191,
+        "clinicalSignsPathophysiology": 628,
+        "diagnosis": 920,
+        "treatment": 1548,
+        "complications": 141,
+        "prevention": 149
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença renal crônica em cães (DRC canina)",
+      "slug": "doenca-renal-cronica-canina",
+      "totalWords": 5464,
+      "depth": {
+        "etiology": 915,
+        "epidemiology": 232,
+        "pathogenesisTransmission": 527,
+        "pathophysiology": 351,
+        "clinicalSignsPathophysiology": 426,
+        "diagnosis": 900,
+        "treatment": 1655,
+        "complications": 266,
+        "prevention": 192
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Brucelose em cães e gatos",
+      "slug": "brucelose-caes-gatos",
+      "totalWords": 5614,
+      "depth": {
+        "etiology": 323,
+        "epidemiology": 336,
+        "pathogenesisTransmission": 91,
+        "pathophysiology": 470,
+        "clinicalSignsPathophysiology": 681,
+        "diagnosis": 1845,
+        "treatment": 1079,
+        "complications": 610,
+        "prevention": 179
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Enteropatias inflamatórias crônicas em cães (CIE / antiga IBD)",
+      "slug": "enteropatia-inflamatoria-cronica-canina",
+      "totalWords": 5715,
+      "depth": {
+        "etiology": 587,
+        "epidemiology": 298,
+        "pathogenesisTransmission": 334,
+        "pathophysiology": 536,
+        "clinicalSignsPathophysiology": 348,
+        "diagnosis": 1270,
+        "treatment": 1557,
+        "complications": 322,
+        "prevention": 463
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Mastite em cadelas e gatas",
+      "slug": "mastite-caes-gatos",
+      "totalWords": 5756,
+      "depth": {
+        "etiology": 564,
+        "epidemiology": 241,
+        "pathogenesisTransmission": 430,
+        "pathophysiology": 440,
+        "clinicalSignsPathophysiology": 746,
+        "diagnosis": 935,
+        "treatment": 1670,
+        "complications": 360,
+        "prevention": 370
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [
+        "pathophysiology"
+      ],
+      "references": 7,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Anemia Hemolítica Imunomediada em Cães (AHIM / IMHA)",
+      "slug": "anemia-hemolitica-imunomediada-canina",
+      "totalWords": 5857,
+      "depth": {
+        "etiology": 423,
+        "epidemiology": 289,
+        "pathogenesisTransmission": 515,
+        "pathophysiology": 589,
+        "clinicalSignsPathophysiology": 420,
+        "diagnosis": 986,
+        "treatment": 2191,
+        "complications": 253,
+        "prevention": 191
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 11,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Enteropatia perdedora de proteínas em cães e gatos (PLE)",
+      "slug": "enteropatia-perdedora-de-proteinas-caes-gatos",
+      "totalWords": 5885,
+      "depth": {
+        "etiology": 661,
+        "epidemiology": 214,
+        "pathogenesisTransmission": 262,
+        "pathophysiology": 661,
+        "clinicalSignsPathophysiology": 343,
+        "diagnosis": 1182,
+        "treatment": 1725,
+        "complications": 360,
+        "prevention": 477
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cinomose canina",
+      "slug": "cinomose-canina",
+      "totalWords": 5935,
+      "depth": {
+        "etiology": 333,
+        "epidemiology": 241,
+        "pathogenesisTransmission": 123,
+        "pathophysiology": 1018,
+        "clinicalSignsPathophysiology": 1321,
+        "diagnosis": 1443,
+        "treatment": 922,
+        "complications": 296,
+        "prevention": 238
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 35,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Megacólon",
+      "slug": "megacolon-caes-gatos",
+      "totalWords": 5956,
+      "depth": {
+        "etiology": 1062,
+        "epidemiology": 662,
+        "pathogenesisTransmission": 204,
+        "pathophysiology": 555,
+        "clinicalSignsPathophysiology": 505,
+        "diagnosis": 1005,
+        "treatment": 1477,
+        "complications": 198,
+        "prevention": 288
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndrome mielodisplásica (MDS)",
+      "slug": "sindrome-mielodisplasica-caes-gatos",
+      "totalWords": 6098,
+      "depth": {
+        "etiology": 789,
+        "epidemiology": 240,
+        "pathogenesisTransmission": 250,
+        "pathophysiology": 962,
+        "clinicalSignsPathophysiology": 600,
+        "diagnosis": 1136,
+        "treatment": 1323,
+        "complications": 548,
+        "prevention": 250
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 13,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Cetoacidose diabética em cães e gatos",
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "totalWords": 6132,
+      "depth": {
+        "etiology": 221,
+        "epidemiology": 348,
+        "pathogenesisTransmission": 205,
+        "pathophysiology": 1466,
+        "clinicalSignsPathophysiology": 250,
+        "diagnosis": 1099,
+        "treatment": 2008,
+        "complications": 409,
+        "prevention": 126
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Sepse e Choque Séptico em Felinos",
+      "slug": "sepse-felina",
+      "totalWords": 6142,
+      "depth": {
+        "etiology": 928,
+        "epidemiology": 489,
+        "pathogenesisTransmission": 105,
+        "pathophysiology": 564,
+        "clinicalSignsPathophysiology": 603,
+        "diagnosis": 843,
+        "treatment": 1764,
+        "complications": 679,
+        "prevention": 167
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 12,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Doença renal crônica em felinos (DRC felina)",
+      "slug": "doenca-renal-cronica-felina",
+      "totalWords": 6222,
+      "depth": {
+        "etiology": 660,
+        "epidemiology": 276,
+        "pathogenesisTransmission": 378,
+        "pathophysiology": 677,
+        "clinicalSignsPathophysiology": 565,
+        "diagnosis": 1010,
+        "treatment": 2106,
+        "complications": 320,
+        "prevention": 230
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Polirradiculoneurite Aguda em Cães e Gatos (ACP / AIP)",
+      "slug": "polirradiculoneurite-caes-gatos",
+      "totalWords": 6236,
+      "depth": {
+        "etiology": 980,
+        "epidemiology": 428,
+        "pathogenesisTransmission": 474,
+        "pathophysiology": 752,
+        "clinicalSignsPathophysiology": 405,
+        "diagnosis": 1006,
+        "treatment": 1176,
+        "complications": 745,
+        "prevention": 270
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Asma felina",
+      "slug": "asma-felina",
+      "totalWords": 6339,
+      "depth": {
+        "etiology": 466,
+        "epidemiology": 233,
+        "pathogenesisTransmission": 122,
+        "pathophysiology": 710,
+        "clinicalSignsPathophysiology": 565,
+        "diagnosis": 1882,
+        "treatment": 1889,
+        "complications": 301,
+        "prevention": 171
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 27,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Intermação em Cães e Gatos",
+      "slug": "intermacao-caes-gatos",
+      "totalWords": 6348,
+      "depth": {
+        "etiology": 709,
+        "epidemiology": 543,
+        "pathogenesisTransmission": 647,
+        "pathophysiology": 375,
+        "clinicalSignsPathophysiology": 707,
+        "diagnosis": 713,
+        "treatment": 1551,
+        "complications": 833,
+        "prevention": 270
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Lesão Renal Aguda em Felinos (LRA / AKI)",
+      "slug": "lesao-renal-aguda-felina",
+      "totalWords": 6376,
+      "depth": {
+        "etiology": 1025,
+        "epidemiology": 976,
+        "pathogenesisTransmission": 136,
+        "pathophysiology": 583,
+        "clinicalSignsPathophysiology": 110,
+        "diagnosis": 614,
+        "treatment": 1730,
+        "complications": 1013,
+        "prevention": 189
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 18,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Tríade Felina",
+      "slug": "triade-felina",
+      "totalWords": 6430,
+      "depth": {
+        "etiology": 618,
+        "epidemiology": 266,
+        "pathogenesisTransmission": 260,
+        "pathophysiology": 1102,
+        "clinicalSignsPathophysiology": 562,
+        "diagnosis": 973,
+        "treatment": 1952,
+        "complications": 395,
+        "prevention": 302
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Neoplasias intracranianas em cães (tumores encefálicos)",
+      "slug": "neoplasias-intracranianas-caes",
+      "totalWords": 6444,
+      "depth": {
+        "etiology": 1009,
+        "epidemiology": 377,
+        "pathogenesisTransmission": 570,
+        "pathophysiology": 406,
+        "clinicalSignsPathophysiology": 628,
+        "diagnosis": 1184,
+        "treatment": 1765,
+        "complications": 270,
+        "prevention": 235
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Paralisia Laríngea em Cães e Gatos (GOLPP / LPPN)",
+      "slug": "paralisia-laringea-caes-gatos",
+      "totalWords": 6495,
+      "depth": {
+        "etiology": 853,
+        "epidemiology": 446,
+        "pathogenesisTransmission": 166,
+        "pathophysiology": 670,
+        "clinicalSignsPathophysiology": 453,
+        "diagnosis": 915,
+        "treatment": 1279,
+        "complications": 1020,
+        "prevention": 693
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 19,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Sepse e Choque Séptico em Cães",
+      "slug": "sepse-canina",
+      "totalWords": 6534,
+      "depth": {
+        "etiology": 1219,
+        "epidemiology": 196,
+        "pathogenesisTransmission": 685,
+        "pathophysiology": 636,
+        "clinicalSignsPathophysiology": 748,
+        "diagnosis": 766,
+        "treatment": 1693,
+        "complications": 322,
+        "prevention": 269
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 10,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Anemia em Cães e Gatos",
+      "slug": "anemia-caes-gatos",
+      "totalWords": 6592,
+      "depth": {
+        "etiology": 1222,
+        "epidemiology": 388,
+        "pathogenesisTransmission": 289,
+        "pathophysiology": 224,
+        "clinicalSignsPathophysiology": 1077,
+        "diagnosis": 1657,
+        "treatment": 1093,
+        "complications": 285,
+        "prevention": 357
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Megaesôfago em Cães e Gatos",
+      "slug": "megaesofago-caes-gatos",
+      "totalWords": 6752,
+      "depth": {
+        "etiology": 824,
+        "epidemiology": 233,
+        "pathogenesisTransmission": 157,
+        "pathophysiology": 533,
+        "clinicalSignsPathophysiology": 435,
+        "diagnosis": 1305,
+        "treatment": 3041,
+        "complications": 0,
+        "prevention": 224
+      },
+      "missing": [
+        "complications"
+      ],
+      "brief": [],
+      "legacy": [],
+      "references": 29,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Linfoma Mediastinal em Cães e Gatos",
+      "slug": "linfoma-mediastinal-caes-gatos",
+      "totalWords": 6856,
+      "depth": {
+        "etiology": 1032,
+        "epidemiology": 363,
+        "pathogenesisTransmission": 271,
+        "pathophysiology": 488,
+        "clinicalSignsPathophysiology": 804,
+        "diagnosis": 1156,
+        "treatment": 2545,
+        "complications": 99,
+        "prevention": 98
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Bronquite crônica em cães e gatos",
+      "slug": "bronquite-cronica-caes-gatos",
+      "totalWords": 7081,
+      "depth": {
+        "etiology": 720,
+        "epidemiology": 299,
+        "pathogenesisTransmission": 584,
+        "pathophysiology": 503,
+        "clinicalSignsPathophysiology": 524,
+        "diagnosis": 1518,
+        "treatment": 2266,
+        "complications": 438,
+        "prevention": 229
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 15,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Pancreatite em cães e gatos",
+      "slug": "pancreatite-caes-gatos",
+      "totalWords": 7134,
+      "depth": {
+        "etiology": 553,
+        "epidemiology": 143,
+        "pathogenesisTransmission": 517,
+        "pathophysiology": 334,
+        "clinicalSignsPathophysiology": 506,
+        "diagnosis": 2241,
+        "treatment": 2335,
+        "complications": 365,
+        "prevention": 140
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 21,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Quilotórax em Gatos e Cães",
+      "slug": "quilotorax-caes-gatos",
+      "totalWords": 7198,
+      "depth": {
+        "etiology": 1411,
+        "epidemiology": 493,
+        "pathogenesisTransmission": 304,
+        "pathophysiology": 583,
+        "clinicalSignsPathophysiology": 726,
+        "diagnosis": 1060,
+        "treatment": 2395,
+        "complications": 113,
+        "prevention": 113
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 17,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica)",
+      "slug": "pielonefrite-caes-gatos",
+      "totalWords": 7198,
+      "depth": {
+        "etiology": 1152,
+        "epidemiology": 859,
+        "pathogenesisTransmission": 508,
+        "pathophysiology": 680,
+        "clinicalSignsPathophysiology": 266,
+        "diagnosis": 1240,
+        "treatment": 1438,
+        "complications": 849,
+        "prevention": 206
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leucemias em cães e gatos",
+      "slug": "leucemias-caes-gatos",
+      "totalWords": 7480,
+      "depth": {
+        "etiology": 1833,
+        "epidemiology": 322,
+        "pathogenesisTransmission": 310,
+        "pathophysiology": 395,
+        "clinicalSignsPathophysiology": 559,
+        "diagnosis": 1786,
+        "treatment": 1307,
+        "complications": 766,
+        "prevention": 202
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 25,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Tétano em Cães e Gatos (Clostridium tetani)",
+      "slug": "tetano-caes-gatos",
+      "totalWords": 8090,
+      "depth": {
+        "etiology": 1018,
+        "epidemiology": 670,
+        "pathogenesisTransmission": 735,
+        "pathophysiology": 908,
+        "clinicalSignsPathophysiology": 561,
+        "diagnosis": 1162,
+        "treatment": 1717,
+        "complications": 961,
+        "prevention": 358
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 16,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Piotórax em Cães e Gatos",
+      "slug": "piotorax-caes-gatos",
+      "totalWords": 8219,
+      "depth": {
+        "etiology": 1303,
+        "epidemiology": 440,
+        "pathogenesisTransmission": 343,
+        "pathophysiology": 650,
+        "clinicalSignsPathophysiology": 894,
+        "diagnosis": 1094,
+        "treatment": 2996,
+        "complications": 222,
+        "prevention": 277
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 14,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Síndrome de Chiari-like em cães e gatos",
+      "slug": "sindrome-chiari-like-caes-gatos",
+      "totalWords": 8250,
+      "depth": {
+        "etiology": 598,
+        "epidemiology": 564,
+        "pathogenesisTransmission": 228,
+        "pathophysiology": 702,
+        "clinicalSignsPathophysiology": 867,
+        "diagnosis": 1567,
+        "treatment": 2712,
+        "complications": 799,
+        "prevention": 213
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 23,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Babesiose em cães e gatos",
+      "slug": "babesiose-caes-gatos",
+      "totalWords": 8565,
+      "depth": {
+        "etiology": 938,
+        "epidemiology": 751,
+        "pathogenesisTransmission": 358,
+        "pathophysiology": 684,
+        "clinicalSignsPathophysiology": 803,
+        "diagnosis": 2115,
+        "treatment": 2258,
+        "complications": 363,
+        "prevention": 295
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 24,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Coagulação intravascular disseminada (CID/DIC)",
+      "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+      "totalWords": 8657,
+      "depth": {
+        "etiology": 1083,
+        "epidemiology": 402,
+        "pathogenesisTransmission": 349,
+        "pathophysiology": 708,
+        "clinicalSignsPathophysiology": 972,
+        "diagnosis": 2159,
+        "treatment": 2439,
+        "complications": 273,
+        "prevention": 272
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 30,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Prolapso retal em cães e gatos",
+      "slug": "prolapso-retal-caes-gatos",
+      "totalWords": 10684,
+      "depth": {
+        "etiology": 1381,
+        "epidemiology": 493,
+        "pathogenesisTransmission": 393,
+        "pathophysiology": 777,
+        "clinicalSignsPathophysiology": 684,
+        "diagnosis": 2122,
+        "treatment": 3549,
+        "complications": 976,
+        "prevention": 309
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Leptospirose em cães e gatos",
+      "slug": "leptospirose-caes-gatos",
+      "totalWords": 11147,
+      "depth": {
+        "etiology": 755,
+        "epidemiology": 856,
+        "pathogenesisTransmission": 315,
+        "pathophysiology": 871,
+        "clinicalSignsPathophysiology": 846,
+        "diagnosis": 3049,
+        "treatment": 2580,
+        "complications": 1416,
+        "prevention": 459
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 26,
+      "recadastro": false,
+      "issues": []
+    },
+    {
+      "title": "Insuficiência cardíaca congestiva (ICC) em cães e gatos",
+      "slug": "insuficiencia-cardiaca-congestiva-caes-gatos",
+      "totalWords": 13035,
+      "depth": {
+        "etiology": 967,
+        "epidemiology": 299,
+        "pathogenesisTransmission": 785,
+        "pathophysiology": 689,
+        "clinicalSignsPathophysiology": 1233,
+        "diagnosis": 3381,
+        "treatment": 3537,
+        "complications": 1252,
+        "prevention": 892
+      },
+      "missing": [],
+      "brief": [],
+      "legacy": [],
+      "references": 28,
+      "recadastro": false,
+      "issues": []
+    }
+  ]
+}

@@ -75,7 +75,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
           label: 'Suspeita clínica',
           timing: 'Consulta inicial',
           detail:
-            'Poliúria, polidipsia, polifagia com perda de peso; hepatomegalia e hiperlipidemia frequentes. Anorexia/vômitos = complicação aguda (Behrend et al., 2018; Nelson & Couto, 2020).',
+            'Poliúria, polidipsia, polifagia com perda de peso; hepatomegalia e hiperlipidemia frequentes. Anorexia/vômitos = complicação aguda (Behrend et al., 2018).',
         },
         {
           label: 'Glicemia + urinálise',
@@ -88,13 +88,13 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
           label: 'Banco inicial',
           timing: 'Confirmação',
           detail:
-            'Hemograma, bioquímica, eletrólitos, urinálise por cistocentese, ceto-fita; urocultura se sedimento alterado ou refratariedade (Behrend et al., 2018; Nelson & Couto, 2020).',
+            'Hemograma, bioquímica, eletrólitos, urinálise por cistocentese, ceto-fita; urocultura se sedimento alterado ou refratariedade (Behrend et al., 2018).',
         },
         {
           label: 'Classificar compensação',
           timing: 'Antes de iniciar insulina',
           detail:
-            'DM compensado vs DKA/HHS. DKA/HHS exigem estabilização hospitalar antes de esquema ambulatorial (Textbook of Small Animal Emergency Medicine, 2020).',
+            'DM compensado vs DKA/HHS. DKA/HHS exigem estabilização hospitalar antes de esquema ambulatorial.',
         },
         {
           label: 'Iniciar insulinoterapia + dieta',
@@ -109,7 +109,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       steps: [
         {
           label: 'Insulina lente suína — início',
-          detail: 'Caninsulin®/Vetsulin® U40: 0,25 U/kg SC q12h pelo peso ideal; agitar vigorosamente; seringa U40 (Behrend et al., 2018; Plumb\'s, 10ª ed.).',
+          detail: 'Caninsulin®/Vetsulin® U40: 0,25 U/kg SC q12h pelo peso ideal; agitar vigorosamente; seringa U40 (Behrend et al., 2018).',
           dose: '0,25 U/kg q12h SC (máx. inicial usual 0,25–0,5 U/kg).',
           duration: 'Vitalícia na maioria dos casos.',
           reassess: 'Titular a cada 7–14 dias conforme clínica e curva/monitor contínuo de glicose.',
@@ -130,7 +130,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
         },
         {
           label: 'Resistência >1,5 U/kg/dose',
-          detail: 'Investigar técnica, efeito rebote de Somogyi, HAC, diestro, pancreatite, ITU, obesidade, esteroides (Behrend et al., 2018; Nelson & Couto, 2020).',
+          detail: 'Investigar técnica, efeito rebote de Somogyi, HAC, diestro, pancreatite, ITU, obesidade, esteroides (Behrend et al., 2018).',
           duration: 'Sequencial — ver fluxograma de resistência na seção Tratamento.',
         },
       ],
@@ -165,7 +165,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       'Doença endógena metabólica e endócrina. Não contagiosa.',
   },
   pathophysiology:
-    'A insulina é o principal hormônio anabólico. Sua escassez promove a tríade de hiperglicemia (menor utilização periférica + maior produção hepática de glicose), diurese osmótica renal quando o limiar de ~180–200 mg/dL é superado e catabolismo acentuado. A lipólise acelerada libera ácidos graxos livres que são oxidados no fígado a acetil-CoA, gerando corpos cetônicos (β-hidroxibutirato, acetoacetato e acetona) (Nelson & Couto, 2020; Textbook of Small Animal Emergency Medicine, 2020). Na cadela em diestro, o GH de origem mamário induzido pela progesterona promove bloqueio intenso do receptor de insulina. A cirurgia de OVARIOHISTERECTOMIA é tratamento indicado pela AAHA (Behrend et al., 2018); a remoção cirúrgica da fonte progestágena pode reduzir a necessidade de insulina bruscamente, exigindo monitoramento rigoroso pós-operatório para evitar hipoglicemia (Behrend et al., 2018). No olho do cão, a hiperglicemia constante satura a hexocinase lenticular; a aldose redutase converte glicose em sorbitol, que se acumula no cristalino, atrai água osmoticamente e degrada as fibras lentiulares, gerando catarata intumescente em 50% dos cães até 170 dias e em 80% até 470 dias (Beam et al., 1999).',
+    'A insulina é o principal hormônio anabólico. Sua escassez promove a tríade de hiperglicemia (menor utilização periférica + maior produção hepática de glicose), diurese osmótica renal quando o limiar de ~180–200 mg/dL é superado e catabolismo acentuado. A lipólise acelerada libera ácidos graxos livres que são oxidados no fígado a acetil-CoA, gerando corpos cetônicos (β-hidroxibutirato, acetoacetato e acetona). Na cadela em diestro, o GH de origem mamário induzido pela progesterona promove bloqueio intenso do receptor de insulina. A cirurgia de OVARIOHISTERECTOMIA é tratamento indicado pela AAHA (Behrend et al., 2018); a remoção cirúrgica da fonte progestágena pode reduzir a necessidade de insulina bruscamente, exigindo monitoramento rigoroso pós-operatório para evitar hipoglicemia (Behrend et al., 2018). No olho do cão, a hiperglicemia constante satura a hexocinase lenticular; a aldose redutase converte glicose em sorbitol, que se acumula no cristalino, atrai água osmoticamente e degrada as fibras lentiulares, gerando catarata intumescente em 50% dos cães até 170 dias e em 80% até 470 dias (Beam et al., 1999).',
   clinicalSignsPathophysiology: [
     {
       system: 'metabolico',
@@ -213,7 +213,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
   },
   treatment: {
     decisaoInicial:
-      'Todo cão com diabetes mellitus clínico necessita de insulinoterapia exógena por toda a vida (Behrend et al., 2018). O objetivo clínico é eliminar a PU/PD, parar a perda de peso, evitar cetoacidose e evitar hipoglicemia, mantendo uma rotina sustentável para a família — a normoglicemia humana estrita 24h não é a meta prática (Behrend et al., 2018; Nelson & Couto, 2020). Cadelas inteiras devem ser submetidas a OVARIOHISTERECTOMIA (Behrend et al., 2018).',
+      'Todo cão com diabetes mellitus clínico necessita de insulinoterapia exógena por toda a vida (Behrend et al., 2018). O objetivo clínico é eliminar a PU/PD, parar a perda de peso, evitar cetoacidose e evitar hipoglicemia, mantendo uma rotina sustentável para a família — a normoglicemia humana estrita 24h não é a meta prática (Behrend et al., 2018). Cadelas inteiras devem ser submetidas a OVARIOHISTERECTOMIA (Behrend et al., 2018).',
     tabelaInsulinas: {
       kind: 'clinicalTable' as const,
       title: 'Insulinas e doses iniciais — cão',
@@ -224,7 +224,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
           'U40',
           '0,25 U/kg (peso ideal)',
           'SC q12h',
-          '1ª linha AAHA; agitar antes; seringa U40 (Behrend et al., 2018; Plumb\'s, 10ª ed.)',
+          '1ª linha AAHA; agitar antes; seringa U40 (Behrend et al., 2018)',
         ],
         ['NPH', 'U100', '0,25–0,5 U/kg', 'SC q12h', 'Alternativa; seringa U100 (Behrend et al., 2018)'],
         ['PZI', 'U40', '0,25–0,5 U/kg', 'SC q12h', 'Alternativa quando lente indisponível (Behrend et al., 2018)'],
@@ -245,7 +245,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       ],
     },
     calculoPesoIdeal:
-      'A dose em UI/kg deve ser calculada pelo peso corporal ideal (PCI), não pelo peso atual, em cães com sobrepeso ou obesidade — superdosar insulina pelo peso real aumenta risco de hipoglicemia (Behrend et al., 2018; Nelson & Couto, 2020). Se o animal estiver no peso ideal (ECC 5/9), PCI = peso atual.',
+      'A dose em UI/kg deve ser calculada pelo peso corporal ideal (PCI), não pelo peso atual, em cães com sobrepeso ou obesidade — superdosar insulina pelo peso real aumenta risco de hipoglicemia (Behrend et al., 2018). Se o animal estiver no peso ideal (ECC 5/9), PCI = peso atual.',
     tabelaPesoIdealEcc: {
       kind: 'clinicalTable' as const,
       title: 'Estimativa do peso ideal pelo ECC (9 pontos)',
@@ -259,7 +259,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       ],
     },
     exemploCalculoInsulina: [
-      '1. Pesar o cão e atribuir ECC (escala de 9 pontos) por palpação — costelas palpáveis sem excesso de gordura e cintura abdominal visível em ECC 5 (Nelson & Couto, 2020; AAHA 2021).',
+      '1. Pesar o cão e atribuir ECC (escala de 9 pontos) por palpação — costelas palpáveis sem excesso de gordura e cintura abdominal visível em ECC 5 (AAHA 2021).',
       '2. Preferir peso saudável anterior documentado (quando ECC era 5) como PCI — método mais confiável.',
       '3. Sem histórico: estimar PCI pela tabela ECC (ex.: 12 kg com ECC 8/9 → PCI = 12 ÷ 1,30 = 9,2 kg).',
       '4. Calcular dose inicial: PCI × UI/kg (ex.: 9,2 kg × 0,25 UI/kg = 2,3 UI → arredondar conservadoramente para 2 UI SC q12h).',
@@ -294,13 +294,13 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
         priority: 5,
         title: 'Investigação de Resistência Insulínica (>1,5 U/kg/dose)',
         summary:
-          'Doses >1,5 U/kg por aplicação sem controle adequado caracterizam resistência clínica (Behrend et al., 2018). Etapa 1: Erros de técnica/seringa/armazenamento. Etapa 2: Duração curta ou efeito rebote de Somogyi. Etapa 3: HAC, diestro, pancreatite, infecção/doença periodontal, obesidade e esteroides (Behrend et al., 2018; Nelson & Couto, 2020).',
+          'Doses >1,5 U/kg por aplicação sem controle adequado caracterizam resistência clínica (Behrend et al., 2018). Etapa 1: Erros de técnica/seringa/armazenamento. Etapa 2: Duração curta ou efeito rebote de Somogyi. Etapa 3: HAC, diestro, pancreatite, infecção/doença periodontal, obesidade e esteroides (Behrend et al., 2018).',
       },
     ],
     protocoloTerapeutico:
       'A dose inicial da insulina lente não deve ultrapassar 0,25–0,5 U/kg q12h. A maioria dos cães estabiliza com aproximadamente ~0,5 U/kg q12h através de titulação progressiva a cada 7 a 14 dias com base na resposta clínica e curvas glicêmicas (4,5).',
     monitoramento: [
-      'Avaliar resposta clínica primária: resolução da PU/PD, estabilização do peso corporal e apetite (Behrend et al., 2018; Nelson & Couto, 2020).',
+      'Avaliar resposta clínica primária: resolução da PU/PD, estabilização do peso corporal e apetite (Behrend et al., 2018).',
       'Curva glicêmica domiciliar ou monitor contínuo de glicose (FreeStyle Libre) a cada 2h durante o intervalo de dose (Behrend et al., 2018; Tardo et al., 2024). Valor mínimo glicêmico ideal entre 80–150 mg/dL (Behrend et al., 2018).',
       'Se o valor mínimo glicêmico for satisfatório (ex: 100 mg/dL), mas a glicose subir rapidamente antes da próxima dose: trata-se de DURAÇÃO CURTA DA INSULINA. NÃO aumentar a dose (risco de hipoglicemia no valor mínimo glicêmico); trocar por formulação de maior duração (Behrend et al., 2018).',
       'Frutosamina sérica a cada 1 a 3 meses para acompanhar tendência geral (Behrend et al., 2018).',
@@ -309,8 +309,8 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       'Etapa 1 — Técnica e aderência: seringa correta (U40 vs U100), agitação, local de aplicação, rotação, armazenamento e horários de refeição/insulina (Behrend et al., 2018).',
       'Etapa 2 — Efeito rebote de Somogyi vs duração curta: valor mínimo glicêmico <80 mg/dL com hiperglicemia de rebote sugere efeito de Somogyi; valor mínimo 80–150 mg/dL com hiperglicemia pré-dose sugere duração insuficiente — trocar insulina, não escalar dose (Behrend et al., 2018).',
       'Etapa 3 — Diestro/OVH: cadela inteira em diestro → OVH e reduzir insulina pós-operatório (Behrend et al., 2018).',
-      'Etapa 4 — HAC: testes de triagem (LDDS/ACTHST) se sinais compatíveis ou resistência persistente (Nelson & Couto, 2020).',
-      'Etapa 5 — Pancreatite, ITU, obesidade, esteroides e doença periodontal: tratar comorbidades antes de escalar insulina além de >1,5 U/kg/dose (Behrend et al., 2018; Nelson & Couto, 2020).',
+      'Etapa 4 — HAC: testes de triagem (LDDS/ACTHST) se sinais compatíveis ou resistência persistente.',
+      'Etapa 5 — Pancreatite, ITU, obesidade, esteroides e doença periodontal: tratar comorbidades antes de escalar insulina além de >1,5 U/kg/dose (Behrend et al., 2018).',
     ],
   },
   complications: {
@@ -327,7 +327,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
   },
   prevention: {
     primaria:
-      'Ovariohisterectomia de cadelas não reprodutoras antes de ciclos repetidos de diestro; manutenção de peso ideal; evitar glicocorticoides e progestágenos desnecessários; controle de obesidade e doença periodontal como fatores de resistência insulínica (Behrend et al., 2018; Nelson & Couto, 2020).',
+      'Ovariohisterectomia de cadelas não reprodutoras antes de ciclos repetidos de diestro; manutenção de peso ideal; evitar glicocorticoides e progestágenos desnecessários; controle de obesidade e doença periodontal como fatores de resistência insulínica (Behrend et al., 2018).',
     vigilanciaComplicacoes:
       'Após diagnóstico: exame oftalmológico seriado para catarata/uveíte; urocultura quando indicado; reforçar consistência alimentar e técnica de insulina com tutores (Behrend et al., 2018; Beam et al., 1999).',
     errosComuns: [
@@ -354,7 +354,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
     {
       id: 'ref-aula-magna-2026',
       citationText:
-        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material fornecido ao projeto Vetius, 2026.',
+        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material didático, 2026.',
       sourceType: 'Aula Magna',
       evidenceLevel: 'A',
     },

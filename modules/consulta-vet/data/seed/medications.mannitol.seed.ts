@@ -105,7 +105,7 @@ export const mannitolMedicationsSeed: MedicationRecord[] = [
         route: 'IV',
         frequency: 'em 15–20 minutos; titular à resposta',
         duration: 'Uso hospitalar agudo.',
-        notes: 'Nelson & Couto descreve 1–1,5 g/kg; August descreve 0,5–1,5 g/kg em gatos. Preferir salina hipertônica se houver hipovolemia/hipotensão.',
+        notes: 'Faixas usuais descritas variam de 1–1,5 g/kg em cães e 0,5–1,5 g/kg em gatos. Preferir salina hipertônica se houver hipovolemia/hipotensão.',
         monitoring: 'Escala neurológica, pupilas, PA, perfusão, sódio, osmolalidade, débito urinário e sinais de congestão.',
         referenceIds: ['ref-manitol-nelson6', 'ref-manitol-august-feline'],
         evidenceLevel: 'Livro-texto e manual de medicina felina',
@@ -155,7 +155,7 @@ export const mannitolMedicationsSeed: MedicationRecord[] = [
       '<p><strong>⚠️ Lesão renal aguda:</strong> o manitol pode aumentar temporariamente a produção urinária, mas isso não demonstra melhora da TFG, recuperação renal ou prognóstico. Não repetir em anúria e não atrasar terapia renal substitutiva.</p>' +
       '<p><strong>Neurologia:</strong> para edema cerebral, usar bolus intermitente e evitar CRI rotineira, pois o acúmulo no tecido cerebral pode favorecer edema de rebote.</p>' +
       '<p><strong>Estado volêmico:</strong> ocorre expansão intravascular antes da diurese. Em TCE com hipovolemia ou hipotensão, a salina hipertônica costuma ser opção mais atraente. Doses altas exigem cautela especial em cardiopatas.</p>' +
-      '<p><strong>Administração:</strong> inspecionar cristais; se presentes, seguir a orientação do fabricante para dissolução completa. Usar cateter pérvio e filtro IV em linha apropriado, aproximadamente 5 µm conforme Plumb’s. Não infundir no mesmo equipo de sangue ou hemocomponentes.</p>' +
+      '<p><strong>Administração:</strong> inspecionar cristais; se presentes, seguir a orientação do fabricante para dissolução completa. Usar cateter pérvio e filtro IV em linha apropriado (~5 µm). Não infundir no mesmo equipo de sangue ou hemocomponentes.</p>' +
       '<p><strong>Conversões:</strong> manitol 20% = 200 mg/mL = 0,2 g/mL; manitol 25% = 250 mg/mL = 0,25 g/mL. Exemplo: 10 kg a 0,5 g/kg com solução 20% = 25 mL.</p>',
     adminNotesText:
       'Uso exclusivamente hospitalar e intravenoso sob monitorização. Interromper diante de congestão/edema pulmonar, insuficiência cardíaca, piora da azotemia, oligúria progressiva, anúria ou suspeita de LRA associada à terapia. Pode interferir na dosagem de fósforo e produzir falso-positivo em alguns testes para etilenoglicol.',

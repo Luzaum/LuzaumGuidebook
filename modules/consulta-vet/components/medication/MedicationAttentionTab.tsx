@@ -282,13 +282,19 @@ export function MedicationAttentionTab({
             {sortedPrecautions.map((prec, idx) => {
               const isContra = prec.alertLevel === 'contraindicated';
               const isWarning = prec.alertLevel === 'warning';
+              const normalize = (text: string) => text.replace(/\s+/g, ' ').trim();
+              // Também cobre registros remotos/antigos que duplicavam a condição.
+              const mechanism = normalize(prec.physiologicalExplanation || '');
+              const hasMechanism = Boolean(mechanism && mechanism !== normalize(prec.condition));
+              const Container = hasMechanism ? 'details' : 'div';
+              const Header = hasMechanism ? 'summary' : 'div';
 
               return (
-                <details
+                <Container
                   key={idx}
                   className="group px-4 py-3.5 transition-colors hover:bg-muted/15"
                 >
-                  <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <Header className={`flex min-h-11 list-none items-start justify-between gap-3 ${hasMechanism ? 'cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring' : ''}`}>
                     <div className="min-w-0 flex-1">
                       <span
                         className={`block text-[11px] font-bold uppercase tracking-wider ${
@@ -310,30 +316,30 @@ export function MedicationAttentionTab({
                         {prec.condition}
                       </span>
 
-                      <span className="mt-1 block text-[12px] sm:text-[13px] leading-5 text-muted-foreground">
+                      {prec.clinicalAction?.trim() && <span className="mt-1 block text-[12px] sm:text-[13px] leading-5 text-muted-foreground">
                         <strong className="font-semibold text-foreground/85">Conduta Clínica: </strong>
                         {prec.clinicalAction}
-                      </span>
+                      </span>}
                     </div>
 
-                    <span className="mt-1 flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-muted-foreground transition group-hover:text-foreground">
+                    {hasMechanism && <span className="mt-1 flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-muted-foreground transition group-hover:text-foreground">
                       <span className="hidden sm:inline">Mecanismo</span>
                       <ChevronDown
                         className="h-4 w-4 transition-transform duration-200 group-open:rotate-180"
                         aria-hidden
                       />
-                    </span>
-                  </summary>
+                    </span>}
+                  </Header>
 
-                  <div className="mt-3 border-t border-border/50 pt-3">
+                  {hasMechanism && <div className="mt-3 border-t border-border/50 pt-3">
                     <p className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">
                       Entender o mecanismo
                     </p>
                     <p className="mt-1 text-[13px] sm:text-[14px] leading-6 text-foreground/85">
                       {prec.physiologicalExplanation}
                     </p>
-                  </div>
-                </details>
+                  </div>}
+                </Container>
               );
             })}
           </div>

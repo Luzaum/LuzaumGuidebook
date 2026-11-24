@@ -3,6 +3,8 @@ import React, { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Menu } from 'lucide-react';
+import { ThemeToggle } from '../../../../components/ThemeToggle';
+import { TopRightAuthMenu } from '../../../../src/components/TopRightAuthMenu';
 
 import { ConsultaVetSidebar } from './ConsultaVetSidebar';
 
@@ -68,7 +70,11 @@ export function ConsultaVetShell() {
 
             </button>
 
-            <span className="text-sm font-semibold text-foreground">Menu do Vetius</span>
+            <span className="min-w-0 flex-1 truncate text-sm font-semibold text-foreground">Vetius</span>
+            <div className="flex shrink-0 items-center gap-1">
+              <ThemeToggle />
+              <TopRightAuthMenu />
+            </div>
 
           </div>
 

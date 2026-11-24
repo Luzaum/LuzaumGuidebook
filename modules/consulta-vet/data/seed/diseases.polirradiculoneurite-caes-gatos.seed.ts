@@ -42,7 +42,6 @@ export const polirradiculoneuriteCaesGatosRecord: DiseaseRecord = {
     'Dissociação Albuminocitológica',
     'Plasmaférese / TPE',
     'Falência Respiratória',
-    'Nelson & Couto',
   ],
   isPublished: true,
 
@@ -142,7 +141,7 @@ export const polirradiculoneuriteCaesGatosRecord: DiseaseRecord = {
           label: 'Passo 1: Reconhecimento do Fenótipo de NMI Generalizado e Triagem Respiratória',
           detail:
             'Avaliação semiológica imediata e mecânica respiratória:\n' +
-            '- Tetraparesia flácida: identificar fraqueza ascendente com hipotonia profunda, arreflexia, mentação alerta e sensibilidade preservada (Nelson & Couto).\n' +
+            '- Tetraparesia flácida: identificar fraqueza ascendente com hipotonia profunda, arreflexia, mentação alerta e sensibilidade preservada.\n' +
             '- Padrão ventilatório: respiração paradoxal abdominal e expansão torácica reduzida indicam paresia de nervo frênico com risco de falência.',
           timing: 'Minuto 0',
           limitations: 'SpO2 normal não afasta hipoventilação alveolar grave com hipercapnia.',
@@ -485,7 +484,7 @@ export const polirradiculoneuriteCaesGatosRecord: DiseaseRecord = {
       '- Natureza neurogênica aguda: ao contrário da atrofia por desuso simples (lenta, em semanas), a atrofia na ACP instala-se de forma fulminante em 3 a 5 dias pós-paralisia.\n' +
       '- Perda do suporte trófico axonal: o motoneurônio fornece continuamente por fluxo axoplasmático moléculas indispensáveis como agrina, neurorregulina e citocinas tróficas musculares.\n' +
       '- Ativação proteolítica hipercatabólica: a cessação das descargas de acetilcolina e dos fatores tróficos dispara o sistema ubiquitina-proteassoma dependente de ATP e autofagia lisossomal nas miofibrilas.\n' +
-      '- Assinatura diagnóstica diferencial (Nelson & Couto): a tríade paralisia flácida, arreflexia e atrofia neurogênica ultrarrápida diferencia a ACP de distúrbios de junção neuromuscular (botulismo, paralisia por carrapato), onde a atrofia aguda inexiste.',
+      '- Assinatura diagnóstica diferencial: a tríade paralisia flácida, arreflexia e atrofia neurogênica ultrarrápida diferencia a ACP de distúrbios de junção neuromuscular (botulismo, paralisia por carrapato), onde a atrofia aguda inexiste.',
 
     preservacaoSensitivaEHiperestesiaDolorosa:
       'Dissociação sensório-motora, preservação nociceptiva e hiperestesia radicular na ACP:\n' +
@@ -497,7 +496,7 @@ export const polirradiculoneuriteCaesGatosRecord: DiseaseRecord = {
     falsoDeficitProprioceptivoEMovimentoCaudal:
       'Falso déficit proprioceptivo e preservação da motricidade caudal na ACP:\n' +
       '- Armadilha do teste proprioceptivo (knuckling): o teste avalia conjuntamente a aferência sensitiva e a resposta motora eferente de reposicionamento; sua ausência na ACP decorre exclusivamente da incapacidade mecânica motora de extensão, não de deficit sensorial central.\n' +
-      '- Prova da integridade proprioceptiva (Nelson & Couto): quando o animal é sustentado mecanicamente em estação com auxílio de tipóia, manifesta consciência espacial da postura e tenta posicionar os membros de maneira congruente.\n' +
+      '- Prova da integridade proprioceptiva: quando o animal é sustentado mecanicamente em estação com auxílio de tipóia, manifesta consciência espacial da postura e tenta posicionar os membros de maneira congruente.\n' +
       '- Preservação da motricidade da cauda: cães tetraplégicos frequentemente mantêm o abanar de cauda ativo e responsivo à voz do tutor, constituindo pista semiológica clássica de altíssimo valor.\n' +
       '- Mecanismo anatômico do abanar de cauda: as raízes nervosas mais caudais e os segmentos sacrococcígeos são tipicamente poupados ou agredidos com menor severidade pelo processo autoimune.',
 

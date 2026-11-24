@@ -83,7 +83,7 @@ export function calculateOmega3Dose(input: Omega3DoseCalculationInput): Omega3Do
   if (species === 'cat') {
     const catLimit = FELINE_EPA_DHA_CAUTION_MG_PER_METABOLIC * mw
     if (upperEffective.epaDhaMg > catLimit) {
-      felineLimitAlert = `Dose superior a ${FELINE_EPA_DHA_CAUTION_MG_PER_METABOLIC} mg/kg^0,67 de EPA+DHA — exige supervisão veterinária explícita (Plumb's).`
+      felineLimitAlert = `Dose superior a ${FELINE_EPA_DHA_CAUTION_MG_PER_METABOLIC} mg/kg^0,67 de EPA+DHA — exige supervisão veterinária explícita.`
       warnings.push(felineLimitAlert)
     }
   }

@@ -82,6 +82,12 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'enteropatia-perdedora-de-proteinas-caes-gatos',
   'enteropatia-inflamatoria-cronica-canina',
   'neoplasias-intracranianas-caes',
+  'prolapso-retal-caes-gatos',
+  'colangite-parasitaria-caes-gatos',
+  'leucemias-caes-gatos',
+  'leptospirose-caes-gatos',
+  'sindrome-chiari-like-caes-gatos',
+  'insuficiencia-cardiaca-congestiva-caes-gatos',
 ] as const;
 
 
@@ -112,6 +118,7 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'gabapentina',
   'hidroxido-de-aluminio',
   'levetiracetam',
+  'manitol',
   'marbofloxacina',
   'maropitant',
   'meloxicam',
@@ -123,7 +130,9 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'acido-tranexamico',
   'mirtazapina',
   'molidustat',
+  'nitroprussiato-de-sodio',
   'ondansetrona',
+  'pilocarpina',
   'pradofloxacina',
   'prednisolona',
   'pronefra',

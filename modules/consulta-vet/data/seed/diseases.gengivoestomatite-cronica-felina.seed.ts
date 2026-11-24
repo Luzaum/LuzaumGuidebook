@@ -115,7 +115,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
         {
           label: 'Reavaliar SDAI',
           timing: '2 semanas, 2–3 meses, 6 meses',
-          reassess: 'Peso, grooming, ingestão, fotos seriadas',
+          reassess: 'Peso, autolimpeza, ingestão, fotos seriadas',
           detail:
             'Não classificar refratário em 2 semanas — inflamação leva tempo para regredir (Soltero-Rivera et al., 2023).',
         },
@@ -240,7 +240,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
       system: 'general',
       findings: [
         {
-          finding: 'Hiporexia, perda de peso, grooming reduzido',
+          finding: 'Hiporexia, perda de peso, autolimpeza reduzida',
           mechanism: 'Dor oral crônica → evita mastigação; pseudoanorexia.',
           clinicalMeaning: 'Suporte nutricional (dieta úmida, tubo esofágico se grave); analgesia antes de julgar “inapetência” (Lobprise et al., 2025).',
           priority: 'common',
@@ -350,7 +350,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
       title: 'Analgesia multimodal na FCGS',
       headers: ['Fármaco', 'Dose (gato)', 'Observações'],
       rows: [
-        ['Buprenorfina', '0,02–0,03 mg/kg IV/IM q6h', 'Preferir parenteral perioperatório; OTM tem menor biodisponibilidade em mucosa doente (Stathopoulou et al., 2018; Allerton, BSAVA Formulary 2020)'],
+        ['Buprenorfina', '0,02–0,03 mg/kg IV/IM q6h', 'Preferir parenteral perioperatório; OTM tem menor biodisponibilidade em mucosa doente (Stathopoulou et al., 2018)'],
         ['Gabapentina', '5–10 mg/kg VO q8–12h', 'Adjuvante; evidência indireta — não trata FCGS (Soltero-Rivera et al., 2023)'],
         ['Meloxicam', '0,01–0,05 mg/kg VO q24h', 'Somente se hidratado, renal OK, sem corticoide concomitante'],
         ['Robenacoxib', '1–2 mg/kg VO q24h', 'Mesmas cautelas renais/hidratacionais'],
@@ -364,13 +364,13 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
     ciclosporina:
       'Indicação: FCGS clinicamente significativa após extração adequada. Dose estudada: 2,5 mg/kg VO q12h, formulação microemulsionada modificada (Lommer, 2013). RCT: 77,8% melhora vs 14,3% placebo; concentração >300 ng/mL associada a maior resposta. Desaconselhar imunossupressão sem intervenção cirúrgica prévia (Soltero-Rivera et al., 2023).',
     interferonOmega:
-      'Interferon-ω felino recombinante: 100.000 UI/gato q24h oromucoso ×90 dias — RCT em refratários FCV+ (Hennet et al., 2011; Plumb\'s 2023). Disponibilidade limitada em alguns mercados.',
+      'Interferon-ω felino recombinante: 100.000 UI/gato q24h oromucoso ×90 dias — RCT em refratários FCV+ (Hennet et al., 2011). Disponibilidade limitada em alguns mercados.',
     msc:
       'Células mesenquimais estromais (MSC): terapia especializada pós-extração refratária — resposta positiva ~65,5% em longo prazo; NÃO usar antes da extração (Soltero-Rivera et al., 2023).',
     experimental:
       'Canabidiol (CBD) 4 mg/gato q12h ×15 dias: adjuvante pós-extração — evidência preliminar (Coelho et al., 2023). PSSNa tópico 2026: redução carga FCV, experimental. Molnupiravir/EIDD-1931: sem evidência robusta para FCGS — não rotina.',
     monitoramento: [
-      'SDAI seriado + fotografias + peso + avaliação do tutor (apetite, grooming, dor).',
+      'SDAI seriado + fotografias + peso + avaliação do tutor (apetite, autolimpeza, dor).',
       '2 semanas: cicatrização — não rotular refratário.',
       '2–3 meses: decisão FME após PME, raízes retidas, terapia adjunta.',
       '≥6 meses sem resposta após extração adequada: refratário verdadeiro (Lobprise et al., 2025).',

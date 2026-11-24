@@ -162,7 +162,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       'Inflamação piogranulomatosa — serosite/efusão (forma efusiva) ou granulomas viscerais, ocular e/ou neurológica (forma não efusiva ou mista) (Kipar et al., 2005).',
     ],
     transmissaoFCoV:
-      'Via fecal-oral: ambiente compartilhado, caixas de areia, grooming, mãe-filhote. FCoV resiste dias a semanas no ambiente úmido — higiene e redução de densidade são pilares de controle (Addie et al., 2009; Tasker et al., ABCD 2023).',
+      'Via fecal-oral: ambiente compartilhado, caixas de areia, autolimpeza, mãe-filhote. FCoV resiste dias a semanas no ambiente úmido — higiene e redução de densidade são pilares de controle (Addie et al., 2009; Tasker et al., ABCD 2023).',
     transmissaoPIF:
       'PIF não se transmite diretamente entre gatos — transmissão é de FCoV entérico; apenas uma minoria desenvolve mutação patogênica intrahospedeiro (Pedersen, 2014; Tasker et al., ABCD 2023).',
   },
@@ -218,7 +218,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
         [
           'Fezes',
           'PCR para coronavírus felino (FCoV) em fezes — detecção de RNA/DNA viral fecal',
-          'Triagem de exposição a FCoV entérico e controle ambiental em multicat',
+          'Triagem de exposição a FCoV entérico e controle ambiental em lares com vários gatos',
           'Não diagnóstica PIF — positivo indica FCoV entérico/exposição, não doença sistêmica (Thayer et al., 2022)',
         ],
         [
@@ -234,7 +234,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
     granulomas:
       'Forma não efusiva: nódulos piogranulomatosos em fígado, baço, linfonodos, rins, olhos e sistema nervoso central (SNC) — podem mimetizar neoplasia; ultrassom revela espessamento intestinal assimétrico, linfonodomegalia e lesões focais (Müller et al., 2023).',
     imunidade:
-      'Resposta humoral robusta sem clearance viral eficiente; hiperglobulinemia policlonal reflete estimulação imune persistente. Linfopenia com frequência — possível sequestro/depleção (Tasker et al., ABCD 2023).',
+      'Resposta humoral robusta sem depuração viral eficiente; hiperglobulinemia policlonal reflete estimulação imune persistente. Linfopenia com frequência — possível sequestro/depleção (Tasker et al., ABCD 2023).',
     caveatADE:
       'Antibody-dependent enhancement (ADE) explica parcialmente a patogênese em modelos experimentais, mas PIF ocorre também com titulações variadas — não usar nível de anticorpos isolado para diagnosticar ou prognosticar (Pedersen, 2014; Dewerchin et al., 2005).',
   },
@@ -567,7 +567,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
     ],
     vacina: [
       'Vacina intranasal contra FCoV (bivalente) disponível em alguns países — uso restrito a ambientes FCoV endêmicos com histórico de PIF (Tasker et al., ABCD 2023).',
-      'Não indicada em gatos já FCoV positivos ou em gatos isolados indoor sem exposição — eficácia e necessidade variam regionalmente.',
+      'Não indicada em gatos já FCoV positivos ou em gatos isolados em ambiente domiciliar sem exposição — eficácia e necessidade variam regionalmente.',
     ],
     biossegurancaProdutos: [
       'Tratar com antivirais de composição conhecida e prescrição veterinária — produtos “black market” têm concentração imprevisível (Kent et al., 2024; Taylor et al., 2023).',

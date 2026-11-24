@@ -47,7 +47,6 @@ export const enteropatiaPerdedoraDeProteinasRecord: DiseaseRecord = {
     'Alfa-1 Proteinase Inhibitor',
     'Estriações Hiperecogênicas',
     'Cobalamina',
-    'Nelson & Couto',
   ],
   isPublished: true,
   source: 'seed',

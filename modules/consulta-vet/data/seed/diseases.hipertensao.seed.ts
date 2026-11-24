@@ -66,31 +66,31 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
           label: 'Suspeita',
           timing: 'Primeira consulta',
           detail:
-            'Lesão-orgão-alvo (ocular, neurológico), azotemia com proteinúria, soplo + dispneia atípica, ou rastreio geriátrico de alto risco (Nelson & Couto, 6ª ed.; IRIS 2023).',
+            'Lesão-orgão-alvo (ocular, neurológico), azotemia com proteinúria, sopro + dispneia atípica, ou rastreio geriátrico de alto risco (IRIS 2023).',
         },
         {
           label: 'Medição séria',
           timing: 'Antes de rotular HAS',
           detail:
-            'Repouso ≥5–10 min; manguito = 40% da circunferência do membro; registro de posição e aparelho; idealmente ≥2 visitas ou série domiciliar (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+            'Repouso ≥5–10 min; manguito = 40% da circunferência do membro; registro de posição e aparelho; idealmente ≥2 visitas ou série domiciliar (IRIS 2023).',
         },
         {
           label: 'Confirmar e quantificar',
           timing: 'Após medições repetidas',
           detail:
-            'Classificar faixa IRIS se DRC; documentar tendência (subir/desceu com terapia) (IRIS 2023).',
+            'Classificar faixa IRIS se DRC; documentar tendência (subiu/desceu com terapia) (IRIS 2023).',
         },
         {
           label: 'Investigar causa',
           timing: 'Antes de rotular idiopática',
           detail:
-            'Bioquímica, SDMA, urinálise, RPCU, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos (Nelson & Couto, 6ª ed.).',
+            'Bioquímica, SDMA, urinálise, RPCU, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos.',
         },
         {
           label: 'Tratar e reavaliar',
           timing: 'Após confirmação',
           detail:
-            'Meta pressórica individualizada; creatinina e eletrólitos 5–7 dias após IECA/BRA; fundo de olho seriado se lesão (IRIS 2023; Plumb\'s, 10ª ed.).',
+            'Meta pressórica individualizada; creatinina e eletrólitos 5–7 dias após IECA/BRA; fundo de olho seriado se lesão (IRIS 2023).',
         },
       ],
     },
@@ -100,12 +100,12 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         {
           label: 'Causa reversível',
           detail:
-            'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de SRAA (Nelson & Couto, 6ª ed.).',
+            'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de SRAA.',
         },
         {
           label: 'Anti-hipertensivo de base',
           detail:
-            'Em muitos gatos: anlodipino — titular até meta ou tolerância (IRIS 2023; Plumb\'s, 10ª ed.).',
+            'Em muitos gatos: anlodipino — titular até meta ou tolerância (IRIS 2023).',
           dose: 'Amlodipino 0,125–0,25 mg/kg VO q24h (gatos), titular até ~0,25–0,5 mg/kg q24h conforme resposta.',
           duration: 'Contínuo; reavaliar PA em 1–2 semanas após início ou ajuste.',
           reassess: 'Hipotensão postural, bradicardia relativa — titular gradualmente.',
@@ -113,14 +113,14 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         {
           label: 'SRAA',
           detail:
-            'IECA ou BRA quando proteinúria, ICC com contexto, ou combinação necessária — monitorizar função renal (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
-          dose: 'Benazepril conforme perfusão renal e monografia Plumb\'s; associar amlodipino se monoterapia insuficiente.',
+            'IECA ou BRA quando proteinúria, ICC com contexto, ou combinação necessária — monitorizar função renal (IRIS 2023).',
+          dose: 'Benazepril conforme perfusão renal; associar amlodipino se monoterapia insuficiente.',
           reassess: 'Creatinina e K⁺ 5–7 dias após início ou escalada de SRAA.',
         },
         {
           label: 'Urgência',
           detail:
-            'Crise neurológica ou olho com ameaça visual: abordagem hospitalar com fármacos de curta duração e vigilância intensiva (Nelson & Couto, 6ª ed.).',
+            'Crise neurológica ou olho com ameaça visual: abordagem hospitalar com fármacos de curta duração e vigilância intensiva.',
           reassess: 'Fundo de olho seriado mesmo com PA controlada — prognóstico visual pode permanecer reservado.',
         },
       ],
@@ -320,7 +320,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         title: 'Suspeita clínica e lesão-orgão-alvo',
         purpose: 'Identificar indicação para medição séria de PA.',
         description:
-          'Lesão ocular/neurológica aguda, azotemia com proteinúria, ou rastreio geriátrico de alto risco (Nelson & Couto, 6ª ed.; IRIS 2023).',
+          'Lesão ocular/neurológica aguda, azotemia com proteinúria, ou rastreio geriátrico de alto risco (IRIS 2023).',
         interpretation: 'Amaurose súbita ou hemorragia retiniana = urgência pressórica até prova em contrário.',
         limitations: 'Sinais inespecíficos isolados não confirmam HAS.',
       },
@@ -329,7 +329,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         title: 'Medição padronizada repetida',
         purpose: 'Confirmar elevação sustentada antes de rotular HAS.',
         description:
-          'Repouso ≥5–10 min; manguito = 30–40% da circunferência do membro; ≥2 visitas ou monitor domiciliar (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+          'Repouso ≥5–10 min; manguito = 30–40% da circunferência do membro; ≥2 visitas ou monitor domiciliar (IRIS 2023).',
         interpretation: 'PAS persistentemente elevada em condições calmas confirma HAS.',
         limitations: 'Efeito bata branca e dor superestimam PA — repetir em ambiente calmo.',
       },
@@ -347,7 +347,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         title: 'Investigação de causa',
         purpose: 'Excluir secundárias antes de rotular idiopática felina.',
         description:
-          'Bioquímica, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem abdominal, revisão de fármacos (Nelson & Couto, 6ª ed.).',
+          'Bioquímica, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem abdominal, revisão de fármacos.',
         interpretation: 'DRC e hipertireoidismo explicam maioria dos casos felinos.',
         limitations: 'Hipertensão idiopática é diagnóstico de exclusão.',
       },
@@ -425,12 +425,12 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
   },
   treatment: {
     cronica: [
-      'IRIS (2023), nas diretrizes de DRC, recomendam amlodipino como espinha dorsal em muitos gatos hipertensos, iniciando ~0,125–0,25 mg/kg VO q24h e titulando até ~0,25–0,5 mg/kg conforme resposta, com reavaliação de PA em 1–2 semanas.',
-      'Elliott et al. (2017), no BSAVA Manual of Nephrology and Urology (3ª ed.), descrevem associação de IECA ou BRA quando proteinúria, ICC com contexto ou monoterapia insuficiente — creatinina e K⁺ 5–7 dias após início ou escalada de SRAA.',
-      'Nelson & Couto (6ª ed.) enfatizam tratar causa de base em paralelo: corrigir hipertireoidismo, suspender corticoide precipitante, otimizar hidratação do nefropata antes de intensificar SRAA.',
+      'Diretrizes IRIS (2023) de DRC recomendam amlodipino como espinha dorsal em muitos gatos hipertensos, iniciando ~0,125–0,25 mg/kg VO q24h e titulando até ~0,25–0,5 mg/kg conforme resposta, com reavaliação de PA em 1–2 semanas.',
+      'Associa-se IECA ou BRA quando proteinúria, ICC com contexto ou monoterapia insuficiente — monitorar creatinina e K⁺ 5–7 dias após início ou escalada de SRAA.',
+      'Tratar a causa de base em paralelo: corrigir hipertireoidismo, suspender corticoide precipitante e otimizar a hidratação do nefropata antes de intensificar SRAA.',
     ],
     aguda: [
-      'Nelson & Couto (6ª ed.) descrevem abordagem hospitalar para crise neurológica ou olho com ameaça visual: fármacos de curta duração, vigilância intensiva de PA e fundo de olho seriado — prognóstico visual pode permanecer reservado mesmo com PA controlada.',
+      'Na crise neurológica ou olho com ameaça visual, instituir abordagem hospitalar com fármacos de curta duração, vigilância intensiva de PA e fundo de olho seriado — o prognóstico visual pode permanecer reservado mesmo com PA controlada.',
     ],
     monitoramento: [
       'Reavaliar PA em 1–2 semanas após início ou ajuste de anti-hipertensivo; creatinina e K⁺ 5–7 dias após IECA/BRA (IRIS 2023).',

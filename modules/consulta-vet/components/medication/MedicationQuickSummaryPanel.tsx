@@ -12,13 +12,44 @@ import {
   Calculator,
   X,
 } from 'lucide-react';
+import { getPrimaryMedicationTherapeuticClass } from '../../utils/medicationTherapeuticClasses';
 import type { MedicationRecord } from '../../types/medication';
 import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
+import { StructuredSummaryText } from '../shared/StructuredSummaryText';
 import {
   calculateQuickIndicationDose,
   formatPatientDoseNumber,
   type QuickIndicationWithSource,
 } from '../../utils/quickIndicationDoseCalculator';
+
+const SUMMARY_BORDER_COLORS = {
+  blue: 'border-blue-500/60 dark:border-blue-400/55',
+  red: 'border-red-500/60 dark:border-red-400/55',
+  purple: 'border-purple-500/60 dark:border-purple-400/55',
+  orange: 'border-orange-500/60 dark:border-orange-400/55',
+  green: 'border-emerald-500/60 dark:border-emerald-400/55',
+  teal: 'border-teal-500/60 dark:border-teal-400/55',
+  indigo: 'border-indigo-500/60 dark:border-indigo-400/55',
+  pink: 'border-pink-500/60 dark:border-pink-400/55',
+  cyan: 'border-cyan-500/60 dark:border-cyan-400/55',
+  lime: 'border-lime-500/60 dark:border-lime-400/55',
+  amber: 'border-amber-500/60 dark:border-amber-400/55',
+  slate: 'border-slate-500/60 dark:border-slate-400/55',
+};
+const CLASS_BORDER_GROUP: Record<string, keyof typeof SUMMARY_BORDER_COLORS> = {
+  'aines': 'red', 'glicocorticoides': 'red', 'analgesicos-anestesicos': 'blue',
+  'antineoplasicos-imunossupressores': 'purple', 'endocrinologicos-hormonais': 'orange',
+  'metabolicos-hipolipemiantes': 'orange', 'antiemeticos': 'green', 'hepatobiliares': 'green',
+  'antibacterianos': 'teal', 'anti-helminticos-antiparasitarios': 'lime',
+  'neurologicos-anticonvulsivantes': 'indigo', 'cardiovasculares': 'pink', 'antiarritmicos': 'pink',
+  'diureticos-hiperosmolares': 'cyan', 'quelantes-antiacidos': 'cyan',
+  'oftalmologicos-autonomicos': 'cyan', 'antifibrinoliticos': 'pink', 'antidotos-toxicologia': 'amber',
+};
+const CATEGORY_BORDER_GROUP: Record<string, keyof typeof SUMMARY_BORDER_COLORS> = {
+  'anestesia-dor': 'blue', 'gastroenterologia': 'green', 'endocrinologia': 'orange',
+  'oncologia': 'purple', 'cardiologia': 'pink', 'nefrologia': 'cyan', 'neurologia': 'indigo',
+  'infectologia': 'teal', 'dermatologia': 'amber', 'respiratorio': 'cyan',
+};
 
 function sortHighlightsLongestFirst(terms: string[]): string[] {
   return [...new Set(terms.map((t) => t.trim()).filter(Boolean))].sort((a, b) => b.length - a.length);
@@ -50,7 +81,7 @@ function applyHighlightTerms(segments: Seg[], term: string): Seg[] {
   return out;
 }
 
-export function HighlightedText({ text, highlights }: { text: string; highlights?: string[] }) {
+export function HighlightedText({ text, highlights, subtle = false }: { text: string; highlights?: string[]; subtle?: boolean }) {
   const segments = useMemo(() => {
     if (!highlights?.length) return [{ mark: false, value: text }];
     let segs: Seg[] = [{ mark: false, value: text }];
@@ -66,7 +97,7 @@ export function HighlightedText({ text, highlights }: { text: string; highlights
         n.mark ? (
           <mark
             key={i}
-            className="rounded bg-amber-200/90 px-1 font-semibold text-slate-900 shadow-xs dark:bg-amber-300/95 dark:text-slate-950"
+            className={subtle ? 'bg-transparent font-semibold text-foreground underline decoration-primary/40 decoration-2 underline-offset-4' : 'rounded bg-amber-200/90 px-1 font-semibold text-slate-900 shadow-xs dark:bg-amber-300/95 dark:text-slate-950'}
           >
             {n.value}
           </mark>
@@ -87,6 +118,10 @@ export function MedicationQuickSummaryPanel({
   patientWeightInput?: string;
   onPatientWeightInputChange?: (value: string) => void;
 }) {
+  const therapeuticClass = getPrimaryMedicationTherapeuticClass(medication);
+  const borderGroup = (therapeuticClass && CLASS_BORDER_GROUP[therapeuticClass.slug])
+    || CATEGORY_BORDER_GROUP[medication.category] || 'slate';
+  const cardBorder = SUMMARY_BORDER_COLORS[borderGroup];
   const weightInputId = useId();
   const [internalWeightInput, setInternalWeightInput] = useState('');
   const patientWeightInput = controlledWeightInput ?? internalWeightInput;
@@ -182,46 +217,43 @@ export function MedicationQuickSummaryPanel({
   const highlights = medication.quickSummaryHighlights ?? [];
   const plainSummaryText =
     medication.plainLanguageSummary || `${medication.title}: ${medication.mechanismOfAction}`;
-  const plainSummaryParagraphs = useMemo(
-    () => plainSummaryText.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
-    [plainSummaryText]
-  );
 
   const plainLanguageBlock = (
-    <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md md:rounded-2xl md:p-6">
-      <p className="text-xs font-bold uppercase tracking-wider text-amber-200 flex items-center gap-2 mb-3">
+    <div className={`rounded-2xl border-2 ${cardBorder} bg-transparent p-4 sm:p-6`}>
+      <p className="text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-2 mb-3">
         <Info className="h-4 w-4" />
         Em palavras simples
       </p>
-      <div className="space-y-2.5 text-sm font-medium leading-6 text-white/95">
-        {plainSummaryParagraphs.map((paragraph, idx) => (
-          <p key={idx}>
-            <HighlightedText text={paragraph} highlights={highlights} />
-          </p>
-        ))}
-      </div>
+      <StructuredSummaryText
+        text={plainSummaryText}
+        renderInline={(chunk) => <HighlightedText text={chunk} highlights={highlights} subtle />}
+        className="space-y-4 max-w-4xl text-sm leading-7 text-foreground/90 sm:text-base sm:leading-8"
+      />
     </div>
   );
 
   const pillarsBlock = (
     <div>
-      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3.5">
+      <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3.5">
         Pilares Terapêuticos Essenciais
       </h3>
-      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
         {pillars.map((pillar) => {
           const Icon = pillar.icon;
           return (
             <div
               key={pillar.title}
-              className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xs transition hover:border-white/20 hover:bg-white/10 md:rounded-2xl md:p-4"
+              className={`rounded-2xl border-2 ${cardBorder} bg-transparent p-4`}
             >
-              <div className="flex items-center gap-2.5 text-amber-300 mb-2">
+              <div className="flex items-center gap-2.5 text-foreground mb-2">
                 <Icon className="h-4 w-4 shrink-0" />
                 <span className="text-xs font-bold uppercase tracking-wide">{pillar.title}</span>
               </div>
-              <div className="text-xs leading-relaxed text-slate-300">
-                <p>{pillar.desc}</p>
+              <div className="text-xs leading-relaxed text-muted-foreground">
+                <StructuredSummaryText
+                  text={pillar.desc}
+                  renderInline={(chunk) => <HighlightedText text={chunk} highlights={highlights} subtle />}
+                />
               </div>
             </div>
           );
@@ -232,18 +264,18 @@ export function MedicationQuickSummaryPanel({
 
   const quickIndicationsBlock = (
     <div className="space-y-4">
-      <h3 className="text-center text-lg sm:text-xl font-bold text-white">
+      <h3 className="text-lg sm:text-xl font-bold text-foreground">
         Indicações de Uso
       </h3>
 
       {/* Caixa de número para o peso do paciente em kg */}
       <div className="flex flex-col items-center gap-1.5">
-        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-xl border border-white/15 bg-black/30 px-3.5 py-2 backdrop-blur-sm shadow-xs transition focus-within:border-amber-400/50 focus-within:bg-black/40">
+        <div className="inline-flex flex-wrap items-center justify-center gap-2.5 rounded-xl border border-border bg-background px-3.5 py-2 shadow-xs transition focus-within:border-ring focus-within:bg-background">
           <label
             htmlFor={weightInputId}
-            className="flex items-center gap-1.5 text-xs font-semibold text-slate-200 cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-semibold text-foreground cursor-pointer"
           >
-            <Scale className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+            <Scale className="h-3.5 w-3.5 text-foreground shrink-0" />
             <span>Peso do paciente:</span>
           </label>
           <div className="flex items-center gap-1.5">
@@ -258,15 +290,15 @@ export function MedicationQuickSummaryPanel({
               onChange={(event) => setPatientWeightInput(event.target.value)}
               placeholder="Ex: 10"
               aria-label="Peso do paciente em kg"
-              className="w-24 rounded-lg border border-white/20 bg-white/10 px-2.5 py-1 text-sm font-bold text-white placeholder:font-normal placeholder:text-slate-400 outline-none transition focus:border-amber-400 focus:bg-white/15"
+              className="w-24 rounded-lg border border-input bg-muted/40 px-2.5 py-1 text-sm font-bold text-foreground placeholder:font-normal placeholder:text-muted-foreground outline-none transition focus:border-ring focus:bg-background"
             />
-            <span className="text-xs font-bold text-amber-300">kg</span>
+            <span className="text-xs font-bold text-foreground">kg</span>
           </div>
           {trimmedWeight !== '' && (
             <button
               type="button"
               onClick={() => setPatientWeightInput('')}
-              className="inline-flex h-6 w-6 items-center justify-center rounded-md text-slate-400 transition hover:bg-white/10 hover:text-white"
+              className="inline-flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground transition hover:bg-muted/50 hover:text-foreground"
               title="Limpar peso"
               aria-label="Limpar peso"
             >
@@ -275,13 +307,13 @@ export function MedicationQuickSummaryPanel({
           )}
         </div>
         {weightValidationError && (
-          <p className="text-[11px] font-medium text-amber-300" role="alert">
+          <p className="text-[11px] font-medium text-foreground" role="alert">
             {weightValidationError}
           </p>
         )}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         {quickIndications.map((item, idx) => {
           const isDog = item.species === 'dog' || item.species === 'both';
           const isCat = item.species === 'cat' || item.species === 'both';
@@ -296,24 +328,24 @@ export function MedicationQuickSummaryPanel({
           return (
             <div
               key={idx}
-              className={`flex flex-col justify-between rounded-xl border border-white/15 bg-black/25 p-4 backdrop-blur-sm transition hover:border-amber-400/30 hover:bg-black/35 md:rounded-2xl md:p-5 ${
-                isCenteredOddLast ? 'sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc(50%-0.5rem)]' : ''
+              className={`flex min-w-0 flex-col justify-between rounded-2xl border-2 ${cardBorder} bg-transparent p-4 sm:p-5 ${
+                isCenteredOddLast ? 'sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-[calc(50%-0.75rem)]' : ''
               }`.trim()}
             >
               <div className="space-y-3">
                 {/* Top row: Title + Species badges */}
                 <div className="flex flex-wrap items-start justify-between gap-2">
-                  <h4 className="text-sm sm:text-base font-bold text-white">
+                  <h4 className="text-sm sm:text-base font-bold text-foreground">
                     {item.condition}
                   </h4>
                   <div className="flex items-center gap-1.5 shrink-0">
                     {isDog && (
-                      <span className="inline-flex items-center rounded-md bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold text-blue-300 border border-blue-500/30">
+                      <span className="inline-flex items-center rounded-md bg-blue-500/20 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:text-blue-300 border border-blue-500/30">
                         Cães
                       </span>
                     )}
                     {isCat && (
-                      <span className="inline-flex items-center rounded-md bg-purple-500/20 px-2 py-0.5 text-[10px] font-bold text-purple-300 border border-purple-500/30">
+                      <span className="inline-flex items-center rounded-md bg-purple-500/20 px-2 py-0.5 text-[10px] font-bold text-purple-700 dark:text-purple-300 border border-purple-500/30">
                         Gatos
                       </span>
                     )}
@@ -322,7 +354,7 @@ export function MedicationQuickSummaryPanel({
 
                 {/* Contexto clínico completo sem corte */}
                 {item.clinicalContext && (
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                     {item.clinicalContext}
                   </p>
                 )}
@@ -330,33 +362,33 @@ export function MedicationQuickSummaryPanel({
 
               {/* Detalhes de dose, via e duração + cálculo para o paciente ancorados no final do card */}
               <div className="mt-4 space-y-3">
-                <div className="pt-3.5 border-t border-white/10 space-y-2.5 rounded-xl bg-white/5 p-3.5">
+                <div className="border-t border-border pt-4 space-y-3">
                   <div className="flex items-start gap-2.5">
-                    <Syringe className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                    <Syringe className="h-4 w-4 text-foreground shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">
+                      <span className="text-[10px] uppercase font-bold text-muted-foreground block">
                         Dose de Ataque / Manutenção
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-amber-200">
+                      <span className="text-xs sm:text-sm font-bold text-foreground">
                         {item.doseSummary}
                       </span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 pt-1 text-xs border-t border-white/10">
+                  <div className="grid grid-cols-2 gap-3 pt-1 text-xs border-t border-border">
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
+                      <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5">
                         Via
                       </span>
-                      <span className="text-slate-200 font-medium">
+                      <span className="text-foreground font-medium">
                         {item.route}
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-0.5">
+                      <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5">
                         Duração
                       </span>
-                      <span className="text-emerald-300 font-medium">
+                      <span className="text-emerald-700 dark:text-emerald-300 font-medium">
                         {item.duration}
                       </span>
                     </div>
@@ -369,19 +401,19 @@ export function MedicationQuickSummaryPanel({
                     aria-live="polite"
                     className={
                       calculatedDose.status === 'contraindicated'
-                        ? 'rounded-xl border border-rose-400/35 bg-rose-500/15 p-3'
+                        ? 'rounded-xl border border-rose-400/35 bg-transparent p-3'
                         : calculatedDose.status === 'unavailable'
-                        ? 'rounded-xl border border-white/10 bg-white/5 p-3'
-                        : 'rounded-xl border border-emerald-400/30 bg-emerald-500/10 p-3'
+                        ? 'rounded-xl border border-border bg-transparent p-3'
+                        : 'rounded-xl border border-emerald-400/30 bg-transparent p-3'
                     }
                   >
                     <div
                       className={`flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider mb-1.5 ${
                         calculatedDose.status === 'contraindicated'
-                          ? 'text-rose-300'
+                          ? 'text-rose-700 dark:text-rose-300'
                           : calculatedDose.status === 'unavailable'
-                          ? 'text-slate-400'
-                          : 'text-emerald-300'
+                          ? 'text-muted-foreground'
+                          : 'text-emerald-700 dark:text-emerald-300'
                       }`}
                     >
                       <Calculator className="h-3.5 w-3.5 shrink-0" />
@@ -391,7 +423,7 @@ export function MedicationQuickSummaryPanel({
                     </div>
 
                     {calculatedDose.status === 'unavailable' ? (
-                      <p className="text-xs text-slate-300">
+                      <p className="text-xs text-muted-foreground">
                         Sem cálculo automático por peso para esta indicação (consultar posologia acima).
                       </p>
                     ) : (
@@ -400,15 +432,15 @@ export function MedicationQuickSummaryPanel({
                           <div key={dIdx} className="text-xs sm:text-sm leading-snug">
                             <div className="flex flex-wrap items-baseline gap-x-1.5 gap-y-0.5">
                               {doseItem.label && (
-                                <span className="text-xs font-semibold text-slate-200">
+                                <span className="text-xs font-semibold text-foreground">
                                   {doseItem.label}:
                                 </span>
                               )}
                               <span
                                 className={`font-extrabold ${
                                   calculatedDose.status === 'contraindicated'
-                                    ? 'text-rose-200'
-                                    : 'text-emerald-200'
+                                    ? 'text-rose-800 dark:text-rose-200'
+                                    : 'text-emerald-800 dark:text-emerald-200'
                                 }`}
                               >
                                 {doseItem.doseText}
@@ -417,7 +449,7 @@ export function MedicationQuickSummaryPanel({
                             {doseItem.note && (
                               <p
                                 className={`mt-0.5 text-[11px] ${
-                                  doseItem.isWarning ? 'font-medium text-amber-300' : 'text-slate-300/90'
+                                  doseItem.isWarning ? 'font-medium text-foreground' : 'text-muted-foreground'
                                 }`}
                               >
                                 {doseItem.note}
@@ -439,9 +471,9 @@ export function MedicationQuickSummaryPanel({
 
   const warningsBlock =
     warningItems.length > 0 ? (
-      <div className="space-y-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-100 md:rounded-2xl md:p-5">
-        <div className="flex items-center gap-2 text-amber-300">
-          <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+      <div className="space-y-4 rounded-2xl border border-amber-500/50 bg-transparent p-4 text-foreground sm:p-5">
+        <div className="flex items-center gap-2 text-foreground">
+          <AlertTriangle className="h-5 w-5 shrink-0 text-foreground" />
           <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">
             Aviso Clínico Importante
           </span>
@@ -450,11 +482,11 @@ export function MedicationQuickSummaryPanel({
         <div className="space-y-2.5 text-xs sm:text-sm pl-1">
           {warningItems.map((item, idx) => (
             <div key={idx} className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
+              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-foreground">
                 {idx + 1}
               </span>
-              <p className="text-slate-200 leading-relaxed">
-                <strong className="text-white font-semibold">{item.label}</strong> {item.text}
+              <p className="text-foreground leading-relaxed">
+                <strong className="text-foreground font-semibold">{item.label}</strong> {item.text}
               </p>
             </div>
           ))}
@@ -465,12 +497,12 @@ export function MedicationQuickSummaryPanel({
   return (
     <section
       id="resumo-rapido"
-      className="scroll-mt-24 overflow-hidden rounded-[20px] border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl md:rounded-3xl"
+      className="scroll-mt-24 text-foreground"
     >
-      <div className="space-y-5 p-4 md:space-y-8 md:p-8 lg:p-10">
+      <div className="space-y-8 px-1 py-5 sm:px-2 md:space-y-10 md:py-8">
         {/* Cabeçalho do Resumo Rápido */}
-        <div className="border-b border-white/10 pb-4">
-          <h2 className="text-lg font-black tracking-tight text-white md:text-2xl">
+        <div className="border-b border-border pb-4">
+          <h2 className="text-lg font-black tracking-tight text-foreground md:text-2xl">
             Resumo Clínico Executivo
           </h2>
         </div>

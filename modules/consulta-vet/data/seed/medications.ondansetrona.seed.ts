@@ -305,7 +305,7 @@ export const ondansetronaMedicationRecord: MedicationRecord = {
         'Protocolo de excelência hospitalar validado por Sotelo et al. (2022) em cães doentes (Cmax 214 ng/mL, t½ 1,9 h, taxa de melhora clínica de 83,3%). A solução injetável de 2 mg/mL (Nausedron® / genéricos) é dosada a exatamente 0,25 mL/kg. Administrar estritamente de forma lenta em 2 a 5 minutos (~0,1 a 0,25 mg/kg/min). Em casos refratários sem contraindicação arrítmica, a dose pode ser titulada até 1,0 mg/kg IV q8h.',
       calculatorEnabled: true,
       presentationId: 'pres-nausedron-inj-2ml',
-      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo PK/PD em cães hospitalizados (Sotelo et al. 2022); Plumb’s 10ª ed.',
+      evidenceLevel: 'Nível 1b — Ensaio clínico prospectivo PK/PD em cães hospitalizados (Sotelo et al., 2022)',
     },
     {
       id: 'dose-ondan-dog-sc-nausea',
@@ -339,7 +339,7 @@ export const ondansetronaMedicationRecord: MedicationRecord = {
         'Validado no ensaio clínico cruzado cego de Kenward et al. (2017) em cães desafiados com cisplatina (18 mg/m²): eliminação de 100% dos vômitos e redução de 90% da área sob a curva de náusea comportamental (vs apenas 25% com maropitant naquele modelo). Pode ser associada ao maropitant para cobertura emética bifásica (5-HT3 nas primeiras 12h + NK1 para fase tardia).',
       calculatorEnabled: true,
       presentationId: 'pres-nausedron-inj-2ml',
-      evidenceLevel: 'Nível 1b — Ensaio clínico randomizado cruzado e cego (Kenward et al. 2017); Plumb’s 10ª ed.',
+      evidenceLevel: 'Nível 1b — Ensaio clínico randomizado cruzado e cego (Kenward et al., 2017)',
     },
     {
       id: 'dose-ondan-dog-parvovirus',
@@ -371,7 +371,7 @@ export const ondansetronaMedicationRecord: MedicationRecord = {
       notes:
         'Ensaio clínico duplo-cego randomizado e cruzado de Henze et al. (2022) em 14 cães com síndrome vestibular: demonstrou resolução clínica rápida da náusea em cerca de 1 hora pós-infusão de 0,5 mg/kg IV. Nota: não confundir síndrome vestibular patológica com enjoo cinemático simples (motion sickness de carro), no qual a ondansetrona não é eficaz.',
       calculatorEnabled: false,
-      evidenceLevel: 'Nível 1b — Ensaio clínico randomizado duplo-cego cruzado (Henze et al. 2022); Plumb’s 10ª ed.',
+      evidenceLevel: 'Nível 1b — Ensaio clínico randomizado duplo-cego cruzado (Henze et al., 2022)',
     },
     {
       id: 'dose-ondan-dog-po-ambulatorial',
@@ -452,9 +452,9 @@ export const ondansetronaMedicationRecord: MedicationRecord = {
       frequency: 'infusão contínua em bomba após dose de ataque lenta de 0,5 mg/kg IV',
       duration: 'Até 6 horas consecutivas sob monitoramento eletrocardiográfico',
       notes:
-        'Protocolo de formulário constante no BSAVA Small Animal Formulary (10ª ed., p. 293): bolus de ataque de 0,5 mg/kg IV em 5 minutos seguido de CRI de 0,5 mg/kg/h durante 6 horas. ATENÇÃO: dose cumulativa substancial (3,5 mg/kg total em 6h). Reservar estritamente para casos refratários em UTI com monitoramento contínuo de ritmo cardíaco (risco de prolongamento de QTc).',
+        'Protocolo intensivo de resgate antiemético: bolus de ataque de 0,5 mg/kg IV em 5 minutos seguido de CRI de 0,5 mg/kg/h durante 6 horas. ATENÇÃO: dose cumulativa substancial (3,5 mg/kg total em 6h). Reservar estritamente para casos refratários em UTI com monitoramento contínuo de ritmo cardíaco (risco de prolongamento de QTc).',
       calculatorEnabled: false,
-      evidenceLevel: 'Nível 2b — Diretrizes de Formulário de Especialistas (BSAVA 10ª ed., p. 293)',
+      evidenceLevel: 'Nível 2b — Protocolo de Resgate Hospitalar em UTI',
     },
   ],
 

@@ -125,7 +125,7 @@ export const clorambucilMedicationRecord: MedicationRecord = {
     {
       condition: 'Leucemia Linfocítica Crônica (LLC) e Linfoma Indolente Canino',
       species: 'dog',
-      doseSummary: '2 a 6 mg/m² VO q24h inicialmente até remissão; reduzir para manutenção (BSAVA 10ª ed.)',
+      doseSummary: '2 a 6 mg/m² VO q24h inicialmente até remissão; reduzir para manutenção',
       route: 'Oral (VO)',
       duration: 'Ajustado conforme contagem de linfócitos circulantes e infiltração esplênica/medular',
       clinicalContext: 'Cães idosos com linfocitose clonal madura persistente e acometimento medular.',
@@ -176,7 +176,7 @@ export const clorambucilMedicationRecord: MedicationRecord = {
     'Corticosteroides Sistêmicos (Prednisolona, Dexametasona): Interação sinérgica e intencional no tratamento do linfoma felino e doenças imunomediadas. Embora não haja competição enzimática metabólica desfavorável, a imunossupressão aditiva exige vigilância contínua contra infecções oportunistas.',
     'Radioterapia Externa em Campos Hematopoiéticos: A irradiação simultânea ou recente de grandes ossos planos e vértebras acentua a depleção de células progenitoras medulares, precipitando aplasia grave.',
     'Vacinas Vivas Modificadas: Contraindicação absoluta durante o tratamento e por pelo menos 3 meses após a descontinuação, devido ao risco de replicação vacinal descontrolada e falência de resposta imune protetora.',
-    'Alimentos e Refeições: Em humanos, a ingestão com alimentos reduz a Cmax e a AUC do clorambucil. Bula humana e VIN preconizam administração em jejum (1 hora antes ou 3 horas após refeição); o BSAVA 10ª ed. sugere oferta com alimento para mitigar náusea. Recomenda-se manter consistência na rotina alimentar e não alternar diariamente.',
+    'Alimentos e Refeições: Em humanos, a ingestão com alimentos reduz a Cmax e a AUC do clorambucil, razão pela qual bulas recomendam administração em jejum (1 hora antes ou 3 horas após refeição), enquanto alguns protocolos clínicos admitem oferta com pequena porção de alimento para mitigar náusea. Recomenda-se manter consistência na rotina alimentar e não alternar diariamente.',
   ],
 
   pharmacokineticsData: {

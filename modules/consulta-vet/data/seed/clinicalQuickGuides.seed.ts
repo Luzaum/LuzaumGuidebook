@@ -15,7 +15,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
   subtitle:
     'Ortopedia — joelho (cães e gatos): analogia clínica, tibial thrust, gaveta cranial, compressão tibial e armadilhas do exame.',
   summary:
-    'Do “cinto de segurança” do LCC ao tibial thrust: por que o joelho instável “escorrega”, como posicionar as mãos (BSAVA), interpretar por ângulo, usar gaveta e compressão em conjunto e quando a sedação muda o exame.',
+    'Do “cinto de segurança” do LCC ao tibial thrust: por que o joelho instável “escorrega”, como posicionar as mãos, interpretar por ângulo, usar gaveta e compressão em conjunto e quando a sedação muda o exame.',
   category: 'ortopedia',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -30,7 +30,6 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     'tibial thrust',
     'compressão tibial',
     'tibial compression',
-    'bsava',
     'fabella',
     'crista tibial',
     'menisco',
@@ -48,7 +47,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
   quickBullets: [
     'Pense no LCC como “cinto” que impede a tíbia de ir cranialmente; sem ele, testes mostram folga ou tibial thrust.',
     'Tibial thrust: tendência natural da tíbia a deslizar cranialmente no apoio (platô inclinado) — o exame tenta revelar isso.',
-    'Gaveta cranial: teste mais manual; compressão tibial: imita força funcional do apoio. O BSAVA recomenda usar os dois.',
+    'Gaveta cranial: teste mais manual; compressão tibial: imita força funcional do apoio. Recomenda-se usar os dois em conjunto.',
     'Teste em extensão e em 30–60° de flexão: bandas do LCC mudam de tensão; lesões parciais podem aparecer só num ângulo.',
     'Dor, tensão muscular, menisco/fibrose podem mascarar; sedação ou anestesia repetem o exame com outra qualidade.',
   ],
@@ -80,9 +79,9 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'info',
-      title: 'BSAVA (resumo do texto de estudo)',
+      title: 'Associação dos testes e limitações no paciente acordado',
       text:
-        'O BSAVA destaca que esses dois testes são usados em conjunto para diagnosticar ruptura parcial ou completa do LCCr, e que dor, tensão muscular ou instabilidade sutil podem dificultar o exame no animal acordado.',
+        'A gaveta cranial e a compressão tibial são usadas em conjunto para diagnosticar ruptura parcial ou completa do LCCr; dor, tensão muscular ou instabilidade sutil podem mascarar o achado no animal acordado.',
     },
 
     { type: 'heading', level: 2, text: '1. Antes de pôr a mão no joelho: o que observar' },
@@ -128,7 +127,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'No teste de gaveta cranial, o BSAVA orienta: uma mão no fêmur distal — polegar sobre a fabella lateral e dedo indicador na patela (mão que “trava” o fêmur); a outra mão na tíbia proximal — polegar sobre a cabeça da fíbula e indicador na crista tibial (mão que movimenta a tíbia).',
+        'No teste de gaveta cranial, recomenda-se posicionar uma mão no fêmur distal — polegar sobre a fabella lateral e dedo indicador na patela (mão que “trava” o fêmur); a outra mão na tíbia proximal — polegar sobre a cabeça da fíbula e indicador na crista tibial (mão que movimenta a tíbia).',
     },
 
     { type: 'heading', level: 2, text: '3. Teste de gaveta cranial: como fazer' },
@@ -141,7 +140,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'O BSAVA indica que pode ser feito no animal consciente; se houver dor, tensão muscular, temperamento difícil ou ruptura parcial, sedação ou anestesia geral podem ser necessárias. Acordado: frequentemente em estação sobre três membros. Sedado: decúbito lateral com o membro afetado para cima.',
+        'O teste pode ser realizado com o animal consciente; se houver dor, tensão muscular, temperamento difícil ou ruptura parcial, sedação ou anestesia geral podem ser necessárias. Acordado: frequentemente em estação sobre três membros. Sedado: decúbito lateral com o membro afetado para cima.',
     },
     { type: 'heading', level: 3, text: 'Passo a passo (mãos e movimento)' },
     {
@@ -154,7 +153,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     },
     {
       type: 'steps',
-      title: 'Movimento (protocolo BSAVA citado no material de estudo)',
+      title: 'Movimento articular em dois ângulos',
       items: [
         'Aplicar força cranial na tíbia primeiro com o joelho em quase total extensão.',
         'Repetir com o joelho em 30 a 60 graus de flexão.',
@@ -164,7 +163,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '4. Como interpretar a gaveta cranial' },
     {
       type: 'table',
-      caption: 'Resumo alinhado ao BSAVA (estudo — confira na sua edição)',
+      caption: 'Interpretação conforme amplitude do movimento e ângulo do joelho',
       headers: ['Situação', 'O que se espera na gaveta'],
       rows: [
         [
@@ -205,7 +204,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     },
     {
       type: 'steps',
-      title: 'Passo a passo (BSAVA)',
+      title: 'Passo a passo da manobra',
       items: [
         'Segurar o fêmur distal fixo: polegar sobre a fabella lateral e indicador levemente na crista tibial.',
         'Com a outra mão, segurar a região metatarsiana.',
@@ -216,7 +215,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Ao flexionar o tarso, a força transmitida pelo gastrocnêmio e estruturas caudais faz a tíbia tender a deslizar cranialmente. Se o LCCr estiver rompido, percebe-se a crista tibial a ir para frente — o tibial thrust. O BSAVA descreve resultado positivo como deslocamento cranial da crista tibial relativo ao fêmur, sugestivo de lesão do LCCr, e lembra que nem todos os casos terão instabilidade detectável neste teste.',
+        'Ao flexionar o tarso, a força transmitida pelo gastrocnêmio e estruturas caudais faz a tíbia tender a deslizar cranialmente. Se o LCCr estiver rompido, percebe-se a crista tibial a ir para frente — o tibial thrust. Um resultado positivo consiste no deslocamento cranial da crista tibial relativo ao fêmur, sugestivo de lesão do LCCr, embora nem todos os casos apresentem instabilidade detectável nesta manobra isolada.',
     },
 
     { type: 'heading', level: 2, text: '6. O que cada teste “prova” na biomecânica' },
@@ -242,7 +241,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
       variant: 'tip',
       title: 'Associação',
       text:
-        'Os dois complementam-se; o BSAVA recomenda usá-los em conjunto.',
+        'Os dois testes complementam-se e devem ser realizados em conjunto na avaliação do joelho.',
     },
 
     { type: 'heading', level: 2, text: '7. Quando o teste pode enganar' },
@@ -278,7 +277,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
       variant: 'warning',
       title: 'Falso positivo',
       text:
-        'Animal jovem pode ter gaveta curtinha com ponto final firme (considerada normal no BSAVA). Examinador inexperiente pode confundir movimento de pele, partes moles ou da perna inteira com instabilidade articular real.',
+        'Animal jovem pode apresentar gaveta curta com ponto final firme (achado considerado normal nessa faixa etária). Examinador inexperiente pode confundir movimento de pele, partes moles ou da perna inteira com instabilidade articular real.',
     },
 
     { type: 'heading', level: 2, text: '8. Sequência prática completa (ordem sugerida)' },
@@ -306,7 +305,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'O BSAVA refere que avaliação sob sedação ou anestesia pode revelar instabilidade mascarada por dor, tensão muscular ou sutileza da lesão.',
+        'A avaliação sob sedação ou anestesia frequentemente revela instabilidade mascarada por dor, tensão muscular ou sutileza da lesão.',
     },
 
     { type: 'heading', level: 2, text: '9. Achados que aumentam a suspeita de LCCr' },
@@ -322,14 +321,14 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Obras como Breed Predispositions to Disease in Dogs and Cats descrevem a doença do LCCr como causa comum de claudicação aguda importante e citam diagnóstico com demonstração da cranial drawer motion, além de radiografia e avaliação cirúrgica por artrotomia ou artroscopia; há predisposição racial referida (ex.: Rottweiler, Bulldog Inglês). Confirme na fonte.',
+        'A doença do LCCr é causa frequente de claudicação aguda importante, cujo diagnóstico envolve a demonstração da gaveta cranial (cranial drawer motion), associada a radiografias e, quando indicado, avaliação por artrotomia ou artroscopia; determinadas raças apresentam predisposição reconhecida (ex.: Rottweiler, Bulldog Inglês).',
     },
 
     { type: 'heading', level: 2, text: '10. O exame ortopédico sozinho “fecha” diagnóstico?' },
     {
       type: 'paragraph',
       text:
-        'Muitas vezes, na prática, quando há dor compatível, efusão e gaveta cranial e/ou tibial thrust positivos. Tecnicamente, o diagnóstico completo costuma integrar exame físico ortopédico, radiografia e eventualmente artrotomia ou artroscopia — em linha com referências como Gough, Thomas e O’Neill (cranial drawer, radiografia, artroscopia/artrotomia).',
+        'Muitas vezes, na prática, quando há dor compatível, efusão articular e gaveta cranial e/ou tibial thrust positivos. Tecnicamente, o diagnóstico completo integra exame físico ortopédico, radiografia e, quando indicado, artrotomia ou artroscopia.',
     },
 
     { type: 'heading', level: 2, text: '11. Pérolas clínicas' },
@@ -379,7 +378,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
         [
           'Estabilidade patelar',
           'Luxação medial/lateral',
-          'BSAVA: avaliar em extensão total e leve flexão.',
+          'Avaliar sempre em extensão total e leve flexão.',
         ],
       ],
     },
@@ -423,6 +422,14 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
       type: 'youtubeEmbed',
       videoId: 'Txvir1HG_u4',
       title: 'Teste de compressão tibial (tibial compression / thrust)',
+    },
+    { type: 'heading', level: 2, text: 'Referências bibliográficas' },
+    {
+      type: 'steps',
+      items: [
+        'Bexfield N, Riggs J, eds. BSAVA Guide to Procedures in Small Animal Practice. 3rd ed. BSAVA; 2024.',
+        'Gough A, Thomas A, O’Neill D. Breed Predispositions to Disease in Dogs and Cats. 3rd ed. Wiley-Blackwell; 2018.',
+      ],
     },
   ],
   isPublished: true,
@@ -644,31 +651,6 @@ const guiaAbdominocentese: ClinicalQuickGuide = {
       text: 'A abdominocentese (também referida como paracentese abdominal ou celiocentese) é a remoção percutânea de líquido da cavidade peritoneal. Na clínica de pequenos animais, constitui um procedimento majoritariamente diagnóstico, embora possa ter caráter terapêutico no alívio de ascites volumosas que causem restrição respiratória, dor ou aumento pressórico abdominal deletério. O objetivo primário é obter e analisar a efusão para categorizá-la, auxiliando no direcionamento médico, emergencial ou cirúrgico imediato.'
     },
     
-    { type: 'heading', level: 2, text: 'Onde Consultar Ilustrações nos Livros de Referência' },
-    {
-      type: 'paragraph',
-      text: 'Para um estudo aprofundado dos esquemas anatômicos e fotografias do procedimento, consulte as seguintes obras:'
-    },
-    {
-      type: 'table',
-      caption: 'Literatura de referência consultada',
-      headers: ['Livro de Referência', 'Escopo Clínico'],
-      rows: [
-        [
-          'BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)',
-          'Abdominocentese (abordagem de ponto único e abordagem em quatro quadrantes).'
-        ],
-        [
-          'Veterinary Emergency and Critical Care Procedures (3ª ed., 2025) — Hackett & Mazzaferro',
-          'Abdominocentese e Lavagem Peritoneal Diagnóstica (LPD), inserção de cateter fenestrado e técnica over-the-wire.'
-        ],
-        [
-          'BSAVA Manual of Canine and Feline Emergency and Critical Care (3ª ed.)',
-          'Abdome Agudo / Peritonite (citologia de efusão séptica com bactérias intracelulares e esquema de LPD).'
-        ]
-      ]
-    },
-
     { type: 'heading', level: 2, text: '1. Quando fazer? (Indicações)' },
     {
       type: 'paragraph',
@@ -903,6 +885,26 @@ const guiaAbdominocentese: ClinicalQuickGuide = {
         'Disseminação bacteriana decorrente de punção acidental de abscessos intra-abdominais ou piometra.',
         'Resultados falsos-negativos que retardam o diagnóstico.',
         'Nas técnicas de LPD: desconforto álgico à infusão, infusão subcutânea de fluidos, hematomas na parede ou diluição excessiva da amostra original.'
+      ]
+    },
+    { type: 'heading', level: 2, text: '11. Referências bibliográficas' },
+    {
+      type: 'table',
+      caption: 'Literatura de referência consultada',
+      headers: ['Obra de Referência', 'Escopo Clínico'],
+      rows: [
+        [
+          'BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)',
+          'Abdominocentese (abordagem de ponto único e abordagem em quatro quadrantes).'
+        ],
+        [
+          'Veterinary Emergency and Critical Care Procedures (3ª ed., 2025) — Hackett & Mazzaferro',
+          'Abdominocentese e Lavagem Peritoneal Diagnóstica (LPD), inserção de cateter fenestrado e técnica over-the-wire.'
+        ],
+        [
+          'BSAVA Manual of Canine and Feline Emergency and Critical Care (3ª ed.)',
+          'Abdome Agudo / Peritonite (citologia de efusão séptica com bactérias intracelulares e esquema de LPD).'
+        ]
       ]
     }
   ],
@@ -1244,7 +1246,6 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     'puncao arterial',
     'heparina',
     'erros pre analiticos',
-    'bsava',
     'cateter arterial',
     'hipoxemia',
     'ventilacao',
@@ -1306,7 +1307,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '2. Resumo Rápido — Cão vs. Gato' },
     {
       type: 'table',
-      caption: 'Guia comparativo rápido de punção arterial entre espécies (BSAVA Procedures 2024)',
+      caption: 'Guia comparativo rápido de punção arterial entre cães e gatos',
       headers: ['Item Clínico', 'Cão 🐶', 'Gato 🐱'],
       rows: [
         ['Primeira escolha prática', 'Artéria dorsal pedal / metatarsal dorsal', 'Artéria femoral'],
@@ -1350,7 +1351,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '4. Sedar ou Não Sedar? & Paciente Dispneico' },
     {
       type: 'paragraph',
-      text: 'Em princípio: NÃO sedar. O BSAVA Guide to Procedures 2024 recomenda a coleta em paciente consciente e orienta evitar sedativos porque a grande maioria dos fármacos (opioides, agonistas alfa-2, fenotiazínicos e benzodiazepínicos) deprime a ventilação alveolar, reduz a frequência respiratória, eleva a PaCO₂ e reduz a PaO₂, falseando a avaliação da função ventilatória espontânea.'
+      text: 'Em princípio: NÃO sedar. Recomenda-se a coleta em paciente consciente e deve-se evitar sedativos, pois a grande maioria dos fármacos (opioides, agonistas alfa-2, fenotiazínicos e benzodiazepínicos) deprime a ventilação alveolar, reduz a frequência respiratória, eleva a PaCO₂ e reduz a PaO₂, falseando a avaliação da função ventilatória espontânea.'
     },
     {
       type: 'callout',
@@ -1362,13 +1363,13 @@ const guiaColetaArterial: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'warning',
       title: 'Conduta no Paciente Gravemente Dispneico (Ortopneico)',
-      text: 'Se o animal apresentar dispneia moderada a grave ou ortopneia (cabeça estendida, cotovelos abduzidos), NÃO o force a permanecer em decúbito lateral. Como destaca Vaden et al., o decúbito lateral comprime a caixa torácica e limita o diafragma, podendo induzir parada cardiorrespiratória iatrogênica. Nesses pacientes, colha com o animal em estação (em pé) ou decúbito esternal, mantendo oxigênio contínuo. Regra clínica: se a contenção agravar a angústia respiratória, INTERROMPA o procedimento imediatamente.'
+      text: 'Se o animal apresentar dispneia moderada a grave ou ortopneia (cabeça estendida, cotovelos abduzidos), NÃO o force a permanecer em decúbito lateral, pois essa posição comprime a caixa torácica e limita o diafragma, podendo induzir parada cardiorrespiratória iatrogênica. Nesses pacientes, colha com o animal em estação (em pé) ou decúbito esternal, mantendo oxigênio contínuo. Regra clínica: se a contenção agravar a angústia respiratória, INTERROMPA o procedimento imediatamente.'
     },
 
     { type: 'heading', level: 2, text: '5. CÃO — Coleta pela Artéria Dorsal Pedal (1ª Escolha)' },
     {
       type: 'paragraph',
-      text: 'A artéria dorsal pedal (continuação direta da artéria tibial cranial no dorso do pé) é o local mais recomendado no cão (BSAVA 2024). Trata-se de uma artéria periférica, superficial, que repousa diretamente sobre a base óssea tarsometatarsal e distante de grandes veias ou troncos nervosos vulneráveis. Sua maior vantagem é a segurança hemostática: a compressão pós-punção contra os ossos metatársicos controla o sangramento com grande eficácia.'
+      text: 'A artéria dorsal pedal (continuação direta da artéria tibial cranial no dorso do pé) é o sítio de primeira escolha no cão. Trata-se de uma artéria periférica, superficial, que repousa diretamente sobre a base óssea tarsometatarsal e distante de grandes veias ou troncos nervosos vulneráveis. Sua maior vantagem é a segurança hemostática: a compressão pós-punção contra os ossos metatársicos controla o sangramento com grande eficácia.'
     },
     {
       type: 'figure',
@@ -1402,10 +1403,10 @@ const guiaColetaArterial: ClinicalQuickGuide = {
         'Posicione o paciente em decúbito lateral: O membro a ser puncionado deve ficar apoiado para baixo, rente à mesa, proporcionando estabilidade mecânica. O auxiliar mantém o membro contralateral superior afastado dorsalmente.',
         'Estenda suavemente o membro: Promova leve extensão tarsometatarsal sem tracionar excessivamente o jarrete. Uma leve rotação interna ou externa do pé pode projetar o pulso com maior nitidez.',
         'Tricotomia mínima: Raspe uma pequena janela de pelo (cerca de 2x2 cm) diretamente sobre a área pulsátil.',
-        'Antissepsia delicada (sem fricção): O BSAVA recomenda limpar suavemente com compressa de álcool 70% ou clorexidina. ATENÇÃO: Nunca esfregue vigorosamente a pele, pois a fricção mecânica induz vasoespasmo arterial reflexo e desaparecimento do pulso.',
+        'Antissepsia delicada (sem fricção): Limpe suavemente com compressa de álcool 70% ou clorexidina. ATENÇÃO: Nunca esfregue vigorosamente a pele, pois a fricção mecânica induz vasoespasmo arterial reflexo e desaparecimento do pulso.',
         'Estabilize a artéria: Apoie as pontas de dois dedos da mão não dominante proximal e distalmente ao ponto selecionado, formando uma "mira tátil" longitudinal que delimita o vaso sem ocluí-lo.',
         'Posicione a agulha: Conecte a agulha (22G em cães médios/grandes; 25G em cães pequenos) à seringa de gasometria com o bisel voltado para cima, em ângulo de 30° a 60° com a pele, alinhada com o trajeto vascular.',
-        'Inserção firme e deliberada: Atravesse a pele e a túnica adventícia da artéria com um movimento único, direto e controlado (BSAVA 2024).',
+        'Inserção firme e deliberada: Atravesse a pele e a túnica adventícia da artéria com um movimento único, direto e controlado.',
         'Aproveite a pressão arterial (autoenchimento): Ao canular o lúmen, surge um flash pulsátil e o sangue arterial preenche espontaneamente a seringa pela própria pressão intravascular sistêmica. Não tracione o êmbolo vigorosamente.',
         'Jamais "pescar" a artéria: Se não houver retorno de sangue, não movimente a agulha lateralmente em alavanca. Movimentos laterais causam laceração da parede vascular, hematomas dolorosos, vasoespasmo imediato e trombose. Recue suavemente a agulha até o plano subcutâneo ou retire-a e repalpe o pulso.',
         'Volume mínimo suficiente: Colete apenas o volume exigido pelo analisador (geralmente entre 0,4 e 1,0 mL).',
@@ -1432,7 +1433,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'warning',
       title: 'Risco de Contaminação Venosa na Artéria Femoral',
-      text: 'A artéria femoral localiza-se na face medial da coxa, mas corre contígua e ligeiramente cranial à veia femoral. Se a punção desviar caudalmente ou se a agulha transfixar a artéria e penetrar a veia, o resultado será uma amostra venosa ou mista (Nelson & Couto). Amostras mistas exibem PO₂ falsamente baixa e PCO₂ falsamente alta, induzindo erros diagnósticos graves.'
+      text: 'A artéria femoral localiza-se na face medial da coxa, mas corre contígua e ligeiramente cranial à veia femoral. Se a punção desviar caudalmente ou se a agulha transfixar a artéria e penetrar a veia, o resultado será uma amostra venosa ou mista. Amostras mistas exibem PO₂ falsamente baixa e PCO₂ falsamente alta, induzindo erros diagnósticos graves.'
     },
     {
       type: 'steps',
@@ -1448,7 +1449,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '7. GATO — Coleta Arterial & Manejo Cat Friendly' },
     {
       type: 'paragraph',
-      text: 'No paciente felino, o manejo clínico e a contenção exigem cuidado redobrado. Em gatos e cães muito pequenos, a ARTÉRIA FEMORAL é a PRIMEIRA ESCOLHA prática recomendada na literatura (Johnson 2020; BSAVA 2024), pois a artéria dorsal pedal no gato é extremamente delgada e sofre vasoespasmo com grande facilidade.'
+      text: 'No paciente felino, o manejo clínico e a contenção exigem cuidado redobrado. Em gatos e cães muito pequenos, a ARTÉRIA FEMORAL é a PRIMEIRA ESCOLHA prática recomendada na literatura (Johnson, 2020), pois a artéria dorsal pedal no gato é extremamente delgada e sofre vasoespasmo com grande facilidade.'
     },
     {
       type: 'callout',
@@ -1537,7 +1538,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
         '3. Avance o êmbolo suavemente com a ponta protegida por gaze e expulse TODO o ar e bolhas visíveis imediatamente.',
         '4. Vede o bico da seringa com a tampa plástica hermética / borracha vedante própria (evitando qualquer troca gasosa).',
         '5. Homogeneíze a amostra suavemente: role a seringa entre as palmas das mãos por 10 a 15 segundos e inverta o eixo 5 vezes para dissolver a heparina sem produzir hemólise mecânica.',
-        '6. Processe no analisador de hemogasometria imediatamente (alvo ideal: ≤ 5 minutos, BSAVA 2024).'
+        '6. Processe no analisador de hemogasometria imediatamente (alvo ideal: ≤ 5 minutos).'
       ]
     },
     {
@@ -1629,7 +1630,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'warning',
       title: 'Contraindicações Clínicas à Punção Arterial',
-      text: 'O BSAVA 2024 contraindica a punção arterial nos seguintes cenários: 1) Coagulopatias graves ou trombocitopenia severa ativa (risco de hemorragia incontrolável e hematoma compressivo); 2) Dermatite bacteriana, piodermite ou infecção tecidual no sítio de punção; 3) Pele desvitalizada, queimada ou com contusão profunda adjacente; 4) Regiões com alto risco de contaminação por fezes ou urina (especialmente na região femoral de pacientes incontinentes ou com diarreia profusa). Repense a punção periférica se o vaso já tiver sofrido múltiplas tentativas frustradas recentes.'
+      text: 'A punção arterial é contraindicada nos seguintes cenários: 1) Coagulopatias graves ou trombocitopenia severa ativa (risco de hemorragia incontrolável e hematoma compressivo); 2) Dermatite bacteriana, piodermite ou infecção tecidual no sítio de punção; 3) Pele desvitalizada, queimada ou com contusão profunda adjacente; 4) Regiões com alto risco de contaminação por fezes ou urina (especialmente na região femoral de pacientes incontinentes ou com diarreia profusa). Repense a punção periférica se o vaso já tiver sofrido múltiplas tentativas frustradas recentes.'
     },
 
     { type: 'heading', level: 2, text: '12. Cuidados e Monitoramento Pós-Procedimento' },
@@ -1649,7 +1650,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '13. Valores de Referência & Regras de Interpretação' },
     {
       type: 'table',
-      caption: 'Valores de referência arteriais em ar ambiente (cães e gatos — BSAVA Guide to Procedures 2024)',
+      caption: 'Valores de referência arteriais em ar ambiente (cães e gatos)',
       headers: ['Parâmetro', 'Cão (Ar Ambiente)', 'Gato (Ar Ambiente)', 'Significado Fisiológico'],
       rows: [
         ['pH', '7,35 a 7,46', '7,31 a 7,46', 'Status do equilíbrio hidrogeniônico sistêmico'],
@@ -1779,7 +1780,6 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     'rosenthal',
     'illinois',
     'jamshidi',
-    'bsava',
     'vetius'
   ],
   youtubeVideoId: null,
@@ -1829,8 +1829,8 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'info',
-      title: 'Complementaridade Diagnóstica (BSAVA 2024)',
-      text: 'O BSAVA e o Textbook of Small Animal Emergency Medicine recomendam considerar AMO e BMO como exames complementares. A biópsia core é especialmente indispensável quando o aspirado resulta em amostra hipocelular, permitindo diferenciar se a escassez de células decorre de aplasia/hipoplasia real ou de falha técnica na sucção.'
+      title: 'Complementaridade Diagnóstica (AMO + BMO)',
+      text: 'Recomenda-se considerar AMO e BMO como exames complementares. A biópsia core é especialmente indispensável quando o aspirado resulta em amostra hipocelular, permitindo diferenciar se a escassez de células decorre de aplasia/hipoplasia real ou de falha técnica na sucção.'
     },
 
     { type: 'heading', level: 2, text: '2. Fisiologia & Por que não podemos furar qualquer parte de qualquer osso?' },
@@ -1845,7 +1845,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'warning',
-      title: 'Atenção Crítica ao Ponto de Punção no Adulto (Vaden et al.)',
+      title: 'Atenção Crítica ao Ponto de Punção no Adulto',
       text: 'No cão e gato adultos, a hematopoese ativa concentra-se nas extremidades proximais de ossos longos (epífises e metáfises proximais de úmero e fêmur) e em ossos predominantemente planos (asa do ílio e esterno). Furar o centro diafisário de um osso longo de um animal adulto aspira quase que exclusivamente gordura amarela e sangue venoso! A escolha precisa do acidente anatômico define o sucesso do mielograma.'
     },
 
@@ -1856,7 +1856,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     },
     {
       type: 'steps',
-      title: 'Principais Indicações Clínicas (BSAVA 2024; eClinPath Cornell)',
+      title: 'Principais Indicações Clínicas (eClinPath Cornell)',
       items: [
         'Pancitopenia inexplicada: queda simultânea de hemácias, leucócitos e plaquetas — o exemplo clássico de falência multilinhagem (suspeita de aplasia, mielodisplasia, mielofibrose, mieloftise, infecção crônica ou toxicidade).',
         'Anemia não regenerativa persistente: após exclusão consistente de causas extramedulares como doença renal crônica (deficiência de eritropoetina), anemia de doença inflamatória crônica severa, endocrinopatias (hipotireoidismo, hipoadrenocorticismo) ou carências nutricionais.',
@@ -1880,19 +1880,19 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'tip',
       title: 'Trombocitopenia Imunomediada (PTI) Típica no Cão',
-      text: 'Se um cão apresenta trombocitopenia isolada grave (ex.: 8.000 plaquetas/µL), mas mantém série vermelha e leucócitos normais e quadro clínico clássico de destruição periférica, a investigação inicial deve focar em causas secundárias (hemoparasitoses, fármacos) e início de terapia imunossupressora. Nelson & Couto recomendam a medula principalmente se houver ausência de resposta terapêutica, surgimento de outras citopenias ou suspeita de mieloftise. Mas se o paciente tiver trombocitopenia + anemia não regenerativa + neutropenia, a avaliação medular passa a ser mandatória!'
+      text: 'Se um cão apresenta trombocitopenia isolada grave (ex.: 8.000 plaquetas/µL), mas mantém série vermelha e leucócitos normais e quadro clínico clássico de destruição periférica, a investigação inicial deve focar em causas secundárias (hemoparasitoses, fármacos) e início de terapia imunossupressora. A avaliação medular é indicada principalmente se houver ausência de resposta terapêutica, surgimento de outras citopenias ou suspeita de mieloftise. Mas se o paciente tiver trombocitopenia + anemia não regenerativa + neutropenia, a avaliação medular passa a ser mandatória!'
     },
     {
       type: 'callout',
       variant: 'warning',
       title: 'Atenção Especial no Gato: Pseudotrombocitopenia!',
-      text: 'Antes de cogitar qualquer punção medular em um felino com trombocitopenia laboratorial, CONFIRME o esfregaço! Gatos agregam plaquetas com facilidade extrema no tubo de EDTA. A pseudotrombocitopenia por agregados plaquetários na cauda da lâmina é uma das armadilhas pré-analíticas mais frequentes na clínica felina. Além disso, a investigação de retrovírus (FeLV/FIV) deve sempre preceder o procedimento invasivo (Nelson & Couto).'
+      text: 'Antes de cogitar qualquer punção medular em um felino com trombocitopenia laboratorial, CONFIRME o esfregaço! Gatos agregam plaquetas com facilidade extrema no tubo de EDTA. A pseudotrombocitopenia por agregados plaquetários na cauda da lâmina é uma das armadilhas pré-analíticas mais frequentes na clínica felina. Além disso, a investigação de retrovírus (FeLV/FIV) deve sempre preceder o procedimento invasivo.'
     },
 
     { type: 'heading', level: 2, text: '5. Trombocitopenia Grave Contraindica a Punção?' },
     {
       type: 'paragraph',
-      text: 'Não necessariamente! Uma contagem de plaquetas severamente reduzida, isoladamente, NÃO equivale a uma coagulopatia grave (Nelson & Couto; BSAVA 2024).'
+      text: 'Não necessariamente! Uma contagem de plaquetas severamente reduzida, isoladamente, NÃO equivale automaticamente a uma coagulopatia grave.'
     },
     {
       type: 'callout',
@@ -1916,7 +1916,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     { type: 'heading', level: 2, text: '7. Escolha do Local Anatômico 🦴' },
     {
       type: 'paragraph',
-      text: 'A escolha do sítio ideal baseia-se na espécie, conformação corporal, escore de condição corporal e preferência técnica do operador (BSAVA 2024).'
+      text: 'A escolha do sítio ideal baseia-se na espécie, conformação corporal, escore de condição corporal e preferência técnica do operador.'
     },
     {
       type: 'table',
@@ -1939,7 +1939,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
           'Gato 🐱 (todas as conformações)',
           'Úmero proximal',
           'Fossa trocantérica do fêmur',
-          'Sítio padrão-ouro felino (Byers 2017; BSAVA 2024); oferece excelente rendimento para aspirado e biópsia core.'
+          'Sítio padrão-ouro felino (Byers, 2017); oferece excelente rendimento para aspirado e biópsia core.'
         ],
         [
           'Operador experiente / UTI',
@@ -1953,7 +1953,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'figure',
       src: '/consulta-vet/clinical-guides/locais-coleta-medula-ossea-caes-gatos.jpg',
       alt: 'Locais principais de coleta de medula óssea em cães e gatos — referências anatômicas',
-      caption: 'Figura 1 — Locais principais de coleta de medula óssea em cães e gatos. Crista ilíaca (asa do ílio): 1ª escolha em cães médios e grandes; úmero proximal (tubérculo maior, área craniolateral): padrão-ouro em gatos e alternativa em cães pequenos; fossa trocantérica (fêmur): alternativa quando os sítios anteriores estão indisponíveis. (Referências: BSAVA 2024; Byers 2017; Nelson & Couto)'
+      caption: 'Figura 1 — Locais principais de coleta de medula óssea em cães e gatos. Crista ilíaca (asa do ílio): 1ª escolha em cães médios e grandes; úmero proximal (tubérculo maior, área craniolateral): padrão-ouro em gatos e alternativa em cães pequenos; fossa trocantérica (fêmur): alternativa quando os sítios anteriores estão indisponíveis. (Adaptado de Byers, 2017)'
     },
     {
       type: 'callout',
@@ -1969,7 +1969,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     },
     {
       type: 'table',
-      caption: 'Calibres de agulha recomendados por porte e espécie (BSAVA Guide to Procedures 2024)',
+      caption: 'Calibres de agulha recomendados por porte e espécie',
       headers: ['Tipo de Agulha', 'Cão > 5 kg', 'Cão < 5 kg', 'Gato 🐱'],
       rows: [
         ['Agulha de aspiração (Klima ou Rosenthal)', '14G', '16G', '16G'],
@@ -2032,7 +2032,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'tip',
       title: 'Técnica de Priming da Seringa e Agulha',
-      text: 'O BSAVA e Cornell recomendam aspirar ~1 mL de anticoagulante (solução de ACD ou EDTA), banhar minuciosamente as paredes internas da seringa e o lúmen da agulha e EXPULSAR praticamente todo o líquido, deixando apenas o volume mínimo residual retido no cone e canhão (~0,05 a 0,1 mL). Se você deixar 1 mL de anticoagulante líquido na seringa e colher 0,3 mL de medula, você terá uma amostra diluída em 4 vezes! Anticoagular é recobrir as superfícies de contato, jamais diluir a celularidade.'
+      text: 'Recomenda-se aspirar ~1 mL de anticoagulante (solução de ACD ou EDTA), banhar minuciosamente as paredes internas da seringa e o lúmen da agulha e EXPULSAR praticamente todo o líquido, deixando apenas o volume mínimo residual retido no cone e canhão (~0,05 a 0,1 mL). Se você deixar 1 mL de anticoagulante líquido na seringa e colher 0,3 mL de medula, você terá uma amostra diluída em 4 vezes! Anticoagular é recobrir as superfícies de contato, jamais diluir a celularidade.'
     },
 
     { type: 'heading', level: 2, text: '11. Sedação, Anestesia & Analgesia Perióstea' },
@@ -2045,7 +2045,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       title: 'Protocolos Anestésicos Recomendados',
       items: [
         'CÃO 🐶: Sedação profunda (opioide pleno associado a agonista alfa-2 adrenérgico ou benzodiazepínico) associada obrigatoriamente a anestesia local infiltrativa perióstea. Se o paciente for instável, agressivo ou o operador estiver em curva de aprendizado, a anestesia geral é a conduta de eleição.',
-        'GATO 🐱: O BSAVA 2024 recomenda conservadoramente ANESTESIA GERAL associada a analgesia multimodal e anestesia local infiltrativa. Embora operadores experientes possam utilizar sedação pesada em casos selecionados (Byers 2017), a anestesia geral em gatos assegura imobilidade perfeita, previne movimentos reflexos perigosos e protege o paciente.'
+        'GATO 🐱: Recomenda-se conservadoramente ANESTESIA GERAL associada a analgesia multimodal e anestesia local infiltrativa. Embora operadores experientes possam utilizar sedação pesada em casos selecionados (Byers 2017), a anestesia geral em gatos assegura imobilidade perfeita, previne movimentos reflexos perigosos e protege o paciente.'
       ]
     },
     {
@@ -2072,7 +2072,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'steps',
       items: [
         '1. Queda súbita de resistência ("Give"): Ao vencer a túnica cortical densa e alcançar a medula esponjosa trabecular, há uma perceptível perda de resistência mecânica e a agulha avança com maior facilidade.',
-        '2. Estabilidade mecânica absoluta: A agulha fica firmemente engastada no osso. Ao soltar a mão, ela não cai e não oscila. Ao movimentar delicadamente a cânula, o próprio membro ou a pelve do paciente se move junto em bloco (BSAVA 2024).'
+        '2. Estabilidade mecânica absoluta: A agulha fica firmemente engastada no osso. Ao soltar a mão, ela não cai e não oscila. Ao movimentar delicadamente a cânula, o próprio membro ou a pelve do paciente se move junto em bloco.'
       ]
     },
     {
@@ -2086,7 +2086,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
     { type: 'heading', level: 3, text: 'CÃO — Crista Ilíaca (1ª Escolha no Cão Médio/Grande)' },
     {
       type: 'paragraph',
-      text: 'A crista ilíaca é o sítio mais clássico e seguro no cão (BSAVA 2024). O paciente é posicionado em decúbito esternal com os membros pélvicos bem recolhidos sob o abdome ("postura de esfinge"), expondo a asa ilíaca bilateralmente.'
+      text: 'A crista ilíaca é o sítio mais clássico e seguro no cão. O paciente é posicionado em decúbito esternal com os membros pélvicos bem recolhidos sob o abdome ("postura de esfinge"), expondo a asa ilíaca bilateralmente.'
     },
     {
       type: 'figure',
@@ -2100,14 +2100,14 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       items: [
         'Palpe simultaneamente as duas asas do ílio com as polpas dos dedos.',
         'Identifique o ponto mais dorsal e mais largo da crista ilíaca.',
-        'Truque de mira do BSAVA: com a ponta da agulha sobre o osso, deslize suavemente para a borda medial até sentir a queda do osso; depois deslize para a lateral. Posicione a agulha exatamente no centro dessa largura.',
+        'Truque anatômico de mira: com a ponta da agulha sobre o osso, deslize suavemente para a borda medial até sentir a queda do osso; depois deslize para a lateral. Posicione a agulha exatamente no centro dessa largura.',
         'Mantenha a agulha perpendicular à pele ou apontando ligeiramente no sentido caudal, avançando no plano intramedular entre as corticais medial e lateral da asa ilíaca.'
       ]
     },
     { type: 'heading', level: 3, text: 'CÃO E GATO — Úmero Proximal (1ª Escolha no Gato e Cão Pequeno)' },
     {
       type: 'paragraph',
-      text: 'O úmero proximal é o sítio preferencial no gato e em cães de pequeno porte (Byers 2017; BSAVA 2024). O paciente é posicionado em decúbito lateral com o membro a ser puncionado apoiado confortavelmente.'
+      text: 'O úmero proximal é o sítio preferencial no gato e em cães de pequeno porte (Byers, 2017). O paciente é posicionado em decúbito lateral com o membro a ser puncionado apoiado confortavelmente.'
     },
     {
       type: 'figure',
@@ -2170,7 +2170,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'warning',
       title: 'Por que o volume deve ser rigorosamente MENOR que 0,5 mL?',
-      text: 'A medula óssea é densamente vascularizada por sinusoides. Nas primeiras gotas de aspiração, vêm as espículas e células hematopoéticas verdadeiras. Se você continuar tracionando o êmbolo para colher 1, 2 ou 3 mL de sangue, o vácuo sugará sangue circulante periférico em grande escala, provocando hemodiluição maciça. Amostras hemodiluídas parecem ter apenas hemácias maduras e neutrófilos segmentados, mascarando hipoplasias e impedindo a avaliação fidedigna pelo patologista (BSAVA 2024; Drobatz et al. 2019).'
+      text: 'A medula óssea é densamente vascularizada por sinusoides. Nas primeiras gotas de aspiração, vêm as espículas e células hematopoéticas verdadeiras. Se você continuar tracionando o êmbolo para colher 1, 2 ou 3 mL de sangue, o vácuo sugará sangue circulante periférico em grande escala, provocando hemodiluição maciça. Amostras hemodiluídas parecem ter apenas hemácias maduras e neutrófilos segmentados, mascarando hipoplasias e impedindo a avaliação fidedigna pelo patologista.'
     },
 
     { type: 'heading', level: 2, text: '15. "Veio Sangue. Acertei?" — O Reconhecimento das Espículas' },
@@ -2210,7 +2210,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
       type: 'callout',
       variant: 'warning',
       title: 'Dry Tap Repetido em Paciente Pancitopênico = INDICAÇÃO DE CORE!',
-      text: 'Se você realizou a técnica correta no ílio e no úmero e ambos resultaram em dry tap num paciente com pancitopenia ou anemia não regenerativa grave, NÃO conclua simplesmente que houve falha do operador. Dry taps repetidos em sítios diferentes são a manifestação clínica clássica de MIELOFIBROSE, aplasia grave ou infiltração neoplásica densa (mieloftise). Nesses casos, o aspirado é a técnica que falha, enquanto a biópsia core (BMO) com Jamshidi torna-se indispensável para o diagnóstico (Withrow & MacEwen).'
+      text: 'Se você realizou a técnica correta no ílio e no úmero e ambos resultaram em dry tap num paciente com pancitopenia ou anemia não regenerativa grave, NÃO conclua simplesmente que houve falha do operador. Dry taps repetidos em sítios diferentes são a manifestação clínica clássica de MIELOFIBROSE, aplasia grave ou infiltração neoplásica densa (mieloftise). Nesses casos, o aspirado é a técnica que falha, enquanto a biópsia core (BMO) com Jamshidi torna-se indispensável para o diagnóstico.'
     },
 
     { type: 'heading', level: 2, text: '17. Manuseio Imediato & Preparo dos Esfregaços' },
@@ -2604,7 +2604,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
       variant: 'warning',
       title: 'MATERIAIS RÍGIDOS: CONTRAINDICADOS PARA PERMANÊNCIA',
       text:
-        'Cateteres de polipropileno/nylon rígido (como sondas Tom Cat convencionais) só são aceitáveis para alívio imediato pontual ou desobstrução mecânica inicial. Para permanência em internação, cateteres rígidos causam necrose por pressão na mucosa, microperfurações na parede vesical cranial, hematúria persistente e dor intensa. Utilize sempre SILICONE ou POLIURETANO para cateteres de demora (BSAVA 2024).'
+        'Cateteres de polipropileno/nylon rígido (como sondas Tom Cat convencionais) só são aceitáveis para alívio imediato pontual ou desobstrução mecânica inicial. Para permanência em internação, cateteres rígidos causam necrose por pressão na mucosa, microperfurações na parede vesical cranial, hematúria persistente e dor intensa. Utilize sempre SILICONE ou POLIURETANO para cateteres de demora.'
     },
     {
       type: 'paragraph',
@@ -2652,7 +2652,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
       type: 'steps',
       items: [
         'Decúbito lateral (decúbito lateral direito para operadores destros): excelente para a técnica de palpação digital. O membro pélvico superior é tracionado cranialmente e a cauda é refletida dorsalmente por um assistente. Permite grande conforto ergonômico ao clínico sentado ou em pé.',
-        'Decúbito esternal com membros posteriores projetados além da borda da mesa: posição clássica descrita pelo BSAVA. A mesa de procedimentos apoia o abdome, enquanto os membros pélvicos pendem suavemente, abrindo o vestíbulo pélvico e relaxando a musculatura perineal.',
+        'Decúbito esternal com membros posteriores projetados além da borda da mesa: posição clássica em que a mesa de procedimentos apoia o abdome enquanto os membros pélvicos pendem suavemente, abrindo o vestíbulo pélvico e relaxando a musculatura perineal.',
         'Decúbito dorsal com membros abduzidos ("frog-leg"): indicada principalmente quando se opta por visualização direta com espéculo vaginal ou otoscópio sob iluminação direta.'
       ]
     },
@@ -2675,7 +2675,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'A técnica digital é a mais reproduzível, rápida e consagrada na rotina clínica hospitalar para cadelas de médio e grande porte. Segue rigorosamente a descrição do BSAVA Procedures (2024) e do VECC Procedures (2025):'
+        'A técnica digital é a mais reproduzível, rápida e consagrada na rotina clínica hospitalar para cadelas de médio e grande porte:'
     },
     {
       type: 'steps',
@@ -2704,7 +2704,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
         'Introdução e direção: lubrifique a face externa do cone/espéculo. Introduza-o na vulva direcionado inicialmente em ângulo de 60° dorsocranialmente para ultrapassar a fossa do clitóris; em seguida, horizontalize o instrumento e avance-o paralelamente ao assoalho.',
         'Identificação do meato: abra suavemente as valvas do espéculo e ajuste o feixe de luz. Olhando diretamente para o assoalho do vestíbulo, procure uma projeção mucosa rósea em forma de botão ou crista com um orifício central em fenda (o meato uretral). Imediatamente dorsal e cranial à papila observa-se a luz ampla do canal vaginal.',
         'Passagem do cateter sob visão direta: mantendo o espéculo imóvel, introduza o cateter uretral lubrificado através do cone/valvas e guie a ponta diretamente para o interior do orifício da papila.',
-        'Parada no refluxo: avance a sonda aproximadamente 1 a 2 cm após o início do fluxo urinário (Atlas of Canine and Feline Urinalysis 2017) e remova o espéculo delicadamente deslizando-o ao redor do cateter já fixado.'
+        'Parada no refluxo: avance a sonda aproximadamente 1 a 2 cm após o início do fluxo urinário e remova o espéculo delicadamente deslizando-o ao redor do cateter já fixado.'
       ]
     },
 
@@ -2769,7 +2769,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Sedação profunda ou anestesia geral obrigatória: o BSAVA Procedures (2024) enfatiza que tentar sondar uma gata acordada ou com contenção física simples é contraindicado — gera estresse extremo, movimentos bruscos, espasmo esfincteriano e alto risco de laceração uretral. Protocolos combinando butorfanol/buprenorfina com dexmedetomidina e cetamina em doses baixas, ou anestesia inalatória com máscara/TIVA propofol, são padrão-ouro.',
+        'Sedação profunda ou anestesia geral obrigatória: tentar sondar uma gata acordada ou com contenção física simples é contraindicado — gera estresse extremo, movimentos bruscos, espasmo esfincteriano e alto risco de laceração uretral. Protocolos combinando butorfanol/buprenorfina com dexmedetomidina e cetamina em doses baixas, ou anestesia inalatória com máscara/TIVA propofol, são padrão-ouro.',
         'Posicionamento preferencial: decúbito lateral direito (para operadores destros) com o assistente tracionando a cauda dorsalmente e expondo amplamente a vulva. Alternativamente, decúbito esternal com uma toalha enrolada sob a pelve (elevando a bacia) e os membros pélvicos estendidos para trás.'
       ]
     },
@@ -2789,7 +2789,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
         'Passo 4 — Direção do cateter (para frente e para baixo): introduza a ponta do cateter pela comissura dorsal da vulva e avance-a direcionando imediatamente para o ASSOALHO VENTRAL na linha média, com uma angulação de 30° a 45°. A ponta deve correr raspando suavemente o assoalho.',
         'Passo 5 — O deslizamento pelo meato: mantenha leve pressão contínua para frente. Conforme o cateter desliza pelo assoalho, sua ponta engata na pequena depressão do meato uretral e "escorrega" espontaneamente para dentro da uretra.',
         'Passo 6 — Se houver resistência precoce (<1 cm): NUNCA force. Provavelmente a ponta está encostada na parede dorsal ou na fossa clitoridiana. Recue a sonda em 1 cm, reposicione-a rigorosamente na linha média do assoalho e reinsira.',
-        'Passo 7 — Parada milimétrica: assim que surgir urina no hub do cateter, avance apenas cerca de 0,5 a 1 cm a mais (BSAVA 2024) e pare imediatamente! A bexiga da gata tem parede delgada; avançar 5 ou 6 cm de sonda causará irritação severa e dobra mecânica.'
+        'Passo 7 — Parada milimétrica: assim que surgir urina no hub do cateter, avance apenas cerca de 0,5 a 1 cm a mais e pare imediatamente! A bexiga da gata tem parede delgada; avançar 5 ou 6 cm de sonda causará irritação severa e dobra mecânica.'
       ]
     },
 
@@ -2802,7 +2802,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Visualização com cone de otoscópio estéril (Atlas of Canine and Feline Urinalysis 2017): esterilize cones finos de otoscópio em autoclave ou óxido de etileno. Sob sedação, lubrifique o cone e introduza-o delicadamente pela vulva. Com a luz do otoscópio direcionada ao assoalho ventral, visualize a pequena papila uretral. Introduza um cateter de 3,5 Fr através do interior do cone diretamente no meato sob controle visual contínuo.',
+        'Visualização com cone de otoscópio estéril: esterilize cones finos de otoscópio em autoclave ou óxido de etileno. Sob sedação, lubrifique o cone e introduza-o delicadamente pela vulva. Com a luz do otoscópio direcionada ao assoalho ventral, visualize a pequena papila uretral. Introduza um cateter de 3,5 Fr através do interior do cone diretamente no meato sob controle visual contínuo.',
         'Técnica dos dois cateteres na gata: introduza um cateter 10 Fr Red Rubber para ocluir a vagina dorsalmente e tracioná-la para cima; em seguida, conduza um cateter uretral de 3,5 Fr ou 5 Fr sob ele a 45° em direção ao assoalho ventral (sucesso superior a 75% em fêmeas felinas).'
       ]
     },
@@ -3168,7 +3168,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
       variant: 'warning',
       title: 'LIMITAÇÃO CLÍNICA: O LCR RARAMENTE FECHA ETIOLOGIA SOZINHO',
       text:
-        'O de Lahunta (2021) e Nelson & Couto (2020) enfatizam que o líquor é altamente sensível à presença de doença no SNC, mas tem especificidade etiológica limitada:\n\n• Pleocitose mononuclear NÃO é sinônimo exclusivo de MUO (pode ocorrer em cinomose crônica, PIF ou neoplasia).\n• Pleocitose neutrofílica NÃO significa obrigatoriamente bactéria (é o achado cardinal da SRMA, uma afecção estritamente autoimune e estéril).\n• Dissociação albuminocitológica (proteína alta com células normais) ocorre tanto em neoplasias quanto em compressões mecânicas crônicas por hérnia de disco.'
+        'O líquor é altamente sensível à presença de doença no SNC, mas possui especificidade etiológica limitada:\n\n• Pleocitose mononuclear NÃO é sinônimo exclusivo de MUO (pode ocorrer em cinomose crônica, PIF ou neoplasia).\n• Pleocitose neutrofílica NÃO significa obrigatoriamente bactéria (é o achado cardinal da SRMA, uma afecção estritamente autoimune e estéril).\n• Dissociação albuminocitológica (proteína alta com células normais) ocorre tanto em neoplasias quanto em compressões mecânicas crônicas por hérnia de disco.'
     },
 
     { type: 'heading', level: 2, text: '3. A Pergunta Mais Importante: "Este Paciente Pode Herniar?" 🚨' },
@@ -3233,7 +3233,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
       variant: 'warning',
       title: 'A ANATOMIA MUDA COM A FLEXÃO CERVICAL (Sivolapenko et al. 2022)',
       text:
-        'Estudo em cães submetidos a RM com o pescoço flexionado a 90° revelou que:\n\n• 56% (23/41) apresentaram herniação cerebelar foraminal durante a flexão.\n• Em 29% (12/41), a trajetória retilínea da agulha de punção cruzaria DIRETAMENTE o parênquima do verme cerebelar!\n\n• RECOMENDAÇÃO BSAVA (2024): Em cães da raça Cavalier King Charles Spaniel sem exame prévio de RM atestando espaço subaracnoide cisternal amplo e seguro, EVITE A PUNÇÃO CISTERNAL ÀS CEGAS e opte preferencialmente pela via LOMBAR.'
+        'Estudo em cães submetidos a RM com o pescoço flexionado a 90° revelou que:\n\n• 56% (23/41) apresentaram herniação cerebelar foraminal durante a flexão.\n• Em 29% (12/41), a trajetória retilínea da agulha de punção cruzaria DIRETAMENTE o parênquima do verme cerebelar!\n\n• CONDUTA SEGURA: Em cães da raça Cavalier King Charles Spaniel sem exame prévio de RM atestando espaço subaracnoide cisternal amplo e seguro, EVITE A PUNÇÃO CISTERNAL ÀS CEGAS e opte preferencialmente pela via LOMBAR.'
     },
 
     { type: 'heading', level: 2, text: '7. Cisternal vs. Lombar: Qual Sítio Escolher? ⚖️' },
@@ -3338,7 +3338,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Após ampla tricotomia (do occipital até a vértebra C2 e lateralmente além das asas do atlas) e antissepsia rigorosa em três tempos, palpe os três marcos anatômicos com dedos enluvados esterilmente (BSAVA 2024):'
+        'Após ampla tricotomia (do occipital até a vértebra C2 e lateralmente além das asas do atlas) e antissepsia rigorosa em três tempos, palpe os três marcos anatômicos com dedos enluvados esterilmente:'
     },
     {
       type: 'steps',
@@ -3361,7 +3361,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
       items: [
         'Passo 1 — Apoio obrigatório da mão: nunca segure a agulha com a mão livre "flutuando" no ar. Apoie o aspecto ulnar da sua mão ou o dedo mínimo firmemente sobre a nuca do paciente. Esse apoio ancora a mão e impede avanços intempestivos se o animal sofrer qualquer microoscilação.',
         'Passo 2 — Vetor de introdução: posicione a agulha espinal exatamente na linha média sagital, com o corpo da agulha paralelo à superfície da mesa e apontando suavemente em direção à comissura da mandíbula / focinho do paciente.',
-        'Passo 3 — Orientação do bisel: o BSAVA Procedures (2024) orienta o bisel voltado caudalmente para separar as fibras elásticas da membrana atlanto-occipital.',
+        'Passo 3 — Orientação do bisel: mantenha o bisel voltado caudalmente para separar as fibras elásticas da membrana atlanto-occipital.',
         'Passo 4 — Penetração e retirada do mandril: perfure a pele e a fáscia superficial com o mandril travado. Logo após vencer o plano cutâneo, REMOVA O MANDRIL interno e inspecione o hub plástico.',
         'Passo 5 — Avanço milímetro a milímetro: avance a agulha desobstruída em incrementos rigorosos de 1 a 2 mm por vez. Após cada microavanço, aguarde 2 a 3 segundos observando o interior do hub transparente.',
         'Passo 6 — A sensação de "pop" da dura-máter: em muitos pacientes, ao perfurar a membrana atlanto-occipital e a dura-máter, percebe-se uma sutil perda de resistência tátil (um "pop" suave). Contudo, em animais jovens, idosos ou caquéticos, esse pop pode ser imperceptível!',
@@ -3375,7 +3375,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
       variant: 'warning',
       title: 'NUNCA CONECTE UMA SERINGA PARA "PUXAR" O LÍQUOR!',
       text:
-        'A aspiração com seringa é uma das manobras mais perigosas da neurologia veterinária (BSAVA 2024, de Lahunta 2021):\n\n1. A pressão negativa gerada pelo êmbolo traciona a medula espinhal e a pia-máter em direção ao bisel da agulha, provocando laceração e contusão medular iatrogênica.\n2. A queda brusca de pressão intratecal potencializa o gradiente de sucção e precipita a herniação cerebelar foraminal imediata.\n\n• O LCR DEVE GOTEJAR PASSIVAMENTE por gravidade diretamente do hub da agulha para o tubo coletor aberto mantido logo abaixo dele.\n• Também NÃO realize compressão das veias jugulares de rotina: a manobra eleva repentinamente a pressão venosa intracraniana e a PIC.'
+        'A aspiração com seringa é uma das manobras mais perigosas da neurologia veterinária:\n\n1. A pressão negativa gerada pelo êmbolo traciona a medula espinhal e a pia-máter em direção ao bisel da agulha, provocando laceração e contusão medular iatrogênica.\n2. A queda brusca de pressão intratecal potencializa o gradiente de sucção e precipita a herniação cerebelar foraminal imediata.\n\n• O LCR DEVE GOTEJAR PASSIVAMENTE por gravidade diretamente do hub da agulha para o tubo coletor aberto mantido logo abaixo dele.\n• Também NÃO realize compressão das veias jugulares de rotina: a manobra eleva repentinamente a pressão venosa intracraniana e a PIC.'
     },
 
     { type: 'heading', level: 2, text: '14. Intercorrências na Cisternal: Contato Ósseo, Sangue e Limite de Tentativas ⚠️' },
@@ -3390,7 +3390,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
         'Se a agulha bater em osso: se encontrar resistência óssea dura e superficial, você atingiu a crista occipital (muito cranial) ou o arco do atlas (muito caudal). NUNCA FORCE. Recue a agulha quase até a pele, reconfirme a linha média e os três pontos do triângulo, corrija discretamente o ângulo em sentido oposto e reinsira suavemente.',
         'PROIBIDO VARRER LATERALMENTE: jamais incline a agulha em "alavanca" ou faça movimentos de varredura lateral enquanto a ponta estiver introduzida profundamente nos planos musculares! Isso atua como uma lâmina cortando a medula cervical.',
         'Se sair sangue franco pelo hub: você puncionou um dos ramos venosos do plexo vertebral interno ou um vaso meníngeo. RETIRE A AGULHA IMEDIATAMENTE, comprima suavemente o sítio com gaze por 1 minuto e descarte a agulha. Nova tentativa só deve ser feita com uma agulha estéril nova e limpa.',
-        'A Regra de Ouro das Três Tentativas (de Lahunta): se um operador realizar 3 tentativas bem executadas sem conseguir obter líquor, o procedimento cisternal deve ser SUSPENSO por esse profissional. Insistir repetidamente traumatiza os tecidos, gera hematoma retrobulbar e aumenta drasticamente o risco de lesão medular. Solicite auxílio de outro operador experiente ou converta para a punção lombar.'
+        'A Regra de Ouro das Três Tentativas: se um operador realizar 3 tentativas bem executadas sem conseguir obter líquor, o procedimento cisternal deve ser SUSPENSO por esse profissional. Insistir repetidamente traumatiza os tecidos, gera hematoma retrobulbar e aumenta drasticamente o risco de lesão medular. Solicite auxílio de outro operador experiente ou converta para a punção lombar.'
       ]
     },
 
@@ -3436,7 +3436,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'tip',
-      title: 'REGRA CONSERVADORA DE VOLUME (Nelson & Couto)',
+      title: 'REGRA CONSERVADORA DE VOLUME PARA COLETA',
       text:
         'Volume alvo padrão: 0,5 mL a 1,5 mL (suficiente para citologia e bioquímica).\n\n• LIMITE MÁXIMO DE SEGURANÇA: NÃO exceder 1 mL para cada 5 kg de peso vivo do paciente.\n• Em gatos (2 a 4 kg): colete apenas cerca de 0,4 mL a 0,8 mL.\n• Em cães médios (10 a 20 kg): colete entre 1,0 mL e 2,0 mL.\n• Defina previamente com o laboratório a ordem de prioridade dos exames!'
     },
@@ -3458,7 +3458,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
       type: 'steps',
       items: [
         'Tempo ideal: realizar a contagem celular e preparar as lâminas citológicas em até 30 a 60 minutos pós-punção.',
-        'Preservação com Soro Autólogo (BSAVA 2024): se a amostra precisar ser transportada para um laboratório externo com trânsito de várias horas ou até 24–48 horas, adicione soro sanguíneo do próprio paciente à alíquota de citologia:',
+        'Preservação com Soro Autólogo: se a amostra precisar ser transportada para um laboratório externo com trânsito de várias horas ou até 24–48 horas, adicione soro sanguíneo do próprio paciente à alíquota de citologia:',
         'Proporção de soro autólogo: adicione 30% a 50% de soro autólogo ao volume de LCR destinado à citologia (ex.: 1,0 mL de LCR + 0,3 a 0,5 mL de soro do próprio cão/gato). As albuminas do soro estabilizam as membranas leucocitárias e preservam a integridade morfológica celular.',
         'ALERTA OBRIGATÓRIO: mantenha sempre uma alíquota pura de LCR sem soro em tubo separado para a mensuração de proteína total e microproteína, pois o soro adicionado alteraria artificialmente os níveis proteicos!'
       ]
@@ -3499,7 +3499,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'info',
-      title: 'VALORES DE REFERÊNCIA GERAIS NO CÃO E GATO (Nelson & Couto, de Lahunta)',
+      title: 'VALORES DE REFERÊNCIA GERAIS NO CÃO E GATO',
       text:
         '• Contagem de Células Nucleadas (TNCC): <3 a 5 células/µL (geralmente 0 a 2 céls/µL).\n• Contagem de Hemácias: 0 hemácias/µL.\n• Proteína Total (Cisterna Cerebelomedular): <25 mg/dL no cão; <20 mg/dL no gato.\n• Proteína Total (Espaço Lombar): <35 a 45 mg/dL no cão e gato (o LCR lombar tem naturalmente concentração proteica discretamente superior pelo menor volume e reabsorção).'
     },
@@ -3544,7 +3544,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'warning',
-      title: 'PÉROLA DE LAHUNTA: LCR NORMAL NÃO EXCLUI MENINGOENCEFALITE',
+      title: 'PÉROLA CLÍNICA: LCR NORMAL NÃO EXCLUI MENINGOENCEFALITE',
       text:
         'Cerca de 10% a 15% dos cães com meningoencefalite inflamatória comprovada por biópsia/necropsia (particularmente lesões focais em tronco encefálico ou prosencéfalo) podem apresentar análise de LCR inteiramente normal ou apenas com discreta hiperproteinemia. Nunca descarte uma suspeita neurológica grave apenas por um laudo de LCR normal!'
     },
@@ -3717,7 +3717,7 @@ const guiaDesobstrucaoUretral: ClinicalQuickGuide = {
   slug: 'desobstrucao-uretral-caes-gatos',
   title: 'Desobstrução uretral em cães e gatos: manejo emergencial e técnica',
   subtitle:
-    'Urologia & Emergência — Consenso iCatCare 2025, retificação em S e flush pulsátil felino, retro-hidropropulsão canina (ACVIM/BSAVA), estabilização de hipercalemia e MEMO para CIF',
+    'Urologia & Emergência — Consenso iCatCare 2025, retificação em S e flush pulsátil felino, retro-hidropropulsão canina (ACVIM), estabilização de hipercalemia e MEMO para CIF',
   summary:
     'Manejo emergencial de obstrução uretral em pequenos animais: estabilização de hipercalemia, retificação da uretra peniana felina com hidropropulsão/flush pulsátil suave ou retro-hidropropulsão canina com oclusão retal, restabelecendo o fluxo urinário com alívio imediato e proteção vesical.',
   category: 'procedimentos',
@@ -4073,7 +4073,7 @@ const guiaDesobstrucaoUretral: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'O esquema abaixo resume o protocolo cirúrgico de retropulsão hidráulica de uretrólitos em cães machos recomendado pelo BSAVA e ACVIM:'
+        'O esquema abaixo resume o protocolo de retropulsão hidráulica de uretrólitos em cães machos alinhado às diretrizes do ACVIM:'
     },
     {
       type: 'figure',
@@ -4087,7 +4087,7 @@ const guiaDesobstrucaoUretral: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'A retro-hidropropulsão bem-sucedida baseia-se na expansão hidrostática da uretra ao redor do cálculo, e NÃO na força física do cateter (BSAVA Guide to Procedures 2024):'
+        'A retro-hidropropulsão bem-sucedida baseia-se na expansão hidrostática da uretra ao redor do cálculo, e NÃO na força física do cateter:'
     },
     {
       type: 'steps',
@@ -4320,9 +4320,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     'iscaid 2019',
     'uro-hidropropulsao',
     'debito urinario cao',
-    'retencao urinaria cao',
-    'bsava procedures 2024',
-    'vecc 2025'
+    'retencao urinaria cao'
   ],
   youtubeVideoId: null,
   heroImageSrc: '/consulta-vet/clinical-guides/procedure-covers/sondagem-uretral-caes-machos.webp',
@@ -4353,7 +4351,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Este guia padroniza a técnica baseando-se nas mais respeitadas diretrizes internacionais de procedimentos e emergência: o BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024), o Veterinary Emergency and Critical Care Procedures (3ª ed., 2025), o Textbook of Small Animal Emergency Medicine (2019), o Atlas of Canine and Feline Urinalysis (2017) e o consenso ISCAID sobre prevenção de infecções do trato urinário associadas a cateter (CAUTI).'
+        'Este guia padroniza a anatomia aplicada, os pontos de resistência fisiológica, a escolha do cateter e a prevenção de infecções do trato urinário associadas a cateter (CAUTI) segundo as diretrizes vigentes do consenso ISCAID.'
     },
 
     { type: 'heading', level: 2, text: '2. Quando Sondar um Cão Macho? Indicações Clínicas e de UTI 🎯' },
@@ -4378,7 +4376,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'O BSAVA Guide to Procedures 2024 estabelece como contraindicações à sondagem uretral transuretral convencional:'
+        'São contraindicações à sondagem uretral transuretral convencional:'
     },
     {
       type: 'steps',
@@ -4394,7 +4392,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'O Atlas of Canine and Feline Urinalysis (2017) ressalta dois princípios laboratoriais indispensáveis na escolha do método de coleta:'
+        'Dois princípios laboratoriais são indispensáveis na escolha do método de coleta urinária:'
     },
     {
       type: 'callout',
@@ -4414,7 +4412,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        '① Região do Osso Peniano (Os Penis):\nA uretra corre ventralmente abrigada em uma calha óssea inextensível (sulco uretral do os penis). Essa conformação óssea restringe a complacência do tubo urinário. Além disso, o BSAVA descreve um discreto estreitamento luminal fisiológico nesse ponto. É também o sítio mais comum de impacto mecânico de urólitos provenientes da bexiga.',
+        '① Região do Osso Peniano (Os Penis):\nA uretra corre ventralmente abrigada em uma calha óssea inextensível (sulco uretral do os penis). Essa conformação óssea restringe a complacência do tubo urinário. Além disso, observa-se um discreto estreitamento luminal fisiológico nesse ponto. É também o sítio mais comum de impacto mecânico de urólitos provenientes da bexiga.',
         '② Arco Isquiático (Curvatura Pélvica Caudal):\nPara entrar na cavidade pélvica, a uretra precisa realizar uma curva anatômica acentuada ao contornar a borda caudal da sínfise isquiática. Em repouso, essa curva forma um ângulo próximo a 90°. Se o operador simplesmente empurrar a sonda para a frente, a ponta colidirá perpendicularmente contra a parede dorsal da uretra.',
         '③ Região Prostática (Uretra Prostática):\nA próstata envolve circularmente a uretra proximal adjacente ao colo vesical. Em machos não castrados (inteiros) e em animais idosos com Hiperplasia Prostática Benigna (HPB) ou prostatite, o parênquima glandular comprimido reduz o diâmetro intraluminal, exigindo pressão contínua, porém extremamente suave, para progressão.'
       ]
@@ -4425,7 +4423,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
       src: '/consulta-vet/clinical-guides/sondagem-uretral-cao-anatomia-retificacao.svg',
       alt: 'Anatomia sagital da uretra do cão macho mostrando os 3 pontos de resistência fisiológica e manobra de retificação',
       caption:
-        'Figura 1: Anatomia sagital canina com os 3 pontos de resistência fisiológica (1: Os penis, 2: Arco isquiático, 3: Próstata) e comparação biomecânica demonstrando a redução da angulação uretral de 90° para 160° com a tração caudal do pênis (BSAVA 2024 / VECC 2025).'
+        'Figura 1: Anatomia sagital canina com os 3 pontos de resistência fisiológica (1: Os penis, 2: Arco isquiático, 3: Próstata) e comparação biomecânica demonstrando a redução da angulação uretral de 90° para 160° com a tração caudal do pênis.'
     },
 
     { type: 'heading', level: 2, text: '6. O Truque Mais Importante da Técnica: A Manobra de Retificação Caudal 💡' },
@@ -4437,7 +4435,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'tip',
-      title: 'A MANOBRA BIOMECÂNICA (BSAVA 2024)',
+      title: 'A MANOBRA BIOMECÂNICA DE RETIFICAÇÃO URETRAL',
       text:
         'Assim que a extremidade da sonda ultrapassar a base do osso peniano:\n' +
         '1. Segure o corpo do pênis e o prepúcio com gaze estéril.\n' +
@@ -4454,7 +4452,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     },
     {
       type: 'table',
-      caption: 'Guia de Seleção de Cateteres Uretrais em Cães Machos (BSAVA 2024 / VECC 2025 / ISCAID)',
+      caption: 'Guia de Seleção de Cateteres Uretrais em Cães Machos (diretrizes ISCAID)',
       headers: ['Tipo de Cateter', 'Material', 'Calibre (Fr)', 'Comprimento', 'Indicação Principal & Vantagens'],
       rows: [
         [
@@ -4462,7 +4460,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
           'Poliamida semi-rígida',
           '6 a 10 Fr',
           '50 a 60 cm',
-          'Sondagem pontual de alívio, esvaziamento diagnóstico e retro-hidropropulsão de urólitos (BSAVA 2024). Boa dirigibilidade.'
+          'Sondagem pontual de alívio, esvaziamento diagnóstico e retro-hidropropulsão de urólitos. Boa dirigibilidade.'
         ],
         [
           'Foley de Silicone',
@@ -4563,7 +4561,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
       items: [
         'Cão cooperativo e não obstruído (ex.: monitoramento de débito na UTI): a sondagem é habitualmente bem tolerada com contenção física gentil em decúbito lateral, sem necessidade de fármacos depressores do SNC.',
         'Cão ansioso, agressivo ou dolorido: uma sedação multimodal leve (ex.: metadona 0,2 mg/kg associada a midazolam 0,2 mg/kg IV) reduz o estresse, impede movimentos bruscos que laceram a uretra e diminui o tônus esfincteriano.',
-        'Cão com obstrução uretral (uretrólitos): o animal encontra-se em intensa dor e espasmo muscular. A tentativa de sondar ou realizar hidropropulsão em cão acordado é altamente traumática e frustrante. Sedação profunda ou anestesia geral inalatória/TIVA é fortemente recomendada pelo BSAVA 2024 para atingir relaxamento muscular uretral completo.',
+        'Cão com obstrução uretral (uretrólitos): o animal encontra-se em intensa dor e espasmo muscular. A tentativa de sondar ou realizar hidropropulsão em cão acordado é altamente traumática e frustrante. Sedação profunda ou anestesia geral inalatória/TIVA é fortemente recomendada para atingir relaxamento muscular uretral completo.',
         '🚨 AVALIAÇÃO METABÓLICA PRÉVIA EM OBSTRUÍDOS: Antes de anestesiar qualquer cão completamente obstruído, meça potássio sérico, creatinina, ureia e realize ECG. Se houver hipercalemia ou choque urêmico pós-renal, estabilize com fluidos cristaloides e controle arritmias ANTES de iniciar a instrumentação da uretra.'
       ]
     },
@@ -4585,13 +4583,13 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Siga a sequência padronizada do BSAVA Guide to Procedures 2024 e VECC Procedures 2025 para máxima segurança e assepsia:'
+        'Siga a sequência técnica padronizada abaixo para máxima segurança e assepsia:'
     },
     {
       type: 'steps',
       title: 'Passos da Inserção:',
       items: [
-        'Passo 1 — Exteriorização e Estabilização Gentil:\nCom a mão não dominante enluvada com gaze estéril, segure o corpo do pênis logo caudal à glande e empurre o prepúcio para trás. ⚠️ CUIDADO: Não estrangule a base do pênis com os dedos! A compressão excessiva colapsa a uretra no ponto em que ela precisa receber a sonda (erro enfatizado pelo Clinician\'s Brief).',
+        'Passo 1 — Exteriorização e Estabilização Gentil:\nCom a mão não dominante enluvada com gaze estéril, segure o corpo do pênis logo caudal à glande e empurre o prepúcio para trás. ⚠️ CUIDADO: Não estrangule a base do pênis com os dedos! A compressão excessiva colapsa a uretra exatamente no ponto em que ela precisa receber a sonda.',
         'Passo 2 — Visualização Direta do Óstio Uretral Externo:\nLocalize a fenda vertical do meato na ponta mais cranial da glande. Ao contrário da fêmea, a entrada é 100% visível.',
         'Passo 3 — Lubrificação Generosa:\nBanhe os primeiros 10 a 15 cm do cateter com gel lubrificante hidrossolúvel estéril (K-Y estéril). Nunca use vaselina ou lubrificantes oleosos. A lubrificação abundante é o principal redutor de trauma e de resistência por atrito.',
         'Passo 4 — Introdução no Meato Uretral:\nSegure a ponta do cateter a 2–3 cm da extremidade com a mão dominante. Introduza a ponta suavemente no meato e avance os primeiros centímetros. A sonda deve deslizar sem qualquer resistência inicial.',
@@ -4625,7 +4623,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'A ausência imediata de fluxo urinário pelo hub após a introdução da sonda não significa obrigatoriamente que ela está fora da bexiga. O Veterinary Emergency and Critical Care Procedures (2025) aponta as causas mais comuns:'
+        'A ausência imediata de fluxo urinário pelo hub após a introdução da sonda não significa obrigatoriamente que ela está fora da bexiga. As causas mais comuns incluem:'
     },
     {
       type: 'steps',
@@ -4664,7 +4662,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     },
     {
       type: 'steps',
-      title: 'As 4 Etapas Obrigatórias da Foley (BSAVA 2024 / VECC 2025):',
+      title: 'As 4 Etapas Obrigatórias da Sonda de Foley:',
       items: [
         '1. Introduza a Foley até obter fluxo espontâneo de urina. Assim que a urina fluir, avance a sonda MAIS 2 A 4 CM para garantir que todo o balão está livre dentro da cavidade vesical.',
         '2. Remova o mandril (estilete de aço interno): segure a porção externa da sonda firmemente com uma das mãos e puxe o estilete com a outra. ⚠️ Se você não segurar o corpo da sonda, o atrito do mandril puxará toda a Foley de volta para dentro da uretra no momento da retirada!',
@@ -4678,7 +4676,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
       src: '/consulta-vet/clinical-guides/sondagem-foley-cao-posicionamento-fixacao.svg',
       alt: 'Manejo seguro da sonda Foley no cão macho e fixação em sistema fechado',
       caption:
-        'Figura 2: As 3 fases do balonete da sonda Foley no cão macho (1: Erro catastrófico de insuflação intrauretral, 2: Avanço seguro intravesical com retirada de estilete, 3: Insuflação com água estéril e apoio no colo), detalhe da fixação com fita borboleta no prepúcio e sistema fechado de drenagem (BSAVA 2024 / ISCAID 2019).'
+        'Figura 2: As 3 fases do balonete da sonda Foley no cão macho (1: Erro catastrófico de insuflação intrauretral, 2: Avanço seguro intravesical com retirada de estilete, 3: Insuflação com água estéril e apoio no colo), detalhe da fixação com fita borboleta no prepúcio e sistema fechado de drenagem (ISCAID 2019).'
     },
 
     { type: 'heading', level: 2, text: '16. Fixação Externa Atraumática e Montagem do Circuito Fechado 🔒' },
@@ -4690,7 +4688,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'steps',
       items: [
-        'Técnica da Fita em Borboleta (Hackett & Mazzaferro / VECC 2025): dobre uma fita esparadrapo impermeável ao redor do corpo externo da sonda, colando as abas uma contra a outra ("asas de borboleta"). Perfure e suture as asas da fita à pele do prepúcio com fio de nylon 3-0 ou 2-0. NUNCA passe a agulha através da borracha da própria sonda (risco de ocluir o lúmen ou perfurar o canal do balão!).',
+        'Técnica da Fita em Borboleta: dobre uma fita esparadrapo impermeável ao redor do corpo externo da sonda, colando as abas uma contra a outra ("asas de borboleta"). Perfure e suture as asas da fita à pele do prepúcio com fio de nylon 3-0 ou 2-0. NUNCA passe a agulha através da borracha da própria sonda (risco de ocluir o lúmen ou perfurar o canal do balão!).',
         'Alívio de tensão: deixe uma pequena alça de folga no cateter antes da fixação para que as ereções parciais ou movimentos dos membros do cão não tracionem diretamente o pênis.',
         'Montagem do Sistema Fechado: conecte a extremidade da sonda a uma extensão estéril acoplada a uma bolsa coletora de urina com válvula antirrefluxo e porta de amostragem estéril.',
         'Posicionamento da Bolsa Coletora: a bolsa deve permanecer OBRIGATORIAMENTE ABAIXO DO NÍVEL DA BEXIGA em todos os momentos para permitir fluxo passivo por gravidade. JAMAIS permita que a bolsa ou o tubo fiquem em contato com o chão da baia!',
@@ -4720,12 +4718,12 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Em cães machos, a obstrução uretral quase invariavelmente decorre de urólitos (estruvita, oxalato de cálcio, urato) que migraram da bexiga e impactaram caudalmente ao osso peniano ou na curvatura isquiática. O BSAVA 2024 é categórico: NUNCA utilize a ponta da sonda como aríete para empurrar o cálculo à força!'
+        'Em cães machos, a obstrução uretral quase invariavelmente decorre de urólitos (estruvita, oxalato de cálcio, urato) que migraram da bexiga e impactaram caudalmente ao osso peniano ou na curvatura isquiática. Regra categórica: NUNCA utilize a ponta da sonda como aríete para empurrar o cálculo à força!'
     },
     {
       type: 'callout',
       variant: 'info',
-      title: 'O PRINCÍPIO DA RETRO-HIDROPROPULSÃO URETRAL (BSAVA 2024 / VECC 2025)',
+      title: 'O PRINCÍPIO DA RETRO-HIDROPROPULSÃO URETRAL',
       text:
         'Em vez de empurrar a pedra contra a mucosa inflamada, a técnica cria uma câmara de alta pressão líquida ao redor do cálculo:\n' +
         '1. Mistura Lubrificante: misture 50% de solução salina 0,9% estéril com 50% de gel lubrificante hidrossolúvel estéril através de uma torneira de 3 vias.\n' +
@@ -4740,7 +4738,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
       src: '/consulta-vet/clinical-guides/retro-hidropropulsao-canina-passos.svg',
       alt: 'Técnica de retro-hidropropulsão uretral retrógrada no cão macho',
       caption:
-        'Figura 3: Mecânica de retro-hidropropulsão uretral no cão macho: compressão retal digital combinada à oclusão prepucial e liberação com retorno dos cálculos para a bexiga (BSAVA 2024 / VECC 2025).'
+        'Figura 3: Mecânica de retro-hidropropulsão uretral no cão macho: compressão retal digital combinada à oclusão prepucial e liberação com retorno dos cálculos para a bexiga.'
     },
 
     { type: 'heading', level: 2, text: '19. Recursos Avançados: O Uso do Fio-Guia Hidrofílico (0,035") ⭐' },
@@ -4752,7 +4750,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
     {
       type: 'callout',
       variant: 'tip',
-      title: 'TÉCNICA DE SELDINGER MODIFICADA COM FIO-GUIA (BSAVA NEPHROLOGY & UROLOGY)',
+      title: 'TÉCNICA DE SELDINGER MODIFICADA COM FIO-GUIA',
       text:
         '• Fio-guia hidrofílico de nitinol (0,035 polegadas): apresenta ponta atraumática flexível com revestimento hidrofílico ativado por água, oferecendo atrito quase zero.\n' +
         '• Ele é capaz de negociar suavemente as irregularidades da mucosa dilacerada e encontrar o lúmen verdadeiro em direção à bexiga.\n' +

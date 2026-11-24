@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { AlertTriangle, ChevronRight, FileText, Pill, Share2 } from 'lucide-react';
-import { cn } from '../../../lib/utils';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DiseaseSectionFrame } from '../components/disease/DiseaseSectionFrame';
 import { DiseaseSectionRenderer } from '../components/disease/DiseaseSectionRenderer';
@@ -11,6 +10,7 @@ import { IrisAkiClassificationTable } from '../components/disease/IrisAkiClassif
 import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
+import { StructuredSummaryText } from '../components/shared/StructuredSummaryText';
 import { DiseaseReferenceProvider } from '../context/DiseaseReferenceContext';
 import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
 import { useRecents } from '../hooks/useRecents';
@@ -23,7 +23,6 @@ import { MedicationRecord } from '../types/medication';
 import { EditorialSectionValue } from '../types/common';
 import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
-import { getDiseaseCategorySlugs } from '../utils/diseaseCategories';
 import { includesRelatedSlug } from '../utils/relatedContent';
 
 type ResumeLocationState = {
@@ -331,17 +330,17 @@ export function DiseaseDetailPage() {
 
           <div className="space-y-4 pb-8 pt-4 md:space-y-7 md:pt-5">
           {disease.slug === 'intermacao-caes-gatos' ? (
-            <div className="relative overflow-hidden rounded-[20px] border border-red-500/50 bg-gradient-to-r from-red-950/95 via-rose-950/90 to-red-950/95 p-4 text-white shadow-xl sm:p-5">
+            <div className="relative overflow-hidden rounded-[20px] border border-red-500/50 bg-transparent p-4 text-foreground sm:p-5">
               <div className="flex items-start gap-3">
                 <AlertTriangle className="mt-0.5 h-6 w-6 shrink-0 text-red-400 animate-pulse" />
                 <div className="space-y-1.5">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-300">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-700 dark:text-red-300">
                     Alerta Crítico de Medicina Intensiva e Emergência
                   </p>
-                  <p className="text-sm font-bold leading-snug text-white sm:text-base md:text-lg">
+                  <p className="text-sm font-bold leading-snug text-foreground sm:text-base md:text-lg">
                     INTERMAÇÃO NÃO TERMINA QUANDO A TEMPERATURA NORMALIZA: AKI, DIC, hepatopatia, ARDS, hipoglicemia e hemorragia gastrointestinal podem aparecer ou piorar nas horas seguintes.
                   </p>
-                  <p className="text-xs leading-relaxed text-red-100/90 sm:text-sm">
+                  <p className="text-xs leading-relaxed text-foreground/90 sm:text-sm">
                     A normalização da temperatura corporal não encerra a emergência médica. O dano celular térmico, a isquemia esplâncnica com translocação endotóxica e a endoteliopatia com consumo hemostático atingem seu pico crítico entre 12 e 24 horas pós-insulto. Monitoramento hospitalar contínuo em UTI é indispensável por no mínimo 24 a 48 horas.
                   </p>
                 </div>
@@ -350,136 +349,26 @@ export function DiseaseDetailPage() {
           ) : null}
 
           <section id="quick-summary" className="scroll-mt-24">
-            {(() => {
-              const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
-                endocrinologia: {
-                  gradient: 'bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-950',
-                  border: 'border-purple-500/30 dark:border-purple-400/20',
-                  glow: 'bg-purple-500/12',
-                },
-                respiratorio: {
-                  gradient: 'bg-gradient-to-br from-sky-900 via-slate-950 to-slate-950',
-                  border: 'border-sky-500/30 dark:border-sky-400/20',
-                  glow: 'bg-sky-500/12',
-                },
-                cardiologia: {
-                  gradient: 'bg-gradient-to-br from-rose-900 via-rose-950 to-slate-950',
-                  border: 'border-rose-500/30 dark:border-rose-400/20',
-                  glow: 'bg-rose-500/12',
-                },
-                infecciosas: {
-                  gradient: 'bg-gradient-to-br from-emerald-900 via-slate-950 to-slate-950',
-                  border: 'border-emerald-500/30 dark:border-emerald-400/20',
-                  glow: 'bg-emerald-500/12',
-                },
-                infectologia: {
-                  gradient: 'bg-gradient-to-br from-emerald-900 via-slate-950 to-slate-950',
-                  border: 'border-emerald-500/30 dark:border-emerald-400/20',
-                  glow: 'bg-emerald-500/12',
-                },
-                'nefrologia-urologia': {
-                  gradient: 'bg-gradient-to-br from-amber-900 via-slate-950 to-slate-950',
-                  border: 'border-amber-500/30 dark:border-amber-400/20',
-                  glow: 'bg-amber-500/12',
-                },
-                dermatologia: {
-                  gradient: 'bg-gradient-to-br from-pink-900 via-slate-950 to-slate-950',
-                  border: 'border-pink-500/30 dark:border-pink-400/20',
-                  glow: 'bg-pink-500/12',
-                },
-                neurologia: {
-                  gradient: 'bg-gradient-to-br from-indigo-900 via-slate-950 to-slate-950',
-                  border: 'border-indigo-500/30 dark:border-indigo-400/20',
-                  glow: 'bg-indigo-500/12',
-                },
-                oncologia: {
-                  gradient: 'bg-gradient-to-br from-yellow-900 via-slate-950 to-slate-950',
-                  border: 'border-yellow-500/30 dark:border-yellow-400/20',
-                  glow: 'bg-yellow-500/12',
-                },
-                'reproducao-neonatologia': {
-                  gradient: 'bg-gradient-to-br from-fuchsia-900 via-slate-950 to-slate-950',
-                  border: 'border-fuchsia-500/30 dark:border-fuchsia-400/20',
-                  glow: 'bg-fuchsia-500/12',
-                },
-                ortopedia: {
-                  gradient: 'bg-gradient-to-br from-teal-900 via-slate-950 to-slate-950',
-                  border: 'border-teal-500/30 dark:border-teal-400/20',
-                  glow: 'bg-teal-500/12',
-                },
-                imunologia: {
-                  gradient: 'bg-gradient-to-br from-violet-900 via-slate-950 to-slate-950',
-                  border: 'border-violet-500/30 dark:border-violet-400/20',
-                  glow: 'bg-violet-500/12',
-                },
-                odontologia: {
-                  gradient: 'bg-gradient-to-br from-cyan-900 via-slate-950 to-slate-950',
-                  border: 'border-cyan-500/30 dark:border-cyan-400/20',
-                  glow: 'bg-cyan-500/12',
-                },
-                gastroenterologia: {
-                  gradient: 'bg-gradient-to-br from-orange-900 via-slate-950 to-slate-950',
-                  border: 'border-orange-500/30 dark:border-orange-400/20',
-                  glow: 'bg-orange-500/12',
-                },
-                parasitologia: {
-                  gradient: 'bg-gradient-to-br from-lime-900 via-slate-950 to-slate-950',
-                  border: 'border-lime-500/30 dark:border-lime-400/20',
-                  glow: 'bg-lime-500/12',
-                },
-                'urgencia-emergencia': {
-                  gradient: 'bg-gradient-to-br from-red-950 via-rose-950 to-slate-950',
-                  border: 'border-red-500/40 dark:border-red-400/30',
-                  glow: 'bg-red-500/20',
-                },
-              };
-
-              const displayCategory =
-                getDiseaseCategorySlugs(disease).find((s) => SUMMARY_THEMES[s]) ??
-                (disease.category === 'infecciosas' ? 'infectologia' : disease.category);
-              const theme = SUMMARY_THEMES[displayCategory] || {
-                gradient: 'bg-gradient-to-br from-primary via-primary to-sky-700/90 dark:from-primary dark:via-primary/95 dark:to-slate-900',
-                border: 'border-primary/20',
-                glow: 'bg-cyan-400/25 dark:bg-cyan-500/15',
-              };
-
-              return (
-                <div
-                  className={cn(
-                    'relative overflow-hidden rounded-[22px] border p-4 text-white shadow-lg transition-all duration-300 md:rounded-[28px] md:p-7 xl:p-8',
-                    theme.border,
-                    theme.gradient,
-                    'ring-1 ring-white/10 dark:ring-white/5'
-                  )}
-                >
-                  <div
-                    aria-hidden
-                    className={cn("pointer-events-none absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full blur-3xl", theme.glow)}
+            <div className="space-y-5 px-1 py-5 text-foreground sm:px-2 md:py-8">
+              <h2 className="border-b border-border pb-4 text-lg font-black tracking-tight md:text-2xl">
+                {UI_TEXT.quickSummary}
+              </h2>
+              {disease.quickSummaryRich ? (
+                <DiseaseQuickSummaryPanel
+                  data={disease.quickSummaryRich}
+                  slug={disease.slug}
+                  plainLanguage={disease.plainLanguage}
+                  quickDecisionItems={disease.quickDecisionStrip}
+                />
+              ) : (
+                <div className="rounded-2xl border border-border bg-transparent p-4 sm:p-6">
+                  <StructuredSummaryText
+                    text={disease.quickSummary || ''}
+                    className="max-w-[108ch] space-y-3 text-sm leading-7 text-foreground/90 sm:text-base sm:leading-8"
                   />
-                  <div
-                    aria-hidden
-                    className={cn("pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full blur-3xl opacity-40", theme.glow)}
-                  />
-                  <div className="relative z-10">
-                    <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
-                      {UI_TEXT.quickSummary}
-                    </p>
-                    {disease.quickSummaryRich ? (
-                      <DiseaseQuickSummaryPanel
-                        data={disease.quickSummaryRich}
-                        slug={disease.slug}
-                        plainLanguage={disease.plainLanguage}
-                        quickDecisionItems={disease.quickDecisionStrip}
-                      />
-                    ) : (
-                      <div className="max-w-[108ch] text-white/95">
-                        <p className="text-base leading-7 drop-shadow-sm md:text-[26px] md:leading-[1.4]">{disease.quickSummary}</p>
-                      </div>
-                    )}
-                  </div>
                 </div>
-              );
-            })()}
+              )}
+            </div>
           </section>
 
           {!disease.quickSummaryRich?.integratedOverview ? (

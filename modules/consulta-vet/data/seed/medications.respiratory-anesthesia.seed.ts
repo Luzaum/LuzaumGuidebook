@@ -66,7 +66,7 @@ export const anesthesiaAnalgesiaSafety = {
   },
 };
 
-const MANDATORY_FOOTER = '<p class="mt-6 pt-4 border-t text-xs text-muted-foreground"><strong>Literatura revisada até agosto/2026.</strong> As doses publicadas variam conforme espécie, indicação, formulação, via e protocolo. O Vetius deve manter protocolos diferentes separados por fonte e nível de evidência, sem calcular médias artificiais entre regimes publicados.</p>';
+const MANDATORY_FOOTER = '<p class="mt-6 pt-4 border-t text-xs text-muted-foreground"><strong>Literatura revisada até agosto/2026.</strong> As doses publicadas variam conforme espécie, indicação, formulação, via e protocolo. Protocolos diferentes devem ser considerados separadamente por fonte e nível de evidência, sem calcular médias artificiais entre regimes publicados.</p>';
 
 export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
   /* ------------------------------------------------------------------------ */
@@ -149,7 +149,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-fluticasona-cat-bsava',
         species: 'cat',
-        indication: 'Asma felina / Doença brônquica crônica (Manutenção — BSAVA)',
+        indication: 'Asma felina / Doença brônquica crônica (Manutenção)',
         doseMin: 50,
         doseMax: 250,
         doseUnit: 'mcg',
@@ -163,7 +163,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-fluticasona-cat-nelson',
         species: 'cat',
-        indication: 'Asma felina — Abordagem clínica prática (Nelson & Couto)',
+        indication: 'Asma felina — Abordagem clínica prática',
         doseMin: 220,
         doseMax: 250,
         doseUnit: 'mcg',
@@ -191,7 +191,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-fluticasona-dog-bsava',
         species: 'dog',
-        indication: 'Doença inflamatória crônica de vias aéreas / Colapso traqueal (BSAVA / Talavera-López 2023)',
+        indication: 'Doença inflamatória crônica de vias aéreas / Colapso traqueal (Talavera-López et al., 2023)',
         doseMin: 125,
         doseMax: 500,
         doseUnit: 'mcg',
@@ -749,7 +749,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-butorfanol-dog-analgesia',
         species: 'dog',
-        indication: 'Analgesia para dor leve (BSAVA)',
+        indication: 'Analgesia para dor leve',
         doseMin: 0.2,
         doseMax: 0.5,
         doseUnit: 'mg/kg',
@@ -757,7 +757,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
         route: 'IV, IM, SC',
         frequency: 'q2h-q4h PRN',
         calculatorEnabled: true,
-        notes: 'Duração analgésica de 45 min a 4h. Faixa ampliada por Nelson & Couto: 0,05–0,6 mg/kg q6–8h.',
+        notes: 'Duração analgésica de 45 min a 4h. Alguns protocolos clínicos ampliam a faixa para 0,05–0,6 mg/kg q6–8h.',
         referenceIds: ['ref-bsava-10th', 'ref-nelson-couto-6th'],
       },
       {
@@ -805,7 +805,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-butorfanol-cat-analgesia',
         species: 'cat',
-        indication: 'Analgesia felina para dor leve / Sedação (BSAVA / Lumb & Jones)',
+        indication: 'Analgesia felina para dor leve / Sedação',
         doseMin: 0.2,
         doseMax: 0.5,
         doseUnit: 'mg/kg',
@@ -958,7 +958,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-dexmed-premed-combo',
         species: 'both',
-        indication: 'Premedicação anestésica combinada com opioide (BSAVA)',
+        indication: 'Premedicação anestésica combinada com opioide',
         doseMin: 2,
         doseMax: 10,
         doseUnit: 'mcg/kg',
@@ -1145,7 +1145,7 @@ export const respiratoryAnesthesiaMedicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-propofol-dog-induction-titrated',
         species: 'dog',
-        indication: 'Indução anestésica incremental / clínica (BSAVA / Plumb)',
+        indication: 'Indução anestésica incremental / clínica',
         doseMin: 0.5,
         doseMax: 6,
         doseUnit: 'mg/kg',

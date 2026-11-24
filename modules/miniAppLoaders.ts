@@ -1,10 +1,12 @@
 export const miniAppLoaders = {
+  '/conversor-corticoide': () => import('./conversor-corticoide/App'),
   '/calculadora-energetica': () => import('./energia-vet/App'),
   '/fluidoterapia-vet': () => import('./fluidoterapia-vet'),
   '/antibioticoterapia': () => import('./antibioticoterapia-vet'),
   '/transfusao-sanguinea': () => import('../pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })),
   '/neurologia': () => import('../pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })),
   '/dor': () => import('./escalas-dor/App'),
+  '/neonatus': () => import('./neonatus/App'),
   '/consulta-vet/referencias-rapidas/oncologia': () => import('./consulta-vet/pages/quickReferences/OncologyReferencePage').then((m) => ({ default: m.OncologyReferencePage })),
   '/consulta-vet/referencias-rapidas/vhs': () => import('./consulta-vet/pages/quickReferences/VhsReferencePage').then((m) => ({ default: m.VhsReferencePage })),
   '/consulta-vet/referencias-rapidas/ultrassom': () => import('./consulta-vet/pages/quickReferences/UltrasoundReferencePage').then((m) => ({ default: m.UltrasoundReferencePage })),

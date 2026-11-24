@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { Suspense, lazy, useId, useState } from 'react'
 import { ArrowRight, Eye, EyeOff, Loader2 } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+
+const WaterRippleImage = lazy(() => import('./water-ripple-image'))
 
 const cn = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ')
 
@@ -75,6 +77,8 @@ export default function TravelConnectSignIn({
   restrictedAccess = false,
 }: TravelConnectSignInProps) {
   const isLogin = mode === 'login'
+  const googleDataDescriptionId = useId()
+  const prefersReducedMotion = useReducedMotion()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -136,6 +140,13 @@ export default function TravelConnectSignIn({
   return (
     <div className="relative isolate min-h-dvh w-full overflow-x-hidden bg-[#081329] text-white">
       <img src="/HERO.png" alt="As três gatinhas do Vetius no jardim" className="absolute inset-0 -z-20 h-full w-full object-cover object-[65%_center]" />
+      {!prefersReducedMotion && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-20">
+          <Suspense fallback={null}>
+            <WaterRippleImage src="/HERO.png" coverPositionX={0.65} />
+          </Suspense>
+        </div>
+      )}
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#061125]/65 via-[#061125]/10 to-transparent" />
       <div className="mx-auto grid min-h-dvh w-full max-w-[1800px] items-center gap-6 px-4 py-8 sm:px-8 lg:grid-cols-[minmax(360px,510px)_1fr] lg:px-14 lg:py-12">
         <motion.div
@@ -153,10 +164,7 @@ export default function TravelConnectSignIn({
               className="mx-auto w-full max-w-md"
             >
               <div className="mb-6">
-                <div className="mb-5 flex items-center gap-3">
-                  <img src="/apps/vetius-emblema.png" alt="Logo Vetius" className="h-14 w-14 rounded-xl object-contain" />
-                  <span className="text-xl font-extrabold tracking-wide">Vetius</span>
-                </div>
+                <img src="/apps/vetius-emblema.png" alt="Logo Vetius" className="mb-5 h-24 w-24 object-contain sm:h-28 sm:w-28" />
                 <p className="mb-5 text-2xl font-extrabold leading-tight sm:text-3xl">Medicina Veterinária de <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">Alta Precisão</span></p>
                 <h1 className="text-xl font-bold">
                   {restrictedAccess ? 'Entrar no Vetius' : isLogin ? 'Bem-vindo de volta' : 'Criar conta Vetius'}
@@ -172,13 +180,14 @@ export default function TravelConnectSignIn({
 
               {!restrictedAccess && onGoogleSignIn ? (
                 <>
-                  <div className="mb-6 flex min-h-[44px] w-full justify-center">
+                  <div className="space-y-2">
                     <Button
                       type="button"
                       variant="outline"
                       className="h-11 w-full gap-3 rounded-lg border-slate-700 bg-white text-slate-900 hover:bg-slate-100"
                       onClick={handleGoogleButton}
                       disabled={loading || googleLoading}
+                      aria-describedby={googleDataDescriptionId}
                     >
                       {googleLoading ? (
                         <Loader2 className="h-4 w-4 animate-spin" />
@@ -192,6 +201,9 @@ export default function TravelConnectSignIn({
                       )}
                       {isLogin ? 'Entrar com Google' : 'Cadastrar com Google'}
                     </Button>
+                    <p id={googleDataDescriptionId} className="text-center text-xs leading-relaxed text-slate-300">
+                      Ao autorizar o login, você compartilha com o Vetius apenas seu nome, e-mail e foto de perfil do Google.
+                    </p>
                   </div>
 
                   <div className="relative my-6">

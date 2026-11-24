@@ -1,0 +1,1517 @@
+{
+  "medications": [
+    {
+      "kind": "Medicamento",
+      "title": "Sucralfato (Sacarose Octassulfatada de Alumínio)",
+      "slug": "sucralfato",
+      "words": 5185,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Capromorelina (Elura™ / Entyce™)",
+      "slug": "capromorelina",
+      "words": 6094,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 12
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ciproeptadina",
+      "slug": "ciproeptadina",
+      "words": 6225,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Metimazol",
+      "slug": "metimazol",
+      "words": 6796,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 11
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Clorambucil (Clorambucila)",
+      "slug": "clorambucil",
+      "words": 6947,
+      "gaps": [],
+      "references": 20
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Dexametasona",
+      "slug": "dexametasona",
+      "words": 7081,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 11
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Alopurinol",
+      "slug": "alopurinol",
+      "words": 7109,
+      "gaps": [],
+      "references": 20
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Pronefra®",
+      "slug": "pronefra",
+      "words": 7305,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 12
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ciclosporina (Ciclosporina A / CsA)",
+      "slug": "ciclosporina",
+      "words": 7412,
+      "gaps": [],
+      "references": 22
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Amoxicilina + Clavulanato de Potássio",
+      "slug": "amoxicilina-clavulanato",
+      "words": 7470,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ampicilina + Sulbactam (Injetável)",
+      "slug": "ampicilina-sulbactam",
+      "words": 7511,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Gabapentina",
+      "slug": "gabapentina",
+      "words": 7633,
+      "gaps": [],
+      "references": 18
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Enrofloxacina",
+      "slug": "enrofloxacina",
+      "words": 7866,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Hidróxido de Alumínio",
+      "slug": "hidroxido-de-aluminio",
+      "words": 8108,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Molidustat",
+      "slug": "molidustat",
+      "words": 8331,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 12
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Acetilcisteína",
+      "slug": "acetilcisteina",
+      "words": 8342,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Cetamina (Cloridrato de Cetamina / Escetamina)",
+      "slug": "cetamina",
+      "words": 8476,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Betanecol (Cloreto de Betanecol)",
+      "slug": "betanecol",
+      "words": 8538,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Amitriptilina (Cloridrato de Amitriptilina)",
+      "slug": "amitriptilina",
+      "words": 8667,
+      "gaps": [],
+      "references": 19
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Mirtazapina",
+      "slug": "mirtazapina",
+      "words": 8704,
+      "gaps": [],
+      "references": 19
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Dipirona (metamizol)",
+      "slug": "dipirona",
+      "words": 8732,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Pilocarpina (Cloridrato de Pilocarpina)",
+      "slug": "pilocarpina",
+      "words": 8742,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Marbofloxacina",
+      "slug": "marbofloxacina",
+      "words": 8808,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 18
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ceftriaxona",
+      "slug": "ceftriaxona",
+      "words": 8810,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 14
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ácido tranexâmico",
+      "slug": "acido-tranexamico",
+      "words": 8814,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Diazepam",
+      "slug": "diazepam",
+      "words": 8820,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Fenobarbital",
+      "slug": "fenobarbital",
+      "words": 9006,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Tramadol (Cloridrato de Tramadol)",
+      "slug": "tramadol",
+      "words": 9053,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Prednisolona",
+      "slug": "prednisolona",
+      "words": 9101,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Butorfanol (Tartarato de Butorfanol)",
+      "slug": "butorfanol",
+      "words": 9218,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Trimetoprima + Sulfonamida (TMP-SDZ / TMP-SMX)",
+      "slug": "sulfametoxazol-trimetoprima",
+      "words": 9326,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 18
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Meloxicam",
+      "slug": "meloxicam",
+      "words": 9332,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Clindamicina",
+      "slug": "clindamicina",
+      "words": 9365,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 15
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Miltefosina (Milteforan®)",
+      "slug": "miltefosina",
+      "words": 9504,
+      "gaps": [
+        "contraindications"
+      ],
+      "references": 25
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Maropitant",
+      "slug": "maropitant",
+      "words": 9595,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 18
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Buprenorfina (Cloridrato de Buprenorfina)",
+      "slug": "buprenorfina",
+      "words": 9597,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Levetiracetam",
+      "slug": "levetiracetam",
+      "words": 9660,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Metadona (Cloridrato de Metadona)",
+      "slug": "metadona",
+      "words": 9772,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Pradofloxacina",
+      "slug": "pradofloxacina",
+      "words": 10017,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 13
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Domperidona",
+      "slug": "domperidona",
+      "words": 10396,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Trazodona (Cloridrato de Trazodona)",
+      "slug": "trazodona",
+      "words": 10486,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 25
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Ondansetrona",
+      "slug": "ondansetrona",
+      "words": 10671,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 17
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Metoclopramida",
+      "slug": "metoclopramida",
+      "words": 11464,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 19
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Amantadina (Cloridrato de Amantadina)",
+      "slug": "amantadina",
+      "words": 11559,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 15
+    },
+    {
+      "kind": "Medicamento",
+      "title": "Micofenolato de Mofetila (MMF)",
+      "slug": "micofenolato-mofetila",
+      "words": 12129,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 19
+    }
+  ],
+  "diseases": [
+    {
+      "kind": "Doença",
+      "title": "Doença do Disco Intervertebral — Gatos",
+      "slug": "doenca-do-disco-intervertebral-gatos",
+      "words": 2092,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Doença",
+      "title": "Síndrome Cutânea Atópica Felina",
+      "slug": "sindrome-cutanea-atopica-felina",
+      "words": 2108,
+      "gaps": [],
+      "references": 20
+    },
+    {
+      "kind": "Doença",
+      "title": "Dermatite Atópica Canina",
+      "slug": "dermatite-atopica-canina",
+      "words": 2349,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Hipotireoidismo adquirido (cão e gato)",
+      "slug": "hipotireoidismo-adquirido-caes-gatos",
+      "words": 2560,
+      "gaps": [],
+      "references": 22
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença do Disco Intervertebral — Cães",
+      "slug": "doenca-do-disco-intervertebral-caes",
+      "words": 2561,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença Periodontal Felina",
+      "slug": "doenca-periodontal-gatos",
+      "words": 2666,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Complexo do granuloma eosinofílico felino",
+      "slug": "granuloma-eosinofilico-felino",
+      "words": 2701,
+      "gaps": [],
+      "references": 5
+    },
+    {
+      "kind": "Doença",
+      "title": "Tumores mamários em cães e gatos",
+      "slug": "tumores-mamarios-caes-gatos",
+      "words": 2742,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Doença",
+      "title": "Erliquiose monocítica canina (Ehrlichia canis)",
+      "slug": "erliquiose-monocitica-canina",
+      "words": 2745,
+      "gaps": [],
+      "references": 6
+    },
+    {
+      "kind": "Doença",
+      "title": "Síndrome de Cushing — Cão",
+      "slug": "sindrome-cushing-caes",
+      "words": 2779,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Leucemia viral felina (FeLV)",
+      "slug": "leucemia-viral-felina",
+      "words": 2896,
+      "gaps": [],
+      "references": 8
+    },
+    {
+      "kind": "Doença",
+      "title": "Cardiomiopatia dilatada (CMD)",
+      "slug": "cardiomiopatia-dilatada-caes-gatos",
+      "words": 2962,
+      "gaps": [],
+      "references": 8
+    },
+    {
+      "kind": "Doença",
+      "title": "Cardiomiopatia hipertrófica (CMH)",
+      "slug": "cardiomiopatia-hipertrofica-caes-gatos",
+      "words": 2972,
+      "gaps": [],
+      "references": 7
+    },
+    {
+      "kind": "Doença",
+      "title": "Diabetes Mellitus Felino",
+      "slug": "diabetes-mellitus-felina",
+      "words": 2974,
+      "gaps": [
+        "epidemiology"
+      ],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Hipertensão arterial sistêmica (HAS)",
+      "slug": "hipertensao-arterial-sistemica-caes-gatos",
+      "words": 2990,
+      "gaps": [],
+      "references": 5
+    },
+    {
+      "kind": "Doença",
+      "title": "Doenças do trato urinário inferior felino (DTUIF)",
+      "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+      "words": 3051,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Doença",
+      "title": "Diabetes Mellitus Canino",
+      "slug": "diabetes-mellitus-canina",
+      "words": 3118,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Gengivoestomatite crônica felina (GECF)",
+      "slug": "gengivoestomatite-cronica-felina",
+      "words": 3133,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença Periodontal Canina",
+      "slug": "doenca-periodontal-caes",
+      "words": 3174,
+      "gaps": [],
+      "references": 18
+    },
+    {
+      "kind": "Doença",
+      "title": "Prostatite em cães e gatos",
+      "slug": "prostatite-caes-gatos",
+      "words": 3333,
+      "gaps": [],
+      "references": 13
+    },
+    {
+      "kind": "Doença",
+      "title": "Miastenia gravis adquirida (cão e gato)",
+      "slug": "miastenia-gravis-caes-gatos",
+      "words": 3337,
+      "gaps": [],
+      "references": 21
+    },
+    {
+      "kind": "Doença",
+      "title": "Asma felina",
+      "slug": "asma-felina",
+      "words": 3420,
+      "gaps": [],
+      "references": 6
+    },
+    {
+      "kind": "Doença",
+      "title": "Fístula perianal / furunculose anal",
+      "slug": "fistula-perianal-furunculose-anal",
+      "words": 3603,
+      "gaps": [],
+      "references": 7
+    },
+    {
+      "kind": "Doença",
+      "title": "Síndromes miastênicas congênitas (cão e gato)",
+      "slug": "sindromes-miastenicas-congenitas-caes-gatos",
+      "words": 3627,
+      "gaps": [],
+      "references": 6
+    },
+    {
+      "kind": "Doença",
+      "title": "Leishmaniose visceral canina (leishmaniose canina por L. infantum)",
+      "slug": "leishmaniose-visceral-canina",
+      "words": 3727,
+      "gaps": [],
+      "references": 4
+    },
+    {
+      "kind": "Doença",
+      "title": "Síndrome de Cushing — Gato",
+      "slug": "sindrome-cushing-gatos",
+      "words": 3732,
+      "gaps": [],
+      "references": 9
+    },
+    {
+      "kind": "Doença",
+      "title": "Cardiomiopatia restritiva felina (CMR / RCM)",
+      "slug": "cardiomiopatia-restritiva-felina",
+      "words": 3843,
+      "gaps": [],
+      "references": 6
+    },
+    {
+      "kind": "Doença",
+      "title": "Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais",
+      "slug": "micoplasmoses-hemotropicas",
+      "words": 3926,
+      "gaps": [],
+      "references": 6
+    },
+    {
+      "kind": "Doença",
+      "title": "Hipotireoidismo congênito (cão e gato)",
+      "slug": "hipotireoidismo-congenito-caes-gatos",
+      "words": 3996,
+      "gaps": [],
+      "references": 8
+    },
+    {
+      "kind": "Doença",
+      "title": "Vírus da imunodeficiência felina (FIV)",
+      "slug": "imunodeficiencia-felina-fiv",
+      "words": 4263,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença valvar mitral degenerativa (DMVD / endocardiose)",
+      "slug": "doenca-valvar-mitral-degenerativa-caes",
+      "words": 4523,
+      "gaps": [],
+      "references": 5
+    },
+    {
+      "kind": "Doença",
+      "title": "Insuficiência pancreática exócrina (IPE/EPI)",
+      "slug": "insuficiencia-pancreatica-exocrina-caes-gatos",
+      "words": 4536,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Peritonite infecciosa felina (PIF/FIP)",
+      "slug": "peritonite-infecciosa-felina",
+      "words": 4648,
+      "gaps": [],
+      "references": 11
+    },
+    {
+      "kind": "Doença",
+      "title": "Insulinoma em cães e gatos",
+      "slug": "insulinoma-caes-gatos",
+      "words": 4671,
+      "gaps": [],
+      "references": 25
+    },
+    {
+      "kind": "Doença",
+      "title": "Cistoisosporose em cães e gatos",
+      "slug": "coccidiose-caes-gatos",
+      "words": 5161,
+      "gaps": [],
+      "references": 18
+    },
+    {
+      "kind": "Doença",
+      "title": "Linfoma cutâneo",
+      "slug": "linfoma-cutaneo-caes-gatos",
+      "words": 5161,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Giardíase em cães e gatos",
+      "slug": "giardiase-caes-gatos",
+      "words": 5184,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Doença",
+      "title": "Colapso Traqueal em Cães e Gatos",
+      "slug": "colapso-traqueal-canino",
+      "words": 5683,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Doença",
+      "title": "Hipertireoidismo felino",
+      "slug": "hipertireoidismo-felino",
+      "words": 5776,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Doença",
+      "title": "Arritmias cardíacas em cães e gatos",
+      "slug": "arritmias-cardiacas-caes-gatos",
+      "words": 5843,
+      "gaps": [],
+      "references": 26
+    },
+    {
+      "kind": "Doença",
+      "title": "Colangite Parasitária",
+      "slug": "colangite-parasitaria-caes-gatos",
+      "words": 6069,
+      "gaps": [],
+      "references": 18
+    },
+    {
+      "kind": "Doença",
+      "title": "Leishmaniose em Cães e Gatos",
+      "slug": "leishmaniose-caes-gatos",
+      "words": 6185,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Platinosomose Felina",
+      "slug": "platinosomose-felina",
+      "words": 6392,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Hipoadrenocorticismo (Doença de Addison)",
+      "slug": "hipoadrenocorticismo-addison",
+      "words": 6604,
+      "gaps": [],
+      "references": 21
+    },
+    {
+      "kind": "Doença",
+      "title": "Cistite Enfisematosa em Cães e Gatos",
+      "slug": "cistite-enfisematosa-caes-gatos",
+      "words": 6607,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Trombocitopenia em Cães e Gatos",
+      "slug": "trombocitopenia-caes-gatos",
+      "words": 6660,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Lesão Renal Aguda em Cães (LRA / IRA / AKI)",
+      "slug": "lesao-renal-aguda-canina",
+      "words": 6709,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Obstrução Funcional do Fluxo Urinário em Cães (FOO)",
+      "slug": "obstrucao-funcional-fluxo-urinario-caes",
+      "words": 6726,
+      "gaps": [],
+      "references": 9
+    },
+    {
+      "kind": "Doença",
+      "title": "Brucelose em Cães e Gatos (Brucella canis)",
+      "slug": "brucelose-caes-gatos",
+      "words": 6825,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Hiperparatireoidismo em cães e gatos",
+      "slug": "hiperparatireoidismo-caes-gatos",
+      "words": 7058,
+      "gaps": [],
+      "references": 23
+    },
+    {
+      "kind": "Doença",
+      "title": "Cistite Idiopática Felina (CIF / FIC)",
+      "slug": "cistite-idiopatica-felina",
+      "words": 7062,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Discinesia Paroxística em Cães e Gatos",
+      "slug": "discinesia-paroxistica-caes-gatos",
+      "words": 7077,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Anemia Hemolítica Imunomediada em Cães (AHIM / IMHA)",
+      "slug": "anemia-hemolitica-imunomediada-canina",
+      "words": 7463,
+      "gaps": [],
+      "references": 11
+    },
+    {
+      "kind": "Doença",
+      "title": "Mastite em cadelas e gatas",
+      "slug": "mastite-caes-gatos",
+      "words": 7708,
+      "gaps": [],
+      "references": 7
+    },
+    {
+      "kind": "Doença",
+      "title": "Megaesôfago em Cães e Gatos",
+      "slug": "megaesofago-caes-gatos",
+      "words": 7709,
+      "gaps": [],
+      "references": 29
+    },
+    {
+      "kind": "Doença",
+      "title": "Megacólon",
+      "slug": "megacolon-caes-gatos",
+      "words": 7766,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Enteropatia perdedora de proteínas em cães e gatos (PLE)",
+      "slug": "enteropatia-perdedora-de-proteinas-caes-gatos",
+      "words": 7822,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Doença",
+      "title": "Cetoacidose diabética em cães e gatos",
+      "slug": "cetoacidose-diabetica-caes-gatos",
+      "words": 7888,
+      "gaps": [],
+      "references": 26
+    },
+    {
+      "kind": "Doença",
+      "title": "Síndrome mielodisplásica (MDS)",
+      "slug": "sindrome-mielodisplasica-caes-gatos",
+      "words": 8016,
+      "gaps": [],
+      "references": 13
+    },
+    {
+      "kind": "Doença",
+      "title": "Enteropatias inflamatórias crônicas em cães (CIE / antiga IBD)",
+      "slug": "enteropatia-inflamatoria-cronica-canina",
+      "words": 8163,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença renal crônica em cães (DRC canina)",
+      "slug": "doenca-renal-cronica-canina",
+      "words": 8299,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Sepse e Choque Séptico em Cães",
+      "slug": "sepse-canina",
+      "words": 8402,
+      "gaps": [],
+      "references": 10
+    },
+    {
+      "kind": "Doença",
+      "title": "Polirradiculoneurite Aguda em Cães e Gatos (ACP / AIP)",
+      "slug": "polirradiculoneurite-caes-gatos",
+      "words": 8464,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Sepse e Choque Séptico em Felinos",
+      "slug": "sepse-felina",
+      "words": 8502,
+      "gaps": [],
+      "references": 12
+    },
+    {
+      "kind": "Doença",
+      "title": "Doença renal crônica em felinos (DRC felina)",
+      "slug": "doenca-renal-cronica-felina",
+      "words": 8541,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Intermação em Cães e Gatos",
+      "slug": "intermacao-caes-gatos",
+      "words": 8560,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Tríade Felina",
+      "slug": "triade-felina",
+      "words": 8628,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Anemia em Cães e Gatos",
+      "slug": "anemia-caes-gatos",
+      "words": 8749,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Pancreatite em cães e gatos",
+      "slug": "pancreatite-caes-gatos",
+      "words": 8763,
+      "gaps": [],
+      "references": 21
+    },
+    {
+      "kind": "Doença",
+      "title": "Cinomose canina",
+      "slug": "cinomose-canina",
+      "words": 8814,
+      "gaps": [],
+      "references": 35
+    },
+    {
+      "kind": "Doença",
+      "title": "Linfoma Mediastinal em Cães e Gatos",
+      "slug": "linfoma-mediastinal-caes-gatos",
+      "words": 8821,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Neoplasias intracranianas em cães (tumores encefálicos)",
+      "slug": "neoplasias-intracranianas-caes",
+      "words": 8994,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Pielonefrite em Cães e Gatos (Pielonefrite Bacteriana / Fúngica)",
+      "slug": "pielonefrite-caes-gatos",
+      "words": 9064,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Lesão Renal Aguda em Felinos (LRA / AKI)",
+      "slug": "lesao-renal-aguda-felina",
+      "words": 9135,
+      "gaps": [],
+      "references": 18
+    },
+    {
+      "kind": "Doença",
+      "title": "Quilotórax em Gatos e Cães",
+      "slug": "quilotorax-caes-gatos",
+      "words": 9410,
+      "gaps": [],
+      "references": 17
+    },
+    {
+      "kind": "Doença",
+      "title": "Bronquite crônica em cães e gatos",
+      "slug": "bronquite-cronica-caes-gatos",
+      "words": 9778,
+      "gaps": [],
+      "references": 15
+    },
+    {
+      "kind": "Doença",
+      "title": "Babesiose em cães e gatos",
+      "slug": "babesiose-caes-gatos",
+      "words": 10033,
+      "gaps": [],
+      "references": 24
+    },
+    {
+      "kind": "Doença",
+      "title": "Piotórax em Cães e Gatos",
+      "slug": "piotorax-caes-gatos",
+      "words": 10367,
+      "gaps": [],
+      "references": 14
+    },
+    {
+      "kind": "Doença",
+      "title": "Tétano em Cães e Gatos (Clostridium tetani)",
+      "slug": "tetano-caes-gatos",
+      "words": 10455,
+      "gaps": [],
+      "references": 16
+    },
+    {
+      "kind": "Doença",
+      "title": "Coagulação intravascular disseminada (CID/DIC)",
+      "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+      "words": 10676,
+      "gaps": [],
+      "references": 30
+    },
+    {
+      "kind": "Doença",
+      "title": "Paralisia Laríngea em Cães e Gatos (GOLPP / LPPN)",
+      "slug": "paralisia-laringea-caes-gatos",
+      "words": 11038,
+      "gaps": [],
+      "references": 19
+    },
+    {
+      "kind": "Doença",
+      "title": "Prolapso retal em cães e gatos",
+      "slug": "prolapso-retal-caes-gatos",
+      "words": 12305,
+      "gaps": [],
+      "references": 26
+    }
+  ],
+  "internal": [
+    {
+      "kind": "Medicamento interno",
+      "title": "Propranolol",
+      "slug": "propranolol",
+      "words": 197,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Esmolol",
+      "slug": "esmolol",
+      "words": 219,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Sotalol",
+      "slug": "sotalol",
+      "words": 261,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Atenolol",
+      "slug": "atenolol",
+      "words": 286,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Brometo de ipratrópio",
+      "slug": "brometo-de-ipratropio",
+      "words": 317,
+      "gaps": [
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 2
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Bezafibrato (fibrato)",
+      "slug": "benzafibrato",
+      "words": 322,
+      "gaps": [
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 3
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Pimobendan",
+      "slug": "pimobendan",
+      "words": 325,
+      "gaps": [
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Ácido ursodesoxicólico (UDCA)",
+      "slug": "acido-ursodesoxicolico",
+      "words": 325,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 3
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "N-acetilcisteína (NAC)",
+      "slug": "n-acetilcisteina",
+      "words": 333,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 2
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Praziquantel",
+      "slug": "praziquantel",
+      "words": 370,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Tiopental sódico",
+      "slug": "tiopental",
+      "words": 398,
+      "gaps": [
+        "indications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 2
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Digoxina",
+      "slug": "digoxina",
+      "words": 418,
+      "gaps": [
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Ciprofloxacina",
+      "slug": "ciprofloxacina",
+      "words": 425,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "cautions",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Atropina",
+      "slug": "atropina",
+      "words": 434,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Diltiazem",
+      "slug": "diltiazem",
+      "words": 497,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 7
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Propofol",
+      "slug": "propofol",
+      "words": 499,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Lidocaína",
+      "slug": "lidocaina",
+      "words": 543,
+      "gaps": [
+        "mechanismOfAction",
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Ampicilina",
+      "slug": "ampicilina",
+      "words": 547,
+      "gaps": [
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Salbutamol",
+      "slug": "salbutamol",
+      "words": 551,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Benazepril",
+      "slug": "benazepril",
+      "words": 556,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Propionato de fluticasona + salmeterol",
+      "slug": "fluticasona-salmeterol",
+      "words": 600,
+      "gaps": [
+        "indications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 2
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Levotiroxina sódica",
+      "slug": "levotiroxina-sodica",
+      "words": 663,
+      "gaps": [
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Selegilina",
+      "slug": "selegilina",
+      "words": 675,
+      "gaps": [
+        "adverseEffects"
+      ],
+      "references": 4
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Fluoxetina",
+      "slug": "fluoxetina",
+      "words": 695,
+      "gaps": [
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Dexmedetomidina",
+      "slug": "dexmedetomidina",
+      "words": 695,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 5
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Desoxicorticosterona pivalato (DOCP)",
+      "slug": "desoxicorticosterona-pivalato",
+      "words": 722,
+      "gaps": [
+        "indications",
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Propionato de fluticasona",
+      "slug": "propionato-de-fluticasona",
+      "words": 726,
+      "gaps": [
+        "drugInteractionsDetailed"
+      ],
+      "references": 7
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Silimarina, silibina e suplementos hepáticos",
+      "slug": "suplementos-hepaticos-silimarina",
+      "words": 728,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Pregabalina",
+      "slug": "pregabalina",
+      "words": 831,
+      "gaps": [
+        "contraindications"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "S-adenosil-L-metionina (SAMe)",
+      "slug": "same-sadenosilmetionina",
+      "words": 855,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 9
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Ondansetrona",
+      "slug": "ondansetron",
+      "words": 857,
+      "gaps": [
+        "contraindications"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Fenbendazol",
+      "slug": "fenbendazol",
+      "words": 880,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 6
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Budesonida",
+      "slug": "budesonida",
+      "words": 925,
+      "gaps": [
+        "contraindications"
+      ],
+      "references": 9
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Manitol",
+      "slug": "manitol",
+      "words": 1004,
+      "gaps": [
+        "contraindications"
+      ],
+      "references": 8
+    },
+    {
+      "kind": "Medicamento interno",
+      "title": "Metronidazol",
+      "slug": "metronidazol",
+      "words": 1187,
+      "gaps": [
+        "contraindications",
+        "adverseEffects",
+        "drugInteractionsDetailed"
+      ],
+      "references": 8
+    }
+  ]
+}

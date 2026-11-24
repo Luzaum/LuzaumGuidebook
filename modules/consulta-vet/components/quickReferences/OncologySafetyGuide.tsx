@@ -43,7 +43,7 @@ export function OncologySafetyGuide() {
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
             <ShieldCheck className="h-5 w-5" aria-hidden="true" />
           </span>
-          <h3 id={headingId} className="text-base font-bold text-foreground">Regras de Ouro &amp; Biossegurança BSAVA</h3>
+          <h3 id={headingId} className="text-base font-bold text-foreground">Regras de Ouro &amp; Biossegurança em Oncologia</h3>
         </div>
         <button
           type="button"

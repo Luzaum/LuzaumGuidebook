@@ -144,7 +144,7 @@ export function generateAlerts(
       whyItMatters: 'Escalar soro automaticamente pode gerar sobrecarga perioperatoria sem corrigir a causa hemodinamica.',
       whatToMonitor: 'PA, profundidade anestesica, FC, temperatura, perdas e perfusão.',
       recommendation: 'Avaliar plano anestesico, vasodilatacao, analgesia, hemorragia e necessidade de vasoativo antes de subir taxa.',
-      source: 'AAHA 2024 / Lumb & Jones',
+      source: 'AAHA 2024',
       action: {
         label: 'Usar default anestesico',
         apply: (state: CalculatorState) => ({

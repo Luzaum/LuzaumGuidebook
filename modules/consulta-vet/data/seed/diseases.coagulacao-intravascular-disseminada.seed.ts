@@ -126,7 +126,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
     '  - Em coorte de 804 cães, a progressão para CID manifesta (overt DIC, definida por >=3 de 6 critérios hemostáticos alterados) elevou a mortalidade para 62,5% vs 12,9% (risco relativo de 4,84).\n' +
     '- Princípios de intervenção clínica:\n' +
     '  - Combate imediato à causa primária e restauração da microperfusão por fluidoterapia guiada por metas sem hemodiluição excessiva.\n' +
-    '  - Heparinização controversa e restrita a fenótipos trombóticos sem hemorragia ativa (CURATIVE, 2019; Plumb\'s, 10ª ed.).\n' +
+    '  - Heparinização controversa e restrita a fenótipos trombóticos sem hemorragia ativa (CURATIVE, 2019).\n' +
     '  - Plasma fresco congelado (FFP) e crioprecipitado reservados para reposição fenotípica em sangramento ativo ou procedimentos invasivos de alto risco.',
   quickDecisionStrip: [
     'CID é sempre secundária: diagnosticar e eliminar o gatilho sistêmico subjacente é a única terapia verdadeiramente curativa.',
@@ -204,7 +204,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Investigação de causas primárias de alto risco:\n' +
             '  - Rastrear sepse (peritonite séptica, pneumonia, piometra), massas esplênicas/hepáticas (suspeita de hemangiossarcoma), pancreatite necrosante, GDV, insolação, politrauma ou anemia hemolítica.\n' +
             '- Avaliação hemodinâmica imediata:\n' +
-            '  - Avaliar perfusão periférica, tempo de preenchimento capilar (TPC), lactato sérico seriado e estabilidade ventilatória (Nelson & Couto, 6ª ed.; Ettinger, 9ª ed. 2024).',
+            '  - Avaliar perfusão periférica, tempo de preenchimento capilar (TPC), lactato sérico seriado e estabilidade ventilatória.',
         },
         {
           label: 'Hemograma completo com esfregaço sanguíneo manual',
@@ -214,7 +214,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Contagem plaquetária rigorosa:\n' +
             '  - Contagem automatizada confirmada por microscopia manual; em felinos, descartar pseudotrombocitopenia por agregados plaquetários na cauda e bordas do esfregaço.\n' +
             '- Pesquisa de esquizócitos e dano mecânico:\n' +
-            '  - Identificar hemácias fragmentadas por cisalhamento nas redes de fibrina intravascular (Nelson & Couto, 6ª ed.).\n' +
+            '  - Identificar hemácias fragmentadas por cisalhamento nas redes de fibrina intravascular.\n' +
             '- Resposta leucocitária:\n' +
             '  - Avaliar toxicidade neutrofílica e desvio nuclear à esquerda regenerativo ou degenerativo.',
           limitations: 'Esquizócitos reforçam microangiopatia, mas não são patognomônicos (ocorrem também em hemangiossarcoma puro e glomerulopatias).',
@@ -227,7 +227,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Tempos de coagulação plasmática:\n' +
             '  - Mensurar PT e aPTT (prolongam quando o consumo de fatores excede a síntese hepática; tempos normais não descartam fase precoce compensada).\n' +
             '- Fibrinogênio plasmático funcional:\n' +
-            '  - Reagente de fase aguda: valores normais em paciente séptico indicam consumo concomitante acelerado; hipofibrinogenemia ocorre em 14% dos cães e 5% dos gatos (Nelson & Couto, 6ª ed.).\n' +
+            '  - Reagente de fase aguda: valores normais em paciente séptico indicam consumo concomitante acelerado; hipofibrinogenemia ocorre em apenas ~14% dos cães e ~5% dos gatos.\n' +
             '- D-dímero quantitativo:\n' +
             '  - Marcador de ativação simultânea da coagulação e degradação de fibrina reticulada.',
           reassess: 'Repetir o painel a cada 6–12 horas em pacientes críticos instáveis para detectar trajetória de consumo rápido.',
@@ -266,7 +266,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Intervenções cirúrgicas emergenciais:\n' +
             '  - Descompressão e gastropexia no GDV; hemostasia e esplenectomia no hemangiossarcoma roto; desbridamento e drenagem na peritonite séptica.\n' +
             '- Terapêutica médica dirigida:\n' +
-            '  - Antibioticoterapia intravenosa precoce de amplo espectro na sepse; resfriamento corporal ativo na intermação; suporte intensivo e analgesia na pancreatite (Nelson & Couto, 6ª ed.; Ettinger, 9ª ed. 2024).',
+            '  - Antibioticoterapia intravenosa precoce de amplo espectro na sepse; resfriamento corporal ativo na intermação; suporte intensivo e analgesia na pancreatite.',
         },
         {
           label: 'Ressuscitação microvascular guiada por metas',
@@ -275,7 +275,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             'Otimização da perfusão microvascular e prevenção da tríade letal:\n' +
             '- Fluidoterapia balanceada orientada por objetivos:\n' +
             '  - Restaurar pressão de perfusão e débito com cristaloides balanceados titulados por metas (PAM >= 65 mmHg, lactato em queda, débito urinário >= 1–2 mL/kg/h).\n' +
-            '- Prevenção da tríade letal (BSAVA ECC, 3ª ed.):\n' +
+            '- Prevenção da tríade letal:\n' +
             '  - Evitar expansão excessiva que induza coagulopatia dilucional, hipotermia e acidose metabólica.\n' +
             '- Suporte vasopressor precoce:\n' +
             '  - Adicionar infusão contínua de norepinefrina precocemente se houver choque vasodilatador refratário a volume.',
@@ -290,7 +290,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Concentrado de hemácias (pRBC) e Sangue Total:\n' +
             '  - pRBC se anemia comprometer entrega de oxigênio (DO2); Sangue Total Fresco se coincidirem hemorragia profusa, anemia e plaquetopenia grave.\n' +
             '- Crioprecipitado:\n' +
-            '  - Indicado na hipofibrinogenemia profunda (<100 mg/dL) com risco de sobrecarga volêmica (Plumb\'s, 10ª ed.; Fluid Therapy, 2ª ed. 2023).',
+            '  - Indicado na hipofibrinogenemia profunda (<100 mg/dL) com risco de sobrecarga volêmica.',
           dose: 'FFP: cães 10–15 mL/kg IV; gatos 6–10 mL/kg IV. Crioprecipitado: 1 unidade/10 kg IV.',
           reassess: 'Não transfundir FFP profilaticamente apenas para "corrigir tempos no papel" em animal sem sangramento.',
         },
@@ -301,10 +301,10 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             'Terapia anticoagulante estritamente fenotípica:\n' +
             '- Indicações restritas e contraindicações:\n' +
             '  - Indicada apenas na fase inicial pró-trombótica, tromboembolismo comprovado ou TEG hipercoagulável, desde que NÃO haja sangramento ativo.\n' +
-            '  - Contraindicada na fase consumptiva com hemorragia manifesta; heparina requer antitrombina viável para atuar (Ettinger, 2024; ACVECC CURATIVE, 2019).\n' +
-            '- Veto de procedimento (Lumb & Jones, 2024):\n' +
+            '  - Contraindicada na fase consumptiva com hemorragia manifesta; heparina requer antitrombina viável para atuar (ACVECC CURATIVE, 2019).\n' +
+            '- Veto de procedimento:\n' +
             '  - NUNCA pré-incubar heparina com plasma na bolsa de transfusão.',
-          dose: 'UFH: 75–100 UI/kg SC q8h (Plumb\'s) ou bolus IV 100 UI/kg seguido de CRI 20–50 UI/kg/h titulado por aPTT/anti-Xa. Enoxaparina: cão 0,8–1 mg/kg SC q6–8h; gato 0,75–1 mg/kg SC q6–12h. Dalteparina: cão 150–175 UI/kg SC q8h; gato 75–150 UI/kg SC q6h.',
+          dose: 'UFH: 75–100 UI/kg SC q8h ou bolus IV 100 UI/kg seguido de CRI 20–50 UI/kg/h titulado por aPTT/anti-Xa. Enoxaparina: cão 0,8–1 mg/kg SC q6–8h; gato 0,75–1 mg/kg SC q6–12h. Dalteparina: cão 150–175 UI/kg SC q8h; gato 75–150 UI/kg SC q6h.',
           reassess: 'Monitorar por atividade anti-Xa (alvo de pico: 0,5–1,0 UI/mL coletado 3 h pós-dose em cães e 2 h em gatos) ou aPTT. Suspender imediatamente se surgir sangramento ativo.',
         },
         {
@@ -317,7 +317,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             '- Monitoramento cardiovascular contínuo:\n' +
             '  - Rastreio eletrocardiográfico para arritmias ventriculares (VPCs multifocais por hipóxia e isquemia miocárdica).\n' +
             '- Vigilância renal e metabólica:\n' +
-            '  - Monitoramento estrito do débito urinário e eletrólitos séricos para suporte da lesão renal aguda isquêmica (Nelson & Couto, 6ª ed.).',
+            '  - Monitoramento estrito do débito urinário e eletrólitos séricos para suporte da lesão renal aguda isquêmica.',
         },
       ],
     },
@@ -332,13 +332,13 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - A atualização do comitê científico da ISTH (2025) formalizou a CID como uma condição biológica contínua caracterizada por ativação sistêmica da coagulação, lesão do endotélio vascular e fibrinólise desregulada.\n' +
       '  - Progressão de uma fase precoce compensada (pre-DIC), muitas vezes clinicamente silenciosa, para disfunção orgânica de múltiplos órgãos e/ou coagulopatia consumptiva hemorrágica manifesta (overt DIC).\n' +
       '- Aplicação na medicina veterinária:\n' +
-      '  - Embora pontos de corte humanos não devam ser transpostos mecanicamente sem validação, o conceito contemporâneo traduz com precisão a fisiopatologia em cães e gatos (Nelson & Couto, 6ª ed., Cap. 87; Ettinger, 9ª ed. 2024, Cap. 171).',
+      '  - Embora pontos de corte humanos não devam ser transpostos mecanicamente sem validação, o conceito contemporâneo traduz com precisão a fisiopatologia em cães e gatos.',
     figuraFisiopatologiaGeral: figura1FisiopatologiaGeral,
     mecanismosIniciais:
       'Mecanismos patológicos primários de ativação da hemostasia:\n' +
       '- Quebra do modelo celular da coagulação:\n' +
-      '  - A hemostasia fisiológica opera segundo o modelo celular em três etapas coordenadas (iniciação na célula expressora de TF, amplificação na superfície plaquetária e propagação com explosão de trombina; Lumb & Jones, 2024, Cap. 31).\n' +
-      '  - Na CID, três mecanismos patológicos primários rompem essa compartimentalização (BSAVA ECC, 3ª ed., Cap. 13; Textbook of Small Animal Emergency Medicine, Cap. 70):\n' +
+      '  - A hemostasia fisiológica opera segundo o modelo celular em três etapas coordenadas (iniciação na célula expressora de TF, amplificação na superfície plaquetária e propagação com explosão de trombina).\n' +
+      '  - Na CID, três mecanismos patológicos primários rompem essa compartimentalização:\n' +
       '- 1. Liberação maciça ou exposição intravascular de fator tecidual (TF/fator III):\n' +
       '  - Ocorre em necroses extensas, trauma grave, inflamação sistêmica, hemólise intravascular maciça e neoplasias invasivas.\n' +
       '- 2. Lesão endotelial disseminada:\n' +
@@ -355,17 +355,17 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - Liberação torrencial de citocinas pró-inflamatórias (TNF-alfa, IL-1, IL-6), forçando superexpressão de fator tecidual na superfície de monócitos circulantes e células vasculares.\n' +
       '  - O complexo TF–FVIIa deflagra a geração contínua de fator Xa e trombina.\n' +
       '- Círculo vicioso por receptores PARs:\n' +
-      '  - Trombina e FXa sinalizam em receptores ativados por protease (PAR-1, PAR-2 e PAR-4) expressos em leucócitos e endotélio, amplificando ainda mais a produção de citocinas inflamatórias em feedback positivo incontrolável.\n' +
+      '  - Trombina e FXa sinalizam em receptores ativados por protease (PAR-1, PAR-2 e PAR-4) expressos em leucócitos e endotélio, amplificando ainda mais a produção de citocinas inflamatórias em retroalimentação positiva incontrolável.\n' +
       '- Papel das armadilhas extracelulares de neutrófilos (NETs):\n' +
       '  - Plaquetas ativadas expressam P-selectina ligando-se a PSGL-1 em neutrófilos e monócitos, recrutando-os para os microtrombos.\n' +
-      '  - Promovem a ejeção de NETs, que servem de plataforma adicional para ancoramento de mais fibrina e ativação do fator XII (Textbook of Small Animal Emergency Medicine, Cap. 70 e 159).',
+      '  - Promovem a ejeção de NETs, que servem de plataforma adicional para ancoramento de mais fibrina e ativação do fator XII.',
     figuraImunotromboseSepse: figura2ImunotromboseSepse,
     oncologiaHemangiossarcoma:
       'Patogênese da CID no paciente oncológico e no hemangiossarcoma:\n' +
       '- Ativação da tríade de Virchow tumoral:\n' +
       '  - Estase venosa por compressão mecânica, lesão endotelial por invasão e neovascularização anômala, e hipercoagulabilidade induzida pelo próprio tumor.\n' +
       '  - Células neoplásicas e macrófagos associados expressam constitutivamente altos níveis de TF e liberam micropartículas ricas em TF e fosfatidilserina.\n' +
-      '- Prevalência em tumores sólidos (Withrow & MacEwen, 6ª ed., Cap. 5 e 34):\n' +
+      '- Prevalência em tumores sólidos:\n' +
       '  - Cerca de 10% dos cães com neoplasias sólidas desenvolvem alterações de CID, alcançando cerca de 50% nos portadores de hemangiossarcoma (HSA) visceral (esplênico, hepático ou cardíaco), além de taxas elevadas em carcinomas inflamatórios mamários.\n' +
       '- Hemangiossarcoma (HSA) visceral e canais vasculares tortuosos:\n' +
       '  - Vascularização rudimentar revestida por células endoteliais malignas propicia contato contínuo do fluxo sanguíneo com estroma trombogênico, necrose central e trombose contínua.\n' +
@@ -377,17 +377,17 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '- Pancreatite aguda canina necrosante grave:\n' +
       '  - Ativação intraglandular prematura do tripsinogênio em tripsina desencadeia autodigestão acinar, necrose peripancreática e liberação de proteases ativas na circulação portal e sistêmica.\n' +
       '  - A tripsina cliva enzimaticamente o fator X e a protrombina em trombina de forma independente de TF, além de degradar inibidores naturais como a antitrombina e ativar as vias das cininas e do complemento.\n' +
-      '  - Cães com pancreatite sistêmica frequentemente desenvolvem CID oculta muito antes de manifestarem sinais hemorrágicos francos, sofrendo microtrombose mesentérica, renal e pulmonar (Canine Hepatobiliary and Exocrine Pancreatic Diseases, 2024; Textbook of Small Animal Emergency Medicine, Cap. 86).\n' +
+      '  - Cães com pancreatite sistêmica frequentemente desenvolvem CID oculta muito antes de manifestarem sinais hemorrágicos francos, sofrendo microtrombose mesentérica, renal e pulmonar.\n' +
       '- Dilatação-vólvulo gástrica (GDV):\n' +
       '  - A rotação gástrica obstrui o retorno venoso pela veia cava caudal e veia porta, gerando estase esplâncnica massiva, hipoperfusão sistêmica e isquemia da mucosa gástrica.\n' +
       '  - A perda da barreira epitelial gástrica permite translocação de endotoxinas bacterianas (LPS) para a circulação.\n' +
-      '  - Na descompressão e reposicionamento cirúrgico, a lesão de isquemia-reperfusão libera espécies reativas de oxigênio (ROS), citocinas inflamatórias e TF, culminando em SIRS fulminante, endoteliopatia e consumo hemostático difuso (BSAVA Gastroenterology, 3ª ed.; Nelson & Couto, 6ª ed.).',
+      '  - Na descompressão e reposicionamento cirúrgico, a lesão de isquemia-reperfusão libera espécies reativas de oxigênio (ROS), citocinas inflamatórias e TF, culminando em SIRS fulminante, endoteliopatia e consumo hemostático difuso.',
     particularidadesFelinas:
       'Particularidades etiológicas e clínicas da CID na espécie felina:\n' +
       '- Comportamento silencioso e baixa frequência hemorrágica:\n' +
       '  - A CID aguda fulminante e fortemente hemorrágica é um evento raro em gatos.\n' +
       '  - A maioria dos felinos afetados apresenta formas silenciosas, oligossintomáticas ou dominadas por sinais tromboembólicos e falência orgânica associada à patologia primária.\n' +
-      '- Principais gatilhos causais compilados (Nelson & Couto, 6ª ed., Cap. 87):\n' +
+      '- Principais gatilhos causais observados em felinos:\n' +
       '  - 1. Doença hepatobiliar felina (33% dos casos): destacando-se lipidose hepática e colangio-hepatite.\n' +
       '  - 2. Neoplasias malignas (29% dos casos): notadamente linfoma mediastinal e visceral, além de carcinomas metastáticos.\n' +
       '  - 3. Doenças infecciosas graves (19% dos casos): incluindo PIF, citauxzoonose (Cytauxzoon felis), toxoplasmose sistêmica, panleucopenia e pielonefrites graves.\n' +
@@ -400,7 +400,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '- Perfil racial e anatômico:\n' +
       '  - Ocorre sem predisposição direta por raça ou sexo, acometendo qualquer porte.\n' +
       '  - Raças grandes e gigantes com predisposição anatômica ou neoplásica representam parcela substancial em UTI: Pastores Alemães, Golden Retrievers e Labradores (hemangiossarcoma esplênico/cardíaco); Dogue Alemão, Boxer e São Bernardo (GDV); cadelas idosas não castradas (piometra séptica com choque endotóxico).\n' +
-      '- Casuística causal compilada (Couto, 1999; Nelson & Couto, 6ª ed.):\n' +
+      '- Distribuição etiológica em casuísticas clínicas caninas:\n' +
       '  - Neoplasias (18%), hepatopatias graves (14%), anemia hemolítica imunomediada — IMHA (10%), infecções sistêmicas bacterianas (10%), GDV (6%) e pancreatite aguda (4%).\n' +
       '- Particularidades infecciosas e parasitárias regionais:\n' +
       '  - Babesiose canina grave (B. rossi ou B. vogeli): endotoxemia parasitária, hemólise maciça e coagulopatia de consumo proporcional à mortalidade (Goddard et al., 2013).\n' +
@@ -413,14 +413,14 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - Jovens não vacinados com bacteremia secundária à quebra de barreira mucosal intestinal na panleucopenia felina.\n' +
       '- Subdiagnóstico clínico frequente:\n' +
       '  - Prevalência real substancialmente subestimada na rotina ambulatorial devido à manifestação hemorrágica externa mínima ou ausente.\n' +
-      '  - Dificuldade técnica de colheita venosa sem artefatos em felinos hipotensos e desidratados (Estrin et al., 2006; August\'s Consultations in Feline Internal Medicine, vol. 7, Cap. 77).',
+      '  - Dificuldade técnica de colheita venosa sem artefatos em felinos hipotensos e desidratados (Estrin et al., 2006).',
     prognosticoEEstratificacao:
       'Estratificação prognóstica e preditores de mortalidade na CID:\n' +
       '- Fatores determinantes da sobrevida:\n' +
       '  - O prognóstico depende estritamente da reversibilidade da doença causal de base, da precocidade da intervenção de suporte hemodinâmico e do grau de consumo hemostático no momento do diagnóstico.\n' +
       '- Evidência na coorte de 804 cães (Goggs, Mastrocco & Brooks, 2018):\n' +
       '  - A mortalidade hospitalar em cães sem overt DIC foi de 12,9%, saltando para 62,5% naqueles que preencheram critérios de overt DIC (risco relativo de morte de 4,84).\n' +
-      '- Marcadores de gravidade extrema em cães (Nelson & Couto, 6ª ed.; Wiinberg et al., 2008):\n' +
+      '- Marcadores de gravidade extrema em cães (Wiinberg et al., 2008):\n' +
       '  - Plaquetopenia severa (<50.000/mcL), aPTT marcadamente prolongado (>90% acima do controle) e perfil viscoelástico hipocoagulável no TEG.\n' +
       '- Letalidade documentada na espécie felina (Estrin et al., 2006):\n' +
       '  - Prognóstico historicamente grave: 43 de 46 gatos (93%) foram a óbito ou eutanásia humanitária (apenas 7% de sobrevida), com prolongamento significativo do PT nos não sobreviventes.',
@@ -454,7 +454,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - A geração de trombina permanece estritamente confinada ao leito do trauma tecidual por três barreiras bioquímicas sistêmicas intactas.\n' +
       '  - 1. Antitrombina (AT): glicoproteína de síntese hepática que neutraliza trombina livre, FXa e outros fatores ativados.\n' +
       '  - 2. Sistema Proteína C-Proteína S: a trombina liga-se à trombomodulina endotelial e converte a proteína C em proteína C ativada (APC), degradando irreversivelmente os cofatores Va e VIIIa.\n' +
-      '  - 3. Inibidor da via do fator tecidual (TFPI): bloqueia a retroalimentação do complexo TF–FVIIa–FXa (Lumb & Jones, 2024; Ettinger, 2024).\n' +
+      '  - 3. Inibidor da via do fator tecidual (TFPI): bloqueia a retroalimentação do complexo TF–FVIIa–FXa.\n' +
       '- Desregulação inflamatória maciça na CID:\n' +
       '  - Tempestade de citocinas (TNF-alfa, IL-1, IL-6) e endotoxinas induz expressão contínua de fator tecidual em monócitos e células endoteliais lesadas.\n' +
       '  - A produção desgovernada de trombina exaure o estoque de antitrombina por consumo direto e clivagem por elastases de neutrófilos.\n' +
@@ -473,7 +473,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '- Lesão isquêmica em órgãos-alvo críticos:\n' +
       '  - Isquemia renal glomerular e necrose tubular aguda (injúria renal aguda — LRA).\n' +
       '  - Necrose centrolobular hepática e infartos miocárdicos focais por microtrombose de arteríolas coronárias.\n' +
-      '  - Síndrome do pulmão da CID (DIC lung): intensa microtrombose nos capilares septais alveolares associada a hemorragia intrapulmonar, aumento do espaço morto ventilatório, incompatibilidade ventilação-perfusão (V/Q mismatch) e hipoxemia refratária (Nelson & Couto, 6ª ed., p. 1403).',
+      '  - Síndrome do pulmão da CID (DIC lung): intensa microtrombose nos capilares septais alveolares associada a hemorragia intrapulmonar, aumento do espaço morto ventilatório, incompatibilidade ventilação-perfusão (V/Q mismatch) e hipoxemia refratária.',
     figuraMicrotrombosPulmonares: figura3MicrotrombosPulmonares,
     figuraPotencialHemostaticoSepse: figura6PotencialHemostaticoSepse,
     fenotipoHiperfibrinolitico:
@@ -521,7 +521,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
           mechanism:
             'Mecanismo da síndrome do pulmão da CID (DIC lung):\n' +
             '- Microtrombose nos capilares septais alveolares e arteríolas pulmonares impede a perfusão de alvéolos ventilados, elevando o espaço morto alveolar e gerando grave incompatibilidade ventilação-perfusão (V/Q mismatch).\n' +
-            '- Lesão endotelial inflamatória e aumento da permeabilidade capilar promovem extravasamento de plasma e hemácias para o interstício e lúmen alveolar (Nelson & Couto, 6ª ed.).',
+            '- Lesão endotelial inflamatória e aumento da permeabilidade capilar promovem extravasamento de plasma e hemácias para o interstício e lúmen alveolar.',
           clinicalMeaning: 'Muitos cães e gatos com CID não falecem por sangramento externo, mas por disfunção pulmonar aguda refratária e hipoxemia hipóxica.',
           priority: 'emergency',
           context: ['Pulmão da CID (DIC lung)', 'Insuficiência respiratória'],
@@ -554,7 +554,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
           mechanism:
             'Mecanismo eletrofisiológico da arritmogênese miocárdica:\n' +
             '- Microtrombose em arteríolas coronárias intramiocárdicas induz isquemia focal, hipóxia e acidose celular localizada.\n' +
-            '- Heterogeneidade na condução elétrica entre miócitos e fibras de Purkinje desencadeia focos ectópicos automáticos e circuitos de reentrada (Nelson & Couto, 6ª ed., p. 1402).',
+            '- Heterogeneidade na condução elétrica entre miócitos e fibras de Purkinje desencadeia focos ectópicos automáticos e circuitos de reentrada.',
           clinicalMeaning: 'Marcador clássico de envolvimento miocárdico e falência multiorgânica em CID grave; monitoramento com ECG contínuo é mandatória.',
           priority: 'emergency',
           context: ['Isquemia miocárdica'],
@@ -592,7 +592,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
           mechanism:
             'Mecanismo da lesão renal aguda isquêmica na CID:\n' +
             '- Capilares glomerulares e vasculatura peritubular são leitos de alto fluxo e baixa resistência, retendo avidamente redes de fibrina e microtrombos plaquetários.\n' +
-            '- A oclusão glomerular abrupta corta a taxa de filtração glomerular (TFG), enquanto a isquemia hipóxica das células tubulares deflagra necrose tubular aguda (Ettinger, 9ª ed. 2024).',
+            '- A oclusão glomerular abrupta corta a taxa de filtração glomerular (TFG), enquanto a isquemia hipóxica das células tubulares deflagra necrose tubular aguda.',
           clinicalMeaning: 'A disfunção renal é uma das causas mais comuns de óbito na CID; monitorar débito urinário rigoroso com sonda de demora fechada.',
           priority: 'emergency',
           context: ['Microtrombose renal'],
@@ -637,7 +637,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
             'Mecanismo de cisalhamento mecânico e hemólise microangiopática:\n' +
             '- A rede intravascular disseminada de fibrina atua como malha de corte mecânico na luz capilar.\n' +
             '- Eritrócitos impulsionados em alta velocidade colidem contra filamentos de fibrina, fragmentando-se em esquizócitos (células em capacete ou triangulares).\n' +
-            '- Ocorre hemólise intravascular acelerada com consumo simultâneo de plaquetas e anemia progressiva (Nelson & Couto, 6ª ed., pp. 1401–1402).',
+            '- Ocorre hemólise intravascular acelerada com consumo simultâneo de plaquetas e anemia progressiva.',
           clinicalMeaning: 'A demonstração inequívoca de esquizócitos no esfregaço de paciente crítico com trombocitopenia reforça fortemente a presença de microangiopatia trombótica e consumo hemostático ativo.',
           priority: 'common',
         },
@@ -659,7 +659,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '  - Neoplasias vasculares e viscerais (hemangiossarcoma esplênico ou hepático).\n' +
         '  - Intermação térmica e insolação grave, politraumatismos, acidentes ofídicos ou anemia hemolítica imunomediada (IMHA).\n' +
         '- Avaliação clínica imediata:\n' +
-        '  - Investigar padrão respiratório, estabilidade hemodinâmica e estigmas hemorrágicos (Nelson & Couto, 6ª ed.; Textbook of Small Animal Emergency Medicine, Cap. 70).',
+        '  - Investigar padrão respiratório, estabilidade hemodinâmica e estigmas hemorrágicos.',
       interpretation:
         'Raciocínio diagnóstico diferencial inicial:\n' +
         '- Sem comprovação de gatilho inflamatório, infeccioso, neoplásico ou isquêmico sistêmico, o diagnóstico de CID deve ser questionado em favor de coagulopatias primárias (intoxicação por rodenticidas, PTI primária ou deficiências hereditárias).',
@@ -678,12 +678,12 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '- Triagem de artefatos plaquetários felinos:\n' +
         '  - Em felinos, examinar sistematicamente a borda terminal (cauda) e margens do esfregaço para descartar pseudotrombocitopenia induzida por agregados plaquetários in vitro.\n' +
         '- Pesquisa sistemática de esquizócitos:\n' +
-        '  - Identificar hemácias fragmentadas em capacete, triângulo ou vírgula decorrentes do cisalhamento eritrocitário contra filamentos intravasculares de fibrina (Nelson & Couto, 6ª ed., pp. 1401–1402).\n' +
+        '  - Identificar hemácias fragmentadas em capacete, triângulo ou vírgula decorrentes do cisalhamento eritrocitário contra filamentos intravasculares de fibrina.\n' +
         '- Análise da resposta inflamatória leucocitária:\n' +
         '  - Avaliar presença de neutrofilia com desvio à esquerda regenerativo ou degenerativo e granulações tóxicas de sepse.',
       interpretation:
         'Significado clínico das alterações hematológicas:\n' +
-        '- Trombocitopenia ocorre em cerca de 90% dos cães e 57% dos gatos com CID overt (Nelson & Couto, 6ª ed.).\n' +
+        '- Trombocitopenia ocorre em cerca de 90% dos cães e 57% dos gatos com CID overt.\n' +
         '- A associação de trombocitopenia progressiva e esquizócitos em paciente crítico eleva dramaticamente o índice de suspeita de microangiopatia trombótica e CID ativa.',
       limitations:
         'Limitações e especificidade dos esquizócitos:\n' +
@@ -701,11 +701,11 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '- Esgotamento funcional de fatores de coagulação:\n' +
         '  - O consumo contínuo e a degradação de zimogênios plasmáticos esgotam seus níveis circulantes, prolongando o tempo para geração do coágulo in vitro.\n' +
         '- Padronização pré-analítica mandatória:\n' +
-        '  - Punção venosa limpa e atraumática, respeitando a proporção rigorosa de 9 partes de sangue total para 1 parte de citrato trissódico a 3,2% (Ettinger, 9ª ed. 2024, Cap. 170).',
+        '  - Punção venosa limpa e atraumática, respeitando a proporção rigorosa de 9 partes de sangue total para 1 parte de citrato trissódico a 3,2%.',
       interpretation:
         'Interpretação clínica e evidências epidemiológicas dos tempos de coagulação:\n' +
         '- Prolongamento significativo: PT >25–30% e aPTT >25–50% acima dos controles laboratoriais refletem consumo avançado de fatores hemostáticos.\n' +
-        '- Casuística histórica canina e felina (Couto, 1999):\n' +
+        '- Frequência de prolongamento em casuísticas clínicas caninas e felinas:\n' +
         '  - O aPTT prolongou-se em 88% dos cães e 100% dos gatos com CID confirmada.\n' +
         '  - O PT esteve prolongado em 42% dos cães e 71% dos gatos afetados.\n' +
         '- Fator prognóstico felino (Estrin et al., 2006):\n' +
@@ -725,14 +725,14 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '  - Substrato hemostático terminal clivado pela trombina para gerar a malha insolúvel de fibrina.\n' +
         '- Comportamento dual como proteína de fase aguda:\n' +
         '  - Em coagulopatias puramente consumptivas, os níveis plasmáticos despencam.\n' +
-        '  - Porém, o fibrinogênio é fortemente induzido por IL-6 e mediadores hepáticos de fase aguda na sepse e pancreatite grave (Nelson & Couto, 6ª ed.; Canine Hepatobiliary Diseases, 2024).',
+        '  - Porém, o fibrinogênio é fortemente induzido por IL-6 e mediadores hepáticos de fase aguda na sepse e pancreatite grave.',
       interpretation:
         'Interpretação dos níveis plasmáticos e prevalência observada:\n' +
         '- Hipofibrinogenemia consumptiva manifesta:\n' +
         '  - Níveis <100–150 mg/dL em cães e <100 mg/dL em gatos indicam consumo acelerado ou hiperfibrinólise fulminante que superou a capacidade sintética do fígado.\n' +
         '- Falso conforto por valores normais ou elevados:\n' +
         '  - Concentrações normais ou aumentadas (ex.: 400–600 mg/dL) na sepse ou piometra NÃO descartam consumo ativo: síntese de fase aguda e destruição acelerada ocorrem concomitantemente.\n' +
-        '- Baixa sensibilidade isolada na rotina (Nelson & Couto, 6ª ed.):\n' +
+        '- Baixa sensibilidade isolada na rotina:\n' +
         '  - Hipofibrinogenemia esteve presente em apenas 14% dos cães e 5% dos gatos com CID overt confirmada.',
       limitations:
         'ARMADILHA DIAGNÓSTICA:\n' +
@@ -750,7 +750,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '  - Marcador estrito de fibrinólise secundária, exigindo três eventos bioquímicos prévios:\n' +
         '  - 1. Clivagem do fibrinogênio em fibrina pela trombina;\n' +
         '  - 2. Formação de ligações cruzadas covalentes entre domínios D pelo fator XIIIa ativado;\n' +
-        '  - 3. Degradação subsequente dessa rede insolúvel pela plasmina (Textbook of Small Animal Emergency Medicine, Cap. 68; BSAVA ECC, 3ª ed.).',
+        '  - 3. Degradação subsequente dessa rede insolúvel pela plasmina.',
       interpretation:
         'Validação clínica e estudos de acurácia diagnóstica em cães e gatos:\n' +
         '- Desempenho quantitativo em cães (Stokol et al., 2000):\n' +
@@ -776,7 +776,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '- Papel da Proteína C e Proteína S:\n' +
         '  - O complexo trombina-trombomodulina ativa a proteína C, que inativa os cofatores ativados Va e VIIIa.\n' +
         '- Esgotamento na inflamação sistêmica e sepse:\n' +
-        '  - Atividade de AT e proteína C decai por consumo maciço na inativação de proteases, clivagem por elastases e redução da síntese hepática (Ettinger, 9ª ed. 2024; Lumb & Jones, 2024).',
+        '  - Atividade de AT e proteína C decai por consumo maciço na inativação de proteases, clivagem por elastases e redução da síntese hepática.',
       interpretation:
         'Significado prognóstico e impacto farmacológico dos inibidores naturais:\n' +
         '- Marcador de consumo acelerado e gravidade:\n' +
@@ -801,7 +801,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         '  - Tempo de reação até os primeiros filamentos de fibrina (R ou CT).\n' +
         '  - Cinética e velocidade de formação da rede de coágulo (K/CFT e ângulo alfa).\n' +
         '  - Força mecânica máxima do coágulo (MA ou MCF, dependente em 80% das plaquetas e 20% do fibrinogênio).\n' +
-        '  - Taxa de lise do coágulo aos 30 e 60 minutos (LY30, LY60 ou ML) para diagnóstico preciso de hiperfibrinólise (BSAVA ECC, 3ª ed., Cap. 13; Wiinberg et al., 2008).',
+        '  - Taxa de lise do coágulo aos 30 e 60 minutos (LY30, LY60 ou ML) para diagnóstico preciso de hiperfibrinólise (Wiinberg et al., 2008).',
       interpretation:
         'ESTUDO PIVOTAL DE WIINBERG ET AL. (2008) E FENOTIPAGEM INDIVIDUAL:\n' +
         '- Heterogeneidade do perfil viscoelástico em 50 cães com CID:\n' +
@@ -813,7 +813,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       limitations:
         'Exigências técnicas e particularidades da espécie felina:\n' +
         '- Exige equipamento especializado, calibração rigorosa e sensibilidade extrema a traumas de venopunção.\n' +
-        '- August\'s Consultations in Feline Internal Medicine (vol. 7) alerta que a forte retração do coágulo por plaquetas felinas pode mimetizar falso padrão de hiperfibrinólise.',
+        '- Na espécie felina, a forte retração do coágulo pelas plaquetas pode mimetizar falso padrão de hiperfibrinólise no traçado viscoelástico.',
     },
     {
       stepNumber: 8,
@@ -841,7 +841,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       title: 'Diagnósticos diferenciais de coagulopatias e mimetizadores na UTI',
       purpose: 'Excluir intoxicações, trombocitopenias isoladas e alterações iatrogênicas de manejo hospitalar.',
       description:
-        'Diferenciar a CID de afecções comuns com achados laboratoriais que se sobrepõem:\n\n- Intoxicação por rodenticidas anticoagulantes (antagonistas da vitamina K): o PT prolonga-se precocemente devido à meia-vida curta do fator VII (6–8 h), seguido de aPTT; no entanto, plaquetas, fibrinogênio, antitrombina e D-dímero permanecem estritamente normais até que hemorragia cavitária grave ocorra.\n- Trombocitopenia imunomediada (PTI primária): contagem de plaquetas severamente diminuída (<20.000–30.000/µL), mas PT, aPTT e fibrinogênio são normais e o D-dímero é normal ou discretamente elevado sem falência de múltiplos órgãos.\n- Coagulopatia dilucional da ressuscitação agressiva: infusão rápida de grandes volumes de cristaloides e concentrado de hemácias sem plasma dilui preferencialmente o fibrinogênio (o primeiro a atingir níveis críticos), prolongando PT e aPTT e deprimindo a contagem plaquetária em pacientes traumatizados ou hemorrágicos (BSAVA ECC, Cap. 13, p. 227).\n- Insuficiência hepática aguda terminal: síntese reduzida tanto de fatores pró-coagulantes quanto de anticoagulantes naturais (equilíbrio hemostático rebalanceado), com plaquetas normais ou moderadamente baixas e D-dímero variável.\n- Coagulopatias hereditárias (Hemofilia A e B): aPTT isoladamente prolongado com PT, plaquetas, fibrinogênio e D-dímero normais em animais jovens do sexo masculino.',
+        'Diferenciar a CID de afecções comuns com achados laboratoriais que se sobrepõem:\n\n- Intoxicação por rodenticidas anticoagulantes (antagonistas da vitamina K): o PT prolonga-se precocemente devido à meia-vida curta do fator VII (6–8 h), seguido de aPTT; no entanto, plaquetas, fibrinogênio, antitrombina e D-dímero permanecem estritamente normais até que hemorragia cavitária grave ocorra.\n- Trombocitopenia imunomediada (PTI primária): contagem de plaquetas severamente diminuída (<20.000–30.000/µL), mas PT, aPTT e fibrinogênio são normais e o D-dímero é normal ou discretamente elevado sem falência de múltiplos órgãos.\n- Coagulopatia dilucional da ressuscitação agressiva: infusão rápida de grandes volumes de cristaloides e concentrado de hemácias sem plasma dilui preferencialmente o fibrinogênio (o primeiro a atingir níveis críticos), prolongando PT e aPTT e deprimindo a contagem plaquetária em pacientes traumatizados ou hemorrágicos.\n- Insuficiência hepática aguda terminal: síntese reduzida tanto de fatores pró-coagulantes quanto de anticoagulantes naturais (equilíbrio hemostático rebalanceado), com plaquetas normais ou moderadamente baixas e D-dímero variável.\n- Coagulopatias hereditárias (Hemofilia A e B): aPTT isoladamente prolongado com PT, plaquetas, fibrinogênio e D-dímero normais em animais jovens do sexo masculino.',
       interpretation:
         'Síntese diagnóstica multissistêmica:\n' +
         '- A comprovação de ativação hemostática sistêmica em múltiplos compartimentos (queda plaquetária progressiva + tempos prolongados + D-dímero elevado + esquizócitos + antitrombina depletada) em paciente com doença inflamatória ou neoplásica grave confirma o diagnóstico sindrômico de CID perante os seus diagnósticos diferenciais.',
@@ -862,7 +862,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - Hemoabdome por hemangiossarcoma ou massa esplênica rota: estabilização volêmica agressiva com concentrado de hemácias/plasma e esplenectomia de emergência para estancar a hemorragia e remover a massa geradora de TF.\n' +
       '  - Intermação e insolação grave (estresse térmico): resfriamento corporal ativo e controlado até 39,2 °C com água morna/corrente de ar (evitando água gelada que cause vasoconstrição periférica reflexa e tremores) e manejo intensivo da endoteliopatia térmica.\n' +
       '  - Pancreatite aguda grave: controle álgico multimodal com opioides contínuos (fentanil, metadona), antiemese (maropitant, ondansetrona), nutrição enteral precoce e perfusão mesentérica.\n' +
-      '  - Babesiose canina grave: terapia antiprotozoária específica com dipropionato de imidocarb (6,6 mg/kg IM repetido em 14 dias para B. canis/vogeli) ou atovaquona associada a azitromicina para B. gibsoni (Nelson & Couto, 6ª ed.; Ettinger, 9ª ed. 2024; Goddard et al., 2013).',
+      '  - Babesiose canina grave: terapia antiprotozoária específica com dipropionato de imidocarb (6,6 mg/kg IM repetido em 14 dias para B. canis/vogeli) ou atovaquona associada a azitromicina para B. gibsoni (Goddard et al., 2013).',
     suporteHemodinamico:
       'Preservação da perfusão microvascular e metas de ressuscitação:\n' +
       '- Fundamentação fisiopatológica:\n' +
@@ -871,29 +871,29 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '- Metas microvasculares de ressuscitação na UTI:\n' +
       '  - Ressuscitação com cristaloides balanceados (Ringer com lactato ou Plasma-Lyte) estritamente titulada por objetivos clínicos e laboratoriais claros.\n' +
       '  - Alvos: pressão arterial média (PAM ≥65 mmHg), normalização da frequência cardíaca, clareamento sustentado do lactato sérico seriado, temperatura periférica das patas e débito urinário ≥1 a 2 mL/kg/h.\n' +
-      '- Alerta contra sobrecarga volêmica (BSAVA ECC, 3ª ed.):\n' +
+      '- Alerta contra sobrecarga volêmica:\n' +
       '  - Evitar hiper-hidratação baseada em fórmulas teóricas rígidas.\n' +
       '  - A sobrecarga de cristaloides provoca hemodiluição pronunciada, diluindo precocemente o fibrinogênio sérico, as plaquetas e os fatores de coagulação, além de agravar o edema pulmonar no "DIC lung" e aumentar a permeabilidade vascular sistêmica.\n' +
       '- Suporte vasopressor precoce:\n' +
-      '  - Se a hipotensão persistir após restauração adequada da volemia intravascular (avaliada por parâmetros dinâmicos e POCUS vascular), instituir imediatamente norepinefrina em infusão contínua (CRI) na dose de 0,1 a 1,5 µg/kg/min IV, restabelecendo a resistência vascular sistêmica sem hiperidratação volêmica (BSAVA ECC, 3ª ed.; Fluid Therapy in Dogs and Cats, 2ª ed. 2023).',
+      '  - Se a hipotensão persistir após restauração adequada da volemia intravascular (avaliada por parâmetros dinâmicos e POCUS vascular), instituir imediatamente norepinefrina em infusão contínua (CRI) na dose de 0,1 a 1,5 µg/kg/min IV, restabelecendo a resistência vascular sistêmica sem hiperidratação volêmica.',
     terapiaTransfusional:
       'Terapia transfusional restritiva, individualizada e guiada por fenótipo hemostático:\n' +
       '- Princípio fundamental:\n' +
       '  - A hemoterapia na CID deve ser restritiva, individualizada e guiada estritamente pelo fenótipo clínico e laboratorial do paciente, jamais por metas cosméticas de normalização numérica do coagulograma.\n' +
       '- Plasma Fresco Congelado (FFP):\n' +
       '  - Conteúdo biológico: fornece todos os fatores pró-coagulantes lábeis e estáveis da hemostasia (fibrinogênio, fatores II, V, VII, VIII, IX, X, XI, XII, XIII) e repõe os inibidores naturais consumidos (especialmente antitrombina e proteína C).\n' +
-      '  - Dose preconizada: 10 a 15 mL/kg IV lenta em cães e 6 a 10 mL/kg IV lenta em gatos (Fluid Therapy in Dogs and Cats, 2ª ed. 2023; Ettinger, 9ª ed. 2024).\n' +
-      '  - Desmistificação do mito de "lenha na fogueira": o antigo ensino de que infundir plasma na CID seria "adicionar lenha à fogueira" (por fornecer substrato para novos trombos) é formalmente rejeitado por Nelson & Couto (6ª ed., p. 1403) e pelas diretrizes modernas. O FFP fornece tanto fatores quanto seus freios fisiológicos naturais (especialmente AT). No entanto, a transfusão profilática em pacientes sem sangramento não altera o desfecho clínico nem a mortalidade. Indicado exclusivamente na presença de hemorragia ativa clinicamente significativa com coagulopatia documentada, ou antes de cirurgias hemostáticas indispensáveis.\n' +
+      '  - Dose preconizada: 10 a 15 mL/kg IV lenta em cães e 6 a 10 mL/kg IV lenta em gatos.\n' +
+      '  - Desmistificação do mito de "lenha na fogueira": o antigo conceito de que infundir plasma na CID seria "adicionar lenha à fogueira" (por fornecer substrato para novos trombos) foi formalmente abandonado pela literatura e diretrizes contemporâneas. O FFP fornece tanto fatores quanto seus freios fisiológicos naturais (especialmente AT). No entanto, a transfusão profilática em pacientes sem sangramento não altera o desfecho clínico nem a mortalidade. Indicado exclusivamente na presença de hemorragia ativa clinicamente significativa com coagulopatia documentada, ou antes de cirurgias hemostáticas indispensáveis.\n' +
       '- Concentrado de Hemácias (pRBC):\n' +
       '  - Indicado quando a perda sanguínea ou a hemólise microangiopática reduz o hematócrito abaixo de 20–25% em cães ou 15–18% em gatos com sinais de hipóxia tecidual (taquicardia persistente, hiperlactatemia, prostração grave).\n' +
       '  - Fórmula de cálculo da dose: volume (mL) = peso (kg) × 80 (cão) ou 60 (gato) × [(Ht desejado – Ht atual) / Ht da bolsa].\n' +
       '- Sangue Total Fresco (FWB):\n' +
       '  - Melhor alternativa quando concentrados de plaquetas não estão disponíveis e o paciente apresenta simultaneamente anemia hipóxica, trombocitopenia acentuada e hemorragia volumosa ativa.\n' +
-      '  - Dose: 15–20 mL/kg IV lenta. Fornece hemácias, volume plasmático com fatores e plaquetas viáveis se transfundido imediatamente após a colheita (Textbook of Small Animal Emergency Medicine, Cap. 70).\n' +
+      '  - Dose: 15–20 mL/kg IV lenta. Fornece hemácias, volume plasmático com fatores e plaquetas viáveis se transfundido imediatamente após a colheita.\n' +
       '- Crioprecipitado:\n' +
       '  - Concentrado enriquecido de fibrinogênio, fator VIII, fator XIII, fator de von Willebrand e fibronectina em baixo volume (cerca de 50 mL por bolsa canina, contendo de 5 a 10 vezes a concentração de fibrinogênio do plasma original).\n' +
       '  - Dose: 1 unidade a cada 10 kg de peso vivo IV lenta.\n' +
-      '  - Escolha de excelência na hipofibrinogenemia severa (<100 mg/dL) com sangramento ativo em pacientes com risco iminente de sobrecarga volêmica circulatória associada à transfusão (TACO). Sucesso clínico documentado em cães com CID secundária a hemangiossarcoma e GDV (Nelson & Couto, 6ª ed.).\n' +
+      '  - Escolha de excelência na hipofibrinogenemia severa (<100 mg/dL) com sangramento ativo em pacientes com risco iminente de sobrecarga volêmica circulatória associada à transfusão (TACO). Opção eficaz em cães com CID secundária a hemangiossarcoma e GDV.\n' +
       '- Concentrado de Plaquetas:\n' +
       '  - Raramente disponível na rotina veterinária; reservado para trombocitopenia extrema (<20.000–30.000/µL) associada a sangramento ativo com risco de vida.',
     anticoagulacao:
@@ -908,33 +908,33 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '- Heparina Não Fracionada (UFH):\n' +
       '  - Mecanismo: liga-se à antitrombina, acelerando em centenas de vezes a inativação da trombina e do fator Xa.\n' +
       '  - ALERTA FARMACOLÓGICO: depende estritamente de níveis adequados de antitrombina; com AT exaurida (<50–60%), ocorre resistência funcional à heparina.\n' +
-      '  - Posologias (Plumb\'s Veterinary Drug Handbook, 10ª ed., p. 630): na CID em cães (uso extra-label), dose ambulatorial de 75 a 100 UI/kg SC a cada 8 horas. Em UTI sob monitoramento, bolus inicial de 100 UI/kg IV seguido de infusão contínua (CRI) de 20 a 50 UI/kg/hora, ajustando a taxa em incrementos de 5 UI/kg/h conforme resposta hemostática.\n' +
-      '  - Esquemas históricos de Nelson & Couto (6ª ed., p. 1404): minidose (5–10 UI/kg SC q8h, sem efeito sobre testes plasmáticos), baixa dose (50–100 UI/kg SC q8h, preferida por Couto com FFP), intermediária (300–500 UI/kg SC/IV q8h) e alta dose (750–1000 UI/kg SC/IV q8h).\n' +
+      '  - Posologias de referência: na CID em cães (uso fora das indicações de bula), dose ambulatorial de 75 a 100 UI/kg SC a cada 8 horas. Em UTI sob monitoramento, bolus inicial de 100 UI/kg IV seguido de infusão contínua (CRI) de 20 a 50 UI/kg/hora, ajustando a taxa em incrementos de 5 UI/kg/h conforme resposta hemostática.\n' +
+      '  - Esquemas graduados descritos na clínica médica: minidose (5–10 UI/kg SC q8h, sem efeito sobre testes plasmáticos), baixa dose (50–100 UI/kg SC q8h, habitualmente associada ao FFP), intermediária (300–500 UI/kg SC/IV q8h) e alta dose (750–1000 UI/kg SC/IV q8h).\n' +
       '  - Desmame obrigatório: reduzir gradualmente ao longo de 2 a 4 dias (cerca de 50 UI/kg/dia) para evitar trombose rebote documentada.\n' +
       '  - Monitoramento: alvo de atividade anti-fator Xa de 0,35 a 0,7 UI/mL. Se indisponível, aPTT prolongado entre 1,5 e 2 vezes o valor basal do paciente.\n' +
-      '  - Reversão de sobredose: sulfato de protamina na dose de 1 mg IV lento para cada 100 UI da última dose de heparina administrada (Plumb\'s, 10ª ed.), administrando lentamente para evitar colapso hipotensivo anafilactóide.\n' +
-      '  - REGRA DE OURO: NUNCA misturar ou pré-incubar heparina na bolsa de plasma fresco antes da transfusão; além de ineficaz, consome a antitrombina disponível no produto (Lumb & Jones, 2024, Cap. 31, p. 577).\n' +
+      '  - Reversão de sobredose: sulfato de protamina na dose de 1 mg IV lento para cada 100 UI da última dose de heparina administrada, administrando lentamente para evitar colapso hipotensivo anafilactóide.\n' +
+      '  - REGRA DE OURO: NUNCA misturar ou pré-incubar heparina na bolsa de plasma fresco antes da transfusão; além de ineficaz, consome a antitrombina disponível no produto.\n' +
       '- Heparinas de Baixo Peso Molecular (LMWH — Enoxaparina e Dalteparina):\n' +
       '  - Farmacologia: maior relação anti-Xa:anti-IIa (3:1 a 4:1), menor ligação inespecífica e farmacocinética mais previsível.\n' +
-      '  - Posologias segundo o Plumb\'s (10ª ed., pp. 363 e 475):\n' +
+      '  - Posologias usuais:\n' +
       '    - Enoxaparina em cães: 0,8 a 1 mg/kg SC a cada 6 a 8 horas (ou 0,8 mg/kg SC q6h).\n' +
       '    - Enoxaparina em gatos: 0,75 a 1 mg/kg SC a cada 6 a 12 horas (administração q6h preferível para manter anti-Xa terapêutico).\n' +
       '    - Dalteparina em cães: 150 a 175 UI/kg SC a cada 8 horas.\n' +
       '    - Dalteparina em gatos: 75 a 150 UI/kg SC a cada 6 horas.\n' +
-      '  - Monitoramento de LMWH: testes convencionais (PT/aPTT) são insensíveis. Monitorar pico de atividade anti-Xa (alvo: 0,5 a 1,0 UI/mL) colhido 3 horas pós-SC em cães e 2 horas pós-SC em gatos (Plumb\'s, 10ª ed.).\n' +
+      '  - Monitoramento de LMWH: testes convencionais (PT/aPTT) são insensíveis. Monitorar pico de atividade anti-Xa (alvo: 0,5 a 1,0 UI/mL) colhido 3 horas pós-SC em cães e 2 horas pós-SC em gatos.\n' +
       '  - Reversão de Enoxaparina: 1 mg de sulfato de protamina IV lento para cada 1 mg de enoxaparina administrada nas últimas 8 horas.',
     antifibrinoliticos:
       'Diretrizes restritivas de antifibrinolíticos e o relato pivotal de 2024:\n' +
       '- Mecanismo bioquímico:\n' +
       '  - Ácido tranexâmico (TXA) e ácido aminocaproico bloqueiam competitivamente os sítios de ligação de lisina no plasminogênio, impedindo sua conversão em plasmina ativa e estabilizando a fibrina contra a lise enzimática.\n' +
       '- Regra geral de contraindicação formal na sepse:\n' +
-      '  - Contraindicados na CID clínica padrão, em especial na sepse (Textbook of Small Animal Emergency Medicine, Cap. 68, p. 435; Plumb\'s, 10ª ed., p. 78).\n' +
+      '  - Contraindicados na CID clínica padrão, em especial na sepse.\n' +
       '  - Como a sepse induz supressão fibrinolítica acentuada (altos níveis de PAI-1 e TAFI), administrar antifibrinolíticos bloqueia a remoção fisiológica da fibrina e precipita trombose microvascular fulminante irreversível.\n' +
       '- Exceção biológica e evidência pivotal de 2024 (Granger et al.):\n' +
       '  - Pacientes com CID crônica neoplásica ou trauma massivo podem apresentar hiperfibrinólise patológica descontrolada.\n' +
       '  - Granger et al. (2024, Frontiers in Veterinary Science) relataram um cão Border Collie de 8 anos com carcinoma nasal metastático e epistaxes incoercíveis recorrentes; apresentava PT e aPTT severamente prolongados, hipofibrinogenemia profunda (<60 mg/dL), D-dímero elevado, AT depletada e TEG com perfil hipocoagulável e lise acelerada extrema.\n' +
       '  - O uso racional de ácido aminocaproico associado a hemocomponentes (FFP, crioprecipitado e pRBC) controlou a hemorragia fatal.\n' +
-      '- Posologias preconizadas (Plumb\'s 10ª ed., pp. 78 e 1291):\n' +
+      '- Posologias preconizadas:\n' +
       '  - Ácido aminocaproico em cães com hiperfibrinólise comprovada em TEG: 15 a 20 mg/kg IV lenta ou VO a cada 8 horas (ou até 33 mg/kg IV q6h em sangramentos refratários).\n' +
       '  - Ácido tranexâmico (TXA) em cães: 10 mg/kg IV lento em 15–20 minutos, seguido por CRI de 10 mg/kg/hora durante 3 horas, ou 10 mg/kg IV repetido a cada 6–8 horas conforme traçado TEG.\n' +
       '- REGRA DE OURO:\n' +
@@ -943,13 +943,13 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       'Condutas desaconselhadas e mitos terapêuticos a evitar na CID:\n' +
       '- Vitamina K1 (Fitomenadiona) de rotina:\n' +
       '  - Atua unicamente como cofator para a gama-glutamil carboxilase na ativação de fatores dependentes (II, VII, IX, X); não inibe o fator tecidual, não bloqueia a geração sistêmica de trombina e não repõe o consumo hemostático difuso da CID.\n' +
-      '  - Indicada apenas se houver comprovação de colestase com má absorção de lipossolúveis, desnutrição prolongada severa ou intoxicação por rodenticidas antagonistas de vitamina K coexistente (Ettinger, 2024; Nelson & Couto, 6ª ed.).\n' +
+      '  - Indicada apenas se houver comprovação de colestase com má absorção de lipossolúveis, desnutrição prolongada severa ou intoxicação por rodenticidas antagonistas de vitamina K coexistente.\n' +
       '  - VETO FARMACOLÓGICO: nunca administrar vitamina K1 por via intravenosa devido ao risco de choque anafilático grave; utilizar exclusivamente via SC ou oral.\n' +
       '- Corticosteroides para "tratar a CID":\n' +
       '  - Inexistência de indicação para o manejo da CID per se. Glicocorticoides estimulam a síntese endotelial de PAI-1 (suprimindo a fibrinólise) e acentuam estados pró-trombóticos microvasculares.\n' +
       '  - Reservados estritamente quando indicados para a patologia primária de base (anemias hemolíticas imunomediadas — IMHA).\n' +
       '- Antiplaquetários (Aspirina e Clopidogrel):\n' +
-      '  - Não constituem terapia de resgate na CID aguda instalada. A aspirina (0,5–1 mg/kg VO q12h em cães) não cessa a geração plasmática de trombina e impõe risco severo de úlceras gastrointestinais e hemorragias fatais (Nelson & Couto, 6ª ed., p. 1404; ACVECC CURATIVE, 2019).\n' +
+      '  - Não constituem terapia de resgate na CID aguda instalada. A aspirina (0,5–1 mg/kg VO q12h em cães) não cessa a geração plasmática de trombina e impõe risco severo de úlceras gastrointestinais e hemorragias fatais (ACVECC CURATIVE, 2019).\n' +
       '  - Clopidogrel tem indicação formal na profilaxia tromboembólica em felinos cardiopatas ou nefropatas, mas não como tratamento de choque na CID consumptiva.\n' +
       '- Transfusão profilática de FFP para "tratar o exame laboratorial":\n' +
       '  - Não transfundir plasma apenas para corrigir PT ou aPTT numericamente alterados em paciente hemodinamicamente estável e assintomático. O foco deve ser o paciente, e não os valores do laudo.',
@@ -957,7 +957,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       'Protocolos de suporte intensivo aos sistemas orgânicos na UTI:\n' +
       '- Manejo ventilatório da síndrome do pulmão da CID (DIC lung):\n' +
       '  - Oxigenioterapia suplementar umidificada por cânula nasal ou máscara em fluxo moderado.\n' +
-      '  - Hipoxemia refratária (PaO2 <60 mmHg ou SpO2 <90% com FiO2 >0,5) ou exaustão respiratória por microtrombose e edema alveolar: intubação e ventilação mecânica protetora com PEEP de 5 a 10 cmH2O e volume corrente baixo (6 a 8 mL/kg), prevenindo volutrauma e barotrauma (Nelson & Couto, 6ª ed.; Textbook of Small Animal Emergency Medicine).\n' +
+      '  - Hipoxemia refratária (PaO2 <60 mmHg ou SpO2 <90% com FiO2 >0,5) ou exaustão respiratória por microtrombose e edema alveolar: intubação e ventilação mecânica protetora com PEEP de 5 a 10 cmH2O e volume corrente baixo (6 a 8 mL/kg), prevenindo volutrauma e barotrauma.\n' +
       '- Manejo da lesão renal aguda isquêmica (LRA):\n' +
       '  - Monitoramento estrito do débito urinário a cada 1–2 horas via sistema fechado estéril de sondagem vesical com assepsia rigorosa.\n' +
       '  - Oligúria persistente (<1 mL/kg/h) a despeito de volemia restabelecida: avaliar diálise peritoneal/hemodiálise ou bolus de desafio cauteloso com furosemida (1–2 mg/kg IV); suspender imediatamente fármacos nefrotóxicos (AINEs, aminoglicosídeos).\n' +
@@ -1026,7 +1026,7 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
       '  - Quedas seriadas na contagem de plaquetas ou elevação combinada de D-dímero e fibrinogênio nas primeiras 6 a 12 horas sinalizam ativação hemostática subclínica.\n' +
       '  - Permite intervir agressivamente na doença de base e no suporte microcirculatório antes da falência multiorgânica irreversível.',
     iatrogenica:
-      'Prevenção de complicações iatrogênicas e manejo na UTI:\n\n- Prevenção da tríade letal (coagulopatia dilucional, hipotermia e acidose): (1) Prevenir a coagulopatia dilucional através de ressuscitação volêmica restritiva guiada por metas microvasculares, evitando sobrecarga desmedida de fluidos cristaloides sem reposição adequada de fatores e hemácias; (2) Prevenir ativamente a hipotermia durante cirurgias e procedimentos emergenciais, utilizando colchões térmicos de ar forçado e fluidos aquecidos, uma vez que a atividade enzimática dos fatores de coagulação decai cerca de 10% para cada queda de 1 °C na temperatura corporal; e (3) Corrigir precocemente a hipoperfusão para evitar acidose metabólica severa (pH <7,20), a qual inibe a montagem dos complexos enzimáticos tenase e protrombinase na membrana plaquetária.\n- Cuidados com procedimentos invasivos: evitar procedimentos invasivos dispensáveis (como cistocentese em animais com tendência hemorrágica documentada, punções venosas repetidas em jugular ou injeções intramusculares) em pacientes com CID instalada (Nelson & Couto, 6ª ed.; BSAVA ECC, 3ª ed.).',
+      'Prevenção de complicações iatrogênicas e manejo na UTI:\n\n- Prevenção da tríade letal (coagulopatia dilucional, hipotermia e acidose): (1) Prevenir a coagulopatia dilucional através de ressuscitação volêmica restritiva guiada por metas microvasculares, evitando sobrecarga desmedida de fluidos cristaloides sem reposição adequada de fatores e hemácias; (2) Prevenir ativamente a hipotermia durante cirurgias e procedimentos emergenciais, utilizando colchões térmicos de ar forçado e fluidos aquecidos, uma vez que a atividade enzimática dos fatores de coagulação decai cerca de 10% para cada queda de 1 °C na temperatura corporal; e (3) Corrigir precocemente a hipoperfusão para evitar acidose metabólica severa (pH <7,20), a qual inibe a montagem dos complexos enzimáticos tenase e protrombinase na membrana plaquetária.\n- Cuidados com procedimentos invasivos: evitar procedimentos invasivos dispensáveis (como cistocentese em animais com tendência hemorrágica documentada, punções venosas repetidas em jugular ou injeções intramusculares) em pacientes com CID instalada.',
   },
   relatedConsensusSlugs: ['curative-risco-trombotico-2022', 'veccs-sepse-definicao-caes-gatos-2026'],
   relatedDiseaseSlugs: [
@@ -1200,6 +1200,34 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
         'King LG, Boag A, eds. BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. British Small Animal Veterinary Association; 2018:\n' +
         '- Cap. 13: Haematological Emergencies (pp. 210-235; DIC pp. 227-229); Cap. 14: Transfusion Medicine (pp. 236-248).',
       sourceType: 'Manual internacional de emergência e UTI',
+      evidenceLevel: 'Referência clínica especializada',
+    },
+    {
+      id: 'ref-fluid-therapy-2ed',
+      citationText:
+        'Hopper K, Yagi K, eds. Fluid Therapy in Dogs and Cats. 2nd ed. Wiley-Blackwell; 2023.',
+      sourceType: 'Livro-texto de fluidoterapia e medicina transfusional',
+      evidenceLevel: 'Referência clínica especializada',
+    },
+    {
+      id: 'ref-bsava-gastro-3ed',
+      citationText:
+        'Hall EJ, Williams DA, Kathrani A, eds. BSAVA Manual of Canine and Feline Gastroenterology. 3rd ed. British Small Animal Veterinary Association; 2020.',
+      sourceType: 'Manual internacional de gastroenterologia',
+      evidenceLevel: 'Referência clínica especializada',
+    },
+    {
+      id: 'ref-canine-hepatobiliary-2024',
+      citationText:
+        'Jaffey JA, Webster CRL, eds. Canine Hepatobiliary and Exocrine Pancreatic Diseases. Wiley-Blackwell; 2024.',
+      sourceType: 'Livro-texto de hepatologia e pâncreas exócrino',
+      evidenceLevel: 'Referência clínica especializada',
+    },
+    {
+      id: 'ref-august-feline-7ed',
+      citationText:
+        'Little SE, ed. August’s Consultations in Feline Internal Medicine. Vol. 7. Elsevier; 2016. Cap. 77.',
+      sourceType: 'Livro-texto de medicina interna felina',
       evidenceLevel: 'Referência clínica especializada',
     },
     {

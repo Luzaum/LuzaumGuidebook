@@ -789,7 +789,7 @@ export const acetilcisteinaMedicationRecord: MedicationRecord = {
       duration: 'pelo menos 7 administrações consecutivas',
       clinicalContext: 'hospitalar_manutencao',
       monitoring: 'Hematócrito, metemoglobina, enzimas hepáticas (ALT, AST) e coagulograma',
-      evidenceLevel: '🟢 Consenso mundial e formularies (Plumb, BSAVA, Ettinger)',
+      evidenceLevel: '🟢 Consenso clínico veterinário consolidado',
       notes:
         'Iniciar 6 horas após o término da dose de ataque. Em cães e gatos sem vômitos, a via oral diluída pode ser empregada como transição.',
       calculatorEnabled: true,
@@ -808,7 +808,7 @@ export const acetilcisteinaMedicationRecord: MedicationRecord = {
       duration: 'sessões de 30 a 60 minutos por 3 a 5 dias',
       clinicalContext: 'terapia_respiratoria',
       monitoring: 'Frequência respiratória, padrão ventilatório e capacidade de expectoração',
-      evidenceLevel: '🟡 Respaldado por formularies (BSAVA); contraindicado em asma felina',
+      evidenceLevel: '🟡 Prática clínica veterinária documentada; contraindicado em asma felina',
       notes:
         'Diluir 1 mL de acetilcisteína 10% em 4 mL de SF 0,9% estéril para obter concentração a 2%. CONTRAINDICADA em gatos asmáticos.',
       calculatorEnabled: false,
@@ -826,7 +826,7 @@ export const acetilcisteinaMedicationRecord: MedicationRecord = {
       duration: 'até estabilização estromal e fechamento da úlcera',
       clinicalContext: 'oftalmologia_emergencial',
       monitoring: 'Biomicroscopia em lâmpada de fenda e teste de fluoresceína seriado',
-      evidenceLevel: '🟢 Prática consagrada em oftalmologia veterinária (Plumb Ophthalmic)',
+      evidenceLevel: '🟢 Prática consagrada em oftalmologia veterinária',
       notes:
         'Manter o colírio estéril refrigerado após aberto. Pode ser associado a colírio de soro autólogo e antibióticos tópicos com intervalo de 10 minutos.',
       calculatorEnabled: false,

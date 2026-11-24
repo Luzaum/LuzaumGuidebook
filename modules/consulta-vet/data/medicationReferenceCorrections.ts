@@ -3,57 +3,6 @@ import type { MedicationRecord } from '../types/medication';
 
 /** Metadados conferidos via NCBI ESummary; não validam números de resumos antigos. */
 const corrections: Record<string, Record<string, EditorialReference>> = {
-  "fenobarbital": {
-    "ref-ivetf-guidelines-2015": {
-      "id": "ref-ivetf-guidelines-2015",
-      "citationText": "Bhatti SF, De Risio L, Muñana K, et al. International Veterinary Epilepsy Task Force consensus proposal: medical treatment of canine epilepsy in Europe. BMC Vet Res. 2015 Aug 28;11:176.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/26316233/",
-      "sourceType": "Publicação indexada",
-      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
-    },
-    "ref-charalambous-meta-2014": {
-      "id": "ref-charalambous-meta-2014",
-      "citationText": "Charalambous M, Brodbelt D, Volk HA. Treatment in canine epilepsy--a systematic review. BMC Vet Res. 2014 Oct 22;10:257.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/25338624/",
-      "sourceType": "Publicação indexada",
-      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
-    },
-    "ref-boothe-comp-2012": {
-      "id": "ref-boothe-comp-2012",
-      "citationText": "Boothe DM, Dewey C, Carpenter DM. Comparison of phenobarbital with bromide as a first-choice antiepileptic drug for treatment of epilepsy in dogs. J Am Vet Med Assoc. 2012 May 1;240(9):1073-83.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/22515627/",
-      "sourceType": "Publicação indexada",
-      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
-    },
-    "ref-thomas-epilepsy-2010": {
-      "id": "ref-thomas-epilepsy-2010",
-      "citationText": "Thomas WB. Idiopathic epilepsy in dogs and cats. Vet Clin North Am Small Anim Pract. 2010 Jan;40(1):161-79.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/19942062/",
-      "sourceType": "Publicação indexada",
-      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
-    },
-    "ref-podell-status-2016": {
-      "id": "ref-podell-status-2016",
-      "citationText": "Podell M, Volk HA, Berendt M, et al. 2015 ACVIM Small Animal Consensus Statement on Seizure Management in Dogs. J Vet Intern Med. 2016 Mar-Apr;30(2):477-90.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/26899355/",
-      "sourceType": "Publicação indexada",
-      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
-    },
-    "ref-bailey-feline-2009": {
-      "id": "ref-bailey-feline-2009",
-      "citationText": "Bailey KS, Dewey CW, Boothe DM, Barone G, Kortz GD. Feline idiopathic epilepsy: a retrospective study of 30 cases (1998-2008) and treatment response to phenobarbital. J Feline Med Surg. 2009;11(8):657-664. doi: 10.1016/j.jfms.2008.12.008.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/19447661/",
-      "sourceType": "Estudo Clínico Multicêntrico",
-      "notes": "PMID corrigido e verificado: 19447661."
-    },
-    "ref-gizzi-tdm-2020": {
-      "id": "ref-gizzi-tdm-2020",
-      "citationText": "Gizzi AB, Leal LM, Flor PB, Rivero BR, et al. Phenobarbital clearance and therapeutic drug monitoring in dogs with epilepsy: Impact of autoinduction. J Vet Intern Med. 2020;34(4):1532-1541. doi: 10.1111/jvim.15820.",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/32412140/",
-      "sourceType": "Estudo Clínico Prospectivo",
-      "notes": "PMID corrigido e verificado: 32412140."
-    }
-  },
   "dipirona": {
     "ref-giorgi-2017": {
       "id": "ref-giorgi-2017",
@@ -132,7 +81,6 @@ const corrections: Record<string, Record<string, EditorialReference>> = {
 
 const withdrawn: Record<string, string[]> = {
   dipirona: ['ref-steagall-2020', 'ref-giorgi-repeated-2018'],
-  fenobarbital: ['ref-bsava-neurology-2018'],
 };
 
 function publicReferenceUrl(reference: EditorialReference): string | null {

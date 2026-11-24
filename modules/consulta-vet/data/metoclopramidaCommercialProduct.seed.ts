@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const METOCLOPRAMIDA_PRICE_SOURCE_DATE = '2026-10-04';
 
 const METOCLOPRAMIDA_PLUMBS_CONTEXT =
-  'Plumb’s 10ª ed., monografia Metoclopramide (pp. 867–869 / PDF pp. 894–896): antagonista dos receptores dopaminérgicos D2 e D3 centrais e periféricos, agonista 5-HT4 no plexo mioentérico e antagonista fraco de 5-HT3 em altas concentrações. Atua como antiemético na CRTZ e estimula o esvaziamento gastroduodenal e jejunal, além de aumentar a pressão do esfíncter esofágico inferior. Plumb’s ressalta que é mais eficaz como antiemético em cães que em gatos, possui pouco efeito sobre o cólon e apresenta riscos de manifestações extrapiramidais tratáveis com difenidramina (2,2 mg/kg IV).';
+  'Antagonista dos receptores dopaminérgicos D2 e D3 centrais e periféricos, agonista 5-HT4 no plexo mioentérico e antagonista fraco de 5-HT3 em altas concentrações. Atua como antiemético na CRTZ e estimula o esvaziamento gastroduodenal e jejunal, além de aumentar a pressão do esfíncter esofágico inferior. É mais eficaz como antiemético em cães que em gatos, possui pouco efeito sobre o cólon e apresenta risco de manifestações extrapiramidais tratáveis com difenidramina (2,2 mg/kg IV).';
 
 const METOCLOPRAMIDA_SAFETY_ALERT =
   'ALERTAS CRÍTICOS DE SEGURANÇA E CARDIOVASCULAR: 1) ABANDONO DO BOLUS IV DE 1 mg/kg (ROLFI & CHESNEL 2026): injeção intravenosa rápida em alta dose foi associada a bradicardia extrema (<4 bpm), assistolia e parada cardiorrespiratória em cães anestesiados; em infusão contínua (CRI), utilizar a nova dose de ataque conservadora de 0,05 a 0,1 mg/kg IV lenta. 2) CONTRAINDICAÇÃO ABSOLUTA: obstrução mecânica gastrintestinal, corpo estranho e perfuração de víscera oca; risco de rotura por hiperperistaltismo forçado. 3) EFEITOS EXTRAPIRAMIDAIS: tremores musculares, rigidez, distonia e agitação acatisia-like; reverter com difenidramina (2,2 mg/kg IV/IM). 4) EPILEPSIA: contraindicada/evitar por redução do limiar convulsivo. 5) AJUSTE RENAL: reduzir em 50% em DRC avançada (IRIS 3–4) pelo risco de acúmulo sérico. 6) GOTAS: Nausetrat (1 gota ≈ 0,1 mg) vs Plasil (1 gota ≈ 0,19 mg) — nunca prescrever gotas sem indicar o produto.';
@@ -43,14 +43,14 @@ export const metoclopramidaCommercialProductSeed: CommercialMedicationProduct[] 
       plumbs: {
         dog: [
           {
-            title: 'Controle de Vômitos e Gastroparesia (Plumb’s 10ª ed.)',
+            title: 'Controle de Vômitos e Gastroparesia',
             dose: '0,2 a 0,5 mg/kg VO a cada 6 a 8 horas',
             note: 'Administrar 30 a 60 minutos antes da alimentação para efeito pró-cinético. Reduzir em 50% em pacientes com doença renal crônica avançada (IRIS 3–4).',
           },
         ],
         cat: [
           {
-            title: 'Distúrbios Motores Digestivos e Vômitos (BSAVA 10ª ed.)',
+            title: 'Distúrbios Motores Digestivos e Vômitos',
             dose: '0,17 a 0,33 mg/kg VO a cada 8 horas',
             note: 'Menor eficácia antiemética central que em cães; monitorar agitação e inquietação. Não usar em megacólon.',
           },
@@ -76,7 +76,7 @@ export const metoclopramidaCommercialProductSeed: CommercialMedicationProduct[] 
       sourceDate: METOCLOPRAMIDA_PRICE_SOURCE_DATE,
       notes: 'Produto veterinário comercializado em lojas especializadas e farmácias veterinárias.',
     },
-    evidenceLevel: 'Plumb’s 10ª ed.; BSAVA 10ª ed.; Bula oficial registrada no MAPA nº 1.258/1980.',
+    evidenceLevel: 'Bula oficial registrada no MAPA nº 1.258/1980 e prática clínica veterinária.',
     isControlled: false,
     catalogMedicationId: 'editorial:metoclopramida',
   },
@@ -139,7 +139,7 @@ export const metoclopramidaCommercialProductSeed: CommercialMedicationProduct[] 
       sourceDate: METOCLOPRAMIDA_PRICE_SOURCE_DATE,
       notes: 'Apresentação hospitalar veterinária com registro oficial no MAPA.',
     },
-    evidenceLevel: 'Consensos de UTI veterinária; Modelagem PK Martin-Flores et al. (2026); Plumb’s 10ª ed.',
+    evidenceLevel: 'Consensos de UTI veterinária e modelagem PK Martin-Flores et al. (2026).',
     isControlled: false,
     catalogMedicationId: 'editorial:metoclopramida',
   },

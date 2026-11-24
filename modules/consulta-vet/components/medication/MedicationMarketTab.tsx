@@ -352,12 +352,10 @@ export function MedicationMarketTab({
                   <FileText className="h-5 w-5 text-sky-500" />
                   <div>
                     <span className="font-bold text-foreground block">
-                      {medication.slug === 'fenobarbital'
-                        ? 'Bula Técnica Oficial do Convless® 20 mg/mL (MAPA)'
-                        : `Bula Oficial de ${medication.title} (PDF)`}
+                      {`Bula Oficial / Consultas de ${medication.title}`}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
-                      {hasVeterinaryPresentation ? 'Informações de uso e segurança para o médico-veterinário' : 'Informações de uso e segurança'}
+                      {hasVeterinaryPresentation ? 'Informações de uso e segurança para o médico-veterinário' : 'Informações de uso e segurança (ANVISA / fabricante)'}
                     </span>
                   </div>
                 </div>
@@ -376,9 +374,7 @@ export function MedicationMarketTab({
                   <Building2 className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <span className="font-bold text-foreground block">
-                      {medication.slug === 'fenobarbital'
-                        ? 'Portal Fabricante / Linha Convless® (Agener União)'
-                        : `Portal Oficial de ${medication.title}`}
+                      {`Portal Oficial / Consulta Regulatória de ${medication.title}`}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
                       Linha de produtos, apresentações e farmacovigilância
@@ -395,9 +391,7 @@ export function MedicationMarketTab({
               </span>
               <p className="text-[11px]">
                 {medication.genericBrandsNote ||
-                  (medication.slug === 'fenobarbital'
-                    ? 'O fenobarbital conta com formulação de uso veterinário exclusivo com seringa dosadora (Convless® 20 mg/mL - Agener União) e formulações de uso humano sob receita de controle especial (Gardenal® 50/100 mg - Sanofi, Fenocris® injetável - Cristália, além de genéricos União Química, Teuto e EMS).'
-                    : 'Consulte as apresentações listadas nesta ficha e confirme o registro de cada produto.')}
+                  'Consulte as apresentações listadas nesta ficha e confirme o registro de cada produto.'}
               </p>
             </div>
           </div>

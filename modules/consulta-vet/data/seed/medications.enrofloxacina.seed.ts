@@ -52,7 +52,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
       'Hipersensibilidade conhecida à enrofloxacina, ciprofloxacina ou a qualquer antibacteriano da classe das fluoroquinolonas.',
       'Uso em gatos em doses superiores a 5 mg/kg/dia (risco iminente de degeneração fotorreceptora da retina, retinopatia tóxica e cegueira permanente).',
       'Cães jovens durante a fase de crescimento esquelético rápido: contraindicado em portes pequeno e médio até 8 meses de idade; portes grandes até 12 meses; raças gigantes até 18 meses de idade (risco de artropatia cartilagínea bolhosa e erosões articulares permanentes).',
-      'Infecções comprovadas ou suspeitas por Streptococcus canis (contraindicação formal pela literatura e pelo Plumb devido ao risco de precipitação de fasceíte necrosante fatal induzida pelo fármaco).',
+      'Infecções comprovadas ou suspeitas por Streptococcus canis (contraindicação formal devido ao risco de precipitação de fasceíte necrosante fatal induzida pelo fármaco).',
       'Monoterapia empírica em infecções bacterianas causadas primariamente por bactérias anaeróbias estritas (como Bacteroides spp. e Clostridium spp.) ou Enterococcus spp., nas quais a enrofloxacina não apresenta atividade clínica útil.',
       'Uso profilático rotineiro ou em cistites bacterianas simples esporádicas não complicadas onde antimicrobianos de espectro direcionado de primeira escolha (como amoxicilina ou sulfas) forem adequados.',
     ],
@@ -98,7 +98,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Monitorar resolução dos sinais clínicos inflamatórios e tolerância gastrintestinal. Em tratamentos > 14 dias, acompanhar enzimas hepáticas e função renal.',
         calculatorEnabled: true,
         referenceIds: ['plumb-enrofloxacin-10ed', 'bsava-formulary-enrofloxacin-10ed'],
-        evidenceLevel: 'Bula Oficial MAPA / Padrão-Ouro Farmacológico Plumb 10ª ed.',
+        evidenceLevel: 'Bula Oficial MAPA / Consenso Antimicrobiano Veterinário',
       },
       {
         id: 'dose-enrofloxacina-cao-profundo',
@@ -142,7 +142,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Inspeção diária do diâmetro pupilar e acuidade visual do felino. Suspender imediatamente se houver midríase.',
         calculatorEnabled: true,
         referenceIds: ['gelatt-2001-retinal', 'ford-2007-enro-cat', 'ramirez-2011-abcg2'],
-        evidenceLevel: 'Consenso Internacional de Segurança Felina / Plumb 10ª ed.',
+        evidenceLevel: 'Consenso Internacional de Segurança Felina',
       },
       {
         id: 'dose-enrofloxacina-injetavel-hospitalar',
@@ -164,7 +164,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
           'Pressão arterial sistêmica, ausência de flebite ou dor no local e estabilização de parâmetros hemodinâmicos.',
         calculatorEnabled: true,
         referenceIds: ['plumb-enrofloxacin-10ed', 'bsava-formulary-enrofloxacin-10ed'],
-        evidenceLevel: 'Prática de Medicina Intensiva e Formulário BSAVA',
+        evidenceLevel: 'Prática de Medicina Intensiva Veterinária',
       },
     ],
 
@@ -342,7 +342,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Ultrassonografia prostática periódica, citologia e cultura de líquido prostático ou urina colhida por cateterismo pós-massagem prostática.',
         referenceIds: ['plumb-enrofloxacin-10ed', 'bsava-formulary-enrofloxacin-10ed'],
-        evidenceLevel: 'Compêndio de Farmacologia Padrão-Ouro Plumb 10ª ed.',
+        evidenceLevel: 'Prática Clínica Antimicrobiana Consolidada',
       },
       {
         id: 'ind-enro-colite-histiocitica',
@@ -361,7 +361,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
         monitoring:
           'Escore de consistência fecal, ganho de peso, resolução de hematoquezia e muco nas fezes.',
         referenceIds: ['plumb-enrofloxacin-10ed'],
-        evidenceLevel: 'Estudos Clínicos Específicos em Cães de Raça e Plumb 10ª ed.',
+        evidenceLevel: 'Estudos Clínicos Específicos em Colite Histiocítica Granulomatosa',
       },
     ],
 
@@ -526,7 +526,7 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
           condition: 'Infecção por Streptococcus canis (ou suspeita clínica)',
           alertLevel: 'contraindicated',
           physiologicalExplanation:
-            'Relatos consolidados na literatura e advertência explícita no compêndio Plumb associam o uso de enrofloxacina em infecções por Streptococcus canis ao desencadeamento de fasceíte necrosante fulminante induzida pelo fármaco.',
+            'Relatos clínicos e advertências farmacológicas associam o uso de enrofloxacina em infecções por Streptococcus canis ao desencadeamento de fasceíte necrosante fulminante induzida pelo fármaco.',
           clinicalAction:
             'Contraindicado. Em infecções cutâneas ou de tecidos moles estreptocócicas, utilizar beta-lactâmicos (ampicilina, amoxicilina-clavulanato) ou clindamicina.',
         },

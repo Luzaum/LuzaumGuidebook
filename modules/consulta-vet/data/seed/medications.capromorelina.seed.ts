@@ -163,7 +163,7 @@ export const capromorelinaMedicationsSeed: MedicationRecord[] = [
         id: 'ind-capromorelin-cat-general-anorexia',
         indication: 'Estimulação do Apetite Extra-Rótulo em Gatos com Hiporexia Não Renal',
         clinicalContext:
-          'O Plumb cita o uso extra-bula da capromorelina em felinos na faixa de 1,0 a 3,0 mg/kg VO a cada 24 horas por até 21 dias para controle de anorexia por causas diversas. Entretanto, o clínico deve ter rigor extremo para não prescrever o estimulante como substituto da investigação etiológica: pancreatite felina, colangio-hepatite, constipação crônica, doença periodontal dolorosa e corpos estranhos gastrointestinais devem ser identificados e tratados.',
+          'Na rotina felina, emprega-se por vezes em uso extra-bula na faixa de 1,0 a 3,0 mg/kg VO a cada 24 horas por até 21 dias para controle de anorexia por causas diversas. Entretanto, o clínico deve ter rigor extremo para não prescrever o estimulante como substituto da investigação etiológica: pancreatite felina, colangio-hepatite, constipação crônica, doença periodontal dolorosa e corpos estranhos gastrointestinais devem ser identificados e tratados.',
         species: 'cat',
         dose: '1,0 a 2,0 mg/kg (dose padrão 2,0 mg/kg q24h com Elura)',
         route: 'Oral (VO)',

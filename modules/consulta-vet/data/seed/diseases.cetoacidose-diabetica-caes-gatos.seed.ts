@@ -469,7 +469,7 @@ export const cetoacidoseDiabeticaCaesGatosRecord: DiseaseRecord = {
     diagnosticReasoning:
       'O raciocínio diagnóstico da CAD/DKA estrutura-se em cinco etapas lógicas: 1) Reconhecer o diabetes descompensado (ou suspeitar de eDKA em felinos sob SGLT2 com glicemia <250 mg/dL); 2) Quantificar a cetonemia pelo BHB sanguíneo em medidor portátil (cutoffs: cão ≥2,3 mmol/L; gato >2,4 mmol/L); 3) Demonstrar a acidose metabólica via gasometria venosa (pH <7,35, HCO₃⁻ <15 mEq/L) para diferenciar DKA de Cetose Diabética (DK); 4) Mapear eletrólitos (K⁺, Na⁺ corrigido, P, Mg²⁺) para direcionar fluidoterapia e suplementação; 5) Investigar agressivamente o fator precipitante (pancreatite, ITU, piometra, neoplasia). (3)(4)(5)(6)(7)(10)(17)(18)(20)(23)',
     cardAlertaVetius:
-      '⚠️ **CARD DE ALERTA CLÍNICO VETIUS — REGRAS DE DECISÃO:**\n• **BHB NÃO CONFIRMA DKA ISOLADAMENTE:** Cetonemia isolada sem acidose é **Cetose Diabética (DK)**. DKA requer a tríade: Diabetes + Cetonemia/Cetonúria + Acidose metabólica (pH <7,35).\n• **CÃO:** BHB ≥2,3 mmol/L → solicitar gasometria venosa e eletrólitos imediatamente (100% sensibilidade). BHB ≥3,5–3,8 mmol/L → DKA fortemente provável no cão doente. BHB ≥4,3 mmol/L → 100% específico.\n• **GATO:** BHB 1,0–2,4 mmol/L → zona de alerta. BHB >2,4 mmol/L → investigar DKA/eDKA imediatamente (100% sensibilidade, 87% especificidade).\n• **eDKA:** Glicemia normal ou pouco elevada (<250 mg/dL) **NÃO exclui DKA**, especialmente em gatos em uso de inibidores de SGLT2 (bexagliflozina/velagliflozina) ou sob insulinoterapia.',
+      '⚠️ **ALERTA CLÍNICO — REGRAS DE DECISÃO:**\n• **BHB NÃO CONFIRMA DKA ISOLADAMENTE:** Cetonemia isolada sem acidose é **Cetose Diabética (DK)**. DKA requer a tríade: Diabetes + Cetonemia/Cetonúria + Acidose metabólica (pH <7,35).\n• **CÃO:** BHB ≥2,3 mmol/L → solicitar gasometria venosa e eletrólitos imediatamente (100% sensibilidade). BHB ≥3,5–3,8 mmol/L → DKA fortemente provável no cão doente. BHB ≥4,3 mmol/L → 100% específico.\n• **GATO:** BHB 1,0–2,4 mmol/L → zona de alerta. BHB >2,4 mmol/L → investigar DKA/eDKA imediatamente (100% sensibilidade, 87% especificidade).\n• **eDKA:** Glicemia normal ou pouco elevada (<250 mg/dL) **NÃO exclui DKA**, especialmente em gatos em uso de inibidores de SGLT2 (bexagliflozina/velagliflozina) ou sob insulinoterapia.',
     algoritmoCao:
       '🐶 **Algoritmo Prático de Decisão no Cão:**\n1. **BHB <0,32 mmol/L:** Dentro do esperado para cães saudáveis; sem cetonemia significativa.\n2. **BHB 0,32 a 2,29 mmol/L:** Cetonemia acima do normal; avaliar diabetes, jejum/anorexia, doenças concomitantes e monitorar tendência seriada.\n3. **BHB ≥2,3 mmol/L:** 🚨 **Avaliar DKA imediatamente.** Solicitar gasometria venosa, bicarbonato, Na⁺, K⁺, Cl⁻, Fósforo, glicemia, função renal, urinálise com urocultura e calcular ânion gap.\n4. **BHB ≥3,5 mmol/L:** DKA torna-se fortemente provável se o cão estiver clinicamente doente (LR+ 13,16).\n5. **BHB ≥4,3 mmol/L:** Valor de altíssima especificidade (100%) para DKA no estudo de Di Tommaso et al.\n6. **BHB elevado sem acidose (pH ≥7,35):** Diagnóstico de Cetose Diabética (DK), não DKA. Tratar diabetes ambulatorialmente/hospitalar leve sem protocolo agressivo de UTI.',
     algoritmoGato:
@@ -691,14 +691,6 @@ export const cetoacidoseDiabeticaCaesGatosRecord: DiseaseRecord = {
         'Zeugswetter F. K. et al. (JVECC 2021): Uso de Glargina em gatos com CAD demonstrando eficácia e segurança comparáveis à insulina regular. (22)',
       reed2026:
         'Reed N. (JFMS 2026): Abordagem racional às emergências médicas felinas e manejo de CAD. (23)',
-    },
-    livrosAcervo: {
-      feldmanEndocrinology4th:
-        'Canine and Feline Endocrinology (Feldman, Nelson, Reusch & Scott-Moncrieff, 4ª ed., Cap. 8 — Diabetic Ketoacidosis, pp. 320–322): Fisiopatologia, diferenciação DK vs DKA, BHB, limitações diagnósticas da cetonúria e medidores portáteis.',
-      basicMonitoringEmergency:
-        'Basic Monitoring in Canine and Feline Emergency Patients (Cap. 1 — Physical Examination and Point-of-care Testing, pp. 7 e 16–17): Funcionamento dos medidores de BHB, limite fisiológico normal de <0,32 mmol/L em cães e ~0,11 mmol/L em gatos; elevações de até 2,78 mmol/L em lipidose hepática felina.',
-      augustsFelineInternalMed7:
-        'August\'s Consultations in Feline Internal Medicine (Vol. 7, Cap. 85 — Feline Diabetic Ketoacidosis, p. 837): Predomínio de BHB, relação BHB:acetoacetato de ~3:1 em felinos, limitações da fita de nitroprussiato e abordagem clínica da DKA.',
     },
     prognostico: {
       geral:
@@ -962,6 +954,30 @@ export const cetoacidoseDiabeticaCaesGatosRecord: DiseaseRecord = {
       url: 'https://doi.org/10.1177/1098612X251411055',
       evidenceLevel: 'Moderada',
       notes: 'Emergências felinas e manejo de CAD.',
+    },
+    {
+      id: 'ref-feldman-endocrinology-4ed-cad',
+      citationText:
+        'Feldman EC, Nelson RW, Reusch CE, Scott-Moncrieff JCR. Canine and Feline Endocrinology. 4th ed. St. Louis: Elsevier; 2015. Chapter 8 — Diabetic Ketoacidosis, pp. 320–322.',
+      sourceType: 'Livro-texto',
+      evidenceLevel: 'Referência clássica',
+      notes: 'Fisiopatologia, diferenciação DK vs DKA, BHB, limitações diagnósticas da cetonúria e medidores portáteis.',
+    },
+    {
+      id: 'ref-basic-monitoring-emergency-bhb',
+      citationText:
+        'Basic Monitoring in Canine and Feline Emergency Patients. Chapter 1 — Physical Examination and Point-of-care Testing, pp. 7, 16–17.',
+      sourceType: 'Livro-texto',
+      evidenceLevel: 'Referência clínica',
+      notes: 'Medidores de BHB, limites fisiológicos em cães e gatos e elevações na lipidose hepática felina.',
+    },
+    {
+      id: 'ref-august-feline-internal-medicine-v7-cad',
+      citationText:
+        'August\'s Consultations in Feline Internal Medicine. Vol. 7. Chapter 85 — Feline Diabetic Ketoacidosis, p. 837.',
+      sourceType: 'Livro-texto',
+      evidenceLevel: 'Referência clínica',
+      notes: 'Predomínio de BHB, relação BHB:acetoacetato em felinos e limitações da fita de nitroprussiato.',
     },
   ],
   isPublished: true,

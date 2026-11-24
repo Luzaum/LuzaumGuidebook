@@ -96,7 +96,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
           label: 'Banco inicial',
           timing: 'Estadiamento',
           detail:
-            'Hemograma, bioquímica, eletrólitos, urinálise, T4 total em idosos; ultrassom se pancreatite/HST suspeita (AAHA 2026; Nelson & Couto, 2020).',
+            'Hemograma, bioquímica, eletrólitos, urinálise, T4 total em idosos; ultrassom se pancreatite/HST suspeita (AAHA 2026).',
         },
         {
           label: 'Escolher via terapêutica',
@@ -164,7 +164,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       'Doença endógena multifatorial. Não transmissível.',
   },
   pathophysiology:
-    'No gato, o diabetes resulta da interação entre resistência periférica à insulina e falência progressiva das células β, com glicotoxicidade e deposição de amiloide nas ilhotas (Nelson & Couto, 2020; iCatCare 2025). A reversão precoce da hiperglicemia remove a supressão tóxica sobre as células β e permite remissão clínica em parcela significativa dos pacientes (AAHA 2026). No hipersomatotropismo (HST), excesso de IGF-1 antagoniza insulina — investigar quando doses >5 U/gato/dose (AAHA 2026; Nelson & Couto, 2020). A hiperglicemia crônica lesa axônios periféricos distais, gerando neuropatia plantígrada reversível com controle metabólico (iCatCare 2025). Com inibidores de SGLT2 (Bexacat/Senvelgo), a glicosúria forçada pode manter glicemia aparentemente normal enquanto persiste deficiência insulínica e cetogênese — risco de cetoacidose euglicêmica (eDKA) se BHB não for monitorado (AAHA 2026; FDA Bexacat/Senvelgo).',
+    'No gato, o diabetes resulta da interação entre resistência periférica à insulina e falência progressiva das células β, com glicotoxicidade e deposição de amiloide nas ilhotas (iCatCare 2025). A reversão precoce da hiperglicemia remove a supressão tóxica sobre as células β e permite remissão clínica em parcela significativa dos pacientes (AAHA 2026). No hipersomatotropismo (HST), excesso de IGF-1 antagoniza insulina — investigar quando doses >5 U/gato/dose (AAHA 2026). A hiperglicemia crônica lesa axônios periféricos distais, gerando neuropatia plantígrada reversível com controle metabólico (iCatCare 2025). Com inibidores de SGLT2 (Bexacat/Senvelgo), a glicosúria forçada pode manter glicemia aparentemente normal enquanto persiste deficiência insulínica e cetogênese — risco de cetoacidose euglicêmica (eDKA) se BHB não for monitorado (AAHA 2026; FDA Bexacat/Senvelgo).',
   clinicalSignsPathophysiology: [
     {
       system: 'metabolico',
@@ -264,7 +264,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       ],
     },
     calculoPesoIdeal:
-      'Glargina U100 e PZI iniciam em 1 UI/gato (não mg/kg), mas o PCI orienta dieta, perda ponderal e insulinas doseadas por peso (Toujeo 0,5 UI/kg; velagliflozina 1 mg/kg). Em gatos obesos, não usar o peso atual para Toujeo/Senvelgo — estimar PCI pelo ECC (AAHA 2026; Nelson & Couto, 2020).',
+      'Glargina U100 e PZI iniciam em 1 UI/gato (não mg/kg), mas o PCI orienta dieta, perda ponderal e insulinas doseadas por peso (Toujeo 0,5 UI/kg; velagliflozina 1 mg/kg). Em gatos obesos, não usar o peso atual para Toujeo/Senvelgo — estimar PCI pelo ECC (AAHA 2026).',
     tabelaPesoIdealEcc: {
       kind: 'clinicalTable' as const,
       title: 'Estimativa do peso ideal pelo ECC (9 pontos)',
@@ -278,7 +278,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       ],
     },
     exemploCalculoInsulina: [
-      '1. Pesar o gato e atribuir ECC (9 pontos). Em obesidade, palpar costelas e cintura abdominal — ECC inflado superestima gordura (Nelson & Couto, 2020).',
+      '1. Pesar o gato e atribuir ECC (9 pontos). Em obesidade, palpar costelas e cintura abdominal — ECC inflado superestima gordura.',
       '2. Insulina 1ª linha: iniciar 1 UI/gato SC q12h (Glargina ou PZI), independentemente do PCI — titular pela clínica e monitor contínuo de glicose (AAHA 2026).',
       '3. Para Toujeo: PCI × 0,5 UI/kg (ex.: gato 6 kg, ECC 8 → PCI 4,6 kg → 4,6 × 0,5 = 2,3 UI → arredondar para 2 UI q24h).',
       '4. Para Senvelgo: 1 mg/kg sobre PCI (ex.: PCI 4,6 kg → 4,6 mg/dia PO).',
@@ -327,8 +327,8 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
     fluxogramaResistencia: [
       'Etapa 1 — Técnica e aderência: seringa, agitação (PZI), horários, rotação de locais e consistência alimentar (AAHA 2026).',
       'Etapa 2 — Hipoglicemia oculta: reduzir dose se pré-dose normoglicêmica ou queda abrupta da necessidade — não manter dose antiga por prudência (AAHA 2026).',
-      'Etapa 3 — Hipersomatotropismo: doses >5 U/gato/dose → dosar IGF-1; organomegalia e resistência extrema (AAHA 2026; Nelson & Couto, 2020).',
-      'Etapa 4 — HAC felino: fragilidade cutânea, hepatomegalia, proteinúria — testes endócrinos selecionados (Nelson & Couto, 2020).',
+      'Etapa 3 — Hipersomatotropismo: doses >5 U/gato/dose → dosar IGF-1; organomegalia e resistência extrema (AAHA 2026).',
+      'Etapa 4 — HAC felino: fragilidade cutânea, hepatomegalia, proteinúria — testes endócrinos selecionados.',
       'Etapa 5 — Pancreatite, obesidade, esteroides/progestágenos e doença periodontal: tratar comorbidades antes de escalar insulina indefinidamente (AAHA 2026; iCatCare 2025).',
     ],
   },
@@ -346,7 +346,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
   },
   prevention: {
     primaria:
-      'Manter peso ideal e evitar obesidade; dieta rica em proteína e pobre em carboidratos antes do diagnóstico; evitar progestágenos e glicocorticoides desnecessários; estimular atividade física (AAHA 2026; Nelson & Couto, 2020).',
+      'Manter peso ideal e evitar obesidade; dieta rica em proteína e pobre em carboidratos antes do diagnóstico; evitar progestágenos e glicocorticoides desnecessários; estimular atividade física (AAHA 2026).',
     remissaoPreservacao:
       'Diagnosticar e tratar cedo para reverter glicotoxicidade; insulinoterapia conservadora (1 U/gato q12h) ou SGLT2 selecionado em caso estável; monitorar remissão e reduzir dose prontamente — preservar função β residual aumenta chance de remissão (AAHA 2026; iCatCare 2025).',
     errosComuns: [
@@ -376,7 +376,7 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
     {
       id: 'ref-aula-magna-2026',
       citationText:
-        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material fornecido ao projeto Vetius, 2026.',
+        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material didático, 2026.',
       sourceType: 'Aula Magna',
       evidenceLevel: 'A',
     },

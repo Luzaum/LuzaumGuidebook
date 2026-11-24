@@ -25,7 +25,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
     'Arritmia',
   ],
   quickSummary:
-    'A DMVD (endocardiose mixomatosa da valva mitral) é a cardiopatia adquirida mais frequente em cães de pequeno porte: os folhetos mitrais tornam-se espessados e incompetentes, permitindo regurgitação sistólica para o átrio esquerdo. O sopro é o achado clássico, mas a intensidade não traduz gravidade hemodinâmica. O estadiamento ACVIM (A–D) separa predisposição, lesão sem remodelação (B1), remodelação pré-clínica (B2), ICC (C) e doença refratária (D). Em B2 com critérios de imagem, pimobendan tem evidência para retardar a descompensação (EPIC; Keene et al., 2019). Na ICC, o eixo é congestão (diurético), inodilatação (pimobendan) e SRAA quando a perfusão renal permitir, com creatinina e eletrólitos obrigatórios (Nelson & Couto, 6ª ed.; Plumb’s, 10ª ed.).',
+    'A DMVD (endocardiose mixomatosa da valva mitral) é a cardiopatia adquirida mais frequente em cães de pequeno porte: os folhetos mitrais tornam-se espessados e incompetentes, permitindo regurgitação sistólica para o átrio esquerdo. O sopro é o achado clássico, mas a intensidade não traduz gravidade hemodinâmica. O estadiamento ACVIM (A–D) separa predisposição, lesão sem remodelação (B1), remodelação pré-clínica (B2), ICC (C) e doença refratária (D). Em B2 com critérios de imagem, pimobendan tem evidência para retardar a descompensação (EPIC; Keene et al., 2019). Na ICC, o eixo é congestão (diurético), inodilatação (pimobendan) e SRAA quando a perfusão renal permitir, com creatinina e eletrólitos obrigatórios.',
   quickDecisionStrip: [
     'Sopro sistólico esquerdo em cão pequeno idoso: DMVD até prova em contrário — a intensidade do sopro não substitui o eco.',
     'Estadiar ACVIM antes de medicar: B1 observa; B2 discute pimobendan; C/D tratam congestão.',
@@ -68,7 +68,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
           label: 'Estabilidade e ausculta',
           timing: 'Primeira consulta',
           detail:
-            'Localizar foco mitral; pulso, frequência, dispneia, síncope, tosse e frequência respiratória de sono. Dispneia em repouso: oxigênio antes de exames demorados (Nelson & Couto, 6ª ed.; Keene et al., 2019).',
+            'Localizar foco mitral; pulso, frequência, dispneia, síncope, tosse e frequência respiratória de sono. Dispneia em repouso: oxigênio antes de exames demorados (Keene et al., 2019).',
         },
         {
           label: 'Ecocardiografia completa',
@@ -85,7 +85,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
         {
           label: 'Radiografia quando houver dúvida de congestão',
           detail:
-            'VHS, veias pulmonares e padrão intersticial/alveolar. Apoia ICC; não substitui o eco para B2 (Nelson & Couto, 6ª ed.).',
+            'VHS, veias pulmonares e padrão intersticial/alveolar. Apoia ICC; não substitui o eco para B2.',
         },
         {
           label: 'ECG e laboratório',
@@ -118,7 +118,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
           duration: 'Ajuste contínuo à menor dose que mantém conforto respiratório',
           reassess: 'Creatinina e eletrólitos 5–10 dias após iniciar IECA + diurético',
           detail:
-            'Diurético para congestão; internar se dispneia em repouso ou hipóxia; tratar infecção e arritmia desencadeantes (Keene et al., 2019; Plumb’s, 10ª ed.).',
+            'Diurético para congestão; internar se dispneia em repouso ou hipóxia; tratar infecção e arritmia desencadeantes (Keene et al., 2019).',
         },
         {
           label: 'D — refratário',
@@ -131,18 +131,18 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
   },
   etiology: {
     pontosChave: [
-      'Sopro ≠ gravidade: a intensidade não mede volume regurgitante nem congestão (Nelson & Couto, 6ª ed.).',
+      'Sopro ≠ gravidade: a intensidade não mede volume regurgitante nem congestão.',
       'Estadiar ACVIM A–D antes de abrir o “cóctel cardíaco” (Keene et al., 2019).',
       'B2 exige conjunto de critérios (sopro, LA/Ao, LVIDDN, VHS) — um número isolado não basta.',
       'Tosse pode ser compressão do brônquio esquerdo pelo átrio, sem edema pulmonar.',
       'Pimobendan trata remodelação/ICC; diurético trata congestão — não são intercambiáveis.',
     ],
     definicao:
-      'DMVD (também MMVD) é degeneração mixomatosa crônica dos folhetos da valva mitral: acúmulo de glicosaminoglicanos e desorganização do colágeno tornam a valva espessa, nodular e incompetente na sístole. Não é infecciosa nem “endocardite”. O fenótipo final é insuficiência mitral com tempo de evolução variável (Nelson & Couto, 6ª ed.; Keene et al., 2019).',
+      'DMVD (também MMVD) é degeneração mixomatosa crônica dos folhetos da valva mitral: acúmulo de glicosaminoglicanos e desorganização do colágeno tornam a valva espessa, nodular e incompetente na sístole. Não é infecciosa nem “endocardite”. O fenótipo final é insuficiência mitral com tempo de evolução variável (Keene et al., 2019).',
     dmvdAnatomiaMixomatose:
       'A lesão primária está nos folhetos e, com o tempo, nas cordas tendíneas. O anel mitral pode dilatar secundariamente e piorar a incompetência. Ruptura de corda produz regurgitação aguda e edema súbito — emergência distinta da progressão lenta habitual.',
     etiologiaMultifatorial:
-      'Há forte predisposição racial e componente hereditário em linhagens estudadas (especialmente Cavalier King Charles Spaniel), somados a envelhecimento e tensão hemodinâmica local sobre cordas e folhetos. Qualquer cão idoso pode desenvolver a lesão; genética não equivale a teste diagnóstico de rotina (Nelson & Couto, 6ª ed.).',
+      'Há forte predisposição racial e componente hereditário em linhagens estudadas (especialmente Cavalier King Charles Spaniel), somados a envelhecimento e tensão hemodinâmica local sobre cordas e folhetos. Qualquer cão idoso pode desenvolver a lesão; genética não equivale a teste diagnóstico de rotina.',
     dmvdValvaTricuspideNota:
       'A valva tricúspide degenera em parte significativa dos casos avançados. Regurgitação tricúspide acentuada eleva pressão venosa sistêmica (hepatomegalia, ascite) e entra na avaliação de hipertensão pulmonar — não tratar como “outro diagnóstico” isolado sem olhar o lado esquerdo.',
   },
@@ -150,7 +150,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
     perfil:
       'Cardiopatia adquirida mais comum em cães, com impacto clínico maior em porte pequeno/miniatura e meia-idade a idosos. Machos e fêmeas são afetados; a progressão é altamente variável.',
     dmvdPredisposicaoRacial:
-      'Poodle, Yorkshire Terrier, Cavalier King Charles Spaniel, Chihuahua, Maltês, Dachshund e outras raças toy/miniatura. Cavalier pode apresentar lesão mais precoce. Cães grandes também desenvolvem DMVD, mas o diagnóstico diferencial com cardiomiopatia dilatada torna-se mais importante (Nelson & Couto, 6ª ed.).',
+      'Poodle, Yorkshire Terrier, Cavalier King Charles Spaniel, Chihuahua, Maltês, Dachshund e outras raças toy/miniatura. Cavalier pode apresentar lesão mais precoce. Cães grandes também desenvolvem DMVD, mas o diagnóstico diferencial com cardiomiopatia dilatada torna-se mais importante.',
     dmvdPrevalenciaEIdade:
       'A prevalência cresce com a idade. Alterações subclínicas ao eco podem preceder o sopro “óbvio”. Isso justifica rastreio auscultatório geriátrico e em reprodução de raças de risco, sem transformar todo sopro em tratamento imediato — o estágio ACVIM define a intensidade da conduta.',
     historiaNatural:
@@ -168,7 +168,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Distensão atrial e fibrose criam substrato para fibrilação atrial; taquicardia encurta a diástole e precipita descompensação.',
     ],
     dmvdNeurohumoralIcc:
-      'A ativação neuro-humoral explica o papel dos diuréticos (volume) e dos moduladores do SRAA (IECA, espironolactona) na ICC estabelecida — sempre com vigilância de creatinina, potássio e hidratação (Keene et al., 2019; Nelson & Couto, 6ª ed.).',
+      'A ativação neuro-humoral explica o papel dos diuréticos (volume) e dos moduladores do SRAA (IECA, espironolactona) na ICC estabelecida — sempre com vigilância de creatinina, potássio e hidratação (Keene et al., 2019).',
     dmvdComplicacoesEletro:
       'Fibrilação atrial com resposta ventricular rápida é a taquiarritmia mais relevante: reduz enchimento, piora congestão e pode descompensar um cão que estava “estável” com o mesmo grau de regurgitação. Déficit de pulso pede ECG, não só aumento de diurético.',
   },
@@ -178,7 +178,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
     dmvdFuncaoSistolicaDescompensacao:
       'Quando a função sistólica cai, aparece o fenótipo de baixo débito: fraqueza, hiporexia, hipoperfusão renal e azotemia mais fácil ao somar diurético e IECA. Esse é o momento em que “ICC resolvida no pulmão” pode coexistir com rim sob estresse.',
     dmvdCirculacaoPulmonarEdema:
-      'Edema cardiogênico reflete pressão hidrostática capilar elevada, não “grau de sopro”. Paciente com pouco ruído e muito edema ocorre em descompensação aguda (ruptura de corda, FA rápida). Compressão do brônquio principal esquerdo pelo átrio dilatado produz tosse sem necessariamente haver líquido alveolar (Nelson & Couto, 6ª ed.).',
+      'Edema cardiogênico reflete pressão hidrostática capilar elevada, não “grau de sopro”. Paciente com pouco ruído e muito edema ocorre em descompensação aguda (ruptura de corda, FA rápida). Compressão do brônquio principal esquerdo pelo átrio dilatado produz tosse sem necessariamente haver líquido alveolar.',
   },
   clinicalSignsPathophysiology: [
     {
@@ -269,7 +269,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
         title: 'Ausculta, história e estabilidade',
         purpose: 'Identificar sopro mitral, sinais de congestão e necessidade de emergência.',
         description:
-          'Foco mitral esquerdo, irradiação, pulso, frequência, FR de sono relatada pelo tutor, tosse, síncope, dispneia. Se dispneia em repouso: oxigênio primeiro (Nelson & Couto, 6ª ed.; Keene et al., 2019).',
+          'Foco mitral esquerdo, irradiação, pulso, frequência, FR de sono relatada pelo tutor, tosse, síncope, dispneia. Se dispneia em repouso: oxigênio primeiro (Keene et al., 2019).',
         interpretation: 'Sopro sistólico esquerdo em cão pequeno idoso = DMVD até o eco.',
         limitations: 'Intensidade do sopro não substitui medidas ecocardiográficas.',
       },
@@ -297,7 +297,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
         title: 'Radiografia torácica',
         purpose: 'Documentar congestão, VHS e compressão de vias aéreas.',
         description:
-          'Veias pulmonares, padrão intersticial/alveolar, derrame pleural, silhueta cardíaca (Nelson & Couto, 6ª ed.).',
+          'Veias pulmonares, padrão intersticial/alveolar, derrame pleural, silhueta cardíaca.',
         interpretation: 'Edema confirma descompensação congestiva. Cardiomegalia sem edema não é ICC.',
         limitations: 'Não substitui o eco para quantificar regurgitação nem para B2.',
       },
@@ -312,7 +312,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       },
     ],
     dmvdClinicaAusculta:
-      'O sopro típico é sistólico, em foco mitral (ápice esquerdo), podendo irradiar dorsalmente. Palpar pulso simultâneo à ausculta ajuda a detectar déficit. Ortopneia, cianose ou FR muito alta = estabilizar antes de insistir em ausculta prolongada. Documentar raça, idade, medicamentos e se a tosse começa com honking/coleira (respiratório) ou com taquipneia de sono (congestão) (Nelson & Couto, 6ª ed.).',
+      'O sopro típico é sistólico, em foco mitral (ápice esquerdo), podendo irradiar dorsalmente. Palpar pulso simultâneo à ausculta ajuda a detectar déficit. Ortopneia, cianose ou FR muito alta = estabilizar antes de insistir em ausculta prolongada. Documentar raça, idade, medicamentos e se a tosse começa com honking/coleira (respiratório) ou com taquipneia de sono (congestão).',
     dmvdEcocardiografiaPadraoOuro:
       'O eco confirma que o sopro é mitral, mede remodelação e detecta complicações (ruptura de corda, hipertensão pulmonar, disfunção sistólica, trombo atrial raro). Para B2, o consenso privilegia LA/Ao ≥1,6 e LVIDDN ≥1,7 no contexto de sopro ≥3/6 — não um “AE um pouco aumentado” isolado (Keene et al., 2019).',
     dmvdEstadiamentoAcvimTabela: {
@@ -402,7 +402,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
     ],
     cronica: [
       'Keene et al. (2019): pimobendan em B2 (critérios), C e D; IECA quando perfusão e pressão permitem, com laboratório 5–10 dias após o início.',
-      'Budde e McCluskey (2023), no Plumb’s (10ª ed.): furosemida na menor dose eficaz após estabilização; torasemida com equivalência aproximada 1:10 se refratariedade.',
+      'Furosemida na menor dose eficaz após estabilização; torasemida com equivalência aproximada 1:10 se refratariedade.',
       'Keene et al. (2019): espironolactona ~2–4 mg/kg/dia como adjuvante em ICC avançada selecionada, com vigilância de potássio e rim.',
     ],
     dmvdIccAgudaHospitalar:
@@ -481,7 +481,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Espironolactona atenua aldosterona e poupa potássio. Dose comum ~2–4 mg/kg/dia.\n\n' +
       'Bloqueio do néfron (alça + tiazídico + espironolactona) é reserva de ICC refratária: espera-se mais azotemia — às vezes aceitável para conforto terminal, com transparência ao tutor. Não é o primeiro passo em B2 ou C estável.',
     dmvdIecaBenazeprilEnalapril:
-      'Introduzir IECA na ICC estável, euvolêmico, com creatinina de referência — não no desidratado da emergência. Enalapril depende mais de rim; benazepril também tem via hepática. Repetir laboratório 5–10 dias após o início (Keene et al., 2019; Plumb’s, 10ª ed.).',
+      'Introduzir IECA na ICC estável, euvolêmico, com creatinina de referência — não no desidratado da emergência. Enalapril depende mais de rim; benazepril também tem via hepática. Repetir laboratório 5–10 dias após o início (Keene et al., 2019).',
     dmvdIsosorbidaVasodilatadorOral:
       'Isosorbida dinitrato aparece em alguns protocolos de ICC refratária (~0,25–0,5 mg/kg BID). Tolerância farmacológica pode reduzir o efeito crônico. Titular por PA e congestão — não é rotina de B2.',
     dmvdAnlodipinoHipertensao:
@@ -510,7 +510,7 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Tutor: frequência respiratória durante o sono, esforço, tosse, síncope, apetite e peso.',
       'Creatinina, ureia e eletrólitos 5–10 dias após iniciar ou aumentar IECA, espironolactona ou diurético de alça; depois conforme estabilidade.',
       'Peso semanal na titulação de diurético — desidratação piora azotemia mesmo com “ICC controlada”.',
-      'Radiografia quando a dispneia recorre, comparando com o baseline.',
+      'Radiografia quando a dispneia recorre, comparando com o valor basal.',
       'Eco seriado em B2/C para ajustar expectativa e detectar hipertensão pulmonar ou queda da função sistólica.',
     ],
   },

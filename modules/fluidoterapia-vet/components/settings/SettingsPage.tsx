@@ -73,7 +73,7 @@ export function SettingsPage() {
                   <div>
                     <h4 className="font-semibold text-slate-900 dark:text-slate-100">Fontes Clínicas</h4>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                      Os cálculos e protocolos são baseados no 2024 AAHA Fluid Therapy Guidelines for Dogs and Cats, e em literatura veterinária padrão (Silverstein, DiBartola).
+                      Os cálculos e protocolos são baseados no 2024 AAHA Fluid Therapy Guidelines for Dogs and Cats e nas evidências consolidadas de fluidoterapia e medicina intensiva veterinária.
                     </p>
                   </div>
                 </div>

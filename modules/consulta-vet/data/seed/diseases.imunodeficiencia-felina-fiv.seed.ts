@@ -65,7 +65,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       {
         title: 'Tratamento e manejo',
         body:
-          'Assintomático: indoor, controle de brigas, dieta completa, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro. Sintomático: tratar infecções, gengivoestomatite (extração dentária extensa), neoplasias. AZT 5–10 mg/kg q12h em casos selecionados com monitoramento hematológico (Westman et al., 2022).',
+          'Assintomático: em ambiente domiciliar, controle de brigas, dieta completa, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro. Sintomático: tratar infecções, gengivoestomatite (extração dentária extensa), neoplasias. AZT 5–10 mg/kg q12h em casos selecionados com monitoramento hematológico (Westman et al., 2022).',
         highlights: ['monitoramento', 'gengivoestomatite', 'AZT'],
       },
     ],
@@ -88,13 +88,13 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
           label: 'Confirmar baixa prevalência',
           timing: 'Resultado inesperado',
           detail:
-            'Em população indoor de baixo risco, positivo isolado → repetir em laboratório diferente ou Western blot/PCR proviral para confirmar (Westman et al., 2022).',
+            'Em população em ambiente domiciliar de baixo risco, positivo isolado → repetir em laboratório diferente ou Western blot/PCR proviral para confirmar (Westman et al., 2022).',
         },
         {
           label: 'Investigar doença associada',
           timing: 'Sempre que sintomático',
           detail:
-            'Hemograma, bioquímica (hiperglobulinemia), urinálise, FeLV; citologia/biópsia se massa ou linfadenomegalia; excluir anemia por hemoplasma (Nelson & Couto, 6ª ed.).',
+            'Hemograma, bioquímica (hiperglobulinemia), urinálise, FeLV; citologia/biópsia se massa ou linfadenomegalia; excluir anemia por hemoplasma.',
         },
       ],
     },
@@ -104,7 +104,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
         {
           label: '7.1 Tratamento de suporte',
           detail:
-            'Alojamento indoor ou recinto seguro; castração; dieta de alta digestibilidade (evitar crus); controle parasitário; vacinas inativadas; consulta + hemograma ≥6/6 meses — sem antiviral rotineiro (Little et al., 2020; Westman et al., 2022).',
+            'Alojamento em ambiente domiciliar ou recinto seguro; castração; dieta de alta digestibilidade (evitar crus); controle parasitário; vacinas inativadas; consulta + hemograma ≥6/6 meses — sem antiviral rotineiro (Little et al., 2020; Westman et al., 2022).',
         },
         {
           label: '7.2 Tratamento de doenças associadas ao vírus da FIV',
@@ -126,12 +126,12 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'FIV é lentivirus envelopado de RNA da família Retroviridae, gênero Lentivirus — mesmo grupo que inclui HIV humano, porém restrito a felídeos. Após entrada por mordida, replica-se em linfócitos T CD4+ e células dendríticas, estabelecendo infecção crônica com depleção progressiva de CD4+ e imunodeficiência celular (Tizard, 11ª ed.; Westman et al., 2022).',
+      'FIV é lentivirus envelopado de RNA da família Retroviridae, gênero Lentivirus — mesmo grupo que inclui HIV humano, porém restrito a felídeos. Após entrada por mordida, replica-se em linfócitos T CD4+ e células dendríticas, estabelecendo infecção crônica com depleção progressiva de CD4+ e imunodeficiência celular (Westman et al., 2022).',
     biologiaLentivirus: [
       'Genoma RNA → transcriptase reversa → DNA proviral integrado ao cromossomo — base da persistência vitalícia.',
       'Tropismo por linfócitos T CD4+ via receptor CD134 (OX40) e co-receptor CXCR4 — depleção gradual altera relação CD4/CD8.',
       'Fases clínicas: aguda (linfadenomegalia, febre), assintomática prolongada (anos), progressiva (imunodeficiência, doenças oportunistas) (Westman et al., 2022).',
-      'Não existe clearance completa documentada — infecção é, na prática, permanente após estabelecida.',
+      'Não existe depuração completa documentada — infecção é, na prática, permanente após estabelecida.',
     ],
     subtiposClados: [
       'Clado A: predominante em campo na maioria das regiões — maior diversidade genética.',
@@ -143,7 +143,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       'Subtipo não altera teste diagnóstico padrão (anticorpos) nem manejo clínico rotineiro.',
     ],
     zoonose:
-      'FIV não infecta humanos como patógeno — espécie restrita a felídeos; não há transmissão documentada a cães ou humanos em condições naturais (Nelson & Couto, 6ª ed.; Hosie et al., ABCD 2009).',
+      'FIV não infecta humanos como patógeno — espécie restrita a felídeos; não há transmissão documentada a cães ou humanos em condições naturais (Hosie et al., ABCD 2009).',
   },
   epidemiology: {
     idade:
@@ -170,7 +170,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
     transmissaoMordida:
       'Via principal e mais eficiente — saliva de gato viremicamente infectado inoculada por canino em mordida profunda durante brigas territoriais. Gatos com abscessos por mordida de gato devem ser testados (Litster, 2014; Hosie et al., ABCD 2009).',
     transmissaoConvivencia:
-      'Convivência social estável sem agressão: risco de transmissão muito baixo — estudo prospectivo em domicílio multicat não documentou transmissão entre gatos conviventes pacíficos (Litster, 2014). Compartilhar pote de comida ou grooming não transmite eficientemente.',
+      'Convivência social estável sem agressão: risco de transmissão muito baixo — estudo prospectivo em domicílio multicat não documentou transmissão entre gatos conviventes pacíficos (Litster, 2014). Compartilhar potes de comida ou realizar lambedura mútua não transmite eficientemente.',
     transmissaoVertical:
       'Transplacentária, intraparto e via leite materno são possíveis — filhotes podem ser positivos por infecção ou anticorpo materno até ~6 meses; confirmar após desmame (Little et al., 2020; Hosie et al., ABCD 2009).',
     transmissaoSanguinea:
@@ -233,9 +233,9 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       ],
     },
     imunidadeCD134:
-      'Entrada viral mediada por CD134 (OX40) na superfície de linfócitos T ativados e co-receptor CXCR4 — explica tropismo linfocitário e depleção de CD4+. Resposta humoral (anticorpos) é robusta e duradoura, base dos testes diagnósticos, mas não elimina provírus (Tizard, 11ª ed.; Westman et al., 2022).',
+      'Entrada viral mediada por CD134 (OX40) na superfície de linfócitos T ativados e co-receptor CXCR4 — explica tropismo linfocitário e depleção de CD4+. Resposta humoral (anticorpos) é robusta e duradoura, base dos testes diagnósticos, mas não elimina provírus (Westman et al., 2022).',
     hiperglobulinemia:
-      'Hiperglobulinemia policlonal frequente na fase progressiva — estimulação imune crônica e inflamação persistente; pode mimetizar PIF ou linfoma na bioquímica (Nelson & Couto, 6ª ed.).',
+      'Hiperglobulinemia policlonal frequente na fase progressiva — estimulação imune crônica e inflamação persistente; pode mimetizar PIF ou linfoma na bioquímica.',
     caveatADE:
       'Antibody-dependent enhancement (ADE) foi descrito em modelos experimentais de lentivirus felino, mas relevancia clínica em campo permanece incerta — não usar titulação de anticorpos isolada para prognosticar ou decidir tratamento (Akhtar et al., 2025).',
   },
@@ -393,7 +393,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
     {
       stepNumber: 3,
       title: 'Confirmar em baixa prevalência',
-      purpose: 'Reduzir falso-positivo em gato indoor sem risco.',
+      purpose: 'Reduzir falso-positivo em gato em ambiente domiciliar sem risco.',
       description:
         'Positivo inesperado em gato sem história de mordida → repetir teste em laboratório diferente ou solicitar Western blot/PCR proviral (Westman et al., 2022).',
       interpretation: 'Dois testes concordantes positivos confirmam soropositividade.',
@@ -431,7 +431,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       title: 'Investigação de doença associada',
       purpose: 'FIV+ inicia investigação, não a encerra.',
       description:
-        'Hemograma, bioquímica, urinálise, FeLV; citologia se linfadenomegalia; imagem se massa ou efusão (Nelson & Couto, 6ª ed.).',
+        'Hemograma, bioquímica, urinálise, FeLV; citologia se linfadenomegalia; imagem se massa ou efusão.',
       interpretation: 'Achados guiam tratamento — anemia, linfoma, infecção bacteriana, FCGS.',
       limitations: 'Exames normais não excluem progressão futura — monitoramento seriado necessário.',
     },
@@ -440,7 +440,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       title: 'Contexto padrão-ouro clínico',
       purpose: 'Integrar teste + história + exame físico.',
       description:
-        'Não existe “gold standard” único isolado — combinação de anticorpos concordantes + história compatível + (opcional) PCR proviral define infecção na prática clínica (Little et al., 2020; Westman et al., 2022).',
+        'Não existe padrão-ouro único isolado — combinação de anticorpos concordantes + história compatível + (opcional) PCR proviral define infecção na prática clínica (Little et al., 2020; Westman et al., 2022).',
       interpretation: 'Assintomático soropositivo confirmado → manejo conservador e monitoramento; sintomático → tratar doença associada.',
       limitations: 'Gatos em janela de soroconversão podem ser falsamente negativos — timing do teste importa.',
       isGoldStandard: true,
@@ -453,7 +453,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       'FIV+ não contraindica quimioterapia, cirurgia ou corticoide quando indicado clinicamente — avaliar risco-benefício individual (Hosie et al., ABCD 2009).',
     ],
     tratamentoSuporte: [
-      'Alojamento estritamente indoor ou recinto seguro: previne estresse de território, brigas com outros gatos, reinfecções e transmissão a felinos suscetíveis (Little et al., 2020).',
+      'Alojamento estritamente em ambiente domiciliar ou recinto seguro: previne estresse de território, brigas com outros gatos, reinfecções e transmissão a felinos suscetíveis (Little et al., 2020).',
       'Castração de machos e fêmeas: reduz comportamentos sexuais e de agressividade territorial, eliminando uma das maiores fontes de estresse imunológico.',
       'Nutrição completa de alta digestibilidade: evitar carne crua, ovos crus e leite não pasteurizado pelo risco elevado de *Salmonella*, *Listeria*, *Campylobacter* e *Toxoplasma gondii* em imunocomprometidos.',
       'Controle parasitário contínuo: profilaxia sistemática contra endoparasitas e ectoparasitas (pulgas/carrapatos) para prevenir debilitação e anemia secundária a hemoplasmas.',
@@ -506,7 +506,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
   prevention: {
     controleBrigas: [
       'Castrar machos inteiros — reduz agressão territorial e mordidas (Hosie et al., ABCD 2009).',
-      'Indoor ou acesso controlado; enriquecimento ambiental para reduzir conflitos em multicat.',
+      'Manter em ambiente domiciliar ou com acesso controlado; enriquecimento ambiental para reduzir conflitos em lares com vários gatos.',
       'Separar gatos com histórico de agressão; introdução lenta de novos gatos com período de adaptação.',
     ],
     testagem: [

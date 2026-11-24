@@ -91,7 +91,7 @@ export const requestedClinicalCommercialProductsSeed: CommercialMedicationProduc
       sourceDate: '2026-09-08',
     },
     evidenceLevel:
-      'Produto humano; uso veterinário extra-label amplamente documentado em literatura consolidada (Plumb\'s Veterinary Drug Handbook 10ª ed., Papich 5ª ed.).',
+      'Produto humano; uso veterinário extra-label amplamente documentado em literatura clínica.',
     productPageUrl: 'https://www.ems.com.br/produtos/apevitin-bc',
     labelUrl: 'https://consultaremedios.com.br/apevitin-bc/bula',
   },
@@ -166,7 +166,7 @@ export const requestedClinicalCommercialProductsSeed: CommercialMedicationProduc
       sourceDate: '2026-09-08',
     },
     evidenceLevel:
-      'Uso empírico consagrado de longa data na rotina de pequenos animais no Brasil e América Latina; monografias veterinárias de ciproeptadina e cobamamida (Plumb\'s 10ª ed., Kirk\'s Current Veterinary Therapy).',
+      'Uso empírico consagrado de longa data na rotina de pequenos animais no Brasil e América Latina.',
     productPageUrl: 'https://www.abbottbrasil.com.br/produtos/cobavital.html',
     labelUrl: 'https://consultaremedios.com.br/cobavital/bula',
   },

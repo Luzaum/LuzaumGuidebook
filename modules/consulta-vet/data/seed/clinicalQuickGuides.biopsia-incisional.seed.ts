@@ -36,9 +36,9 @@ const figure = (file: string, alt: string, caption: string): ClinicalQuickGuideB
 const tabQuandoFazer: ClinicalQuickGuideBlock[] = [
   h('1. O que é a biópsia incisional e conceito oncológico fundamental'),
   p('A **biópsia incisional** é a remoção cirúrgica de apenas uma porção representativa de uma lesão, deixando a maior parte da massa no paciente, com o objetivo estrito de obter tecido suficiente para avaliação histopatológica antes do tratamento definitivo.'),
-  box('warning', 'O princípio basilar da oncologia cirúrgica', '==A biópsia incisional não deve ser encarada como “tirar um pedacinho para descobrir o que é”.== Em oncologia, a biópsia já faz parte da cirurgia definitiva: o local, a direção e a profundidade da incisão criam um trajeto potencialmente contaminado por células tumorais que **deverá ser removido em bloco junto com o tumor posteriormente**. O Withrow & MacEwen orienta categoricamente que o trajeto da biópsia incisional seja incorporado à futura ressecção em bloco.'),
+  box('warning', 'O princípio basilar da oncologia cirúrgica', '==A biópsia incisional não deve ser encarada como “tirar um pedacinho para descobrir o que é”.== Em oncologia, a biópsia já faz parte da cirurgia definitiva: o local, a direção e a profundidade da incisão criam um trajeto potencialmente contaminado por células tumorais que **deverá ser removido em bloco junto com o tumor posteriormente**, incorporando todo o trajeto da biópsia à futura ressecção em bloco.'),
   p('O objetivo da biópsia incisional **não é obter margens livres**, mas obter tecido com arquitetura preservada para responder a perguntas que mudarão a conduta: *Existe neoplasia? → Qual a linhagem? → Qual o subtipo? → Qual o grau histológico quando aplicável? → Isso muda a extensão cirúrgica, radioterapia, quimioterapia ou o prognóstico?*'),
-  box('tip', 'A analogia do bolo: por que a histopatologia supera a citologia', 'A citologia avalia as “migalhas”: mostra muito bem as células individuais, mas não conserva a organização tecidual. Uma cunha é uma fatia que mantém as camadas e a relação entre elas. A histopatologia preserva a arquitetura tecidual, permitindo avaliar diferenciação, mitoses, necrose, invasão vascular/linfática e graduação histológica. O BSAVA destaca essa vantagem fundamental das técnicas histológicas sobre a citologia isolada.'),
+  box('tip', 'A analogia do bolo: por que a histopatologia supera a citologia', 'A citologia avalia as “migalhas”: mostra muito bem as células individuais, mas não conserva a organização tecidual. Uma cunha é uma fatia que mantém as camadas e a relação entre elas. A histopatologia preserva a arquitetura tecidual, permitindo avaliar diferenciação, mitoses, necrose, invasão vascular/linfática e graduação histológica — vantagem fundamental das técnicas histológicas sobre a citologia isolada.'),
   p('Este guia detalha a técnica aberta em cunha (*wedge biopsy*) de massas cutâneas, subcutâneas e de tecidos moles acessíveis, além das particularidades fundamentais para a cavidade oral e sarcomas em cães e gatos.'),
 
   h('2. Comparação prática: PAAF, core, punch, incisional ou excisional?'),
@@ -49,11 +49,11 @@ const tabQuandoFazer: ClinicalQuickGuideBlock[] = [
     ['**Incisional (em cunha)**', '**Fragmento/wedge relativamente grande**', '**Excelente arquitetura e representatividade tecidual sob visão direta.**', '**Mais invasiva; cria trajeto cirúrgico potencialmente contaminado que exige ressecção futura.**'],
     ['Excisional', 'Massa inteira', 'Diagnóstico e potencial tratamento simultâneo em lesões selecionadas.', 'Pode arruinar a primeira cirurgia oncológica se feita sem planejamento ou com margens infiltradas.']
   ]),
-  p('O Withrow ressalta que a **biópsia excisional é empregada com frequência maior do que deveria**: a remoção marginal (“descascar a bolinha”) de uma massa posteriormente diagnosticada como sarcoma transforma uma cirurgia inicialmente simples em uma segunda operação muito maior, mutilante ou com necessidade de radioterapia complementar.'),
+  p('Na prática clínica, a **biópsia excisional é empregada com frequência maior do que deveria**: a remoção marginal (“descascar a bolinha”) de uma massa posteriormente diagnosticada como sarcoma transforma uma cirurgia inicialmente simples em uma segunda operação muito maior, mutilante ou com necessidade de radioterapia complementar.'),
   box('warning', 'O perigo de “descascar e descobrir depois”', 'Nunca realize excisão marginal de uma massa sólida suspeita sem diagnóstico prévio. A primeira cirurgia oncológica é a melhor oportunidade de cura do paciente; desrespeitar os princípios de margens amplas tridimensionais resulta em recidiva local agressiva.'),
 
   h('3. Quando indicar biópsia incisional (Indicações fortes)'),
-  steps('Indicações estabelecidas pelas diretrizes de oncologia clínica (Withrow & MacEwen / BSAVA)', [
+  steps('Indicações clínicas estabelecidas em oncologia cirúrgica', [
     '**PAAF ou core biopsy foram inconclusivos ou discordantes da clínica:** massa palpável progressiva cuja citologia revelou apenas sangue, tecido adiposo ou inflamação reativa inespecífica.',
     '**O tipo tumoral modifica a modalidade de tratamento:** diferenciação entre neoplasia epitelial, mesenquimal, de células redondas ou inflamatória, definindo cirurgia, radioterapia ou quimioterapia.',
     '**O grau histológico modifica a extensão cirúrgica:** crucial em sarcomas de tecidos moles (STS) e mastocitomas, nos quais o grau define as margens laterais e fasciais.',
@@ -168,8 +168,8 @@ const tabPlanejamento: ClinicalQuickGuideBlock[] = [
   h('6. Antes da biópsia: planeje a cirurgia definitiva primeiro'),
   p('Esse é o ponto em que muitas biópsias oncológicas dão errado. Imagine uma massa na face lateral da coxa. Não escolha simplesmente “o ponto mais fácil para cortar”. Pergunte:'),
   box('tip', 'A pergunta que define o trajeto', '==“Se isso for um sarcoma agressivo, qual será minha futura linha de ressecção?”== A biópsia deve então ocupar uma pequena parte dessa futura linha.'),
-  p('O BSAVA estabelece princípios rigorosos: a incisão deve permanecer dentro do provável campo cirúrgico/radioterápico, ser tão curta quanto possível e ser orientada de modo que não amplie a área que posteriormente precisará ser retirada. Em membros e cauda, recomenda-se tradicionalmente **orientação paralela ao eixo longitudinal do membro**.'),
-  figure('trajeto.svg', 'Incisão longitudinal contida no campo planejado comparada com uma incisão transversal.', 'Figura 1 — Planejamento da incisão em um membro. O contorno tracejado representa o campo hipotético de ressecção. Em membros, a incisão deve ser longitudinal ao eixo longo. Uma incisão transversal extravasa o campo cirúrgico e impede o fechamento primário na cirurgia definitiva. Esquema baseado em Withrow & MacEwen e BSAVA Oncology.'),
+  p('Os princípios oncológicos cirúrgicos são rigorosos: a incisão deve permanecer dentro do provável campo cirúrgico/radioterápico, ser tão curta quanto possível e ser orientada de modo que não amplie a área que posteriormente precisará ser retirada. Em membros e cauda, recomenda-se tradicionalmente **orientação paralela ao eixo longitudinal do membro**.'),
+  figure('trajeto.svg', 'Incisão longitudinal contida no campo planejado comparada com uma incisão transversal.', 'Figura 1 — Planejamento da incisão em um membro. O contorno tracejado representa o campo hipotético de ressecção. Em membros, a incisão deve ser longitudinal ao eixo longo. Uma incisão transversal extravasa o campo cirúrgico e impede o fechamento primário na cirurgia definitiva.'),
   steps('Regras anatômicas para planejar a via de acesso', [
     '**Imagine a futura ressecção antes de marcar a pele:** projete mentalmente a margem lateral e profunda necessária para uma ressecção curativa.',
     '**Em membros e cauda, siga rigorosamente o eixo longitudinal:** incisões transversais forçam uma elipse definitiva imensa, frequentemente impossível de fechar sem enxertos ou amputação.',
@@ -181,8 +181,8 @@ const tabPlanejamento: ClinicalQuickGuideBlock[] = [
 
   h('7. O princípio sagrado dos compartimentos anatômicos'),
   p('Este princípio merece destaque absoluto: o trajeto da biópsia é um volume tridimensional potencialmente contaminado. Durante a manipulação cirúrgica e a incisão tumoral, células neoplásicas podem ser deslocadas para o trajeto, contaminando novos planos anatômicos.'),
-  box('warning', 'Não contamine compartimentos sadios virgens', '==Nunca atravesse desnecessariamente: outro músculo, septo fascial íntegro, articulação, cavidade sinovial, grande vaso sanguíneo, feixe neurovascular, cavidade pleural/peritoneal ou área necessária para retalho reconstrutivo.== Se você violar um compartimento muscular adjacente sadio para atingir o tumor, esse compartimento também terá que ser removido na cirurgia definitiva (BSAVA Oncology).'),
-  p('O BSAVA orienta explicitamente evitar violação de planos anatômicos e compartimentos não envolvidos pela lesão.'),
+  box('warning', 'Não contamine compartimentos sadios virgens', '==Nunca atravesse desnecessariamente: outro músculo, septo fascial íntegro, articulação, cavidade sinovial, grande vaso sanguíneo, feixe neurovascular, cavidade pleural/peritoneal ou área necessária para retalho reconstrutivo.== Se você violar um compartimento muscular adjacente sadio para atingir o tumor, esse compartimento também terá que ser removido na cirurgia definitiva.'),
+  p('Deve-se evitar rigorosamente a violação de planos anatômicos e compartimentos não envolvidos pela lesão.'),
 
   h('8. Extensão cirúrgica em sarcomas: por que o trajeto precisa ser planejado'),
   figure('sarcoma-resseccao-fonseca-2026.webp', 'Ressecção oncológica de sarcoma de tecidos moles em cão com margens amplas e reconstrução.', 'Figura 2 — Ressecção oncológica de sarcoma de tecidos moles em cão. A sequência cirúrgica em bloco evidencia a extensão de uma cirurgia definitiva e reforça a necessidade imperativa de posicionar previamente o trajeto da biópsia dentro do campo que será removido em bloco. Licença CC BY. Fonte: Fonseca-Alves et al., 2026, Frontiers in Veterinary Science (DOI: 10.3389/fvets.2026.1750148).'),
@@ -202,7 +202,7 @@ const tabPlanejamento: ClinicalQuickGuideBlock[] = [
   h('Sarcoma de tecidos moles em cães (STS)', 3),
   p('Aqui a biópsia pré-operatória tem enorme valor porque o diagnóstico e principalmente o grau histológico ajudam a definir a estratégia cirúrgica. O consenso ABROVET 2026 recomenda biópsia antes de tratar especialmente massas grandes ou potencialmente irressecáveis. Entretanto, salienta que 12–29% das biópsias pré-operatórias podem apresentar grau diferente daquele observado na peça completa. Por isso, a massa inteira deve novamente ser enviada para histopatologia após a cirurgia definitiva.'),
   h('Sarcoma felino associado ao local de injeção (FISS) 🐈', 3),
-  p('Este é um cenário no qual “tirar a bolinha e mandar para biópsia” causa uma tragédia oncológica. Esses sarcomas são caracteristicamente **infiltrativos, localmente agressivos e associados a altíssima taxa de recidiva após cirurgia inadequada**. O BSAVA destaca esse comportamento e a necessidade de planejamento oncológico radical prévio.'),
+  p('Este é um cenário no qual “tirar a bolinha e mandar para biópsia” causa uma tragédia oncológica. Esses sarcomas são caracteristicamente **infiltrativos, localmente agressivos e associados a altíssima taxa de recidiva após cirurgia inadequada**, exigindo planejamento oncológico radical prévio.'),
   box('warning', 'Sequência obrigatória diante de suspeita de FISS', 'Se a lesão for suspeita para sarcoma de aplicação (regra 3-2-1), a sequência mandatória deve ser: **diagnóstico tecidual prévio (core ou incisional planejada) → estadiamento / TC local → planejamento cirúrgico radical com margens amplas (3 a 5 cm e 2 planos fasciais) incorporando o trajeto**. Jamais faça enucleação marginal (“shell out”) para esperar o laudo.'),
 
   h('11. Relato de caso demonstrativo: Ressecção vertebral com trajeto em bloco'),
@@ -233,7 +233,7 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
     ['Massas profundas, intramusculares ou extremidades sensíveis', 'Anestesia geral balanceada com monitorização multiparamétrica.', 'Permite dissecção profunda controlada, bloqueio de reflexos álgicos e hemostasia segura sob visualização direta.'],
     ['Cavidade oral, face e região periocular', 'Anestesia geral inalatória obrigatória com intubação orotraqueal e proteção de via aérea.', 'Proteção indispensável contra aspiração de sangue/saliva; inspeção minuciosa e hemostasia sem pressa.']
   ]),
-  box('warning', 'Sedação não é analgesia!', '==Muitos tumores possuem relativamente pouca inervação própria, mas pele, tecido subcutâneo, fáscias e músculos atravessados são ricamente inervados, extremamente dolorosos e precisam ser adequadamente anestesiados (Withrow).== Calcule as doses de anestésico local conforme espécie e peso.'),
+  box('warning', 'Sedação não é analgesia!', '==Muitos tumores possuem relativamente pouca inervação própria, mas pele, tecido subcutâneo, fáscias e músculos atravessados são ricamente inervados, extremamente dolorosos e precisam ser adequadamente anestesiados.== Calcule as doses de anestésico local conforme espécie e peso.'),
 
   h('14. Passo 1 — Documentar a massa antes de interferir nela 🩺'),
   steps('Registro pré-procedimento no prontuário', [
@@ -255,14 +255,14 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
   h('16. Passo 3 — Incisão cutânea e exposição cirúrgica mínima'),
   steps('Acesso cirúrgico controlado', [
     'Faça uma **incisão linear, curta e diretamente sobre a rota mais curta e segura até a massa**, estritamente orientada de acordo com a futura cirurgia (eixo longitudinal em membros).',
-    'Evite criar uma elipse grande na pele — você não está tentando retirar pele normal. O Withrow observa que, se a pele sobre a massa estiver normal e não aderida, não existe necessidade de retirar uma cunha de pele normal junto com o tumor.',
+    'Evite criar uma elipse grande na pele — você não está tentando retirar pele normal. Se a pele sobre a massa estiver normal e não aderida, não existe necessidade de retirar uma cunha de pele normal junto com o tumor.',
     '**Exponha a massa com o mínimo absoluto de dissecção:** não transforme uma biópsia em exploração cirúrgica. Quanto maior a dissecção, maior a superfície exposta, maior a possibilidade de contaminação e maior a área que potencialmente deverá entrar na futura cirurgia. Faça exposição apenas suficiente para identificar claramente tecido tumoral sólido.'
   ]),
   box('warning', 'Não faça dissecção circunferencial!', 'Não contorne a massa nem disseque seus polos laterais ou planos profundos. A visualização deve se restringir à janela estritamente necessária para a retirada da cunha.'),
 
   h('17. Passo 4 — Retirada da cunha com bisturi frio'),
   p('Com lâmina fria de bisturi (nº 10 ou 15), retire uma **cunha suficientemente profunda e volumosa para preservar a arquitetura tecidual**. Uma amostra muito superficial pode ser pior do que nenhuma amostragem.'),
-  figure('cunha.svg', 'Corte convergente em cunha no tecido tumoral viável.', 'Figura 3 — Forma conceitual da cunha diagnóstica. Os planos de incisão convergem em “V” no interior de tecido tumoral viável e a base é liberada sob visão direta. Você deseja obter epitélio/tecido superficial quando relevante + tecido tumoral sólido viável em profundidade, e não apenas crosta ou debris inflamatórios superficiais. Esquema baseado em Withrow & MacEwen.'),
+  figure('cunha.svg', 'Corte convergente em cunha no tecido tumoral viável.', 'Figura 3 — Forma conceitual da cunha diagnóstica. Os planos de incisão convergem em “V” no interior de tecido tumoral viável e a base é liberada sob visão direta. Você deseja obter epitélio/tecido superficial quando relevante + tecido tumoral sólido viável em profundidade, e não apenas crosta ou debris inflamatórios superficiais.'),
   steps('Técnica de corte convergente sob visão direta', [
     '**Selecione parênquima sólido viável:** se a massa tiver crosta ou úlcera superficial, alcance a porção sólida profunda.',
     '**Primeiro plano de corte com bisturi:** realize incisão linear firme e profunda na massa.',
@@ -272,8 +272,8 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
   ]),
 
   h('18. Passo 5 — O tecido normal deve entrar na amostra? (Nuance moderna)'),
-  p('Aqui existe uma nuance importante entre textos cirúrgicos mais antigos e os princípios oncológicos modernos. Alguns manuais historicamente recomendaram incluir a interface normal–tumor para ajudar o patologista, e o próprio BSAVA menciona a interface como área útil em algumas circunstâncias.'),
-  box('tip', 'Recomendação cautelosa do Withrow & MacEwen para neoplasias', '==Em suspeita de neoplasia, NÃO amplie deliberadamente a incisão para dentro de tecido previamente normal apenas para obter a interface.== Isso pode contaminar tecidos e planos fasciais sadios que precisariam permanecer intactos para a futura cirurgia curativa. Em vez disso, priorize tumor viável e representativo sem contaminar margens sadias que não precisariam ser removidas.'),
+  p('Aqui existe uma nuance importante entre abordagens cirúrgicas tradicionais e os princípios oncológicos modernos. Embora incluir a interface normal–tumor possa auxiliar o patologista em algumas lesões não neoplásicas ou inflamatórias, na suspeita de neoplasia essa escolha exige cautela redobrada.'),
+  box('tip', 'Recomendação cautelosa para neoplasias', '==Em suspeita de neoplasia, NÃO amplie deliberadamente a incisão para dentro de tecido previamente normal apenas para obter a interface.== Isso pode contaminar tecidos e planos fasciais sadios que precisariam permanecer intactos para a futura cirurgia curativa. Em vez disso, priorize tumor viável e representativo sem contaminar margens sadias que não precisariam ser removidas.'),
 
   h('19. Passo 6 — Nunca esmague o fragmento (Manipulação delicada)'),
   p('Um erro extremamente comum e destrutivo é segurar o centro da pequena amostra com uma pinça cirúrgica traumática (com dente ou hemostática). Isso causa: **pressão excessiva → ruptura celular → distorção nuclear → perda da arquitetura tecidual → artefato de esmagamento (*crush artifact*) → menor acurácia histológica ou laudo inconclusivo**.'),
@@ -284,7 +284,7 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
   ]),
 
   h('20. Passo 7 — Eletrocautério: ótimo para hemostasia, ruim para a amostra'),
-  box('warning', 'Não corte o fragmento com bisturi elétrico', '==Não use eletrocautério para cortar o fragmento diagnóstico se puder evitá-lo.== O calor produz coagulação proteica maciça, distorção nuclear grave, carbonização e perda da relação arquitetural. O BSAVA e o Withrow recomendam a obtenção da amostra com bisturi/instrumento frio e o uso do cautério estritamente depois, para hemostasia do leito cruento.'),
+  box('warning', 'Não corte o fragmento com bisturi elétrico', '==Não use eletrocautério para cortar o fragmento diagnóstico se puder evitá-lo.== O calor produz coagulação proteica maciça, distorção nuclear grave, carbonização e perda da relação arquitetural. A amostra deve ser obtida com bisturi/instrumento frio, reservando o cautério estritamente para a hemostasia posterior do leito cruento.'),
 
   h('21. Passo 8 — Controle rigoroso de hemorragia e fechamento'),
   steps('Hemostasia e sutura segura', [
@@ -303,10 +303,10 @@ const tabPassoAPasso: ClinicalQuickGuideBlock[] = [
   ]),
 
   h('23. Particularidades críticas: Massas Orais e Melanoma Oral'),
-  p('Massas na cavidade oral representam uma situação em que uma biópsia superficial frequentemente falha. O Nelson & Couto enfatiza que **tumores orais precisam de amostras generosas e profundas**, porque a superfície frequentemente apresenta necrose e inflamação causadas pelo trauma mastigatório e pela microbiota bucal.'),
+  p('Massas na cavidade oral representam uma situação em que uma biópsia superficial frequentemente falha. **Tumores orais precisam de amostras generosas e profundas**, porque a superfície frequentemente apresenta necrose e inflamação causadas pelo trauma mastigatório e pela microbiota bucal.'),
   figure('massa-oral-wright-2023.webp', 'Massa oral em cão durante avaliação sob anestesia.', 'Figura 4 — Massa oral em cão durante avaliação sob anestesia geral. A visualização direta da lesão permite selecionar uma região profunda e representativa para biópsia e planejar um acesso intraoral que possa ser incorporado à futura ressecção oncológica. Wright et al., 2023, Frontiers in Veterinary Science (CC BY).'),
-  steps('Recomendações técnicas para massas orais (Nelson & Couto / Polton et al., 2024)', [
-    'Para uma massa oral canina, o livro recomenda **estadiamento por imagem tomográfica (TC) seguido de biópsia incisional relativamente profunda** sob anestesia geral e intubação traqueal protegida.',
+  steps('Recomendações técnicas para massas orais (Polton et al., 2024)', [
+    'Para uma massa oral canina, recomenda-se **estadiamento por imagem tomográfica (TC) seguido de biópsia incisional relativamente profunda** sob anestesia geral e intubação traqueal protegida.',
     '**Melanoma oral:** o consenso de melanoma em cães e gatos recomenda amostra incisional/core grande e profunda, evitando tecido necrótico/ulcerado. Em melanoma oral, recomenda-se **biopsiar pela mucosa e não através da pele**, porque um trajeto externo pode comprometer a cirurgia curativa posterior.'
   ]),
   box('warning', 'Regra de ouro para lesões orais', '==Tumor oral → entre pela boca, NUNCA atravesse a pele da face para alcançá-lo.== Um acesso transcutâneo externo cria um trajeto contaminado que condena o paciente a uma ressecção facial desnecessariamente mutilante.')
@@ -335,7 +335,7 @@ const tabAmostra: ClinicalQuickGuideBlock[] = [
 
   h('26. Imprint citológico antes da formalina: técnica e cuidados'),
   p('Uma prática de imenso valor clínico imediato:'),
-  steps('Passo a passo do imprint de fragmento cirúrgico (BSAVA Oncology)', [
+  steps('Passo a passo do imprint de fragmento cirúrgico', [
     'Assim que a cunha for retirada, seque delicadamente o excesso de sangue superficial tocando uma gaze estéril seca na face de corte.',
     'Encoste a superfície de corte recém-fatiada suavemente sobre uma lâmina de vidro limpa em vários pontos.',
     'Deixe as lâminas secarem completamente ao ar à temperatura ambiente.',
@@ -347,9 +347,9 @@ const tabAmostra: ClinicalQuickGuideBlock[] = [
   h('27. Fixação tecidual em formalina tamponada neutra a 10%'),
   p('Para a histopatologia convencional de rotina, o fixador correto é a **formalina tamponada neutra a 10%** (que corresponde a formaldeído a 4% tamponado com fosfatos a pH 7,0–7,2).'),
   figure('destinos.svg', 'Divisão e acondicionamento correto das amostras para histopatologia, citologia e microbiologia.', 'Figura 6 — Destinos separados da amostra planejados antes da coleta: histopatologia em frasco de boca larga com formalina 1:10; lâminas de imprint citológico secas ao ar e embaladas isoladamente; e tecido fresco em recipiente estéril sem formol se houver indicação de cultura ou PCR.'),
-  steps('Regras de ouro da fixação tecidual (Withrow & MacEwen / Kamstock et al.)', [
+  steps('Regras de ouro da fixação tecidual (Kamstock et al.)', [
     '**Proporção volumétrica 1:10:** aproximadamente 1 parte de tecido para 10 partes de solução de formalina. O formol precisa penetrar e fixar quimicamente as proteínas.',
-    '**Espessura máxima de 1 cm:** a formalina penetra no tecido a cerca de 1 mm por hora. Fragmentos espessos demais fixam por fora, enquanto o centro sofre autólise e putrefação. O Withrow recomenda que o tecido não permaneça com mais de aproximadamente 1 cm de espessura.',
+    '**Espessura máxima de 1 cm:** a formalina penetra no tecido a cerca de 1 mm por hora. Fragmentos espessos demais fixam por fora, enquanto o centro sofre autólise e putrefação. Por isso, o tecido não deve permanecer com mais de aproximadamente 1 cm de espessura.',
     '**Frasco de boca larga:** utilize recipientes com abertura ampla. O tecido enrijece após a fixação e não poderá ser retirado de frascos estreitos sem ser danificado.'
   ]),
   box('warning', 'O que NUNCA fazer com a amostra histológica', '• **NUNCA deixe o fragmento secar** exposto ao ar sobre a mesa cirúrgica.\n• **NUNCA esmague** o tecido com pinças ou na tampa do frasco.\n• **NUNCA coloque o fragmento em água destilada ou soro** (induz lise osmótica e autólise acelerada).\n• **NUNCA congele** uma amostra destinada à histopatologia de rotina (a formação de cristais de gelo rompe as células e inutiliza a leitura histológica).\n• **NUNCA misture** fragmentos de locais diferentes no mesmo frasco sem identificação separada.'),
@@ -384,7 +384,7 @@ const tabAmostra: ClinicalQuickGuideBlock[] = [
   ]),
 
   h('32. Discordância entre patologistas e conduta diante de laudo discordante'),
-  p('Um ponto excelente para memorizar: “Histopatologia” não significa infalibilidade absoluta. O Withrow cita um estudo de segunda opinião histopatológica em oncologia veterinária que revelou: **70% de concordância completa, 20% de concordância parcial e 10% de discordância diagnóstica completa**, com divergências que envolveram inclusive a distinção entre lesão maligna versus benigna.'),
+  p('Um ponto excelente para memorizar: “Histopatologia” não significa infalibilidade absoluta. Em estudo clássico de segunda opinião histopatológica em oncologia veterinária, observou-se **70% de concordância completa, 20% de concordância parcial e 10% de discordância diagnóstica completa**, com divergências que envolveram inclusive a distinção entre lesão maligna versus benigna.'),
   box('tip', 'Regra de ouro de conduta clínica', '==Se o laudo diz “lesão benigna discreta / dermatite”, mas você tem uma massa de 12 cm, invasiva, destrutiva e em crescimento rápido: NÃO adapte o paciente ao laudo. Questione a amostra e o laudo!==\n\nConverse com o médico patologista, solicite recortes adicionais do bloco de parafina, colorações especiais, painel de imuno-histoquímica, envie para segunda opinião ou repita a biópsia incisional representativa profunda antes de qualquer intervenção irreversível.')
 ];
 
@@ -474,14 +474,8 @@ const tabErros: ClinicalQuickGuideBlock[] = [
   h('37. O que precisa ser memorizado 🧠 (Os 8 pontos de ouro)'),
   box('tip', 'Os 8 mandamentos inegociáveis da biópsia incisional oncológica', '1. **A biópsia é parte da cirurgia definitiva:** não é um procedimento isolado, mas a primeira etapa do tratamento.\n\n2. **Todo o trajeto deve ser considerado potencialmente contaminado:** pele incisada, tecidos transpassados e leito manipulado contêm células neoplásicas.\n\n3. **O trajeto precisa caber dentro da futura ressecção:** em membros, incisão estritamente paralela ao eixo longitudinal.\n\n4. **Não atravesse compartimentos anatômicos sadios:** não transfixe músculos normais, articulações ou fáscias não acometidas.\n\n5. **Colete tecido tumoral viável, profundo e representativo:** evite crostas, necrose amorfa pura e pseudocápsula fibrosa.\n\n6. **Nunca esmague a amostra com pinças nem a corte com eletrocautério:** preserve a integridade celular com bisturi frio e manipulação delicada.\n\n7. **Tumores heterogêneos podem ser subgraduados na biópsia prévia:** a peça cirúrgica completa definitiva DEVE voltar para histopatologia.\n\n8. **Se o laudo histopatológico não condiz com a clínica do paciente, questione a amostra:** nunca tome decisões irreversíveis baseado em laudo discordante sem antes solicitar recortes, IHQ, segunda opinião ou nova biópsia.'),
 
-  h('38. Mapa das fontes do projeto e evidências científicas'),
-  p('O conteúdo deste guia técnico foi construído com base nas principais obras de referência e diretrizes de sociedades veterinárias mundiais e nacionais:'),
-  table('Obras de referência técnica utilizadas no guia', ['Fonte consultada', 'Contribuição clínica incorporada'], [
-    ['Withrow & MacEwen’s Small Animal Clinical Oncology (6ª ed., 2020)', 'Indicações, técnica em cunha, incorporação de trajeto, interface normal-tumor, fixação em formol 1:10 e discordância diagnóstica.'],
-    ['BSAVA Manual of Canine and Feline Oncology (3ª ed., 2011)', 'Princípio dos compartimentos anatômicos, orientação longitudinal de incisão em membros, contraindicação de cautério na amostra e FISS em felinos.'],
-    ['BSAVA Guide to Procedures in Small Animal Practice (3ª ed., 2024)', 'Manipulação atraumática de biópsias, cuidados de transporte e distinção explícita entre preparo de massa tumoral vs dermatose.'],
-    ['Nelson & Couto: Small Animal Internal Medicine (6ª ed., 2020)', 'Indicação mandatória de biópsia incisional profunda em tumores orais e TC prévia para avaliação óssea.']
-  ]),
+  h('38. Evidências científicas e consensos'),
+  p('Principais consensos e estudos clínicos incorporados nas recomendações deste guia (a bibliografia completa, incluindo livros-texto, encontra-se na seção seguinte):'),
   list([
     '**Kamstock DA et al. (2011)** — *Recommended guidelines for submission, trimming, margin evaluation, and reporting of tumor biopsy specimens in veterinary surgical pathology*. Vet Pathol. 48(1):19–31. Diretrizes de consenso do comitê de oncologia do ACVP para padronização de requisições, fixação e relatórios histopatológicos. [PubMed](https://pubmed.ncbi.nlm.nih.gov/21123864/) · [DOI](https://doi.org/10.1177/0300985810389316).',
     '**Fonseca-Alves CE et al. (2026)** — *Canine cutaneous and subcutaneous soft tissue sarcoma in dogs: a consensus report from the Brazilian Association of Veterinary Oncology (ABROVET)*. Front Vet Sci. 13:1750148. Consenso brasileiro contemporâneo que estabelece a biópsia incisional como método de escolha pré-operatório em massas grandes/complexas e ressalta a taxa de 12% a 29% de divergência de grau entre biópsia e peça final. [Artigo Open Access CC BY](https://doi.org/10.3389/fvets.2026.1750148).',
@@ -491,7 +485,7 @@ const tabErros: ClinicalQuickGuideBlock[] = [
     '**Wright AL, Peralta S, Fiani N. (2023)** — *Case report: Spontaneous mandibular body regeneration following unilateral subtotal mandibulectomy in a 3-month-old French bulldog*. Front Vet Sci. 10:1281232. Registro fotográfico intraoperatório de massa oral sob anestesia geral e planejamento de ressecção. [Artigo Open Access CC BY](https://doi.org/10.3389/fvets.2023.1281232).',
     '**Ho L, Lim WZ, Thompson JL. (2026)** — *Case Report: Surgical resection of high-grade extradural thoracic vertebral chondrosarcoma in a dog*. Front Vet Sci. 13:1767307. Demonstração clínica do princípio oncológico de ressecção em bloco incorporando o trajeto de biópsia incisional prévia. [Artigo Open Access CC BY](https://doi.org/10.3389/fvets.2026.1767307).'
   ]),
-  box('info', 'Hierarquia e peso das evidências científicas', 'Os livros de referência (Withrow, BSAVA, Nelson & Couto) fundamentam a doutrina e os princípios cirúrgicos consagrados; os consensos (ABROVET, ACVP) harmonizam as recomendações de especialistas; ensaios prospectivos (Ferraris) quantificam desfechos numéricos em coortes específicas; e relatos de casos ilustram a aplicação tridimensional do trajeto ressecado.'),
+  box('info', 'Hierarquia e peso das evidências científicas', 'Os princípios cirúrgicos oncológicos consolidados formam a base técnica; os consensos (ABROVET, ACVP) harmonizam as recomendações de especialistas; ensaios prospectivos (Ferraris) quantificam desfechos numéricos em coortes específicas; e relatos de casos ilustram a aplicação tridimensional do trajeto ressecado.'),
 
   h('39. Bibliografia principal completa (Formato ABNT)'),
   list([
@@ -536,7 +530,8 @@ export const guiaBiopsiaIncisional: ClinicalQuickGuide = {
     'biopsia', 'biópsia', 'biópsia incisional', 'cunha', 'wedge', 'oncologia',
     'histopatologia', 'sarcoma', 'tecidos moles', 'massa oral', 'melanoma',
     'FISS', 'sarcoma de aplicação', 'punch', 'tru-cut', 'PAAF', 'formol',
-    'formalina', 'imprint', 'withrow', 'bsava', 'kamstock', 'abrovet'
+    'formalina', 'imprint',
+ 'kamstock', 'abrovet'
   ],
   youtubeVideoId: null,
   heroImageSrc: '/consulta-vet/clinical-guides/biopsia-incisional/capa.webp',

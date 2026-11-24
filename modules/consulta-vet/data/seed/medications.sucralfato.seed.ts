@@ -116,7 +116,7 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
       clinicalContext: 'Cães de médio a grande porte com erosões esofágicas confirmadas ou altamente suspeitas.',
     },
     {
-      condition: 'Esofagite e Mucoproteção Digestiva Felina (BSAVA 10ª ed.)',
+      condition: 'Esofagite e Mucoproteção Digestiva Felina (dose padrão)',
       species: 'cat',
       doseSummary: '250 mg por gato VO a cada 8 a 12 horas (q8-12h), em suspensão líquida (1,25 mL de 200 mg/mL)',
       route: 'Oral (VO)',
@@ -124,7 +124,7 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
       clinicalContext: 'Gatos com esofagite pós-intubação, odinofagia ou vômitos cáusticos; não usar como quelante renal.',
     },
     {
-      condition: 'Esofagite Grave e Refluxo Agudo em Felinos (Faixa Experimental Plumb\'s)',
+      condition: 'Esofagite Grave e Refluxo Agudo em Felinos (faixa alta)',
       species: 'cat',
       doseSummary: '500 mg por gato VO a cada 8 horas (q8h), em suspensão oral fluida (2,5 mL de 200 mg/mL)',
       route: 'Oral (VO)',
@@ -189,7 +189,7 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
     {
       id: 'dose-sucral-dog-under20-bsava',
       species: 'dog',
-      indication: 'Esofagite erosiva, refluxo ou úlcera gastroduodenal — cães até 20 kg (BSAVA 10ª ed.)',
+      indication: 'Esofagite erosiva, refluxo ou úlcera gastroduodenal — cães até 20 kg',
       doseMin: 500.0,
       doseMax: 500.0,
       doseUnit: 'mg',
@@ -198,14 +198,14 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
       frequency: 'q6–8h',
       duration: '7 a 14 dias conforme avaliação clínica e endoscópica',
       notes:
-        'Dose fixa padrão por animal (BSAVA 10ª ed., p. 388). Administrar preferencialmente na forma de suspensão fluida (slurry) preparada com água ou utilizando 2,5 mL de suspensão oral 200 mg/mL. Administrar com o estômago vazio, mantendo intervalo de pelo menos 2 horas antes de outros medicamentos orais.',
+        'Dose fixa padrão por animal (500 mg). Administrar preferencialmente na forma de suspensão fluida (slurry) preparada com água ou utilizando 2,5 mL de suspensão oral 200 mg/mL. Administrar com o estômago vazio, mantendo intervalo de pelo menos 2 horas antes de outros medicamentos orais.',
       calculatorEnabled: false,
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-acvim-2018'],
     },
     {
       id: 'dose-sucral-dog-over20-bsava',
       species: 'dog',
-      indication: 'Esofagite erosiva, refluxo ou úlcera gastroduodenal — cães acima de 20 kg (BSAVA 10ª ed.)',
+      indication: 'Esofagite erosiva, refluxo ou úlcera gastroduodenal — cães acima de 20 kg',
       doseMin: 1000.0,
       doseMax: 2000.0,
       doseUnit: 'mg',
@@ -214,14 +214,14 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
       frequency: 'q6–8h',
       duration: '7 a 14 dias',
       notes:
-        'Dose fixa por animal (BSAVA 10ª ed., p. 388): 1000 a 2000 mg (1 a 2 g por dose), equivalente a 5 a 10 mL de suspensão 200 mg/mL ou 1 a 2 comprimidos de 1 g dispersos em água (slurry). Para esofagite, administrar lentamente.',
+        'Dose fixa por animal: 1000 a 2000 mg (1 a 2 g por dose), equivalente a 5 a 10 mL de suspensão 200 mg/mL ou 1 a 2 comprimidos de 1 g dispersos em água (slurry). Para esofagite, administrar lentamente.',
       calculatorEnabled: false,
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-acvim-2018'],
     },
     {
       id: 'dose-sucral-cat-general-bsava',
       species: 'cat',
-      indication: 'Esofagite, refluxo e mucoproteção digestiva felina (BSAVA 10ª ed.)',
+      indication: 'Esofagite, refluxo e mucoproteção digestiva felina',
       doseMin: 250.0,
       doseMax: 250.0,
       doseUnit: 'mg',
@@ -230,14 +230,14 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
       frequency: 'q8–12h',
       duration: '5 a 10 dias com monitoramento do apetite e trânsito intestinal',
       notes:
-        'Dose prática recomendada pelo BSAVA 10ª ed. (p. 388) para a espécie felina: 250 mg por gato (equivalente a 1,25 mL da suspensão oral 200 mg/mL). Não utilizar como quelante de fósforo na DRC felina devido à ineficácia e risco de descompensação e vômitos (Quimby & Lappin 2016).',
+        'Dose prática padrão para a espécie felina: 250 mg por gato (equivalente a 1,25 mL da suspensão oral 200 mg/mL). Não utilizar como quelante de fósforo na DRC felina devido à ineficácia e risco de descompensação e vômitos (Quimby & Lappin 2016).',
       calculatorEnabled: false,
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-quimby-2016'],
     },
     {
       id: 'dose-sucral-dog-esophagitis-slurry',
       species: 'dog',
-      indication: 'Esofagite erosiva e refluxo gastroesofágico canino — protocolo slurry (VIN / Plumb\'s 10ª ed.)',
+      indication: 'Esofagite erosiva e refluxo gastroesofágico canino — protocolo slurry (consenso ACVIM)',
       doseMin: 500.0,
       doseMax: 1000.0,
       doseUnit: 'mg',
@@ -253,7 +253,7 @@ export const sucralfatoMedicationRecord: MedicationRecord = {
     {
       id: 'dose-sucral-cat-esophagitis-high',
       species: 'cat',
-      indication: 'Esofagite ácida grave e refluxo agudo em felinos — protocolo de resgate (Katz et al. 1988 / Plumb\'s)',
+      indication: 'Esofagite ácida grave e refluxo agudo em felinos — protocolo de resgate (Katz et al., 1988)',
       doseMin: 500.0,
       doseMax: 500.0,
       doseUnit: 'mg',

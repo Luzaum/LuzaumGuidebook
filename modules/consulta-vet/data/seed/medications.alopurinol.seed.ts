@@ -1,530 +1,783 @@
 import { MedicationRecord } from '../../types/medication';
 
+/**
+ * ALOPURINOL — Monografia Farmacológica Veterinária Completa
+ * ConsultaVET / Vetius • Farmacologia clínica de cães e gatos • Revisão: novembro de 2026
+ */
 export const alopurinolMedicationRecord: MedicationRecord = {
   id: 'med-alopurinol',
   slug: 'alopurinol',
   title: 'Alopurinol',
-  activeIngredient: 'Alopurinol (Alopurinol sódico)',
+  activeIngredient: 'Alopurinol (base / ácido enólico fraco — não é sal sódico)',
   isControlled: false,
   controlNotice:
-    'Medicamento de venda sob prescrição médico-veterinária em receituário simples. Não consta nas listas de controle especial da Portaria SVS/MS nº 344/1998. Na Leishmaniose Visceral Canina no Brasil, a prescrição deve observar rigorosamente as normativas técnicas e regulamentares específicas do MAPA e Ministério da Saúde.',
+    'Medicamento humano sob prescrição em receituário simples (não listado na Portaria SVS/MS nº 344/1998). ATENÇÃO REGULATÓRIA NA LVC (BRASIL): a Portaria Interministerial MS/MAPA nº 1.426/2008 proíbe o tratamento da leishmaniose visceral canina com produtos de uso humano ou fármacos não registrados no MAPA (incluindo o alopurinol); o clínico deve distinguir consenso científico internacional de exigência sanitária nacional vigente.',
   tradeNames: [
-    'Zyloric 100 mg e 300 mg Comprimidos (Aspen Pharma — Referência Humana)',
-    'Alopurinol Genérico 100 mg e 300 mg Comprimidos (EMS, Medley, Eurofarma, Teuto)',
-    'Alopurinol Cápsulas Magistrais Veterinárias (dosagens flexíveis de 20 mg a 300 mg)',
-    'Alopurinol Suspensão Oral Manipulada Veterinária (20 mg/mL ou 50 mg/mL)',
+    'Zyloric® 100 mg e 300 mg comprimidos (Aspen Pharma — medicamento de referência humano no Brasil)',
+    'Alopurinol Genérico 100 mg e 300 mg comprimidos (Medley, EMS, Eurofarma, Teuto, Sandoz, Neo Química)',
+    'Alopurinol Suspensão Oral Manipulada 20 mg/mL (formulação extemporânea em Ora-Plus® / Ora-Sweet®)',
+    'Alopurinol Cápsulas Magistrais Veterinárias (doses individualizadas para cães miniaturas e gatos)',
   ],
   officialSiteUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
   leafletUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
   imageUrl: 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/allopurinol/PNG',
   pharmacologicClass:
-    'Inibidor da Xantina-Oxidase; Análogo Estrutural da Hipoxantina; Agente Antiurêmico/Antiurolítico e Leishmaniostático',
+    'Análogo estrutural de purina (pirazolopirimidina) • Inibidor da xantina oxidoredutase (XO/XDH) • Leishmaniostático e antiurolítico de urato',
   species: ['dog', 'cat'],
   category: 'nefrologia',
   tags: [
-    'Alopurinol',
-    'Allopurinol',
+    'alopurinol',
+    'allopurinol',
+    'oxipurinol',
+    'aloxantina',
     'Zyloric',
-    'Inibidor da Xantina-Oxidase',
-    'Urolitíase por Urato',
-    'Hiperuricosúria',
-    'Dálmata',
-    'SLC2A9',
-    'Leishmaniose Canina',
+    'xantina oxidoredutase',
+    'xantina-oxidase',
+    'leishmaniose canina',
+    'leishmaniose felina',
+    'leishmaniostático',
+    'WAVD 2025',
+    'CLWG 2026',
     'LeishVet',
-    'Xantina',
-    'Xantinúria',
-    'Urologia',
-    'Nefrologia',
+    'Portaria 1426/2008',
+    'urolitíase por urato',
+    'urato de amônio',
+    'hiperuricosúria',
+    'SLC2A9',
+    'Dálmata',
+    'xantinúria',
+    'urólito de xantina',
+    'mineralização renal',
+    'azatioprina',
   ],
 
   plainLanguageSummary:
-    'O alopurinol é um medicamento oral amplamente empregado na clínica veterinária para duas finalidades inteiramente distintas: dissolver e prevenir cálculos urinários de urato em cães com predisposição genética e controlar a multiplicação do parasito causador da leishmaniose visceral canina. Ele atua bloqueando a enzima xantina-oxidase, responsável por transformar a xantina em ácido úrico, reduzindo expressivamente os níveis de urato na urina e no sangue; contudo, esse bloqueio gera o acúmulo da própria xantina, uma substância ainda menos solúvel que pode se precipitar e formar novos cristais e cálculos renais e vesicais se o paciente não receber uma dieta estritamente restrita em purinas e hidratação abundante com urina bem diluída. Na leishmaniose, o medicamento é captado pelo parasito como um falso tijolo de purina e incorporado ao seu RNA, inibindo a sua replicação de forma sustentada mas sem proporcionar cura esterilizante definitiva, exigindo acompanhamento veterinário prolongado com urinálises e ultrassonografias abdominais periódicas para prevenir complicações urinárias.',
+    'O alopurinol é um medicamento oral que desempenha dois papéis distintos: em cães predispostos a cálculos de urato, bloqueia a enzima xantina oxidoredutase e diminui a formação de ácido úrico na urina; na leishmaniose, aproveita o fato de Leishmania depender de purinas externas, sendo captado como falso substrato que desregula o RNA e paralisa a multiplicação parasitária (efeito leishmaniostático, sem cura esterilizante). Seu principal risco em tratamentos longos é o paradoxo da xantina: ao bloquear o passo final da degradação das purinas, a xantina acumula na urina e pode formar cristais e cálculos radiotransparentes, exigindo dieta pobre em purinas, estímulo hídrico e urinálise + ultrassonografia seriadas. Nunca associar a azatioprina sem ajuste rigoroso (risco de mielossupressão grave).',
 
   mechanismOfAction:
-    'O alopurinol possui dois mecanismos farmacodinâmicos fundamentais e distintos dependendo do contexto patológico: 1. Inibição da Xantina-Oxidase no hospedeiro: Sendo um análogo estrutural da hipoxantina (núcleo pirazolopirimidina), o alopurinol atua como falso substrato e inibidor mecanismo-dependente da xantina-oxidase/xantina-oxidoredutase (XO/XOR). A própria enzima catalisa a oxidação do alopurinol em oxipurinol (aloxantina), metabólito ativo dotado de meia-vida mais longa (~4 horas no cão) que permanece fortemente ligado ao sítio catalítico com inibição duradoura. Isso bloqueia tanto a conversão de hipoxantina em xantina quanto a oxidação de xantina em ácido úrico, promovendo queda acentuada das concentrações de urato plasmático e urinário. Em contrapartida, os substratos a montante (hipoxantina e especialmente xantina) acumulam-se no organismo e na urina. Como a xantina possui produto de solubilidade inferior ao do urato, o excesso de substrato pode precipitar na forma de cristais e urólitos de xantina quando a ingestão de purinas dietéticas permanece elevada. 2. Ação leishmaniostática no parasito: Diferentemente dos mamíferos, protozoários do gênero Leishmania são incapazes de realizar a síntese de novo do anel purínico, dependendo exclusivamente da via de salvamento (purine salvage pathway) para adquirir purinas do hospedeiro. O parasito capta ativamente o alopurinol através de transportadores de nucleosídeos/nucleobases e o metaboliza por fosforribosiltransferases (HGPRT/XPRT) em ribonucleotídeos anormais de pirazolopirimidina (como o monofosfato de alopurinol-ribosídeo). Esses metabólitos anormais inibem a IMP-desidrogenase e a GMP-redutase, bloqueiam a síntese funcional de nucleotídeos de adenina e guanina e são incorporados na cadeia de RNA parasitário, deflagrando parada da síntese de proteínas e inibição da replicação celular amastigota de maneira seletiva.',
+    'Análogo isomérico da hipoxantina (1H-pirazolo[3,4-d]pirimidin-4-ol; C₅H₄N₄O; massa molecular 136,11 g/mol; pKa ≈ 9,4) com duplo mecanismo farmacodinâmico dependente do alvo biológico:\n\n' +
+    '1. Inibição da xantina oxidoredutase (XO/XDH) no hospedeiro: atua como substrato competitivo e inibidor mecanismo-dependente da xantina oxidoredutase. A própria enzima oxida o alopurinol em oxipurinol (aloxantina, pKa ≈ 7,7), metabólito ativo de meia-vida mais longa que forma complexo estável com o centro de molibdênio reduzido da enzima, sustentando a inibição ao longo do intervalo posológico. O bloqueio simultâneo das etapas hipoxantina → xantina → ácido úrico reduz expressivamente o urato sérico e urinário (sem efeito uricosúrico direto, anti-inflamatório ou analgésico). Em cães hígidos, a uricase hepática converte ácido úrico em alantoína altamente solúvel; já cães homozigotos para a mutação autossômica recessiva SLC2A9 (como Dálmatas, Bulldogs Ingleses e Russian Black Terriers, que excretam 400–600 mg/dia de ácido úrico contra 10–60 mg/dia em cães não afetados) acumulam urato urinário. Ao fechar essa rota, o alopurinol eleva os precursores a montante (hipoxantina e xantina): como a xantina é moderadamente insolúvel em praticamente qualquer pH urinário e pouco influenciada pelo pH alcalino, dietas com excesso de purinas levam à precipitação de cristalúria e cálculos de xantina (ou camadas de xantina revestindo urólitos de urato).\n\n' +
+    '2. Efeito leishmaniostático em protozoários: protozoários do gênero Leishmania são auxotróficos para purinas — incapazes de sintetizar o anel purínico de novo — e dependem integralmente da via de salvamento. Transportadores parasitários captam o alopurinol, que é fosforribosilado pelas enzimas HGPRT/XPRT do parasito em nucleotídeos anômalos (como ribonucleotídeo de 4-aminopirazolopirimidina / alopurinol-ribosídeo monofosfato). Esses metabólitos inibem enzimas críticas (IMP-desidrogenase, GMP-redutase e succinil-AMP sintetase), depletam o pool intracelular de nucleotídeos de adenina e guanina e incorporam-se ao RNA parasitário, bloqueando a síntese proteica e a replicação de amastigotas. Por ser estritamente leishmaniostático (não esterilizante), requer protocolos combinados prolongados e pode selecionar resistência parasitária por redução na captação de purinas e na expressão do gene da S-adenosilmetionina sintetase.',
+
+  quickIndications: [
+    {
+      condition: 'Leishmaniose visceral canina (protocolo combinado)',
+      species: 'dog',
+      doseSummary: '10 mg/kg a cada 12 horas',
+      route: 'VO',
+      duration: '6–12 meses (em associação a leishmanicida; checar Portaria MS/MAPA nº 1.426/2008 no Brasil)',
+      clinicalContext: 'Consenso internacional WAVD 2025 / CLWG 2026 / LeishVet 2025',
+    },
+    {
+      condition: 'Dissolução de urólitos de urato caninos (SLC2A9 / HHU)',
+      species: 'dog',
+      doseSummary: '15 mg/kg a cada 12 horas',
+      route: 'VO',
+      duration: 'Até 4 semanas com dieta hipopurínica alcalinizante (pH 7,0–7,5; USG ≤ 1,020)',
+      clinicalContext: 'Consenso urológico ACVIM 2016 (excluir shunt portossistêmico antes)',
+    },
+    {
+      condition: 'Prevenção de urólitos de urato recorrentes em cães',
+      species: 'dog',
+      doseSummary: '5–7 mg/kg a cada 12–24 horas',
+      route: 'VO',
+      duration: 'Uso contínuo apenas quando dieta pobre em purinas e hidratação isoladas falharem',
+      clinicalContext: 'Consenso ACVIM 2016 (menor dose efetiva contra cristalúria)',
+    },
+    {
+      condition: 'Leishmaniose felina (uso empírico vigiado)',
+      species: 'cat',
+      doseSummary: '10 mg/kg q12h ou 20 mg/kg q24h',
+      route: 'VO',
+      duration: '6–12 meses sob monitoramento dermatológico e renal rigoroso',
+      clinicalContext: 'Séries de casos ABCD / LeishVet Felina (PK felina desconhecida)',
+    },
+    {
+      condition: 'Tripanossomíase / Doença de Chagas',
+      species: 'both',
+      doseSummary: 'Sem posologia clínica validada',
+      route: 'VO',
+      duration: 'Dados experimentais preliminares; não usar como monoterapia confiável',
+      clinicalContext: 'Evidência experimental limitada',
+    },
+  ],
+
+  detailedIndications: [
+    {
+      id: 'ind-allo-dog-lvc',
+      indication: 'Leishmaniose visceral canina (Leishmania infantum) — Terapia combinada de manutenção',
+      clinicalContext: 'Consenso internacional WAVD 2025 / CLWG 2026 / LeishVet 2025 • Atenção à Portaria MS/MAPA nº 1.426/2008 no Brasil',
+      species: 'dog',
+      dose: '10 mg/kg',
+      route: 'VO',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Pelo menos 6–12 meses associado a antimoniato de meglumina ou miltefosina',
+      mechanismOfAction:
+        'Protozoários Leishmania são auxotróficos para purinas e incorporam o alopurinol via fosforribosiltransferases parasitárias ao RNA, bloqueando síntese proteica e divisão de amastigotas (ação leishmaniostática).',
+      clinicalRationale:
+        'Reduz carga parasitária, lesões clínicas e proteinúria por imunocomplexos enquanto administrado, mas não induz cura parasitológica estéril; a monoterapia crônica seleciona resistência parasitária e está proscrita pelos consensos recentes.',
+      monitoring: 'Urinálise e US urinário (xantinúria) aos 30d e a cada 3–6m; creatinina, SDMA, UPC, hemograma e eletroforese.',
+      referenceIds: ['ref-wavd-leish-2025', 'ref-clwg-leish-2026', 'ref-leishvet-canine-2025', 'ref-portaria-1426-2008'],
+      evidenceLevel: 'Consenso internacional elevado (nível I em terapia combinada)',
+      highlights: ['Ação leishmaniostática (não esterilizante)', 'Exige terapia combinada', 'Conformidade sanitária no Brasil'],
+    },
+    {
+      id: 'ind-allo-dog-urate-dissolution',
+      indication: 'Dissolução médica de urólitos de urato em cães (hiperuricosúria genética SLC2A9)',
+      clinicalContext: 'Consenso ACVIM (2016) em cálculos vesicais não obstrutivos sem shunt portossistêmico',
+      species: 'dog',
+      dose: '15 mg/kg',
+      route: 'VO',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Até 4 semanas (reavaliar por US/cistografia; suspender se não houver resposta)',
+      mechanismOfAction:
+        'Inibição da xantina oxidoredutase pelo alopurinol e oxipurinol reduz a conversão hepática e sistêmica de hipoxantina/xantina em ácido úrico, diminuindo drasticamente o urato urinário.',
+      clinicalRationale:
+        'Alcança dissolução completa em ~30–40% dos cães com HHU (mediana 1 mês) e parcial em outro 1/3 quando estritamente combinado a dieta pobre em purinas (~35–50 g proteína/Mcal com fontes vegetais/ovo), USG ≤ 1,020 e pH 7,0–7,5.',
+      monitoring: 'Urinálise e US vesical a cada 4 semanas; atenção a casca de xantina se dieta falhar.',
+      referenceIds: ['ref-acvim-uroliths-2016', 'ref-nutrition-2e', 'ref-ettinger-9e'],
+      evidenceLevel: 'Consenso internacional ACVIM',
+      highlights: ['Dieta pobre em purinas obrigatória', 'Alvo pH 7,0–7,5 e USG ≤ 1,020', 'Contraindicado em shunt não reparado'],
+    },
+    {
+      id: 'ind-allo-dog-urate-prevention',
+      indication: 'Prevenção secundária de cálculos de urato em cães hiperuricosúricos',
+      clinicalContext: 'Consenso ACVIM (2016) após falha do manejo dietético e hídrico exclusivo',
+      species: 'dog',
+      dose: '5–7 mg/kg',
+      route: 'VO',
+      frequency: 'a cada 12–24 horas',
+      duration: 'Uso contínuo sob titulação pela menor dose eficaz contra cristalúria de urato',
+      mechanismOfAction:
+        'Supressão parcial sustentada da xantina oxidoredutase evitando acúmulo excessivo de xantina pouco solúvel.',
+      clinicalRationale:
+        'Evita manter cronicamente 30 mg/kg/dia, minimizando risco de troca para litíase iatrogênica por xantina.',
+      monitoring: 'Urinálise mensal inicial e trimestral/semestral depois; US abdominal periódico.',
+      referenceIds: ['ref-acvim-uroliths-2016', 'ref-plumb-10', 'ref-bsava-nephro-3e'],
+      evidenceLevel: 'Consenso internacional ACVIM',
+      highlights: ['Menor dose eficaz', 'Rastrear xantinúria no sedimento'],
+    },
+    {
+      id: 'ind-allo-cat-leishmania',
+      indication: 'Leishmaniose felina (FeL)',
+      clinicalContext: 'Evidência descritiva em séries de casos (ABCD 2024/2026 e LeishVet Felina)',
+      species: 'cat',
+      dose: '10 mg/kg (q12h) ou 20 mg/kg (q24h)',
+      route: 'VO',
+      frequency: 'a cada 12–24 horas',
+      duration: 'Prolongada (6–12 meses) com monitoramento estrito',
+      mechanismOfAction:
+        'Inibição parasitária por incorporação na via de salvamento de purinas; farmacocinética formal em felinos não estabelecida.',
+      clinicalRationale:
+        'Opção frequentemente empregada em felinos sintomáticos na ausência de fármacos aprovados para a espécie, porém com relatos de dermatite esfoliativa crostosa facial grave e LRA.',
+      monitoring: 'Inspeção dermatológica facial/cervical, creatinina, SDMA, ALT/FA e hemograma seriados.',
+      referenceIds: ['ref-abcd-fel-2024', 'ref-leishvet-feline-2024', 'ref-bsava-10'],
+      evidenceLevel: 'Séries de casos / baixo grau de evidência controlada',
+      highlights: ['Lacuna PK felina', 'Vigiar dermatite crostosa e azotemia'],
+    },
+  ],
 
   indications: [
-    'Dissolução médica de urólitos de urato (urato de amônio / ácido úrico) em cães com hiperuricosúria genética comprovada (ex.: mutações no gene SLC2A9 em Dálmatas e Bulldogs Ingleses), em associação obrigatória a dieta restrita em purinas, alcalinização e hidratação.',
-    'Prevenção secundária de recorrência de urolitíase por urato em cães geneticamente hiperuricosúricos quando as intervenções dietéticas e hídricas isoladas forem comprovadamente insuficientes.',
-    'Terapia de manutenção e controle leishmaniostático prolongado (6 a 12 meses) na Leishmaniose Visceral Canina (CanL) em protocolos combinados (LeishVet) com miltefosina ou antimoniato de meglumina.',
-    'Manejo leishmaniostático na Leishmaniose Felina (FeL) sob evidência descritiva e monitoramento estrito.',
-    'Adjuvante no controle de gota úrica e hiperuricemia em aves e répteis sob protocolos especializados.',
+    'Terapia leishmaniostática combinada de médio/longo prazo na leishmaniose visceral canina (10 mg/kg VO q12h associada a miltefosina ou antimoniato, respeitando normas sanitárias nacionais).',
+    'Dissolução médica de urólitos vesicais de urato em cães com hiperuricosúria genética (SLC2A9) e função hepática normal, sempre em conjunto com dieta restrita em purinas e alcalinização urinária.',
+    'Prevenção secundária de recorrência de urólitos de urato caninos refratários ao manejo dietético e hídrico exclusivo.',
+    'Manejo empírico da leishmaniose felina (evidência observacional limitada, exigindo vigilância para reações cutâneas e injúria renal).',
+    'Controle adjuvante de gota úrica/hiperuricemia em aves ornamentais e répteis selecionados (contraindicado em aves de rapina).',
   ],
 
   contraindications: [
-    'Urolitíase secundária a anomalias vasculares portossistêmicas (Shunt Portossistêmico intra ou extra-hepático / displasia microvascular) sem correção da causa de base: o alopurinol não corrige a hipoplasia hepática nem a hiperamonemia e seu papel profilático é incerto, devendo o foco residir no reparo vascular ou manejo médico da hepatopatia.',
-    'Cães sob dieta habitual rica em purinas sem transição dietética restritiva: risco severo de xantinúria massiva e urolitíase obstrutiva por xantina.',
-    'Uso concomitante com azatioprina ou 6-mercaptopurina em doses convencionais sem redução drástica prévia: risco crítico de mielossupressão fatal e pancitopenia.',
-    'Hipersensibilidade conhecida ao alopurinol ou aos componentes da fórmula.',
-    'Crise obstrutiva urinária aguda que demande intervenção física emergencial (uro-hidropropulsão, cistotomia ou desobstrução).',
-    'Aves de rapina da espécie Buteo jamaicensis (gavião-de-cauda-vermelha) e outros rapinantes predispostos a toxicidade renal aguda fatal.',
+    'Uso concomitante com dieta rica em purinas (carnes vermelhas, vísceras, miúdos ou proteínas animais padrão): desencadeia rapidamente xantinúria maciça, revestimento de urólitos por xantina e cálculos obstrutivos refratários à dissolução.',
+    'Associação com azatioprina ou 6-mercaptopurina sem ajuste severo da dose imunossupressora e monitorização semanal: bloqueio da inativação pela XO provoca mielotoxicidade e pancitopenia fatais.',
+    'Obstrução uretral ou ureteral aguda por urólitos/xantina (demanda desobstrução mecânica, uro-hidropropulsão ou remoção cirúrgica imediata, não dissolução medicamentosa).',
+    'Monoterapia de longo prazo como substituto de leishmanicidas em cães (rejeitada pelos consensos WAVD 2025 e CLWG 2026 por falha esterilizante e indução de resistência parasitária).',
+    'Urolitíase por urato em cães com shunt portossistêmico não tratado ou em felinos como alternativa única à remoção cirúrgica (eficácia clínica não comprovada pelo consenso ACVIM 2016).',
+    'Hipersensibilidade prévia documentada ao alopurinol, dermatite esfoliativa ou toxicidade orgânica idiopática em exposição anterior.',
+    'Aves de rapina como o gavião-de-cauda-vermelha (Buteo jamaicensis): relatos de vômito, hiperuricemia paradoxal e disfunção renal aguda a 50 mg/kg/dia.',
   ],
 
   cautions: [
-    'Pacientes com doença renal crônica (estágios IRIS 2 a 4): o oxipurinol é depurado predominantemente por excreção renal; o declínio da taxa de filtração glomerular prolonga a meia-vida do metabólito e potencializa tanto a toxicidade sistêmica quanto o risco de nefrolitíase por xantina, exigindo redução posológica inicial (5 mg/kg q12h em CanL segundo o Plumb 10ª ed.).',
-    'Evitar a manutenção crônica da dose alta de dissolução (15 mg/kg q12h) após a resolução dos urólitos; para prevenção a longo prazo, reduzir para 5 a 7 mg/kg q12-24h para minimizar a supersaturação de xantina.',
-    'Em felinos, dados do Consenso ACVIM indicam que a eficácia da dissolução médica de urato com alopurinol não foi comprovada clinicamente; priorizar exclusão de shunt e manejo dietético/hídrico.',
-    'Gatos com leishmaniose apresentam maior suscetibilidade a reações adversas medicamentosas idiossincráticas, incluindo dermatite esfoliativa facial grave e lesão renal aguda.',
-    'Não utilizar acidificantes urinários (cloreto de amônio, metionina) durante a terapia antiurato, pois a acidúria reduz drasticamente a solubilidade do ácido úrico.',
-    'A Leishmania pode desenvolver resistência fenotípica e molecular ao alopurinol em tratamentos prolongados repetidos (aumento da IC50 documentado por Yasur-Landau et al. 2016).',
+    'Monitoramento urinário obrigatório contra xantinúria e mineralização renal: a cristalúria pode surgir já no primeiro mês (mediana de 150 dias; variação de 31 a 455 dias), acometendo 13,1% a até ~50% dos cães tratados cronicamente. Como a xantina é radiotransparente e pouco dependente do pH ou densidade, a ultrassonografia abdominal e o exame de sedimento urinário são insubstituíveis.',
+    'Doença renal crônica (DRC) ou redução da taxa de filtração glomerular: alopurinol e oxipurinol são eliminados por via renal e acumulam-se na azotemia. Embora cães com glomerulopatia da LVC possam apresentar melhora renal com o controle parasitário, compêndios recomendam iniciar em 5 mg/kg VO q12h na insuficiência renal prévia e acompanhar creatinina, SDMA, UPC e ultrassom.',
+    'Felinos exibem farmacocinética não estabelecida e maior risco aparente de dermatite crostosa/esfoliativa em face e pescoço e injúria renal aguda idiossincrática: suspender imediatamente diante de lesões cutâneas ou azotemia progressiva.',
+    'Nunca associar acidificantes urinários (metionina, cloreto de amônio) durante tratamento para urato: pH ácido precipita ácido úrico e anula a terapia de dissolução.',
+    'Administrar com alimento se ocorrer desconforto gástrico: ensaios farmacocinéticos cruzados demonstraram que a alimentação não reduz a AUC nem a biodisponibilidade em cães.',
+    'Se ocorrerem cálculos puros de xantina induzidos por alopurinol + excesso de purinas, suspender o alopurinol mantendo dieta estritamente hipopurínica e hidratação favorece a dissolução da xantina; caso seja necessário reintroduzir posteriormente, reduzir para 25–35% da dose prévia.',
+    'Uso de suspensão extemporânea a 20 mg/mL (Ora-Plus®/Ora-Sweet®): possui estabilidade físico-química publicada por 60 dias a 5 °C e 25 °C protegida da luz, porém sem ensaios microbiológicos formais publicados — agitar vigorosamente antes de cada dose e respeitar rigorosamente o prazo magistral e a higiene do frasco.',
   ],
 
   adverseEffects: [
-    'Frequentes / Mecanismo-dependentes: Xantinúria (formação de cristais urinários de xantina de coloração amarelo-acastanhada), urolitíase por xantina (cálculos radiolucentes na vesícula urinária ou uretra) e nefrocalcinose/mineralização do parênquima renal (documentada em até 13% dos cães tratados cronicamente no estudo de Torres et al. 2016).',
-    'Gastrointestinais: Vômitos transitórios, náusea matinal, fezes amolecidas, diarreia e hiporexia leve (atenuados pela administração com alimento).',
-    'Dermatológicos / Hipersensibilidade: Prurido generalizado, eritema cutâneo, alopecia, descamação e reações cutâneas alérgicas (em felinos, relatos de dermatite esfoliativa crostosa intensa em cabeça e pescoço reversível após suspensão).',
-    'Hepáticos: Elevação transitória e assintomática de ALT, AST e fosfatase alcalina; hepatite medicamentosa idiossincrática é rara.',
-    'Hematológicos: Neutropenia transitória, leucopenia e supressão medular reversível após a descontinuação (monitoramento hematológico semestral recomendado).',
-    'Renais: Lesão renal aguda ou progressão de disfunção renal crônica decorrente de deposição intratubular de microcristais de xantina e nefrite intersticial secundária.',
+    'Urolitíase e cristalúria por xantina / nefrocalcinose (frequentes e mecanismo-dependentes em terapias prolongadas): cristais esféricos amarelo-acastanhados ou cálculos vesicais/uretrais radiolucentes e mineralização do parênquima renal (observada em 13,1% de 320 cães em estudo de coorte, incluindo casos com obstrução uretral).',
+    'Gastrointestinais (comuns, geralmente leves): náusea, êmese transitória, hiporexia e diarreia — minimizados quando fornecido com alimento.',
+    'Cutâneos e hipersensibilidade (incomuns a raros em cães; mais preocupantes em felinos): prurido, eritema, alopecia, piodermite/dermatite esfoliativa crostosa facial e cervical e erupções descamativas (especialmente se associado a aminopenicilinas).',
+    'Hepáticos: elevação assintomática e transitória de ALT/AST e fosfatase alcalina; hepatite medicamentosa ou necrose hepática idiossincrática rara.',
+    'Hematológicos (raros): neutropenia, trombocitopenia e aplasia medular (risco multiplicado na coterapia com azatioprina/6-mercaptopurina ou ciclofosfamida).',
+    'Renais: injúria renal aguda por hipersensibilidade ou progressão de nefropatia obstrutiva/intratubular secundária a microcristais de xantina.',
   ],
 
   interactions: [
-    'Azatioprina e Mercaptopurina (Interação Crítica de Alto Risco): A xantina-oxidase é uma das principais enzimas responsáveis pela degradação e inativação metabólica da 6-mercaptopurina. A inibição da XO pelo alopurinol desvia a via para produção desmedida de tioguanina ativa, deflagrando mielossupressão fulminante, neutropenia extrema e trombocitopenia com risco de morte. A associação exige redução da dose de azatioprina para 25% a 33% da dose original e monitoramento hematológico semanal rigoroso.',
-    'Ciclofosfamida: Pode aumentar o risco e a severidade da supressão da medula óssea; acompanhar leucograma quinzenal.',
-    'Ciclosporina: Relatos em humanos e mamíferos indicam aumento das concentrações séricas mínimas de ciclosporina, elevando o risco de nefrotoxicidade.',
-    'Teofilina e Aminofilina: O alopurinol inibe o metabolismo oxidativo das metilxantinas, podendo elevar os níveis plasmáticos de teofilina e desencadear tremores, taquicardia sinusal e arritmias.',
-    'Aminopenicilinas (Amoxicilina e Ampicilina): Em medicina humana, associa-se a maior incidência de exantema cutâneo e rash medicamentoso; monitorar a pele de cães e gatos em coterapia.',
-    'Diuréticos Tiazídicos e de Alça (Furosemida): Podem reduzir a excreção renal de oxipurinol, elevando sua meia-vida e facilitando eventos tóxicos.',
-    'Acidificantes Urinários (Metionina, Cloreto de Amônio): Contraindicados formalmente; a acidose tubular urinária reduz bruscamente a solubilidade do urato e precipita cálculos.',
-    'Hidróxido de Alumínio e Antiácidos: Podem quelar e diminuir a absorção entérica do alopurinol; respeitar intervalo de 2 horas entre as tomadas.',
+    'Azatioprina e 6-Mercaptopurina (INTERAÇÃO CRÍTICA — risco de morte): a xantina-oxidase é via fundamental de inativação da 6-MP. Seu bloqueio desvia a metabolização para nucleotídeos 6-tioguanina (6-TGN) em níveis tóxicos, causando pancitopenia e aplasia medular grave. Evitar a combinação; caso indispensável, reduzir drasticamente a dose da tiopurina (diversas referências preconizam administrar apenas 25%–33% da dose original, isto é, redução de 67%–75%, embora alguns formulários veterinários redijam redução inicial de 25%–33%) sob hemograma semanal rigoroso.',
+    'Teofilina e Aminofilina: o alopurinol inibe a depuração oxidativa das metilxantinas, elevando concentrações séricas com risco de tremores, taquicardia, vômitos e arritmias ventriculares.',
+    'Ciclofosfamida e outros mielossupressores (ex.: cloranfenicol): risco aditivo de neutropenia e supressão medular.',
+    'Ciclosporina: pode elevar concentrações plasmáticas mínimas de ciclosporina e potencializar nefrotoxicidade.',
+    'Diuréticos tiazídicos e de alça (furosemida, hidroclorotiazida): podem diminuir a excreção renal do oxipurinol e elevar concentrações plasmáticas do metabólito ativo, sobretudo na presença de disfunção renal.',
+    'Aminopenicilinas (amoxicilina, ampicilina) e inibidores da ECA (benazepril, enalapril): associação ligada a maior incidência de erupções cutâneas e reações de hipersensibilidade em medicina humana, com relatos clínicos caninos isolados.',
+    'Hidróxido de alumínio e antiácidos orais: reduzem a absorção gastrointestinal do alopurinol — respeitar intervalo mínimo de 2 horas entre as administrações.',
+    'Acidificantes urinários (cloreto de amônio, DL-metionina): antagonizam a dissolução de urato ao reduzir o pH urinário (< 6,5), acelerando a cristalização.',
+    'Agentes uricosúricos (probenecida, sulfinpirazona): aceleram a excreção renal do oxipurinol (reduzindo sua duração de inibição sobre a XO).',
+    'Anticoagulantes cumarínicos (varfarina): possível inibição do metabolismo hepático com aumento do risco de sangramento; monitorar tempo de protrombina (TP/INR).',
   ],
 
-  routes: ['por via oral'],
+  routes: ['Via Oral (VO) — com ou sem alimento (preferir com refeição em estômagos sensíveis)'],
+
+  administration: [
+    'Administrar por via oral em intervalos regulares (a cada 12 horas na maioria dos protocolos caninos), preferencialmente junto ao alimento ou pequena porção pastosa para reduzir irritação gástrica sem perda de absorção.',
+    'Instituir concomitantemente dieta com estrita restrição de purinas (evitar carnes vermelhas, fígado, rins, coração, extratos cárneos e petiscos proteicos; preferir dietas veterinárias terapêuticas à base de soja/ovo ou formulação clínica de ~35–50 g proteína/Mcal no manejo de urato).',
+    'Garantir acesso irrestrito a água fresca e estimular hidratação via alimento úmido ou adição de água morna visando densidade urinária ≤ 1,020 em cães.',
+    'Para cães abaixo de 5 kg e gatos: NÃO fracionar comprimidos de 100 mg em frações menores que 1/2 comprimido (50 mg); prescrever suspensão oral manipulada 20 mg/mL ou cápsulas magistrais na dose exata.',
+    'Suspensão manipulada 20 mg/mL (Ora-Plus®/Ora-Sweet®): armazenar em frasco âmbar protegido da luz (geladeira 5 °C ou temperatura ambiente 25 °C por até 60 dias segundo estabilidade físico-química; agitar vigorosamente antes de aspirar).',
+  ],
+
+  clinicalNotesRichText:
+    'Síntese clínica aplicada: o alopurinol é peça central em duas áreas distintas da clínica médica veterinária — a urologia de cálculos de urato e a infectologia da leishmaniose — mas exige vigilância rigorosa para não trocar uma doença tratável por uma iatrogenia de difícil resolução.\n\n' +
+    '1. Por que a dieta pobre em purinas e a ultrassonografia são inegociáveis: enquanto a eliminação parcial de urato pode ser compensada com hidratação e pH 7,0–7,5, o acúmulo de xantina provocado pelo bloqueio enzimático NÃO dissolve com citrato de potássio nem aparece facilmente em radiografias simples (xantina é radiolucente). Além disso, na presença de purinas alimentares, a xantina forma uma casca insolúvel ao redor do cálculo de urato e bloqueia sua dissolução. O aparecimento de xantinúria pode ocorrer precocemente (já no primeiro mês, mediana de 150 dias) e exige redução da dose ou revisão dietética imediata.\n\n' +
+    '2. Contexto sanitário no Brasil versus diretriz científica na LVC: consensos mundiais e europeus (WAVD 2025, CLWG 2026, LeishVet 2025) sustentam 10 mg/kg VO q12h por 6–12 meses sempre em combinação com antimonial pentavalente ou miltefosina (nunca em monoterapia de rotina, pelo risco de resistência parasitária documentada e falha de cura estéril). No Brasil, entretanto, a Portaria Interministerial MS/MAPA nº 1.426/2008 restringe o tratamento da leishmaniose visceral canina a medicamentos veterinários registrados no MAPA (caso da miltefosina veterinária), vedando o emprego oficial de fármacos de uso humano como o alopurinol. Cabe ao médico-veterinário documentar claramente em prontuário e termo de consentimento qualquer decisão clínica, monitorar carga/proteinúria e manter repelência vetorial permanente contra flebotomíneos.\n\n' +
+    '3. Atenção a erros frequentes de prescrição e cálculo: (a) evitar doses > 30 mg/kg/dia em cães, pois a cinética não linear gera platô farmacodinâmico sobre o ácido úrico enquanto multiplica exponencialmente a xantinúria; (b) na tripanossomíase (Doença de Chagas), não há posologia validada; (c) sempre separar por ≥ 2 h de hidróxido de alumínio e revisar todo o receituário para excluir azatioprina.',
+
+  clinicalStructuredBlocks: [
+    {
+      kind: 'clinicalCallout',
+      variant: 'brazil',
+      title: 'Regulação Brasileira na Leishmaniose Visceral Canina (LVC)',
+      body: 'No Brasil, embora diretrizes internacionais (WAVD 2025, CLWG 2026, LeishVet 2025) e protocolos de pesquisa adotem miltefosina + alopurinol 10 mg/kg VO q12h, a Portaria Interministerial MS/MAPA nº 1.426/2008 proíbe o tratamento da LVC com produtos de uso humano ou não registrados no MAPA (o que engloba o alopurinol). O único leishmanicida com registro veterinário específico vigente no país é a miltefosina (Milteforan®). Diferencie sempre a base científica internacional da conformidade regulatória local e mantenha controle vetorial obrigatório (coleiras/pipetas repelentes).',
+    },
+    {
+      kind: 'clinicalCallout',
+      variant: 'caution',
+      title: 'Paradoxo da Xantina e Armadilha da Radiografia Simples',
+      body: 'Urólitos e cristais de xantina induzidos pelo alopurinol são radiotransparentes na radiografia abdominal simples e praticamente insolúveis em qualquer pH urinário (a alcalinização com citrato de potássio protege contra urato, NÃO dissolve xantina). Em estudos clínicos, 13,1% a ~50% dos cães tratados cronicamente desenvolveram xantinúria, com tempo mediano de apenas 150 dias (variando de 31 a 455 dias). Realize urinálise completa e ultrassonografia de vias urinárias a cada 1–3 meses no início e trimestralmente depois.',
+    },
+    {
+      kind: 'clinicalCallout',
+      variant: 'info',
+      title: 'Discrepâncias de Literatura & Correções Críticas de Dose/PK',
+      body: '• Cmax canina após 10 mg/kg VO (Bartges et al., 1997): 0,87 mg/dL equivale a 8,7 µg/mL (não confundir mg/dL com µg/mL). • Biodisponibilidade oral canina: 68–70% no estudo cruzado controlado (alguns compêndios secundários arredondam para ~90%). • Ajuste renal na LVC: formulários conservadores iniciam com 5 mg/kg VO q12h na DRC para evitar retenção de oxipurinol, mas a melhora da glomerulopatia por controle da Leishmania exige decisão individualizada por estágio IRIS, UPC e ultrassonografia. • Azatioprina: evite a associação; se indispensável, reduza a azatioprina para 25%–33% da dose habitual sob hemograma semanal.',
+    },
+  ],
 
   pillars: [
     {
-      title: 'Bloqueio Enzimático da Xantina-Oxidase',
+      title: 'Inibição da XO & Oxipurinol Ativo',
       icon: 'Scissors',
-      desc: 'O alopurinol e seu metabólito ativo oxipurinol inibem a conversão de hipoxantina em xantina e de xantina em ácido úrico, reduzindo drasticamente o urato urinário e plasmático.',
+      desc: 'Convertido pela própria xantina oxidoredutase em oxipurinol, bloqueia duradouramente hipoxantina → xantina → ácido úrico e reduz o urato urinário.',
     },
     {
-      title: 'O Paradoxo Farmacológico da Xantina',
-      icon: 'AlertTriangle',
-      desc: 'Ao fechar a torneira do urato, a xantina acumula a montante. Por ser menos solúvel que o urato, o alopurinol sem dieta com baixa purina pode trocar cálculo de urato por cálculo de xantina.',
-    },
-    {
-      title: 'Mecanismo Antiparasitário por Falso Substrato',
+      title: 'Falso Substrato na Leishmania',
       icon: 'ShieldAlert',
-      desc: 'Na Leishmania, que depende da via de salvamento de purinas, o alopurinol é metabolizado em nucleotídeos anormais e incorporado ao RNA, bloqueando a síntese proteica e a replicação amastigota.',
+      desc: 'Parasitos incapazes de síntese de novo incorporam o alopurinol em nucleotídeos anômalos e no RNA parasitário, paralisando amastigotas sem cura estéril.',
     },
     {
-      title: 'Dieta e Hidratação Como Pilares Inseparáveis',
+      title: 'Paradoxo & Insolubilidade da Xantina',
+      icon: 'AlertTriangle',
+      desc: 'Sem dieta pobre em purinas, o acúmulo de xantina reveste cálculos de urato ou forma urólitos radiotransparentes refratários em qualquer pH.',
+    },
+    {
+      title: 'Teto Não Linear & Interação Fatal',
       icon: 'Droplets',
-      desc: 'A restrição de purinas na dieta e a promoção de urina abundante e diluída (USG cão <= 1,020) são mandatórias para prevenir a supersaturação e precipitação de xantina durante o tratamento.',
+      desc: 'Cinética saturável em cães (teto > 30 mg/kg/dia), depuração renal do oxipurinol e toxicidade medular grave se associado à azatioprina.',
     },
   ],
 
   quickSummaryHighlights: [
-    'Inibidor seletivo da xantina-oxidase indicado para dissolução e prevenção de urato canino e controle leishmaniostático prolongado.',
-    'Risco de troca de urato por urólito de xantina: mandatório associar dieta com restrição de purinas e estímulo à diurese.',
-    'Na Leishmaniose Canina (LeishVet): dose padrão de 10 mg/kg VO q12h por 6 a 12 meses associada a miltefosina ou antimonial.',
-    'Interação de altíssimo risco com azatioprina: exige redução de 66% a 75% da azatioprina sob risco de mielotoxicidade grave.',
+    'Fórmula C₅H₄N₄O (136,11 g/mol — não é sal sódico). Biodisponibilidade oral em cães: ~68–70% (ensaio cruzado; alguns textos citam ~90%), sem interferência do alimento; 0% ligado a proteínas.',
+    'LVC (consenso internacional WAVD 2025 / CLWG 2026): 10 mg/kg VO q12h por 6–12 meses SEMPRE em terapia combinada (no Brasil, checar Portaria MS/MAPA nº 1.426/2008).',
+    'Urato canino (ACVIM 2016): 15 mg/kg VO q12h até 4 semanas para dissolução (eficácia ~30–40%) e 5–7 mg/kg VO q12–24h na prevenção; evitar como monoterapia em shunt não corrigido e gatos.',
+    'Xantinúria surge em mediana de 150 dias (desde 31 dias) e provoca cálculos radiolucentes insolúveis: exige dieta restrita em purinas (35–50 g proteína/Mcal), USG ≤ 1,020, pH 7,0–7,5 e US periódico.',
+    'Nunca associar azatioprina sem corte drástico de dose; evitar monoterapia na LVC (seleção de resistência via diminuição de transportadores/S-adenosilmetionina sintetase); PK felina não estabelecida.',
   ],
 
   pharmacokineticsData: {
     absorption:
-      'Absorção oral rápida e consistente a partir do trato gastrointestinal canino. O estudo farmacocinético seminal de Bartges et al. (1997) em cães Beagles sadios demonstrou que a presença de alimento não altera significativamente a taxa de absorção nem a área sob a curva (AUC) do alopurinol ou oxipurinol, permitindo a administração com ou sem refeições (sendo recomendado fornecer com alimentos para amenizar náuseas e vômitos). O pico de concentração plasmática (Tmax) ocorre entre 1 e 2 horas (faixa de 1 a 3 horas com variabilidade interindividual descrita em Dálmatas). A biodisponibilidade oral canina é boa, situada na faixa de 70% a 90% (Plumb 10ª ed. relata ~90%, enquanto compêndios mais antigos relatam 68% a 70%). Em felinos, faltam ensaios farmacocinéticos quantitativos robustos equivalentes.',
+      'Absorção oral rápida e consistente em cães sadios. No estudo farmacocinético cruzado controlado de Bartges et al. (1997) em Beagles (10 mg/kg e 30 mg/kg IV e VO em jejum e pós-prandial), a biodisponibilidade oral foi de ~68–70% (67,7 ± 12,1% em dose única), embora resumos secundários de formulários citem valores próximos de ~90%. O pico plasmático (Tmax) ocorre em ~1,3 a 2 horas (variação de 1 a 3 horas em Dálmatas). Na dose oral de 10 mg/kg em cães, a concentração máxima (Cmax) observada foi de ~0,87 mg/dL (= 8,7 µg/mL). A alimentação não altera significativamente a absorção ou a área sob a curva (AUC), permitindo administrar com refeições para atenuar irritação gástrica. Gatos: parâmetros de absorção oral e biodisponibilidade NÃO estabelecidos em estudos formais.',
     distribution:
-      'Molécula de caráter hidrofílico (XLogP3 computado ≈ -0,7) que apresenta volume de distribuição aparente moderado no cão, em torno de 0,88 a 0,90 L/kg. Diferentemente de outros fármacos, tanto o alopurinol quanto o oxipurinol praticamente não exibem ligação a proteínas plasmáticas (fração livre próxima de 100%), eliminando riscos de deslocamento competitivo proteico. A travessia da barreira hematoencefálica é limitada. Ambos os compostos atravessam a barreira placentária e são excretados no leite materno em fêmeas lactantes.',
+      'Baixa lipofilicidade relativa e ausência de ligação a proteínas plasmáticas (~0% para alopurinol e oxipurinol), eliminando interações por deslocamento proteico. Volume de distribuição aparente no estado de equilíbrio (Vdss) em cães de ~0,88 a 0,90 L/kg (equivalente à água corporal total). Penetração limitada no sistema nervoso central (LCR). Ambos os compostos atravessam a barreira placentária e são excretados no leite materno. Gatos: volume de distribuição e penetração tecidual não estabelecidos.',
     metabolism:
-      'Extensa biotransformação hepática e tecidual mediada pela própria enzima alvo (xantina-oxidase) e pela aldeído-oxidase, caracterizando um inibidor mecanismo-dependente. A oxidação primária converte o alopurinol em oxipurinol (aloxantina), um metabólito ativo e persistente que é o principal responsável pela inibição sustentada da xantina-oxidase ao longo do intervalo posológico. Frações menores sofrem conjugação com ribosídeos formando alopurinol-ribosídeo. A cinética de eliminação é não linear: Bartges et al. (1997) evidenciaram a existência de um limiar farmacodinâmico no cão acima do qual doses crescentes não produzem supressão adicional proporcional da síntese de urato.',
+      'Biotransformação hepática e tecidual rápida e saturável pela própria xantina oxidoredutase e pela aldeído-oxidase, gerando principalmente oxipurinol (aloxantina), metabólito farmacologicamente ativo responsável pela maior parte da inibição enzimática prolongada no intervalo de 12 h, além de pequenas frações de ribosídeos conjugados. Apresenta farmacocinética não linear e teto farmacodinâmico em cães (Bartges et al., 1997): doses acima de ~30 mg/kg/dia saturam a conversão/eliminação e reduzem pouco ou nada o ácido úrico adicional, enquanto elevam desproporcionalmente o risco de xantinúria. Gatos: vias quantitativas de conversão alopurinol → oxipurinol não estabelecidas.',
     elimination:
-      'A eliminação do alopurinol e de seu metabólito ativo oxipurinol dá-se predominantemente pela via renal. O alopurinol parental é eliminado com meia-vida curta (t1/2 de 1,5 a 2,5 horas em cães; clearance plasmático de 3,5 a 4,3 mL/kg/min). O oxipurinol, por sua vez, exibe meia-vida de eliminação mais prolongada, em torno de 4 a 6 horas em cães hígidos (podendo ultrapassar 10 a 24 horas em pacientes nefropatas devido à filtração glomerular reduzida e reabsorção tubular). Pacientes com insuficiência renal crônica retêm oxipurinol, aumentando o risco de intoxicação e nefrolitíase por xantina.',
+      'Eliminação predominantemente renal (filtração glomerular e reabsorção tubular do oxipurinol; parte do alopurinol também é excretada inalterada). Em cães hígidos: meia-vida plasmática (t1/2) de ~1,5–2,7 horas para o alopurinol (clearance plasmático ~3,5–4,3 mL/kg/min) e ~3,8–4,5 horas para o metabólito ativo oxipurinol. Na insuficiência renal crônica ou redução severa da TFG, o clearance do oxipurinol cai acentuadamente e sua meia-vida prolonga-se de forma expressiva, predispondo a acúmulo sistêmico, toxicidade e cristalização intratubular. É dialisável em situações de superdosagem grave. Gatos: meia-vida de eliminação não estabelecida.',
   },
+
+  clinicalFoundationsData: [
+    {
+      id: 'found-allo-pk-nonlinear',
+      title: 'Farmacocinética canina cruzada, correção de Cmax e cinética não linear',
+      narrative:
+        'Os dados farmacocinéticos quantitativos no cão provêm principalmente do ensaio cruzado em Beagles sadios (IV e VO em jejum vs. pós-prandial). A alimentação não altera significativamente a AUC (biodisponibilidade oral ~68–70% nesse ensaio; resumos secundários citam ~90%), permitindo administrar com refeições. Na dose de 10 mg/kg VO, a Cmax de 0,87 mg/dL equivale a 8,7 µg/mL — erro frequente de transcrição quando citada como µg/mL sem conversão. Acima de ~30 mg/kg/dia surge platô não linear com maior acúmulo de oxipurinol e xantinúria sem ganho proporcional.',
+      narrativeHighlights: [
+        'Biodisponibilidade oral real medida ~68–70% em Beagles (não prejudicada por alimento).',
+        'Cmax a 10 mg/kg = 0,87 mg/dL (= 8,7 µg/mL); 0% de ligação proteica e t1/2 do oxipurinol ~3,8–4,5 h.',
+        'Cinética não linear > 30 mg/kg/dia contraindica escalonamento empírico de doses altas.',
+      ],
+      referenceIds: ['ref-bartges-1997', 'ref-plumb-10'],
+      studies: [
+        {
+          citation: 'Bartges JW et al. AJVR 1997;58(5):504–510',
+          referenceId: 'ref-bartges-1997',
+          sourceType: 'Ensaio farmacocinético cruzado experimental',
+          summaryText:
+            'Avaliou 6 Beagles adultos recebendo alopurinol 10 e 30 mg/kg IV e VO em jejum e pós-prandial. Demonstrou F = 67,7 ± 12,1% (sem efeito significativo de alimento), Vdss ~0,88–0,90 L/kg e saturação metabólica/farmacodinâmica nas doses mais elevadas.',
+          metrics: ['F oral ~68–70%', 'Cmax 8,7 µg/mL (10 mg/kg)', 't1/2 oxipurinol ~4 h'],
+          clinicalConclusion:
+            'Pode ser oferecido com alimento para reduzir náuseas; evitar doses > 30 mg/kg/dia devido ao teto de eficácia e maior risco de xantina.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/9140559/',
+        },
+      ],
+    },
+    {
+      id: 'found-allo-lvc-combo',
+      title: 'Evidência na Leishmaniose Canina: efeito leishmaniostático, terapia combinada e resistência',
+      narrative:
+        'Ensaios clínicos controlados comprovaram que o alopurinol reduz carga parasitária e melhora significativamente sinais clínicos e glomerulopatia, porém não promove cura parasitológica estéril em monoterapia (PCR positiva persistente). Protocolos combinados com antimoniato de meglumina ou miltefosina consolidaram 10 mg/kg VO q12h por 6–12 meses nos consensos internacionais (WAVD 2025, CLWG 2026, LeishVet 2025), enquanto tratamentos isolados selecionam cepas resistentes de L. infantum por redução de transportadores de purina e do gene da S-adenosilmetionina sintetase.',
+      narrativeHighlights: [
+        'Leishmaniostático não esterilizante: evitar monoterapia contínua e não interromper abruptamente.',
+        'Resistência documentada in vitro e ex vivo em cães com recaída clínica (IC50 ~5× maior).',
+        'No Brasil, observar sempre as disposições da Portaria Interministerial MS/MAPA nº 1.426/2008.',
+      ],
+      referenceIds: ['ref-koutinas-2001', 'ref-miro-miltefosine-2009', 'ref-manna-2015', 'ref-yasur-landau-2016'],
+      studies: [
+        {
+          citation: 'Koutinas AF et al. Vet Parasitol 2001;98(4):247–261',
+          referenceId: 'ref-koutinas-2001',
+          sourceType: 'Ensaio clínico randomizado controlado por placebo',
+          summaryText:
+            '45 cães naturalmente infectados tratados com 10 mg/kg q12h vs. placebo por 4 meses obtiveram remissão clínica acentuada, porém 100% mantiveram PCR positiva de medula óssea.',
+          clinicalConclusion: 'Confirma natureza leishmaniostática e necessidade de associação leishmanicida.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/11423183/',
+        },
+        {
+          citation: 'Miró G et al. Vet Dermatol 2009 & Manna L et al. Parasit Vectors 2015',
+          referenceId: 'ref-miro-miltefosine-2009',
+          sourceType: 'Ensaios multicêntrico e longitudinal comparativos',
+          summaryText:
+            'Validaram miltefosina (2 mg/kg/dia × 28 d) ou antimoniato + alopurinol (10 mg/kg q12h × 6–12 m), mostrando redução sustentada de escores e qPCR parasitário.',
+          clinicalConclusion: 'Base posológica dos protocolos internacionais combinados.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/20178476/',
+        },
+        {
+          citation: 'Yasur-Landau D et al. PLoS Negl Trop Dis 2016;10:e0004341',
+          referenceId: 'ref-yasur-landau-2016',
+          sourceType: 'Estudo parasitológico de resistência',
+          summaryText:
+            'Isolados de cães com recidiva sob alopurinol exibiram IC50 ~996 µg/mL vs. ~200 µg/mL pré-tratamento (P = 0,01).',
+          clinicalConclusion: 'Sustenta a proscrição da monoterapia prolongada rotineira pelos consensos atuais.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/26735519/',
+        },
+      ],
+    },
+    {
+      id: 'found-allo-xanthinuria-uroliths',
+      title: 'Farmacovigilância urinária: xantinúria precoce, nefrocalcinose e manejo dietético',
+      narrative:
+        'A inibição crônica da XO eleva a xantina urinária, cuja solubilidade é baixa independentemente do pH urinário e gera cálculos radiotransparentes na radiografia simples. Em estudo com 320 cães sob alopurinol, 13,1% desenvolveram complicações urinárias (cristalúria, urólitos e/ou mineralização renal); estudo caso-controle multicêntrico de 2025 revelou tempo mediano de apenas 150 dias até o surgimento de xantinúria (com casos já aos 31 dias). Dieta restrita em purinas (~35–50 g proteína/Mcal no urato), hidratação intensa e ultrassonografia seriada são obrigatórias.',
+      narrativeHighlights: [
+        'Urólitos de xantina são radiotransparentes: exigir ultrassonografia abdominal + análise de sedimento.',
+        'Xantinúria pode surgir no 1º mês (mediana 150 dias; mais comum em cães mais jovens).',
+        'Suspender alopurinol sob dieta pobre em purinas pode dissolver depósitos recentes de xantina.',
+      ],
+      referenceIds: ['ref-torres-2016', 'ref-oliveira-2025', 'ref-acvim-uroliths-2016', 'ref-nutrition-2e'],
+      studies: [
+        {
+          citation: 'Torres M et al. JSAP 2016;57(6):299–304',
+          referenceId: 'ref-torres-2016',
+          sourceType: 'Coorte clínica de farmacovigilância (320 cães)',
+          summaryText:
+            '42/320 cães (13,1%) desenvolveram xantinúria com urolitíase (21,4%), mineralização renal (26,2%) ou ambos (31%).',
+          clinicalConclusion: 'Estabelece vigilância urinária e ultrassonográfica rotineira em todo cão sob alopurinol.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/27112522/',
+        },
+        {
+          citation: 'Oliveira BC et al. Parasit Vectors 2025;18:98',
+          referenceId: 'ref-oliveira-2025',
+          sourceType: 'Caso-controle multicêntrico pareado 1:1 (90 cães)',
+          summaryText:
+            'Mediana de 150 dias (IQR 31–455 dias) para surgimento de xantinúria; cães acometidos eram significativamente mais jovens (4 vs. 6 anos; P = 0,002).',
+          clinicalConclusion: 'Antecipar primeira urinálise de controle para ~30 dias após início da terapia.',
+          url: 'https://pubmed.ncbi.nlm.nih.gov/40065388/',
+        },
+      ],
+    },
+  ],
 
   doses: [
     {
-      id: 'dose-allo-dog-urate-dissolution',
+      id: 'dose-allo-dog-leishmania-combo',
       species: 'dog',
-      indication: 'Dissolução médica de urólitos de urato em cães (hiperuricosúria genética / SLC2A9 comprovada)',
-      doseMin: 15.0,
-      doseMax: 15.0,
+      indication:
+        'Leishmaniose visceral canina (LVC) — Protocolo combinado padrão internacional (associado a leishmanicida)',
+      doseMin: 10,
+      doseMax: 10,
       doseUnit: 'mg/kg',
       perWeightUnit: 'kg',
       route: 'VO',
-      frequency: 'q12h',
-      duration: 'Até 4 semanas; avaliar resposta clínica e radiográfica/ultrassonográfica ao final do período',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: '6 a 12 meses (ou manutenção monitorada conforme estágio clínico, sorologia, qPCR e UPC)',
+      clinicalContext:
+        'Referência internacional (WAVD 2025, CLWG 2026 e LeishVet 2025) associada a antimoniato de meglumina ou miltefosina; no Brasil, verificar conformidade com a Portaria Interministerial MS/MAPA nº 1.426/2008.',
+      evidenceLevel: 'Consenso internacional elevado (nível I em associação com leishmanicida)',
+      monitoring:
+        'Urinálise com sedimento (pesquisa de cristais de xantina) e ultrassonografia urinária a cada 1–3 meses no início e depois a cada 3–6 meses; creatinina, SDMA, UPC, hemograma, proteínas séricas e enzimas hepáticas.',
       notes:
-        'Protocolo de consenso ACVIM (Lulich et al., 2016) e Plumb 10ª ed.: 15 mg/kg VO a cada 12 horas. Obrigatório associar a dieta veterinária terapêutica restrita em purinas, alcalinizante urinário (citrato de potássio se necessário para pH >= 7,0) e estímulo vigoroso à hidratação para manter densidade urinária <= 1,020. Dissolução completa ocorre em aproximadamente 40% e parcial em 30% dos cães. Jamais manter esta dose elevada indefinidamente devido ao risco de xantinúria.',
+        'Administrar preferencialmente com alimento para melhor tolerância gástrica. Efeito estritamente leishmaniostático (não esterilizante): a suspensão abrupta sem controle clínico/laboratorial associa-se à recidiva. Manter dieta restrita em purinas caso ocorra xantinúria e repelência vetorial contínua. Para cães < 5 kg, usar a suspensão 20 mg/mL ou cápsula manipulada (evitar fracionar comprimido de 100 mg abaixo de 1/2 comprimido).',
       calculatorEnabled: true,
-      referenceIds: ['ref-acvim-uroliths-2016', 'ref-plumb-10', 'ref-bsava-10'],
+      presentationId: 'pres-alopurinol-susp-20mg',
+      referenceIds: [
+        'ref-wavd-leish-2025',
+        'ref-clwg-leish-2026',
+        'ref-leishvet-canine-2025',
+        'ref-miro-miltefosine-2009',
+        'ref-manna-2015',
+        'ref-portaria-1426-2008',
+      ],
+    },
+    {
+      id: 'dose-allo-dog-urate-dissolution',
+      species: 'dog',
+      indication:
+        'Dissolução médica de urólitos de urato em cães (hiperuricosúria genética / SLC2A9 sem shunt portossistêmico)',
+      doseMin: 15,
+      doseMax: 15,
+      doseUnit: 'mg/kg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Até 4 semanas (reavaliar imagem por US/cistografia; suspender se não houver redução ou se surgir xantinúria)',
+      clinicalContext:
+        'Consenso ACVIM (2016) e tratados de medicina interna/nutrição para cálculos não obstrutivos, obrigatoriamente associado a dieta pobre em purinas (~35–50 g proteína/Mcal), alta ingestão hídrica e pH urinário 7,0–7,5.',
+      evidenceLevel: 'Consenso internacional ACVIM e estudos clínicos de dissolução',
+      monitoring:
+        'Urinálise e ultrassonografia vesical ou cistografia de duplo contraste a cada 4 semanas (espera-se redução ≥ 50% do volume em 4 semanas; dissolução completa em ~30–40%, mediana 1 mês). Vigiar sinais de disúria/obstrução uretral.',
+      notes:
+        'Alternativa descrita em alguns formulários europeus: 10 mg/kg VO q8h (mesma dose diária total de 30 mg/kg/dia). JAMAIS manter 30 mg/kg/dia cronicamente nem administrar sem restrição rigorosa de purinas, pois forma casca de xantina ao redor do cálculo de urato e bloqueia a dissolução. Contraindicado para shunt portossistêmico não reparado.',
+      calculatorEnabled: true,
+      presentationId: 'pres-alopurinol-100mg',
+      referenceIds: ['ref-acvim-uroliths-2016', 'ref-plumb-10', 'ref-bsava-10', 'ref-nutrition-2e', 'ref-ettinger-9e'],
     },
     {
       id: 'dose-allo-dog-urate-prevention',
       species: 'dog',
-      indication: 'Prevenção secundária de recorrência de cálculos de urato em cães hiperuricosúricos',
-      doseMin: 5.0,
-      doseMax: 7.0,
+      indication:
+        'Prevenção secundária de urólitos de urato em cães hiperuricosúricos refratários à dieta isolada',
+      doseMin: 5,
+      doseMax: 7,
       doseUnit: 'mg/kg',
       perWeightUnit: 'kg',
       route: 'VO',
-      frequency: 'q12–24h',
-      duration: 'Uso contínuo sob acompanhamento periódico de sedimento urinário e ultrassonografia',
+      frequency: 'a cada 12 a 24 horas (q12–24h)',
+      duration: 'Uso contínuo sob titulação para a menor dose capaz de evitar cristalúria de urato sem gerar xantinúria',
+      clinicalContext:
+        'Consenso ACVIM (2016): instituir apenas quando dieta restrita em purinas, alimento úmido (USG ≤ 1,020) e alcalinização com citrato de potássio (pH ≥ 7,0) não controlarem a recidiva.',
+      evidenceLevel: 'Consenso internacional ACVIM',
+      monitoring:
+        'Urinálise mensal nos primeiros meses e depois a cada 3–6 meses (ausência de cristais de urato E ausência de cristais de xantina); US abdominal a cada 3–6 meses.',
       notes:
-        'Dose preventiva consensual ACVIM (2016): 5 a 7 mg/kg VO a cada 12 a 24 horas. Iniciar somente se as medidas dietéticas com baixa purina e hidratação forem insuficientes para prevenir a cristalúria. O objetivo é utilizar a menor dose eficaz para suprimir o urato sem atingir concentrações críticas de supersaturação de xantina.',
+        'Formulários britânicos e textos nefrológicos citam ainda faixas profiláticas de 5–10 mg/kg/dia ou 10–15 mg/kg VO q24h; recomenda-se iniciar no limite inferior (5–7 mg/kg) e titular conforme sedimento urinário.',
       calculatorEnabled: true,
-      referenceIds: ['ref-acvim-uroliths-2016', 'ref-plumb-10', 'ref-bsava-10'],
-    },
-    {
-      id: 'dose-allo-dog-leishmania-combo',
-      species: 'dog',
-      indication: 'Leishmaniose Visceral Canina (CanL) — Terapia de manutenção leishmaniostática combinada',
-      doseMin: 10.0,
-      doseMax: 10.0,
-      doseUnit: 'mg/kg',
-      perWeightUnit: 'kg',
-      route: 'VO',
-      frequency: 'q12h',
-      duration: '6 a 12 meses (reavaliar estadiamento clínico, sorologia quantitativa, UPC e imagem)',
-      notes:
-        'Diretrizes internacionais consensuais LeishVet (2025) e Plumb 10ª ed.: 10 mg/kg VO a cada 12 horas. Administrado em combinação com leishmanicida de ataque: miltefosina (2 mg/kg VO q24h por 28 dias) OU antimoniato de meglumina (100 mg/kg SC q24h por 4 a 6 semanas). No Brasil, utilizar produtos com registro veterinário regularizado no MAPA para LVC (Milteforan). Monitorar sedimento urinário e ultrassonografia abdominal a cada 2 a 3 meses pelo risco de xantinúria (incidência de ~13% a 50% dos animais tratados).',
-      calculatorEnabled: true,
-      referenceIds: [
-        'ref-leishvet-canine-2025',
-        'ref-miro-miltefosine-2009',
-        'ref-koutinas-allopurinol-2001',
-        'ref-plumb-10',
-      ],
+      presentationId: 'pres-alopurinol-100mg',
+      referenceIds: ['ref-acvim-uroliths-2016', 'ref-plumb-10', 'ref-bsava-nephro-3e'],
     },
     {
       id: 'dose-allo-dog-leishmania-renal',
       species: 'dog',
-      indication: 'Leishmaniose Visceral Canina em cães com disfunção renal crônica / proteinúria',
-      doseMin: 5.0,
-      doseMax: 5.0,
+      indication:
+        'Leishmaniose canina com disfunção renal crônica prévia (ajuste conservador em azotemia)',
+      doseMin: 5,
+      doseMax: 5,
       doseUnit: 'mg/kg',
       perWeightUnit: 'kg',
       route: 'VO',
-      frequency: 'q12h',
-      duration: '6 a 12 meses sob monitoramento quinzenal de creatinina, SDMA e sedimento',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Prolongada sob reavaliação quinzenal/mensal de função renal e sedimento (individualizada por estágio IRIS)',
+      clinicalContext:
+        'Dose inicial reduzida em 50% recomendada por formulários clínicos em cães com insuficiência renal prévia para compensar menor depuração de oxipurinol; calcular e titular de modo individualizado (calculadora bloqueada).',
+      evidenceLevel: 'Recomendação de formulário farmacológico (cautela posológica renal)',
+      monitoring:
+        'Creatinina, ureia, SDMA, UPC, fósforo, eletrólitos, sedimento urinário e ultrassom renal a cada 15–30 dias no início.',
       notes:
-        'Ajuste posológico preconizado pelo Plumb 10ª ed.: iniciar com 5 mg/kg VO a cada 12 horas (redução de 50% em relação à dose padrão) em cães com doença renal crônica ou disfunção tubular para compensar o menor clearance de oxipurinol e minimizar a deposição de cristais de xantina no parênquima renal.',
-      calculatorEnabled: true,
-      referenceIds: ['ref-plumb-10', 'ref-leishvet-canine-2025'],
+        'Contraponto importante da literatura de infectologia: em cães cuja azotemia/proteinúria decorre de glomerulonefrite ativa pela própria Leishmania, doses usuais frequentemente melhoram as lesões renais ao conter os imunocomplexos. Portanto, o corte para 5 mg/kg q12h é uma partida prudente na DRC avançada (IRIS 3–4), reavaliável conforme resposta clínica e ausência de xantinúria.',
+      calculatorEnabled: false,
+      presentationId: 'pres-alopurinol-susp-20mg',
+      referenceIds: ['ref-plumb-10', 'ref-greene-5e', 'ref-oliveira-2025'],
+    },
+    {
+      id: 'dose-allo-dog-leishmania-monotherapy-historical',
+      species: 'dog',
+      indication:
+        'Leishmaniose canina — Monoterapia histórica / faixa alternativa de formulários antigos (NÃO recomendada como rotina)',
+      doseMin: 5,
+      doseMax: 20,
+      doseUnit: 'mg/kg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Histórica (2 a 24 meses) — evitar monoterapia prolongada isolada',
+      clinicalContext:
+        'Faixa citada em monografias mais antigas quando não havia associação leishmanicida; consensos atuais (WAVD 2025, CLWG 2026) desaconselham monoterapia por incapacidade de cura estéril, risco de recidiva e seleção de resistência parasitária.',
+      evidenceLevel: 'Evidência histórica superada / ensaio controlado demonstrando falha de esterilização',
+      monitoring:
+        'Vigilância estrita de xantinúria, nefrocalcinose e piora clínica/recidiva.',
+      notes:
+        'Calculadora desabilitada propositalmente para impedir automação de doses de 20 mg/kg q12h (= 40 mg/kg/dia), que ultrapassam o limiar não linear canino (> 30 mg/kg/dia) e elevam drasticamente a litíase por xantina.',
+      calculatorEnabled: false,
+      referenceIds: ['ref-plumb-10', 'ref-koutinas-2001', 'ref-wavd-leish-2025', 'ref-yasur-landau-2016'],
     },
     {
       id: 'dose-allo-cat-leishmania',
       species: 'cat',
-      indication: 'Leishmaniose Felina (FeL) — Manejo terapêutico adjuvante sob evidência descritiva',
-      doseMin: 10.0,
-      doseMax: 20.0,
+      indication:
+        'Leishmaniose felina (FeL) — Protocolo empírico de séries de casos (lacuna farmacocinética formal)',
+      doseMin: 10,
+      doseMax: 20,
       doseUnit: 'mg/kg',
       perWeightUnit: 'kg',
       route: 'VO',
-      frequency: 'q12–24h',
-      duration: 'Pelo menos 6 a 12 meses sob monitorização clínica estrita',
+      frequency: 'a cada 12 horas (10 mg/kg) ou a cada 24 horas (20 mg/kg)',
+      duration: 'Prolongada (6 a 12 meses) sob acompanhamento clínico e laboratorial contínuo',
+      clinicalContext:
+        'Regimes mais empregados em séries de casos (ABCD 2024/2026 e LeishVet Felina), embora a literatura descreva ampla faixa empírica de 5–50 mg/kg/dia; farmacocinética felina não estabelecida e risco elevado de hipersensibilidade cutânea e LRA.',
+      evidenceLevel: 'Séries de casos e consenso descritivo (baixo grau de evidência controlada)',
+      monitoring:
+        'Avaliação dermatológica (face/pescoço — dermatite esfoliativa crostosa), creatinina, ureia, SDMA, ALT/FA, hemograma e urinálise quinzenais/mensais no início.',
       notes:
-        'Diretrizes LeishVet Felina (2024) e BSAVA 10ª ed.: 10 mg/kg VO a cada 12 horas OU 20 mg/kg VO a cada 24 horas. Evidência clínica derivada exclusivamente de estudos descritivos e séries de casos não controlados. Monitorar função renal, bioquímica hepática e pele (risco documentado de dermatite esfoliativa crostosa grave de hipersensibilidade e injúria renal aguda em gatos).',
-      calculatorEnabled: true,
-      referenceIds: ['ref-leishvet-feline-2024', 'ref-bsava-10', 'ref-plumb-10'],
+        'Calculadora automática bloqueada para impedir extrapolação acrítica ou cálculo livre da faixa de 5–50 mg/kg/dia. Utilizar exclusivamente suspensão manipulada 20 mg/mL ou cápsulas magistrais exatas sob supervisão especializada.',
+      calculatorEnabled: false,
+      presentationId: 'pres-alopurinol-susp-20mg',
+      referenceIds: ['ref-abcd-fel-2024', 'ref-leishvet-feline-2024', 'ref-plumb-10', 'ref-bsava-10'],
     },
     {
-      id: 'dose-allo-cat-urate-historical',
+      id: 'dose-allo-cat-urate-alert',
       species: 'cat',
-      indication: 'Urolitíase por urato em felinos — Alerta de evidência insuficiente e dose histórica',
-      doseMin: 10.0,
-      doseMax: 15.0,
+      indication:
+        'Urolitíase por urato em felinos — Alerta de eficácia não comprovada (dose histórica desencorajada)',
+      doseMin: 7.5,
+      doseMax: 15,
       doseUnit: 'mg/kg',
       perWeightUnit: 'kg',
       route: 'VO',
-      frequency: 'q12h',
-      duration: 'Dose histórica de literatura; uso deve ser criteriosamente individualizado',
+      frequency: 'a cada 12 horas (q12h)',
+      duration: 'Não recomendada como conduta padrão — priorizar remoção cirúrgica e dieta úmida hipoproteica',
+      clinicalContext:
+        'O consenso ACVIM (2016) e tratados de medicina interna advertem que não há segurança nem eficácia comprovadas para alopurinol em cálculos de urato felinos (embora relatos pontuais citem 7,5–15 mg/kg q12h).',
+      evidenceLevel: 'Opinião histórica isolada contraposta por consenso internacional ACVIM',
+      monitoring:
+        'Investigação obrigatória de shunt portossistêmico/disfunção hepática, remoção mecânica (uro-hidropropulsão/PCCL/cistotomia) e dieta úmida renal/hepática alcalinizante.',
       notes:
-        'Dose histórica descrita em compêndios antigos (10 a 15 mg/kg q12h por 4 semanas). O Consenso Internacional ACVIM (2016) destaca formalmente que não existem evidências clínicas publicadas que respaldem a eficácia de inibidores da xantina-oxidase para dissolução de urato em gatos. Priorizar investigação exaustiva de shunt portossistêmico, manejo dietético específico e estímulo hídrico vigoroso.',
-      calculatorEnabled: true,
-      referenceIds: ['ref-acvim-uroliths-2016', 'ref-bsava-10'],
-    },
-  ],
-
-  monitoringParameters: [
-    'Urinálise seriada e exame microscópico do sedimento urinário: realizar a cada 30 a 60 dias no início e trimestralmente no tratamento prolongado para rastrear precocemente cristalúria por xantina (cristais esféricos marrom-amarelados) ou recidiva de urato.',
-    'Mensuração da densidade urinária específica (USG) e pH urinário: conferir hidratação adequada buscando USG <= 1,020 em cães e < 1,030 em gatos, além de pH neutro a levemente alcalino (>= 7,0) para favorecer a solubilidade de uratos.',
-    'Ultrassonografia do trato urinário e radiografia abdominal periódica: monitorar a formação de cálculos radiolucentes de xantina na bexiga e uretra, bem como áreas de mineralização renal ou nefrolitíase (estudo de Oliveira et al. 2025 identificou tempo mediano de 150 dias para o surgimento de xantinúria em cães sob alopurinol).',
-    'Avaliação da função renal seriada: dosar ureia sérica, creatinina plasmática e SDMA a cada 2 a 3 meses; em pacientes com leishmaniose, monitorar a relação proteína:creatinina urinária (UPC) para acompanhar a glomerulopatia por imunocomplexos.',
-    'Enzimas hepáticas (ALT, AST e Fosfatase Alcalina): monitorar periodicamente a cada 3 a 6 meses para descartar hepatite medicamentosa associada ao alopurinol.',
-    'Hemograma completo periódico: checar contagem de neutrófilos e plaquetas semestralmente (ou semanalmente se houver coadministração com azatioprina).',
-    'Monitoramento específico na Leishmaniose Canina (LeishVet): acompanhar resposta clínica, proteinograma sérico (eletroforese com normalização de gamaglobulinas e albumina), título de anticorpos por IFI/ELISA quantitativo e proteínas de fase aguda (PCR, haptoglobina).',
-  ],
-
-  clientInformation: [
-    'Medicamento de Uso Contínuo: O alopurinol precisa ser administrado todos os dias rigorosamente nos horários prescritos. Não interrompa o tratamento sem autorização expressa do médico-veterinário.',
-    'Dieta Específica Obrigatória: Não forneça carnes vermelhas, miúdos (fígado, coração, rim), peixes ricos em purinas ou petiscos caseiros sem autorização. O alopurinol associado a alimentos ricos em purinas pode produzir cálculos urinários graves de xantina.',
-    'Água Abundante e Fresca: Estimule o animal a beber muita água todos os dias. Forneça fontes com água corrente, tigelas distribuídas pela casa e alimentos úmidos para garantir que a urina permaneça diluída e clara.',
-    'Como Administrar: Os comprimidos podem ser administrados junto com uma refeição caso o animal apresente sensibilidade digestiva, náusea ou vômitos.',
-    'Sinais de Alerta Urinário: Observe diariamente a micção do animal. Se notar dificuldade para urinar, esforço repetido sem sair urina, urina com sangue ou dor na barriga, suspenda o medicamento e leve o paciente imediatamente à clínica veterinária.',
-    'Acompanhamento Veterinário Periódico: Realize as urinálises e os exames de ultrassom solicitados pelo profissional nas datas programadas. Cálculos de xantina podem se formar silenciosamente durante o tratamento prolongado.',
-  ],
-
-  references: [
-    {
-      id: 'ref-plumb-10',
-      citationText:
-        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. VetMedux/Wiley-Blackwell; 2023. Monografia: Allopurinol, pp. 37–39 (PDF pp. 64–66).',
-      sourceType: 'Compêndio Farmacológico Veterinário Padrão-Ouro',
-      url: 'https://search.worldcat.org/isbn/9781394172207',
-      notes: 'Monografia canônica com dados de boa absorção oral, formação de oxipurinol, ausência de ligação proteica, ajuste posológico na nefropatia e tabelas de interação medicamentosa.',
-      evidenceLevel: 'Referência terciária especializada',
-    },
-    {
-      id: 'ref-bsava-10',
-      citationText:
-        'British Small Animal Veterinary Association. BSAVA Small Animal Formulary, Part A: Canine and Feline. 10th ed. British Small Animal Veterinary Association; 2020. Monografia: Allopurinol, pp. 11–12.',
-      sourceType: 'Formulário Veterinário Internacional',
-      url: 'https://www.bsavalibrary.com/content/book/10.22233/9781910443729',
-      notes: 'Diretrizes de dissolução canina (10 mg/kg q8h ou 15 mg/kg q12h), leishmaniose canina (10 mg/kg q12h) e alertas de experiência felina limitada.',
-      evidenceLevel: 'Referência terciária especializada',
-    },
-    {
-      id: 'ref-acvim-uroliths-2016',
-      citationText:
-        'Lulich JP, Berent AC, Adams LG, Westropp JL, Bartges JW, Osborne CA. ACVIM Small Animal Consensus Recommendations on the Treatment and Prevention of Uroliths in Dogs and Cats. J Vet Intern Med. 2016;30(5):1564-1574. doi:10.1111/jvim.14559.',
-      sourceType: 'Diretriz de Consenso Internacional ACVIM',
-      url: 'https://doi.org/10.1111/jvim.14559',
-      notes: 'Consenso que preconiza 15 mg/kg q12h para dissolução de urato em cães e 5 a 7 mg/kg q12-24h para prevenção genética; adverte formalmente contra o uso de alopurinol sem dieta restrita em purinas e destaca ausência de dados em gatos.',
-      evidenceLevel: 'Consenso Internacional de Especialistas',
-    },
-    {
-      id: 'ref-leishvet-canine-2025',
-      citationText:
-        'LeishVet Group. Practical Management of Canine Leishmaniosis. Guidelines Updated 2025. LeishVet; 2025. Disponível em: https://www.leishvet.org/wp-content/uploads/2025/09/FS-LeishVetC.pdf.',
-      sourceType: 'Diretriz Internacional Especializada em Leishmaniose',
-      url: 'https://www.leishvet.org/wp-content/uploads/2025/09/FS-LeishVetC.pdf',
-      notes: 'Protocolo padrão-ouro recomendando alopurinol 10 mg/kg VO q12h por 6 a 12 meses em combinação com miltefosina ou antimoniato de meglumina, com vigilância obrigatória de xantinúria.',
-      evidenceLevel: 'Consenso Internacional de Especialistas',
-    },
-    {
-      id: 'ref-leishvet-feline-2024',
-      citationText:
-        'LeishVet Group. Practical Management of Feline Leishmaniosis. Guidelines Updated 2024. LeishVet; 2024. Disponível em: https://www.leishvet.org/wp-content/uploads/2024/04/FS-ALIVE24-feline.pdf.',
-      sourceType: 'Diretriz Internacional Especializada em Leishmaniose Felina',
-      url: 'https://www.leishvet.org/wp-content/uploads/2024/04/FS-ALIVE24-feline.pdf',
-      notes: 'Orientações para gatos: alopurinol 10 mg/kg q12h ou 20 mg/kg q24h por 6 a 12 meses sob alerta de evidência descritiva e risco de reações cutâneas graves.',
-      evidenceLevel: 'Consenso Internacional de Especialistas',
-    },
-    {
-      id: 'ref-bartges-pk-1997',
-      citationText:
-        'Bartges JW, Osborne CA, Felice LJ, Koehler LA, Ulrich LK, Bird KA, Chen M, Sawchuk RJ. Bioavailability and pharmacokinetics of intravenously and orally administered allopurinol in healthy beagles. Am J Vet Res. 1997;58(5):504-510.',
-      sourceType: 'Ensaio farmacocinético cruzado experimental',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/9140559/',
-      notes: 'Estudo seminal em cães Beagles demonstrando absorção oral rápida, ausência de impacto do alimento na biodisponibilidade e cinética não linear com teto de inibição de urato.',
-      evidenceLevel: 'Nível I — Ensaio farmacocinético experimental',
-    },
-    {
-      id: 'ref-koutinas-allopurinol-2001',
-      citationText:
-        'Koutinas AF, Saridomichelakis MN, Mylonakis ME, Leontides LS, Polizopoulou Z, Billinis C, Argyroudis S, Diakou N. A randomised, blinded, placebo-controlled clinical trial with allopurinol in canine leishmaniosis. Vet Parasitol. 2001;98(4):247-261. doi:10.1016/s0304-4017(01)00399-5.',
-      sourceType: 'Ensaio clínico randomizado cego controlado por placebo (RCT)',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/11423183/',
-      notes: 'Ensaio em 45 cães demonstrando que alopurinol 10 mg/kg q12h melhora substancialmente os sinais clínicos e a carga parasitária, mas não produz cura esterilizante (PCR medular persistiu positiva).',
-      evidenceLevel: 'Nível I — Ensaio clínico randomizado e controlado',
-    },
-    {
-      id: 'ref-miro-miltefosine-2009',
-      citationText:
-        'Miró G, Oliva G, Cruz I, Cañavate C, Mortarino M, San Andrés M, Masucci M, Mercurio V, Pereira L, Fosdick L, Carrió J. Multicentric, controlled clinical study to evaluate effectiveness and safety of miltefosine and allopurinol for canine leishmaniosis. Vet Dermatol. 2009;20(5-6):397-404. doi:10.1111/j.1365-3164.2009.00824.x.',
-      sourceType: 'Ensaio clínico multicêntrico prospectivo controlado',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/20178476/',
-      notes: 'Estudo comparando miltefosina + alopurinol versus antimonial + alopurinol, demonstrando eficácia e segurança clínica comparáveis no tratamento da leishmaniose canina.',
-      evidenceLevel: 'Nível I — Ensaio multicêntrico controlado',
-    },
-    {
-      id: 'ref-torres-xanthinuria-2016',
-      citationText:
-        'Torres M, Pastor J, Roura X, Tabar MD, Espada Y, Font A, Balasch J, Planellas M. Adverse urinary effects of allopurinol in dogs with leishmaniasis. J Small Anim Pract. 2016;57(6):299-304. doi:10.1111/jsap.12484.',
-      sourceType: 'Estudo de coorte clínico prospectivo e retrospectivo',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/27112522/',
-      notes: 'Avaliou 320 cães tratados com alopurinol: 13% (42 cães) desenvolveram complicações urinárias com xantinúria, urolitíase por xantina e mineralização renal.',
-      evidenceLevel: 'Nível II — Estudo de coorte clínico observacional',
-    },
-    {
-      id: 'ref-oliveira-xanthinuria-2025',
-      citationText:
-        'Oliveira BC, Silva AC, Fontes MM, et al. Characterisation and evaluation of predisposing factors for the development of xanthinuria in dogs with leishmaniosis under allopurinol therapy. Parasit Vectors. 2025;18(1):98. doi:10.1186/s13071-025-06731-0.',
-      sourceType: 'Estudo multicêntrico retrospectivo pareado',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/40065388/',
-      notes: 'Estudo recente em 90 cães sob alopurinol identificando tempo mediano para desenvolvimento de xantinúria de 150 dias (IQR 31 a 455 dias), ressaltando a urgência de urinálise seriada precoce.',
-      evidenceLevel: 'Nível II — Estudo multicêntrico controlado',
-    },
-    {
-      id: 'ref-yasur-landau-resistance-2016',
-      citationText:
-        'Yasur-Landau D, Jaffe CL, David L, Baneth G. Allopurinol Resistance in Leishmania infantum from Dogs with Disease Relapse. PLoS Negl Trop Dis. 2016;10(1):e0004341. doi:10.1371/journal.pntd.0004341.',
-      sourceType: 'Estudo parasitológico e farmacológico experimental',
-      url: 'https://pubmed.ncbi.nlm.nih.gov/26735519/',
-      notes: 'Demonstrou que cepas de L. infantum isoladas de cães com recaída clínica apresentaram IC50 significativamente maior (~996 mcg/mL vs ~200 mcg/mL), provando resistência adquirida ao alopurinol.',
-      evidenceLevel: 'Estudo Translacional / Experimental',
-    },
-    {
-      id: 'ref-nelson-couto-6th',
-      citationText:
-        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Cap. 40: Disorders of Micturition and Urolithiasis, pp. 650–658 & Cap. 89: Protozoal Infections (Leishmaniasis), pp. 1380–1386.',
-      sourceType: 'Livro-texto de Medicina Interna Veterinária',
-      evidenceLevel: 'Referência terciária especializada',
-    },
-    {
-      id: 'ref-ettinger-9th',
-      citationText:
-        'Côté E, Ettinger SJ, Feldman EC. Ettinger’s Textbook of Veterinary Internal Medicine. 9th ed. Elsevier; 2024. Cap. 286: Canine Urolithiasis, pp. 1765–1772 & Cap. 195: Leishmaniosis, pp. 1088–1096.',
-      sourceType: 'Tratado de Medicina Interna Veterinária',
-      evidenceLevel: 'Referência terciária especializada',
-    },
-    {
-      id: 'ref-zyloric-bula',
-      citationText:
-        'Aspen Pharma Indústria Farmacêutica Ltda. Bula oficial do medicamento Zyloric (Alopurinol 100 mg e 300 mg comprimidos). Registro ANVISA MS nº 1.2883.0035.',
-      sourceType: 'Bula Técnica Oficial Registrada ANVISA',
-      url: 'https://consultas.anvisa.gov.br/#/medicamentos/',
-      notes: 'Apresentação humana de referência no Brasil sob prescrição simples.',
-      evidenceLevel: 'Documento Técnico Regulatório ANVISA',
+        'Calculadora bloqueada intencionalmente. Gatos com urato devem passar por triagem hepática e extração física do urólito.',
+      calculatorEnabled: false,
+      referenceIds: ['ref-acvim-uroliths-2016', 'ref-ettinger-9e', 'ref-nutrition-2e'],
     },
   ],
 
   presentations: [
     {
-      id: 'pres-zyloric-100mg',
-      name: 'Zyloric 100 mg Comprimidos',
-      brand: 'Aspen Pharma (Referência Humana)',
-      form: 'Comprimido simples',
-      concentrationValue: 100.0,
-      concentrationUnit: 'mg',
-      packInfo: 'Caixa com 30 comprimidos de 100 mg',
-      route: 'Oral (VO)',
-      channel: 'human_pharmacy',
-    },
-    {
-      id: 'pres-zyloric-300mg',
-      name: 'Zyloric 300 mg Comprimidos',
-      brand: 'Aspen Pharma (Referência Humana)',
-      form: 'Comprimido simples',
-      concentrationValue: 300.0,
-      concentrationUnit: 'mg',
-      packInfo: 'Caixa com 30 comprimidos de 300 mg',
-      route: 'Oral (VO)',
-      channel: 'human_pharmacy',
-    },
-    {
-      id: 'pres-allopurinol-mag-caps',
-      name: 'Alopurinol Cápsulas Magistrais Veterinárias',
-      brand: 'Farmácia de Manipulação Veterinária Especializada',
-      form: 'Cápsula gelatinosa manipulada',
-      concentrationValue: 50.0,
-      concentrationUnit: 'mg',
-      packInfo: 'Frasco com 30, 60 ou 90 cápsulas (dosagens sob medida: 20 mg, 50 mg, 150 mg, 200 mg)',
+      id: 'pres-alopurinol-susp-20mg',
+      label: 'Alopurinol Suspensão Oral Manipulada 20 mg/mL',
+      name: 'Alopurinol Suspensão Oral Manipulada 20 mg/mL (Ora-Plus® / Ora-Sweet®)',
+      brand: 'Formulação Extemporânea / Farmácia de Manipulação Veterinária',
+      form: 'Suspensão oral',
+      concentrationValue: 20,
+      concentrationUnit: 'mg/mL',
+      packInfo: 'Frasco âmbar 60–120 mL (preparo clássico: 8 comp. 300 mg + 60 mL Ora-Plus® q.s.p. 120 mL Ora-Sweet®)',
       route: 'Oral (VO)',
       channel: 'compounded',
     },
     {
-      id: 'pres-allopurinol-mag-susp',
-      name: 'Alopurinol Suspensão Oral Veterinária 20 mg/mL ou 50 mg/mL (Veículo Palatável)',
-      brand: 'Farmácia de Manipulação Veterinária Especializada',
-      form: 'Suspensão oral palatável',
-      concentrationValue: 50.0,
-      concentrationUnit: 'mg/mL',
-      packInfo: 'Frasco dosador de 30 mL a 120 mL (estabilidade de 60 dias em Ora-Plus/Ora-Sweet)',
+      id: 'pres-alopurinol-100mg',
+      label: 'Alopurinol 100 mg Comprimido (Zyloric® / Genérico)',
+      name: 'Zyloric® / Alopurinol Genérico 100 mg comprimidos sulcados',
+      brand: 'Aspen Pharma (Zyloric®) / Medley / EMS / Eurofarma',
+      form: 'Comprimido sulcado',
+      concentrationValue: 100,
+      concentrationUnit: 'mg',
+      packInfo: 'Caixa com 30 ou 60 comprimidos humanos de 100 mg',
+      route: 'Oral (VO)',
+      channel: 'human_pharmacy',
+    },
+    {
+      id: 'pres-alopurinol-300mg',
+      label: 'Alopurinol 300 mg Comprimido (Zyloric® / Genérico)',
+      name: 'Zyloric® / Alopurinol Genérico 300 mg comprimidos sulcados',
+      brand: 'Aspen Pharma (Zyloric®) / Medley / EMS / Eurofarma',
+      form: 'Comprimido sulcado',
+      concentrationValue: 300,
+      concentrationUnit: 'mg',
+      packInfo: 'Caixa com 30 comprimidos humanos de 300 mg (uso em cães ≥ 15–30 kg)',
+      route: 'Oral (VO)',
+      channel: 'human_pharmacy',
+    },
+    {
+      id: 'pres-alopurinol-mag-caps',
+      label: 'Alopurinol Cápsula Manipulada Veterinária (50 mg ref.)',
+      name: 'Alopurinol Cápsulas Magistrais Veterinárias sob medida',
+      brand: 'Farmácia de Manipulação Veterinária',
+      form: 'Cápsula oral manipulada',
+      concentrationValue: 50,
+      concentrationUnit: 'mg',
+      packInfo: 'Frasco com 30–90 cápsulas ajustadas em mg exata (ex.: 20 mg, 30 mg, 50 mg, 75 mg, 150 mg)',
       route: 'Oral (VO)',
       channel: 'compounded',
     },
   ],
 
   attentionSubtitle:
-    'Risco de troca de urato por cálculo de xantina, nefrocalcinose em uso crônico, interação fatal com azatioprina e exigência de dieta com restrição de purinas.',
+    'Xantinúria e cálculos radiolucentes precoces (mediana 150d), interação medular fatal com azatioprina, exigência de dieta pobre em purinas e Portaria MS/MAPA nº 1.426/2008 na LVC.',
 
   attentionData: {
     precautions: [
       {
-        condition: 'Administração sem Dieta Restrita em Purinas (Risco de Xantinúria Crítica)',
+        condition: 'Terapia prolongada sem restrição dietética de purinas',
         alertLevel: 'contraindicated',
         physiologicalExplanation:
-          'O alopurinol inibe a oxidação de xantina a urato, provocando elevação massiva da excreção urinária de xantina. Como a solubilidade aquosa da xantina é consideravelmente menor do que a do urato, manter uma dieta rica em purinas durante o bloqueio enzimático sobrecarrega a via metabólica e precipita cristalúria maciça, nefrocalcinose e formação rápida de urólitos obstrutivos de xantina.',
+          'O bloqueio da xantina oxidoredutase acumula xantina na urina. Como a xantina apresenta baixíssima solubilidade em praticamente qualquer pH urinário e não depende apenas da diluição urinária, o aporte contínuo de purinas alimentares precipita cristalúria e urólitos puros de xantina ou reveste urólitos prévios impedindo a dissolução.',
         clinicalAction:
-          'Contraindicação formal de uso. O alopurinol jamais deve ser instituído sem a transição obrigatória e concomitante para uma dieta com estrita restrição de purinas e estímulo hídrico vigoroso.',
+          'Proibir carnes vermelhas, vísceras e miúdos; instituir dieta veterinária hipopurínica (~35–50 g proteína/Mcal no urato) e monitorar sedimento urinário e ultrassonografia a cada 1–3 meses.',
       },
       {
-        condition: 'Associação Inadvertida com Azatioprina ou 6-Mercaptopurina',
+        condition: 'Uso concomitante com azatioprina ou 6-mercaptopurina',
         alertLevel: 'contraindicated',
         physiologicalExplanation:
-          'A xantina-oxidase é a principal rota catabólica de inativação da 6-mercaptopurina. Ao inibir a enzima, o alopurinol desvia a metabolização para a geração de nucleotídeos tioguanínicos citotóxicos em níveis suprafisiológicos, deflagrando pancitopenia fulminante, aplasia medular e choque séptico.',
+          'A xantina-oxidase inativa a 6-mercaptopurina (metabólito ativo da azatioprina). Com a enzima bloqueada pelo alopurinol, a droga desvia-se para a síntese excessiva de nucleotídeos 6-tioguanina (6-TGN), desencadeando pancitopenia fulminante e aplasia medular.',
         clinicalAction:
-          'Contraindicação absoluta em doses usuais. Se a coterapia for indispensável, reduzir a dose de azatioprina para 25% a 33% da dose original e realizar monitoramento semanal de hemograma completo.',
+          'Evitar a associação. Se estritamente necessária, reduzir a azatioprina para 25%–33% da dose habitual (corte de 67%–75%) com hemograma completo semanal.',
       },
       {
-        condition: 'Cálculos de Urato Secundários a Shunt Portossistêmico (PSS) não Corrigido',
-        alertLevel: 'contraindicated',
-        physiologicalExplanation:
-          'No shunt vascular portossistêmico, a hiperuricosúria decorre do desvio do fluxo sanguíneo esplâncnico e da falha de captação hepática pela uricase íntegra, associada a hiperamonemia profunda. O alopurinol não repara a anatomia vascular nem a disfunção hepática, apresentando eficácia incerta e agregando risco de xantinúria.',
-        clinicalAction:
-          'Não utilizar alopurinol como monoterapia em animais com PSS não corrigido. A conduta prioritária é a atenuação cirúrgica do vaso anômalo ou terapia médica conservadora com lactulose, dieta para hepatopatia e controle de encefalopatia.',
-      },
-      {
-        condition: 'Doença Renal Crônica Avançada (Estágios IRIS 3 e 4)',
+        condition: 'Leishmaniose Visceral Canina no Brasil — Conformidade Sanitária (Portaria nº 1.426/2008)',
         alertLevel: 'warning',
         physiologicalExplanation:
-          'O oxipurinol depende primordialmente da depuração renal para ser eliminado. O declínio severo da taxa de filtração glomerular resulta em acúmulo sistêmico do metabólito, acentuando a inibição enzimática e promovendo mineralização parenquimatosa e nefrotoxicidade tubular por microcristais de xantina.',
+          'No Brasil, a Portaria Interministerial MS/MAPA nº 1.426/2008 proíbe o tratamento da LVC com produtos de uso humano ou fármacos não registrados no MAPA. Paralelamente, consensos internacionais indicam alopurinol apenas combinado a leishmanicida.',
         clinicalAction:
-          'Utilizar com extrema precaução. Na leishmaniose canina com DRC, reduzir a dose inicial para 5 mg/kg VO q12h (Plumb 10ª ed.) e monitorar creatinina, SDMA, UPC e sedimento urinário quinzenalmente.',
+          'Priorizar terapia registrada no MAPA (miltefosina veterinária), esclarecer limitações legais e técnicas ao tutor em prontuário, jamais prescrever como monoterapia de rotina e manter encoleiramento/repelência contínua.',
       },
       {
-        condition: 'Uso de Acidificantes Urinários Concomitantes (Metionina, Cloreto de Amônio)',
-        alertLevel: 'contraindicated',
-        physiologicalExplanation:
-          'A acidificação urinária reduz drasticamente a solubilidade do ácido úrico (que precipita preferencialmente em pH < 6,5) sem beneficiar a dissolução de xantina, acelerando a litogênese e lesão tubular.',
-        clinicalAction:
-          'Proibido associar acidificantes urinários. Manter o pH urinário neutro a levemente alcalino (alvo >= 7,0) através de dieta apropriada ou suplementação com citrato de potássio.',
-      },
-      {
-        condition: 'Hipersensibilidade Severa e Reações Cutâneas Idiossincráticas em Felinos',
+        condition: 'Doença Renal Crônica (DRC IRIS 2–4) e retenção de oxipurinol',
         alertLevel: 'warning',
         physiologicalExplanation:
-          'Gatos tratados para leishmaniose apresentam relatos na literatura de reações idiossincráticas com erupções crostosas, prurido intenso na cabeça e pescoço e lesão renal aguda associada a hipersensibilidade.',
+          'Tanto o alopurinol quanto o metabólito ativo oxipurinol dependem da depuração renal; a queda da TFG prolonga sua meia-vida e facilita deposição intratubular de microcristais de xantina e mineralização renal.',
         clinicalAction:
-          'Suspender o alopurinol imediatamente se surgirem lesões dermatológicas esfoliativas ou piora renal inexplicada em felinos.',
+          'Avaliar se a nefropatia é lesão crônica fixa (considerar início cauteloso em 5 mg/kg VO q12h) ou glomerulonefrite ativa da LVC responsiva ao controle parasitário; monitorar creatinina, SDMA, UPC e US renal seriados.',
+      },
+      {
+        condition: 'Shunt portossistêmico (PSS) / hepatopatia grave e pacientes felinos com urato',
+        alertLevel: 'contraindicated',
+        physiologicalExplanation:
+          'No shunt hepatovascular, o defeito primário é o desvio sanguíneo impedindo o clearance hepático de ácido úrico pela uricase e de amônia. Em gatos, faltam estudos de eficácia/segurança de dissolução medicamentosa.',
+        clinicalAction:
+          'Priorizar correção cirúrgica do shunt no cão ou extração física (PCCL/cistotomia/VUH) + dieta hepática/renal úmida em gatos e cães shunted.',
+      },
+      {
+        condition: 'Uso de acidificantes urinários concomitantes (NH₄Cl, metionina)',
+        alertLevel: 'contraindicated',
+        physiologicalExplanation:
+          'Urina ácida (pH < 6,5) diminui drasticamente a solubilidade do urato e favorece precipitação lítica sem ajudar na solubilidade da xantina.',
+        clinicalAction:
+          'Suspender acidificantes; manter pH entre 7,0 e 7,5 com dieta adequada ou citrato de potássio (~75 mg/kg VO q12h quando necessário).',
       },
     ],
-
     adverseEffectsDetailed: [
       {
-        effect: 'Xantinúria e Urolitíase Obstrutiva por Xantina',
+        effect: 'Xantinúria, urolitíase por xantina e mineralização renal',
         frequency: 'common',
-        mechanism: 'Bloqueio da xantina-oxidase gerando acúmulo a montante de xantina, a qual possui baixíssima solubilidade na urina e precipita em cristais e urólitos radiolucentes.',
+        mechanism:
+          'Acúmulo urinário de xantina pouco solúvel por inibição da xantina oxidoredutase, detectado em 13,1% de 320 cães em estudo de coorte (até ~50% em séries com sedimento dirigido; tempo mediano 150 dias, IQR 31–455 d).',
         clinicalManagement:
-          'Documentada em 13% a 50% dos cães em tratamento crônico. Realizar urinálise seriada e ultrassom trimestral. Ao detectar xantinúria, reforçar a restrição dietética de purinas, elevar a ingestão de água e considerar redução ou pausa da dose de alopurinol.',
+          'Suspender ou reduzir dose se surgir urolitíase/mineralização progressiva; associar dieta pobre em purinas e hidratação pode dissolver depósitos recentes de xantina após pausa do fármaco (eventual retomada a 25–35% da dose prévia).',
       },
       {
-        effect: 'Nefrocalcinose e Mineralização Renal Parenquimatosa',
-        frequency: 'uncommon',
-        mechanism: 'Precipitação intratubular e intersticial crônica de microcristais de xantina associada a nefrite intersticial secundária.',
-        clinicalManagement:
-          'Monitorar ultrassom renal com atenção a hiperecogenicidade medular ou cortical. Avaliar função renal (creatinina, SDMA) e proteinúria.',
-      },
-      {
-        effect: 'Desconforto Gastrointestinal (Náusea, Vômito e Diarreia)',
+        effect: 'Náusea, êmese, hiporexia e diarreia',
         frequency: 'common',
-        mechanism: 'Irritação direta da mucosa gástrica e modulação transitória da motilidade digestiva pelo princípio ativo.',
-        clinicalManagement:
-          'Fornecer o medicamento misturado a uma pequena porção de refeição ou logo após a alimentação para amenizar náuseas e vômitos.',
+        mechanism: 'Irritação gástrica direta e intolerância digestiva.',
+        clinicalManagement: 'Administrar imediatamente junto à refeição (sem prejuízo à biodisponibilidade em cães).',
       },
       {
-        effect: 'Elevação Assintomática de Enzimas Hepáticas (ALT, AST, FA)',
+        effect: 'Dermatite esfoliativa crostosa / reações cutâneas de hipersensibilidade (notadamente em gatos)',
         frequency: 'uncommon',
-        mechanism: 'Biotransformação hepática oxidativa intensa e reação hepatocelular transitória leve.',
-        clinicalManagement:
-          'Monitorar painel hepático semestralmente. Na vasta maioria dos casos é autolimitada e não exige suspensão a menos que acompanhada de hiperbilirrubinemia ou sinais clínicos de hepatopatia.',
+        mechanism: 'Reação imunomediada idiossincrática a metabólitos do alopurinol (risco elevado em gatos e em coterapia com aminopenicilinas).',
+        clinicalManagement: 'Interromper o medicamento imediatamente diante de prurido facial, crostas, eritema ou lesões esfoliativas.',
       },
       {
-        effect: 'Dermatite Esfoliativa, Eritema e Prurido (Especialmente Felinos)',
-        frequency: 'rare',
-        mechanism: 'Hipersensibilidade imunomediada induzida por metabólitos reativos do alopurinol.',
-        clinicalManagement:
-          'Suspender o fármaco imediatamente. Administrar anti-histamínicos ou suporte tópico conforme a gravidade das lesões.',
+        effect: 'Elevação de enzimas hepáticas (ALT, AST, FA) e hepatite rara',
+        frequency: 'uncommon',
+        mechanism: 'Biotransformação hepática intensa ou hipersensibilidade hepatocelular idiossincrática.',
+        clinicalManagement: 'Checar bioquímica hepática basal e a cada 3–6 meses; suspender se elevação progressiva ou hiperbilirrubinemia.',
       },
       {
-        effect: 'Neutropenia e Mielossupressão Transitória',
+        effect: 'Neutropenia, trombocitopenia e aplasia medular',
         frequency: 'rare',
-        mechanism: 'Toxicidade medular idiossincrática reversível sobre linhagens granulocíticas.',
-        clinicalManagement:
-          'Monitorar hemograma completo semestralmente. Em caso de neutropenia confirmada, interromper a medicação e aguardar recuperação medular.',
+        mechanism: 'Toxicidade medular direta rara ou desvio severo de tiopurinas quando associado a azatioprina/ciclofosfamida.',
+        clinicalManagement: 'Realizar hemograma basal e periódico (semanal se houver associação com imunossupressor).',
+      },
+      {
+        effect: 'Toxicidade aguda por superdosagem (> 44 mg/kg no cão)',
+        frequency: 'rare',
+        mechanism: 'Sobrecarga gastrointestinal e neurometabólica aguda em ingestão maciça acidental.',
+        clinicalManagement: 'Sem antídoto específico; emese precoce/carvão ativado se recente, fluidoterapia de suporte e diálise em quadros graves (fármaco e oxipurinol são dialisáveis).',
+      },
+    ],
+    drugInteractionsDetailed: [
+      {
+        drugOrClass: 'Azatioprina / 6-Mercaptopurina',
+        severity: 'contraindicated',
+        clinicalEffect:
+          'Pancitopenia, neutropenia grave, trombocitopenia e aplasia medular potencialmente fatal. Conduta: evitar coadministração; se imprescindível, reduzir azatioprina para 25%–33% da dose original (corte de 67%–75%) com hemograma semanal.',
+        pharmacologicalMechanism:
+          'Inibição da xantina-oxidase bloqueia a inativação oxidativa da 6-mercaptopurina, aumentando maciçamente os metabólitos citotóxicos 6-tioguanina.',
+      },
+      {
+        drugOrClass: 'Teofilina / Aminofilina',
+        severity: 'major',
+        clinicalEffect:
+          'Toxicidade por metilxantinas (tremores, agitação, taquicardia, arritmias e vômitos). Conduta: evitar ou reduzir dose de aminofilina/teofilina monitorando sinais clínicos.',
+        pharmacologicalMechanism: 'Redução da depuração metabólica hepática das xantinas exógenas.',
+      },
+      {
+        drugOrClass: 'Ciclofosfamida / Mielossupressores',
+        severity: 'major',
+        clinicalEffect:
+          'Supressão medular potencializada (leucopenia e trombocitopenia). Conduta: monitoramento hematológico seriado rigoroso durante coterapia oncológica/imunossupressora.',
+        pharmacologicalMechanism: 'Efeito aditivo sobre precursores hematopoiéticos e alteração de clearance metabólico.',
+      },
+      {
+        drugOrClass: 'Ciclosporina',
+        severity: 'moderate',
+        clinicalEffect:
+          'Elevação dos níveis plasmáticos mínimos de ciclosporina e risco nefrotóxico. Conduta: monitorar creatinina, SDMA e nível sérico de ciclosporina quando disponíveis.',
+        pharmacologicalMechanism: 'Redução da depuração metabólica em pacientes tratados concomitantemente.',
+      },
+      {
+        drugOrClass: 'Diuréticos de alça e tiazídicos (furosemida, hidroclorotiazida)',
+        severity: 'moderate',
+        clinicalEffect:
+          'Retenção de oxipurinol e maior risco de xantinúria ou hipersensibilidade. Conduta: garantir hidratação adequada e reforçar controle de creatinina e sedimento urinário.',
+        pharmacologicalMechanism: 'Competição/redução da depuração tubular renal do oxipurinol associada à contração de volume.',
+      },
+      {
+        drugOrClass: 'Hidróxido de alumínio / Antiácidos orais',
+        severity: 'moderate',
+        clinicalEffect:
+          'Redução da absorção entérica e perda parcial de eficácia do alopurinol. Conduta: separar as administrações orais por pelo menos 2 horas.',
+        pharmacologicalMechanism: 'Adsorção intraluminal e alteração do perfil de dissolução gástrica.',
+      },
+      {
+        drugOrClass: 'Aminopenicilinas (amoxicilina, ampicilina) e IECAs (benazepril, enalapril)',
+        severity: 'minor',
+        clinicalEffect:
+          'Possível aumento de reações de hipersensibilidade/eritema cutâneo (observação humana + relato pontual canino). Conduta: acompanhar tegumento em pacientes recebendo coterapia antibiótica ou antiproteinúrica.',
+        pharmacologicalMechanism: 'Mecanismo imunológico não completamente elucidado.',
+      },
+      {
+        drugOrClass: 'Acidificantes urinários (NH₄Cl, DL-metionina)',
+        severity: 'contraindicated',
+        clinicalEffect:
+          'Falha de dissolução e recorrência acelerada de cálculos de urato. Conduta: proscrever acidificantes e manter pH urinário alvo em 7,0–7,5.',
+        pharmacologicalMechanism: 'Queda do pH urinário (< 6,5) reduz fortemente a solubilidade do ácido úrico e do urato de amônio.',
       },
     ],
   },
@@ -532,220 +785,418 @@ export const alopurinolMedicationRecord: MedicationRecord = {
   generalInfoData: {
     routesDetailed: [
       {
-        route: 'Oral (VO)',
+        route: 'Via Oral (VO — padrão e exclusiva na clínica de pequenos animais)',
         technique:
-          'Via padrão e exclusiva na clínica de pequenos animais. Pode ser administrado com ou sem alimentos, visto que estudos farmacocinéticos comprovam que a presença de alimento não altera a biodisponibilidade sistêmica. Recomenda-se oferecer junto com a refeição para minimizar êmese.',
+          'Administrar comprimidos, cápsulas manipuladas ou suspensão oral 20 mg/mL (agitada vigorosamente) preferencialmente junto com uma refeição ou petisco compatível com dieta pobre em purinas.',
         nursingCare:
-          'Garantir a ingestão completa da cápsula ou comprimido. Confirmar que o paciente possui acesso permanente e ilimitado a água fresca e limpa.',
+          'Conferir deglutição completa, manter água fresca disponível ad libitum e estimular consumo hídrico (ração úmida ou água adicionada) para diluição urinária contínua.',
         limitations:
-          'Inexistência de formulações industriais veterinárias aprovadas no Brasil, exigindo o emprego de apresentações humanas (100 mg e 300 mg) ou manipulação magistral personalizada.',
+          'Não existem apresentações industriais veterinárias aprovadas no Brasil; exige uso extra-bula de comprimidos humanos (100 e 300 mg) ou manipulação veterinária individualizada para pacientes ≤ 5 kg e gatos.',
       },
     ],
-
+    dilutionGuide: {
+      compatibleFluids: [
+        'Não se trata de solução injetável de rotina no Brasil. Para manipulação de suspensão oral extemporânea a 20 mg/mL: triturar 8 comprimidos de 300 mg (= 2.400 mg de alopurinol), levigar em 60 mL de Ora-Plus® e completar volume (q.s.p.) para 120 mL com Ora-Sweet® ou Ora-Sweet® SF.',
+      ],
+      incompatibleFluids: [
+        'Evitar misturar comprimidos triturados diretamente em soluções acidificantes ou administrar junto de hidróxido de alumínio/quelantes no mesmo horário (espaçar ≥ 2 horas).',
+      ],
+      infusionRateGuidance:
+        'Uso exclusivamente oral. Em aves psitacídeas (uso exótico especializado), soluções em água de bebida devem ser renovadas diariamente; não se aplica via IV na rotina de cães e gatos.',
+      preparationNotes:
+        'A suspensão oral a 20 mg/mL descrita em farmacopeia veterinária mantém > 95% de potência por até 60 dias a 5 °C (refrigeração) ou 25 °C (temperatura ambiente) protegida da luz. Atenção: há estabilidade físico-química publicada, mas ausência de estudos formais publicados de estabilidade microbiológica — usar boas práticas magistrais, frasco âmbar bem vedado e agitar vigorosamente antes de cada coleta.',
+      storageRequirements:
+        'Comprimidos humanos (100 e 300 mg): armazenar entre 15–30 °C (20–25 °C idealmente) em recipiente bem fechado e protegido de luz e umidade.',
+    },
     pharmacologicalClassification: {
-      chemicalClass: 'Análogo de Purina / Derivado Pirazolopirimidina',
+      chemicalClass: 'Pirazolopirimidina (1H-pirazolo[3,4-d]pirimidin-4-ol) — análogo estrutural da hipoxantina (C₅H₄N₄O | 136,11 g/mol)',
       chemicalClassDescription:
-        'Composto heterocíclico bicíclico do tipo pirazolo[3,4-d]pirimidin-4-ona com fórmula molecular C5H4N4O e massa molecular de 136,11 g/mol, análogo estrutural isomérico da hipoxantina.',
-      therapeuticClass: 'Inibidor da Xantina-Oxidase, Agente Antiurolítico e Leishmaniostático',
+        'Base/ácido enólico fraco cristalino branco a quase branco, praticamente insolúvel ou muito pouco solúvel em água, com pKa ≈ 9,4 (metabólito ativo oxipurinol com pKa ≈ 7,7) e ponto de fusão > 350 °C.',
+      therapeuticClass: 'Inibidor da xantina oxidoredutase (XO/XDH) • Antiprotozoário leishmaniostático • Antiurolítico de urato',
       therapeuticClassDescription:
-        'Fármaco que inibe reversivelmente a síntese de ácido úrico no hospedeiro e atua como falso substrato de purina no parasito Leishmania, desregulando seu RNA e síntese proteica.',
+        'Reduz biossíntese de ácido úrico no hospedeiro mamífero e bloqueia o metabolismo de purinas e síntese proteica em protozoários do gênero Leishmania.',
       atcCode: 'M04AA01',
       receptorTargets: [
-        'Xantina-Oxidoredutase / Xantina-Oxidase (XO/XOR do hospedeiro)',
-        'Hipoxantina-Guanina Fosforribosiltransferase parasitária (HGPRT da Leishmania)',
-        'Xantina Fosforribosiltransferase parasitária (XPRT)',
-        'IMP-Desidrogenase e GMP-Redutase parasitárias',
-      ],
-      receptorsAndSites: [
-        {
-          name: 'Xantina-Oxidoredutase / Xantina-Oxidase (Hospedeiro)',
-          type: 'Metaloenzima molibdênio-flavoenzima citosólica e endotelial',
-          action: 'Inibição catalítica por mecanismo-dependente via alopurinol e oxipurinol',
-          clinicalEffect:
-            'Queda acentuada da biossíntese de urato no sangue e na urina com acúmulo concomitante de xantina e hipoxantina.',
-        },
-        {
-          name: 'Via de Salvamento de Purinas (Leishmania spp.)',
-          type: 'Complexo enzimático de incorporação de purinas parasitárias',
-          action: 'Incorporação do falso análogo e geração de ribonucleotídeos atípicos de pirazolopirimidina',
-          clinicalEffect:
-            'Bloqueio da produção de nucleotídeos de adenina/guanina e síntese de RNA parasitário anormal, interrompendo a replicação amastigota.',
-        },
-      ],
-      detailedTargets: [
-        {
-          target: 'Xantina-Oxidase Hepática e Endotelial',
-          action: 'Inibição direta competitiva duradoura',
-          clinicalSignificance:
-            'Dissolução médica e prevenção secundária de urólitos de urato em cães hiperuricosúricos.',
-        },
-        {
-          target: 'RNA Parasitário de Leishmania infantum',
-          action: 'Incorporação de metabólitos ribosilados anormais',
-          clinicalSignificance:
-            'Efeito leishmaniostático com redução prolongada da carga parasitária tecidual e das lesões clínicas.',
-        },
+        'Xantina oxidoredutase / Xantina-oxidase (XO/XDH) hepática e endotelial do hospedeiro',
+        'Via de salvamento de purinas parasitária (HGPRT / XPRT de Leishmania infantum)',
+        'IMP-desidrogenase, GMP-redutase e RNA mensageiro parasitários',
       ],
     },
-
     prescriptionType: {
-      category: 'Receituário Simples (Uso Veterinário / Humano Extra-bula)',
-      ordinanceOrLaw: 'Portaria SVS/MS nº 344/1998 (Não consta nas listas de controle especial A, B ou C1)',
+      category: 'Receituário simples (humano extra-bula / magistral veterinário)',
+      ordinanceOrLaw: 'Não integra a Portaria SVS/MS nº 344/1998 • Restrição na LVC pela Portaria Interministerial MS/MAPA nº 1.426/2008',
       retentionRequired: false,
       guidelines:
-        'Medicamento de venda sob prescrição médico-veterinária em receituário simples em uma via. Não requer Notificação de Receita nem Receita de Controle Especial pela Portaria 344/98 da Anvisa. No caso específico da Leishmaniose Visceral Canina no Brasil, a conduta clínica e prescritiva deve respeitar as normativas regulamentares conjuntas do MAPA e Ministério da Saúde relativas ao manejo terapêutico da LVC.',
+        'Para prevenção/dissolução de urolitíase por urato em cães, prescrever em receituário simples orientando dieta restrita em purinas. Para Leishmaniose Visceral Canina no Brasil, observar rigorosamente as restrições da Portaria Interministerial MS/MAPA nº 1.426/2008 e resoluções do CFMV quanto ao uso de fármacos não registrados no MAPA.',
     },
-
     speciesPeculiarities: [
       {
         species: 'dog',
-        title: 'Presença de Uricase, Mutação SLC2A9 e Alta Suscetibilidade à Xantinúria',
+        title: 'Mutação SLC2A9, cinética saturável e alto risco de xantinúria crônica',
         description:
-          'Diferentemente dos seres humanos que não possuem uricase funcional, os cães normais convertem eficientemente o urato em alantoína solúvel. No entanto, cães homozigotos para a mutação autossômica recessiva do transportador SLC2A9 (como Dálmatas e Bulldogs Ingleses) não conseguem transportar o urato para dentro do hepatócito, desenvolvendo hiperuricosúria severa e propensão a urólitos de urato. O alopurinol fecha a produção de urato, mas gera grande acúmulo de xantina. Estudos em cães demonstram que a xantinúria surge com tempo mediano de 150 dias de terapia (Oliveira et al. 2025) e acomete até 13% a 50% dos animais sob tratamento crônico para leishmaniose, podendo causar cálculos de xantina e nefrocalcinose.',
+          'Cães não Dálmatas convertem ácido úrico em alantoína altamente solúvel via uricase hepática (excreção urinária de 10–60 mg/dia). Já Dálmatas, Bulldogs Ingleses e outras raças homozigotas para a mutação SLC2A9 falham no transporte hepático/renal de urato e excretam 400–600 mg/dia de ácido úrico. Em ambos os casos, terapias longas ou doses > 30 mg/kg/dia de alopurinol geram xantinúria precoce (mediana 150 dias, já observada com 31 dias; incidência de 13,1% a ~50%), nefrocalcinose e cálculos de xantina radiotransparentes.',
         clinicalImplications:
-          'Obrigatoriedade absoluta de instituir dieta restrita em purinas e estímulo à diurese (densidade urinária <= 1,020). Urinálises seriadas e ultrassonografia do trato urinário a cada 2 a 3 meses são indispensáveis para segurança.',
+          'Confirmar ausência de shunt portossistêmico antes de tratar urato, associar dieta pobre em purinas + USG ≤ 1,020 + pH 7,0–7,5, usar suspensão 20 mg/mL abaixo de 5 kg e realizar urinálise + ultrassonografia abdominal seriadas.',
       },
       {
         species: 'cat',
-        title: 'Ausência de Evidências em Urato e Maior Suscetibilidade a Hipersensibilidade na Leishmaniose',
+        title: 'Lacuna farmacocinética, falha de evidência em urato e vulnerabilidade cutânea/renal',
         description:
-          'Em gatos, o Consenso Internacional ACVIM (2016) adverte formalmente que não existem evidências clínicas de eficácia da dissolução de urato com alopurinol; a presença de urato em felinos deve levantar imediata suspeita de shunt portossistêmico. Na leishmaniose felina (FeL), os dados de eficácia são limitados a séries de casos descritivos (LeishVet 2024), observando-se maior predisposição a reações cutâneas graves (dermatite crostosa em cabeça e pescoço) e nefrite intersticial por hipersensibilidade com injúria renal aguda.',
+          'Não existem estudos farmacocinéticos formais (F%, Cmax, Tmax, Vdss, t1/2) para alopurinol nem oxipurinol em gatos. Além disso, o consenso ACVIM (2016) e tratados de medicina interna contraindicam depender do alopurinol para dissolver cálculos de urato felinos (remoção física/cirúrgica é o padrão). Na leishmaniose felina (ABCD/LeishVet), relatos clínicos apontam ocorrência significativa de dermatite crostosa/esfoliativa facial e injúria renal aguda.',
         clinicalImplications:
-          'Não utilizar alopurinol como terapia padrão para urato felino. Na leishmaniose felina, monitorar quinzenalmente o perfil renal e dermatológico.',
+          'Nunca automatizar faixas empíricas amplas (como 5–50 mg/kg/dia) na rotina clínica; na leishmaniose felina empregar manipulação exata (20 mg/mL ou cápsula) e monitorar pele, creatinina, SDMA e ALT a cada 2–4 semanas.',
       },
     ],
-
     curiositiesAndHistory: [
-      'Sintetizado originalmente em 1956 por George Hitchings e Gertrude Elion no laboratório Burroughs Wellcome como uma tentativa de desenvolver um fármaco antineoplásico para potencializar a 6-mercaptopurina no tratamento de leucemias.',
-      'A observação de que o alopurinol inibia a degradação de purinas e reduzia drasticamente o ácido úrico levou ao seu redirecionamento histórico como o tratamento padrão-ouro mundial para a gota humana.',
-      'O mecanismo antileishmania foi descoberto na década de 1970 quando pesquisadores demonstraram que hemoflagelados dependem obrigatoriamente de purinas exógenas e incorporam o alopurinol em seu próprio RNA.',
-      'A constatação de que o alopurinol pode transformar urato em xantina representou um marco na urologia comparada: a xantina é um dos urólitos mais difíceis de dissolver clinicamente, exigindo prevenção rigorosa.',
-      'Gertrude Elion e George Hitchings receberam o Prêmio Nobel de Fisiologia ou Medicina em 1988 pelas descobertas de princípios fundamentais da farmacoterapia que incluíram o alopurinol, a azatioprina e o aciclovir.',
+      'Desenvolvido na década de 1950 por Gertrude Elion e George Hitchings originalmente com o propósito de potencializar a 6-mercaptopurina em leucemias ao inibir sua degradação — justamente o mecanismo hoje temido como interação fatal quando associados sem ajuste.',
+      'Na leishmaniose canina, é um dos exemplos mais clássicos de medicina translacional de biologia parasitária: explora a incapacidade evolutiva dos tripanossomatídeos de fabricar o anel purínico de novo.',
+      'A xantina possui solubilidade inferior à do ácido úrico em meio aquoso neutro/ácido; assim, um paciente que ingere carnes ou miúdos durante o alopurinol literalmente reveste seu cálculo de urato original com uma camada insolúvel de xantina.',
     ],
   },
 
   practicalWeightTable: {
     standardDoseText:
-      'Posologia orientativa de Alopurinol por faixa de peso e espécie para Leishmaniose Canina (dose LeishVet de 10 mg/kg q12h) e Dissolução de Urato Canino (dose ACVIM de 15 mg/kg q12h). Formulações magistrais veterinárias de 20 mg a 300 mg permitem precisão exata para portes pequenos e médios.',
+      'Referência prática na dose internacional padrão de 10 mg/kg VO q12h (LVC em associação leishmanicida). Para dissolução de urato canino (15 mg/kg q12h), multiplicar os valores por 1,5. ATENÇÃO: frações < 0,5 comprimido de 100 mg (*) são equivalências matemáticas inviáveis na rotina — utilizar suspensão manipulada 20 mg/mL ou cápsula magistral em cães ≤ 4–5 kg e gatos.',
     headers: [
-      'Faixa de Peso Corporal',
-      'Leishmaniose (10 mg/kg q12h)',
-      'Dissolução Urato (15 mg/kg q12h)',
-      'Apresentação Sugerida',
+      'Peso Corporal',
+      'Dose por Tomada (10 mg/kg)',
+      'Suspensão 20 mg/mL',
+      'Comprimido 100 mg',
+      'Comprimido 300 mg',
     ],
     rows: [
       {
-        weight: '2 kg (Miniatura)',
+        weight: '2 kg (Miniatura / Gato)',
         totalDose: '20 mg q12h',
-        col1: '30 mg q12h',
-        col2: 'Cápsula manipulada 20–30 mg ou 0,4–0,6 mL suspensão 50 mg/mL',
+        col1: '1,0 mL q12h',
+        col2: '0,2 comp* (usar 20 mg/mL)',
+        col3: 'Inaplicável',
       },
       {
-        weight: '5 kg (Pequeno)',
+        weight: '4 kg (Pequeno / Gato)',
+        totalDose: '40 mg q12h',
+        col1: '2,0 mL q12h',
+        col2: '0,4 comp* (usar 20 mg/mL)',
+        col3: 'Inaplicável',
+      },
+      {
+        weight: '5 kg',
         totalDose: '50 mg q12h',
-        col1: '75 mg q12h',
-        col2: 'Cápsula manipulada 50–75 mg ou 1/2 comp. humano de 100 mg (leish)',
+        col1: '2,5 mL q12h',
+        col2: '1/2 comp (50 mg)',
+        col3: 'Inaplicável',
       },
       {
-        weight: '10 kg (Pequeno/Médio)',
+        weight: '10 kg',
         totalDose: '100 mg q12h',
-        col1: '150 mg q12h',
-        col2: '1 comp. humano 100 mg (leish) ou cápsula manipulada 150 mg (urato)',
+        col1: '5,0 mL q12h',
+        col2: '1 comp (100 mg)',
+        col3: 'Inaplicável',
       },
       {
-        weight: '15 kg (Médio)',
+        weight: '15 kg',
         totalDose: '150 mg q12h',
-        col1: '225 mg q12h',
-        col2: '1 e 1/2 comp. humano 100 mg ou cápsula manipulada 150–225 mg',
+        col1: '7,5 mL q12h',
+        col2: '1 e 1/2 comp (150 mg)',
+        col3: '1/2 comp (150 mg)',
       },
       {
-        weight: '20 kg (Médio/Grande)',
+        weight: '20 kg',
         totalDose: '200 mg q12h',
-        col1: '300 mg q12h',
-        col2: '2 comp. humanos 100 mg ou 1 comp. 300 mg (dissolução urato)',
+        col1: '10,0 mL q12h',
+        col2: '2 comp (200 mg)',
+        col3: 'Usar 2× 100 mg',
       },
       {
-        weight: '30 kg (Grande)',
+        weight: '30 kg',
         totalDose: '300 mg q12h',
-        col1: '450 mg q12h',
-        col2: '1 comp. humano 300 mg (leish) ou cápsula manipulada 450 mg (urato)',
+        col1: '15,0 mL q12h',
+        col2: '3 comp (300 mg)',
+        col3: '1 comp (300 mg)',
       },
       {
-        weight: '40 kg (Gigante)',
+        weight: '40 kg',
         totalDose: '400 mg q12h',
-        col1: '600 mg q12h',
-        col2: '4 comp. 100 mg ou 2 comp. humanos 300 mg (dissolução urato)',
+        col1: '20,0 mL q12h',
+        col2: '4 comp (400 mg)',
+        col3: '1 comp 300 mg + 1 comp 100 mg',
       },
     ],
   },
 
+  genericBrandsNote:
+    'Zyloric® 100 mg / 300 mg (Aspen Pharma) e genéricos humanos (Medley, EMS, Eurofarma, Teuto) são apresentados em comprimidos sulcados de 100 mg e 300 mg sem uso veterinário em bula. Para pacientes ≤ 5 kg ou gatos, prescrever manipulação veterinária (cápsulas na dose exata ou suspensão oral 20 mg/mL preparada com Ora-Plus®/Ora-Sweet®, estável por 60 dias protegida da luz).',
+
+  monitoringParameters: [
+    'Urinálise completa com análise de sedimento urinário (pesquisa dirigida de cristais esféricos marrom-amarelados de xantina e avaliação de cristalúria de urato) após 30 dias de início e a cada 1–3 a 6 meses continuamente.',
+    'Ultrassonografia de trato urinário (rins, ureteres, vesícula urinária e uretra proximal): indispensável porque urólitos de xantina são radiotransparentes e a mineralização renal pode evoluir silenciosamente.',
+    'Densidade urinária (meta USG ≤ 1,020 em cães no manejo de urato) e pH urinário (alvo 7,0–7,5 para urato; lembrar que xantina precipita mesmo em urina neutra/alcalina se houver excesso de purinas).',
+    'Bioquímica renal seriada (creatinina, ureia, SDMA, fósforo) e relação proteína/creatinina urinária (UPC): essenciais tanto para monitorar acúmulo de oxipurinol na DRC quanto para acompanhar remissão da glomerulopatia na LVC.',
+    'Painel hepático (ALT, AST, fosfatase alcalina, bilirrubinas) e hemograma completo antes do início e a cada 3–6 meses (semanal caso haja coterapia inevitável com azatioprina).',
+    'Na LVC: acompanhamento clínico dermatológico/linfonodal, eletroforese de proteínas, proteínas de fase aguda (PCR, haptoglobina) e qPCR/sorologia quantitativa para vigiar recidivas ou resistência.',
+  ],
+
+  clientInformation: [
+    'Nunca interromper o uso por conta própria na leishmaniose: a melhora clínica da pele e dos pelos não significa cura definitiva do parasito, e pausas sem orientação favorecem recidiva rápida.',
+    'Dieta rigorosamente pobre em purinas é parte obrigatória do tratamento: NÃO oferecer carnes vermelhas, fígado, coração, rim, miúdos ou petiscos ricos em carne sem liberação veterinária, pois isso favorece a formação de pedras de xantina na bexiga e nos rins.',
+    'Oferecer água fresca em abundância em vários pontos da casa e priorizar ração úmida ou adição de água conforme orientação médica para manter a urina bem diluída.',
+    'Se houver vômito ou desconforto estomacal em jejum, administrar o medicamento junto com a refeição prescrita (em cães a alimentação não prejudica a absorção).',
+    'Buscar atendimento veterinário imediato diante de dificuldade ou esforço para urinar, gotas de sangue na urina, lambedura genital intensa, feridas com crostas na face/pescoço (especialmente em gatos) ou prostração súbita.',
+    'Comparecer a todos os exames de urina e ultrassons solicitados: cálculos de xantina não aparecem no raio-X comum e precisam ser detectados precocemente por ultrassom.',
+  ],
 
   clinicalStudiesCommented: [
     {
       title: 'Bioavailability and pharmacokinetics of intravenously and orally administered allopurinol in healthy beagles',
       authorsYear: 'Bartges JW, Osborne CA, Felice LJ, et al. (1997)',
       journal: 'American Journal of Veterinary Research (AJVR)',
-      studyDesign: 'Estudo farmacocinético experimental cruzado prospectivo',
-      sampleSize: '6 cães Beagles adultos sadios avaliados com doses IV e orais',
-      mainFindings: 'Demonstrou boa absorção oral do alopurinol, ausência de interferência clinicamente relevante do alimento sobre a AUC e eliminação não linear com existência de um platô/limiar farmacodinâmico acima do qual aumentos de dose não geram redução adicional na formação de urato.',
-      clinicalTakeaway: 'Fundamenta a administração com alimentos para diminuir êmese e comprova que doses suprafisiológicas de alopurinol não trazem benefício clínico proporcional, aumentando apenas a toxicidade.',
-      referenceId: 'ref-bartges-pk-1997',
+      studyDesign: 'Ensaio farmacocinético experimental cruzado (IV e VO em jejum vs. pós-prandial; 10 e 30 mg/kg)',
+      sampleSize: '6 cães Beagles adultos sadios',
+      mainFindings:
+        'Biodisponibilidade oral de ~68–70%, Tmax de ~1,3–2 h, Cmax de ~0,87 mg/dL (= 8,7 µg/mL) a 10 mg/kg VO, Vdss de ~0,88–0,90 L/kg e ausência de impacto significativo do alimento sobre a AUC. Demonstrou cinética de eliminação não linear e existência de platô farmacodinâmico na supressão de ácido úrico em doses maiores.',
+      clinicalTakeaway:
+        'Sustenta a administração oral com alimento para reduzir náusea e comprova que ultrapassar ~30 mg/kg/dia aumenta toxicidade urinária sem ganho terapêutico proporcional.',
+      referenceId: 'ref-bartges-1997',
     },
     {
       title: 'A randomised, blinded, placebo-controlled clinical trial with allopurinol in canine leishmaniosis',
       authorsYear: 'Koutinas AF, Saridomichelakis MN, Mylonakis ME, et al. (2001)',
       journal: 'Veterinary Parasitology',
-      studyDesign: 'Ensaio clínico prospectivo, randomizado, duplo-cego e controlado por placebo (RCT Nível I)',
-      sampleSize: '45 cães com leishmaniose clínica (37 tratados com alopurinol 10 mg/kg q12h e 8 com placebo)',
-      mainFindings: 'O alopurinol em monoterapia por 4 meses promoveu melhora clínica expressiva, redução significativa dos escores de doença e queda da carga de amastigotas teciduais; contudo, a totalidade dos cães tratados permaneceu com PCR positiva em aspirado de medula óssea ao final do ensaio.',
-      clinicalTakeaway: 'Evidência inequívoca de Nível I de que o alopurinol é um fármaco leishmaniostático com potente ação clínica e laboratorial, mas incapaz de atingir cura parasitológica estéril isoladamente.',
-      referenceId: 'ref-koutinas-allopurinol-2001',
+      studyDesign: 'Ensaio clínico randomizado duplo-cego controlado por placebo (RCT)',
+      sampleSize: '45 cães naturalmente infectados por L. infantum (37 tratados com 10 mg/kg q12h e 8 placebo)',
+      mainFindings:
+        'Promoveu redução expressiva dos escores clínicos e da carga tecidual parasitária ao longo de 4 meses, mas todos os animais tratados persistiram positivos na PCR de aspirado de medula óssea.',
+      clinicalTakeaway:
+        'Confirma em nível I o caráter leishmaniostático (e não esterilizante) do alopurinol, justificando sua combinação a leishmanicidas nos consensos atuais.',
+      referenceId: 'ref-koutinas-2001',
     },
     {
       title: 'Multicentric, controlled clinical study to evaluate effectiveness and safety of miltefosine and allopurinol for canine leishmaniosis',
       authorsYear: 'Miró G, Oliva G, Cruz I, et al. (2009)',
       journal: 'Veterinary Dermatology',
       studyDesign: 'Ensaio clínico prospectivo multicêntrico controlado',
-      sampleSize: 'Cães com leishmaniose natural em múltiplos centros europeus',
-      mainFindings: 'Comprovou que a combinação de miltefosina oral (2 mg/kg q24h por 28 dias) associada a alopurinol (10 mg/kg q12h por 7 meses) proporcionou redução marcante dos escores clínicos e da carga parasitária, exibindo eficácia e tolerabilidade estatisticamente comparáveis ao protocolo de antimoniato de meglumina + alopurinol.',
-      clinicalTakeaway: 'Fornece validação científica para o protocolo combinado miltefosina + alopurinol consagrado nas diretrizes internacionais do LeishVet.',
+      sampleSize: 'Cães com LVC acompanhados em múltiplos centros europeus',
+      mainFindings:
+        'A combinação miltefosina (2 mg/kg VO q24h por 28 dias) + alopurinol (10 mg/kg VO q12h por 7 meses) reduziu escores clínicos e densidade parasitária com eficácia e segurança comparáveis ao protocolo clássico de antimoniato de meglumina + alopurinol.',
+      clinicalTakeaway:
+        'Consolida a dose de 10 mg/kg VO q12h como espinha dorsal dos protocolos leishmaniostáticos combinados.',
       referenceId: 'ref-miro-miltefosine-2009',
+    },
+    {
+      title: 'Long-term follow-up of dogs with leishmaniosis treated with meglumine antimoniate plus allopurinol versus miltefosine plus allopurinol',
+      authorsYear: 'Manna L, Corso R, Galiero G, et al. (2015)',
+      journal: 'Parasites & Vectors',
+      studyDesign: 'Coorte clínica de acompanhamento longitudinal de longo prazo',
+      sampleSize: 'Cães tratados com antimonial + alopurinol versus miltefosina + alopurinol',
+      mainFindings:
+        'Ambas as associações melhoraram significativamente os escores clínicos e reduziram a carga parasitária por qPCR, com melhor sustentação de baixa carga parasitária em longo prazo no esquema com antimoniato + alopurinol.',
+      clinicalTakeaway:
+        'Reforça que o sucesso longitudinal depende de leishmanicida inicial associado à manutenção com alopurinol e vigilância por qPCR/clínica.',
+      referenceId: 'ref-manna-2015',
     },
     {
       title: 'Adverse urinary effects of allopurinol in dogs with leishmaniasis',
       authorsYear: 'Torres M, Pastor J, Roura X, et al. (2016)',
       journal: 'Journal of Small Animal Practice (JSAP)',
-      studyDesign: 'Estudo de coorte clínico observacional',
-      sampleSize: '320 cães portadores de leishmaniose visceral sob terapia crônica com alopurinol',
-      mainFindings: 'Identificou eventos adversos urinários em 13% dos cães (42 animais), todos apresentando cristalúria por xantina, dos quais 31% exibiam urolitíase concomitante a nefrocalcinose/mineralização renal, 26,2% mineralização renal e 21,4% urólitos de xantina puros.',
-      clinicalTakeaway: 'Estudo seminal de farmacovigilância que comprova a alta relevância clínica da xantinúria como efeito adverso frequente do alopurinol, demandando monitoramento ultrassonográfico e urinário preventivo.',
-      referenceId: 'ref-torres-xanthinuria-2016',
-    },
-    {
-      title: 'Characterisation and evaluation of predisposing factors for the development of xanthinuria in dogs with leishmaniosis under allopurinol therapy',
-      authorsYear: 'Oliveira BC, Silva AC, Fontes MM, et al. (2025)',
-      journal: 'Parasites & Vectors',
-      studyDesign: 'Estudo multicêntrico retrospectivo controlado pareado 1:1',
-      sampleSize: '90 cães com leishmaniose sob alopurinol (45 com xantinúria e 45 controles pareados sem xantinúria)',
-      mainFindings: 'O tempo mediano para o surgimento de xantinúria foi de 150 dias de terapia (amplitude interquartil de 31 a 455 dias). Os cães que desenvolveram xantinúria eram significativamente mais jovens (mediana de 4 anos versus 6 anos nos controles; P = 0,002).',
-      clinicalTakeaway: 'Demonstra que a precipitação de xantina pode ocorrer precocemente nos primeiros meses de tratamento, reforçando que a urinálise seriada deve ser realizada precocemente e repetida de forma contínua.',
-      referenceId: 'ref-oliveira-xanthinuria-2025',
+      studyDesign: 'Estudo retrospectivo de farmacovigilância clínica',
+      sampleSize: '320 cães com LVC tratados cronicamente com alopurinol',
+      mainFindings:
+        '42 de 320 cães (13,1%) apresentaram eventos adversos urinários associados à xantinúria: 31% tiveram concomitantemente urolitíase e mineralização renal, 26,2% mineralização renal isolada, 21,4% urolitíase por xantina isolada e 21,4% cristalúria isolada.',
+      clinicalTakeaway:
+        'Quantifica o risco concreto de nefrocalcinose e cálculos de xantina sob terapia prolongada, tornando inegociáveis a dieta pobre em purinas e a ultrassonografia periódica.',
+      referenceId: 'ref-torres-2016',
     },
     {
       title: 'Allopurinol Resistance in Leishmania infantum from Dogs with Disease Relapse',
-      authorsYear: 'Yasur-Landau D, Jaffe CL, David L, Baneth G. (2016)',
+      authorsYear: 'Yasur-Landau D, Jaffe CL, David L, Baneth G (2016)',
       journal: 'PLoS Neglected Tropical Diseases',
-      studyDesign: 'Estudo parasitológico e fenotípico experimental in vitro e ex vivo',
-      sampleSize: 'Isolados clínicos de Leishmania infantum obtidos de cães antes do tratamento e após recaída clínica',
-      mainFindings: 'Isolados de cães que apresentaram recidiva clínica durante a terapia crônica exibiram sensibilidade significativamente reduzida ao alopurinol, com concentração inibitória média (IC50) de 996 mcg/mL em comparação a 200 mcg/mL antes do tratamento e 268 mcg/mL em animais responsivos (P = 0,01).',
-      clinicalTakeaway: 'Comprova a seleção de resistência parasitária adquirida ao alopurinol em cães submetidos a ciclos prolongados repetidos, alertando contra a manutenção indefinida sem critérios de descontinuação.',
-      referenceId: 'ref-yasur-landau-resistance-2016',
+      studyDesign: 'Estudo parasitológico comparativo ex vivo / in vitro',
+      sampleSize: 'Isolados clínicos de L. infantum de cães recidivantes vs. pré-tratamento e responsivos',
+      mainFindings:
+        'Isolados obtidos após recaída sob terapia prolongada apresentaram aumento acentuado da IC50 ao alopurinol (~996 µg/mL vs. ~200 µg/mL pré-tratamento e ~268 µg/mL em responsivos; P = 0,01), associado à redução na captação/metabolismo de purinas e alterações no gene da S-adenosilmetionina sintetase em estudos subsequentes (2017).',
+      clinicalTakeaway:
+        'Demonstra seleção real de resistência parasitária e fundamenta a proibição da monoterapia contínua indiscriminada pelos consensos atuais.',
+      referenceId: 'ref-yasur-landau-2016',
+    },
+    {
+      title: 'Impact of allopurinol treatment on canine leishmaniosis: clinical, parasitological and urinary follow-up',
+      authorsYear: 'Kaempfle M, Hartmann K, et al. (2023) & Oliveira BC, Silva AC, et al. (2025)',
+      journal: 'Parasites & Vectors / Medicina Interna Veterinária',
+      studyDesign: 'Estudos multicêntricos recentes de acompanhamento clínico e caso-controle pareado (90 cães em 2025)',
+      sampleSize: 'Coortes europeias (2023) e 90 cães pareados 1:1 (45 com xantinúria vs. 45 controles, 2025)',
+      mainFindings:
+        'Confirmaram a eficácia do alopurinol como parte de protocolos combinados e revelaram mediana de 150 dias até o aparecimento de xantinúria (amplitude interquartil 31–455 dias), com maior frequência em cães mais jovens (mediana 4 vs. 6 anos; P = 0,002).',
+      clinicalTakeaway:
+        'Comprova que a xantinúria pode instalar-se já nas primeiras semanas/meses de uso, exigindo urinálise precoce no 1º mês além do seguimento trimestral.',
+      referenceId: 'ref-oliveira-2025',
+    },
+  ],
+
+  references: [
+    {
+      id: 'ref-plumb-10',
+      citationText: 'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. Wiley-Blackwell; 2023. Monografia: Allopurinol, pp. 37–39 (PDF pp. 64–66).',
+      sourceType: 'Compêndio Farmacológico Veterinário',
+      notes: 'Corroboração de propriedades físico-químicas, suspensão oral 20 mg/mL em Ora-Plus®/Ora-Sweet®, doses em cães, gatos, aves e répteis, cautelas renais e interações.',
+      evidenceLevel: 'Referência terciária padrão-ouro',
+    },
+    {
+      id: 'ref-bsava-10',
+      citationText: 'British Small Animal Veterinary Association. BSAVA Small Animal Formulary, Part A: Canine and Feline. 10th ed. BSAVA; 2020. Monografia: Allopurinol, pp. 11–12.',
+      sourceType: 'Formulário Veterinário Internacional',
+      notes: 'Corroboração de doses de dissolução/prevenção de ácido úrico em cães (10 mg/kg q8h ou 15 mg/kg q12h), leishmaniose canina e experiência felina limitada.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-ettinger-9e',
+      citationText: 'Côté E, Ettinger SJ, Feldman EC. Ettinger’s Textbook of Veterinary Internal Medicine. 9th ed. Elsevier; 2024. Sec. XI (Leishmaniasis, p. 1032 / PDF p. 1091), Sec. XX (Hyperxanthinuria, p. 2122 / PDF p. 2274) e Cap. 308–309 (Canine and Feline Lower Urinary Tract Urolithiasis, pp. 2149–2163 / PDF pp. 2301–2315).',
+      sourceType: 'Tratado de Medicina Interna Veterinária',
+      notes: 'Base de dissolução em HHU canina (30–40%, mediana 1 mês), insolubilidade da xantina em qualquer pH urinário, radiolucência em raios X e contraindicação como terapia primária em felinos com urato.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-greene-5e',
+      citationText: 'Sykes JE, Papich MG. Greene’s Infectious Diseases of the Dog and Cat. 5th ed. Elsevier; 2023. Cap. 12: Antiprotozoal Drugs — Antileishmanial Antiprotozoal Drugs (Allopurinol), PDF pp. 542–544.',
+      sourceType: 'Tratado de Doenças Infecciosas Veterinárias',
+      notes: 'Corroboração da via de resistência (redução de transportadores de purina e cópias do gene S-adenosilmetionina sintetase) e impacto clínico renal positivo na LVC sob monitoramento.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-bsava-nephro-3e',
+      citationText: 'Elliott J, Grauer GF, Westropp JL. BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. BSAVA; 2017. Cap. 6, 14 e 26 (pp. 77, 173–174, 308–310).',
+      sourceType: 'Manual de Nefrologia e Urologia Veterinária',
+      notes: 'Genética SLC2A9 c.616G>T, excreção urinária comparada de ácido úrico em Dálmatas (400–600 vs. 10–60 mg/dia) e algoritmos de prevenção de urato.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-nutrition-2e',
+      citationText: 'Fascetti AJ, Delaney SJ, Larsen JA, Villaverde C. Applied Veterinary Clinical Nutrition. 2nd ed. Wiley-Blackwell; 2023. Cap. 16: Nutritional Management of Lower Urinary Tract Disease (Purines, Urate and Xanthine), pp. 426–428 (PDF pp. 454–456).',
+      sourceType: 'Tratado de Nutrição Clínica Veterinária',
+      notes: 'Alvo nutricional (35–50 g proteína/Mcal com fontes vegetais/ovo), revestimento de urato por xantina na falha dietética e protocolo de suspensão + redução para 25–35% após cálculos de xantina.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-acvim-uroliths-2016',
+      citationText: 'Lulich JP, Berent AC, Adams LG, Westropp JL, Bartges JW, Osborne CA. ACVIM Small Animal Consensus Recommendations on the Treatment and Prevention of Uroliths in Dogs and Cats. J Vet Intern Med. 2016;30(5):1564–1574.',
+      sourceType: 'Diretriz de Consenso Internacional ACVIM',
+      doi: '10.1111/jvim.14559',
+      url: 'https://doi.org/10.1111/jvim.14559',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-wavd-leish-2025',
+      citationText: 'World Association for Veterinary Dermatology (WAVD). Clinical Consensus Guidelines for the Diagnosis and Treatment of Canine Leishmaniosis. 2025.',
+      sourceType: 'Diretriz Internacional WAVD',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-clwg-leish-2026',
+      citationText: 'Canine Leishmaniosis Working Group (CLWG). Updated International Recommendations on Canine Leishmaniosis Classification and Therapy. 2026.',
+      sourceType: 'Consenso Internacional CLWG',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-leishvet-canine-2025',
+      citationText: 'LeishVet Group. Practical Management of Canine Leishmaniosis. Guidelines Updated 2025.',
+      sourceType: 'Diretriz Internacional LeishVet',
+      url: 'https://www.leishvet.org/wp-content/uploads/2025/09/FS-LeishVetC.pdf',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-leishvet-feline-2024',
+      citationText: 'LeishVet Group. Practical Management of Feline Leishmaniosis. Guidelines Updated 2024.',
+      sourceType: 'Diretriz Internacional LeishVet Felina',
+      url: 'https://www.leishvet.org/wp-content/uploads/2024/04/FS-ALIVE24-feline.pdf',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-abcd-fel-2024',
+      citationText: 'European Advisory Board on Cat Diseases (ABCD). Guideline for Leishmaniosis in Cats. 2024/2026 update.',
+      sourceType: 'Diretriz Europeia ABCD Felina',
+      evidenceLevel: 'Consenso Internacional de Especialistas',
+    },
+    {
+      id: 'ref-portaria-1426-2008',
+      citationText: 'Brasil. Ministério da Saúde / Ministério da Agricultura, Pecuária e Abastecimento. Portaria Interministerial nº 1.426, de 11 de julho de 2008 (proibição do tratamento de LVC com produtos humanos ou não registrados no MAPA) e notas técnicas do CFMV / Brasileish.',
+      sourceType: 'Normativa Sanitária Brasileira',
+      evidenceLevel: 'Legislação sanitária vigente no Brasil',
+    },
+    {
+      id: 'ref-bartges-1997',
+      citationText: 'Bartges JW, Osborne CA, Felice LJ, et al. Bioavailability and pharmacokinetics of intravenously and orally administered allopurinol in healthy beagles. Am J Vet Res. 1997;58(5):504–510.',
+      sourceType: 'Estudo farmacocinético cruzado',
+      pmid: '9140559',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/9140559/',
+      evidenceLevel: 'Nível I — Farmacocinética experimental controlada',
+    },
+    {
+      id: 'ref-koutinas-2001',
+      citationText: 'Koutinas AF, Saridomichelakis MN, Mylonakis ME, et al. A randomised, blinded, placebo-controlled clinical trial with allopurinol in canine leishmaniosis. Vet Parasitol. 2001;98(4):247–261.',
+      sourceType: 'Ensaio clínico randomizado duplo-cego controlado por placebo',
+      doi: '10.1016/s0304-4017(01)00399-5',
+      pmid: '11423183',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/11423183/',
+      evidenceLevel: 'Nível I — Ensaio clínico randomizado',
+    },
+    {
+      id: 'ref-miro-miltefosine-2009',
+      citationText: 'Miró G, Oliva G, Cruz I, et al. Multicentric, controlled clinical study to evaluate effectiveness and safety of miltefosine and allopurinol for canine leishmaniosis. Vet Dermatol. 2009;20(5-6):397–404.',
+      sourceType: 'Ensaio clínico multicêntrico controlado',
+      doi: '10.1111/j.1365-3164.2009.00824.x',
+      pmid: '20178476',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/20178476/',
+      evidenceLevel: 'Nível I — Estudo multicêntrico controlado',
+    },
+    {
+      id: 'ref-manna-2015',
+      citationText: 'Manna L, Corso R, Galiero G, et al. Long-term follow-up of dogs with leishmaniosis treated with meglumine antimoniate plus allopurinol versus miltefosine plus allopurinol. Parasit Vectors. 2015;8:289.',
+      sourceType: 'Estudo longitudinal comparativo',
+      doi: '10.1186/s13071-015-0896-0',
+      url: 'https://doi.org/10.1186/s13071-015-0896-0',
+      evidenceLevel: 'Nível II — Coorte clínica longitudinal',
+    },
+    {
+      id: 'ref-torres-2016',
+      citationText: 'Torres M, Pastor J, Roura X, et al. Adverse urinary effects of allopurinol in dogs with leishmaniasis. J Small Anim Pract. 2016;57(6):299–304.',
+      sourceType: 'Estudo de coorte de farmacovigilância',
+      doi: '10.1111/jsap.12484',
+      pmid: '27112522',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/27112522/',
+      evidenceLevel: 'Nível II — Farmacovigilância clínica',
+    },
+    {
+      id: 'ref-yasur-landau-2016',
+      citationText: 'Yasur-Landau D, Jaffe CL, David L, Baneth G. Allopurinol Resistance in Leishmania infantum from Dogs with Disease Relapse. PLoS Negl Trop Dis. 2016;10(1):e0004341.',
+      sourceType: 'Estudo parasitológico de resistência',
+      doi: '10.1371/journal.pntd.0004341',
+      pmid: '26735519',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/26735519/',
+      evidenceLevel: 'Estudo experimental ex vivo / in vitro',
+    },
+    {
+      id: 'ref-oliveira-2025',
+      citationText: 'Oliveira BC, Silva AC, Fontes MM, et al. Characterisation and evaluation of predisposing factors for the development of xanthinuria in dogs with leishmaniosis under allopurinol therapy. Parasit Vectors. 2025;18(1):98.',
+      sourceType: 'Estudo multicêntrico retrospectivo pareado',
+      doi: '10.1186/s13071-025-06731-0',
+      pmid: '40065388',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/40065388/',
+      evidenceLevel: 'Nível II — Caso-controle pareado multicêntrico',
+    },
+    {
+      id: 'ref-zyloric-bula',
+      citationText: 'Aspen Pharma Indústria Farmacêutica Ltda / Medley Farmacêutica Ltda. Bulas técnicas de alopurinol 100 mg e 300 mg comprimidos (Zyloric® e genérico). Anvisa.',
+      sourceType: 'Bula oficial registrada na ANVISA',
+      url: 'https://consultas.anvisa.gov.br/#/medicamentos/',
+      evidenceLevel: 'Documento técnico regulatório',
     },
   ],
 
   relatedDiseaseSlugs: [
     'leishmaniose-visceral-canina',
-    'doenca-renal-cronica-caes-gatos',
-    'doencas-trato-urinario-inferior-felino-dtuif',
+    'leishmaniose-caes-gatos',
+    'doenca-renal-cronica-canina',
+    'doenca-renal-cronica-felina',
+    'lesao-renal-aguda-canina',
+    'lesao-renal-aguda-felina',
   ],
 };

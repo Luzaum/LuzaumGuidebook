@@ -1,0 +1,89 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - button "Visão Geral" [ref=e6] [cursor=pointer]
+      - button "Plano diagnóstico" [ref=e11] [cursor=pointer]
+      - button "Plano de tratamento" [active] [ref=e15] [cursor=pointer]
+    - generic [ref=e79]:
+      - paragraph [ref=e80]: Plano de tratamento
+      - list "Plano de tratamento" [ref=e81]:
+        - listitem [ref=e82]:
+          - generic [ref=e83]: "1"
+          - generic [ref=e87]:
+            - heading "Estabilizar crise aguda" [level=5] [ref=e89]
+            - paragraph [ref=e90]: Oxigênio suplementar, manuseio mínimo, sedação leve se estresse piorar broncoespasmo. Nenhum exame estressante antes da estabilização (Trzil & Reinero, 2014).
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - paragraph [ref=e93]: Dose
+                - paragraph [ref=e97]: Terbutalina 0,01 mg/kg SC/IM (repetir conforme resposta); dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM (dose única ou repetir em 24 h). Oxigênio por gaiola ou máscara conforme tolerância.
+              - generic [ref=e98]:
+                - paragraph [ref=e99]: Duração
+                - paragraph [ref=e103]: Até FR e esforço respiratório normalizarem — tipicamente horas, não dias.
+              - generic [ref=e104]:
+                - paragraph [ref=e105]: Reavaliar
+                - paragraph [ref=e111]: Reavaliar a cada 30–60 min na emergência; FR em repouso alvo <30–40 irpm quando estável.
+        - listitem [ref=e112]:
+          - generic [ref=e113]: "2"
+          - generic [ref=e117]:
+            - heading "Indução anti-inflamatória sistêmica" [level=5] [ref=e119]
+            - paragraph [ref=e120]: Prednisolona oral (preferir sobre prednisona em gatos). Dose anti-inflamatória para leve/moderado; imunossupressora (até 2–4 mg/kg/dia divididos) se crise grave ou refratária.
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - paragraph [ref=e123]: Dose
+                - paragraph [ref=e127]: "Leve/moderado: prednisolona 1 mg/kg VO q12h. Grave: 2 mg/kg VO q12h. Protocolo de transição típico: 1 mg/kg q12h × 5 dias → 1 mg/kg q24h × 5 dias → desmame gradual."
+              - generic [ref=e128]:
+                - paragraph [ref=e129]: Duração
+                - paragraph [ref=e133]: Indução 5–14 dias; desmame por semanas se uso prolongado ou dose imunossupressora.
+              - generic [ref=e134]:
+                - paragraph [ref=e135]: Reavaliar
+                - paragraph [ref=e141]: Revisão clínica em 7–14 dias; reduzir 25–50% a cada 5–7 dias somente se assintomático.
+        - listitem [ref=e142]:
+          - generic [ref=e143]: "3"
+          - generic [ref=e147]:
+            - heading "Manutenção inalatória" [level=5] [ref=e149]
+            - paragraph [ref=e150]: Fluticasona ou budesonida via câmara espaçadora felina (AeroKat ou equivalente). Manter prednisolona oral sobreposta na transição para evitar rebote clínico (Galler et al., 2013).
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - paragraph [ref=e153]: Dose
+                - paragraph [ref=e157]: "Fluticasona propionato: 125 mcg/gato inalatório q12h (leve/moderado) ou 250 mcg/gato q12h (moderado/grave). Budesonida: 400 mcg/gato inalatório q12h. 7–10 respirações completas por jato com máscara vedada."
+              - generic [ref=e158]:
+                - paragraph [ref=e159]: Duração
+                - paragraph [ref=e163]: Contínuo na manutenção; sobrepor VO por 1–2 semanas ao iniciar inalatório. Efeito pleno da fluticasona em 7–10 dias.
+              - generic [ref=e164]:
+                - paragraph [ref=e165]: Reavaliar
+                - paragraph [ref=e171]: Reavaliar em 2–4 semanas; tentar menor dose eficaz de corticoide sistêmico após controle inalatório.
+        - listitem [ref=e172]:
+          - generic [ref=e173]: "4"
+          - generic [ref=e177]:
+            - heading "Broncodilatador de resgate" [level=5] [ref=e179]
+            - paragraph [ref=e180]: Adjuvante para broncoespasmo agudo em casa — nunca monoterapia crônica. Sempre com anti-inflamatório de base ativo (Trzil & Reinero, 2014).
+            - generic [ref=e181]:
+              - generic [ref=e182]:
+                - paragraph [ref=e183]: Dose
+                - paragraph [ref=e187]: "Salbutamol/albuterol: 100 mcg/gato (1 jato) inalatório PRN; repetir 1× após 20–30 min se necessário. Terbutalina oral adjuvante: 0,01–0,02 mg/kg VO q12h em casos selecionados."
+              - generic [ref=e188]:
+                - paragraph [ref=e189]: Duração
+                - paragraph [ref=e193]: "Salbutamol: uso pontual na crise. Terbutalina oral: curto prazo enquanto ajusta corticoide."
+              - generic [ref=e194]:
+                - paragraph [ref=e195]: Reavaliar
+                - paragraph [ref=e201]: Uso de salbutamol >2–3×/semana indica controle inadequado — intensificar anti-inflamatório.
+        - listitem [ref=e202]:
+          - generic [ref=e203]: "5"
+          - generic [ref=e207]:
+            - heading "Controle ambiental" [level=5] [ref=e209]
+            - paragraph [ref=e210]: Areia sanitária sem perfume e de baixa poeira; eliminar fumaça, incenso, aerossóis e perfumes; purificador HEPA quando aplicável; controle de peso (Reinero, 2019).
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - paragraph [ref=e213]: Duração
+                - paragraph [ref=e217]: Permanente — medida de custo-benefício alto e subutilizada.
+              - generic [ref=e218]:
+                - paragraph [ref=e219]: Reavaliar
+                - paragraph [ref=e225]: Registrar crises, tosse e uso de resgate no diário do tutor a cada revisão.
+        - listitem [ref=e226]:
+          - generic [ref=e227]: "6"
+          - generic [ref=e230]:
+            - heading "Reavaliação e casos refratários" [level=5] [ref=e232]
+            - paragraph [ref=e233]: Buscar menor dose eficaz de corticoide; confirmar técnica inalatória com o tutor. Broncoscopia/BAL de controle se persistência de sinais apesar de adesão (Reinero, 2019).
+            - generic [ref=e235]:
+              - paragraph [ref=e236]: Reavaliar
+              - paragraph [ref=e242]: Consultas a cada 4–8 semanas na manutenção; FR noturna em repouso semanalmente em casa (alvo <30 irpm).

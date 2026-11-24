@@ -3,7 +3,7 @@ import { CommercialMedicationProduct } from '../types/commercialMedication';
 const SOURCE_DATE = '2026-08-06';
 
 const KI_SPOROTRICHOSIS_CONTEXT =
-  'Antifúngico histórico e imunomodulador por via oral; mecanismo provável envolve modulação da resposta granulomatosa, não ação antifúngica direta como azóis. Em esporotricose felina, associa-se ao itraconazol em casos disseminados, refratários, nasais ou recorrentes; monoterapia tem eficácia inferior. CRMV-PR 2024: 2,5–5 mg/kg/dia VO em associação; Plumb\'s: iniciar 2,5 mg/kg/dia e titular até 20 mg/kg/dia conforme tolerância.';
+  'Antifúngico histórico e imunomodulador por via oral; mecanismo provável envolve modulação da resposta granulomatosa, não ação antifúngica direta como azóis. Em esporotricose felina, associa-se ao itraconazol em casos disseminados, refratários, nasais ou recorrentes; monoterapia tem eficácia inferior. CRMV-PR 2024 orienta 2,5–5 mg/kg/dia VO em associação; em protocolos individuais, inicia-se em 2,5 mg/kg/dia com titulação até 20 mg/kg/dia conforme tolerância.';
 
 const KI_CAT_DOSAGE = {
   labelDose:
@@ -41,7 +41,7 @@ const KI_HUMAN_SYRUP_ALERT =
   'Xarope humano 2% (20 mg/mL): uso veterinário extra-label. Confirmar excipientes (xilitol, açúcar). Não usar dose da bula humana; calcular sempre em mg/kg. Volume 20× maior que solução a 40% para a mesma dose.';
 
 const KI_INJECTABLE_ALERT =
-  'PRODUTO INJETÁVEL — não converter automaticamente para terapia oral de esporotricose. Plumb\'s contraindica administração intramuscular de iodetos. Decisão parenteral exclusivamente veterinária; não equivalente às cápsulas ou soluções orais.';
+  'PRODUTO INJETÁVEL — não converter automaticamente para terapia oral de esporotricose. A administração intramuscular de iodetos é contraindicada. Decisão parenteral exclusivamente veterinária; não equivalente às cápsulas ou soluções orais.';
 
 const KI_LAQFA_ALERT =
   'Comprimido humano LAQFA 130 mg: indicação de profilaxia pós-exposição a iodo radioativo, não esporotricose. Concentração fixa dificulta titulação em gatos. Não cadastrar como equivalente terapêutico veterinário para micose.';
@@ -114,7 +114,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     clinicalUse:
       'Esporotricose felina (associação ao itraconazol ou monoterapia selecionada), titulação por peso em cápsulas personalizadas.',
     prescriptionExample:
-      'Iodeto de potássio ___ mg — cápsulas: administrar 2,5 mg/kg VO q24h junto ao alimento; titular conforme resposta e tolerância, até máximo de 20 mg/kg/dia em gatos.',
+      'Iodeto de potássio ___ mg — cápsulas: iniciar 2,5 mg/kg VO q24h junto ao alimento; aumentar em incrementos de 2,5 mg/kg a cada 7 a 14 dias se boa tolerância clínica, até máximo de 20 mg/kg/dia em gatos.',
     safetyAlert: `${KI_CONCENTRATION_ALERT} ${KI_COMPOUNDING_ALERT} ${KI_IODISM_ALERT} ${KI_RENAL_POTASSIUM_ALERT}`,
     price: {
       averageLabel: '10 mg/60 caps: R$ 61,60 • 25 mg/60 caps: R$ 70,70 • 50 mg/60 caps: R$ 86,00',
@@ -182,7 +182,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
       'Iodeto de potássio 400 mg/mL — solução oral: administrar ___ mL VO q24h, correspondendo a ___ mg/kg, junto ao alimento. Fornecer seringa graduada.',
     safetyAlert: `${KI_CONCENTRATION_ALERT} ALTA CONCENTRAÇÃO — 400 mg/mL. Confirmar cálculo e seringa oral. ${KI_IODISM_ALERT} ${KI_RENAL_POTASSIUM_ALERT}`,
     extraDosageNotes: [
-      'DrogaVET (solução 400 mg/mL): cães 40 mg/kg q8–12h; gatos 20 mg/kg q12–24h ou faixa Plumb\'s 2,5–20 mg/kg q24h.',
+      'DrogaVET (solução 400 mg/mL): cães 40 mg/kg q8–12h; gatos 20 mg/kg q12–24h ou faixa clínica de 2,5–20 mg/kg q24h.',
     ],
     price: {
       averageLabel: 'Variável',
@@ -318,12 +318,12 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     dosageGuidance: {
       labelDose: 'Cadastro comercial: 0,2–2 mL/animal IM ou IV — decisão veterinária exclusiva.',
       notes: [
-        'Plumb\'s: iodetos não devem ser administrados por via intramuscular.',
+        'Iodetos não devem ser administrados por via intramuscular.',
         'Não usar como equivalente automático às cápsulas ou soluções orais para esporotricose.',
       ],
     },
     plumbsContext:
-      'Formulação parenteral distinta; Plumb\'s contraindica IM de iodetos e exige cautela em aplicação IV lenta.',
+      'Formulação parenteral distinta; a via IM é contraindicada para iodetos e a aplicação IV lenta exige cautela.',
     clinicalUse:
       'Produto injetável veterinário cadastrado; não substituto automático da terapia oral de esporotricose em pequenos animais.',
     reassessment: 'Monitoramento intensivo se uso parenteral for considerado; preferir formulações orais para esporotricose.',

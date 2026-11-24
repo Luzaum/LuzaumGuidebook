@@ -219,7 +219,7 @@ export const diazepamMedicationRecord: MedicationRecord = {
       mechanismOfAction:
         'Contrapõe a hipertonia e os tremores musculares característicos da cetamina através de relaxamento medular central; proporciona potente efeito poupador de indutor e estabilidade cardiovascular.',
       clinicalRationale:
-        'Combinação consagrada em anestesiologia veterinária (Grimm et al. Lumb & Jones). Evitar em animais jovens e hígidos em monoterapia devido ao risco de excitação paradoxal e desinibição agressiva.',
+        'Combinação consagrada em anestesiologia veterinária. Evitar em animais jovens e hígidos em monoterapia devido ao risco de excitação paradoxal e desinibição agressiva.',
       monitoring:
         'Grau de relaxamento da mandíbula, facilidade de intubação orotraqueal, frequência respiratória, pressão arterial média e eletrocardiograma.',
       referenceIds: ['ref-bsava-10', 'ref-plumb-10'],

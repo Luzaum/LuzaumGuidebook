@@ -164,7 +164,7 @@ export const domperidonaMedicationRecord: MedicationRecord = {
       clinicalRationale: 'Aumenta a pressão do EEI sem produzir efeitos extrapiramidais centrais.',
       monitoring: 'Tolerância clínica, persistência de vômitos e ritmo cardíaco.',
       referenceIds: ['ref-domp-plumbs-10ed', 'ref-domp-bsava-10ed'],
-      evidenceLevel: 'Nível 3 — Formulários de consenso e farmacologia clássica (Plumb’s 10ª ed.)',
+      evidenceLevel: 'Nível 3 — Farmacologia Veterinária Clássica',
     },
   ],
 
@@ -183,7 +183,7 @@ export const domperidonaMedicationRecord: MedicationRecord = {
     },
     {
       label: 'EVIDÊNCIA FRACA E INEFICÁCIA DEMONSTRADA NA ESPÉCIE FELINA',
-      text: 'A BSAVA (10ª ed.) e Plumb’s (10ª ed.) alertam que não existem estudos farmacocinéticos robustos ou posologias formalmente validadas para gatos. Além disso, investigações manométricas de Mangel (1983) comprovaram que a domperidona não estimula a motilidade antral nem acelera o trânsito no trato digestivo de felinos, decorrente de distribuição e resposta divergente de receptores dopaminérgicos entéricos nesta espécie. A domperidona não deve ser considerada droga de primeira escolha em gatos.',
+      text: 'Não existem estudos farmacocinéticos robustos ou posologias formalmente validadas para gatos. Além disso, investigações manométricas de Mangel (1983) comprovaram que a domperidona não estimula a motilidade antral nem acelera o trânsito no trato digestivo de felinos, decorrente de distribuição e resposta divergente de receptores dopaminérgicos entéricos nesta espécie. A domperidona não deve ser considerada droga de primeira escolha em gatos.',
     },
     {
       label: 'CORREÇÃO DE ERROS TEXTUAIS CLÁSSICOS NA LITERATURA ESPECIALIZADA',
@@ -285,10 +285,10 @@ export const domperidonaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 12 a 24 horas',
       duration: '3 a 7 dias conforme resposta clínica',
       notes:
-        'Dose histórica em formulários veterinários (Plumb’s 10ª ed. pp. 421–422; BSAVA 10ª ed. p. 135: 0,05 a 0,1 mg/kg VO q12–24h ou 2 a 5 mg por cão). Administrar 15 a 30 minutos antes das refeições. Emprego em declínio na medicina veterinária contemporânea devido à inconsistência demonstrada no esvaziamento gástrico (Orihata & Sarna 1994) e à superioridade absoluta de maropitant e ondansetrona para êmese.',
+        'Dose histórica descrita em cães: 0,05 a 0,1 mg/kg VO q12–24h ou 2 a 5 mg por cão. Administrar 15 a 30 minutos antes das refeições. Emprego em declínio na medicina veterinária contemporânea devido à inconsistência demonstrada no esvaziamento gástrico (Orihata & Sarna 1994) e à superioridade absoluta de maropitant e ondansetrona para êmese.',
       calculatorEnabled: true,
       presentationId: 'pres-domperix-1mgml',
-      evidenceLevel: 'Plumb’s 10ª ed.; BSAVA 10ª ed.; Orihata & Sarna 1994',
+      evidenceLevel: 'Estudo Experimental (Orihata & Sarna, 1994) e Posologia Histórica',
     },
     {
       id: 'dose-domp-dog-agalactia',
@@ -304,7 +304,7 @@ export const domperidonaMedicationRecord: MedicationRecord = {
       notes:
         'Indicação endócrina fundamentada no bloqueio D2 adeno-hipofisário que desinibe a secreção de prolactina pelos lactotrofos. Fornecer a cada 12 horas até o estabelecimento de fluxo lácteo adequado, associado à estimulação da sucção pelos neonatos. Monitorar rigorosamente as glândulas mamárias para prevenir mastite estagnante secundária.',
       calculatorEnabled: false,
-      evidenceLevel: 'Estudos endócrinos reprodutivos / Plumb’s 10ª ed.',
+      evidenceLevel: 'Estudos endócrinos reprodutivos veterinários',
     },
     {
       id: 'dose-domp-cat-prokinetic',
@@ -318,7 +318,7 @@ export const domperidonaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 8 a 12 horas',
       duration: '3 a 5 dias sob vigilância',
       notes:
-        'ALERTA DE EVIDÊNCIA INSUFICIENTE: Plumb’s (10ª ed.) e BSAVA (10ª ed.) citam dose empírica fixa de 2 a 5 mg por felino (aproximadamente 0,1 a 0,3 mg/kg) q8–12h. Entretanto, ensaios manométricos comparativos de Mangel (1983) comprovaram que a domperidona NÃO estimula a motilidade antral em felinos. Inexistem estudos farmacocinéticos ou ensaios clínicos controlados de eficácia em gatos. Evitar na rotina e priorizar fármacos com eficácia demonstrada na espécie.',
+        'ALERTA DE EVIDÊNCIA INSUFICIENTE: Apesar de relatos empíricos citarem 2 a 5 mg por felino (aproximadamente 0,1 a 0,3 mg/kg) q8–12h, Entretanto, ensaios manométricos comparativos de Mangel (1983) comprovaram que a domperidona NÃO estimula a motilidade antral em felinos. Inexistem estudos farmacocinéticos ou ensaios clínicos controlados de eficácia em gatos. Evitar na rotina e priorizar fármacos com eficácia demonstrada na espécie.',
       calculatorEnabled: false,
       evidenceLevel: 'Formulários históricos; Evidência fisiológica negativa de motilidade (Mangel 1983)',
     },
@@ -620,7 +620,7 @@ export const domperidonaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'A domperidona é depurada quase que exclusivamente por metabolismo microssomal mediado por CYP3A. Inibidores enzimáticos potentes (cetoconazol, itraconazol, eritromicina, claritromicina) bloqueiam a depuração, elevando dramaticamente a concentração sérica do fármaco livre. Como esses mesmos fármacos também bloqueiam o canal hERG/Kv11.1, ocorre um sinergismo eletrofisiológico que retarda a repolarização ventricular da fase 3, precipitando arritmias ventriculares polimórficas malignas (Torsades de Pointes) e parada cardíaca.',
         clinicalAction:
-          'Contraindicação absoluta de uso concomitante. Respeitar janela de descontinuação (washout) de pelo menos 5 a 7 dias antes de iniciar domperidona.',
+          'Contraindicação absoluta de uso concomitante. Respeitar janela de descontinuação de pelo menos 5 a 7 dias antes de iniciar domperidona.',
       },
       {
         condition: 'Prescrição como monoterapia em leishmaniose visceral canina clinicamente manifesta',

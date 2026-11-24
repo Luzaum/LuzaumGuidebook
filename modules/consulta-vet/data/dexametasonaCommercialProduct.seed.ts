@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const DEXAMETASONA_PRICE_SOURCE_DATE = '2026-10-05';
 
 const DEXAMETASONA_PLUMBS_CONTEXT =
-  'Plumb’s Veterinary Drug Handbook 10ª ed., monografia “Dexamethasone” (pp. 361–366 / PDF pp. 388–393): glicocorticoide sintético fluorado de longa duração (~30 vezes mais potente que hidrocortisona, sem retenção mineralocorticoide). Meia-vida plasmática curta (2–5 h em cães), mas reprogramação celular e duração biológica estendida (24 a 48+ h). BSAVA Small Animal Formulary 10ª ed. (pp. 114–115), Nelson & Couto 6ª ed., Diretrizes ACVIM (IMHA 2019 e IVDE 2022) e Diretrizes RECOVER (Ressuscitação 2024 e Choque Anafilático 2026) fornecem a base terapêutica para controle inflamatório agudo, imunossupressão parenteral inicial, testes endócrinos de supressão (LDDST e HDDST) e choque com edema cerebral peritumoral.';
+  'Glicocorticoide sintético fluorado de longa duração (~30 vezes mais potente que a hidrocortisona, sem retenção mineralocorticoide). Apresenta meia-vida plasmática curta (2–5 h em cães), mas reprogramação celular e duração biológica estendida (24 a 48+ h). Com base nas diretrizes ACVIM (IMHA 2019 e IVDE 2022) e RECOVER (Ressuscitação 2024 e Choque Anafilático 2026), é indicada para controle inflamatório agudo, imunossupressão parenteral inicial, testes endócrinos de supressão (LDDST e HDDST) e edema cerebral peritumoral.';
 
 const DEXAMETASONA_SAFETY_ALERT =
   'ALERTAS CRÍTICOS DE SEGURANÇA E ADMINISTRAÇÃO: 1) CONTRAINDICAÇÃO ABSOLUTA COM AINEs: NUNCA associar dexametasona com anti-inflamatórios não esteroidais (meloxicam, carprofeno, firocoxib, etc.). Risco gravíssimo de úlcera péptica, enterite hemorrágica e perfuração gastrointestinal fatal. Respeitar período de washout mínimo de 3 a 7 dias na troca de classes. 2) CONTRAINDICADO EM TCE E TRAUMA MEDULAR AGUDO (IVDD): contraindicado no traumatismo cranioencefálico (TCE) e herniação de disco aguda (ACVIM 2022); não confere neuroproteção e aumenta morbimortalidade e hiperglicemia. O uso em edema vasogênico peritumoral cerebral, todavia, permanece com evidência consolidada (Poirier et al. 2025). 3) ANAFILAXIA AGUDA (RECOVER 2026): corticoides NÃO salvam vidas de forma imediata no colapso anafilático agudo hospitalar; a intervenção prioritária e salvadora é EPINEFRINA (Adrenalina) IM/IV. Corticoides atuam via transcrição genômica (latência de horas) e podem ser adjuvantes tardios contra reações bifásicas. 4) CRISE ADDISONIANA (AAHA 2023): fármaco de escolha pré-teste de estimulação por ACTH porque o fosfato de dexametasona NÃO interfere no imunoensaio de cortisol sérico (diferente da hidrocortisona e prednisolona). 5) EXCLUSIVIDADE PARENTERAL: administrar exclusivamente FOSFATO DISSÓDICO por via intravenosa; NUNCA administrar ésteres de acetato ou formulações insolúveis por via IV. 6) GATOS: espécie vulnerável a indução de diabetes mellitus secundário e suscetível a edema pulmonar por retenção de volume caso haja cardiopatia oculta.';
@@ -44,7 +44,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Anti-inflamatório Sistêmico de Curta Duração (Plumb’s 10ª ed. / BSAVA 10ª ed.)',
+            title: 'Anti-inflamatório Sistêmico de Curta Duração',
             dose: '0,07 a 0,14 mg/kg IV, IM ou SC a cada 24 a 48 horas (0,035 a 0,07 mL/kg da solução 2 mg/mL)',
             note: 'Duração biológica de 24 a 48h. Transicionar precocemente para prednisolona oral se terapia prolongada.',
           },
@@ -54,17 +54,17 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
             note: 'Indicado em cães hospitalizados com intolerância oral aguda, transicionando para prednisolona 2 mg/kg VO q24h assim que estabilizados.',
           },
           {
-            title: 'Emergência da Crise Addisoniana Pré-Teste de ACTH (AAHA 2023 / Nelson & Couto)',
+            title: 'Emergência da Crise Addisoniana Pré-Teste de ACTH (AAHA 2023)',
             dose: '0,1 a 0,2 mg/kg IV lenta em dose única (0,05 a 0,1 mL/kg da solução 2 mg/mL)',
             note: 'Fármaco de escolha porque NÃO interfere na dosagem de cortisol sérico no teste de estimulação por ACTH.',
           },
           {
-            title: 'Edema Vasogênico Peritumoral Cerebral (Poirier et al. 2025 / Plumb’s 10ª ed.)',
+            title: 'Edema Vasogênico Peritumoral Cerebral (Poirier et al. 2025)',
             dose: '0,1 a 0,3 mg/kg IV lenta ou SC a cada 12 a 24 horas',
             note: 'Comprovada redução volumétrica de edema intracraniano neoplásico de 0,83 para 0,40 cm³. NÃO usar em TCE.',
           },
           {
-            title: 'Teste de Supressão por Dexametasona em Baixa Dose — LDDST (Greco et al. 1993 / Feldman)',
+            title: 'Teste de Supressão por Dexametasona em Baixa Dose — LDDST (Greco et al. 1993)',
             dose: '0,01 a 0,015 mg/kg IV lenta em bolus (requer diluição para precisão volumétrica)',
             note: 'Coletar cortisol sérico basal T0, T4h e T8h pós-administração para diagnóstico de hiperadrenocorticismo.',
           },
@@ -76,22 +76,22 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
         ],
         cat: [
           {
-            title: 'Anti-inflamatório Agudo Felino (BSAVA 10ª ed. / Plumb’s 10ª ed.)',
+            title: 'Anti-inflamatório Agudo Felino',
             dose: '0,14 a 0,28 mg/kg IV, IM ou SC a cada 24 a 48 horas (0,07 a 0,14 mL/kg da solução 2 mg/mL)',
             note: 'Gatos requerem doses anti-inflamatórias discretamente maiores devido a menor densidade de receptores hepáticos.',
           },
           {
-            title: 'Crise Addisoniana Aguda Felina Pré-ACTH (AAHA 2023 / Plumb’s 10ª ed.)',
+            title: 'Crise Addisoniana Aguda Felina Pré-ACTH (AAHA 2023)',
             dose: '0,1 a 0,2 mg/kg IV lenta ou IM dose única (0,05 a 0,1 mL/kg)',
             note: 'Estabilização de emergência concomitante à expansão fluídica agressiva com NaCl 0,9%.',
           },
           {
-            title: 'Teste de Supressão por Baixa Dose Felino — LDDST (Feldman & Nelson 6ª ed.)',
+            title: 'Teste de Supressão por Baixa Dose Felino — LDDST',
             dose: '0,1 mg/kg IV lenta em bolus (dose 10 vezes maior que a canina)',
             note: 'Gatos têm resistência fisiológica de feedback hipofisário; usar 0,1 mg/kg IV e coletar basais, 4h e 8h.',
           },
           {
-            title: 'Teste de Supressão por Alta Dose Felino — HDDST (Feldman & Nelson 6ª ed.)',
+            title: 'Teste de Supressão por Alta Dose Felino — HDDST',
             dose: '1,0 mg/kg IV lenta em bolus (0,5 mL/kg da solução 2 mg/mL)',
             note: 'Diferenciação de hiperadrenocorticismo dependente de hipófise vs tumor de adrenal em felinos.',
           },
@@ -116,7 +116,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       sourceDate: DEXAMETASONA_PRICE_SOURCE_DATE,
       notes: 'Medicamento de uso veterinário registrado no MAPA.',
     },
-    evidenceLevel: 'Nível 1a — Consensos ACVIM, RECOVER, AAHA e Plumb’s 10ª ed.',
+    evidenceLevel: 'Nível 1a — Consensos ACVIM, RECOVER e AAHA',
     isControlled: false,
     catalogMedicationId: 'editorial:dexametasona',
   },
@@ -154,14 +154,14 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Anti-inflamatório Oral de Curto Prazo (Plumb’s 10ª ed.)',
+            title: 'Anti-inflamatório Oral de Curto Prazo',
             dose: '0,07 a 0,14 mg/kg VO a cada 24 a 48 horas',
             note: 'Para cão de 5 kg: 1 comprimido de 0,5 mg (0,10 mg/kg) VO q24h. Para cão de 10 kg: 2 comprimidos (0,10 mg/kg) VO q24h por 3 a 5 dias.',
           },
         ],
         cat: [
           {
-            title: 'Anti-inflamatório Oral Felino (BSAVA 10ª ed.)',
+            title: 'Anti-inflamatório Oral Felino',
             dose: '0,14 a 0,28 mg/kg VO a cada 24 a 48 horas',
             note: 'Para gato de 3,5 kg: 1 comprimido de 0,5 mg (0,14 mg/kg) VO q24h por 3 dias.',
           },
@@ -186,7 +186,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       sourceDate: DEXAMETASONA_PRICE_SOURCE_DATE,
       notes: 'Uso veterinário. Venda sob prescrição.',
     },
-    evidenceLevel: 'Nível 1b — Farmacologia Veterinária Consolidada e Plumb’s 10ª ed.',
+    evidenceLevel: 'Nível 1b — Farmacologia Veterinária Consolidada',
     isControlled: false,
     catalogMedicationId: 'editorial:dexametasona',
   },
@@ -224,14 +224,14 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       plumbs: {
         dog: [
           {
-            title: 'Dose Anti-inflamatória Ambulatorial Canina (Plumb’s 10ª ed.)',
+            title: 'Dose Anti-inflamatória Ambulatorial Canina',
             dose: '0,07 a 0,14 mg/kg VO a cada 24 a 48 horas',
             note: 'Cão de 5 kg: 1 comprimido q24h. Cão de 10 kg: 2 comprimidos q24h.',
           },
         ],
         cat: [
           {
-            title: 'Dose Anti-inflamatória Ambulatorial Felina (BSAVA 10ª ed.)',
+            title: 'Dose Anti-inflamatória Ambulatorial Felina',
             dose: '0,14 a 0,28 mg/kg VO a cada 24 a 48 horas',
             note: 'Gato de 4 kg: 1 a 2 comprimidos q24–48h.',
           },
@@ -256,7 +256,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
       sourceDate: DEXAMETASONA_PRICE_SOURCE_DATE,
       notes: 'Uso veterinário. MAPA n° 6.278.',
     },
-    evidenceLevel: 'Nível 1b — Literatura veterinária padrão e Plumb’s 10ª ed.',
+    evidenceLevel: 'Nível 1b — Literatura veterinária padrão',
     isControlled: false,
     catalogMedicationId: 'editorial:dexametasona',
   },
@@ -306,7 +306,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
         ],
         cat: [
           {
-            title: 'Emergência Inflamatória / Addison Felina (AAHA / BSAVA)',
+            title: 'Emergência Inflamatória / Addison Felina (AAHA)',
             dose: '0,1 a 0,2 mg/kg IV lenta ou IM dose única',
             note: 'Permite coleta de cortisol basal e pós-estimulação sem interferência analítica.',
           },
@@ -381,7 +381,7 @@ export const dexametasonaCommercialProductSeed: CommercialMedicationProduct[] = 
         ],
         cat: [
           {
-            title: 'Teste HDDST Felino Diferencial (Feldman & Nelson 6ª ed.)',
+            title: 'Teste HDDST Felino Diferencial',
             dose: '1,0 mg/kg IV lenta em bolus (0,25 mL/kg da solução 4 mg/mL)',
             note: 'Concentração de 4 mg/mL é ideal para aplicar volumes reduzidos no HDDST felino (ex: gato de 4 kg recebe 1,0 mL IV).',
           },

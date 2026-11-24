@@ -89,7 +89,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
     '- Fisiopatologia e lesões: ação mecânica e antigênica dos vermes desencadeia colangite crônica, hiperplasia adenomatosa ductal exuberante, fibrose periductal progressiva, colangiectasia e colestase mista com potencial evolução para cirrose biliar e falência hepática.\n' +
     '- Desafio diagnóstico: o exame coproparasitológico convencional (flotação simples) apresenta alta taxa de falso-negativo por estase biliar e baixa eliminação de ovos pesados; o método de eleição é a dupla centrifugação com solução de Sheather (SG 1,28).\n' +
     '- Padrão ouro intervencionista: em casos suspeitos com fezes negativas e ductos dilatados, a colecistocentese percutânea ecoguiada demonstra concentração de ovos até 30 vezes superior à fecal, respeitadas as condições hemostáticas do paciente.\n' +
-    '- Terapêutica de escolha: praziquantel em regimes de doses elevadas (como 30 mg/kg VO q24h por 5 a 10 dias, uso extra-label preconizado no Plumb\'s 10ª ed.), aliado a suporte nutricional enteral precoce contra lipidose hepática, ácido ursodesoxicólico e descompressão cirúrgica de resgate quando indicada.',
+    '- Terapêutica de escolha: praziquantel em regimes de doses elevadas (30 mg/kg VO q24h por 5 a 10 dias, uso fora das indicações de bula), aliado a suporte nutricional enteral precoce contra lipidose hepática, ácido ursodesoxicólico e descompressão cirúrgica de resgate quando indicada.',
 
   quickDecisionStrip: [
     'A platinosomose é primariamente uma doença dos ductos biliares e da vesícula; o comprometimento de hepatócitos é secundário à colestase mecânica crônica.',
@@ -117,7 +117,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
       'Icterícia hepática e pós-hepática',
       'Dupla centrifugação com Sheather (SG 1,28)',
       'Colecistocentese diagnóstica ecoguiada',
-      'Praziquantel em doses intensivas (Plumb\'s 10ª ed.)',
+      'Praziquantel em doses intensivas (30 mg/kg)',
       'Risco de lipidose hepática por anorexia',
     ],
     pillars: [
@@ -149,9 +149,9 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
         title: 'Terapêutica Antiparasitária e Suporte Crítico',
         body:
           'Protocolos antiparasitários e suporte metabólico intensivo:\n' +
-          '- Ineficácia da dose de rotina: a dose convencional de praziquantel (5 mg/kg) falha na árvore biliar; recomendam-se 20 a 30 mg/kg VO por 5 a 10 dias (Plumb\'s 10ª ed.).\n' +
+          '- Ineficácia da dose de rotina: a dose convencional de praziquantel (5 mg/kg) falha na árvore biliar; recomendam-se 20 a 30 mg/kg VO por 5 a 10 dias.\n' +
           '- Suporte clínico integrado: nutrição enteral precoce para prevenir lipidose hepática secundária, ácido ursodesoxicólico e descompressão cirúrgica nos quadros obstrutivos refratários.',
-        highlights: ['Praziquantel 30 mg/kg VO (Plumb\'s)', 'Prevenção de lipidose', 'Ácido ursodesoxicólico', 'Descompressão cirúrgica'],
+        highlights: ['Praziquantel 30 mg/kg VO', 'Prevenção de lipidose', 'Ácido ursodesoxicólico', 'Descompressão cirúrgica'],
       },
     ],
     diagnosticFlow: {
@@ -208,7 +208,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
           label: 'Fase 3: Farmacoterapia Específica com Praziquantel',
           timing: 'Após estabilização metabólica',
           detail:
-            'Instituição de praziquantel na dose preconizada pelo compêndio Plumb\'s 10ª ed. (30 mg/kg VO a cada 24 horas por 5 a 10 dias consecutivos), com monitoramento de tolerância gástrica e suporte antiemético prévio.',
+            'Instituição de praziquantel em dose intensiva (30 mg/kg VO a cada 24 horas por 5 a 10 dias consecutivos), com monitoramento de tolerância gástrica e suporte antiemético prévio.',
         },
         {
           label: 'Fase 4: Terapia Adjuvante e Modulação do Fluxo Biliar',
@@ -292,7 +292,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
       'Distribuição geográfica e cenário epidemiológico nacional:\n' +
       '- Endemicidade tropical e global: prevalência agrupada mundial estimada em 17,8% (Silva, Feitosa e Vilela, 2023), concentrada na América Central, Caribe, América do Sul e Sudeste Asiático.\n' +
       '- Realidade brasileira: infecção documentada em todas as regiões brasileiras onde há condições climáticas favoráveis à proliferação de moluscos e isópodes terrestres.\n' +
-      '- Discrepância de populações: taxas de infecção de 20% a mais de 50% em gatos com acesso à rua ou em necropsias, contrastando com menor incidência em gatos mantidos 100% indoor.\n' +
+      '- Discrepância de populações: taxas de infecção de 20% a mais de 50% em gatos com acesso à rua ou em necropsias, contrastando com menor incidência em gatos mantidos 100% em ambiente domiciliar.\n' +
       '- Casuística hospitalar recente: coortes da UNESP (Sato et al., 2025) e da UFSM (Sousa et al., 2025) reforçam o parasito como diferencial obrigatório em qualquer felino com colestase e icterícia.',
 
     anatomiaBiliarFelinaEPatogenia:
@@ -361,7 +361,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
       'Associação anatomopatológica com neoplasias biliares malignas:\n' +
       '- Evidências necrópsicas: Andrade et al. (2012) identificaram colangiocarcinoma em 3 de 11 gatos parasitados por Platynosomum, com displasia e atipia epitelial em outros 6 animais.\n' +
       '- Mecanismos oncogênicos: a irritação mecânica crônica, espécies reativas de oxigênio e estímulo mitogênico contínuo deflagram instabilidade genômica, mimetizando a carcinogênese humana por Opisthorchis e Clonorchis.\n' +
-      '- Contextualização oncológica: conforme o tratado Withrow & MacEwen\'s (6ª ed., Cap. 23), o colangiocarcinoma também ocorre em áreas não endêmicas; Platynosomum atua como promotor inflamatório crônico de alta relevância.',
+      '- Contextualização oncológica: o colangiocarcinoma também ocorre em áreas não endêmicas; Platynosomum atua como promotor inflamatório crônico de alta relevância.',
   },
 
   clinicalSignsPathophysiology: [
@@ -586,11 +586,11 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
       ],
       rows: [
         {
-          protocol: 'Praziquantel Alta Dose (Plumb\'s 10ª ed.)',
+          protocol: 'Praziquantel Alta Dose (Regime Intensivo Oral)',
           regimen: '30 mg/kg VO a cada 24 horas por 5 a 10 dias consecutivos',
-          evidenceLevel: 'Consenso farmacológico de compêndio veterinário internacional (uso extra-label)',
+          evidenceLevel: 'Recomendação farmacológica de referência clínica (uso fora das indicações de bula)',
           clinicalVerdict:
-            'Protocolo de primeira linha mais robusto no acervo farmacológico atual; indicado para infecções confirmadas sem obstrução mecânica total.',
+            'Protocolo de primeira linha mais robusto na rotina atual; indicado para infecções confirmadas sem obstrução mecânica total.',
         },
         {
           protocol: 'Praziquantel Injetável (Lathroum et al., 2018)',
@@ -618,9 +618,9 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
 
     protocoloPraziquantelDosesEVersoes:
       'Mecanismo de ação e regimes farmacológicos de praziquantel:\n' +
-      '- Mecanismo antiparasitário: alteração profunda na permeabilidade ao cálcio no tegumento do trematódeo, causando influxo de Ca2+, contração espástica e vacuolização tegumentar irreversível exposta à imunidade (Plumb\'s 10ª ed.).\n' +
+      '- Mecanismo antiparasitário: alteração profunda na permeabilidade ao cálcio no tegumento do trematódeo, causando influxo de Ca2+, contração espástica e vacuolização tegumentar irreversível exposta à imunidade.\n' +
       '- Ineficácia da dose de rotina: a dose convencional para cestódeos (5 mg/kg) falha completamente nos ductos biliares; o ensaio de Lathroum et al. (2018) comprovou que 20 mg/kg IM q24h por 3 dias erradicou vermes vivos em apenas 50% dos gatos em necropsia.\n' +
-      '- Protocolo de escolha (Plumb\'s 10ª ed.): regime oral estendido de 30 mg/kg VO a cada 24 horas por 5 a 10 dias consecutivos para máxima eliminação tecidual.\n' +
+      '- Protocolo de escolha: regime oral estendido de 30 mg/kg VO a cada 24 horas por 5 a 10 dias consecutivos para máxima eliminação tecidual.\n' +
       '- Manejo profilático de êmese: administração prévia de maropitant (1 mg/kg SC/VO) para prevenir náusea e sialorreia associadas a doses altas de praziquantel.',
 
     avaliacaoCriticaDoFenbendazol:
@@ -651,7 +651,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
       'Passo 6: Se houver líquido livre peritoneal, realizar abdominocentese diagnóstica imediata para dosagem de bilirrubina no líquido (bilirrubina efusão > bilirrubina sérica diagnostica peritonite biliar).',
       'Passo 7: Coleta de amostra fecal recente para solicitação expressa de dupla centrifugação com solução saturada de Sheather (SG 1,28) para pesquisa de ovos de Platynosomum.',
       'Passo 8: Se o paciente estiver estável, sem obstrução total e com coagulação preservada, mas com fezes negativas e suspeita alta, considerar colecistocentese percutânea ecoguiada para citologia e cultura.',
-      'Passo 9: Iniciar terapia antiparasitária com praziquantel em dose elevada (30 mg/kg VO q24h por 5 a 10 dias conforme o Plumb\'s 10ª ed.), com protetor gástrico e antiemético.',
+      'Passo 9: Iniciar terapia antiparasitária com praziquantel em dose elevada (30 mg/kg VO q24h por 5 a 10 dias), com protetor gástrico e antiemético.',
       'Passo 10: Iniciar suporte nutricional enteral ativo (sonda nasoesofágica precoce se anorexia > 48h) e introduzir ácido ursodesoxicólico (10-15 mg/kg VO q24h) somente após descartar obstrução mecânica total.',
     ],
 
@@ -705,7 +705,7 @@ export const platinosomoseFelinaSeed: DiseaseRecord = {
 
   prevention: {
     confinamentoIndoorEBloqueioDePredacao:
-      'Manejo estritamente indoor e enriquecimento ambiental:\n' +
+      'Manejo estritamente em ambiente domiciliar e enriquecimento ambiental:\n' +
       '- Bloqueio do acesso externo: confinamento estrito do felino com telas de proteção em janelas e varandas para eliminar a caça predatória.\n' +
       '- Interrupção do ciclo: previne a ingestão de hospedeiros intermediários (tatuzinhos-de-jardim) e paratênicos (lagartixas, geckos e anfíbios).',
 

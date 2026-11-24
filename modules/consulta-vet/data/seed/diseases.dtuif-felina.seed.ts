@@ -139,7 +139,7 @@ export const dtuifFelinaRecord: DiseaseRecord = {
     perfilGeral:
       'Os sinais urinários baixos são frequentes na clínica felina e muitas séries classificam cerca de 55-65% dos casos como FIC quando uma causa específica não é encontrada. A prevalência por causa varia conforme idade, sexo, comorbidades e acesso a exames.',
     fic:
-      'FIC tende a afetar gatos suscetíveis em ambientes provocativos: vida indoor, obesidade, sedentarismo, casas multicat, mudanças frequentes, ausência de pontos elevados, recursos mal distribuídos e experiências adversas precoces aparecem como fatores de risco consistentes.',
+      'FIC tende a afetar gatos suscetíveis em ambientes provocativos: vida em ambiente domiciliar, obesidade, sedentarismo, lares com vários gatos, mudanças frequentes, ausência de pontos elevados, recursos mal distribuídos e experiências adversas precoces aparecem como fatores de risco consistentes.',
     utiEUrolitos:
       'ITU deve entrar com mais força em gatos maduros/idosos, fêmeas e pacientes com DRC, diabetes, hipertireoidismo, incontinência, cateterização, ureterostomia/perineal urethrostomy ou urolitíase. Urolitíase representa parcela importante dos casos e também pode causar obstrução.',
     obstrucao:

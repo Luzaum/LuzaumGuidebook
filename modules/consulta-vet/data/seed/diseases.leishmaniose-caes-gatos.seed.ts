@@ -185,7 +185,7 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
     taxonomiaEBiologiaDoParasita: 'A leishmaniose em pequenos animais é causada por protozoários digenéticos e hemoflagelados pertencentes à ordem Trypanosomatida, família Trypanosomatidae e gênero Leishmania:\n\n' +
       '- Agente etiológico principal: Leishmania infantum (historicamente denominada Leishmania chagasi no continente americano), de ampla distribuição no Brasil, Américas, sul da Europa, norte da África e Ásia.\n' +
       '- Forma promastigota (no vetor): flagelada e alongada (15 a 20 um), altamente móvel, presente no trato digestivo dos insetos flebotomíneos.\n' +
-      '- Forma amastigota (no hospedeiro vertebrado): esférica a ovoide (2 a 4 um), sem flagelo livre visível, contendo núcleo e cinetoplasto característicos, multiplicando-se obrigatoriamente no interior de macrófagos e células do sistema fagocítico mononuclear (Nelson & Couto, 6a ed., Cap. 98; Ettinger, 9a ed.).',
+      '- Forma amastigota (no hospedeiro vertebrado): esférica a ovoide (2 a 4 um), sem flagelo livre visível, contendo núcleo e cinetoplasto característicos, multiplicando-se obrigatoriamente no interior de macrófagos e células do sistema fagocítico mononuclear.',
 
     mudancaDeConceitoCLWG2026InfeccaoVsDoenca: 'As diretrizes do Canine Leishmaniosis Working Group (CLWG 2026; Roura et al., Parasites & Vectors, 2026) estabelecem uma reformulação paradigmática na abordagem da leishmaniose canina:\n\n' +
       '- Infecção versus doença ativa: a infecção por Leishmania não é sinônimo de doença clínica ativa. Em regiões endêmicas, grande parcela dos cães alberga DNA ou anticorpos sem lesões ou manifestações clínicas.\n' +
@@ -639,7 +639,7 @@ export const leishmanioseCaesGatosSeed: DiseaseRecord = {
     alertaToxicologicoCriticoPermetrinaEmFelinos: 'ALERTA FARMACOLÓGICO CRÍTICO: Permetrina e piretroides caninos são formalmente contraindicados e FATAIS para felinos:\n\n' +
       '- Mecanismo da toxicidade letal: os gatos apresentam deficiência constitucional de glicuroniltransferase (UGT) hepática, incapazes de conjugar e eliminar a permetrina.\n' +
       '- Quadro neurotóxico agudo: tremores musculares generalizados, hiperestesia, convulsões contínuas, hipertermia grave e óbito rápido.\n' +
-      '- Alternativa aprovada para gatos: uso restrito de coleiras com flumetrina registradas para felinos ou manutenção estrita do paciente em ambiente indoor protegido.',
+      '- Alternativa aprovada para gatos: uso restrito de coleiras com flumetrina registradas para felinos ou manutenção estrita do paciente em ambiente domiciliar protegido.',
   },
 
   references: [

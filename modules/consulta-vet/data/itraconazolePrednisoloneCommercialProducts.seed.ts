@@ -3,7 +3,7 @@ import { CommercialMedicationProduct } from '../types/commercialMedication';
 const SOURCE_DATE = '2026-08-02';
 
 const ITRACONAZOLE_CONTEXT =
-  'Plumb’s e BSAVA descrevem 5 mg/kg VO a cada 24 horas como referência frequente em cães e gatos. A duração depende do agente e da resposta; micoses profundas e esporotricose geralmente exigem tratamento prolongado.';
+  'A referência frequente em cães e gatos é de 5 mg/kg VO a cada 24 horas. A duração depende do agente e da resposta; micoses profundas e esporotricose geralmente exigem tratamento prolongado.';
 const ITRACONAZOLE_ALERT =
   'Administrar cápsulas com alimento. Antiácidos e supressores de acidez podem reduzir a absorção. Monitorar apetite, vômitos e enzimas hepáticas; atenção a hepatotoxicidade e interações com glicocorticoides, ciclosporina, vincristina e rivaroxabana.';
 const HUMAN_ITRACONAZOLE_DIRECTIONS =
@@ -33,12 +33,12 @@ function humanItraconazole(
     reassessment: 'Reavaliar resposta clínica e, em tratamentos prolongados, monitorar enzimas hepáticas. A duração deve considerar cura clínica e micológica.',
     prescriptionExample: 'Calcular a dose individual em mg/kg e selecionar a apresentação somente após confirmar que o fracionamento é viável e seguro.',
     safetyAlert: `Uso veterinário extra-label. ${ITRACONAZOLE_ALERT}`,
-    evidenceLevel: 'Apresentação e preço conforme pesquisa comercial de 02/08/2026; posologia veterinária baseada em Plumb’s e BSAVA.',
+    evidenceLevel: 'Apresentação e preço conforme pesquisa comercial de 02/08/2026; posologia veterinária extra-bula consolidada.',
   };
 }
 
 const PREDNISOLONE_CONTEXT =
-  'Plumb’s: cães 0,5–1 mg/kg/dia como anti-inflamatório e 2–4 mg/kg/dia como imunossupressor; gatos 1–2 mg/kg/dia e 2–8 mg/kg/dia, respectivamente. Usar a menor dose eficaz pelo menor tempo possível.';
+  'Em cães, utiliza-se 0,5–1 mg/kg/dia como anti-inflamatório e 2–4 mg/kg/dia como imunossupressor; em gatos, 1–2 mg/kg/dia e 2–8 mg/kg/dia, respectivamente. Usar a menor dose eficaz pelo menor tempo possível.';
 const PREDNISOLONE_ALERT =
   'Não associar a AINE. Cautela em diabetes, infecção ativa, micose sistêmica, úlcera gastrointestinal, pancreatite, hipertensão e doença renal. Tratamentos prolongados exigem retirada gradual e monitoramento.';
 

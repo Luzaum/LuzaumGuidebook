@@ -166,7 +166,7 @@ const sections: Block[] = [
       '**2. Esofagite Erosiva Grave e Estenose Esofágica:** O tubo e o alimento permanecem em contato direto com a mucosa friável, provocando dor excruciante, ulceração, necrose de pressão e possível perfuração. Em estenoses, o tubo não consegue transpor a luz luminal.\n' +
       '**3. Vômito ou Regurgitação Persistente Incoercível:** O aumento da pressão intra-abdominal e o refluxo antiperistáltico provocam a retroflexão da sonda, fazendo com que sua ponta seja vomitada para fora da boca ou se dobre sobre si mesma.\n' +
       '**4. Incapacidade de Proteger a Via Aérea:** Coma, disfunção laríngea/faríngea severa ou paralisia que impeça o reflexo de tosse e fechamento glótico aumentam desproporcionalmente o risco de aspiração do refluxo.\n' +
-      '**5. Tosse Grave e Pneumonia Ativa Não Controlada:** Citadas expressamente por Hackett & Mazzaferro (2025) e BSAVA (2024) como critérios de adiamento, pois o esforço tussígeno contínuo desloca o tubo e agrava o quadro ventilatório [1, 2].'
+      '**5. Tosse Grave e Pneumonia Ativa Não Controlada:** São critérios clássicos de adiamento, pois o esforço tussígeno contínuo desloca o tubo e agrava o quadro ventilatório [1, 2].'
   ),
   p(
     '**Contraindicações Relativas / Condições que Exigem Estabilização Prévia:**\n' +
@@ -222,7 +222,7 @@ const sections: Block[] = [
     ['Parâmetro', 'Gato (Felinos)', 'Cão (Caninos)'],
     [
       ['Lado de acesso habitual', 'Esquerdo (decúbito lateral direito)', 'Esquerdo (decúbito lateral direito)'],
-      ['Calibre de referência (ISFM / BSAVA)', '12 a 14 Fr (14 Fr é o calibre ouro para o gato adulto)', '14 a 20 Fr (conforme porte corporal)'],
+      ['Calibre de referência (ISFM)', '12 a 14 Fr (14 Fr é o calibre ouro para o gato adulto)', '14 a 20 Fr (conforme porte corporal)'],
       ['Comprimento típico do tubo', '23 a 38 cm (ou tubo de 45–60 cm ajustado)', '45 a 60 cm (ou mais em raças gigantes)'],
       [
         'Histologia da musculatura esofágica',
@@ -262,7 +262,7 @@ const sections: Block[] = [
   box(
     'tip',
     'A Controvérsia dos Calibres em Gatos: Por que 14 Fr é a Escolha Ideal',
-    'O consenso do ISFM 2022 e o BSAVA 2024 preconizam calibres de 12 a 14 Fr para gatos adultos. Embora Tolbert et al. (2025) tenham discutido o uso de sondas ≥ 18 Fr em gatos > 2 kg, a vasta experiência clínica veterinária demonstra que tubos de 18 Fr geram estomas cervicais desnecessariamente volumosos, maior reação tecidual e desconforto cervical em gatos, sem ganho clínico que justifique seu uso rotineiro. **A sonda de 14 Fr é o equilíbrio perfeito**: permite a passagem livre de rações úmidas completas batidas com água, sem risco excessivo de obstrução e com trauma cervical mínimo [1, 3, 4].'
+    'O consenso do ISFM 2022 e a prática cirúrgica atual preconizam calibres de 12 a 14 Fr para gatos adultos. Embora Tolbert et al. (2025) tenham discutido o uso de sondas ≥ 18 Fr em gatos > 2 kg, a vasta experiência clínica veterinária demonstra que tubos de 18 Fr geram estomas cervicais desnecessariamente volumosos, maior reação tecidual e desconforto cervical em gatos, sem ganho clínico que justifique seu uso rotineiro. **A sonda de 14 Fr é o equilíbrio perfeito**: permite a passagem livre de rações úmidas completas batidas com água, sem risco excessivo de obstrução e com trauma cervical mínimo [1, 3, 4].'
   ),
 
   h('10. Qual Sonda Usar no Brasil? 🇧🇷 (Dispositivos Comerciais)', 2),
@@ -349,7 +349,7 @@ const sections: Block[] = [
   ),
   steps('Protocolo Operatório Detalhado', [
     '**Passo 0: Estabilização e Verificação Prévia.** Confirmar indicação e estabilidade hemodinâmica. No paciente desidratado ou em jejum prolongado, corrigir déficits hídricos e eletrólitos antes do procedimento. Ter à mão dosagens basais de fósforo, potássio, magnésio, glicemia, ureia, creatinina e hematócrito.',
-    '**Passo 1: Estimativa e Marcação do Comprimento da Sonda.** Com o paciente ainda posicionado lateralmente, estenda a sonda ao longo do pescoço e tórax: meça a distância do local pretendido do estoma (terço médio cervical esquerdo) até o **8º espaço intercostal (ISFM) ou 9ª costela (BSAVA)**. Faça uma marca visual no tubo com caneta dermográfica ou marcador cirúrgico. Essa marca representa o limite de inserção para que a ponta termine no terço distal do esôfago torácico, antes da cárdia.',
+    '**Passo 1: Estimativa e Marcação do Comprimento da Sonda.** Com o paciente ainda posicionado lateralmente, estenda a sonda ao longo do pescoço e tórax: meça a distância do local pretendido do estoma (terço médio cervical esquerdo) até o **8º espaço intercostal (ISFM) ou 9ª costela**. Faça uma marca visual no tubo com caneta dermográfica ou marcador cirúrgico. Essa marca representa o limite de inserção para que a ponta termine no terço distal do esôfago torácico, antes da cárdia.',
     '**Passo 2: Anestesia Geral e Intubação Traqueal Rigorosa.** O procedimento deve ser realizado SEMPRE sob anestesia geral e com o paciente intubado com tubo endotraqueal com balonete adequadamente insuflado. Isso impede que secreções orais ou sangue aspirem para a árvore respiratória e protege a via aérea durante a manipulação transoral da pinça e da sonda.',
     '**Passo 3: Posicionamento Cirúrgico.** Posicione o paciente em **decúbito lateral direito**, expondo amplamente o hemitórax e o lado esquerdo do pescoço. Em cães grandes ou de pescoço musculoso, coloque uma toalha enrolada ou coxim macio sob a face ventral do pescoço para elevar e estabilizar o esôfago lateralmente.',
     '**Passo 4: Tricotomia Ampla e Antissepsia.** Tose amplamente desde o ramo horizontal da mandíbula cranialmente até a entrada torácica e escápula caudalmente; e da linha média dorsal do pescoço até a linha média ventral. Realize degermação cirúrgica com clorexidina e posicione os campos cirúrgicos estéreis fenestrados.',
@@ -835,7 +835,7 @@ export const guiaEsofagostomia: ClinicalQuickGuide = {
   subtitle:
     'Guia completo e aprofundado: anatomia cirúrgica cervical, seleção de sondas (silicone / poliuretano), técnica retrógrada com Carmalt, manobra do flip, confirmação radiográfica, cálculo de RER, protocolo de realimentação, manejo de complicações e cuidados domiciliares',
   summary:
-    'Manual clínico-cirúrgico exaustivo de esofagostomia cervical (E-tube/O-tube) em cães e gatos, baseado no BSAVA 2024, Hackett & Mazzaferro 2025, Feline Emergency 2023 e consenso ISFM 2022. Contempla técnica com Carmalt passo a passo, a manobra do flip, confirmação radiográfica do terço distal, fixação por sutura entrelaçada, prevenção da síndrome de realimentação, estudos de 473 casos e imagens e vídeos demonstrativos oficiais em fluxo vertical contínuo.',
+    'Manual clínico-cirúrgico exaustivo de esofagostomia cervical (E-tube/O-tube) em cães e gatos, alinhado ao consenso ISFM 2022 e às melhores práticas de cirurgia e cuidados intensivos. Contempla técnica com Carmalt passo a passo, a manobra do flip, confirmação radiográfica do terço distal, fixação por sutura entrelaçada, prevenção da síndrome de realimentação, estudos de 473 casos e imagens e vídeos demonstrativos oficiais em fluxo vertical contínuo.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [

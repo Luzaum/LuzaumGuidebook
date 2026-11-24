@@ -24,7 +24,7 @@ const GLARGINE_U100_GUIDANCE = {
     ],
     cat: [
       {
-        title: 'Diabetes mellitus felina — Plumb\'s/AAHA',
+        title: 'Diabetes mellitus felina — Consenso AAHA',
         dose: '0,25-0,5 UI/kg SC q12h (arredondar para baixo; frequentemente ≤2 UI/gato q12h)',
         note: 'Ponto de partida prático: 1 UI/gato SC q12h; ajustar por curva/CGM.',
       },
@@ -122,7 +122,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
       'Uso SC. Em veterinária, aplicar no horario prescrito, geralmente q12h em gatos, sempre com seringa U100 ou caneta/refil compatível.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
-      'Plumb\'s 10ª ed., Insulin Glargine (pp. 658–661): glargina U100 é opção principal para DM felino; em cães, segunda linha após lente/NPH.',
+      'Glargina U100 é opção principal para DM felino; em cães, segunda linha após lente/NPH.',
     clinicalUse:
       'Manutenção de diabetes mellitus, principalmente em gatos recem diagnosticados ou quando se busca insulina basal de perfil mais prolongado.',
     reassessment:
@@ -154,7 +154,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Insulina glargina 100 UI/mL em caneta KwikPen. Alternativa comercial de glargina U100.',
     labelDirections:
-      'Uso SC com caneta KwikPen. Em cães/gatos, aplicar conforme protocolo de glargina U100 e não trocar por Lantus sem nova orientação.',
+      'Uso SC com caneta KwikPen. Em veterinária (extra-label): gatos 0,25 a 0,5 UI/kg SC a cada 12 h (início prático frequente: 1 UI/gato SC q12h); cães selecionados 0,25 a 0,5 UI/kg SC q12h. Não trocar entre marcas de glargina sem ajuste.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
       'Usar o mesmo raciocinio clínico da glargina U100. Em gatos, pode ser alternativa quando Lantus estiver indisponivel ou caro.',
@@ -191,7 +191,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
       'Bula humana (SC); em veterinária, aplicar 0,25–0,5 UI/kg SC a cada 12 horas em gatos (início prático frequente: 1 UI/gato SC q12h) ou 0,25–0,5 UI/kg SC q12h em cães selecionados, com caneta/refil U100.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
-      'Plumb\'s 10ª ed., Insulin Glargine (pp. 658–661): mesmo raciocínio clínico da glargina U100; biossimilar exige cautela na troca de marca.',
+      'Segue o mesmo raciocínio clínico da glargina U100; por ser biossimilar, exige cautela e reavaliação glicêmica na troca de marca.',
     clinicalUse:
       'Alternativa econômica de glargina U100 para DM felino (e cães selecionados), quando disponível e após decisão clínica de uso.',
     reassessment:
@@ -223,10 +223,10 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Biossimilar de insulina glargina U100 em caneta descartável 3 mL. Produto humano; uso veterinário extrabula.',
     labelDirections:
-      'Uso SC somente com a caneta original. Em gatos/cães, q12h conforme protocolo de glargina U100.',
+      'Uso SC somente com a caneta original. Em veterinária (extra-label): gatos 0,25 a 0,5 UI/kg SC q12h (início prático frequente: 1 UI/gato SC q12h); cães selecionados 0,25 a 0,5 UI/kg SC q12h.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
-      'Plumb\'s 10ª ed., Insulin Glargine (pp. 658–661): mesma conduta da glargina U100; caneta facilita doses fracionadas em gatos pequenos.',
+      'Mesma conduta clínica da glargina U100; a caneta facilita o ajuste fino de doses pequenas em gatos.',
     clinicalUse: 'DM felino/canino quando se prefere caneta descartável em vez de frasco + seringa.',
     reassessment: 'Reavaliar 5–7 dias no início/troca; monitorar hipoglicemia.',
     prescriptionExample:
@@ -257,10 +257,10 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Biossimilar de insulina glargina U100 em frasco-ampola 10 mL. Apresentação de maior volume; produto humano extrabula em vet.',
     labelDirections:
-      'Uso SC com seringa U100. Refrigerar 2–8 °C. Em veterinária, q12h em gatos conforme protocolo de glargina.',
+      'Uso SC com seringa U100; refrigerar 2–8 °C. Em veterinária (extra-label): gatos 0,25 a 0,5 UI/kg SC a cada 12 h (início prático frequente: 1 UI/gato SC q12h); cães selecionados 0,25 a 0,5 UI/kg SC q12h.',
     dosageGuidance: GLARGINE_U100_GUIDANCE,
     plumbsContext:
-      'Plumb\'s 10ª ed., Insulin Glargine (pp. 658–661): frasco 10 mL útil para múltiplos pacientes ou doses maiores; confirmar disponibilidade no varejo.',
+      'Mesma conduta clínica da glargina U100; frasco de 10 mL útil para múltiplos pacientes ou doses maiores, mediante disponibilidade no varejo.',
     clinicalUse:
       'Alternativa de custo por mL para glargina U100 quando frasco 10 mL estiver disponível; comparar com Lantus.',
     reassessment: 'Reavaliar 5–7 dias após início/troca; descartar após prazo de uso aberto conforme bula.',
@@ -291,7 +291,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary:
       'Insulina glargina concentrada U300. Caneta preenchida; não aspirar com seringa comum e não converter diretamente de U100.',
     labelDirections:
-      'Uso SC somente com a caneta original. Em gatos/cães selecionados, q12-24h conforme resposta clínica e monitoramento.',
+      'Uso SC somente com a caneta original SoloStar U300. Em veterinária (extra-label): ponto de partida felino relatado de 0,5 UI/kg SC a cada 12–24 h (ou 2 UI/gato q24h); cães selecionados 0,25 a 0,5 UI/kg SC q12–24h com monitoramento intensivo.',
     dosageGuidance: {
       labelDose:
         'Bula humana: dose individualizada. Literatura felina emergente: 0,5 UI/kg SC q12-24h ou 2 UI/gato q24h como pontos de partida descritos; ajustar por CGM/curva.',
@@ -455,13 +455,13 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Insulina regular U100 - frasco 10 mL', 'Refis 3 mL conforme mercado'],
     activeComponents: ['insulina humana regular 100 UI/mL'],
     labelCompositionSummary: 'Insulina humana regular/cristalina 100 UI/mL. Produto humano; uso hospitalar veterinário extra-label.',
-    labelDirections: 'Uso hospitalar IV/IM/SC conforme protocolo. Não usar como manutenção domiciliar de rotina.',
+    labelDirections: 'Uso hospitalar IV/IM/SC em DKA e hipercalemia: Cães/gatos CRI DKA = 1,1 UI/kg/24h (gatos) ou 2,2 UI/kg/24h (cães) IV; IM intermitente = 0,2 UI/kg IM inicial seguido de 0,1 UI/kg IM q1–2h até glicemia <250 mg/dL (hipercalemia: 0,25–0,5 UI/kg IV + glicose). Não usar como manutenção domiciliar.',
     dosageGuidance: REGULAR_GUIDANCE,
     plumbsContext: 'Insulina regular e usada em DKA, hipercalemia e controle emergencial, com monitoramento intensivo.',
     clinicalUse: 'Emergência/UTI: DKA, hipercalemia e hiperglicemia hospitalar. Não e basal domiciliar.',
     reassessment: 'Glicemia e eletrolitos seriados durante internacao; ajustar conforme resposta e hidratação.',
     prescriptionExample:
-      'Humulin R 100 UI/mL: uso hospitalar conforme protocolo de DKA/hipercalemia; não dispensar para manutenção domiciliar sem plano explicito.',
+      'Humulin R 100 UI/mL (hospitalar DKA): ataque 0,2 UI/kg IM seguido de 0,1 UI/kg IM a cada 1–2 h até glicemia <250 mg/dL (ou CRI IV: 1,1 UI/kg/24h gatos; 2,2 UI/kg/24h cães); não dispensar como basal domiciliar.',
     safetyAlert: `${HOSPITAL_ALERT} ${U100_ALERT}`,
     price: {
       averageLabel: 'Frasco 10 mL em torno de R$ 59,39-75,99',
@@ -484,13 +484,13 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Insulina regular U100 - frasco 10 mL', 'Penfill 5 refis de 3 mL'],
     activeComponents: ['insulina humana regular 100 UI/mL'],
     labelCompositionSummary: 'Insulina humana regular 100 UI/mL. Alternativa regular U100 ao Humulin R.',
-    labelDirections: 'Uso hospitalar conforme protocolo. Não e opção de manutenção domiciliar.',
+    labelDirections: 'Uso hospitalar IV/IM/SC em DKA e hipercalemia: CRI DKA = 1,1 UI/kg/24h (gatos) ou 2,2 UI/kg/24h (cães) IV; IM intermitente = 0,2 UI/kg IM inicial seguido de 0,1 UI/kg IM q1–2h até glicemia <250 mg/dL (hipercalemia: 0,25–0,5 UI/kg IV + glicose). Não usar como manutenção domiciliar.',
     dosageGuidance: REGULAR_GUIDANCE,
     plumbsContext: 'Mesmo papel clínico da insulina regular: emergência, DKA, hipercalemia e controle hospitalar.',
     clinicalUse: 'Emergência/UTI, principalmente DKA e hipercalemia com toxicidade miocardica conforme protocolo.',
     reassessment: 'Monitoramento seriado de glicemia, potássio/fósforo, cetonas e fluidoterapia.',
     prescriptionExample:
-      'Novolin R 100 UI/mL: uso hospitalar conforme protocolo; não usar como insulina basal domiciliar.',
+      'Novolin R 100 UI/mL (hospitalar DKA): 0,2 UI/kg IM inicial seguido de 0,1 UI/kg IM q1–2h (ou CRI IV 1,1–2,2 UI/kg/24h) sob monitoração; não usar como basal domiciliar.',
     safetyAlert: `${HOSPITAL_ALERT} ${U100_ALERT}`,
     price: {
       averageLabel: 'Frasco 10 mL em torno de R$ 32,99; Penfill conforme estoque',
@@ -518,7 +518,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     plumbsContext: 'Lispro e insulina de ação rápida/ultrarrapida, util em ambiente hospitalar, não como basal domiciliar.',
     clinicalUse: 'DKA/hiperglicemia hospitalar em protocolos selecionados.',
     reassessment: 'Monitoramento intensivo de glicemia e eletrolitos durante uso.',
-    prescriptionExample: 'Humalog lispro 100 UI/mL: uso hospitalar conforme protocolo de emergência; não prescrever como basal domiciliar.',
+    prescriptionExample: 'Humalog lispro 100 UI/mL (hospitalar DKA): ataque 0,09 UI/kg/h em CRI IV (cães/gatos) até estabilização metabólica e glicemia <250 mg/dL; não prescrever como basal domiciliar.',
     safetyAlert: HOSPITAL_ALERT,
     price: {
       averageLabel: 'KwikPen 3 mL em torno de R$ 46,39; frasco/refil conforme estoque',
@@ -542,13 +542,13 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Insulina asparte U100 - FlexPen 3 mL', 'Penfill 5 refis de 3 mL'],
     activeComponents: ['insulina asparte 100 UI/mL'],
     labelCompositionSummary: 'Analogo ultrarrapido de insulina asparte 100 UI/mL. Produto humano; uso veterinário hospitalar extra-label.',
-    labelDirections: 'Uso hospitalar conforme protocolo de DKA/hiperglicemia; não usar como manutenção domiciliar.',
+    labelDirections: 'Uso hospitalar em DKA/hiperglicemia: CRI IV de 0,09 UI/kg/h (ou bolus IM/IV intermitente 0,1–0,2 UI/kg) sob monitoramento intensivo de glicemia e K+; não usar como manutenção domiciliar.',
     dosageGuidance: RAPID_ANALOG_GUIDANCE,
     plumbsContext: 'Asparte tem ação rápida e pode ser usada em protocolos hospitalares, com monitoramento seriado.',
     clinicalUse: 'DKA e controle emergencial em internacao, quando escolhido no protocolo da equipe.',
     reassessment: 'Monitorar glicemia, potássio, fósforo, cetonas e hidratação durante internacao.',
     prescriptionExample:
-      'NovoRapid asparte 100 UI/mL: uso hospitalar conforme protocolo; não usar como insulina basal domiciliar.',
+      'NovoRapid asparte 100 UI/mL (hospitalar DKA): CRI IV de 0,09 UI/kg/h (ou 0,1–0,2 UI/kg IM/IV sob monitoração); não usar como insulina basal domiciliar.',
     safetyAlert: HOSPITAL_ALERT,
     price: {
       averageLabel: 'FlexPen 3 mL em torno de R$ 46,39-55,99; Penfill 5x3 mL conforme estoque',
@@ -599,7 +599,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     clinicalUse: 'Pacientes selecionados com diabetes mellitus, quando houver necessidade de perfil prolongado e monitoramento adequado.',
     reassessment: 'Reavaliar com curva/CGM e sinais clínicos; cuidado com hipoglicemia prolongada.',
     prescriptionExample:
-      'Tresiba degludeca 100 UI/mL: aplicar ___ UI SC conforme protocolo individual, com caneta/refil compatível e monitoramento estreito.',
+      'Tresiba degludeca 100 UI/mL (extra-label): iniciar 0,25 a 0,5 UI/kg SC a cada 24 horas com caneta/refil compatível, ajustando após 5–7 dias por curva glicêmica ou CGM.',
     safetyAlert: `${INSULIN_GENERAL_ALERT} Acao prolongada pode tornar hipoglicemia mais duradoura.`,
     price: {
       averageLabel: 'FlexTouch U100 conforme estoque; pesquisa local em torno de R$ 430,00-590,00 para caixas maiores',
@@ -652,7 +652,7 @@ export const insulinCommercialProductsSeed: CommercialMedicationProduct[] = [
     clinicalUse: 'Diabetes mellitus em pacientes selecionados quando insulinas mais usuais não foram adequadas.',
     reassessment: 'Curva/CGM após inicio/troca e reavaliação imediata se hipoglicemia, anorexia ou letargia.',
     prescriptionExample:
-      'Levemir detemir 100 UI/mL: aplicar ___ UI SC q12h conforme protocolo individual, usando seringa U100/caneta compatível.',
+      'Levemir detemir 100 UI/mL: iniciar com dose conservadora de ~0,1 UI/kg em cães ou 0,5-1 UI/gato SC q12h, ajustando após 5-7 dias por curva glicêmica/CGM; aplicar com seringa U100/caneta compatível.',
     safetyAlert: `${U100_ALERT} Detemir pode exigir dose inicial menor que outras insulinas em caes.`,
     price: {
       averageLabel: 'Preço confiável nacional não consolidado; produto pode ter disponibilidade irregular',

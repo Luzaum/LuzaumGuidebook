@@ -1,0 +1,591 @@
+- main [ref=e3]:
+  - heading "Intermação em Cães e Gatos" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - heading "Sinais clínicos" [level=3] [ref=e7]
+    - generic [ref=e10]:
+      - group [ref=e11]:
+        - generic "Geral O Paradoxo Térmico da Admissão (Hipertermia vs Normotermia vs Hipotermia) Clique para expandir explicação completa" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13]:
+            - generic [ref=e14]: Geral
+            - generic [ref=e15]: O Paradoxo Térmico da Admissão (Hipertermia vs Normotermia vs Hipotermia)
+          - generic [ref=e16]: Clique para expandir explicação completa
+      - group [ref=e20]:
+        - generic "Geral Desidratação Severa e Choque Misto Clique para expandir explicação completa" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]:
+            - generic [ref=e23]: Geral
+            - generic [ref=e24]: Desidratação Severa e Choque Misto
+          - generic [ref=e25]: Clique para expandir explicação completa
+      - group [ref=e29]:
+        - generic "Neurológico Alterações Progressivas do Sensório e Consciência Clique para expandir explicação completa" [ref=e30] [cursor=pointer]:
+          - generic [ref=e31]:
+            - generic [ref=e32]: Neurológico
+            - generic [ref=e33]: Alterações Progressivas do Sensório e Consciência
+          - generic [ref=e34]: Clique para expandir explicação completa
+      - group [ref=e38]:
+        - generic "Neurológico Crises Convulsivas e Sinais de Herniação Encefálica Clique para expandir explicação completa" [ref=e39] [cursor=pointer]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: Neurológico
+            - generic [ref=e42]: Crises Convulsivas e Sinais de Herniação Encefálica
+          - generic [ref=e43]: Clique para expandir explicação completa
+      - group [ref=e47]:
+        - generic "Respiratório Respiração Ofegante Extrema e Respiração de Boca Aberta em Gatos Clique para expandir explicação completa" [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: Respiratório
+            - generic [ref=e51]: Respiração Ofegante Extrema e Respiração de Boca Aberta em Gatos
+          - generic [ref=e52]: Clique para expandir explicação completa
+      - group [ref=e56]:
+        - generic "Respiratório Estridor Laríngeo e Edema de Vias Aéreas Superiores Clique para expandir explicação completa" [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: Respiratório
+            - generic [ref=e60]: Estridor Laríngeo e Edema de Vias Aéreas Superiores
+          - generic [ref=e61]: Clique para expandir explicação completa
+      - group [ref=e65]:
+        - generic "Respiratório Estertores Crepitantes e Desconforto por ARDS Clique para expandir explicação completa" [ref=e66] [cursor=pointer]:
+          - generic [ref=e67]:
+            - generic [ref=e68]: Respiratório
+            - generic [ref=e69]: Estertores Crepitantes e Desconforto por ARDS
+          - generic [ref=e70]: Clique para expandir explicação completa
+      - group [ref=e74]:
+        - generic "Cardiovascular Fase Hiperdinâmica Inicial vs Hipodinâmica Tardia Clique para expandir explicação completa" [ref=e75] [cursor=pointer]:
+          - generic [ref=e76]:
+            - generic [ref=e77]: Cardiovascular
+            - generic [ref=e78]: Fase Hiperdinâmica Inicial vs Hipodinâmica Tardia
+          - generic [ref=e79]: Clique para expandir explicação completa
+      - group [ref=e83]:
+        - generic "Cardiovascular Arritmias Cardíacas Ventriculares e Hipotensão Vasoplégica Clique para expandir explicação completa" [ref=e84] [cursor=pointer]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: Cardiovascular
+            - generic [ref=e87]: Arritmias Cardíacas Ventriculares e Hipotensão Vasoplégica
+          - generic [ref=e88]: Clique para expandir explicação completa
+      - group [ref=e92]:
+        - generic "Gastrointestinal Vômitos Profusos, Hematêmese e Sialorreia Espessa Clique para expandir explicação completa" [ref=e93] [cursor=pointer]:
+          - generic [ref=e94]:
+            - generic [ref=e95]: Gastrointestinal
+            - generic [ref=e96]: Vômitos Profusos, Hematêmese e Sialorreia Espessa
+          - generic [ref=e97]: Clique para expandir explicação completa
+      - group [ref=e101]:
+        - generic "Gastrointestinal Diarreia Hemorrágica Fulminante (Hematochezia e Melena) Clique para expandir explicação completa" [ref=e102] [cursor=pointer]:
+          - generic [ref=e103]:
+            - generic [ref=e104]: Gastrointestinal
+            - generic [ref=e105]: Diarreia Hemorrágica Fulminante (Hematochezia e Melena)
+          - generic [ref=e106]: Clique para expandir explicação completa
+      - group [ref=e110]:
+        - generic "Renal Oligúria, Anúria e Urina com Pigmentúria Acastanhada Clique para expandir explicação completa" [ref=e111] [cursor=pointer]:
+          - generic [ref=e112]:
+            - generic [ref=e113]: Renal
+            - generic [ref=e114]: Oligúria, Anúria e Urina com Pigmentúria Acastanhada
+          - generic [ref=e115]: Clique para expandir explicação completa
+      - group [ref=e119]:
+        - generic "Hematológico Diátese Hemorrágica Cutaneomucosa e Coagulopatia Tardia Clique para expandir explicação completa" [ref=e120] [cursor=pointer]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: Hematológico
+            - generic [ref=e123]: Diátese Hemorrágica Cutaneomucosa e Coagulopatia Tardia
+          - generic [ref=e124]: Clique para expandir explicação completa
+  - generic [ref=e128]:
+    - heading "Tratamento" [level=3] [ref=e130]
+    - generic [ref=e132]:
+      - generic [ref=e133]:
+        - 'heading "Diretrizes internacionais RECOVER First Aid 2026: resfriamento ativo pré e intra-hospitalar imediato" [level=4] [ref=e136]'
+        - generic [ref=e138]:
+          - paragraph [ref=e139]:
+            - strong [ref=e140]: Diretrizes de resfriamento ativo baseadas em evidências (RECOVER 2026)
+            - text: →
+          - generic [ref=e141]:
+            - generic [ref=e143]:
+              - generic [ref=e148]:
+                - paragraph [ref=e149]: Evidência publicada
+                - paragraph [ref=e150]: Mandell et al. (2026)
+              - paragraph [ref=e151]:
+                - strong [ref=e152]: Ação pré-hospitalar imediata
+                - text: →Mandell et al. (2026) e Thawley et al. (2026) preconizam resfriamento imediato pelo tutor com água fresca contínua sobre tronco e abdome sob ventilador.
+            - generic [ref=e157]:
+              - strong [ref=e158]: Desmistificação científica da água fresca
+              - text: →a premissa de que água fria impede a dissipação por vasoconstrição foi superada; convecção e evaporação forçada são seguras e salvam vidas.
+            - generic [ref=e163]:
+              - strong [ref=e164]: Limites térmicos e alvos estritos
+              - text: →
+            - generic [ref=e169]:
+              - strong [ref=e170]: Com termômetro
+              - text: →interromper resfriamento ativo rigidamente aos 39,7–40,0°C para prevenir hipotermia rebote iatrogênica (< 37,5°C) que agrava a CID.
+            - generic [ref=e175]:
+              - strong [ref=e176]: Sem termômetro
+              - text: →resfriar ativamente por
+              - mark [ref=e177]: 15 minutos
+              - text: e partir com ar-condicionado ligado para o hospital.
+            - generic [ref=e182]:
+              - strong [ref=e183]: Exceção de via aérea
+              - text: →estridor laríngeo que atenua com arrefecimento permite meta de 38,6°C.
+            - generic [ref=e188]:
+              - strong [ref=e189]: VETO CLÍNICO ABSOLUTO
+              - text: →jamais envolver o animal em toalhas molhadas estagnadas (aprisionam calor) e não usar banhos de gelo (induzem tremores musculares hipermetabólicos).
+      - generic [ref=e190]:
+        - heading "Manejo prioritário de vias aéreas (ABC), sedação titulada, intubação e oxigenoterapia" [level=4] [ref=e193]
+        - generic [ref=e195]:
+          - paragraph [ref=e196]:
+            - strong [ref=e197]: Abordagem emergencial sistematizada no minuto zero
+            - text: →
+          - generic [ref=e198]:
+            - generic [ref=e203]:
+              - strong [ref=e204]: Airway (Vias Aéreas)
+              - text: →braquicefálicos ou animais com edema laríngeo/depressão de sensório necessitam de via aérea protegida; estridor com cianose exige sedação imediata com butorfanol (
+              - mark [ref=e205]: 0,1–0,2 mg/kg
+              - text: IV).
+            - generic [ref=e210]:
+              - strong [ref=e211]: Suporte invasivo
+              - text: →se a obstrução persistir, indução anestésica rápida, intubação orotraqueal com cuff inflado e oxigênio a 100%; traqueostomia emergencial se houver obstrução orofaríngea mecânica.
+            - generic [ref=e216]:
+              - strong [ref=e217]: Breathing (Ventilação)
+              - text: →oxigenoterapia umidificada sem contenção estressante (especialmente em felinos sob risco de parada cardiorrespiratória; priorizar gaiola de oxigênio amena).
+            - generic [ref=e222]:
+              - strong [ref=e223]: Circulation (Circulação)
+              - text: →obtenção rápida de 2 acessos venosos calibrosos (18G ou 20G em cefálicas ou jugulares) ou acesso intraósseo se houver colapso vascular periférico.
+      - generic [ref=e224]:
+        - 'heading "Ressuscitação volêmica prudente (Diretrizes AAHA 2024): alíquotas balanceadas e prevenção de sobrecarga" [level=4] [ref=e227]'
+        - generic [ref=e229]:
+          - paragraph [ref=e230]:
+            - strong [ref=e231]: Fluidoterapia guiada por metas (AAHA 2024)
+            - text: →
+          - generic [ref=e232]:
+            - generic [ref=e237]:
+              - strong [ref=e238]: Fim das doses de choque cegas
+              - text: →proscrita a infusão de 90 mL/kg em cães ou 60 mL/kg em gatos; o endotélio com hiperpermeabilidade (capillary leak) sofre inundação pulmonar letal (ARDS).
+            - generic [ref=e243]:
+              - strong [ref=e244]: Alíquotas prudentes de cristaloides balanceados (Ringer Lactato ou Plasmalyte)
+              - text: →
+            - generic [ref=e245]:
+              - generic [ref=e246]: Cães
+              - generic [ref=e253]:
+                - text: 15 a 20 mL/kg IV em infusão de 15 a
+                - mark [ref=e254]: 30 minutos
+                - text: .
+            - generic [ref=e255]:
+              - generic [ref=e256]: Gatos
+              - generic [ref=e262]:
+                - text: 5 a 10 mL/kg IV conservadores em 15 a
+                - mark [ref=e263]: 30 minutos
+                - text: .
+            - generic [ref=e268]:
+              - strong [ref=e269]: Metas perfusionais de reavaliação seriada
+              - text: →normalização da frequência cardíaca, amplitude de pulso femoral, TPC de 1–2 segundos, PAM >= 65 mmHg, lactato em queda e ausculta pulmonar limpa.
+      - generic [ref=e270]:
+        - 'heading "Terapia vasoativa e inotrópica: norepinefrina precoce, vasopressina e dobutamina" [level=4] [ref=e273]'
+        - generic [ref=e275]:
+          - paragraph [ref=e276]:
+            - strong [ref=e277]: Manejo do choque vasoplégico distributivo refratário
+            - text: →
+          - generic [ref=e278]:
+            - generic [ref=e283]:
+              - strong [ref=e284]: Diagnóstico de vasoplegia
+              - text: →hipotensão persistente (PAM < 65 mmHg ou PAS < 90 mmHg) após restauração da euvolemia intravascular decorre de desregulação endotelial por óxido nítrico e citocinas.
+            - generic [ref=e289]:
+              - strong [ref=e290]: VETO CLÍNICO
+              - text: →não insistir em sobrecarga hídrica de cristaloides na hipotensão euvolêmica, pois agrava edema intersticial pulmonar e cerebral.
+            - generic [ref=e295]:
+              - strong [ref=e296]: Vasopressor de primeira escolha
+              - text: →Norepinefrina em infusão contínua (CRI).
+            - generic [ref=e301]:
+              - strong [ref=e302]: Posologia e titulação
+              - text: →0,05 a 0,1 mcg/kg/min IV inicial, titulada a cada 10–15 min até PAM >= 65 mmHg (faixa de 0,5 a 2,0 mcg/kg/min em choque profundo), preservando perfusão esplâncnica e renal.
+      - generic [ref=e303]:
+        - heading "Correção emergencial de hipoglicemia severa (dextrose a 50%) e manejo gradual de distúrbios eletrolíticos" [level=4] [ref=e306]
+        - generic [ref=e308]:
+          - paragraph [ref=e309]:
+            - strong [ref=e310]: Manejo metabólico e correção hidroeletrolítica seriada
+            - text: →
+          - generic [ref=e311]:
+            - generic [ref=e316]:
+              - strong [ref=e317]: Intervenção glicêmica imediata
+              - text: →se glicemia < 60 mg/dL ou neuroglicopenia clínica, administrar bolus de Glicose 50% na dose de 0,5 a 1,0 mL/kg (0,25–0,5 g/kg de glicose).
+            - generic [ref=e322]:
+              - strong [ref=e323]: Diluição obrigatória
+              - text: →diluir 1:2 a 1:4 em SF ou Ringer Lactato em 5–10 min lentos para evitar flebite química grave; manter manutenção contínua com glicose a 2,5% a 5,0% em fluido.
+            - generic [ref=e328]:
+              - strong [ref=e329]: Distúrbios do potássio
+              - text: →transição frequente de hipercalemia inicial (acidose e lise muscular) para hipocalemia severa pós-ressuscitação; suplementar KCl venoso com controle seriado.
+            - generic [ref=e334]:
+              - strong [ref=e335]: Oscilações de sódio
+              - text: →reposição hidroeletrolítica cautelosa em hipernatremia por perda evaporativa pura para prevenir mielinólise pontina central ou edema cerebral rebote.
+      - generic [ref=e336]:
+        - 'heading "Terapia antiarrítmica com lidocaína: protocolo canino padrão vs alerta de toxicidade extrema em felinos" [level=4] [ref=e339]'
+        - generic [ref=e341]:
+          - paragraph [ref=e342]:
+            - strong [ref=e343]: Controle antiarrítmico e divergências de espécie
+            - text: →
+          - generic [ref=e344]:
+            - generic [ref=e349]:
+              - strong [ref=e350]: Indicações formais de intervenção
+              - text: →taquicardia ventricular sustentada com FC > 180 bpm, complexos polimórficos, fenômeno de R-sobre-T ou colapso hemodinâmico associado.
+            - generic [ref=e355]:
+              - strong [ref=e356]: Protocolo padrão-ouro canino
+              - text: →Lidocaína a 2% sem vasoconstritor em bolus de
+              - mark [ref=e357]: 2 mg/kg
+              - text: IV lento em
+              - mark [ref=e358]: 2 minutos
+              - text: (cumulativo até
+              - mark [ref=e359]: 6–8 mg/kg
+              - text: ); conversão seguida de CRI de 25 a 80 mcg/kg/min IV.
+            - paragraph [ref=e367]: ALERTA FARMACOLÓGICO ESTREITO FELINO
+            - generic [ref=e372]:
+              - strong [ref=e373]: Deficiência de conjugação hepática
+              - text: →felinos apresentam sensibilidade extrema a anestésicos locais com alto risco de cardiotoxicidade e convulsões.
+            - generic [ref=e378]:
+              - strong [ref=e379]: Posologia felina estrita
+              - text: →bolus de resgate de apenas 0,2 a
+              - mark [ref=e380]: 0,5 mg/kg
+              - text: IV administrado lentamente em 5 a
+              - mark [ref=e381]: 10 minutos
+              - text: ; CRI de resgate limitada a 10 a 20 mcg/kg/min sob ECG ininterrupto.
+      - generic [ref=e382]:
+        - 'heading "Manejo renal contemporâneo (IRIS AKI 2026): sondagem de Foley e regra estrita de entradas e saídas (Ins & Outs)" [level=4] [ref=e385]'
+        - generic [ref=e387]:
+          - paragraph [ref=e388]:
+            - strong [ref=e389]: Proteção nefrológica e balanço hídrico rigoroso (IRIS AKI 2026)
+            - text: →
+          - generic [ref=e390]:
+            - generic [ref=e395]:
+              - strong [ref=e396]: Sondagem vesical contínua
+              - text: →cateter de Foley em sistema fechado estéril com quantificação horária de diurese para diagnóstico precoce de oligúria (< 1 mL/kg/h cão, < 0,6 mL/kg/h gato).
+            - generic [ref=e401]:
+              - strong [ref=e402]: Regra horária de Ins & Outs
+              - text: →Volume IV (mL/h) = débito urinário da hora anterior (mL/h) + perdas insensíveis (20 mL/kg/dia ~ 0,8 mL/kg/h) + perdas extraordinárias mensuradas (vômitos/diarreia).
+            - generic [ref=e407]:
+              - strong [ref=e408]: VETO TERAPÊUTICO
+              - text: →uso empírico de furosemida para forçar diurese em rins isquemiados é ineficaz, não recupera a TFG e apenas agrava a desidratação tubular.
+      - generic [ref=e409]:
+        - heading "Suporte hemostático criterioso com plasma fresco congelado e gastroproteção racional com pantoprazol" [level=4] [ref=e412]
+        - generic [ref=e414]:
+          - paragraph [ref=e415]:
+            - strong [ref=e416]: Manejo de hemostasia consuntiva e integridade mucosal
+            - text: →
+          - generic [ref=e417]:
+            - generic [ref=e422]:
+              - strong [ref=e423]: Indicações racionais de Plasma Fresco Congelado (FFP)
+              - text: →
+            - generic [ref=e428]:
+              - strong [ref=e429]: Não usar profilaticamente
+              - text: →apenas alterações laboratoriais isoladas de tempos de coagulação não justificam FFP.
+            - generic [ref=e434]:
+              - strong [ref=e435]: Critérios de infusão
+              - text: →presença de sangramento clínico ativo (petéquias progressivas, hematomas, melena copiosa) com tempos de coagulação > 1,5 vez o controle; dose de 10 a 20 mL/kg IV.
+            - generic [ref=e440]:
+              - strong [ref=e441]: Proteção gastroduodenal
+              - text: →Pantoprazol
+              - mark [ref=e442]: 1 mg/kg
+              - text: IV q12–24h para profilaxia e manejo de úlceras isquêmicas de estresse; sucralfato (0,5–1,0 g VO q8h) apenas se ausência de vômitos e via aérea segura.
+      - generic [ref=e443]:
+        - 'heading "Stewardship antimicrobiano estrito: indicações reais de antibioticoterapia vs contraindicação de profilaxia" [level=4] [ref=e446]'
+        - generic [ref=e448]:
+          - paragraph [ref=e449]:
+            - strong [ref=e450]: Uso racional de antimicrobianos e restrições de segurança
+            - text: →
+          - generic [ref=e451]:
+            - generic [ref=e456]:
+              - strong [ref=e457]: Não prescrever antibióticos profiláticos de rotina
+              - text: →a translocação bacteriana decorre de quebra de barreira, mas antibioticoterapia indiscriminada induz resistência e lesão de órgãos.
+            - generic [ref=e462]:
+              - strong [ref=e463]: Critérios formais para início de antibioticoterapia intravenosa
+              - text: →
+            - generic [ref=e464]: Choque circulatório descompensado refratário simulando sepse.
+            - generic [ref=e467]: Neutropenia acentuada (< 2.000 leucócitos/uL).
+            - generic [ref=e470]: Perda epitelial gastrointestinal fulminante com fezes sanguinolentas necróticas graves ou pneumonia aspirativa documentada.
+            - generic [ref=e477]:
+              - strong [ref=e478]: Esquema parenteral empírico
+              - text: →Ampicilina + Sulbactam (
+              - mark [ref=e479]: 30 mg/kg
+              - text: IV q8h) associada a fluoroquinolona com dose corrigida à função renal (lembrando risco de retinotoxicidade de fluoroquinolonas em gatos).
+      - generic [ref=e480]:
+        - heading "Tabela 5 — Farmacoterapia de emergência e suporte crítico na intermação" [level=4] [ref=e486]
+        - generic [ref=e488]:
+          - generic [ref=e489]:
+            - generic [ref=e490]:
+              - generic [ref=e491]:
+                - term [ref=e492]: Fármaco / Solução
+                - definition [ref=e493]: Cristaloide Isotônico Balanceado (Ringer Lactato / Plasmalyte)
+              - generic [ref=e494]:
+                - term [ref=e495]: Espécie e Dose Prática
+                - definition [ref=e496]: "Cão: 15–20 mL/kg em 15–30 min; Gato: 5–10 mL/kg em 15–30 min"
+              - generic [ref=e497]:
+                - term [ref=e498]: Via e Frequência
+                - definition [ref=e499]: Intravenosa rápida em alíquotas com reavaliação
+              - generic [ref=e500]:
+                - term [ref=e501]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e502]: Restauração de volume intravascular e euvolemia sem acidose hiperclorêmica
+              - generic [ref=e503]:
+                - term [ref=e504]: Alertas e Contraindicações Críticas
+                - definition [ref=e505]: Proibido usar dose de choque inteira cega; alto risco de ARDS e edema pulmonar
+            - generic [ref=e506]:
+              - generic [ref=e507]:
+                - term [ref=e508]: Fármaco / Solução
+                - definition [ref=e509]: Norepinefrina (Bitartarato)
+              - generic [ref=e510]:
+                - term [ref=e511]: Espécie e Dose Prática
+                - definition [ref=e512]: "Cão e Gato: 0,05–0,1 mcg/kg/min inicial (titular até 1–2 mcg/kg/min)"
+              - generic [ref=e513]:
+                - term [ref=e514]: Via e Frequência
+                - definition [ref=e515]: Intravenosa em Infusão Contínua (CRI) com bomba
+              - generic [ref=e516]:
+                - term [ref=e517]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e518]: Agonista alfa-1 e beta-1 adrenérgico; vasopressor de escolha no choque vasoplégico
+              - generic [ref=e519]:
+                - term [ref=e520]: Alertas e Contraindicações Críticas
+                - definition [ref=e521]: Iniciar apenas após euvolemia; monitorar PAM com alvo estrito >= 65 mmHg
+            - generic [ref=e522]:
+              - generic [ref=e523]:
+                - term [ref=e524]: Fármaco / Solução
+                - definition [ref=e525]: Glicose a 50% (Dextrose 50%)
+              - generic [ref=e526]:
+                - term [ref=e527]: Espécie e Dose Prática
+                - definition [ref=e528]: "Cão e Gato: 0,5–1,0 mL/kg (0,25–0,5 g/kg de glicose)"
+              - generic [ref=e529]:
+                - term [ref=e530]: Via e Frequência
+                - definition [ref=e531]: IV lento em 5–10 min, diluída 1:2 a 1:4 em SF
+              - generic [ref=e532]:
+                - term [ref=e533]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e534]: Correção imediata de hipoglicemia aguda (< 60 mg/dL) por falência hepática/consumo
+              - generic [ref=e535]:
+                - term [ref=e536]: Alertas e Contraindicações Críticas
+                - definition [ref=e537]: Nunca administrar pura sem diluição (risco de flebite química e trombose venosa)
+            - generic [ref=e538]:
+              - generic [ref=e539]:
+                - term [ref=e540]: Fármaco / Solução
+                - definition [ref=e541]: Midazolam ou Diazepam
+              - generic [ref=e542]:
+                - term [ref=e543]: Espécie e Dose Prática
+                - definition [ref=e544]: "Cão e Gato: 0,2–0,3 mg/kg"
+              - generic [ref=e545]:
+                - term [ref=e546]: Via e Frequência
+                - definition [ref=e547]: Intravenosa lenta ou intranasal (Midazolam)
+              - generic [ref=e548]:
+                - term [ref=e549]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e550]: Modulador alostérico GABA-A; controle imediato de crises convulsivas ativas
+              - generic [ref=e551]:
+                - term [ref=e552]: Alertas e Contraindicações Críticas
+                - definition [ref=e553]: Interromper atividade muscular convulsiva que gera calor metabólico explosivo
+            - generic [ref=e554]:
+              - generic [ref=e555]:
+                - term [ref=e556]: Fármaco / Solução
+                - definition [ref=e557]: Lidocaína 2% sem vasoconstritor (Canina)
+              - generic [ref=e558]:
+                - term [ref=e559]: Espécie e Dose Prática
+                - definition [ref=e560]: "Cão: 2 mg/kg IV lento em 2 min; manutenção CRI 25–80 mcg/kg/min"
+              - generic [ref=e561]:
+                - term [ref=e562]: Via e Frequência
+                - definition [ref=e563]: Intravenosa bolus + infusão contínua sob ECG
+              - generic [ref=e564]:
+                - term [ref=e565]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e566]: Bloqueador de canal de sódio classe Ib; reversão de taquicardia ventricular instável
+              - generic [ref=e567]:
+                - term [ref=e568]: Alertas e Contraindicações Críticas
+                - definition [ref=e569]: Corrigir hipóxia, acidose e hipocalemia antes; contraindicada em bloqueios AV
+            - generic [ref=e570]:
+              - generic [ref=e571]:
+                - term [ref=e572]: Fármaco / Solução
+                - definition [ref=e573]: Lidocaína 2% (Ajuste Estrito Felino)
+              - generic [ref=e574]:
+                - term [ref=e575]: Espécie e Dose Prática
+                - definition [ref=e576]: "Gato: 0,2–0,5 mg/kg IV muito lento em 5–10 min; CRI 10–20 mcg/kg/min"
+              - generic [ref=e577]:
+                - term [ref=e578]: Via e Frequência
+                - definition [ref=e579]: Intravenosa com monitorização rigorosíssima
+              - generic [ref=e580]:
+                - term [ref=e581]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e582]: Antiarrítmico ventricular de resgate na espécie felina com extrema cautela
+              - generic [ref=e583]:
+                - term [ref=e584]: Alertas e Contraindicações Críticas
+                - definition [ref=e585]: "Alta sensibilidade felina: risco de convulsão, depressão miocárdica e parada"
+            - generic [ref=e586]:
+              - generic [ref=e587]:
+                - term [ref=e588]: Fármaco / Solução
+                - definition [ref=e589]: Pantoprazol
+              - generic [ref=e590]:
+                - term [ref=e591]: Espécie e Dose Prática
+                - definition [ref=e592]: "Cão e Gato: 1 mg/kg"
+              - generic [ref=e593]:
+                - term [ref=e594]: Via e Frequência
+                - definition [ref=e595]: Intravenosa lenta a cada 12 a 24 horas
+              - generic [ref=e596]:
+                - term [ref=e597]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e598]: Inibidor de bomba de prótons; profilaxia e tratamento de úlceras e gastrite isquêmica
+              - generic [ref=e599]:
+                - term [ref=e600]: Alertas e Contraindicações Críticas
+                - definition [ref=e601]: Indicado se houver hematêmese, melena ou suspeita de lesão mucosa grave
+            - generic [ref=e602]:
+              - generic [ref=e603]:
+                - term [ref=e604]: Fármaco / Solução
+                - definition [ref=e605]: Plasma Fresco Congelado (FFP)
+              - generic [ref=e606]:
+                - term [ref=e607]: Espécie e Dose Prática
+                - definition [ref=e608]: "Cão e Gato: 10–20 mL/kg"
+              - generic [ref=e609]:
+                - term [ref=e610]: Via e Frequência
+                - definition [ref=e611]: Intravenosa lenta com equipo com filtro de sangue
+              - generic [ref=e612]:
+                - term [ref=e613]: Mecanismo de Ação e Indicação Primária
+                - definition [ref=e614]: Reposição de fatores de coagulação e antitrombina na CID hemorrágica ativa
+              - generic [ref=e615]:
+                - term [ref=e616]: Alertas e Contraindicações Críticas
+                - definition [ref=e617]: Não usar profilaticamente sem sangramento ou sem coagulopatia clinicamente relevante
+          - generic [ref=e618]:
+            - paragraph [ref=e619]: ↔ Deslize para ver todas as colunas. No teclado, use as setas.
+            - region "Tabela 5 — Farmacoterapia de Emergência e Suporte Crítico na Intermação" [ref=e620]:
+              - table "Tabela 5 — Farmacoterapia de Emergência e Suporte Crítico na Intermação" [ref=e621]:
+                - rowgroup [ref=e622]:
+                  - row [ref=e623]:
+                    - columnheader "Fármaco / Solução" [ref=e624]
+                    - columnheader "Espécie e Dose Prática" [ref=e625]
+                    - columnheader "Via e Frequência" [ref=e626]
+                    - columnheader "Mecanismo de Ação e Indicação Primária" [ref=e627]
+                    - columnheader "Alertas e Contraindicações Críticas" [ref=e628]
+                - rowgroup [ref=e629]:
+                  - row [ref=e630]:
+                    - cell "Cristaloide Isotônico Balanceado (Ringer Lactato / Plasmalyte)" [ref=e631]
+                    - 'cell "Cão: 15–20 mL/kg em 15–30 min; Gato: 5–10 mL/kg em 15–30 min" [ref=e632]'
+                    - cell "Intravenosa rápida em alíquotas com reavaliação" [ref=e633]
+                    - cell "Restauração de volume intravascular e euvolemia sem acidose hiperclorêmica" [ref=e634]
+                    - cell "Proibido usar dose de choque inteira cega; alto risco de ARDS e edema pulmonar" [ref=e635]
+                  - row [ref=e636]:
+                    - cell "Norepinefrina (Bitartarato)" [ref=e637]
+                    - 'cell "Cão e Gato: 0,05–0,1 mcg/kg/min inicial (titular até 1–2 mcg/kg/min)" [ref=e638]'
+                    - cell "Intravenosa em Infusão Contínua (CRI) com bomba" [ref=e639]
+                    - cell "Agonista alfa-1 e beta-1 adrenérgico; vasopressor de escolha no choque vasoplégico" [ref=e640]
+                    - cell "Iniciar apenas após euvolemia; monitorar PAM com alvo estrito >= 65 mmHg" [ref=e641]
+                  - row [ref=e642]:
+                    - cell "Glicose a 50% (Dextrose 50%)" [ref=e643]
+                    - 'cell "Cão e Gato: 0,5–1,0 mL/kg (0,25–0,5 g/kg de glicose)" [ref=e644]'
+                    - cell "IV lento em 5–10 min, diluída 1:2 a 1:4 em SF" [ref=e645]
+                    - cell "Correção imediata de hipoglicemia aguda (< 60 mg/dL) por falência hepática/consumo" [ref=e646]
+                    - cell "Nunca administrar pura sem diluição (risco de flebite química e trombose venosa)" [ref=e647]
+                  - row [ref=e648]:
+                    - cell "Midazolam ou Diazepam" [ref=e649]
+                    - 'cell "Cão e Gato: 0,2–0,3 mg/kg" [ref=e650]'
+                    - cell "Intravenosa lenta ou intranasal (Midazolam)" [ref=e651]
+                    - cell "Modulador alostérico GABA-A; controle imediato de crises convulsivas ativas" [ref=e652]
+                    - cell "Interromper atividade muscular convulsiva que gera calor metabólico explosivo" [ref=e653]
+                  - row [ref=e654]:
+                    - cell "Lidocaína 2% sem vasoconstritor (Canina)" [ref=e655]
+                    - 'cell "Cão: 2 mg/kg IV lento em 2 min; manutenção CRI 25–80 mcg/kg/min" [ref=e656]'
+                    - cell "Intravenosa bolus + infusão contínua sob ECG" [ref=e657]
+                    - cell "Bloqueador de canal de sódio classe Ib; reversão de taquicardia ventricular instável" [ref=e658]
+                    - cell "Corrigir hipóxia, acidose e hipocalemia antes; contraindicada em bloqueios AV" [ref=e659]
+                  - row [ref=e660]:
+                    - cell "Lidocaína 2% (Ajuste Estrito Felino)" [ref=e661]
+                    - 'cell "Gato: 0,2–0,5 mg/kg IV muito lento em 5–10 min; CRI 10–20 mcg/kg/min" [ref=e662]'
+                    - cell "Intravenosa com monitorização rigorosíssima" [ref=e663]
+                    - cell "Antiarrítmico ventricular de resgate na espécie felina com extrema cautela" [ref=e664]
+                    - 'cell "Alta sensibilidade felina: risco de convulsão, depressão miocárdica e parada" [ref=e665]'
+                  - row [ref=e666]:
+                    - cell "Pantoprazol" [ref=e667]
+                    - 'cell "Cão e Gato: 1 mg/kg" [ref=e668]'
+                    - cell "Intravenosa lenta a cada 12 a 24 horas" [ref=e669]
+                    - cell "Inibidor de bomba de prótons; profilaxia e tratamento de úlceras e gastrite isquêmica" [ref=e670]
+                    - cell "Indicado se houver hematêmese, melena ou suspeita de lesão mucosa grave" [ref=e671]
+                  - row [ref=e672]:
+                    - cell "Plasma Fresco Congelado (FFP)" [ref=e673]
+                    - 'cell "Cão e Gato: 10–20 mL/kg" [ref=e674]'
+                    - cell "Intravenosa lenta com equipo com filtro de sangue" [ref=e675]
+                    - cell "Reposição de fatores de coagulação e antitrombina na CID hemorrágica ativa" [ref=e676]
+                    - cell "Não usar profilaticamente sem sangramento ou sem coagulopatia clinicamente relevante" [ref=e677]
+      - generic [ref=e678]:
+        - heading "Tabela 6 — Protocolo operacional de resfriamento baseado em evidências (RECOVER First Aid 2026)" [level=4] [ref=e684]
+        - generic [ref=e686]:
+          - generic [ref=e687]:
+            - generic [ref=e688]:
+              - generic [ref=e689]:
+                - term [ref=e690]: Fase do Atendimento
+                - definition [ref=e691]: Pré-Hospitalar (Tutor / Primeiros Socorros)
+              - generic [ref=e692]:
+                - term [ref=e693]: Ação Prática Obrigatória
+                - definition [ref=e694]: Água corrente fresca contínua sobre tronco e abdome com ventilador
+              - generic [ref=e695]:
+                - term [ref=e696]: Meta Térmica / Limite de Parada
+                - definition [ref=e697]: Cessar aos 39,7–40,0°C retal ou após ~15 minutos se sem termômetro
+              - generic [ref=e698]:
+                - term [ref=e699]: Mecanismo Biofísico e Justificativa
+                - definition [ref=e700]: Convecção forçada e evaporação rápida removem calor sem fechar o leito vascular
+              - generic [ref=e701]:
+                - term [ref=e702]: Erro Técnico Grave a Evitar
+                - definition [ref=e703]: Enrolar em toalhas molhadas estagnadas (aprisionam calor e impedem evaporação)
+            - generic [ref=e704]:
+              - generic [ref=e705]:
+                - term [ref=e706]: Fase do Atendimento
+                - definition [ref=e707]: Transporte até o Hospital
+              - generic [ref=e708]:
+                - term [ref=e709]: Ação Prática Obrigatória
+                - definition [ref=e710]: Retirar água ativa, secar superficialmente e manter ar-condicionado veicular no máximo
+              - generic [ref=e711]:
+                - term [ref=e712]: Meta Térmica / Limite de Parada
+                - definition [ref=e713]: Manter temperatura monitorada; evitar resfriamento passivo excessivo
+              - generic [ref=e714]:
+                - term [ref=e715]: Mecanismo Biofísico e Justificativa
+                - definition [ref=e716]: O calor continua sendo perdido por inércia térmica após a remoção da água
+              - generic [ref=e717]:
+                - term [ref=e718]: Erro Técnico Grave a Evitar
+                - definition [ref=e719]: Deixar animal molhado em caixa fechada sem circulação de ar durante o trajeto
+            - generic [ref=e720]:
+              - generic [ref=e721]:
+                - term [ref=e722]: Fase do Atendimento
+                - definition [ref=e723]: Admissão Hospitalar Imediata
+              - generic [ref=e724]:
+                - term [ref=e725]: Ação Prática Obrigatória
+                - definition [ref=e726]: Termometria retal contínua; retomar água fresca + ventilador apenas se T > 40,0°C
+              - generic [ref=e727]:
+                - term [ref=e728]: Meta Térmica / Limite de Parada
+                - definition [ref=e729]: Interrupção imediata e definitiva aos 39,7–40,0°C (ou 38,6°C em estridor laríngeo)
+              - generic [ref=e730]:
+                - term [ref=e731]: Mecanismo Biofísico e Justificativa
+                - definition [ref=e732]: Prevenção estrita de hipotermia rebote iatrogênica (< 37,5°C) que agrava a CID
+              - generic [ref=e733]:
+                - term [ref=e734]: Erro Técnico Grave a Evitar
+                - definition [ref=e735]: Uso de banhos de imersão com gelo ou lavagem peritoneal/gástrica com água gelada
+            - generic [ref=e736]:
+              - generic [ref=e737]:
+                - term [ref=e738]: Fase do Atendimento
+                - definition [ref=e739]: Fase Pós-Resfriamento (UTI)
+              - generic [ref=e740]:
+                - term [ref=e741]: Ação Prática Obrigatória
+                - definition [ref=e742]: Aquecimento passivo suave caso ocorra hipotermia rebote; monitorar T a cada 15–30 min
+              - generic [ref=e743]:
+                - term [ref=e744]: Meta Térmica / Limite de Parada
+                - definition [ref=e745]: Estabilização da normotermia fisiológica (38,0 a 39,2°C)
+              - generic [ref=e746]:
+                - term [ref=e747]: Mecanismo Biofísico e Justificativa
+                - definition [ref=e748]: Homeostase enzimática e preservação da função hemostática e plaquetária
+              - generic [ref=e749]:
+                - term [ref=e750]: Erro Técnico Grave a Evitar
+                - definition [ref=e751]: Administrar dipirona ou anti-inflamatórios (AINEs) achando que se trata de febre
+          - generic [ref=e752]:
+            - paragraph [ref=e753]: ↔ Deslize para ver todas as colunas. No teclado, use as setas.
+            - region "Tabela 6 — Protocolo Operacional de Resfriamento Baseado em Evidências (RECOVER First Aid 2026)" [ref=e754]:
+              - table "Tabela 6 — Protocolo Operacional de Resfriamento Baseado em Evidências (RECOVER First Aid 2026)" [ref=e755]:
+                - rowgroup [ref=e756]:
+                  - row [ref=e757]:
+                    - columnheader "Fase do Atendimento" [ref=e758]
+                    - columnheader "Ação Prática Obrigatória" [ref=e759]
+                    - columnheader "Meta Térmica / Limite de Parada" [ref=e760]
+                    - columnheader "Mecanismo Biofísico e Justificativa" [ref=e761]
+                    - columnheader "Erro Técnico Grave a Evitar" [ref=e762]
+                - rowgroup [ref=e763]:
+                  - row [ref=e764]:
+                    - cell "Pré-Hospitalar (Tutor / Primeiros Socorros)" [ref=e765]
+                    - cell "Água corrente fresca contínua sobre tronco e abdome com ventilador" [ref=e766]
+                    - cell "Cessar aos 39,7–40,0°C retal ou após ~15 minutos se sem termômetro" [ref=e767]
+                    - cell "Convecção forçada e evaporação rápida removem calor sem fechar o leito vascular" [ref=e768]
+                    - cell "Enrolar em toalhas molhadas estagnadas (aprisionam calor e impedem evaporação)" [ref=e769]
+                  - row [ref=e770]:
+                    - cell "Transporte até o Hospital" [ref=e771]
+                    - cell "Retirar água ativa, secar superficialmente e manter ar-condicionado veicular no máximo" [ref=e772]
+                    - cell "Manter temperatura monitorada; evitar resfriamento passivo excessivo" [ref=e773]
+                    - cell "O calor continua sendo perdido por inércia térmica após a remoção da água" [ref=e774]
+                    - cell "Deixar animal molhado em caixa fechada sem circulação de ar durante o trajeto" [ref=e775]
+                  - row [ref=e776]:
+                    - cell "Admissão Hospitalar Imediata" [ref=e777]
+                    - cell "Termometria retal contínua; retomar água fresca + ventilador apenas se T > 40,0°C" [ref=e778]
+                    - cell "Interrupção imediata e definitiva aos 39,7–40,0°C (ou 38,6°C em estridor laríngeo)" [ref=e779]
+                    - cell "Prevenção estrita de hipotermia rebote iatrogênica (< 37,5°C) que agrava a CID" [ref=e780]
+                    - cell "Uso de banhos de imersão com gelo ou lavagem peritoneal/gástrica com água gelada" [ref=e781]
+                  - row [ref=e782]:
+                    - cell "Fase Pós-Resfriamento (UTI)" [ref=e783]
+                    - cell "Aquecimento passivo suave caso ocorra hipotermia rebote; monitorar T a cada 15–30 min" [ref=e784]
+                    - cell "Estabilização da normotermia fisiológica (38,0 a 39,2°C)" [ref=e785]
+                    - cell "Homeostase enzimática e preservação da função hemostática e plaquetária" [ref=e786]
+                    - cell "Administrar dipirona ou anti-inflamatórios (AINEs) achando que se trata de febre" [ref=e787]

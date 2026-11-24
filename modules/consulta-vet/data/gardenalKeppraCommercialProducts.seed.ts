@@ -24,14 +24,14 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
     labelCompositionSummary:
       'Gardenal® 100 mg: cada comprimido contém 100 mg de fenobarbital. Gardenal® 50 mg: cada comprimido contém 50 mg de fenobarbital. Gardenal® Gotas 40 mg/mL: cada 1 mL (40 gotas) contém 40 mg de fenobarbital (1 gota = 1 mg). Comprimidos com sulco para partição precisa.',
     labelDirections:
-      'Bula humana: adultos 2 a 3 mg/kg/dia; crianças 3 a 4 mg/kg/dia. Doses veterinárias (Plumb\'s 10ª ed.): Cães: dose inicial 2,5 a 3 mg/kg VO q12h (manutenção 2 a 5 mg/kg q12h). Gatos: 1 a 3 mg/kg VO q12h (ou 7,5 a 15 mg/gato q12h). Uso contínuo; não suspender abruptamente.',
+      'Bula humana: adultos 2 a 3 mg/kg/dia; crianças 3 a 4 mg/kg/dia. Doses veterinárias usuais: Cães: dose inicial 2,5 a 3 mg/kg VO q12h (manutenção 2 a 5 mg/kg q12h). Gatos: 1 a 3 mg/kg VO q12h (ou 7,5 a 15 mg/gato q12h). Uso contínuo; não suspender abruptamente.',
     dosageGuidance: {
       labelDose:
-        'Bula humana: 2 a 3 mg/kg/dia VO. Dose inicial veterinária recomendada (Plumb\'s 10ª ed.): Cães 2,5 a 3 mg/kg VO q12h; Gatos 1 a 3 mg/kg VO q12h.',
+        'Bula humana: 2 a 3 mg/kg/dia VO. Dose inicial veterinária recomendada: Cães 2,5 a 3 mg/kg VO q12h; Gatos 1 a 3 mg/kg VO q12h.',
       plumbs: {
         dog: [
           {
-            title: 'Epilepsia idiopática / Manutenção crônica (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia idiopática / Manutenção crônica',
             dose: '2,5 a 3 mg/kg VO a cada 12 horas',
             note: 'Duração: Uso contínuo (vitalício na epilepsia crônica). Desmame gradual ao longo de 2 a 6 meses se ≥ 1 a 2 anos livre de crises. Faixas de manutenção usuais: 2 a 5 mg/kg VO q12h. Monitorar concentração sérica (alvo: 15 a 35 µg/mL) em 10–14 dias e após 6 semanas por autoindução.',
           },
@@ -43,7 +43,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         ],
         cat: [
           {
-            title: 'Epilepsia / Controle de crises em felinos (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia / Controle de crises em felinos',
             dose: '1 a 3 mg/kg VO a cada 12 horas',
             note: 'Duração: Uso contínuo / vitalício na epilepsia crônica. Desmame lento em meses caso ocorra controle prolongado. Dose prática: 7,5 a 15 mg/gato VO q12h (ou ½ comp de 15 mg q12h). Felinos têm menor autoindução que cães, mas monitorar sedação e enzimas hepáticas.',
           },
@@ -73,7 +73,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         'Valores pesquisados em redes farmacêuticas humanas (Droga Raia, Drogasil, Ultrafarma, Pacheco) em 06/09/2026.',
     },
     evidenceLevel:
-      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016); Plumb\'s Veterinary Drug Handbook 10ª edição.',
+      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016).',
     imageUrl:
       'https://sjdigital.vtexassets.com/arquivos/ids/944887/gardenal-100mg-20-comprimidos-1146_1.jpg',
     productPageUrl: 'https://consultaremedios.com.br/gardenal/p',
@@ -106,14 +106,14 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
     labelCompositionSummary:
       'Keppra® 250 mg e 750 mg: comprimidos revestidos sulcados contendo 250 mg ou 750 mg de levetiracetam. Keppra® XR 500 mg: comprimidos de liberação prolongada com 500 mg de levetiracetam (engolir inteiro, não mastigar/partir). Keppra® Solução Oral: cada 1 mL contém 100 mg de levetiracetam acompanhado de seringa graduada.',
     labelDirections:
-      'Bula humana: 500 mg VO BID, até 1500 mg BID. Doses veterinárias (Plumb\'s 10ª ed.): Cães: 20 a 30 mg/kg VO a cada 8 horas (ou formulação XR: 30 a 60 mg/kg VO a cada 12 horas). Gatos: 20 a 40 mg/kg VO a cada 8 horas (ou XR: 500 mg/gato VO q24h; FARS: 20 a 25 mg/kg VO q8h). Pulse therapy em crises em salva: 30–60 mg/kg dose de ataque, depois 30 mg/kg q8h por 24 a 72 horas.',
+      'Bula humana: 500 mg VO BID, até 1500 mg BID. Doses veterinárias usuais: Cães: 20 a 30 mg/kg VO a cada 8 horas (ou formulação XR: 30 a 60 mg/kg VO a cada 12 horas). Gatos: 20 a 40 mg/kg VO a cada 8 horas (ou XR: 500 mg/gato VO q24h; FARS: 20 a 25 mg/kg VO q8h). Pulse therapy em crises em salva: 30–60 mg/kg dose de ataque, depois 30 mg/kg q8h por 24 a 72 horas.',
     dosageGuidance: {
       labelDose:
-        'Bula humana: 500 mg VO BID a 1500 mg BID. Doses veterinárias segundo Plumb\'s 10ª ed.: Cães 20–30 mg/kg VO q8h (XR: 30–60 mg/kg q12h); Gatos 20–40 mg/kg VO q8h.',
+        'Bula humana: 500 mg VO BID a 1500 mg BID. Doses veterinárias usuais: Cães 20–30 mg/kg VO q8h (XR: 30–60 mg/kg q12h); Gatos 20–40 mg/kg VO q8h.',
       plumbs: {
         dog: [
           {
-            title: 'Epilepsia crônica / Terapia adjuvante ou monoterapia (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia crônica / Terapia adjuvante ou monoterapia',
             dose: '20 a 30 mg/kg VO a cada 8 horas',
             note: 'Duração: Uso contínuo (vitalício na epilepsia refratária). Pode ser titulado até 40–60 mg/kg q8h conforme necessidade. Meia-vida curta em cães (~3–4h), exigindo rigoroso intervalo q8h para a apresentação convencional.',
           },
@@ -135,7 +135,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         ],
         cat: [
           {
-            title: 'Epilepsia felina crônica / Adjuvante ou monoterapia (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia felina crônica / Adjuvante ou monoterapia',
             dose: '20 a 40 mg/kg VO a cada 8 horas',
             note: 'Duração: Uso contínuo / vitalício na epilepsia crônica. Não sofre metabolismo hepático significativo (excreção predominantemente renal), sendo excepcionalmente seguro para gatos com hepatopatia.',
           },
@@ -175,7 +175,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         'Valores pesquisados em redes farmacêuticas (Drogasil, Raia, Ultrafarma, Pacheco) em 06/09/2026.',
     },
     evidenceLevel:
-      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016); Plumb\'s Veterinary Drug Handbook 10ª edição.',
+      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016).',
     imageUrl: 'https://product-data.raiadrogasil.io/images/14981920.webp',
     productPageUrl: 'https://consultaremedios.com.br/keppra/p',
     labelUrl: 'https://consultaremedios.com.br/keppra/bula',
@@ -209,14 +209,14 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
     labelCompositionSummary:
       'Levetiracetam genérico registrado pela Anvisa: comprimidos revestidos sulcados de 250 mg, 500 mg, 750 mg e 1000 mg; solução oral 100 mg/mL. Medicamento bioequivalente intercambiável de farmácia humana.',
     labelDirections:
-      'Bula genérica humana: 500 mg VO a cada 12 horas, ajustável até 1500 mg BID. Doses veterinárias (Plumb\'s 10ª ed.): Cães: 20 a 30 mg/kg VO a cada 8 horas. Gatos: 20 a 40 mg/kg VO a cada 8 horas (FARS: 20 a 25 mg/kg q8h). Em crises em salva (pulse therapy): dose inicial 30 a 60 mg/kg, seguida de 30 mg/kg q8h por 24 a 72h.',
+      'Bula genérica humana: 500 mg VO a cada 12 horas, ajustável até 1500 mg BID. Doses veterinárias usuais: Cães: 20 a 30 mg/kg VO a cada 8 horas. Gatos: 20 a 40 mg/kg VO a cada 8 horas (FARS: 20 a 25 mg/kg q8h). Em crises em salva (pulse therapy): dose inicial 30 a 60 mg/kg, seguida de 30 mg/kg q8h por 24 a 72h.',
     dosageGuidance: {
       labelDose:
-        'Bula genérica humana: 500 mg VO BID a 1500 mg BID. Doses veterinárias segundo Plumb\'s 10ª ed.: Cães 20–30 mg/kg VO q8h; Gatos 20–40 mg/kg VO q8h.',
+        'Bula genérica humana: 500 mg VO BID a 1500 mg BID. Doses veterinárias usuais: Cães 20–30 mg/kg VO q8h; Gatos 20–40 mg/kg VO q8h.',
       plumbs: {
         dog: [
           {
-            title: 'Epilepsia crônica / Terapia adjuvante ou monoterapia (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia crônica / Terapia adjuvante ou monoterapia',
             dose: '20 a 30 mg/kg VO a cada 8 horas',
             note: 'Duração: Uso contínuo (vitalício na epilepsia refratária). Pode ser titulado até 40–60 mg/kg q8h conforme necessidade. Meia-vida curta em cães (~3–4h), exigindo rigoroso intervalo q8h para a apresentação convencional.',
           },
@@ -233,7 +233,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         ],
         cat: [
           {
-            title: 'Epilepsia felina crônica / Adjuvante ou monoterapia (Plumb\'s 10ª ed.)',
+            title: 'Epilepsia felina crônica / Adjuvante ou monoterapia',
             dose: '20 a 40 mg/kg VO a cada 8 horas',
             note: 'Duração: Uso contínuo / vitalício na epilepsia crônica. Não sofre metabolismo hepático significativo (excreção predominantemente renal), sendo excepcionalmente seguro para gatos com hepatopatia.',
           },
@@ -250,7 +250,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
       ],
     },
     plumbsContext:
-      'Bioequivalente ao medicamento de referência (Keppra®), o levetiracetam genérico oferece opção de alta acessibilidade com os mesmos parâmetros de dosagem, tolerabilidade e segurança preconizados pelo Plumb\'s 10ª ed. e ACVIM.',
+      'Bioequivalente ao medicamento de referência (Keppra®), o levetiracetam genérico oferece opção de alta acessibilidade com os mesmos parâmetros de dosagem, tolerabilidade e segurança preconizados pelo consenso ACVIM.',
     clinicalUse:
       'Opção de excelente custo-benefício para anticonvulsivante adjuvante em cães e gatos, monoterapia em nefropatas/hepatopatas, pulse therapy em crises em cluster e manejo de FARS em felinos.',
     reassessment:
@@ -268,7 +268,7 @@ export const gardenalKeppraCommercialProductsSeed: CommercialMedicationProduct[]
         'Pesquisa realizada em redes farmacêuticas (Drogasil, Raia, Ultrafarma, Pacheco, Qualidoc) em 06/09/2026.',
     },
     evidenceLevel:
-      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016); Plumb\'s Veterinary Drug Handbook 10ª edição.',
+      'Consenso ACVIM Small Animal Consensus Statement on Seizure Management in Dogs (2016).',
     imageUrl:
       'https://qualidoc-plataforma.s3.us-east-2.amazonaws.com/attachments/9cacbd08-35da-482d-b67e-a1098ad8f50c.jpeg',
     productPageUrl: 'https://consultaremedios.com.br/levetiracetam/p',

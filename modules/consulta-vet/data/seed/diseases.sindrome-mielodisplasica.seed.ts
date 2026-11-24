@@ -75,7 +75,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     '- Diagnóstico diferencial crítico:\n' +
     '  - Diferenciação entre MDS clonal primária e dismielopoiese secundária reativa (desencadeada por sepse, imunomediadas como IMHA/PIMA, fármacos mielotóxicos e FeLV em gatos), indistinguíveis apenas pela citomorfologia (Weiss & Aird, 2001).\n' +
     '- Fronteira taxonômica e estudo de Meredith et al. (2025):\n' +
-    '  - O limiar de aproximadamente 20% de blastos medulares separa operacionalmente a MDS (<20%) da leucemia mieloide aguda (AML, >=20%; Withrow & MacEwen, 2020).\n' +
+    '  - O limiar de aproximadamente 20% de blastos medulares separa operacionalmente a MDS (<20%) da leucemia mieloide aguda (AML, >=20%).\n' +
     '  - Cães com MDS apresentam evolução significativamente mais indolente do que na AML (sobrevida mediana de 384 dias versus 6 dias, P < 0,001; Meredith et al., 2025).\n' +
     '- Manejo clínico e suporte:\n' +
     '  - Exclusão de causas secundárias, suporte transfusional com concentrado de hemácias guiado por hipóxia tecidual, antibioticoterapia agressiva na neutropenia febril e quimioterapia citotóxica especializada (doxorrubicina combinada a citarabina contínua em cães, ou azacitidina em gatos) em centros oncológicos.',
@@ -297,7 +297,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       '  - Entretanto, os precursores neoplásicos exibem maturação disfuncional intrínseca e ativação excessiva de vias pró-apoptóticas mitocondriais e de receptores de morte (Fas/FasL, caspases).\n' +
       '  - Sofrem lise programada antes de atingir os sinusoides vasculares (hematopoiese ineficaz).\n' +
       '- Enquadramento nosológico internacional:\n' +
-      '  - A enfermidade integra formalmente o espectro das neoplasias mieloides da Organização Mundial da Saúde adaptadas à medicina veterinária (Withrow & MacEwen, 6ª ed.).',
+      '  - A enfermidade integra formalmente o espectro das neoplasias mieloides da Organização Mundial da Saúde adaptadas à medicina veterinária.',
     dismielopoieseSecundariaReativa:
       'Dismielopoiese secundária reativa: a principal armadilha diagnóstica:\n' +
       '- Indistinguibilidade citomorfológica isolada (Weiss & Aird, 2001):\n' +
@@ -363,13 +363,13 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       '  - A integração proviral e a expressão de proteínas virais interferem na sinalização de ciclinas e fatores de transcrição, desencadeando apoptose prematura e maturação desordenada.\n' +
       '- Evidência histórica de forte ligação:\n' +
       '  - Série de Hisasue et al. (2001): 15 de 16 gatos com MDS (93,8%) eram positivos para FeLV.\n' +
-      '  - Nelson & Couto (6ª ed.): mais de 80% dos gatos em estudos clássicos apresentavam virêmia ativa.\n' +
+      '  - Em estudos clássicos, mais de 80% dos gatos acometidos apresentavam viremia ativa.\n' +
       '- ARMADILHA DIAGNÓSTICA NO PACIENTE FELINO:\n' +
       '  - O FeLV também provoca afecções medulares não neoplásicas (aplasia pura de série vermelha e mielossupressão reativa).\n' +
       '  - A presença do retrovírus associada à displasia não fecha automaticamente o diagnóstico de MDS clonal sem acompanhamento longitudinal.',
     classificacaoPraticaVeterinaria:
       'Classificação prática da síndrome mielodisplásica em pequenos animais:\n' +
-      '- Consensos FAB e adaptações veterinárias (Jain et al., 1991; Withrow & MacEwen, 2020; Weiss, 2006):\n' +
+      '- Critérios morfológicos adaptados para medicina veterinária (Jain et al., 1991; Weiss, 2006):\n' +
       '- 1. MDS-RC (Citopenia Refratária):\n' +
       '  - Citopenia em uma linhagem (anemia não regenerativa), menos de 5% de blastos medulares e curso clínico indolente.\n' +
       '- 2. MDS-RCMD (Citopenia Refratária com Displasia Multilinear):\n' +
@@ -380,7 +380,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       '  - Hiperplasia eritroide maciça displásica e relação mieloide:eritroide (M:E) inferior a 1,0.',
     tabelaClassificacaoVeterinariaMds: {
       kind: "clinicalTable",
-      caption: "Tabela — Classificação Prática da Síndrome Mielodisplásica em Cães e Gatos (Adaptada de Jain et al. e Withrow)",
+      caption: "Tabela — Classificação Prática da Síndrome Mielodisplásica em Cães e Gatos (Adaptada de Jain et al.)",
       headers: [
         "Subtipo Editorial",
         "Blastos na Medula",
@@ -424,7 +424,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     populacaoCanina:
       'Epidemiologia e demografia na espécie canina:\n' +
       '- Enfermidade incomum a rara:\n' +
-      '  - Neoplasias mieloides como um grupo ocorrem cerca de 10 vezes menos frequentemente do que neoplasias linfoproliferativas (linfomas e leucemias linfoides; Withrow & MacEwen, 6ª ed.).\n' +
+      '  - Neoplasias mieloides como um grupo ocorrem cerca de 10 vezes menos frequentemente do que neoplasias linfoproliferativas (linfomas e leucemias linfoides).\n' +
       '- Faixa etária e distribuição:\n' +
       '  - Acomete cães adultos a idosos.\n' +
       '  - Estudo de Meredith et al. (2025) com 42 cães: idade média de 7,8 anos (amplitude de 3,4 a 15 anos).\n' +
@@ -520,7 +520,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       'Fronteira taxonômica e limiar de blastos entre MDS e AML:\n' +
       '- Evolução dos critérios de classificação diagnóstica:\n' +
       '  - Critério histórico FAB (Jain et al., 1991): estabelecia o patamar de 30% de blastos medulares para definir leucemia mieloide aguda (AML).\n' +
-      '  - Consenso veterinário contemporâneo (Withrow & MacEwen, 2020; Meredith et al., 2025): adotou aproximadamente 20% de blastos como limite prático divisor.\n' +
+      '  - Consenso veterinário contemporâneo (Meredith et al., 2025): adotou aproximadamente 20% de blastos como limite prático divisor.\n' +
       '- Estratificação diagnóstica baseada na blastemia medular:\n' +
       '  - Menos de 20% de blastos: classificado como síndrome mielodisplásica (MDS), dividida em baixo blasto (<5%) e excesso de blastos (MDS-EB, 5% a 19%).\n' +
       '  - 20% ou mais de blastos: diagnóstico definitivo de leucemia mieloide aguda (AML).\n' +
@@ -838,7 +838,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
         '- Função renal e hepática:\n' +
         '  - Exames bioquímicos encontram-se frequentemente preservados na fase inicial da MDS; alterações refletem complicações orgânicas ou hepatopatias/nefropatias causadoras de anemia crônica.\n' +
         '- Retrovírus felino:\n' +
-        '  - Positividade para FeLV presente na maioria das séries históricas felinas (Hisasue et al., 2001; Nelson & Couto, 6ª ed.).',
+        '  - Positividade para FeLV presente na maioria das séries históricas felinas (Hisasue et al., 2001).',
       limitations: "O gato FeLV-positivo com displasia medular não é automaticamente portador de clone neoplásico irreversível; pode tratar-se de dismielopoiese viral reversível ou aplasia pura.",
       isGoldStandard: false
     },
@@ -1005,7 +1005,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     citarabinaBaixaDoseHistorica:
       'Regime histórico de Citarabina em baixa dose (baixo blasto):\n' +
       '- Racional terapêutico clássico:\n' +
-      '  - Emprego de citarabina (Ara-C) em regime de baixa dose (10 mg/m² SC a cada 12 horas por 7 a 14 dias em ciclos mensais; Nelson & Couto, 6ª ed.).\n' +
+      '  - Emprego de citarabina (Ara-C) em regime de baixa dose (10 mg/m² SC a cada 12 horas por 7 a 14 dias em ciclos mensais).\n' +
       '  - Objetivo teórico de induzir diferenciação de precursores displásicos sem acarretar mielossupressão ablativa.\n' +
       '- Resposta clínica limitada e riscos:\n' +
       '  - As respostas documentadas em pequenos animais são tipicamente modestas e transitórias (remissões parciais de poucas semanas).\n' +
@@ -1027,7 +1027,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     transformacaoEmLeucemiaMieloideAguda:
       'Transformação em Leucemia Mieloide Aguda (AML):\n' +
       '- Incidência de progressão clonal:\n' +
-      '  - A transformação leucêmica aguda ocorre em 20% a 40% dos cães e gatos com MDS que sobrevivem às complicações iniciais de citopenia (Withrow & MacEwen, 6ª ed.; Nelson & Couto, 6ª ed.).\n' +
+      '  - A transformação leucêmica aguda ocorre em 20% a 40% dos cães e gatos com MDS que sobrevivem às complicações iniciais de citopenia.\n' +
       '- Mecanismo genômico de escape:\n' +
       '  - Resulta do acúmulo de mutações oncogênicas adicionais que bloqueiam terminalmente a diferenciação celular e anulam os mecanismos de apoptose intramedular.\n' +
       '- Apresentação clínica e prognóstico fulminante:\n' +
@@ -1078,7 +1078,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       '  - Testagem sorológica para antígeno p27 do FeLV de todos os gatos no acolhimento, adoção ou antes de introdução em grupos de convívio (diretrizes AAFP/ISFM).\n' +
       '- Imunização e manejo ambiental:\n' +
       '  - Vacinação sistemática contra FeLV para indivíduos com acesso a áreas externas ou coabitantes de animais com status desconhecido.\n' +
-      '  - Manutenção de gatos estritamente domiciliados (indoor) e isolamento preventivo de animais comprovadamente positivos.',
+      '  - Manutenção de gatos estritamente domiciliados e isolamento preventivo de animais comprovadamente positivos.',
     farmacovigilanciaMielotoxica:
       'Farmacovigilância contra dismielopoiese tóxica secundária:\n' +
       '- Veto a terapias empíricas de alto risco:\n' +
@@ -1152,7 +1152,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       src: "/consulta-vet/sindrome-mielodisplasica/locais-coleta-medula-ossea-vetius.jpg",
       alt: "Locais anatômicos de referência para punção aspirativa e core biopsy de medula óssea em cães e gatos",
       caption:
-        'Figura 6 — Sítios anatômicos recomendados para aspiração e core biopsy de medula óssea (Guia de Procedimentos Vetius):\n' +
+        'Figura 6 — Sítios anatômicos recomendados para aspiração e core biopsy de medula óssea:\n' +
         '- Fossa trocantérica do fêmur proximal (preferencial em cães e gatos).\n' +
         '- Crista ilíaca e tuberosidade maior do úmero.',
       display: "wide"

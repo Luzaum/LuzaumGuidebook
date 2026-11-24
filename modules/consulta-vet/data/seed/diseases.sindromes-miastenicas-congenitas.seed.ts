@@ -105,7 +105,7 @@ export const sindromesMiastenicasCongenitasRecord: DiseaseRecord = {
         },
         {
           label: 'Passo 5: Teste Genético Molecular por Sequenciamento de DNA',
-          detail: 'Padrão-ouro confirmatório (*isGoldStandard: true*). Painéis moleculares comerciais para mutações em CHRNE (Jack Russell Terrier, Smooth Fox Terrier, Parson Russell), COLQ (Labrador Retriever, Sphynx, Devon Rex) e CHAT. Confirmação do genótipo autossômico recessivo homozigoto.'
+          detail: 'Padrão-ouro confirmatório. Painéis moleculares comerciais para mutações em CHRNE (Jack Russell Terrier, Smooth Fox Terrier, Parson Russell), COLQ (Labrador Retriever, Sphynx, Devon Rex) e CHAT. Confirmação do genótipo autossômico recessivo homozigoto.'
         }
       ]
     },
@@ -255,7 +255,7 @@ export const sindromesMiastenicasCongenitasRecord: DiseaseRecord = {
         purpose: 'Identificação da mutação causal, confirmação definitiva do subtipo e orientação terapêutica.',
         description:
           'Sequenciamento de DNA em sangue total ou swab bucal para mutações conhecidas: 1) Gene CHRNE (mutação c.470delC em Jack Russell Terrier e Parson Russell Terrier); 2) Gene COLQ (deleções em Labrador Retriever, Golden Retriever e raças felinas Sphynx e Devon Rex); 3) Gene CHAT.',
-        interpretation: 'Padrão-ouro confirmatório (*isGoldStandard: true*). Positivo para mutação homozigota sela o diagnóstico etiológico exato e orienta a escolha ou contraindicação de piridostigmina.',
+        interpretation: 'Padrão-ouro confirmatório. Positivo para mutação homozigota sela o diagnóstico etiológico exato e orienta a escolha ou contraindicação de piridostigmina.',
         limitations: 'Linhagens com mutações raras ou não mapeadas comercialmente podem ter teste genético inicial não conclusivo.',
         isGoldStandard: true
       },

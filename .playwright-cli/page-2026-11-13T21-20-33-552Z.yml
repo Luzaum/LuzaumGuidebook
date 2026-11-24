@@ -1,0 +1,27 @@
+- generic [ref=e3]:
+  - img "As três gatinhas do Vetius no jardim" [ref=e4]
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - img "Logo Vetius" [ref=e11]
+      - paragraph [ref=e12]: Medicina Veterinária de Alta Precisão
+      - heading "Bem-vindo de volta" [level=1] [ref=e13]
+      - paragraph [ref=e14]: Entre para continuar seu trabalho clínico com segurança.
+    - generic [ref=e15]:
+      - button "Entrar com Google" [ref=e16] [cursor=pointer]
+      - paragraph [ref=e22]: Ao autorizar o login, você compartilha com o Vetius apenas seu nome, e-mail e foto de perfil do Google.
+    - generic [ref=e23]: ou
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: Usuário ou e-mail *
+        - textbox "Usuário ou e-mail *" [ref=e31]:
+          - /placeholder: "ex.: usuário ou nome@gmail.com"
+      - generic [ref=e32]:
+        - generic [ref=e33]: Senha *
+        - generic [ref=e34]:
+          - textbox "Senha *" [ref=e35]:
+            - /placeholder: Digite sua senha
+          - button "Mostrar senha" [ref=e36] [cursor=pointer]
+      - button "Entrar" [ref=e40] [cursor=pointer]
+    - generic [ref=e43]:
+      - button "Esqueceu sua senha?" [ref=e44] [cursor=pointer]
+      - button "Não tem conta? Criar conta" [ref=e45] [cursor=pointer]

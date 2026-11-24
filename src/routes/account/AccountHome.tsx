@@ -93,7 +93,7 @@ export default function AccountHome() {
             <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
           </Link>
           <Link
-            to="/conta/clínica"
+            to="/conta/clinica"
             className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-sm text-slate-300 transition-all duration-300 hover:bg-slate-800 hover:text-white hover:border-slate-700"
           >
             <span>Minha clínica</span>

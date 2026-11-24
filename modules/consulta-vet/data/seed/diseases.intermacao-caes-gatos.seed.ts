@@ -256,7 +256,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       '  - Quando a temperatura ambiente se aproxima da temperatura cutânea (32 a 35°C), o gradiente para radiação e convecção praticamente se anula, tornando a evaporação a única via viável de perda calórica.\n' +
       '- Limitação fisiológica de cães e gatos:\n' +
       '  - Glândulas sudoríparas écrinas funcionais limitam-se aos coxins plantares, com papel insignificante na termorregulação sistêmica.\n' +
-      '  - O principal mecanismo evaporativo é o panting (respiração ofegante superficial e rápida sobre mucosas orais e linguais vascularizadas).',
+      '  - O principal mecanismo evaporativo é a respiração ofegante (respiração ofegante superficial e rápida sobre mucosas orais e linguais vascularizadas).',
 
     vulnerabilidadeBraquicefalicaEAltaUmidade:
       'Interação crítica entre umidade ambiental e conformação anatômica craniofacial:\n' +
@@ -384,7 +384,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
         ],
         [
           'Sinal Clínico de Alerta Respiratório',
-          'Panting taquipneico ruidoso com língua projetada e hipersalivação espessa',
+          'Respiração ofegante rápida e ruidosa com língua projetada e hipersalivação espessa',
           'Respiração de boca aberta (open-mouth breathing): sinal de gravidade extrema',
         ],
         [
@@ -563,7 +563,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       system: 'respiratory',
       findings: [
         {
-          sign: 'Panting Extremo e Respiração de Boca Aberta em Gatos',
+          sign: 'Respiração Ofegante Extrema e Respiração de Boca Aberta em Gatos',
           detail:
             'Padrões respiratórios de esforço térmico:\n' +
             '- Apresentação canina: taquipneia superficial rápida incessante acompanhada de salivação espessa e viscosa decorrente da hiperventilação de espaço morto.\n' +
@@ -772,7 +772,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       'Manejo do choque vasoplégico distributivo refratário:\n' +
       '- Diagnóstico de vasoplegia: hipotensão persistente (PAM < 65 mmHg ou PAS < 90 mmHg) após restauração da euvolemia intravascular decorre de desregulação endotelial por óxido nítrico e citocinas.\n' +
       '- VETO CLÍNICO: não insistir em sobrecarga hídrica de cristaloides na hipotensão euvolêmica, pois agrava edema intersticial pulmonar e cerebral.\n' +
-      '- Vasopressor de primeira escolha (Plumb 10ª ed.): Norepinefrina em infusão contínua (CRI).\n' +
+      '- Vasopressor de primeira escolha: Norepinefrina em infusão contínua (CRI).\n' +
       '- Posologia e titulação: 0,05 a 0,1 mcg/kg/min IV inicial, titulada a cada 10–15 min até PAM >= 65 mmHg (faixa de 0,5 a 2,0 mcg/kg/min em choque profundo), preservando perfusão esplâncnica e renal.',
 
     correcaoHipoglicemiaEletrolitos:
@@ -783,7 +783,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       '- Oscilações de sódio: reposição hidroeletrolítica cautelosa em hipernatremia por perda evaporativa pura para prevenir mielinólise pontina central ou edema cerebral rebote.',
 
     terapiaAntiarrimicaCaninaVsFelina:
-      'Controle antiarrítmico e divergências de espécie (Plumb 10ª ed.):\n' +
+      'Controle antiarrítmico e divergências de espécie:\n' +
       '- Indicações formais de intervenção: taquicardia ventricular sustentada com FC > 180 bpm, complexos polimórficos, fenômeno de R-sobre-T ou colapso hemodinâmico associado.\n' +
       '- Protocolo padrão-ouro canino: Lidocaína a 2% sem vasoconstritor em bolus de 2 mg/kg IV lento em 2 minutos (cumulativo até 6–8 mg/kg); conversão seguida de CRI de 25 a 80 mcg/kg/min IV.\n' +
       '- ALERTA FARMACOLÓGICO ESTREITO FELINO:\n' +
@@ -995,7 +995,7 @@ export const intermacaoCaesGatosRecord: DiseaseRecord = {
       'Educação preventiva para tutores e primeiros socorros:\n' +
       '- Risco crítico de confinamento veicular: jamais deixar animais em veículos fechados, mesmo na sombra ou por poucos minutos; a temperatura interna sobe de 25°C para 45°C em 15 minutos.\n' +
       '- Restrição de exercícios: suspender passeios sob temperatura > 25°C ou umidade > 70%, transferindo caminhadas para o início da manhã ou final da noite.\n' +
-      '- Reconhecimento de exaustão térmica: orientar tutores sobre sinais precoces (panting ruidoso incessante, salivação espessa, marcha atáxica e fraqueza motora).\n' +
+      '- Reconhecimento de exaustão térmica: orientar tutores sobre sinais precoces (respiração ofegante ruidosa e incessante, salivação espessa, marcha atáxica e fraqueza motora).\n' +
       '- Primeiros socorros corretos: molhar imediatamente o animal com água fresca corrente sobre tronco e abdome e ligar o ar-condicionado veicular no trajeto até o hospital.',
 
     aclimatacaoEManejoBraquicefalicos:

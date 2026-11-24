@@ -208,7 +208,7 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       'Fatores ambientais, nutricionais e disruptores endócrinos associados:\n\n' +
       '- Fatores dietéticos e embalagens: consumo prolongado de rações úmidas enlatadas (revestimentos com bisfenol A e resinas epóxi) e presença de fitoestrógenos de soja.\n' +
       '- Flutuações nos teores de iodo: ciclos alternados de deficiência e sobrecarga de iodo na dieta, estimulando autonomia folicular proliferativa.\n' +
-      '- Disruptores químicos domésticos: exposição crônica a retardantes de chama bromados (PBDEs em poeira e estofados), areias sanitárias aromatizadas e vida estritamente indoor.',
+      '- Disruptores químicos domésticos: exposição crônica a retardantes de chama bromados (PBDEs em poeira e estofados), areias sanitárias aromatizadas e vida estritamente em ambiente domiciliar.',
     baseGenetica:
       'Mutações somáticas e desregulação da cascata de sinalização folicular:\n\n' +
       '- Alvos moleculares: mutações constitutivas nos genes da subunidade alfa da proteína G estimulatória (Gs-alfa) e do receptor de TSH (TSHR).\n' +
@@ -362,7 +362,7 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         purpose: 'Diferenciação hormonal refinada de casos borderline e monitoramento.',
         interpretation:
           'Padrão de secreção do TSH no hipertireoidismo felino:\n\n' +
-          '- Supressão profunda (< 0,03 ng/mL): feedback hipofisário negativo persistente na doença ativa não tratada.\n' +
+          '- Supressão profunda (< 0,03 ng/mL): retroalimentação hipofisária negativa persistente na doença ativa não tratada.\n' +
           '- Painel confirmatório limítrofe: combinação de TT4 normal-alto com fT4ed elevado e TSH indetectável confirma doença precoce com máxima especificidade.\n' +
           '- Exclusão diagnóstica: TSH mensurável ou elevado (> 0,05 ng/mL) afasta a hipótese de hipertireoidismo virgem de tratamento com altíssima probabilidade.',
         limitations:
@@ -389,7 +389,7 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
         title: 'Avaliação da Função Renal e Estadiamento IRIS Basal',
         description:
           'Urinálise completa por cistocentese com mensuração da densidade urinária (USG) por refratometria, associada a dosagens séricas de creatinina, ureia, SDMA e fósforo.',
-        purpose: 'Identificação de lesão renal preexistente e estabelecimento do baseline antes da intervenção.',
+        purpose: 'Identificação de lesão renal preexistente e estabelecimento do valor basal antes da intervenção.',
         interpretation:
           'Avaliação funcional e identificação de DRC subclínica:\n\n' +
           '- Interpretação da densidade urinária: USG < 1,035 com creatinina na faixa de referência (ex.: 1,2 mg/dL) sugere fortemente DRC estágio IRIS 2 a 3 preexistente.\n' +

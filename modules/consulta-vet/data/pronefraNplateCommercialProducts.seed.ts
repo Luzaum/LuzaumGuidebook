@@ -127,7 +127,7 @@ export const pronefraNplateCommercialProductsSeed: CommercialMedicationProduct[]
       'USO HOSPITALAR EXCLUSIVO SOB PRESCRIÇÃO E SUPERVISÃO VETERINÁRIA ESPECIALIZADA. Bula humana Anvisa: dose inicial de 1 mcg/kg SC semanalmente, ajustada por titulação de 1 mcg/kg até contagem de plaquetas ≥ 50.000/µL. Uso veterinário extra-label consagrado (JVIM / consensos de PTI refratária): Cães: 3 a 5 mcg/kg (faixa relatada de 1 a 10 mcg/kg, dose mediana comumente empregada de 5 mcg/kg) por via subcutânea (SC) em injeção única semanal (q7d). Gatos: 1 a 3 mcg/kg SC semanal (q7d) em caráter excepcional. RECONSTITUIÇÃO: Reconstituir o frasco de 250 mcg com 0,72 mL de água para injetáveis estéril (ou o frasco de 500 mcg com 1,2 mL), injetando lentamente pela parede interna do frasco. Girar o frasco suavemente em movimentos circulares sem agitar vigorosamente ou chacoalhar (risco de desnaturação proteica e perda de eficácia). A concentração final reconstituída entregue é de 500 mcg/mL. Aspirar o volume calculado com seringa de insulina (100 UI = 1 mL) ou seringa de 1 mL para assegurar dosagem precisa em centésimos de mililitro (ex.: cão de 10 kg a 5 mcg/kg = 50 mcg = 0,1 mL).',
     dosageGuidance: {
       labelDose:
-        'Cães: 3 a 5 mcg/kg SC a cada 7 dias (semanal); Gatos: 1 a 3 mcg/kg SC a cada 7 dias (semanal), ajustando conforme resposta plaquetária.',
+        'Cães: 3 a 5 mcg/kg SC a cada 7 dias (semanal); Gatos: 1 a 3 mcg/kg SC a cada 7 dias (semanal), espaçando ou suspendendo quando plaquetas atingirem >100.000 a 200.000/µL.',
       plumbs: {
         dog: [
           {

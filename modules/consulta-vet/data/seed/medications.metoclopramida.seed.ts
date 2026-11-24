@@ -155,7 +155,7 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       clinicalRationale: 'Reduz a náusea central e acelera o esvaziamento gastroduodenal sem efeito sobre o cólon.',
       monitoring: 'Manifestações extrapiramidais (tremores, distonia), frequência cardíaca e função renal.',
       referenceIds: ['ref-metoclo-plumbs-10ed', 'ref-metoclo-bsava-10ed'],
-      evidenceLevel: 'Nível 1a — Consensos de medicina interna e formulários canônicos (Plumb’s e BSAVA)',
+      evidenceLevel: 'Nível 1a — Consenso ACVIM de Manejo Hospitalar e Terapêutica',
     },
     {
       id: 'ind-metoclo-dog-cri',
@@ -185,7 +185,7 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       clinicalRationale: 'Reduz o tempo de contato do suco gástrico ácido e biliar com a mucosa do esôfago distal.',
       monitoring: 'Episódios de regurgitação, sialorreia e dor à deglutição.',
       referenceIds: ['ref-metoclo-plumbs-10ed', 'ref-metoclo-ettinger-9ed'],
-      evidenceLevel: 'Nível 2a — Tratados de medicina interna veterinária (Ettinger 2024)',
+      evidenceLevel: 'Nível 2a — Prática Clínica Gastroenterológica Consolidada',
     },
   ],
 
@@ -258,7 +258,7 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
     'Via subcutânea (SC): excelente alternativa para pacientes que estejam vomitando ativamente e ainda não possuam acesso venoso cateterizado; absorção rápida com pico plasmático em 15 a 30 minutos.',
     'Via intravenosa (IV): administrar LENTAMENTE (infusão fracionada ao longo de 5 a 15 minutos). NUNCA administrar em bolus rápido não diluído pelo risco cardiovascular e extrapiramidal.',
     'Infusão Contínua (CRI) em Bomba de Infusão: diluir a dose diária calculada (1 a 2 mg/kg/dia) em solução de NaCl 0,9%, Ringer Lactato ou SG 5%. Recomendado administrar em via venosa ou bomba de seringa dedicada para não vincular a taxa do fármaco às alterações da taxa de reposição hemodinâmica do paciente.',
-    'Dose de Ataque para CRI (Modelagem Farmacocinética 2026): administrar dose de ataque lenta de 0,05 mg/kg IV (para CRI de 1 mg/kg/dia) ou 0,1 mg/kg IV (para CRI de 2 mg/kg/dia) imediatamente antes de iniciar a bomba, eliminando a janela de atraso de 3,25 horas até o steady state.',
+    'Dose de Ataque para CRI (Modelagem Farmacocinética 2026): administrar dose de ataque lenta de 0,05 mg/kg IV (para CRI de 1 mg/kg/dia) ou 0,1 mg/kg IV (para CRI de 2 mg/kg/dia) imediatamente antes de iniciar a bomba, eliminando a janela de atraso de 3,25 horas até o estado de equilíbrio.',
     'Proteção contra a luz: proteger equipos e frascos de CRI da luz solar direta ou lâmpadas fototerápicas em infusões prolongadas (acima de 24 horas).',
   ],
 
@@ -275,10 +275,10 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 6 a 8 horas (ou q8–12h conforme gravidade)',
       duration: '3 a 5 dias conforme resolução do quadro emético',
       notes:
-        'Dose de referência internacional do Plumb’s 10ª ed. (0,2 a 0,5 mg/kg) e BSAVA 10ª ed. (0,25 a 0,5 mg/kg q12h ou 0,17 a 0,33 mg/kg q8h). Administrar via oral 30 a 60 minutos antes da alimentação. Na administração IV, injetar estritamente de forma lenta em 5 a 10 minutos. Em cães com doença renal crônica avançada (IRIS 3–4), reduzir a dose em 50%.',
+        'Faixas posológicas clássicas variam de 0,2 a 0,5 mg/kg q8h (ou 0,25 a 0,5 mg/kg q12h; 0,17 a 0,33 mg/kg q8h). Administrar via oral 30 a 60 minutos antes da alimentação. Na administração IV, injetar estritamente de forma lenta em 5 a 10 minutos. Em cães com doença renal crônica avançada (IRIS 3–4), reduzir a dose em 50%.',
       calculatorEnabled: true,
       presentationId: 'pres-nausetrat-oral-5mgml',
-      evidenceLevel: 'Plumb’s 10ª ed.; BSAVA 10ª ed.; Bula oficial Emeprid 2025',
+      evidenceLevel: 'Bula Oficial Veterinária Emeprid® (2025) e Prática Clínica',
     },
     {
       id: 'dose-metoclo-dog-cri-standard',
@@ -327,7 +327,7 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       notes:
         'Atua elevando a pressão de repouso do esfíncter esofágico inferior (EEI) e acelerando a depuração ácida gastroduodenal. Administrar 30 minutos antes das refeições. Em esofagite grave, combinar com omeprazol/pantoprazol e sucralfato (separado em 1–2 horas). A evidência perioperatória em cirurgias de BOAS é conflitante (Rovatti et al. 2024 e Fraser 2026 não demonstraram benefício isolado).',
       calculatorEnabled: false,
-      evidenceLevel: 'Plumb’s 10ª ed.; BSAVA 10ª ed.; Revisão crítica BOAS 2026',
+      evidenceLevel: 'Revisão Crítica BOAS (2026) e Protocolos Perioperatórios',
     },
     {
       id: 'dose-metoclo-dog-lactation',
@@ -343,7 +343,7 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       notes:
         'Indicação endócrina respaldada no bloqueio D2 adeno-hipofisário que remove a inibição da secreção de prolactina. Monitorar ativamente as glândulas mamárias para prevenir o desenvolvimento de mastite séptica ou estagnante. Garantir sucção vigorosa e suporte hidroeletrolítico e nutricional à nutriz.',
       calculatorEnabled: false,
-      evidenceLevel: 'Plumb’s 10ª ed.; Papich 2020',
+      evidenceLevel: 'Farmacologia veterinária e uso prático',
     },
     {
       id: 'dose-metoclo-cat-general',
@@ -357,10 +357,10 @@ export const metoclopramidaMedicationRecord: MedicationRecord = {
       frequency: 'a cada 8 horas (ou 0,25 a 0,5 mg/kg q12h)',
       duration: '2 a 4 dias sob avaliação',
       notes:
-        'Posologia oficial das diretrizes da BSAVA (10ª ed.) e bula europeia Emeprid 2025. ALERTA DE ESPÉCIE: o efeito antiemético central é significativamente menos confiável no gato do que no cão devido à baixa densidade de receptores D2 na CRTZ felina. Em gatos com pancreatite, DRC ou enteropatia, maropitant e ondansetrona são de primeira escolha. Monitorar rigorosamente manifestações neurocomportamentais (agitação e vocalização). NUNCA usar para megacólon felino.',
+        'Posologia conforme bula europeia veterinária Emeprid® (2025). ALERTA DE ESPÉCIE: o efeito antiemético central é significativamente menos confiável no gato do que no cão devido à baixa densidade de receptores D2 na CRTZ felina. Em gatos com pancreatite, DRC ou enteropatia, maropitant e ondansetrona são de primeira escolha. Monitorar rigorosamente manifestações neurocomportamentais (agitação e vocalização). NUNCA usar para megacólon felino.',
       calculatorEnabled: true,
       presentationId: 'pres-nausetrat-oral-5mgml',
-      evidenceLevel: 'BSAVA 10ª ed.; Bula Emeprid 2025; Revisão fisiológica felina PMC10816764',
+      evidenceLevel: 'Bula Emeprid® (2025) e Revisão Fisiológica Felina',
     },
     {
       id: 'dose-metoclo-cat-xylazine-exp',

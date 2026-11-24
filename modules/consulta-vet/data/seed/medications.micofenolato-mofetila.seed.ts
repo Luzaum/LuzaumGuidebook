@@ -99,7 +99,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
     },
     {
       label: 'Evidência Cautelosa em Anemia Hemolítica Imunomediada (IMHA) Canina (Ensaio Clínico 2024)',
-      text: 'Embora o Consenso ACVIM de 2019 tenha incluído o MMF (8 a 12 mg/kg VO q12h) entre as opções aceitáveis de segundo imunossupressor na IMHA, o ensaio clínico prospectivo randomizado mais recente de Agnoli et al. (JVIM, 2024) em 43 cães não encontrou superioridade da adição de MMF à metilprednisolona e registrou mortalidade significativamente superior no grupo MMF aos 60 e 365 dias em comparação à ciclosporina. O ConsultaVET recomenda cautela no emprego de rotina na IMHA, priorizando corticosteroides em monoterapia ou ciclosporina, e reservando o MMF para casos individualizados refratários.',
+      text: 'Embora o Consenso ACVIM de 2019 tenha incluído o MMF (8 a 12 mg/kg VO q12h) entre as opções aceitáveis de segundo imunossupressor na IMHA, o ensaio clínico prospectivo randomizado mais recente de Agnoli et al. (JVIM, 2024) em 43 cães não encontrou superioridade da adição de MMF à metilprednisolona e registrou mortalidade significativamente superior no grupo MMF aos 60 e 365 dias em comparação à ciclosporina. Recomenda-se cautela no emprego de rotina na IMHA, priorizando corticosteroides em monoterapia ou ciclosporina, e reservando o MMF para casos individualizados refratários.',
     },
     {
       label: 'Interação Crítica com Antibióticos e Microbiota Intestinal na Recirculação Entero-Hepática',
@@ -165,7 +165,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
     {
       condition: 'Dermatopatias Autoimunes e Pênfigo Foliáceo Canino',
       species: 'dog',
-      doseSummary: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h segundo BSAVA 10ª ed.)',
+      doseSummary: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h em esquemas fracionados)',
       route: 'Oral (VO)',
       duration: 'Mínimo de 6 a 8 semanas até início de remissão clínica e cicatrização de crostas',
       clinicalContext: 'Agente poupador de corticoides para controle crônico de lesões pustulosas e crostosas.',
@@ -249,7 +249,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
       clinicalContext:
         'Cães com pênfigo foliáceo, vasculite cutânea imunomediada ou lúpus eritematoso discóide que sofrem efeitos colaterais inaceitáveis de corticosteroides (iatrogenia cushingoide, hepatomegalia, calcinose).',
       species: 'dog',
-      dose: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h segundo protocolo BSAVA)',
+      dose: '10 a 15 mg/kg VO a cada 12 horas (ou 7 a 13 mg/kg VO q8h em esquemas fracionados)',
       route: 'Oral (VO)',
       frequency: 'A cada 12 horas (ou a cada 8 horas)',
       duration: 'Mínimo de 6 a 8 semanas para remissão clínica (média de 5,7 semanas descrita por Ackermann)',
@@ -756,15 +756,15 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
 <h3>2. Recirculação Entero-Hepática, Microbioma e a Correção da Interação com a Ciclosporina</h3>
 <p>A farmacocinética do ácido micofenólico em pequenos animais é profundamente marcada pelo fenômeno de <strong>recirculação entero-hepática (EHC)</strong>. Após a absorção oral do pró-fármaco MMF e sua clivagem em MPA livre, o fármaco é glucuronizado no fígado pela UDP-glucuronosiltransferase na forma inerte 7-O-glucuronídeo de ácido micofenólico (MPAG). Esse metabólito polar é transportado ativamente através da membrana canalicular dos hepatócitos para a bile pelo carreador de efluxo <em>multidrug resistance-associated protein 2</em> (ABCC2 / MRP2).</p>
 <p>Ao alcançar a luz do intestino delgado e do cólon através do fluxo biliar, o MPAG encontra a densa comunidade bacteriana do microbioma entérico. Bactérias anaeróbias comensais (como <em>Bacteroides</em> e <em>Clostridium</em> spp.) sintetizam e secretam a enzima <strong>beta-glucuronidase</strong>, que hidrolisa a ligação glicosídica do MPAG, liberando novamente o MPA ativo lipofílico na luz intestinal. Esse MPA regenerado é prontamente reabsorvido pela mucosa colônica para o sistema venoso portal, gerando um segundo pico plasmático nítido entre 6 e 12 horas após a ingestão da dose e contribuindo com até 10% a 40% da área sob a curva (AUC) total diária de exposição ao fármaco.</p>
-<p>Esse mecanismo farmacocinético sustenta duas correções clínicas de suma importância para o ConsultaVET:</p>
+<p>Esse mecanismo farmacocinético sustenta duas correções clínicas de suma importância:</p>
 <ol>
-  <li><strong>Correção da Interação com a Ciclosporina:</strong> Certos materiais veterinários secundários (incluindo versões preliminares do VIN) mencionaram de forma equivocada que a ciclosporina aumentaria as concentrações de micofenolato. A bula oficial contemporânea do medicamento de referência CellCept® (Roche) e os estudos de farmacologia clínica humana e animal esclarecem o oposto: a ciclosporina inibe de forma potente o transportador biliar MRP2/ABCC2, impedindo a excreção canalicular de MPAG para a bile e bloqueando a recirculação entero-hepática. O resultado é uma <strong>redução de 30% a 50% na exposição sistêmica (AUC) ao MPA</strong> em esquemas contendo ciclosporina quando comparados a regimes isolados. No entanto, do ponto de vista farmacodinâmico, ciclosporina e MMF atuam em etapas distintas e somatórias da imunidade celular (a ciclosporina bloqueia a calcineurina e a síntese de IL-2, enquanto o MMF bloqueia a proliferação linfocítica downstream), produzindo potente imunossupressão aditiva que exige vigilância contra infecções secundárias a despeito da menor AUC de MPA.</li>
+  <li><strong>Correção da Interação com a Ciclosporina:</strong> Certos materiais secundários históricos mencionaram de forma equivocada que a ciclosporina aumentaria as concentrações de micofenolato. A bula oficial contemporânea do medicamento de referência CellCept® (Roche) e os estudos de farmacologia clínica humana e animal esclarecem o oposto: a ciclosporina inibe de forma potente o transportador biliar MRP2/ABCC2, impedindo a excreção canalicular de MPAG para a bile e bloqueando a recirculação entero-hepática. O resultado é uma <strong>redução de 30% a 50% na exposição sistêmica (AUC) ao MPA</strong> em esquemas contendo ciclosporina quando comparados a regimes isolados. No entanto, do ponto de vista farmacodinâmico, ciclosporina e MMF atuam em etapas distintas e somatórias da imunidade celular (a ciclosporina bloqueia a calcineurina e a síntese de IL-2, enquanto o MMF bloqueia a proliferação linfocítica downstream), produzindo potente imunossupressão aditiva que exige vigilância contra infecções secundárias a despeito da menor AUC de MPA.</li>
   <li><strong>Interação com Antimicrobianos de Amplo Espectro:</strong> A prescrição concomitante de antibióticos orais que erradicam os anaeróbios entéricos secretores de beta-glucuronidase (tais como amoxicilina com clavulanato, enrofloxacina ou metronidazol) destrói a desconjugação intraluminal de MPAG, abolindo o segundo pico de absorção e reduzindo a biodisponibilidade do MPA ativo em até metade. O paciente veterinário pode apresentar recaída aguda de uma doença autoimune controlada sem que tenha havido qualquer modificação na dose prescrita de micofenolato.</li>
 </ol>
 
 <h3>3. Não Intercambialidade: MMF versus Micofenolato Sódico (EC-MPS / Myfortic®)</h3>
 <p>Uma armadilha posológica grave na rotina de pequenos animais é a tentativa de substituir o micofenolato de mofetila (MMF, 500 mg) pelo micofenolato sódico com revestimento entérico gastrorresistente (EC-MPS, Myfortic® 180 mg e 360 mg) sob a presunção de equivalência molar e menor agressão gástrica. Na medicina humana, o Myfortic® foi formulado especificamente com polímeros entéricos para dissolver apenas no pH neutro do duodeno e diminuir as náuseas dispépticas proximais.</p>
-<p>Contudo, pesquisas fisiológicas comparativas em cães Beagles demonstraram resultados diametralmente opostos: a motilidade gastrointestinal e o perfil de trânsito canino diferem substancialmente do humano. Nos cães que receberam micofenolato sódico gastrorresistente, a liberação retardada do sal concentrou o fármaco de forma abrupta e maciça no íleo e no cólon, deflagrando <strong>taxas severamente mais altas de diarreia inflamatória, perda ponderal rápida, enterocolite e apoptose mucosal extensa</strong> em comparação aos que receberam o MMF convencional. Além disso, a absorção do micofenolato sódico em cães revelou-se extremamente errática e imprevisível. Por essas razões, o ConsultaVET contraindica a substituição automática entre essas apresentações em cães e gatos, mantendo o MMF como o fármaco de escolha consolidado.</p>
+<p>Contudo, pesquisas fisiológicas comparativas em cães Beagles demonstraram resultados diametralmente opostos: a motilidade gastrointestinal e o perfil de trânsito canino diferem substancialmente do humano. Nos cães que receberam micofenolato sódico gastrorresistente, a liberação retardada do sal concentrou o fármaco de forma abrupta e maciça no íleo e no cólon, deflagrando <strong>taxas severamente mais altas de diarreia inflamatória, perda ponderal rápida, enterocolite e apoptose mucosal extensa</strong> em comparação aos que receberam o MMF convencional. Além disso, a absorção do micofenolato sódico em cães revelou-se extremamente errática e imprevisível. Por essas razões, não se recomenda a substituição automática entre essas apresentações em cães e gatos, mantendo o MMF como o fármaco de escolha consolidado.</p>
 
 <h3>4. Análise Crítica das Evidências em IMHA e ITP: O Impacto do Ensaio Prospectivo de 2024</h3>
 <p>O papel do MMF nas citopenias imunomediadas passou por uma significativa reavaliação crítica entre 2019 e 2026:</p>
@@ -774,7 +774,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
 </ul>
 
 <h3>5. Esclarecimento do Erro Editorial de Meia-Vida (5,5 Minutos versus 5,5 Horas)</h3>
-<p>Um detalhe de auditoria farmacológica de alta relevância descoberto na literatura refere-se ao estudo pioneiro de farmacocinética de Grobman et al. (2017) em cães Dachshunds juvenis recebendo 13 mg/kg de MMF oral. O compêndio Plumb's Veterinary Drug Handbook (10ª edição) e compilações derivadas reproduziram no texto descritivo que a meia-vida do fármaco teria sido de "5,5 minutos". A conferência minuciosa dos dados primários da Tabela 2 do artigo original publicado no <em>Journal of Veterinary Pharmacology and Therapeutics</em> confirma de maneira inequívoca que a meia-vida terminal mensurada foi de <strong>5,50 ± 3,80 HORAS</strong>, valor compatível com a meia-vida de 2,9 horas em adultos e com o intervalo de administração a cada 12 horas. A presença da abreviação "min" no abstract original tratou-se de um manifesto erro tipográfico editorial. O ConsultaVET cadastra formalmente a meia-vida correta em horas.</p>
+<p>Um detalhe de auditoria farmacológica de alta relevância descoberto na literatura refere-se ao estudo pioneiro de farmacocinética de Grobman et al. (2017) em cães Dachshunds juvenis recebendo 13 mg/kg de MMF oral. Algumas compilações secundárias reproduziram no texto descritivo que a meia-vida do fármaco teria sido de "5,5 minutos". A conferência minuciosa dos dados primários da Tabela 2 do artigo original publicado no <em>Journal of Veterinary Pharmacology and Therapeutics</em> confirma de maneira inequívoca que a meia-vida terminal mensurada foi de <strong>5,50 ± 3,80 HORAS</strong>, valor compatível com a meia-vida de 2,9 horas em adultos e com o intervalo de administração a cada 12 horas. A presença da abreviação "min" no abstract original tratou-se de um manifesto erro tipográfico editorial. A meia-vida deve ser expressa em horas.</p>
 
 <h3>6. Particularidades do Metabolismo Felino: A Rota do MPA-Glucosídeo</h3>
 <p>Por muitos anos perdurou o dogma na medicina veterinária de que o micofenolato seria absolutamente contraindicado em felinos devido à deficiência clássica da família de enzimas hepáticas UDP-glucuronosiltransferases (UGT), temendo-se que o acúmulo tóxico do fármaco inalterado fosse letal. Esse conceito foi formalmente superado pelos trabalhos de Slovak e colaboradores (2018 e 2019):
@@ -1254,7 +1254,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
       frequency: 'A cada 12 horas (q12h)',
       duration: 'Uso mantido até estabilização plaquetária consolidada (> 100.000/µL) e desmame gradual',
       notes:
-        'Opção razoável de 2º agente segundo ACVIM 2024 (recomendação fraca, evidência baixa). Plumb cita 7 a 9 mg/kg q12h; Yau & Bianco (2014) utilizaram até 14 mg/kg q12h em 5 cães com remissão completa. Associar à corticoterapia inicial.',
+        'Opção razoável de 2º agente segundo ACVIM 2024 (recomendação fraca, evidência baixa). Faixa usual descrita de 7 a 9 mg/kg q12h; Yau & Bianco (2014) utilizaram até 14 mg/kg q12h em 5 cães com remissão completa. Associar à corticoterapia inicial.',
       monitoring: 'Contagem de plaquetas seriada, hematócrito, pesquisa de melena e tolerabilidade digestiva.',
       referenceIds: ['ref-acvim-itp-2024', 'ref-yau-2014', 'ref-plumb-10'],
       evidenceLevel: 'Nível 1a — Diretriz de Consenso ACVIM 2024 (Recomendação Fraca, Evidência Baixa)',
@@ -1264,7 +1264,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-mmf-dog-dermatopathy',
       species: 'dog',
-      indication: 'Dermatopatias Autoimunes e Pênfigo Foliáceo Canino (Ackermann 2017 / BSAVA 10ª ed.)',
+      indication: 'Dermatopatias Autoimunes e Pênfigo Foliáceo Canino (Ackermann et al., 2017)',
       clinicalContext: 'Agente poupador de esteroides para cães com lesões pustulosas, crostas e vasculite.',
       doseMin: 10.0,
       doseMax: 15.0,
@@ -1274,7 +1274,7 @@ export const micofenolatoMofetilaMedicationRecord: MedicationRecord = {
       frequency: 'A cada 12 horas (ou 7 a 13 mg/kg VO q8h)',
       duration: 'Pelo menos 6 a 8 semanas até remissão clínica satisfatória (média de 5,7 semanas)',
       notes:
-        'Dose média de 14,7 mg/kg q12h descrita por Ackermann et al. (2017) com remissão em 10 de 14 cães. O BSAVA preconiza 7 a 13 mg/kg a cada 8 horas. Como doses elevadas e q8h aumentam a incidência de diarreia, iniciar preferencialmente com 10 mg/kg q12h e titular.',
+        'Dose média de 14,7 mg/kg q12h descrita por Ackermann et al. (2017) com remissão em 10 de 14 cães; esquemas alternativos de 7 a 13 mg/kg a cada 8 horas também são descritos. Como doses elevadas e q8h aumentam a incidência de diarreia, iniciar preferencialmente com 10 mg/kg q12h e titular.',
       monitoring: 'Inspeção dermatológica de crostas/úlceras, citologia cutânea, fezes e hemograma.',
       referenceIds: ['ref-ackermann-2017', 'ref-bsava-10', 'ref-plumb-10'],
       evidenceLevel: 'Nível 2b — Estudo Retrospectivo em Dermatologia Veterinária',

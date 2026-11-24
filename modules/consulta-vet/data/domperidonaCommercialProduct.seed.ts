@@ -3,7 +3,7 @@ import type { CommercialMedicationProduct } from '../types/commercialMedication'
 const DOMPERIDONA_PRICE_SOURCE_DATE = '2026-09-30';
 
 const DOMPERIDONA_PLUMBS_CONTEXT =
-  'Plumb’s 10ª ed., monografia Domperidone (pp. 421–422 / PDF pp. 448–449): antagonista dos receptores dopaminérgicos periféricos D2 e D3 que não atravessa a barreira hematoencefálica íntegra em concentrações significativas (bloqueio de efluxo por P-glicoproteína), agindo na CRTZ e plexo mioentérico. Seu principal destaque contemporâneo na clínica de pequenos animais é a imunomodulação por hiperprolactinemia na prevenção da Leishmaniose Visceral Canina em cães soronegativos de áreas endêmicas (0,5 mg/kg VO q24h por 30 dias a cada 4 meses; Sabaté 2014, WAVD 2025 grau moderado). Plumb’s ressalta que o fármaco perdeu espaço na rotina gastroenterológica para maropitant e ondansetrona devido à inconsistência demonstrada no esvaziamento gástrico canino e ineficácia antral em gatos.';
+  'Antagonista dos receptores dopaminérgicos periféricos D2 e D3 que não atravessa a barreira hematoencefálica íntegra em concentrações significativas (bloqueio de efluxo por P-glicoproteína), agindo na CRTZ e no plexo mioentérico. Seu principal destaque contemporâneo na clínica de pequenos animais é a imunomodulação por hiperprolactinemia na prevenção da Leishmaniose Visceral Canina em cães soronegativos de áreas endêmicas (0,5 mg/kg VO q24h por 30 dias a cada 4 meses; Sabaté 2014, WAVD 2025 grau moderado). O fármaco perdeu espaço na rotina gastroenterológica para maropitant e ondansetrona devido à inconsistência no esvaziamento gástrico canino e à ineficácia antral em gatos.';
 
 const DOMPERIDONA_SAFETY_ALERT =
   'ALERTAS CRÍTICOS DE SEGURANÇA E CARDIOVASCULAR: 1) PROLONGAMENTO DO INTERVALO QTc (DONATO ET AL. 2024): a domperidona bloqueia canais de potássio dependentes de voltagem hERG/Kv11.1 no miocárdio canino, causando prolongamento estatisticamente significativo do QTc no ECG (195,4 ms basal -> 205,1 ms; p=0,0292). Contraindicada em associação com inibidores potentes do CYP3A4 (cetoconazol, itraconazol, eritromicina) e fármacos que prolongam a repolarização (antiarrítmicos classes IA e III, metadona, cisaprida). 2) DIVERGÊNCIA DE CONSENSO (WAVD 2025 vs CLWG 2026): indicada para PREVENÇÃO em cães soronegativos de áreas endêmicas; contudo, o WAVD 2025 NÃO a recomenda como tratamento para cães com leishmaniose clínica (evidência fraca/insuficiente), enquanto o CLWG 2026 admite apenas como adjuvante aos leishmanicidas consolidados (NUNCA em monoterapia). 3) GATOS: evidência fraca e ineficácia antral comprovada por manometria (Mangel 1983); não utilizar de rotina. 4) NÃO DISPENSA REPELÊNCIA: a domperidona não tem ação repelente contra flebotomíneos; a manutenção de coleiras inseticidas à base de deltametrina é obrigatória.';
@@ -52,7 +52,7 @@ export const domperidonaCommercialProductSeed: CommercialMedicationProduct[] = [
             note: 'Indicado para cães clinicamente saudáveis e soronegativos em áreas de transmissão endêmica. Com Domperix® 1 mg/mL: fornecer 0,5 mL para cada 1 kg de peso por dia (5 mL a cada 10 kg). Sabaté et al. (2014) comprovaram redução relativa de 80% no adoecimento clínico. Não substitui coleiras repelentes contra flebotomíneos.',
           },
           {
-            title: 'Antiemético e Pró-cinético Gastrintestinal Secundário (Plumb’s 10ª ed.)',
+            title: 'Antiemético e Pró-cinético Gastrintestinal Secundário',
             dose: '0,05 a 0,1 mg/kg VO a cada 12 a 24 horas (ou 2 a 5 mg/cão)',
             note: 'Administrar 15 a 30 minutos antes das refeições. Em declínio frente a maropitant e ondansetrona por inconsistência no esvaziamento gástrico (Orihata & Sarna 1994).',
           },
@@ -89,7 +89,7 @@ export const domperidonaCommercialProductSeed: CommercialMedicationProduct[] = [
         'Apresentação de uso humano amplamente comercializada em drogarias de todo o Brasil. Não exige retenção de receita.',
     },
     evidenceLevel:
-      'Consenso mundial WAVD 2025 (grau moderado para prevenção); Ensaio Sabaté et al. (2014); Estudo de QTc Donato et al. (2024); Plumb’s 10ª ed.',
+      'Consenso mundial WAVD 2025 (grau moderado para prevenção); Ensaio Sabaté et al. (2014); Estudo de QTc Donato et al. (2024).',
     isControlled: false,
     catalogMedicationId: 'editorial:domperidona',
   },

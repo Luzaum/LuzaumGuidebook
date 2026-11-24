@@ -22,9 +22,8 @@ export function QuickDecisionStrip({ items, slug, className = '' }: QuickDecisio
   return (
     <section
       id="quick-strip"
-      className={`scroll-mt-24 overflow-hidden rounded-[20px] border border-primary/20 bg-gradient-to-br from-primary/[0.06] via-card/80 to-card shadow-sm md:rounded-[28px] ${className}`.trim()}
+      className={`scroll-mt-24 overflow-hidden rounded-[20px] border border-border bg-transparent md:rounded-[28px] ${className}`.trim()}
     >
-      <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-primary to-emerald-500 opacity-90" aria-hidden />
       <div className="p-4 md:p-6">
         <p className="mb-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
           <Zap className="h-4 w-4" aria-hidden />
@@ -35,7 +34,7 @@ export function QuickDecisionStrip({ items, slug, className = '' }: QuickDecisio
           {trimmed.map((text, index) => (
             <div
               key={`${index}-${text.slice(0, 24)}`}
-              className="min-w-[min(100%,220px)] max-w-[300px] shrink-0 rounded-2xl border border-primary/15 bg-background/90 px-4 py-3 text-[13px] leading-snug text-foreground/90 shadow-sm ring-1 ring-black/[0.03] dark:ring-white/[0.05]"
+              className="min-w-[min(100%,220px)] max-w-[300px] shrink-0 rounded-2xl border border-border bg-transparent px-4 py-3 text-[13px] leading-snug text-foreground/90"
             >
               <span className="mb-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-lg bg-primary/15 px-2 text-[11px] font-bold text-primary">
                 {index + 1}

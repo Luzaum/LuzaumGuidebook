@@ -46,15 +46,23 @@ interface DiseaseSectionRendererProps {
   hideTitle?: boolean;
 }
 
-function isSystemGroupArray(value: unknown): value is EditorialSystemGroup[] {
-  return Array.isArray(value) && value.length > 0 && value.every((item) => {
-    if (!item || typeof item !== 'object' || !('system' in item) || !('findings' in item)) return false;
-    const findings = (item as EditorialSystemGroup).findings;
-    return Array.isArray(findings) && findings.every((finding) => {
-      if (typeof finding === 'string') return true;
-      return Boolean(finding && typeof finding === 'object' && 'finding' in finding && 'mechanism' in finding);
-    });
-  });
+function normalizeSystemGroups(value: unknown): EditorialSystemGroup[] | null {
+  if (!Array.isArray(value) || value.length === 0) return null;
+  const groups: EditorialSystemGroup[] = [];
+  for (const item of value) {
+    if (!item || typeof item.system !== 'string' || !Array.isArray(item.findings)) return null;
+    const findings: EditorialSystemGroup['findings'] = [];
+    for (const entry of item.findings) {
+      if (typeof entry === 'string') { findings.push(entry); continue; }
+      if (!entry || typeof entry !== 'object') return null;
+      const finding = entry.finding ?? entry.sign;
+      const mechanism = entry.mechanism ?? entry.detail;
+      if (typeof finding !== 'string' || typeof mechanism !== 'string') return null;
+      findings.push({ ...entry, finding, mechanism });
+    }
+    groups.push({ ...item, findings });
+  }
+  return groups;
 }
 
 function isDrugProtocolArray(value: unknown): value is EditorialDrugProtocol[] {
@@ -118,6 +126,7 @@ export function normalizeClinicalFigure(value: unknown): EditorialClinicalFigure
   return {
     kind: 'clinicalFigure',
     src: src.trim(),
+    fallbackSrc: typeof v.fallbackSrc === 'string' && v.fallbackSrc.trim() ? v.fallbackSrc.trim() : undefined,
     alt: typeof v.alt === 'string' && v.alt.trim() ? v.alt : typeof v.caption === 'string' && v.caption.trim() ? v.caption : 'Figura clínica',
     caption: typeof v.caption === 'string' ? v.caption : undefined,
     shortCaption: typeof v.shortCaption === 'string' && v.shortCaption.trim() ? v.shortCaption.trim() : undefined,
@@ -147,6 +156,20 @@ function figureGridSpanClass(figure: EditorialClinicalFigure, isOnlyInGroup = fa
 
 function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [activeSrc, setActiveSrc] = React.useState(figure.src);
+  const [usedFallback, setUsedFallback] = React.useState(false);
+
+  React.useEffect(() => {
+    setActiveSrc(figure.src);
+    setUsedFallback(false);
+  }, [figure.src, figure.fallbackSrc]);
+
+  const handleImageError = React.useCallback(() => {
+    if (!usedFallback && figure.fallbackSrc && activeSrc !== figure.fallbackSrc) {
+      setUsedFallback(true);
+      setActiveSrc(figure.fallbackSrc);
+    }
+  }, [usedFallback, figure.fallbackSrc, activeSrc]);
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -175,10 +198,12 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
         >
           <div className={cn('relative w-full flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden', figureViewportClass(figure.display))}>
             <img
-              src={figure.src}
+              src={activeSrc}
               alt={figure.alt}
               loading="lazy"
               decoding="async"
+              referrerPolicy="no-referrer"
+              onError={handleImageError}
               className="h-auto w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.02]"
             />
           </div>
@@ -220,8 +245,10 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
           >
             <div className="flex items-center justify-center w-full">
               <img
-                src={figure.src}
+                src={activeSrc}
                 alt={figure.alt}
+                referrerPolicy="no-referrer"
+                onError={handleImageError}
                 className="block max-h-[70vh] w-auto max-w-[95vw] md:max-w-[85vw] object-contain rounded-xl shadow-2xl select-none mx-auto ring-1 ring-white/10"
               />
             </div>
@@ -1425,15 +1452,16 @@ function FlowSubsection({
 
 function tryRenderTreatmentRichObject(
   obj: Record<string, unknown>,
-  visual: DiseaseSectionVisual
+  visual: DiseaseSectionVisual,
+  renderNested: (value: unknown, key?: string) => React.ReactNode
 ): React.ReactNode | null {
   const ordemEstruturada = isTreatmentPriorityStepArray(obj.ordemDePrioridadeEstruturada)
     ? (obj.ordemDePrioridadeEstruturada as EditorialTreatmentPriorityStep[])
     : [];
-  const ordem = Array.isArray(obj.ordemDePrioridade)
+  const ordem = Array.isArray(obj.ordemDePrioridade) && obj.ordemDePrioridade.every((item) => typeof item === 'string')
     ? (obj.ordemDePrioridade as string[]).map((s) => String(s).trim()).filter(Boolean)
     : [];
-  const monitor = Array.isArray(obj.monitoramento)
+  const monitor = Array.isArray(obj.monitoramento) && obj.monitoramento.every((item) => typeof item === 'string')
     ? (obj.monitoramento as string[]).map((s) => String(s).trim()).filter(Boolean)
     : [];
   if (ordemEstruturada.length === 0 && ordem.length === 0 && monitor.length === 0) return null;
@@ -1459,7 +1487,7 @@ function tryRenderTreatmentRichObject(
         return <DrugProtocolList protocols={value as EditorialDrugProtocol[]} />;
       }
     }
-    return <StructuredNarrative value={String(value ?? '')} visual={visual} />;
+    return renderNested(value, key);
   };
 
   const pushNarrative = (key: string, blocks: React.ReactNode[]) => {
@@ -1490,14 +1518,14 @@ function tryRenderTreatmentRichObject(
     blocks.push(<TreatmentPriorityPanel key="ordem" items={ordem} visual={visual} />);
   }
 
-  for (const key of TREATMENT_NARRATIVE_AFTER_PRIORITY) {
+  for (const key of new Set(TREATMENT_NARRATIVE_AFTER_PRIORITY)) {
     if (obj[key]) pushNarrative(key, blocks);
   }
 
   const handled = new Set<string>([
-    'ordemDePrioridade',
-    'ordemDePrioridadeEstruturada',
-    'monitoramento',
+    ...(ordem.length > 0 ? ['ordemDePrioridade'] : []),
+    ...(ordemEstruturada.length > 0 ? ['ordemDePrioridadeEstruturada'] : []),
+    ...(monitor.length > 0 ? ['monitoramento'] : []),
     'decisaoInicial',
     'prognosticoResumo',
     ...TREATMENT_NARRATIVE_AFTER_PRIORITY,
@@ -1559,11 +1587,19 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       }
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
-      if (isSystemGroupArray(content)) return <ClinicalSignsTable groups={content} visual={visual} />;
-      if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogênese'))) {
+      const systemGroups = normalizeSystemGroups(content);
+      if (systemGroups) return <ClinicalSignsTable groups={systemGroups} visual={visual} />;
+      if (content.every((item) => typeof item === 'string') && key && (key === 'cascata' || key.includes('cascata') || key.includes('patogênese'))) {
         return <CascataFlowTimeline items={content as string[]} visual={visual} />;
       }
-      return <BulletList items={content.filter((item): item is string => typeof item === 'string')} visual={visual} />;
+      if (content.every((item) => typeof item === 'string')) {
+        return <BulletList items={content as string[]} visual={visual} />;
+      }
+      // Importações podem conter objetos ou listas mistas. Não descartar achados
+      // clínicos só porque não correspondem a um dos componentes especializados.
+      return <div className="space-y-4">{content.map((item, index) => (
+        <React.Fragment key={index}>{renderContent(item)}</React.Fragment>
+      ))}</div>;
     }
 
     if (content && typeof content === 'object') {
@@ -1577,7 +1613,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       }
 
       if (id === 'treatment') {
-        const rich = tryRenderTreatmentRichObject(content as Record<string, unknown>, visual);
+        const rich = tryRenderTreatmentRichObject(content as Record<string, unknown>, visual, renderContent);
         if (rich !== null) return rich;
       }
 
@@ -1671,6 +1707,9 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       );
     }
 
+    if (typeof content === 'number' || typeof content === 'boolean') {
+      return <StructuredNarrative value={typeof content === 'boolean' ? (content ? 'Sim' : 'Não') : String(content)} visual={visual} />;
+    }
     return null;
   };
 

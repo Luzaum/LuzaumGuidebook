@@ -99,7 +99,7 @@ export const hipotireoidismoCongenitoRecord: DiseaseRecord = {
         },
         {
           label: 'Passo 3: Dosagem Hormonal de T4 Total e TSH Canino/Felino',
-          detail: 'Padrão-ouro confirmatório (*isGoldStandard: true*). TT4 e fT4 por diálise encontram-se em concentrações extremamente baixas ou indetectáveis (<0,5 mcg/dL). No hipotireoidismo congênito primário (99% dos casos), o cTSH sérico encontra-se dramaticamente elevado (>1,5 a 5,0 ng/mL), estimulado pela perda do feedback negativo hipofisário.'
+          detail: 'Padrão-ouro confirmatório. TT4 e fT4 por diálise encontram-se em concentrações extremamente baixas ou indetectáveis (<0,5 mcg/dL). No hipotireoidismo congênito primário (99% dos casos), o cTSH sérico encontra-se dramaticamente elevado (>1,5 a 5,0 ng/mL), estimulado pela perda da retroalimentação negativa hipofisária.'
         },
         {
           label: 'Passo 4: Avaliação Radiográfica Esquelética Completa',
@@ -284,7 +284,7 @@ export const hipotireoidismoCongenitoRecord: DiseaseRecord = {
         description:
           'Colheita de amostra de soro para ensaios validados de imunoensaio quimioluminescente.',
         interpretation:
-          'Padrão-ouro confirmatório (*isGoldStandard: true*). TT4 e fT4 por diálise encontram-se indetectáveis ou marcadamente abaixo dos valores pediátricos normais (<0,5 mcg/dL). O TSH sérico canino/felino encontra-se expressivamente elevado (>1,5 a 5,0 ng/mL) nas formas primárias (disgenesia e disormonogênese). Um TSH baixo com T4 baixo aponta para nanismo hipofisário central.',
+          'Padrão-ouro confirmatório. TT4 e fT4 por diálise encontram-se indetectáveis ou marcadamente abaixo dos valores pediátricos normais (<0,5 mcg/dL). O TSH sérico canino/felino encontra-se expressivamente elevado (>1,5 a 5,0 ng/mL) nas formas primárias (disgenesia e disormonogênese). Um TSH baixo com T4 baixo aponta para nanismo hipofisário central.',
         limitations: 'Valores de T4 fisiológicos em filhotes normais saudáveis nas primeiras 4 semanas de vida são até 2 a 3 vezes mais altos que em adultos; concentrações "normais de adulto" em um filhote de 4 semanas podem representar subdosagem hormonal patológica.',
         isGoldStandard: true
       },

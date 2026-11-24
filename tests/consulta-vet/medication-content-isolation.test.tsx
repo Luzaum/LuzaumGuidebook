@@ -20,7 +20,12 @@ test('todo medicamento público possui explicações próprias com fontes resolv
     assert.ok((medication.clinicalFoundationsData?.length ?? 0) >= 4, `${slug}: deve possuir tópicos didáticos e de evidência`);
     const ids = new Set(medication.references?.map((reference) => reference.id));
     for (const topic of medication.clinicalFoundationsData ?? []) {
-      assert.ok(topic.narrative.length > 100, `${slug}: explicação insuficiente`);
+      if (!topic.studies?.length) {
+        assert.ok(topic.narrative.length > 100, `${slug}: explicação insuficiente`);
+      } else {
+        assert.ok(topic.narrative.trim(), `${slug}: contexto do estudo ausente`);
+        assert.ok(topic.studies.every((study) => study.summaryText.trim()), `${slug}: resultados do estudo ausentes`);
+      }
       for (const id of topic.referenceIds ?? []) assert.ok(ids.has(id), `${slug}: referência ${id} não encontrada`);
       for (const study of topic.studies ?? []) {
         assert.ok(ids.has(study.referenceId), `${slug}: estudo ${study.referenceId} não encontrado nas referências`);

@@ -91,7 +91,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
   ],
 
   interactions: [
-    'Inibidores da Monoamina Oxidase / IMAO (Selegilina, Amitraz, Linezolida, Azul de Metileno): Contraindicação Absoluta de Alto Risco. A associação ou uso sem intervalo de clareamento (washout) de 14 dias deflagra Síndrome Serotoninérgica letal caracterizada por hipertermia grave, mioclonia, convulsões, rigidez muscular, choque autonômico e óbito.',
+    'Inibidores da Monoamina Oxidase / IMAO (Selegilina, Amitraz, Linezolida, Azul de Metileno): Contraindicação Absoluta de Alto Risco. A associação ou uso sem intervalo de clareamento de 14 dias deflagra Síndrome Serotoninérgica letal caracterizada por hipertermia grave, mioclonia, convulsões, rigidez muscular, choque autonômico e óbito.',
     'Tramadol: Aumento significativo do risco de toxicidade serotoninérgica decorrente do bloqueio concomitante da recaptação de serotonina e estimulação monoaminérgica central; monitorar agitação, hipertermia e tremores.',
     'Trazodona, Fluoxetina, Paroxetina, Amitriptilina e Clomipramina: Sinergismo serotoninérgico aditivo com potencialização do risco de síndrome serotoninérgica e sedação excessiva; monitorar estreitamente.',
     'Ciproeptadina: Antagonismo farmacodinâmico recíproco. Sendo um antagonista serotonérgico e anti-histamínico com potente afinidade 5-HT2, a ciproeptadina neutraliza os efeitos orexígenos da mirtazapina; em contrapartida, é o antídoto padrão-ouro de resgate para reverter intoxicações agudas e efeitos adversos comportamentais induzidos pela mirtazapina.',
@@ -171,7 +171,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-mirt-cat-inappetence-plumb',
       species: 'cat',
-      indication: 'Estimulação de apetite e antiemético em gatos saudáveis ou convalescentes (Plumb / BSAVA)',
+      indication: 'Estimulação de apetite e antiemético em gatos saudáveis ou convalescentes (consenso AAFP/ISFM)',
       clinicalContext: 'Uso de formulação oral extra-bula fracionada ou magistral em felinos sem doença renal ou hepática avançada.',
       doseMin: 1.88,
       doseMax: 1.88,
@@ -181,7 +181,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
       frequency: 'q24h a q48h',
       duration: '3 a 14 dias; monitorar recuperação do apetite e investigar causa primária',
       notes:
-        'Dose consensual de compêndios (Plumb 10ª ed., BSAVA 10ª ed.): 1,88 mg por gato (aproximadamente 1/4 de comprimido de 7,5 mg ou 1/8 de 15 mg, ou cápsula manipulada). Quimby et al. (2011) comprovaram que 1,88 mg estimula o consumo de alimento tão eficazmente quanto 3,75 mg, porém com incidência significativamente menor de efeitos adversos comportamentais.',
+        'Dose consensual felina validada: 1,88 mg por gato (aproximadamente 1/4 de comprimido de 7,5 mg ou 1/8 de 15 mg, ou cápsula manipulada). Quimby et al. (2011) comprovaram que 1,88 mg estimula o consumo de alimento tão eficazmente quanto 3,75 mg, porém com incidência significativamente menor de efeitos adversos comportamentais.',
       monitoring: 'Ganho de peso, aceitação alimentar e nível de sedação ou miados excessivos.',
       calculatorEnabled: true,
       referenceIds: ['ref-plumb-10', 'ref-bsava-10', 'ref-quimby-pk-2011'],
@@ -200,7 +200,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
       frequency: 'q48h',
       duration: 'Uso continuado ou por pulsos conforme escore de apetite e peso corporal',
       notes:
-        'Protocolo validado pelo estudo pivotal de Quimby & Lunn (2013) e Plumb 10ª ed.: 1,88 mg a 2 mg por gato VO a cada 48 horas. A meia-vida de eliminação plasmática em gatos com DRC prolonga-se para 15,2 horas e o clearance oral cai para 0,6 L/h/kg, sustentando cientificamente o intervalo espaçado de 48 horas para evitar acúmulo sistêmico e toxicidade.',
+        'Protocolo validado pelo estudo pivotal de Quimby & Lunn (2013): 1,88 mg a 2 mg por gato VO a cada 48 horas. A meia-vida de eliminação plasmática em gatos com DRC prolonga-se para 15,2 horas e o clearance oral cai para 0,6 L/h/kg, sustentando cientificamente o intervalo espaçado de 48 horas para evitar acúmulo sistêmico e toxicidade.',
       monitoring: 'Creatinina sérica, ureia, peso corporal periódico, pressão arterial sistólica e sinais de hiperestimulação.',
       calculatorEnabled: true,
       presentationId: 'pres-mirtz-2mg',
@@ -220,7 +220,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
       frequency: 'q48h a q72h',
       duration: 'Individualizada; monitorar enzimas hepáticas e bilirrubina',
       notes:
-        'Dose adaptada com base no estudo farmacocinético de Fitzpatrick et al. (2018) e Plumb 10ª ed.: 1,88 mg a 2 mg por gato VO a cada 48 horas, podendo requerer espaçamento para 72 horas em pacientes com hiperbilirrubinemia severa, visto que a meia-vida se estende para uma mediana de 13,8 horas (com amplitude máxima observada de até 61,4 horas). Não adiar sonda enteral em risco iminente de lipidose hepática.',
+        'Dose adaptada com base no estudo farmacocinético de Fitzpatrick et al. (2018): 1,88 mg a 2 mg por gato VO a cada 48 horas, podendo requerer espaçamento para 72 horas em pacientes com hiperbilirrubinemia severa, visto que a meia-vida se estende para uma mediana de 13,8 horas (com amplitude máxima observada de até 61,4 horas). Não adiar sonda enteral em risco iminente de lipidose hepática.',
       monitoring: 'ALT, FA, bilirrubina sérica, nível de sedação e aceitação alimentar.',
       calculatorEnabled: true,
       presentationId: 'pres-mirtz-2mg',
@@ -250,7 +250,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
     {
       id: 'dose-mirt-dog-appetite-formulatory',
       species: 'dog',
-      indication: 'Estimulação de apetite e controle de náusea em cães — Diretriz de Formulário (Plumb / BSAVA)',
+      indication: 'Estimulação de apetite e controle de náusea em cães',
       clinicalContext: 'Cães inapetentes por afecções crônicas, insuficiência renal ou tratamento oncológico.',
       doseMin: 1.1,
       doseMax: 1.3,
@@ -261,11 +261,11 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
       duration: 'Conforme evolução do apetite e controle etiológico; reavaliar periodicamente',
       maximumDose: '30 mg/cão/dia (limite teto independente do peso corporal)',
       notes:
-        'Dose preconizada pelo BSAVA 10ª ed. e Plumb 10ª ed.: 1,1 a 1,3 mg/kg VO a cada 24 horas. Plumb estabelece expressamente que a dose total jamais deve exceder 30 mg por cão uma vez ao dia, independentemente do peso corporal. Usar a menor dose eficaz para minimizar sonolência acentuada. Em cães Beagles sadios, a meia-vida média é de 6,17 horas e o clearance é de 1193 mL/kg/h.',
+        'Dose canina padrão: 1,1 a 1,3 mg/kg VO a cada 24 horas, com limite máximo absoluto de 30 mg por cão uma vez ao dia, independentemente do peso corporal. Usar a menor dose eficaz para minimizar sonolência acentuada. Em cães Beagles sadios, a meia-vida média é de 6,17 horas e o clearance é de 1193 mL/kg/h.',
       monitoring: 'Grau de sedação motora, consumo alimentar espontâneo, pressão arterial e ausência de hipotensão.',
       calculatorEnabled: true,
       referenceIds: ['ref-bsava-10', 'ref-plumb-10', 'ref-nelson-couto-6th'],
-      evidenceLevel: 'Compêndios Padrão-Ouro Internacionais (BSAVA 10 e Plumb 10)',
+      evidenceLevel: 'Prática Clínica e Farmacocinética Canina Consolidada',
     },
     {
       id: 'dose-mirt-dog-appetite-conservative-2025',
@@ -512,7 +512,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
         physiologicalExplanation:
           'Os IMAOs bloqueiam a degradação mitocondrial de monoaminas enquanto a mirtazapina desinibe a liberação pré-sináptica de serotonina e noradrenalina. Essa associação deflagra acúmulo suprafisiológico maciço de serotonina na fenda sináptica, culminando em crise serotoninérgica maligna com hipertermia severa, convulsões, instabilidade autonômica e morte.',
         clinicalAction:
-          'Contraindicação absoluta de uso simultâneo. Respeitar período obrigatório de washout de no mínimo 14 dias após descontinuar selegilina ou amitraz antes de iniciar a mirtazapina.',
+          'Contraindicação absoluta de uso simultâneo. Respeitar período obrigatório de intervalo de suspensão de no mínimo 14 dias após descontinuar selegilina ou amitraz antes de iniciar a mirtazapina.',
       },
       {
         condition: 'Doença Renal Crônica Felina Estágios 2 a 4 (Clearance Reduzido)',
@@ -705,7 +705,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
         species: 'dog',
         title: 'Cinética Linear com Meia-Vida Curta e Alta Responsividade a Doses Conservadoras',
         description:
-          'Cães sadios apresentam meia-vida plasmática significativamente mais curta (média de 6,17 horas) e clearance plasmático muito mais rápido (~1193 mL/kg/hora) do que gatos, com eliminação mais homogênea. Embora os formulários tradicionais (Plumb e BSAVA) citem doses de 1,1 a 1,3 mg/kg q24h (com teto estrito de 30 mg/dia), o recente estudo de Theodoro et al. (2025) demonstrou que doses conservadoras de 0,5 a 0,6 mg/kg VO q24h (ou faixas fixas de 3,75 a 15 mg/cão) são altamente eficazes (100% de aceitação alimentar no Dia 1 versus 63,6% no placebo) e evitam a sedação profunda e a letargia induzidas por doses mais altas.',
+          'Cães sadios apresentam meia-vida plasmática significativamente mais curta (média de 6,17 horas) e clearance plasmático muito mais rápido (~1193 mL/kg/hora) do que gatos, com eliminação mais homogênea. Embora esquemas posológicos clássicos citem doses de 1,1 a 1,3 mg/kg q24h (com teto estrito de 30 mg/dia), o estudo de Theodoro et al. (2025) demonstrou que doses conservadoras de 0,5 a 0,6 mg/kg VO q24h (ou faixas fixas de 3,75 a 15 mg/cão) são altamente eficazes (100% de aceitação alimentar no Dia 1 versus 63,6% no placebo) e evitam a sedação profunda e a letargia induzidas por doses mais altas.',
         clinicalImplications:
           'Prescrever preferencialmente na faixa conservadora de 0,5 a 0,6 mg/kg VO a cada 24 horas para minimizar sedação. Respeitar o limite máximo absoluto de 30 mg por cão uma vez ao dia, independentemente do porte.',
       },
@@ -776,7 +776,7 @@ export const mirtazapinaMedicationRecord: MedicationRecord = {
         weight: '40 kg ou mais (Cão Gigante)',
         totalDose: '20,0 a 24,0 mg q24h',
         col1: '30,0 mg q24h (Limite Teto Absoluto)',
-        col2: '1 comp. humano 30 mg q24h (Atenção: Plumb veda doses acima de 30 mg/dia)',
+        col2: '1 comp. humano 30 mg q24h (Atenção: evitar doses acima de 30 mg/dia)',
       },
     ],
   },

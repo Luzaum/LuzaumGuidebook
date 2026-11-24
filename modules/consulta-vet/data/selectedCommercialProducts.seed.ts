@@ -16,7 +16,7 @@ const RIVAROXABAN_ALERT =
 
 const PREDNISOLONE_OPHTHALMIC_DOSAGE = {
   labelDose:
-    "Bula humana: 1-2 gotas no olho afetado 2-4x/dia; nas primeiras 24-48 h pode intensificar sob prescricao. Plumb's: cães/gatos, 1 gota no olho afetado q6h para conjuntivite/ceratite/uveíte não ulcerativas.",
+    "Bula humana: 1-2 gotas no olho afetado 2-4x/dia; nas primeiras 24-48 h pode intensificar sob prescricao. Uso veterinário: cães/gatos, 1 gota no olho afetado q6h para conjuntivite/ceratite/uveíte não ulcerativas.",
   plumbs: {
     dog: [
       {
@@ -41,13 +41,13 @@ const PREDNISOLONE_OPHTHALMIC_DOSAGE = {
 
 const TOBRAMYCIN_OPHTHALMIC_DOSAGE = {
   labelDose:
-    "Bula humana: leve a moderada, 1-2 gotas q4h; grave, 2 gotas q1h e reduzir conforme resposta. Plumb's: cães/gatos, 1 gota 4-6x/dia; grave, 1 gota q30-60 min inicialmente.",
+    "Leve a moderada: 1-2 gotas no olho afetado q4h; grave: 2 gotas q1h nas primeiras 24-48 h, reduzindo progressivamente para q4-6h após controle clínico. Em cães e gatos: 1 gota 4-6x/dia; em ceratite grave, 1 gota q30-60 min nas primeiras 24-48 h.",
   plumbs: {
     dog: [
       {
         title: 'Infeccao ocular bacteriana suscetivel',
         dose: '1 gota no olho afetado 4-6x/dia',
-        note: 'Em ceratite grave/infectada, iniciar q30-60 min sob acompanhamento e reduzir conforme resposta.',
+        note: 'Em ceratite grave/infectada, iniciar q30-60 min nas primeiras 24-48 h e reduzir progressivamente para q4-6h após controle clínico.',
       },
     ],
     cat: [
@@ -66,7 +66,7 @@ const TOBRAMYCIN_OPHTHALMIC_DOSAGE = {
 
 const ALUMINUM_HYDROXIDE_DOSAGE = {
   labelDose:
-    "Hiperfosfatemia/DRC: Plumb's cães/gatos, 30-100 mg/kg/dia VO, dividido e misturado com todas as refeicoes. Suspensão 60 mg/mL: 0,50-1,67 mL/kg/dia total.",
+    "Hiperfosfatemia/DRC em cães/gatos: 30-100 mg/kg/dia VO, dividido e misturado com todas as refeicoes. Suspensão 60 mg/mL: 0,50-1,67 mL/kg/dia total.",
   plumbs: {
     dog: [
       {
@@ -92,7 +92,7 @@ const ALUMINUM_HYDROXIDE_DOSAGE = {
 
 const RIVAROXABAN_DOSAGE = {
   labelDose:
-    "Bula humana não deve ser transposta. Plumb's: cães 0,5-1 mg/kg VO q24h; alguns protocolos 1-2 mg/kg q24h. Gatos 0,5-1 mg/kg VO q12-24h ou doses praticas 1,25-5 mg/gato q24h.",
+    "Bula humana não deve ser transposta. Uso veterinário: cães 0,5-1 mg/kg VO q24h (alguns protocolos 1-2 mg/kg q24h); gatos 0,5-1 mg/kg VO q12-24h ou doses práticas de 1,25-5 mg/gato q24h.",
   plumbs: {
     dog: [
       {
@@ -169,7 +169,7 @@ function tobramycinProduct(product: {
     labelCompositionSummary:
       'Tobramicina 3 mg/mL em solução oftálmica estéril. Antibiótico aminoglicosideo humano; uso veterinário extra-label.',
     labelDirections:
-      'Uso exclusivamente oftálmico. Bula humana: 1-2 gotas q4h em infecções leves a moderadas; graves podem iniciar com frequência horaria e reduzir conforme resposta.',
+      'Uso exclusivamente oftálmico. Instilar 1-2 gotas no olho afetado q4h em infecções leves a moderadas; em quadros graves, iniciar com 2 gotas q1h nas primeiras 24-48 h e espaçar progressivamente para q4-6h após controle clínico.',
     dosageGuidance: TOBRAMYCIN_OPHTHALMIC_DOSAGE,
     plumbsContext:
       'Tobramicina oftálmica tem utilidade contra bactérias suscetíveis, especialmente bacilos Gram-negativos aeróbios, incluindo Pseudomonas. Não cobre virus, fungos ou anaerobios.',
@@ -178,7 +178,7 @@ function tobramycinProduct(product: {
     reassessment:
       'Reavaliar em 24-72 h conforme gravidade; imediatamente se dor piorar, úlcera aprofundar, houver malacia, secrecao intensa ou perda visual.',
     prescriptionExample:
-      `${product.name}: instilar 1 gota no olho afetado a cada 4-6 horas por ___ dias. Separar outros colirios por pelo menos 5 minutos.`,
+      `${product.name}: instilar 1 gota no olho afetado a cada 4-6 horas por 7 a 10 dias. Separar outros colírios por pelo menos 5 minutos.`,
     safetyAlert: TOBRAMYCIN_ALERT,
   };
 }
